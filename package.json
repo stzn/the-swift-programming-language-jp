@@ -4,7 +4,8 @@
   "description": "[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。",
   "main": "index.js",
   "scripts": {
-    "textlint": "textlint"
+    "textlint": "textlint",
+    "textlintf": "textlint --fix"
   },
   "repository": {
     "type": "git",
