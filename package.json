@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "textlint": "textlint"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stzn/the-swift-programming-language-jp.git"
@@ -16,6 +18,7 @@
   "homepage": "https://github.com/stzn/the-swift-programming-language-jp#readme",
   "devDependencies": {
     "textlint": "^11.9.0",
+    "textlint-rule-period-in-list-item": "^0.3.2",
     "textlint-rule-preset-jtf-style": "^2.3.8"
   }
 }
