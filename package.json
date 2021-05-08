@@ -1,0 +1,21 @@
+{
+  "name": "the-swift-programming-language-jp",
+  "version": "1.0.0",
+  "description": "[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stzn/the-swift-programming-language-jp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stzn/the-swift-programming-language-jp/issues"
+  },
+  "homepage": "https://github.com/stzn/the-swift-programming-language-jp#readme",
+  "devDependencies": {
+    "textlint": "^11.9.0",
+    "textlint-rule-preset-jtf-style": "^2.3.8"
+  }
+}
