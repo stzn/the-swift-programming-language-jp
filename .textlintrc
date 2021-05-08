@@ -1,5 +1,6 @@
 {
     "rules": {
+        "period-in-list-item": true,
         "preset-jtf-style": {
             "1.1.3.箇条書き": false,
             "2.1.5.カタカナ": false,

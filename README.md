@@ -87,7 +87,10 @@
 
 #### 翻訳チェック
 
-[textlint](https://github.com/textlint/textlint)に[textlint-rule-preset-JTF-style](https://github.com/textlint-ja/textlint-rule-preset-JTF-style)を適用してチェックしています。
+[textlint](https://github.com/textlint/textlint)に
+- [textlint-rule-preset-JTF-style](https://github.com/textlint-ja/textlint-rule-preset-JTF-style)
+- [textlint-rule-period-in-list-item](https://github.com/textlint-rule/textlint-rule-period-in-list-item)
+を適用してチェックしています。
 
 ※ 一部チェック項目を除外しています。内容は[.textlintrc](https://github.com/stzn/the-swift-programming-language-jp/blob/master/.textlintrc)をご参照ください。
 
@@ -95,5 +98,5 @@
 
 ```text
 npm install
-textlint <対象のファイル>
+npm run textlint <対象のファイル>
 ```
