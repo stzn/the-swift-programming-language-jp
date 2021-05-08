@@ -1,0 +1,2 @@
+# Opaque Types
+
