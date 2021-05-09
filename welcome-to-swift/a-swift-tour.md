@@ -337,6 +337,156 @@ print(sortedNumbers)
 
 ## Objects and Classes
 
+`class` を class 名の前に付けることで class を作成することができます。class 内のプロパティの宣言は、class 内にあるということを除いて、定数や変数の宣言方法と同じです。同様に、メソッドや関数の宣言も同じように書くことができます。
+
+```swift
+class Shape {
+    var numberOfSides = 0
+    func simpleDescription() -> String {
+        return "A shape with \(numberOfSides) sides."
+    }
+}
+```
+
+> Experiment  
+> let を使って定数プロパティを追加しましょう。また、引数を受け取る別のメソッドも追加してみましょう。
+
+class のインスタンスは、class 名の後に丸括弧(())を付けて生成します。そのインスタンスのプロパティやメソッドにアクセスするには、ドット(.)シンタックスを使います。
+
+```swift
+var shape = Shape()
+shape.numberOfSides = 7
+var shapeDescription = shape.simpleDescription()
+```
+
+このバージョンの `Shape` class は重要なことが抜けています。それは、インスタンスを生成するときに class を構築するためのイニシャライザです。生成するために `init` を使います。
+
+```swift
+class NamedShape {
+    var numberOfSides: Int = 0
+    var name: String
+
+    init(name: String) {
+        self.name = name
+    }
+
+    func simpleDescription() -> String {
+        return "A shape with \(numberOfSides) sides."
+    }
+}
+```
+
+イニシャライザ内で `self` を使って `name` プロパティと `name` 引数を区別していることに注目してください。インスタンスの作成時、イニシャライザの引数は関数の呼び出しと同じように渡されます。全てのプロパティは宣言時に値を設定するか(`numberOfSides` 参照)、イニシャライザ内で値を設定する必要があります。(`name`参照)
+
+インスタンスが開放される前に何かクリーンアップ作業が必要な場合、デイニシャライザを作成するために `deinit` を使います。
+
+subclass は、その class 名の後に、superclass の名前をコロンで区切って指定します。標準で定義されているルート class の subclass にする必要は必ずしもありません。追加も省略もできます。
+
+superclass のメソッドを subclass で override する場合は `override` を付けます。意図せずに override してしまった場合は、コンパイラがエラーにします。`override` を付けていても、`override` が正しく行われていない場合も、コンパイラはエラーにします。
+
+```swift
+class Square: NamedShape {
+    var sideLength: Double
+
+    init(sideLength: Double, name: String) {
+        self.sideLength = sideLength
+        super.init(name: name)
+        numberOfSides = 4
+    }
+
+    func area() -> Double {
+        return sideLength * sideLength
+    }
+
+    override func simpleDescription() -> String {
+        return "A square with sides of length \(sideLength)."
+    }
+}
+let test = Square(sideLength: 5.2, name: "my test square")
+test.area()
+test.simpleDescription()
+```
+
+> Experiment  
+> radius と name をイニシャライザの引数に受けとる `Circle` という名前の `NameShape` の別の subclass を作ってみましょう。そして、 `Circle` class に area(), simpleDescription() メソッドを実装してみましょう。
+
+単純に値を保持するプロパティ以外に、プロパティが getter と setter を持つこともできます。
+
+```swift
+class EquilateralTriangle: NamedShape {
+    var sideLength: Double = 0.0
+
+    init(sideLength: Double, name: String) {
+        self.sideLength = sideLength
+        super.init(name: name)
+        numberOfSides = 3
+    }
+
+    var perimeter: Double {
+        get {
+            return 3.0 * sideLength
+        }
+        set {
+            sideLength = newValue / 3.0
+        }
+    }
+
+    override func simpleDescription() -> String {
+        return "An equilateral triangle with sides of length \(sideLength)."
+    }
+}
+var triangle = EquilateralTriangle(sideLength: 3.1, name: "a triangle")
+print(triangle.perimeter)
+// Prints "9.3"
+triangle.perimeter = 9.9
+print(triangle.sideLength)
+// Prints "3.3000000000000003"
+```
+
+`perimeter` の setter の中で、新しい値は暗黙的に `newValue` という名前になります。 `set` の後に丸括弧(())で囲んで明示的に指定することもできます。
+
+`EquilateralTriangle` class のイニシャライザは3つの異なるステップがあります。
+
+1. subclass で宣言されたプロパティに値を設定
+2. superclass のイニシャライザを呼ぶ
+3. superclass で定義されたプロパティの値を変更。この時点で getter setter メソッドを使って他のセットアップ処理を実行
+
+プロパティを計算する必要はないけれども、新しい値を設定する前後で何かコードを実行したい場合、`willSet`, didSet` を使います。このコードは、イニシャライザ以外で値が変更された時に毎回実行されます。例えば、下の class は三角形の辺の長さが常に四角形の辺の長さと同じになります。
+
+```swift
+class TriangleAndSquare {
+    var triangle: EquilateralTriangle {
+        willSet {
+            square.sideLength = newValue.sideLength
+        }
+    }
+    var square: Square {
+        willSet {
+            triangle.sideLength = newValue.sideLength
+        }
+    }
+    init(size: Double, name: String) {
+        square = Square(sideLength: size, name: name)
+        triangle = EquilateralTriangle(sideLength: size, name: name)
+    }
+}
+var triangleAndSquare = TriangleAndSquare(size: 10, name: "another test shape")
+print(triangleAndSquare.square.sideLength)
+// Prints "10.0"
+print(triangleAndSquare.triangle.sideLength)
+// Prints "10.0"
+triangleAndSquare.square = Square(sideLength: 50, name: "larger square")
+print(triangleAndSquare.triangle.sideLength)
+// Prints "50.0"
+```
+
+optional な値を扱う場合、 `?` をメソッド、プロパティ、subscript のような操作の前に書きます。もし`?`の前の値が `nil` の場合、`?`の後の処理は全て無視され、その式全体の値は `nil` になります。それ以外は、optional の値はアンラップされて、`?`の後は全てアンラップされた値として実行されます。どちらの場合も、式全体は optinal な値です。
+
+```swift
+let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
+let sideLength = optionalSquare?.sideLength
+```
+
 ## Enumerations and Structures
 
 ## Protocols and Extensions
