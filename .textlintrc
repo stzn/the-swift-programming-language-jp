@@ -20,7 +20,15 @@
             "preferInList": "ですます",
             "strict": true
         },
-        "period-in-list-item": true
+        "period-in-list-item": true,
+        "preset-ja-spacing": {
+            "ja-space-between-half-and-full-width": {
+                "space": "always"
+            }
+        },
+        "@proofdict/proofdict": {
+            "dictURL": "https://tanabebe.github.io/proof-dictionary/"
+        },
     },
     "filters": {
         "comments": true
