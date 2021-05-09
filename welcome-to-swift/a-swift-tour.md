@@ -489,7 +489,185 @@ let sideLength = optionalSquare?.sideLength
 
 ## Enumerations and Structures
 
+列挙型を作成するには `enum` を使います。class やその他の名前の付いた型と同様に、列挙型もメソッドを持つことができます。
+
+```swift
+enum Rank: Int {
+    case ace = 1
+    case two, three, four, five, six, seven, eight, nine, ten
+    case jack, queen, king
+
+    func simpleDescription() -> String {
+        switch self {
+        case .ace:
+            return "ace"
+        case .jack:
+            return "jack"
+        case .queen:
+            return "queen"
+        case .king:
+            return "king"
+        default:
+            return String(self.rawValue)
+        }
+    }
+}
+let ace = Rank.ace
+let aceRawValue = ace.rawValue
+```
+
+> Experiment  
+> 2つの`Rank`の raw value を比較して `Rank` を比較するメソッドを追加してみましょう。
+
+デフォルトで、Swift は0から1つずつ増加する値を raw value に設定しますが、明示的に値を指定してこの挙動を変更することもできます。上記の例では、`Ace` は明示的に1を raw value に指定しており、残りは、1から順番に raw value が指定されます。文字列や浮動小数点も使うことができます。列挙型の個々の case の raw value には、 `rawValue` プロパティからアクセスすることができます。
+
+raw value から列挙型のインスタンスを生成するためには `init?(rawValue:)` イニシャライザを使います。raw value に合致した case を返すか、合致するものがない場合は `nil` を返します。
+
+```swift
+if let convertedRank = Rank(rawValue: 3) {
+    let threeDescription = convertedRank.simpleDescription()
+}
+```
+
+列挙型の case の値は実在の値で、raw value を書くための別の方法ではありません。事実、意味のある raw value が存在しない場合は、raw value を提供する必要はありません。
+
+```swift
+enum Suit {
+    case spades, hearts, diamonds, clubs
+
+    func simpleDescription() -> String {
+        switch self {
+        case .spades:
+            return "spades"
+        case .hearts:
+            return "hearts"
+        case .diamonds:
+            return "diamonds"
+        case .clubs:
+            return "clubs"
+        }
+    }
+}
+let hearts = Suit.hearts
+let heartsDescription = hearts.simpleDescription()
+```
+
+> Experiment  
+> `color()`メソッドを`Suit`に追加してみましょう。`spades` と `clubs`は "black" を返し、`hearts` と `diaminds` は "red" を返します。
+
+`hearts` case を参照するために2つの方法があることに注目してください。`hearts`定数に値を設定する時、列挙型 case の `Suits.hearts` は型を明示的に特定していないため、完全な名前で参照されています。一方、switch 文の中では、`self` が既に `Suit` だとわかっているため、列挙型 case は `.hearts` と省略方法で参照されています。型が既にわかっている場合はいつでも省略方法を使用することができます。
+
+もし列挙型が raw value を持つ場合、これらの値は宣言の一部として決定されます。これはつまり、特定の列挙型 case の全てのインスタンスは、必ず同じ raw value を持つということです。列挙型 case が case に関連した値を持つもう1つの方法があります。これらはインスタンス生成時に値が決定され、列挙型 case のインスタンスごとに異なる値を持つ可能性があります。例えば、サーバから日の出時刻と日の入り時刻をリクエストする場合を考えてみてください。サーバはリクエスト情報に応じたレスポンスを返すか、リクエストが間違っている場合は間違っている内容を返します。
+
+```swift
+enum ServerResponse {
+    case result(String, String)
+    case failure(String)
+}
+
+let success = ServerResponse.result("6:00 am", "8:09 pm")
+let failure = ServerResponse.failure("Out of cheese.")
+
+switch success {
+case let .result(sunrise, sunset):
+    print("Sunrise is at \(sunrise) and sunset is at \(sunset).")
+case let .failure(message):
+    print("Failure...  \(message)")
+}
+// Prints "Sunrise is at 6:00 am and sunset is at 8:09 pm."
+```
+
+> Experiment  
+> `ServerResponse` に3つ目の case を追加して、switch 文を変更しましょう。
+
+日の出時刻と日の入り時刻が、switch に合致した case の一部として、`ServerResponse` から抽出されていることに注目してください。
+
+struct を作成するには `struct` を使います。struct はメソッドやイニシャライザなど多くの class と同じ挙動をサポートしています。最も重要な違いは、struct はコードの中で渡される時に必ずコピーされる、ということです。class は参照を渡します。
+
+```swift
+struct Card {
+    var rank: Rank
+    var suit: Suit
+    func simpleDescription() -> String {
+        return "The \(rank.simpleDescription()) of \(suit.simpleDescription())"
+    }
+}
+let threeOfSpades = Card(rank: .three, suit: .spades)
+let threeOfSpadesDescription = threeOfSpades.simpleDescription()
+```
+
+> Experiment  
+> rank と suit を持った全種類の card を含む array を返すメソッドを書いてみよう。
+
 ## Protocols and Extensions
+
+protocol を宣言するために `protocol` を使います。
+
+```switf
+protocol ExampleProtocol {
+    var simpleDescription: String { get }
+    mutating func adjust()
+}
+```
+
+class, enum, struct は全て protocol に適合することができます。
+
+```swift
+class SimpleClass: ExampleProtocol {
+    var simpleDescription: String = "A very simple class."
+    var anotherProperty: Int = 69105
+    func adjust() {
+        simpleDescription += "  Now 100% adjusted."
+    }
+}
+var a = SimpleClass()
+a.adjust()
+let aDescription = a.simpleDescription
+
+struct SimpleStructure: ExampleProtocol {
+    var simpleDescription: String = "A simple structure"
+    mutating func adjust() {
+        simpleDescription += " (adjusted)"
+    }
+}
+var b = SimpleStructure()
+b.adjust()
+let bDescription = b.simpleDescription
+```
+
+> Experiment  
+> `ExampleProtocolrank` にもう1つの要件を追加してみましょう。`SimpleClass` と `SimpleStructure` にどういう変更が必要になりますでしょうか？
+
+struct `SimpleStructure` を変更するメソッド に `mutating` キーワードが付いていることに注目してください。 class のメソッドは class を変更することが許されているため、`mutating` を付ける必要はありません。
+
+既存の型に新しい機能(メソッドや計算プロパティ)を追加する場合に、`extension` を使います。他のファイルやモジュールで宣言された型やライブラリやフレームワークからインポートした型に protocol を適合させる場合にも extension を使います。
+
+```swift
+extension Int: ExampleProtocol {
+    var simpleDescription: String {
+        return "The number \(self)"
+    }
+    mutating func adjust() {
+        self += 42
+    }
+}
+print(7.simpleDescription)
+// Prints "The number 7"
+```
+
+> Experiment  
+> `absoluteValue`プロパティを `Double` に追加する extension を書いてみましょう。
+
+protocol の名前は他の名前が付いた型と同じように使うことができます。例えば、同じ1つの protocol に適合した異なる型のオブジェクトのコレクションを作成することができます。protocol 自体の型の値を扱っている場合、protocol 外側で定義されたメソッドを使うことはできません。
+
+```swift
+let protocolValue: ExampleProtocol = a
+print(protocolValue.simpleDescription)
+// Prints "A very simple class.  Now 100% adjusted."
+// print(protocolValue.anotherProperty)  // Uncomment to see the error
+```
+
+変数 `protocolValue` が実行時には `SimpleClass` なことはわかるものの、コンパイラはこれをとある `ExampleProtocol` として扱います。つまり、protocol で定義されたメソッドやプロパティ以外へアクセスすることはできません。
 
 ## Error Handling
 
