@@ -131,7 +131,33 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 
 > NOTE  
 > string interpolation\(文字列補間\)で使用できるオブションは[String Interpolation](./strings-and-characters.md#string-interpolation)に記載しています
+
 ## Comments
+
+コード内に実行されないテキスト(メモやリマインダーなど)を含めるためにはコメントを使います。コメントはコンパイル時に Swift のコンパイラからは無視されます。
+
+Swift のコンパイラは C 言語のコメントにとてもよく似ています。1 行のコメントは 2 つのスラッシュ(//)で開始します。
+
+```swift
+// This is a comment.
+```
+
+複数行の場合は、アスタリスク+スラッシュ(/\*)で開始し、スラッシュ+アスタリスク(\*)で終了します。
+
+```swift
+/* This is also a comment
+but is written over multiple lines. */
+```
+
+C 言語の複数行コメントとは異なり、Swift では他の複数行コメントにネストさせることができます。1 つ目の複数行コメントブロックの中で、2 つ目の複数行ブロックコメントを開始します。2 つ目のブロックは、1 つ目のブロックの前にコメントを閉じます。
+
+```swift
+/* This is the start of the first multiline comment.
+ /* This is the second, nested multiline comment. */
+This is the end of the first multiline comment. */
+```
+
+ネストした複数行コメントを使うことで、長い複数行コメントの中でも簡単に素早くその部分だけコメントアウトすることができます。
 
 ## Semicolons
 
