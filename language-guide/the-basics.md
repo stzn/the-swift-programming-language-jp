@@ -78,6 +78,38 @@ var red, green, blue: Double
 
 ### Naming Constants and Variables
 
+定数名と変数名には、Unicode 文字も含めた、ほとんどの文字を含めることができます。
+
+```swift
+let π = 3.14159
+let 你好 = "你好世界"
+let 🐶🐮 = "dogcow"
+```
+
+定数名と変数名に、ホワイトスペース、数学記号、矢印、公式ではない Unicode スカラ値、罫線素片罫線素片、書式文字は含められません。また、数字から始めることはできません(他の位置に数字を含めることはできます)
+
+一度特定の型で定数や変数を定義すると、同じ名前で再定義することはできません。また、異なる型の値を保持することもできません。定数を変数に、変数を定数に変換することもできません。
+
+> NOTE  
+> Swift の予約語と同じ名前で定数や変数を使いたい場合、そのキーワードをバッククォート(``)で囲みます。
+> とはいうものの、予約語を名前に使用することは、本当に他に選択肢がない以外は避けましょう。
+
+既存の変数の値を他の互換性のある型の値に変更することができます。この例では、`friendlyWelcome`の値を`"Hello!"`から`"Bonjour!"`に変更しています。
+
+```swift
+var friendlyWelcome = "Hello!"
+friendlyWelcome = "Bonjour!"
+// friendlyWelcome is now "Bonjour!"
+```
+
+変数とは異なり、定数の値は最初に設定した後に変更できません。試みようとしても、コンパイル時にエラーになります。
+
+```swift
+let languageName = "Swift"
+languageName = "Swift++"
+// This is a compile-time error: languageName cannot be changed.
+```
+
 ### Printing Constants and Variables
 
 ## Comments
