@@ -754,3 +754,51 @@ print(fridgeIsOpen)
 ```
 
 ## Generics
+
+generic な関数や型を作成するには、かぎ括弧(<>)の中に名前を書きます。
+
+```swift
+func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
+    var result = [Item]()
+    for _ in 0..<numberOfTimes {
+        result.append(item)
+    }
+    return result
+}
+makeArray(repeating: "knock", numberOfTimes: 4)
+```
+
+class, enum, struct と同じように、generic な関数やメソッドも作成することができます。
+
+```swift
+// Reimplement the Swift standard library's optional type
+enum OptionalValue<Wrapped> {
+    case none
+    case some(Wrapped)
+}
+var possibleInteger: OptionalValue<Int> = .none
+possibleInteger = .some(100)
+```
+
+要件の一覧を特定するために、 body の直前に `where` を使います。例えば、protocol を実装するために型が必要な場合や、2つの型が一致している必要がある場合、class が特定の superclass を継承している必要がある場合など。
+
+```swift
+func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
+    where T.Element: Equatable, T.Element == U.Element
+{
+    for lhsItem in lhs {
+        for rhsItem in rhs {
+            if lhsItem == rhsItem {
+                return true
+            }
+        }
+    }
+    return false
+}
+anyCommonElements([1, 2, 3], [3])
+```
+
+> Experiment  
+> `anyCommonElements(_:_:)` を2つの Sequence で共通の要素が含まれる配列を返すように修正してみよう。
+
+`<T: Equatable>` は `<T> ... where T: Equatable` と同じです。
