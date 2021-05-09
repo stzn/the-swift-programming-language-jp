@@ -176,6 +176,15 @@ Swift は signed と unsigned の数値を 8, 16, 32, 64 ビットの形式で�
 
 ### Integer Bounds
 
+`min`と`max`プロパティを使って、各 integer 型の最小値と最大値にアクセスすることができます。
+
+```swift
+let minValue = UInt8.min  // minValue is equal to 0, and is of type UInt8
+let maxValue = UInt8.max  // maxValue is equal to 255, and is of type UInt8
+```
+
+これらのプロパティの値は、適切なサイズの integer 型で(上記の例だと``UInt8)で、同じ型の他の値と一緒に式の中で使用することができます。
+
 ### Int
 
 ### UInt
