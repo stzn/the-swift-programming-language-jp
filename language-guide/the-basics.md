@@ -161,6 +161,13 @@ This is the end of the first multiline comment. */
 
 ## Semicolons
 
+他の言語とは異なり、Swift ではコードの 1 つ 1 つのステートメントの最後にセミコロンを付ける必要がありません。(付けることも可能ではあります)一方で、1 行に複数のステートメントを書きたい場合は必要になります。
+
+```swift
+let cat = "🐱"; print(cat)
+// Prints "🐱"
+```
+
 ## Integers
 
 ### Integer Bounds
