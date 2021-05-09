@@ -16,6 +16,8 @@ Swift は型安全な言語です。つまり、言語がコードで扱う値�
 
 ## Constants and Variables
 
+定数と変数は特定の型の値(`10`、`"Hello"`など)と名前(`maximumNumberOfLoginAttempts`、`welcomeMessage`など)を関連付けます。定数は一度値を設定すると変更することはできません。一方で変数は先々に異なった値を設定できます。
+
 ### Declaring Constants and Variables
 
 ### Type Annotations
