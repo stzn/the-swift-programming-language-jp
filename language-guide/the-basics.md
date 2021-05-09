@@ -4,13 +4,13 @@
 
 Swift は iOS, macOS, watchOS, tyOS のアプリ開発のための新しいプログラミング言語です。一方で、 Swift の多くの部分は C 言語と Objective-C の開発経験から馴染みのある感じを受けるでしょう。
 
-Swift は C 言語と Objective-C の全ての基本的な型に対応した Swift バージョンの型を提供します。 integer に対する `Int`、floating-point に対する `Double` と `Float`、Boolean に対する `Bool`、text データに対する `String`があります。また、3つのより強力な collection 型(`Array`, `Set`, `Dictionary` )も提供します。詳細は [Collection Types](./language-guide/../collection-types.md)に記載。
+Swift は C 言語と Objective-C の全ての基本的な型に対応した Swift バージョンの型を提供します。 integer に対する `Int`、floating-point に対する `Double` と `Float`、Boolean に対する `Bool`、text データに対する `String`があります。また、3 つのより強力な collection 型(`Array`, `Set`, `Dictionary` )も提供します。詳細は [Collection Types](./language-guide/../collection-types.md)に記載。
 
 C 言語のように、Swift は名前を特定することで、値を保持したり、その値を参照するために変数を使います。また、Swift は変数の値を変更できなくすることで、より幅広い方法で変数を利用しています。これらは定数として知られており、C 言語の定数よりもかなり強力です。定数は、値を変更する必要がない場合に、定数を利用することで、コードを意図的に、より安全に、よりわかりやすくするために Swift 全体で利用されます。
 
-馴染みのある型に加え、Swift は Objective-C にはなかった、tuple のようなより応用的な型を導入します。tuple は値を1つのグループとして扱うことができます。tuple を使うと、関数から複数の値を1つの値の組み合わせとして返すことができます。
+馴染みのある型に加え、Swift は Objective-C にはなかった、tuple のようなより応用的な型を導入します。tuple は値を 1 つのグループとして扱うことができます。tuple を使うと、関数から複数の値を 1 つの値の組み合わせとして返すことができます。
 
-Swift は 値が存在しないかもしれない値を扱う optional 型を導入します。optional は、「値が存在していて、これは x と等しい」もしくは「値は一切存在しない」ということを伝えます。optional は Objective-C のポインタと `nil` を扱うのに似ていますが、class だけではなく、あらゆる型に利用することができます。Objective-C の `nil` ポインタよりも、安全で表現的なだけでなく、多くの Swift の最も強力な特徴のコアな部分になります。
+Swift は値が存在しないかもしれない値を扱う optional 型を導入します。optional は、「値が存在していて、これは x と等しい」もしくは「値は一切存在しない」ということを伝えます。optional は Objective-C のポインタと `nil` を扱うのに似ていますが、class だけではなく、あらゆる型に利用することができます。Objective-C の `nil` ポインタよりも、安全で表現的なだけでなく、多くの Swift の最も強力な特徴のコアな部分になります。
 
 Swift は型安全な言語です。つまり、言語がコードで扱う値の型を明確にしてくれます。`String` が必要な場合、この型安全な特徴が、間違って `Int` を渡してしまうことを防いでくれます。同様に、型安全なことで、optional ではない `String` に optional の `String` を気がつかずに渡してしまうことも防いでくれます。型安全なことで、開発プロセスの中でできる限り早くエラーに気がついて、修正する手助けをしてくれます。
 
@@ -33,7 +33,7 @@ var currentLoginAttempt = 0
 
 この例では、最大回数は変更しないので、定数で定義しています。試行回数はログインを試みる度に増加させなければならないため、変数として今の試行回数を定義しています。
 
-1行の中で、カンマで区切って複数の定数や変数を定義することもできます。
+1 行の中で、カンマで区切って複数の定数や変数を定義することもできます。
 
 ```swift
 var x = 0.0, y = 0.0, z = 0.0
@@ -65,14 +65,14 @@ var welcomeMessage: String
 welcomeMessage = "Hello"
 ```
 
-1行の中で、同じ型の複数の変数をカンマで区切って定義することもできます。この際、型アノテーションは最後の変数の後に1つ付けます。
+1 行の中で、同じ型の複数の変数をカンマで区切って定義することもできます。この際、型アノテーションは最後の変数の後に 1 つ付けます。
 
 ```swift
 var red, green, blue: Double
 ```
 
 > NOTE  
-> 実際に型アノテーションを書く必要はあまりありません。定義時に定数や変数に初期値を与えた場合、 
+> 実際に型アノテーションを書く必要はあまりありません。定義時に定数や変数に初期値を与えた場合、
 > Swift はたいていそれらの型を推論できます(詳細は[Type Safety and Type Inference](#type-safety-and-type-inference))。
 > 上記の`welcomeMessage`の例では、初期値を与えていないため、推論をすることができないため、`welcomeMessage`変数は型アノテーションで型を特定しています。
 
@@ -112,6 +112,25 @@ languageName = "Swift++"
 
 ### Printing Constants and Variables
 
+`print(_:separator:terminator:)`関数を使って、定数や変数の現在の値を出力することができます。
+
+```swift
+print(friendlyWelcome)
+// Prints "Bonjour!"
+```
+
+`print(_:separator:terminator:)`関数はグローバル関数で、1 つ以上の値を適切なアウトプット先に出力します。Xcode では、`print(_:separator:terminator:)`関数を使うと、
+Xcode のコンソールパネルへ値を出力します。`separator` と `terminator`引数には、デフォルト値が用意されているので省略可能です。デフォルトでは、最後に改行を追加します。改行を付けたくない場合は、`terminator`に空文字を渡しましょう。例えば`print(someValue, terminator: "")`。詳細は[Default Parameter Values](./functions.md#default-parameter-values)。
+
+Swift はより長い文字列の中で定数や変数をプレースホルダとして使用したい場合、 string interpolation\(文字列補間\)を使い、定数や変数の現在値に置き換えるように Swift に伝えることができます。名前を括弧(())で囲み、開始括弧の前にバックスラッシュ(\\)を付けます。
+
+```swift
+print("The current value of friendlyWelcome is \(friendlyWelcome)")
+// Prints "The current value of friendlyWelcome is Bonjour!"
+```
+
+> NOTE  
+> string interpolation\(文字列補間\)で使用できるオブションは[String Interpolation](./strings-and-characters.md#string-interpolation)に記載しています
 ## Comments
 
 ## Semicolons
