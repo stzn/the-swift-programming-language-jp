@@ -1,5 +1,7 @@
 # Version Compatibility
 
+最終更新日: 2020/5/9
+
 この本は Xcode12.5 のデフォルトバージョン Swift5.4 で記載されています。Xcode12.5 では、Swift5.4, Swift4.2, Swift4を build target に指定できます。
 
 Swift4 または Swift4.2 のコードをビルドするのに Xcode12.5 を利用すると、たいていの Swift5.4 の機能は利用可能です。一方で、次の変更は Swift5.4 以降でのみ利用可能です。
