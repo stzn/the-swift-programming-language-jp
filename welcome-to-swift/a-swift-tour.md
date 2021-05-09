@@ -671,4 +671,86 @@ print(protocolValue.simpleDescription)
 
 ## Error Handling
 
+`Error` protocol に適合することでどんな型もエラーを表現することができます。
+
+```swift
+enum PrinterError: Error {
+    case outOfPaper
+    case noToner
+    case onFire
+}
+```
+
+関数に `throws` を付け、エラーを throw する箇所に `throw` を使うことでエラーを throw することができます。関数内でエラーを throw すると、関数がすぐにリターンして、その関数を呼んだ関数でエラーを処理します。
+
+```swift
+func send(job: Int, toPrinter printerName: String) throws -> String {
+    if printerName == "Never Has Toner" {
+        throw PrinterError.noToner
+    }
+    return "Job sent"
+}
+```
+
+エラーを処理する方法は様々あります。1つは `do-catch` を使うことです。`do` ブロックの中では、エラーを throw する可能性がある箇所の前に `try` を付けるます。`catch` ブロックの中では、明示的に異なる名前を設定しない限り、`error` という名前で自動的にエラー情報が与えられます。
+
+```swift
+do {
+    let printerResponse = try send(job: 1040, toPrinter: "Bi Sheng")
+    print(printerResponse)
+} catch {
+    print(error)
+}
+// Prints "Job sent"
+```
+
+> Experiment  
+> printer の名前を"Never Has Toner"に変えてみましょう。`send(job:toPrinter:)` はエラーを throw します。
+
+特定のエラーを処理するために、複数の `catch` ブロックを書くこともできます。switch 文の `case` のように `catch` の後ろにパターンを書きます。
+
+```swift
+do {
+    let printerResponse = try send(job: 1440, toPrinter: "Gutenberg")
+    print(printerResponse)
+} catch PrinterError.onFire {
+    print("I'll just put this over here, with the rest of the fire.")
+} catch let printerError as PrinterError {
+    print("Printer error: \(printerError).")
+} catch {
+    print(error)
+}
+// Prints "Job sent"
+```
+
+> Experiment  
+> `do` ブロックの中でエラーを throw するコードを追加してみましょう。最初の `catch` ブロックでエラーを処理するためにはどの種類のエラーを throw する必要がありますでしょうか？ 2つ目、3つ目の場合はどうでしょうか？
+
+エラーを処理するもう1つの方法は、`try?` を付けて結果を optional に変換することです。もしその関数がエラーを throw する場合、特定のエラーは破棄されて、結果が `nil` になります。そうでなければ、結果は、関数が返す値を内包した optional になります。
+
+```swift
+let printerSuccess = try? send(job: 1884, toPrinter: "Mergenthaler")
+let printerFailure = try? send(job: 1885, toPrinter: "Never Has Toner")
+```
+
+関数内の全ての処理が実行されて、関数が結果返す直前にコードを実行したい場合、`defer` を使います。このブロックは関数がエラーを throw しても実行されます。違うタイミングで実行される必要はありますが、`defer` を使ってセットアップ用のコードの次にクリーンアップ用のコードを書くことができます。
+
+```swift
+var fridgeIsOpen = false
+let fridgeContent = ["milk", "eggs", "leftovers"]
+
+func fridgeContains(_ food: String) -> Bool {
+    fridgeIsOpen = true
+    defer {
+        fridgeIsOpen = false
+    }
+
+    let result = fridgeContent.contains(food)
+    return result
+}
+fridgeContains("banana")
+print(fridgeIsOpen)
+// Prints "false"
+```
+
 ## Generics
