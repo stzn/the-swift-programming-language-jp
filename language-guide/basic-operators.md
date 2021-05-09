@@ -1,3 +1,3 @@
 # Basic Operators
 
-最終更新日時:
+最終更新日:
