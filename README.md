@@ -90,6 +90,10 @@
 [textlint](https://github.com/textlint/textlint)に
 - [textlint-rule-preset-JTF-style](https://github.com/textlint-ja/textlint-rule-preset-JTF-style)
 - [textlint-rule-period-in-list-item](https://github.com/textlint-rule/textlint-rule-period-in-list-item)
+- [textlint-rule-no-mix-dearu-desumasu](https://github.com/textlint-ja/textlint-rule-no-mix-dearu-desumasu)
+- [textlint-rule-detect-bad-chars](https://github.com/magitek-telescope/textlint-rule-detect-bad-chars)
+- [textlint-rule-the-swift-programming-language-jp](./rules/textlint-rule-the-swift-programming-language-jp/textlint-rule-the-swift-programming-language-jp.js)  
+
 を適用してチェックしています。
 
 ※ 一部チェック項目を除外しています。内容は[.textlintrc](https://github.com/stzn/the-swift-programming-language-jp/blob/master/.textlintrc)をご参照ください。
