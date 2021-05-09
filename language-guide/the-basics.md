@@ -29,7 +29,7 @@ var currentLoginAttempt = 0
 
 このコードは下記のように読み取れます。
 
-「`maximumNumberOfLoginAttempts`と呼ばれる定数を定義して、`10`という値を設定します。次に`currentLoginAttempt`という変数を定義して、`0`という初期値を設定している」
+「`maximumNumberOfLoginAttempts`と呼ばれる定数を定義して、`10`という値を設定します。次に`currentLoginAttempt`という変数を定義して、`0`という初期値を設定する」
 
 この例では、最大回数は変更しないので、定数で定義しています。試行回数はログインを試みる度に増加させなければならないため、変数として今の試行回数を定義しています。
 
@@ -44,6 +44,37 @@ var x = 0.0, y = 0.0, z = 0.0
 > 変数は変更できるようにする必要がある場合にのみ使用しましょう。
 
 ### Type Annotations
+
+定数や変数を定義する時に、保持する値の種類をより明確にするために、型アノテーションを使用することもできます。定数や変数の名前の後にコロンを置いて、型アノテーションを書きましょう。
+
+この例では `welcomeMessage` という変数に型アノテーションを書いて `String` が保持されることを示しています。
+
+```swift
+var welcomeMessage: String
+```
+
+定義の中のコロンは、「~型の~」を意味します。なので、このコードは下記のように読み取れます。
+
+「`String`型の`welcomeMessage`という変数を定義する」
+
+「`String`型の」というフェーズは、どんな`String`型の値も保持できることを意味します。つまり、保持することができる「物の型(物の種類)」だと考えましょう。
+
+`welcomeMessage`にはエラーなしに文字列を設定できます。
+
+```swift
+welcomeMessage = "Hello"
+```
+
+1行の中で、同じ型の複数の変数をカンマで区切って定義することもできます。この際、型アノテーションは最後の変数の後に1つ付けます。
+
+```swift
+var red, green, blue: Double
+```
+
+> NOTE  
+> 実際に型アノテーションを書く必要はあまりありません。定義時に定数や変数に初期値を与えた場合、 
+> Swift はたいていそれらの型を推論できます(詳細は[Type Safety and Type Inference](#type-safety-and-type-inference))。
+> 上記の`welcomeMessage`の例では、初期値を与えていないため、推論をすることができないため、`welcomeMessage`変数は型アノテーションで型を特定しています。
 
 ### Naming Constants and Variables
 
