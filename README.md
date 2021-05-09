@@ -8,7 +8,38 @@
 
 ## バージョン履歴
 
-## 翻訳上のルール
+## 開発ガイド
+
+### 参加方法
+
+1. [GitHub Issues](https://github.com/stzn/the-swift-programming-language-jp/issues)からアサインされていない issues 一覧からやりたい issue を選択します
+2. 選択した issue で、「翻訳やります」的なコメントをお願いします
+3. このレポジトリをフォークします
+4. 変更をコミットします: コミットメッセージの先頭に翻訳したページのタイトルを[XXXX]のような形で入れてもらえると助かります
+5. `npm run lint` で引っかかる場合は再度修正を行いコミットします
+6. ページ冒頭の最終更新日を更新しているか確認をお願いします
+7. フォークした自分のレポジトリに Push します: `git push origin my-branch`
+8. 問題がなければ、プルリクエストを送ります
+9. レビューで指摘事項があったら修正し、再度 Push します
+10. レビューOKならば、マージされて内容がドキュメントに反映されます
+
+### 開発準備
+
+まず始めに実行してください。
+
+```shell
+npm install
+```
+
+### コミット時のお願い
+
+pre-commitのhooksを使用していますが、現在独自で生成した  `textlint-checker-for-the-swift-programming-language-jp`が適用されないため、commit前に下記のコマンドを実行してください。(調査中)
+
+```shell
+npm run lint
+```
+
+## 翻訳ルール
 
 ### 翻訳のゆらぎ & トーン
 
@@ -88,19 +119,13 @@
 #### 翻訳チェック
 
 [textlint](https://github.com/textlint/textlint)に
-- [textlint-rule-preset-JTF-style](https://github.com/textlint-ja/textlint-rule-preset-JTF-style)
-- [textlint-rule-period-in-list-item](https://github.com/textlint-rule/textlint-rule-period-in-list-item)
-- [textlint-rule-no-mix-dearu-desumasu](https://github.com/textlint-ja/textlint-rule-no-mix-dearu-desumasu)
-- [textlint-rule-detect-bad-chars](https://github.com/magitek-telescope/textlint-rule-detect-bad-chars)
-- [textlint-rule-the-swift-programming-language-jp](./rules/textlint-rule-the-swift-programming-language-jp/textlint-rule-the-swift-programming-language-jp.js)  
+
+* [textlint-rule-preset-JTF-style](https://github.com/textlint-ja/textlint-rule-preset-JTF-style)
+* [textlint-rule-period-in-list-item](https://github.com/textlint-rule/textlint-rule-period-in-list-item)
+* [textlint-rule-no-mix-dearu-desumasu](https://github.com/textlint-ja/textlint-rule-no-mix-dearu-desumasu)
+* [textlint-rule-detect-bad-chars](https://github.com/magitek-telescope/textlint-rule-detect-bad-chars)
+* [textlint-checker-for-the-swift-programming-language-jp](https://github.com/stzn/textlint-checker-for-the-swift-programming-language-jp)
 
 を適用してチェックしています。
 
 ※ 一部チェック項目を除外しています。内容は[.textlintrc](https://github.com/stzn/the-swift-programming-language-jp/blob/master/.textlintrc)をご参照ください。
-
-#### **実行方法**
-
-```text
-npm install
-npm run textlint <対象のファイル>
-```
