@@ -19,9 +19,9 @@
 5. `npm run lint` で引っかかる場合は再度修正を行いコミットします
 6. ページ冒頭の最終更新日を更新しているか確認をお願いします
 7. フォークした自分のレポジトリに Push します: `git push origin my-branch`
-8. 問題がなければ、プルリクエストを送ります
+8. 問題がなければプルリクエストを送ります
 9. レビューで指摘事項があったら修正し、再度 Push します
-10. レビューOKならば、マージされて内容がドキュメントに反映されます
+10. レビュー OK ならば、マージされて内容がドキュメントに反映されます
 
 ### 開発準備
 
@@ -33,7 +33,7 @@ npm install
 
 ### コミット時のお願い
 
-pre-commitのhooksを使用していますが、現在独自で生成した  `textlint-checker-for-the-swift-programming-language-jp`が適用されないため、commit前に下記のコマンドを実行してください。(調査中)
+pre-commit の hooks を使用していますが、現在独自で生成した  `textlint-checker-for-the-swift-programming-language-jp`が適用されないため、commit 前に下記のコマンドを実行してください。(調査中)
 
 ```shell
 npm run lint
@@ -44,38 +44,49 @@ npm run lint
 ### 翻訳のゆらぎ & トーン
 
 #### **文体**
+<!-- textlint-disable -->
 
 「だである」ではなく「ですます」調
 
+<!-- textlint-enable -->
 > Swift is a fantastic way to write software.
+<!-- textlint-disable -->
 
-* ❌ Swift はソフトウェアを書くための素晴らしい手段である。
-* ⭕️ Swift はソフトウェアを書くための素晴らしい手段です。
+❌ Swift はソフトウェアを書くための素晴らしい手段である。
+
+<!-- textlint-enable -->
+⭕️ Swift はソフトウェアを書くための素晴らしい手段です。
 
 **半角スペースでアルファベット両端を入れて読みやすく！**
 
 > Swift has struct and class.
+<!-- textlint-disable -->
 
-* ❌ Swiftには、structとclassがあります。
-* ⭕️ Swift には、struct と class があります。
+❌ Swiftには、structとclassがあります。
+
+<!-- textlint-enable -->
+
+⭕️ Swift には、struct と class があります。
 
 例外として、句読点の前後にアルファベットがある場合は、スペースを入れなくてもいいです。
 
-* 読点: Swift には**、struct** と class があります。
+読点: Swift には**、struct** と class があります。
 
 #### **原則、一語一句翻訳、ただ日本語として分かりにくい場合は読みやすさを優先**
 
 > The compiler is optimized for performance and the language is optimized for development, without compromising on either.
 
-* ❌ コンパイラはパフォーマンスが最適化され、言語は開発に最適化されています。どちらも妥協することなく。
-* ⭕️ コンパイラによるパフォーマンスの最適化、言語による開発のしやすさの最適化、どちらも実現できるようにしています。
+❌ コンパイラはパフォーマンスが最適化され、言語は開発に最適化されています。どちらも妥協することなく。
+
+⭕️ コンパイラによるパフォーマンスの最適化、言語による開発のしやすさの最適化、どちらも実現できるようにしています。
 
 #### **原文に使われる ':' や '!' や '?' などの記号は極力残して翻訳**
 
 > Example:
 
-* ❌ 例
-* ⭕️ 例:
+❌ 例
+
+⭕️ 例:
 
 ただし、文の途中にハイフン`-` や セミコロン`;` がある場合は、その記号があると理解しづらい訳になる場合は、例外として削除してもよいです。
 
@@ -88,6 +99,7 @@ npm run lint
   > もっと簡単な方法で文字列の中に値を含めることができます。値を括弧で囲み、括弧の前にバックスラッシュをつけます。
 
 #### **単語の統一 \(特に技術用語\)**
+<!-- textlint-disable -->
 
 * 技術用語は基本英語、ただ日本語で一般的に使われている場合は日本語 OK
   * 例: 英語の filter 、日本語のフィルタ
@@ -95,6 +107,8 @@ npm run lint
   * 例: expression -&gt; 式、表現
 * 和訳にして分かりづらい場合は、翻訳と英語\(どちらかに括弧付け\)でも OK
   * 例: Two way -&gt; Two way \(双方向\)
+
+<!-- textlint-enable -->
 
 #### **長音訳のついて**
 
@@ -109,12 +123,6 @@ npm run lint
 
 * ❌ プルリクエストフロ
 * ⭕️ プルリクエストフロー
-
-#### **長音訳例外リスト\(随時更新\)**
-
-* error: エラー
-* throw: スロー
-* flow: フロー
 
 #### 翻訳チェック
 
