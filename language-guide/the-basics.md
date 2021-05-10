@@ -196,6 +196,14 @@ let maxValue = UInt8.max  // maxValue is equal to 255, and is of type UInt8
 
 ### UInt
 
+Swift は unsigned integer 型も提供しています。これも、現在のプラットフォーム由来のサイズと同じサイズを持ちます。
+
+* 32 ビットのプラットフォームの場合、`UInt`は UInt32 と等しい
+* 64 ビットのプラットフォームの場合、`UInt`は UInt64 と等しい
+
+> NOTE  
+> `UInt`は特別にプラットフォーム由来のサイズと同じサイズのunsigned integer 型を暑いかいたい場合にのみ使用しましょう。そうでない場合、負の値にならないとしても`Int`を使う方が好ましいです。一貫して`Int`をintegerの値に使用することは、互換性を保つ手助けとなり、異なる数値型の変換を避け、integer 型の推論に合致します。詳細は[Type Safety and Type Inference](#type-safety-and-type-inference)。
+
 ## Floating-Point Numbers
 
 ## Type Safety and Type Inference
