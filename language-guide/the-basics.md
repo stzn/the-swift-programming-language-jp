@@ -358,6 +358,24 @@ let integerPi = Int(pi)
 
 ## Type Aliases
 
+*Type Aliases(タイプエイリアス)* は既存の型に別の名前を定義します。`typealias`キーワードを使います。
+
+タイプエイリアスは既存の型に文脈上より適切な名前で参照したい場合に有効です。例えば、外部リソースの特定のサイズのデータを扱いたい場合など:
+
+```swift
+typealias AudioSample = UInt16
+
+```
+
+定義したタイプエイリアスは、元の名前で使っていた所で、そのエイリアスを使うことができます:
+
+```swift
+var maxAmplitudeFound = AudioSample.min
+// maxAmplitudeFound is now 0
+```
+
+ここでは、`AudioSample` を `UInt16` のタイプエイリアスとして定義されています。エイリアスなので、`AudioSample.min` の実態は `UInt16.min` で、`maxAmplitudeFound`の初期値は `0`になります。
+
 ## Booleans
 
 ## Tuples
