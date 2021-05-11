@@ -307,6 +307,30 @@ let justOverOneMillion = 1_000_000.000_000_1
 
 ### Integer Conversion
 
+数値の定数や変数に保持できる数値の範囲は、それぞれの数値型によって異なります。`Int8` の定数や変数は、−128 から 127 まで保持できます。`UInt8` の定数や変数は、0 から 255 まで保持できます。サイズを特定した数値型の定数や変数に合わない数値を設定しようとすると、エラーになります。
+
+```swift
+let cannotBeNegative: UInt8 = -1
+// UInt8 can't store negative numbers, and so this will report an error
+let tooBig: Int8 = Int8.max + 1
+// Int8 can't store a number larger than its maximum value,
+// and so this will also report an error
+```
+
+このように数値型によって保持できる範囲が異なるため、ケースごとに型の変換をしなければなりません。このオプトインの方法によって隠れた変換ミスを防ぎ、コードで型変換が起こっていることを明確に表現することができます。
+
+ある特定の数値型を他の型に変換するためには、既存の数値から変換したい型の新しい値を生成する必要があります。下記の例では、定数`twoThousand`は`UInt16`ですが、定数の`one`は`UInt8`です。この 2 つは同じ型ではないので直接足し算をすることができません。そこで、この例では、`one`を使って`UInt16`の新しい値を作るために`UInt16(one)`を呼び、元の例に置き換えて使います:
+
+```swift
+let twoThousand: UInt16 = 2_000
+let one: UInt8 = 1
+let twoThousandAndOne = twoThousand + UInt16(one)
+```
+
+今はどちらも`UInt16`なので、足し算は可能です。そして計算結果の定数(`twoThousandAndOne`)も`UInt16`に推論されます。
+
+`SomeType(ofInitialValue)`という形式は、初期値を渡して初期化を行う Swift のデフォルトの方法です。裏側では、`UInt16`型が`UInt8`の値を受け取って、新しい`UInt16`型の値を生成しています。とはいっても、あらゆる型を渡せるわけではありません。`UInt16`型提供するイニシャライザに合った型が必要です。新しい型を渡して初期化する方法は、[Extensions](./extensions.md)に記載しています。
+
 ### Integer and Floating-Point Conversion
 
 ## Type Aliases
