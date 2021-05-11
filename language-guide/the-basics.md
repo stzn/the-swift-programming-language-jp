@@ -378,6 +378,50 @@ var maxAmplitudeFound = AudioSample.min
 
 ## Booleans
 
+Swift は、`Bool`と呼ばれる基本的なブール値を持っています。ブール値は、真(true)か偽(false)のみを値として取ることから、*logical (論理値)*として参照されます。Swift では`true`と`false`という 2 つのブール値の定数を提供しています。
+
+```swift
+let orangesAreOrange = true
+let turnipsAreDelicious = false
+```
+
+`orangesAreOrange` と `turnipsAreDelicious` はブール値リテラルで初期化されていることから、`Bool`と推論されます。これまで見てきた`Int`や`Double`のように、`true`や`false`で値を設定すれば、明示的に`Bool`と指定する必要はありません。既に型がわかっている他の定数や変数を使って初期化する際に、Swift の型推論を活用することで、より簡潔で読みやすいコードを書くことができます。
+
+ブール値は、条件文を扱う際にとても有効です。例えば、`if`文など:
+
+```swift
+if turnipsAreDelicious {
+    print("Mmm, tasty turnips!")
+} else {
+    print("Eww, turnips are horrible.")
+}
+// Prints "Eww, turnips are horrible."
+```
+
+`if`のような条件文については、[Control Flow](./control-flow.md)でより詳細に記載しています。
+
+Swift の型安全なので、`Bool`の値を他の型に置き換えることはできません。次の例はコンパイルエラーになります:
+
+```swift
+let i = 1
+if i {
+    // this example will not compile, and will report an error
+}
+```
+
+一方で、次の例は問題ありません:
+
+```swift
+let i = 1
+if i == 1 {
+    // this example will compile successfully
+}
+```
+
+`i == 1`の比較結果は`Bool`なので、型チェックを通過できます。`i == 1`のような比較については、[Basic Operators](./basic-operators.md)でより詳しく記載しています。
+
+他の型安全性を示した例と同様に、型安全なことで、予期せぬエラーを発生させることを防ぎ、型は明確なことから、そのコードの意図をより明確にすることができます。
+
 ## Tuples
 
 ## Optionals
