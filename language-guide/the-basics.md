@@ -483,7 +483,7 @@ print("The status message is \(http200Status.description)")
 
 ## Optionals
 
-*optionals*は、値が存在しないかもしれない時に使用します。optioanl は 2 つの可能性を表します: 値が存在して unwrap することで値にアクセスすることができる、もしくは、値が全く存在しない
+*optionals*は、値が存在しないかもしれない時に使用します。optional は 2 つの可能性を表します: 値が存在して unwrap することで値にアクセスすることができる、もしくは、値が全く存在しない
 
 > NOTE  
 > optional の概念は、 C 言語や Objective-C には存在しません。 Objective-C は、メソッドから`nil`かオブジェクトを返すことができますが、ここでいう`nil`は妥当なオブジェクトが存在しない、ということを意味します。しかし、これはオブジェクトのみで機能し、構造体や基本的なC言語の型、列挙型には使用できません。これらの型へは、値が存在しないことを示す特別な値(`NSNotFound`など)を返すのが通例です。この方法ですと、メソッドの呼び出し側がこの特別な値が返ってくることを知っていて、チェックすることを念頭に置いていることを想定しています。Swiftでは、この特別な値を必要とせず、どんな型に対しても、値が存在しないことを示すことができます。
@@ -498,7 +498,7 @@ let convertedNumber = Int(possibleNumber)
 // convertedNumber is inferred to be of type "Int?", or "optional Int"
 ```
 
-イニシャライザは、失敗するかもしれないので、`Int`ではなく、optioanl の`Int`を返します。optioanl の`Int`は、*`Int`*ではなく*`Int?`*と書きます。`?`は optional を示し、ある`Int`型の値を含んでいる、ということを表しています。(`Bool`や`String`など他の型を含めることはできません。`Int`、または値を持たないの 2 つのみ可能です)
+イニシャライザは、失敗するかもしれないので、`Int`ではなく、optional の`Int`を返します。optional の`Int`は、*`Int`*ではなく*`Int?`*と書きます。`?`は optional を示し、ある`Int`型の値を含んでいる、ということを表しています。(`Bool`や`String`など他の型を含めることはできません。`Int`、または値を持たないの 2 つのみ可能です)
 
 ### nil
 
@@ -512,7 +512,7 @@ serverResponseCode = nil
 ```
 
 > NOTE  
-> optionalではない定数と変数には`nil`を設定することができません。もし、ある条件で値のない状態を扱う必要がない場合、適切な型のoptionalな値として定義しましょう
+> optional ではない定数と変数には`nil`を設定することができません。もし、ある条件で値のない状態を扱う必要がない場合、適切な型の optional 値として定義しましょう
 
 もし、デフォルトで値を与えずに optional な変数を定義した場合、その変数には自動で`nil`が設定されます:
 
@@ -526,7 +526,33 @@ var surveyAnswer: String?
 
 ### If Statements and Forced Unwrapping
 
+`if`文を使って optional 値を`nil`と比較することで、値を含んでいるかどうかのチェックができます。この比較は、`等しい(==)`または`等しくない(==)`演算子を使って行います。
+
+optional が値を含んでいる場合、`nil`と「等しくない」と見なされます。
+
+```swift
+if convertedNumber != nil {
+    print("convertedNumber contains some integer value.")
+}
+// Prints "convertedNumber contains some integer value."
+```
+
+optional が値を含んでいることが一度わかれば、optional 値の名前の後ろに`!`を付けることで、中の値にアクセスすることができます。`!`は「私はこの optional が値を含んでいることが 100%わかっています。だから使わせてください」ということを実質的に宣言していることになります。これは optional の強制アンラップ(`forced unwrapping`)と呼ばれています。
+
+```swift
+if convertedNumber != nil {
+    print("convertedNumber has an integer value of \(convertedNumber!).")
+}
+// Prints "convertedNumber has an integer value of 123."
+```
+
+`if`文についての詳細は、[Control Flow](./control-flow.md)を参照ください。
+
+> NOTE  
+> 値が存在しない optional 値に`!`と付けてアクセスしようとすると、実行時エラー( runtime error )が発生します。`!`を使った強制アンラップを行う際は、確実に non-`nil`であることを常に確かめましょう。
+
 ### Optional Binding
+
 
 ### Implicitly Unwrapped Optionals
 
