@@ -6,11 +6,11 @@ Swift は iOS, macOS, watchOS, tyOS のアプリ開発のための新しいプ�
 
 Swift は C 言語と Objective-C の全ての基本的な型に対応した Swift バージョンの型を提供します。 数値に対する `Int`、浮動小数点数に対する `Double` と `Float`、Boolean に対する `Bool`、text データに対する `String`があります。また、3 つのより強力な collection 型(`Array`, `Set`, `Dictionary` )も提供します。詳細は [Collection Types](./language-guide/../collection-types.md)に記載。
 
-C 言語のように、Swift は名前を特定することで、値を保持したり、その値を参照するために変数を使います。また、Swift は変数の値を変更できなくすることで、より幅広い方法で変数を利用しています。これらは定数として知られており、C 言語の定数よりもかなり強力です。定数は、値を変更する必要がない場合に、定数を利用することで、コードを意図的に、より安全に、よりわかりやすくするために Swift 全体で利用されます。
+C 言語のように、Swift は名前を特定することで、値を保持したり、その値を参照するために変数を使います。また、Swift は変数の値を変更できなくすることで、より幅広い方法で変数を使います。これらは定数として知られており、C 言語の定数よりもかなり強力です。定数は、値を変更する必要がない場合に、定数を使うことで、コードを意図的に、より安全に、よりわかりやすくするために Swift 全体で使われます。
 
 馴染みのある型に加え、Swift は Objective-C にはなかった、tuple のようなより応用的な型を導入します。tuple は値を 1 つのグループとして扱うことができます。tuple を使うと、関数から複数の値を 1 つの値の組み合わせとして返すことができます。
 
-Swift は値が存在しないかもしれない値を扱う optional 型を導入します。optional は、「値が存在していて、これは x と等しい」もしくは「値は一切存在しない」ということを伝えます。optional は Objective-C のポインタと `nil` を扱うのに似ていますが、class だけではなく、あらゆる型に利用することができます。Objective-C の `nil` ポインタよりも、安全で表現的なだけでなく、多くの Swift の最も強力な特徴のコアな部分になります。
+Swift は値が存在しないかもしれない値を扱う optional 型を導入します。optional は、「値が存在していて、これは x と等しい」もしくは「値は一切存在しない」ということを伝えます。optional は Objective-C のポインタと `nil` を扱うのに似ていますが、class だけではなく、あらゆる型に使うことができます。Objective-C の `nil` ポインタよりも、安全で表現的なだけでなく、多くの Swift の最も強力な特徴のコアな部分になります。
 
 Swift は型安全な言語です。つまり、言語がコードで扱う値の型を明確にしてくれます。`String` が必要な場合、この型安全な特徴が、間違って `Int` を渡してしまうことを防いでくれます。同様に、型安全なことで、optional ではない `String` に optional の `String` を気がつかずに渡してしまうことも防いでくれます。型安全なことで、開発プロセスの中でできる限り早くエラーに気がついて、修正する手助けをしてくれます。
 
@@ -553,6 +553,55 @@ if convertedNumber != nil {
 
 ### Optional Binding
 
+optional 値に、オプショナルバインディング(*optional binding*)を使って、値を含んでいるかどうかを判定できます。もし含んでいる場合は、一時的な定数や変数として値を使用できるようになります。オプショナルバインディングは、`if`や`while`文で optional 値の内部の値を確認して定数や変数にその内部の値を設定することを、1 つのアクションで行うことができます。`if`や`while`の詳細は[Control Flow](./control-flow.md)を参照ください。
+
+`if`文でオプショナルバインディングを行う場合、次のように書きます:
+
+```swift
+if let constantName = someOptional {
+    statements
+}
+```
+
+[Optionals](#optionals)の中の例で出てきた`possibleNumber`は、強制アンラップ(`forced unwrapping`)の代わりに、オプショナルバインディングを使って書き換えることができます。
+
+```swift
+if let actualNumber = Int(possibleNumber) {
+    print("The string \"\(possibleNumber)\" has an integer value of \(actualNumber)")
+} else {
+    print("The string \"\(possibleNumber)\" couldn't be converted to an integer")
+}
+// Prints "The string "123" has an integer value of 123"
+```
+
+このコードはこのような意味に読み取れます。
+
+「`Int(possibleNumber)`が返す optional`Int`が値を含んでいた場合、`actualNumber`にその値を設定する」
+
+この変換が成功した場合、`actualNumber`定数は`if`文の最初の分岐内で使うことができます。optional の中で既に初期化は完了しているので、`!`を後ろに付ける必要はありません。この例では、`actualNumber`は変換した結果を出力します。
+
+オプショナルバインディングは定数と変数の両方に使うことができます。`if`文の最初の分岐内で`actualNumber`したい場合は、`if var actualNumber`と書くことで、定数の代わりに変数としてこの optional 値を使用できます。
+
+1 つの`if`文の中に、複数のオプショナルバインディングとブール値をカンマ(`,`)区切りで含めることができます。そのうちのいずれかが`nil`または`false`の場合、`if`文全体が`false`と判断されます。次の`if`文はこれに該当します。
+
+```swift
+if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
+    print("\(firstNumber) < \(secondNumber) < 100")
+}
+// Prints "4 < 42 < 100"
+
+if let firstNumber = Int("4") {
+    if let secondNumber = Int("42") {
+        if firstNumber < secondNumber && secondNumber < 100 {
+            print("\(firstNumber) < \(secondNumber) < 100")
+        }
+    }
+}
+// Prints "4 < 42 < 100"
+```
+
+> NOTE  
+> `if`文の中でオプショナルバインディングによって作られた定数や変数は、`if`文の中でしか使えません。もし他でも使用したい場合は、`guard`文　を使うことで、`guard`文の次から使うことができます。詳細は[Early Exit](./control-flow.md#early-exit)に記載しています。
 
 ### Implicitly Unwrapped Optionals
 
