@@ -502,6 +502,28 @@ let convertedNumber = Int(possibleNumber)
 
 ### nil
 
+optional な変数は、特別な値の`nil`を設定することで、値のない状態を設定することができます:
+
+```swift
+var serverResponseCode: Int? = 404
+// serverResponseCode contains an actual Int value of 404
+serverResponseCode = nil
+// serverResponseCode now contains no value
+```
+
+> NOTE  
+> optionalではない定数と変数には`nil`を設定することができません。もし、ある条件で値のない状態を扱う必要がない場合、適切な型のoptionalな値として定義しましょう
+
+もし、デフォルトで値を与えずに optional な変数を定義した場合、その変数には自動で`nil`が設定されます:
+
+```swift
+var surveyAnswer: String?
+// surveyAnswer is automatically set to nil
+```
+
+> NOTE  
+> Swift の`nil`はObjective-Cの`nil`と同じではありません。Objective-C では、`nil`は存在しないオブジェクトのポインタです。Swift では、`nil`はポインタではありません。- ある型の存在しない値です。オブジェクト型だけではなく、どんな型の optional にも`nil`を設定することができます。
+
 ### If Statements and Forced Unwrapping
 
 ### Optional Binding
