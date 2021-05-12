@@ -483,6 +483,23 @@ print("The status message is \(http200Status.description)")
 
 ## Optionals
 
+*optionals*は、値が存在しないかもしれない時に使用します。optioanl は 2 つの可能性を表します: 値が存在して unwrap することで値にアクセスすることができる、もしくは、値が全く存在しない
+
+> NOTE  
+> optional の概念は、 C 言語や Objective-C には存在しません。 Objective-C は、メソッドから`nil`かオブジェクトを返すことができますが、ここでいう`nil`は妥当なオブジェクトが存在しない、ということを意味します。しかし、これはオブジェクトのみで機能し、構造体や基本的なC言語の型、列挙型には使用できません。これらの型へは、値が存在しないことを示す特別な値(`NSNotFound`など)を返すのが通例です。この方法ですと、メソッドの呼び出し側がこの特別な値が返ってくることを知っていて、チェックすることを念頭に置いていることを想定しています。Swiftでは、この特別な値を必要とせず、どんな型に対しても、値が存在しないことを示すことができます。
+
+下記に optional がどのように値が存在しないことを扱うのかの例を示します。Switf の`Int`型は`String`を`Int`への変換を試みるイニシャライザがあります。しかし、全ての文字列が整数に変換できるわけではありません。"`123`"という文字列は数値`123`に変換できますが、"`hello world`"は変換することができません。
+
+下記の例は`String`を`Int`へ変換しようとするイニシャライザの例です。
+
+```swift
+let possibleNumber = "123"
+let convertedNumber = Int(possibleNumber)
+// convertedNumber is inferred to be of type "Int?", or "optional Int"
+```
+
+イニシャライザは、失敗するかもしれないので、`Int`ではなく、optioanl の`Int`を返します。optioanl の`Int`は、*`Int`*ではなく*`Int?`*と書きます。`?`は optional を示し、ある`Int`型の値を含んでいる、ということを表しています。(`Bool`や`String`など他の型を含めることはできません。`Int`、または値を持たないの 2 つのみ可能です)
+
 ### nil
 
 ### If Statements and Forced Unwrapping
