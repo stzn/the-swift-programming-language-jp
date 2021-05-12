@@ -424,6 +424,63 @@ if i == 1 {
 
 ## Tuples
 
+*タプル(Tuples)*は、複数の値を 1 つのまとまりにグループ化します。タプル内の値にはどんな型も入れることができ、全ての型を同じにする必要はありません。
+
+下記の例では、`(404, "Not Found")`は HTTP ステータスコードを表したタプルです。HTTP ステータスコードは、Web ページを取得するリクエストを送る時に Web サーバから返ってくる特別な値です。`404 Not Found`のステータスコードは、リクエストした Web ページが存在しなかった場合に返ってきます。
+
+```swift
+let http404Error = (404, "Not Found")
+// http404Error is of type (Int, String), and equals (404, "Not Found")
+```
+
+`(404, "Not Found")`タプルは、HTTP ステータスコードを 2 つの値:(数値と人が読める説明)に分けた`Int`と`String` を 1 つのグループにまとめています。これは「`(Int, String)`型のタプル」と説明できます。
+
+タプルは任意の順序で異なる任意の型を組み合わせることができます。例えば、`(Int, Int, Int)`や`(String, Bool)`型のタプルも作ることがありますし、必要ならば他の順番でも可能です。
+
+タプルの個々の内容をそれぞれ定数や変数に分解することができ、他の値と変わらずにアクセスすることができます:
+
+```swift
+let (statusCode, statusMessage) = http404Error
+print("The status code is \(statusCode)")
+// Prints "The status code is 404"
+print("The status message is \(statusMessage)")
+// Prints "The status message is Not Found"
+```
+
+もしタプルの一部だけが必要な場合、タプルを分解する時に、アンダースコア(_)を使って無視することができます。
+
+```swift
+let (justTheStatusCode, _) = http404Error
+print("The status code is \(justTheStatusCode)")
+// Prints "The status code is 404"
+```
+
+各値へのアクセス方法としては、0 から始まるインデックスを使うこともできます:
+
+```swift
+print("The status code is \(http404Error.0)")
+// Prints "The status code is 404"
+print("The status message is \(http404Error.1)")
+// Prints "The status message is Not Found"
+```
+
+タプルの定義時に、名前を付けることもできます:
+
+```swift
+let http200Status = (statusCode: 200, description: "OK")
+```
+
+名前を付けた場合、その名前を使って各値へアクセスすることができます:
+
+```swift
+print("The status code is \(http200Status.statusCode)")
+// Prints "The status code is 200"
+print("The status message is \(http200Status.description)")
+// Prints "The status message is OK"
+```
+
+タプルは、特に関数の戻り値で有効に活用できます。Web ページを取得しようとする関数は、取得の成否の結果を`(Int, String)`で返すかもしれません。2 つの異なる型の値を持ったタプルを返すことで、1 つの型の 1 つの値を返すよりも、関数はより有益な情報を提供できます。より詳しくは、[Functions with Multiple Return Values](./functions.md#functions-with-multiple-return-values)を参照ください。
+
 ## Optionals
 
 ### nil
