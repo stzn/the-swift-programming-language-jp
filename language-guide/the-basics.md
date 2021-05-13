@@ -655,6 +655,56 @@ if let definiteString = assumedString {
 
 ## Error Handling
 
+実行中にエラーに対応するためには、エラーハンドリング(*error handling*)を使います。
+
+関数の成功失敗を伝えるために値の有無を利用する optional と異なり、エラーハンドリングは背後にある失敗の原因を特定でき、必要ならば、エラーをプログラムの他の箇所へ伝播させることができます。
+
+関数がエラーに遭遇すると、エラーを投げます(*throw*します)。そして、この関数の呼び出し側でエラーを捕捉(*catch*)して、適切に反応することができます。
+
+```swift
+func canThrowAnError() throws {
+    // this function may or may not throw an error
+}
+```
+
+エラーは定義に`throws`キーワードを含めることで、エラーを throws することを示せます。エラーを throw する関数を呼ぶ場合、式の前に`try`キーワードを付けます。
+
+Swift は`catch`でエラーが捕捉されるまで、現在のスコープを抜けてエラーを自動で伝播します。
+
+```swift
+do {
+    try canThrowAnError()
+    // no error was thrown
+} catch {
+    // an error was thrown
+}
+```
+
+`do`は新しいスコープを生成して、エラーを 1 つ以上の`catch`句で捕捉することができます。
+
+これは異なるエラーに反応するために、どのようにエラーハンドリングを使った例です:
+
+```swift
+func makeASandwich() throws {
+    // ...
+}
+
+do {
+    try makeASandwich()
+    eatASandwich()
+} catch SandwichError.outOfCleanDishes {
+    washDishes()
+} catch SandwichError.missingIngredients(let ingredients) {
+    buyGroceries(ingredients)
+}
+```
+
+この例では、`makeASandwich()`関数は、綺麗な皿を使えない場合や材料が足りない場合、エラーを投げます。`makeASandwich()`はエラーを throw する可能性があるため、この関数の呼び出しには`try`式で包まれています。`do`文の中で、関数の呼び出しを包み、throw されたエラーは`catch`句で捕捉されます。
+
+エラーが throw されない場合、`eatASandwich()`関数が呼ばれます。エラーが throw され、それが`SandwichError.outOfCleanDishes`case と合致する場合、`washDishes()`関数が呼ばれます。`SandwichError.missingIngredients`case に合致する場合、`buyGroceries(_:)`関数が`catch`で捕捉された`[String]`値を引数に呼び出されます。
+
+エラーのスロー(Throwing), 捕捉(catching) そして伝播(propagating) は、[Error Handling](./error-handling.md)でより詳細に書かれています。
+
 ## Assertions and Preconditions
 
 ### Debugging with Assertions
