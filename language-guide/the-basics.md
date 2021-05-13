@@ -719,7 +719,7 @@ assertion と precondition の違いは、チェックのタイミングがあ�
 
 ### Debugging with Assertions
 
-Swift の標準ライブラリ(standard library) [assert(_:_:file:line:)](https://developer.apple.com/documentation/swift/1541112-assert)関数を呼ぶことで assertion を書くことができます。`true`か`false`と評価される式と、`false`だった場合の出力するメッセージを引数として渡すことができます。例えば:
+Swift の標準ライブラリ(standard library) [assert(_:_:file:line:)](https://developer.apple.com/documentation/swift/1541112-assert)関数を呼ぶことで assertion を書くことができます。`true`か`false`と評価される式と、`false`だった場合に出力するメッセージを引数として渡すことができます。例えば:
 
 ```swift
 let age = -3
@@ -749,3 +749,17 @@ if age > 10 {
 
 ### Enforcing Preconditions
 
+false になる可能性があるものの、コードの実行を継続するためには必ず true にならなければならない条件に対しては、 precondition を使いましょう。例えば、subscript が範囲超え(out of bounds)を起こしていないかの確認や適切な値を関数の引数に渡しているかなどには、precondition を使いましょう。
+
+precondition は[precondition(_:_:file:line:)](https://developer.apple.com/documentation/swift/1540960-precondition)関数を呼ぶことで、precondition を書けます。`true`か`false`と評価される式と、`false`だった場合に出力するメッセージを引数として渡すことができます。例えば:
+
+```swift
+// In the implementation of a subscript...
+precondition(index > 0, "Index must be greater than zero.")
+```
+
+precondition が失敗したことを示すために、[preconditionFailure(_:file:line:)](https://developer.apple.com/documentation/swift/1539374-preconditionfailure)関数を使うこともできます。例えば、switch 文で本当は他の case で全ての妥当な入力値を処理できるはずなのに、defalt の case が起きた場合などがあります。
+
+> NOTE
+> もし(`-Ounchecked`)モードでコンパイルした場合、preconditionはチェックされません。コンパイラはpreconditionを常に true と見なしてコードの最適化を行います。一方で、`fatalError(_:file:line:)`関数は最適化の設定をしても、常に実行を中断します。  
+> `fatalError(_:file:line:)`関数は試作段階や開発の初期段階で、まだ未実装であることを示すためのスタブとして使うことができます(`fatalError("Unimplemented")`と書くなど)。fatal error はコードの最適化がされないため、assertion と precondition とは異なり、もしこのスタブメソッドに遭遇した場合は、確実に実行が中断させることができます
