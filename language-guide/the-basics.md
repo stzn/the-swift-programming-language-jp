@@ -549,7 +549,7 @@ if convertedNumber != nil {
 `if`文についての詳細は、[Control Flow](./control-flow.md)を参照ください。
 
 > NOTE  
-> 値が存在しない optional 値に`!`と付けてアクセスしようとすると、実行時エラー( runtime error )が発生します。`!`を使った強制アンラップを行う際は、確実に non-`nil`であることを常に確かめましょう。
+> 値が存在しない optional 値に`!`と付けてアクセスしようとすると、実行時エラー(runtime error)が発生します。`!`を使った強制アンラップを行う際は、確実に non-`nil`であることを常に確かめましょう。
 
 ### Optional Binding
 
@@ -604,6 +604,54 @@ if let firstNumber = Int("4") {
 > `if`文の中でオプショナルバインディングによって作られた定数や変数は、`if`文の中でしか使えません。もし他でも使用したい場合は、`guard`文　を使うことで、`guard`文の次から使うことができます。詳細は[Early Exit](./control-flow.md#early-exit)に記載しています。
 
 ### Implicitly Unwrapped Optionals
+
+上記で書いているように、optional は定数や変数に「値が存在しない可能性がある」ことを示します。optional は値が存在するかどうかを`if`文の中でチェックでき、存在している場合は、optional 内の値にアクセスするために、オプショナルバインディング(Optional Binding)を使ってアンラップすることができます。
+
+時々、optional に一度値が設定された後は必ず値が存在するということが、明確なこともあります。このような場合、常に値があることはわかっているので、アクセスする度に optional 値のチェックとアンラップをしなくなれば便利です。
+
+このような optional は暗黙アンラップ optional(implicitly unwrapped optionals)として定義されます。`?`の代わりに`!`を型の後に付けることで、暗黙アンラップ optional を書くことができます(`String?`の代わりに`String!`と書くなど)。コード内で使用する optional 値の後に`!`付けるよりも、定義した型の後に`!`を付けます。
+
+暗黙アンラップ optional は、optional が定義された後すぐに値が存在して、それ以降はずっと値が存在していることが確実な場合に役に立ちます。Swift での暗黙アンラップ optional の主な使われ方としては、`class`の初期化時があります。[Unowned References and Implicitly Unwrapped Optional Properties](./automatic-reference-counting.md#unowned-references-and-implicitly-unwrapped-optional-properties)で記載しています。
+
+暗黙アンラップ optional は内部的には通常の optional ですが、optional ではない値のように使うこともできます。次の例は、optional と暗黙アンラップ optional で、明示的に`String`を型として記載している値へアクセスする時の動きの違いを表しています。
+
+```swift
+let possibleString: String? = "An optional string."
+let forcedString: String = possibleString! // requires an exclamation point
+
+let assumedString: String! = "An implicitly unwrapped optional string."
+let implicitString: String = assumedString // no need for an exclamation point
+```
+
+暗黙アンラップ optional を optional 値に必要な時に強制アンラップできるようにしていると見なすことができます。暗黙アンラップ optional 値を使う時、Swift は強制アンラップします。上記のコードでは、optional 値の`assumedString`は、`implicitString`が明示的に optional ではない`String`を宣言しているため、設定される前に強制アンラップされています。下記のコードでは、`optionalString`は明示的に型を宣言していないため、通常は optional になります。
+
+```swift
+let optionalString = assumedString
+// The type of optionalString is "String?" and assumedString isn't force-unwrapped.
+```
+
+暗黙アンラップ optional が`nil`の場合に内部の値にアクセスしようとすると、実行時エラー(runtime error)が発生します。これはに`!`を付けた通常の optional で値が存在しない場合にアクセスした時の動きと同じです。
+
+暗黙アンラップ optional が`nil`かどうかのチェックは通常の optional と同じ方法でできます。
+
+```swift
+if assumedString != nil {
+    print(assumedString!)
+}
+// Prints "An implicitly unwrapped optional string."
+```
+
+暗黙アンラップ optional はオプショナルバインディングもできます。1 つの文の中で、チェックとアンラップができます。
+
+```swift
+if let definiteString = assumedString {
+    print(definiteString)
+}
+// Prints "An implicitly unwrapped optional string."
+```
+
+> NOTE  
+> 暗黙アンラップ optionalを後でnilになる可能性のある変数に使わないでください。変数が使用されている間にnilチェックが必要な場合は、通常のoptionalをいつも使いましょう
 
 ## Error Handling
 
