@@ -707,6 +707,16 @@ do {
 
 ## Assertions and Preconditions
 
+*Assertions*と*Preconditions*は実行時のチェックです。他のコードが実行される前に必要不可欠な条件が満たされているかどうかを確かめることができます。assertion や precondition のブール値が`true`と評価される場合、コードは通常通りの継続します。`false`の場合、現在のプログラムの状態は不正となり、コードの実行は中断し、アプリは終了します。
+
+assertion と precondition はコード上での前提条件や期待値を表すために使います。assertion は開発中の間違いや間違った想定を見つけやすくし、precondition は開発中の問題を検知しやすくします。
+
+実行時の期待値を確認することに加えて、assertion と precondition はコード内のドキュメントとしても有用です。[Error Handling](#error-handling)で話したエラー条件とは異なり、assertion と precondition は復帰可能になったり、期待されたエラーとして使うことはできません。assertion や precondition の失敗は不正なプログラムの状態を表し、失敗した assertion を catch する方法はありません。
+
+assertion と precondition を使うことは、不正な条件を起こさないためのツールとしてコードをデザインするための代用品にはなりません。妥当なデータや状態を強制することで、不正な状態が起きた場合に予測しやすい状態でアプリ終了させたり、プログラムのデバッグをしやすくします。不正な状態が起きた際にすぐに実行を止めることで、不正な状態が与えるダメージを抑えることができます。
+
+assertion と precondition の違いは、チェックのタイミングがあります: assertion はデバッグビルド時にしかチェックをせず、precondition はデバッグとプロダクションの両方のビルドでチェックされます。プロダクションビルドでは、assertion は評価されません。つまり、開発時には assertion を多用してもプロダクションのパフォーマンスに影響はありません。
+
 ### Debugging with Assertions
 
 ### Enforcing Preconditions
