@@ -719,5 +719,33 @@ assertion と precondition の違いは、チェックのタイミングがあ�
 
 ### Debugging with Assertions
 
+Swift の標準ライブラリ(standard library) [assert(_:_:file:line:)](https://developer.apple.com/documentation/swift/1541112-assert)関数を呼ぶことで assertion を書くことができます。`true`か`false`と評価される式と、`false`だった場合の出力するメッセージを引数として渡すことができます。例えば:
+
+```swift
+let age = -3
+assert(age >= 0, "A person's age can't be less than zero.")
+// This assertion fails because -3 isn't >= 0.
+```
+
+この例では、`age >= 0`、つまり負の値ではない場合、が`true`の場合にコードは継続して実行されます。負の値の場合、`age >= 0`は`false`となり、assertion は失敗し、アプリは終了します。
+
+assertion のメッセージを省略することができます。例えば、ただ条件を繰り返している場合などがあります。
+
+```swift
+assert(age >= 0)
+```
+
+既にチェック済みの条件に対して assertion を呼び出したい場合、[assertionFailure(_:file:line:)](https://developer.apple.com/documentation/swift/1539616-assertionfailure)関数を使って、assertion が失敗したことを示すことができます。
+
+```swift
+if age > 10 {
+    print("You can ride the roller-coaster or the ferris wheel.")
+} else if age >= 0 {
+    print("You can ride the ferris wheel.")
+} else {
+    assertionFailure("A person's age can't be less than zero.")
+}
+```
+
 ### Enforcing Preconditions
 
