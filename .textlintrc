@@ -22,6 +22,8 @@
         },
         "period-in-list-item": true,
         "preset-ja-spacing": {
+            "ja-space-around-code": true,
+            "ja-no-space-around-parentheses": false,
             "ja-space-between-half-and-full-width": {
                 "space": "always"
             }

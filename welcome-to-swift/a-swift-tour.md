@@ -9,7 +9,7 @@ print("Hello, world!")
 // Prints "Hello, world!"
 ```
 
-もし C 言語や Objective-C の経験があるならばこのシンタックスに馴染みがあるかもしれませんが、Swift ではこの 1 行のコードは完成したプログラミングです。input/output や文字列を扱うために他のライブラリを import する必要もありません。グローバル領域に書かれたコードはプログラムのエントリポイントとして使用されます。`main()` 関数は必要ありません。全てのステートメントの末尾にセミコロンをつける必要もありません。
+もし C 言語や Objective-C の経験があるならばこのシンタックスに馴染みがあるかもしれませんが、Swift ではこの 1 行のコードは完成したプログラミングです。input/output や文字列を扱うために他のライブラリを import する必要もありません。グローバル領域に書かれたコードはプログラムのエントリポイントとして使用されます。`main()`関数は必要ありません。全てのステートメントの末尾にセミコロンをつける必要もありません。
 
 このツアーでは、様々なプログラム上のタスクを遂行する方法を示すことで、Swift でコードを書き始めるために必要十分な情報を提供します。もし理解できなくても心配しないでください。このツアーで紹介することは全て、この本で後々詳細に説明しています。
 
@@ -20,7 +20,7 @@ print("Hello, world!")
 
 ## Simple Values
 
-定数を作成するのに `let`、変数を作成するのに `var` を使います。定数の値はコンパイル時に知る必要はありませんが、正確に一度だけ値を設定しなければなりません。つまり、値を指定をたった一度だけ行い、他のあらゆる場所から利用するために定数を活用できます。
+定数を作成するのに`let`、変数を作成するのに`var`を使います。定数の値はコンパイル時に知る必要はありませんが、正確に一度だけ値を設定しなければなりません。つまり、値を指定をたった一度だけ行い、他のあらゆる場所から利用するために定数を活用できます。
 
 ```swift
 var myVariable = 42
@@ -28,7 +28,7 @@ myVariable = 50
 let myConstant = 42
 ```
 
-定数や変数は設定したい値と同じ型でなければなりません。しかし、明示的に型を記載する必要はありません。定数や変数を作成する時に値を与えることで、コンパイラが型を推論します。例えば、コンパイラは `myVariable` の値が integer ということから、型を integer と推論します。
+定数や変数は設定したい値と同じ型でなければなりません。しかし、明示的に型を記載する必要はありません。定数や変数を作成する時に値を与えることで、コンパイラが型を推論します。例えば、コンパイラは`myVariable`の値が integer ということから、型を integer と推論します。
 
 もし、最初に設定する値が十分な情報を提供しなかった場合(もしくは最初に設定する値ではなかった場合)、変数の後にコロンを付けて型を書くことで特定することができます。
 
@@ -109,7 +109,7 @@ occupations = [:]
 
 ## Control Flow
 
-条件を作成するには、 `if` と `switch` を使います。ループを作成するには `for-in` `while` `repeat-while` を使います。条件や optional に丸括弧(())を付けるかどうかは任意です。body の周りの中括弧({})は必須です。
+条件を作成するには、 `if`と`switch`を使います。ループを作成するには`for-in` `while` `repeat-while`を使います。条件や optional に丸括弧(())を付けるかどうかは任意です。body の周りの中括弧({})は必須です。
 
 ```swift
 let individualScores = [75, 43, 103, 87, 12]
@@ -125,9 +125,9 @@ print(teamScore)
 // Prints "11"
 ```
 
-`if` ステートメントの中で、条件は Boolean でなければなりません。(つまり、`if score { ... }`などのコードはエラーか暗黙的に 0 と推論されます)
+`if`ステートメントの中で、条件は Boolean でなければなりません。(つまり、`if score { ... }`などのコードはエラーか暗黙的に 0 と推論されます)
 
-`if` と `let`を一緒に使って、存在しないかもしれない値を扱うことができます。これらの値は optional で表現されます。optional は値が含まれているか、値が存在しないことを示す `nil` を含んでいます。値を optional にするには、値の型の後ろにクエスチョンマーク(?)を書きましょう。
+`if`と`let`を一緒に使って、存在しないかもしれない値を扱うことができます。これらの値は optional で表現されます。optional は値が含まれているか、値が存在しないことを示す`nil`を含んでいます。値を optional にするには、値の型の後ろにクエスチョンマーク(?)を書きましょう。
 
 ```swift
 var optionalString: String? = "Hello"
@@ -142,9 +142,9 @@ if let name = optionalName {
 ```
 
 > Experiment  
-> optionalName を nil に変えてみましょう。 どんな greeting が出力されるでしょうか？ optionalName が nil の場合に別の greeting が出力されるように `else` を追加してみましょう。
+> optionalName を nil に変えてみましょう。 どんな greeting が出力されるでしょうか？ optionalName が nil の場合に別の greeting が出力されるように`else`を追加してみましょう。
 
-もし optional の値が nil の場合、条件は false になり、中括弧内のコードはスキップされます。nil でなければ、optional の値はアンラップされて `let` の後の定数に値が設定され、中括弧内のブロックでその値を利用できます。
+もし optional の値が nil の場合、条件は false になり、中括弧内のコードはスキップされます。nil でなければ、optional の値はアンラップされて`let`の後の定数に値が設定され、中括弧内のブロックでその値を利用できます。
 
 optional の値を扱うもう 1 つの方法として、?? を使ってデフォルトの値を提供します。もし optional の値が nil の場合、代わりにデフォルトの値が使われます。
 
@@ -154,7 +154,7 @@ let fullName: String = "John Appleseed"
 let informalGreeting = "Hi \(nickname ?? fullName)"
 ```
 
- `switch` は、あらゆる種類のデータと比較のための operator を扱うことができます。( integer と等価チェックだけに限定されません)
+ `switch`は、あらゆる種類のデータと比較のための operator を扱うことができます。( integer と等価チェックだけに限定されません)
 
 ```swift
 let vegetable = "red pepper"
@@ -174,11 +174,11 @@ default:
 > Experiment  
 > default の case を削除してみましょう。どんなエラーが起きるでしょうか？
 
-パターンに合った値を定数に設定するために `let` がどう使われるかに注目してください。
+パターンに合った値を定数に設定するために`let`がどう使われるかに注目してください。
 
 パターンに合った switch case 内のコードが実行された後、プログラムは switch ステートメントから抜け出します。次の case は実行されないので、各 case の最後に明示的に break を書く必要はありません。
 
-`for-in` を使うことで Dictionary のそれぞれの要素の key-value ペアを受け取って、Dictionary 内のアイテムを反復処理をすることができます。Dictionary は順序のないコレクションなので、key-value ペアの受け取る順序は決まっていません。
+`for-in`を使うことで Dictionary のそれぞれの要素の key-value ペアを受け取って、Dictionary 内のアイテムを反復処理をすることができます。Dictionary は順序のないコレクションなので、key-value ペアの受け取る順序は決まっていません。
 
 ```swift
 let interestingNumbers = [
@@ -201,7 +201,7 @@ print(largest)
 > Experiment  
 > _ を変数の名前に置き換えてみて、どの種類の値が最大だったかを追ってみましょう。
 
-`while` を使うことで条件が変わるまで、ブロック内のコードを反復して実行できます。ループの条件を最後に置くことで、ループ内のブロックが少なくとも 1 回実行されるようにすることができます。
+`while`を使うことで条件が変わるまで、ブロック内のコードを反復して実行できます。ループの条件を最後に置くことで、ループ内のブロックが少なくとも 1 回実行されるようにすることができます。
 
 ```swift
 var n = 2
@@ -219,7 +219,7 @@ print(m)
 // Prints "128"
 ```
 
-`..<` を使うと、index の range を生成でき、ループの index を追うことができます。
+`..<`を使うと、index の range を生成でき、ループの index を追うことができます。
 
 ```swift
 var total = 0
@@ -230,11 +230,11 @@ print(total)
 // Prints "6
 ```
 
-`..<` では後の値は除外され、`...` は両方の値を含みます。
+`..<`では後の値は除外され、`...`は両方の値を含みます。
 
 ## Functions and Closures
 
-関数の定義には `func` を使います。()の中に引数のリスト、その前に関数の名前を付けることで関数の呼び出します。 また、`->` の後ろに戻り値の型を指定して、関数名や引数と区別します。
+関数の定義には`func`を使います。()の中に引数のリスト、その前に関数の名前を付けることで関数の呼び出します。 また、`->`の後ろに戻り値の型を指定して、関数名や引数と区別します。
 
 ```swift
 func greet(person: String, day: String) -> String {
@@ -246,7 +246,7 @@ greet(person: "Bob", day: "Tuesday")
 > Experiment  
 > day 引数を削除して、greet に今日の lunch special を指定するための引数を追加してみましょう。
 
-デフォルトで、関数は引数名をそのまま引数ラベルとして使用します。カスタムの引数ラベルを設定したい場合は、引数名の前に引数ラベルを記載しましょう。引数にラベルが不要な場合は、`_` を書きましょう。
+デフォルトで、関数は引数名をそのまま引数ラベルとして使用します。カスタムの引数ラベルを設定したい場合は、引数名の前に引数ラベルを記載しましょう。引数にラベルが不要な場合は、`_`を書きましょう。
 
 ```swift
 func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
@@ -317,7 +317,7 @@ var numbers = [20, 19, 7, 12]
 hasAnyMatches(list: numbers, condition: lessThanTen)
 ```
 
-関数は実はクロージャの特殊なケースです。クロージャは、後で呼ばれる可能性があるコードブロックのことを指します。クロージャ内のコードは、そのクロージャが作成されたスコープで利用可能な変数や関数へアクセスすることができます。これは、実際に実行されるのが別のスコープ(タイミング)の場合でも当てはまります。(上記のネストした関数の例でも同じことが見られます)。中括弧({})で囲むことで、名前なしのクロージャを作成することもできます。`in` を使用することで、コードの body から引数と戻り値を分離することができます。
+関数は実はクロージャの特殊なケースです。クロージャは、後で呼ばれる可能性があるコードブロックのことを指します。クロージャ内のコードは、そのクロージャが作成されたスコープで利用可能な変数や関数へアクセスすることができます。これは、実際に実行されるのが別のスコープ(タイミング)の場合でも当てはまります。(上記のネストした関数の例でも同じことが見られます)。中括弧({})で囲むことで、名前なしのクロージャを作成することもできます。`in`を使用することで、コードの body から引数と戻り値を分離することができます。
 
 ```swift
 numbers.map({ (number: Int) -> Int in
@@ -339,7 +339,7 @@ print(sortedNumbers)
 
 ## Objects and Classes
 
-`class` を class 名の前に付けることで class を作成することができます。class 内のプロパティの宣言は、class 内にあるということを除いて、定数や変数の宣言方法と同じです。同様に、メソッドや関数の宣言も同じように書くことができます。
+`class`を class 名の前に付けることで class を作成することができます。class 内のプロパティの宣言は、class 内にあるということを除いて、定数や変数の宣言方法と同じです。同様に、メソッドや関数の宣言も同じように書くことができます。
 
 ```swift
 class Shape {
@@ -361,7 +361,7 @@ shape.numberOfSides = 7
 var shapeDescription = shape.simpleDescription()
 ```
 
-このバージョンの `Shape` class は重要なことが抜けています。それは、インスタンスを生成するときに class を構築するためのイニシャライザです。生成するために `init` を使います。
+このバージョンの`Shape` class は重要なことが抜けています。それは、インスタンスを生成するときに class を構築するためのイニシャライザです。生成するために`init`を使います。
 
 ```swift
 class NamedShape {
@@ -378,13 +378,13 @@ class NamedShape {
 }
 ```
 
-イニシャライザ内で `self` を使って `name` プロパティと `name` 引数を区別していることに注目してください。インスタンスの作成時、イニシャライザの引数は関数の呼び出しと同じように渡されます。全てのプロパティは宣言時に値を設定するか(`numberOfSides` 参照)、イニシャライザ内で値を設定する必要があります。(`name`参照)
+イニシャライザ内で`self`を使って`name`プロパティと`name`引数を区別していることに注目してください。インスタンスの作成時、イニシャライザの引数は関数の呼び出しと同じように渡されます。全てのプロパティは宣言時に値を設定するか(`numberOfSides`参照)、イニシャライザ内で値を設定する必要があります。(`name`参照)
 
-インスタンスが開放される前に何かクリーンアップ作業が必要な場合、デイニシャライザを作成するために `deinit` を使います。
+インスタンスが開放される前に何かクリーンアップ作業が必要な場合、デイニシャライザを作成するために`deinit`を使います。
 
 subclass は、その class 名の後に、superclass の名前をコロンで区切って指定します。標準で定義されているルート class の subclass にする必要は必ずしもありません。追加も省略もできます。
 
-superclass のメソッドを subclass で override する場合は `override` を付けます。意図せずに override してしまった場合は、コンパイラがエラーにします。`override` を付けていても、`override` が正しく行われていない場合も、コンパイラはエラーにします。
+superclass のメソッドを subclass で override する場合は`override`を付けます。意図せずに override してしまった場合は、コンパイラがエラーにします。`override`を付けていても、`override`が正しく行われていない場合も、コンパイラはエラーにします。
 
 ```swift
 class Square: NamedShape {
@@ -410,7 +410,7 @@ test.simpleDescription()
 ```
 
 > Experiment  
-> radius と name をイニシャライザの引数に受けとる `Circle` という名前の `NameShape` の別の subclass を作ってみましょう。そして、 `Circle` class に area(), simpleDescription() メソッドを実装してみましょう。
+> radius と name をイニシャライザの引数に受けとる`Circle`という名前の`NameShape`の別の subclass を作ってみましょう。そして、 `Circle` class に area(), simpleDescription() メソッドを実装してみましょう。
 
 単純に値を保持するプロパティ以外に、プロパティが getter と setter を持つこともできます。
 
@@ -445,7 +445,7 @@ print(triangle.sideLength)
 // Prints "3.3000000000000003"
 ```
 
-`perimeter` の setter の中で、新しい値は暗黙的に `newValue` という名前になります。 `set` の後に丸括弧(())で囲んで明示的に指定することもできます。
+`perimeter`の setter の中で、新しい値は暗黙的に`newValue`という名前になります。 `set`の後に丸括弧(())で囲んで明示的に指定することもできます。
 
 `EquilateralTriangle` class のイニシャライザは 3 つの異なるステップがあります。
 
@@ -482,7 +482,7 @@ print(triangleAndSquare.triangle.sideLength)
 // Prints "50.0"
 ```
 
-optional な値を扱う場合、 `?` をメソッド、プロパティ、subscript のような操作の前に書きます。もし`?`の前の値が `nil` の場合、`?`の後の処理は全て無視され、その式全体の値は `nil` になります。それ以外は、optional の値はアンラップされて、`?`の後は全てアンラップされた値として実行されます。どちらの場合も、式全体は optinal な値です。
+optional な値を扱う場合、 `?`をメソッド、プロパティ、subscript のような操作の前に書きます。もし`?`の前の値が`nil`の場合、`?`の後の処理は全て無視され、その式全体の値は`nil`になります。それ以外は、optional の値はアンラップされて、`?`の後は全てアンラップされた値として実行されます。どちらの場合も、式全体は optinal な値です。
 
 ```swift
 let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
@@ -491,7 +491,7 @@ let sideLength = optionalSquare?.sideLength
 
 ## Enumerations and Structures
 
-列挙型を作成するには `enum` を使います。class やその他の名前の付いた型と同様に、列挙型もメソッドを持つことができます。
+列挙型を作成するには`enum`を使います。class やその他の名前の付いた型と同様に、列挙型もメソッドを持つことができます。
 
 ```swift
 enum Rank: Int {
@@ -519,11 +519,11 @@ let aceRawValue = ace.rawValue
 ```
 
 > Experiment  
-> 2つの`Rank`の raw value を比較して `Rank` を比較するメソッドを追加してみましょう。
+> 2つの`Rank`の raw value を比較して`Rank`を比較するメソッドを追加してみましょう。
 
-デフォルトで、Swift は 0 から 1 つずつ増加する値を raw value に設定しますが、明示的に値を指定してこの挙動を変更することもできます。上記の例では、`Ace` は明示的に 1 を raw value に指定しており、残りは、1 から順番に raw value が指定されます。文字列や浮動小数点も使うことができます。列挙型の個々の case の raw value には、 `rawValue` プロパティからアクセスすることができます。
+デフォルトで、Swift は 0 から 1 つずつ増加する値を raw value に設定しますが、明示的に値を指定してこの挙動を変更することもできます。上記の例では、`Ace`は明示的に 1 を raw value に指定しており、残りは、1 から順番に raw value が指定されます。文字列や浮動小数点も使うことができます。列挙型の個々の case の raw value には、 `rawValue`プロパティからアクセスすることができます。
 
-raw value から列挙型のインスタンスを生成するためには `init?(rawValue:)` イニシャライザを使います。raw value に合致した case を返すか、合致するものがない場合は `nil` を返します。
+raw value から列挙型のインスタンスを生成するためには`init?(rawValue:)`イニシャライザを使います。raw value に合致した case を返すか、合致するものがない場合は`nil`を返します。
 
 ```swift
 if let convertedRank = Rank(rawValue: 3) {
@@ -555,9 +555,9 @@ let heartsDescription = hearts.simpleDescription()
 ```
 
 > Experiment  
-> `color()`メソッドを`Suit`に追加してみましょう。`spades` と `clubs`は "black" を返し、`hearts` と `diaminds` は "red" を返します。
+> `color()`メソッドを`Suit`に追加してみましょう。`spades`と`clubs`は "black" を返し、`hearts`と`diaminds`は "red" を返します。
 
-`hearts` case を参照するために 2 つの方法があることに注目してください。`hearts`定数に値を設定する時、列挙型 case の `Suits.hearts` は型を明示的に特定していないため、完全な名前で参照されています。一方、switch 文の中では、`self` が既に `Suit` だとわかっているため、列挙型 case は `.hearts` と省略方法で参照されています。型が既にわかっている場合はいつでも省略方法を使用することができます。
+`hearts` case を参照するために 2 つの方法があることに注目してください。`hearts`定数に値を設定する時、列挙型 case の`Suits.hearts`は型を明示的に特定していないため、完全な名前で参照されています。一方、switch 文の中では、`self`が既に`Suit`だとわかっているため、列挙型 case は`.hearts`と省略方法で参照されています。型が既にわかっている場合はいつでも省略方法を使用することができます。
 
 もし列挙型が raw value を持つ場合、これらの値は宣言の一部として決定されます。これはつまり、特定の列挙型 case の全てのインスタンスは、必ず同じ raw value を持つということです。列挙型 case が case に関連した値を持つもう 1 つの方法があります。これらはインスタンス生成時に値が決定され、列挙型 case のインスタンスごとに異なる値を持つ可能性があります。例えば、サーバから日の出時刻と日の入り時刻をリクエストする場合を考えてみてください。サーバはリクエスト情報に応じたレスポンスを返すか、リクエストが間違っている場合は間違っている内容を返します。
 
@@ -580,11 +580,11 @@ case let .failure(message):
 ```
 
 > Experiment  
-> `ServerResponse` に3つ目の case を追加して、switch 文を変更しましょう。
+> `ServerResponse`に3つ目の case を追加して、switch 文を変更しましょう。
 
-日の出時刻と日の入り時刻が、switch に合致した case の一部として、`ServerResponse` から抽出されていることに注目してください。
+日の出時刻と日の入り時刻が、switch に合致した case の一部として、`ServerResponse`から抽出されていることに注目してください。
 
-struct を作成するには `struct` を使います。struct はメソッドやイニシャライザなど多くの class と同じ挙動をサポートしています。最も重要な違いは、struct はコードの中で渡される時に必ずコピーされる、ということです。class は参照を渡します。
+struct を作成するには`struct`を使います。struct はメソッドやイニシャライザなど多くの class と同じ挙動をサポートしています。最も重要な違いは、struct はコードの中で渡される時に必ずコピーされる、ということです。class は参照を渡します。
 
 ```swift
 struct Card {
@@ -603,7 +603,7 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 
 ## Protocols and Extensions
 
-protocol を宣言するために `protocol` を使います。
+protocol を宣言するために`protocol`を使います。
 
 ```switf
 protocol ExampleProtocol {
@@ -638,11 +638,11 @@ let bDescription = b.simpleDescription
 ```
 
 > Experiment  
-> `ExampleProtocolrank` にもう1つの要件を追加してみましょう。`SimpleClass` と `SimpleStructure` にどういう変更が必要になりますでしょうか？
+> `ExampleProtocolrank`にもう1つの要件を追加してみましょう。`SimpleClass`と`SimpleStructure`にどういう変更が必要になりますでしょうか？
 
-struct `SimpleStructure` を変更するメソッドに `mutating` キーワードが付いていることに注目してください。 class のメソッドは class を変更することが許されているため、`mutating` を付ける必要はありません。
+struct `SimpleStructure`を変更するメソッドに`mutating`キーワードが付いていることに注目してください。 class のメソッドは class を変更することが許されているため、`mutating`を付ける必要はありません。
 
-既存の型に新しい機能(メソッドや計算プロパティ)を追加する場合に、`extension` を使います。他のファイルやモジュールで宣言された型やライブラリやフレームワークからインポートした型に protocol を適合させる場合にも extension を使います。
+既存の型に新しい機能(メソッドや計算プロパティ)を追加する場合に、`extension`を使います。他のファイルやモジュールで宣言された型やライブラリやフレームワークからインポートした型に protocol を適合させる場合にも extension を使います。
 
 ```swift
 extension Int: ExampleProtocol {
@@ -658,7 +658,7 @@ print(7.simpleDescription)
 ```
 
 > Experiment  
-> `absoluteValue`プロパティを `Double` に追加する extension を書いてみましょう。
+> `absoluteValue`プロパティを`Double`に追加する extension を書いてみましょう。
 
 protocol の名前は他の名前が付いた型と同じように使うことができます。例えば、同じ 1 つの protocol に適合した異なる型のオブジェクトのコレクションを作成することができます。protocol 自体の型の値を扱っている場合、protocol 外側で定義されたメソッドを使うことはできません。
 
@@ -669,7 +669,7 @@ print(protocolValue.simpleDescription)
 // print(protocolValue.anotherProperty)  // Uncomment to see the error
 ```
 
-変数 `protocolValue` が実行時には `SimpleClass` なことはわかるものの、コンパイラはこれをとある `ExampleProtocol` として扱います。つまり、protocol で定義されたメソッドやプロパティ以外へアクセスすることはできません。
+変数`protocolValue`が実行時には`SimpleClass`なことはわかるものの、コンパイラはこれをとある`ExampleProtocol`として扱います。つまり、protocol で定義されたメソッドやプロパティ以外へアクセスすることはできません。
 
 ## Error Handling
 
@@ -683,7 +683,7 @@ enum PrinterError: Error {
 }
 ```
 
-関数に `throws` を付け、エラーを throw する箇所に `throw` を使うことでエラーを throw することができます。関数内でエラーを throw すると、関数がすぐにリターンして、その関数を呼んだ関数でエラーを処理します。
+関数に`throws`を付け、エラーを throw する箇所に`throw`を使うことでエラーを throw することができます。関数内でエラーを throw すると、関数がすぐにリターンして、その関数を呼んだ関数でエラーを処理します。
 
 ```swift
 func send(job: Int, toPrinter printerName: String) throws -> String {
@@ -694,7 +694,7 @@ func send(job: Int, toPrinter printerName: String) throws -> String {
 }
 ```
 
-エラーを処理する方法は様々あります。1 つは `do-catch` を使うことです。`do` ブロックの中では、エラーを throw する可能性がある箇所の前に `try` を付けるます。`catch` ブロックの中では、明示的に異なる名前を設定しない限り、`error` という名前で自動的にエラー情報が与えられます。
+エラーを処理する方法は様々あります。1 つは`do-catch`を使うことです。`do`ブロックの中では、エラーを throw する可能性がある箇所の前に`try`を付けるます。`catch`ブロックの中では、明示的に異なる名前を設定しない限り、`error`という名前で自動的にエラー情報が与えられます。
 
 ```swift
 do {
@@ -707,9 +707,9 @@ do {
 ```
 
 > Experiment  
-> printer の名前を"Never Has Toner"に変えてみましょう。`send(job:toPrinter:)` はエラーを throw します。
+> printer の名前を"Never Has Toner"に変えてみましょう。`send(job:toPrinter:)`はエラーを throw します。
 
-特定のエラーを処理するために、複数の `catch` ブロックを書くこともできます。switch 文の `case` のように `catch` の後ろにパターンを書きます。
+特定のエラーを処理するために、複数の`catch`ブロックを書くこともできます。switch 文の`case`のように`catch`の後ろにパターンを書きます。
 
 ```swift
 do {
@@ -726,16 +726,16 @@ do {
 ```
 
 > Experiment  
-> `do` ブロックの中でエラーを throw するコードを追加してみましょう。最初の `catch` ブロックでエラーを処理するためにはどの種類のエラーを throw する必要がありますでしょうか？ 2つ目、3つ目の場合はどうでしょうか？
+> `do`ブロックの中でエラーを throw するコードを追加してみましょう。最初の`catch`ブロックでエラーを処理するためにはどの種類のエラーを throw する必要がありますでしょうか？ 2つ目、3つ目の場合はどうでしょうか？
 
-エラーを処理するもう 1 つの方法は、`try?` を付けて結果を optional に変換することです。もしその関数がエラーを throw する場合、特定のエラーは破棄されて、結果が `nil` になります。そうでなければ、結果は、関数が返す値を内包した optional になります。
+エラーを処理するもう 1 つの方法は、`try?`を付けて結果を optional に変換することです。もしその関数がエラーを throw する場合、特定のエラーは破棄されて、結果が`nil`になります。そうでなければ、結果は、関数が返す値を内包した optional になります。
 
 ```swift
 let printerSuccess = try? send(job: 1884, toPrinter: "Mergenthaler")
 let printerFailure = try? send(job: 1885, toPrinter: "Never Has Toner")
 ```
 
-関数内の全ての処理が実行されて、関数が結果返す直前にコードを実行したい場合、`defer` を使います。このブロックは関数がエラーを throw しても実行されます。違うタイミングで実行される必要はありますが、`defer` を使ってセットアップ用のコードの次にクリーンアップ用のコードを書くことができます。
+関数内の全ての処理が実行されて、関数が結果返す直前にコードを実行したい場合、`defer`を使います。このブロックは関数がエラーを throw しても実行されます。違うタイミングで実行される必要はありますが、`defer`を使ってセットアップ用のコードの次にクリーンアップ用のコードを書くことができます。
 
 ```swift
 var fridgeIsOpen = false
@@ -782,7 +782,7 @@ var possibleInteger: OptionalValue<Int> = .none
 possibleInteger = .some(100)
 ```
 
-要件の一覧を特定するために、 body の直前に `where` を使います。例えば、protocol を実装するために型が必要な場合や、2 つの型が一致している必要がある場合、class が特定の superclass を継承している必要がある場合など。
+要件の一覧を特定するために、 body の直前に`where`を使います。例えば、protocol を実装するために型が必要な場合や、2 つの型が一致している必要がある場合、class が特定の superclass を継承している必要がある場合など。
 
 ```swift
 func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
@@ -801,6 +801,6 @@ anyCommonElements([1, 2, 3], [3])
 ```
 
 > Experiment  
-> `anyCommonElements(_:_:)` を2つの Sequence で共通の要素が含まれる配列を返すように修正してみよう。
+> `anyCommonElements(_:_:)`を2つの Sequence で共通の要素が含まれる配列を返すように修正してみよう。
 
-`<T: Equatable>` は `<T> ... where T: Equatable` と同じです。
+`<T: Equatable>`は`<T> ... where T: Equatable`と同じです。
