@@ -167,7 +167,7 @@ Swift は、次の比較演算子をサポートしています。
 * 等しいかそれ以下(`a <= b`)
 
 > NOTE  
-> Swift では、2つの恒等作用素(`===`と`!==`)も提供しています。これは2つのオブジェクトが同じインスタンスを参照しているかどうかの確認ができます。より詳細は、[Identity Operators](./structures-and-classes.md#identity-operators.md)を参照ください。
+> Swift では、2つの恒等作用素(`===`と`!==`)も提供しています。これは2つのオブジェクトが同じインスタンスを参照しているかどうかの確認ができます。より詳細は、[Identity Operators](./structures-and-classes.md#identity-operators)を参照ください。
 
 それぞれの比較演算子は、その宣言が`true`かどうかのブール値を返します。
 
@@ -296,7 +296,7 @@ Swift は、値の範囲を表現するためのショートカットとして�
 
 ### Closed Range Operator
 
-(`a...b`)のような Closed 範囲演算子(*closed range operator*)は、`a`から`b`まで連続した、`a`も`b`も含んだ範囲を定義します。`a`は`b`よりも大きい値にしてはいけません。
+`a...b`のような Closed 範囲演算子(*closed range operator*)は、`a`から`b`までの連続した、`a`も`b`も含んだ範囲を定義します。`a`は`b`よりも大きい値にしてはいけません。
 
 Closed 範囲演算子は、必要な全ての値を範囲に含めて繰り返し処理を行う時に有用です。例えば`for-in`ループでは:
 
@@ -314,6 +314,24 @@ for index in 1...5 {
 `for-in`ループについては、[Control FLow](./control-flow.md)を参照ください。
 
 ### Half-Open Range Operator
+
+ `a..<b`のような Half-Open 範囲演算子(*half-open range operator*)は、`a`から`b`までの連続しているものの、`b`は含まない範囲を定義します。`a`は`b`よりも大きい値にしてはいけません。`a`と`b`が等しい場合、範囲は空になります。
+
+Half-Open 範囲演算子は、配列などの 0 ベースのリストで特に有用です。例えば、リストの要素数に順番にアクセスする場合などあります:
+
+```swift
+let names = ["Anna", "Alex", "Brian", "Jack"]
+let count = names.count
+for i in 0..<count {
+    print("Person \(i + 1) is called \(names[i])")
+}
+// Person 1 is called Anna
+// Person 2 is called Alex
+// Person 3 is called Brian
+// Person 4 is called Jack
+```
+
+この配列は 4 つの要素が含まれていますが、`0..<count`は Half-Open 範囲演算子なので`3`(配列の最後のインデックス)までしかカウントしないことに注目してください。配列については、[Arrays](./collection-types.md#arrays)を参照ください。
 
 ### One-Sided Ranges
 
