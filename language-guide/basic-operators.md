@@ -140,6 +140,21 @@ let alsoMinusSix = +minusSix  // alsoMinusSix equals -6
 
 ## Compound Assignment Operators
 
+C 言語と同様に、Swift の複合代入演算子は代入演算子(`=`)と他の演算子を組み合わせることができます。1 つの例として、加算代入演算子(`+=`)があります:
+
+```swift
+var a = 1
+a += 2
+// a is now equal to 3
+```
+
+`a += 2`は`a = a + 2`の短縮版です。効率的に、加算と代入が 1 つの操作に合成されて、同時に行われます。
+
+> NOTE  
+> 複合代入演算子は値を返しません。例えば、`let b = a += 2`と書くことはできません。
+
+Swift の標準ライブラリで提供している演算子については、[Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
+
 ## Comparison Operators
 
 ## Ternary Conditional Operator
