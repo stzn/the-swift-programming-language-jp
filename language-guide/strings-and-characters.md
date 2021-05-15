@@ -58,7 +58,7 @@ till you come to the end; then stop."
 """
 ```
 
-複数行文字列リテラルを境界線で開始、終了したい場合は、最初、と最後に空白の行を入れましょう。例えば:
+複数行文字列リテラルをラインフィードで開始、終了したい場合は、最初、と最後に空白の行を入れましょう。例えば:
 
 ```swift
 let lineBreaks = """
@@ -76,6 +76,30 @@ It also ends with a line break.
 上記の例では、全ての複数行文字列にインデントが加えられていますが、最初と最後の行は冒頭に空白はありません。真ん中の行は終了クォテーションマーク(`"""`)よりもさらにインデントを追加しているため、4 つ空白インデントから開始します。
 
 ### Special Characters in String Literals
+
+文字列リテラルには次の特殊文字が含まれています。
+
+* エスケープされた文字`\0 (null文字)`、`\\ (バックスラッシュ)`、`\t (水平タブ)`、`\n (ラインフィード)`、`\r (キャリッジリターン)`、`\" (ダブルクォテーション)`、`\' (シングルクォテーション)`
+* `\u{n}`で書ける随意の Unicode スカラ値、`n`には 1〜8 桁の 16 進数が入ります(Unicode については下記の[Unicode](#unicode)に書かれています)
+
+下記のコードは特殊文字の 4 つの例を示しています。`wiseWords`定数は 2 つのエスケープされた 2 つのダブルクォテーションを含んでいます。`dollarSign`と`blackHeart`と`sparklingHeart`定数は、Unicode スカラ形式を示しています:
+
+```swift
+let wiseWords = "\"Imagination is more important than knowledge\" - Einstein"
+// "Imagination is more important than knowledge" - Einstein
+let dollarSign = "\u{24}"        // $,  Unicode scalar U+0024
+let blackHeart = "\u{2665}"      // ♥,  Unicode scalar U+2665
+let sparklingHeart = "\u{1F496}" // 💖, Unicode scalar U+1F496
+```
+
+複数行文字列リテラルは 1 つではなく 3 つのを使っているので、複数行文字列リテラルの中にエスケープなしでダブルクォテーションを含めることができます。文字列にテキストとして`"""`を追加したい場合、少なくともその中の 1 つをエスケープしましょう。
+
+```swift
+let threeDoubleQuotationMarks = """
+Escaping the first quotation mark \"""
+Escaping all three quotation marks \"\"\"
+"""
+```
 
 ### Extended String Delimiters
 
