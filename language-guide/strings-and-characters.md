@@ -15,7 +15,7 @@ Swift の`String`と`Character`型は、高速で、Unicode に準拠した方�
 
 ## String Literals
 
-事前に定義された`String`の値を文字列リテラル(*string literals*)として使うことができます。文字列リテラルはダブルクォテーション(`"`)で囲まれた一連の文字です。
+事前に定義された`String`値を文字列リテラル(*string literals*)として使うことができます。文字列リテラルはダブルクォテーション(`"`)で囲まれた一連の文字です。
 
 ```swift
 let someString = "Some string literal value"
@@ -153,13 +153,43 @@ constantString += " and another Highlander"
 
 ## Strings Are Value Types
 
-`String`型は値型(*Value Type*)です。新しい`String`の値を生成すると、関数やメソッドの引数で渡される時や、他の定数、変数に代入される時に値のコピーが発生します。いずれの場合でも、既存の`String`の値のコピーが生成され、元の値ではなく新しいコピーが渡され(または代入され)ます。値型は[Structures and Enumerations Are Value Types](./structures-and-classes.md)で記載されています。
+`String`型は値型(*Value Type*)です。新しい`String`値を生成すると、関数やメソッドの引数で渡される時や、他の定数、変数に代入される時に値のコピーが発生します。いずれの場合でも、既存の`String`値のコピーが生成され、元の値ではなく新しいコピーが渡され(または代入され)ます。値型は[Structures and Enumerations Are Value Types](./structures-and-classes.md)で記載されています。
 
-Swift のデフォルトでコピーをする`String`の挙動は、`String`の値が関数やメソッドの引数で渡される時に、どこからその値が来たとしても、正しい`String`の値を所有していることを確実にします。つまり、渡ってきた文字列は、自身で変更しない限り、決して変更されることがないことを確信できます。
+Swift のデフォルトでコピーをする`String`の挙動は、`String`値が関数やメソッドの引数で渡される時に、どこからその値が来たとしても、正しい`String`値を所有していることを確実にします。つまり、渡ってきた文字列は、自身で変更しない限り、決して変更されることがないことを確信できます。
 
 舞台裏では、Swift のコンパイラは、本当に必要な時だけ実際にコピーが発生するように最適化をしています。つまり、値型として文字列を扱う場合に、常に良いパフォーマンスを得ることができます。
 
 ## Working with Characters
+
+`for-in`ループを使って文字列を繰り返し処理することで、`String`の個々の`Character`の値にアクセスすることができます。
+
+```swift
+for character in "Dog!🐶" {
+    print(character)
+}
+// D
+// o
+// g
+// !
+// 🐶
+```
+
+`for-in`ループについては[For-In Loops](./control-flow.md#for-in-loops)に記載されています。
+
+もしくは、`Character`型アノテーションを与えて 1 文字のリテラルから`Character`型の定数や変数を作ることもできます:
+
+```swift
+let exclamationMark: Character = "!"
+```
+
+`String`値は、`Character`値の配列をイニシャライザの引数に渡して構築することができます:
+
+```swift
+let catCharacters: [Character] = ["C", "a", "t", "!", "🐱"]
+let catString = String(catCharacters)
+print(catString)
+// Prints "Cat!🐱"
+```
 
 ## Concatenating Strings and Characters
 
