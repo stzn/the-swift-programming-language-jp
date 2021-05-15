@@ -252,6 +252,35 @@ print(goodStart + end)
 
 ## String Interpolation
 
+文字列補間(*String Interpolation*)は複数の定数、変数、リテラル、式を文字列リテラルの中に含めることで新しい`String`値を構築する方法です。文字列補間は 1 行でも複数行でも使うことができます。文字列に入れるそれぞれの値は、両かっこで囲んで、その前にバックスラッシュ(\\)をつけます。
+
+```swift
+let multiplier = 3
+let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
+// message は "3 times 2.5 is 7.5"
+```
+
+上記の例では、`multiplier`は`\(multiplier)`として文字列に挿入します。このプレースホルダは、実際に文字列を生成するタイミングで評価されて、`multiplier`の実際の値に置き換えられます。
+
+`multiplier`は文字列の後半の大きな式の中でも使われています。この式は、`Double(multiplier) * 2.5`を計算して、その結果の(`7.5`)を文字列に挿入します。この場合、`\(Double(multiplier) * 2.5)`と書いて文字列リテラル含まれます。
+
+文字列補間として通常扱われる文字を含んだ文字列を生成する場合、拡張区切り文字を使うことができます。例えば:
+
+```swift
+print(#"Write an interpolated string in Swift using \(multiplier)."#)
+// Prints "Write an interpolated string in Swift using \(multiplier)."
+```
+
+拡張区切り文字を使った文字列の中で文字列補間を使う場合、バックスラッシュの後の番号記号の数を文字列の開始と終了の番号記号の数に合わせます。例えば:
+
+```swift
+print(#"6 times 7 is \#(6 * 7)."#)
+// Prints "6 times 7 is 42."
+```
+
+> NOTE  
+> 補間された文字列内のかっこの中に書かれた式は、エスケープしていないバックスラッシュ(\\)、キャリッジリターン、改行を含めることはできません。しかし、他の文字列リテラルは含めることができます。
+
 ## Unicode
 
 ### Unicode Scalar Values
