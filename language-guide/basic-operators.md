@@ -437,7 +437,7 @@ if hasDoorKey || knowsOverridePassword {
 
 ### Combining Logical Operators
 
-より長く様々な条件が混在した式を作成するために、複数の論理演算子を組み合わせることができます。
+より長く様々な条件の複合式を作成するために、複数の論理演算子を組み合わせることができます。
 
 ```swift
 if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
@@ -448,7 +448,7 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 // Prints "Welcome!"
 ```
 
-この例では、複数の`&&`と`||`を使っています。`&&`と`||`は 2 つの値しか操作することができないため、実際には 3 つの小さい式を繋げています。この例は下記のように読み取れます:
+この例では、複数の`&&`と`||`を使って複合式を作っています。`&&`と`||`は 2 つの値しか操作することができないため、実際には 3 つの小さい式を繋げています。この例は下記のように読み取れます:
 
 「もし正しいドア番号に入って、網膜スキャンを通過し、正しいドアキーを持っているまたは緊急の上書きパスワードを知っている場合に、アクセスすることができます」
 
@@ -458,3 +458,16 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 > Swift の`&&`と`||`は左側結合(left-associative)です。つまり、複数の論理演算子を使った式の場合は、一番左の部分式から評価されます。
 
 ### Explicit Parentheses
+
+厳密には必要ありませんが、複雑な式の意図を分かりやすくするために、かっこ(`()`)を使うと有用な時があります。ドアへのアクセスの例では、意図を明確にするために、複合式の最初の部分にかっこを追加すると役に立ちます。
+
+```swift
+if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+// Prints "Welcome!"
+```
+
+このかっこは、最初の 2 つの値が、全体の論理の中で別の状態を持つ部分を明確にしています。複合式の出力結果は変わりませんが、全体の意図は読み手により明確になります。可読性は簡潔さよりも常に優先されます。意図を明確にすることができるならば、かっこを使いましょう。
