@@ -335,6 +335,42 @@ for i in 0..<count {
 
 ### One-Sided Ranges
 
+Closed 範囲演算子には、1 つの方向に、可能な限り続く範囲に対して違った形式があります。例えば、ある配列の index 2 から配列の最後までの要素を含んだ範囲などがこれに当たります。これらの場合では、範囲演算子の片方の値を省略できます。この種類の範囲は、片方しか値を持たないので、 片側範囲(*one-sided range*)と呼ばれています。例えば:
+
+```swift
+for name in names[2...] {
+    print(name)
+}
+// Brian
+// Jack
+
+for name in names[...2] {
+    print(name)
+}
+// Anna
+// Alex
+// Brian
+```
+
+Half-Open 範囲演算子は最後の値のみを書くことでも片側範囲の形式で書くことができます。両側の値を書いた時と同様に、記載した最後の値は範囲に含まれません。例えば:
+
+```swift
+for name in names[..<2] {
+    print(name)
+}
+// Anna
+// Alex
+```
+
+片側範囲は、subscripts 以外の他の文脈でも使うことができます。最初の値を省略した片側範囲を繰り返し処理に利用することはできません。どこから繰り返しを始めて良いかがわからないからです。一方で最後の値を省略した片側範囲を繰り返し処理に利用することはできます。しかし、範囲は無限に続くので、ループの中での終了条件を明示的に設定していることを確かめましょう。片側範囲にある値が含まれているかどうかのチェックもできます。下記に例を示します:
+
+```swift
+let range = ...5
+range.contains(7)   // false
+range.contains(4)   // true
+range.contains(-1)  // true
+```
+
 ## Logical Operators
 
 ### Logical NOT Operator
