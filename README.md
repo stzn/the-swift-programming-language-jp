@@ -36,18 +36,12 @@ npm install
 ### 翻訳のゆらぎ & トーン
 
 #### **文体**
-<!-- textlint-disable -->
 
 「だである」ではなく「ですます」調
 
-<!-- textlint-enable -->
 > Swift is a fantastic way to write software.
 
-<!-- textlint-disable -->
-
 ❌ Swift はソフトウェアを書くための素晴らしい手段である。
-
-<!-- textlint-enable -->
 
 ⭕️ Swift はソフトウェアを書くための素晴らしい手段です。
 
@@ -132,3 +126,4 @@ npm install
 ```text
 npm run lint
 ```
+
