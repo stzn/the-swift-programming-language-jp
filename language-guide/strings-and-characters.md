@@ -193,6 +193,63 @@ print(catString)
 
 ## Concatenating Strings and Characters
 
+`String`値同士は、加算演算子(`+`)使って連結して新しい`String`値を生成できます:
+
+```swift
+let string1 = "hello"
+let string2 = " there"
+var welcome = string1 + string2
+// welcome は "hello there" と等しい
+```
+
+加算代入演算子(`+=`)を使って既存の`String`変数に`String`値を追加することもできます:
+
+```swift
+var instruction = "look over"
+instruction += string2
+// instruction は "look over there" と等しい
+```
+
+`String`変数に`String`の`append()`メソッドと使って`Character`値を追加できます。
+
+```swift
+let exclamationMark: Character = "!"
+welcome.append(exclamationMark)
+// welcome は "hello there!" と等しい
+```
+
+> NOTE  
+> 既存の`Character`値に`String`や`Character`を追加することはできません。`Character`値は、 1 つの文字だけしか含められません。
+
+より長い文字列を構築するために複数行文字列リテラルを使っている場合、最後の行も含めた全ての行を改行で終えたいでしょう。例えば:
+
+```swift
+let badStart = """
+one
+two
+"""
+let end = """
+three
+"""
+print(badStart + end)
+// Prints two lines:
+// one
+// twothree
+
+let goodStart = """
+one
+two
+
+"""
+print(goodStart + end)
+// Prints three lines:
+// one
+// two
+// three
+```
+
+上記のコードは、`badStart`と`end`を連結すると、2 行の文字列を生成していますが、これは期待した結果ではあありません。`badStart`の最後の行に改行が入っていないため、`end`の最初の行と混ざってしまいます。一方で、`goodStart`の最初と最後の行は改行で終わっているので、`end`と連結した結果は 3 行になり、期待通りになりました。
+
 ## String Interpolation
 
 ## Unicode
