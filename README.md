@@ -15,7 +15,7 @@
 1. [GitHub Issues](https://github.com/stzn/the-swift-programming-language-jp/issues)からアサインされていない issues 一覧からやりたい issue を選択します
 2. 選択した issue で、「翻訳やります」的なコメントをお願いします
 3. このリポジトリをフォークします
-4. 変更をコミットします: コミットメッセージの先頭に翻訳したページのタイトルを[XXXX]のような形で入れてもらえると助かります
+4. 変更をコミットします: コミットメッセージの先頭に翻訳したページのタイトルを\[XXXX\]のような形で入れてもらえると助かります
 5. lint で引っかかる場合は再度修正を行いコミットします
 6. ページ冒頭の最終更新日を更新しているか確認をお願いします
 7. フォークした自分のリポジトリに Push します: `git push origin my-branch`
@@ -27,7 +27,7 @@
 
 まず始めに実行してください。
 
-```shell
+```text
 npm install
 ```
 
@@ -36,27 +36,20 @@ npm install
 ### 翻訳のゆらぎ & トーン
 
 #### **文体**
-<!-- textlint-disable -->
 
 「だである」ではなく「ですます」調
 
-<!-- textlint-enable -->
 > Swift is a fantastic way to write software.
-<!-- textlint-disable -->
 
 ❌ Swift はソフトウェアを書くための素晴らしい手段である。
 
-<!-- textlint-enable -->
 ⭕️ Swift はソフトウェアを書くための素晴らしい手段です。
 
 #### **半角スペースを半角文字の両端に入れて読みやすく**
 
 > Swift has struct and class.
-<!-- textlint-disable -->
 
 ❌ Swift5.5には、structとclassがあります。
-
-<!-- textlint-enable -->
 
 ⭕️ Swift5.5 には、struct と class があります。
 
@@ -91,7 +84,6 @@ npm install
   > もっと簡単な方法で文字列の中に値を含めることができます。値を括弧で囲み、括弧の前にバックスラッシュをつけます。
 
 #### **単語の統一 \(特に技術用語\)**
-<!-- textlint-disable -->
 
 * 技術用語は基本英語、ただ日本語で一般的に使われている場合は日本語 OK
   * 例: 英語の filter 、日本語のフィルタ
@@ -99,8 +91,6 @@ npm install
   * 例: expression -&gt; 式、表現
 * 和訳にして分かりづらい場合は、翻訳と英語\(どちらかに括弧付け\)でも OK
   * 例: Two way -&gt; Two way \(双方向\)
-
-<!-- textlint-enable -->
 
 #### **長音訳のついて**
 
@@ -133,6 +123,7 @@ npm install
 
 手動で lint を行う場合は下記を実行してください。
 
-```shell
+```text
 npm run lint
 ```
+
