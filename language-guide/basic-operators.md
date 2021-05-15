@@ -213,8 +213,47 @@ if name == "world" {
 > NOTE  
 > Swift の標準ライブラリは 7 つより少ない要素数のタプルの演算子を提供しています。 7 つ以上の要素数のタプルへの演算子は自身で実装しなければなりません。
 
-
 ## Ternary Conditional Operator
+
+三項条件演算子(*ternary conditional operator*)は、`question ? answer1 : answer2`という形式の、3 つの部分を持った特別な演算子です。これは、`question`が`true`か`false`かを基に 2 つの式のどちらかを評価する短縮的な書き方です。`question`が`true`ならば、`answer1`が評価され、`false`だと`answer2`が評価されます。
+
+三項条件演算子は下記のコードの短縮版です。
+
+```swift
+if question {
+    answer1
+} else {
+    answer2
+}
+```
+
+こちらの例は、table の行の高さを計算しています。ヘッダーがある場合の行の高さは内容の高さよりも 50 ポイント高く、ない場合は内容の高さよりも 20 ポイント高くします。
+
+```swift
+let contentHeight = 40
+let hasHeader = true
+let rowHeight = contentHeight + (hasHeader ? 50 : 20)
+// rowHeight は 90
+```
+
+上記のコードは下記の短縮版です。
+
+```swift
+let contentHeight = 40
+let hasHeader = true
+let rowHeight: Int
+if hasHeader {
+    rowHeight = contentHeight + 50
+} else {
+    rowHeight = contentHeight + 20
+}
+// rowHeight は 90
+```
+
+最初の例では三項条件演算子を使って 1 行で`rowHeight`を設定でき、
+2 つ目の例よりもより簡潔になっています。
+
+三項条件演算子は 2 つの式のどちらが使われるのかを決める効率的な短縮方法です。しかし、三項条件演算子にも注意が必要です。あまり使いすぎると可動性がを損なう場合もあります。複数の三項条件演算子を 1 つのステートメントに含めることは避けましょう。
 
 ## Nil-Coalescing Operator
 
