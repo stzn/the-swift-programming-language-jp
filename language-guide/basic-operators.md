@@ -418,6 +418,23 @@ if enteredDoorCode && passedRetinaScan {
 
 ### Logical OR Operator
 
+`a || b`のような論理和(*OR*)は、2 つの連続したバーティカルバー(`||`)を使った中置演算子です。片方の値が`true`の場合に、全体の式も`true`になる論理式を作ります。
+
+論理積(*AND*)と同様に、論理和(*OR*)は式を検討する時に短絡評価を使います。論理和の左側が`true`ならば、既に全体の式も`true`と分かっているので、右側は評価されません。
+
+下記の例では、最初の`Bool`値(`hasDoorKey`)は`false`ですが、2 番目の値(`knowsOverridePassword`)は`true`です。片方が`true`なので、全体の式も`true`になり、アクセスは許可されます:
+
+```swift
+let hasDoorKey = false
+let knowsOverridePassword = true
+if hasDoorKey || knowsOverridePassword {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+// Prints "Welcome!"
+```
+
 ### Combining Logical Operators
 
 ### Explicit Parentheses
