@@ -136,6 +136,21 @@ if emptyString.isEmpty {
 
 ## String Mutability
 
+`String`が変更可能かどうかは、変数(変更可能)か定数(変更不可能)のどちらに設定するかによって示すことができます。:
+
+```swift
+var variableString = "Horse"
+variableString += " and carriage"
+// variableString は "Horse and carriage"
+
+let constantString = "Highlander"
+constantString += " and another Highlander"
+// コンパイルエラー - 定数は変更できません
+```
+
+> NOTE  
+> これは Objective-C と Cocoa とは異なります。Objective-C と Cocoa では、変更の可不可を示すために 2 つの class (`NSString`と`NSMutableString`)から選択します。
+
 ## Strings Are Value Types
 
 ## Working with Characters
