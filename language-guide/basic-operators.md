@@ -117,7 +117,26 @@ Swift では、下記のように書きます。
 
 ### Unary Minus Operator
 
+数値の記号は、前置の`-`を使って切り替えることができます。これは単項マイナス演算子と呼ばれます。
+
+```swift
+let three = 3
+let minusThree = -three       // minusThree equals -3
+let plusThree = -minusThree   // plusThree equals 3, or "minus minus three"
+```
+
+単項マイナス演算子(`-`)は、操作する値の直前にスペースなしで付けます。
+
 ### Unary Plus Operator
+
+単項プラス演算子(`+`)は、何も変えず操作する値を返します。
+
+```swift
+let minusSix = -6
+let alsoMinusSix = +minusSix  // alsoMinusSix equals -6
+```
+
+単項プラス演算子は何もしませんが、負の値に単項マイナス演算子使っている場合、その対称として正の値に単項プラス演算子を使うこともできます。
 
 ## Compound Assignment Operators
 
