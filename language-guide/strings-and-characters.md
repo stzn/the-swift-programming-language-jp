@@ -15,6 +15,14 @@ Swift の`String`と`Character`型は、高速で、Unicode に準拠した方�
 
 ## String Literals
 
+事前に定義された`String`の値を文字列リテラル(*string literals*)として使うことができます。文字列リテラルはダブルクォテーション(`"`)で囲まれた一連の文字です。
+
+```swift
+let someString = "Some string literal value"
+```
+
+`someString`は文字列リテラルで初期化されているので、`String`型と推論されていることに注目してください
+
 ### Multiline String Literals
 
 ### Special Characters in String Literals
