@@ -373,7 +373,29 @@ range.contains(-1)  // true
 
 ## Logical Operators
 
+論理演算子(`Logical operators`)は、ブール論理値の`true`と`false`を変更したり、組み合わせます。Swift では、C ベースの言語にもある 3 つの標準の論理演算子をサポートしています。
+
+* 否定 NOT (`!a`)
+* 論理積 AND (`a && b`)
+* 論理和 OR (`a || b`)
+
 ### Logical NOT Operator
+
+`!a`のような否定(*NOT*)は`true`は`false`に、`false`は`true`にブール値を反転させます。
+
+否定論理演算子は、前置演算子は操作する値の直前にスペースなしで付けます。次の例では、「`a`ではない」と読み取れます。
+
+```swift
+let allowedEntry = false
+if !allowedEntry {
+    print("ACCESS DENIED")
+}
+// Prints "ACCESS DENIED"
+```
+
+`if !allowedEntry`は「もし許可されたエントリでなければ」と読み取れます。次の行では、「もし許可されたエントリでなければ」が`true`だった場合のみ実行されます。つまり、`if allowedEntry`は`false`です。
+
+この例では、Bool 型の定数と変数の名前を注意深く選択していることで、コードの可読性や簡潔さを保つことができます。(二重否定や紛らわしい論理文を避けるなど)
 
 ### Logical AND Operator
 
