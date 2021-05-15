@@ -399,6 +399,23 @@ if !allowedEntry {
 
 ### Logical AND Operator
 
+`a && b`のような論理積(*AND*)は、両方の値が`true`の場合に、全体の式も`true`になる論理式を作ります。
+
+もしどちらかが`false`ならば、全体の式は`false`になります。実際、最初の値が`false`ならば、既に全体の式が`false`だと分かっているため、次の値は評価されません。これは短絡評価(*short-circuit evaluation*)と呼ばれています。
+
+この例は、2 つのブール値を検討し、両方の値が`true`の場合のみ、アクセスを許可します。
+
+```swift
+let enteredDoorCode = true
+let passedRetinaScan = false
+if enteredDoorCode && passedRetinaScan {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+// Prints "ACCESS DENIED"
+```
+
 ### Logical OR Operator
 
 ### Combining Logical Operators
