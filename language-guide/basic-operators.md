@@ -148,7 +148,7 @@ a += 2
 // a は 3 と等しい
 ```
 
-`a += 2`は`a = a + 2`の短縮版です。効率的に、加算と代入が 1 つの操作に合成されて、同時に行われます。
+`a += 2`は`a = a + 2`のショートカットです。効率的に、加算と代入が 1 つの操作に合成されて、同時に行われます。
 
 > NOTE  
 > 複合代入演算子は値を返しません。例えば、`let b = a += 2`と書くことはできません。
@@ -215,9 +215,9 @@ if name == "world" {
 
 ## Ternary Conditional Operator
 
-三項条件演算子(*ternary conditional operator*)は、`question ? answer1 : answer2`という形式の、3 つの部分を持った特別な演算子です。これは、`question`が`true`か`false`かを基に 2 つの式のどちらかを評価する短縮的な書き方です。`question`が`true`ならば、`answer1`が評価され、`false`だと`answer2`が評価されます。
+三項条件演算子(*ternary conditional operator*)は、`question ? answer1 : answer2`という形式の、3 つの部分を持った特別な演算子です。これは、`question`が`true`か`false`かを基に 2 つの式のどちらかを評価するショートカットです。`question`が`true`ならば、`answer1`が評価され、`false`だと`answer2`が評価されます。
 
-三項条件演算子は下記のコードの短縮版です。
+三項条件演算子は下記のコードのショートカットです。
 
 ```swift
 if question {
@@ -236,7 +236,7 @@ let rowHeight = contentHeight + (hasHeader ? 50 : 20)
 // rowHeight は 90
 ```
 
-上記のコードは下記の短縮版です。
+上記のコードは下記のショートカットです。
 
 ```swift
 let contentHeight = 40
@@ -253,13 +253,13 @@ if hasHeader {
 最初の例では三項条件演算子を使って 1 行で`rowHeight`を設定でき、
 2 つ目の例よりもより簡潔になっています。
 
-三項条件演算子は 2 つの式のどちらが使われるのかを決める効率的な短縮方法です。しかし、三項条件演算子にも注意が必要です。あまり使いすぎると可動性がを損なう場合もあります。複数の三項条件演算子を 1 つのステートメントに含めることは避けましょう。
+三項条件演算子は 2 つの式のどちらが使われるのかを決める効率的なショートカットです。しかし、三項条件演算子にも注意が必要です。あまり使いすぎると可動性がを損なう場合もあります。複数の三項条件演算子を 1 つのステートメントに含めることは避けましょう。
 
 ## Nil-Coalescing Operator
 
 `(a ?? b)`の Nil 結合演算子(*nil-coalescing operator*)は、optional `a`にもし値が存在すれば`a`をアンラップし、`a`が`nil`の場合は`b`をデフォルトとして返します。式`a`は常に optional 型です。式`b`は`a`が内包する値の型と一致していなけばなりません。
 
-Nil 結合演算子は下記のコードの短縮版です。
+Nil 結合演算子は下記のコードのショートカットです。
 
 ```swift
 a != nil ? a! : b
@@ -292,7 +292,26 @@ colorNameToUse = userDefinedColorName ?? defaultColorName
 
 ## Range Operators
 
+Swift は、値の範囲を表現するためのショートカットとして複数の範囲演算子(`range operators`)を提供します。
+
 ### Closed Range Operator
+
+(`a...b`)のような Closed 範囲演算子(*closed range operator*)は、`a`から`b`まで連続した、`a`も`b`も含んだ範囲を定義します。`a`は`b`よりも大きい値にしてはいけません。
+
+Closed 範囲演算子は、必要な全ての値を範囲に含めて繰り返し処理を行う時に有用です。例えば`for-in`ループでは:
+
+```swift
+for index in 1...5 {
+    print("\(index) times 5 is \(index * 5)")
+}
+// 1 times 5 is 5
+// 2 times 5 is 10
+// 3 times 5 is 15
+// 4 times 5 is 20
+// 5 times 5 is 25
+```
+
+`for-in`ループについては、[Control FLow](./control-flow.md)を参照ください。
 
 ### Half-Open Range Operator
 
