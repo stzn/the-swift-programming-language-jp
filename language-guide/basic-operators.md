@@ -437,4 +437,24 @@ if hasDoorKey || knowsOverridePassword {
 
 ### Combining Logical Operators
 
+より長く様々な条件が混在した式を作成するために、複数の論理演算子を組み合わせることができます。
+
+```swift
+if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+// Prints "Welcome!"
+```
+
+この例では、複数の`&&`と`||`を使っています。`&&`と`||`は 2 つの値しか操作することができないため、実際には 3 つの小さい式を繋げています。この例は下記のように読み取れます:
+
+「もし正しいドア番号に入って、網膜スキャンを通過し、正しいドアキーを持っているまたは緊急の上書きパスワードを知っている場合に、アクセスすることができます」
+
+`enteredDoorCode`と`passedRetinaScan`と`hasDoorKey`の値を基に、最初の 2 つの部分式は`false`です。しかし、緊急の上書きパスワードを知っているため、全体の式としては`true`と評価されます。
+
+> NOTE  
+> Swift の`&&`と`||`は左側結合(left-associative)です。つまり、複数の論理演算子を使った式の場合は、一番左の部分式から評価されます。
+
 ### Explicit Parentheses
