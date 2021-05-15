@@ -117,6 +117,23 @@ Here are three more double quotes: """
 
 ## Initializing an Empty String
 
+長い文字列を構築する時に、初期値として空の文字列を作る時、文字列リテラルを変数に設定するか、`String`のイニシャライザを使って新しいインスタンスを初期化します。
+
+```swift
+var emptyString = ""               // 空の文字列
+var anotherEmptyString = String()  // イニシャライザ
+// 2つの変数はどちらも空の文字列で等しいです
+```
+
+`isEmpty`というブール値のプロパティをチェックすることで`String`値が空文字かどうかを判定できます。
+
+```swift
+if emptyString.isEmpty {
+    print("Nothing to see here")
+}
+// Prints "Nothing to see here"
+```
+
 ## String Mutability
 
 ## Strings Are Value Types
