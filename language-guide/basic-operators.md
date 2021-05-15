@@ -157,6 +157,63 @@ Swift の標準ライブラリで提供している演算子については、[O
 
 ## Comparison Operators
 
+Swift は、次の比較演算子をサポートしています。
+
+* 等価演算子(`a == b`)
+* 不等価演算子(`a != b`)
+* より大きい(`a > b`)
+* より小さい(`a < b`)
+* 等しいかそれ以上(`a >= b`)
+* 等しいかそれ以下(`a <= b`)
+
+> NOTE  
+> Swift では、2つの恒等作用素(`===`と`!==`)も提供しています。これは2つのオブジェクトが同じインスタンスを参照しているかどうかの確認ができます。より詳細は、[Identity Operators](./structures-and-classes.md#identity-operators.md)を参照ください。
+
+それぞれの比較演算子は、その宣言が`true`かどうかのブール値を返します。
+
+```swift
+1 == 1   // true because 1 is equal to 1
+2 != 1   // true because 2 isn't equal to 1
+2 > 1    // true because 2 is greater than 1
+1 < 2    // true because 1 is less than 2
+1 >= 1   // true because 1 is greater than or equal to 1
+2 <= 1   // false because 2 isn't less than or equal to 1
+```
+
+比較演算子は、`if`などの条件文でよく使われます。
+
+```swift
+let name = "world"
+if name == "world" {
+    print("hello, world")
+} else {
+    print("I'm sorry \(name), but I don't recognize you")
+}
+// Prints "hello, world", because name is indeed equal to "world".
+```
+
+`if`については、[Control FLow](./control-flow.md)を参照ください。
+同じ型、同じ数の値を持ったタプル(tuple)同士の比較もできます。タプルは左から右へと順番に値を比較します。それぞれの値の比較結果が全体の結果に反映されます。全て等しい場合、タプル同士は等しいと見なされます。例えば:
+
+```swift
+(1, "zebra") < (2, "apple")   // true because 1 is less than 2; "zebra" and "apple" aren't compared
+(3, "apple") < (3, "bird")    // true because 3 is equal to 3, and "apple" is less than "bird"
+(4, "dog") == (4, "dog")      // true because 4 is equal to 4, and "dog" is equal to "dog"
+```
+
+上記の例では、最初の行では左から右へと比較をしています。`1`は`2`より小さいので、`(1, "zebra")`はタプルは他の値がどんな値でも`(2, "apple")`よりも小さいと判定されます。既に最初の値同士でこのタプルの比較は完了しているので、`"zebra"`と`"apple"`の比較は関係ではありません。しかし、最初の値が同じ場合、2 番目の値同士で比較されます。上記の 2, 3 行目で見られます。
+
+タプルは、個々の要素の値がその演算子に適応できる場合に、比較をすることができます。例えば、下記のコードでは、2 つの`(String, Int)`のタプルを比較していますが、`String`も`Int`も`<`で比較できるので、タプル自身も比較ができます。反対に、`(String, Bool)`は、`Bool`が`<`に使えないため、タプルの比較ができません。
+
+```swift
+("blue", -1) < ("purple", 1)        // OK, evaluates to true
+("blue", false) < ("purple", true)  // Error because < can't compare Boolean values
+```
+
+> NOTE  
+> Swift の標準ライブラリは 7 つより少ない要素数のタプルの演算子を提供しています。 7 つ以上の要素数のタプルへの演算子は自身で実装しなければなりません。
+
+
 ## Ternary Conditional Operator
 
 ## Nil-Coalescing Operator
