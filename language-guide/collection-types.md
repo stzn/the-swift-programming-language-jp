@@ -234,6 +234,11 @@ for (index, value) in shoppingList.enumerated() {
 
 ## Sets
 
+セット(*set*)はコレクション内に同じ型の値を、決まった順序がない状態で、重複なく保持します。アイテムの順序が重要でない場合や、アイテムに重複がないことを確実にしたい場合に、配列(*array*)の変わりにセットを使うことができます。
+
+> `Set`はFoundationの`NSSet`とスムーズにやりとりできるようにしています。  
+> FoundationとCocoaを使った`Set`の使用方法に関しては、[Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530)を参照ください
+
 ### Hash Values for Set Types
 
 ### Set Type Syntax
