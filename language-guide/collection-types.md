@@ -254,6 +254,26 @@ Swift の基本的な型(`String`、`Int`、`Double`、`Bool`など)は、デフ
 
 ### Creating and Initializing an Empty Set
 
+イニシャライザのシンタックスを使って、ある型の空のセットを生成できます。
+
+```swift
+var letters = Set<Character>()
+print("letters is of type Set<Character> with \(letters.count) items.")
+// Prints "letters is of type Set<Character> with 0 items."
+```
+
+> NOTE  
+> `letters`変数の型はイニシャライザの型から`Set<Character>`と推論されます。
+
+他の方法として、関数の引数や型が明示されている変数や定数など型情報が既にわかっている場合は、空の配列リテラルを使って空のセットを作成することができます。
+
+```swift
+letters.insert("a")
+// letters は Character 型の値を 1 つ含んでいます
+letters = []
+// letters 空のセットですが、 型は Set<Character> のままです
+```
+
 ### Creating a Set with an Array Literal
 
 ### Accessing and Modifying a Set
