@@ -592,7 +592,7 @@ print("")
 ```
 
 上記の例では、最初の 3 つの 10 進数の`codeUnit`(`68`、`111`、`103`)は、ASCII 形式の`D`、`o`、`g`を UTF-8 形式で表しています。  
-次の 3 つの 10 進数の`codeUnit`(`226`、`128`、`188`)は、`DOUBLE EXCLAMATION MARK`を 3 byte の UTF-8 で表しています。最後の 4 つ`codeUnit`(`240`、`159`、`144`、`182`)は、`DOG FACE`文字を UTF-8 で表しています。
+次の 3 つの 10 進数の`codeUnit`(`226`、`128`、`188`)は、`DOUBLE EXCLAMATION MARK`を 3 byte の UTF-8 で表しています。最後の 4 つの`codeUnit`(`240`、`159`、`144`、`182`)は、`DOG FACE`文字を UTF-8 で表しています。
 
 ### UTF-16 Representation
 
@@ -614,3 +614,36 @@ print("")
 5,6 番目の`codeUnit`(`55357`, `56374`)は UTF-16 のサロゲートペアで、`DOG FACE`文字を表しています。これは高位サローゲートの`U+D83D`(10 進数だと`55357`)と低位サローゲートの`U+DC36`(10 進数だと`56374`)です。
 
 ### Unicode Scalar Representation
+
+`String`の Unicode スカラ形式には`unicodeScalars`プロパティを使います。このプロパティの型は、`UnicodeScalarView`で、`UnicodeScalar`値のコレクションです。
+
+それぞれの`UnicodeScalar`には`UInt32`で表される 21 ビットのスカラ値を返す`value`プロパティを持っています。
+
+![Unicode Scalar](./../.gitbook/assets/unicodescalar_2x.png)
+
+```swift
+for scalar in dogString.unicodeScalars {
+    print("\(scalar.value) ", terminator: "")
+}
+print("")
+// Prints "68 111 103 8252 128054 "
+```
+
+最初の 3 つの`UnicodeScalar`(`68`、`111`、`103`)の`value`プロパティは、ASCII 形式の`D`、`o`、`g`を表しています。
+
+4 番目の`codeUnit`(`8252`)は、16 進数の`203C`と等しく、`DOUBLE EXCLAMATION MARK(U+203C)`を表しています。
+
+5 番目の`UnicodeScalar`(`128054`)は、16 進数の`1F436`と等しく、`DOG FACE`文字を表す Unicode スカラ`U+1F436`と等しいです。
+
+`value`プロパティを探索する代わりに、それぞれの`UnicodeScalar`値から新しい`String`を構築することもできます。例えば文字列補間で使えます:
+
+```swift
+for scalar in dogString.unicodeScalars {
+    print("\(scalar) ")
+}
+// D
+// o
+// g
+// ‼
+// 🐶
+```
