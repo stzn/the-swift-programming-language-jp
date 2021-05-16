@@ -250,6 +250,8 @@ Swift の基本的な型(`String`、`Int`、`Double`、`Bool`など)は、デフ
 
 ### Set Type Syntax
 
+セット(*Set*)型は`Set<Element>`と書きます。`Element`はセットが保持できる型です。配列と異なり、セットは同等のショートハンドはありません。
+
 ### Creating and Initializing an Empty Set
 
 ### Creating a Set with an Array Literal
