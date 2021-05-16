@@ -1,6 +1,6 @@
 # Strings and Characters
 
-最終更新日:
+最終更新日: 2021/5/16
 
 文字列\(_string_\)は`"hello, world"`や`"albatross"`のような一連の文字です。Swift の文字列は`String`型で表されます。`String`の内容には、様々な方法でアクセスすることができます\(`Character`型の値のコレクションとしてなど\)。
 
