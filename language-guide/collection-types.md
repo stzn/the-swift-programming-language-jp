@@ -20,6 +20,12 @@ Swift の配列、セット、辞書は常に保持できるキーや値の型�
 
 ## Arrays
 
+配列は同じ型の値を順序立ったリストの中に保持します。配列の中で同じ値を複数回入れることができます。
+
+> NOTE  
+> `Array`はFoundationの`NSArray`とスムーズにやりとりできるようにしています。  
+> FoundationとCocoaを使った`Array`の使用方法に関しては、[Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730)を参照ください
+
 ### Array Type Shorthand Syntax
 
 ### Creating an Empty Array
