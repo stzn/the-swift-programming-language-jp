@@ -329,6 +329,34 @@ let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
 
 ## Counting Characters
 
+文字列の中の`Character`の数を得るためには、文字列の`count`プロパティを使いましょう。
+
+```swift
+let unusualMenagerie = "Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"
+print("unusualMenagerie has \(unusualMenagerie.count) characters")
+// Prints "unusualMenagerie has 40 characters"
+```
+
+`Character`値に拡張書記素クラスタを使っているということは、文字列の連結や変更が必ずしも文字列内の文字のカウントに影響を与えるわけではない、ということに注意してください。
+
+例えば、`cafe`という単語は 4 つの文字から新しい文字列を初期化した場合、`COMBINING ACUTE ACCENT (U+0301)`を最後に追加すると、最後の文字は`e`から`é`に変わりますが、文字のカウントは`4`のままです。
+
+```swift
+var word = "cafe"
+print("the number of characters in \(word) is \(word.count)")
+// Prints "the number of characters in cafe is 4"
+
+word += "\u{301}"    // COMBINING ACUTE ACCENT, U+0301
+
+print("the number of characters in \(word) is \(word.count)")
+// Prints "the number of characters in café is 4"
+```
+
+> NOTE  
+> 拡張書記素クラスタは複数のUnicodeスカラを組み合わせることができます。つまり、異なった文字や、同じ文字でも異なったスカラで表された文字は、メモリ上に保持する際に、異なったメモリサイズが必要になる場合があります。これは、Swift の文字が、それぞれの文字に同じメモリ量を使ってはいない、ということです。結果として、文字列内の文字カウントは拡張書記素クラスタの境界を判断しなければならないため、文字列全体を反復しないと計算することができません。特に長い文字列を扱っている場合は、`count`プロパティを使うと、文字数をカウントするために文字列全体に反復処理を行なっていることに気をつけてください。  
+>  
+> `count`プロパティから返ってくる文字数は、同じ文字列であっても`NSString`の`length`と異なる場合があります。`NSString`の`length`は*UTF-16*での文字数カウントで、Unicode 拡張書記素クラスタの数ではありません。
+
 ## Accessing and Modifying a String
 
 ### String Indices
