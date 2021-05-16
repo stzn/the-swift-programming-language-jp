@@ -457,7 +457,53 @@ let newString = String(beginning)
 
 ## Comparing Strings
 
+Swift では、3 つの方法で文字列同士を比較する方法を提供しています: 文字列と文字の完全一致、前方一致、後方一致です。
+
 ### String and Character Equality
+
+文字列と文字の完全一致は、は等価演算子(`==`)と不等演算子(`!=`)を使ってチェックします。[Comparison Operators](./basic-operators.md#comparison-operators)
+
+```swift
+let quotation = "We're a lot alike, you and I."
+let sameQuotation = "We're a lot alike, you and I."
+if quotation == sameQuotation {
+    print("These two strings are considered equal")
+}
+// Prints "These two strings are considered equal"
+```
+
+2 つの文字列(または文字)は、拡張書記素クラスタが「規範的に」等しければ、等しいと見なされます。つまり、舞台裏では異なる Unicode スカラで構成されていたとしても、同じ言語的な意味と見た目が同じならば等しくなります。
+
+例えば、`LATIN SMALL LETTER E WITH ACUTE`(`U+00E9`)は、`LATIN SMALL LETTER E`(`U+0065`)の最後に`COMBINING ACUTE ACCENT`(`U+0301`)を付け加えた文字列と「規範的に」等しくなります。どちらの拡張書記素クラスタも`é`という文字を表す妥当な方法なので、これらは「規範的に」等しいと見なされます。
+
+```swift
+// "Voulez-vous un café?"は LATIN SMALL LETTER E WITH ACUTE を使っている
+let eAcuteQuestion = "Voulez-vous un caf\u{E9}?"
+
+// "Voulez-vous un café?"は LATIN SMALL LETTER E and COMBINING ACUTE ACCENT を使っている
+let combinedEAcuteQuestion = "Voulez-vous un caf\u{65}\u{301}?"
+
+if eAcuteQuestion == combinedEAcuteQuestion {
+    print("These two strings are considered equal")
+}
+// Prints "These two strings are considered equal"
+```
+
+反対に、英語で使われている`LATIN CAPITAL LETTER A`(`U+0041`または`"A"`)はロシア語で使われている`CYRILLIC CAPITAL LETTER A`(`U+0410`または`"А"`)と等しくありません。一見似ていますが、同じ言語的な意味を持っていません。
+
+```swift
+let latinCapitalLetterA: Character = "\u{41}"
+
+let cyrillicCapitalLetterA: Character = "\u{0410}"
+
+if latinCapitalLetterA != cyrillicCapitalLetterA {
+    print("These two characters aren't equivalent.")
+}
+// Prints "These two characters aren't equivalent."
+```
+
+> NOTE  
+> Swift の文字列と文字の比較は、ロケール依存です。
 
 ### Prefix and Suffix Equality
 
