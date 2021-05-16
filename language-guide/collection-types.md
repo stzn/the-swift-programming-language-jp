@@ -32,7 +32,24 @@ Swift の配列の型は全体で`Array<Element>`と書きます。`Element`は�
 
 ### Creating an Empty Array
 
+イニシャライザのシンタックスを使って、ある型の空の配列を生成できます。
 
+```swift
+var someInts = [Int]()
+print("someInts is of type [Int] with \(someInts.count) items.")
+// Prints "someInts is of type [Int] with 0 items."
+```
+
+`someInts`変数の型は、イニシャライザから`[Int]`と推論されます。
+
+他にも、文脈的に型情報がわかっている場合(関数の引数や既に型が決まっている変数や定数など)、`[]`(空の角括弧ペア)と書く空配列リテラルを使って、空の配列を作成することができます。
+
+```swift
+someInts.append(3)
+// someInts Int型の3を含んでいる
+someInts = []
+// someInts は空の配列だけど[Int]型
+```
 
 ### Creating an Array with a Default Value
 
