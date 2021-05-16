@@ -359,7 +359,51 @@ print("the number of characters in \(word) is \(word.count)")
 
 ## Accessing and Modifying a String
 
+メソッドやプロパティを使ったり、script シンタックスを使って、文字列へのアクセスや変更をすることができます。
+
 ### String Indices
+
+`String`値は｀String.Index｀という紐づいた index 型を持っており、それぞれは文字列の`Character`の位置に対応関係があります。
+
+上記で述べたように、異なる文字へは、保持する際に異なるメモリ量が必要になります。つまり、`Character`の位置を特定するには、Unicode スカラを文字列の最初または最後から反復して探さなければなりません。こういった理由から Swift の`String`の index は数値にすることはできません。
+
+`String`の最初の`Character`の位置を知るためには、`startIndex`プロパティを使いましょう。`endIndex`プロパティは`String`の最後の`Character`の位置の次の位置です。つまり、`endIndex`プロパティは文字列の subscript に使ってはいけません。`String`が空ならば、`startIndex`と`endIndex`は等しくなります。
+
+`index(before:)`と`index(after:)`を使ってある index の前後の index にアクセスできます。ある index から離れた位置の index にアクセスするためには、上記 2 つのメソッドを繰り返し呼ぶのではなく、`index(_:offsetBy:)`を使います。
+
+`String`のある特定の位置の`Character`へアクセスするには、subscript シンタックスを使います。
+
+```swift
+let greeting = "Guten Tag!"
+greeting[greeting.startIndex]
+// G
+greeting[greeting.index(before: greeting.endIndex)]
+// !
+greeting[greeting.index(after: greeting.startIndex)]
+// u
+let index = greeting.index(greeting.startIndex, offsetBy: 7)
+greeting[index]
+// a
+```
+
+文字列の範囲を超えた index や`Character`にアクセスしたり、実行時エラーが起きます。
+
+```swift
+greeting[greeting.endIndex] // Error
+greeting.index(after: greeting.endIndex) // Error
+```
+
+文字列内の個々の文字の全ての index にアクセスするためには`indices`プロパティを使いましょう。
+
+```swift
+for index in greeting.indices {
+    print("\(greeting[index]) ", terminator: "")
+}
+// Prints "G u t e n   T a g ! "
+```
+
+> NOTE  
+> `Collection`プロトコルに適合したどんな型にも、`startIndex`、`endIndex`プロパティ、index(before:)、index(after:)、index(_:offsetBy:)メソッドを使うことができます。これは、`Array`、 `Dictionary`、`Set`といったコレクションの型と同様に、今紹介している`String`も含んでいます。
 
 ### Inserting and Removing
 
