@@ -53,9 +53,28 @@ someInts = []
 
 ### Creating an Array with a Default Value
 
+`Array`は同じデフォルト値を設定した特定にサイズの配列を作成するイニシャライザも提供しています。このイニシャライザに適切な型のデフォルト値(`repeating`)と、その値の繰り返し回数(`count`)を渡します。
+
+```swift
+var threeDoubles = Array(repeating: 0.0, count: 3)
+// threeDoubles は [Double]型で、 [0.0, 0.0, 0.0] と等しい
+```
+
 ### Creating an Array by Adding Two Arrays Together
 
+加算演算子(`+`)を使って、既存の型互換のある 2 つの配列を合わせて新しい配列を作成することもできます。この新しい配列の型は連結させた配列の型から推論されます:
+
+```swift
+var anotherThreeDoubles = Array(repeating: 2.5, count: 3)
+// anotherThreeDoubles は [Double]型で [2.5, 2.5, 2.5] と等しい
+
+var sixDoubles = threeDoubles + anotherThreeDoubles
+// sixDoubles は [Double] と推論され、 [0.0, 0.0, 0.0, 2.5, 2.5, 2.5] と等しい
+```
+
 ### Creating an Array with an Array Literal
+
+
 
 ### Accessing and Modifying an Array
 
