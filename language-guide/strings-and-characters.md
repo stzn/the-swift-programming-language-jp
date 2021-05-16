@@ -434,6 +434,27 @@ welcome.removeSubrange(range)
 
 ## Substrings
 
+文字列から部分文字列を取得したい場合(例えば subscript や`prefix(_:)`などのメソッドを使うなど)、[Substring](https://developer.apple.com/documentation/swift/substring)インスタンスが結果として取得できます。は、部分文字列は文字列とほぼ同じメソッドを使うことができます。つまり、部分文字列を文字列と同じような方法で扱うことができます。しかし、文字列とは異なり、文字列に対して何かアクションを起こしている時に、ほんの短い間だけ、部分文字列を使います。処理の結果をより長い期間保持する時は、部分文字列を`String`のインスタンスに変換します。例えば:
+
+```swift
+let greeting = "Hello, world!"
+let index = greeting.firstIndex(of: ",") ?? greeting.endIndex
+let beginning = greeting[..<index]
+// beginning は "Hello"
+
+// より長期で使用するためにStringへ変換
+let newString = String(beginning)
+```
+
+文字列のように、部分文字列もそれを構成する文字配列をメモリ領域に持っています。文字列と部分文字列の違いはパフォーマンス最適化として、部分文字列は元の文字列や他の部分文字列を保持するのに使用しているメモリの一部を再利用します。(文字列にも似たような最適化がありますが、2 つの文字列のメモリが共有されている場合、等しいと見なされます)この最適化は、文字列や部分文字列が変更されるまでメモリのコピーが発生するコストに注意を払わなくて済みます。上記で述べたように、部分文字列は、長期保持するには向いていません。部分文字列が元の文字列とメモリを共有しているため、元の文字列は部分文字列が使われている間はメモリ上に保持していなければなりません。
+
+上記の例では、`greeting`は文字列です。つまり、文字列を構築する文字を保持したメモリ領域を持っています。`beginning`は`greeting`の部分文字列です。`greeting`が使っているメモリを再利用しています。反対に、`newString`は文字列で、部分文字列から生成された時に独自のメモリ領域を持ちます。下記の図はこの関係を示しています。
+
+![文字列部分文字列の関係](./../.gitbook/assets/stringsubstring_2x.png)
+
+> NOTE  
+> 文字列と部分文字列は、[StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol)に適合しています。つまり、文字列操作を行う関数は、*StringProtocol*の値を受け取るとしばしば便利なことがあります。文字列、部分文字列のどちらを使っても、その関数を使うことができます。
+
 ## Comparing Strings
 
 ### String and Character Equality
