@@ -28,7 +28,11 @@ Swift の配列、セット、辞書は常に保持できるキーや値の型�
 
 ### Array Type Shorthand Syntax
 
+Swift の配列の型は全体で`Array<Element>`と書きます。`Element`はその配列が保持できる値の型です。ショートハンドとして`[Element]`とも書けます。この 2 つの形式は機能的に同じですが、ショートハンド版の方が好まれ、このガイド内でも配列の型を参照する際はこちらの形式を使います。
+
 ### Creating an Empty Array
+
+
 
 ### Creating an Array with a Default Value
 
