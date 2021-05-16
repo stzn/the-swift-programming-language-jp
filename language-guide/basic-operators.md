@@ -280,7 +280,7 @@ var colorNameToUse = userDefinedColorName ?? defaultColorName
 
 `userDefinedColorName`は、optional の`String`として定義され、デフォルトは`nil`です。`userDefinedColorName`は optional 型なので、その値を検討するために、Nil 結合演算子を使うことができます。上記の例では、`colorNameToUse`という`String`型の変数の初期値を決めるために Nil 結合演算子を使っています。`userDefinedColorName`は`nil`なので、式`userDefinedColorName ?? defaultColorName`は、`defaultColorName`、つまり`"red"`を返します。
 
-もし`userDefinedColorName`に`nil`以外が設定されていて Nil 結合演算子でチェックを行った場合、`userDefinedColorName`が内包する値がデフォルトの代わりに使われます:
+もし`userDefinedColorName`に`nil`以外が代入されていて Nil 結合演算子でチェックを行った場合、`userDefinedColorName`が内包する値がデフォルトの代わりに使われます:
 
 ```swift
 userDefinedColorName = "green"
@@ -469,4 +469,3 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 ```
 
 このかっこは、最初の 2 つの値が、全体の論理の中で別の状態を持つ部分を明確にしています。複合式の出力結果は変わりませんが、全体の意図は読み手により明確になります。可読性は簡潔さよりも常に優先されます。意図を明確にすることができるならば、かっこを使いましょう。
-
