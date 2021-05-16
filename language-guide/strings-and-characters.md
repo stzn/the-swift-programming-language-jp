@@ -287,7 +287,13 @@ print(#"6 times 7 is \#(6 * 7)."#)
 
 ### Unicode Scalar Values
 
+舞台裏では、Swift 固有の`String`型は *Unicode* スカラ値(*Unicode Scalar Values*)から構築されています。*Unicode* スカラ値は 21 ビットの文字と修飾子で構成されています。例えば、`U+0061`は`LATIN SMALL LETTER A ("a")`、`U+1F425`は`FRONT-FACING BABY CHICK ("🐥")`です。
+
+全ての 21 ビットのスカラ値が 1 つの文字に当てはまるわけではありません。いくつかは、将来的に必要になるために確保されていたり、UTF-16 で使われています。文字に割り当てられているスカラ値には、上記の`LATIN SMALL LETTER A`や`FRONT-FACING BABY CHICK`のように一般的に名前が付いています。
+
 ### Extended Grapheme Clusters
+
+
 
 ## Counting Characters
 
