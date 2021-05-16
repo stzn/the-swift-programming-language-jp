@@ -74,7 +74,31 @@ var sixDoubles = threeDoubles + anotherThreeDoubles
 
 ### Creating an Array with an Array Literal
 
+配列リテラルからも配列を初期化できます。これは、1 つ以上の要素を持った配列コレクションを書くショートハンドです。配列リテラルはカンマ区切りの、角括弧([])で囲んだ値のリストです:
 
+![Array Literal](./../.gitbook/assets/arrayliteral_2x.png)
+
+下記の例は、`String`を保持する`shoppingList`という配列を作成しています。
+
+```swift
+var shoppingList: [String] = ["Eggs", "Milk"]
+// shoppingList は 2つの 初期値で初期化されている
+```
+
+`shoppingList`変数は、`[String]`と書くことで「文字列を保持する配列」として宣言されています。この配列は値の型が`String`で特定されているので、`String`のみを保持することができます。ここで、`shoppingList`配列は、配列リテラルの中で`"Eggs"`と`"Milk"`の 2 つの値で初期化しています。
+
+> NOTE  
+> 後の例でさらにアイテムを追加するので、`shoppingList`配列は`let`で宣言された定数ではなく、`var`で変数で宣言されてます。
+
+この例では、配列リテラルには 2 つの`String`を含んでいます。これは`shoppingList`変数の宣言時の型(`String`しか含めない)に合致しているので、`shoppingList`に配列リテラルを代入して 2 つに初期値で初期化することができます。
+
+Swift の型推論のおかげで、同じ型の値を含んだ配列リテラルで初期化する時に、配列の型を書く必要ありません。`shoppingList`の初期化で代わりにより短い方法で書くことができました:
+
+```swift
+var shoppingList = ["Eggs", "Milk"]
+```
+
+配列リテラルの全ての値は同じ型なので、Swift は`shoppingList`変数で使われている型は`[String]`が適切だと推論できます。
 
 ### Accessing and Modifying an Array
 
