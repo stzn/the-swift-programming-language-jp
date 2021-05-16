@@ -283,6 +283,8 @@ print(#"6 times 7 is \#(6 * 7)."#)
 
 ## Unicode
 
+*Unicode*は、さまざまな書記体系でテキストをエンコード、表現、および処理するための国際標準です。標準化された形式で、どんな言語のほとんど全ての文字を表現することができ、Web ページやテキストファイルなどの外部リソースへ読み書きできます。Swift の`String`や`Character`は、このセクションでも記載していますが、完全に Unicode に準拠しています。
+
 ### Unicode Scalar Values
 
 ### Extended Grapheme Clusters
