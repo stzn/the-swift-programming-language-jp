@@ -204,6 +204,34 @@ let apples = shoppingList.removeLast()
 
 ### Iterating Over an Array
 
+`for-in`ループを使って配列の値全部に繰り返し処理をすることができます。
+
+```swift
+for item in shoppingList {
+    print(item)
+}
+// Six eggs
+// Milk
+// Flour
+// Baking Powder
+// Bananas
+```
+
+各アイテムの index が必要な場合は、`enumerated()`を代わりに使いましょう。`enumerated()`は数値の index とアイテムを組み合わせたタプルを返します。数値の開始は`0`で`1`ずつ増加していきます。つまり全体を繰り返し処理すると、数値はアイテムの index と一致します。繰り返し処理の中で、index とアイテムのタプルを一時的な定数や変数に展開することができます。
+
+```swift
+for (index, value) in shoppingList.enumerated() {
+    print("Item \(index + 1): \(value)")
+}
+// Item 1: Six eggs
+// Item 2: Milk
+// Item 3: Flour
+// Item 4: Baking Powder
+// Item 5: Bananas
+```
+
+`for-in`ループについては、[For-In Loops](./control-flow.md#for-in-loops)をご参照ください。
+
 ## Sets
 
 ### Hash Values for Set Types
