@@ -293,7 +293,39 @@ print(#"6 times 7 is \#(6 * 7)."#)
 
 ### Extended Grapheme Clusters
 
+Swift の`Character`の全てのインスタンスは 1 つの拡張書記素クラスタ(*Extended Grapheme Clusters*)を表しています。拡張書記素クラスタは、人間が読み取れる 1 つの文字を生成するための 1 つ以上の Unicode スカラの配列です(1 つ以上 Unicode スカラが必要な場合は組み合わされます)。
 
+下記に例を示します。文字`é`は、1 つの`é`(`LATIN SMALL LETTER E WITH ACUTE`または`U+00E9`)を表しすことができます。一方で、同じ文字をスカラのペアで表すこともできます。`e`(`LATIN SMALL LETTER E`または`U+0065`)の後ろに`COMBINING ACUTE ACCENT`スカラ(`U+0301`)を付けます。`COMBINING ACUTE ACCENT`スカラはその前のスカラに視覚的に適用されて、Unicode を理解できるシステムがテキストをレンダリングする際に、`e`を`é`に変換します。
+
+どちらの場合も、`é`は拡張書記素クラスタの 1 つの Swift の``Character`型の値として表されます。最初のケースでは、1 つのスカラを含んでいるクラスタで、2 番目のケースは、2 つのスカラのクラスタとなります。
+
+```swift
+let eAcute: Character = "\u{E9}"                         // é
+let combinedEAcute: Character = "\u{65}\u{301}"          // e の後ろに  ́
+// eAcute は é, combinedEAcute は é
+```
+
+拡張書記素クラスタは、多くの複雑な文字スクリプトを 1 つの`Character`値として表す柔軟な方法です。例えば、韓国語のアルファベットのハングル文字は、合成または分解されたスカラの配列で表すことができます。これらのどちらも、 Swift では 1 つの`Character`値と見なされます。
+
+```swift
+let precomposed: Character = "\u{D55C}"                  // 한
+let decomposed: Character = "\u{1112}\u{1161}\u{11AB}"   // ᄒ, ᅡ, ᆫ
+// precomposed は 한, decomposed も 한
+```
+
+拡張書記素クラスタは、囲み記号(`COMBINING ENCLOSING CIRCLE`または`U+20DD`)のスカラを 1 つの`Character`値の一部として他の*Unicode* スカラを囲むことができます。
+
+```swift
+let enclosedEAcute: Character = "\u{E9}\u{20DD}"
+// enclosedEAcute is é⃝
+```
+
+地域を示す*Unicode* スカラは、1 つの`Character`値を作成するために、ペアを組み合わせることができます。例えば、`REGIONAL INDICATOR SYMBOL LETTER U`(`U+1F1FA`)と`REGIONAL INDICATOR SYMBOL LETTER S`(`U+1F1F8`):
+
+```swift
+let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
+// regionalIndicatorForUS は 🇺🇸
+```
 
 ## Counting Characters
 
