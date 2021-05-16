@@ -579,7 +579,7 @@ let dogString = "Dog‼🐶"
 
 ### UTF-8 Representation
 
-`String`の UTF-8 形式には`utf8`プロパティを使います。このプロパティの型は、`String.UTF8View`で、符号なし 8 ビット(UInt8)値のコレクションで、文字列の UTF-8 形式のそれぞれの byte を表しています:
+`String`の UTF-8 形式には`utf8`プロパティを使います。このプロパティの型は、`String.UTF8View`で、符号なし 8 ビット(`UInt8`)値のコレクションで、文字列の UTF-8 形式のそれぞれの byte を表しています:
 
 ![UTF-8](./../.gitbook/assets/utf8_2x.png)
 
@@ -591,9 +591,26 @@ print("")
 // Prints "68 111 103 226 128 188 240 159 144 182 "
 ```
 
-上記の例では、最初の 3 つの 10 進数の`codeUnit`(`68`、`111`、`103`)は、ASCII 形式の`D`、`o`、`g`と同じです。  
+上記の例では、最初の 3 つの 10 進数の`codeUnit`(`68`、`111`、`103`)は、ASCII 形式の`D`、`o`、`g`を UTF-8 形式で表しています。  
 次の 3 つの 10 進数の`codeUnit`(`226`、`128`、`188`)は、`DOUBLE EXCLAMATION MARK`を 3 byte の UTF-8 で表しています。最後の 4 つ`codeUnit`(`240`、`159`、`144`、`182`)は、`DOG FACE`文字を UTF-8 で表しています。
 
 ### UTF-16 Representation
+
+`String`の UTF-16 形式には`utf16`プロパティを使います。このプロパティの型は、`String.UTF16View`で、符号なし 16 ビット(`UInt16`)値のコレクションで、文字列の UTF-16 形式のそれぞれの byte を表しています:
+
+![UTF-16](./../.gitbook/assets/utf16_2x.png)
+
+```swift
+for codeUnit in dogString.utf16 {
+    print("\(codeUnit) ", terminator: "")
+}
+print("")
+// Prints "68 111 103 8252 55357 56374 "
+```
+
+上記の例では、最初の 3 つの 10 進数の`codeUnit`(`68`、`111`、`103`)は、ASCII 形式の`D`、`o`、`g`を UTF-16 形式で表しています。これは UTF-8 と同じです。(Unicode スカラは ASCII 文字を表しているため等しくなります)  
+4 番目の`codeUnit`(`8252`)は、16 進数の`203C`と等しく、`DOUBLE EXCLAMATION MARK(U+203C)`を表しています。この文字は UTF-16 だと 1 つのコードユニットで表すことができます。
+
+5,6 番目の`codeUnit`(`55357`, `56374`)は UTF-16 のサロゲートペアで、`DOG FACE`文字を表しています。これは高位サローゲートの`U+D83D`(10 進数だと`55357`)と低位サローゲートの`U+DC36`(10 進数だと`56374`)です。
 
 ### Unicode Scalar Representation
