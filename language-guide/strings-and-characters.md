@@ -561,6 +561,22 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 
 ## Unicode Representations of Strings
 
+Unicode 文字列は、テキストファイルや他のストレージに書かれる時、文字列の Unicode スカラは、様々ある Unicode のエンコード形式の 1 つに符号化(エンコード)されます。それぞれの形式は、文字列を*コードユニット(code unit)*と呼ばれる小さな塊にエンコードします。これらには、UTF-8(8 ビットのコードユニットで文字列を符号化)、UTF-16(16 ビットのコードユニットで文字列を符号化)、UTF-32(32 ビットのコードユニットで文字列を符号化)があります。
+
+Swift では、複数の Unicode 形式で文字列にアクセスできます。`for-in`ステートメントで文字列を反復処理する場合、Unicode 拡張書記素クラスタとして個々の`Character`にアクセスします。このプロセスは[Working with Characters](#working-with-characters)で記載しています。
+
+他にも 3 つの Unicode 準拠形式で`String`値にアクセスできます:
+
+* UTF-8 のコードユニットのコレクション(`utf8`プロパティを使ってアクセス)
+* UTF-16 のコードユニットのコレクション(`utf16`プロパティを使ってアクセス)
+* 21 ビット Unicode スカラ値のコレクション、UTF-32 に等しい (`unicodeScalars`プロパティを使ってアクセス)
+
+下記の例は、次の文字列を異なる形式で表示しています。`D`、 `o`、 `g`、 `‼` (`DOUBLE EXCLAMATION MARK`または Unicode スカラ`U+203C`)と 🐶 文字 (`DOG FACE`, or Unicode スカラ`U+1F436`):
+
+```swift
+let dogString = "Dog‼🐶"
+```
+
 ### UTF-8 Representation
 
 ### UTF-16 Representation
