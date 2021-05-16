@@ -241,6 +241,13 @@ for (index, value) in shoppingList.enumerated() {
 
 ### Hash Values for Set Types
 
+セットに保存する型はハッシュ化が可能でなければなりません。つまり、型はそのハッシュ値を計算する方法をセットに伝えなければなりません。ハッシュ値は、等しく比較するすべてのオブジェクトで`Int`型で、`a == b`の場合、`a`のハッシュ値は`b`のハッシュ値と等しくなります。
+
+Swift の基本的な型(`String`、`Int`、`Double`、`Bool`など)は、デフォルトでハッシュ化が可能で、セットや辞書のキーに使うことができます。associated value を持たない列挙型の case ([Enumerations](./enumerations.md))もデフォルトでハッシュ化が可能です。
+
+> NOTE  
+> Swift標準ライブラリの`Hashable`プロトコルに適合することで、独自で作成した型をセットや辞書のキーに使用できます。`hash(into:)`メソッドの実装については、[Hashable](https://developer.apple.com/documentation/swift/hashable)を参照ください。プロトコルの適合については、[Protocols](./protocols.md)を参照ください。
+
 ### Set Type Syntax
 
 ### Creating and Initializing an Empty Set
