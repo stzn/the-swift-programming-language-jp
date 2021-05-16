@@ -507,6 +507,58 @@ if latinCapitalLetterA != cyrillicCapitalLetterA {
 
 ### Prefix and Suffix Equality
 
+ある文字列が特定の前置文字や後置文字を含んでいるかどうかをチェックするために、`hasPrefix(_:)`と`hasSuffix(_:)`メソッドを使います。どちらも 1 つの`String`型の引数を取り、`Bool`値を返します。
+
+下記の例では、シャークスピアのロミオとジュリエットの最初の 2 幕のシーンの場所を表した文字列の配列です。
+
+```swift
+let romeoAndJuliet = [
+    "Act 1 Scene 1: Verona, A public place",
+    "Act 1 Scene 2: Capulet's mansion",
+    "Act 1 Scene 3: A room in Capulet's mansion",
+    "Act 1 Scene 4: A street outside Capulet's mansion",
+    "Act 1 Scene 5: The Great Hall in Capulet's mansion",
+    "Act 2 Scene 1: Outside Capulet's mansion",
+    "Act 2 Scene 2: Capulet's orchard",
+    "Act 2 Scene 3: Outside Friar Lawrence's cell",
+    "Act 2 Scene 4: A street in Verona",
+    "Act 2 Scene 5: Capulet's mansion",
+    "Act 2 Scene 6: Friar Lawrence's cell"
+]
+```
+
+`hasPrefix(_:)`を使って`romeoAndJuliet`配列から*Act1*のシーンの数を数えます。
+
+```swift
+var act1SceneCount = 0
+for scene in romeoAndJuliet {
+    if scene.hasPrefix("Act 1 ") {
+        act1SceneCount += 1
+    }
+}
+print("There are \(act1SceneCount) scenes in Act 1")
+// Prints "There are 5 scenes in Act 1"
+```
+
+同様に、`hasSuffix(_:)`を使って Capulet マンションや修道士ローレンスの周りで起きたシーンの数を数えてみます。
+
+```swift
+var mansionCount = 0
+var cellCount = 0
+for scene in romeoAndJuliet {
+    if scene.hasSuffix("Capulet's mansion") {
+        mansionCount += 1
+    } else if scene.hasSuffix("Friar Lawrence's cell") {
+        cellCount += 1
+    }
+}
+print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
+// Prints "6 mansion scenes; 2 cell scenes"
+```
+
+> NOTE  
+> `hasPrefix(_:)`は`hasSuffix(_:)`文字ごとに各文字列の拡張書記素クラスタを使って「規範的に」等しいかどうかを調べます([String and Character Equality](#string-and-character-equality)に記載)。
+
 ## Unicode Representations of Strings
 
 ### UTF-8 Representation
