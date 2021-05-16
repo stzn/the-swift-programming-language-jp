@@ -407,6 +407,31 @@ for index in greeting.indices {
 
 ### Inserting and Removing
 
+特定の文字列の index に 1 つの文字を挿入するには、`insert(_:at:)`を使い、他の文字列を挿入したい場合は、`insert(contentsOf:at:)`を使います。
+
+```swift
+var welcome = "hello"
+welcome.insert("!", at: welcome.endIndex)
+// welcome は "hello!" と等しい
+
+welcome.insert(contentsOf: " there", at: welcome.index(before: welcome.endIndex))
+// welcome は "hello there!" と等しい
+```
+
+文字列の特定の index に 1 つの文字を削除するには、`remove(at:)`を使い、部分文字列を削除したい場合は、`removeSubrange(_:)`を使います。
+
+```swift
+welcome.remove(at: welcome.index(before: welcome.endIndex))
+// welcome は "hello there" と等しい
+
+let range = welcome.index(welcome.endIndex, offsetBy: -6)..<welcome.endIndex
+welcome.removeSubrange(range)
+// welcome は "hello" と等しい
+```
+
+> NOTE  
+> `RangeReplaceableCollection`プロトコルに適合したどんな型にも、insert(_:at:)、insert(contentsOf:at:)、remove(at:)、removeSubrange(_:)メソッドを使うことができます。これは、`Array`、 `Dictionary`、`Set`といったコレクションの型と同様に、今紹介している`String`も含んでいます。
+
 ## Substrings
 
 ## Comparing Strings
