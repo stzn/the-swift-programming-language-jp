@@ -102,6 +102,106 @@ var shoppingList = ["Eggs", "Milk"]
 
 ### Accessing and Modifying an Array
 
+メソッドやプロパティ、subscript シンタックスを通して配列にアクセスしたり、変更できます。
+
+配列のアイテムの数を調べるために、読み取り専用の`count`プロパティをチェックします。
+
+```swift
+print("The shopping list contains \(shoppingList.count) items.")
+// Prints "The shopping list contains 2 items."
+```
+
+`Bool`型の`isEmpty`プロパティは、`count`プロパティが`0`かどうかをチェックするショートハンドです。
+
+```swift
+if shoppingList.isEmpty {
+    print("The shopping list is empty.")
+} else {
+    print("The shopping list isn't empty.")
+}
+// Prints "The shopping list isn't empty."
+```
+
+`append(_:)`メソッドを使って、配列の末尾に新しいアイテムを追加することができます。
+
+```swift
+shoppingList.append("Flour")
+// shoppingList は 3 つのアイテムを含んでいて、誰かがパンケーキを作っています
+```
+
+他には加算代入演算子(`+=`)を使って 1 つ以上の互換性のある型のアイテムを追加できます。
+
+```swift
+shoppingList += ["Baking Powder"]
+// shoppingList 4 つのアイテムを含んでいます
+shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
+// shoppingList は 7 つのアイテムを含んでいます
+```
+
+`subscript`シンタックスを使うと、配列から値を取得します。配列名のすぐ後の角括弧([])の中に、取得したい値の index を渡します。
+
+```swift
+var firstItem = shoppingList[0]
+// firstItem は "Eggs" と等しい
+```
+
+> NOTE  
+> 配列の最初のアイテムのindexは`0`で`1`ではありません。SwiftのArrayはいつも0から始まるインデックス方式です。
+
+ある index の既存の値を変更したい場合も`subscript`シンタックスを使います。
+
+```swift
+shoppingList[0] = "Six eggs"
+// リストの最初のアイテムは"Eggs"ではなく、"Six eggs"
+```
+
+`subscript`シンタックスを使う時、指定した index は妥当でなければなりません。例えば、配列の最後にあたいを追加しようと`shoppingList[shoppingList.count] = "Salt"`と書くと、実行時エラーになります。
+
+ある一定範囲の値を一度に変更するにも`subscript`シンタックスを使うことができます。これは置き換えたい値のセットの数と指定した置き換える範囲の長さが異なっていても可能です。次の例は`"Chocolate Spread"`、`"Cheese"`、`"Butter"`を`"Bananas"`、`"Apples"`に置き換えています。
+
+```swift
+shoppingList[4...6] = ["Bananas", "Apples"]
+// shoppingList は 6 つのアイテムを含んでいます
+```
+
+配列の特定の index にアイテムを挿入したい場合、`insert(_:at:)`メソッドを使います。
+
+```swift
+shoppingList.insert("Maple Syrup", at: 0)
+// shoppingList は 7 つのアイテムを含んでいます
+// "Maple Syrup" は最初のアイテムです
+```
+
+この例では`insert(_:at:)`に`"Maple Syrup"`と index 0 を指定して、ショッピングリストの最初に新しいアイテムを挿入しています。
+
+同様に`remove(at:)`を使って配列からアイテムを削除できます。このメソッドは特定の index のアイテムを削除し、削除したアイテムを返します(必要なければ戻り値は無視できます):
+
+```swift
+let mapleSyrup = shoppingList.remove(at: 0)
+// index 0 にあったアイテムは削除されました
+// shoppingList は 6 つのアイテムを含んでいますが、 Maple Syrupはありません
+// mapleSyrup定数は削除した"Maple Syrup"文字列と等しい
+```
+
+> NOTE  
+> 配列の既存の境界を超えたindexの値にアクセスしたり、変更したりしようとすると、実行時エラーになるでしょう。`count`プロパティとindexを比較して、indexが妥当かどうかをチェックしましょう。配列は0から始まるインデックス方式なので、妥当な最大のindexは`count - 1`です。しかし、`count`が`0`の時(配列が空の時)、妥当なindexはありません。
+
+アイテムが削除された時、配列内のキャップは埋められ、index `0`の値は再び`"Six eggs"`になります。
+
+```swift
+firstItem = shoppingList[0]
+// firstItem は "Six eggs" と等しい
+```
+
+配列の最後の値を削除したい場合、`count`プロパティを探索する必要を避けるために、`remove(at:)`よりも`removeLast()`を使います。`remove(at:)`同様に`removeLast()`も削除したアイテムを返します:
+
+```swift
+let apples = shoppingList.removeLast()
+// 最後のアイテムは削除されました
+// shoppingListは 5 つのアイテムを含んでいますが、 applesはありません
+// apples定数は削除された"Apples"文字列と等しい
+```
+
 ### Iterating Over an Array
 
 ## Sets
