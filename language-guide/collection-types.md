@@ -302,7 +302,58 @@ var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
 
 ### Accessing and Modifying a Set
 
+メソッドやプロパティを通してセットにアクセスしたり、変更できます。
+
+セットのアイテムの数を調べるために、読み取り専用の`count`プロパティをチェックします。
+
+```swift
+print("I have \(favoriteGenres.count) favorite music genres.")
+// Prints "I have 3 favorite music genres."
+```
+
+`Bool`型の`isEmpty`プロパティは、`count`プロパティが`0`かどうかをチェックするショートハンドです。
+
+```swift
+if favoriteGenres.isEmpty {
+    print("As far as music goes, I'm not picky.")
+} else {
+    print("I have particular music preferences.")
+}
+// Prints "I have particular music preferences."
+```
+
+`insert(_:)`メソッドを使って、セットに新しいアイテムを追加することができます。
+
+```swift
+favoriteGenres.insert("Jazz")
+// favoriteGenres 4 つのアイテムを含んでいます
+```
+
+`remove(_:)`を使ってセットからアイテムを削除できます。セットにアイテムが存在した場合は削除し、削除したアイテムを返します。もし存在しなけば`nil`を返します。他の方法として、全アイテムを削除するには`removeAll()`を使います。
+
+```swift
+if let removedGenre = favoriteGenres.remove("Rock") {
+    print("\(removedGenre)? I'm over it.")
+} else {
+    print("I never much cared for that.")
+}
+// Prints "Rock? I'm over it."
+```
+
+特定のアイテムが含まれているかどうかを調べるには、`contains(_:)`メソッドを使うことができます。
+
+```swift
+if favoriteGenres.contains("Funk") {
+    print("I get up on the good foot.")
+} else {
+    print("It's too funky in here.")
+}
+// Prints "It's too funky in here."
+```
+
 ### Iterating Over a Set
+
+
 
 ## Performing Set Operations
 
