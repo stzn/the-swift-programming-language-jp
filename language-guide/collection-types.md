@@ -436,6 +436,12 @@ farmAnimals.isDisjoint(with: cityAnimals)
 
 ## Dictionaries
 
+辞書は、同じ型のキーと同じ型の値の関係を順序なしでコレクションに保持します。それぞれの値は辞書内で識別子の役割を果たす一意なキーに紐づいています。配列のアイテムとは異なり、辞書のアイテムに順序はありません。辞書は、現実に特定の単語を辞書で調べるのと同じように、識別子から値を探したい時に使います。
+
+> NOTE  
+> `Dictionary`はFoundationの`NSDictionary`とスムーズにやりとりできるようにしています。  
+> FoundationとCocoaを使った`Dictionary`の使用方法に関しては、[Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239)を参照ください
+
 ### Dictionary Type Shorthand Syntax
 
 ### Creating an Empty Dictionary
