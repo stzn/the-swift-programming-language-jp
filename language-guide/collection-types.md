@@ -379,7 +379,33 @@ for genre in favoriteGenres.sorted() {
 
 ## Performing Set Operations
 
+2 つのセットの合成、共通の要素の発見、値が全部等しいのか、いくつか等しいのか、全く違うのかなど、基本的なセットの操作を効率的に行うことができます。
+
 ### Fundamental Set Operations
+
+下記のイラストでは、`a`と`b`の 2 つのセットに対して、それぞれ操作を行い、色の付いた部分が結果(戻り値)を表しています。
+
+![Setの操作結果](./../.gitbook/assets/setvenndiagram_2x.png)
+
+* `intersection(_:)`は、2 つのセットの共通要素を含めた新しいセットを生成します
+* `symmetricDifference(_:)`は、どちらかのセットにあるものの、両方には含まれていない要素を含めた新しいセットを生成します
+* `union(_:)`は、両方のセットに含まれている全ての要素を含めた新しいセットを生成します
+* `subtracting(_:)`は、特定のセットには含まれていない要素を含めた新しいセットを生成します
+
+```swift
+let oddDigits: Set = [1, 3, 5, 7, 9]
+let evenDigits: Set = [0, 2, 4, 6, 8]
+let singleDigitPrimeNumbers: Set = [2, 3, 5, 7]
+
+oddDigits.union(evenDigits).sorted()
+// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+oddDigits.intersection(evenDigits).sorted()
+// []
+oddDigits.subtracting(singleDigitPrimeNumbers).sorted()
+// [1, 9]
+oddDigits.symmetricDifference(singleDigitPrimeNumbers).sorted()
+// [1, 2, 9]
+```
 
 ### Set Membership and Equality
 
