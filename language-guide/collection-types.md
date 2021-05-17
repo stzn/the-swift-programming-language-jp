@@ -28,7 +28,7 @@ Swift の配列、セット、辞書は常に保持できるキーや値の型�
 
 ### Array Type Shorthand Syntax
 
-Swift の配列の型は全体で`Array<Element>`と書きます。`Element`はその配列が保持できる値の型です。ショートハンドとして`[Element]`とも書けます。この 2 つの形式は機能的に同じですが、ショートハンド版の方が好まれ、このガイド内でも配列の型を参照する際はこちらの形式を使います。
+Swift の配列の型は全体で`Array<Element>`と書きます。`Element`はその配列が保持できる値の型です。簡略記法として`[Element]`とも書けます。この 2 つの形式は機能的に同じですが、簡略記法の方が好まれ、このガイド内でも配列の型を参照する際はこちらの形式を使います。
 
 ### Creating an Empty Array
 
@@ -74,7 +74,7 @@ var sixDoubles = threeDoubles + anotherThreeDoubles
 
 ### Creating an Array with an Array Literal
 
-配列リテラルからも配列を初期化できます。これは、1 つ以上の要素を持った配列コレクションを書くショートハンドです。配列リテラルはカンマ区切りの、角括弧([])で囲んだ値のリストです:
+配列リテラルからも配列を初期化できます。これは、1 つ以上の要素を持った配列コレクションを書く簡略記法です。配列リテラルはカンマ区切りの、角括弧([])で囲んだ値のリストです:
 
 ![Array Literal](./../.gitbook/assets/arrayliteral_2x.png)
 
@@ -111,7 +111,7 @@ print("The shopping list contains \(shoppingList.count) items.")
 // Prints "The shopping list contains 2 items."
 ```
 
-`Bool`型の`isEmpty`プロパティは、`count`プロパティが`0`かどうかをチェックするショートハンドです。
+`Bool`型の`isEmpty`プロパティは、`count`プロパティが`0`かどうかをチェックする簡略記法です。
 
 ```swift
 if shoppingList.isEmpty {
@@ -250,7 +250,7 @@ Swift の基本的な型(`String`、`Int`、`Double`、`Bool`など)は、デフ
 
 ### Set Type Syntax
 
-セット(*Set*)型は`Set<Element>`と書きます。`Element`はセットが保持できる型です。配列と異なり、セットは同等のショートハンドはありません。
+セット(*Set*)型は`Set<Element>`と書きます。`Element`はセットが保持できる型です。配列と異なり、セットは同等の簡略記法はありません。
 
 ### Creating and Initializing an Empty Set
 
@@ -276,7 +276,7 @@ letters = []
 
 ### Creating a Set with an Array Literal
 
-1 つ以上の値をセットのコレクションとして書くショートハンドとして、配列リテラルを使ってセットを初期化することもできます。
+1 つ以上の値をセットのコレクションの簡略記法として、配列リテラルを使ってセットを初期化することもできます。
 
 下記の例は、`favoriteGenres`という`String`の値を保持するセットを作成しています。
 
@@ -311,7 +311,7 @@ print("I have \(favoriteGenres.count) favorite music genres.")
 // Prints "I have 3 favorite music genres."
 ```
 
-`Bool`型の`isEmpty`プロパティは、`count`プロパティが`0`かどうかをチェックするショートハンドです。
+`Bool`型の`isEmpty`プロパティは、`count`プロパティが`0`かどうかをチェックする簡略記法です。
 
 ```swift
 if favoriteGenres.isEmpty {
@@ -443,6 +443,13 @@ farmAnimals.isDisjoint(with: cityAnimals)
 > FoundationとCocoaを使った`Dictionary`の使用方法に関しては、[Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239)を参照ください
 
 ### Dictionary Type Shorthand Syntax
+
+Swift の辞書は、全部きちんと書くと`Dictionary<Key, Value>`と書きます。`Key`には辞書のキーとして使える値の型を、`Value`にはそのキーに紐づいた辞書で保持する値の型です。
+
+> NOTE  
+> 辞書の`Key`はセットの値のように、`Hashable`プロトコルに適合しなければなりません。
+
+辞書の型は、`[Key: Value]`と簡略記法で書くこともできます。機能的にはどちらの書き方も同じですが、簡略記法の方が好ましく、このガイド内では、辞書の型を参照する際はこちらの形式を使います。
 
 ### Creating an Empty Dictionary
 
