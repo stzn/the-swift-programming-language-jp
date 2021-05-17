@@ -353,7 +353,29 @@ if favoriteGenres.contains("Funk") {
 
 ### Iterating Over a Set
 
+`for-in`ループを使ってセットの要素を繰り返し処理をすることができます。
 
+```swift
+for genre in favoriteGenres {
+    print("\(genre)")
+}
+// Classical
+// Jazz
+// Hip hop
+```
+
+`for-in`ループについては、[For-In Loops](./control-flow.md#for-in-loops)をご参照ください。
+
+Swift の Set 型は決まった順序がありません。特定の順番で値を繰り返し処理をしたい場合、`sorted()`メソッドを使うと、`<`演算子を使ってソートされた配列として要素を返します。
+
+```swift
+for genre in favoriteGenres.sorted() {
+    print("\(genre)")
+}
+// Classical
+// Hip hop
+// Jazz
+```
 
 ## Performing Set Operations
 
