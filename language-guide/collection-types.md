@@ -276,6 +276,30 @@ letters = []
 
 ### Creating a Set with an Array Literal
 
+1 つ以上の値をセットのコレクションとして書くショートハンドとして、配列リテラルを使ってセットを初期化することもできます。
+
+下記の例は、`favoriteGenres`という`String`の値を保持するセットを作成しています。
+
+```swift
+var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip hop"]
+// favoriteGenres は 3 つ の初期値で初期化されている
+```
+
+`favoriteGenres`変数は`Set<String>`と書くことで、「`String`のセット」を宣言しています。`String`型の値をしているため、このセットには`String`しか保持できません。ここでは`favoriteGenres`セットに 3 つの`String`含めた配列リテラルを使って初期化しています。
+
+> NOTE  
+> 後の例でアイテムの追加や削除を行なっているため、`favoriteGenres`は定数ではなく変数で定義されています。
+
+セットの型は配列リテラルだけから型推論することはできず、`Set`の型を明示しなければなりません。しかし、Swift の型推論によって、1 つの型しか持たない配列リテラルの場合は、要素の型を書かなくても初期化できます。
+
+`favoriteGenres`の初期化は下記のようにより簡単に書くことができました:
+
+```swift
+var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
+```
+
+配列リテラルの値はすべて同じ型なので、`favoriteGenres`変数は`Set<String>`が正しい型だと推論できます。
+
 ### Accessing and Modifying a Set
 
 ### Iterating Over a Set
