@@ -409,6 +409,31 @@ oddDigits.symmetricDifference(singleDigitPrimeNumbers).sorted()
 
 ### Set Membership and Equality
 
+下記のイラストでは、`a`、`b`、`c`の 3 つのセットで共有している要素の領域を表しています。
+
+![Setの共通領域](./../.gitbook/assets/seteulerdiagram_2x.png)
+
+`a`は、`b`に含まれる全ての要素を含んでいるため、`b`の上位集合(*superset*)です。反対に、`b`は`a`の下位集合(*subset*)です。`b`と`c`は、共通の要素がないため￥、お互いに素(*disjoint*)です。
+
+* 等価演算子(*==*)を使って、2 つのセットの要素が全て同じかどうかを判定できます
+* `isSubset(of:)`を使ってあるセットの要素が他のセットに全て含まれているかどうかを判定できます
+* `isSuperset(of:)`を使ってあるセットが他のセットに全ての要素を含んでいるかどうかを判定できます
+* `isStrictSubset(of:)`や`isStrictSuperset(of:)`はあるセットが他のセットと、等しくはない、上位集合か下位集合かどうかを判定できます
+* `isDisjoint(with:)`は 2 つのセットに共通要素が全くないかどうかを判定できます
+
+```swift
+let houseAnimals: Set = ["🐶", "🐱"]
+let farmAnimals: Set = ["🐮", "🐔", "🐑", "🐶", "🐱"]
+let cityAnimals: Set = ["🐦", "🐭"]
+
+houseAnimals.isSubset(of: farmAnimals)
+// true
+farmAnimals.isSuperset(of: houseAnimals)
+// true
+farmAnimals.isDisjoint(with: cityAnimals)
+// true
+```
+
 ## Dictionaries
 
 ### Dictionary Type Shorthand Syntax
