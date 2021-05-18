@@ -473,6 +473,35 @@ namesOfIntegers = [:]
 
 ### Creating a Dictionary with a Dictionary Literal
 
+先ほど見た配列リテラルと似たようなシンタックスの辞書リテラル(*dictionary literal*)を使った初期化もできます。辞書リテラルは、1 つ以上のキーバリューペアから`Dictionary`のコレクションを作成する簡略記法です。
+
+キーバリューペア(*key-value pair*)は、キーと値の組み合わせです。辞書リテラルは、それぞれのキーバリューペアのキーと値をコロン(`:`)で分けます。複数のキーバリューペアは、カンマ(`,`)区切りのリストを角括弧(`[]`)で囲みます:
+
+![辞書リテラル](./../.gitbook/assets/04_dictionarycreating.png)
+
+下記の例では、国際空港の名前を保持する辞書を作成します。この辞書は、3 文字の国際空港コードをキーに、空港名を値にしています。
+
+```swift
+var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
+```
+
+`airports`辞書は、`[String: String]`型と宣言され、「`String`型のキーと`String`型の値の`Dictionary`」を意味します。
+
+> NOTE  
+> 後の例でさらに空港を追加するため、`airports`辞書は定数ではなく変数で定義されています。
+
+`airports`辞書は、2 つのキーバリューペアの辞書リテラルで初期化されています。最初のペアのキーは`"YYZ"`、値は`"Toronto Pearson"`、2 番目のペアのキーは`"DUB"`、値は`"Dublin"`です。
+
+この辞書リテラルは、`String: String`型のペアを含んでいます。このキーバリューペアは`airports`変数の宣言(`String`型のキーと`String`型の値しか持つことができない辞書)と一致するので、2 つの初期値を持つ`airports`辞書を初期化するためにこの辞書リテラルを代入することができます。
+
+配列と同様に、キーと値が定まった型の辞書リテラルを使って初期化している場合、型を書く必要はありません。`airports`の初期化は、より簡潔に書くことができました:
+
+```swift
+var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
+```
+
+全てのキーの型が同じで、値の型も同じなので、Swift は`airports`辞書は`[String: String]`が正しい型だと推論できます。
+
 ### Accessing and Modifying a Dictionary
 
 ### Iterating Over a Dictionary
