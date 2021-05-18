@@ -590,3 +590,56 @@ if let removedValue = airports.removeValue(forKey: "DUB") {
 ```
 
 ### Iterating Over a Dictionary
+
+`for-in`ループを使って辞書のキーバリューペア全部に繰り返し処理をすることができます。
+
+```swift
+for item in shoppingList {
+    print(item)
+}
+// Six eggs
+// Milk
+// Flour
+// Baking Powder
+// Bananas
+```
+
+各アイテムの index が必要な場合は、`enumerated()`を代わりに使いましょう。各アイテムは`(key, value)`のタプルを返し、繰り返し処理の中で、このタプルを一時的な定数や変数に展開することができます。
+
+```swift
+for (airportCode, airportName) in airports {
+    print("\(airportCode): \(airportName)")
+}
+// LHR: London Heathrow
+// YYZ: Toronto Pearson
+```
+
+`for-in`ループについては、[For-In Loops](./control-flow.md#for-in-loops)をご参照ください。
+
+`keys`と`values`プロパティを使って、キーと値それぞれのリストを取得することもできます:
+
+```swift
+for airportCode in airports.keys {
+    print("Airport code: \(airportCode)")
+}
+// Airport code: LHR
+// Airport code: YYZ
+
+for airportName in airports.values {
+    print("Airport name: \(airportName)")
+}
+// Airport name: London Heathrow
+// Airport name: Toronto Pearson
+```
+
+`Array`インスタンスを引数に受け取る API で辞書のキーと値を使いたい場合、`keys`と`values`プロパティを使って新しい配列を初期化しましょう:
+
+```swift
+let airportCodes = [String](airports.keys)
+// airportCodes is ["LHR", "YYZ"]
+
+let airportNames = [String](airports.values)
+// airportNames is ["London Heathrow", "Toronto Pearson"]
+```
+
+`Dictionary`型には決まった順序がありません。特定の順番で値を繰り返し処理をしたい場合、`keys`か`values`プロパティの`sorted()`メソッドを使いましょう。
