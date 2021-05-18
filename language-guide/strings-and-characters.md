@@ -1,6 +1,6 @@
 # Strings and Characters
 
-最終更新日:
+最終更新日: 2021/5/16
 
 文字列\(_string_\)は`"hello, world"`や`"albatross"`のような一連の文字です。Swift の文字列は`String`型で表されます。`String`の内容には、様々な方法でアクセスすることができます\(`Character`型の値のコレクションとしてなど\)。
 
@@ -304,7 +304,7 @@ let combinedEAcute: Character = "\u{65}\u{301}"          // e の後ろに  ́
 // eAcute は é, combinedEAcute は é
 ```
 
-拡張書記素クラスタは、多くの複雑な文字スクリプトを 1 つの`Character`として表す柔軟な方法です。例えば、韓国語のハングル文字は、合成または分解されたスカラの配列で表すことができます。これらのどちらも、 Swift では 1 つの`Character`と見なされます。
+拡張書記素クラスタは、多くの複雑な文字スクリプトを 1 つの`Character`として表す柔軟な方法です。例えば、韓国語のハングル文字は、合成または展開されたスカラの配列で表すことができます。これらのどちらも、 Swift では 1 つの`Character`と見なされます。
 
 ```swift
 let precomposed: Character = "\u{D55C}"                  // 한

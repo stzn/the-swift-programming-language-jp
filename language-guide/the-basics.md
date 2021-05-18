@@ -442,7 +442,7 @@ print("The status message is \(statusMessage)")
 // Prints "The status message is Not Found"
 ```
 
-もしタプルの一部だけが必要な場合、タプルを分解する時に、アンダースコア\(\_\)を使って無視することができます。
+もしタプルの一部だけが必要な場合、タプルを展開する時に、アンダースコア\(\_\)を使って無視することができます。
 
 ```swift
 let (justTheStatusCode, _) = http404Error
