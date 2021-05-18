@@ -453,6 +453,24 @@ Swift の辞書は、全部きちんと書くと`Dictionary<Key, Value>`と書�
 
 ### Creating an Empty Dictionary
 
+配列と同様に、ある型の空の`Dictionary`をイニシャライザシンタックスを使って作成できます。
+
+```swift
+var namesOfIntegers = [Int: String]()
+// namesOfIntegers は空の [Int: String] 辞書
+```
+
+この例では、数字を人が理解できる名前として保持するための`[Int: String]`型の空の辞書を作成しています。キーは`Int`型で値は`String`型です。
+
+既に型情報が分かっている場合は、空の辞書リテラルを`[:]`と書くことができます。(角括弧(`[]`)の中にコロン(`:`)):
+
+```swift
+namesOfIntegers[16] = "sixteen"
+// namesOfIntegers は 1 つのキーバリューペアを含んでいます
+namesOfIntegers = [:]
+// namesOfIntegers は再び [Int: String] の空の辞書
+```
+
 ### Creating a Dictionary with a Dictionary Literal
 
 ### Accessing and Modifying a Dictionary
