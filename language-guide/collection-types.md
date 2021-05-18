@@ -504,4 +504,89 @@ var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 ### Accessing and Modifying a Dictionary
 
+メソッドやプロパティ、subscript シンタックスを通して辞書にアクセスしたり、変更できます。
+
+配列と同様に、`Dictionary`のアイテムの数を調べるために、読み取り専用の`count`プロパティをチェックします。
+
+```swift
+print("The airports dictionary contains \(airports.count) items.")
+// Prints "The airports dictionary contains 2 items."
+```
+
+`Bool`型の`isEmpty`プロパティは、`count`プロパティが`0`かどうかをチェックする簡略記法です。
+
+```swift
+if airports.isEmpty {
+    print("The airports dictionary is empty.")
+} else {
+    print("The airports dictionary isn't empty.")
+}
+// Prints "The airports dictionary isn't empty."
+```
+
+subscript シンタックスを使って、新しいアイテムを追加することができます。適切な型の新しいキーを subscript の index に入れ、適切な型の新しい値を代入します。
+
+```swift
+airports["LHR"] = "London"
+// airports 辞書は 3 つのアイテムを含みます
+```
+
+他には加算代入演算子(`+=`)を使って 1 つ以上の互換性のある型のアイテムを追加できます。
+
+```swift
+shoppingList += ["Baking Powder"]
+// shoppingList 4 つのアイテムを含んでいます
+shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
+// shoppingList は 7 つのアイテムを含んでいます
+```
+
+`subscript`シンタックスを使うと、特定のキーの値を変更することもできます。
+
+```swift
+airports["LHR"] = "London Heathrow"
+// "LHR" の値は"London Heathrow"へ変更
+```
+
+別の方法として、`updateValue(_:forKey:)`メソッドを使って、特定のキーへ値の設定/更新ができます。`subscript`と同様に`updateValue(_:forKey:)`は、特定のキーの値がなければ新しく値を設定し、既に値が存在していたら、その値を更新します。`subscript`と違う点として、`updateValue(_:forKey:)`メソッドは、更新後に前の値を返します。こうすることで、更新が実際に起きたかどうかが確認できます。
+
+`updateValue(_:forKey:)`メソッドは、辞書の値の型の optional 値を返します。例えば辞書が`String`を保持している場合、このメソッドは`String?`(optional `String`)を返します。この optional 値は更新前に値が存在していた場合はその値の optional を返し、存在していなかった場合は`nil`を返します:
+
+```swift
+if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
+    print("The old value for DUB was \(oldValue).")
+}
+// Prints "The old value for DUB was Dublin."
+```
+
+subscript シンタックスを使って特定のキーの値を取得することもできます。値の存在しないキーに対してもリクエストすることが可能で、値の型の optional 値を返します。値がなければ`nil`を返します:
+
+```swift
+if let airportName = airports["DUB"] {
+    print("The name of the airport is \(airportName).")
+} else {
+    print("That airport isn't in the airports dictionary.")
+}
+// Prints "The name of the airport is Dublin Airport."
+```
+
+subscript シンタックスを使って、キーに`nil`を代入することで、キーバリューペアを削除できます:
+
+```swift
+airports["APL"] = "Apple International"
+// "Apple International" APL の空港ではないので削除します
+airports["APL"] = nil
+// APL は辞書から削除されました
+```
+
+他の方法として、`removeValue(forKey:)`メソッドを使ってキーバリューペアを削除できます。値が存在すれば削除した値を返し、存在しなければ`nil`を返します:
+
+```swift
+if let removedValue = airports.removeValue(forKey: "DUB") {
+    print("The removed airport's name is \(removedValue).")
+} else {
+    print("The airports dictionary doesn't contain a value for DUB.")
+}
+// Prints "The removed airport's name is Dublin Airport."
+```
+
 ### Iterating Over a Dictionary
