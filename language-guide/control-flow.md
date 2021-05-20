@@ -223,6 +223,61 @@ Swift は、コードに条件分岐を追加する 2 つの方法、`if` 文と
 
 ### If
 
+最も単純な形式として、`if` 文は 1 つの `if` 条件です。条件が `true` の場合にのみ、内部の文が実行されます。
+
+```swift
+var temperatureInFahrenheit = 30
+if temperatureInFahrenheit <= 32 {
+    print("It's very cold. Consider wearing a scarf.")
+}
+// Prints "It's very cold. Consider wearing a scarf."
+```
+
+上記の例は、気温が華氏 32 度以下かどうかをチェックしています。もしそうならば、メッセージが出力されます。そうでないならば、メッセージは出力されません。コード実行は `if` 文の右中括弧(`}`)の後のコードが継続して実行します。
+
+`if` 文は、条件が `false` の場合に `if` 文の代わりに実行する、`else` 句と呼ばれる文も提供できます。この文は `else` キーワードを使って書かれます。
+
+```swift
+temperatureInFahrenheit = 40
+if temperatureInFahrenheit <= 32 {
+    print("It's very cold. Consider wearing a scarf.")
+} else {
+    print("It's not that cold. Wear a t-shirt.")
+}
+// Prints "It's not that cold. Wear a t-shirt."
+```
+
+この 2 つの分岐の内の 1 つが必ず実行されます。気温は華氏 40 度に増加しているので、スカーフを巻くアドバイスをする程寒くはなく、`else` の分岐が実行されます。
+
+さらに句を追加して、複数の `if` 文をつなげることもできます。
+
+```swift
+temperatureInFahrenheit = 90
+if temperatureInFahrenheit <= 32 {
+    print("It's very cold. Consider wearing a scarf.")
+} else if temperatureInFahrenheit >= 86 {
+    print("It's really warm. Don't forget to wear sunscreen.")
+} else {
+    print("It's not that cold. Wear a t-shirt.")
+}
+// Prints "It's really warm. Don't forget to wear sunscreen."
+```
+
+ここで、特定の暖かい温度に応答するために、追加の `if` 文が提供されています。最後の `else` 句で、暑過ぎず寒過ぎない温度全ての応答を出力します。
+
+しかし、最後の `else` 句は必須ではなく、条件が絶対に必要でない場合は、除くこともできます。
+
+```swift
+temperatureInFahrenheit = 72
+if temperatureInFahrenheit <= 32 {
+    print("It's very cold. Consider wearing a scarf.")
+} else if temperatureInFahrenheit >= 86 {
+    print("It's really warm. Don't forget to wear sunscreen.")
+}
+```
+
+この温度は、暑過ぎず寒過ぎない温度なので、`if` も `else if` も実行されず、何も出力しません。
+
 ### Switch
 
 #### No Implicit Fallthrough
