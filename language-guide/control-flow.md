@@ -174,6 +174,47 @@ print("Game over!")
 
 ### Repeat-While
 
+`while` ループの別の形として、`repeat-while` があり、ループ条件を検証する前に、一度ループ内の処理を実行します。その後、条件が `false` になるまで、ループを繰り返します。
+
+> NOTE  
+> Swiftの `repeat-while` は、他の言語でいうところの `do-while` に当たります
+
+下記が `repeat-while` ループ一般的な形式です。
+
+![repeat-while](./../.gitbook/assets/05_repeatwhile.png)
+
+ここで蛇とはしごの例を `while` の代わりに `repeat-while` を使って書き換えてみます。`finalSquare`、 `board`、`square` と `diceRoll` は `while` と全く同じ方法で初期化します。
+
+```swift
+let finalSquare = 25
+var board = [Int](repeating: 0, count: finalSquare + 1)
+board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
+board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
+var square = 0
+var diceRoll = 0
+```
+
+このバージョンのゲームでは、ループの最初で、蛇かはしごかをチェックしています。プレイヤーを 25 枠に直接移動させるはしごはないので、はしごを上るだけで勝利することはできません。なので、ループの最初で蛇かはしごかをチェックするのは安全です。
+
+ゲームの最初はにプレイヤーは「0 枠」にいます。`board[0]` は常に 0 で影響はありません。
+
+```swift
+repeat {
+    // 蛇かはしご分移動する
+    square += board[square]
+    // サイコロを振る
+    diceRoll += 1
+    if diceRoll == 7 { diceRoll = 1 }
+    // 出た目分移動
+    square += diceRoll
+} while square < finalSquare
+print("Game over!")
+```
+
+蛇かはしごかのチェック後に、サイコロが振られ、プレイヤーは `diceRoll` 分の枠を移動します。そして現在のループを終了します。
+
+ループの条件は前と同様(`while square < finalSquare`)ですが、今回はループを一度実行するまでは評価されません。今回の例では、`repeat-while` の構造は `while` 適しています。`repeat-while` では、`square += board[square]` は常に `while` 条件で `square` がまだボード上にいることを確かめた後で、すぐに実行されます。この挙動で、`while` の例では必要だった配列の範囲チェックは必要なくなります。
+
 ## Conditional Statements
 
 ### If
