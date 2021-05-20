@@ -280,7 +280,77 @@ if temperatureInFahrenheit <= 32 {
 
 ### Switch
 
+`switch` 文は複数の可能性に対してパターンマッチを使って比較を行い、値を検討します。そして、一致した最初のパターンのコードのブロックを実行します。`switch` 文は、複数の可能性がある状態に対して `if` 文の代わりに使うことができます。
+
+最もシンプルな形式として、`switch` 文は同じ型の 1 つ以上の値を比較します。
+
+![switch](./../.gitbook/assets/05_switchform.png)
+
+全ての `switch` 文は、`case` キーワードで始まる複数の可能性があるケースで構成されます。特定の値の比較に加えて、さらに複雑なパターンマッチをケースに指定する様々な方法を提供しています。それらについては、この章で後ほど記載しています。
+
+`if` 文の `body` と同じく、各 `case` はコードを実行する分岐です。`switch` 文はどの分岐を選択するべきかどうかを決めます。このプロセスは、検討中の値の切り替え(*switching*)と呼ばれます。
+
+全ての `switch` 文は網羅的(*exhaustive*)です。つまり、全ての検討中の型の値は、`switch` ケースのどれか 1 つにマッチしなければなりません。特定のケースに当てはまらない可能性がある値を扱う場合、明示的にパターンに合致しないあらゆる値をカバーするデフォルトを定義することができます。このデフォルトケースは、`default` キーワードで示され、必ず最後に書かなければなりません。
+
+下記の例では、`someCharacter` という 1 つの小文字検討する `switch` 文です。
+
+```swift
+let someCharacter: Character = "z"
+switch someCharacter {
+case "a":
+    print("The first letter of the alphabet")
+case "z":
+    print("The last letter of the alphabet")
+default:
+    print("Some other character")
+}
+// Prints "The last letter of the alphabet"
+```
+
+`switch` 文の最初のケースは、英語アルファベットの最初の文字 `a` に合致し、2 番目のケースは最後の文字 `z`  `a` に合致します。全ての可能性がある文字をカバーしなければならないため、`a` と `z` 以外の全ての文字に対して `default` ケースを使っています。こうすることで全てのケースを網羅できています。
+
 #### No Implicit Fallthrough
+
+---
+
+C 言語や Objective-C と異なり、Swift の `switch` 文はデフォルトでそれぞれのケースを上から下に通り抜けません。代わりに、最初に合致した `switch` ケースの実行が完了すると、明示的に `break` しなくても、全体の `switch` 文も完了します。こうすることで、C 言語の `switch` 文よりも、より安全に簡単に使えるようにしています。間違って 1 つ以上のケースを事項してしまうリスクを防ぎます。
+
+> NOTE  
+> `break` は必須ではありませんが、合致したけど何も実行しないような場合や、あるケースの中で最後まで実行される前にそのブロックを抜けたい場合に、`break` を使うことができます。詳細は、[Break in a Switch Statement](#break-in-a-switch-statement)を参照ください。
+
+各ケースの `body` は少なくとも 1 つの文を実行しなければなりません。次のコードは最初のケースの `body` が空なので不正です。
+
+```swift
+let anotherCharacter: Character = "a"
+switch anotherCharacter {
+case "a": // 空の body は不正
+case "A":
+    print("The letter A")
+default:
+    print("Not the letter A")
+}
+// コンパイルエラーが発生します
+```
+
+C 言語の `switch` 文と異なり、`"a"` と `"A"` の両方に合致することはありません。`case "a":` は実行文が何も含まれていないため、コンパイルエラーが発生します。こうすることで、不意に 1 つのケースから他のケースに進むことを防ぎ、意図がより明確な安全なコードにすることができます。
+
+`"a"` と `"A"` の両方に合致させたい場合は、カンマ区切り(`,`)で値を区切って、2 つの値を複合ケースに組み合わせます。
+
+```swift
+let anotherCharacter: Character = "a"
+switch anotherCharacter {
+case "a", "A":
+    print("The letter A")
+default:
+    print("Not the letter A")
+}
+// Prints "The letter A"
+```
+
+可読性のために、複合ケースに複数行に分けて書くこともできます。複合ケースについての詳細は[Compound Cases](#compound-cases)を参照ください。
+
+> NOTE  
+> 特定のケースから次のケースの `body` を実行したい場合は、`fallthrough` キーワードを使います。[Fallthrough](#fallthrough)に記載しています。
 
 #### Interval Matching
 
