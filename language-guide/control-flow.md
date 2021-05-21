@@ -384,6 +384,35 @@ print("There are \(naturalCount) \(countedThings).")
 
 #### Tuples
 
+---
+
+タプルを使って同じ `switch` 文の中で、複数の値を検証することができます。タプルの個々の要素は、異なる値や範囲に対して検証できます。逆に、アンダースコア(`_`)を使うと、ワイルドカードとしてどんな値にも合致されることができます。
+
+下記の例では、`(Int, Int`)型のシンプルなタプルとして `(x, y)` な座標を受け取り、グラフに分類しています。
+
+```swift
+let somePoint = (1, 1)
+switch somePoint {
+case (0, 0):
+    print("\(somePoint) is at the origin")
+case (_, 0):
+    print("\(somePoint) is on the x-axis")
+case (0, _):
+    print("\(somePoint) is on the y-axis")
+case (-2...2, -2...2):
+    print("\(somePoint) is inside the box")
+default:
+    print("\(somePoint) is outside of the box")
+}
+// Prints "(1, 1) is inside the box"
+```
+
+![simple graph](./../.gitbook/assets/coordinategraphsimple_2x.png)
+
+`switch` 文で、座標が原点 `(0、0)` にあるか、赤い x 軸にあるか、オレンジ色の y 軸にあるか、原点を中心とする青い 4x4 列のボックスの内側にあるか、ボックスの外側にあるかを判別します。
+
+C 言語と異なり、Swift では複数のケースで同じ値を検証することができます。実際、この例では `(0、0)` は全ての 4 つのケースに当てはまります。複数に合致する場合は、常に最初に合致したケースが使われます。`(0、0)` は最初に `case (0, 0)` に合致するので、他のケースは無視します。
+
 #### Value Bindings
 
 #### Where
