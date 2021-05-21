@@ -354,6 +354,34 @@ default:
 
 #### Interval Matching
 
+---
+
+`switch` ケースの値には、範囲内に含まれるかどうかのチェックもできます。下記の例では、数値間隔を使用して、任意のサイズの数値の自然言語カウントを提供します。
+
+```swift
+let approximateCount = 62
+let countedThings = "moons orbiting Saturn"
+let naturalCount: String
+switch approximateCount {
+case 0:
+    naturalCount = "no"
+case 1..<5:
+    naturalCount = "a few"
+case 5..<12:
+    naturalCount = "several"
+case 12..<100:
+    naturalCount = "dozens of"
+case 100..<1000:
+    naturalCount = "hundreds of"
+default:
+    naturalCount = "many"
+}
+print("There are \(naturalCount) \(countedThings).")
+// Prints "There are dozens of moons orbiting Saturn."
+```
+
+上記の例では、`approximateCount` が `switch` 文で評価されています。それぞれのケースでは、1 つの数値または範囲で比較しています。`approximateCount` の値は、12 から 100 の間にあるので、`naturalCount` は `"dozens of"` に値が代入されます。実行後は `switch` 文から抜け出します。
+
 #### Tuples
 
 #### Value Bindings
