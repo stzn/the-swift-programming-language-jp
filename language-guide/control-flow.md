@@ -621,6 +621,70 @@ print(description)
 
 ### Labeled Statements
 
+Swift は、より複雑な制御フローを作成するために、ループや条件文の中にさらにループや条件文をネストできます。しかし、`break` を使って早期に実行を終了されることもできます。そのため、どの文を `break` するのかを明示すると役に立つことがあります。同様に、複数のネストしたループで、どのループに `continue` が影響するかを明示することも役に立ちます。
+
+これを達成するために、ループや条件文にラベルを付けることができます。条件文では、`break` を使ってラベル付き文の実行を終了できます。ループでは、`break` か `continue` を使ってラベル付き文の実行を終了または継続することができます。
+
+ラベル付き文は、文の導入キーワードの前にコロン(`:`)を付けて同じ行にラベルを配置することで示されます。下記は、`while` ループのシンタックの例ですが、他の全てのループや `switch` にも同じ原則が当てはまります。
+
+![ラベル付き文](./../.gitbook/assets/05_lebeledstatements.png)
+
+次の例は、この章の前で見てきた「蛇とはしご」にラベル付き `while` ループと `break` と `continue` 文を適用したバージョンです。今回は、追加のルールがあります。
+
+* 勝つためには、ちょうど 25 枠に到達しなければならない
+
+サイコロの結果 25 枠を超えた場合、ちょうど 25 枠に到達するまでサイコロを振らなければなりません。
+
+ゲーム盤は、前と同じです。
+
+![蛇とはしご](./../.gitbook/assets/snakesandladders_2x-2.png)
+
+`finalSquare`、`board`、`square` と `diceRoll` は前と同じように初期化されています。
+
+```swift
+let finalSquare = 25
+var board = [Int](repeating: 0, count: finalSquare + 1)
+board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
+board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
+var square = 0
+var diceRoll = 0
+```
+
+今回のバージョンでは、`while` ループと `switch` 文がロジックの実装に使っています。`while` ループは、`gameLoop` と呼ばれるラベルを付けて、これがゲームのメインのループだということを示しています。
+
+`while` ループ条件は `while square != finalSquare` で、正確に 25 枠に到達しなければならないことを反映しています。
+
+```swift
+gameLoop: while square != finalSquare {
+    diceRoll += 1
+    if diceRoll == 7 { diceRoll = 1 }
+    switch square + diceRoll {
+    case finalSquare:
+        // diceRoll が最後の枠に移動したらゲームは終了します
+        break gameLoop
+    case let newSquare where newSquare > finalSquare:
+        // diceRoll が最後の枠を超えた場合はサイコロを再度振ります
+        continue gameLoop
+    default:
+        // 妥当な移動であった場合、その値を反映します
+        square += diceRoll
+        square += board[square]
+    }
+}
+print("Game over!")
+```
+
+各ループの最初でサイコロを振ります。即座にプレイヤーが移動する前に、ループの移動結果を検討してその移動ができるかどうかを判定しています:
+
+* サイコロの結果でプレイヤーが最後の枠に移動したらゲームは終了します。`break gameLoop` は `while` ループの外側のコードの最初の行へフローを移動して、ゲームは終わります
+* diceRoll が最後の枠を超えた場合は、その移動は不正で、プレイヤーは再度サイコロを振る必要があります。`continue gameLoop` で現在の `while` ループのループを終了し、次のループを開始します
+* 他の全てのケースでは、サイコロの結果は妥当です。プレイヤーは `diceRoll` 分移動し、蛇かはしごかのチェックをします。ループが終了後、フローは `while` の条件文に戻り、次のループが必要かどうかを判定します
+
+> NOTE  
+> もし `break` が `gameLoop` ラベルを付けなかった場合、`while` ではなく `switch から抜けます。`gameLoop`ラベルを使うことで、どの制御文から抜けるのかを明確にできます  
+>  
+> 次のループに移動するのに `continue gameLoop` と `gameLoop` ラベルを使う必要は厳密にはありません。ゲーム内にループは 1 つしかなく、どのループに `continue` が影響を与えるかは明確です。しかし、`gameLoop` ラベルを使っても害はありません。そうすることで `break` のラベルと一貫性ができ、ロジックを読みやすく理解しやすくすることができます。
+
 ## Early Exit
 
 ## Checking API Availability
