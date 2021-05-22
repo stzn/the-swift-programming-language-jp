@@ -53,9 +53,21 @@ print(greetAgain(person: "Anna"))
 
 ## Function Parameters and Return Values
 
-
+Swift では、関数の引数と戻り値は非常に柔軟です。 名前のない単一のパラメーターを持つ単純な効用関数から、表現力豊かな引数名とさまざまな引数オプションを持つ複雑な関数まで、あらゆるものを定義できます。
 
 ### Functions Without Parameters
+
+入力引数は関数に必須ではありません。 入力引数のない関数は次のとおりです。この関数は、呼び出されるたびに常に同じ `String` 型のメッセージを返します:
+
+```swift
+func sayHelloWorld() -> String {
+    return "hello, world"
+}
+print(sayHelloWorld())
+// Prints "hello, world"
+```
+
+関数は、引数を受け取りませんが、関数名の後に括弧が必要です。関数が呼び出されると、関数名の後に空の括弧のペア(`()`)も書きます。
 
 ### Functions With Multiple Parameters
 
