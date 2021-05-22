@@ -388,7 +388,7 @@ print("There are \(naturalCount) \(countedThings).")
 
 タプルを使って同じ `switch` 文の中で、複数の値を検証することができます。タプルの個々の要素は、異なる値や範囲に対して検証できます。逆に、アンダースコア(`_`)を使うと、ワイルドカードとしてどんな値にも合致されることができます。
 
-下記の例では、`(Int, Int`)型のタプルとして `(x, y)` 座標を受け取り、グラフに分類しています。
+下記の例では、`(Int, Int`)型のタプルとして `(x, y)` 座標を受け取り、グラフに分布しています。
 
 ```swift
 let somePoint = (1, 1)
@@ -407,7 +407,7 @@ default:
 // Prints "(1, 1) is inside the box"
 ```
 
-![simple graph](./../.gitbook/assets/coordinategraphsimple_2x.png)
+![switch例のグラフ](./../.gitbook/assets/coordinategraphsimple_2x.png)
 
 `switch` 文は、座標が原点 `(0、0)` にあるか、赤い x 軸にあるか、オレンジ色の y 軸にあるか、原点を中心とする青い 4x4 列のボックスの内側にあるか、ボックスの外側にあるかを判別します。
 
@@ -419,7 +419,7 @@ C 言語と異なり、Swift では複数のケースで同じ値を検証する
 
 `switch` ケースは、合致した値を、ケースの `body` で使える変数や定数に代入することができます。この挙動は、値を変数や定数にバインドするので、値バインディング(*value binding*)と呼ばれています。
 
-下記の例では、`(Int, Int`)型のタプルとして `(x, y)` 座標を受け取り、グラフに分類しています。
+下記の例では、`(Int, Int`)型のタプルとして `(x, y)` 座標を受け取り、グラフに分布しています。
 
 ```swift
 let anotherPoint = (2, 0)
@@ -434,17 +434,44 @@ case let (x, y):
 // Prints "on the x-axis with an x value of 2"
 ```
 
-![switch tuple](./../.gitbook/assets/coordinategraphmedium_2x.png)
+![switchタプルの例のグラフ](./../.gitbook/assets/coordinategraphmedium_2x.png)
 
 `switch` 文は、座標がが赤い x 軸上にあるか、オレンジ色の y 軸上にあるか、または他の場所（どちらの軸上にもない）にあるかを判別します。
 
-この 3 つの `switch` ケースは、`anotherPoint` から 1 つまたは両方のタプルの値を、プレースホルダーとして定数 `x` と `y` を宣言しています。最初のケース `case (let x, 0)` は、`y` は 0 で、座標 `x` の値を定数 `x` に代入した任意の値に合致します。同様に、2 番目のケース `case (0, let y)` は、`x` は 0 で、座標 `y` の値を定数 `y` に代入した任意の値に合致します。
+この 3 つの `switch` ケースは、`anotherPoint` から 1 つまたは両方のタプルの値を、プレースホルダー定数 `x` と `y` として宣言しています。最初のケース `case (let x, 0)` は、`y` は 0 で、座標 `x` の値を定数 `x` に代入した任意の値に合致します。同様に、2 番目のケース `case (0, let y)` は、`x` は 0 で、座標 `y` の値を定数 `y` に代入した任意の値に合致します。
 
 定数は、そのケースのブロック内で使用することができます。ここでは、座標の分類を出力するために使われています。
 
 `switch` 文は、`default` のケースが必ず必要な訳ではありません。最後のケース `case let (x, y)` は、どんな値にも合致する 2 つのプレースホルダとして定数を宣言しています。`anotherPoint` は、常に 2 つの値を持つタプルなので、このケースで、先の 2 つのケース以外の全ての値に合致するため、`switch` 文で全ての値を網羅するための `default` ケースは不要です。
 
 #### Where
+
+---
+
+`switch` 文は、追加条件として `where` 句を使うことができます。
+
+下記の例では、`(x, y)` 座標を受け取り、グラフに分布しています。
+
+```swift
+let yetAnotherPoint = (1, -1)
+switch yetAnotherPoint {
+case let (x, y) where x == y:
+    print("(\(x), \(y)) is on the line x == y")
+case let (x, y) where x == -y:
+    print("(\(x), \(y)) is on the line x == -y")
+case let (x, y):
+    print("(\(x), \(y)) is just some arbitrary point")
+}
+// Prints "(1, -1) is on the line x == -y"
+```
+
+![switch whereの例のグラフ](./../.gitbook/assets/coordinategraphcomplex_2x.png)
+
+`switch` 文は、座標が `x == y` の場合は緑色の対角線上にあるか、`x == -y` の場合は紫色の対角線上にあるか、またはどちらでもないかを判別します。
+
+この 3 つの `switch` ケースは、`yetAnotherPoint` から 1 つまたは両方のタプルの値を、プレースホルダー定数 `x` と `y` として宣言しています。これらの定数は `where` 句の一部で使われており、動的なフィルターを作成しています。`switch` ケースには、`point` の現在値が `where` の条件で `true` になった場合のみ合致します。
+
+最後のケースは、先の 2 つのケース以外の全ての値に合致するため、`switch` 文で全ての値を網羅するための `default` ケースは不要です。
 
 #### Compound Cases
 
