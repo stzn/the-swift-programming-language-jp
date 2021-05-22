@@ -524,6 +524,26 @@ default:
 
 ### Continue
 
+`continue` 文は、全ループで実行中のループを止めて、次のループの最初から処理を開始します。つまり、ループを抜けることなく「今のループを完了します」と伝えます。
+
+次の例は、全ての母音とスペースを小文字の文字列から除いて、暗号パズルフレーズを作成しています:
+
+```swift
+let puzzleInput = "great minds think alike"
+var puzzleOutput = ""
+let charactersToRemove: [Character] = ["a", "e", "i", "o", "u", " "]
+for character in puzzleInput {
+    if charactersToRemove.contains(character) {
+        continue
+    }
+    puzzleOutput.append(character)
+}
+print(puzzleOutput)
+// Prints "grtmndsthnklk"
+```
+
+上記のコードは、母音かスペースの場合に即座に現在のループを終了し、次のループの開始に移動するように `continue` キーワードを使っています。
+
 ### Break
 
 #### Break in a Loop Statement
