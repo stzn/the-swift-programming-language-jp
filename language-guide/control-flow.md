@@ -556,6 +556,44 @@ print(puzzleOutput)
 
 #### Break in a Switch Statement
 
+---
+
+`switch` 文の内部で使う時、`break` は `switch` の実行を即座に終了し、`switch` の末尾の閉じかっこ(`}`)の後へ制御フローを移します。`switch` 文は網羅的で空のケースが許されないため、明示的に何もしないことを伝えるために、わざと合致させて無視する時に必要になります。無視したいケースの `body` に `break` のみを書きます。そのケースに合致した場合、ケース内の `break` が `switch` 文全体の実行を即時に終了されます。
+
+> NOTE  
+> コメントだけを含めた `switch` ケースは、コンパイルエラーになります。コメントは文ではなく、`switch` ケースを無視することができません。`switch` ケースを無視するには `break` を常に使います。
+
+次の例では、`Character` 型の値が、4 つの言語の 1 つの番号記号に合致するかどうかを判定しています。簡潔にするために、複数の値を 1 つの `switch` ケースでカバーしています。
+
+```swift
+let numberSymbol: Character = "三"  // 中国語の数字 3
+var possibleIntegerValue: Int?
+switch numberSymbol {
+case "1", "١", "一", "๑":
+    possibleIntegerValue = 1
+case "2", "٢", "二", "๒":
+    possibleIntegerValue = 2
+case "3", "٣", "三", "๓":
+    possibleIntegerValue = 3
+case "4", "٤", "四", "๔":
+    possibleIntegerValue = 4
+default:
+    break
+}
+if let integerValue = possibleIntegerValue {
+    print("The integer value of \(numberSymbol) is \(integerValue).")
+} else {
+    print("An integer value couldn't be found for \(numberSymbol).")
+}
+// Prints "The integer value of 三 is 3."
+```
+
+この例では、`numberSymbol` が `1`〜`4` のラテン語、アラビア語、中国語、タイ語に合致するかどうかをチェックしています。合致した場合、各ケースは、`Int?` の `possibleIntegerValue` 変数に適切な数字を設定しています。
+
+`switch` 文の実行完了後、この例では値が見つかったかどうかを判定するのに、 optional バインディングを使用しています。`possibleIntegerValue` 変数は、optional 型の性質上、`nil` が暗黙的に初期値になります。`switch` の最初の 4 つのケースで値 `possibleIntegerValue` に値が設定された場合のみ、optional バインディングは成功します。
+
+上記の例で `Character` 型の値を全部羅列することは現実的ではないので、`default` ケースで合致しない全ての値を処理します。`default` ケースでは、何も必要がないので、`body` には `break` のみを記載しています。`default` ケースが合致すると、`break` 文は `switch` 文を終了させ、`if let` からコードを継続します。
+
 ### Fallthrough
 
 ### Labeled Statements
