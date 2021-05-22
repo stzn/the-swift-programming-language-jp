@@ -512,6 +512,16 @@ default:
 
 ## Control Transfer Statements
 
+制御転送文(*Control Transfer Statements*)は、コードの一部の制御を他の部分へ移動させることで、コードの実行順序を変更します。Swift は 5 つの制御転送文があります:
+
+* `continue`
+* `break`
+* `fallthrough`
+* `return`
+* `throw`
+
+`continue`、`break` と `fallthrough` は下記に記載しています。`return` は[Functions](./functions.md)、`throw` は[Propagating Errors Using Throwing Functions](./error-handling.md#propagating-errors-using-throwing-functions)に記載しています。
+
 ### Continue
 
 ### Break
