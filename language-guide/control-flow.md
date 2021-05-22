@@ -475,6 +475,41 @@ case let (x, y):
 
 #### Compound Cases
 
+---
+
+各ケースをカンマ(`,`)で区切って `case` の後に書くことで、同じ `body` を共有する複数のケースを書くことができます。その中の 1 つのケースに合致した場合に、合致したと見なされます。ケースのリストが長くなるような場合は、複数行にまたがって書くことができます。例えば:
+
+```swift
+let someCharacter: Character = "e"
+switch someCharacter {
+case "a", "e", "i", "o", "u":
+    print("\(someCharacter) is a vowel")
+case "b", "c", "d", "f", "g", "h", "j", "k", "l", "m",
+     "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z":
+    print("\(someCharacter) is a consonant")
+default:
+    print("\(someCharacter) isn't a vowel or a consonant")
+}
+// Prints "e is a vowel"
+```
+
+最初のケースは英語の小文字の母音全てに合致します。同様に、2 番目のケースは英語の子音全てに合致します。`default` は他の全ての文字に合致します。
+
+複合ケースは、値バインディング(*value binding*)を含めることもできます。複合ケース内のすべてのパターンには、同じ値バインディングのセットが含まれている必要があり、各バインディングは、すべてのパターンから同じ型の値を取得する必要があります。こうすることで、複合ケース内のどのパターンでも、`body` 内でバインディングされた値にアクセスすることができ、型も常に同じことが保証できます。
+
+```swift
+let stillAnotherPoint = (9, 0)
+switch stillAnotherPoint {
+case (let distance, 0), (0, let distance):
+    print("On an axis, \(distance) from the origin")
+default:
+    print("Not on an axis")
+}
+// Prints "On an axis, 9 from the origin"
+```
+
+上記の `case` では 2 つのパターンを含んでいます: `(let distance, 0)` は x 軸上にある点に合致し、 `(0, let distance)` は y 軸上にある点に合致します。どちらのパターンでも、`distance` へのバインディングが含まれており、どちらも数値です。つまり、`case` 内では常に `distance` にアクセスできます。
+
 ## Control Transfer Statements
 
 ### Continue
