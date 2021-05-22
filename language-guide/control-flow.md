@@ -546,7 +546,13 @@ print(puzzleOutput)
 
 ### Break
 
+`break` 文は、即座に全体の制御フローの実行を終了させます。`break` は、`switch` 文かループ文の内部で、他のケースよりも早期に処理の実行を終了させたい時に使います。
+
 #### Break in a Loop Statement
+
+---
+
+
 
 #### Break in a Switch Statement
 
