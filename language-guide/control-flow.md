@@ -687,4 +687,36 @@ print("Game over!")
 
 ## Early Exit
 
+`guard` 文は `if` 文と同様に式のブール値によって文を実行します。`guard` 文は、`guard` の後のコードを実行するために、 `guard` の条件が `true` でなければならない場合に使います。`if` 文と異なり、`guard` 文は常に `else` 句が必要で、条件が `false` の場合に `else` 内は実行されます。
+
+```swift
+func greet(person: [String: String]) {
+    guard let name = person["name"] else {
+        return
+    }
+
+    print("Hello \(name)!")
+
+    guard let location = person["location"] else {
+        print("I hope the weather is nice near you.")
+        return
+    }
+
+    print("I hope the weather is nice in \(location).")
+}
+
+greet(person: ["name": "John"])
+// Prints "Hello John!"
+// Prints "I hope the weather is nice near you."
+greet(person: ["name": "Jane", "location": "Cupertino"])
+// Prints "Hello Jane!"
+// Prints "I hope the weather is nice in Cupertino."
+```
+
+`guard` 文の条件を満たした場合、`guard` の閉じかっこ(`}`)以降のコードを続けて実行します。条件の一部として optional バインディングに使われている変数や定数は、`guard` の後のコードで利用できるようになります。
+
+条件を満たさない場合、`else` 句の内部を実行します。この分岐内では、`guard` 文のあるコードブロックを抜けために制御を他へ転送させなければなりません。これは、`return`、`break`、`continue` や `throw` といった制御転送文を使うことができます。あるいは、`fatalError(_:file:line:)` のように値を返さない関数やメソッドを呼びます。
+
+`guard` 文を必須条件に使うことで、`if` 文で同じことを行うよりも可読性を改善させることができます。概ね `else` ブロックで包むことなくコードを書くことができたり、必須条件のすぐ下で条件を満たさないケースを処理することができます。
+
 ## Checking API Availability
