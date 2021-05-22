@@ -596,6 +596,29 @@ if let integerValue = possibleIntegerValue {
 
 ### Fallthrough
 
+Swift の `switch` 文は、各ケースの底から次のケースで通り抜ける(*fall through*する)ことはしません。つまり、最初に合致したケースが完了したらすぐに `switch` 文全体の実行が終了します。逆に、C 言語の `switch` 文では、各ケースへ通り抜けることを防ぐために、明示的に `break` を各ケースの末尾に書かなければなりません。デフォルトで通り抜けないことで、C 言語とは反対に、Swift の `switch` 文は、より簡潔で挙動が予測しやすくなっています。間違って複数のケースを実行することを防ぎます。
+
+もし C 言語のような通り抜け(*fallthrough*)が必要な場合は、`fallthrough` キーワードを使って場合ごとに設定することができます。下記の例では、`fallthrough` を使って数値のテキストによる説明を作成します。
+
+```swift
+let integerToDescribe = 5
+var description = "The number \(integerToDescribe) is"
+switch integerToDescribe {
+case 2, 3, 5, 7, 11, 13, 17, 19:
+    description += " a prime number, and also"
+    fallthrough
+default:
+    description += " an integer."
+}
+print(description)
+// Prints "The number 5 is a prime number, and also an integer."
+```
+
+この例では、`description` という新しい `String` 変数を宣言して、初期値を設定しています。この関数は `switch` 文で `integerToDescribe` を検討しています。`integerToDescribe` がリストの素数の 1 つの場合、この関数は `description` の末尾に、数字が素数なことを説明したテキストを追加します。`default` ケースにも「落ちる」ように、`fallthrough` キーワードを使っています。`default` ケースでは、説明の末尾に追加のテキストを追加して `switch` 文は完了します。数字の説明は、`print(_:separator:terminator:)` 関数を使って出力されています。この例では、素数として 5 が適切に特定されています。
+
+> NOTE  
+> fallthrough キーワードは、前のケースから落ちて実行されたケースの条件をチェックしません。fallthrough キーワードは次のケース(または `default` ケース)のブロック内の文に直接移動し、コードを実行します。これはC 言語と同じ挙動です。
+
 ### Labeled Statements
 
 ## Early Exit
