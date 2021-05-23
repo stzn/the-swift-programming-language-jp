@@ -102,7 +102,7 @@ greet(person: "Dave")
 // Prints "Hello, Dave!"
 ```
 
-値を返す必要がないため、関数の定義には戻り値を示す矢印(`->`)や戻り値の型は含まれていません。
+値を返す必要がないため、関数の定義には戻り矢印(`->`)や戻り値の型は含まれていません。
 
 > NOTE  
 > 厳密に言えば、`greet(person:)` は、戻り値が定義されていなくても、値を返してます。 戻り型が定義されていない関数は、`Void` 型の特別な値を返します。 これは単に `（）` と書く空のタプルです。
@@ -434,5 +434,44 @@ printMathResult(addTwoInts, 3, 5)
 `printMathResult(_:_:_:)` の役割は、適切な型の数学関数の結果を出力することです。その関数が実際に何をするかは重要ではありません。関数が正しい型なことが重要です。これにより、`printMathResult(_:_:_:)` は、その機能の一部を関数の呼び出し元に型安全な方法で渡すことができます。
 
 ### Function Types as Return Types
+
+関数型を別の関数の戻り型として使用できます。 これを行うには、戻り関数の戻り矢印(`->`)の直後に完全な関数型を書きます。
+
+次の例では、`stepForward(_:)` と `stepBackward(_:)` という 2 つのシンプルな関数を定義します。`stepForward(_:)` 関数は、入力値より 1 つ大きい値を返し、`stepBackward(_:)` 関数は、入力値より 1 つ小さい値を返します。両方の関数の型は `(Int) -> Int` です:
+
+```swift
+func stepForward(_ input: Int) -> Int {
+    return input + 1
+}
+func stepBackward(_ input: Int) -> Int {
+    return input - 1
+}
+```
+
+これが `chooseStepFunction(backward:)` という関数で、その戻り値の型は `(Int) -> Int` です。`chooseStepFunction(backward:)` 関数は、`backward` と呼ばれるブール値に基づいて `stepForward(_:)` または `stepBackward(_:)` を返します。
+
+```swift
+var currentValue = 3
+let moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
+// moveNearerToZero は stepBackward() 関数を参照しています
+```
+
+上記の例では、`currentValue` という変数を徐々にゼロに近づけるために正または負のステップが必要かどうかを判断します。 `currentValue` の初期値は `3` です。これは、`currentValue > 0` が `true` を返し、`chooseStepFunction(backward:)` が `stepBackward(_:)` 関数を返すことを意味します。返された関数への参照は、`moveNearerToZero` という定数に格納されます。
+
+`moveNearerToZero` が適切な関数を参照しているので、ゼロまでカウントできます:
+
+```swift
+print("Counting to zero:")
+// 0 までカウントします:
+while currentValue != 0 {
+    print("\(currentValue)... ")
+    currentValue = moveNearerToZero(currentValue)
+}
+print("zero!")
+// 3...
+// 2...
+// 1...
+// zero!
+```
 
 ## Nested Functions
