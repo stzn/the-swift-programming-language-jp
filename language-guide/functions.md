@@ -319,7 +319,7 @@ arithmeticMean(3, 8.25, 18.75)
 
 関数の引数はデフォルトで定数です。関数の本文から引数の値を変更しようとすると、コンパイルエラーが発生します。 つまり、誤って引数の値を変更することはできません。関数で引数の値を変更する必要があり、関数呼び出しが終了した後もそれらの変更を保持したい場合は、代わりに `in-out` 引数として定義します。
 
-引数のタイプの直前に `inout` キーワードを配置することにより、in-out 引数を書きます。 in-out 引数に渡された値は、関数に渡され、変更され、元の値を置き換えて、関数から戻ってきます。in-out 引数の動作および関連するコンパイラの最適化の詳細については、[In-Out Parameters](./../language-reference/declarations.md#in-out-parameters)を参照ください。
+引数の型の直前に `inout` キーワードを配置することにより、in-out 引数を書きます。 in-out 引数に渡された値は、関数に渡され、変更され、元の値を置き換えて、関数から戻ってきます。in-out 引数の動作および関連するコンパイラの最適化の詳細については、[In-Out Parameters](./../language-reference/declarations.md#in-out-parameters)を参照ください。
 
 in-out 引数には、変数のみ渡すことができます。 定数とリテラルは変更できないため、渡すことはできません。変数を in-out 引数として渡すときは、変数名の直前にアンパサンド(`&`)を付けて、関数で値が変更される可能性があることを示します。
 
@@ -370,7 +370,7 @@ func multiplyTwoInts(_ a: Int, _ b: Int) -> Int {
 
 この例では、`addTwoInts` および `multiplyTwoInts` と呼ばれる 2 つのシンプルな数学関数を定義します。これらの関数はそれぞれ 2 つの `Int` 値を取り、適切な数学演算を実行した結果の `Int` 値を返します。
 
-これらの関数の両方のタイプは、`(Int, Int) -> Int` です。 これは次のように読むことができます:
+これらの関数の両方の型は、`(Int, Int) -> Int` です。これは次のように読むことができます:
 
 「両方とも `Int` 型の 2 つの引数を持ち、`Int` 型の値を返す関数です」
 
@@ -385,6 +385,33 @@ func printHelloWorld() {
 この関数の型は、`() -> Void` で「引数を持たず、`Void` を返す関数」です。
 
 ### Using Function Types
+
+Swift の他の型と同じように関数型を使用します。 例えば、定数または変数を関数型として定義し、その変数に適切な関数を代入することができます:
+
+```swift
+var mathFunction: (Int, Int) -> Int = addTwoInts
+```
+
+これは次のように読むことができます:
+
+「"2 つの `Int` 値を取り、`Int` 値を返す関数"の型を持つ `mathFunction` という変数を定義します。この新しい変数を、`addTwoInts` という関数を参照するように設定します」
+
+`addTwoInts(_:_:)` 関数は `mathFunction` 変数と同じ型なため、この代入は Swift の型チェックを通ります。
+
+これで、代入した関数を `mathFunction` という名前で呼び出すことができます。
+
+```swift
+mathFunction = multiplyTwoInts
+print("Result: \(mathFunction(2, 3))")
+// Prints "Result: 6"
+```
+
+他の型と同様に、定数または変数に関数を代入するときに、関数型を型推論することができます。
+
+```swift
+let anotherMathFunction = addTwoInts
+// anotherMathFunction は (Int, Int) -> Int と推論されます。
+```
 
 ### Function Types as Parameter Types
 
