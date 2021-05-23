@@ -98,6 +98,14 @@ reversedNames = names.sorted(by: { s1, s2 in return s1 > s2 } )
 
 ### Implicit Returns from Single-Expression Closures
 
+上記の例のように、単一式のクロージャは、宣言から `return` キーワードを省略して結果を暗黙的に返すことができます。
+
+```swift
+reversedNames = names.sorted(by: { s1, s2 in s1 > s2 } )
+```
+
+ここで、`sorted(by:)` メソッドの引数の関数型は、`Bool` 値がクロージャによって返される必要があることを明確にしています。 クロージャの本文は、ブール値を返す単一の式(`s1 > s2`)のため、あいまいさはなく、`return` キーワードは省略できます。
+
 ### Shorthand Argument Names
 
 ### Operator Methods
