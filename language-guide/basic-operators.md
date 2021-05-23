@@ -4,7 +4,7 @@
 
 演算子\(_operator_\)は、値のチェックや変更、合成するために使われる特殊なシンボルや用語です。例えば、加算演算子\(`+`\)は `let i = 1 + 2` のように 2 つの数値を足します。論理 AND 演算子\(&&\)は、`if enteredDoorCode && passedRetinaScan` のように 2 つのブール値を組み合わせます。
 
-Swift は、C 言語のような他の言語でおそらく見たことがある演算子をサポートするのに加え、よく起きるコーディング中のエラーを排除するために改良を加えています。代入演算子\(`=`\)は、本当は等価演算子\(`==`\)を使おうと思っていた所へ間違って代入演算子を使えないようにするために、値を返さないようにしています。算術演算子\(`+`, `-`, `*`, `/`, `%` など\)は、保持している値の型の許容範囲を超えて予期せぬ結果が起きることを防ぐために、オーバーフローを検知して発生しないようにしています。Swift のオーバーフロー演算子を使うことで、オーバーフローに対する挙動を変えることもできます。詳細は[Overflow Operators](advanced-operators.md#overflow-operators)に記載しています。
+Swift は、C 言語のような他の言語でおそらく見たことがある演算子をサポートするのに加え、よく起きるコーディング中のエラーを排除するために改良を加えています。代入演算子\(`=`\)は、本当は等価演算子\(`==`\)を使おうと思っていた所へ間違って代入演算子を使えないようにするために、値を返さないようにしています。算術演算子\(`+`, `-`, `*`, `/`, `%` など\)は、保持している値の型の許容範囲を超えて予期せぬ結果が起きることを防ぐために、オーバーフローを検知して発生しないようにしています。Swift のオーバーフロー演算子を使用することで、オーバーフローに対する挙動を変えることもできます。詳細は[Overflow Operators](advanced-operators.md#overflow-operators)に記載しています。
 
 また、C 言語にはなかった `a..<b` や `a...b` のような値の範囲を簡単に表すための範囲演算子も提供しています。
 
@@ -46,7 +46,7 @@ if x = y {
 }
 ```
 
-この特徴から代入演算子\(`=`\)を等価演算子\(`==`\)と間違えて使うことを防げます。上記の例では、`if x = y` はコンパイルエラーになります。
+この特徴から代入演算子\(`=`\)を等価演算子\(`==`\)と間違えて使用することを防げます。上記の例では、`if x = y` はコンパイルエラーになります。
 
 ## Arithmetic Operators
 
@@ -136,7 +136,7 @@ let minusSix = -6
 let alsoMinusSix = +minusSix  // alsoMinusSix は -6
 ```
 
-単項プラス演算子は何もしませんが、負数に単項マイナス演算子使用している場合、その対称として正数に単項プラス演算子を使うこともできます。
+単項プラス演算子は何もしませんが、負数に単項マイナス演算子使用している場合、その対称として正数に単項プラス演算子を使用することもできます。
 
 ## Compound Assignment Operators
 
@@ -278,7 +278,7 @@ var colorNameToUse = userDefinedColorName ?? defaultColorName
 // userDefinedColorName が nil なので、 colorNameToUse にデフォルトの"red"が設定されます
 ```
 
-`userDefinedColorName` は、optional の `String` として定義され、デフォルトは `nil` です。`userDefinedColorName` は optional 型なので、その値を検討するために、Nil 結合演算子を使うことができます。上記の例では、`colorNameToUse` という `String` 型の変数の初期値を決めるために Nil 結合演算子を使用しています。`userDefinedColorName` は `nil` なので、式 `userDefinedColorName ?? defaultColorName` は、`defaultColorName`、つまり `"red"` を返します。
+`userDefinedColorName` は、optional の `String` として定義され、デフォルトは `nil` です。`userDefinedColorName` は optional 型なので、その値を検討するために、Nil 結合演算子を使用することができます。上記の例では、`colorNameToUse` という `String` 型の変数の初期値を決めるために Nil 結合演算子を使用しています。`userDefinedColorName` は `nil` なので、式 `userDefinedColorName ?? defaultColorName` は、`defaultColorName`、つまり `"red"` を返します。
 
 もし `userDefinedColorName` に `nil` 以外が代入されていて Nil 結合演算子でチェックを行った場合、`userDefinedColorName` が内包する値がデフォルトの代わりに使われます:
 
@@ -360,7 +360,7 @@ for name in names[..<2] {
 // Alex
 ```
 
-片側範囲は、subscripts 以外の他の文脈でも使うことができます。最初の値を省略した片側範囲を繰り返し処理に利用することはできません。どこから繰り返しを始めて良いかがわからないからです。一方で最後の値を省略した片側範囲を繰り返し処理に利用することはできます。しかし、範囲は無限に続くので、ループの中での終了条件を明示的に設定していることを確かめましょう。片側範囲にある値が含まれているかどうかのチェックもできます。下記に例を示します:
+片側範囲は、subscripts 以外の他の文脈でも使用することができます。最初の値を省略した片側範囲を繰り返し処理に利用することはできません。どこから繰り返しを始めて良いかがわからないからです。一方で最後の値を省略した片側範囲を繰り返し処理に利用することはできます。しかし、範囲は無限に続くので、ループの中での終了条件を明示的に設定していることを確かめましょう。片側範囲にある値が含まれているかどうかのチェックもできます。下記に例を示します:
 
 ```swift
 let range = ...5
@@ -457,7 +457,7 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 
 ### Explicit Parentheses
 
-厳密には必要ありませんが、複雑な式の意図を分かりやすくするために、かっこ\(`()`\)を使うと有用な時があります。ドアへのアクセスの例では、意図を明確にするために、複合式の最初の部分にかっこを追加すると役に立ちます。
+厳密には必要ありませんが、複雑な式の意図を分かりやすくするために、かっこ\(`()`\)を使用すると有用な時があります。ドアへのアクセスの例では、意図を明確にするために、複合式の最初の部分にかっこを追加すると役に立ちます。
 
 ```swift
 if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword {

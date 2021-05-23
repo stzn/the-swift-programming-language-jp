@@ -14,7 +14,7 @@ print("Hello, world!")
 このツアーでは、様々なプログラム上のタスクを遂行する方法を示すことで、Swift でコードを書き始めるために必要十分な情報を提供します。もし理解できなくても心配しないでください。このツアーで紹介することは全て、この本で後々詳細に説明しています。
 
 > NOTE  
-> より理解を深めるために、Xcode でこのチャプターを開いて遊んでみましょう。Playgrounds を使うと、コードを編集して結果をすぐに確認することができます。
+> より理解を深めるために、Xcode でこのチャプターを開いて遊んでみましょう。Playgrounds を使用すると、コードを編集して結果をすぐに確認することができます。
 >
 > [Download Playground](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.playground.zip)
 
@@ -178,7 +178,7 @@ default:
 
 パターンに合った switch case 内のコードが実行された後、プログラムは switch ステートメントから抜け出します。次の case は実行されないので、各 case の最後に明示的に break を書く必要はありません。
 
-`for-in` を使うことで Dictionary のそれぞれの要素の key-value ペアを受け取って、Dictionary 内のアイテムを反復処理をすることができます。Dictionary は順序のないコレクションなので、key-value ペアの受け取る順序は決まっていません。
+`for-in` を使用することで Dictionary のそれぞれの要素の key-value ペアを受け取って、Dictionary 内のアイテムを反復処理をすることができます。Dictionary は順序のないコレクションなので、key-value ペアの受け取る順序は決まっていません。
 
 ```swift
 let interestingNumbers = [
@@ -201,7 +201,7 @@ print(largest)
 > Experiment  
 > \_ を変数の名前に置き換えてみて、どの種類の値が最大だったかを追ってみましょう。
 
-`while` を使うことで条件が変わるまで、ブロック内のコードを反復して実行できます。ループの条件を最後に置くことで、ループ内のブロックが少なくとも 1 回実行されるようにすることができます。
+`while` を使用することで条件が変わるまで、ブロック内のコードを反復して実行できます。ループの条件を最後に置くことで、ループ内のブロックが少なくとも 1 回実行されるようにすることができます。
 
 ```swift
 var n = 2
@@ -219,7 +219,7 @@ print(m)
 // Prints "128"
 ```
 
-`..<` を使うと、index の range を生成でき、ループの index を追うことができます。
+`..<` を使用すると、index の range を生成でき、ループの index を追うことができます。
 
 ```swift
 var total = 0
@@ -272,7 +272,7 @@ print(statistics.2)
 // Prints "120"
 ```
 
-関数はネストして使うことができます。ネストした関数は、外側で定義された変数にアクセスすることができます。ネスト関数を使うことで、長くて複雑な関数を整理することができます。
+関数はネストして使用することができます。ネストした関数は、外側で定義された変数にアクセスすることができます。ネスト関数を使用することで、長くて複雑な関数を整理することができます。
 
 ```swift
 func returnFifteen() -> Int {
@@ -521,7 +521,7 @@ let aceRawValue = ace.rawValue
 > Experiment  
 > 2つの `Rank` の raw value を比較して `Rank` を比較するメソッドを追加してみましょう。
 
-デフォルトで、Swift は 0 から 1 つずつ増加する値を raw value に設定しますが、明示的に値を指定してこの挙動を変更することもできます。上記の例では、`Ace` は明示的に 1 を raw value に指定しており、残りは、1 から順番に raw value が指定されます。文字列や浮動小数点も使うことができます。列挙型の個々の case の raw value には、 `rawValue` プロパティからアクセスすることができます。
+デフォルトで、Swift は 0 から 1 つずつ増加する値を raw value に設定しますが、明示的に値を指定してこの挙動を変更することもできます。上記の例では、`Ace` は明示的に 1 を raw value に指定しており、残りは、1 から順番に raw value が指定されます。文字列や浮動小数点も使用することができます。列挙型の個々の case の raw value には、 `rawValue` プロパティからアクセスすることができます。
 
 raw value から列挙型のインスタンスを生成するためには `init?(rawValue:)` イニシャライザを使います。raw value に合致した case を返すか、合致するものがない場合は `nil` を返します。
 
@@ -660,7 +660,7 @@ print(7.simpleDescription)
 > Experiment  
 > `absoluteValue` プロパティを `Double` に追加する extension を書いてみましょう。
 
-protocol の名前は他の名前が付いた型と同じように使うことができます。例えば、同じ 1 つの protocol に適合した異なる型のオブジェクトのコレクションを作成することができます。protocol 自体の型の値を扱っている場合、protocol 外側で定義されたメソッドを使うことはできません。
+protocol の名前は他の名前が付いた型と同じように使用することができます。例えば、同じ 1 つの protocol に適合した異なる型のオブジェクトのコレクションを作成することができます。protocol 自体の型の値を扱っている場合、protocol 外側で定義されたメソッドを使用することはできません。
 
 ```swift
 let protocolValue: ExampleProtocol = a
@@ -683,7 +683,7 @@ enum PrinterError: Error {
 }
 ```
 
-関数に `throws` を付け、エラーを throw する箇所に `throw` を使うことでエラーを throw することができます。関数内でエラーを throw すると、関数がすぐにリターンして、その関数を呼んだ関数でエラーを処理します。
+関数に `throws` を付け、エラーを throw する箇所に `throw` を使用することでエラーを throw することができます。関数内でエラーを throw すると、関数がすぐにリターンして、その関数を呼んだ関数でエラーを処理します。
 
 ```swift
 func send(job: Int, toPrinter printerName: String) throws -> String {
@@ -694,7 +694,7 @@ func send(job: Int, toPrinter printerName: String) throws -> String {
 }
 ```
 
-エラーを処理する方法は様々あります。1 つは `do-catch` を使うことです。`do` ブロックの中では、エラーを throw する可能性がある箇所の前に `try` を付けるます。`catch` ブロックの中では、明示的に異なる名前を設定しない限り、`error` という名前で自動的にエラー情報が与えられます。
+エラーを処理する方法は様々あります。1 つは `do-catch` を使用することです。`do` ブロックの中では、エラーを throw する可能性がある箇所の前に `try` を付けるます。`catch` ブロックの中では、明示的に異なる名前を設定しない限り、`error` という名前で自動的にエラー情報が与えられます。
 
 ```swift
 do {

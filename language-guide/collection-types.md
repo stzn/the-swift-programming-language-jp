@@ -138,7 +138,7 @@ shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
 // shoppingList は 7 つのアイテムを含んでいます
 ```
 
-`subscript` シンタックスを使うと、配列から値を取得します。配列名のすぐ後の角括弧\(`[]`\)の中に、取得したい値の index を渡します。
+`subscript` シンタックスを使用すると、配列から値を取得します。配列名のすぐ後の角括弧\(`[]`\)の中に、取得したい値の index を渡します。
 
 ```swift
 var firstItem = shoppingList[0]
@@ -155,9 +155,9 @@ shoppingList[0] = "Six eggs"
 // リストの最初のアイテムは "Eggs" ではなく、 "Six eggs"
 ```
 
-`subscript` シンタックスを使う時、指定した index は値の存在する範囲内でなければなりません。例えば、配列の最後に値を追加しようとして `shoppingList[shoppingList.count] = "Salt"` と書くと、実行時エラーになります。
+`subscript` シンタックスを使用する時、指定した index は値の存在する範囲内でなければなりません。例えば、配列の最後に値を追加しようとして `shoppingList[shoppingList.count] = "Salt"` と書くと、実行時エラーになります。
 
-ある一定範囲の値を一度に変更する場合にも、`subscript` シンタックスを使うことができます。これは置き換えたい値のセットの数と指定した置き換える範囲の長さが異なっていても可能です。次の例は `"Chocolate Spread"`、`"Cheese"`、`"Butter"` を `"Bananas"`、`"Apples"` に置き換えています。
+ある一定範囲の値を一度に変更する場合にも、`subscript` シンタックスを使用することができます。これは置き換えたい値のセットの数と指定した置き換える範囲の長さが異なっていても可能です。次の例は `"Chocolate Spread"`、`"Cheese"`、`"Butter"` を `"Bananas"`、`"Apples"` に置き換えています。
 
 ```swift
 shoppingList[4...6] = ["Bananas", "Apples"]
@@ -234,7 +234,7 @@ for (index, value) in shoppingList.enumerated() {
 
 ## Sets
 
-セット\(_set_\)はコレクション内に、同じ型の値を、決まった順序と値の重複なしに保持します。アイテムの順序が重要でない場合や、アイテムに重複がないことを保証したい場合に、配列\(_array_\)の変わりにセットを使うことができます。
+セット\(_set_\)はコレクション内に、同じ型の値を、決まった順序と値の重複なしに保持します。アイテムの順序が重要でない場合や、アイテムに重複がないことを保証したい場合に、配列\(_array_\)の変わりにセットを使用することができます。
 
 > `Set` はFoundationの `NSSet` とスムーズにやりとりできるようにしています。  
 > FoundationとCocoaを使った `Set` の使用方法に関しては、[Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530)を参照ください
@@ -243,7 +243,7 @@ for (index, value) in shoppingList.enumerated() {
 
 セットに保存する型はハッシュ化が可能でなければなりません。つまり、その型はハッシュ値を計算する方法をセットに知らせる必要があります。ハッシュ値は、`Int` 型で、等価比較が可能なすべてのオブジェクトで、例えば `a == b` の場合、`a` のハッシュ値は `b` のハッシュ値と等しくなります。
 
-Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デフォルトでハッシュ化が可能で、セットや辞書のキーに使うことができます。associated value を持たない列挙型の case \([Enumerations](enumerations.md)\)もデフォルトでハッシュ化が可能です。
+Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デフォルトでハッシュ化が可能で、セットや辞書のキーに使用することができます。associated value を持たない列挙型の case \([Enumerations](enumerations.md)\)もデフォルトでハッシュ化が可能です。
 
 > NOTE  
 > Swift 標準ライブラリの `Hashable` プロトコルに適合することで、独自で作成した型をセットや辞書のキーに使用できます。`hash(into:)` メソッドの実装については、[Hashable](https://developer.apple.com/documentation/swift/hashable)を参照ください。プロトコルの適合については、[Protocols](protocols.md)を参照ください。
@@ -340,7 +340,7 @@ if let removedGenre = favoriteGenres.remove("Rock") {
 // Prints "Rock? I'm over it."
 ```
 
-特定のアイテムが含まれているかどうかを調べるには、`contains(_:)` メソッドを使うことができます。
+特定のアイテムが含まれているかどうかを調べるには、`contains(_:)` メソッドを使用することができます。
 
 ```swift
 if favoriteGenres.contains("Funk") {
@@ -366,7 +366,7 @@ for genre in favoriteGenres {
 
 `for-in` ループについては、[For-In Loops](control-flow.md#for-in-loops)をご参照ください。
 
-Swift の Set 型は決まった順序がありません。特定の順番で値を繰り返し処理したい場合、`sorted()` メソッドを使うと、`<` 演算子を使用してソートされた配列として要素を返します。
+Swift の Set 型は決まった順序がありません。特定の順番で値を繰り返し処理したい場合、`sorted()` メソッドを使用すると、`<` 演算子を使用してソートされた配列として要素を返します。
 
 ```swift
 for genre in favoriteGenres.sorted() {
@@ -540,7 +540,7 @@ shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
 // shoppingList は 7 つのアイテムを含んでいます
 ```
 
-`subscript` シンタックスを使うと、特定のキーのバリューを変更することもできます。
+`subscript` シンタックスを使用すると、特定のキーのバリューを変更することもできます。
 
 ```swift
 airports["LHR"] = "London Heathrow"

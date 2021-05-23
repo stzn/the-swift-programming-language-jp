@@ -14,7 +14,7 @@ Swift の `String` と `Character` 型は、高速で、Unicode に準拠した�
 
 ## String Literals
 
-事前に定義された `String` を文字列リテラル\(_string literals_\)として使うことができます。文字列リテラルはダブルクォテーション\(`"`\)で囲まれた一連の文字です。
+事前に定義された `String` を文字列リテラル\(_string literals_\)として使用することができます。文字列リテラルはダブルクォテーション\(`"`\)で囲まれた一連の文字です。
 
 ```swift
 let someString = "Some string literal value"
@@ -251,7 +251,7 @@ print(goodStart + end)
 
 ## String Interpolation
 
-文字列補間\(_String Interpolation_\)は、複数の定数、変数、リテラル、式を文字列リテラルの中に含めることで新しい `String` を構築する方法です。文字列補間は 1 行でも複数行でも使うことができます。文字列に入れるそれぞれの値は、両かっこで囲み、その前にバックスラッシュ\(\\)をつけます。
+文字列補間\(_String Interpolation_\)は、複数の定数、変数、リテラル、式を文字列リテラルの中に含めることで新しい `String` を構築する方法です。文字列補間は 1 行でも複数行でも使用することができます。文字列に入れるそれぞれの値は、両かっこで囲み、その前にバックスラッシュ\(\\)をつけます。
 
 ```swift
 let multiplier = 3
@@ -263,14 +263,14 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 
 `multiplier` は文字列の後半の大きな式の中でも使われています。この式は、`Double(multiplier) * 2.5` を計算して、その結果の\(`7.5`\)を文字列に挿入します。この場合、`\(Double(multiplier) * 2.5)` と書いて文字列リテラルに含まれます。
 
-文字列補間ではなく通常扱われる文字として文字列を生成したい場合、拡張区切り文字を使うことができます。例えば:
+文字列補間ではなく通常扱われる文字として文字列を生成したい場合、拡張区切り文字を使用することができます。例えば:
 
 ```swift
 print(#"Write an interpolated string in Swift using \(multiplier)."#)
 // Prints "Write an interpolated string in Swift using \(multiplier)."
 ```
 
-拡張区切り文字を使った文字列の中で文字列補間を使う場合、バックスラッシュの後の番号記号の数を文字列の開始\(終了\)の番号記号の数に合わせます。例えば:
+拡張区切り文字を使った文字列の中で文字列補間を使用する場合、バックスラッシュの後の番号記号の数を文字列の開始\(終了\)の番号記号の数に合わせます。例えば:
 
 ```swift
 print(#"6 times 7 is \#(6 * 7)."#)
@@ -352,7 +352,7 @@ print("the number of characters in \(word) is \(word.count)")
 ```
 
 > NOTE  
-> 拡張書記素クラスタは複数のUnicodeスカラを組み合わせることができます。つまり、異なった文字や、同じ文字でも、異なったスカラで表された文字はメモリ上に保持する際に異なったメモリサイズが必要になる場合があります。これは、Swift の文字は、それぞれの文字で同じメモリ量ではない、ということです。結果として、文字列内の文字を数えるには、拡張書記素クラスタの境界を判断しなければならず、文字列全体を繰り返し処理しないと計算することができません。特に長い文字列を扱っている場合は、`count` プロパティを使うと文字数をカウントするために文字列全体に繰り返し処理を行なっていることに気をつけてください。  
+> 拡張書記素クラスタは複数のUnicodeスカラを組み合わせることができます。つまり、異なった文字や、同じ文字でも、異なったスカラで表された文字はメモリ上に保持する際に異なったメモリサイズが必要になる場合があります。これは、Swift の文字は、それぞれの文字で同じメモリ量ではない、ということです。結果として、文字列内の文字を数えるには、拡張書記素クラスタの境界を判断しなければならず、文字列全体を繰り返し処理しないと計算することができません。特に長い文字列を扱っている場合は、`count` プロパティを使用すると文字数をカウントするために文字列全体に繰り返し処理を行なっていることに気をつけてください。  
 > `count` プロパティから返ってくる文字数は、同じ文字列であっても `NSString` の `length` と異なる場合があります。`NSString` の `length` は_UTF-16_での文字数カウントで、Unicode 拡張書記素クラスタでの数ではありません。
 
 ## Accessing and Modifying a String
@@ -401,7 +401,7 @@ for index in greeting.indices {
 ```
 
 > NOTE  
-> `Collection` プロトコルに適合したどんな型にも、`startIndex`、`endIndex` プロパティ、index\(before:\)、index\(after:\)、index\(\_:offsetBy:\)メソッドを使うことができます。これは、`Array`、 `Dictionary`、`Set` といったコレクションの型と同様に、今紹介している `String` も含んでいます。
+> `Collection` プロトコルに適合したどんな型にも、`startIndex`、`endIndex` プロパティ、index\(before:\)、index\(after:\)、index\(\_:offsetBy:\)メソッドを使用することができます。これは、`Array`、 `Dictionary`、`Set` といったコレクションの型と同様に、今紹介している `String` も含んでいます。
 
 ### Inserting and Removing
 
@@ -428,11 +428,11 @@ welcome.removeSubrange(range)
 ```
 
 > NOTE  
-> `RangeReplaceableCollection` プロトコルに適合したどんな型にも、insert\(_:at:\)、insert\(contentsOf:at:\)、remove\(at:\)、removeSubrange\(_:\)メソッドを使うことができます。これは、`Array`、 `Dictionary`、`Set` といったコレクションの型と同様に、今紹介している `String` も含んでいます。
+> `RangeReplaceableCollection` プロトコルに適合したどんな型にも、insert\(_:at:\)、insert\(contentsOf:at:\)、remove\(at:\)、removeSubrange\(_:\)メソッドを使用することができます。これは、`Array`、 `Dictionary`、`Set` といったコレクションの型と同様に、今紹介している `String` も含んでいます。
 
 ## Substrings
 
-文字列から部分文字列を取得したい場合\(例えば subscript や `prefix(_:)` などのメソッドを使うなど\)、[Substring](https://developer.apple.com/documentation/swift/substring)インスタンスが結果として取得できます。部分文字列には文字列とほぼ同じメソッドを使うことができます。つまり、部分文字列を文字列と同じような方法で扱うことができます。しかし、文字列とは異なり、部分文字列は、文字列に対して何かアクションを起こしているほんの短い間だけ使います。処理の結果をより長い期間保持する時は、部分文字列を `String` のインスタンスに変換します。例えば:
+文字列から部分文字列を取得したい場合\(例えば subscript や `prefix(_:)` などのメソッドを使用するなど\)、[Substring](https://developer.apple.com/documentation/swift/substring)インスタンスが結果として取得できます。部分文字列には文字列とほぼ同じメソッドを使用することができます。つまり、部分文字列を文字列と同じような方法で扱うことができます。しかし、文字列とは異なり、部分文字列は、文字列に対して何かアクションを起こしているほんの短い間だけ使います。処理の結果をより長い期間保持する時は、部分文字列を `String` のインスタンスに変換します。例えば:
 
 ```swift
 let greeting = "Hello, world!"
@@ -451,7 +451,7 @@ let newString = String(beginning)
 ![&#x6587;&#x5B57;&#x5217;&#x90E8;&#x5206;&#x6587;&#x5B57;&#x5217;&#x306E;&#x95A2;&#x4FC2;](../.gitbook/assets/stringsubstring_2x.png)
 
 > NOTE  
-> 文字列と部分文字列は、[StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol)に適合しています。つまり、文字列操作を行う関数は、_StringProtocol_の値を受け取るとしばしば便利なことがあります。文字列、部分文字列のどちらを使用しても、その関数を使うことができます。
+> 文字列と部分文字列は、[StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol)に適合しています。つまり、文字列操作を行う関数は、_StringProtocol_の値を受け取るとしばしば便利なことがあります。文字列、部分文字列のどちらを使用しても、その関数を使用することができます。
 
 ## Comparing Strings
 
