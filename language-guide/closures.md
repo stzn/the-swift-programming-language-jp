@@ -312,6 +312,23 @@ incrementByTen()
 
 ## Closures Are Reference Types
 
+上記の例では、`incrementBySeven` と `incrementByTen` は定数ですが、これらの定数が参照するクロージャは、関数とクロージャが参照型なので、キャプチャした `runningTotal` 変数をインクリメントできます。
+
+関数またはクロージャを定数または変数に代入するときはいつでも、実際にはその定数または変数を関数またはクロージャへの参照を設定しています。上記の例では、`incrementByTen` が参照するのはクロージャの選択で、クロージャ自体の内容ではありません。
+
+つまり、2 つの異なる定数または変数にクロージャを代入する場合、それらは同じクロージャを参照することを意味します。
+
+```swift
+let alsoIncrementByTen = incrementByTen
+alsoIncrementByTen()
+// 50 を返します
+
+incrementByTen()
+// 60 を返します
+```
+
+上記の例は、`alsoIncrementByTen` を呼び出すことは `incrementByTen` を呼び出すことと同じなを示しています。どちらも同じクロージャを参照しているため、両方ともインクリメントして同じ `runningTotal` を返します。
+
 ## Escaping Closures
 
 ## Autoclosures
