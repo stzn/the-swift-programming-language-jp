@@ -86,6 +86,16 @@ reversedNames = names.sorted(by: { (s1: String, s2: String) -> Bool in return s1
 
 ### Inferring Type From Context
 
+ソートクロージャは、引数としてメソッドに渡されるため、Swift はその引数の型と返す値の型を推測できます。`sorted(by:)` メソッドは、文字列の配列で呼び出されるため、その引数は `(String, String) -> Bool` 型の関数な必要があります。つまり、`(String, String)` 型と `Bool` 型は、クロージャ式に記述する必要はありません。全ての型を推測できるため、戻り矢印(`->`)と引数名を囲む括弧も省略できます。
+
+```swift
+reversedNames = names.sorted(by: { s1, s2 in return s1 > s2 } )
+```
+
+インラインクロージャ式としてクロージャを関数またはメソッドに渡す場合、引数型と戻り値の型を推測することは常に可能です。その結果、クロージャが関数またはメソッドの引数として使用される場合、完全な形式でインラインクロージャを記述する必要はありません。
+
+必要に応じて型を明示的にすることもできます。コードのあいまいさを回避できる場合は、そうすることをお勧めします。 `sorted(by:)` メソッドの場合、ソートが行われているという事実からクロージャの目的は明らかで、文字列の配列を扱っていることから、クロージャは `String` で機能していると読み手は容易に想定できます。
+
 ### Implicit Returns from Single-Expression Closures
 
 ### Shorthand Argument Names
