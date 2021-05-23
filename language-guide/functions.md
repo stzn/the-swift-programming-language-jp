@@ -203,6 +203,29 @@ if let bounds = minMax(array: [8, -6, 2, 109, 3, 71]) {
 
 ### Functions With an Implicit Return
 
+関数の本文全体が、単一の式の場合は、関数は暗黙的にその式の結果を返します。例えば、下記の両方の関数の動作は同じです:
+
+```swift
+func greeting(for person: String) -> String {
+    "Hello, " + person + "!"
+}
+print(greeting(for: "Dave"))
+// Prints "Hello, Dave!"
+
+func anotherGreeting(for person: String) -> String {
+    return "Hello, " + person + "!"
+}
+print(anotherGreeting(for: "Dave"))
+// Prints "Hello, Dave!"
+```
+
+`greeting(for:)` 関数の定義全体は、戻り値の挨拶文です。つまり、この短い形式を使用できます。`anotherGreeting(for:)` 関数は、より長い式を持つ関数と同様に `return` キーワードを使用して、同じ挨拶文を返しています。 1 つの戻り行として記述した関数は、`return` を省略できます。
+
+[Shorthand Getter Declaration](./properties.md#shorthand-getter-declaration)でも見ますが、プロパティゲッタ(*property getter*)でもは暗黙的な戻り値を使うことができます。
+
+> NOTE  
+> 暗黙の戻り値を使ったコードは、何かしらの値を返す必要があります。 例えば、 `fatalError("Oh no!")` または `print（13）` を暗黙の戻り値として使用することはできません。
+
 ## Function Argument Labels and Parameter Names
 
 ### Specifying Argument Labels
