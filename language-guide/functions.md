@@ -264,6 +264,18 @@ print(greet(person: "Bill", from: "Cupertino"))
 
 ### Omitting Argument Labels
 
+引数ラベルが必要ない場合は、その引数の明示的な引数ラベルの代わりにアンダースコア（`_`）を記述します。
+
+```swift
+func someFunction(_ firstParameterName: Int, secondParameterName: Int) {
+    // 関数の本文では、`firstParameterName`と`secondParameterName`は
+    // 最初と 2 番目の引数の値を参照します。
+}
+someFunction(1, secondParameterName: 2)
+```
+
+引数ラベルがある場合、関数を呼び出すときに引数にラベルを付ける必要があります。
+
 ### Default Parameter Values
 
 ### Variadic Parameters
