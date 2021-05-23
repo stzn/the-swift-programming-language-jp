@@ -120,6 +120,14 @@ reversedNames = names.sorted(by: { $0 > $1 } )
 
 ### Operator Methods
 
+実際には、上記のクロージャ式を記述するさらに短い方法があります。Swift の `String` 型は、大なり演算子（`>`）の文字列固有の実装を、`String` 型の 2 つの引数を持ち、`Bool` 型の値を返すメソッドとして定義しています。これは、`sorted(by:)` メソッドに必要なメソッド型と完全に一致します。したがって、`>` 演算子を渡すだけで、Swift は文字列固有の実装を使用していると推測します。
+
+```swift
+reversedNames = names.sorted(by: >)
+```
+
+演算子メソッドの詳細については、[Operator Methods](./advanced-operators.md#operator-methods)を参照ください。
+
 ## Trailing Closures
 
 ## Capturing Values
