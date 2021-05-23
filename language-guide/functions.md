@@ -10,7 +10,7 @@ Swift の統一された関数シンタックは、シンプルな C 言語ス�
 
 ## Defining and Calling Functions
 
-関数を定義する時、選択的に名前と型を持つ、パラメータと呼ばれる 1 つ以上のインプットを定義することができます。また、関数の完了後に呼び出し側に戻す、戻り値と呼ばれるアウトプットの値の型も選択的に定義できます。
+関数を定義する時、選択的に名前と型を持つ、引数と呼ばれる 1 つ以上のインプットを定義することができます。また、関数の完了後に呼び出し側に戻す、戻り値と呼ばれるアウトプットの値の型も選択的に定義できます。
 
 全ての関数は、関数が実行するタスクを説明する、関数名(*function name*)を持っています。関数を使うには、関数名と(引数と呼ばれる)インプット値と一緒に呼びます。引数には関数の型に合致した値を渡します。関数の引数は、関数の引数のリストと同じ順序で常に提供しなければなりません。
 
@@ -53,7 +53,7 @@ print(greetAgain(person: "Anna"))
 
 ## Function Parameters and Return Values
 
-Swift では、関数の引数と戻り値は非常に柔軟です。 名前のない単一のパラメーターを持つ単純な効用関数から、表現力豊かな引数名とさまざまな引数オプションを持つ複雑な関数まで、あらゆるものを定義できます。
+Swift では、関数の引数と戻り値は非常に柔軟です。 名前のない単一の引数ーを持つ単純な効用関数から、表現力豊かな引数名とさまざまな引数オプションを持つ複雑な関数まで、あらゆるものを定義できます。
 
 ### Functions Without Parameters
 
@@ -277,6 +277,19 @@ someFunction(1, secondParameterName: 2)
 引数ラベルがある場合、関数を呼び出すときに引数にラベルを付ける必要があります。
 
 ### Default Parameter Values
+
+引数の型の後に値を代入することで、関数内の任意の引数のデフォルト値を定義できます。 デフォルト値が定義されている場合は、関数を呼び出すときにその引数を省略できます。
+
+```swift
+func someFunction(parameterWithoutDefault: Int, parameterWithDefault: Int = 12) {
+    // 関数を呼び出すときに 2 番目の引数を省略した場合、
+    // `parameterWithDefault`の値は`12`になります。
+}
+someFunction(parameterWithoutDefault: 3, parameterWithDefault: 6) // `parameterWithDefault` は 6
+someFunction(parameterWithoutDefault: 4) // `parameterWithDefault` は 12
+```
+
+デフォルト値のない引数は、関数の引数リストでデフォルト値のある引数よりも前に置きましょう。通常、デフォルト値を持たない引数の方が重要です。最初にデフォルト値を持たない引数を置くと、デフォルト引数が省略されているかどうかに関係なく、同じ関数が呼び出されていることを認識しやすくなります。
 
 ### Variadic Parameters
 
