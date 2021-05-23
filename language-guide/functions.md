@@ -71,6 +71,25 @@ print(sayHelloWorld())
 
 ### Functions With Multiple Parameters
 
+関数は、カンマ(`,`)区切りで複数の引数を持つことができます。
+
+この関数は、人の名前と、その人がすでに挨拶されているかどうかを引数として受け取り、その人に適切な挨拶を返します:
+
+```swift
+func greet(person: String, alreadyGreeted: Bool) -> String {
+    if alreadyGreeted {
+        return greetAgain(person: person)
+    } else {
+        return greet(person: person)
+    }
+}
+print(greet(person: "Tim", alreadyGreeted: true))
+// Prints "Hello again, Tim!"
+```
+
+`person` というラベルの付いた `String` 型の値と、括弧(`()`) 内にカンマ(`,`)で区切られた `alreadyGreeted` というラベルの付いた `Bool` 型の値の両方を渡して `great（person:alreadyGreeted:)` 関数を呼び出しています。この関数は、
+前のセクションで示した `greet(person:)` 関数とは異なることに注意してください。 どちらも `greet` という関数名ですが、`greet(person:alreadyGreeted:)` は 2 つの引数を取り、`greet(person:)` 関数は 1 つしか取りません。
+
 ### Functions Without Return Values
 
 ### Functions with Multiple Return Values
