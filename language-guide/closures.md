@@ -58,6 +58,32 @@ var reversedNames = names.sorted(by: backward)
 
 ### Closure Expression Syntax
 
+クロージャ式の構文には、次の一般的な形式があります:
+
+![クロージャ式の構文](./../.gitbook/assets/07_closureexpressionsyntax.png)
+
+クロージャ式構文の引数は、in-out 引数にすることができますが、デフォルト値を設定することはできません。可変個引数に名前を付けると、可変個引数を使用できます。タプルは、引数の型および戻り値の型としても使用できます。
+
+以下の例は、上記の `backward(_:_:)` 関数のクロージャ式バージョンです。
+
+```swift
+reversedNames = names.sorted(by: { (s1: String, s2: String) -> Bool in
+    return s1 > s2
+})
+```
+
+このインラインクロージャの引数と戻り値の宣言は、`backward(_:_:)` 関数からの宣言と同じなことに注目してください。どちらの場合も、`(s1: String, s2: String) -> Bool` と書きます。ただし、インラインクロージャ式の場合、引数と戻り値の型は中括弧(`{}`)の外側ではなく、中括弧の内側に記述されます。
+
+クロージャの本文は、`in` キーワードの後から始まります。このキーワードは、クロージャの引数と戻り値の型の定義が完了し、クロージャの本文がまもなく開始されることを示します。
+
+クロージャの本文は非常に短いため、1 行で書くこともできます。
+
+```swift
+reversedNames = names.sorted(by: { (s1: String, s2: String) -> Bool in return s1 > s2 } )
+```
+
+これは、`sorted(by:)` メソッドへの呼び出しが同じままなことを示しています。括弧のペア(`()`)は、メソッドの引数全体をラップしますが、引数はインラインクロージャです。
+
 ### Inferring Type From Context
 
 ### Implicit Returns from Single-Expression Closures
