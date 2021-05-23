@@ -242,6 +242,26 @@ someFunction(firstParameterName: 1, secondParameterName: 2)
 
 ### Specifying Argument Labels
 
+引数名の前に、スペースで区切って引数ラベルを記述します。
+
+```swift
+func someFunction(argumentLabel parameterName: Int) {
+    // 関数の本文では、`parameterName`は引数の値を参照します
+}
+```
+
+これは、人の名前と出身地を受け取って挨拶を返す `greet(person:)` 関数の一種です:
+
+```swift
+func greet(person: String, from hometown: String) -> String {
+    return "Hello \(person)!  Glad you could visit from \(hometown)."
+}
+print(greet(person: "Bill", from: "Cupertino"))
+// Prints "Hello Bill!  Glad you could visit from Cupertino."
+```
+
+引数ラベルを使用すると、関数の本文に読みやすく明確な意図を持たせつつ、表現豊かな文章のように関数を呼び出すことができます。
+
 ### Omitting Argument Labels
 
 ### Default Parameter Values
