@@ -331,4 +331,70 @@ incrementByTen()
 
 ## Escaping Closures
 
+関数の引数として渡されたクロージャが、関数本文が終了した後に呼び出される場合、関数をエスケープ(*escaping*)すると言われます。引数の 1 つとしてクロージャを受け取る関数を宣言する場合、引数の型の前に `@escaping` を記述して、クロージャがエスケープできることを示すことができます。
+
+クロージャをエスケープする 1 つの方法は、関数の外部で定義された変数に格納することです。 例として、非同期操作を開始する多くの関数は、完了ハンドラとしてクロージャ引数を取ります。関数は操作の開始後に戻り値を返しますが、操作が完了するまでクロージャは呼び出されません。クロージャはエスケープする必要があり、後で呼び出す必要があります。 例えば:
+
+```swift
+var completionHandlers = [() -> Void]()
+func someFunctionWithEscapingClosure(completionHandler: @escaping () -> Void) {
+    completionHandlers.append(completionHandler)
+}
+```
+
+`someFunctionWithEscapingClosure(_:)` 関数は、引数としてクロージャを取り、関数の外部で宣言されている配列に追加します。この関数の引数を `@escaping` でマークしなかった場合、コンパイルエラーが発生します。
+
+`self` が class のインスタンスを参照する場合、`self` を参照するエスケープクロージャには特別な考慮が必要です。エスケープクロージャで `self` をキャプチャすると、誤って循環参照を作りやすくなります。循環参照については、[Automatic Reference Counting](./automatic-reference-counting.md)を参照ください。
+
+通常、クロージャは、本文で変数を使用して暗黙的に変数をキャプチャしますが、この場合は明示的に宣言する必要があります。 `self` をキャプチャする場合は、使用するときに `self` を記述するか、クロージャのキャプチャリスト(*capture list*)に `self` を含めます。`self` を明示的に書くことで、意図を表現でき、循環参照がないことを確認するように促されます。例えば、下記のコードでは、`someFunctionWithEscapingClosure(_:)` に渡されるクロージャは `self` を明示的に参照しています。対照的に、`someFunctionWithNonescapingClosure(_:)` に渡されるクロージャは、エスケープなしのクロージャです。つまり、暗黙的に `self` を参照できます。
+
+```swift
+func someFunctionWithNonescapingClosure(closure: () -> Void) {
+    closure()
+}
+
+class SomeClass {
+    var x = 10
+    func doSomething() {
+        someFunctionWithEscapingClosure { self.x = 100 }
+        someFunctionWithNonescapingClosure { x = 200 }
+    }
+}
+
+let instance = SomeClass()
+instance.doSomething()
+print(instance.x)
+// Prints "200"
+
+completionHandlers.first?()
+print(instance.x)
+// Prints "100"
+```
+
+下記は、クロージャーのキャプチャリストに含めることで `self` をキャプチャし、暗黙的に `self` を参照する `doSomething()` のバージョンです。
+
+```swift
+class SomeOtherClass {
+    var x = 10
+    func doSomething() {
+        someFunctionWithEscapingClosure { [self] in x = 100 }
+        someFunctionWithNonescapingClosure { x = 200 }
+    }
+}
+```
+
+`self` が `struct` または `enum` のインスタンスの場合は、いつでも暗黙的に `self` を参照できます。 ただし、`self` が `struct` または `enum` のインスタンスの場合、エスケープクロージャは `self` への変更可能な参照をキャプチャできません。[Structures and Enumerations Are Value Types](./structures-and-classes.md#structures-and-enumerations-are-value-types)でも説明されているように、`struct` または `enum` は変更可能な値の共有はできません。
+
+```swift
+struct SomeStruct {
+    var x = 10
+    mutating func doSomething() {
+        someFunctionWithNonescapingClosure { x = 200 }  // Ok
+        someFunctionWithEscapingClosure { x = 100 }     // Error
+    }
+}
+```
+
+上記の例の `someFunctionWithEscapingClosure` 関数の呼び出しは、可変メソッド内で `self` は変更可能なので、エラーとなります。`self` は変更可能です。これは、エスケープクロージャが `struct` の変更可能な `self` への参照をキャプチャできないというルールに違反します。
+
 ## Autoclosures
