@@ -92,6 +92,21 @@ print(greet(person: "Tim", alreadyGreeted: true))
 
 ### Functions Without Return Values
 
+戻り値の型を定義することは必須ではありません。`greet(person:)` バージョンは文字列値を返すのではなく出力します。
+
+```swift
+func greet(person: String) {
+    print("Hello, \(person)!")
+}
+greet(person: "Dave")
+// Prints "Hello, Dave!"
+```
+
+値を返す必要がないため、関数の定義には戻り値を示す矢印(`->`)や戻り値の型は含まれていません。
+
+> NOTE  
+> 厳密に言えば、`greet(person:)` は、戻り値が定義されていなくても、値を返してます。 戻り型が定義されていない関数は、`Void` 型の特別な値を返します。 これは単に `（）` と書く空のタプルです。
+
 ### Functions with Multiple Return Values
 
 #### Optional Tuple Return Types
