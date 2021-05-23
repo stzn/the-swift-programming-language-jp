@@ -130,6 +130,39 @@ printWithoutCounting(string: "hello, world")
 
 ### Functions with Multiple Return Values
 
+タプル型を関数の戻り型として使用して、1 つの複合戻り値として複数の値を返すことができます。
+
+以下の例では、`minMax(array:)` という関数を定義しています。この関数は、`Int` 値の配列内の最小数と最大数を検索します。
+
+```swift
+func minMax(array: [Int]) -> (min: Int, max: Int) {
+    var currentMin = array[0]
+    var currentMax = array[0]
+    for value in array[1..<array.count] {
+        if value < currentMin {
+            currentMin = value
+        } else if value > currentMax {
+            currentMax = value
+        }
+    }
+    return (currentMin, currentMax)
+}
+```
+
+`minMax(array:)` 関数は、2 つの `Int` 値を含むタプルを返します。 これらの値には `min` と `max` のラベルが付いているため、関数の戻り値を使うときに名前でアクセスできます。
+
+`minMax(array:)` 関数の本体は、`currentMin` および `currentMax` と呼ばれる 2 つの変数を、配列の最初の整数値に設定することから始まります。 次に、この関数は配列内の残りの値を繰り返し処理し、各値をチェックして、それぞれ `currentMin` と `currentMax` の値よりも小さいか大きいかを確認します。 最後に、全体の最小値と最大値が 2 つの `Int` 値のタプルとして返されます。
+
+タプルのそれぞれの値は、関数の戻り型の一部として名前が付けられているため、ドット(`.`)シンタックスでアクセスして、見つかった最小値と最大値を取得できます。
+
+```swift
+let bounds = minMax(array: [8, -6, 2, 109, 3, 71])
+print("min is \(bounds.min) and max is \(bounds.max)")
+// Prints "min is -6 and max is 109"
+```
+
+タプルの各値は、関数の戻り値の型で名前がすでに指定されているため、関数からタプルが返される時点で名前を付ける必要がないことに注意してください。
+
 #### Optional Tuple Return Types
 
 ### Functions With an Implicit Return
