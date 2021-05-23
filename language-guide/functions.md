@@ -475,3 +475,30 @@ print("zero!")
 ```
 
 ## Nested Functions
+
+この章でこれまでに見てきた全ての関数は、グローバルスコープで定義されたグローバル関数の例でしたが、ネスト関数(*nested functions*)と呼ばれる、他の関数の本文内に関数を定義することもできます。
+
+ネスト関数は、デフォルトでは外から見えませんが、それを囲む関数から呼び出して使用することができます。囲んでいる関数は、ネスト関数内の 1 つを返して、ネスト関数を別のスコープで使用することもできます。
+
+上記の `chooseStepFunction(backward:)` の例を書き直して、ネスト関数を使用することができます。
+
+```swift
+func chooseStepFunction(backward: Bool) -> (Int) -> Int {
+    func stepForward(input: Int) -> Int { return input + 1 }
+    func stepBackward(input: Int) -> Int { return input - 1 }
+    return backward ? stepBackward : stepForward
+}
+var currentValue = -4
+let moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
+// moveNearerToZero は ネスト関数の stepForward() を参照しています
+while currentValue != 0 {
+    print("\(currentValue)... ")
+    currentValue = moveNearerToZero(currentValue)
+}
+print("zero!")
+// -4...
+// -3...
+// -2...
+// -1...
+// zero!
+```
