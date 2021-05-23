@@ -293,6 +293,28 @@ someFunction(parameterWithoutDefault: 4) // `parameterWithDefault` は 12
 
 ### Variadic Parameters
 
+可変個引数(*Variadic Parameters*)は、指定された型の 0 個以上の値を受け入れます。可変個引数を使用すると、関数が呼び出されたときに引数に様々な数の入力値を渡すことができます。引数の型名の後に 3 つのピリオド文字(`...`)を挿入して、可変個引数を記述します。
+
+可変個引数に渡された値は、適切な型の配列として関数の本体内で使用できるようになります。 例えば、`numbers` という `Double ...` 型を持つ可変個引数は、`numbers` という `[Double]` 型の定数配列として関数の本体内で使用できます。
+
+下記の例では、任意の長さの数値のリストの算術平均(いわゆる平均) を計算しています。
+
+```swift
+func arithmeticMean(_ numbers: Double...) -> Double {
+    var total: Double = 0
+    for number in numbers {
+        total += number
+    }
+    return total / Double(numbers.count)
+}
+arithmeticMean(1, 2, 3, 4, 5)
+// 5つの数値の平均である3.0を返します
+arithmeticMean(3, 8.25, 18.75)
+// 3つの数値の平均である10.0を返します
+```
+
+関数は複数の可変個引数を持つことができます。 可変個引数の後に続く最初の引数には、引数ラベルが必要です。引数ラベルにより、どの引数が可変個引数に渡され、どの引数が可変個引数の後に続く引数に渡されているかが明確になります。
+
 ### In-Out Parameters
 
 ## Function Types
