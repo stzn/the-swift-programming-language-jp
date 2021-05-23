@@ -107,6 +107,27 @@ greet(person: "Dave")
 > NOTE  
 > 厳密に言えば、`greet(person:)` は、戻り値が定義されていなくても、値を返してます。 戻り型が定義されていない関数は、`Void` 型の特別な値を返します。 これは単に `（）` と書く空のタプルです。
 
+関数の戻り値は、呼び出されたときに無視できます:
+
+```swift
+func printAndCount(string: String) -> Int {
+    print(string)
+    return string.count
+}
+func printWithoutCounting(string: String) {
+    let _ = printAndCount(string: string)
+}
+printAndCount(string: "hello, world")
+// prints "hello, world" and returns a value of 12
+printWithoutCounting(string: "hello, world")
+// prints "hello, world" but doesn't return a value
+```
+
+最初の関数 `printAndCount(string:)` は文字列を出力し、その文字数を `Int` として返します。 2 番目の関数 `printWithoutCounting(string:)` は、最初の関数を呼び出しますが、その戻り値を無視します。 2 番目の関数が呼び出されても、メッセージは最初の関数によって出力されますが、戻り値は使われません。
+
+> NOTE  
+> 戻り値は無視できますが、常に関数が値を返すことは示さなければなりません。 戻り型が定義されている関数では、値を返さずに関数を使うことはできません。そうしようとすると、コンパイルエラーが発生します。
+
 ### Functions with Multiple Return Values
 
 #### Optional Tuple Return Types
