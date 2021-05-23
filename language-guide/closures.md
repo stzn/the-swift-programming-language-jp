@@ -201,7 +201,7 @@ let strings = numbers.map { (number) -> String in
 クロージャ式は、呼び出されるたびに `output` という文字列を作成します。剰余演算子(`number % 10`)を使用して `number` の最後の桁を計算し、この桁を使用して `digitNames` 辞書で適切な文字列を検索します。クロージャを使用して、ゼロより大きい任意の整数の文字列表現を作成できます。
 
 > NOTE  
-> 辞書の subscript は、キーが存在しない場合に辞書の検索が失敗する可能性があることを示す optional の値を返すため、`digitNames` 辞書の subscript の呼び出しの後に感嘆符（`！`）を付けています。 上記の例では、`number % 10` が常に `digitNames` 辞書内に存在する subscript のキーであることが保証されているため、感嘆符を使用して、subscript の optional の値に格納されている `String` 値を強制的にアンラップします。
+> 辞書の subscript は、キーが存在しない場合に辞書の検索が失敗する可能性があることを示す optional の値を返すため、`digitNames` 辞書の subscript の呼び出しの後に感嘆符（`！`）を付けています。 上記の例では、`number % 10` が常に `digitNames` 辞書内に存在する subscript のキーだとが保証されているため、感嘆符を使用して、subscript の optional の値に格納されている `String` 値を強制的にアンラップします。
 
 `digitNames` 辞書から取得した文字列が `output` の前に追加され、数値の文字列バージョンが逆順に追加されています。(式 `number % 10` は、`16` の場合は `6`、`58` の場合は `8`、`510` の場合は `0` を示します)
 
