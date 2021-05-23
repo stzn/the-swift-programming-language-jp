@@ -237,6 +237,79 @@ loadPicture(from: someServer) { picture in
 
 ## Capturing Values
 
+クロージャは、定義されている周囲のコンテキストから定数と変数をキャプチャ(*Capture*)できます。クロージャは、定数と変数を定義した元のスコープが存在しなくなった場合でも、本文内からそれらの定数と変数の値を参照および変更できます。
+
+Swift では、値をキャプチャできるクロージャの最もシンプルな形式は、別の関数の本文内に記述されたネスト関数です。 ネスト関数は、その外部関数の引数や、外部関数内で定義された定数や変数をキャプチャできます。
+
+これは、`makeIncrementer` と呼ばれる関数の例です。これには、`incrementer` と呼ばれるネスト関数が含まれています。`incrementer()` 関数は、周囲のコンテキストから、`runningTotal` と `amount` の 2 つの値をキャプチャします。これらの値をキャプチャした後、インクリメンタは、呼び出されるたびに `runningTotal` を `amount` 分だけ増加するクロージャとして `makeIncrementer` によって返されます。
+
+```swift
+func makeIncrementer(forIncrement amount: Int) -> () -> Int {
+    var runningTotal = 0
+    func incrementer() -> Int {
+        runningTotal += amount
+        return runningTotal
+    }
+    return incrementer
+}
+```
+
+`makeIncrementer` の戻り値の型は `() -> Int` です。これは、シンプルな値ではなく、関数を返すことを意味します。返される関数には引数がなく、呼び出されるたびに `Int` 値を返します。関数が他の関数を返す方法については、[Function Types as Return Types](./functions.md#function-types-as-return-types)を参照ください。
+
+`makeIncrementer(forIncrement:)` 関数は、`runningTotal` と呼ばれる整数の変数を定義して、返される `incrementer` の現在の合計を格納します。この変数は値 `0` で初期化されます。
+
+`makeIncrementer(forIncrement:)` 関数には、`forIncrement` 引数ラベルと `amount` 引数名を持つ 1 つの `Int` 引数があります。この引数に渡される値は、返されたインクリメント関数が呼び出されるたびに、`runningTotal` を増加する量を指定します。 `makeIncrementer` 関数は、実際に値を増加させる `incrementer` と呼ばれるネスト関数を定義します。この関数は単に `runningTotal` に `amount` を加算して、結果を返します。
+
+独立して検討すると、ネストされた `incrementer()` 関数は少し変に見えるかもしれません。
+
+```swift
+func incrementer() -> Int {
+    runningTotal += amount
+    return runningTotal
+}
+```
+
+`incrementer()` 関数には引数がありませんが、関数本文内から `runningTotal` と `amount` を参照します。これは、`runningTotal` と `amount` への参照を周囲の関数からキャプチャし、それらを独自の関数本文内で使用します。参照によるキャプチャにより、`makeIncrementer` の呼び出しが終了したときに `runningTotal` と `amount` が解放されないようにし、次に `incrementer` 関数が呼び出されたときにも `runningTotal` を使用可能にします。
+
+> NOTE  
+> 最適化として、Swift は、値がクロージャによって変更されていない場合やクロージャの作成後に値が変更されていない場合、代わりに値のコピーをキャプチャして保存する場合があります。  
+> Swiftは、変数が不要になったときの変数の破棄など全てのメモリを管理します。
+
+`makeIncrementer` の動作例を次に示します。
+
+```swift
+let incrementByTen = makeIncrementer(forIncrement: 10)
+```
+
+この例では、`incrementByTen` という定数を設定して、呼び出されるたびに `runningTotal` 変数に `10` を追加するインクリメンタ関数を参照します。関数を複数回呼び出すと、次のようになります:
+
+```swift
+incrementByTen()
+// 10 を返します
+incrementByTen()
+// 20 を返します
+incrementByTen()
+// 30 を返します
+```
+
+2 番目のインクリメントを作成すると、新しい別の `runningTotal` 変数への参照を格納します。
+
+```swift
+let incrementBySeven = makeIncrementer(forIncrement: 7)
+incrementBySeven()
+// 7 を返します
+```
+
+元のインクリメンター（`incrementByTen`）を再度呼び出すと、それ自体の `runningTotal` 変数が引き続きインクリメントされ、`incrementBySeven` によってキャプチャされた変数には影響しません。
+
+```swift
+incrementByTen()
+// 40 を返します
+```
+
+> NOTE  
+> class インスタンスのプロパティにクロージャを代入して、クロージャがインスタンスまたはそのメンバーを参照して、そのインスタンスをキャプチャする場合、クロージャとインスタンスの間に循環参照(strong reference cycle)が作成されます。 Swift は、キャプチャリストを使用して、これらの循環参照を中断します。 詳細については、 [StrongReference Cycles for Closures](./automatic-reference-counting.md#strong-reference-cycles-for-closures) を参照ください。
+
 ## Closures Are Reference Types
 
 ## Escaping Closures
