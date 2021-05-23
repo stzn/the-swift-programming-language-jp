@@ -355,6 +355,35 @@ print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
 
 ## Function Types
 
+すべての関数には特定の関数型があり、引数の型と戻り値の型で構成されています。
+
+例えば:
+
+```swift
+func addTwoInts(_ a: Int, _ b: Int) -> Int {
+    return a + b
+}
+func multiplyTwoInts(_ a: Int, _ b: Int) -> Int {
+    return a * b
+}
+```
+
+この例では、`addTwoInts` および `multiplyTwoInts` と呼ばれる 2 つのシンプルな数学関数を定義します。これらの関数はそれぞれ 2 つの `Int` 値を取り、適切な数学演算を実行した結果の `Int` 値を返します。
+
+これらの関数の両方のタイプは、`(Int, Int) -> Int` です。 これは次のように読むことができます:
+
+「両方とも `Int` 型の 2 つの引数を持ち、`Int` 型の値を返す関数です」
+
+引数や戻り値のない関数の例を次に示します。
+
+```swift
+func printHelloWorld() {
+    print("hello, world")
+}
+```
+
+この関数の型は、`() -> Void` で「引数を持たず、`Void` を返す関数」です。
+
 ### Using Function Types
 
 ### Function Types as Parameter Types
