@@ -4,7 +4,7 @@
 
 ## オンラインドキュメント
 
-[Gitbook](https://www.gitbook.com)を使用しています
+[Gitbook](https://www.gitbook.com)を使用しています。
 
 ## バージョン履歴
 
