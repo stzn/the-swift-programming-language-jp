@@ -317,6 +317,42 @@ arithmeticMean(3, 8.25, 18.75)
 
 ### In-Out Parameters
 
+関数の引数はデフォルトで定数です。関数の本文から引数の値を変更しようとすると、コンパイルエラーが発生します。 つまり、誤って引数の値を変更することはできません。関数で引数の値を変更する必要があり、関数呼び出しが終了した後もそれらの変更を保持したい場合は、代わりに `in-out` 引数として定義します。
+
+引数のタイプの直前に `inout` キーワードを配置することにより、in-out 引数を書きます。 in-out 引数に渡された値は、関数に渡され、変更され、元の値を置き換えて、関数から戻ってきます。in-out 引数の動作および関連するコンパイラの最適化の詳細については、[In-Out Parameters](./../language-reference/declarations.md#in-out-parameters)を参照ください。
+
+in-out 引数には、変数のみ渡すことができます。 定数とリテラルは変更できないため、渡すことはできません。変数を in-out 引数として渡すときは、変数名の直前にアンパサンド(`&`)を付けて、関数で値が変更される可能性があることを示します。
+
+> NOTE  
+> In-out 引数にデフォルト値を設定したり、可変個引数を `inout` としてマークしたりすることはできません。
+
+これは、`swapTwoInts(_:_:)` という関数の例です。この関数には、`a` と `b` という 2 つの引数があります。
+
+```swift
+func swapTwoInts(_ a: inout Int, _ b: inout Int) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+```
+
+`swapTwoInts(_:_:)` 関数は、`b` の値を `a` にスワップし、`a` の値を `b` にスワップします。この関数は、`a` の値を `temporaryA` と呼ばれる一時定数に格納し、`b` の値を `a` に代入してから、`temporaryA` を `b` に代入することによってこのスワップを実行します。
+
+`Int` 型の 2 つの変数を指定して `swapTwoInts(_:_:)` 関数を呼び出し、それらの値を交換できます。 `someInt` と `anotherInt` の名前は、`swapTwoInts(_:_:)` 関数に渡されるときに、アンパサンド(`&`)が前に付いていることに注目してください。
+
+```swift
+var someInt = 3
+var anotherInt = 107
+swapTwoInts(&someInt, &anotherInt)
+print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+// Prints "someInt is now 107, and anotherInt is now 3"
+```
+
+上記の例は、`someInt` と `anotherInt` の元の値が、関数の外部で定義されていたとしても、`swapTwoInts(_:_:)` 関数によって変更されることを示しています。
+
+> NOTE  
+> In-Out引数は、関数から値を返すことと同じではありません。 上記の `swapTwoInts` の例では、戻り値の型を定義したり値を返しませんが、`someInt` と `anotherInt` の値を変更しています。 In-Out引数は、関数が本文の範囲外に影響を与える代替方法です。
+
 ## Function Types
 
 ### Using Function Types
