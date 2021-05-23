@@ -64,7 +64,7 @@ Swift は全ての数値型に対して 4 つの基本的な算術演算子\(_ar
 10.0 / 2.5  // 4.0
 ```
 
-C 言語や Objective-C と異なり、Swift はデフォルトでオーバーフローはできません。`a &+ b` のようにオーバーフロー演算子\(`&-`\)を使ってオーバーフローさせることができます。詳細は[Overflow Operators](advanced-operators.md#overflow-operators)を参照ください。
+C 言語や Objective-C と異なり、Swift はデフォルトでオーバーフローはできません。`a &+ b` のようにオーバーフロー演算子\(`&-`\)を使用してオーバーフローさせることができます。詳細は[Overflow Operators](advanced-operators.md#overflow-operators)を参照ください。
 
 加算演算子は `String` の連結もすることができます。
 
@@ -117,7 +117,7 @@ Swift では、下記のように書きます。
 
 ### Unary Minus Operator
 
-数値の記号は、前置の `-` を使って切り替えることができます。これは単項マイナス演算子と呼ばれます。
+数値の記号は、前置の `-` を使用して切り替えることができます。これは単項マイナス演算子と呼ばれます。
 
 ```swift
 let three = 3
@@ -136,7 +136,7 @@ let minusSix = -6
 let alsoMinusSix = +minusSix  // alsoMinusSix は -6
 ```
 
-単項プラス演算子は何もしませんが、負数に単項マイナス演算子使っている場合、その対称として正数に単項プラス演算子を使うこともできます。
+単項プラス演算子は何もしませんが、負数に単項マイナス演算子使用している場合、その対称として正数に単項プラス演算子を使うこともできます。
 
 ## Compound Assignment Operators
 
@@ -249,7 +249,7 @@ if hasHeader {
 // rowHeight は 90
 ```
 
-最初の例では三項条件演算子を使って 1 行で `rowHeight` を設定でき、2 つ目の例よりもより簡潔になっています。
+最初の例では三項条件演算子を使用して 1 行で `rowHeight` を設定でき、2 つ目の例よりもより簡潔になっています。
 
 三項条件演算子は 2 つの式のどちらが使われるのかを決める効率的なショートカットです。しかし、三項条件演算子にも注意が必要です。あまり使いすぎると可動性がを損なう場合もあります。複数の三項条件演算子を 1 つのステートメントに含めることは避けましょう。
 
@@ -263,12 +263,12 @@ Nil 結合演算子は下記のコードのショートカットです。
 a != nil ? a! : b
 ```
 
-上記のコードは、三項条件演算子を使って、`a` が `nil` ではない場合は、`a` が内包する値へアクセスするための強制アンラップ\(`a!`\)をし、それ以外は `b` を返します。Nil 結合演算子は条件チェックとアンラップを簡潔で読みやすい方法で 1 つにした、より洗練された方法です。
+上記のコードは、三項条件演算子を使用して、`a` が `nil` ではない場合は、`a` が内包する値へアクセスするための強制アンラップ\(`a!`\)をし、それ以外は `b` を返します。Nil 結合演算子は条件チェックとアンラップを簡潔で読みやすい方法で 1 つにした、より洗練された方法です。
 
 > NOTE  
 > `a` が `nil` ではない場合、`b` は評価されません。これは短絡評価\(short-circuit evaluation\)と呼ばれます。
 
-下記の例では、デフォルトのカラー名かユーザ定義の optional なカラー名を選択するために、Nil 結合演算子を使っています。
+下記の例では、デフォルトのカラー名かユーザ定義の optional なカラー名を選択するために、Nil 結合演算子を使用しています。
 
 ```swift
 let defaultColorName = "red"
@@ -278,7 +278,7 @@ var colorNameToUse = userDefinedColorName ?? defaultColorName
 // userDefinedColorName が nil なので、 colorNameToUse にデフォルトの"red"が設定されます
 ```
 
-`userDefinedColorName` は、optional の `String` として定義され、デフォルトは `nil` です。`userDefinedColorName` は optional 型なので、その値を検討するために、Nil 結合演算子を使うことができます。上記の例では、`colorNameToUse` という `String` 型の変数の初期値を決めるために Nil 結合演算子を使っています。`userDefinedColorName` は `nil` なので、式 `userDefinedColorName ?? defaultColorName` は、`defaultColorName`、つまり `"red"` を返します。
+`userDefinedColorName` は、optional の `String` として定義され、デフォルトは `nil` です。`userDefinedColorName` は optional 型なので、その値を検討するために、Nil 結合演算子を使うことができます。上記の例では、`colorNameToUse` という `String` 型の変数の初期値を決めるために Nil 結合演算子を使用しています。`userDefinedColorName` は `nil` なので、式 `userDefinedColorName ?? defaultColorName` は、`defaultColorName`、つまり `"red"` を返します。
 
 もし `userDefinedColorName` に `nil` 以外が代入されていて Nil 結合演算子でチェックを行った場合、`userDefinedColorName` が内包する値がデフォルトの代わりに使われます:
 
@@ -446,7 +446,7 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 // Prints "Welcome!"
 ```
 
-この例では、複数の `&&` と `||` を使って複合式を作っています。`&&` と `||` は 2 つの値しか操作することができないため、実際には 3 つの小さい式を繋げています。この例は下記のように読み取れます:
+この例では、複数の `&&` と `||` を使用して複合式を作っています。`&&` と `||` は 2 つの値しか操作することができないため、実際には 3 つの小さい式を繋げています。この例は下記のように読み取れます:
 
 「もし正しいドア番号に入って、網膜スキャンを通過し、正しいドアキーを持っているまたは緊急の上書きパスワードを知っている場合に、アクセスすることができます」
 

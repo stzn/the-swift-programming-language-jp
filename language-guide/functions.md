@@ -228,7 +228,7 @@ print(anotherGreeting(for: "Dave"))
 
 ## Function Argument Labels and Parameter Names
 
-各関数の引数には、引数ラベルと引数名の両方持つことができます。引数ラベルは、関数を呼び出すときに使用されます。各引数は、その前に書かれた引数ラベルを使って関数が呼び出されます。引数名は関数の内部で使用されます。デフォルトでは、引数名を引数ラベルとして使用します。
+各関数の引数には、引数ラベルと引数名の両方持つことができます。引数ラベルは、関数を呼び出すときに使用されます。各引数は、その前に書かれた引数ラベルを使用して関数が呼び出されます。引数名は関数の内部で使用されます。デフォルトでは、引数名を引数ラベルとして使用します。
 
 ```swift
 func someFunction(firstParameterName: Int, secondParameterName: Int) {
