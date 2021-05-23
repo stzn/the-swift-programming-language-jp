@@ -6,11 +6,11 @@ Swift は iOS, macOS, watchOS, tyOS アプリ開発のための新しいプロ�
 
 Swift は C 言語と Objective-C の全ての基本的な型に対応した Swift 版の型を提供します。 数値に対する `Int`、浮動小数点数に対する `Double` と `Float`、ブール値に対する `Bool`、文字データに対する `String` があります。また、3 つのより強力な collection 型\(`Array`, `Set`, `Dictionary` \)も提供しています。詳細は [Collection Types](collection-types.md)に記載しています。
 
-C 言語のように、Swift は、名前を特定して、値を保持したり、その値を参照するために変数を使います。また、変数の値を変更できなくすることで、より幅広い方法で変数を使うことができます。これらは、定数として知られており、C 言語の定数よりもかなり強力です。定数は、値を変更する必要がない場合に、コードを、意図的に、より安全に、よりわかりやすくするために Swift 全体で使われます。
+C 言語のように、Swift は、名前を特定して、値を保持したり、その値を参照するために変数を使います。また、変数の値を変更できなくすることで、より幅広い方法で変数を使用することができます。これらは、定数として知られており、C 言語の定数よりもかなり強力です。定数は、値を変更する必要がない場合に、コードを、意図的に、より安全に、よりわかりやすくするために Swift 全体で使われます。
 
-これまで見たことがあるような型に加え、Swift は Objective-C にはなかった、tuple のようなより応用的な型を導入します。tuple は値を 1 つのグループとして扱うことができます。tuple を使うと、関数から複数の値を 1 つの値の組み合わせにすることができます。
+これまで見たことがあるような型に加え、Swift は Objective-C にはなかった、tuple のようなより応用的な型を導入します。tuple は値を 1 つのグループとして扱うことができます。tuple を使用すると、関数から複数の値を 1 つの値の組み合わせにすることができます。
 
-Swift は値が存在しないかもしれない値を扱う optional 型を導入しています。optional は、「値が存在していて、これは x と等しい」もしくは「値は一切存在しない」ということ表します。optional は Objective-C のポインタと `nil` を扱うのに似ていますが、class だけではなく、あらゆる型に使うことができます。Objective-C の `nil` ポインタよりも、安全で表現豊かなだけでなく、Swift の数々の強力な特徴の中心に位置します。
+Swift は値が存在しないかもしれない値を扱う optional 型を導入しています。optional は、「値が存在していて、これは x と等しい」もしくは「値は一切存在しない」ということ表します。optional は Objective-C のポインタと `nil` を扱うのに似ていますが、class だけではなく、あらゆる型に使用することができます。Objective-C の `nil` ポインタよりも、安全で表現豊かなだけでなく、Swift の数々の強力な特徴の中心に位置します。
 
 Swift は型安全な言語です。つまり、言語として、コードで扱う値の型を明確にしてくれます。例えば、`String` が必要な場合に、この型安全な特徴が、間違って `Int` を渡してしまうことを防いでくれます。同様に、optional ではない `String` に optional の `String` を誤って渡してしまうことも防いでくれます。型安全なことで、開発中に、素早いエラーの発見と修正をすることができます。
 
@@ -40,7 +40,7 @@ var x = 0.0, y = 0.0, z = 0.0
 ```
 
 > NOTE  
-> コードで保持している値がこの先変更されない場合は、 `let` を使って定数として定義しましょう。 変数は変更できるようにする必要がある場合にのみ使用しましょう。
+> コードで保持している値がこの先変更されない場合は、 `let` を使用して定数として定義しましょう。 変数は変更できるようにする必要がある場合にのみ使用しましょう。
 
 ### Type Annotations
 
@@ -109,14 +109,14 @@ languageName = "Swift++"
 
 ### Printing Constants and Variables
 
-`print(_:separator:terminator:)` 関数を使って、定数や変数の現在の値を出力することができます。
+`print(_:separator:terminator:)` 関数を使用して、定数や変数の現在の値を出力することができます。
 
 ```swift
 print(friendlyWelcome)
 // Prints "Bonjour!"
 ```
 
-`print(_:separator:terminator:)` 関数はグローバル関数で、1 つ以上の値を適切なアウトプット先に出力します。Xcode では、`print(_:separator:terminator:)` 関数を使うと、 Xcode のコンソールパネルへ値を出力します。`separator` と `terminator` 引数には、デフォルト値が用意されているので省略可能です。デフォルトでは最後に改行を追加します。改行を付けたくない場合は `terminator` に空文字を渡しましょう。例えば `print(someValue, terminator: "")`。詳細は[Default Parameter Values](functions.md#default-parameter-values)。
+`print(_:separator:terminator:)` 関数はグローバル関数で、1 つ以上の値を適切なアウトプット先に出力します。Xcode では、`print(_:separator:terminator:)` 関数を使用すると、 Xcode のコンソールパネルへ値を出力します。`separator` と `terminator` 引数には、デフォルト値が用意されているので省略可能です。デフォルトでは最後に改行を追加します。改行を付けたくない場合は `terminator` に空文字を渡しましょう。例えば `print(someValue, terminator: "")`。詳細は[Default Parameter Values](functions.md#default-parameter-values)。
 
 Swift は長い文字列の中で定数や変数をプレースホルダとして使用したい場合、 string interpolation\(文字列補間\)を使い、定数や変数の現在値に置き換えるように Swift に伝えることができます。名前を括弧\(\(\)\)で囲み、開始括弧の前にバックスラッシュ\(\\)を付けます。
 
@@ -153,7 +153,7 @@ C 言語の複数行コメントとは異なり、Swift では他の複数行コ
 This is the end of the first multiline comment. */
 ```
 
-ネストした複数行コメントを使うことで、長い複数行コメントの中でも簡単に素早くその部分だけコメントアウトすることができます。
+ネストした複数行コメントを使用することで、長い複数行コメントの中でも簡単に素早くその部分だけコメントアウトすることができます。
 
 ## Semicolons
 
@@ -172,7 +172,7 @@ Swift は signed と unsigned の整数値を 8, 16, 32, 64 ビットの形式�
 
 ### Integer Bounds
 
-`min` と `max` プロパティを使って、各整数値型の最小値と最大値にアクセスすることができます。
+`min` と `max` プロパティを使用して、各整数値型の最小値と最大値にアクセスすることができます。
 
 ```swift
 let minValue = UInt8.min  // minValue is equal to 0, and is of type UInt8
@@ -188,7 +188,7 @@ let maxValue = UInt8.max  // maxValue is equal to 255, and is of type UInt8
 * 32 ビットのプラットフォームの場合、`Int` は `Int32` と等しい
 * 64 ビットのプラットフォームの場合、`Int` は `Int64` と等しい
 
-特定のサイズの整数値を扱う必要がない限り常に `Int` を使うようにしましょう、これはコードの一貫性と互換性を保つ手助けとなります。32 ビットのプラットフォームでは、`Int` は `-2,147,483,648` から `2,147,483,647` まで保持することができます。これは整数値が使われる多くの場合において、十分に大きい範囲です。
+特定のサイズの整数値を扱う必要がない限り常に `Int` を使用するようにしましょう、これはコードの一貫性と互換性を保つ手助けとなります。32 ビットのプラットフォームでは、`Int` は `-2,147,483,648` から `2,147,483,647` まで保持することができます。これは整数値が使われる多くの場合において、十分に大きい範囲です。
 
 ### UInt
 
@@ -198,7 +198,7 @@ Swift は unsigned の整数値型も提供しています。これも、プラ�
 * 64 ビットのプラットフォームの場合、`UInt` は `UInt64` と等しい
 
 > NOTE  
-> `UInt` は特別にプラットフォームに応じて決まるサイズと同じサイズの unsigned integer 型を扱いたい場合にのみ使用しましょう。そうでない場合、負の値にならないとしても `Int` を使う方が好ましいです。一貫して `Int` を整数値に使用することで、異なる整数値型間の変換を避け、合致する型をコンパイラが推論することで、互換性を保つことができます。詳細は[Type Safety and Type Inference](the-basics.md#type-safety-and-type-inference)。
+> `UInt` は特別にプラットフォームに応じて決まるサイズと同じサイズの unsigned integer 型を扱いたい場合にのみ使用しましょう。そうでない場合、負の値にならないとしても `Int` を使用する方が好ましいです。一貫して `Int` を整数値に使用することで、異なる整数値型間の変換を避け、合致する型をコンパイラが推論することで、互換性を保つことができます。詳細は[Type Safety and Type Inference](the-basics.md#type-safety-and-type-inference)。
 
 ## Floating-Point Numbers
 
@@ -297,7 +297,7 @@ let justOverOneMillion = 1_000_000.000_000_1
 
 ## Numeric Type Conversion
 
-通常整数値を扱う際は、負の値にならないことがわかっていたとしても定数や変数に `Int` 型を使いましょう。全ての状況でデフォルトに `Int` を使うことで、整数値の定数と変数を特別な手順なしに互換可能にし、数値リテラルから推論される型とも合致します。
+通常整数値を扱う際は、負の値にならないことがわかっていたとしても定数や変数に `Int` 型を使いましょう。全ての状況でデフォルトに `Int` を使用することで、整数値の定数と変数を特別な手順なしに互換可能にし、数値リテラルから推論される型とも合致します。
 
 特別な理由ある場合のみ、他の整数値型を使いましょう。例えば、外部リソースから特定サイズの型が指定されている場合やパフォーマンス、メモリの使用量や他の最適化が必要な場合など、がこれに当たります。明示的にサイズを指定することで思わぬオーバーフローを起こしたり、暗黙的にそのデータの特性を表現することができます。
 
@@ -315,7 +315,7 @@ let tooBig: Int8 = Int8.max + 1
 
 このように、整数値型によって保持できる範囲が異なるため、ケースごとに型の変換をしなければなりません。この明示的に指定する方法によって、隠れた変換ミスを防ぎ、コードで型変換が起こっていることを明確に表現することができます。
 
-ある特定の整数値型を他の型に変換するためには、既存の整数値から変換したい型の新しい値を生成する必要があります。下記の例では、定数 `twoThousand` は `UInt16` ですが、定数の `one` は `UInt8` です。この 2 つは同じ型ではないので直接足し算をすることができません。そこで、この例では、`one` を使って `UInt16` の新しい値を作るために `UInt16(one)` を呼び、元の例に置き換えて使います:
+ある特定の整数値型を他の型に変換するためには、既存の整数値から変換したい型の新しい値を生成する必要があります。下記の例では、定数 `twoThousand` は `UInt16` ですが、定数の `one` は `UInt8` です。この 2 つは同じ型ではないので直接足し算をすることができません。そこで、この例では、`one` を使用して `UInt16` の新しい値を作るために `UInt16(one)` を呼び、元の例に置き換えて使います:
 
 ```swift
 let twoThousand: UInt16 = 2_000
@@ -362,7 +362,7 @@ _Type Aliases\(タイプエイリアス\)_ は既存の型に別の名前を定�
 typealias AudioSample = UInt16
 ```
 
-定義したタイプエイリアスは、元の名前で使っていた所にも使うことができます:
+定義したタイプエイリアスは、元の名前で使用していた所にも使用することができます:
 
 ```swift
 var maxAmplitudeFound = AudioSample.min
@@ -380,7 +380,7 @@ let orangesAreOrange = true
 let turnipsAreDelicious = false
 ```
 
-`orangesAreOrange` と `turnipsAreDelicious` は、ブール値リテラルで初期化されていることから `Bool` と推論されます。これまで見てきた `Int` や `Double` のように、`true` や `false` を値に設定すれば、明示的に `Bool` と指定する必要はありません。既に型がわかっている他の定数や変数を使って初期化する際に、Swift の型推論を活用することで、より簡潔で読みやすいコードを書くことができます。
+`orangesAreOrange` と `turnipsAreDelicious` は、ブール値リテラルで初期化されていることから `Bool` と推論されます。これまで見てきた `Int` や `Double` のように、`true` や `false` を値に設定すれば、明示的に `Bool` と指定する必要はありません。既に型がわかっている他の定数や変数を使用して初期化する際に、Swift の型推論を活用することで、より簡潔で読みやすいコードを書くことができます。
 
 ブール値は、条件文を扱う際にとても有効です。例えば、`if` 文など:
 
@@ -442,7 +442,7 @@ print("The status message is \(statusMessage)")
 // Prints "The status message is Not Found"
 ```
 
-もしタプルの一部だけが必要な場合、タプルを展開する時に、アンダースコア\(\_\)を使って無視することができます。
+もしタプルの一部だけが必要な場合、タプルを展開する時に、アンダースコア\(\_\)を使用して無視することができます。
 
 ```swift
 let (justTheStatusCode, _) = http404Error
@@ -450,7 +450,7 @@ print("The status code is \(justTheStatusCode)")
 // Prints "The status code is 404"
 ```
 
-各値へのアクセス方法としては、0 から始まるインデックスを使うこともできます:
+各値へのアクセス方法としては、0 から始まるインデックスを使用することもできます:
 
 ```swift
 print("The status code is \(http404Error.0)")
@@ -465,7 +465,7 @@ print("The status message is \(http404Error.1)")
 let http200Status = (statusCode: 200, description: "OK")
 ```
 
-名前を付けた場合、その名前を使って各値へアクセスすることができます:
+名前を付けた場合、その名前を使用して各値へアクセスすることができます:
 
 ```swift
 print("The status code is \(http200Status.statusCode)")
@@ -521,7 +521,7 @@ var surveyAnswer: String?
 
 ### If Statements and Forced Unwrapping
 
-`if` 文を使って optional 値を `nil` と比較することで、値を含んでいるかどうかのチェックができます。この比較は、等しい\(`==`\)または等しくない\(`!=`\)演算子を使って行います。
+`if` 文を使用して optional 値を `nil` と比較することで、値を含んでいるかどうかのチェックができます。この比較は、等しい\(`==`\)または等しくない\(`!=`\)演算子を使用して行います。
 
 optional が値を含んでいる場合、`nil` と「等しくない」と見なされます。
 
@@ -548,7 +548,7 @@ if convertedNumber != nil {
 
 ### Optional Binding
 
-optional 値に、オプショナルバインディング\(_optional binding_\)を使って、値を含んでいるかどうかを判定できます。もし含んでいる場合は、一時的な定数や変数として値を使用できるようになります。オプショナルバインディングは、`if` や `while` 文で optional 値に値が存在することを証明し、定数や変数にその内部の値を設定することを、1 つのアクションで行うことができます。`if` や `while` の詳細は[Control Flow](control-flow.md)を参照ください。
+optional 値に、オプショナルバインディング\(_optional binding_\)を使用して、値を含んでいるかどうかを判定できます。もし含んでいる場合は、一時的な定数や変数として値を使用できるようになります。オプショナルバインディングは、`if` や `while` 文で optional 値に値が存在することを証明し、定数や変数にその内部の値を設定することを、1 つのアクションで行うことができます。`if` や `while` の詳細は[Control Flow](control-flow.md)を参照ください。
 
 `if` 文でオプショナルバインディングを行う場合、次のように書きます:
 
@@ -558,7 +558,7 @@ if let constantName = someOptional {
 }
 ```
 
-[Optionals](the-basics.md#optionals)の中の例で出てきた `possibleNumber` は、強制アンラップ\(`forced unwrapping`\)の代わりに、オプショナルバインディングを使って書き換えることができます。
+[Optionals](the-basics.md#optionals)の中の例で出てきた `possibleNumber` は、強制アンラップ\(`forced unwrapping`\)の代わりに、オプショナルバインディングを使用して書き換えることができます。
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
@@ -573,9 +573,9 @@ if let actualNumber = Int(possibleNumber) {
 
 「`Int(possibleNumber)` が返す optional`Int` が値を含んでいた場合、`actualNumber` にその値を設定する」
 
-この変換が成功した場合、`actualNumber` 定数は `if` 文の最初の分岐内で使うことができます。optional の中で既に初期化は完了しているので、`!` を後ろに付ける必要はありません。この例では、`actualNumber` は変換した結果を出力します。
+この変換が成功した場合、`actualNumber` 定数は `if` 文の最初の分岐内で使用することができます。optional の中で既に初期化は完了しているので、`!` を後ろに付ける必要はありません。この例では、`actualNumber` は変換した結果を出力します。
 
-オプショナルバインディングは定数と変数の両方に使うことができます。`if` 文の最初の分岐内で `actualNumber` したい場合は、`if var actualNumber` と書くことで、定数の代わりに変数としてこの optional 値を使用できます。
+オプショナルバインディングは定数と変数の両方に使用することができます。`if` 文の最初の分岐内で `actualNumber` したい場合は、`if var actualNumber` と書くことで、定数の代わりに変数としてこの optional 値を使用できます。
 
 1 つの `if` 文の中に、複数のオプショナルバインディングとブール値をカンマ\(`,`\)区切りで含めることができます。そのうちのいずれかが `nil` または `false` の場合、`if` 文全体が `false` と判断されます。次の `if` 文はこれに該当します。
 
@@ -596,11 +596,11 @@ if let firstNumber = Int("4") {
 ```
 
 > NOTE  
-> `if` 文の中でオプショナルバインディングによって作られた定数や変数は、`if` 文の中でしか使えません。もし他でも使用したい場合は、`guard` 文 を使うことで、`guard` 文の次から使うことができます。詳細は[Early Exit](control-flow.md#early-exit)に記載しています。
+> `if` 文の中でオプショナルバインディングによって作られた定数や変数は、`if` 文の中でしか使えません。もし他でも使用したい場合は、`guard` 文 を使用することで、`guard` 文の次から使用することができます。詳細は[Early Exit](control-flow.md#early-exit)に記載しています。
 
 ### Implicitly Unwrapped Optionals
 
-上記で書いているように、optional は定数や変数に「値が存在しない可能性がある」ことを示します。optional は値が存在するかどうかを `if` 文の中でチェックでき、存在している場合は、optional 内の値にアクセスするために、オプショナルバインディング\(Optional Binding\)を使ってアンラップすることができます。
+上記で書いているように、optional は定数や変数に「値が存在しない可能性がある」ことを示します。optional は値が存在するかどうかを `if` 文の中でチェックでき、存在している場合は、optional 内の値にアクセスするために、オプショナルバインディング\(Optional Binding\)を使用してアンラップすることができます。
 
 時々、optional に一度値が設定された後は必ず値が存在するということが明らかなこともあります。このような場合、常に値があることはわかっているので、アクセスする度に optional 値のチェックとアンラップすることを省略できれば便利です。
 
@@ -608,7 +608,7 @@ if let firstNumber = Int("4") {
 
 暗黙アンラップ optional は、optional 値が定義後すぐに値が設定され、それ以降はずっと値が存在していることが確実な場合に、役に立ちます。Swift での暗黙アンラップ optional の主な使われ方としては、`class` の初期化時があります。[Unowned References and Implicitly Unwrapped Optional Properties](automatic-reference-counting.md#unowned-references-and-implicitly-unwrapped-optional-properties)で記載しています。
 
-暗黙アンラップ optional は、内部的には通常の optional ですが、optional ではない値のように使うこともできます。次の例は、optional と暗黙アンラップ optional で、明示的に `String` を型として記載している値へアクセスする時の動きの違いを表しています。
+暗黙アンラップ optional は、内部的には通常の optional ですが、optional ではない値のように使用することもできます。次の例は、optional と暗黙アンラップ optional で、明示的に `String` を型として記載している値へアクセスする時の動きの違いを表しています。
 
 ```swift
 let possibleString: String? = "An optional string."
@@ -618,7 +618,7 @@ let assumedString: String! = "An implicitly unwrapped optional string."
 let implicitString: String = assumedString // no need for an exclamation point
 ```
 
-暗黙アンラップ optional を必要な時に optional 値へ強制アンラップできるようにしていると見なすことができます。暗黙アンラップ optional 値を使う時、Swift は強制アンラップします。上記のコードでは、optional 値の `assumedString` は、`implicitString` が明示的に optional ではない `String` を宣言しているため、代入される前に強制アンラップされています。下記のコードでは、`optionalString` は明示的に型を宣言していないため、通常は optional になります。
+暗黙アンラップ optional を必要な時に optional 値へ強制アンラップできるようにしていると見なすことができます。暗黙アンラップ optional 値を使用する時、Swift は強制アンラップします。上記のコードでは、optional 値の `assumedString` は、`implicitString` が明示的に optional ではない `String` を宣言しているため、代入される前に強制アンラップされています。下記のコードでは、`optionalString` は明示的に型を宣言していないため、通常は optional になります。
 
 ```swift
 let optionalString = assumedString
@@ -706,9 +706,9 @@ _Assertions_と_Preconditions_は実行時のチェックです。他のコー�
 
 assertion と precondition はコード上での前提条件や期待値を表すために使います。assertion は開発中の間違いや間違った想定を見つけやすくし、precondition は開発中の問題を検知しやすくします。
 
-実行時の期待値を確認することに加えて、assertion と precondition はコード内のドキュメントとしても有用です。[Error Handling](the-basics.md#error-handling)で話したエラー条件とは異なり、assertion と precondition は復帰可能ではなく、期待されたエラーを捕捉する手段としても使うことはできません。assertion や precondition の失敗は、不正なプログラムの状態を表し、失敗した assertion を catch する方法はありません。
+実行時の期待値を確認することに加えて、assertion と precondition はコード内のドキュメントとしても有用です。[Error Handling](the-basics.md#error-handling)で話したエラー条件とは異なり、assertion と precondition は復帰可能ではなく、期待されたエラーを捕捉する手段としても使用することはできません。assertion や precondition の失敗は、不正なプログラムの状態を表し、失敗した assertion を catch する方法はありません。
 
-assertion と precondition を使うことは、不正な条件を起こさないためのツールとしてコードをデザインするための代用品にはなりません。妥当なデータや状態を強制することで、不正な状態が起きた場合に、予測しやすい状態でアプリ終了させたり、プログラムをデバッグしやすくします。不正な状態が起きた際にすぐに実行を止めることで、不正な状態が与えるダメージを抑えることができます。
+assertion と precondition を使用することは、不正な条件を起こさないためのツールとしてコードをデザインするための代用品にはなりません。妥当なデータや状態を強制することで、不正な状態が起きた場合に、予測しやすい状態でアプリ終了させたり、プログラムをデバッグしやすくします。不正な状態が起きた際にすぐに実行を止めることで、不正な状態が与えるダメージを抑えることができます。
 
 assertion と precondition の違いは、チェックのタイミングにあります: assertion はデバッグビルド時にしかチェックをせず、precondition はデバッグとプロダクションの両方のビルドでチェックされます。プロダクションビルドでは、assertion は評価されません。つまり、開発時には assertion を多用してもプロダクションのパフォーマンスに影響はありません。
 
@@ -730,7 +730,7 @@ assertion のメッセージは省略することができます。例えば、�
 assert(age >= 0)
 ```
 
-既にチェック済みの条件に対して assertion を呼び出したい場合、[assertionFailure\(\_:file:line:\)](https://developer.apple.com/documentation/swift/1539616-assertionfailure)関数を使って、assertion が失敗したことを示すことができます。
+既にチェック済みの条件に対して assertion を呼び出したい場合、[assertionFailure\(\_:file:line:\)](https://developer.apple.com/documentation/swift/1539616-assertionfailure)関数を使用して、assertion が失敗したことを示すことができます。
 
 ```swift
 if age > 10 {
@@ -753,8 +753,8 @@ precondition は[precondition\(_:_:file:line:\)](https://developer.apple.com/doc
 precondition(index > 0, "Index must be greater than zero.")
 ```
 
-precondition が失敗したことを示すために、[preconditionFailure\(\_:file:line:\)](https://developer.apple.com/documentation/swift/1539374-preconditionfailure)関数を使うこともできます。例えば、switch 文の中で、本来ならば他の case で全ての妥当な入力値をカバーできるはずなのに、defalt の case の条件に当てはまるケースがあった場合などがあります。
+precondition が失敗したことを示すために、[preconditionFailure\(\_:file:line:\)](https://developer.apple.com/documentation/swift/1539374-preconditionfailure)関数を使用することもできます。例えば、switch 文の中で、本来ならば他の case で全ての妥当な入力値をカバーできるはずなのに、defalt の case の条件に当てはまるケースがあった場合などがあります。
 
 > NOTE もし\(`-Ounchecked`\)モードでコンパイルした場合、precondition はチェックされません。コンパイラはprecondition を常に `true` と見なしてコードの最適化を行います。一方で、`fatalError(_:file:line:)` 関数は最適化の設定をしても、常に実行を中断します。  
-> `fatalError(_:file:line:)` 関数は、試作段階や開発の初期段階で、まだ未実装であることを示すためのスタブとして使うことができます\(`fatalError("Unimplemented")` と書くなど\)。fatal error はコードの最適化がされないため、assertion と precondition とは異なり、もしこのスタブメソッドに遭遇した場合は、確実に実行が中断させることができます
+> `fatalError(_:file:line:)` 関数は、試作段階や開発の初期段階で、まだ未実装であることを示すためのスタブとして使用することができます\(`fatalError("Unimplemented")` と書くなど\)。fatal error はコードの最適化がされないため、assertion と precondition とは異なり、もしこのスタブメソッドに遭遇した場合は、確実に実行が中断させることができます
 

@@ -32,7 +32,7 @@ Swift の配列の型は全体で `Array<Element>` と書きます。`Element` �
 
 ### Creating an Empty Array
 
-イニシャライザのシンタックスを使って、ある型の空の配列を作成できます。
+イニシャライザのシンタックスを使用して、ある型の空の配列を作成できます。
 
 ```swift
 var someInts = [Int]()
@@ -42,7 +42,7 @@ print("someInts is of type [Int] with \(someInts.count) items.")
 
 `someInts` 変数の型は、イニシャライザから `[Int]` と推論されます。
 
-他にも、文脈的に型情報がわかっている場合\(関数の引数や既に型が決まっている変数や定数など\)は、空配列リテラルの `[]`\(空の角括弧ペア\)を使って、空の配列を作成することができます。
+他にも、文脈的に型情報がわかっている場合\(関数の引数や既に型が決まっている変数や定数など\)は、空配列リテラルの `[]`\(空の角括弧ペア\)を使用して、空の配列を作成することができます。
 
 ```swift
 someInts.append(3)
@@ -62,7 +62,7 @@ var threeDoubles = Array(repeating: 0.0, count: 3)
 
 ### Creating an Array by Adding Two Arrays Together
 
-加算演算子\(`+`\)を使って、既存の型互換のある 2 つの配列を合成して、新しい配列を作成することもできます。この新しい配列の型は連結させた配列の型から推論されます:
+加算演算子\(`+`\)を使用して、既存の型互換のある 2 つの配列を合成して、新しい配列を作成することもできます。この新しい配列の型は連結させた配列の型から推論されます:
 
 ```swift
 var anotherThreeDoubles = Array(repeating: 2.5, count: 3)
@@ -122,14 +122,14 @@ if shoppingList.isEmpty {
 // Prints "The shopping list isn't empty."
 ```
 
-`append(_:)` メソッドを使って、配列の末尾に新しいアイテムを追加することができます。
+`append(_:)` メソッドを使用して、配列の末尾に新しいアイテムを追加することができます。
 
 ```swift
 shoppingList.append("Flour")
 // shoppingList は 3 つのアイテムを含んでいて、誰かがパンケーキを作っています
 ```
 
-加算代入演算子\(`+=`\)を使って 1 つ以上の互換性のある型のアイテムを追加することもできます。
+加算代入演算子\(`+=`\)を使用して 1 つ以上の互換性のある型のアイテムを追加することもできます。
 
 ```swift
 shoppingList += ["Baking Powder"]
@@ -138,7 +138,7 @@ shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
 // shoppingList は 7 つのアイテムを含んでいます
 ```
 
-`subscript` シンタックスを使うと、配列から値を取得します。配列名のすぐ後の角括弧\(`[]`\)の中に、取得したい値の index を渡します。
+`subscript` シンタックスを使用すると、配列から値を取得します。配列名のすぐ後の角括弧\(`[]`\)の中に、取得したい値の index を渡します。
 
 ```swift
 var firstItem = shoppingList[0]
@@ -155,9 +155,9 @@ shoppingList[0] = "Six eggs"
 // リストの最初のアイテムは "Eggs" ではなく、 "Six eggs"
 ```
 
-`subscript` シンタックスを使う時、指定した index は値の存在する範囲内でなければなりません。例えば、配列の最後に値を追加しようとして `shoppingList[shoppingList.count] = "Salt"` と書くと、実行時エラーになります。
+`subscript` シンタックスを使用する時、指定した index は値の存在する範囲内でなければなりません。例えば、配列の最後に値を追加しようとして `shoppingList[shoppingList.count] = "Salt"` と書くと、実行時エラーになります。
 
-ある一定範囲の値を一度に変更する場合にも、`subscript` シンタックスを使うことができます。これは置き換えたい値のセットの数と指定した置き換える範囲の長さが異なっていても可能です。次の例は `"Chocolate Spread"`、`"Cheese"`、`"Butter"` を `"Bananas"`、`"Apples"` に置き換えています。
+ある一定範囲の値を一度に変更する場合にも、`subscript` シンタックスを使用することができます。これは置き換えたい値のセットの数と指定した置き換える範囲の長さが異なっていても可能です。次の例は `"Chocolate Spread"`、`"Cheese"`、`"Butter"` を `"Bananas"`、`"Apples"` に置き換えています。
 
 ```swift
 shoppingList[4...6] = ["Bananas", "Apples"]
@@ -174,7 +174,7 @@ shoppingList.insert("Maple Syrup", at: 0)
 
 この例では `insert(_:at:)` に `"Maple Syrup"` と index 0 を指定して、ショッピングリストの先頭に新しいアイテムを挿入しています。
 
-同様に `remove(at:)` を使って配列からアイテムを削除できます。このメソッドは特定の index のアイテムを削除し、削除したアイテムを返します\(必要なければ戻り値は無視できます\):
+同様に `remove(at:)` を使用して配列からアイテムを削除できます。このメソッドは特定の index のアイテムを削除し、削除したアイテムを返します\(必要なければ戻り値は無視できます\):
 
 ```swift
 let mapleSyrup = shoppingList.remove(at: 0)
@@ -204,7 +204,7 @@ let apples = shoppingList.removeLast()
 
 ### Iterating Over an Array
 
-`for-in` ループを使って配列の値全部に繰り返し処理をすることができます。
+`for-in` ループを使用して配列の値全部に繰り返し処理をすることができます。
 
 ```swift
 for item in shoppingList {
@@ -234,7 +234,7 @@ for (index, value) in shoppingList.enumerated() {
 
 ## Sets
 
-セット\(_set_\)はコレクション内に、同じ型の値を、決まった順序と値の重複なしに保持します。アイテムの順序が重要でない場合や、アイテムに重複がないことを保証したい場合に、配列\(_array_\)の変わりにセットを使うことができます。
+セット\(_set_\)はコレクション内に、同じ型の値を、決まった順序と値の重複なしに保持します。アイテムの順序が重要でない場合や、アイテムに重複がないことを保証したい場合に、配列\(_array_\)の変わりにセットを使用することができます。
 
 > `Set` はFoundationの `NSSet` とスムーズにやりとりできるようにしています。  
 > FoundationとCocoaを使った `Set` の使用方法に関しては、[Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530)を参照ください
@@ -243,7 +243,7 @@ for (index, value) in shoppingList.enumerated() {
 
 セットに保存する型はハッシュ化が可能でなければなりません。つまり、その型はハッシュ値を計算する方法をセットに知らせる必要があります。ハッシュ値は、`Int` 型で、等価比較が可能なすべてのオブジェクトで、例えば `a == b` の場合、`a` のハッシュ値は `b` のハッシュ値と等しくなります。
 
-Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デフォルトでハッシュ化が可能で、セットや辞書のキーに使うことができます。associated value を持たない列挙型の case \([Enumerations](enumerations.md)\)もデフォルトでハッシュ化が可能です。
+Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デフォルトでハッシュ化が可能で、セットや辞書のキーに使用することができます。associated value を持たない列挙型の case \([Enumerations](enumerations.md)\)もデフォルトでハッシュ化が可能です。
 
 > NOTE  
 > Swift 標準ライブラリの `Hashable` プロトコルに適合することで、独自で作成した型をセットや辞書のキーに使用できます。`hash(into:)` メソッドの実装については、[Hashable](https://developer.apple.com/documentation/swift/hashable)を参照ください。プロトコルの適合については、[Protocols](protocols.md)を参照ください。
@@ -254,7 +254,7 @@ Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デ
 
 ### Creating and Initializing an Empty Set
 
-イニシャライザのシンタックスを使って、ある型の空のセットを作成できます。
+イニシャライザのシンタックスを使用して、ある型の空のセットを作成できます。
 
 ```swift
 var letters = Set<Character>()
@@ -265,7 +265,7 @@ print("letters is of type Set<Character> with \(letters.count) items.")
 > NOTE  
 > `letters` 変数の型はイニシャライザの型から `Set<Character>` と推論されます。
 
-他の方法として、関数の引数や型が明示されている変数や定数など型情報が既にわかっている場合は、空の配列リテラルを使って空のセットを作成することができます。
+他の方法として、関数の引数や型が明示されている変数や定数など型情報が既にわかっている場合は、空の配列リテラルを使用して空のセットを作成することができます。
 
 ```swift
 letters.insert("a")
@@ -276,7 +276,7 @@ letters = []
 
 ### Creating a Set with an Array Literal
 
-簡略記法として、1 つ以上の値を配列リテラルを使ってセットを初期化することもできます。
+簡略記法として、1 つ以上の値を配列リテラルを使用してセットを初期化することもできます。
 
 下記の例は、`favoriteGenres` という `String` の値を保持するセットを作成しています。
 
@@ -285,7 +285,7 @@ var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip hop"]
 // favoriteGenres は 3 つ の初期値で初期化されている
 ```
 
-`favoriteGenres` 変数は `Set<String>` と書くことで、「`String` のセット」を宣言しています。`String` 型の値をしているため、このセットには `String` しか保持できません。ここでは `favoriteGenres` セットに 3 つの `String` を含めた配列リテラルを使って初期化しています。
+`favoriteGenres` 変数は `Set<String>` と書くことで、「`String` のセット」を宣言しています。`String` 型の値をしているため、このセットには `String` しか保持できません。ここでは `favoriteGenres` セットに 3 つの `String` を含めた配列リテラルを使用して初期化しています。
 
 > NOTE  
 > 後の例でアイテムの追加や削除を行なっているため、`favoriteGenres` は定数ではなく変数で定義されています。
@@ -322,14 +322,14 @@ if favoriteGenres.isEmpty {
 // Prints "I have particular music preferences."
 ```
 
-`insert(_:)` メソッドを使って、セットに新しいアイテムを追加することができます。
+`insert(_:)` メソッドを使用して、セットに新しいアイテムを追加することができます。
 
 ```swift
 favoriteGenres.insert("Jazz")
 // favoriteGenres 4 つのアイテムを含んでいます
 ```
 
-`remove(_:)` を使ってセットからアイテムを削除できます。セットにアイテムが存在した場合は削除し、削除したアイテムを返します。もし存在しなけば `nil` を返します。他の方法として、全アイテムを削除するには `removeAll()` を使います。
+`remove(_:)` を使用してセットからアイテムを削除できます。セットにアイテムが存在した場合は削除し、削除したアイテムを返します。もし存在しなけば `nil` を返します。他の方法として、全アイテムを削除するには `removeAll()` を使います。
 
 ```swift
 if let removedGenre = favoriteGenres.remove("Rock") {
@@ -340,7 +340,7 @@ if let removedGenre = favoriteGenres.remove("Rock") {
 // Prints "Rock? I'm over it."
 ```
 
-特定のアイテムが含まれているかどうかを調べるには、`contains(_:)` メソッドを使うことができます。
+特定のアイテムが含まれているかどうかを調べるには、`contains(_:)` メソッドを使用することができます。
 
 ```swift
 if favoriteGenres.contains("Funk") {
@@ -353,7 +353,7 @@ if favoriteGenres.contains("Funk") {
 
 ### Iterating Over a Set
 
-`for-in` ループを使ってセットの要素を繰り返し処理することができます。
+`for-in` ループを使用してセットの要素を繰り返し処理することができます。
 
 ```swift
 for genre in favoriteGenres {
@@ -366,7 +366,7 @@ for genre in favoriteGenres {
 
 `for-in` ループについては、[For-In Loops](control-flow.md#for-in-loops)をご参照ください。
 
-Swift の Set 型は決まった順序がありません。特定の順番で値を繰り返し処理したい場合、`sorted()` メソッドを使うと、`<` 演算子を使ってソートされた配列として要素を返します。
+Swift の Set 型は決まった順序がありません。特定の順番で値を繰り返し処理したい場合、`sorted()` メソッドを使用すると、`<` 演算子を使用してソートされた配列として要素を返します。
 
 ```swift
 for genre in favoriteGenres.sorted() {
@@ -415,9 +415,9 @@ oddDigits.symmetricDifference(singleDigitPrimeNumbers).sorted()
 
 `a` は、`b` に含まれる全ての要素を含んでいるため、`b` の上位集合\(_superset_\)です。反対に、`b` は `a` の下位集合\(_subset_\)です。`b` と `c` は、共通の要素がないため￥、お互いに素\(_disjoint_\)です。
 
-* 等価演算子\(_==_\)を使って、2 つのセットの要素が全て同じかどうかを判定できます
-* `isSubset(of:)` を使ってあるセットの要素が他のセットに全て含まれているかどうかを判定できます
-* `isSuperset(of:)` を使ってあるセットが他のセットの全ての要素を含んでいるかどうかを判定できます
+* 等価演算子\(_==_\)を使用して、2 つのセットの要素が全て同じかどうかを判定できます
+* `isSubset(of:)` を使用してあるセットの要素が他のセットに全て含まれているかどうかを判定できます
+* `isSuperset(of:)` を使用してあるセットが他のセットの全ての要素を含んでいるかどうかを判定できます
 * `isStrictSubset(of:)` や `isStrictSuperset(of:)` は、あるセットが他のセットの上位集合か下位集合かどうかを判定できます\(等しい場合は `false` です\)
 * `isDisjoint(with:)` は 2 つのセットに共通要素が全くないかどうかを判定できます
 
@@ -453,7 +453,7 @@ Swift の辞書は、全体で `Dictionary<Key, Value>` と書きます。`Key` 
 
 ### Creating an Empty Dictionary
 
-配列と同様に、ある型の空の `Dictionary` をイニシャライザのシンタックスを使って作成できます。
+配列と同様に、ある型の空の `Dictionary` をイニシャライザのシンタックスを使用して作成できます。
 
 ```swift
 var namesOfIntegers = [Int: String]()
@@ -494,7 +494,7 @@ var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 この辞書リテラルは、`String: String` 型のペアを含んでいます。このキーバリューペアは `airports` 変数の宣言\(`String` 型のキーと `String` 型のバリューしか持つことができない辞書\)と一致するので、2 つの初期値を持つ `airports` 辞書を初期化するために、この辞書リテラルを代入することができます。
 
-配列と同様に、キーとバリューの型がはっきりと分かる辞書リテラルを使って初期化している場合、型を書く必要はありません。`airports` の初期化は、より簡潔に書くことができました:
+配列と同様に、キーとバリューの型がはっきりと分かる辞書リテラルを使用して初期化している場合、型を書く必要はありません。`airports` の初期化は、より簡潔に書くことができました:
 
 ```swift
 var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
@@ -524,14 +524,14 @@ if airports.isEmpty {
 // Prints "The airports dictionary isn't empty."
 ```
 
-subscript シンタックスを使って、新しいアイテムを追加することができます。適切な型の新しいキーを subscript の index に入れ、適切な型の新しいバリューを代入します。
+subscript シンタックスを使用して、新しいアイテムを追加することができます。適切な型の新しいキーを subscript の index に入れ、適切な型の新しいバリューを代入します。
 
 ```swift
 airports["LHR"] = "London"
 // airports 辞書は 3 つのアイテムを含んでいます
 ```
 
-他には加算代入演算子\(`+=`\)を使って 1 つ以上の互換性のある型のアイテムを追加できます。
+他には加算代入演算子\(`+=`\)を使用して 1 つ以上の互換性のある型のアイテムを追加できます。
 
 ```swift
 shoppingList += ["Baking Powder"]
@@ -540,14 +540,14 @@ shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
 // shoppingList は 7 つのアイテムを含んでいます
 ```
 
-`subscript` シンタックスを使うと、特定のキーのバリューを変更することもできます。
+`subscript` シンタックスを使用すると、特定のキーのバリューを変更することもできます。
 
 ```swift
 airports["LHR"] = "London Heathrow"
 // "LHR"の値は "London Heathrow" へ変更
 ```
 
-別の方法として、`updateValue(_:forKey:)` メソッドを使って、特定のキーのバリューの設定/更新ができます。`subscript` と同様に `updateValue(_:forKey:)` は、特定のキーのバリューがなければ新しく値を設定し、既にバリューが存在していたら更新します。`subscript` と違う点として、`updateValue(_:forKey:)` メソッドは、更新後に前の値を返します。こうすることで、更新が実際に起きたかどうかが確認できます。
+別の方法として、`updateValue(_:forKey:)` メソッドを使用して、特定のキーのバリューの設定/更新ができます。`subscript` と同様に `updateValue(_:forKey:)` は、特定のキーのバリューがなければ新しく値を設定し、既にバリューが存在していたら更新します。`subscript` と違う点として、`updateValue(_:forKey:)` メソッドは、更新後に前の値を返します。こうすることで、更新が実際に起きたかどうかが確認できます。
 
 `updateValue(_:forKey:)` メソッドは、辞書のバリューの型の optional 値を返します。例えば辞書が `String` を保持している場合、このメソッドは `String?`\(optional `String`\)を返します。この optional 値は更新前にバリューが存在していた場合はその値の optional を返し、存在していなかった場合は `nil` を返します:
 
@@ -558,7 +558,7 @@ if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
 // Prints "The old value for DUB was Dublin."
 ```
 
-subscript シンタックスを使って特定のキーのバリューを取得することもできます。バリューの存在しないキーに対してもリクエストすることが可能で、バリューの型の optional 値を返します。存在しなければ `nil` を返します:
+subscript シンタックスを使用して特定のキーのバリューを取得することもできます。バリューの存在しないキーに対してもリクエストすることが可能で、バリューの型の optional 値を返します。存在しなければ `nil` を返します:
 
 ```swift
 if let airportName = airports["DUB"] {
@@ -569,7 +569,7 @@ if let airportName = airports["DUB"] {
 // Prints "The name of the airport is Dublin Airport."
 ```
 
-subscript シンタックスを使って、キーに `nil` を代入することで、キーバリューペアを削除できます:
+subscript シンタックスを使用して、キーに `nil` を代入することで、キーバリューペアを削除できます:
 
 ```swift
 airports["APL"] = "Apple International"
@@ -578,7 +578,7 @@ airports["APL"] = nil
 // APL は辞書から削除されました
 ```
 
-他の方法として、`removeValue(forKey:)` メソッドを使ってキーバリューペアを削除できます。バリューが存在すれば削除した値を返し、存在しなければ `nil` を返します:
+他の方法として、`removeValue(forKey:)` メソッドを使用してキーバリューペアを削除できます。バリューが存在すれば削除した値を返し、存在しなければ `nil` を返します:
 
 ```swift
 if let removedValue = airports.removeValue(forKey: "DUB") {
@@ -591,7 +591,7 @@ if let removedValue = airports.removeValue(forKey: "DUB") {
 
 ### Iterating Over a Dictionary
 
-`for-in` ループを使って辞書のキーバリューペア全部に繰り返し処理することができます。
+`for-in` ループを使用して辞書のキーバリューペア全部に繰り返し処理することができます。
 
 ```swift
 for item in shoppingList {
@@ -616,7 +616,7 @@ for (airportCode, airportName) in airports {
 
 `for-in` ループについては、[For-In Loops](control-flow.md#for-in-loops)をご参照ください。
 
-`keys` と `values` プロパティを使って、キーとバリューそれぞれのリストを取得することもできます:
+`keys` と `values` プロパティを使用して、キーとバリューそれぞれのリストを取得することもできます:
 
 ```swift
 for airportCode in airports.keys {
@@ -632,7 +632,7 @@ for airportName in airports.values {
 // Airport name: Toronto Pearson
 ```
 
-`Array` インスタンスを引数に受け取る API で辞書のキーとバリューを使いたい場合、`keys` と `values` プロパティを使って新しい配列を初期化しましょう:
+`Array` インスタンスを引数に受け取る API で辞書のキーとバリューを使いたい場合、`keys` と `values` プロパティを使用して新しい配列を初期化しましょう:
 
 ```swift
 let airportCodes = [String](airports.keys)

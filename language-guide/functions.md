@@ -126,7 +126,7 @@ printWithoutCounting(string: "hello, world")
 最初の関数 `printAndCount(string:)` は文字列を出力し、その文字数を `Int` として返します。 2 番目の関数 `printWithoutCounting(string:)` は、最初の関数を呼び出しますが、その戻り値を無視します。 2 番目の関数が呼び出されても、メッセージは最初の関数によって出力されますが、戻り値は使われていません。
 
 > NOTE  
-> 戻り値は無視できますが、常に関数が値を返すことは示さなければなりません。 戻り型が定義されている関数では、値を返さずに関数を使うことはできません。そうしようとすると、コンパイルエラーが発生します。
+> 戻り値は無視できますが、常に関数が値を返すことは示さなければなりません。 戻り型が定義されている関数では、値を返さずに関数を使用することはできません。そうしようとすると、コンパイルエラーが発生します。
 
 ### Functions with Multiple Return Values
 
@@ -149,7 +149,7 @@ func minMax(array: [Int]) -> (min: Int, max: Int) {
 }
 ```
 
-`minMax(array:)` 関数は、2 つの `Int` 値を含むタプルを返します。 これらの値には `min` と `max` のラベルが付いているため、関数の戻り値を使うときにその名前でアクセスできます。
+`minMax(array:)` 関数は、2 つの `Int` 値を含むタプルを返します。 これらの値には `min` と `max` のラベルが付いているため、関数の戻り値を使用するときにその名前でアクセスできます。
 
 `minMax(array:)` 関数の本体は、`currentMin` および `currentMax` と呼ばれる 2 つの変数に、配列の最初の整数値を設定することから始まります。 次に、この関数は配列内の残りの値を繰り返し処理し、各値をチェックして、それぞれ `currentMin` と `currentMax` の値よりも小さいか大きいかを確認します。 最後に、全体の最小値と最大値が 2 つの `Int` 値のタプルとして返されます。
 
@@ -221,14 +221,14 @@ print(anotherGreeting(for: "Dave"))
 
 `greeting(for:)` 関数の全体の定義は、戻り値の挨拶文です。つまり、この短い形式を使用できます。`anotherGreeting(for:)` 関数は、より複数の式を持つ関数と同様に `return` キーワードを使用して、同じ挨拶文を返しています。 1 つの戻り行として記述した関数は、`return` を省略できます。
 
-[Shorthand Getter Declaration](./properties.md#shorthand-getter-declaration)でも見ますが、プロパティゲッタ(*property getter*)でも暗黙的な戻り値を使うことができます。
+[Shorthand Getter Declaration](./properties.md#shorthand-getter-declaration)でも見ますが、プロパティゲッタ(*property getter*)でも暗黙的な戻り値を使用することができます。
 
 > NOTE  
 > 暗黙の戻り値を使ったコードは、何かしらの値を返す必要があります。 例えば、 `fatalError("Oh no!")` または `print（13）` を暗黙の戻り値として使用することはできません。
 
 ## Function Argument Labels and Parameter Names
 
-各関数の引数には、引数ラベルと引数名の両方持つことができます。引数ラベルは、関数を呼び出すときに使用されます。各引数は、その前に書かれた引数ラベルを使って関数が呼び出されます。引数名は関数の内部で使用されます。デフォルトでは、引数名を引数ラベルとして使用します。
+各関数の引数には、引数ラベルと引数名の両方持つことができます。引数ラベルは、関数を呼び出すときに使用されます。各引数は、その前に書かれた引数ラベルを使用して関数が呼び出されます。引数名は関数の内部で使用されます。デフォルトでは、引数名を引数ラベルとして使用します。
 
 ```swift
 func someFunction(firstParameterName: Int, secondParameterName: Int) {
@@ -308,9 +308,9 @@ func arithmeticMean(_ numbers: Double...) -> Double {
     return total / Double(numbers.count)
 }
 arithmeticMean(1, 2, 3, 4, 5)
-// 5つの数値の平均である3.0を返します
+// 5 つの数値の平均の 3.0 を返します
 arithmeticMean(3, 8.25, 18.75)
-// 3つの数値の平均である10.0を返します
+// 3 つの数値の平均の 10.0 を返します
 ```
 
 関数は複数の可変個引数を持つことができます。 可変個引数の後に続く最初の引数には、引数ラベルが必要です。引数ラベルにより、どの引数が可変個引数に渡され、どの引数が可変個引数の後に続く引数に渡されているかが明確になります。

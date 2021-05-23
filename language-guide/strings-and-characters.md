@@ -4,7 +4,7 @@
 
 文字列\(_string_\)は `"hello, world"` や `"albatross"` のような一連の文字です。Swift の文字列は `String` 型で表されます。`String` の内容には、様々な方法でアクセスすることができます\(`Character` 型の値のコレクションとしてなど\)。
 
-Swift の `String` と `Character` 型は、高速で、Unicode に準拠した方法でテキストを扱うことができます。文字列の生成と操作のシンタックスは、C 言語に似た文字列リテラルのシンタックスを使い、軽量で読みやすくなっています。文字列の連結は、`+` 演算子を使って 2 つの文字列の連結をするのと同じくらいシンプルです。また、文字列が変更が可能かどうかは、他の型と同じように定数か変数かを選択することで管理できます。また、文字列補間と呼ばれるプロセスの中で、定数、変数、リテラルや式をより長い文字列の中に入れることができます。こういった特徴から、画面用、ストレージ用、印刷用などカスタム文字列も簡単に作ることができます。
+Swift の `String` と `Character` 型は、高速で、Unicode に準拠した方法でテキストを扱うことができます。文字列の生成と操作のシンタックスは、C 言語に似た文字列リテラルのシンタックスを使い、軽量で読みやすくなっています。文字列の連結は、`+` 演算子を使用して 2 つの文字列の連結をするのと同じくらいシンプルです。また、文字列が変更が可能かどうかは、他の型と同じように定数か変数かを選択することで管理できます。また、文字列補間と呼ばれるプロセスの中で、定数、変数、リテラルや式をより長い文字列の中に入れることができます。こういった特徴から、画面用、ストレージ用、印刷用などカスタム文字列も簡単に作ることができます。
 
 このようなシンプルなシンタックスにも関わらず、Swift の `String` 型は、高速で、モダンな実装になっています。それぞれの文字は、特定の変換形式とは独立した Unicode 文字群で構成され、様々な Unicode 形式でアクセスできるようになっています。
 
@@ -14,7 +14,7 @@ Swift の `String` と `Character` 型は、高速で、Unicode に準拠した�
 
 ## String Literals
 
-事前に定義された `String` を文字列リテラル\(_string literals_\)として使うことができます。文字列リテラルはダブルクォテーション\(`"`\)で囲まれた一連の文字です。
+事前に定義された `String` を文字列リテラル\(_string literals_\)として使用することができます。文字列リテラルはダブルクォテーション\(`"`\)で囲まれた一連の文字です。
 
 ```swift
 let someString = "Some string literal value"
@@ -91,7 +91,7 @@ let blackHeart = "\u{2665}"      // ♥,  Unicode scalar U+2665
 let sparklingHeart = "\u{1F496}" // 💖, Unicode scalar U+1F496
 ```
 
-複数行文字列リテラルは 1 つではなく 3 つのダブルクォテーションを使っているので、複数行文字列リテラルの中にエスケープなしでダブルクォテーションを含めることができます。文字列にテキストとして `"""` を含めたい場合、少なくともその中の 1 つをエスケープしましょう。
+複数行文字列リテラルは 1 つではなく 3 つのダブルクォテーションを使用しているので、複数行文字列リテラルの中にエスケープなしでダブルクォテーションを含めることができます。文字列にテキストとして `"""` を含めたい場合、少なくともその中の 1 つをエスケープしましょう。
 
 ```swift
 let threeDoubleQuotationMarks = """
@@ -116,7 +116,7 @@ Here are three more double quotes: """
 
 ## Initializing an Empty String
 
-長い文字列を構築する時に、初期値として空の文字列を作る時、文字列リテラルを変数に設定するか、`String` のイニシャライザを使って新しいインスタンスを初期化します。
+長い文字列を構築する時に、初期値として空の文字列を作る時、文字列リテラルを変数に設定するか、`String` のイニシャライザを使用して新しいインスタンスを初期化します。
 
 ```swift
 var emptyString = ""               // 空の文字列
@@ -160,7 +160,7 @@ Swift の、デフォルトでコピーをする `String` の挙動は、`String
 
 ## Working with Characters
 
-`for-in` ループを使って文字列を繰り返し処理することで、`String` の個々の `Character` にアクセスすることができます。
+`for-in` ループを使用して文字列を繰り返し処理することで、`String` の個々の `Character` にアクセスすることができます。
 
 ```swift
 for character in "Dog!🐶" {
@@ -192,7 +192,7 @@ print(catString)
 
 ## Concatenating Strings and Characters
 
-`String` 同士は、加算演算子\(`+`\)使って新しい `String` を生成できます:
+`String` 同士は、加算演算子\(`+`\)使用して新しい `String` を生成できます:
 
 ```swift
 let string1 = "hello"
@@ -201,7 +201,7 @@ var welcome = string1 + string2
 // welcome は "hello there" と等しい
 ```
 
-加算代入演算子\(`+=`\)を使って、既存の `String` 変数に `String` を追加することもできます:
+加算代入演算子\(`+=`\)を使用して、既存の `String` 変数に `String` を追加することもできます:
 
 ```swift
 var instruction = "look over"
@@ -209,7 +209,7 @@ instruction += string2
 // instruction は "look over there" と等しい
 ```
 
-`String` の `append()` メソッドを使って `Character` を追加することもできます。
+`String` の `append()` メソッドを使用して `Character` を追加することもできます。
 
 ```swift
 let exclamationMark: Character = "!"
@@ -220,7 +220,7 @@ welcome.append(exclamationMark)
 > NOTE  
 > 既存の `Character` に `String` や `Character` を追加することはできません。`Character` には、 1 つの文字だけしか含められません。
 
-より長い文字列を構築するために複数行文字列リテラルを使っている場合、最後の行も含めた全ての行で改行したいこともあるかと思います。例えば:
+より長い文字列を構築するために複数行文字列リテラルを使用している場合、最後の行も含めた全ての行で改行したいこともあるかと思います。例えば:
 
 ```swift
 let badStart = """
@@ -251,7 +251,7 @@ print(goodStart + end)
 
 ## String Interpolation
 
-文字列補間\(_String Interpolation_\)は、複数の定数、変数、リテラル、式を文字列リテラルの中に含めることで新しい `String` を構築する方法です。文字列補間は 1 行でも複数行でも使うことができます。文字列に入れるそれぞれの値は、両かっこで囲み、その前にバックスラッシュ\(\\)をつけます。
+文字列補間\(_String Interpolation_\)は、複数の定数、変数、リテラル、式を文字列リテラルの中に含めることで新しい `String` を構築する方法です。文字列補間は 1 行でも複数行でも使用することができます。文字列に入れるそれぞれの値は、両かっこで囲み、その前にバックスラッシュ\(\\)をつけます。
 
 ```swift
 let multiplier = 3
@@ -263,14 +263,14 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 
 `multiplier` は文字列の後半の大きな式の中でも使われています。この式は、`Double(multiplier) * 2.5` を計算して、その結果の\(`7.5`\)を文字列に挿入します。この場合、`\(Double(multiplier) * 2.5)` と書いて文字列リテラルに含まれます。
 
-文字列補間ではなく通常扱われる文字として文字列を生成したい場合、拡張区切り文字を使うことができます。例えば:
+文字列補間ではなく通常扱われる文字として文字列を生成したい場合、拡張区切り文字を使用することができます。例えば:
 
 ```swift
 print(#"Write an interpolated string in Swift using \(multiplier)."#)
 // Prints "Write an interpolated string in Swift using \(multiplier)."
 ```
 
-拡張区切り文字を使った文字列の中で文字列補間を使う場合、バックスラッシュの後の番号記号の数を文字列の開始\(終了\)の番号記号の数に合わせます。例えば:
+拡張区切り文字を使った文字列の中で文字列補間を使用する場合、バックスラッシュの後の番号記号の数を文字列の開始\(終了\)の番号記号の数に合わせます。例えば:
 
 ```swift
 print(#"6 times 7 is \#(6 * 7)."#)
@@ -336,7 +336,7 @@ print("unusualMenagerie has \(unusualMenagerie.count) characters")
 // Prints "unusualMenagerie has 40 characters"
 ```
 
-`Character` に拡張書記素クラスタを使っているということは、文字列の連結や変更が必ずしも文字列内の文字数に影響を与えるわけではない、ということに注意してください。
+`Character` に拡張書記素クラスタを使用しているということは、文字列の連結や変更が必ずしも文字列内の文字数に影響を与えるわけではない、ということに注意してください。
 
 例えば、`cafe` という単語は 4 つの文字から新しい文字列を初期化した場合、`COMBINING ACUTE ACCENT (U+0301)` を最後に追加すると、最後の文字は `e` から `é` に変わりますが、文字のカウントは `4` のままです。
 
@@ -352,12 +352,12 @@ print("the number of characters in \(word) is \(word.count)")
 ```
 
 > NOTE  
-> 拡張書記素クラスタは複数のUnicodeスカラを組み合わせることができます。つまり、異なった文字や、同じ文字でも、異なったスカラで表された文字はメモリ上に保持する際に異なったメモリサイズが必要になる場合があります。これは、Swift の文字は、それぞれの文字で同じメモリ量ではない、ということです。結果として、文字列内の文字を数えるには、拡張書記素クラスタの境界を判断しなければならず、文字列全体を繰り返し処理しないと計算することができません。特に長い文字列を扱っている場合は、`count` プロパティを使うと文字数をカウントするために文字列全体に繰り返し処理を行なっていることに気をつけてください。  
+> 拡張書記素クラスタは複数のUnicodeスカラを組み合わせることができます。つまり、異なった文字や、同じ文字でも、異なったスカラで表された文字はメモリ上に保持する際に異なったメモリサイズが必要になる場合があります。これは、Swift の文字は、それぞれの文字で同じメモリ量ではない、ということです。結果として、文字列内の文字を数えるには、拡張書記素クラスタの境界を判断しなければならず、文字列全体を繰り返し処理しないと計算することができません。特に長い文字列を扱っている場合は、`count` プロパティを使用すると文字数をカウントするために文字列全体に繰り返し処理を行なっていることに気をつけてください。  
 > `count` プロパティから返ってくる文字数は、同じ文字列であっても `NSString` の `length` と異なる場合があります。`NSString` の `length` は_UTF-16_での文字数カウントで、Unicode 拡張書記素クラスタでの数ではありません。
 
 ## Accessing and Modifying a String
 
-メソッドやプロパティを使ったり、script シンタックスを使って、文字列へアクセスしたり、変更をすることができます。
+メソッドやプロパティを使ったり、script シンタックスを使用して、文字列へアクセスしたり、変更をすることができます。
 
 ### String Indices
 
@@ -365,9 +365,9 @@ print("the number of characters in \(word) is \(word.count)")
 
 上記で述べたように、異なる文字には異なるメモリ量が必要になります。つまり、`Character` の位置を特定するには、Unicode スカラを文字列の最初または最後から反復して探さなければなりません。こういった理由から Swift の `String` の index は数値にすることはできません。
 
-`String` の最初の `Character` の位置を知るためには、`startIndex` プロパティを使いましょう。`endIndex` プロパティは `String` の最後の `Character` の位置の次の位置です。つまり、`endIndex` プロパティは文字列の subscript に使ってはいけません。`String` が空ならば、`startIndex` と `endIndex` は等しくなります。
+`String` の最初の `Character` の位置を知るためには、`startIndex` プロパティを使いましょう。`endIndex` プロパティは `String` の最後の `Character` の位置の次の位置です。つまり、`endIndex` プロパティは文字列の subscript に使用してはいけません。`String` が空ならば、`startIndex` と `endIndex` は等しくなります。
 
-`index(before:)` と `index(after:)` を使って、ある index の前後の index にアクセスできます。ある index から離れた位置の index にアクセスするためには、上記 2 つのメソッドを繰り返し呼ぶのではなく、`index(_:offsetBy:)` を使います。
+`index(before:)` と `index(after:)` を使用して、ある index の前後の index にアクセスできます。ある index から離れた位置の index にアクセスするためには、上記 2 つのメソッドを繰り返し呼ぶのではなく、`index(_:offsetBy:)` を使います。
 
 `String` のある特定の位置の `Character` へアクセスするには、subscript シンタックスを使います。
 
@@ -401,7 +401,7 @@ for index in greeting.indices {
 ```
 
 > NOTE  
-> `Collection` プロトコルに適合したどんな型にも、`startIndex`、`endIndex` プロパティ、index\(before:\)、index\(after:\)、index\(\_:offsetBy:\)メソッドを使うことができます。これは、`Array`、 `Dictionary`、`Set` といったコレクションの型と同様に、今紹介している `String` も含んでいます。
+> `Collection` プロトコルに適合したどんな型にも、`startIndex`、`endIndex` プロパティ、index\(before:\)、index\(after:\)、index\(\_:offsetBy:\)メソッドを使用することができます。これは、`Array`、 `Dictionary`、`Set` といったコレクションの型と同様に、今紹介している `String` も含んでいます。
 
 ### Inserting and Removing
 
@@ -428,11 +428,11 @@ welcome.removeSubrange(range)
 ```
 
 > NOTE  
-> `RangeReplaceableCollection` プロトコルに適合したどんな型にも、insert\(_:at:\)、insert\(contentsOf:at:\)、remove\(at:\)、removeSubrange\(_:\)メソッドを使うことができます。これは、`Array`、 `Dictionary`、`Set` といったコレクションの型と同様に、今紹介している `String` も含んでいます。
+> `RangeReplaceableCollection` プロトコルに適合したどんな型にも、insert\(_:at:\)、insert\(contentsOf:at:\)、remove\(at:\)、removeSubrange\(_:\)メソッドを使用することができます。これは、`Array`、 `Dictionary`、`Set` といったコレクションの型と同様に、今紹介している `String` も含んでいます。
 
 ## Substrings
 
-文字列から部分文字列を取得したい場合\(例えば subscript や `prefix(_:)` などのメソッドを使うなど\)、[Substring](https://developer.apple.com/documentation/swift/substring)インスタンスが結果として取得できます。部分文字列には文字列とほぼ同じメソッドを使うことができます。つまり、部分文字列を文字列と同じような方法で扱うことができます。しかし、文字列とは異なり、部分文字列は、文字列に対して何かアクションを起こしているほんの短い間だけ使います。処理の結果をより長い期間保持する時は、部分文字列を `String` のインスタンスに変換します。例えば:
+文字列から部分文字列を取得したい場合\(例えば subscript や `prefix(_:)` などのメソッドを使用するなど\)、[Substring](https://developer.apple.com/documentation/swift/substring)インスタンスが結果として取得できます。部分文字列には文字列とほぼ同じメソッドを使用することができます。つまり、部分文字列を文字列と同じような方法で扱うことができます。しかし、文字列とは異なり、部分文字列は、文字列に対して何かアクションを起こしているほんの短い間だけ使います。処理の結果をより長い期間保持する時は、部分文字列を `String` のインスタンスに変換します。例えば:
 
 ```swift
 let greeting = "Hello, world!"
@@ -446,12 +446,12 @@ let newString = String(beginning)
 
 文字列のように、部分文字列もそれを構成する文字配列をメモリ領域に持っています。文字列と部分文字列の違いはパフォーマンス最適化として、部分文字列は元の文字列や他の部分文字列を保持するのに使用しているメモリの一部を再利用します。\(文字列にも似たような最適化がありますが、2 つの文字列のメモリが共有されている場合、それらは等しいと見なされます\)この最適化によって、文字列や部分文字列が変更されるまでメモリのコピーが発生するコストに注意を払わなくて済みます。上記で述べたように、部分文字列は長期保持するには向いていません。部分文字列が元の文字列とメモリを共有しているため、元の文字列は部分文字列が使われている間はメモリ上に保持していなければなりません。
 
-上記の例では、`greeting` は文字列です。つまり、文字列を構築する文字を保持したメモリ領域を持っています。`beginning` は `greeting` の部分文字列です。`greeting` が使っているメモリを再利用しています。反対に、`newString` は文字列で、部分文字列から生成された時に独自のメモリ領域を持ちます。下記の図はこの関係を示しています。
+上記の例では、`greeting` は文字列です。つまり、文字列を構築する文字を保持したメモリ領域を持っています。`beginning` は `greeting` の部分文字列です。`greeting` が使用しているメモリを再利用しています。反対に、`newString` は文字列で、部分文字列から生成された時に独自のメモリ領域を持ちます。下記の図はこの関係を示しています。
 
 ![&#x6587;&#x5B57;&#x5217;&#x90E8;&#x5206;&#x6587;&#x5B57;&#x5217;&#x306E;&#x95A2;&#x4FC2;](../.gitbook/assets/stringsubstring_2x.png)
 
 > NOTE  
-> 文字列と部分文字列は、[StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol)に適合しています。つまり、文字列操作を行う関数は、_StringProtocol_の値を受け取るとしばしば便利なことがあります。文字列、部分文字列のどちらを使っても、その関数を使うことができます。
+> 文字列と部分文字列は、[StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol)に適合しています。つまり、文字列操作を行う関数は、_StringProtocol_の値を受け取るとしばしば便利なことがあります。文字列、部分文字列のどちらを使用しても、その関数を使用することができます。
 
 ## Comparing Strings
 
@@ -459,7 +459,7 @@ Swift では、3 つの方法で文字列同士を比較する方法を提供し
 
 ### String and Character Equality
 
-文字列と文字の完全一致は、は等価演算子\(`==`\)と不等演算子\(`!=`\)を使ってチェックします。[Comparison Operators](basic-operators.md#comparison-operators)
+文字列と文字の完全一致は、は等価演算子\(`==`\)と不等演算子\(`!=`\)を使用してチェックします。[Comparison Operators](basic-operators.md#comparison-operators)
 
 ```swift
 let quotation = "We're a lot alike, you and I."
@@ -475,10 +475,10 @@ if quotation == sameQuotation {
 例えば、`LATIN SMALL LETTER E WITH ACUTE`\(`U+00E9`\)は、`LATIN SMALL LETTER E`\(`U+0065`\)の最後に `COMBINING ACUTE ACCENT`\(`U+0301`\)を付け加えた文字列と「規範的に」等しくなります。どちらの拡張書記素クラスタも `é` という文字を表す妥当な方法なので、これらは「規範的に」等しいと見なされます。
 
 ```swift
-// "Voulez-vous un café?"は LATIN SMALL LETTER E WITH ACUTE を使っている
+// "Voulez-vous un café?"は LATIN SMALL LETTER E WITH ACUTE を使用している
 let eAcuteQuestion = "Voulez-vous un caf\u{E9}?"
 
-// "Voulez-vous un café?"は LATIN SMALL LETTER E and COMBINING ACUTE ACCENT を使っている
+// "Voulez-vous un café?"は LATIN SMALL LETTER E and COMBINING ACUTE ACCENT を使用している
 let combinedEAcuteQuestion = "Voulez-vous un caf\u{65}\u{301}?"
 
 if eAcuteQuestion == combinedEAcuteQuestion {
@@ -525,7 +525,7 @@ let romeoAndJuliet = [
 ]
 ```
 
-`hasPrefix(_:)` を使って `romeoAndJuliet` 配列から_Act1_のシーンの数を数えます。
+`hasPrefix(_:)` を使用して `romeoAndJuliet` 配列から_Act1_のシーンの数を数えます。
 
 ```swift
 var act1SceneCount = 0
@@ -538,7 +538,7 @@ print("There are \(act1SceneCount) scenes in Act 1")
 // Prints "There are 5 scenes in Act 1"
 ```
 
-同様に、`hasSuffix(_:)` を使って Capulet マンションや修道士ローレンスの周りで起きたシーンの数を数えてみます。
+同様に、`hasSuffix(_:)` を使用して Capulet マンションや修道士ローレンスの周りで起きたシーンの数を数えてみます。
 
 ```swift
 var mansionCount = 0
@@ -555,7 +555,7 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 ```
 
 > NOTE  
-> `hasPrefix(_:)` は `hasSuffix(_:)` 文字ごとに各文字列の拡張書記素クラスタを使って「規範的に」等しいかどうかを調べます\([String and Character Equality](strings-and-characters.md#string-and-character-equality)に記載\)。
+> `hasPrefix(_:)` は `hasSuffix(_:)` 文字ごとに各文字列の拡張書記素クラスタを使用して「規範的に」等しいかどうかを調べます\([String and Character Equality](strings-and-characters.md#string-and-character-equality)に記載\)。
 
 ## Unicode Representations of Strings
 
@@ -565,9 +565,9 @@ Swift では、複数の Unicode 形式で文字列にアクセスできます�
 
 他にも 3 つの Unicode 準拠形式で `String` にアクセスできます:
 
-* UTF-8 のコードユニットのコレクション\(`utf8` プロパティを使ってアクセス\)
-* UTF-16 のコードユニットのコレクション\(`utf16` プロパティを使ってアクセス\)
-* 21 ビット Unicode スカラのコレクション、UTF-32 に等しい \(`unicodeScalars` プロパティを使ってアクセス\)
+* UTF-8 のコードユニットのコレクション\(`utf8` プロパティを使用してアクセス\)
+* UTF-16 のコードユニットのコレクション\(`utf16` プロパティを使用してアクセス\)
+* 21 ビット Unicode スカラのコレクション、UTF-32 に等しい \(`unicodeScalars` プロパティを使用してアクセス\)
 
 下記の例は、次の文字列を異なる形式で表示しています。`D`、 `o`、 `g`、 `‼` \(`DOUBLE EXCLAMATION MARK` または Unicode スカラ `U+203C`\)と 🐶 文字 \(`DOG FACE`, or Unicode スカラ `U+1F436`\):
 
