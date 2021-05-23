@@ -398,3 +398,73 @@ struct SomeStruct {
 上記の例の `someFunctionWithEscapingClosure` 関数の呼び出しは、可変メソッド内で `self` は変更可能なので、エラーとなります。`self` は変更可能です。これは、エスケープクロージャが `struct` の変更可能な `self` への参照をキャプチャできないというルールに違反します。
 
 ## Autoclosures
+
+自動クロージャ(*autoclosures*)は、関数の引数として渡された式をラップして自動的に作成されるクロージャです。引数はとらず、このクロージャが呼び出されると、ラップされている式の値を返します。この構文は便利で、明示的なクロージャの代わりに通常の式を記述することで、関数のパラメータの中括弧(`{}`)を省略できます。
+
+自動クロージャを引数に取る関数を呼び出すことは一般的ですが、そのような関数を実装することは一般的ではありません。例えば、`assert(condition:message:file:line:)` 関数は、`condition` と `message` 引数を自動クロージャで受け取ります。`condition` 引数はデバッグビルドでのみ評価され、`message` 引数は `condition` が `false` の場合にのみ評価されます。
+
+自動クロージャを使用すると、クロージャを呼び出すまで内部のコードが実行されないため、評価を遅らせることができます。遅延評価は、コードがいつ評価されるかを制御できるため、副作用があるコードや計算コストが高いコードを書く時に役に立ちます。下記のコードは、クロージャが評価をどのように遅らせるかを示しています。
+
+```swift
+var customersInLine = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+print(customersInLine.count)
+// Prints "5"
+
+let customerProvider = { customersInLine.remove(at: 0) }
+print(customersInLine.count)
+// Prints "5"
+
+print("Now serving \(customerProvider())!")
+// Prints "Now serving Chris!"
+print(customersInLine.count)
+// Prints "4"
+```
+
+`customersInLine` 配列の最初の要素はクロージャ内のコードによって削除されますが、配列要素はクロージャが実際に呼び出されるまで削除されません。 クロージャが呼び出されない場合、クロージャ内の式が評価されることはありません。つまり、配列要素が削除されることはありません。`customerProvider` の型は `String` ではなく、`() -> String` で、文字列を返す引数のない関数だということに注意してください。
+
+関数の引数としてクロージャを渡すと、遅延評価と同じ動作が得られます。
+
+```swift
+// customersInLine は ["Alex", "Ewa", "Barry", "Daniella"]
+func serve(customer customerProvider: () -> String) {
+    print("Now serving \(customerProvider())!")
+}
+serve(customer: { customersInLine.remove(at: 0) } )
+// Prints "Now serving Alex!"
+```
+
+上記のリストの `serve(customer:)` 関数は、顧客の名前を返す明示的なクロージャを受け取ります。下記のバージョンの `serve(customer:)` は同じ操作を実行しますが、明示的なクロージャを取得する代わりに、引数の型を `@autoclosure` 属性でマークすることによって自動クロージャを取得します。 これで、クロージャの代わりに `String` 引数を受け取ったかのように関数を呼び出すことができます。`customerProvider` 引数の型は `@autoclosure` 属性でマークされているため、引数は自動的にクロージャに変換されます。
+
+```swift
+// customersInLine は ["Ewa", "Barry", "Daniella"]
+func serve(customer customerProvider: @autoclosure () -> String) {
+    print("Now serving \(customerProvider())!")
+}
+serve(customer: customersInLine.remove(at: 0))
+// Prints "Now serving Ewa!"
+```
+
+> NOTE  
+> 自動クロージャを使いすぎると、コードが理解しにくくなる可能性があります。コンテキストと関数名は、遅延評価されていることを明確にする必要があります。
+
+エスケープを許可する自動クロージャが必要な場合は、`@autoclosure` 属性と `@escaping` 属性の両方を使用します。 `@escaping` 属性については、上記の[Escaping Closures](#escaping-closures)で説明しています。
+
+```swift
+// customersInLine は ["Barry", "Daniella"]
+var customerProviders: [() -> String] = []
+func collectCustomerProviders(_ customerProvider: @autoclosure @escaping () -> String) {
+    customerProviders.append(customerProvider)
+}
+collectCustomerProviders(customersInLine.remove(at: 0))
+collectCustomerProviders(customersInLine.remove(at: 0))
+
+print("Collected \(customerProviders.count) closures.")
+// Prints "Collected 2 closures."
+for customerProvider in customerProviders {
+    print("Now serving \(customerProvider())!")
+}
+// Prints "Now serving Barry!"
+// Prints "Now serving Daniella!"
+```
+
+上記のコードでは、`customerProvider` 引数として渡されたクロージャを呼び出す代わりに、`collectCustomerProviders(_:)` 関数がクロージャを `customerProviders 配列に追加します。配列は関数のスコープ外で宣言されています。つまり、配列のクロージャは関数が戻った後に実行される場合があります。その結果、`customerProvider` 引数の値は、関数のスコープをエスケープできるようにする必要があります。
