@@ -1,4 +1,4 @@
-# Enumerations
+# Enumerations(列挙型)
 
 最終更新日:
 
@@ -13,7 +13,53 @@ Swift の列挙型は、それ自体がファーストクラスの型です。�
 
 これらの機能の詳細については、[Properties](./properties.md), [Methods](./methods.md), [Initialization](./initialization.md), [Extensions](../language-guide/extensions.md)および[Protocols](./protocols.md)を参照ください。
 
-## Enumeration Syntax
+## Enumeration Syntax(列挙型構文)
+
+`enum` キーワードを使用して列挙型を導入し、それらの定義全体を中括弧のペア(`{}`)内に配置します。
+
+```swift
+enum SomeEnumeration {
+    // 列挙型の定義をここに記載します
+}
+```
+
+コンパスの 4 つの主要なポイントの例を次に示します:
+
+```swift
+enum CompassPoint {
+    case north
+    case south
+    case east
+    case west
+}
+```
+
+列挙型で定義された値（`north`、`south`、`east`、`west` など）は、その列挙型のケースです。 `case` キーワードを使用して、新しい列挙ケースを導入します。
+
+> NOTE  
+> C 言語や Objective-C などの言語とは異なり、Swift 列挙型のケースにはデフォルトで整数値が設定されていません。上記の `CompassPoint` の例では、`north`、`south`、`east`、`west` は暗黙的に `0`、`1`、`2`、`3` になりません。代わりに、異なる列挙ケースはそれ自体が値であり、`CompassPoint` 明示的に定義された型です。
+
+複数のケースをカンマ(`,`)で区切って 1 行に表示できます。
+
+```swift
+enum Planet {
+    case mercury, venus, earth, mars, jupiter, saturn, uranus, neptune
+}
+```
+
+各列挙定義は、新しいタイプを定義します。Swift の他のタイプと同様に、それらの名前（`CompassPoint` や `Planet` など）は大文字で始まります。列挙型は、1 つのグループなことが自明なため、複数の名前ではなく単数の名前を付けましょう:
+
+```swift
+var directionToHead = CompassPoint.west
+```
+
+`directionToHead` の型は、`CompassPoint` のある値の 1 つで初期化された場合、型が推論されます。一度 `directionToHead` が `CompassPoint` として宣言されたら、次からは短いドット構文(`.`)を使用して別の `CompassPoint` 値に設定できます。
+
+```swift
+directionToHead = .east
+```
+
+`directionToHead` の型はすでにわかっているため、値を設定するときにタイプを削除できます。これにより、明示的に型指定された列挙値を操作するときに、非常に読みやすいコードが作成されます。
 
 ## Matching Enumeration Values with a Switch Statement
 
