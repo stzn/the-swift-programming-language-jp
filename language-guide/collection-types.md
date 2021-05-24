@@ -1,4 +1,4 @@
-# Collection Types
+# Collection Types(コレクション型）
 
 最終更新日: 2021/5/19
 
@@ -11,14 +11,14 @@ Swift の配列、セット、辞書は、常に保持できるキーや値の�
 > NOTE  
 > Swift の配列、セット、辞書は、ジェネリックなコレクションとして実装されています。ジェネリック型やコレクションについての詳細は[Generics](generics.md)を参照ください。
 
-## Mutability of Collections
+## Mutability of Collections(コレクションの可変性）
 
 もし配列、セット、辞書を変数に代入した場合、作成されたコレクションは可変です。つまり、追加、削除、要素の変更など、後々そのコレクションを取り替え\(または変更\)できます。もし配列、セット、辞書を定数に代入した場合、コレクションは不変で、そのサイズや内容を変更できません。
 
 > NOTE  
 > コレクションの変更が必要ない場合は、不変なコレクションを作成するのが良いプラクティスです。そうすることで、コードを理解しやすくし、Swiftのコンパイラもコレクションのパフォーマンスを最適化することができます。
 
-## Arrays
+## Arrays(配列）
 
 配列は同じ型の値を順序立ったリストの中に保持します。配列の中に同じ値を複数回入れることができます。
 
@@ -26,11 +26,11 @@ Swift の配列、セット、辞書は、常に保持できるキーや値の�
 > `Array` はFoundationの `NSArray` とスムーズにやりとりできるようにしています。  
 > FoundationとCocoaを使った `Array` の使用方法に関しては、[Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730)を参照ください
 
-### Array Type Shorthand Syntax
+### Array Type Shorthand Syntax(配列型の短縮構文）
 
 Swift の配列の型は全体で `Array<Element>` と書きます。`Element` はその配列が保持できる値の型です。簡略記法として `[Element]` とも書けます。この 2 つの形式は機能的に同じですが、簡略記法の方が好まれ、このガイド内でも配列の型を参照する際はこちらの形式を使います。
 
-### Creating an Empty Array
+### Creating an Empty Array(空の配列の作成）
 
 イニシャライザのシンタックスを使用して、ある型の空の配列を作成できます。
 
@@ -51,7 +51,7 @@ someInts = []
 // someInts は空の配列だけど [Int] 型
 ```
 
-### Creating an Array with a Default Value
+### Creating an Array with a Default Value(デフォルト値を使った配列の作成）
 
 `Array` は同じデフォルト値を設定した特定にサイズの配列を作成するイニシャライザも提供しています。このイニシャライザに適切な型のデフォルト値\(`repeating`\)と、その値の繰り返し回数\(`count`\)を渡します。
 
@@ -60,7 +60,7 @@ var threeDoubles = Array(repeating: 0.0, count: 3)
 // threeDoubles は [Double] 型で、 [0.0, 0.0, 0.0] と等しい
 ```
 
-### Creating an Array by Adding Two Arrays Together
+### Creating an Array by Adding Two Arrays Together(2つの配列の結合）
 
 加算演算子\(`+`\)を使用して、既存の型互換のある 2 つの配列を合成して、新しい配列を作成することもできます。この新しい配列の型は連結させた配列の型から推論されます:
 
@@ -72,7 +72,7 @@ var sixDoubles = threeDoubles + anotherThreeDoubles
 // sixDoubles は [Double] と推論され、 [0.0, 0.0, 0.0, 2.5, 2.5, 2.5] と等しい
 ```
 
-### Creating an Array with an Array Literal
+### Creating an Array with an Array Literal(配列リテラルを使った配列の作成）
 
 配列リテラルからも配列を初期化できます。これは、1 つ以上の要素を持った配列コレクションの簡略記法です。配列リテラルはカンマ区切りの角括弧\(\[\]\)で囲んだ値のリストです:
 
@@ -100,7 +100,7 @@ var shoppingList = ["Eggs", "Milk"]
 
 配列リテラルの全ての値は同じ型なので、Swift は `shoppingList` 変数で使われている型は `[String]` が適切だと推論できます。
 
-### Accessing and Modifying an Array
+### Accessing and Modifying an Array(配列へのアクセスと変更）
 
 メソッドやプロパティ、subscript シンタックスを通して配列の要素へのアクセス、変更ができます。
 
@@ -202,7 +202,7 @@ let apples = shoppingList.removeLast()
 // apples 定数は削除された "Apples" 文字列と等しい
 ```
 
-### Iterating Over an Array
+### Iterating Over an Array(配列の繰り返し処理）
 
 `for-in` ループを使用して配列の値全部に繰り返し処理をすることができます。
 
@@ -232,14 +232,14 @@ for (index, value) in shoppingList.enumerated() {
 
 `for-in` ループについては、[For-In Loops](control-flow.md#for-in-loops)をご参照ください。
 
-## Sets
+## Sets(セット）
 
 セット\(_set_\)はコレクション内に、同じ型の値を、決まった順序と値の重複なしに保持します。アイテムの順序が重要でない場合や、アイテムに重複がないことを保証したい場合に、配列\(_array_\)の変わりにセットを使用することができます。
 
 > `Set` はFoundationの `NSSet` とスムーズにやりとりできるようにしています。  
 > FoundationとCocoaを使った `Set` の使用方法に関しては、[Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530)を参照ください
 
-### Hash Values for Set Types
+### Hash Values for Set Types(セット型のハッシュ値）
 
 セットに保存する型はハッシュ化が可能でなければなりません。つまり、その型はハッシュ値を計算する方法をセットに知らせる必要があります。ハッシュ値は、`Int` 型で、等価比較が可能なすべてのオブジェクトで、例えば `a == b` の場合、`a` のハッシュ値は `b` のハッシュ値と等しくなります。
 
@@ -248,11 +248,11 @@ Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デ
 > NOTE  
 > Swift 標準ライブラリの `Hashable` プロトコルに適合することで、独自で作成した型をセットや辞書のキーに使用できます。`hash(into:)` メソッドの実装については、[Hashable](https://developer.apple.com/documentation/swift/hashable)を参照ください。プロトコルの適合については、[Protocols](protocols.md)を参照ください。
 
-### Set Type Syntax
+### Set Type Syntax(セット型構文）
 
 セット\(_Set_\)型は `Set<Element>` と書きます。`Element` はセットが保持できる型です。セットには、配列のような簡略記法\(`[Element]`\)はありません。
 
-### Creating and Initializing an Empty Set
+### Creating and Initializing an Empty Set(空のセットの作成と初期化）
 
 イニシャライザのシンタックスを使用して、ある型の空のセットを作成できます。
 
@@ -274,7 +274,7 @@ letters = []
 // letters は空のセットですが、 型は Set<Character> のままです
 ```
 
-### Creating a Set with an Array Literal
+### Creating a Set with an Array Literal(配列リテラルを使ったセットの作成）
 
 簡略記法として、1 つ以上の値を配列リテラルを使用してセットを初期化することもできます。
 
@@ -300,7 +300,7 @@ var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
 
 配列リテラルの値はすべて同じ型なので、`favoriteGenres` 変数は `Set<String>` が正しい型だと推論できます。
 
-### Accessing and Modifying a Set
+### Accessing and Modifying a Set(セットへのアクセスと変更）
 
 メソッドやプロパティを通してセットにアクセスしたり、変更できます。
 
@@ -351,7 +351,7 @@ if favoriteGenres.contains("Funk") {
 // Prints "It's too funky in here."
 ```
 
-### Iterating Over a Set
+### Iterating Over a Set(セットの繰り返し処理）
 
 `for-in` ループを使用してセットの要素を繰り返し処理することができます。
 
@@ -377,11 +377,11 @@ for genre in favoriteGenres.sorted() {
 // Jazz
 ```
 
-## Performing Set Operations
+## Performing Set Operations(セットの操作）
 
 2 つのセットの、合成、共通の要素の発見、値が全部等しいのか、いくつか等しいのか、全く違うのかの比較など、基本的なセットの操作を効率的に行うことができます。
 
-### Fundamental Set Operations
+### Fundamental Set Operations(基本的なセットの操作）
 
 下記のイラストでは、`a` と `b` の 2 つのセットに対して、それぞれ操作を行い、色の付いた部分が結果\(戻り値\)を表しています。
 
@@ -407,7 +407,7 @@ oddDigits.symmetricDifference(singleDigitPrimeNumbers).sorted()
 // [1, 2, 9]
 ```
 
-### Set Membership and Equality
+### Set Membership and Equality(セットの要素と等価性）
 
 下記のイラストでは、`a`、`b`、`c` の 3 つのセットで共有している要素の領域を表しています。
 
@@ -434,7 +434,7 @@ farmAnimals.isDisjoint(with: cityAnimals)
 // true
 ```
 
-## Dictionaries
+## Dictionaries(辞書）
 
 辞書は、特定の型のキーと、特定の型のバリューをペアとして関連づけ、順序なしでコレクションに保持します。それぞれのアイテムは、辞書内で識別子の役割を果たす一意なキーに紐づいています。配列のアイテムとは異なり、辞書のアイテムに順序はありません。辞書は、現実に特定の単語を辞書で調べるのと同じように、識別子から値を探したい時に使います。
 
@@ -442,7 +442,7 @@ farmAnimals.isDisjoint(with: cityAnimals)
 > `Dictionary` はFoundationの `NSDictionary` とスムーズにやりとりできるようにしています。  
 > FoundationとCocoaを使った `Dictionary` の使用方法に関しては、[Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239)を参照ください
 
-### Dictionary Type Shorthand Syntax
+### Dictionary Type Shorthand Syntax(辞書型の短縮構文）
 
 Swift の辞書は、全体で `Dictionary<Key, Value>` と書きます。`Key` には辞書のキーとして使える値の型を、`Value` にはそのキーに紐づいた辞書で保持するバリューの型です。
 
@@ -451,7 +451,7 @@ Swift の辞書は、全体で `Dictionary<Key, Value>` と書きます。`Key` 
 
 辞書の型は、`[Key: Value]` と簡略記法で書くこともできます。機能的にはどちらの書き方も同じですが、簡略記法の方が好ましく、このガイド内では、辞書の型を参照する際はこちらの形式を使います。
 
-### Creating an Empty Dictionary
+### Creating an Empty Dictionary(空の辞書型の作成）
 
 配列と同様に、ある型の空の `Dictionary` をイニシャライザのシンタックスを使用して作成できます。
 
@@ -471,7 +471,7 @@ namesOfIntegers = [:]
 // namesOfIntegers は再び [Int: String] の空の辞書
 ```
 
-### Creating a Dictionary with a Dictionary Literal
+### Creating a Dictionary with a Dictionary Literal(辞書リテラルを使った辞書の作成）
 
 先ほど見た配列リテラルと似たようなシンタックスの辞書リテラル\(_dictionary literal_\)を使った初期化もできます。辞書リテラルは、1 つ以上のキーバリューペアから `Dictionary` のコレクションを作成する簡略記法です。
 
@@ -502,7 +502,7 @@ var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 キーの値の型も、バリューの値の型も全ての同じなので、Swift は `airports` 辞書は `[String: String]` が正しい型だと推論できます。
 
-### Accessing and Modifying a Dictionary
+### Accessing and Modifying a Dictionary(辞書へのアクセスと変更）
 
 メソッドやプロパティ、subscript シンタックスを通して、辞書へのアクセス、変更ができます。
 
@@ -589,7 +589,7 @@ if let removedValue = airports.removeValue(forKey: "DUB") {
 // Prints "The removed airport's name is Dublin Airport."
 ```
 
-### Iterating Over a Dictionary
+### Iterating Over a Dictionary(辞書の繰り返し処理）
 
 `for-in` ループを使用して辞書のキーバリューペア全部に繰り返し処理することができます。
 
@@ -643,4 +643,3 @@ let airportNames = [String](airports.values)
 ```
 
 `Dictionary` 型には決まった順序がありません。特定の順番で値を繰り返し処理をしたい場合、`keys` か `values` プロパティの `sorted()` メソッドを使いましょう。
-
