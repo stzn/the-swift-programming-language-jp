@@ -61,7 +61,45 @@ directionToHead = .east
 
 `directionToHead` の型はすでにわかっているため、値を設定するときにタイプを削除できます。これにより、明示的に型指定された列挙値を操作するときに、非常に読みやすいコードが作成されます。
 
-## Matching Enumeration Values with a Switch Statement
+## Matching Enumeration Values with a Switch Statement(switch文を使った列挙値のパターンマッチング)
+
+`switch` 文を使って、個々の列挙値をパターンマッチングできます。
+
+```swift
+directionToHead = .south
+switch directionToHead {
+case .north:
+    print("Lots of planets have a north")
+case .south:
+    print("Watch out for penguins")
+case .east:
+    print("Where the sun rises")
+case .west:
+    print("Where the skies are blue")
+}
+// Prints "Watch out for penguins"
+```
+
+このコードは次のように読むことができます。
+
+「`directionToHead` の値を検証してください。`.north` に等しい場合は、「多くの惑星は北にあります」と出力します。`.south` に等しい場合は、「ペンギンに気をつけて」と出力してください」
+
+…などなど。
+
+[Control Flow](./control-flow.md)で説明されているように、列挙型のケースを検証するときは、`switch` 文で全てのケースを網羅する必要があります。`.west` の `case` を省略した場合、このコードはコンパイルできません。網羅性を要求することで、列挙ケースが誤って省略されないようにします。
+
+全ての列挙ケースの `case` を並べることが適切でない場合は、明示的に対処されていないケースをカバーする `default` のケースを提供できます。
+
+```swift
+let somePlanet = Planet.earth
+switch somePlanet {
+case .earth:
+    print("Mostly harmless")
+default:
+    print("Not a safe place for humans")
+}
+// Prints "Mostly harmless"
+```
 
 ## Iterating over Enumeration Cases
 
