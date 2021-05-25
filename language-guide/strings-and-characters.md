@@ -158,7 +158,7 @@ Swift の、デフォルトでコピーをする `String` の挙動は、`String
 
 舞台裏では、Swift のコンパイラは本当に必要な時だけ実際にコピーが発生するように最適化をしています。つまり、値型として文字列を扱う場合に常に良いパフォーマンスを得ることができます。
 
-## Working with Characters(文字配列を扱う）
+## Working with Characters(文字配列の取扱）
 
 `for-in` ループを使用して文字列を繰り返し処理することで、`String` の個々の `Character` にアクセスすることができます。
 
@@ -173,7 +173,7 @@ for character in "Dog!🐶" {
 // 🐶
 ```
 
-`for-in` ループについては[For-In Loops](control-flow.md#for-in-loops)に記載されています。
+`for-in` ループについては[For-In Loops](control-flow.md#for-in-loopsFor-Inループ)に記載されています。
 
 もしくは、`Character` 型アノテーションを与えて 1 文字のリテラルから `Character` 型の定数や変数を作ることもできます:
 
@@ -459,7 +459,7 @@ Swift では、3 つの方法で文字列同士を比較する方法を提供し
 
 ### String and Character Equality(文字と文字列の等価性）
 
-文字列と文字の完全一致は、は等価演算子\(`==`\)と不等演算子\(`!=`\)を使用してチェックします。[Comparison Operators](basic-operators.md#comparison-operators)
+文字列と文字の完全一致は、は等価演算子\(`==`\)と不等演算子\(`!=`\)を使用してチェックします。[Comparison Operators](basic-operators.md#comparison-operators比較演算子)
 
 ```swift
 let quotation = "We're a lot alike, you and I."
@@ -555,13 +555,13 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 ```
 
 > NOTE  
-> `hasPrefix(_:)` は `hasSuffix(_:)` 文字ごとに各文字列の拡張書記素クラスタを使用して「規範的に」等しいかどうかを調べます\([String and Character Equality](strings-and-characters.md#string-and-character-equality)に記載\)。
+> `hasPrefix(_:)` は `hasSuffix(_:)` 文字ごとに各文字列の拡張書記素クラスタを使用して「規範的に」等しいかどうかを調べます\([String and Character Equality](#string-and-character-equality文字と文字列の等価性)に記載\)。
 
 ## Unicode Representations of Strings(文字列のUnicode表現）
 
 Unicode 文字列は、テキストファイルや他のストレージに書かれる時、Unicode 形式の 1 つに符号化\(エンコード\)されます。それぞれの形式は、文字列を_コードユニット\(code unit\)_と呼ばれる小さな塊にエンコードします。これらには、UTF-8\(8 ビットのコードユニットで文字列を符号化\)、UTF-16\(16 ビットのコードユニットで文字列を符号化\)、UTF-32\(32 ビットのコードユニットで文字列を符号化\)があります。
 
-Swift では、複数の Unicode 形式で文字列にアクセスできます。`for-in` ステートメントで文字列を繰り返し処理する場合、Unicode 拡張書記素クラスタとして個々の `Character` にアクセスできます。このプロセスは[Working with Characters](strings-and-characters.md#working-with-characters)で記載しています。
+Swift では、複数の Unicode 形式で文字列にアクセスできます。`for-in` ステートメントで文字列を繰り返し処理する場合、Unicode 拡張書記素クラスタとして個々の `Character` にアクセスできます。このプロセスは[Working with Characters](#working-with-characters文字配列の取扱)で記載しています。
 
 他にも 3 つの Unicode 準拠形式で `String` にアクセスできます:
 
