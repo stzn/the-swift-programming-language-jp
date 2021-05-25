@@ -219,7 +219,43 @@ raw value は、文字列、文字、または整数型または浮動小数点�
 > NOTE  
 > raw valueは、関連値と同じではありません。上記の3つの ASCII コードのように、コードで列挙を最初に定義するときに、raw value は事前入力された値に設定されます。特定の列挙ケースのraw valueは常に同じです。関連値は、列挙ケースに基づいて新しい定数または変数を作成するときに設定され、作成する度に異なる可能性があります。
 
-### Implicitly Assigned Raw Values
+### Implicitly Assigned Raw Values(暗黙的に割り当てられたraw value)
+
+整数または文字列の raw value を格納する列挙を操作する場合、それぞれのケースに raw value を明示的に割り当てる必要はありません。代わりに Swift が自動的に値を割り当てます。
+
+例えば、raw value に整数が使用されている場合、各ケースの暗黙の値は前のケースより 1 つ増えます。最初のケースに値が設定されていない場合、その値は `0` です。
+
+以下の列挙は、以前の `Planet` の列挙を改良したもので、太陽からの各惑星の順序を表す整数の raw value が含まれています。
+
+```swift
+enum Planet: Int {
+    case mercury = 1, venus, earth, mars, jupiter, saturn, uranus, neptune
+}
+```
+
+上記の例では、`Planet.mercury` の明示的な raw value は `1` で、`Planet.venus` の暗黙的な raw value は `2` です。
+
+文字列が raw value に使用される場合、各ケースの暗黙的な値は、そのケースの名前のテキストです。
+
+下記の列挙型は、以前の `CompassPoint` 列挙型を改良したもので、各方向の名前を表す文字列の raw value が含まれています。
+
+```swift
+enum CompassPoint: String {
+    case north, south, east, west
+}
+```
+
+上記の例では、`CompassPoint.south` には `"south"` という暗黙の raw value があります。
+
+`rawValue` プロパティを使用して列挙ケースの raw value にアクセスします。
+
+```swift
+let earthsOrder = Planet.earth.rawValue
+// earthsOrder は 3
+
+let sunsetDirection = CompassPoint.west.rawValue
+// sunsetDirection は "west"
+```
 
 ### Initializing from a Raw Value
 
