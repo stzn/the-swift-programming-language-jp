@@ -292,5 +292,55 @@ if let somePlanet = Planet(rawValue: positionToFind) {
 
 この例では、オプションバインディングを使用して、raw value が `11` の惑星にアクセスしようとします。`if let somePlanet = Planet（rawValue: 11)` は、optional の `Planet` を作成し、取得できる場合は、`somePlanet` をその optional の `Planet` の値に設定します。この場合、位置が `11` の惑星を取得することはできないため、代わりに `else` の分岐が実行されます。
 
-## Recursive Enumerations
+## Recursive Enumerations(再帰的列挙)
 
+再帰的列挙(*recursive enumeration*)は、1 つ以上の列挙ケースの関連値としてその列挙型の別のインスタンスを持つ列挙型です。列挙型が再帰的なことを示すには、その前に `indirect` を記述します。これにより、コンパイラに必要な間接層を挿入することを伝えることができます。
+
+例えば、シンプルな算術式を格納する列挙型は次のとおりです。
+
+```swift
+enum ArithmeticExpression {
+    case number(Int)
+    indirect case addition(ArithmeticExpression, ArithmeticExpression)
+    indirect case multiplication(ArithmeticExpression, ArithmeticExpression)
+}
+```
+
+列挙型の開始前に `indirect` を記述して、関連値を持つ全てのケースを `indirect` にすることもできます。
+
+```swift
+indirect enum ArithmeticExpression {
+    case number(Int)
+    case addition(ArithmeticExpression, ArithmeticExpression)
+    case multiplication(ArithmeticExpression, ArithmeticExpression)
+}
+```
+
+この列挙型には、シンプルな数値、2 つの式の加算、および乗算の 3 種類の算術式を格納できます。`addition` と `multiplication` のケースには、同じく算術式を関連値として格納しています。これらの関連値により、式をネストできます。例えば、式 `（5 + 4）* 2` には、乗算の右側に数値があり、乗算の左側に別の式があります。データがネストしているため、データを格納する列挙ケースもネストをサポートする必要があります。つまり、再帰的でなければなりません。下記のコードは、`（5 + 4）* 2` に対する `ArithmeticExpression` の再帰的列挙を作成する方法を示しています。
+
+```swift
+let five = ArithmeticExpression.number(5)
+let four = ArithmeticExpression.number(4)
+let sum = ArithmeticExpression.addition(five, four)
+let product = ArithmeticExpression.multiplication(sum, ArithmeticExpression.number(2))
+```
+
+再帰関数は、再帰構造を持つデータを操作する簡単な方法です。例えば、算術式を評価する関数は次のとおりです。
+
+```swift
+func evaluate(_ expression: ArithmeticExpression) -> Int {
+    switch expression {
+    case let .number(value):
+        return value
+    case let .addition(left, right):
+        return evaluate(left) + evaluate(right)
+    case let .multiplication(left, right):
+        return evaluate(left) * evaluate(right)
+    }
+}
+
+print(evaluate(product))
+// Prints "18"
+```
+
+この関数は、関連値を返すだけで多単純な数値を評価します。左側の式を評価し、右側の式を評価してから、それらをさらに加算または乗算することにより、`addition` または `multiplication` を評価します。
