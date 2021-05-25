@@ -257,6 +257,40 @@ let sunsetDirection = CompassPoint.west.rawValue
 // sunsetDirection は "west"
 ```
 
-### Initializing from a Raw Value
+### Initializing from a Raw Value(raw valueからの初期化)
+
+raw value 型で列挙型を定義すると、列挙型は、raw value の型の値を(`rawValue` と呼ばれる引数として)受け取り、列挙型または `nil` のいずれかを返すイニシャライザを自動的に提供します。このイニシャライザを使用して、列挙型の新しいインスタンスを作成することができます。
+
+この例では、raw value`7` から天王星を識別します。
+
+```swift
+let possiblePlanet = Planet(rawValue: 7)
+// possiblePlanet の型は Planet? で Planet.uranus と等しい
+```
+
+ただし、全ての `Int` 値が惑星に一致するわけではありません。このため、raw value のイニシャライザは常に optional の列挙ケースを返します。上記の例では、`possiblePlanet` は Planet?` または optional の `Planet`型です。
+
+> NOTE  
+> 全ての raw value が列挙型を返すわけではないため、raw valueイニシャライザは失敗可能です。詳細については、[Failable Initializers](./../language-reference/declarations.md#failable-initializers)を参照ください。
+
+位置が `11` の惑星を見つけようとすると、raw value のイニシャライザによって返される optional の `Planet` は `nil` になります。
+
+```swift
+let positionToFind = 11
+if let somePlanet = Planet(rawValue: positionToFind) {
+    switch somePlanet {
+    case .earth:
+        print("Mostly harmless")
+    default:
+        print("Not a safe place for humans")
+    }
+} else {
+    print("There isn't a planet at position \(positionToFind)")
+}
+// Prints "There isn't a planet at position 11"
+```
+
+この例では、オプションバインディングを使用して、raw value が `11` の惑星にアクセスしようとします。`if let somePlanet = Planet（rawValue: 11)` は、optional の `Planet` を作成し、取得できる場合は、`somePlanet` をその optional の `Planet` の値に設定します。この場合、位置が `11` の惑星を取得することはできないため、代わりに `else` の分岐が実行されます。
 
 ## Recursive Enumerations
+
