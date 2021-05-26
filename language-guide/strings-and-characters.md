@@ -401,7 +401,7 @@ for index in greeting.indices {
 ```
 
 > NOTE  
-> `Collection` プロトコルに適合したどんな型にも、`startIndex`、`endIndex` プロパティ、index\(before:\)、index\(after:\)、index\(\_:offsetBy:\)メソッドを使用することができます。これは、`Array`、 `Dictionary`、`Set` といったコレクションの型と同様に、今紹介している `String` も含んでいます。
+> `Collection` プロトコルに準拠したどんな型にも、`startIndex`、`endIndex` プロパティ、index\(before:\)、index\(after:\)、index\(\_:offsetBy:\)メソッドを使用することができます。これは、`Array`、 `Dictionary`、`Set` といったコレクションの型と同様に、今紹介している `String` も含んでいます。
 
 ### Inserting and Removing(挿入と削除）
 
@@ -428,7 +428,7 @@ welcome.removeSubrange(range)
 ```
 
 > NOTE  
-> `RangeReplaceableCollection` プロトコルに適合したどんな型にも、insert\(_:at:\)、insert\(contentsOf:at:\)、remove\(at:\)、removeSubrange\(_:\)メソッドを使用することができます。これは、`Array`、 `Dictionary`、`Set` といったコレクションの型と同様に、今紹介している `String` も含んでいます。
+> `RangeReplaceableCollection` プロトコルに準拠したどんな型にも、insert\(_:at:\)、insert\(contentsOf:at:\)、remove\(at:\)、removeSubrange\(_:\)メソッドを使用することができます。これは、`Array`、 `Dictionary`、`Set` といったコレクションの型と同様に、今紹介している `String` も含んでいます。
 
 ## Substrings(部分文字列）
 
@@ -451,7 +451,7 @@ let newString = String(beginning)
 ![&#x6587;&#x5B57;&#x5217;&#x90E8;&#x5206;&#x6587;&#x5B57;&#x5217;&#x306E;&#x95A2;&#x4FC2;](../.gitbook/assets/stringsubstring_2x.png)
 
 > NOTE  
-> 文字列と部分文字列は、[StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol)に適合しています。つまり、文字列操作を行う関数は、_StringProtocol_の値を受け取るとしばしば便利なことがあります。文字列、部分文字列のどちらを使用しても、その関数を使用することができます。
+> 文字列と部分文字列は、[StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol)に準拠しています。つまり、文字列操作を行う関数は、_StringProtocol_の値を受け取るとしばしば便利なことがあります。文字列、部分文字列のどちらを使用しても、その関数を使用することができます。
 
 ## Comparing Strings(文字列の比較）
 
