@@ -246,7 +246,7 @@ for (index, value) in shoppingList.enumerated() {
 Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デフォルトでハッシュ化が可能で、セットや辞書のキーに使用することができます。associated value を持たない列挙型の case \([Enumerations](enumerations.md)\)もデフォルトでハッシュ化が可能です。
 
 > NOTE  
-> Swift 標準ライブラリの `Hashable` プロトコルに適合することで、独自で作成した型をセットや辞書のキーに使用できます。`hash(into:)` メソッドの実装については、[Hashable](https://developer.apple.com/documentation/swift/hashable)を参照ください。プロトコルの適合については、[Protocols](protocols.md)を参照ください。
+> Swift 標準ライブラリの `Hashable` プロトコルに準拠することで、独自で作成した型をセットや辞書のキーに使用できます。`hash(into:)` メソッドの実装については、[Hashable](https://developer.apple.com/documentation/swift/hashable)を参照ください。プロトコルの準拠については、[Protocols](protocols.md)を参照ください。
 
 ### Set Type Syntax(セット型構文）
 
@@ -447,7 +447,7 @@ farmAnimals.isDisjoint(with: cityAnimals)
 Swift の辞書は、全体で `Dictionary<Key, Value>` と書きます。`Key` には辞書のキーとして使える値の型を、`Value` にはそのキーに紐づいた辞書で保持するバリューの型です。
 
 > NOTE  
-> 辞書の `Key` はセットの値のように、`Hashable` プロトコルに適合しなければなりません。
+> 辞書の `Key` はセットの値のように、`Hashable` プロトコルに準拠しなければなりません。
 
 辞書の型は、`[Key: Value]` と簡略記法で書くこともできます。機能的にはどちらの書き方も同じですが、簡略記法の方が好ましく、このガイド内では、辞書の型を参照する際はこちらの形式を使います。
 

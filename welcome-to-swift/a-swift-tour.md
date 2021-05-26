@@ -612,7 +612,7 @@ protocol ExampleProtocol {
 }
 ```
 
-class, enum, struct は全て protocol に適合することができます。
+class, enum, struct は全て protocol に準拠することができます。
 
 ```swift
 class SimpleClass: ExampleProtocol {
@@ -642,7 +642,7 @@ let bDescription = b.simpleDescription
 
 struct `SimpleStructure` を変更するメソッドに `mutating` キーワードが付いていることに注目してください。 class のメソッドは class を変更することが許されているため、`mutating` を付ける必要はありません。
 
-既存の型に新しい機能\(メソッドや計算プロパティ\)を追加する場合に、`extension` を使います。他のファイルやモジュールで宣言された型やライブラリやフレームワークからインポートした型に protocol を適合させる場合にも extension を使います。
+既存の型に新しい機能\(メソッドや計算プロパティ\)を追加する場合に、`extension` を使います。他のファイルやモジュールで宣言された型やライブラリやフレームワークからインポートした型に protocol を準拠させる場合にも `extension` を使います。
 
 ```swift
 extension Int: ExampleProtocol {
@@ -658,9 +658,9 @@ print(7.simpleDescription)
 ```
 
 > Experiment  
-> `absoluteValue` プロパティを `Double` に追加する extension を書いてみましょう。
+> `absoluteValue` プロパティを `Double` に追加する `extension` を書いてみましょう。
 
-protocol の名前は他の名前が付いた型と同じように使用することができます。例えば、同じ 1 つの protocol に適合した異なる型のオブジェクトのコレクションを作成することができます。protocol 自体の型の値を扱っている場合、protocol 外側で定義されたメソッドを使用することはできません。
+protocol の名前は他の名前が付いた型と同じように使用することができます。例えば、同じ 1 つの protocol に準拠した異なる型のオブジェクトのコレクションを作成することができます。protocol 自体の型の値を扱っている場合、protocol 外側で定義されたメソッドを使用することはできません。
 
 ```swift
 let protocolValue: ExampleProtocol = a
@@ -673,7 +673,7 @@ print(protocolValue.simpleDescription)
 
 ## Error Handling(エラーハンドリング）
 
-`Error` protocol に適合することでどんな型もエラーを表現することができます。
+`Error` protocol に準拠することでどんな型もエラーを表現することができます。
 
 ```swift
 enum PrinterError: Error {

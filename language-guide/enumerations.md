@@ -9,9 +9,9 @@ C 言語に馴染みがあれば、C 言語の列挙型が、関連する名前�
 あるいは、他の言語の `unions` や `variants` のように、それぞれのケースで任意の型の関連値を格納できます。それぞれで適切な型の異なる値のセットで関連付けられた
 ケースを列挙型の一部として定義できます。
 
-Swift の列挙型は、それ自体が第一級の型です。これらは、列挙型の現在値の追加情報を提供する計算プロパティや、列挙型が表す値に関わる機能を提供するインスタンスメソッドなど、従来は class でのみサポートされていた多くの機能を使うことができます。列挙型は、初期のケース値を指定するイニシャライザも定義しています。元の実装を超えて機能を拡張するように extension も使用することができます。また、プロトコルに準拠して標準機能を提供することもできます。
+Swift の列挙型は、それ自体が第一級の型です。これらは、列挙型の現在値の追加情報を提供する計算プロパティや、列挙型が表す値に関わる機能を提供するインスタンスメソッドなど、従来は class でのみサポートされていた多くの機能を使うことができます。列挙型は、初期のケース値を指定するイニシャライザも定義しています。`extension` で機能を拡張することもできます。また、プロトコルに準拠して標準機能を提供することもできます。
 
-これらの機能の詳細については、[Properties](./properties.md), [Methods](./methods.md), [Initialization](./initialization.md), [Extensions](../language-guide/extensions.md)および[Protocols](./protocols.md)を参照ください。
+これらの機能の詳細については、[Properties](./properties.md)、[Methods](./methods.md)、[Initialization](./initialization.md)、[Extensions](../language-guide/extensions.md)および[Protocols](./protocols.md)を参照ください。
 
 ## Enumeration Syntax(列挙型構文)
 
