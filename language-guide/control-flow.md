@@ -73,7 +73,7 @@ print("\(base) to the power of \(power) is \(answer)")
 
 最初と最後の両方を含める Closed 範囲を使用する必要がない場合もあるかもしれません。時計の分針を思い浮かべてください。0 から始まる 60 個の目盛が必要です。最初の値を含める Half-open 範囲演算子（`..<`)を使いましょう。
 
-範囲についての詳細は、[Range Operators](./basic-operators.md#range-operators)を参照ください。
+範囲についての詳細は、[Range Operators](./basic-operators.md#range-operators範囲演算子)を参照ください。
 
 ```swift
 let minutes = 60
@@ -316,7 +316,7 @@ default:
 C 言語や Objective-C と異なり、Swift の `switch` 文は、デフォルトでは、それぞれの case 下から次の case に行くことはありません。その代わりに、最初に合致した `switch` case の実行が完了すると、明示的に `break` しなくても、全体の `switch` 文も完了します。こうすることで、C 言語の `switch` 文よりも、より安全に簡単に使えるようにしています。間違って 1 つ以上の case を事項してしまうリスクを防ぎます。
 
 > NOTE  
-> `break` は必須ではありませんが、合致したけど何も実行しないような場合や、あるcaseの中で最後まで実行される前にそのブロックを抜けたい場合に、`break` を使用することができます。詳細は、[Break in a Switch Statement](#break-in-a-switch-statement)を参照ください。
+> `break` は必須ではありませんが、合致したけど何も実行しないような場合や、あるcaseの中で最後まで実行される前にそのブロックを抜けたい場合に、`break` を使用することができます。詳細は、[Break in a Switch Statement](#break-in-a-switch-statementswitch内でbreak)を参照ください。
 
 各 case の本文は少なくとも 1 つの文を実行しなければなりません。次のコードは最初の case の本文が空なので不正です。
 

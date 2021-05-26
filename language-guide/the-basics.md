@@ -71,7 +71,7 @@ var red, green, blue: Double
 ```
 
 > NOTE  
-> 実際に型アノテーションを書く必要はあまりありません。定義時に定数や変数に初期値を与えた場合、 Swift はたいていそれらの型を推論できます\(詳細は[Type Safety and Type Inference](the-basics.md#type-safety-and-type-inference)\)。  
+> 実際に型アノテーションを書く必要はあまりありません。定義時に定数や変数に初期値を与えた場合、 Swift はたいていそれらの型を推論できます\(詳細は[Type Safety and Type Inference](#type-safety-and-type-inference型安全と型推論)\)。  
 > 上記の `welcomeMessage` の例では、初期値を与えていないため、推論をすることができないため、`welcomeMessage` 変数は型アノテーションで型を特定しています。
 
 ### Naming Constants and Variables(定数と変数の命名）
@@ -126,7 +126,7 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 ```
 
 > NOTE  
-> string interpolation\(文字列補間\)で使用できるオブションは[String Interpolation](strings-and-characters.md#string-interpolation)に記載しています
+> string interpolation\(文字列補間\)で使用できるオブションは[String Interpolation](strings-and-characters.md#string-interpolation文字列補間)に記載しています
 
 ## Comments(コメント）
 
@@ -198,7 +198,7 @@ Swift は unsigned の整数値型も提供しています。これも、プラ�
 * 64 ビットのプラットフォームの場合、`UInt` は `UInt64` と等しい
 
 > NOTE  
-> `UInt` は特別にプラットフォームに応じて決まるサイズと同じサイズの unsigned integer 型を扱いたい場合にのみ使用しましょう。そうでない場合、負の値にならないとしても `Int` を使用する方が好ましいです。一貫して `Int` を整数値に使用することで、異なる整数値型間の変換を避け、合致する型をコンパイラが推論することで、互換性を保つことができます。詳細は[Type Safety and Type Inference](the-basics.md#type-safety-and-type-inference)。
+> `UInt` は特別にプラットフォームに応じて決まるサイズと同じサイズの unsigned integer 型を扱いたい場合にのみ使用しましょう。そうでない場合、負の値にならないとしても `Int` を使用する方が好ましいです。一貫して `Int` を整数値に使用することで、異なる整数値型間の変換を避け、合致する型をコンパイラが推論することで、互換性を保つことができます。詳細は[Type Safety and Type Inference](#type-safety-and-type-inference型安全と型推論)。
 
 ## Floating-Point Numbers(浮動小数点数）
 
@@ -474,7 +474,7 @@ print("The status message is \(http200Status.description)")
 // Prints "The status message is OK"
 ```
 
-タプルは、特に関数の戻り値で有効に活用できます。Web ページを取得する関数は、取得の成否の結果を `(Int, String)` で返すかもしれません。2 つの異なる型の値を持ったタプルを返すことで、1 つの型の 1 つの値を返すよりも、関数はより有益な情報を提供できます。より詳しくは、[Functions with Multiple Return Values](functions.md#functions-with-multiple-return-values)を参照ください。
+タプルは、特に関数の戻り値で有効に活用できます。Web ページを取得する関数は、取得の成否の結果を `(Int, String)` で返すかもしれません。2 つの異なる型の値を持ったタプルを返すことで、1 つの型の 1 つの値を返すよりも、関数はより有益な情報を提供できます。より詳しくは、[Functions with Multiple Return Values](functions.md#functions-with-multiple-return-values複数の戻り値がある関数)を参照ください。
 
 ## Optionals(オプショナル）
 
@@ -596,7 +596,7 @@ if let firstNumber = Int("4") {
 ```
 
 > NOTE  
-> `if` 文の中でオプショナルバインディングによって作られた定数や変数は、`if` 文の中でしか使えません。もし他でも使用したい場合は、`guard` 文 を使用することで、`guard` 文の次から使用することができます。詳細は[Early Exit](control-flow.md#early-exit)に記載しています。
+> `if` 文の中でオプショナルバインディングによって作られた定数や変数は、`if` 文の中でしか使えません。もし他でも使用したい場合は、`guard` 文 を使用することで、`guard` 文の次から使用することができます。詳細は[Early Exit](control-flow.md#early-exit早期リターン)に記載しています。
 
 ### Implicitly Unwrapped Optionals(暗黙アンラップオプショナル）
 
@@ -706,7 +706,7 @@ _Assertions_と_Preconditions_は実行時のチェックです。他のコー�
 
 assertion と precondition はコード上での前提条件や期待値を表すために使います。assertion は開発中の間違いや間違った想定を見つけやすくし、precondition は開発中の問題を検知しやすくします。
 
-実行時の期待値を確認することに加えて、assertion と precondition はコード内のドキュメントとしても有用です。[Error Handling](the-basics.md#error-handling)で話したエラー条件とは異なり、assertion と precondition は復帰可能ではなく、期待されたエラーを捕捉する手段としても使用することはできません。assertion や precondition の失敗は、不正なプログラムの状態を表し、失敗した assertion を catch する方法はありません。
+実行時の期待値を確認することに加えて、assertion と precondition はコード内のドキュメントとしても有用です。[Error Handling](the-basics.md#error-handlingエラーハンドリング)で話したエラー条件とは異なり、assertion と precondition は復帰可能ではなく、期待されたエラーを捕捉する手段としても使用することはできません。assertion や precondition の失敗は、不正なプログラムの状態を表し、失敗した assertion を catch する方法はありません。
 
 assertion と precondition を使用することは、不正な条件を起こさないためのツールとしてコードをデザインするための代用品にはなりません。妥当なデータや状態を強制することで、不正な状態が起きた場合に、予測しやすい状態でアプリ終了させたり、プログラムをデバッグしやすくします。不正な状態が起きた際にすぐに実行を止めることで、不正な状態が与えるダメージを抑えることができます。
 

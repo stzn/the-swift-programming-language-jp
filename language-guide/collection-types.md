@@ -230,7 +230,7 @@ for (index, value) in shoppingList.enumerated() {
 // Item 5: Bananas
 ```
 
-`for-in` ループについては、[For-In Loops](control-flow.md#for-in-loops)をご参照ください。
+`for-in` ループについては、[For-In Loops](control-flow.md#for-in-loopsFor-Inループ)をご参照ください。
 
 ## Sets(セット）
 
@@ -241,7 +241,7 @@ for (index, value) in shoppingList.enumerated() {
 
 ### Hash Values for Set Types(セット型のハッシュ値）
 
-セットに保存する型はハッシュ化が可能でなければなりません。つまり、その型はハッシュ値を計算する方法をセットに知らせる必要があります。ハッシュ値は、`Int` 型で、等価比較が可能なすべてのオブジェクトで、例えば `a == b` の場合、`a` のハッシュ値は `b` のハッシュ値と等しくなります。
+セットに保存する型はハッシュ化が可能でなければなりません。つまり、その型はハッシュ値を計算する方法をセットに知らせる必要があります。ハッシュ値は、`Int` 型で、等価比較が可能な全てのオブジェクトで、例えば `a == b` の場合、`a` のハッシュ値は `b` のハッシュ値と等しくなります。
 
 Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デフォルトでハッシュ化が可能で、セットや辞書のキーに使用することができます。associated value を持たない列挙型の case \([Enumerations](enumerations.md)\)もデフォルトでハッシュ化が可能です。
 
@@ -298,7 +298,7 @@ var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip hop"]
 var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
 ```
 
-配列リテラルの値はすべて同じ型なので、`favoriteGenres` 変数は `Set<String>` が正しい型だと推論できます。
+配列リテラルの値は全て同じ型なので、`favoriteGenres` 変数は `Set<String>` が正しい型だと推論できます。
 
 ### Accessing and Modifying a Set(セットへのアクセスと変更）
 
@@ -364,7 +364,7 @@ for genre in favoriteGenres {
 // Hip hop
 ```
 
-`for-in` ループについては、[For-In Loops](control-flow.md#for-in-loops)をご参照ください。
+`for-in` ループについては、[For-In Loops](control-flow.md#for-in-loopsFor-Inループ)をご参照ください。
 
 Swift の Set 型は決まった順序がありません。特定の順番で値を繰り返し処理したい場合、`sorted()` メソッドを使用すると、`<` 演算子を使用してソートされた配列として要素を返します。
 
@@ -614,7 +614,7 @@ for (airportCode, airportName) in airports {
 // YYZ: Toronto Pearson
 ```
 
-`for-in` ループについては、[For-In Loops](control-flow.md#for-in-loops)をご参照ください。
+`for-in` ループについては、[For-In Loops](control-flow.md#for-in-loopsFor-Inループ)をご参照ください。
 
 `keys` と `values` プロパティを使用して、キーとバリューそれぞれのリストを取得することもできます:
 
