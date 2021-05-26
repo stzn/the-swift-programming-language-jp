@@ -1,15 +1,15 @@
 # Enumerations(列挙型)
 
-最終更新日:
+最終更新日: 2021/5/26
 
 列挙型(*enumerations*)は、関連する値のグループに共通の型を定義し、コード内で型安全にそれらの値を操作できるようにします。
 
-C 言語に馴染みがあるれば、C 言語の列挙型が、関連する名前のグループを整数値のセットに割り当てることを知っていると思います。Swift の列挙型は、それよりもはるかに柔軟性があり、列挙型の各ケースに値を割り当てる必要はありません。列挙型ごとに（*raw value*と呼ばれる）値が与えられている場合、値は文字列、文字、または任意の整数型または浮動小数点型の値にすることができます。
+C 言語に馴染みがあれば、C 言語の列挙型が、関連する名前のグループを整数値のセットに割り当てることを知っていると思います。Swift の列挙型は、それよりもはるかに柔軟性があり、列挙型の各ケースに値を割り当てる必要はありません。列挙型のケースごとに（*raw value*と呼ばれる）値が与えられている場合、値は文字列、文字、または任意の整数型または浮動小数点型にすることができます。
 
-あるいは、他の言語の `unions` や `variants` のように、それぞれの case で任意の型の関連値を格納できます。それぞれで適切な型の異なる値のセットで関連付けられた
-case の共通セットをある列挙型の一部として定義できます。
+あるいは、他の言語の `unions` や `variants` のように、それぞれのケースで任意の型の関連値を格納できます。それぞれで適切な型の異なる値のセットで関連付けられた
+ケースを列挙型の一部として定義できます。
 
-Swift の列挙型は、それ自体がファーストクラスの型です。これらは、列挙型の現在値の追加情報を提供する計算プロパティや、列挙型が表す値に関わる機能を提供するインスタンスメソッドなど、従来は class でのみサポートされていた多くの機能を使うことができます。列挙型は、初期の case 値を指定するイニシャライザを定義することもできます。元の実装を超えて機能を拡張するように extension も使用することができます。また、プロトコルに準拠して標準機能を提供することもできます。
+Swift の列挙型は、それ自体が第一級の型です。これらは、列挙型の現在値の追加情報を提供する計算プロパティや、列挙型が表す値に関わる機能を提供するインスタンスメソッドなど、従来は class でのみサポートされていた多くの機能を使うことができます。列挙型は、初期のケース値を指定するイニシャライザも定義しています。元の実装を超えて機能を拡張するように extension も使用することができます。また、プロトコルに準拠して標準機能を提供することもできます。
 
 これらの機能の詳細については、[Properties](./properties.md), [Methods](./methods.md), [Initialization](./initialization.md), [Extensions](../language-guide/extensions.md)および[Protocols](./protocols.md)を参照ください。
 
@@ -23,7 +23,7 @@ enum SomeEnumeration {
 }
 ```
 
-コンパスの 4 つの主要なポイントの例を次に示します:
+コンパスの 4 つの主要な方向の例を次に示します:
 
 ```swift
 enum CompassPoint {
@@ -34,12 +34,12 @@ enum CompassPoint {
 }
 ```
 
-列挙型で定義された値（`north`、`south`、`east`、`west` など）は、その列挙ケースです。 `case` キーワードを使用して、新しい列挙ケースを導入します。
+列挙型で定義された値（`north`、`south`、`east`、`west` など）は、その列挙型のケースです。 `case` キーワードを使用して、新しい列挙型のケースを導入します。
 
 > NOTE  
-> C 言語や Objective-C などの言語とは異なり、Swift 列挙ケースにはデフォルトで整数値が設定されていません。上記の `CompassPoint` の例では、`north`、`south`、`east`、`west` は暗黙的に `0`、`1`、`2`、`3` になりません。代わりに、異なる列挙ケースはそれ自体が値であり、`CompassPoint` 明示的に定義された型です。
+> C 言語や Objective-C などの言語とは異なり、Swift 列挙型bのケースにはデフォルトで整数値が設定されていません。上記の `CompassPoint` の例では、`north`、`south`、`east`、`west` は暗黙的に `0`、`1`、`2`、`3` になりません。代わりに、異なる列挙型のケースはそれ自体が値であり、明示的に定義された `CompassPoint` 型です。
 
-複数のケースをカンマ(`,`)で区切って 1 行に表示できます。
+複数のケースをカンマ(`,`)で区切って 1 行で表示できます。
 
 ```swift
 enum Planet {
@@ -47,19 +47,19 @@ enum Planet {
 }
 ```
 
-各列挙定義は、新しいタイプを定義します。Swift の他のタイプと同様に、それらの名前（`CompassPoint` や `Planet` など）は大文字で始まります。列挙型は、1 つのグループなことが自明なため、複数の名前ではなく単数の名前を付けましょう:
+各列挙型の定義は、新しい型を定義します。Swift の他の型と同様に、それらの名前（`CompassPoint` や `Planet` など）は大文字で始まります。列挙型は、1 つのグループなことが自明なため、複数の名前ではなく単数の名前を付けましょう:
 
 ```swift
 var directionToHead = CompassPoint.west
 ```
 
-`directionToHead` の型は、`CompassPoint` のある値の 1 つで初期化された場合、型が推論されます。一度 `directionToHead` が `CompassPoint` として宣言されたら、次からは短いドット構文(`.`)を使用して別の `CompassPoint` 値に設定できます。
+`directionToHead` の型は、`CompassPoint` のある値の 1 つで初期化された場合、型が推論されます。一度 `directionToHead` が `CompassPoint` として宣言されたら、次からは短いドット構文(`.`)を使用して別の `CompassPoint` 値を設定できます。
 
 ```swift
 directionToHead = .east
 ```
 
-`directionToHead` の型はすでにわかっているため、値を設定するときにタイプを削除できます。これにより、明示的に型指定された列挙値を操作するときに、非常に読みやすいコードが作成されます。
+`directionToHead` の型はすでにわかっているため、値を設定するときに型を省略できます。これにより、明示的に型指定された列挙型の値を操作するときに、非常に読みやすいコードが作成できます。
 
 ## Matching Enumeration Values with a Switch Statement(switch文を使った列挙値のパターンマッチング)
 
@@ -86,9 +86,9 @@ case .west:
 
 …などなど。
 
-[Control Flow](./control-flow.md)で説明されているように、列挙ケースを検証するときは、`switch` 文で全てのケースを網羅する必要があります。`.west` の `case` を省略した場合、このコードはコンパイルできません。網羅性を要求することで、列挙ケースが誤って省略されないようにします。
+[Control Flow](./control-flow.md)で説明されているように、列挙型のケースを検証するときは、`switch` 文で全てのケースを網羅する必要があります。`.west` の `case` を省略した場合、このコードはコンパイルできません。これによって、列挙型のケースが誤って省略できないようにします。
 
-全ての列挙ケースの `case` を並べることが適切でない場合は、明示的に対処されていないケースをカバーする `default` のケースを提供できます。
+全ての列挙型のケースの `case` を並べることが適切でない場合は、明示的に対処されていないケースをカバーする `default` のケースを提供できます。
 
 ```swift
 let somePlanet = Planet.earth
@@ -101,9 +101,9 @@ default:
 // Prints "Mostly harmless"
 ```
 
-## Iterating over Enumeration Cases(列挙ケースの繰り返し処理)
+## Iterating over Enumeration Cases(列挙型のケースの繰り返し処理)
 
-一部の列挙型では、その列挙型の全てのケースのコレクションがあると便利です。これを有効にするには、列挙型の名前の後に `:CaseIterable` を記述します。Swift は、全てのケースのコレクションを列挙型の `allCases` プロパティとして公開してます。次に例を示します:
+一部の列挙型では、その列挙型の全てのケースのコレクションがあると便利です。これを有効にするには、列挙型の名前の後に `:CaseIterable` を記述します。Swift は、全てのケースのコレクションを列挙型の `allCases` プロパティとして提供しています。次に例を示します:
 
 ```swift
 enum Beverage: CaseIterable {
@@ -114,7 +114,7 @@ print("\(numberOfChoices) beverages available")
 // Prints "3 beverages available"
 ```
 
-上記の例では、`Beverage.allCases` を記述して、列挙型 `Beverage` の全てのケースを含むコレクションにアクセスします。 `allCases` は、他のコレクションと同じように使用できます。コレクションの要素は列挙型のインスタンスで、今回は `Beverage` の値です。上記の例では、ケースの数をカウントし、下記の例では、`for` ループを使用して全てのケースを繰り返し処理しています。
+上記の例では、`Beverage.allCases` を記述して、列挙型 `Beverage` の全てのケースを含むコレクションにアクセスします。`allCases` は、他のコレクションと同じように使用できます。コレクションの要素は列挙型のインスタンスで、今回は `Beverage` の値です。上記の例では、ケースの数をカウントし、下記の例では、`for` ループを使用して全てのケースを繰り返し処理しています。
 
 ```swift
 for beverage in Beverage.allCases {
@@ -129,9 +129,9 @@ for beverage in Beverage.allCases {
 
 ## Associated Values(関連値)
 
-前のセクションの例は、列挙ケースがそれ自体で定義された（および型指定された）値とする方法を示しています。定数または変数を `Planet.earth` に設定し、後でこの値を確認できます。ただし、これらのケース値と一緒に他の型の値を保持できると便利な場合があります。この追加情報は関連値(*associated values*)と呼ばれ、コードでそのケースの値を使用する度に異なります。
+前のセクションの例は、列挙型のケースがそれ自体で定義された（および型指定された）値にする方法を示しています。定数または変数を `Planet.earth` に設定し、後でこの値を確認できます。ただし、これらのケース値と一緒に他の型の値を保持できると便利な場合があります。この追加情報は関連値(*associated values*)と呼ばれ、コードでそのケースの値を使用する度に異なります。
 
-Swift の列挙型を定義して、任意のタイプの関連する値を格納できます。また、必要に応じて、列挙ケースごとに値の型を変えることができます。これらに類似した列挙型は、他のプログラミング言語では、`discriminated unions`、`tagged unions`、または `variants` として知られています。
+Swift の列挙型を定義して、任意の型に関連する値を格納できます。また、必要に応じて、列挙型のケースごとに値の型を変えることができます。これらに類似した列挙型は、他のプログラミング言語では、`discriminated unions`、`tagged unions`、または `variants` として知られています。
 
 例えば、在庫追跡システムが 2 つの異なる型のバーコードで製品を追跡する必要があるとします。一部の製品には、`0〜9` の数字を使用する UPC 形式の 1D バーコードでラベルが付けられています。各バーコードには番号システムの数字があり、その後に 5 つのメーカーコード数字と 5 つの製品コード数字が続きます。これらの後にチェックディジットが続き、コードが正しくスキャンされたことを確認します。
 
@@ -143,7 +143,7 @@ Swift の列挙型を定義して、任意のタイプの関連する値を格�
 
 在庫追跡システムでは、UPC バーコードを 4 つの整数のタプルとして保存し、QR コードバーコードを任意の長さの文字列として保存すると便利です。
 
-Swift では、いずれかのタイプの製品バーコードを定義するための列挙は次のようになります。
+Swift では、いずれかの型の製品バーコードを定義するための列挙型は次のようになります。
 
 ```swift
 enum Barcode {
@@ -158,7 +158,7 @@ enum Barcode {
 
 この定義は、実際の `Int` 値または `String` 値を提供するものではなく、`Barcode.upc` または `Barcode.qrCode` と等しい場合に `Barcode` の定数および変数が格納できる関連値の型を定義しているだけです。
 
-次に、次のいずれかの型を使用して新しい `Barcode` を作成できます。
+次に、いずれかの型を使用して新しい `Barcode` を作成します。
 
 ```swift
 var productBarcode = Barcode.upc(8, 85909, 51226, 3)
@@ -166,7 +166,7 @@ var productBarcode = Barcode.upc(8, 85909, 51226, 3)
 
 この例では、関連付けられたタプル値 `(8,85909, 51226, 3)` を持つ `Barcode.upc` の値を代入して、`productBarcode` という新しい変数を作成します。
 
-同じ製品に異なる型のバーコードを代入することができます。
+同じ製品に異なる型のバーコードを代入することもできます。
 
 ```swift
 productBarcode = .qrCode("ABCDEFGHIJKLMNOP")
@@ -174,7 +174,7 @@ productBarcode = .qrCode("ABCDEFGHIJKLMNOP")
 
 この時点で、元の `Barcode.upc` とその整数値は、新しい `Barcode.qrCode` とその文字列値に置き換えられます。`Barcode` の定数と変数は、`.upc` または `.qrCode` のいずれかを（関連する値とともに）格納できますが、一度に格納できるのはそのうちの 1 つだけです。
 
-[Matching Enumeration Values with a Switch Statement](#matching-enumeration-values-with-a-switch-statementswitch文を使った列挙値のパターンマッチング)の例と同様に、`switch` 文を使用してさまざまなバーコード型を確認できます。ただし、今回は、関連する値が `switch` 文の一部として抽出されます。`switch` のケースの本文内で使用するために、関連付けられた各値を定数（`let` プレフィックス）または変数（`var` プレフィックス）として抽出します。
+[Matching Enumeration Values with a Switch Statement](#matching-enumeration-values-with-a-switch-statementswitch文を使った列挙値のパターンマッチング)の例と同様に、`switch` 文を使用して様々なバーコード型を確認できます。ただし、今回は、関連値が `switch` 文の一部として抽出されます。`switch` のケースの本文内で使用するために、関連値を定数(`let` プレフィックス)または変数(`var` プレフィックス)として抽出します。
 
 ```swift
 switch productBarcode {
@@ -186,7 +186,7 @@ case .qrCode(let productCode):
 // Prints "QR code: ABCDEFGHIJKLMNOP."
 ```
 
-列挙ケースに関連付けられている全ての値が定数として抽出される場合、または全てが変数として抽出される場合は、簡潔にするために、ケース名の前に 1 つの `var` または `let` を付けるだけにできます:
+列挙型のケースの全ての関連値が定数として抽出される場合、または全てが変数として抽出される場合は、簡潔にするために、ケース名の前に 1 つの `var` または `let` を付けるだけで問題ありません:
 
 ```swift
 switch productBarcode {
@@ -200,9 +200,9 @@ case let .qrCode(productCode):
 
 ## Raw Values
 
-[Associated Values](#associated-values関連値)のバーコードの例は、列挙ケースが、様々な型に関連値を格納して宣言する方法を示しています。関連値の代わりに、列挙型には、全て同じ型のデフォルト値（*raw values*と呼ばれる）を事前に入力していることがあります。
+[Associated Values](#associated-values関連値)のバーコードの例は、列挙型のケースが、様々な型に関連値を格納して宣言する方法を示しています。関連値の代わりに、列挙型には、全て同じ型のデフォルト値(*raw values*と呼ばれる)を事前に定義することもできます。
 
-名前付き列挙ケースと一緒にそのままの ASCII 値を格納する例を次に示します。
+名前付きの列挙型のケースと一緒に ASCII 値を格納する例を次に示します。
 
 ```swift
 enum ASCIIControlCharacter: Character {
@@ -212,20 +212,20 @@ enum ASCIIControlCharacter: Character {
 }
 ```
 
-ここで、`ASCIIControlCharacter` と呼ばれる列挙型の raw value は、`Character` 型で定義されており、より一般的な ASCII 制御文字のいくつかが設定されています。`Character` 値は、[Strings and Characters](./strings-and-characters.md)で説明しています。
+ここで、`ASCIIControlCharacter` と呼ばれる列挙型の raw value は、`Character` 型で定義されており、一般的な ASCII 制御文字のいくつかが設定されています。`Character` 値は、[Strings and Characters](./strings-and-characters.md)で説明しています。
 
 raw value は、文字列、文字、または整数型または浮動小数点数型のいずれかです。各 raw value は、その列挙型内で一意でなければなりません。
 
 > NOTE  
-> raw valueは、関連値と同じではありません。上記の3つの ASCII コードのように、コードで列挙を最初に定義するときに、raw value は事前入力された値に設定されます。特定の列挙ケースのraw valueは常に同じです。関連値は、列挙ケースに基づいて新しい定数または変数を作成するときに設定され、作成する度に異なる可能性があります。
+> raw valueは、関連値と同じではありません。上記の3つの ASCII コードのように、コードで列挙型を最初に定義するときに、raw value は事前入力された値に設定されます。特定の列挙型のケースの raw value は常に同じです。関連値は、列挙型のケースに基づいて新しい定数または変数を作成するときに設定され、作成する度に異なる可能性があります。
 
 ### Implicitly Assigned Raw Values(暗黙的に割り当てられたraw value)
 
-整数または文字列の raw value を格納する列挙を操作する場合、それぞれのケースに raw value を明示的に割り当てる必要はありません。代わりに Swift が自動的に値を割り当てます。
+整数または文字列の raw value を格納する列挙型を操作する場合、それぞれのケースに raw value を明示的に割り当てる必要はありません。代わりに Swift が自動的に値を割り当てます。
 
-例えば、raw value に整数が使用されている場合、各ケースの暗黙の値は前のケースより 1 つ増えます。最初のケースに値が設定されていない場合、その値は `0` です。
+例えば、raw value に整数が使用されている場合、各ケースの暗黙の値は前のケースより 1 つ増えた値になります。最初のケースに値が設定されていない場合、その値は `0` です。
 
-以下の列挙は、以前の `Planet` の列挙を改良したもので、太陽からの各惑星の順序を表す整数の raw value が含まれています。
+以下の列挙型は、以前の `Planet` の列挙型を改良したもので、太陽からの各惑星の順序を表す整数の raw value が含まれています。
 
 ```swift
 enum Planet: Int {
@@ -247,7 +247,7 @@ enum CompassPoint: String {
 
 上記の例では、`CompassPoint.south` には `"south"` という暗黙の raw value があります。
 
-`rawValue` プロパティを使用して列挙ケースの raw value にアクセスします。
+`rawValue` プロパティを使用して列挙型のケースの raw value にアクセスします。
 
 ```swift
 let earthsOrder = Planet.earth.rawValue
@@ -268,10 +268,10 @@ let possiblePlanet = Planet(rawValue: 7)
 // possiblePlanet の型は Planet? で Planet.uranus と等しい
 ```
 
-ただし、全ての `Int` 値が惑星に一致するわけではありません。このため、raw value のイニシャライザは常に optional の列挙ケースを返します。上記の例では、`possiblePlanet` は Planet?` または optional の `Planet`型です。
+ただし、全ての `Int` 値が惑星に一致するわけではありません。このため、raw value のイニシャライザは常に optional の列挙型を返します。上記の例では、`possiblePlanet` は Planet?` または optional の `Planet`型です。
 
 > NOTE  
-> 全ての raw value が列挙型を返すわけではないため、raw valueイニシャライザは失敗可能です。詳細については、[Failable Initializers](./../language-reference/declarations.md#failable-initializers)を参照ください。
+> 全ての raw value が列挙型を返すわけではないため、raw valueイニシャライザは `nil` を返す可能性があります。詳細については、[Failable Initializers](./../language-reference/declarations.md#failable-initializers)を参照ください。
 
 位置が `11` の惑星を見つけようとすると、raw value のイニシャライザによって返される optional の `Planet` は `nil` になります。
 
@@ -292,9 +292,9 @@ if let somePlanet = Planet(rawValue: positionToFind) {
 
 この例では、オプションバインディングを使用して、raw value が `11` の惑星にアクセスしようとします。`if let somePlanet = Planet（rawValue: 11)` は、optional の `Planet` を作成し、取得できる場合は、`somePlanet` をその optional の `Planet` の値に設定します。この場合、位置が `11` の惑星を取得することはできないため、代わりに `else` の分岐が実行されます。
 
-## Recursive Enumerations(再帰的列挙)
+## Recursive Enumerations(再帰的列挙型)
 
-再帰的列挙(*recursive enumeration*)は、1 つ以上の列挙ケースの関連値としてその列挙型の別のインスタンスを持つ列挙型です。列挙型が再帰的なことを示すには、その前に `indirect` を記述します。これにより、コンパイラに必要な間接層を挿入することを伝えることができます。
+再帰的列挙型(*recursive enumeration*)は、1 つ以上の列挙型のケースの関連値としてその列挙型の別のインスタンスを持つ列挙型です。列挙型が再帰的なことを示すには、その前に `indirect` を記述します。これにより、コンパイラに `indirect` のネストがあることを伝えることができます。
 
 例えば、シンプルな算術式を格納する列挙型は次のとおりです。
 
@@ -316,7 +316,7 @@ indirect enum ArithmeticExpression {
 }
 ```
 
-この列挙型には、シンプルな数値、2 つの式の加算、および乗算の 3 種類の算術式を格納できます。`addition` と `multiplication` のケースには、同じく算術式を関連値として格納しています。これらの関連値により、式をネストできます。例えば、式 `（5 + 4）* 2` には、乗算の右側に数値があり、乗算の左側に別の式があります。データがネストしているため、データを格納する列挙ケースもネストをサポートする必要があります。つまり、再帰的でなければなりません。下記のコードは、`（5 + 4）* 2` に対する `ArithmeticExpression` の再帰的列挙を作成する方法を示しています。
+この列挙型には、シンプルな数値、2 つの式の加算、および乗算の 3 種類の算術式を格納できます。`addition` と `multiplication` のケースには、同じく算術式を関連値として格納しています。これらの関連値により、式をネストできます。例えば、式 `（5 + 4）* 2` には、乗算の右側に数値があり、乗算の左側に別の式があります。データがネストしているため、データを格納する列挙型のケースもネストをサポートする必要があります。つまり、再帰的でなければなりません。下記のコードは、`（5 + 4）* 2` に対する `ArithmeticExpression` の再帰的列挙を作成する方法を示しています。
 
 ```swift
 let five = ArithmeticExpression.number(5)
@@ -343,4 +343,4 @@ print(evaluate(product))
 // Prints "18"
 ```
 
-この関数は、関連値を返すだけで多単純な数値を評価します。左側の式を評価し、右側の式を評価してから、それらをさらに加算または乗算することにより、`addition` または `multiplication` を評価します。
+この関数は、関連値を返すだけで単純な数値を評価します。左側の式を評価し、右側の式を評価してから、それらをさらに加算または乗算することにより、`addition` または `multiplication` を評価します。
