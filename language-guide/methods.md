@@ -1,4 +1,4 @@
-# Methods
+# Methods(メソッド)
 
 最終更新日:
 

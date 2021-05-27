@@ -1,4 +1,4 @@
-# Properties
+# Properties(プロパティ)
 
 最終更新日:
 
