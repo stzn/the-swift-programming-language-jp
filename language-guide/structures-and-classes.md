@@ -186,6 +186,42 @@ print("The remembered direction is \(rememberedDirection)")
 
 ## Classes Are Reference Types(classは参照型)
 
+値型とは異なり、参照型は、変数または定数に割り当てられたとき、または関数に渡されたときにコピーされません。コピーではなく、同じ既存のインスタンスへの参照が使用されます。
+
+上記で定義した `VideoMode` クラスを使用した例を次に示します。
+
+```swift
+let tenEighty = VideoMode()
+tenEighty.resolution = hd
+tenEighty.interlaced = true
+tenEighty.name = "1080i"
+tenEighty.frameRate = 25.0
+```
+
+この例では、`tenEighty` という新しい定数を宣言し、`VideoMode` クラスの新しいインスタンスを参照するように設定します。ビデオモードには、元々 `1920` x `1080` の HD 解像度のコピーが割り当てられています。インターレースされるように設定され、名前には `"1080i"` 、フレームレートは `25.0` フレーム/秒が設定されます。
+
+次に、`tenEighty` が `alsoTenEighty` という新しい定数に割り当てられ、`alsoTenEighty` のフレームレートが変更されます。
+
+```swift
+let alsoTenEighty = tenEighty
+alsoTenEighty.frameRate = 30.0
+```
+
+クラスは参照型のため、`tenEighty` と `alsoTenEighty` は実際には両方とも同じ `VideoMode` インスタンスを参照します。事実上、次の図に示すように、これらは同じインスタンスの 2 つの異なる名前にすぎません。
+
+![クラスの共有状態](./../.gitbook/assets/sharedStateClass_2x.png)
+
+`tenEighty` の `frameRate` プロパティを確認すると、基になる `VideoMode` インスタンスから `30.0` の新しいフレームレートが正しく設定されていることがわかります。
+
+```swift
+print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
+// Prints "The frameRate property of tenEighty is now 30.0"
+```
+
+この例は、参照型の推論がいかに難しいかを示しています。`tenEighty` と `alsoTenEighty` がコード内で大きく離れている場合、ビデオモードが変更される全ての場所を見つけるのは難しい可能性があります。`tenEighty` を使用する場合は常に、`alsoTenEighty` も使用するコードも考慮する必要があります。その逆も同様です。対照的に、値型は、同じ値に作用する全てのコードが近くにあるため、考慮する点が少なくなるため簡単です。
+
+`tenEighty` と `alsoTenEighty` は、変数ではなく定数として宣言されていることに注目してください。それでも、`tenEighty` および `alsoTenEighty` 定数自体の値は実際には変更されないため、`tenEighty.frameRate` および `alsoTenEighty.frameRate` を変更することはできます。`tenEighty` と `alsoTenEighty` 自体は、`VideoMode` インスタンスを「格納」しません。代わりに、どちらも裏側で同じ `VideoMode` インスタンスを参照します。変更されるのは、基になる `VideoMode` の `frameRate` プロパティで、その `VideoMode` への参照を持つ定数ではありません。
+
 ### Identity Operators(参照等価演算子)
 
 ### Pointers(ポインタ)
