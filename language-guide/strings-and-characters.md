@@ -130,7 +130,7 @@ var anotherEmptyString = String()  // イニシャライザ
 if emptyString.isEmpty {
     print("Nothing to see here")
 }
-// Prints "Nothing to see here"
+// "Nothing to see here"
 ```
 
 ## String Mutability(文字列の可変性）
@@ -187,7 +187,7 @@ let exclamationMark: Character = "!"
 let catCharacters: [Character] = ["C", "a", "t", "!", "🐱"]
 let catString = String(catCharacters)
 print(catString)
-// Prints "Cat!🐱"
+// "Cat!🐱"
 ```
 
 ## Concatenating Strings and Characters(文字と文字列の連結）
@@ -231,7 +231,7 @@ let end = """
 three
 """
 print(badStart + end)
-// Prints two lines:
+// two lines:
 // one
 // twothree
 
@@ -241,7 +241,7 @@ two
 
 """
 print(goodStart + end)
-// Prints three lines:
+// three lines:
 // one
 // two
 // three
@@ -267,14 +267,14 @@ let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 
 ```swift
 print(#"Write an interpolated string in Swift using \(multiplier)."#)
-// Prints "Write an interpolated string in Swift using \(multiplier)."
+// "Write an interpolated string in Swift using \(multiplier)."
 ```
 
 拡張区切り文字を使った文字列の中で文字列補間を使用する場合、バックスラッシュの後の番号記号の数を文字列の開始\(終了\)の番号記号の数に合わせます。例えば:
 
 ```swift
 print(#"6 times 7 is \#(6 * 7)."#)
-// Prints "6 times 7 is 42."
+// "6 times 7 is 42."
 ```
 
 > NOTE  
@@ -333,7 +333,7 @@ let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
 ```swift
 let unusualMenagerie = "Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"
 print("unusualMenagerie has \(unusualMenagerie.count) characters")
-// Prints "unusualMenagerie has 40 characters"
+// "unusualMenagerie has 40 characters"
 ```
 
 `Character` に拡張書記素クラスタを使用しているということは、文字列の連結や変更が必ずしも文字列内の文字数に影響を与えるわけではない、ということに注意してください。
@@ -343,12 +343,12 @@ print("unusualMenagerie has \(unusualMenagerie.count) characters")
 ```swift
 var word = "cafe"
 print("the number of characters in \(word) is \(word.count)")
-// Prints "the number of characters in cafe is 4"
+// "the number of characters in cafe is 4"
 
 word += "\u{301}"    // COMBINING ACUTE ACCENT, U+0301
 
 print("the number of characters in \(word) is \(word.count)")
-// Prints "the number of characters in café is 4"
+// "the number of characters in café is 4"
 ```
 
 > NOTE  
@@ -397,7 +397,7 @@ greeting.index(after: greeting.endIndex) // Error
 for index in greeting.indices {
     print("\(greeting[index]) ", terminator: "")
 }
-// Prints "G u t e n   T a g ! "
+// "G u t e n   T a g ! "
 ```
 
 > NOTE  
@@ -467,7 +467,7 @@ let sameQuotation = "We're a lot alike, you and I."
 if quotation == sameQuotation {
     print("These two strings are considered equal")
 }
-// Prints "These two strings are considered equal"
+// "These two strings are considered equal"
 ```
 
 2 つの文字列\(または文字\)は、拡張書記素クラスタが「規範的に」等しければ、等しいと見なされます。つまり、内部では異なる Unicode スカラで構成されていたとしても、同じ言語的な意味と見た目が同じならば等しくなります。
@@ -484,7 +484,7 @@ let combinedEAcuteQuestion = "Voulez-vous un caf\u{65}\u{301}?"
 if eAcuteQuestion == combinedEAcuteQuestion {
     print("These two strings are considered equal")
 }
-// Prints "These two strings are considered equal"
+// "These two strings are considered equal"
 ```
 
 反対に、英語で使われている `LATIN CAPITAL LETTER A`\(`U+0041` または `"A"`\)はロシア語で使われている `CYRILLIC CAPITAL LETTER A`\(`U+0410` または `"А"`\)と等しくありません。一見似ていますが、同じ言語的な意味を持っていません。
@@ -497,7 +497,7 @@ let cyrillicCapitalLetterA: Character = "\u{0410}"
 if latinCapitalLetterA != cyrillicCapitalLetterA {
     print("These two characters aren't equivalent.")
 }
-// Prints "These two characters aren't equivalent."
+// "These two characters aren't equivalent."
 ```
 
 > NOTE  
@@ -535,7 +535,7 @@ for scene in romeoAndJuliet {
     }
 }
 print("There are \(act1SceneCount) scenes in Act 1")
-// Prints "There are 5 scenes in Act 1"
+// "There are 5 scenes in Act 1"
 ```
 
 同様に、`hasSuffix(_:)` を使用して Capulet マンションや修道士ローレンスの周りで起きたシーンの数を数えてみます。
@@ -551,7 +551,7 @@ for scene in romeoAndJuliet {
     }
 }
 print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
-// Prints "6 mansion scenes; 2 cell scenes"
+// "6 mansion scenes; 2 cell scenes"
 ```
 
 > NOTE  
@@ -586,7 +586,7 @@ for codeUnit in dogString.utf8 {
     print("\(codeUnit) ", terminator: "")
 }
 print("")
-// Prints "68 111 103 226 128 188 240 159 144 182 "
+// "68 111 103 226 128 188 240 159 144 182 "
 ```
 
 上記の例では、最初の 3 つの 10 進数の `codeUnit`\(`68`、`111`、`103`\)は、ASCII 形式の `D`、`o`、`g` を UTF-8 形式で表しています。  
@@ -603,7 +603,7 @@ for codeUnit in dogString.utf16 {
     print("\(codeUnit) ", terminator: "")
 }
 print("")
-// Prints "68 111 103 8252 55357 56374 "
+// "68 111 103 8252 55357 56374 "
 ```
 
 上記の例では、最初の 3 つの 10 進数の `codeUnit`\(`68`、`111`、`103`\)は、ASCII 形式の `D`、`o`、`g` を UTF-16 形式で表しています。これは UTF-8 と同じです。\(Unicode スカラは ASCII 文字を表しているため等しくなります\)  
@@ -624,7 +624,7 @@ for scalar in dogString.unicodeScalars {
     print("\(scalar.value) ", terminator: "")
 }
 print("")
-// Prints "68 111 103 8252 128054 "
+// "68 111 103 8252 128054 "
 ```
 
 最初の 3 つの `UnicodeScalar`\(`68`、`111`、`103`\)の `value` プロパティは、ASCII 形式の `D`、`o`、`g` を表しています。

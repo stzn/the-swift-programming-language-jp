@@ -388,7 +388,7 @@ let allowedEntry = false
 if !allowedEntry {
     print("ACCESS DENIED")
 }
-// Prints "ACCESS DENIED"
+// "ACCESS DENIED"
 ```
 
 `if !allowedEntry` は「もし許可されたエントリでなければ」と読み取れます。次の行では、「もし許可されたエントリでなければ」が `true` だった場合のみ実行されます。つまり、`if allowedEntry` は `false` です。
@@ -411,7 +411,7 @@ if enteredDoorCode && passedRetinaScan {
 } else {
     print("ACCESS DENIED")
 }
-// Prints "ACCESS DENIED"
+// "ACCESS DENIED"
 ```
 
 ### Logical OR Operator(論理OR演算子）
@@ -430,7 +430,7 @@ if hasDoorKey || knowsOverridePassword {
 } else {
     print("ACCESS DENIED")
 }
-// Prints "Welcome!"
+// "Welcome!"
 ```
 
 ### Combining Logical Operators(論理演算子の合成）
@@ -443,7 +443,7 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 } else {
     print("ACCESS DENIED")
 }
-// Prints "Welcome!"
+// "Welcome!"
 ```
 
 この例では、複数の `&&` と `||` を使用して複合式を作っています。`&&` と `||` は 2 つの値しか操作することができないため、実際には 3 つの小さい式を繋げています。この例は下記のように読み取れます:
@@ -465,7 +465,7 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 } else {
     print("ACCESS DENIED")
 }
-// Prints "Welcome!"
+// "Welcome!"
 ```
 
 この括弧は、最初の 2 つの値が、全体の論理の中で別の状態を持つ部分を明確にしています。複合式の出力結果は変わりませんが、全体の意図は読み手により明確になります。可読性は簡潔さよりも常に優先されます。意図を明確にすることができるならば、括弧を使いましょう。

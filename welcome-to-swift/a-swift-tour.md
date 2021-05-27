@@ -6,7 +6,7 @@
 
 ```swift
 print("Hello, world!")
-// Prints "Hello, world!"
+// "Hello, world!"
 ```
 
 もし C 言語や Objective-C の経験があるならばこのシンタックスに馴染みがあるかもしれませんが、Swift ではこの 1 行のコードは完成したプログラミングです。input/output や文字列を扱うために他のライブラリを import する必要もありません。グローバル領域に書かれたコードはプログラムのエントリポイントとして使用されます。`main()` 関数は必要ありません。全てのステートメントの末尾にセミコロンをつける必要もありません。
@@ -122,7 +122,7 @@ for score in individualScores {
     }
 }
 print(teamScore)
-// Prints "11"
+// "11"
 ```
 
 `if` ステートメントの中で、条件は Boolean でなければなりません。\(つまり、`if score { ... }` などのコードはエラーか暗黙的に 0 と推論されます\)
@@ -132,7 +132,7 @@ print(teamScore)
 ```swift
 var optionalString: String? = "Hello"
 print(optionalString == nil)
-// Prints "false"
+// "false"
 
 var optionalName: String? = "John Appleseed"
 var greeting = "Hello!"
@@ -168,7 +168,7 @@ case let x where x.hasSuffix("pepper"):
 default:
     print("Everything tastes good in soup.")
 }
-// Prints "Is it a spicy red pepper?"
+// "Is it a spicy red pepper?"
 ```
 
 > Experiment  
@@ -195,7 +195,7 @@ for (_, numbers) in interestingNumbers {
     }
 }
 print(largest)
-// Prints "25"
+// "25"
 ```
 
 > Experiment  
@@ -209,14 +209,14 @@ while n < 100 {
     n *= 2
 }
 print(n)
-// Prints "128"
+// "128"
 
 var m = 2
 repeat {
     m *= 2
 } while m < 100
 print(m)
-// Prints "128"
+// "128"
 ```
 
 `..<` を使用すると、index の range を生成でき、ループの index を追うことができます。
@@ -227,7 +227,7 @@ for i in 0..<4 {
     total += i
 }
 print(total)
-// Prints "6
+// "6
 ```
 
 `..<` では後の値は除外され、`...` は両方の値を含みます。
@@ -267,9 +267,9 @@ func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
 }
 let statistics = calculateStatistics(scores: [5, 3, 100, 3, 9])
 print(statistics.sum)
-// Prints "120"
+// "120"
 print(statistics.2)
-// Prints "120"
+// "120"
 ```
 
 関数はネストして使用することができます。ネストした関数は、外側で定義された変数にアクセスすることができます。ネスト関数を使用することで、長くて複雑な関数を整理することができます。
@@ -334,7 +334,7 @@ numbers.map({ (number: Int) -> Int in
 ```swift
 let sortedNumbers = numbers.sorted { $0 > $1 }
 print(sortedNumbers)
-// Prints "[20, 19, 12, 7]"
+// "[20, 19, 12, 7]"
 ```
 
 ## Objects and Classes(オブジェクトとクラス）
@@ -439,10 +439,10 @@ class EquilateralTriangle: NamedShape {
 }
 var triangle = EquilateralTriangle(sideLength: 3.1, name: "a triangle")
 print(triangle.perimeter)
-// Prints "9.3"
+// "9.3"
 triangle.perimeter = 9.9
 print(triangle.sideLength)
-// Prints "3.3000000000000003"
+// "3.3000000000000003"
 ```
 
 `perimeter` の setter の中で、新しい値は暗黙的に `newValue` という名前になります。 `set` の後に丸括弧\(\(\)\)で囲んで明示的に指定することもできます。
@@ -474,12 +474,12 @@ class TriangleAndSquare {
 }
 var triangleAndSquare = TriangleAndSquare(size: 10, name: "another test shape")
 print(triangleAndSquare.square.sideLength)
-// Prints "10.0"
+// "10.0"
 print(triangleAndSquare.triangle.sideLength)
-// Prints "10.0"
+// "10.0"
 triangleAndSquare.square = Square(sideLength: 50, name: "larger square")
 print(triangleAndSquare.triangle.sideLength)
-// Prints "50.0"
+// "50.0"
 ```
 
 optional な値を扱う場合、 `?` をメソッド、プロパティ、subscript のような操作の前に書きます。もし `?` の前の値が `nil` の場合、`?` の後の処理は全て無視され、その式全体の値は `nil` になります。それ以外は、optional の値はアンラップされて、`?` の後は全てアンラップされた値として実行されます。どちらの場合も、式全体は optinal な値です。
@@ -576,7 +576,7 @@ case let .result(sunrise, sunset):
 case let .failure(message):
     print("Failure...  \(message)")
 }
-// Prints "Sunrise is at 6:00 am and sunset is at 8:09 pm."
+// "Sunrise is at 6:00 am and sunset is at 8:09 pm."
 ```
 
 > Experiment  
@@ -654,7 +654,7 @@ extension Int: ExampleProtocol {
     }
 }
 print(7.simpleDescription)
-// Prints "The number 7"
+// "The number 7"
 ```
 
 > Experiment  
@@ -665,7 +665,7 @@ protocol の名前は他の名前が付いた型と同じように使用する�
 ```swift
 let protocolValue: ExampleProtocol = a
 print(protocolValue.simpleDescription)
-// Prints "A very simple class.  Now 100% adjusted."
+// "A very simple class.  Now 100% adjusted."
 // print(protocolValue.anotherProperty)  // Uncomment to see the error
 ```
 
@@ -703,7 +703,7 @@ do {
 } catch {
     print(error)
 }
-// Prints "Job sent"
+// "Job sent"
 ```
 
 > Experiment  
@@ -722,7 +722,7 @@ do {
 } catch {
     print(error)
 }
-// Prints "Job sent"
+// "Job sent"
 ```
 
 > Experiment  
@@ -752,7 +752,7 @@ func fridgeContains(_ food: String) -> Bool {
 }
 fridgeContains("banana")
 print(fridgeIsOpen)
-// Prints "false"
+// "false"
 ```
 
 ## Generics(ジェネリクス）

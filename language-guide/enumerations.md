@@ -77,7 +77,7 @@ case .east:
 case .west:
     print("Where the skies are blue")
 }
-// Prints "Watch out for penguins"
+// "Watch out for penguins"
 ```
 
 このコードは次のように読むことができます。
@@ -98,7 +98,7 @@ case .earth:
 default:
     print("Not a safe place for humans")
 }
-// Prints "Mostly harmless"
+// "Mostly harmless"
 ```
 
 ## Iterating over Enumeration Cases(列挙型のケースの繰り返し処理)
@@ -111,7 +111,7 @@ enum Beverage: CaseIterable {
 }
 let numberOfChoices = Beverage.allCases.count
 print("\(numberOfChoices) beverages available")
-// Prints "3 beverages available"
+// "3 beverages available"
 ```
 
 上記の例では、`Beverage.allCases` を記述して、列挙型 `Beverage` の全てのケースを含むコレクションにアクセスします。`allCases` は、他のコレクションと同じように使用できます。コレクションの要素は列挙型のインスタンスで、今回は `Beverage` の値です。上記の例では、ケースの数をカウントし、下記の例では、`for` ループを使用して全てのケースを繰り返し処理しています。
@@ -183,7 +183,7 @@ case .upc(let numberSystem, let manufacturer, let product, let check):
 case .qrCode(let productCode):
     print("QR code: \(productCode).")
 }
-// Prints "QR code: ABCDEFGHIJKLMNOP."
+// "QR code: ABCDEFGHIJKLMNOP."
 ```
 
 列挙型のケースの全ての関連値が定数として抽出される場合、または全てが変数として抽出される場合は、簡潔にするために、ケース名の前に 1 つの `var` または `let` を付けるだけで問題ありません:
@@ -195,7 +195,7 @@ case let .upc(numberSystem, manufacturer, product, check):
 case let .qrCode(productCode):
     print("QR code: \(productCode).")
 }
-// Prints "QR code: ABCDEFGHIJKLMNOP."
+// "QR code: ABCDEFGHIJKLMNOP."
 ```
 
 ## Raw Values
@@ -287,7 +287,7 @@ if let somePlanet = Planet(rawValue: positionToFind) {
 } else {
     print("There isn't a planet at position \(positionToFind)")
 }
-// Prints "There isn't a planet at position 11"
+// "There isn't a planet at position 11"
 ```
 
 この例では、オプションバインディングを使用して、raw value が `11` の惑星にアクセスしようとします。`if let somePlanet = Planet（rawValue: 11)` は、optional の `Planet` を作成し、取得できる場合は、`somePlanet` をその optional の `Planet` の値に設定します。この場合、位置が `11` の惑星を取得することはできないため、代わりに `else` の分岐が実行されます。
@@ -340,7 +340,7 @@ func evaluate(_ expression: ArithmeticExpression) -> Int {
 }
 
 print(evaluate(product))
-// Prints "18"
+// "18"
 ```
 
 この関数は、関連値を返すだけで単純な数値を評価します。左側の式を評価し、右側の式を評価してから、それらをさらに加算または乗算することにより、`addition` または `multiplication` を評価します。

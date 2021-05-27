@@ -66,7 +66,7 @@ for _ in 1...power {
     answer *= base
 }
 print("\(base) to the power of \(power) is \(answer)")
-// Prints "3 to the power of 10 is 59049"
+// "3 to the power of 10 is 59049"
 ```
 
 上記の例では、1 つの数字に累乗した結果を出力しています。この例では `1` に `3`(つまり `3` の `0` 乗）を掛けることから始まり、`1` から `10` までの Closed 範囲を使用して、10 回計算をループしています。この計算では、ループ内で範囲から取得できる値は必要ありません。シンプルに範囲の数だけ処理をループしています。ループの変数部に使われているアンダースコア（`_`)は、それぞれの値を無視し、ループ内に値を提供しません。
@@ -230,7 +230,7 @@ var temperatureInFahrenheit = 30
 if temperatureInFahrenheit <= 32 {
     print("It's very cold. Consider wearing a scarf.")
 }
-// Prints "It's very cold. Consider wearing a scarf."
+// "It's very cold. Consider wearing a scarf."
 ```
 
 上記の例は、気温が華氏 32 度以下かどうかをチェックしています。もしそうならばメッセージが出力されます。そうでないならばメッセージは出力されません。コードの実行は `if` 文の右中括弧（`}`)の後のコードが継続して実行します。
@@ -244,7 +244,7 @@ if temperatureInFahrenheit <= 32 {
 } else {
     print("It's not that cold. Wear a t-shirt.")
 }
-// Prints "It's not that cold. Wear a t-shirt."
+// "It's not that cold. Wear a t-shirt."
 ```
 
 この 2 つの分岐の内の 1 つが必ず実行されます。気温は華氏 40 度に増加しているので、スカーフを巻くアドバイスをする程寒くはなく、`else` の分岐が実行されます。
@@ -260,7 +260,7 @@ if temperatureInFahrenheit <= 32 {
 } else {
     print("It's not that cold. Wear a t-shirt.")
 }
-// Prints "It's really warm. Don't forget to wear sunscreen."
+// "It's really warm. Don't forget to wear sunscreen."
 ```
 
 ここで、特定の暖かい温度に応答するために、追加の `if` 文が提供されています。最後の `else` 句で、暑過ぎず寒過ぎない温度全ての応答を出力します。
@@ -304,7 +304,7 @@ case "z":
 default:
     print("Some other character")
 }
-// Prints "The last letter of the alphabet"
+// "The last letter of the alphabet"
 ```
 
 `switch` 文の最初の case は、英語アルファベットの最初の文字 `a` に合致し、2 番目の case は最後の文字 `z` に合致します。全ての可能性がある文字をカバーしなければならないため、`a` と `z` 以外の全ての文字に対して `default` case を使用しています。こうすることで全ての case を網羅できています。
@@ -344,7 +344,7 @@ case "a", "A":
 default:
     print("Not the letter A")
 }
-// Prints "The letter A"
+// "The letter A"
 ```
 
 可読性のために、複合 case を複数行に分けて書くこともできます。複合 case についての詳細は[Compound Cases](#compound-cases)を参照ください。
@@ -377,7 +377,7 @@ default:
     naturalCount = "many"
 }
 print("There are \(naturalCount) \(countedThings).")
-// Prints "There are dozens of moons orbiting Saturn."
+// "There are dozens of moons orbiting Saturn."
 ```
 
 上記の例では、`approximateCount` が `switch` 文で評価されています。それぞれの case では、1 つの数値または範囲で比較しています。`approximateCount` の値は、12 から 100 の間にあるので、`naturalCount` は `"dozens of"` に値が代入されます。実行後は `switch` 文から抜け出します。
@@ -404,7 +404,7 @@ case (-2...2, -2...2):
 default:
     print("\(somePoint) is outside of the box")
 }
-// Prints "(1, 1) is inside the box"
+// "(1, 1) is inside the box"
 ```
 
 ![switch例のグラフ](./../.gitbook/assets/coordinategraphsimple_2x.png)
@@ -431,7 +431,7 @@ case (0, let y):
 case let (x, y):
     print("somewhere else at (\(x), \(y))")
 }
-// Prints "on the x-axis with an x value of 2"
+// "on the x-axis with an x value of 2"
 ```
 
 ![switchタプルの例のグラフ](./../.gitbook/assets/coordinategraphmedium_2x.png)
@@ -462,7 +462,7 @@ case let (x, y) where x == -y:
 case let (x, y):
     print("(\(x), \(y)) is just some arbitrary point")
 }
-// Prints "(1, -1) is on the line x == -y"
+// "(1, -1) is on the line x == -y"
 ```
 
 ![switch whereの例のグラフ](./../.gitbook/assets/coordinategraphcomplex_2x.png)
@@ -490,7 +490,7 @@ case "b", "c", "d", "f", "g", "h", "j", "k", "l", "m",
 default:
     print("\(someCharacter) isn't a vowel or a consonant")
 }
-// Prints "e is a vowel"
+// "e is a vowel"
 ```
 
 最初の case は英語の小文字の母音全てに合致します。同様に、2 番目の case は英語の子音全てに合致します。`default` は他の全ての文字に合致します。
@@ -505,7 +505,7 @@ case (let distance, 0), (0, let distance):
 default:
     print("Not on an axis")
 }
-// Prints "On an axis, 9 from the origin"
+// "On an axis, 9 from the origin"
 ```
 
 上記の case では 2 つのパターンを含んでいます: `(let distance, 0)` は x 軸上にある点に合致し、 `(0, let distance)` は y 軸上にある点に合致します。どちらのパターンでも、`distance` へのバインディングが含まれており、どちらも数値です。つまり、case 内では常に `distance` にアクセスできます。
@@ -539,7 +539,7 @@ for character in puzzleInput {
     puzzleOutput.append(character)
 }
 print(puzzleOutput)
-// Prints "grtmndsthnklk"
+// "grtmndsthnklk"
 ```
 
 上記のコードは、母音かスペースの場合に即座に現在のループを終了し、次のループの開始に移動するように `continue` キーワードを使用しています。
@@ -585,7 +585,7 @@ if let integerValue = possibleIntegerValue {
 } else {
     print("An integer value couldn't be found for \(numberSymbol).")
 }
-// Prints "The integer value of 三 is 3."
+// "The integer value of 三 is 3."
 ```
 
 この例では、`numberSymbol` が `1`〜`4` のラテン語、アラビア語、中国語、タイ語に合致するかどうかをチェックしています。合致した場合、各 case は、`Int?` の `possibleIntegerValue` 変数に適切な数字を設定しています。
@@ -611,7 +611,7 @@ default:
     description += " an integer."
 }
 print(description)
-// Prints "The number 5 is a prime number, and also an integer."
+// "The number 5 is a prime number, and also an integer."
 ```
 
 この例では、`description` という新しい `String` 変数を宣言して、初期値を設定しています。この関数は `switch` 文で `integerToDescribe` を検証しています。`integerToDescribe` がリストの素数の 1 つの場合、この関数は `description` の末尾に、数字が素数なことを説明したテキストを追加します。`default` case にも「落ちる」ように、`fallthrough` キーワードを使用しています。`default` case では、説明の末尾に追加のテキストを追加して `switch` 文は完了します。数字の説明は、`print(_:separator:terminator:)` 関数を使用して出力されています。この例では、素数として `5` が適切に特定されています。
@@ -706,11 +706,11 @@ func greet(person: [String: String]) {
 }
 
 greet(person: ["name": "John"])
-// Prints "Hello John!"
-// Prints "I hope the weather is nice near you."
+// "Hello John!"
+// "I hope the weather is nice near you."
 greet(person: ["name": "Jane", "location": "Cupertino"])
-// Prints "Hello Jane!"
-// Prints "I hope the weather is nice in Cupertino."
+// "Hello Jane!"
+// "I hope the weather is nice in Cupertino."
 ```
 
 `guard` 文の条件を満たした場合、`guard` の閉じ括弧（`}`)以降のコードを続けて実行します。条件の一部としてオプショナルバインディングに使われている変数や定数は、`guard` の後のコードで利用できるようになります。
