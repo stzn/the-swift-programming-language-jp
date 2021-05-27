@@ -83,6 +83,30 @@ let someVideoMode = VideoMode()
 
 ### Accessing Properties(プロパティへのアクセス)
 
+ドット構文を使用して、インスタンスのプロパティにアクセスできます。ドット構文では、インスタンス名の直後に、スペースを入れずにピリオド(`.`)で区切ってプロパティ名を記述します。
+
+```swift
+print("The width of someResolution is \(someResolution.width)")
+// Prints "The width of someResolution is 0"
+```
+
+この例では、`someResolution.width` は `someResolution` の `width` プロパティを参照し、デフォルトの初期値 `0` を返します。
+
+`VideoMode` の `resolution` プロパティの `width` プロパティなど、プロパティのプロパティなどより深い階層へもアクセスできます。
+
+```swift
+print("The width of someVideoMode is \(someVideoMode.resolution.width)")
+// Prints "The width of someVideoMode is 0"
+```
+
+ドット構文を使用して、変数プロパティに新しい値を代入することもできます。
+
+```swift
+someVideoMode.resolution.width = 1280
+print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
+// Prints "The width of someVideoMode is now 1280"
+```
+
 ### Memberwise Initializers for Structure Types(structのMemberwiseイニシャライザ)
 
 ## Structures and Enumerations Are Value Types(structと列挙型は値型)
