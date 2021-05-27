@@ -156,7 +156,7 @@ constantString += " and another Highlander"
 
 Swift の、デフォルトでコピーをする `String` の挙動は、`String` が関数やメソッドの引数で渡される時に、どこからその値が来たとしても、正しい `String` を所有していることに確証が持てます。つまり、渡された文字列は、自身で変更しない限り決して変更されることがないことを確信できます。
 
-舞台裏では、Swift のコンパイラは本当に必要な時だけ実際にコピーが発生するように最適化をしています。つまり、値型として文字列を扱う場合に常に良いパフォーマンスを得ることができます。
+内部では、Swift のコンパイラは本当に必要な時だけ実際にコピーが発生するように最適化をしています。つまり、値型として文字列を扱う場合に常に良いパフォーマンスを得ることができます。
 
 ## Working with Characters(文字配列の取扱）
 
@@ -286,7 +286,7 @@ _Unicode_は、さまざまな書記体系で、テキストをエンコード�
 
 ### Unicode Scalar Values(Unicodeスカラ値）
 
-舞台裏では、Swift 固有の `String` 型は _Unicode_ スカラ\(_Unicode Scalar Values_\)から構築されています。_Unicode_ スカラは 21 ビットの文字と修飾子で構成されています。例えば、`U+0061` は `LATIN SMALL LETTER A ("a")`、`U+1F425` は `FRONT-FACING BABY CHICK ("🐥")` です。
+内部では、Swift 固有の `String` 型は _Unicode_ スカラ\(_Unicode Scalar Values_\)から構築されています。_Unicode_ スカラは 21 ビットの文字と修飾子で構成されています。例えば、`U+0061` は `LATIN SMALL LETTER A ("a")`、`U+1F425` は `FRONT-FACING BABY CHICK ("🐥")` です。
 
 全ての 21 ビットのスカラが 1 つの文字に当てはまるわけではありません。いくつかは将来的に必要になるために確保されていたり、UTF-16 で使われています。文字に割り当てられているスカラには、上記の `LATIN SMALL LETTER A` や `FRONT-FACING BABY CHICK` のように一般的には名前が付いています。
 
@@ -470,7 +470,7 @@ if quotation == sameQuotation {
 // Prints "These two strings are considered equal"
 ```
 
-2 つの文字列\(または文字\)は、拡張書記素クラスタが「規範的に」等しければ、等しいと見なされます。つまり、舞台裏では異なる Unicode スカラで構成されていたとしても、同じ言語的な意味と見た目が同じならば等しくなります。
+2 つの文字列\(または文字\)は、拡張書記素クラスタが「規範的に」等しければ、等しいと見なされます。つまり、内部では異なる Unicode スカラで構成されていたとしても、同じ言語的な意味と見た目が同じならば等しくなります。
 
 例えば、`LATIN SMALL LETTER E WITH ACUTE`\(`U+00E9`\)は、`LATIN SMALL LETTER E`\(`U+0065`\)の最後に `COMBINING ACUTE ACCENT`\(`U+0301`\)を付け加えた文字列と「規範的に」等しくなります。どちらの拡張書記素クラスタも `é` という文字を表す妥当な方法なので、これらは「規範的に」等しいと見なされます。
 
