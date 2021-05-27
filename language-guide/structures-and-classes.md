@@ -117,7 +117,72 @@ let vga = Resolution(width: 640, height: 480)
 
 構造体とは異なり、クラスはデフォルトのイニシャライザを自動で生成しません。イニシャライザについては、[Initialization](./initialization.md)で詳しく説明しています。
 
-## Structures and Enumerations Are Value Types(structと列挙型は値型)
+## Structures and Enumerations Are Value Types(構造体と列挙型は値型)
+
+値型は、変数または定数に値が割り当てられたとき、または関数に渡されたときに値がコピーされる型です。
+
+これまでの章では、実際に値型を多く使用してきました。実際、Swift の基本的な型(整数、浮動小数点数、ブール値、文字列、配列、辞書)はすべて値型で、内部では、構造体として実装されています。
+
+全ての構造体と列挙型は、Swift の値型です。 つまり、作成した構造体と列挙型のインスタンス、およびそれらがプロパティとして持つ値型は、コードで渡されるときに常にコピーされます。
+
+> NOTE  
+> 配列、辞書、文字列などの標準ライブラリによって定義されたコレクションは、最適化されてコピーのパフォーマンスコストを削減します。これらのコレクションは、すぐにコピーを作成する代わりに、元のインスタンスとコピーの間で要素が格納されているメモリを共有します。 コレクションのコピーの1つが変更された場合、要素は変更の直前にコピーされます。コードに表示される動作は、常にコピーがすぐに行われたかのように見えます。
+
+前の例の `Resolution` 構造体を使用するバージョンについて考えてみます。
+
+```swift
+let hd = Resolution(width: 1920, height: 1080)
+var cinema = hd
+```
+
+この例では、`hd` という定数を宣言し、フル HD ビデオの幅と高さ(幅 1920 ピクセル、高さ 1080 ピクセル)で初期化された `Resolution` インスタンスに設定します。
+
+次に、`cinema` という変数を宣言し、`hd` の現在の値を設定します。`Resolution` は構造体のため、既存のインスタンスのコピーが作成され、この新しいコピーが `cinema` に割り当てられます。`hd` と `cinema` の幅と高さは同じになりましたが、裏側ではまったく異なる 2 つのインスタンスになっています。
+
+次に、`cinema` の `width` プロパティは、デジタルシネマ映写に使用されるわずかに広い 2K 標準の幅(幅 2048 ピクセル、高さ 1080 ピクセル)に修正されます。
+
+```swift
+cinema.width = 2048
+```
+
+`cinema` の `width` プロパティを確認すると、実際に 2048 に変更されていることがわかります。
+
+```swift
+print("cinema is now \(cinema.width) pixels wide")
+// Prints "cinema is now 2048 pixels wide"
+```
+
+ただし、元の `hd` インスタンスの `width` プロパティは、1920 のままです。
+
+```swift
+print("hd is still \(hd.width) pixels wide")
+// Prints "hd is still 1920 pixels wide"
+```
+
+`cinema` に `hd` の現在の値が与えられると、`hd` に保存されている値が新しい `cinema` インスタンスにコピーされます。最終結果は、同じ数値を含む 2 つの完全に別個のインスタンスですが、これらは個別のインスタンスのため、次の図に示すように、`cinema` の幅を 2048 に設定しても、`hd` に保存される幅には影響しません。
+
+![構造体の共有状態](./../.gitbook/assets/sharedStateStruct_2x.png)
+
+同じ動作が列挙型にも適用されます。
+
+```swift
+enum CompassPoint {
+    case north, south, east, west
+    mutating func turnNorth() {
+        self = .north
+    }
+}
+var currentDirection = CompassPoint.west
+let rememberedDirection = currentDirection
+currentDirection.turnNorth()
+
+print("The current direction is \(currentDirection)")
+print("The remembered direction is \(rememberedDirection)")
+// Prints "The current direction is north"
+// Prints "The remembered direction is west"
+```
+
+`RememberedDirection` に `currentDirection` の値が割り当てられると、実際にはその値のコピーが設定されます。その後、`currentDirection` の値を変更しても、`rememberedDirection` に保存されていた元の値には影響しません。
 
 ## Classes Are Reference Types(classは参照型)
 
