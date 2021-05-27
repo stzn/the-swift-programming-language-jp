@@ -245,3 +245,5 @@ if tenEighty === alsoTenEighty {
 独自の構造体とクラスを定義するときは、2 つのインスタンスがどうすれば等しいと見なされるものを決定するのはあなた次第です。`==` および `！=` 演算子の独自の実装を定義するプロセスは、[Equivalence Operators](./advanced-operators.md#equivalence-operators)等価演算子で説明されています。
 
 ### Pointers(ポインタ)
+
+C 言語、C ++、または Objective-C の経験がある場合は、これらの言語がポインタ(*pointer*)を使用してメモリ内のアドレスを参照することを知っているかもしれません。ある参照型のインスタンスを参照する Swift 定数または変数は、C 言語のポインタに似ていますが、メモリ内のアドレスへの直接ポインタではなく、参照を示すためにアスタリスク(`*`)を記述する必要はありません。代わりに、これらの参照は、Swift の他の定数または変数と同様に定義されます。標準ライブラリには、ポインタを直接操作する必要がある場合に使用できるポインタとバッファ型が用意されています。[Manual Memory Management](https://developer.apple.com/documentation/swift/swift_standard_library/manual_memory_management)を参照してください。
