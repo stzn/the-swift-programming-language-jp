@@ -70,6 +70,17 @@ class VideoMode {
 
 ### Structure and Class Instances(structとclassのインスタンス)
 
+`Resolution` 構造体の定義と `VideoMode` クラスの定義は、`Resolution` または `VideoMode` がどのように見えるかを説明するだけです。それら自体は、特定の解像度やビデオモードについては説明していません。そのためには、構造体またはクラスのインスタンスを作成する必要があります。
+
+インスタンスを作成するための構文は、構造とクラスの両方で非常に似ています。
+
+```swift
+let someResolution = Resolution()
+let someVideoMode = VideoMode()
+```
+
+構造体とクラスはどちらも、新しいインスタンスに初期化構文を使用します。初期化構文の最も単純な形式では、クラスまたは構造体の型名の後に、`Resolution()` や `VideoMode()` などの空の括弧(`()`)が続きます。これにより、クラスまたは構造の新しいインスタンスが作成され、プロパティはデフォルト値で初期化されます。クラスと構造体の初期化については、[Initialization](./initialization.md)で詳しく説明しています。
+
 ### Accessing Properties(プロパティへのアクセス)
 
 ### Memberwise Initializers for Structure Types(structのMemberwiseイニシャライザ)
