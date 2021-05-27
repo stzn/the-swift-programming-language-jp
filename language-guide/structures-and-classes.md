@@ -109,6 +109,14 @@ print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
 
 ### Memberwise Initializers for Structure Types(structのMemberwiseイニシャライザ)
 
+全ての構造体には、自動的に生成されるメンバーを全て初期化するイニシャライザがあります。これを使用して、新しい構造体インスタンスのメンバープロパティを初期化できます。新しいインスタンスのプロパティの初期値は、プロパティ名でイニシャライザに渡すことができます。
+
+```swift
+let vga = Resolution(width: 640, height: 480)
+```
+
+構造体とは異なり、クラスはデフォルトのイニシャライザを自動で生成しません。イニシャライザについては、[Initialization](./initialization.md)で詳しく説明しています。
+
 ## Structures and Enumerations Are Value Types(structと列挙型は値型)
 
 ## Classes Are Reference Types(classは参照型)
