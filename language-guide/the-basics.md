@@ -113,7 +113,7 @@ languageName = "Swift++"
 
 ```swift
 print(friendlyWelcome)
-// Prints "Bonjour!"
+// "Bonjour!"
 ```
 
 `print(_:separator:terminator:)` 関数はグローバル関数で、1 つ以上の値を適切なアウトプット先に出力します。Xcode では、`print(_:separator:terminator:)` 関数を使用すると、 Xcode のコンソールパネルへ値を出力します。`separator` と `terminator` 引数には、デフォルト値が用意されているので省略可能です。デフォルトでは最後に改行を追加します。改行を付けたくない場合は `terminator` に空文字を渡しましょう。例えば `print(someValue, terminator: "")`。詳細は[Default Parameter Values](functions.md#default-parameter-values)。
@@ -122,7 +122,7 @@ Swift は長い文字列の中で定数や変数をプレースホルダとし�
 
 ```swift
 print("The current value of friendlyWelcome is \(friendlyWelcome)")
-// Prints "The current value of friendlyWelcome is Bonjour!"
+// "The current value of friendlyWelcome is Bonjour!"
 ```
 
 > NOTE  
@@ -161,7 +161,7 @@ This is the end of the first multiline comment. */
 
 ```swift
 let cat = "🐱"; print(cat)
-// Prints "🐱"
+// "🐱"
 ```
 
 ## Integers(整数）
@@ -390,7 +390,7 @@ if turnipsAreDelicious {
 } else {
     print("Eww, turnips are horrible.")
 }
-// Prints "Eww, turnips are horrible."
+// "Eww, turnips are horrible."
 ```
 
 `if` のような条件文については、[Control Flow](control-flow.md)でより詳細に記載しています。
@@ -437,9 +437,9 @@ let http404Error = (404, "Not Found")
 ```swift
 let (statusCode, statusMessage) = http404Error
 print("The status code is \(statusCode)")
-// Prints "The status code is 404"
+// "The status code is 404"
 print("The status message is \(statusMessage)")
-// Prints "The status message is Not Found"
+// "The status message is Not Found"
 ```
 
 もしタプルの一部だけが必要な場合、タプルを展開する時に、アンダースコア\(\_\)を使用して無視することができます。
@@ -447,16 +447,16 @@ print("The status message is \(statusMessage)")
 ```swift
 let (justTheStatusCode, _) = http404Error
 print("The status code is \(justTheStatusCode)")
-// Prints "The status code is 404"
+// "The status code is 404"
 ```
 
 各値へのアクセス方法としては、0 から始まるインデックスを使用することもできます:
 
 ```swift
 print("The status code is \(http404Error.0)")
-// Prints "The status code is 404"
+// "The status code is 404"
 print("The status message is \(http404Error.1)")
-// Prints "The status message is Not Found"
+// "The status message is Not Found"
 ```
 
 タプルの定義時に、名前を付けることもできます:
@@ -469,9 +469,9 @@ let http200Status = (statusCode: 200, description: "OK")
 
 ```swift
 print("The status code is \(http200Status.statusCode)")
-// Prints "The status code is 200"
+// "The status code is 200"
 print("The status message is \(http200Status.description)")
-// Prints "The status message is OK"
+// "The status message is OK"
 ```
 
 タプルは、特に関数の戻り値で有効に活用できます。Web ページを取得する関数は、取得の成否の結果を `(Int, String)` で返すかもしれません。2 つの異なる型の値を持ったタプルを返すことで、1 つの型の 1 つの値を返すよりも、関数はより有益な情報を提供できます。より詳しくは、[Functions with Multiple Return Values](functions.md#functions-with-multiple-return-values複数の戻り値がある関数)を参照ください。
@@ -529,7 +529,7 @@ optional が値を含んでいる場合、`nil` と「等しくない」と見�
 if convertedNumber != nil {
     print("convertedNumber contains some integer value.")
 }
-// Prints "convertedNumber contains some integer value."
+// "convertedNumber contains some integer value."
 ```
 
 optional が値を含んでいることが一度分かると、optional 値の名前の後ろに `!` を付けることで、中の値に直接アクセスすることができます。`!` は「私はこの optional が値を含んでいることが 100%わかっています。だから使わせてください」ということを実質的に宣言していることになります。これは optional の強制アンラップ\(`forced unwrapping`\)と呼ばれています。
@@ -538,7 +538,7 @@ optional が値を含んでいることが一度分かると、optional 値の�
 if convertedNumber != nil {
     print("convertedNumber has an integer value of \(convertedNumber!).")
 }
-// Prints "convertedNumber has an integer value of 123."
+// "convertedNumber has an integer value of 123."
 ```
 
 `if` 文についての詳細は、[Control Flow](control-flow.md)を参照ください。
@@ -566,7 +566,7 @@ if let actualNumber = Int(possibleNumber) {
 } else {
     print("The string \"\(possibleNumber)\" couldn't be converted to an integer")
 }
-// Prints "The string "123" has an integer value of 123"
+// "The string "123" has an integer value of 123"
 ```
 
 このコードはこのような意味に読み取れます。
@@ -583,7 +583,7 @@ if let actualNumber = Int(possibleNumber) {
 if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
     print("\(firstNumber) < \(secondNumber) < 100")
 }
-// Prints "4 < 42 < 100"
+// "4 < 42 < 100"
 
 if let firstNumber = Int("4") {
     if let secondNumber = Int("42") {
@@ -592,7 +592,7 @@ if let firstNumber = Int("4") {
         }
     }
 }
-// Prints "4 < 42 < 100"
+// "4 < 42 < 100"
 ```
 
 > NOTE  
@@ -633,7 +633,7 @@ let optionalString = assumedString
 if assumedString != nil {
     print(assumedString!)
 }
-// Prints "An implicitly unwrapped optional string."
+// "An implicitly unwrapped optional string."
 ```
 
 暗黙アンラップ optional はオプショナルバインディングもできます。1 つの文の中で、チェックとアンラップができます。
@@ -642,7 +642,7 @@ if assumedString != nil {
 if let definiteString = assumedString {
     print(definiteString)
 }
-// Prints "An implicitly unwrapped optional string."
+// "An implicitly unwrapped optional string."
 ```
 
 > NOTE  

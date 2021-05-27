@@ -37,7 +37,7 @@ Swift の配列の型は全体で `Array<Element>` と書きます。`Element` �
 ```swift
 var someInts = [Int]()
 print("someInts is of type [Int] with \(someInts.count) items.")
-// Prints "someInts is of type [Int] with 0 items."
+// "someInts is of type [Int] with 0 items."
 ```
 
 `someInts` 変数の型は、イニシャライザから `[Int]` と推論されます。
@@ -108,7 +108,7 @@ var shoppingList = ["Eggs", "Milk"]
 
 ```swift
 print("The shopping list contains \(shoppingList.count) items.")
-// Prints "The shopping list contains 2 items."
+// "The shopping list contains 2 items."
 ```
 
 `Bool` 型の `isEmpty` プロパティは、`count` プロパティが `0` かどうかをチェックする簡略記法です。
@@ -119,7 +119,7 @@ if shoppingList.isEmpty {
 } else {
     print("The shopping list isn't empty.")
 }
-// Prints "The shopping list isn't empty."
+// "The shopping list isn't empty."
 ```
 
 `append(_:)` メソッドを使用して、配列の末尾に新しいアイテムを追加することができます。
@@ -246,7 +246,7 @@ for (index, value) in shoppingList.enumerated() {
 Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デフォルトでハッシュ化が可能で、セットや辞書のキーに使用することができます。associated value を持たない列挙型の case \([Enumerations](enumerations.md)\)もデフォルトでハッシュ化が可能です。
 
 > NOTE  
-> Swift 標準ライブラリの `Hashable` プロトコルに適合することで、独自で作成した型をセットや辞書のキーに使用できます。`hash(into:)` メソッドの実装については、[Hashable](https://developer.apple.com/documentation/swift/hashable)を参照ください。プロトコルの適合については、[Protocols](protocols.md)を参照ください。
+> Swift 標準ライブラリの `Hashable` プロトコルに準拠することで、独自で作成した型をセットや辞書のキーに使用できます。`hash(into:)` メソッドの実装については、[Hashable](https://developer.apple.com/documentation/swift/hashable)を参照ください。プロトコルの準拠については、[Protocols](protocols.md)を参照ください。
 
 ### Set Type Syntax(セット型構文）
 
@@ -259,7 +259,7 @@ Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デ
 ```swift
 var letters = Set<Character>()
 print("letters is of type Set<Character> with \(letters.count) items.")
-// Prints "letters is of type Set<Character> with 0 items."
+// "letters is of type Set<Character> with 0 items."
 ```
 
 > NOTE  
@@ -308,7 +308,7 @@ var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
 
 ```swift
 print("I have \(favoriteGenres.count) favorite music genres.")
-// Prints "I have 3 favorite music genres."
+// "I have 3 favorite music genres."
 ```
 
 `Bool` 型の `isEmpty` プロパティは、`count` プロパティが `0` かどうかをチェックする簡略記法です。
@@ -319,7 +319,7 @@ if favoriteGenres.isEmpty {
 } else {
     print("I have particular music preferences.")
 }
-// Prints "I have particular music preferences."
+// "I have particular music preferences."
 ```
 
 `insert(_:)` メソッドを使用して、セットに新しいアイテムを追加することができます。
@@ -337,7 +337,7 @@ if let removedGenre = favoriteGenres.remove("Rock") {
 } else {
     print("I never much cared for that.")
 }
-// Prints "Rock? I'm over it."
+// "Rock? I'm over it."
 ```
 
 特定のアイテムが含まれているかどうかを調べるには、`contains(_:)` メソッドを使用することができます。
@@ -348,7 +348,7 @@ if favoriteGenres.contains("Funk") {
 } else {
     print("It's too funky in here.")
 }
-// Prints "It's too funky in here."
+// "It's too funky in here."
 ```
 
 ### Iterating Over a Set(セットの繰り返し処理）
@@ -447,7 +447,7 @@ farmAnimals.isDisjoint(with: cityAnimals)
 Swift の辞書は、全体で `Dictionary<Key, Value>` と書きます。`Key` には辞書のキーとして使える値の型を、`Value` にはそのキーに紐づいた辞書で保持するバリューの型です。
 
 > NOTE  
-> 辞書の `Key` はセットの値のように、`Hashable` プロトコルに適合しなければなりません。
+> 辞書の `Key` はセットの値のように、`Hashable` プロトコルに準拠しなければなりません。
 
 辞書の型は、`[Key: Value]` と簡略記法で書くこともできます。機能的にはどちらの書き方も同じですが、簡略記法の方が好ましく、このガイド内では、辞書の型を参照する際はこちらの形式を使います。
 
@@ -510,7 +510,7 @@ var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 ```swift
 print("The airports dictionary contains \(airports.count) items.")
-// Prints "The airports dictionary contains 2 items."
+// "The airports dictionary contains 2 items."
 ```
 
 `Bool` 型の `isEmpty` プロパティは、`count` プロパティが `0` かどうかをチェックする簡略記法です。
@@ -521,7 +521,7 @@ if airports.isEmpty {
 } else {
     print("The airports dictionary isn't empty.")
 }
-// Prints "The airports dictionary isn't empty."
+// "The airports dictionary isn't empty."
 ```
 
 subscript シンタックスを使用して、新しいアイテムを追加することができます。適切な型の新しいキーを subscript の index に入れ、適切な型の新しいバリューを代入します。
@@ -555,7 +555,7 @@ airports["LHR"] = "London Heathrow"
 if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
     print("The old value for DUB was \(oldValue).")
 }
-// Prints "The old value for DUB was Dublin."
+// "The old value for DUB was Dublin."
 ```
 
 subscript シンタックスを使用して特定のキーのバリューを取得することもできます。バリューの存在しないキーに対してもリクエストすることが可能で、バリューの型の optional 値を返します。存在しなければ `nil` を返します:
@@ -566,7 +566,7 @@ if let airportName = airports["DUB"] {
 } else {
     print("That airport isn't in the airports dictionary.")
 }
-// Prints "The name of the airport is Dublin Airport."
+// "The name of the airport is Dublin Airport."
 ```
 
 subscript シンタックスを使用して、キーに `nil` を代入することで、キーバリューペアを削除できます:
@@ -586,7 +586,7 @@ if let removedValue = airports.removeValue(forKey: "DUB") {
 } else {
     print("The airports dictionary doesn't contain a value for DUB.")
 }
-// Prints "The removed airport's name is Dublin Airport."
+// "The removed airport's name is Dublin Airport."
 ```
 
 ### Iterating Over a Dictionary(辞書の繰り返し処理）
