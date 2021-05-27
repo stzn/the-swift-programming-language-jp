@@ -137,7 +137,7 @@ var cinema = hd
 
 この例では、`hd` という定数を宣言し、フル HD ビデオの幅と高さ(幅 1920 ピクセル、高さ 1080 ピクセル)で初期化された `Resolution` インスタンスに設定します。
 
-次に、`cinema` という変数を宣言し、`hd` の現在の値を設定します。`Resolution` は構造体のため、既存のインスタンスのコピーが作成され、この新しいコピーが `cinema` に割り当てられます。`hd` と `cinema` の幅と高さは同じになりましたが、裏側ではまったく異なる 2 つのインスタンスになっています。
+次に、`cinema` という変数を宣言し、`hd` の現在の値を設定します。`Resolution` は構造体のため、既存のインスタンスのコピーが作成され、この新しいコピーが `cinema` に割り当てられます。`hd` と `cinema` の幅と高さは同じになりましたが、内部ではまったく異なる 2 つのインスタンスになっています。
 
 次に、`cinema` の `width` プロパティは、デジタルシネマ映写に使用されるわずかに広い 2K 標準の幅(幅 2048 ピクセル、高さ 1080 ピクセル)に修正されます。
 
@@ -220,8 +220,28 @@ print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 
 この例は、参照型の推論がいかに難しいかを示しています。`tenEighty` と `alsoTenEighty` がコード内で大きく離れている場合、ビデオモードが変更される全ての場所を見つけるのは難しい可能性があります。`tenEighty` を使用する場合は常に、`alsoTenEighty` も使用するコードも考慮する必要があります。その逆も同様です。対照的に、値型は、同じ値に作用する全てのコードが近くにあるため、考慮する点が少なくなるため簡単です。
 
-`tenEighty` と `alsoTenEighty` は、変数ではなく定数として宣言されていることに注目してください。それでも、`tenEighty` および `alsoTenEighty` 定数自体の値は実際には変更されないため、`tenEighty.frameRate` および `alsoTenEighty.frameRate` を変更することはできます。`tenEighty` と `alsoTenEighty` 自体は、`VideoMode` インスタンスを「格納」しません。代わりに、どちらも裏側で同じ `VideoMode` インスタンスを参照します。変更されるのは、基になる `VideoMode` の `frameRate` プロパティで、その `VideoMode` への参照を持つ定数ではありません。
+`tenEighty` と `alsoTenEighty` は、変数ではなく定数として宣言されていることに注目してください。それでも、`tenEighty` および `alsoTenEighty` 定数自体の値は実際には変更されないため、`tenEighty.frameRate` および `alsoTenEighty.frameRate` を変更することはできます。`tenEighty` と `alsoTenEighty` 自体は、`VideoMode` インスタンスを「格納」しません。代わりに、どちらも内部で同じ `VideoMode` インスタンスを参照します。変更されるのは、基になる `VideoMode` の `frameRate` プロパティで、その `VideoMode` への参照を持つ定数ではありません。
 
-### Identity Operators(参照等価演算子)
+### Identity Operators(同一性演算子)
+
+クラスは参照型のため、複数の定数と変数が内部でクラスの同じインスタンスを参照する可能性があります。(構造体や列挙型については、定数や変数に割り当てられたとき、または関数に渡されたときに常にコピーされるため異なります)
+
+2 つの定数または変数が参照しているかどうかを確認すると便利な場合があります。これを有効にするために、Swift は 2 つの同一性演算子(*identity operator*)を提供します:
+
+* 等しい(`===`)
+* 等しくない(`!==`)
+
+これらの演算子を使用して、2 つの定数または変数が同じインスタンスを参照しているかどうかを確認します。
+
+```swift
+if tenEighty === alsoTenEighty {
+    print("tenEighty and alsoTenEighty refer to the same VideoMode instance.")
+}
+// Prints "tenEighty and alsoTenEighty refer to the same VideoMode instance."
+```
+
+「同一」(3 つの等号または `===`)は、「等しい」(2 つの等号または `==` で表される)と同じではないことに注意してください。「同一」とは、クラスタイプの 2 つの定数または変数がまったく同じクラスインスタンスを参照することを意味します。等しいとは、型の設計者による「等しい」の定義において、適切に 2 つのインスタンスの値が等しいまたは同等だと見なされることを意味します。
+
+独自の構造体とクラスを定義するときは、2 つのインスタンスがどうすれば等しいと見なされるものを決定するのはあなた次第です。`==` および `！=` 演算子の独自の実装を定義するプロセスは、[Equivalence Operators](./advanced-operators.md#equivalence-operators)等価演算子で説明されています。
 
 ### Pointers(ポインタ)
