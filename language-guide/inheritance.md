@@ -184,8 +184,35 @@ print("Car: \(car.description)")
 // Car: traveling at 25.0 miles per hour in gear 3
 ```
 
-#### Overriding Property Observers(プロパティオブザーバーのオーバーライド)
+#### Overriding Property Observers(プロパティオブザーバのオーバーライド)
 
 ---
+
+プロパティのオーバーライドを使用して、継承したプロパティのプロパティオブザーバを追加できます。これにより、継承したプロパティの値が変更されたときに、そのプロパティが最初にどのように実装されたかに関係なく通知を受け取ることができます。プロパティオブザーバーの詳細については、[Property Observers](./properties.md#property-observersプロパティオブザーバ)を参照ください。
+
+> NOTE  
+> 継承した定数の格納プロパティまたは継承した読み取り専用の計算プロパティにプロパティオブザーバを追加することはできません。これらのプロパティの値は変更できないため、オーバーライドの一部として `willSet` または `didSet` の実装を提供することは適切ではありません。  
+> 同じプロパティに対して、セッターのオーバーライドとプロパティオブザーバーのオーバーライドの、両方を提供することはできないことにも注意してください。プロパティの値の変更を監視する必要があり、そのプロパティのカスタムセッターを既に提供している場合は、カスタムセッター内から値の変更が簡単に監視できます。
+
+次の例では、`Car` のサブクラスの `AutomaticCar` という新しいクラスを定義しています。`AutomaticCar` クラスは、現在の速度に基づいて使用する適切なギアを自動的に選択する自動ギアボックスを備えた車を表します:
+
+```swift
+class AutomaticCar: Car {
+    override var currentSpeed: Double {
+        didSet {
+            gear = Int(currentSpeed / 10.0) + 1
+        }
+    }
+}
+```
+
+`AutomaticCar` インスタンスの `currentSpeed` プロパティを設定するたびに、プロパティの `didSet` オブザーバは、インスタンスの `gear` プロパティに新しい速度に適したギアを選択します。具体的には、プロパティオブザーバは、新しい `currentSpeed` 値を `10` で除算し、最も近い整数に切り捨てられた値に `1` を加えたギアを選択します。速度 `35.0` はギア `4` を生成します。
+
+```swift
+let automatic = AutomaticCar()
+automatic.currentSpeed = 35.0
+print("AutomaticCar: \(automatic.description)")
+// AutomaticCar: traveling at 35.0 miles per hour in gear 4
+```
 
 ## Preventing Overrides(オーバーライドを防ぐ)
