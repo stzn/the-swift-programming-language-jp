@@ -216,3 +216,9 @@ print("AutomaticCar: \(automatic.description)")
 ```
 
 ## Preventing Overrides(オーバーライドを防ぐ)
+
+メソッド、プロパティ、または `subscript` を `final` としてマークすることで、オーバーライドされないようにすることができます。これを行うには、メソッド、プロパティ、または `subscript` のキーワードの前に `final` 修飾子を記述します(`final var`、`final func`、`final class func` や `final subscript` など)。
+
+サブクラスで `final` メソッド、プロパティ、または `subscript` をオーバーライドしようとすると、コンパイルエラーになります。extension でクラスに追加するメソッド、プロパティ、または `subscript` にも、`final` をマークすることもできます。
+
+クラスの定義の `class` キーワードの前に `final` 修飾子を記述することで、クラス全体を `final` としてマークできます(`final class`)。`final` クラスをサブクラス化しようとすると、コンパイルエラーになります。
