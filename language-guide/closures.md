@@ -254,7 +254,7 @@ func makeIncrementer(forIncrement amount: Int) -> () -> Int {
 }
 ```
 
-`makeIncrementer` の戻り値の型は `() -> Int` です。これは、シンプルな値ではなく、関数を返すことを意味します。返される関数には引数がなく、呼び出されるたびに `Int` 値を返します。関数が他の関数を返す方法については、[Function Types as Return Types](./functions.md#function-types-as-return-types)を参照ください。
+`makeIncrementer` の戻り値の型は `() -> Int` です。これは、シンプルな値ではなく、関数を返すことを意味します。返される関数には引数がなく、呼び出されるたびに `Int` 値を返します。関数が他の関数を返す方法については、[Function Types as Return Types](functions.md#function-types-as-return-types#戻り値の型としての関数型)を参照ください。
 
 `makeIncrementer(forIncrement:)` 関数は、`runningTotal` と呼ばれる整数の変数を定義して、戻り値として返される `incrementer` の現在の合計を格納します。この変数は値 `0` で初期化されます。
 

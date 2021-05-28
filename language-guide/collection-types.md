@@ -230,7 +230,7 @@ for (index, value) in shoppingList.enumerated() {
 // Item 5: Bananas
 ```
 
-`for-in` ループについては、[For-In Loops](control-flow.md#for-in-loopsFor-Inループ)をご参照ください。
+`for-in` ループについては、[For-In Loops](control-flow.md#for-in-loopsFor-Inループ)を参照ください。
 
 ## Sets(セット）
 
@@ -364,7 +364,7 @@ for genre in favoriteGenres {
 // Hip hop
 ```
 
-`for-in` ループについては、[For-In Loops](control-flow.md#for-in-loopsFor-Inループ)をご参照ください。
+`for-in` ループについては、[For-In Loops](control-flow.md#for-in-loopsFor-Inループ)を参照ください。
 
 Swift の Set 型は決まった順序がありません。特定の順番で値を繰り返し処理したい場合、`sorted()` メソッドを使用すると、`<` 演算子を使用してソートされた配列として要素を返します。
 

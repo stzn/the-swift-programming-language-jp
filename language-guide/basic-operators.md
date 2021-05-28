@@ -167,7 +167,7 @@ Swift は、次の比較演算子をサポートしています。
 * 等しいかそれ以下\(`a <= b`\)
 
 > NOTE  
-> Swift では、2つの恒等作用素\(`===` と `!==`\)も提供しています。これは2つのオブジェクトが同じインスタンスを参照しているかどうかの確認ができます。より詳細は、[Identity Operators](structures-and-classes.md#identity-operators)を参照ください。
+> Swift では、2つの恒等作用素\(`===` と `!==`\)も提供しています。これは2つのオブジェクトが同じインスタンスを参照しているかどうかの確認ができます。より詳細は、[Identity Operators](structures-and-classes.md#identity-operators同一性演算子)を参照ください。
 
 それぞれの比較演算子は、そのステートメントが `true` かどうかのブール値を返します。
 
