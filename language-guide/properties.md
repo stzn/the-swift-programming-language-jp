@@ -18,7 +18,7 @@
 
 ### Read-Only Computed Properties(読み取り専用計算プロパティ)
 
-## Property Observers(プロパティオブザーバー)
+## Property Observers(プロパティオブザーバ)
 
 ## Property Wrappers(プロパティラッパー)
 

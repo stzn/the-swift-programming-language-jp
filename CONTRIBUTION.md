@@ -113,7 +113,7 @@ npm install
 
 を適用してチェックしています。
 
-※ 一部チェック項目を除外しています。内容は[.textlintrc](https://github.com/stzn/the-swift-programming-language-jp/blob/master/.textlintrc)をご参照ください。
+※ 一部チェック項目を除外しています。内容は[.textlintrc](https://github.com/stzn/the-swift-programming-language-jp/blob/master/.textlintrc)を参照ください。
 
 手動で lint を行う場合は下記を実行してください。
 
