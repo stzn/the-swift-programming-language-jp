@@ -126,6 +126,26 @@ print("Tandem: \(tandem.description)")
 
 ### Overriding Methods(メソッドのオーバーライド)
 
+継承されたインスタンスまたは型メソッドをオーバーライドして、サブクラス内のメソッドの特定の目的に適合されたまたは代わりとなる実装を提供できます。
+
+次の例では、`Train` と呼ばれる `Vehicle` の新しいサブクラスを定義します。これは、`Train` が `Vehicle` から継承する `makeNoise()` メソッドをオーバーライドします。
+
+```swift
+class Train: Vehicle {
+    override func makeNoise() {
+        print("Choo Choo")
+    }
+}
+```
+
+`Train` の新しいインスタンスを作成し、その `makeNoise()` メソッドを呼び出すと、`Train` サブクラスバージョンのメソッドが呼び出されていることがわかります。
+
+```swift
+let train = Train()
+train.makeNoise()
+// "Choo Choo"
+```
+
 ### Overriding Properties(プロパティのオーバーライド)
 
 #### Overriding Property Getters and Setters(プロパティのゲッターセッタードのオーバーライド)
