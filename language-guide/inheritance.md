@@ -46,7 +46,65 @@ print("Vehicle: \(someVehicle.description)")
 
 `Vehicle` クラスは、任意の乗り物に共通の特性を定義しますが、そのまま使用されることはあまりありません。より便利にするには、より具体的な種類の乗り物を記述するようにする必要があります。
 
-## Subclassing(サブクラス)
+## Subclassing(サブクラス化)
+
+サブクラス化は、既存のクラスに基づいて新しいクラスを作成する行為です。サブクラスは既存のクラスの特性を継承し、それを変更することができます。サブクラスに新しい特性を追加することもできます。
+
+サブクラスにスーパークラスがあることを示すには、サブクラス名の後にコロン(`:`)で区切ってスーパークラス名を記述します。
+
+```swift
+class SomeSubclass: SomeSuperclass {
+    // サブクラスの定義をここに
+}
+```
+
+次の例では、`Vehicle` のスーパークラスを持つ `Bicycle` というサブクラスを定義しています。
+
+```swift
+class Bicycle: Vehicle {
+    var hasBasket = false
+}
+```
+
+新しい `Bicycle` クラスは、`currentSpeed` プロパティと `description` プロパティ、`makeNoise()` メソッドなど、`Vehicle` の全ての特性を自動的に取得します。
+
+継承する特性に加えて、`Bicycle` クラスは新しい格納プロパティ `hasBasket` を定義し、デフォルト値は `false` です(プロパティの `Bool` の型を推論します)。
+
+デフォルトでは、作成する新しい `Bicycle` インスタンスにはバスケットがありません。特定の `Bicycle` インスタンスが作成された後、そのインスタンスに対して `hasBasket` プロパティを `true` に設定できます。
+
+```swift
+let bicycle = Bicycle()
+bicycle.hasBasket = true
+```
+
+`Bicycle` インスタンスの継承された `currentSpeed` プロパティを変更し、インスタンスで継承した `description` プロパティを検索することもできます。
+
+```swift
+bicycle.currentSpeed = 15.0
+print("Bicycle: \(bicycle.description)")
+// Bicycle: traveling at 15.0 miles per hour
+```
+
+サブクラス自体をサブクラス化できます。 次の例では、「タンデム」と呼ばれる 2 人乗り自転車のサブクラスを作成します。
+
+```swift
+class Tandem: Bicycle {
+    var currentNumberOfPassengers = 0
+}
+```
+
+`Tandem` は `Bicycle` から全てのプロパティとメソッドを継承し、`Bicycle` は `Vehicle` から全てのプロパティとメソッドを継承します。`Tandem` サブクラスは、`currentNumberOfPassengers` と呼ばれる新しい格納プロパティも追加します。デフォルト値は `0` です。
+
+`Tandem` インスタンスを作成する場合、その新しいプロパティと継承されたプロパティのいずれかを操作して、`Vehicle` から継承する読み取り専用の `description` プロパティを検索できます。
+
+```swift
+let tandem = Tandem()
+tandem.hasBasket = true
+tandem.currentNumberOfPassengers = 2
+tandem.currentSpeed = 22.0
+print("Tandem: \(tandem.description)")
+// Tandem: traveling at 22.0 miles per hour
+```
 
 ## Overriding(オーバーライド)
 
