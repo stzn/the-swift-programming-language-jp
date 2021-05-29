@@ -178,6 +178,27 @@ struct AlternativeRect {
 
 ### Shorthand Getter Declaration(短縮ゲッタ宣言)
 
+ゲッタの本文全体が単一の式の場合、ゲッタは暗黙的にその式を返します。この省略表記とセッタの省略表記を利用した別のバージョンの `Rect` 構造体を次に示します:
+
+```swift
+struct CompactRect {
+    var origin = Point()
+    var size = Size()
+    var center: Point {
+        get {
+            Point(x: origin.x + (size.width / 2),
+                  y: origin.y + (size.height / 2))
+        }
+        set {
+            origin.x = newValue.x - (size.width / 2)
+            origin.y = newValue.y - (size.height / 2)
+        }
+    }
+}
+```
+
+ゲッタからの戻り値の省略は、[Functions With an Implicit Return](./functions.md#functions-with-an-implicit-return暗黙的な戻り値がある関数)で説明されているように、関数からの戻り値を省略した場合と同じ規則に従います。
+
 ### Read-Only Computed Properties(読み取り専用計算プロパティ)
 
 ## Property Observers
