@@ -118,6 +118,44 @@ fixedPoint.moveBy(x: 2.0, y: 3.0)
 // エラーが出力されます
 ```
 
-### Assigning to self Within a Mutating Method(mutatingメソッド内からselfへの代入)
+### Assigning to self Within a Mutating Method(mutatingメソッド内からselfへの値の割り当て)
+
+メソッドを変更すると、まったく新しいインスタンスを暗黙的な `self` プロパティに割り当てることができます。上記の `Point` の例は、代わりに次のように記述できます:
+
+```swift
+struct Point {
+    var x = 0.0, y = 0.0
+    mutating func moveBy(x deltaX: Double, y deltaY: Double) {
+        self = Point(x: x + deltaX, y: y + deltaY)
+    }
+}
+```
+
+このバージョンの `mutating` `moveBy(x:y:)` メソッドは、`x` と `y` がターゲットの位置に設定された新しい構造体を作成します。この代替バージョンのメソッドを呼び出した場合の最終結果は、以前のバージョンを呼び出した場合とまったく同じになります。
+
+列挙型の変更メソッドは、暗黙的な `self` パラメータを同じ列挙型とは異なるケースに設定できます。
+
+```swift
+enum TriStateSwitch {
+    case off, low, high
+    mutating func next() {
+        switch self {
+        case .off:
+            self = .low
+        case .low:
+            self = .high
+        case .high:
+            self = .off
+        }
+    }
+}
+var ovenLight = TriStateSwitch.low
+ovenLight.next()
+// ovenLight は .high
+ovenLight.next()
+// ovenLight は .off
+```
+
+この例では、スイッチの 3 つの状態を列挙型で定義しています。スイッチは、`next()` メソッドが呼び出されるたびに、3 つの異なる電源状態(`off`、`low` と `high`)を切り替えます。
 
 ### Type Methods(型メソッド)
