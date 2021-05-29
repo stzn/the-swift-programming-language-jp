@@ -60,7 +60,31 @@ struct Fahrenheit {
 
 ## Customizing Initialization(初期化のカスタマイズ)
 
+次のセクションで説明するように、入力パラメータと optional プロパティ型を使用するか、初期化中に定数プロパティを割り当てることにより、初期化プロセスをカスタマイズできます。
+
 ### Initialization Parameters(イニシャライザの引数)
+
+初期化パラメータをイニシャライザの定義の一部として提供して、初期化プロセスをカスタマイズする値の型と名前を定義できます。初期化パラメータには、関数およびメソッドパラメータと同じ機能と構文があります。
+
+次の例では、摂氏で表された温度を格納する `Celsius` という構造体を定義しています。`Celsius` 構造体は、`init(fromFahrenheit:)` および `init(fromKelvin:)` という 2 つのカスタムイニシャライザを実装します。これらは、構造体の新しいインスタンスを異なる温度スケールの値で初期化しています。
+
+```swift
+struct Celsius {
+    var temperatureInCelsius: Double
+    init(fromFahrenheit fahrenheit: Double) {
+        temperatureInCelsius = (fahrenheit - 32.0) / 1.8
+    }
+    init(fromKelvin kelvin: Double) {
+        temperatureInCelsius = kelvin - 273.15
+    }
+}
+let boilingPointOfWater = Celsius(fromFahrenheit: 212.0)
+// boilingPointOfWater.temperatureInCelsius は 100.0
+let freezingPointOfWater = Celsius(fromKelvin: 273.15)
+// freezingPointOfWater.temperatureInCelsius は 0.0
+```
+
+最初のイニシャライザには、`fromFahrenheit` という引数ラベルと `fahrenheit` というパラメータ名を持つ単一の初期化パラメータがあります。2 番目のイニシャライザには、`fromKelvin` という引数ラベルと `kelvin` というパラメータ名を持つ単一の初期化パラメータがあります。どちらのイニシャライザも、単一の引数を対応する摂氏値に変換し、この値を `temperatureInCelsius` というプロパティに格納しています。
 
 ### Parameter Names and Argument Labels(パラメータ名と引数ラベル)
 
