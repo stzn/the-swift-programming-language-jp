@@ -2,7 +2,7 @@
 
 最終更新日:
 
-メソッドは、特定の型に関連付けられた関数です。クラス、構造体、および列挙型は全て、インスタンスメソッドを定義できます。インスタンスメソッドは、特定の型のインスタンスを操作するための特定のタスクと機能をカプセル化します。クラス、構造体、および列挙型は、型自体に関連付けられている型メソッドを定義することもできます。 型メソッドは、Objective-C のクラスメソッドに似ています。
+メソッドは、特定の型に関連付けられた関数です。クラス、構造体、および列挙型は全て、インスタンスメソッドを定義できます。インスタンスメソッドは、特定の型のインスタンスを操作するための特定のタスクと機能をカプセル化します。クラス、構造体、および列挙型は、型自体に関連付けられている型メソッドを定義することもできます。型メソッドは、Objective-C のクラスメソッドに似ています。
 
 Swift で構造体と列挙型がメソッドを定義できるという事実は、C 言語および Objective-C との大きな違いです。Objective-C では、クラスはメソッドを定義できる唯一の型です。Swift では、クラス、構造体、または列挙型を定義するかどうかを選択でき、作成した型のメソッドを柔軟に定義できます。
 
@@ -88,7 +88,7 @@ if somePoint.isToTheRightOf(x: 1.0) {
 
 ### Modifying Value Types from Within Instance Methods(インスタンスメソッド内からの値型の変更)
 
-構造体と列挙型は値型です。デフォルトでは、値型のプロパティはそのインスタンス メソッド内から変更できません。
+構造体と列挙型は値型です。デフォルトでは、値型のプロパティはそのインスタンスメソッド内から変更できません。
 
 ただし、特定のメソッド内の構造体または列挙型のプロパティを変更する必要がある場合は、そのメソッドの動作を変更することができます。その後、メソッドはそのプロパティをメソッド内から変更することができ、メソッドが行った変更は、メソッドの終了時に元の構造体に書き戻されます。このメソッドは、完全に新しいインスタンスをその暗黙的な `self` プロパティに割り当てることもでき、メソッドが終了すると、この新しいインスタンスが既存のインスタンスに置き換えられます。
 
@@ -159,3 +159,99 @@ ovenLight.next()
 この例では、スイッチの 3 つの状態を列挙型で定義しています。スイッチは、`next()` メソッドが呼び出されるたびに、3 つの異なる電源状態(`off`、`low` と `high`)を切り替えます。
 
 ### Type Methods(型メソッド)
+
+上で説明したように、インスタンスメソッドは、特定の型のインスタンスで呼び出すメソッドです。型自体で呼び出されるメソッドを定義することもできます。このようなメソッドは型メソッド(*type method*)と呼ばれます。メソッドの `func` キーワードの前に `static` キーワードを記述して、型メソッドを示します。クラスは代わりに `class` キーワードを使用して、サブクラスがそのメソッドのスーパークラスの実装をオーバーライドできるようにすることができます。
+
+> NOTE  
+> Objective-C では、Objective-C クラスに対してのみ型レベルのメソッドを定義できます。Swift では、全てのクラス、構造体、および列挙型に対して型レベルのメソッドを定義できます。各型メソッドは、サポートする型に明示的にスコープされます。
+
+型メソッドは、インスタンスメソッドと同様にドット構文で呼び出せます。ただし、その型のインスタンスではなく、その型に対して型メソッドを呼び出します。`SomeClass` というクラスで型メソッドを呼び出す方法は次のとおりです:
+
+```swift
+class SomeClass {
+    class func someTypeMethod() {
+        // 型メソッドの実装はここに
+    }
+}
+SomeClass.someTypeMethod()
+```
+
+型メソッドの本文内で、暗黙的な `self` プロパティは、その型のインスタンスではなく、型自体を参照します。これは、インスタンスプロパティとインスタンスメソッドパラメータの場合と同様に、`self` を使用して、型プロパティと型メソッドパラメータのあいまいさを解消できることを意味します。
+
+より一般的には、型メソッドの本文内で使用する修飾されていないメソッド名とプロパティ名は、他の型レベルのメソッドとプロパティを参照します。型メソッドは、型名のプレフィックスを必要とせずに、他のメソッドの名前で別の型メソッドを呼び出すことができます。同様に、構造体と列挙型の型メソッドは、型名のプレフィックスなしで型プロパティの名前を使用して、型プロパティにアクセスできます。
+
+下記では、ゲームの様々なレベルまたはステージを通じてプレーヤーの進行状況を追跡する `LevelTracker` と呼ばれる構造体を定義しています。シングルプレイヤー用のゲームですが、1 つのデバイスに複数のプレイヤーの情報を保存できます。
+
+ゲームの全てのレベル(レベル 1 を除く)は、ゲームを最初にプレイしたときに決定されます。プレーヤーがそのレベルをクリアするたびに、そのレベルはデバイス上の全てのプレーヤーに対して開放されます。`LevelTracker` 構造体は、型プロパティとメソッドを使用して、ゲームのどのレベルが開放されたのかを追跡します。また、個々のプレーヤーの現在のレベルも追跡します。
+
+```swift
+struct LevelTracker {
+    static var highestUnlockedLevel = 1
+    var currentLevel = 1
+
+    static func unlock(_ level: Int) {
+        if level > highestUnlockedLevel { highestUnlockedLevel = level }
+    }
+
+    static func isUnlocked(_ level: Int) -> Bool {
+        return level <= highestUnlockedLevel
+    }
+
+    @discardableResult
+    mutating func advance(to level: Int) -> Bool {
+        if LevelTracker.isUnlocked(level) {
+            currentLevel = level
+            return true
+        } else {
+            return false
+        }
+    }
+}
+```
+
+`LevelTracker` 構造体は、任意のプレーヤーが開放した最高レベルを追跡します。この値は、`highestUnlockedLevel` という型プロパティに格納されます。
+
+`LevelTracker` は、`highestUnlockedLevel` プロパティを操作する 2 つの型関数も定義します。1 つ目は、`unlock(_:)` と呼ばれる型関数で、新しいレベルが開放されるたびに最高の `UnlockedLevel` の値を更新します。2 つ目は、`isUnlocked(_ :)` と呼ばれる便利な型関数で、特定のレベル番号がすでに開放されている場合に `true` を返します。(これらの型メソッドは、`LevelTracker.highestUnlockedLevel` として記述しなくても、`highestUnlockedLevel` 型プロパティにアクセスできることに注目してください)
+
+型プロパティと型メソッドに加えて、`LevelTracker` は、ゲーム全体での個々のプレーヤーの進行状況を追跡します。これは、`currentLevel` というインスタンスプロパティを使用して、プレーヤーが現在再生しているレベルを追跡します。
+
+`currentLevel` プロパティの管理を容易にするために、`LevelTracker` は `advance(to:)` というインスタンスメソッドを定義します。`currentLevel` を更新する前に、このメソッドは、要求された新しいレベルが既に開放されているかどうかを確認します。`advance(to:)` メソッドは、`currentLevel` を実際に設定できたかどうかを示すブール値を返します。`advance(to:)` メソッドを呼び出して戻り値を無視するのはこともあるため、この関数は `@discardableResult` 属性でマークされています。この属性の詳細については、[Attributes](./../language-reference/attributes.md)を参照ください。
+
+`LevelTracker` 構造体は、下記に示す `Player` クラスで使用され、個々のプレーヤーの進行状況を追跡および更新します:
+
+```swift
+class Player {
+    var tracker = LevelTracker()
+    let playerName: String
+    func complete(level: Int) {
+        LevelTracker.unlock(level + 1)
+        tracker.advance(to: level + 1)
+    }
+    init(name: String) {
+        playerName = name
+    }
+}
+```
+
+`Player` クラスは、`LevelTracker` の新しいインスタンスを作成して、そのプレーヤーの進行状況を追跡します。また、`complete(level:)` というメソッドも提供します。これは、プレーヤーが特定のレベルを完了するたびに呼び出されます。このメソッドは、全てのプレーヤーの次のレベルの開放し、プレーヤーの進行状況を更新して次のレベルに移動します。(レベルは前の行の `LevelTracker.unlock(_:)` の呼び出しによって開放されていることがわかっているため、`advance(to:)` のブール値の戻り値は無視されます)
+
+新しいプレーヤーの `Player` クラスのインスタンスを作成し、プレーヤーがレベル 1 をクリアしたときに何が起こるかを確認できます。
+
+```swift
+var player = Player(name: "Argyrios")
+player.complete(level: 1)
+print("highest unlocked level is now \(LevelTracker.highestUnlockedLevel)")
+// "highest unlocked level is now 2"
+```
+
+2 番目のプレーヤーを作成し、そのプレーヤーをゲーム内のどのプレーヤーもまだ開放していないレベルに移動しようとすると、プレーヤーの現在のレベルを設定する際に失敗します:
+
+```swift
+player = Player(name: "Beto")
+if player.tracker.advance(to: 6) {
+    print("player is now on level 6")
+} else {
+    print("level 6 hasn't yet been unlocked")
+}
+// "level 6 hasn't yet been unlocked"
+```
