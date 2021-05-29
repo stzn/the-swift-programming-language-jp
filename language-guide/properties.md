@@ -156,6 +156,26 @@ print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 
 ### Shorthand Setter Declaration(短縮セッタ宣言)
 
+計算プロパティのセッタが、設定される新しい値の名前を定義しない場合、デフォルト名の `newValue` が使用されます。この省略表記を利用した `Rect` 構造体の代替バージョンを次に示します:
+
+```swift
+struct AlternativeRect {
+    var origin = Point()
+    var size = Size()
+    var center: Point {
+        get {
+            let centerX = origin.x + (size.width / 2)
+            let centerY = origin.y + (size.height / 2)
+            return Point(x: centerX, y: centerY)
+        }
+        set {
+            origin.x = newValue.x - (size.width / 2)
+            origin.y = newValue.y - (size.height / 2)
+        }
+    }
+}
+```
+
 ### Shorthand Getter Declaration(短縮ゲッタ宣言)
 
 ### Read-Only Computed Properties(読み取り専用計算プロパティ)
