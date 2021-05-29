@@ -219,7 +219,34 @@ var item = ShoppingListItem()
 
 `ShoppingListItem` クラスの全てのプロパティにはデフォルト値があり、スーパークラスを持たない基本クラスのため、`ShoppingListItem` は、全てのプロパティにデフォルト値が設定された新しいインスタンスを作成するイニシャライザ実装を自動的に取得します。(`name` プロパティは optional の `String` プロパティのため、この値がコードに記述されていなくても、既定値の `nil` が自動的に取得されます)上記の例では、`ShoppingListItem` クラスの既定のイニシャライザを使用して `ShoppingListItem()` と記述し、新しいインスタンスを作成して `item` という変数に割り当てています。
 
-### Memberwise Initializers for Structure Types(構造体の全メンバーを引数に取るイニシャライザ)
+### Memberwise Initializers for Structure Types(構造体のメンバごとのイニシャライザ)
+
+構造体は、独自のカスタムイニシャライザを定義していない場合、メンバごとのイニシャライザを自動的に受け取ります。既定のイニシャライザとは異なり、構造体は、既定値を持たないプロパティが格納されている場合でも、メンバーごとのイニシャライザを受け取ります。
+
+メンバごとのイニシャライザは、新しい構造体インスタンスのメンバプロパティを初期化する簡単な方法です。新しいインスタンスのプロパティの初期値は、プロパティ名によってメンバごとのイニシャライザに渡すことができます。
+
+下記の例では、`width` と `height` という 2 つのプロパティを持つ `Size` という構造体を定義しています。両方のプロパティは、デフォルト値 `0.0` を割り当てることにより、`Double` 型だと推論されます。
+
+`Size` 構造体は、新しい `Size` インスタンスを初期化するために使用できるメンバごとのイニシャライザ `init(width:height:)` を自動的に受け取ります。
+
+```swift
+struct Size {
+    var width = 0.0, height = 0.0
+}
+let twoByTwo = Size(width: 2.0, height: 2.0)
+```
+
+メンバごとのイニシャライザを呼び出すときは、既定値を持つ全てのプロパティの値を省略できます。上記の例では、`Size` 構造体の `height` と `width` の両方のプロパティにデフォルト値があります。プロパティのいずれかまたは両方を省略できます。イニシャライザは、省略した全てのプロパティに既定値を使用します。例えば、次のようになります。
+
+```swift
+let zeroByTwo = Size(height: 2.0)
+print(zeroByTwo.width, zeroByTwo.height)
+// "0.0 2.0"
+
+let zeroByZero = Size()
+print(zeroByZero.width, zeroByZero.height)
+// "0.0 0.0"
+```
 
 ## Initializer Delegation for Value Types(値型のイニシャライザの委譲)
 
