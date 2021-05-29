@@ -328,7 +328,7 @@ print(rectangle.height)
 // "12"
 ```
 
-`height` と `width` のプロパティは、`TwelveOrLess.number` をゼロに設定する `TwelveOrLess` の定義から初期値を取得します。`TwelveOrLess` のセッタは、`10` を有効な値として扱うため、数値 `10` を `rectangle.height` に格納すると、記述どおりに進みます。ただし、`24` は `TwelveOrLess` が許容する値よりも大きいため、`24` を格納しようとすると、代わりに `rectangle.height` を最大許容値の `12` に設定することになります。
+`height` と `width` のプロパティは、`TwelveOrLess.number` を 0 に設定する `TwelveOrLess` の定義から初期値を取得します。`TwelveOrLess` のセッタは、`10` を有効な値として扱うため、数値 `10` を `rectangle.height` に格納すると、記述どおりに進みます。ただし、`24` は `TwelveOrLess` が許容する値よりも大きいため、`24` を格納しようとすると、代わりに `rectangle.height` を最大許容値の `12` に設定することになります。
 
 プロパティにラッパを適用すると、コンパイラは、ラッパにストレージを提供するコードと、ラッパを介したプロパティへのアクセスするためのコードの 2 つを合成します。(プロパティラッパ自体にはラップされた値を格納する責務があるため、合成されるコードはありません) 特別な属性構文を利用せずに、プロパティラッパの動作を使用するコードを作成することもできます。例えば、前のコードリストの `SmallRectangle` に、属性として `@TwelveOrLess` を記述する代わりに、`TwelveOrLess` 構造体でそのプロパティを明示的にラップしています。
 
@@ -350,6 +350,107 @@ struct SmallRectangle {
 `_height` および `_width` プロパティは、プロパティラッパ `TwelveOrLess` のインスタンスを格納します。`height` と `width` のゲッタとセッタは、`wrappedValue` プロパティへのアクセスをラップします。
 
 ### Setting Initial Values for Wrapped Properties(ラップされたプロパティの初期値の設定)
+
+上記の例のコードは、`TwelveOrLess` の定義で `number` に初期値を与えることにより、ラップされたプロパティの初期値を設定します。このプロパティラッパを使用するコードでは、`TwelveOrLess` でラップされたプロパティに異なる初期値を指定できません。例えば、`SmallRectangle` の定義では `height` や `width` の初期値を指定できません。初期値の設定やその他のカスタマイズをサポートするには、プロパティラッパでイニシャライザを追加する必要があります。これは、ラップされた値と最大値を設定するイニシャライザを定義する `SmallNumber` と呼ばれる `TwelveOrLess` の拡張バージョンです。
+
+```swift
+@propertyWrapper
+struct SmallNumber {
+    private var maximum: Int
+    private var number: Int
+
+    var wrappedValue: Int {
+        get { return number }
+        set { number = min(newValue, maximum) }
+    }
+
+    init() {
+        maximum = 12
+        number = 0
+    }
+    init(wrappedValue: Int) {
+        maximum = 12
+        number = min(wrappedValue, maximum)
+    }
+    init(wrappedValue: Int, maximum: Int) {
+        self.maximum = maximum
+        number = min(wrappedValue, maximum)
+    }
+}
+```
+
+`SmallNumber` の定義には、`init()`、`init(wrappedValue:)`、および `init(wrappedValue:maximum:)` の 3 つのイニシャライザが含まれています。下記の例では、これらのイニシャライザを使用して、ラップされた値と最大値を設定します。イニシャライザとその構文については、[Initialization](./initialization.md)を参照ください。
+
+プロパティにラッパを適用し、初期値を指定しない場合、Swift は `init()` を使用してラッパを設定します。例えば:
+
+```swift
+truct ZeroRectangle {
+    @SmallNumber var height: Int
+    @SmallNumber var width: Int
+}
+
+var zeroRectangle = ZeroRectangle()
+print(zeroRectangle.height, zeroRectangle.width)
+// "0 0"
+```
+
+`height` と `width` をラップする `SmallNumber` のインスタンスは、`SmallNumber()` を呼び出すことによって作成されます。そのイニシャライザ内のコードは、0 と 12 のデフォルト値を使用して、ラップされた初期値と最大値の初期値を設定します。プロパティラッパは、`SmallRectangle` で `TwelveOrLess` を使用した以前の例のように、引き続き全ての初期値を設定します。その例とは異なり、`SmallNumber` は、プロパティの宣言の一部としてこれらの初期値を書き込むこともサポートしています。
+
+プロパティの初期値を指定すると、Swift は `init(wrappedValue:)` イニシャライザを使用してラッパを設定します。例えば:
+
+```swift
+struct UnitRectangle {
+    @SmallNumber var height: Int = 1
+    @SmallNumber var width: Int = 1
+}
+
+var unitRectangle = UnitRectangle()
+print(unitRectangle.height, unitRectangle.width)
+// "1 1"
+```
+
+ラッパを使用してプロパティに `= 1` を書き込むと、それは `init(wrappedValue:)` イニシャライザの呼び出しに変換されます。`height` と `width` をラップする `SmallNumber` のインスタンスは、`SmallNumber(wrappedValue: 1)` を呼び出すことによって作成されます。イニシャライザは、ここで指定されたラップされた値を使用し、デフォルトの最大値の `12` を使用します。
+
+カスタム属性の後の括弧内に引数を記述すると、Swift はそれらの引数を受け入れるイニシャライザ初期化子を使用してラッパを設定します。 たとえば、初期値と最大値を指定すると、Swift は `init(wrappedValue:maximum:)` イニシャライザを使用します:
+
+```swift
+struct NarrowRectangle {
+    @SmallNumber(wrappedValue: 2, maximum: 5) var height: Int
+    @SmallNumber(wrappedValue: 3, maximum: 4) var width: Int
+}
+
+var narrowRectangle = NarrowRectangle()
+print(narrowRectangle.height, narrowRectangle.width)
+// "2 3"
+
+narrowRectangle.height = 100
+narrowRectangle.width = 100
+print(narrowRectangle.height, narrowRectangle.width)
+// "5 4"
+```
+
+`height` をラップする `SmallNumber` のインスタンスは `SmallNumber(wrappedValue: 2, maximum: 5)` を呼び出すことで作成され、`width` 幅をラップするインスタンスは `SmallNumber(wrappedValue: 3, maximum: 4)` を呼び出すことで作成されます。
+
+プロパティラッパに引数を含めることで、ラッパの初期状態を設定したり、ラッパの作成時に他のオプションをラッパに渡すことができます。この構文は、プロパティラッパを使用する最も一般的な方法です。必要な引数を属性に指定でき、それらはイニシャライザに渡されます。
+
+プロパティラッパに引数を含める場合、値を設定して初期値を指定することもできます。Swift は、この値の代入を `wrappedValue` 引数のように扱い、含まれる引数を受け入れるイニシャライザを使用します。例えば:
+
+```swift
+struct MixedRectangle {
+    @SmallNumber var height: Int = 1
+    @SmallNumber(maximum: 9) var width: Int = 2
+}
+
+var mixedRectangle = MixedRectangle()
+print(mixedRectangle.height)
+// "1"
+
+mixedRectangle.height = 20
+print(mixedRectangle.height)
+// "12"
+```
+
+`height` をラップする `SmallNumber` のインスタンスは、デフォルトの最大値 12 を使用する `SmallNumber(wrappedValue: 1)` を呼び出すことによって作成されます。`width` をラップするインスタンスは、`SmallNumber(wrappedValue: 2, maximum: 9)` を呼び出すことによって作成されます。
 
 ### Projecting a Value From a Property Wrapper(Property Wrapperからの値の投影)
 
