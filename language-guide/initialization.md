@@ -153,6 +153,29 @@ let bodyTemperature = Celsius(37.0)
 
 ### Optional Property Types(optional のプロパティ型)
 
+カスタムタイプに、論理的に「値なし」が許される格納プロパティがある場合(おそらく、初期化中にその値を設定できないか、後で「値なし」が許可されるため)、プロパティを optional 型を使って宣言します。optional 型のプロパティは、値 `nil` で自動的に初期化されます。これは、プロパティが初期化中に意図的に「まだ値がない」ことを示しています。
+
+次の例では、`SurveyQuestion` というクラスを定義し、optional の `String` プロパティとして `response` を指定します。
+
+```swift
+class SurveyQuestion {
+    var text: String
+    var response: String?
+    init(text: String) {
+        self.text = text
+    }
+    func ask() {
+        print(text)
+    }
+}
+let cheeseQuestion = SurveyQuestion(text: "Do you like cheese?")
+cheeseQuestion.ask()
+// "Do you like cheese?"
+cheeseQuestion.response = "Yes, I do like cheese."
+```
+
+アンケートの質問への回答は質問されるまでわからないため、回答プロパティは `String?` または `Optional<String>` で宣言されています。 `SurveyQuestion` の新しいインスタンスが初期化されると、デフォルト値の `nil`、つまり「文字列はまだありません」が自動的に割り当てられます。
+
 ### Assigning Constant Properties During Initialization(初期化中の定数プロパティの割り当て)
 
 ## Default Initializers(デフォルトイニシャライザ)
