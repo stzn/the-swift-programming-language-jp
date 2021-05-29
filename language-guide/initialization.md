@@ -19,6 +19,30 @@
 
 ### Initializers(イニシャライザ)
 
+イニシャライザ(*initializers*)は、特定の型の新しいインスタンスを作成するために呼び出されます。最もシンプルな形式では、イニシャライザはパラメータのないインスタンスメソッドのようなもので、`init` キーワードを使用して記述されます:
+
+```swift
+init() {
+    // ここで初期化を実行します
+}
+```
+
+下記の例では、華氏で表された温度を保存するために `Fahrenheit` という新しい構造体を定義しています。`Fahrenheit` 構造体には、`Double` 型の `temperature` という 1 つの格納プロパティがあります。
+
+```swift
+struct Fahrenheit {
+    var temperature: Double
+    init() {
+        temperature = 32.0
+    }
+}
+var f = Fahrenheit()
+print("The default temperature is \(f.temperature)° Fahrenheit")
+// "The default temperature is 32.0° Fahrenheit"
+```
+
+この構造体は、パラメータのない単一のイニシャライザ `init` を定義します。これは、格納された温度を `32.0`(華氏での水の凝固点)の値で初期化します。
+
 ### Default Property Values(デフォルトのプロパティ値)
 
 ## Customizing Initialization(初期化のカスタマイズ)
