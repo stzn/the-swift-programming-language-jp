@@ -412,7 +412,7 @@ test.simpleDescription()
 > Experiment  
 > radius と name をイニシャライザの引数に受けとる `Circle` という名前の `NameShape` の別の subclass を作ってみましょう。そして、 `Circle` class に area\(\), simpleDescription\(\) メソッドを実装してみましょう。
 
-単純に値を保持するプロパティ以外に、プロパティが getter と setter を持つこともできます。
+単純に値を保持するプロパティ以外に、プロパティがゲッタ(*getter*) とセッタ(*setter*) を持つこともできます。
 
 ```swift
 class EquilateralTriangle: NamedShape {
@@ -451,7 +451,7 @@ print(triangle.sideLength)
 
 1. subclass で宣言されたプロパティに値を設定
 2. superclass のイニシャライザを呼ぶ
-3. superclass で定義されたプロパティの値を変更。この時点で getter setter メソッドを使用して他のセットアップ処理を実行
+3. superclass で定義されたプロパティの値を変更。この時点でゲッタとセッタのメソッドを使用して他のセットアップ処理を実行
 
 プロパティを計算する必要はないけれども、新しい値を設定する前後で何かコードを実行したい場合、`willSet`, didSet\` を使います。このコードは、イニシャライザ以外で値が変更された時に毎回実行されます。例えば、下の class は三角形の辺の長さが常に四角形の辺の長さと同じになります。
 
