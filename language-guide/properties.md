@@ -100,7 +100,59 @@ print(manager.importer.filename)
 
 ### Stored Properties and Instance Variables(格納プロパティはインスタンス変数)
 
+`Objective-C` の経験がある場合は、クラスインスタンスの一部として値と参照を格納する 2 つの方法が提供されていることを知っているかもしれません。プロパティに加えて、インスタンス変数をプロパティに格納されている値のバッキングストアとして使用できます。
+
+Swift は、これらの概念を単一のプロパティ宣言に統合しました。Swift のプロパティには対応するインスタンス変数がなく、プロパティのバッキングストアには直接アクセスしません。このアプローチにより、様々なコンテキストで値にアクセスできてしまうことから起きる混乱が回避され、ただ唯一のプロパティの宣言へと単純化されています。名前、型、メモリ管理特性など、プロパティに関する全ての情報は、型の定義の一部として 1 つの場所に集約されます。
+
 ## Computed Properties(計算プロパティ)
+
+格納プロパティに加えて、クラス、構造体、および列挙型は、値を保存しない計算プロパティを定義できます。代わりに、間接的に他のプロパティの値の取得するゲッタと、必要ならば、値の設定を行うセッタを提供します。
+
+```swift
+struct Point {
+    var x = 0.0, y = 0.0
+}
+struct Size {
+    var width = 0.0, height = 0.0
+}
+struct Rect {
+    var origin = Point()
+    var size = Size()
+    var center: Point {
+        get {
+            let centerX = origin.x + (size.width / 2)
+            let centerY = origin.y + (size.height / 2)
+            return Point(x: centerX, y: centerY)
+        }
+        set(newCenter) {
+            origin.x = newCenter.x - (size.width / 2)
+            origin.y = newCenter.y - (size.height / 2)
+        }
+    }
+}
+var square = Rect(origin: Point(x: 0.0, y: 0.0),
+                  size: Size(width: 10.0, height: 10.0))
+let initialSquareCenter = square.center
+square.center = Point(x: 15.0, y: 15.0)
+print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
+// "square.origin is now at (10.0, 10.0)"
+```
+
+この例では、幾何学的形状を操作するための 3 つの構造体を定義しています。
+
+* `Point` は、x 座標と y 座標をカプセル化しています
+* `Size` は `width` と `height` をカプセル化しています
+* `Rect` は、原点とサイズで四角形を定義しています
+
+`Rect` 構造体は、`center` と呼ばれる計算プロパティも提供します。`Rect` の現在の中心位置は常にその `origin` と `size` から判断できるため、中心点を明示的に `Point` として保存する必要はありません。代わりに、`Rect` は `center` と呼ばれる計算プロパティ変数のカスタム ゲッタとセッタを定義して、あたかも格納プロパティかのように四角形の中心を操作できるようにします。
+
+上記の例では、`square` という新しい `Rect` 変数を作成しています。`square` 変数は、原点 `(0, 0)`、幅と高さ `10` で初期化されます。この正方形は、下の図では青い正方形で表されています。
+
+次に、ドット構文(`square.center`)を介して `Square` 変数の `center` プロパティにアクセスします。これにより、`center` のゲッタが呼び出され、現在のプロパティ値が取得できます。ゲッタは、既存の値を返すのではなく、正方形の中心を表す新しい `Point` を計算して返します。上記のように、ゲッタは `(5, 5)` の中心点を正しく返します。
+
+次に、`center` プロパティに新しく `(15, 15)` が設定されます。これにより、下の図のオレンジ色の正方形で示されている新しい位置に正方形が上下に移動します。`center` プロパティを設定すると、保存されている `origin` プロパティの `x` と `y` の値を変更する `center` のセッタが呼び出され、正方形が新しい位置に移動します。
+
+![計算プロパティ](./../.gitbook/assets/computedProperties_2x.png)
 
 ### Shorthand Setter Declaration(短縮セッタ宣言)
 
