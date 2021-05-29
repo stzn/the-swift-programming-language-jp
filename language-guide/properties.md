@@ -14,7 +14,7 @@
 
 最もシンプルな形式だと、格納プロパティ(*stored property*)は、特定のクラスまたは構造体のインスタンスの一部として保存される定数または変数です。格納プロパティは、変数格納プロパティ(`var` キーワードを使用)または定数格納プロパティ(`let` キーワードを使用) のいずれかです。
 
-[Default Property Values](./initialization.md#default-property-valuesデフォルトプロパティ値)で説明されているように、格納プロパティのデフォルト値をその定義の一部として設定できます。また、初期化中に格納プロパティに初期値の設定や変更もできます。これは、[Assigning Constant Properties During Initialization](./initialization.md#assigning-constant-properties-during-initialization初期化中の定数プロパティへの値の設定)で説明されているように、定数の格納プロパティにも当てはまります。
+[Default Property Values](./initialization.md#default-property-valuesデフォルトのプロパティ値)で説明されているように、格納プロパティのデフォルト値をその定義の一部として設定できます。また、初期化中に格納プロパティに初期値の設定や変更もできます。これは、[Assigning Constant Properties During Initialization](./initialization.md#assigning-constant-properties-during-initialization初期化中の定数プロパティへの値の設定)で説明されているように、定数の格納プロパティにも当てはまります。
 
 下記の例では、`FixedLengthRange` という構造体を定義しています。これは、作成後に範囲の長さを変更できない整数の範囲を表します。
 
