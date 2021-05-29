@@ -2,7 +2,7 @@
 
 最終更新日:
 
-クラス、構造体、および列挙型は、コレクション、リスト、またはシーケンスのメンバー要素にアクセスするためのショートカット subscript を定義できます。subscript を使用すると、インデックスによって値を設定および取得でき、設定と取得に個別のメソッドを必要としません。たとえば、`Array` インスタンスの要素には `someArray[index]` としてアクセスし、`Dictionary` インスタンスの要素には `someDictionary[key]` としてアクセスします。
+クラス、構造体、および列挙型は、コレクション、リスト、またはシーケンスのメンバー要素にアクセスするためのショートカット subscript を定義できます。subscript を使用すると、インデックスによって値を設定および取得でき、設定と取得に個別のメソッドを必要としません。たとえば、`Array` インスタンスの要素には `someArray[index]` としてアクセスし、`Dictionary` インスタンスの要素には `someDictionary[Key]` としてアクセスします。
 
 単一の型に対して複数の subscript を定義でき、使用する適切な subscript のオーバーロードは、subscript に渡すインデックス値の型に基づいて選択されます。subscript は 1 つの次元に限定されず、カスタムの型のニーズに合わせて複数の入力パラメータで subscript を定義できます。
 
@@ -53,6 +53,22 @@ print("six times three is \(threeTimesTable[6])")
 > n 倍数テーブル は、決まった数学ルールに基づいています。`threeTimesTable[someIndex]` を新しい値に設定することは適切ではないため、`TimesTable` のsubscriptは読み取り専用のsubscript として定義されています。
 
 ## Subscript Usage(subscriptの利用)
+
+「subscript」の正確な意味は、それが使用されるコンテキストによって異なります。subscript は通常、コレクション、リスト、またはシーケンス内のメンバー要素にアクセスするためのショートカットとして使用されます。特定のクラスまたは構造体の機能に最も適した方法で、自由に subscript を実装できます。
+
+例えば、Swift の `Dictionary` 型は、`Dictionary` インスタンスに格納されている値を設定および取得するための subscript を実装します。辞書に値を設定するには、辞書のキー の型を subscript の角括弧(`[]`)で囲み、辞書のバリュー の型の値を subscript に割り当てます:
+
+```swift
+var numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
+numberOfLegs["bird"] = 2
+```
+
+上記の例では、`numberOfLegs` という変数を定義し、3 つのキーとバリューのペアを含む辞書テラルで初期化します。`numberOfLegs` 辞書の型は `[String: Int]` だと推論されます。この例では、辞書を作成した後、subscript の割り当てを使用して、`"bird"` の `String` のキーと 2 の `Int` のバリューを辞書に追加します。
+
+`Dictionary` の subscript の詳細については、[Accessing and Modifying a Dictionary](./collection-types.md#accessing-and-modifying-a-dictionary辞書へのアクセスと変更)を参照ください。
+
+> NOTE  
+> Swift の `Dictionary` 型は、optional の型を受け取って返すsubscriptとしてキーの subscript を実装します。上記の `numberOfLegs` 辞書の場合、キーとバリューの subscript は `Int?` または optional Int 型の値を受け取り、返します。`Dictionary` 型は、 optional の subscript の型を使用して、全てのキーにバリューがあるわけではないということをモデル化し、そのキーに `nil` 値を割り当てることによってキーのバリューを削除する方法を提供します。
 
 ## Subscript Options(subscriptのオプション)
 
