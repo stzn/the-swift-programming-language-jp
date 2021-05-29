@@ -454,6 +454,73 @@ print(mixedRectangle.height)
 
 ### Projecting a Value From a Property Wrapper(Property Wrapperからの値の投影)
 
+プロパティラッパは、ラップされた値に加えて、投影値(*projected value*)を定義することで追加機能を公開できます。例えば、データベースへのアクセスを管理するプロパティラッパは、その投影値で `flushDatabaseConnection()` メソッドを提供できます。投影値の名前は、ドル記号 (`$`) で始まることを除いて、ラップされた値と同じです。コードでは `$` で始まるプロパティを定義できないため、投影値が定義したプロパティに干渉することはありません。
+
+上記の `SmallNumber` の例では、プロパティを大きすぎる数値に設定しようとすると、プロパティラッパは数値を格納する前に調整します。下記のコードは、`projectedValue` プロパティを `SmallNumber` 構造体に追加して、プロパティラッパが新しい値を格納する前にプロパティの新しい値を調整したかどうかを追跡します。
+
+```swift
+@propertyWrapper
+struct SmallNumber {
+    private var number = 0
+    var projectedValue = false
+    var wrappedValue: Int {
+        get { return number }
+        set {
+            if newValue > 12 {
+                number = 12
+                projectedValue = true
+            } else {
+                number = newValue
+                projectedValue = false
+            }
+        }
+    }
+}
+struct SomeStructure {
+    @SmallNumber var someNumber: Int
+}
+var someStructure = SomeStructure()
+
+someStructure.someNumber = 4
+print(someStructure.$someNumber)
+// "false"
+
+someStructure.someNumber = 55
+print(someStructure.$someNumber)
+// "true"
+```
+
+`someStructure.$someNumber` を書き込むと、ラッパの投影値にアクセスします。 4 などの小さな数を格納した後、`someStructure.$someNumber` の値は `false` です。ただし、55 などの大きすぎる数値を格納しようとすると、投影値は `true` になります。
+
+プロパティ ラッパーは、投影された値として任意の型の値を返すことができます。この例では、プロパティラッパは、数値が調整されたかどうかに関係なく、1 つの情報のみを公開するため、そのブール値をその投影値として公開します。より多くの情報を公開する必要があるラッパは、他のデータ型のインスタンスを返すことも、`self` を返してラッパーのインスタンスをその投影値として公開することもできます。
+
+プロパティのゲッタやインスタンスメソッドなど、型の一部から投影された値にアクセスする場合、他のプロパティにアクセスするのと同じように、プロパティ名の前の `self.` を省略できます。次の例のコードは、`height` と `width` のラッパの投影値を `$height` および `$width` として参照します。
+
+```swift
+enum Size {
+    case small, large
+}
+
+struct SizedRectangle {
+    @SmallNumber var height: Int
+    @SmallNumber var width: Int
+
+    mutating func resize(to size: Size) -> Bool {
+        switch size {
+        case .small:
+            height = 10
+            width = 20
+        case .large:
+            height = 100
+            width = 100
+        }
+        return $height || $width
+    }
+}
+```
+
+プロパティラッパの構文は、ゲッタとセッタを持つプロパティの単なるシュガー構文なので、`height` と `width` へのアクセスは、他のプロパティへのアクセスと同じように働きます。例えば、`resize(to:)` のコードは、プロパティラッパを使用して `height` と `width` にアクセスします。`resize(to: .large)` を呼び出すと、`.large` の switch の case により、長方形の高さと幅が 100 に設定されます。ラッパはそれぞれのプロパティが 12 を超えないようにするため、値を調整したことを記録し、投影値に `true` が設定されます。`resize(to:)` の最後で、`return` ステートメントは `$height` と `$width` をチェックして、プロパティラッパが `height` または `width` のいずれかを調整したかどうかを判断します。
+
 ## Global and Local Variables(グローバル変数とローカル変数)
 
 ## Type Properties
