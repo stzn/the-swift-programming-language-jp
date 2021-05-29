@@ -138,7 +138,7 @@ shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
 // shoppingList は 7 つのアイテムを含んでいます
 ```
 
-`subscript` シンタックスを使用すると、配列から値を取得します。配列名のすぐ後の角括弧\(`[]`\)の中に、取得したい値の index を渡します。
+subscript シンタックスを使用すると、配列から値を取得します。配列名のすぐ後の角括弧\(`[]`\)の中に、取得したい値の index を渡します。
 
 ```swift
 var firstItem = shoppingList[0]
@@ -155,7 +155,7 @@ shoppingList[0] = "Six eggs"
 // リストの最初のアイテムは "Eggs" ではなく、 "Six eggs"
 ```
 
-`subscript` シンタックスを使用する時、指定した index は値の存在する範囲内でなければなりません。例えば、配列の最後に値を追加しようとして `shoppingList[shoppingList.count] = "Salt"` と書くと、実行時エラーになります。
+subscript シンタックスを使用する時、指定した index は値の存在する範囲内でなければなりません。例えば、配列の最後に値を追加しようとして `shoppingList[shoppingList.count] = "Salt"` と書くと、実行時エラーになります。
 
 ある一定範囲の値を一度に変更する場合にも、`subscript` シンタックスを使用することができます。これは置き換えたい値のセットの数と指定した置き換える範囲の長さが異なっていても可能です。次の例は `"Chocolate Spread"`、`"Cheese"`、`"Butter"` を `"Bananas"`、`"Apples"` に置き換えています。
 
@@ -540,14 +540,14 @@ shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
 // shoppingList は 7 つのアイテムを含んでいます
 ```
 
-`subscript` シンタックスを使用すると、特定のキーのバリューを変更することもできます。
+subscript シンタックスを使用すると、特定のキーのバリューを変更することもできます。
 
 ```swift
 airports["LHR"] = "London Heathrow"
 // "LHR"の値は "London Heathrow" へ変更
 ```
 
-別の方法として、`updateValue(_:forKey:)` メソッドを使用して、特定のキーのバリューの設定/更新ができます。`subscript` と同様に `updateValue(_:forKey:)` は、特定のキーのバリューがなければ新しく値を設定し、既にバリューが存在していたら更新します。`subscript` と違う点として、`updateValue(_:forKey:)` メソッドは、更新後に前の値を返します。こうすることで、更新が実際に起きたかどうかが確認できます。
+別の方法として、`updateValue(_:forKey:)` メソッドを使用して、特定のキーのバリューの設定/更新ができます。subscript と同様に `updateValue(_:forKey:)` は、特定のキーのバリューがなければ新しく値を設定し、既にバリューが存在していたら更新します。subscript と違う点として、`updateValue(_:forKey:)` メソッドは、更新後に前の値を返します。こうすることで、更新が実際に起きたかどうかが確認できます。
 
 `updateValue(_:forKey:)` メソッドは、辞書のバリューの型の optional 値を返します。例えば辞書が `String` を保持している場合、このメソッドは `String?`\(optional `String`\)を返します。この optional 値は更新前にバリューが存在していた場合はその値の optional を返し、存在していなかった場合は `nil` を返します:
 
