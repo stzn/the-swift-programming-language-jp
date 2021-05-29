@@ -222,7 +222,68 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 
 この例では、`Cuboid` という新しい構造体を定義します。これは、`width`、`height`、`depth` プロパティを持つ 3D の長方形のボックスを表します。この構造体には、`volume` と呼ばれる読み取り専用の計算プロパティもあります。これは、直方体の現在のボリュームを計算して返します。特定のボリューム値に `width`、`height`、`depth` のどの値を使用するかについてあいまいになるため、`volume` を設定可能にすることは意味がありません。それでも、`Cuboid` が読み取り専用の計算プロパティを提供して、外部ユーザーが現在の計算済みボリュームを見られようにすると便利です。
 
-## Property Observers
+## Property Observers(プロパティオブザーバ)
+
+プロパティオブザーバ(*property observer*)は、プロパティの値の変化を監視し、それに対応します。プロパティオブザーバは、新しい値がプロパティの現在の値と同じ場合でも、プロパティの値が設定されるたびに呼び出されます。
+
+次の場所にプロパティオブザーバを追加できます。
+
+* 自身で定義した格納プロパティ
+* 継承した格納プロパティ
+* 継承した計算済みプロパティ
+
+継承されたプロパティの場合、サブクラスでそのプロパティをオーバーライドすることにより、プロパティオブザーバを追加します。自身で定義した計算プロパティの場合、オブザーバーを作成しようとする代わりに、プロパティのセッタを使用して値の変更を監視し、応答します。プロパティのオーバーライドについては、[Overriding](./inheritance.md#overridingオーバーライド)オーバーライドで説明されています。
+
+プロパティにこれらのオブザーバのいずれかまたは両方を定義するオプションがあります。
+
+* `willSet` は、値が格納される直前に呼び出されます
+* `didSet` は、新しい値が格納された直後に呼び出されます
+
+`willSet` オブザーバを実装すると、新しいプロパティ値が定数パラメータとして渡されます。 `willSet` 実装の一部として、このパラメータの名前を指定できます。 実装内にパラメータ名と括弧を記述しない場合、パラメータは `newValue` というのデフォルトのパラメータ名で使用可能になります。
+
+同様に、 `didSet` オブザーバを実装する場合、古いプロパティ値を含む定数パラメータが渡されます。パラメータに名前を付けるか、`oldValue` というのデフォルト パラメータ名を使用できます。独自の `didSet` オブザーバ内のプロパティに値を割り当てると、新しい値によって、設定されたばかりの値が置き換えられます。
+
+> NOTE  
+> スーパークラス プロパティの `willSet` および `didSet` オブザーバは、プロパティがサブクラスのイニシャライザで設定されると、スーパークラスのイニシャライザが呼び出された後に呼び出されます。 スーパークラスのイニシャライザが呼び出される前に、サブクラスが独自のプロパティを設定している間は呼び出されません。  
+> イニシャライザの委譲については、[Initializer Delegation for Value Types](./initialization.md#initializer-delegation-for-value-types値型のイニシャライザの委譲)、[Initializer Delegation for Class Types](./initialization.md#initializer-delegation-for-class-typesクラス型のイニシャライザの委譲)を参照ください。
+
+`willSet` と `didSet` の使用例を次に示します。下記の例では、`StepCounter` という名前の新しいクラスを定義しています。これは、人の合計歩数を追跡します。このクラスは、歩数計やその他の歩数計からの入力データや日常生活での運動を追跡する歩数計に使われます。
+
+```swift
+class StepCounter {
+    var totalSteps: Int = 0 {
+        willSet(newTotalSteps) {
+            print("About to set totalSteps to \(newTotalSteps)")
+        }
+        didSet {
+            if totalSteps > oldValue  {
+                print("Added \(totalSteps - oldValue) steps")
+            }
+        }
+    }
+}
+let stepCounter = StepCounter()
+stepCounter.totalSteps = 200
+// About to set totalSteps to 200
+// Added 200 steps
+stepCounter.totalSteps = 360
+// About to set totalSteps to 360
+// Added 160 steps
+stepCounter.totalSteps = 896
+// About to set totalSteps to 896
+// Added 536 steps
+```
+
+`StepCounter` クラスは、`Int` 型の `totalSteps` プロパティを宣言します。これは、`willSet` および `didSet` オブザーバを持つ格納プロパティです。
+
+プロパティに新しい値が割り当てられるたびに、`totalSteps` の `willSet` および `didSet` オブザーバーが呼び出されます。これは、新しい値が現在の値と同じでも当てはまります。
+
+この例の `willSet` オブザーバは、次の新しい値に `newTotalSteps` のカスタムパラメータ名を使用します。この例では、設定しようとしている値を出力するだけです。
+
+`didSet` オブザーバは、`totalSteps` の値が更新された後に呼び出されます。 これは、`totalSteps` の新しい値を古い値と比較します。合計ステップ数が増えると、新しく何ステップ増えたかを示すメッセージが出力されます。`didSet` オブザーバは古い値のカスタム パラメータ名を提供せず、代わりに `oldValue` のデフォルト名が使用されます。
+
+> NOTE  
+> オブザーバを持つプロパティを関数に入出力パラメータとして渡すと、`willSet` および `didSet` オブザーバが常に呼び出されます。これは、入力パラメータのコピーインコピーアウト(copy-in copy-out)メモリモデルによるものです。値は常に関数の最後でプロパティに書き戻されます。入出力パラメータの動作の詳細については、[In-Out Parameters](./../language-reference/declarations.md#in-Out-parameters入出力パラメータ)を参照ください。
 
 ## Property Wrappers(プロパティラッパ)
 
