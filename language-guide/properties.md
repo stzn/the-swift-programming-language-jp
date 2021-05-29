@@ -33,6 +33,21 @@ rangeOfThreeItems.firstValue = 6
 
 ### Stored Properties of Constant Structure Instances(定数に保存されたインスタンスのプロパティ)
 
+構造体のインスタンスを作成し、そのインスタンスを定数に割り当てる場合、インスタンスのプロパティは、変数で宣言されていても変更できません。
+
+```swift
+let rangeOfFourItems = FixedLengthRange(firstValue: 0, length: 4)
+// 0, 1, 2 の整数の範囲を表しています
+rangeOfFourItems.firstValue = 6
+// firstValue は変数ですがエラーになります
+```
+
+`rangeOfFourItems` は定数として(`let` キーワードを使用して)宣言されているため、`firstValue` が変数でも、その `firstValue` プロパティを変更することはできません。
+
+この挙動は、構造型が値型のためです。値型のインスタンスが定数としてマークされている場合、その全てのプロパティも同様です。
+
+参照型のクラスには同じことが当てはまりません。参照型のインスタンスを定数に割り当てた場合でも、そのインスタンスの変数を変更できます。
+
 ### Lazy Stored Properties(遅延格納プロパティ)
 
 ### Stored Properties and Instance Variables(格納プロパティはインスタンス変数)
