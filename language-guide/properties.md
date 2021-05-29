@@ -565,6 +565,37 @@ func someFunction() {
 >  
 > 格納型プロパティは、最初のアクセス時に遅延して初期化されます。それらは、複数のスレッドから同時にアクセスされた場合でも、1 回だけ初期化されることが保証されており、`lazy` 修飾子でマークする必要はありません。
 
-### Type Property Syntax
+### Type Property Syntax(型プロパティ構文)
+
+C 言語および Objective-C では、静的定数および型に関連付けられた変数をグローバル静的変数として定義します。Swift では、型プロパティは型の定義の一部として、型定義の中括弧内(`{}`)に記述され、各型プロパティは、サポートする型に明示的にスコープされます。
+
+`static` キーワードを使用して型プロパティを定義します。クラス型の計算型プロパティの場合、代わりに `class` キーワードを使用して、サブクラスがスーパークラスの実装をオーバーライドできるようにすることもできます。下記の例は、格納および計算型プロパティの構文を示しています。
+
+```swift
+struct SomeStructure {
+    static var storedTypeProperty = "Some value."
+    static var computedTypeProperty: Int {
+        return 1
+    }
+}
+enum SomeEnumeration {
+    static var storedTypeProperty = "Some value."
+    static var computedTypeProperty: Int {
+        return 6
+    }
+}
+class SomeClass {
+    static var storedTypeProperty = "Some value."
+    static var computedTypeProperty: Int {
+        return 27
+    }
+    class var overrideableComputedTypeProperty: Int {
+        return 107
+    }
+}
+```
+
+> NOTE  
+> 上記の計算型プロパティの例は、読み取り専用の計算型プロパティですが、計算インスタンスプロパティと同じ構文を使用して、読み書き可能な計算型プロパティを定義することもできます。
 
 ### Querying and Setting Type Properties
