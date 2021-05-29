@@ -287,6 +287,68 @@ stepCounter.totalSteps = 896
 
 ## Property Wrappers(プロパティラッパ)
 
+プロパティラッパ(*Property Wrapper*)は、プロパティの格納方法を管理するコードと、プロパティを定義するコードとの間に境界レイヤを追加します。例えば、スレッドセーフチェックを提供するプロパティ、またはその基になるデータをデータベースに格納するプロパティがある場合、全てのプロパティにそのコードを記述する必要があります。プロパティラッパを使用すると、ラッパを定義するときに管理コードを 1 回記述し、その管理コードを複数のプロパティに適用して再利用できます。
+
+プロパティラッパを定義するには、`wrappedValue` プロパティを定義する構造体、列挙型、またはクラスを作成します。下記のコードでは、`TwelveOrLess` 構造体により、ラップする値に常に `12` 以下の数値が含まれることが保証されます。より大きな数値を格納するように要求すると、代わりに `12` が格納されます。
+
+```swift
+@propertyWrapper
+struct TwelveOrLess {
+    private var number = 0
+    var wrappedValue: Int {
+        get { return number }
+        set { number = min(newValue, 12) }
+    }
+}
+```
+
+セッタは新しい値が `12` 未満だと確認し、ゲッタは格納された値を返します。
+
+> NOTE  
+> 上記の例の `number` の宣言は、変数を `private` としてマークします。これにより、`number` は `TwelveOrLess` の実装でのみ使用されます。それ以外の場所に記述されたコードは、`wrappedValue` のゲッタとセッタを使用して値にアクセスし、数値を直接使用することはできません。`private` については、[Access Control](./access-control.md)を参照ください。
+
+プロパティにラッパを適用するには、属性としてプロパティの前にラッパの名前を記述します。 `TwelveOrLess` プロパティラッパを使用して、大きさが常に `12` 以下になるようにする四角形を格納する構造体を次に示します。
+
+```swift
+struct SmallRectangle {
+    @TwelveOrLess var height: Int
+    @TwelveOrLess var width: Int
+}
+
+var rectangle = SmallRectangle()
+print(rectangle.height)
+// "0"
+
+rectangle.height = 10
+print(rectangle.height)
+// "10"
+
+rectangle.height = 24
+print(rectangle.height)
+// "12"
+```
+
+`height` と `width` のプロパティは、`TwelveOrLess.number` をゼロに設定する `TwelveOrLess` の定義から初期値を取得します。`TwelveOrLess` のセッタは、`10` を有効な値として扱うため、数値 `10` を `rectangle.height` に格納すると、記述どおりに進みます。ただし、`24` は `TwelveOrLess` が許容する値よりも大きいため、`24` を格納しようとすると、代わりに `rectangle.height` を最大許容値の `12` に設定することになります。
+
+プロパティにラッパを適用すると、コンパイラは、ラッパにストレージを提供するコードと、ラッパを介したプロパティへのアクセスするためのコードの 2 つを合成します。(プロパティラッパ自体にはラップされた値を格納する責務があるため、合成されるコードはありません) 特別な属性構文を利用せずに、プロパティラッパの動作を使用するコードを作成することもできます。例えば、前のコードリストの `SmallRectangle` に、属性として `@TwelveOrLess` を記述する代わりに、`TwelveOrLess` 構造体でそのプロパティを明示的にラップしています。
+
+```swift
+struct SmallRectangle {
+    private var _height = TwelveOrLess()
+    private var _width = TwelveOrLess()
+    var height: Int {
+        get { return _height.wrappedValue }
+        set { _height.wrappedValue = newValue }
+    }
+    var width: Int {
+        get { return _width.wrappedValue }
+        set { _width.wrappedValue = newValue }
+    }
+}
+```
+
+`_height` および `_width` プロパティは、プロパティラッパ `TwelveOrLess` のインスタンスを格納します。`height` と `width` のゲッタとセッタは、`wrappedValue` プロパティへのアクセスをラップします。
+
 ### Setting Initial Values for Wrapped Properties(ラップされたプロパティの初期値の設定)
 
 ### Projecting a Value From a Property Wrapper(Property Wrapperからの値の投影)
