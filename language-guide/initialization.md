@@ -88,6 +88,44 @@ let freezingPointOfWater = Celsius(fromKelvin: 273.15)
 
 ### Parameter Names and Argument Labels(パラメータ名と引数ラベル)
 
+関数やメソッドのパラメータと同様に、初期化パラメータには、イニシャライザの本部内で使用するパラメータ名と、イニシャライザを呼び出すときに使用する引数ラベルの両方を含めることができます。
+
+ただし、イニシャライザには、関数やメソッドのように括弧の前に識別関数名がありません。したがって、イニシャライザのパラメータの名前と型は、どのイニシャライザを呼び出す必要があるかを識別する上で特に重要な役割を果たします。このため、Swift は、イニシャライザが提供されていない場合、イニシャライザの全てのパラメータに自動で引数ラベルを提供します。
+
+次の例では、`red`、`green`、`blue` という 3 つの定数プロパティを持つ `Color` という構造体を定義しています。これらのプロパティには、色の赤、緑、青の量を示す `0.0` ～ `1.0` の値が格納されます。
+
+`Color` は、赤、緑、および青のコンポーネント用に `Double` 型の適切に名前が付けられた 3 つのパラメーターを含むイニシャライザを提供します。`Color` は、3 つすべての色コンポーネントに同じ値を提供するために使用される、単一の `white` パラメーターを持つ 2 番目のイニシャライザも提供します。
+
+```swift
+struct Color {
+    let red, green, blue: Double
+    init(red: Double, green: Double, blue: Double) {
+        self.red   = red
+        self.green = green
+        self.blue  = blue
+    }
+    init(white: Double) {
+        red   = white
+        green = white
+        blue  = white
+    }
+}
+```
+
+両方のイニシャライザを使用して、各イニシャライザのパラメータに名前付きの値を指定することで、新しい `Color` インスタンスを作成できます。
+
+```swift
+let magenta = Color(red: 1.0, green: 0.0, blue: 1.0)
+let halfGray = Color(white: 0.5)
+```
+
+引数ラベルを使用せずにこれらのイニシャライザを呼び出すことはできないことに注意してください。引数ラベルが定義されている場合は、常にイニシャライザで使用する必要があり、それらを省略するとコンパイルエラーになります。
+
+```swift
+let veryGreen = Color(0.0, 1.0, 0.0)
+// 引数ラベルが必要になるため、コンパイルエラーになります
+```
+
 ### Initializer Parameters Without Argument Labels(引数ラベルのないイニシャライザパラメータ)
 
 ### Optional Property Types(optional のプロパティ型)
