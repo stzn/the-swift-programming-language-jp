@@ -110,7 +110,7 @@ print("The point is now at (\(somePoint.x), \(somePoint.y))")
 
 上記の `Point` 構造体は、自身に変更を加える `moveBy(x:y:)` メソッドを定義します。これは、`Point` インスタンスを一定量移動します。新しいポイントを返す代わりに、呼び出されたポイントを実際に変更します。プロパティを変更できるようにするために、`mutating` キーワードがその定義に追加されてます。
 
-[Stored Properties of Constant Structure Instances](./properties.md#stored-properties-of-constant-structure-instances定数の格納インスタンスのプロパティ)で説明されているように、構造型の定数内の変数プロパティを変更できないため、構造型の定数で変更メソッドを呼び出すことはできないことに注意してください。
+[Stored Properties of Constant Structure Instances](./properties.md#stored-properties-of-constant-structure-instances定数の格納インスタンスのプロパティ)で説明されているように、構造体の定数内の変数プロパティを変更できないため、構造体の定数で変更メソッドを呼び出すことはできないことに注意してください。
 
 ```swift
 let fixedPoint = Point(x: 3.0, y: 3.0)
