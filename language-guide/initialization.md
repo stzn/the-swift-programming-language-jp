@@ -94,7 +94,7 @@ let freezingPointOfWater = Celsius(fromKelvin: 273.15)
 
 次の例では、`red`、`green`、`blue` という 3 つの定数プロパティを持つ `Color` という構造体を定義しています。これらのプロパティには、色の赤、緑、青の量を示す `0.0` ～ `1.0` の値が格納されます。
 
-`Color` は、赤、緑、および青のコンポーネント用に `Double` 型の適切に名前が付けられた 3 つのパラメーターを含むイニシャライザを提供します。`Color` は、3 つすべての色コンポーネントに同じ値を提供するために使用される、単一の `white` パラメーターを持つ 2 番目のイニシャライザも提供します。
+`Color` は、赤、緑、および青のコンポーネント用に `Double` 型の適切に名前が付けられた 3 つのパラメーターを含むイニシャライザを提供します。`Color` は、3 つ全ての色コンポーネントに同じ値を提供するために使用される、単一の `white` パラメーターを持つ 2 番目のイニシャライザも提供します。
 
 ```swift
 struct Color {
@@ -153,7 +153,7 @@ let bodyTemperature = Celsius(37.0)
 
 ### Optional Property Types(optional のプロパティ型)
 
-カスタムタイプに、論理的に「値なし」が許される格納プロパティがある場合(おそらく、初期化中にその値を設定できないか、後で「値なし」が許可されるため)、プロパティを optional 型を使って宣言します。optional 型のプロパティは、値 `nil` で自動的に初期化されます。これは、プロパティが初期化中に意図的に「まだ値がない」ことを示しています。
+カスタム型に、論理的に「値なし」が許される格納プロパティがある場合(おそらく、初期化中にその値を設定できないか、後で「値なし」が許可されるため)、プロパティを optional 型を使って宣言します。optional 型のプロパティは、値 `nil` で自動的に初期化されます。これは、プロパティが初期化中に意図的に「まだ値がない」ことを示しています。
 
 次の例では、`SurveyQuestion` というクラスを定義し、optional の `String` プロパティとして `response` を指定します。
 
@@ -174,7 +174,7 @@ cheeseQuestion.ask()
 cheeseQuestion.response = "Yes, I do like cheese."
 ```
 
-アンケートの質問への回答は質問されるまでわからないため、回答プロパティは `String?` または `Optional<String>` で宣言されています。 `SurveyQuestion` の新しいインスタンスが初期化されると、デフォルト値の `nil`、つまり「文字列はまだありません」が自動的に割り当てられます。
+アンケートの質問への回答は質問されるまでわからないため、回答プロパティは `String?` または `Optional<String>` で宣言されています。`SurveyQuestion` の新しいインスタンスが初期化されると、デフォルト値の `nil`、つまり「文字列はまだありません」が自動的に割り当てられます。
 
 ### Assigning Constant Properties During Initialization(初期化中の定数プロパティの割り当て)
 
@@ -203,6 +203,21 @@ beetsQuestion.response = "I also like beets. (But not with cheese.)"
 ```
 
 ## Default Initializers(デフォルトイニシャライザ)
+
+Swift は、全てのプロパティにデフォルト値を提供し、少なくとも 1 つのイニシャライザを提供しない構造体またはクラスにデフォルトのイニシャライザを提供します。デフォルトのイニシャライザは、全てのプロパティがデフォルト値に設定された新しいインスタンスを作成するだけです。
+
+この例では、ショッピングリスト内のアイテムの名前、数量、購入状態をカプセル化する `ShoppingListItem` というクラスを定義しています。
+
+```swift
+class ShoppingListItem {
+    var name: String?
+    var quantity = 1
+    var purchased = false
+}
+var item = ShoppingListItem()
+```
+
+`ShoppingListItem` クラスの全てのプロパティにはデフォルト値があり、スーパークラスを持たない基本クラスのため、`ShoppingListItem` は、全てのプロパティにデフォルト値が設定された新しいインスタンスを作成するイニシャライザ実装を自動的に取得します。(`name` プロパティは optional の `String` プロパティのため、この値がコードに記述されていなくても、既定値の `nil` が自動的に取得されます)上記の例では、`ShoppingListItem` クラスの既定のイニシャライザを使用して `ShoppingListItem()` と記述し、新しいインスタンスを作成して `item` という変数に割り当てています。
 
 ### Memberwise Initializers for Structure Types(構造体の全メンバーを引数に取るイニシャライザ)
 
