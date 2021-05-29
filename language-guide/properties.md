@@ -598,4 +598,86 @@ class SomeClass {
 > NOTE  
 > 上記の計算型プロパティの例は、読み取り専用の計算型プロパティですが、計算インスタンスプロパティと同じ構文を使用して、読み書き可能な計算型プロパティを定義することもできます。
 
-### Querying and Setting Type Properties
+### Querying and Setting Type Properties(型プロパティのクエリと設定)
+
+型プロパティは、インスタンスプロパティと同様に、ドット構文でクエリおよび設定されます。ただし、型プロパティは、その型のインスタンスではなく、その型自体に対してクエリおよび設定されます。例えば:
+
+```swift
+print(SomeStructure.storedTypeProperty)
+// "Some value."
+SomeStructure.storedTypeProperty = "Another value."
+print(SomeStructure.storedTypeProperty)
+// "Another value."
+print(SomeEnumeration.computedTypeProperty)
+// "6"
+print(SomeClass.computedTypeProperty)
+// "27"
+```
+
+下記の例では、いくつかのオーディオチャネルのオーディオレベルメータをモデル化する構造体の一部として、2 つの格納型プロパティを使用します。各チャンネルには、`0` から `10` までの整数のオーディオレベルがあります。
+
+次の図は、これらのオーディオチャネルの 2 つを組み合わせてステレオオーディオ レベルメータをモデル化する方法を示しています。チャンネルのオーディオレベルが `0` の場合、そのチャンネルのライトはどれも点灯しません。オーディオレベルが `10` の場合、そのチャンネルの全てのライトが点灯します。この図では、左チャネルの現在のレベルは `9` で、右チャネルの現在のレベルは `7` です。
+
+![型プロパティオーディオレベルメータ](./../.gitbook/assets/staticPropertiesVUMeter_2x.png)
+
+上記のオーディオチャネルは、`AudioChannel` 構造体のインスタンスによって表されます。
+
+```swift
+struct AudioChannel {
+    static let thresholdLevel = 10
+    static var maxInputLevelForAllChannels = 0
+    var currentLevel: Int = 0 {
+        didSet {
+            if currentLevel > AudioChannel.thresholdLevel {
+                // 新しいオーディオ レベルをしきい値レベルに制限する
+                currentLevel = AudioChannel.thresholdLevel
+            }
+            if currentLevel > AudioChannel.maxInputLevelForAllChannels {
+                // これを新しい全体の最大入力レベルとして保存します
+                AudioChannel.maxInputLevelForAllChannels = currentLevel
+            }
+        }
+    }
+}
+```
+
+`AudioChannel` 構造体は、その機能をサポートする 2 つの格納型プロパティを定義します。最初の `thresholdLevel` は、オーディオレベルの最大のしきい値を定義します。これは、全ての `AudioChannel` インスタンスの定数値 `10` です。 オーディオ信号が `10` よりも高い値で入力されると、このしきい値に制限されます (後述)。
+
+2 番目の型のプロパティは、`maxInputLevelForAllChannels` と呼ばれる変数格納プロパティです。これは、`AudioChannel` インスタンスによって受信された最大入力値を追跡します。初期値 `0` から始まります。
+
+`AudioChannel` 構造体は、`0` から `10` のスケールでチャネルの現在のオーディオレベルを表す、`currentLevel` と呼ばれる保存されたインスタンスプロパティも定義します。
+
+`currentLevel` プロパティには、設定されるたびに `currentLevel` の値をチェックする `didSet` プロパティオブザーバがあります。このオブザーバは、次の 2 つのチェックを実行します:
+
+* `currentLevel` の新しい値が許可された `thresholdLevel` より大きい場合、プロパティオブザーバは `currentLevel` を `thresholdLevel` に制限します
+* (しきい値でレベルを制限した後の) `currentLevel` の新しい値が、`AudioChannel` インスタンスによって以前に受信された値よりも大きい場合、プロパティオブザーバは新しい `currentLevel` 値を `maxInputLevelForAllChannels` 型プロパティに保存します
+
+> NOTE  
+> これらの 2 つのチェックのうち最初のチェックでは、`didSet` オブザーバは `currentLevel` を別の値に設定します。ただし、これによってオブザーバが再度呼び出されることはありません。
+
+`AudioChannel` 構造体を使用して、ステレオサウンドシステムのオーディオレベルを表す、`leftChannel` および `rightChannel` という 2 つの新しいオーディオチャネルを作成できます。
+
+```swift
+var leftChannel = AudioChannel()
+var rightChannel = AudioChannel()
+```
+
+左チャネルの `currentLevel` を `7` に設定すると、`maxInputLevelForAllChannels` 型プロパティが `7` に更新されることがわかります。
+
+```swift
+leftChannel.currentLevel = 7
+print(leftChannel.currentLevel)
+// "7"
+print(AudioChannel.maxInputLevelForAllChannels)
+// "7"
+```
+
+右チャネルの `currentLevel` を `11` に設定しようとすると、右チャネルの `currentLevel` プロパティが最大値 `10` に制限され、`maxInputLevelForAllChannels` 型プロパティが `10` に更新されることがわかります。
+
+```swift
+rightChannel.currentLevel = 11
+print(rightChannel.currentLevel)
+// "10"
+print(AudioChannel.maxInputLevelForAllChannels)
+// "10"
+```
