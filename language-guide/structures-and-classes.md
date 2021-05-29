@@ -107,7 +107,7 @@ print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
 // "The width of someVideoMode is now 1280"
 ```
 
-### Memberwise Initializers for Structure Types(structのMemberwiseイニシャライザ)
+### Memberwise Initializers for Structure Types(構造体のメンバごとのイニシャライザ)
 
 全ての構造体には、メンバー全てに値を設定して初期化するイニシャライザ(*memberwise initializer*)が自動的に生成されます。新しいインスタンスのプロパティの初期値は、プロパティ名でイニシャライザに渡すことができます。
 
