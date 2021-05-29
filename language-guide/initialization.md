@@ -339,6 +339,14 @@ convenience イニシャライザは二次的なもので、クラスのイニ�
 
 ### Syntax for Designated and Convenience Initializers(指定イニシャライザとcovenience イニシャライザの構文)
 
+クラスの指定イニシャライザは、値型のシンプルなイニシャライザと同じ方法で記述します:
+
+![指定イニシャライザ](./../.gitbook/assets/14_designatedInitializer.png)
+
+covenience イニシャライザは同じスタイルで記述できますが、`init` キーワードの前にスペース区切りで `covenience` 修飾子を配置します:
+
+![covenience イニシャライザ](./../.gitbook/assets/14_convenienceInitializer.png)
+
 ### Initializer Delegation for Class Types(クラス型のイニシャライザの委譲)
 
 ### Two-Phase Initialization(2段階イニシャライザ)
