@@ -178,6 +178,30 @@ cheeseQuestion.response = "Yes, I do like cheese."
 
 ### Assigning Constant Properties During Initialization(初期化中の定数プロパティの割り当て)
 
+初期化が完了するまでに明確な値が設定されている限り、初期化中の任意の時点で定数プロパティに値を割り当てることができます。定数プロパティに値が割り当てられると、それ以上変更することはできません。
+
+> NOTE  
+> クラスインスタンスの場合、初期化中に定数プロパティを変更できるのは、それを導入したクラスだけです。サブクラスでは変更できません。
+
+上記の `SurveyQuestion` の例を修正して、質問の `text` プロパティに変数プロパティではなく定数プロパティを使用して、`SurveyQuestion` のインスタンスが作成されたら質問が変更されないことを示すことができます。`text` プロパティは現在定数ですが、クラスのイニシャライザ内で設定できます。
+
+```swift
+class SurveyQuestion {
+    let text: String
+    var response: String?
+    init(text: String) {
+        self.text = text
+    }
+    func ask() {
+        print(text)
+    }
+}
+let beetsQuestion = SurveyQuestion(text: "How about beets?")
+beetsQuestion.ask()
+// "How about beets?"
+beetsQuestion.response = "I also like beets. (But not with cheese.)"
+```
+
 ## Default Initializers(デフォルトイニシャライザ)
 
 ### Memberwise Initializers for Structure Types(構造体の全メンバーを引数に取るイニシャライザ)
