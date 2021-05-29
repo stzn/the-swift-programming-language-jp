@@ -50,6 +50,54 @@ rangeOfFourItems.firstValue = 6
 
 ### Lazy Stored Properties(遅延格納プロパティ)
 
+遅延格納プロパティ(*lazy stored property*)は、最初に使用されるまで初期値が計算されないプロパティです。宣言の前に `lazy` 修飾子を記述して、遅延格納プロパティを示します。
+
+> NOTE  
+> インスタンスの初期化が完了するまで初期値が取得できない可能性があるため、遅延プロパティは常に変数として(`var` キーワードを使用して)宣言する必要があります。定数プロパティは、初期化が完了する前に常に値を持っている必要があるため、`lazy` で宣言することはできません。
+
+遅延格納プロパティは、プロパティの初期値が、インスタンスの初期化が完了後でないと値がわからない外部要因に依存している場合に役立ちます。プロパティの初期値が必要になるまで実行すべきではない、複雑または計算コストの高いセットアップが必要な場合にも役立ちます。
+
+下記の例では、遅延格納プロパティを使用して、複雑なクラスの不必要な初期化を回避しています。この例では、`DataImporter` と `DataManager` という 2 つのクラスを定義していますが、どちらも全体像は見せていません:
+
+```swift
+class DataImporter {
+    /*
+    DataImporter は、外部ファイルからデータをインポートするためのクラスです
+    このクラスは、初期化にかなりの時間がかかると想定します
+    */
+    var filename = "data.txt"
+    // DataImporter クラスは、ここでデータのインポート機能を提供します
+}
+
+class DataManager {
+    lazy var importer = DataImporter()
+    var data = [String]()
+    // DataManager クラスはここでデータの管理機能を提供します
+}
+
+let manager = DataManager()
+manager.data.append("Some data")
+manager.data.append("Some more data")
+// importer プロパティの DataImporter インスタンスはまだ作成されていません
+```
+
+`DataManager` クラスには、`data` と呼ばれる格納プロパティがあり、新しい空の `String` 型の配列で初期化されています。残りの機能は示されていませんが、この `DataManager` クラスの目的は、この `String` の配列を管理し、アクセスする機能を提供することです。
+
+`DataManager` クラスの機能の一部は、ファイルからデータをインポートする機能です。この機能は、`DataImporter` クラスによって提供されています。このクラスは、初期化にかなりの時間がかかると想定されています。これは、`DataImporter` インスタンスが初期化されるときに、`DataImporter` インスタンスがファイルを開いてその内容をメモリに読み込む必要があるからかもしれません。
+
+`DataManager` インスタンスはファイルからデータをインポートしなくてもデータを管理できるため、`DataManager` 自体が作成されるときに、`DataManager` は新しい `DataImporter` インスタンスを作成しません。代わりに、`DataImporter` インスタンスを最初に使用するときに作成する方が理にかなっています。
+
+`lazy` 修飾子でマークされているため、`importer` プロパティの `DataImporter` インスタンスは、`importer` プロパティが最初にアクセスされたとき(`filename` プロパティが照会されたときなど)にのみ作成されます。
+
+```swift
+print(manager.importer.filename)
+// importer プロパティの DataImporter インスタンスが作成されました
+// "data.txt"
+```
+
+> NOTE  
+> `lazy` 修飾子でマークされたプロパティが複数のスレッドから同時にアクセスされ、そのプロパティがまだ初期化されていない場合、そのプロパティが 1 回だけ初期化されるという保証はありません。
+
 ### Stored Properties and Instance Variables(格納プロパティはインスタンス変数)
 
 ## Computed Properties(計算プロパティ)
