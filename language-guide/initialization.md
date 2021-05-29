@@ -128,6 +128,29 @@ let veryGreen = Color(0.0, 1.0, 0.0)
 
 ### Initializer Parameters Without Argument Labels(引数ラベルのないイニシャライザパラメータ)
 
+初期化パラメータに引数ラベルを使用したくない場合は、そのパラメータの明示的な引数ラベルの代わりにアンダースコア (`_`) を記述して、デフォルトの挙動をオーバーライドします。
+
+これは、上記の[Initialization Parameters](#initialization-parametersイニシャライザの引数)の `Celsius` の例の拡張バージョンで、すでに摂氏スケールにある `Double` 値から新しい `Celsius` インスタンスを作成する追加のイニシャライザを備えています。
+
+```swift
+struct Celsius {
+    var temperatureInCelsius: Double
+    init(fromFahrenheit fahrenheit: Double) {
+        temperatureInCelsius = (fahrenheit - 32.0) / 1.8
+    }
+    init(fromKelvin kelvin: Double) {
+        temperatureInCelsius = kelvin - 273.15
+    }
+    init(_ celsius: Double) {
+        temperatureInCelsius = celsius
+    }
+}
+let bodyTemperature = Celsius(37.0)
+// bodyTemperature.temperatureInCelsius は 37.0
+```
+
+イニシャライザの呼び出し `Celsius(37.0)` は、意図が明確なので引数ラベルを必要としません。したがって、このイニシャライザを `init(_ celsius: Double)` と記述して、名前のない `Double` 値を指定して呼び出すことができるのは適切です。
+
 ### Optional Property Types(optional のプロパティ型)
 
 ### Assigning Constant Properties During Initialization(初期化中の定数プロパティの割り当て)
