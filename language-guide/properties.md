@@ -8,7 +8,7 @@
 
 さらに、プロパティオブザーバ(*property observer*)を定義して、プロパティ値の変更を監視して、それに応じたアクションを起こすことができます。プロパティオブザーバは、自分で定義した格納プロパティ、およびサブクラスがそのスーパークラスから継承するプロパティに追加できます。
 
-プロパティラッパー(*property wrapper*)を使用して、複数のプロパティのゲッタとセッタでコードを再利用することもできます。
+プロパティラッパ(*property wrapper*)を使用して、複数のプロパティのゲッタとセッタでコードを再利用することもできます。
 
 ## Stored Properties(格納プロパティ)
 
@@ -201,9 +201,30 @@ struct CompactRect {
 
 ### Read-Only Computed Properties(読み取り専用計算プロパティ)
 
+ゲッタはあるがセッタは持たない計算プロパティは、読み取り専用の計算プロパティ(*read-only computed property*)と呼ばれます。読み取り専用計算プロパティは常に値を返し、ドット構文を介してアクセスできますが、別の値を設定することはできません。
+
+> NOTE  
+> 計算プロパティ(読み取り専用を含む)は、その値が固定されていないため、`var` キーワードを使用して変数プロパティとして宣言する必要があります。`let` キーワードは定数プロパティにのみ使用され、インスタンスの初期化の一部として設定された後は値を変更できないことを示します。
+
+`get` キーワードとその中括弧(`{}`)を削除することで、読み取り専用計算プロパティの宣言を簡素化できます。
+
+```swift
+struct Cuboid {
+    var width = 0.0, height = 0.0, depth = 0.0
+    var volume: Double {
+        return width * height * depth
+    }
+}
+let fourByFiveByTwo = Cuboid(width: 4.0, height: 5.0, depth: 2.0)
+print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
+// "the volume of fourByFiveByTwo is 40.0"
+```
+
+この例では、`Cuboid` という新しい構造体を定義します。これは、`width`、`height`、`depth` プロパティを持つ 3D の長方形のボックスを表します。この構造体には、`volume` と呼ばれる読み取り専用の計算プロパティもあります。これは、直方体の現在のボリュームを計算して返します。特定のボリューム値に `width`、`height`、`depth` のどの値を使用するかについてあいまいになるため、`volume` を設定可能にすることは意味がありません。それでも、`Cuboid` が読み取り専用の計算プロパティを提供して、外部ユーザーが現在の計算済みボリュームを見られようにすると便利です。
+
 ## Property Observers
 
-## Property Wrappers(プロパティラッパー)
+## Property Wrappers(プロパティラッパ)
 
 ### Setting Initial Values for Wrapped Properties(ラップされたプロパティの初期値の設定)
 
