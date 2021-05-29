@@ -88,6 +88,36 @@ if somePoint.isToTheRightOf(x: 1.0) {
 
 ### Modifying Value Types from Within Instance Methods(インスタンスメソッド内からの値型の変更)
 
+構造体と列挙型は値型です。デフォルトでは、値型のプロパティはそのインスタンス メソッド内から変更できません。
+
+ただし、特定のメソッド内の構造体または列挙型のプロパティを変更する必要がある場合は、そのメソッドの動作を変更することができます。その後、メソッドはそのプロパティをメソッド内から変更することができ、メソッドが行った変更は、メソッドの終了時に元の構造体に書き戻されます。このメソッドは、完全に新しいインスタンスをその暗黙的な `self` プロパティに割り当てることもでき、メソッドが終了すると、この新しいインスタンスが既存のインスタンスに置き換えられます。
+
+この動作を可能にするには、そのメソッドの `func` キーワードの前に `mutating` キーワードを配置します:
+
+```swift
+struct Point {
+    var x = 0.0, y = 0.0
+    mutating func moveBy(x deltaX: Double, y deltaY: Double) {
+        x += deltaX
+        y += deltaY
+    }
+}
+var somePoint = Point(x: 1.0, y: 1.0)
+somePoint.moveBy(x: 2.0, y: 3.0)
+print("The point is now at (\(somePoint.x), \(somePoint.y))")
+// "The point is now at (3.0, 4.0)"
+```
+
+上記の `Point` 構造体は、自身に変更を加える `moveBy(x:y:)` メソッドを定義します。これは、`Point` インスタンスを一定量移動します。新しいポイントを返す代わりに、呼び出されたポイントを実際に変更します。プロパティを変更できるようにするために、`mutating` キーワードがその定義に追加されてます。
+
+[Stored Properties of Constant Structure Instances](./properties.md#stored-properties-of-constant-structure-instances定数の格納インスタンスのプロパティ)で説明されているように、変数プロパティでも、そのプロパティを変更できないため、構造型の定数で変更メソッドを呼び出すことはできないことに注意してください。
+
+```swift
+let fixedPoint = Point(x: 3.0, y: 3.0)
+fixedPoint.moveBy(x: 2.0, y: 3.0)
+// エラーが出力されます
+```
+
 ### Assigning to self Within a Mutating Method(mutatingメソッド内からselfへの代入)
 
 ### Type Methods(型メソッド)
