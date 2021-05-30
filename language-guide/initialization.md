@@ -936,4 +936,27 @@ class UntitledDocument: Document {
 
 ## Required Initializers(必須イニシャライザ)
 
+クラスの全てのサブクラスがそのイニシャライザを実装する必要があることを示すために、クラスのイニシャライザの定義の前に必要な修飾子を記述します。
+
+```swift
+class SomeClass {
+    required init() {
+        // ここにイニシャライザの実装を
+    }
+}
+```
+
+また、必要なイニシャライザの全てサブクラス実装の前に、`required` 修飾子を記述して、イニシャライザの必須要件がチェーン内の他のサブクラスに適用されることを示す必要があります。必要な指定イニシャライザをオーバーライドするときは、`override` 修飾子を記述しません:
+
+```swift
+class SomeSubclass: SomeClass {
+    required init() {
+        // サブクラスでこの必須イニシャライザの実装をします
+    }
+}
+```
+
+> NOTE  
+> 継承したイニシャライザで要件を満たすことができる場合、必須イニシャライザの明示的な実装を提供する必要はありません。
+
 ## Setting a Default Property Value with a Closure or Function(クロージャまたは関数を使用したデフォルトのプロパティ値の設定)
