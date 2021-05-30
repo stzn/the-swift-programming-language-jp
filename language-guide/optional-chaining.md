@@ -283,6 +283,18 @@ if let firstRoomName = john.residence?[0].name {
 
 ### Accessing Subscripts of Optional Type(optional型のsubscriptへのアクセス)
 
+subscript が optional 型の値 (Swift の Dictionary 型のキーsubscript など) を返す場合、その optional の戻り値を連鎖させるために、subscript の閉じ括弧(`]`)の後に疑問符(`?`)を置きます:
+
+```swift
+var testScores = ["Dave": [86, 82, 84], "Bev": [79, 94, 81]]
+testScores["Dave"]?[0] = 91
+testScores["Bev"]?[0] += 1
+testScores["Brian"]?[0] = 72
+// the "Dave" array is now [91, 82, 84] and the "Bev" array is now [80, 94, 81]
+```
+
+上記の例では、`String` 型のキーを `Int` 型の配列にマップする `testScores` という辞書を定義しています。 この例では、optional の連鎖を使用して、`"Dave"` 配列の最初の項目を `91` に設定し、`"Bev"` 配列の最初の項目を `1` ずつ増やし、`"Brian"` キーの配列の最初のアイテムを設定しようとします。`testScores` 辞書には `"Dave"` と `"Bev"` のキーが含まれているため、最初の 2 つの呼び出しは成功します。しかし、`testScores` 辞書に `"Brian"` のキーが含まれていないため、3 番目の呼び出しは失敗します。
+
 ## Linking Multiple Levels of Chaining(複数階層の連鎖のリンク)
 
 ## Chaining on Methods with Optional Return Values(optionalの戻り値を持つメソッドの連鎖)
