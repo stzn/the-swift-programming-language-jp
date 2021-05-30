@@ -12,7 +12,7 @@ Swift での型キャストは、 `is` および `as` 演算子で実装され�
 
 クラスとサブクラスの階層で型キャストを使用して、特定のクラスインスタンスの型を確認し、そのインスタンスを同じ階層内の別のクラスにキャストできます。以下の 3 つのコードスニペットは、型キャストの例で使用するために、クラスの階層とそれらのクラスのインスタンスを含む配列を定義します。
 
-最初のスニペットは、`MediaItem` という新しい基本クラスを定義します。このクラスは、デジタルメディアライブラリに表示されるあらゆる種類のアイテムに基本的な機能を提供します。具体的には、`String` 型の `name` プロパティと `init name` イニシャライザを宣言します。(全ての映画と曲を含むすべてのメディアアイテムに名前があると想定されています)
+最初のスニペットは、`MediaItem` という新しい基本クラスを定義します。このクラスは、デジタルメディアライブラリに表示されるあらゆる種類のアイテムに基本的な機能を提供します。具体的には、`String` 型の `name` プロパティと `init name` イニシャライザを宣言します。(全ての映画と曲を含む全てのメディアアイテムに名前があると想定されています)
 
 ```swift
 class MediaItem {
@@ -58,8 +58,32 @@ let library = [
 
 `library` に保存されているアイテムは、依然として裏側では `Movie` および `Song` インスタンスです。ただし、この配列の内容を反復処理すると、返されるアイテムは `Movie` や `Song` ではなく `MediaItem` になります。それらを本来の型として使用するには、型を確認するか、下記で説明するように別の型にダウンキャスト(*downcast*)する必要があります。
 
-## Checking Type
+## Checking Type(型チェック)
 
-## Downcasting
+インスタンスが特定のサブクラス型かどうかを確認するには、型チェック演算子(`is`)を使用します。型チェック演算子は、インスタンスがそのサブクラス型の場合は `true` を返し、そうでない場合は `false` を返します。
 
-## Type Casting for Any and AnyObject
+下記の例では、`library` 配列内の `Movie` および `Song` インスタンスの数をカウントする 2 つの変数 `movieCount` と `songCount` を定義しています:
+
+```swift
+var movieCount = 0
+var songCount = 0
+
+for item in library {
+    if item is Movie {
+        movieCount += 1
+    } else if item is Song {
+        songCount += 1
+    }
+}
+
+print("Media library contains \(movieCount) movies and \(songCount) songs")
+// "Media library contains 2 movies and 3 songs"
+```
+
+この例では、`library` 配列内の全てのアイテムを繰り返します。各パスで、`for-in` ループは、`item` 定数を配列内の次の `MediaItem` に設定します。
+
+`item is Movie` は、現在の `MediaItem` が `Movie` インスタンスの場合は `true` を返し、そうでない場合は `false` を返します。同様に、`item is Song` は、アイテムが `Song` インスタンスかどうかをチェックします。`for-in` ループの最後で、`movieCount` と `songCount` の値には、各型の `MediaItem` インスタンスがいくつ見つかったかのカウントが含まれます。
+
+## Downcasting(ダウンキャスト)
+
+## Type Casting for Any and AnyObject(AnyおよびAnyObject の型キャスト)
