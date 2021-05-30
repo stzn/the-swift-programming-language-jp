@@ -157,6 +157,50 @@ class Address {
 
 ## Accessing Properties Through Optional Chaining(オプショナル連鎖を通したプロパティへのアクセス)
 
+[Optional Chaining as an Alternative to Forced Unwrapping](#optional-chaining-as-an-alternative-to-forced-unwrapping強制アンラップの代替としてのオプショナル連鎖)で示されているように、optional の連鎖を使用して optional のプロパティにアクセスし、アクセスが成功したかどうかを確認できます。
+
+上で定義したクラスを使用して新しい `Person` インスタンスを作成し、以前と同じように `numberOfRooms` プロパティにアクセスしてみます:
+
+```swift
+let john = Person()
+if let roomCount = john.residence?.numberOfRooms {
+    print("John's residence has \(roomCount) room(s).")
+} else {
+    print("Unable to retrieve the number of rooms.")
+}
+// "Unable to retrieve the number of rooms."
+```
+
+`john.residence` が `nil` のため、この optional の連鎖呼び出しは以前と同じように失敗します。
+
+optional の連鎖を通じてプロパティの値を設定することもできます:
+
+```swift
+let someAddress = Address()
+someAddress.buildingNumber = "29"
+someAddress.street = "Acacia Road"
+john.residence?.address = someAddress
+```
+
+この例では、`john.residence` が現在 `nil` のため、`john.residence` の `address` のプロパティを設定に失敗します。
+
+割り当ては optional の連鎖の一部です。つまり、`=` 演算子の右側のコードはどれも評価されません。前の例では、定数へのアクセスには副作用がないため、`someAddress` が評価されないことを確認するのは簡単ではありません。下記のリストは同じ割り当てを行いますが、関数を使用して住所を作成します。この関数は、値を返す前に `"Function was called."` と出力します。これにより、`=` 演算子の右側が評価されたかどうかを確認できます。
+
+```swift
+func createAddress() -> Address {
+    print("Function was called.")
+
+    let someAddress = Address()
+    someAddress.buildingNumber = "29"
+    someAddress.street = "Acacia Road"
+
+    return someAddress
+}
+john.residence?.address = createAddress()
+```
+
+何も出力されないため、`createAddress()` 関数が呼び出されていないことがわかります。
+
 ## Calling Methods Through Optional Chaining(オプショナル連鎖を通したメソッドの呼び出し)
 
 ## Accessing Subscripts Through Optional Chaining(オプショナル連鎖を通したsubscriptへのアクセス)
