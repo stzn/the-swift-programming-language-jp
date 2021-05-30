@@ -4,7 +4,7 @@
 
 ## WELCOME TO SWIFT
 
-* [About Swift](welcome-to-swift/about-swift.md)
+* [About Swift (Swiftについて)](welcome-to-swift/about-swift.md)
 * [Version Compatibility](welcome-to-swift/version-compatibility.md)
 * [A Swift Tour](welcome-to-swift/a-swift-tour.md)
 
