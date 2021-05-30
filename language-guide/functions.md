@@ -1,4 +1,4 @@
-# Functions(関数）
+# Functions
 
 最終更新日: 2020/5/23
 

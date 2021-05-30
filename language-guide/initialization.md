@@ -1,4 +1,4 @@
-# Initialization(初期化)
+# Initialization
 
 最終更新日: 2021/5/30
 

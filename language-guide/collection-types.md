@@ -1,4 +1,4 @@
-# Collection Types(コレクション型）
+# Collection Types
 
 最終更新日: 2021/5/19
 

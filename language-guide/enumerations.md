@@ -1,4 +1,4 @@
-# Enumerations(列挙型)
+# Enumerations
 
 最終更新日: 2021/5/26
 
