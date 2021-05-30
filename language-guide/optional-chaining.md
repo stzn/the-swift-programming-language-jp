@@ -344,3 +344,30 @@ if let johnsStreet = john.residence?.address?.street {
 
 ## Chaining on Methods with Optional Return Values(optionalの戻り値を持つメソッドの連鎖)
 
+前の例は、optional の連鎖を通じて optional の型のプロパティの値を取得する方法を示しています。また、optional 連鎖を使用して、optional 型の値を返すメソッドを呼び出し、必要に応じてそのメソッドの戻り値を連鎖することもできます。
+
+下記の例では、optional の連鎖を通じて `Address` クラスの `buildingIdentifier()` メソッドを呼び出します。このメソッドは、`String?` 型の値を返します。上で説明したように、optional の連鎖後のこのメソッド呼び出しの最終的な戻り型も `String?` です。
+
+```swift
+if let buildingIdentifier = john.residence?.address?.buildingIdentifier() {
+    print("John's building identifier is \(buildingIdentifier).")
+}
+// "John's building identifier is The Larches."
+```
+
+このメソッドの戻り値に対してさらに optional の連鎖を実行する場合は、メソッドの括弧(`)`)の後に疑問符(`?`)を配置します。
+
+```swift
+if let beginsWithThe =
+    john.residence?.address?.buildingIdentifier()?.hasPrefix("The") {
+    if beginsWithThe {
+        print("John's building identifier begins with \"The\".")
+    } else {
+        print("John's building identifier doesn't begin with \"The\".")
+    }
+}
+// "John's building identifier begins with "The"."
+```
+
+> NOTE  
+> 上記の例では、連鎖する optional の値が `buildingIdentifier()` メソッド自体ではなく、`buildingIdentifier()` メソッドの戻り値のため、括弧の後に疑問符を配置します。
