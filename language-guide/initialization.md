@@ -447,6 +447,92 @@ convenience イニシャライザは、値をプロパティ(同じクラスで�
 
 ### Initializer Inheritance and Overriding(イニシャライザの継承とオーバーライド)
 
+Objective-C のサブクラスとは異なり、Swift サブクラスはデフォルトでスーパークラスのイニシャライザを継承しません。Swift のアプローチは、スーパークラスからのシンプルなイニシャライザが、より特化されたサブクラスによって継承され、完全または正しく初期化されていないサブクラスの新しいインスタンスを作成するために使用されること防ぎます。
+
+> NOTE  
+> スーパークラスのイニシャライザは特定の状況で継承されますが、安全で適切な場合に限ります。詳細については、以下の[Automatic Initializer Inheritance](#automatic-initializer-inheritance自動イニシャライザの継承)を参照してください。
+
+カスタムサブクラスで 1 つ以上のそのスーパークラスと同じイニシャライザを使用したい場合、サブクラス内でそれらのイニシャライザのカスタム実装を提供できます。
+
+スーパークラスの指定イニシャライザに一致するサブクラスのイニシャライザを作成すると、その指定イニシャライザのオーバーライドを効果的に提供することができます。これを行うためには、サブクラスのイニシャライザ定義の前に `override` 修飾子を記述する必要があります。[Default Initializers](#default-initializersデフォルトイニシャライザ)で説明されているように、これは、自動的に提供されるデフォルトのイニシャライザをオーバーライドしている場合にも当てはまります。
+
+オーバーライドされたプロパティ、メソッド、または subscript の場合と同様に、`override` 修飾子が存在すると、Swift は、スーパークラスにオーバーライドされる指定イニシャライザがあるかどうかを確認し、オーバーライドするイニシャライザのパラメータが意図したとおりの形になっていることを検証します。
+
+> NOTE  
+> サブクラスのイニシャライザの実装が convenience イニシャライザであっても、スーパークラスで指定イニシャライザをオーバーライドするときは、常に `override` 修飾子を記述します。
+
+逆に、スーパークラスの convenience イニシャライザと一致するサブクラスイニシャライザを作成する場合、上記の[Initializer Delegation for Class Types](#initializer-delegation-for-class-typesクラス型のイニシャライザの委譲)で説明したルールに従って、そのスーパークラスの convenience イニシャライザをサブクラスから直接呼び出すことはできません。したがって、サブクラスは(厳密に言えば)スーパークラスのイニシャライザのオーバーライドを提供していません。その結果、スーパークラスの convenience イニシャライザに一致する実装を提供するときに、`override` 修飾子を記述しません。
+
+下記の例では、`Vehicle` という基本クラスを定義しています。 この基本クラスは、デフォルトの `Int` 値が 0 の `numberOfWheels` という格納プロパティを宣言しています。`numberOfWheels` プロパティは、`description` という計算プロパティで使用され、乗り物の特性の説明を作成しています:
+
+```swift
+class Vehicle {
+    var numberOfWheels = 0
+    var description: String {
+        return "\(numberOfWheels) wheel(s)"
+    }
+}
+```
+
+`Vehicle` クラスは、その唯一の格納プロパティにデフォルト値を提供し、カスタムんのイニシャライザ自体を提供していません。その結果、[Default Initializers](#default-initializersデフォルトイニシャライザ)で説明されているように、デフォルトのイニシャライザを自動的に受け取ります。デフォルトのイニシャライザ(使用可能な場合)は、常にクラスの指定イニシャライザで、`numberOfWheels` が `0` の新しい `Vehicle` インスタンスを作成するために使用できます:
+
+```swift
+let vehicle = Vehicle()
+print("Vehicle: \(vehicle.description)")
+// Vehicle: 0 wheel(s)
+```
+
+次の例では、`Bicycle` という `Vehicle` のサブクラスを定義しています:
+
+```swift
+class Bicycle: Vehicle {
+    override init() {
+        super.init()
+        numberOfWheels = 2
+    }
+}
+```
+
+`Bicycle` サブクラスは、カスタムの指定イニシャライザ `init()` を定義します。この指定イニシャライザは `Bicycle` のスーパークラスの指定イニシャライザと一致するため、`Bicycle` では `override` 修飾子でマークされています。
+
+`Bicycle` の `init()` イニシャライザは、最初に `super.init()` を呼び出します。これは、`Bicycle` クラスのスーパークラスの `Vehicle` のデフォルトのイニシャライザを呼び出します。これにより、`Bicycle` がプロパティを変更する前に、継承したプロパティ `numberOfWheels` が `Vehicle` によって初期化されます。`super.init()` を呼び出した後、`numberOfWheels` の元の値は新しい値 `2` に置き換えられます。
+
+`Bicycle` のインスタンスを作成する場合、継承した `description` 計算プロパティを呼び出して、`numberOfWheels` プロパティがどのように更新されたかを確認できます:
+
+```swift
+let bicycle = Bicycle()
+print("Bicycle: \(bicycle.description)")
+// Bicycle: 2 wheel(s)
+```
+
+サブクラスのイニシャライザが初期化プロセスのフェーズ 2 でカスタマイズを実行せず、スーパークラスに引数のない指定イニシャライザがある場合、サブクラスの全ての格納プロパティに値を割り当てた後、`super.init()` の呼び出しを省略できます。
+
+この例では、`Hoverboard` と呼ばれる `Vehicle` の別のサブクラスを定義しています。イニシャライザでは、`Hoverboard` クラスはその `color` プロパティのみを設定します。このイニシャライザは、`super.init()` を明示的に呼び出す代わりに、スーパークラスのイニシャライザを暗黙的に呼び出してプロセスを完了しています。
+
+```swift
+class Hoverboard: Vehicle {
+    var color: String
+    init(color: String) {
+        self.color = color
+        // super.init() は暗黙的に呼ばれています
+    }
+    override var description: String {
+        return "\(super.description) in a beautiful \(color)"
+    }
+}
+```
+
+`Hoverboard` のインスタンスは、`Vehicle` イニシャライザによって提供されるデフォルトのホイール数を使用します。
+
+```swift
+let hoverboard = Hoverboard(color: "silver")
+print("Hoverboard: \(hoverboard.description)")
+// Hoverboard: 0 wheel(s) in a beautiful silver
+```
+
+> NOTE  
+> サブクラスは、初期化中に継承した変数プロパティを変更できますが、継承した定数プロパティを変更することはできません。
+
 ### Automatic Initializer Inheritance(自動イニシャライザの継承)
 
 ### Designated and Convenience Initializers in Action(指定とcovenience イニシャライザの挙動)
