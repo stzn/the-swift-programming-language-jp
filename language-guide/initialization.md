@@ -746,6 +746,44 @@ if anonymousCreature == nil {
 
 ### Failable Initializers for Enumerations(列挙型の失敗可能イニシャライザ)
 
+失敗可能イニシャライザを使用して、1 つ以上のパラメータに基づいて適切な列挙型ケースを選択できます。提供されたパラメーターが適切な列挙型ケースと一致しない場合、イニシャライザは失敗する可能性があります。
+
+以下の例では、3 つの可能な状態(`kelvin`、`celsius`、`fahrenheit`)を使用して、`TemperatureUnit` という列挙型を定義しています。 温度記号を表す `Character` 値の適切な列挙型ケースを見つけるために、失敗可能イニシャライザが使用されます:
+
+```swift
+enum TemperatureUnit {
+    case kelvin, celsius, fahrenheit
+    init?(symbol: Character) {
+        switch symbol {
+        case "K":
+            self = .kelvin
+        case "C":
+            self = .celsius
+        case "F":
+            self = .fahrenheit
+        default:
+            return nil
+        }
+    }
+}
+```
+
+この失敗可能イニシャライザを使用して、3 つの可能な状態に対して適切な列挙型ケースを選択し、パラメータがこれらの状態のいずれかに一致しない場合に初期化を失敗させることができます。
+
+```swift
+let fahrenheitUnit = TemperatureUnit(symbol: "F")
+if fahrenheitUnit != nil {
+    print("This is a defined temperature unit, so initialization succeeded.")
+}
+// "This is a defined temperature unit, so initialization succeeded."
+
+let unknownUnit = TemperatureUnit(symbol: "X")
+if unknownUnit == nil {
+    print("This isn't a defined temperature unit, so initialization failed.")
+}
+// "This isn't a defined temperature unit, so initialization failed."
+```
+
 ### Failable Initializers for Enumerations with Raw Values(Raw Valueを持つ列挙型の失敗可能イニシャライザ)
 
 ### Propagation of Initialization Failure(初期化の失敗の伝播)
