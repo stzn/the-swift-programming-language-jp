@@ -69,7 +69,7 @@ if let roomCount = john.residence?.numberOfRooms {
 john.residence = Residence()
 ```
 
-`john.residence` には、`nil` ではなく実際の `Residence` インスタンスが含まれるようになりました。以前と同じ optional の連鎖を使用して `numberOfRooms` にアクセスすると、デフォルトの `numberOfRooms` 値 `1` を含んだ `Int?` が返されます。
+`john.residence` には、`nil` ではなく実際の `Residence` インスタンスが含まれるようになりました。以前と同じ optional の連鎖を使用して `numberOfRooms` にアクセスすると、デフォルトの `numberOfRooms` 値 `1` を含んだ `Int?` が返されます:
 
 ```swift
 if let roomCount = john.residence?.numberOfRooms {
@@ -82,6 +82,79 @@ if let roomCount = john.residence?.numberOfRooms {
 
 ## Defining Model Classes for Optional Chaining(オプショナル連鎖モデルのクラスの定義)
 
+1 階層以上の深さのプロパティ、メソッド、および subscript の呼び出しで optional の連鎖を使用できます。 これにより、関連するタイプの複雑なモデル内のサブプロパティへ掘り下げ、それらのプロパティ、メソッド、および subscript にアクセスできるかどうかを確認できます。
+
+下記のコードスニペットは、複数階層の optional の連鎖の例を含む、後続のいくつかの例で使用する 4 つのモデルクラスを定義します。これらのクラスは、関連するプロパティ、メソッド、および subscript とともに `Room` および `Address` クラスを追加することにより、上記の `Person` および `Residence` モデルを拡張します。
+
+`Person` クラスは、以前と同じ方法で定義されます:
+
+```swift
+class Person {
+    var residence: Residence?
+}
+```
+
+`Residence` クラスは以前よりも複雑になっています。今回、`Residence` クラスは、`[Room]` 型の空の配列で初期化される `rooms` と呼ばれる変数プロパティを定義します:
+
+```swift
+class Residence {
+    var rooms = [Room]()
+    var numberOfRooms: Int {
+        return rooms.count
+    }
+    subscript(i: Int) -> Room {
+        get {
+            return rooms[i]
+        }
+        set {
+            rooms[i] = newValue
+        }
+    }
+    func printNumberOfRooms() {
+        print("The number of rooms is \(numberOfRooms)")
+    }
+    var address: Address?
+}
+```
+
+このバージョンの `Residence` は `Room` インスタンスの配列を保存するため、その `numberOfRooms` プロパティは、格納プロパティではなく、計算プロパティとして実装されています。`numberOfRooms` 計算プロパティは、単に `rooms` 配列の `count` プロパティの値を返します。
+
+`rooms` 配列にアクセスするためのショートカットとして、このバージョンの `Residence` は、`rooms` 配列内の要求されたインデックスにある部屋へのアクセスを提供する読み書き可能な subscript を提供します。
+
+このバージョンの `Residence` は、`printNumberOfRooms` と呼ばれるメソッドも提供します。このメソッドは、単に住居の部屋数を出力します。
+
+最後に、`Residence` は、`Address?` 型の `address` という optional のプロパティを定義します。このプロパティの `Address` クラス型は下記で定義されています。
+
+`rooms` 配列に使用される `Room` クラスは、`name` という 1 つのプロパティと、そのプロパティを適切な部屋名に設定するイニシャライザを持つシンプルなクラスです:
+
+```swift
+class Room {
+    let name: String
+    init(name: String) { self.name = name }
+}
+```
+
+このモデルの最後のクラスは `Address` と呼ばれます。このクラスには、`String?` 型の 3 つの optional プロパティがあります。最初の 2 つのプロパティ `buildingName` と `buildingNumber` は、特定の建物を住所の一部として識別する別の方法です。3 番目のプロパティ `street` は、その住所の通りに名前を付けるために使用されます。
+
+```swift
+class Address {
+    var buildingName: String?
+    var buildingNumber: String?
+    var street: String?
+    func buildingIdentifier() -> String? {
+        if let buildingNumber = buildingNumber, let street = street {
+            return "\(buildingNumber) \(street)"
+        } else if buildingName != nil {
+            return buildingName
+        } else {
+            return nil
+        }
+    }
+}
+```
+
+`Address` クラスはまた、`String?` の戻り型を持つ `buildingIdentifier()` というメソッドも提供します。このメソッドは、住所のプロパティをチェックし、`buildingName` に値がある場合は `buildingName` を返し、`street` と `buildingNumber` の両方に値がある場合は 2 つを繋げた値を返し、それ以外は `nil` を返します
+
 ## Accessing Properties Through Optional Chaining(オプショナル連鎖を通したプロパティへのアクセス)
 
 ## Calling Methods Through Optional Chaining(オプショナル連鎖を通したメソッドの呼び出し)
@@ -90,6 +163,6 @@ if let roomCount = john.residence?.numberOfRooms {
 
 ### Accessing Subscripts of Optional Type(optional型のsubscriptへのアクセス)
 
-## Linking Multiple Levels of Chaining(複数レベルの連鎖のリンク)
+## Linking Multiple Levels of Chaining(複数階層の連鎖のリンク)
 
 ## Chaining on Methods with Optional Return Values(optionalの戻り値を持つメソッドの連鎖)
