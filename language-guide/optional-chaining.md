@@ -239,6 +239,48 @@ if (john.residence?.address = someAddress) != nil {
 
 ## Accessing Subscripts Through Optional Chaining(オプショナル連鎖を通したsubscriptへのアクセス)
 
+optional の連鎖を使用して、optional の値の subscript から値を取得して設定し、その subscript の呼び出しが成功したかどうかを確認できます。
+
+> NOTE  
+> optional の連鎖を通じて optional の subscript にアクセスする場合、疑問符は subscript の大括弧の後(`]`)ではなく前(`[`)に置きます。optional の連鎖の場合、疑問符(`?`)は、常に式の optional 部分の直後に続きます。
+
+下記の例では、`Residence` クラスで定義された subscript を使用して、`john.residence` プロパティの `rooms` 配列内の最初の部屋の名前を取得しようとしています。`john.residence` は現在 `nil` のため、subscript の呼び出しは失敗します。
+
+```swift
+if let firstRoomName = john.residence?[0].name {
+    print("The first room name is \(firstRoomName).")
+} else {
+    print("Unable to retrieve the first room name.")
+}
+// "Unable to retrieve the first room name."
+```
+
+`john.residence` が optional の値のため、疑問符(`?`)は、`john.residence` の直後、subscript の括弧(`[`)の前に置かれます。
+
+同様に、optional の連鎖を使用して、subscript を介して新しい値の設定を試みることができます:
+
+```swift
+john.residence?[0] = Room(name: "Bathroom")
+```
+
+この subscript 設定の試みも失敗します。現在、`residence` は `nil` なためです。
+
+`john.residence` に実際の `Residence` インスタンスを作成して割り当て、その `room` 配列に 1 つ以上の `Room` インスタンスを設定すると、`Residence` の subscript を使用して、optional の連鎖によって `rooms` 配列内の項目にアクセスできます:
+
+```swift
+let johnsHouse = Residence()
+johnsHouse.rooms.append(Room(name: "Living Room"))
+johnsHouse.rooms.append(Room(name: "Kitchen"))
+john.residence = johnsHouse
+
+if let firstRoomName = john.residence?[0].name {
+    print("The first room name is \(firstRoomName).")
+} else {
+    print("Unable to retrieve the first room name.")
+}
+// "The first room name is Living Room."
+```
+
 ### Accessing Subscripts of Optional Type(optional型のsubscriptへのアクセス)
 
 ## Linking Multiple Levels of Chaining(複数階層の連鎖のリンク)
