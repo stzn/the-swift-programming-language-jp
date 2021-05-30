@@ -97,9 +97,9 @@ class VendingMachine {
 }
 ```
 
-`vend(itemNamed:)` メソッドの実装では、`guard` 文を使用してメソッドを早期に終了し、スナックを購入するための要件が満たされていない場合に適切なエラーをスローします。`throw` 文はすぐにプログラム制御を転送するため、これらすべての要件が満たされた場合にのみアイテムが販売されます。
+`vend(itemNamed:)` メソッドの実装では、`guard` 文を使用してメソッドを早期に終了し、スナックを購入するための要件が満たされていない場合に適切なエラーをスローします。`throw` 文はすぐにプログラム制御を転送するため、これら全ての要件が満たされた場合にのみアイテムが販売されます。
 
-`vend(itemNamed:)` メソッドはスローしたエラーをすべて伝搬するため、このメソッドを呼び出すコードは、`do-catch` 文、`try?`、または `try!` を使用してエラーを処理するか、エラーを伝搬し続ける必要があります。例えば、下記の例の `buyFavoriteSnack(person：vendingMachine:)` もスロー関数で、`vend(itemNamed:)` メソッドがスローするエラーを `buyFavoriteSnack(person：vendingMachine:)` 関数が呼ばれる部分まで伝播します。
+`vend(itemNamed:)` メソッドはスローしたエラーを全て伝搬するため、このメソッドを呼び出すコードは、`do-catch` 文、`try?`、または `try!` を使用してエラーを処理するか、エラーを伝搬し続ける必要があります。例えば、下記の例の `buyFavoriteSnack(person：vendingMachine:)` もスロー関数で、`vend(itemNamed:)` メソッドがスローするエラーを `buyFavoriteSnack(person：vendingMachine:)` 関数が呼ばれる部分まで伝播します。
 
 ```swift
 let favoriteSnacks = [
@@ -128,6 +128,73 @@ struct PurchasedSnack {
 ```
 
 ### Handling Errors Using Do-Catch(do catchを使ったエラー処理)
+
+`do-catch` 文を使用して、コードブロックを実行することでエラーを処理します。`do` 句のコードによってエラーがスローされた場合、`catch` 句と照合され、エラーを処理できるのはどれかを判断します。
+
+`do-catch` 文の一般的な形式は次のとおりです:
+
+![do catch文](./../.gitbook/assets/17_errorHandling.png)
+
+その句が処理できるエラーを示すには、`catch` の後にパターンを記述します。`catch` 句にパターンがない場合、句は全てのエラーに一致し、エラーを `error` という名前のローカル定数にバインドします。パターンマッチングの詳細については、[Patterns](./../language-reference/patterns.md)を参照ください。
+
+例えば、次のコードは、`VendingMachineError` 列挙型の 3 つのケース全てに一致します:
+
+```swift
+var vendingMachine = VendingMachine()
+vendingMachine.coinsDeposited = 8
+do {
+    try buyFavoriteSnack(person: "Alice", vendingMachine: vendingMachine)
+    print("Success! Yum.")
+} catch VendingMachineError.invalidSelection {
+    print("Invalid Selection.")
+} catch VendingMachineError.outOfStock {
+    print("Out of Stock.")
+} catch VendingMachineError.insufficientFunds(let coinsNeeded) {
+    print("Insufficient funds. Please insert an additional \(coinsNeeded) coins.")
+} catch {
+    print("Unexpected error: \(error).")
+}
+// "Insufficient funds. Please insert an additional 2 coins."
+```
+
+上記の例では、エラーをスローする可能性があるため、`buyFavoriteSnack(person:vendingMachine:)` 関数が `try` 式で呼び出されます。エラーがスローされた場合、実行はすぐに `catch` 句に移り、伝播を続行できるかどうかを決定します。一致するパターンがない場合、エラーは最後の `catch` 句によってキャッチされ、ローカル `error` 定数にバインドされます。エラーがスローされない場合は、`do` 文の残りの文が実行されます。
+
+`do` 句のコードがスローする可能性のある全てのエラーを `catch` 句で処理する必要はありません。どの `catch` 句もエラーを処理しない場合、エラーは周囲のスコープに伝播します。ただし、伝播されたエラーは、周囲のスコープによって処理される必要があります。スローしない関数では、囲んでいる `do-catch` 文でエラーを処理する必要があります。スローする関数では、囲んでいる `do-catch` 文または呼び出し元がエラーを処理する必要があります。エラーが処理されずに最上位のスコープに伝播すると、実行時エラーが発生します。
+
+例えば、上記の例は、`VendingMachineError` ではないエラーが代わりに呼び出し関数によってキャッチされるように記述できます:
+
+```swift
+func nourish(with item: String) throws {
+    do {
+        try vendingMachine.vend(itemNamed: item)
+    } catch is VendingMachineError {
+        print("Couldn't buy that from the vending machine.")
+    }
+}
+
+do {
+    try nourish(with: "Beet-Flavored Chips")
+} catch {
+    print("Unexpected non-vending-machine-related error: \(error)")
+}
+// "Couldn't buy that from the vending machine."
+```
+
+`nourt(with:)` 関数では、`vend(itemNamed:)` が `VendingMachineError` 列挙型のケースの 1 つのエラーをスローした場合、`nourt(with:)` はメッセージを出力してエラーを処理します。それ以外の場合、`nish(with:)` はエラーを呼び出しサイトに伝播します。その後、エラーは一般的な `catch` 句によってキャッチされます。
+
+いくつかの関連するエラーをキャッチする別の方法は、キャッチの後にカンマ(`,`)で区切ってそれらをリストすることです。例えば:
+
+```swift
+func eat(item: String) throws {
+    do {
+        try vendingMachine.vend(itemNamed: item)
+    } catch VendingMachineError.invalidSelection, VendingMachineError.insufficientFunds, VendingMachineError.outOfStock {
+        print("Invalid selection, out of stock, or not enough money.")
+    }
+}
+```
+
+`eat(item:)` 関数は、キャッチする自動販売機のエラーをリストし、そのエラーテキストはそのリスト内のアイテムに対応します。リストされている 3 つのエラーのいずれかがスローされた場合、この `catch` 句はメッセージを出力してそれらを処理します。その他のエラーは、後で追加される可能性のある自動販売機のエラーを含め、周囲のスコープに伝達されます。
 
 ### Converting Errors to Optional Values(エラーからオプショナル値への変換)
 
