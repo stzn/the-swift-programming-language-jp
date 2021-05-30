@@ -1,4 +1,4 @@
-# Strings and Characters(文字列と文字）
+# Strings and Characters
 
 最終更新日: 2021/5/16
 

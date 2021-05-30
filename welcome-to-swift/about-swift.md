@@ -1,4 +1,4 @@
-# About Swift(Swiftについて）
+# About Swift
 
 最終更新日: 2020/5/9
 

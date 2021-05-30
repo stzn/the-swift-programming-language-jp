@@ -1,4 +1,4 @@
-# Subscripts(サブスクリプト)
+# Subscripts
 
 最終更新日: 2021/5/29
 

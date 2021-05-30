@@ -1,4 +1,4 @@
-# The Basics(基本）
+# The Basics
 
 最終更新日: 2020/5/15
 

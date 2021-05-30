@@ -1,4 +1,4 @@
-# Control Flow(制御フロー)
+# Control Flow
 
 最終更新日: 2021/5/22
 

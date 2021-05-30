@@ -1,4 +1,4 @@
-# Basic Operators(基本演算子）
+# Basic Operators
 
 最終更新日: 2021/5/15
 

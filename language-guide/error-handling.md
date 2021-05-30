@@ -1,4 +1,4 @@
-# Error Handling(エラー処理)
+# Error Handling
 
 最終更新日: 2021/5/30
 

@@ -1,4 +1,4 @@
-# A Swift Tour（Swiftツアー）
+# A Swift Tour
 
 最終更新日: 2020/5/9
 

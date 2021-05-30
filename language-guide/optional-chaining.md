@@ -1,4 +1,4 @@
-# Optional Chaining(オプショナルの連鎖)
+# Optional Chaining
 
 最終更新日: 2021/5/30
 
