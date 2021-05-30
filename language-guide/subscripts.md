@@ -68,7 +68,7 @@ numberOfLegs["bird"] = 2
 `Dictionary` の subscript の詳細については、[Accessing and Modifying a Dictionary](./collection-types.md#accessing-and-modifying-a-dictionary辞書へのアクセスと変更)を参照ください。
 
 > NOTE  
-> Swift の `Dictionary` 型は、optional の型を受け取って返す subscript としてキーの subscript を実装します。上記の `numberOfLegs` 辞書の場合、キーとバリューの subscript は `Int?` または optional Int 型の値を受け取って返します。`Dictionary` 型は、 optional の subscript の型を使用して、全てのキーにバリューがあるわけではないということをモデル化し、そのキーに `nil` 値を割り当てることによってキーのバリューを削除する方法を提供します。
+> Swift の `Dictionary` 型は、オプショナルの型を受け取って返す subscript としてキーの subscript を実装します。上記の `numberOfLegs` 辞書の場合、キーとバリューの subscript は `Int?` または オプショナルInt 型の値を受け取って返します。`Dictionary` 型は、 オプショナルの subscript の型を使用して、全てのキーにバリューがあるわけではないということをモデル化し、そのキーに `nil` 値を割り当てることによってキーのバリューを削除する方法を提供します。
 
 ## Subscript Options(様々なsubscript)
 

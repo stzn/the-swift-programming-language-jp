@@ -268,12 +268,12 @@ let possiblePlanet = Planet(rawValue: 7)
 // possiblePlanet の型は Planet? で Planet.uranus と等しい
 ```
 
-ただし、全ての `Int` 値が惑星に一致するわけではありません。このため、raw value のイニシャライザは常に optional の列挙型を返します。上記の例では、`possiblePlanet` は Planet?` または optional の `Planet`型です。
+ただし、全ての `Int` 値が惑星に一致するわけではありません。このため、raw value のイニシャライザは常にオプショナルの列挙型を返します。上記の例では、`possiblePlanet` は Planet?` または オプショナルの `Planet`型です。
 
 > NOTE  
 > 全ての raw value が列挙型を返すわけではないため、raw valueイニシャライザは `nil` を返す可能性があります。詳細については、[Failable Initializers](./../language-reference/declarations.md#failable-initializers)を参照ください。
 
-位置が `11` の惑星を見つけようとすると、raw value のイニシャライザによって返される optional の `Planet` は `nil` になります。
+位置が `11` の惑星を見つけようとすると、raw value のイニシャライザによって返されるオプショナルの `Planet` は `nil` になります。
 
 ```swift
 let positionToFind = 11
@@ -290,7 +290,7 @@ if let somePlanet = Planet(rawValue: positionToFind) {
 // "There isn't a planet at position 11"
 ```
 
-この例では、オプションバインディングを使用して、raw value が `11` の惑星にアクセスしようとします。`if let somePlanet = Planet（rawValue: 11)` は、optional の `Planet` を作成し、取得できる場合は、`somePlanet` をその optional の `Planet` の値に設定します。この場合、位置が `11` の惑星を取得することはできないため、代わりに `else` の分岐が実行されます。
+この例では、オプションバインディングを使用して、raw value が `11` の惑星にアクセスしようとします。`if let somePlanet = Planet（rawValue: 11)` は、オプショナルの `Planet` を作成し、取得できる場合は、`somePlanet` をそのオプショナルの `Planet` の値に設定します。この場合、位置が `11` の惑星を取得することはできないため、代わりに `else` の分岐が実行されます。
 
 ## Recursive Enumerations(再帰的列挙型)
 

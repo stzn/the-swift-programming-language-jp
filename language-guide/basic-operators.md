@@ -255,7 +255,7 @@ if hasHeader {
 
 ## Nil-Coalescing Operator(nil合体演算子）
 
-`(a ?? b)` の Nil 結合演算子\(_nil-coalescing operator_\)は、optional `a` にもし値が存在すれば `a` をアンラップし、`a` が `nil` の場合は `b` をデフォルトとして返します。式 `a` は常に optional 型です。式 `b` は `a` が内包する値の型と一致していなけばなりません。
+`(a ?? b)` の Nil 結合演算子\(_nil-coalescing operator_\)は、オプショナル `a` にもし値が存在すれば `a` をアンラップし、`a` が `nil` の場合は `b` をデフォルトとして返します。式 `a` は常にオプショナル型です。式 `b` は `a` が内包する値の型と一致していなけばなりません。
 
 Nil 結合演算子は下記のコードのショートカットです。
 
@@ -268,7 +268,7 @@ a != nil ? a! : b
 > NOTE  
 > `a` が `nil` ではない場合、`b` は評価されません。これは短絡評価\(short-circuit evaluation\)と呼ばれます。
 
-下記の例では、デフォルトのカラー名かユーザ定義の optional なカラー名を選択するために、Nil 結合演算子を使用しています。
+下記の例では、デフォルトのカラー名かユーザ定義のオプショナルなカラー名を選択するために、Nil 結合演算子を使用しています。
 
 ```swift
 let defaultColorName = "red"
@@ -278,7 +278,7 @@ var colorNameToUse = userDefinedColorName ?? defaultColorName
 // userDefinedColorName が nil なので、 colorNameToUse にデフォルトの"red"が設定されます
 ```
 
-`userDefinedColorName` は、optional の `String` として定義され、デフォルトは `nil` です。`userDefinedColorName` は optional 型なので、その値を検討するために、Nil 結合演算子を使用することができます。上記の例では、`colorNameToUse` という `String` 型の変数の初期値を決めるために Nil 結合演算子を使用しています。`userDefinedColorName` は `nil` なので、式 `userDefinedColorName ?? defaultColorName` は、`defaultColorName`、つまり `"red"` を返します。
+`userDefinedColorName` は、オプショナルの `String` として定義され、デフォルトは `nil` です。`userDefinedColorName` はオプショナル型なので、その値を検討するために、Nil 結合演算子を使用することができます。上記の例では、`colorNameToUse` という `String` 型の変数の初期値を決めるために Nil 結合演算子を使用しています。`userDefinedColorName` は `nil` なので、式 `userDefinedColorName ?? defaultColorName` は、`defaultColorName`、つまり `"red"` を返します。
 
 もし `userDefinedColorName` に `nil` 以外が代入されていて Nil 結合演算子でチェックを行った場合、`userDefinedColorName` が内包する値がデフォルトの代わりに使われます:
 

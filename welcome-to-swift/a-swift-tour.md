@@ -109,7 +109,7 @@ occupations = [:]
 
 ## Control Flow(制御フロー)
 
-条件を作成するには、 `if` と `switch` を使います。ループを作成するには `for-in` `while` `repeat-while` を使います。条件や optional に丸括弧\(\(\)\)を付けるかどうかは任意です。本文の周りの中括弧\({}\)は必須です。
+条件を作成するには、 `if` と `switch` を使います。ループを作成するには `for-in` `while` `repeat-while` を使います。条件やオプショナルに丸括弧\(\(\)\)を付けるかどうかは任意です。本文の周りの中括弧\({}\)は必須です。
 
 ```swift
 let individualScores = [75, 43, 103, 87, 12]
@@ -127,7 +127,7 @@ print(teamScore)
 
 `if` ステートメントの中で、条件は Boolean でなければなりません。\(つまり、`if score { ... }` などのコードはエラーか暗黙的に 0 と推論されます\)
 
-`if` と `let` を一緒に使用して、存在しないかもしれない値を扱うことができます。これらの値は optional で表現されます。optional は値が含まれているか、値が存在しないことを示す `nil` を含んでいます。値を optional にするには、値の型の後ろにクエスチョンマーク\(?\)を書きましょう。
+`if` と `let` を一緒に使用して、存在しないかもしれない値を扱うことができます。これらの値はオプショナルで表現されます。オプショナルは値が含まれているか、値が存在しないことを示す `nil` を含んでいます。値をオプショナルにするには、値の型の後ろにクエスチョンマーク\(?\)を書きましょう。
 
 ```swift
 var optionalString: String? = "Hello"
@@ -144,9 +144,9 @@ if let name = optionalName {
 > Experiment  
 > optionalName を nil に変えてみましょう。 どんな greeting が出力されるでしょうか？ optionalName が nil の場合に別の greeting が出力されるように `else` を追加してみましょう。
 
-もし optional の値が nil の場合、条件は false になり、中括弧内のコードはスキップされます。nil でなければ、optional の値はアンラップされて `let` の後の定数に値が設定され、中括弧内のブロックでその値を利用できます。
+もしオプショナルの値が nil の場合、条件は false になり、中括弧内のコードはスキップされます。nil でなければ、オプショナルの値はアンラップされて `let` の後の定数に値が設定され、中括弧内のブロックでその値を利用できます。
 
-optional の値を扱うもう 1 つの方法として、?? を使用してデフォルトの値を提供します。もし optional の値が nil の場合、代わりにデフォルトの値が使われます。
+オプショナルの値を扱うもう 1 つの方法として、?? を使用してデフォルトの値を提供します。もしオプショナルの値が nil の場合、代わりにデフォルトの値が使われます。
 
 ```swift
 let nickname: String? = nil
@@ -482,7 +482,7 @@ print(triangleAndSquare.triangle.sideLength)
 // "50.0"
 ```
 
-optional な値を扱う場合、 `?` をメソッド、プロパティ、subscript のような操作の前に書きます。もし `?` の前の値が `nil` の場合、`?` の後の処理は全て無視され、その式全体の値は `nil` になります。それ以外は、optional の値はアンラップされて、`?` の後は全てアンラップされた値として実行されます。どちらの場合も、式全体は optinal な値です。
+オプショナルな値を扱う場合、 `?` をメソッド、プロパティ、subscript のような操作の前に書きます。もし `?` の前の値が `nil` の場合、`?` の後の処理は全て無視され、その式全体の値は `nil` になります。それ以外は、オプショナルの値はアンラップされて、`?` の後は全てアンラップされた値として実行されます。どちらの場合も、式全体は optinal な値です。
 
 ```swift
 let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
@@ -728,7 +728,7 @@ do {
 > Experiment  
 > `do` ブロックの中でエラーを throw するコードを追加してみましょう。最初の `catch` ブロックでエラーを処理するためにはどの種類のエラーを throw する必要がありますでしょうか？ 2つ目、3つ目の場合はどうでしょうか？
 
-エラーを処理するもう 1 つの方法は、`try?` を付けて結果を optional に変換することです。もしその関数がエラーを throw する場合、特定のエラーは破棄されて、結果が `nil` になります。そうでなければ、結果は、関数が返す値を内包した optional になります。
+エラーを処理するもう 1 つの方法は、`try?` を付けて結果をオプショナルに変換することです。もしその関数がエラーを throw する場合、特定のエラーは破棄されて、結果が `nil` になります。そうでなければ、結果は、関数が返す値を内包したオプショナルになります。
 
 ```swift
 let printerSuccess = try? send(job: 1884, toPrinter: "Mergenthaler")
@@ -773,7 +773,7 @@ makeArray(repeating: "knock", numberOfTimes: 4)
 class, enum, struct と同じように、generic な関数やメソッドも作成することができます。
 
 ```swift
-// Reimplement the Swift standard library's optional type
+// Swift 標準ライブラリのオプショナル型の再実装
 enum OptionalValue<Wrapped> {
     case none
     case some(Wrapped)

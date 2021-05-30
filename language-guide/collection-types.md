@@ -549,7 +549,7 @@ airports["LHR"] = "London Heathrow"
 
 別の方法として、`updateValue(_:forKey:)` メソッドを使用して、特定のキーのバリューの設定/更新ができます。subscript と同様に `updateValue(_:forKey:)` は、特定のキーのバリューがなければ新しく値を設定し、既にバリューが存在していたら更新します。subscript と違う点として、`updateValue(_:forKey:)` メソッドは、更新後に前の値を返します。こうすることで、更新が実際に起きたかどうかが確認できます。
 
-`updateValue(_:forKey:)` メソッドは、辞書のバリューの型の optional 値を返します。例えば辞書が `String` を保持している場合、このメソッドは `String?`\(optional `String`\)を返します。この optional 値は更新前にバリューが存在していた場合はその値の optional を返し、存在していなかった場合は `nil` を返します:
+`updateValue(_:forKey:)` メソッドは、辞書のバリューの型のオプショナル値を返します。例えば辞書が `String` を保持している場合、このメソッドは `String?`\(オプショナル `String`\)を返します。このオプショナル値は更新前にバリューが存在していた場合はその値のオプショナルを返し、存在していなかった場合は `nil` を返します:
 
 ```swift
 if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
@@ -558,7 +558,7 @@ if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
 // "The old value for DUB was Dublin."
 ```
 
-subscript シンタックスを使用して特定のキーのバリューを取得することもできます。バリューの存在しないキーに対してもリクエストすることが可能で、バリューの型の optional 値を返します。存在しなければ `nil` を返します:
+subscript シンタックスを使用して特定のキーのバリューを取得することもできます。バリューの存在しないキーに対してもリクエストすることが可能で、バリューの型のオプショナル値を返します。存在しなければ `nil` を返します:
 
 ```swift
 if let airportName = airports["DUB"] {

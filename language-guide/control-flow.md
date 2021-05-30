@@ -590,7 +590,7 @@ if let integerValue = possibleIntegerValue {
 
 この例では、`numberSymbol` が `1`〜`4` のラテン語、アラビア語、中国語、タイ語に合致するかどうかをチェックしています。合致した場合、各 case は、`Int?` の `possibleIntegerValue` 変数に適切な数字を設定しています。
 
-`switch` 文の実行完了後、この例では値が見つかったかどうかを判定するのに、オプショナルバインディング（*optional binding*)を使用しています。`possibleIntegerValue` 変数は、optional 型の性質上、`nil` が暗黙的に初期値になります。`switch` の最初の 4 つの case で値 `possibleIntegerValue` に値が設定された場合のみ、オプショナルバインディングは成功します。
+`switch` 文の実行完了後、この例では値が見つかったかどうかを判定するのに、オプショナルバインディング（*optional binding*)を使用しています。`possibleIntegerValue` 変数は、オプショナル型の性質上、`nil` が暗黙的に初期値になります。`switch` の最初の 4 つの case で値 `possibleIntegerValue` に値が設定された場合のみ、オプショナルバインディングは成功します。
 
 上記の例で `Character` 型の値を全部羅列することは現実的ではないので、`default` case で合致しない全ての値を処理します。`default` case では何もする必要がないので、本文には `break` のみを記載しています。`default` case が合致すると、`break` 文は `switch` 文を終了させ、`if let` からコードを継続します。
 
