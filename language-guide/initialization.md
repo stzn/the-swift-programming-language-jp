@@ -873,6 +873,61 @@ if let oneUnnamed = CartItem(name: "", quantity: 1) {
 
 ### Overriding a Failable Initializer(失敗可能イニシャライザのオーバーライド)
 
+他のイニシャライザと同様に、サブクラスでスーパークラスの失敗可能イニシャライザをオーバーライドできます。または、スーパークラスの失敗可能イニシャライザをサブクラスの失敗しないイニシャライザでオーバーライドできます。これにより、スーパークラスの初期化が失敗しても、初期化が失敗しないサブクラスを定義できます。
+
+スーパークラスの失敗可能イニシャライザをサブクラスの失敗しないイニシャライザでオーバーライドする場合、スーパークラスのイニシャライザに委譲する唯一の方法は、スーパークラスの失敗可能イニシャライザの結果を強制アンラップすることです。
+
+> NOTE  
+> 失敗可能イニシャライザを失敗しないイニシャライザでオーバーライドすることはできますが、その逆はできません。
+
+下記の例では、`Document` というクラスを定義しています。このクラスは、空でない文字列値または `nil` のいずれかは可能ですが、空文字列にすることはできない `name` プロパティで初期化できるドキュメントをモデル化します。
+
+```swift
+class Document {
+    var name: String?
+    // このイニシャライザは name が nil の Document を作成します
+    init() {}
+    // このイニシャライザは name が 空文字ではない Document を作成します
+    init?(name: String) {
+        if name.isEmpty { return nil }
+        self.name = name
+    }
+}
+```
+
+次の例では、`AutomaticallyNamedDocument` という `Document` のサブクラスを定義しています。`AutomaticNamedDocument` サブクラスは、`Document` の指定イニシャライザの両方をオーバーライドします。これらのオーバーライドにより、インスタンスが名前なしで初期化された場合、または空の文字列が `init(name:)` イニシャライザに渡された場合に、`AutomaticallyNamedDocument` インスタンスは `"[Untitled]"` を`name` の初期値として持つことが保証されます。
+
+```swift
+class AutomaticallyNamedDocument: Document {
+    override init() {
+        super.init()
+        self.name = "[Untitled]"
+    }
+    override init(name: String) {
+        super.init()
+        if name.isEmpty {
+            self.name = "[Untitled]"
+        } else {
+            self.name = name
+        }
+    }
+}
+```
+
+`AutomaticNamedDocument` は、スーパークラスの失敗可能イニシャライザ(`init?(name:)`)を、失敗しないイニシャライザ(`init(name:)`)でオーバーライドします。`AutomaticNamedDocument` は、スーパークラスとは異なる方法で空の文字列に対処するため、イニシャライザは失敗することがなく、代わりに失敗しないバージョンのイニシャライザを提供します。
+
+イニシャライザで強制アンラップを使用して、サブクラスの失敗しないイニシャライザの実装の一部として、スーパークラスから失敗可能イニシャライザを呼び出すことができます。例えば、以下の `UntitledDocument` サブクラスは常に `"[Untitled]"` という名前で、初期化中にスーパークラスの失敗可能イニシャライザ(`init(name:)`)を使用します:
+
+```swift
+class UntitledDocument: Document {
+    override init() {
+        super.init(name: "[Untitled]")!
+    }
+}
+```
+
+この場合、スーパークラスの `init(name:)` イニシャライザが名前に空の文字列を指定して呼び出された場合、強制アンラップにより実行時エラーが発生しますが、文字列定数で呼び出されているため、イニシャライザが失敗しないことがわかり、この場合は実行時エラーは発生しません。
+
 ### The init! Failable Initializer(init!を使った失敗可能イニシャライザ)
 
 ## Required Initializers(必須イニシャライザ)
