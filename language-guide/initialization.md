@@ -272,7 +272,7 @@ struct Point {
 }
 ```
 
-下記の 3 つの方法のいずれかで、`Rect` 構造体を初期化できます。つまり、`0` で初期化されたデフォルトの `origin` と `size` のプロパティ値を使用するか、特定の原点とサイズを指定するか、特定の中心点とサイズを指定します。これらの初期化オプションは、`Rect` 構造体の定義の一部として 3 つのカスタムイニシャライザで表されます：
+下記の 3 つの方法のいずれかで、`Rect` 構造体を初期化できます。つまり、`0` で初期化されたデフォルトの `origin` と `size` のプロパティ値を使用するか、特定の原点とサイズを指定するか、特定の中心点とサイズを指定します。これらの初期化 optional は、`Rect` 構造体の定義の一部として 3 つのカスタムイニシャライザで表されます：
 
 ```swift
 struct Rect {
@@ -420,7 +420,7 @@ convenience イニシャライザは、値をプロパティ(同じクラスで�
 
 * **フェーズ 2**  
 
-* チェーンの先頭から下に戻ると、チェーン内の指定された各イニシャライザには、インスタンスをさらにカスタマイズするオプションがあります。イニシャライザは、`self` にアクセスして、そのプロパティを変更したり、インスタンスメソッドを呼び出したりできるようになりました
+* チェーンの先頭から下に戻ると、チェーン内の指定された各イニシャライザには、インスタンスをさらにカスタマイズする optional があります。イニシャライザは、`self` にアクセスして、そのプロパティを変更したり、インスタンスメソッドを呼び出したりできるようになりました
 * 最後に、チェーン内の convenience イニシャライザには、インスタンスをカスタマイズして `self` を操作することができます
 
 フェーズ 1 でサブクラスとスーパークラスの初期化呼び出しを探す方法は次のとおりです:
@@ -672,6 +672,77 @@ for item in breakfastList {
 ここでは、3 つの新しい `ShoppingListItem` インスタンスを含む配列リテラルから、`breakfastList` という新しい配列が作成されます。 配列のタイプは `[ShoppingListItem]` だと推論されます。配列が作成された後、配列の先頭にある `ShoppingListItem` の名前が `"[Unnamed]"` から `"Orange juice"` に変更され、購入済みとしてマークされます。配列内の各アイテムの説明を出力すると、デフォルトの状態が期待どおりに設定されていることがわかります。
 
 ## Failable Initializers(失敗可能イニシャライザ)
+
+初期化が失敗する可能性があるクラス、構造体、または列挙型を定義すると便利な場合があります。この失敗は、無効な初期化パラメータ値、必要な外部リソースの欠如、または初期化の成功を妨げるその他の条件によって引き起こされる可能性があります。
+
+失敗する可能性のある初期化条件に対処するには、クラス、構造体、または列挙型定義の一部として、1 つ以上の失敗可能イニシャライザ(*Failable Initializers*)を定義します。`init` キーワードの後に疑問符を置いて、失敗するイニシャライザを記述します(`init?`)。
+
+> NOTE  
+> 同じパラメーターの型と名前で失敗可能イニシャライザと失敗しないイニシャライザを定義することはできません。
+
+失敗可能なイニシャライザは、初期化する型の optional の値を作成します。初期化の失敗がトリガーされる場所を示すために、失敗可能イニシャライザ内に `return nil` を記述します。
+
+> NOTE  
+> 厳密に言えば、イニシャライザは値を返しません。 むしろ、その役割は、初期化が終了するまでに自分自身が完全かつ正しく初期化されることを保証することです。初期化の失敗をトリガーするには `return nil` を記述しますが、初期化の成功を示すために `return` キーワードを使用することはありません。
+
+たとえば、失敗可能イニシャライザは、数値型変換のために実装されます。数値型間の変換で値が正確に維持されるようにするには、`init(exactly:)` イニシャライザを使用します。型変換で値を維持できない場合、イニシャライザは失敗します:
+
+```swift
+let wholeNumber: Double = 12345.0
+let pi = 3.14159
+
+if let valueMaintained = Int(exactly: wholeNumber) {
+    print("\(wholeNumber) conversion to Int maintains value of \(valueMaintained)")
+}
+// "12345.0 conversion to Int maintains value of 12345"
+
+let valueChanged = Int(exactly: pi)
+// valueChanged は Int? で Int ではありません
+
+if valueChanged == nil {
+    print("\(pi) conversion to Int doesn't maintain value")
+}
+// "3.14159 conversion to Int doesn't maintain value"
+```
+
+下記の例では、`Animal` と呼ばれる構造体を定義し、`species` と呼ばれる定数の `String` プロパティを使用しています。`Animal` 構造体は、`species` と呼ばれる単一のパラメーターを持つ失敗可能イニシャライザも定義します。このイニシャライザは、イニシャライザに渡された `species` の値が空の文字列かどうかをチェックします。空の文字列が見つかった場合、初期化の失敗がトリガーされます。それ以外の場合、`species` のプロパティの値が設定され、初期化が成功します:
+
+```swift
+struct Animal {
+    let species: String
+    init?(species: String) {
+        if species.isEmpty { return nil }
+        self.species = species
+    }
+}
+```
+
+この失敗可能イニシャライザを使用して、新しい `Animal` インスタンスの初期化を試み、初期化が成功したかどうかを確認できます:
+
+```swift
+let someCreature = Animal(species: "Giraffe")
+// someCreature は Animal? で Animal ではありません
+
+if let giraffe = someCreature {
+    print("An animal was initialized with a species of \(giraffe.species)")
+}
+// "An animal was initialized with a species of Giraffe"
+```
+
+空の文字列値を失敗可能イニシャライザの `species` パラメータに渡すと、イニシャライザは初期化の失敗をトリガーします:
+
+```swift
+let anonymousCreature = Animal(species: "")
+// anonymousCreature は Animal? で Animal ではありません
+
+if anonymousCreature == nil {
+    print("The anonymous creature couldn't be initialized")
+}
+// "The anonymous creature couldn't be initialized"
+```
+
+> NOTE  
+> 空の文字列値 ("Giraffe" ではなく "" など) のチェックは、optionalの String 値がないことを示す `nil` のチェックとは異なります。 上記の例では、空の文字列 ("") が有効な非 optional の文字列です。 ただし、`Animal` がその `species` プロパティの値として空の文字列を持つことは適切ではありません。 この制限をモデル化するために、空の文字列が見つかった場合、失敗可能イニシャライザは初期化の失敗をトリガーします。
 
 ### Failable Initializers for Enumerations(列挙型の失敗可能イニシャライザ)
 
