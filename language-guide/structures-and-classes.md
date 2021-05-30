@@ -31,7 +31,7 @@ Swift の構造体とクラスには多くの共通点があります。いず�
 
 これらの機能の詳細については、[Inheritance](./inheritance.md)、[Type Casting](./type-casting.md)、[Deinitialization](./deinitialization.md)、[Automatic Reference Counting](./automatic-reference-counting.md)を参照ください。
 
-クラスは追加の機能をサポートしている分、複雑さが増します。一般的なガイドラインとして、構造体の方が扱いやすく推奨されます。クラスは適切または必要な場合にのみ使用しましょう。つまり、実際は、独自に定義するデータ型のほとんどが構造体と列挙型になることを意味します。より詳細な比較は[Choosing Between Structures and Classes](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes)を参照ください。
+クラスは追加の機能をサポートしている分、複雑さが増します。一般的なガイドラインとして、構造体の方が扱いやすく推奨されます。クラスは適切または必要な場合にのみ使用してください。つまり、実際は、独自に定義するデータ型のほとんどが構造体と列挙型になることを意味します。より詳細な比較は[Choosing Between Structures and Classes](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes)を参照ください。
 
 ### Definition Syntax(定義構文)
 

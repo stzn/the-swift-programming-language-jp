@@ -184,7 +184,7 @@ let mapleSyrup = shoppingList.remove(at: 0)
 ```
 
 > NOTE  
-> 配列の既存の境界を超えた index の値にアクセスしたり、変更したりしようとすると、実行時エラーになるでしょう。`count` プロパティと index を比較して、index が妥当かどうかをチェックしましょう。配列は 0 から始まる index 方式なので、妥当な最大のindexは `count - 1` です。しかし、`count` が `0` の時\(配列が空の時\)、妥当な index は存在しません。
+> 配列の既存の境界を超えた index の値にアクセスしたり、変更したりしようとすると、実行時エラーになるでしょう。`count` プロパティと index を比較して、index が妥当かどうかをチェックしてください。配列は 0 から始まる index 方式なので、妥当な最大のindexは `count - 1` です。しかし、`count` が `0` の時\(配列が空の時\)、妥当な index は存在しません。
 
 アイテムが削除された時配列内の隙間は埋められ、index `0` の値は再び `"Six eggs"` になります。
 
@@ -632,7 +632,7 @@ for airportName in airports.values {
 // Airport name: Toronto Pearson
 ```
 
-`Array` インスタンスを引数に受け取る API で辞書のキーとバリューを使いたい場合、`keys` と `values` プロパティを使用して新しい配列を初期化しましょう:
+`Array` インスタンスを引数に受け取る API で辞書のキーとバリューを使いたい場合、`keys` と `values` プロパティを使用して新しい配列を初期化してください:
 
 ```swift
 let airportCodes = [String](airports.keys)

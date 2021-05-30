@@ -136,11 +136,11 @@ func indexIsValid(row: Int, column: Int) -> Bool {
 }
 ```
 
-行列の境界の外にある subscript にアクセスしようとすると、アサーションがトリガーされます。
+行列の境界の外にある subscript にアクセスしようとすると、実行時エラーが発生します。
 
 ```swift
 let someValue = matrix[2, 2]
-// [2, 2] は、行列の境界の外にあるのでアサーションがトリガーされます
+// [2, 2] は、行列の境界の外にあるので実行時エラーが発生します
 ```
 
 ## Type Subscripts(型subscript)
