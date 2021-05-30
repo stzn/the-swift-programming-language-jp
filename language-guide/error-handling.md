@@ -13,6 +13,24 @@
 
 ## Representing and Throwing Errors(エラーの表現とスロー)
 
+Swift では、エラーは `Error` プロトコルに準拠した型の値によって表されます。この空のプロトコルは、エラー処理に型を使用できることを示します。
+
+Swift の列挙型は、関連するエラー条件のグループをモデル化するのに特に適しています。関連する値を使用すると、エラーの性質に関する追加情報を伝達できます。例えば、ゲーム内で自動販売機を操作する場合のエラー状態を表す方法は次のとおりです。
+
+```swift
+enum VendingMachineError: Error {
+    case invalidSelection
+    case insufficientFunds(coinsNeeded: Int)
+    case outOfStock
+}
+```
+
+エラーをスローすると、予期しないことが発生し、通常の実行フローを続行できないことを示すことができます。エラーをスローするには、`throw` 文を使用します。例えば、次のコードはエラーをスローして、自動販売機で 5 枚の追加のコインが必要なことを示します。
+
+```swift
+throw VendingMachineError.insufficientFunds(coinsNeeded: 5)
+```
+
 ## Handling Errors(エラー処理)
 
 ### Propagating Errors Using Throwing Functions(スロー関数を使用したエラーの伝播)
