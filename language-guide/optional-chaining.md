@@ -82,7 +82,7 @@ if let roomCount = john.residence?.numberOfRooms {
 
 ## Defining Model Classes for Optional Chaining(オプショナル連鎖モデルのクラスの定義)
 
-1 階層以上の深さのプロパティ、メソッド、および subscript の呼び出しで optional の連鎖を使用できます。これにより、関連するタイプの複雑なモデル内のサブプロパティへ掘り下げ、それらのプロパティ、メソッド、および subscript にアクセスできるかどうかを確認できます。
+1 階層以上の深さのプロパティ、メソッド、および subscript の呼び出しで optional の連鎖を使用できます。これにより、関連する型の複雑なモデル内のサブプロパティへ掘り下げ、それらのプロパティ、メソッド、および subscript にアクセスできるかどうかを確認できます。
 
 下記のコードスニペットは、複数階層の optional の連鎖の例を含む、後続のいくつかの例で使用する 4 つのモデルクラスを定義します。これらのクラスは、関連するプロパティ、メソッド、および subscript とともに `Room` および `Address` クラスを追加することにより、上記の `Person` および `Residence` モデルを拡張します。
 
@@ -293,8 +293,54 @@ testScores["Brian"]?[0] = 72
 // the "Dave" array is now [91, 82, 84] and the "Bev" array is now [80, 94, 81]
 ```
 
-上記の例では、`String` 型のキーを `Int` 型の配列にマップする `testScores` という辞書を定義しています。 この例では、optional の連鎖を使用して、`"Dave"` 配列の最初の項目を `91` に設定し、`"Bev"` 配列の最初の項目を `1` ずつ増やし、`"Brian"` キーの配列の最初のアイテムを設定しようとします。`testScores` 辞書には `"Dave"` と `"Bev"` のキーが含まれているため、最初の 2 つの呼び出しは成功します。しかし、`testScores` 辞書に `"Brian"` のキーが含まれていないため、3 番目の呼び出しは失敗します。
+上記の例では、`String` 型のキーを `Int` 型の配列にマップする `testScores` という辞書を定義しています。この例では、optional の連鎖を使用して、`"Dave"` 配列の最初の項目を `91` に設定し、`"Bev"` 配列の最初の項目を `1` ずつ増やし、`"Brian"` キーの配列の最初のアイテムを設定しようとします。`testScores` 辞書には `"Dave"` と `"Bev"` のキーが含まれているため、最初の 2 つの呼び出しは成功します。しかし、`testScores` 辞書に `"Brian"` のキーが含まれていないため、3 番目の呼び出しは失敗します。
 
 ## Linking Multiple Levels of Chaining(複数階層の連鎖のリンク)
 
+optional の連鎖の複数の階層を一緒にリンクして、モデル内のより深いプロパティ、メソッド、および subscript に掘り下げることができます。ただし、複数階層の optional の連鎖は、戻り値に optional の階層を追加しません。
+
+別の言い方をすると:
+
+* 取得しようとしている型が optional ではない場合、optional の連鎖により optional になります
+* 取得しようとしている型がすでに optional の場合、連鎖してもそれ以上の optional にはなりません
+
+したがって:
+
+* optional の連鎖を通じて `Int` の値を取得しようとすると、連鎖の階層数に関係なく、常に `Int?` が返されます
+* 同様に、optional の連鎖を通じて `Int?` の値を取得しようとすると、連鎖の階層数に関係なく、常に `Int？` が返されます
+
+下記の例では、`john` の `residence` プロパティの `address` プロパティの `street` プロパティにアクセスしようとしています。ここでは、2 階層分の optional の連鎖を使用して、`residence` と `address` のプロパティを連鎖します。どちらも optional の型です:
+
+```swift
+if let johnsStreet = john.residence?.address?.street {
+    print("John's street name is \(johnsStreet).")
+} else {
+    print("Unable to retrieve the address.")
+}
+// "Unable to retrieve the address."
+```
+
+`john.residence` の値には現在、有効な `Residence` インスタンスが含まれています。ただし、`john.residence.address` の値は現在 `nil` です。このため、`john.residence?.address?.street` への呼び出しは失敗します。
+
+上記の例では、`street` プロパティの値を取得しようとしていることに注目してください。このプロパティの型は `String?` です。したがって、`john.residence?.address?.street` の戻り値も `String?` ですが、根本のプロパティの optional に加えて、2 階層分の optional 連鎖が適用されます。
+
+`john.residence.address` の値として実際の `Address` インスタンスを設定し、住所の `street` プロパティに値を設定すると、複数階層の optional 連鎖を通じて `street` プロパティの値にアクセスできます:
+
+```swift
+let johnsAddress = Address()
+johnsAddress.buildingName = "The Larches"
+johnsAddress.street = "Laurel Street"
+john.residence?.address = johnsAddress
+
+if let johnsStreet = john.residence?.address?.street {
+    print("John's street name is \(johnsStreet).")
+} else {
+    print("Unable to retrieve the address.")
+}
+// "John's street name is Laurel Street."
+```
+
+この例では、`john.residence` の値に現在有効な `Residence` インスタンスが含まれているため、`john.residence` の `address` プロパティを設定する試みは成功します。
+
 ## Chaining on Methods with Optional Return Values(optionalの戻り値を持つメソッドの連鎖)
+
