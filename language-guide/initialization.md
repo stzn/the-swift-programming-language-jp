@@ -786,7 +786,90 @@ if unknownUnit == nil {
 
 ### Failable Initializers for Enumerations with Raw Values(Raw Valueを持つ列挙型の失敗可能イニシャライザ)
 
+Raw Value を持つ列挙型は、適切な Raw Value 型の `rawValue` と呼ばれるパラメータを受け取り、一致する列挙型ケースが見つかった場合はそれを選択するか、一致する値がない場合は初期化の失敗をトリガーする失敗可能イニシャライザ `init?(rawValue:)` を自動的に受け取ります。
+
+上記の `TemperatureUnit` の例を書き直して、`Character` 型の Raw Value を使用し、`init?(rawValue:)` イニシャライザを利用できます:
+
+```swift
+enum TemperatureUnit: Character {
+    case kelvin = "K", celsius = "C", fahrenheit = "F"
+}
+
+let fahrenheitUnit = TemperatureUnit(rawValue: "F")
+if fahrenheitUnit != nil {
+    print("This is a defined temperature unit, so initialization succeeded.")
+}
+// "This is a defined temperature unit, so initialization succeeded."
+
+let unknownUnit = TemperatureUnit(rawValue: "X")
+if unknownUnit == nil {
+    print("This isn't a defined temperature unit, so initialization failed.")
+}
+// "This isn't a defined temperature unit, so initialization failed."
+```
+
 ### Propagation of Initialization Failure(初期化の失敗の伝播)
+
+クラス、構造体、または列挙型の失敗可能イニシャライザは、同じクラス、構造体、または列挙型から別の失敗可能イニシャライザに委譲できます。同様に、サブクラスの失敗可能イニシャライザは、スーパークラスの失敗可能イニシャライザまで委譲できます。
+
+いずれの場合も、初期化が失敗する原因となる別のイニシャライザに委譲すると、初期化プロセス全体がすぐに失敗し、それ以上の初期化コードは実行されません。
+
+> NOTE  
+> 失敗可能イニシャライザから失敗しないイニシャライザに委譲することもできます。他の方法では失敗しない既存の初期化プロセスに失敗する可能性を追加する必要がある場合は、このアプローチを使用します。
+
+下記の例では、`CartItem` という `Product` のサブクラスを定義しています。`CartItem` クラスは、オンラインショッピングカート内のアイテムをモデル化しています。`CartItem` は、`quantity` と呼ばれる定数格納プロパティを導入し、このプロパティが常に少なくとも `1` の値を持つようにします:
+
+```swift
+class Product {
+    let name: String
+    init?(name: String) {
+        if name.isEmpty { return nil }
+        self.name = name
+    }
+}
+
+class CartItem: Product {
+    let quantity: Int
+    init?(name: String, quantity: Int) {
+        if quantity < 1 { return nil }
+        self.quantity = quantity
+        super.init(name: name)
+    }
+}
+```
+
+`CartItem` の失敗可能イニシャライザは、`1` 以上の `quantity` の値を受け取ったかどうかを検証することから始まります。`quantity` が無効な場合、初期化プロセス全体はすぐに失敗し、それ以上の初期化コードは実行されません。同様に、`Product` の失敗可能イニシャライザは `name` の値をチェックし、`name` が空の文字列の場合、イニシャライザプロセスはすぐに失敗します。
+
+`name` が空でなく、`quantity` が 1 以上の `CartItem` インスタンスを作成すると、初期化は成功します:
+
+```swift
+if let twoSocks = CartItem(name: "sock", quantity: 2) {
+    print("Item: \(twoSocks.name), quantity: \(twoSocks.quantity)")
+}
+// "Item: sock, quantity: 2"
+```
+
+`quantity` の値が `0` の `CartItem` インスタンスを作成しようとすると、 `CartItem` のイニシャライザによって初期化が失敗します:
+
+```swift
+if let zeroShirts = CartItem(name: "shirt", quantity: 0) {
+    print("Item: \(zeroShirts.name), quantity: \(zeroShirts.quantity)")
+} else {
+    print("Unable to initialize zero shirts")
+}
+// "Unable to initialize zero shirts"
+```
+
+同様に、`name` の値が空の `CartItem` インスタンスを作成しようとすると、スーパークラスの `Product` イニシャライザによって初期化が失敗します。
+
+```swift
+if let oneUnnamed = CartItem(name: "", quantity: 1) {
+    print("Item: \(oneUnnamed.name), quantity: \(oneUnnamed.quantity)")
+} else {
+    print("Unable to initialize one unnamed product")
+}
+// "Unable to initialize one unnamed product"
+```
 
 ### Overriding a Failable Initializer(失敗可能イニシャライザのオーバーライド)
 
