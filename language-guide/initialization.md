@@ -960,3 +960,62 @@ class SomeSubclass: SomeClass {
 > 継承したイニシャライザで要件を満たすことができる場合、必須イニシャライザの明示的な実装を提供する必要はありません。
 
 ## Setting a Default Property Value with a Closure or Function(クロージャまたは関数を使用したデフォルトのプロパティ値の設定)
+
+格納プロパティのデフォルト値にカスタマイズまたは設定が必要な場合は、クロージャまたはグローバル関数を使用して、そのプロパティにカスタマイズされたデフォルト値を提供できます。プロパティが属する型の新しいインスタンスが初期化されるたびに、クロージャまたは関数が呼び出され、その戻り値がプロパティのデフォルト値として割り当てられます。
+
+これらの種類のクロージャまたは関数は、通常、プロパティと同じ型の一時的な値を作成し、その値を調整して目的の初期状態にしてその値を返し、プロパティのデフォルト値として使用します。
+
+クロージャを使用してデフォルトのプロパティ値を提供する方法の概要を次に示します:
+
+```swift
+class SomeClass {
+    let someProperty: SomeType = {
+        // このクロージャ内に someProperty のデフォルト値を作成します
+        // someValue は SomeType と同じ型である必要があります
+        return someValue
+    }()
+}
+```
+
+クロージャの終了中括弧(`}`)の後に空の括弧(`()`)が続いていることに注目してください。これは Swift にクロージャをすぐに実行するように指示します。これらの括弧を省略すると、クロージャの戻り値ではなく、クロージャ自体をプロパティに割り当てようとします。
+
+> NOTE  
+> クロージャを使用してプロパティを初期化する場合、残りのインスタンスはクロージャが実行された時点ではまだ初期化されていないことに注意してください。 これは、たとえそれらのプロパティにデフォルト値があっても、クロージャ内から他のプロパティ値にアクセスできないことを意味します。 また、暗黙的な `self` プロパティを使用したり、インスタンスのメソッドを呼び出すこともできません。
+
+下記の例では、チェスゲームのボードをモデル化する `Chessboard` という構造体を定義しています。チェスは `8 x 8` の盤上で、白と黒の正方形が交互に並んでいます。
+
+![チェスのボード](./../.gitbook/assets/chessBoard_2x.png)
+
+このゲームボードを表すために、`Chessboard` 構造体には、`boardColors` という 1 つのプロパティがあり、これは 64 の `Bool` 値の配列です。配列内の `true` の値は黒い正方形を表し、`false` の値は白い正方形を表します。配列の最初のアイテムはボードの左上の正方形を表し、配列の最後のアイテムはボードの右下の正方形を表します。
+
+`boardColors` 配列は、色の値を設定するためのクロージャで初期化されています。
+
+```swift
+struct Chessboard {
+    let boardColors: [Bool] = {
+        var temporaryBoard = [Bool]()
+        var isBlack = false
+        for i in 1...8 {
+            for j in 1...8 {
+                temporaryBoard.append(isBlack)
+                isBlack = !isBlack
+            }
+            isBlack = !isBlack
+        }
+        return temporaryBoard
+    }()
+    func squareIsBlackAt(row: Int, column: Int) -> Bool {
+        return boardColors[(row * 8) + column]
+    }
+}
+```
+
+新しい `Chessboard` インスタンスが作成されるたびに、クロージャが実行され、`boardColors` のデフォルト値を計算して返します。上記の例のクロージャは、ボード上の各マスの適切な色を計算して、`temporaryBoard` と呼ばれる一時配列に設定し、セットアップが完了すると、この一時配列をクロージャの戻り値として返します。返された配列値は `boardColors` に保存され、`squareIsBlackAt(row:column:)` ユーティリティ関数でクエリできます。
+
+```swift
+let board = Chessboard()
+print(board.squareIsBlackAt(row: 0, column: 1))
+// "true"
+print(board.squareIsBlackAt(row: 7, column: 7))
+// "false"
+```
