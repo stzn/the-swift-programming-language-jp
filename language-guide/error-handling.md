@@ -238,3 +238,27 @@ let photo = try! loadImage(atPath: "./Resources/John Appleseed.jpg")
 ```
 
 ## Specifying Cleanup Actions(クリーンアップアクションの指定)
+
+`defer` 文を使用して、コードの実行が現在のコードブロックを離れる直前に一連の文を実行します。この文を使用すると、エラーのスロー、`return` や `break` のような文など、実行が現在のコードブロックを離れる方法に関係なく、実行する必要のある必要なクリーンアップを実行できます。例えば、 `defer` 文を使用して、ファイル記述子が閉じられ、手動で割り当てられたメモリが解放されるようにすることができます。
+
+`defer` 文は、現在のスコープが終了するまで実行を延期します。この文は、`defer` キーワードと後で実行される文で構成されます。`defer` 文には、`break` や `return` 文など、またはエラーをスローするなど、文から制御を移すコードを含めることはできません。遅延アクションは、ソースコードに記述された順序とは逆の順序で実行されます。つまり、最初の `defer` 文のコードは最後に実行され、2 番目の `defer` 文のコードは最後から 2 番目に実行されます。ソースコードの順序で最後の `defer` 文が最初に実行されます。
+
+```swift
+func processFile(filename: String) throws {
+    if exists(filename) {
+        let file = open(filename)
+        defer {
+            close(file)
+        }
+        while let line = try file.readline() {
+            // ファイルを使って処理をします
+        }
+        // close(file) がスコープの最後に呼ばれます
+    }
+}
+```
+
+上記の例では、`defer` 文を使用して、`open(_:)` 関数に対応する `close(_:)` への呼び出しがあることを確認しています。
+
+> NOTE  
+> エラー処理コードが含まれていない場合でも、`defer` ステートメントを使用できます。
