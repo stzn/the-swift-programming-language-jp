@@ -7,7 +7,7 @@
 > NOTE  
 > Swift のオプショナルの連鎖は、Objective-C の `nil` のメッセージングに似ていますが、どの型にでも機能し、成功または失敗をチェックできます。
 
-## Optional Chaining as an Alternative to Forced Unwrapping(強制アンラップの代替としてのオプショナル連鎖)
+## Optional Chaining as an Alternative to Forced Unwrapping (強制アンラップの代替としてのオプショナル連鎖)
 
 optional が `nil` 以外の場合、プロパティ、メソッド、または subscript を呼び出す optional の値の後に疑問符(`?`)を配置して、optional の連鎖を指定します。これは、optional の値の後に感嘆符(`!`)を配置して、その値を強制アンラップするのとよく似ています。主な違いは、optional が `nil` の場合、optional の連鎖が失敗するのに対し、強制アンラップは実行時エラーを引き起こすことです。
 
@@ -46,7 +46,7 @@ let roomCount = john.residence!.numberOfRooms
 
 上記のコードは、`john.residence` の値が `nil` 以外の場合に成功し、`roomCount` に適切な部屋数を含む `Int` 値に設定します。ただし、上に示したように、このコードは、`residence` が `nil` の場合、常に実行時エラーを引き起こします。
 
-optional の連鎖は、`numberOfRooms` の値にアクセスする別の方法を提供します。 optional の連鎖を使用するには、感嘆符(`!`)の代わりに疑問符(`?`)を使用します:
+optional の連鎖は、`numberOfRooms` の値にアクセスする別の方法を提供します。optional の連鎖を使用するには、感嘆符(`!`)の代わりに疑問符(`?`)を使用します:
 
 ```swift
 if let roomCount = john.residence?.numberOfRooms {
@@ -82,7 +82,7 @@ if let roomCount = john.residence?.numberOfRooms {
 
 ## Defining Model Classes for Optional Chaining(オプショナル連鎖モデルのクラスの定義)
 
-1 階層以上の深さのプロパティ、メソッド、および subscript の呼び出しで optional の連鎖を使用できます。 これにより、関連するタイプの複雑なモデル内のサブプロパティへ掘り下げ、それらのプロパティ、メソッド、および subscript にアクセスできるかどうかを確認できます。
+1 階層以上の深さのプロパティ、メソッド、および subscript の呼び出しで optional の連鎖を使用できます。これにより、関連するタイプの複雑なモデル内のサブプロパティへ掘り下げ、それらのプロパティ、メソッド、および subscript にアクセスできるかどうかを確認できます。
 
 下記のコードスニペットは、複数階層の optional の連鎖の例を含む、後続のいくつかの例で使用する 4 つのモデルクラスを定義します。これらのクラスは、関連するプロパティ、メソッド、および subscript とともに `Room` および `Address` クラスを追加することにより、上記の `Person` および `Residence` モデルを拡張します。
 
@@ -184,7 +184,7 @@ john.residence?.address = someAddress
 
 この例では、`john.residence` が現在 `nil` のため、`john.residence` の `address` のプロパティを設定に失敗します。
 
-割り当ては optional の連鎖の一部です。つまり、`=` 演算子の右側のコードはどれも評価されません。前の例では、定数へのアクセスには副作用がないため、`someAddress` が評価されないことを確認するのは簡単ではありません。下記のリストは同じ割り当てを行いますが、関数を使用して住所を作成します。この関数は、値を返す前に `"Function was called."` と出力します。これにより、`=` 演算子の右側が評価されたかどうかを確認できます。
+割り当ては optional の連鎖の一部です。つまり、`=` 演算子の右側のコードはどれも評価されません。前の例では、定数へのアクセスには副作用がないため、`someAddress` が評価されないことを確認するのは簡単ではありません。下記のリストは同じ割り当てを行いますが、関数を使用して住所を作成します。この関数は、値を返す前に `"Function was called."` と出力します。これにより、`=` 演算子の右側が評価されたかどうかを確認できます:
 
 ```swift
 func createAddress() -> Address {
@@ -202,6 +202,40 @@ john.residence?.address = createAddress()
 何も出力されないため、`createAddress()` 関数が呼び出されていないことがわかります。
 
 ## Calling Methods Through Optional Chaining(オプショナル連鎖を通したメソッドの呼び出し)
+
+optional の連鎖を使用して、optional の値でメソッドを呼び出し、そのメソッドの呼び出しが成功したかどうかを確認できます。そのメソッドが戻り値を定義していなくても、これを行うことができます。
+
+`Residence` クラスの `printNumberOfRooms()` メソッドは、`numberOfRooms` の現在の値を出力します。メソッドの外観は次のとおりです:
+
+```swift
+func printNumberOfRooms() {
+    print("The number of rooms is \(numberOfRooms)")
+}
+```
+
+このメソッドは戻り値の型を指定しません。ただし、[Functions Without Return Values](./functions.md#functions-without-return-values戻り値のない関数)で説明されているように、戻り型のない関数とメソッドには、暗黙的な戻り型 `Void` があります。これは、`()` の値、または空のタプルを返すことを意味します。
+
+optional の連鎖を使用して optional の値でこのメソッドを呼び出す場合、メソッドの戻り値の型は `Void` ではなく `Void?` になります。これにより、メソッド自体が戻り値を定義していなくても、`if` 文を使用して、`printNumberOfRooms()` メソッドを呼び出すことができたかどうかを確認できます。`printNumberOfRooms` の呼び出しからの戻り値を `nil` と比較して、メソッド呼び出しが成功したかどうかを確認します:
+
+```swift
+if john.residence?.printNumberOfRooms() != nil {
+    print("It was possible to print the number of rooms.")
+} else {
+    print("It was not possible to print the number of rooms.")
+}
+// "It was not possible to print the number of rooms."
+```
+
+optional の連鎖によってプロパティを設定しようとする場合も同様です。optional の連鎖によるプロパティへのアクセスの上記の例では、residence プロパティが `nil` にもかかわらず、`john.residence` のアドレス値を設定しようとしています。optional の連鎖によってプロパティを設定しようとすると、`Void?` 型の値が返されます。これにより、`nil` と比較して、プロパティが正常に設定されたかどうかを確認できます:
+
+```swift
+if (john.residence?.address = someAddress) != nil {
+    print("It was possible to set the address.")
+} else {
+    print("It was not possible to set the address.")
+}
+// "It was not possible to set the address."
+```
 
 ## Accessing Subscripts Through Optional Chaining(オプショナル連鎖を通したsubscriptへのアクセス)
 
