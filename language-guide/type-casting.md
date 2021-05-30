@@ -126,3 +126,74 @@ for item in library {
 > キャストは実際にインスタンスを変更したり、その値を変更したりはしません。基になるインスタンスは同じままです。キャストした型のインスタンスとして扱われ、アクセスされるだけです。
 
 ## Type Casting for Any and AnyObject(AnyおよびAnyObject の型キャスト)
+
+Swift は、型を特定できない型を操作するための 2 つの特別な型を提供してます。
+
+* `Any` は、関数型を含むあらゆる型のインスタンスを表すことができます
+* `AnyObject` は、任意のクラス型のインスタンスを表すことができます
+
+`Any` および `AnyObject` は、それらが提供する動作と機能が明示的に必要な場合にのみ使用してください。コードで処理することを想定している型については、常に明確にすることをお勧めします。
+
+`Any` を使用して、関数型と非クラス型を含むさまざまな型の組み合わせを処理する例を次に示します。この例では、`Any` 型の値を格納できる `things` という配列を作成します:
+
+```swift
+var things = [Any]()
+
+things.append(0)
+things.append(0.0)
+things.append(42)
+things.append(3.14159)
+things.append("hello")
+things.append((3.0, 5.0))
+things.append(Movie(name: "Ghostbusters", director: "Ivan Reitman"))
+things.append({ (name: String) -> String in "Hello, \(name)" })
+```
+
+`things` 配列には、2 つの `Int` 値、2 つの `Double` 値、`String` 値、`(Double、Double)` 型のタプル、映画"Ghostbusters"、および `String` 値を受け取り別の `String` 値を返すクロージャ式、が含まれます。
+
+`Any` 型または `AnyObject` 型なことがわかっている定数または変数の特定の型を検出するには、`switch` 文のケースで `is` または `as` パターンを使用できます。下記の例では、`things` 配列内の項目を繰り返し処理し、`switch` 文を使用して各項目の型を照会します。`switch` 文のいくつかのケースは、一致した値を指定された型の定数にバインドして、その値を出力できるようにしています:
+
+```swift
+for thing in things {
+    switch thing {
+    case 0 as Int:
+        print("zero as an Int")
+    case 0 as Double:
+        print("zero as a Double")
+    case let someInt as Int:
+        print("an integer value of \(someInt)")
+    case let someDouble as Double where someDouble > 0:
+        print("a positive double value of \(someDouble)")
+    case is Double:
+        print("some other double value that I don't want to print")
+    case let someString as String:
+        print("a string value of \"\(someString)\"")
+    case let (x, y) as (Double, Double):
+        print("an (x, y) point at \(x), \(y)")
+    case let movie as Movie:
+        print("a movie called \(movie.name), dir. \(movie.director)")
+    case let stringConverter as (String) -> String:
+        print(stringConverter("Michael"))
+    default:
+        print("something else")
+    }
+}
+
+// zero as an Int
+// zero as a Double
+// an integer value of 42
+// a positive double value of 3.14159
+// a string value of "hello"
+// an (x, y) point at 3.0, 5.0
+// a movie called Ghostbusters, dir. Ivan Reitman
+// Hello, Michael
+```
+
+> NOTE  
+> Any 型は、オプショナルの型を含む任意の型の値を表します。`Any` 型の値が期待されているところにオプショナル値を使用すると、Swift は警告を出します。本当にオプショナルの値を `Any` 値として使用する必要がある場合は、下記に示すように、`as` 演算子を使用して、オプショナルを `Any` に明示的にキャストできます。  
+>
+> ```swift
+> let optionalNumber: Int? = 3
+> things.append(optionalNumber)        // Warning
+> things.append(optionalNumber as Any) // No warning
+> ```
