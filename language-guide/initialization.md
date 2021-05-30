@@ -554,6 +554,123 @@ print("Hoverboard: \(hoverboard.description)")
 
 ### Designated and Convenience Initializers in Action(指定とcovenience イニシャライザの挙動)
 
+次の例は、指定イニシャライザ、convenience イニシャライザ、および自動イニシャライザの継承の動作を示しています。この例では、`Food`、`RecipeIngredient`、および `ShoppingListItem` という 3 つのクラスの階層を定義し、それらのイニシャライザがどのように相互作用するかを示します。
+
+階層の基本クラスは `Food` と呼ばれ、食品の名前をカプセル化するシンプルなクラスです。`Food` クラスは、`name` という単一の `String` プロパティを導入し、`Food` インスタンスを作成するために 2 つのイニシャライザを提供します。
+
+```swift
+class Food {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+    convenience init() {
+        self.init(name: "[Unnamed]")
+    }
+}
+```
+
+次の図は、`Food` クラスのイニシャライザのチェーンを示しています。
+
+![Foodクラスのイニシャライザのチェーン](./../.gitbook/assets/initializersExample01_2x.png)
+
+クラスにはデフォルトでメンバーごとのイニシャライザ(*memberwise initializer*)がないため、`Food` クラスは、`name` という単一の引数を取る指定イニシャライザを提供します。このイニシャライザを使用して、特定の名前で新しい `Food` インスタンスを作成できます。
+
+```swift
+let namedMeat = Food(name: "Bacon")
+// namedMeat の name は "Bacon"
+```
+
+`Food` クラスの `init(name: String)` イニシャライザは、指定イニシャライザとして提供されています。これは、新しい `Food` インスタンスの全ての格納プロパティが完全に初期化されているることを保証するためです。`Food` クラスにはスーパークラスがないため、`init(name: String)` イニシャライザは、初期化を完了するために `super.init()` を呼び出す必要はありません。
+
+`Food` クラスは、引数のない convenience イニシャライザ `init()` も提供します。`init()` イニシャライザは、`[Unnamed]` のという `name` の値を使って `Food` クラスの `init(name: String)` に委譲することで、新しい食品にデフォルトのプレースホルダー名を提供します。
+
+```swift
+let mysteryMeat = Food()
+// mysteryMeat の name は "[Unnamed]"
+```
+
+階層の 2 番目のクラスは、`RecipeIngredient` と呼ばれる `Food` のサブクラスです。`RecipeIngredient` クラスは、料理レシピの材料をモデル化します。これは、(`Food` から継承する `name` プロパティに加えて) `amount` という `Int` プロパティを導入し、`RecipeIngredient` インスタンスを作成するための 2 つのイニシャライザを定義します。
+
+```swift
+class RecipeIngredient: Food {
+    var quantity: Int
+    init(name: String, quantity: Int) {
+        self.quantity = quantity
+        super.init(name: name)
+    }
+    override convenience init(name: String) {
+        self.init(name: name, quantity: 1)
+    }
+}
+```
+
+次の図は、`RecipeIngredient` クラスのイニシャライザのチェーンを示しています。
+
+![RecipeIngredientクラスのイニシャライザのチェーン](./../.gitbook/assets/initializersExample02_2x.png)
+
+`RecipeIngredient` クラスには、単一の指定イニシャライザ `init(name: String, amount: Int)` があり、これを使用して新しい `RecipeIngredient` インスタンスの全てのプロパティを設定できます。このイニシャライザは、渡された `quantity` 引数を `quantity` プロパティに割り当てることによって開始します。これは、`RecipeIngredient` によって導入された唯一の新しいプロパティです。その後、イニシャライザは `Food` クラスの `init(name: String)` イニシャライザに委譲します。このプロセスは、上記の[Two-Phase Initialization](#two-phase-initializationイニシャライザの-2-段階)の初期化の安全性チェック 1 を満たしています。
+
+`RecipeIngredient` は、名前だけで `RecipeIngredient` インスタンスを作成するために使用される convenience イニシャライザ `init(name: String)` も定義します。この convenience イニシャライザは、数量を `1` と想定して、明示的に数量を指定せずに `RecipeIngredient` インスタンスを作成します。この convenience イニシャライザの定義により、`RecipeIngredient` インスタンスの作成がより迅速かつ便利になり、単一量の `RecipeIngredient` インスタンスを複数作成する際にコードの重複が回避できます。この convenience イニシャライザは、単にクラスの指定イニシャライザに委譲し、`quantity` に `1` を渡します。
+
+`RecipeIngredient` によって提供される `init(name: String)` convenience イニシャライザは、`Food` の `init(name: String)` 指定イニシャライザと同じパラメータを受け取ります。つまり、この convenience イニシャライザはスーパークラスから指定イニシャライザをオーバーライドするため、`override` 修飾子を付ける必要があります([Initializer Inheritance and Overriding](#initializer-inheritance-and-overridingイニシャライザの継承とオーバーライド)を参照)。
+
+`RecipeIngredient` は、convenience イニシャライザとして `init(name: String)` イニシャライザを提供していますが、さらにそのスーパークラスの指定イニシャライザの全ての実装を提供しています。したがって、`RecipeIngredient` は、そのスーパークラスの convenience イニシャライザも全て自動的に継承します。
+
+この例では、`RecipeIngredient` のスーパークラスは `Food` で、`init()` という名前の convenience イニシャライザが 1 つあります。したがって、このイニシャライザは `RecipeIngredient` によって継承されます。継承されたバージョンの `init()` は、`Food` バージョンではなく `RecipeIngredient` バージョンの `init(name：String)` に委譲することを除いて、`Food` バージョンとまったく同じように機能します。
+
+これらの 3 つの全てのイニシャライザを使用して、新しい `RecipeIngredient` インスタンスを作成できます:
+
+```swift
+let oneMysteryItem = RecipeIngredient()
+let oneBacon = RecipeIngredient(name: "Bacon")
+let sixEggs = RecipeIngredient(name: "Eggs", quantity: 6)
+```
+
+階層の 3 番目の最後のクラスは、`ShoppingListItem` と呼ばれる `RecipeIngredient` のサブクラスです。`ShoppingListItem` クラスは、ショッピングリストに表示されるレシピの材料をモデル化しています。
+
+ショッピングリストの全てのアイテムは、「未購入」として始まります。これを表すために、`ShoppingListItem` には、`purchased` というブール型プロパティが導入されており、デフォルト値は `false` です。`ShoppingListItem` は、`ShoppingListItem` インスタンスのテキスト説明を提供する `description` に計算プロパティも追加しています。
+
+```swift
+class ShoppingListItem: RecipeIngredient {
+    var purchased = false
+    var description: String {
+        var output = "\(quantity) x \(name)"
+        output += purchased ? " ✔" : " ✘"
+        return output
+    }
+}
+```
+
+> NOTE  
+> `ShoppingListItem` は、`purchased` の初期値を提供するイニシャライザを定義しません。これは、(ここでモデル化されている)ショッピングリスト内のアイテムは常に未購入から始まるためです。
+
+導入する全てのプロパティにデフォルト値を提供し、それ自体はイニシャライザを定義しないため、`ShoppingListItem` は全ての指定イニシャライザと convenience イニシャライザをスーパークラスから自動的に継承します。
+
+次の図は、3 つのクラス全てのイニシャライザのチェーンの全体を示しています。
+
+![3 つのクラスのイニシャライザのチェーン](./../.gitbook/assets/initializersExample03_2x.png)
+
+継承した 3 つのイニシャライザ全てを使用して、新しい `ShoppingListItem` インスタンスを作成できます。
+
+```swift
+var breakfastList = [
+    ShoppingListItem(),
+    ShoppingListItem(name: "Bacon"),
+    ShoppingListItem(name: "Eggs", quantity: 6),
+]
+breakfastList[0].name = "Orange juice"
+breakfastList[0].purchased = true
+for item in breakfastList {
+    print(item.description)
+}
+// 1 x Orange juice ✔
+// 1 x Bacon ✘
+// 6 x Eggs ✘
+```
+
+ここでは、3 つの新しい `ShoppingListItem` インスタンスを含む配列リテラルから、`breakfastList` という新しい配列が作成されます。 配列のタイプは `[ShoppingListItem]` だと推論されます。配列が作成された後、配列の先頭にある `ShoppingListItem` の名前が `"[Unnamed]"` から `"Orange juice"` に変更され、購入済みとしてマークされます。配列内の各アイテムの説明を出力すると、デフォルトの状態が期待どおりに設定されていることがわかります。
+
 ## Failable Initializers(失敗可能イニシャライザ)
 
 ### Failable Initializers for Enumerations(列挙型の失敗可能イニシャライザ)
