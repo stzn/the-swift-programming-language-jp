@@ -757,4 +757,3 @@ precondition が失敗したことを示すために、[preconditionFailure\(\_:
 
 > NOTE もし\(`-Ounchecked`\)モードでコンパイルした場合、precondition はチェックされません。コンパイラはprecondition を常に `true` と見なしてコードの最適化を行います。一方で、`fatalError(_:file:line:)` 関数は最適化の設定をしても、常に実行を中断します。  
 > `fatalError(_:file:line:)` 関数は、試作段階や開発の初期段階で、まだ未実装であることを示すためのスタブとして使用することができます\(`fatalError("Unimplemented")` と書くなど\)。fatal error はコードの最適化がされないため、assertion と precondition とは異なり、もしこのスタブメソッドに遭遇した場合は、確実に実行が中断させることができます
-
