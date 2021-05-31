@@ -165,6 +165,21 @@ extension Int {
 
 ### Mutating Instance Methods(mutatingインスタンスメソッド)
 
+拡張機能を使用して追加されたインスタンスメソッドは、インスタンス自体を変更することもできます。`self` またはそのプロパティを変更する構造体および列挙型メソッドは、元の実装のメソッドを変更するのと同じように、インスタンスメソッドを `mutating` としてマークする必要があります。
+
+下記の例では、`Int` 型に元の値を二乗する `square` と呼ばれる新しい `mutating` メソッドを追加しています:
+
+```swift
+extension Int {
+    mutating func square() {
+        self = self * self
+    }
+}
+var someInt = 3
+someInt.square()
+// someInt は 9
+```
+
 ## Subscripts
 
 ## Nested Types(ネストされた型)
