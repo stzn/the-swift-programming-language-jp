@@ -138,6 +138,31 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0),
 
 ## Methods(メソッド)
 
+拡張機能は、新しいインスタンスメソッドと型メソッドを既存の型に追加できます。次の例では、`repetitions` という新しいインスタンスメソッドを `Int` 型に追加しています:
+
+```swift
+extension Int {
+    func repetitions(task: () -> Void) {
+        for _ in 0..<self {
+            task()
+        }
+    }
+}
+```
+
+`repetitions(task:)` メソッドは、`() -> Void` 型の単一の引数を受け取ります。これは、引数がなく、値を返さない関数を示します。
+
+`repetitions(task:)` メソッドを呼び出して、任意の回数のタスクを繰り返し実行できます:
+
+```swift
+3.repetitions {
+    print("Hello!")
+}
+// Hello!
+// Hello!
+// Hello!
+```
+
 ### Mutating Instance Methods(mutatingインスタンスメソッド)
 
 ## Subscripts
