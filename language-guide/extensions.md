@@ -182,4 +182,39 @@ someInt.square()
 
 ## Subscripts
 
+拡張機能は、既存の型に新しい subscript を追加できます。この例では、`Int` 型に整数の subscript を追加します。この `subscript[n]` は、数値の右から `n` 桁の `10` 進数を返します。
+
+* `123456789[0]` は `9` を返します
+* `123456789[1]` は `8` を返します
+
+…など:
+
+```swift
+extension Int {
+    subscript(digitIndex: Int) -> Int {
+        var decimalBase = 1
+        for _ in 0..<digitIndex {
+            decimalBase *= 10
+        }
+        return (self / decimalBase) % 10
+    }
+}
+746381295[0]
+// 5 を返します
+746381295[1]
+// 9 を返します
+746381295[2]
+// 2 を返します
+746381295[8]
+// 7 を返します
+```
+
+要求されたインデックスに対して十分な桁がない場合、subscript の実装は、番号の左側にゼロが埋め込まれているかのように、`0` を返します。
+
+```swift
+746381295[9]
+// 0 を返します
+0746381295[9]
+```
+
 ## Nested Types(ネストされた型)
