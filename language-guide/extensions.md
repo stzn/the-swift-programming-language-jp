@@ -45,6 +45,41 @@ extension SomeType: SomeProtocol, AnotherProtocol {
 
 ## Computed Properties(計算プロパティ)
 
+拡張機能は、計算インスタンスプロパティと計算型プロパティを既存の型に追加できます。この例では、5 つの計算インスタンスプロパティを Swift の `Double` 型に追加して、距離単位を使用するための基本的な機能を提供します。
+
+```swift
+extension Double {
+    var km: Double { return self * 1_000.0 }
+    var m: Double { return self }
+    var cm: Double { return self / 100.0 }
+    var mm: Double { return self / 1_000.0 }
+    var ft: Double { return self / 3.28084 }
+}
+let oneInch = 25.4.mm
+print("One inch is \(oneInch) meters")
+// "One inch is 0.0254 meters"
+let threeFeet = 3.ft
+print("Three feet is \(threeFeet) meters")
+// "Three feet is 0.914399970739201 meters"
+```
+
+これらの計算プロパティは、`Double` 値を特定の長さの単位と見なしています。計算プロパティとして実装されていますが、ドット構文(`.`)を使用して浮動小数点リテラルの後に追加して使用できます。
+
+この例では、`Double` 値 `1.0` が「1 メートル」を表しているため、計算プロパティ `m` は `self` を返します。式 `1.m` は、`Double` 値 `1.0` を計算していることを表しています。
+
+他の単位では、メートルで測定された値として表現するために何らかの変換が必要です。1 キロメートルは 1,000 メートルに等しいので、計算プロパティ `km` は値に `1_000.00` を掛けてメートル単位の数値に変換します。同様に、メートルは 3.28084 フィート、に等しいので、 計算プロパティ `ft` は、基になる `Double` 値を `3.28084` で除算して、フィートからメートルに変換します。
+
+これらのプロパティは読み取り専用の計算プロパティのため、簡潔にするために `get` キーワードなしで表されています。それらの戻り値は `Double` 型で、`Double` が使用できるところでは、計算に使用することができます：
+
+```swift
+let aMarathon = 42.km + 195.m
+print("A marathon is \(aMarathon) meters long")
+// "A marathon is 42195.0 meters long"
+```
+
+> NOTE  
+> 拡張機能は新しい計算プロパティを追加できますが、格納プロパティを追加したり、既存のプロパティにプロパティオブザーバを追加したりすることはできません。
+
 ## Initializers(イニシャライザ)
 
 ## Methods(メソッド)
