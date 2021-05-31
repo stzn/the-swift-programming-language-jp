@@ -82,6 +82,60 @@ print("A marathon is \(aMarathon) meters long")
 
 ## Initializers(イニシャライザ)
 
+拡張機能は、既存の型に新しいイニシャライザを追加できます。これにより、他の型を拡張して、独自のカスタム型を初期化引数として受け入れたり、型の元の実装の一部として含まれていなかった追加の初期化オプションを提供したりできます。
+
+拡張機能は、新しい convenience イニシャライザをクラスに追加できますが、新しい指定イニシャライザまたはデイニシャライザをクラスに追加することはできません。指定イニシャライザとデイニシャライザは、常に元のクラス実装によって提供される必要があります。
+
+拡張機能を使用して、全ての格納プロパティの既定値を提供し、カスタムイニシャライザを定義しない値型にイニシャライザを追加する場合は、拡張機能のイニシャライザ内からその値型の既定のイニシャライザとメンバーごとのイニシャライザを呼び出すことができます。[Initializer Delegation for Value Types](./initialization.md#initializer-delegation-for-value-types値型のイニシャライザの委譲)で説明されているように、値型の元の実装の一部としてイニシャライザを作成した場合、これは当てはまりません。
+
+別のモジュールで宣言された構造体にイニシャライザを追加する場合、新しいイニシャライザは、定義モジュールからイニシャライザを呼び出すまで、`self` にアクセスできません。
+
+下記の例では、幾何学的な長方形を表す独自の `Rect` 構造体を定義しています。この例では、`Size` と `Point` という 2 つの補助的な構造体も定義されており、どちらも全てのプロパティにデフォルト値 `0.0` を提供します:
+
+```swift
+struct Size {
+    var width = 0.0, height = 0.0
+}
+struct Point {
+    var x = 0.0, y = 0.0
+}
+struct Rect {
+    var origin = Point()
+    var size = Size()
+}
+```
+
+`Rect` 構造体はその全てのプロパティに既定値を提供するため、[Default Initializers](./initialization.md#default-initializersデフォルトイニシャライザ)で説明されているように、既定のイニシャライザとメンバーごとのイニシャライザを自動的に受け取ります。これらのイニシャライザを使用して、新しい `Rect` インスタンスを作成できます:
+
+```swift
+let defaultRect = Rect()
+let memberwiseRect = Rect(origin: Point(x: 2.0, y: 2.0),
+   size: Size(width: 5.0, height: 5.0))
+```
+
+`Rect` 構造を拡張して、特定の中心点とサイズを取る追加のイニシャライザを提供できます:
+
+```swift
+extension Rect {
+    init(center: Point, size: Size) {
+        let originX = center.x - (size.width / 2)
+        let originY = center.y - (size.height / 2)
+        self.init(origin: Point(x: originX, y: originY), size: size)
+    }
+}
+```
+
+この新しいイニシャライザは、提供された `center` と `size` の値に基づいて適切な原点を計算することから始まります。次に、イニシャライザは、構造体が自動で受け取るメンバーごとのイニシャライザ `init(origin:size:)` を呼び出します。これは、適切なプロパティに新しい原点とサイズの値を格納します:
+
+```swift
+let centerRect = Rect(center: Point(x: 4.0, y: 4.0),
+                      size: Size(width: 3.0, height: 3.0))
+// centerRect の origin は (2.5, 2.5) で size は (3.0, 3.0) です
+```
+
+> NOTE  
+> 拡張機能を備えた新しいイニシャライザを提供する場合でも、イニシャライザが完了したら、各インスタンスが完全に初期化されていなければなりません。
+
 ## Methods(メソッド)
 
 ### Mutating Instance Methods(mutatingインスタンスメソッド)
