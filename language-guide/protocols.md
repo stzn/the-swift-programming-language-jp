@@ -101,6 +101,49 @@ var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
 
 ## Method Requirements(メソッド要件)
 
+プロトコルでは、特定のインスタンスメソッドと型に準拠することで型メソッドの実装が必要になる場合があります。これらのメソッドは、通常のインスタンスおよび型メソッドとまったく同じ方法でプロトコルの定義の一部として記述されますが、中括弧(`{}`)やメソッド本文はありません。通常のメソッドと同じ規則に従って、可変個引数を使用できます。ただし、プロトコルの定義内のメソッドの引数にデフォルト値を指定することはできません。
+
+型プロパティの要件と同様に、プロトコルで定義するときは、常に型メソッドの要件の前に `static` キーワードを付けます。これは、クラスによって実装されるときに、型メソッドの要件に `class` または `static` キーワードが付いている場合にも当てはまります:
+
+```swift
+protocol SomeProtocol {
+    static func someTypeMethod()
+}
+```
+
+次の例では、単一のインスタンスメソッド要件を持つプロトコルを定義しています:
+
+```swift
+protocol RandomNumberGenerator {
+    func random() -> Double
+}
+```
+
+このプロトコル `RandomNumberGenerator` では、準拠するには `random` と呼ばれるインスタンスメソッドが必要です。このインスタンスメソッドは、呼び出されるたびに `Double` 値を返します。プロトコルの一部として指定されていませんが、この値は `0.0` から `1.0`(ただし、`1.0` を含まない) までの数値が想定されています。
+
+`RandomNumberGenerator` プロトコルは、各乱数がどのように生成されるかについて何も指定していません。単に、ジェネレータが新しい乱数を生成する標準的な方法を提供することを要求するだけです。
+
+下記は、`RandomNumberGenerator` プロトコルに準拠するクラスの実装です。このクラスは、線形合同法発生器として知られる疑似乱数発生器アルゴリズムを実装します:
+
+```swift
+class LinearCongruentialGenerator: RandomNumberGenerator {
+    var lastRandom = 42.0
+    let m = 139968.0
+    let a = 3877.0
+    let c = 29573.0
+    func random() -> Double {
+        lastRandom = ((lastRandom * a + c)
+            .truncatingRemainder(dividingBy:m))
+        return lastRandom / m
+    }
+}
+let generator = LinearCongruentialGenerator()
+print("Here's a random number: \(generator.random())")
+// "Here's a random number: 0.3746499199817101"
+print("And another one: \(generator.random())")
+// "And another one: 0.729023776863283"
+```
+
 ## Mutating Method Requirements(mutatingメソッド要件)
 
 ## Initializer Requirements(イニシャライザ要件)
