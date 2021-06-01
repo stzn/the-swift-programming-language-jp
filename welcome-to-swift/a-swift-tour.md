@@ -142,7 +142,7 @@ if let name = optionalName {
 ```
 
 > Experiment  
-> optionalName を nil に変えてみましょう。 どんな greeting が出力されるでしょうか？ optionalName が nil の場合に別の greeting が出力されるように `else` を追加してみましょう。
+> optionalName を nil に変えてみましょう。どんな greeting が出力されるでしょうか？ optionalName が nil の場合に別の greeting が出力されるように `else` を追加してみましょう。
 
 もしオプショナルの値が nil の場合、条件は false になり、中括弧内のコードはスキップされます。nil でなければ、オプショナルの値はアンラップされて `let` の後の定数に値が設定され、中括弧内のブロックでその値を利用できます。
 
@@ -234,7 +234,7 @@ print(total)
 
 ## Functions and Closures(関数とクロージャ）
 
-関数の定義には `func` を使います。\(\)の中に引数のリスト、その前に関数の名前を付けることで関数の呼び出します。 また、`->` の後ろに戻り値の型を指定して、関数名や引数と区別します。
+関数の定義には `func` を使います。\(\)の中に引数のリスト、その前に関数の名前を付けることで関数の呼び出します。また、`->` の後ろに戻り値の型を指定して、関数名や引数と区別します。
 
 ```swift
 func greet(person: String, day: String) -> String {
@@ -445,7 +445,7 @@ print(triangle.sideLength)
 // "3.3000000000000003"
 ```
 
-`perimeter` の setter の中で、新しい値は暗黙的に `newValue` という名前になります。 `set` の後に丸括弧\(\(\)\)で囲んで明示的に指定することもできます。
+`perimeter` の setter の中で、新しい値は暗黙的に `newValue` という名前になります。`set` の後に丸括弧\(\(\)\)で囲んで明示的に指定することもできます。
 
 `EquilateralTriangle` class のイニシャライザは 3 つの異なるステップがあります。
 
@@ -640,7 +640,7 @@ let bDescription = b.simpleDescription
 > Experiment  
 > `ExampleProtocolrank` にもう1つの要件を追加してみましょう。`SimpleClass` と `SimpleStructure` にどういう変更が必要になりますでしょうか？
 
-struct `SimpleStructure` を変更するメソッドに `mutating` キーワードが付いていることに注目してください。 class のメソッドは class を変更することが許されているため、`mutating` を付ける必要はありません。
+struct `SimpleStructure` を変更するメソッドに `mutating` キーワードが付いていることに注目してください。class のメソッドは class を変更することが許されているため、`mutating` を付ける必要はありません。
 
 既存の型に新しい機能\(メソッドや計算プロパティ\)を追加する場合に、`extension` を使います。他のファイルやモジュールで宣言された型やライブラリやフレームワークからインポートした型に protocol を準拠させる場合にも `extension` を使います。
 
