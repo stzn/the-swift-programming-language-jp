@@ -489,7 +489,61 @@ print(somethingTextRepresentable.textualDescription)
 > NOTE  
 > 要件を満たすだけで、型が自動的にプロトコルに準拠するわけではありません。プロトコルへの準拠を常に明示的に宣言する必要があります。
 
-## Adopting a Protocol Using a Synthesized Implementation(同期的な実装を使用したプロトコル準拠)
+## Adopting a Protocol Using a Synthesized Implementation(既定実装を使用したプロトコル準拠)
+
+Swift は、多くのシンプルなケースで、`Equatable`、`Hashable`、および `Comparable` のプロトコル準拠を自動的に提供できます。この既定実装を使用すると、プロトコル要件を自分で実装するために、繰り返しコードを記述する必要がなくなります。
+
+Swift は、次の種類の独自の型に対して `Equatable` の既定実装を提供します。
+
+* `Equatable` プロトコルに準拠した格納プロパティのみの構造体
+* 関連値のが `Equatable` プロトコルに準拠する型のみの列挙型
+* 関連値のない列挙型
+
+`==` の既定実装を受け取るには、自分で `==` 演算子を実装せずに、元の宣言を含むファイルで `Equatable` への準拠を宣言します。`Equatable` プロトコルは、`!=` のデフォルトの実装を提供しています。
+
+下記の例では、`Vector2D` 構造体と同様に、3 次元位置ベクトル `(x、y、z)` の `Vector3D` 構造体を定義しています。`x`、`y`、`z` プロパティは全て `Equatable` 型なので、`Vector3D` は等価演算子の既定実装を受け取ります。
+
+```swift
+struct Vector3D: Equatable {
+    var x = 0.0, y = 0.0, z = 0.0
+}
+
+let twoThreeFour = Vector3D(x: 2.0, y: 3.0, z: 4.0)
+let anotherTwoThreeFour = Vector3D(x: 2.0, y: 3.0, z: 4.0)
+if twoThreeFour == anotherTwoThreeFour {
+    print("These two vectors are also equivalent.")
+}
+// "These two vectors are also equivalent."
+```
+
+Swift は、次の種類の独自の型に対して `Hashable` の既定実装を提供します。
+
+* `Hashable` プロトコルに準拠した格納プロパティのみの構造体
+* 関連値が `Hashable` プロトコルに準拠する型のみの列挙型
+* 関連値のない列挙型
+
+`hash(into:)` の既定実装を受け取るには、`hash(into:)` メソッドを自分で実装せずに、元の宣言を含むファイルで `Hashable` への準拠を宣言します。
+
+Swift は、Raw Value を持たない列挙型の `Comparable` の既定実装を提供します。列挙に型が関連値がある場合、それらはすべて `Comparable` プロトコルに準拠している必要があります。`<` の既定実装を受け取るには、自分で `<` 演算子を実装せずに、元の列挙宣言を含むファイルで `Comparable` への準拠を宣言します。残りの比較演算子(`<=`、`>`、および `>=`)は `Comparable` プロトコルがデフォルトで実装を提供してます。
+
+下記の例では、初心者、中級者、および専門家向けのケースを含む `SkillLevel` 列挙型を定義しています。エキスパートは、持っている星の数によってさらにランク付けされます。
+
+```swift
+enum SkillLevel: Comparable {
+    case beginner
+    case intermediate
+    case expert(stars: Int)
+}
+var levels = [SkillLevel.intermediate, SkillLevel.beginner,
+              SkillLevel.expert(stars: 5), SkillLevel.expert(stars: 3)]
+for level in levels.sorted() {
+    print(level)
+}
+// "beginner"
+// "intermediate"
+// "expert(stars: 3)"
+// "expert(stars: 5)"
+```
 
 ## Collections of Protocol Types(プロトコル型のコレクション)
 
