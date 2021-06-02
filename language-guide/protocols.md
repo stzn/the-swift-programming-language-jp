@@ -230,6 +230,10 @@ class SomeSubClass: SomeSuperClass, SomeProtocol {
 
 ### Failable Initializer Requirements(失敗可能イニシャライザ要件)
 
+プロトコルは、[Failable Initializers](./initialization.md#failable-initializers失敗可能イニシャライザ)で定義されているように、準拠する型の失敗可能イニシャライザの要件を定義できます。
+
+失敗可能イニシャライザの要件は、準拠する型の失敗可能または失敗しないイニシャライザによって満たされます。失敗しないイニシャライザの要件は、失敗しないイニシャライザまたは暗黙的にアンラップされた失敗可能イニシャライザによって満たされます。
+
 ## Protocols as Types(型としてのプロトコル)
 
 ## Delegation(委譲)
