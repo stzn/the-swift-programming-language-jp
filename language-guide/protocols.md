@@ -180,7 +180,53 @@ lightSwitch.toggle()
 
 ## Initializer Requirements(イニシャライザ要件)
 
+プロトコルでは、型に準拠することで特定のイニシャライザを実装が必要な場合があります。これらのイニシャライザは、通常のイニシャライザとまったく同じ方法でプロトコルの定義の一部として記述しますが、中括弧(`{}`)やイニシャライザ本文はありません:
+
+```swift
+protocol SomeProtocol {
+    init(someParameter: Int)
+}
+```
+
 ### Class Implementations of Protocol Initializer Requirements(プロトコルイニシャライザ要件のクラス実装)
+
+プロトコルのイニシャライザ要件は、準拠するクラスで指定イニシャライザまたは convenience イニシャライザとして実装できます。どちらの場合も、`required` 修飾子でイニシャライザの実装をマークする必要があります:
+
+```swift
+class SomeClass: SomeProtocol {
+    required init(someParameter: Int) {
+        // イニシャライザの実装をここに
+    }
+}
+```
+
+`required` 修飾子を使用すると、準拠するクラスの全てのサブクラスでも、イニシャライザ要件を明示的または継承した実装で、プロトコルに準拠する必要があります。
+
+`required` イニシャライザの詳細については、[Required Initializers](./initialization.md#required-initializers必須イニシャライザ)を参照ください。
+
+> NOTE  
+> `final` クラスはサブクラス化できないため、 `final` 修飾子でマークされているクラスでは、プロトコルのイニシャライザの実装を `required` 修飾子でマークする必要はありません。 `final` 修飾子の詳細については、[Preventing Overrides](./initialization.md#preventing-overridesオーバーライドを防ぐ)を参照ください。
+
+サブクラスがスーパークラスからの指定イニシャライザをオーバーライドし、そのイニシャライザがプロトコル要件にも一致する場合、`required` 修飾子と `override` 修飾子の両方でイニシャライザの実装をマークします:
+
+```swift
+protocol SomeProtocol {
+    init()
+}
+
+class SomeSuperClass {
+    init() {
+        // イニシャライザの実装をここに
+    }
+}
+
+class SomeSubClass: SomeSuperClass, SomeProtocol {
+    // "required" は SomeProtocol から、 "override" は SomeSuperClass から
+    required override init() {
+        // initializer implementation goes here
+    }
+}
+```
 
 ### Failable Initializer Requirements(失敗可能イニシャライザ要件)
 
