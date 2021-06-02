@@ -288,6 +288,116 @@ for _ in 1...5 {
 
 ## Delegation(委譲)
 
+委譲(*delegation*)は、クラスまたは構造体がその責任の一部を別の型のインスタンスに引き渡す(または委譲する)ことを可能にするデザインパターンです。このデザインパターンは、委譲された責任をカプセル化するプロトコルを定義することによって実装され、準拠する型 (デリゲート(*delegate*)と呼ばれる)が委譲された機能を提供することが保証されます。委譲を使用して、特定のアクションに応答したり、その準拠した具体的な型を知らなくても外部ソースからデータを取得したりできます。
+
+下記の例では、サイコロベースのボードゲームで使用する 2 つのプロトコルを定義しています:
+
+```swift
+protocol DiceGame {
+    var dice: Dice { get }
+    func play()
+}
+protocol DiceGameDelegate: AnyObject {
+    func gameDidStart(_ game: DiceGame)
+    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int)
+    func gameDidEnd(_ game: DiceGame)
+}
+```
+
+`DiceGame` プロトコルは、サイコロを使用する全てのゲームで準拠できるプロトコルです。
+
+`DiceGameDelegate` プロトコルは、`DiceGame` の進行状況を追跡するために準拠できます。強参照(*strong reference*)循環を防ぐために、デリゲートは弱参照(*weak reference*)として宣言されます。弱参照については、[Strong Reference Cycles Between Class Instances](./automatic-reference-counting.md#strong-reference-cycles-between-class-instancesクラスインスタンス間の強参照循環)を参照ください。プロトコルをクラス専用としてマークすると、この章の後半で登場する `SnakesAndLadders` クラスがそのデリゲートが弱参照を使用しなければならないことを宣言できるようになります。クラス専用プロトコルは、[Class-Only Protocols](#class-only-protocolsクラス専用プロトコル)で説明されているように、`AnyObject` を継承します。
+
+これは、最初に [Control Flow](./control-flow.md) で紹介した蛇とはしごゲームのバージョンです。このバージョンは、ダイスロールに `Dice` インスタンスを使用しています。`DiceGame` プロトコルに準拠すること。そして、その進行状況を `DiceGameDelegate` に通知します:
+
+```swift
+class SnakesAndLadders: DiceGame {
+    let finalSquare = 25
+    let dice = Dice(sides: 6, generator: LinearCongruentialGenerator())
+    var square = 0
+    var board: [Int]
+    init() {
+        board = Array(repeating: 0, count: finalSquare + 1)
+        board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
+        board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
+    }
+    weak var delegate: DiceGameDelegate?
+    func play() {
+        square = 0
+        delegate?.gameDidStart(self)
+        gameLoop: while square != finalSquare {
+            let diceRoll = dice.roll()
+            delegate?.game(self, didStartNewTurnWithDiceRoll: diceRoll)
+            switch square + diceRoll {
+            case finalSquare:
+                break gameLoop
+            case let newSquare where newSquare > finalSquare:
+                continue gameLoop
+            default:
+                square += diceRoll
+                square += board[square]
+            }
+        }
+        delegate?.gameDidEnd(self)
+    }
+}
+```
+
+蛇とはしごについては、[Break](./control-flow.md#break)を参照してください。
+
+このバージョンのゲームは、`DiceGame` プロトコルに準拠する `SnakesAndLadders` というクラスでラップされています。プロトコルに準拠するために、`dice` と呼ばれる取得可能プロパティと `play()` メソッドを提供しています。(`dice` プロパティは、初期化後に変更する必要がないため、定数プロパティとして宣言されており、プロトコルでは取得可能なことのみを要件にしています)
+
+蛇とはしごのゲームボードのセットアップは、クラスの `init()` イニシャライザ内で行われています。全てのゲームロジックは、プロトコルの `play` メソッドの中で行われています。このメソッドは、プロトコルで必須の `dice` プロパティを使用して、ダイスロール値を提供しています。
+
+ゲームをプレイするためにデリゲートは必要ないため、`delegate` プロパティはオプショナルの `DiceGameDelegate` として定義されていることに注目してください。これはオプショナル型なので、`delegate` プロパティは自動的に `nil` で初期化されます。その後、ゲームのイニシャライザには、プロパティを適切なデリゲートに設定することができます。`DiceGameDelegate` プロトコルはクラス専用のため、デリゲートを `weak` として宣言し、循環参照を防ぐことができます。
+
+`DiceGameDelegate` は、ゲームの進行状況を追跡するための 3 つのメソッドを提供しています。これらの 3 つのメソッドは、上記の `play()` メソッド内のゲームロジックに組み込まれており、新しいゲームの開始、新しいターンの開始、またはゲームの終了時に呼び出されます。
+
+`delegate` プロパティはオプショナルの `DiceGameDelegate` のため、`play()` メソッドはデリゲートメソッドを呼び出す度にオプショナルチェーンを使用します。`delegate`  プロパティが `nil` の場合、これらのデリゲートの呼び出しはエラーを出力せずに失敗します。`delegate` プロパティが `nil` ではない場合、デリゲートメソッドが呼び出され、引数として `SnakesAndLadders` インスタンスが渡されます。
+
+次の例は、`DiceGameDelegate` プロトコルに準拠する `DiceGameTracker` というクラスを示しています:
+
+```swift
+class DiceGameTracker: DiceGameDelegate {
+    var numberOfTurns = 0
+    func gameDidStart(_ game: DiceGame) {
+        numberOfTurns = 0
+        if game is SnakesAndLadders {
+            print("Started a new game of Snakes and Ladders")
+        }
+        print("The game is using a \(game.dice.sides)-sided dice")
+    }
+    func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int) {
+        numberOfTurns += 1
+        print("Rolled a \(diceRoll)")
+    }
+    func gameDidEnd(_ game: DiceGame) {
+        print("The game lasted for \(numberOfTurns) turns")
+    }
+}
+```
+
+`DiceGameTracker` は、`DiceGameDelegate` に必要な 3 つのメソッド全てを実装します。これらのメソッドを使用して、ゲームが経過したターン数を追跡します。これは、ゲームの開始時に `numberOfTurns` プロパティをゼロにリセットし、新しいターンが開始される度にそれを増加し、ゲームが終了すると合計ターン数を出力します。
+
+上記の `gameDidStart(_:)` の実装では、`game` 引数を使用して、これからプレイするゲームに関するいくつかのイントロダクションを出力します。`game` 引数の型は `SnakesAndLadders` ではなく `DiceGame` のため、`gameDidStart(_:)` は、`DiceGame` プロトコルの一部として実装されているメソッドとプロパティのみ使用できます。ただし、メソッドは引き続き型キャストを使用して、準拠したインスタンスの型を照会できます。この例では、`game` が実際に内部で `SnakesAndLadders` のインスタンスかどうかを確認し、その場合は適切なメッセージを出力します。
+
+`gameDidStart(_:)` メソッドは、渡された `game` 引数の `dice` プロパティにもアクセスしています。`game` は `DiceGame` プロトコルに準拠しているため、`dice` プロパティを持つことが保証されているため、`gameDidStart(_:)` メソッドは、プレイされているゲームの種類に関係なく、`dice` の `side` プロパティにアクセスして出力できます。
+
+`DiceGameTracker` の実際の挙動は次のとおりです:
+
+```swift
+let tracker = DiceGameTracker()
+let game = SnakesAndLadders()
+game.delegate = tracker
+game.play()
+// 蛇とはしごの新しいゲームを開始します
+// ゲームでは ６ 面体のサイコロを使います
+// 3 が出ました
+// 5 が出ました
+// 4 が出ました
+// 5 が出ました
+```
+
 ## Adding Protocol Conformance with an Extension(拡張機能へのプロトコル準拠の追加)
 
 ### Conditionally Conforming to a Protocol(条件付きプロトコル準拠)
@@ -300,7 +410,7 @@ for _ in 1...5 {
 
 ## Protocol Inheritance(プロトコル継承)
 
-## Class-Only Protocols(クラスのみのプロトコル)
+## Class-Only Protocols(クラス専用プロトコル)
 
 ## Protocol Composition(プロトコルの組み合わせ)
 
