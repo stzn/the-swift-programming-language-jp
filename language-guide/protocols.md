@@ -398,7 +398,52 @@ game.play()
 // 5 が出ました
 ```
 
-## Adding Protocol Conformance with an Extension(拡張機能へのプロトコル準拠の追加)
+## Adding Protocol Conformance with an Extension(拡張機能を使ったプロトコル準拠の追加)
+
+既存の型のソースコードにアクセスできない場合でも、既存の型を拡張して新しいプロトコルに準拠させることができます。拡張機能(*extension*)は、新しいプロパティ、メソッド、および subscript を既存の型に追加できるため、プロトコルの要件を追加できます。拡張機能の詳細については、[Extensions](./extensions.md)を参照ください。
+
+> NOTE  
+> 型の既存のインスタンスは、extension でそのインスタンスの型がプロトコルに準拠すると、自動的にプロトコルに準拠します。
+
+例えば、`TextRepresentable` と呼ばれるこのプロトコルは、テキストとして表現できる任意の型で実装できます。これは、それ自体の説明、または現在の状態のテキストバージョンの場合があります:
+
+```swift
+protocol TextRepresentable {
+    var textualDescription: String { get }
+}
+```
+
+上記の `Dice` クラスを拡張して、`TextRepresentable` に準拠させることができます:
+
+```swift
+extension Dice: TextRepresentable {
+    var textualDescription: String {
+        return "A \(sides)-sided dice"
+    }
+}
+```
+
+この extension は、`Dice` が元の実装とまったく同じ方法で新しいプロトコルに準拠しています。プロトコル名を型名の後にコロン(`:`)で区切って指定し、プロトコルの全ての要件の実装は extension の中括弧内(`{}`)に指定します。
+
+これで、どの `Dice` インスタンスも `TextRepresentable` として扱えるようになりました:
+
+```swift
+let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
+print(d12.textualDescription)
+// "A 12-sided dice"
+```
+
+同様に、`SnakesAndLadders` クラスを拡張して、`TextRepresentable` プロトコルに準拠させることができます:
+
+```swift
+extension SnakesAndLadders: TextRepresentable {
+    var textualDescription: String {
+        return "A game of Snakes and Ladders with \(finalSquare) squares"
+    }
+}
+print(game.textualDescription)
+// "A game of Snakes and Ladders with 25 squares"
+```
 
 ### Conditionally Conforming to a Protocol(条件付きプロトコル準拠)
 
