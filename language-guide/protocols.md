@@ -465,6 +465,30 @@ print(myDice.textualDescription)
 
 ### Declaring Protocol Adoption with an Extension(拡張機能を使ったプロトコル準拠の宣言)
 
+型がすでにプロトコルの全ての要件を満たしているものの、そのプロトコルに準拠することを表明していない場合は、空の extension でプロトコルに準拠することができます:
+
+```swift
+struct Hamster {
+    var name: String
+    var textualDescription: String {
+        return "A hamster named \(name)"
+    }
+}
+extension Hamster: TextRepresentable {}
+```
+
+これで `TextRepresentable` が必要な型ならば、`Hamster` のインスタンスを使用できるようになりました:
+
+```swift
+let simonTheHamster = Hamster(name: "Simon")
+let somethingTextRepresentable: TextRepresentable = simonTheHamster
+print(somethingTextRepresentable.textualDescription)
+// "A hamster named Simon"
+```
+
+> NOTE  
+> 要件を満たすだけで、型が自動的にプロトコルに準拠するわけではありません。プロトコルへの準拠を常に明示的に宣言する必要があります。
+
 ## Adopting a Protocol Using a Synthesized Implementation(同期的な実装を使用したプロトコル準拠)
 
 ## Collections of Protocol Types(プロトコル型のコレクション)
