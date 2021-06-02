@@ -205,7 +205,7 @@ class SomeClass: SomeProtocol {
 `required` イニシャライザの詳細については、[Required Initializers](./initialization.md#required-initializers必須イニシャライザ)を参照ください。
 
 > NOTE  
-> `final` クラスはサブクラス化できないため、 `final` 修飾子でマークされているクラスでは、プロトコルのイニシャライザの実装を `required` 修飾子でマークする必要はありません。 `final` 修飾子の詳細については、[Preventing Overrides](./initialization.md#preventing-overridesオーバーライドを防ぐ)を参照ください。
+> `final` クラスはサブクラス化できないため、 `final` 修飾子でマークされているクラスでは、プロトコルのイニシャライザの実装を `required` 修飾子でマークする必要はありません。`final` 修飾子の詳細については、[Preventing Overrides](./initialization.md#preventing-overridesオーバーライドを防ぐ)を参照ください。
 
 サブクラスがスーパークラスからの指定イニシャライザをオーバーライドし、そのイニシャライザがプロトコル要件にも一致する場合、`required` 修飾子と `override` 修飾子の両方でイニシャライザの実装をマークします:
 
@@ -235,6 +235,56 @@ class SomeSubClass: SomeSuperClass, SomeProtocol {
 失敗可能イニシャライザの要件は、準拠する型の失敗可能または失敗しないイニシャライザによって満たされます。失敗しないイニシャライザの要件は、失敗しないイニシャライザまたは暗黙的にアンラップされた失敗可能イニシャライザによって満たされます。
 
 ## Protocols as Types(型としてのプロトコル)
+
+プロトコルは、実際には機能を実装しません。それにもかかわらず、コード内で完全な型としてプロトコルを使用できます。プロトコルを型として使用することは、存在型(*existential type*)と呼ばれることもあります。これは、「T がプロトコルに準拠するような型 T が存在する」というフレーズから来ています。
+
+次のような他の型が許可されている多くの場所でプロトコルを使用できます。
+
+* 関数、メソッド、またはイニシャライザの引数の型または戻り値の型として
+* 定数、変数、またはプロパティの型として
+* 配列、辞書、またはその他のコンテナ内のアイテムの型として
+
+> NOTE  
+> プロトコルは型であるため、他の型 (`Int`、`String`、`Double` など) と同じように名前を大文字で始めます。(`FullyNamed` や `RandomNumberGenerator` など)
+
+型として使用されるプロトコルの例を次に示します:
+
+```swift
+class Dice {
+    let sides: Int
+    let generator: RandomNumberGenerator
+    init(sides: Int, generator: RandomNumberGenerator) {
+        self.sides = sides
+        self.generator = generator
+    }
+    func roll() -> Int {
+        return Int(generator.random() * Double(sides)) + 1
+    }
+}
+```
+
+この例では、ボード ゲームで使用する n 面のサイコロを表す `Dice` という新しいクラスを定義しています。`Dice` のインスタンスには、側面の数を表す `sides` と呼ばれる整数のプロパティと、ダイスのロール値を作成するための乱数ジェネレーターを提供する `generator` と呼ばれるプロパティがあります。
+
+`generator` プロパティの型は `RandomNumberGenerator` です。したがって、`RandomNumberGenerator` プロトコルに準拠する任意の型のインスタンスに設定できます。このプロパティに割り当てるインスタンスには、インスタンスが `RandomNumberGenerator` プロトコルに準拠する必要があることを除いて、他に何も必要ありません。その型は `RandomNumberGenerator` なので、`Dice` クラス内のコードは、このプロトコルに準拠する全ての `generator` のみを使用できます。つまり、そのジェネレーターの具体的な型で定義されているメソッドやプロパティを使用することはできません。ただし、[Downcasting](./type-casting.md#downcastingダウンキャスト)で説明されているように、スーパークラスからサブクラスにダウンキャストできるのと同じ方法で、プロトコル型から準拠した具体的な型にダウンキャストできます。
+
+`Dice` には、初期状態を設定するためのイニシャライザもあります。このイニシャライザには、型も `RandomNumberGenerator` の `generator` と呼ばれる引数があります。新しい `Dice` インスタンスを初期化するときに、この引数に準拠する型の値を渡すことができます。
+
+`Dice` は、1 からサイコロの面の数までの整数値を返す 1 つのインスタンスメソッド、`roll` を提供しています。このメソッドは、ジェネレーターの `random()` メソッドを呼び出して `0.0` から `1.0` の間の新しい乱数を作成し、この乱数を使用して正しい範囲内でサイコロの目を作成します。`generator` は `RandomNumberGenerator` に準拠することがわかっているため、呼び出すべき `random()` メソッドがあることが保証されています。
+
+`Dice` クラスを使用して、`LinearCongruentialGenerator` インスタンスを乱数ジェネレーターとして使用して、6 面体のサイコロを作成する方法を次に示します:
+
+```swift
+
+var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
+for _ in 1...5 {
+    print("Random dice roll is \(d6.roll())")
+}
+// Random dice roll is 3
+// Random dice roll is 5
+// Random dice roll is 4
+// Random dice roll is 5
+// Random dice roll is 4
+```
 
 ## Delegation(委譲)
 
