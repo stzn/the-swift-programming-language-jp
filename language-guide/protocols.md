@@ -445,7 +445,23 @@ print(game.textualDescription)
 // "A game of Snakes and Ladders with 25 squares"
 ```
 
-### Conditionally Conforming to a Protocol(条件付きプロトコル準拠)
+### Conditionally Conforming to a Protocol(条件付きでのプロトコルへの準拠)
+
+ジェネリック型は、型のジェネリック引数がプロトコルに準拠している場合など、特定の条件下でのみプロトコルの要件を満たすことができる場合があります。型を拡張するときに制約を並べることで、ジェネリック型を条件付きでプロトコルに準拠させることができます。`where` 句を記述して、準拠するプロトコルの名前の後にこれらの制約を記述します。ジェネリック `where` 句の詳細については、[Generic Where Clauses](./generics.md#generic-where-clauses)を参照ください。
+
+次の拡張により、`Array` インスタンスが `TextRepresentable` に準拠する型の要素を格納する場合は常に、`TextRepresentable` プロトコルに準拠するようになります:
+
+```swift
+extension Array: TextRepresentable where Element: TextRepresentable {
+    var textualDescription: String {
+        let itemsAsText = self.map { $0.textualDescription }
+        return "[" + itemsAsText.joined(separator: ", ") + "]"
+    }
+}
+let myDice = [d6, d12]
+print(myDice.textualDescription)
+// "[A 6-sided dice, A 12-sided dice]"
+```
 
 ### Declaring Protocol Adoption with an Extension(拡張機能を使ったプロトコル準拠の宣言)
 
