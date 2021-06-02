@@ -547,6 +547,25 @@ for level in levels.sorted() {
 
 ## Collections of Protocol Types(プロトコル型のコレクション)
 
+プロトコルは、[Protocols as Types](#protocols-as-types型としてのプロトコル)で説明されているように、配列や辞書などのコレクションに格納される型として使用できます。この例では、`TextRepresentable` の配列を作成します。
+
+```swift
+let things: [TextRepresentable] = [game, d12, simonTheHamster]
+```
+
+配列内のアイテムを繰り返し処理し、各アイテムの説明をテキストで出力できるようになりました:
+
+```swift
+for thing in things {
+    print(thing.textualDescription)
+}
+// A game of Snakes and Ladders with 25 squares
+// A 12-sided dice
+// A hamster named Simon
+```
+
+Thing 定数は `TextRepresentable` 型なことに注目してください。内部の実際のインスタンスがそれらの型の 1 つの場合でも、型は `Dice`、`DiceGame`、または `Hamster` ではありません。これは `TextRepresentable` 型で、`TextRepresentable` は全て `textualDescription` プロパティを持つことがわかっているため、ループ処理の中で安全に `thing.textualDescription` にアクセスできます。
+
 ## Protocol Inheritance(プロトコル継承)
 
 ## Class-Only Protocols(クラス専用プロトコル)
