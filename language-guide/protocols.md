@@ -146,6 +146,38 @@ print("And another one: \(generator.random())")
 
 ## Mutating Method Requirements(mutatingメソッド要件)
 
+メソッドが属するインスタンスを変更する必要がある場合があります。値型 (つまり、構造体と列挙型) のインスタンスメソッドの場合、メソッドの `func` キーワードの前に `mutating` キーワードを配置して、メソッドが属するインスタンスとそのインスタンスの全てのプロパティを変更できることを示します。このプロセスについては、[Modifying Value Types from Within Instance Methods(インスタンスメソッド内からの値型の変更)](./methods.md#modifying-value-types-from-within-instance-methodsインスタンスメソッド内からの値型の変更)で説明されています。
+
+任意の型のインスタンスを変更することを目的としたプロトコルのインスタンスメソッド要件を定義する場合は、プロトコルの定義の一部として `mutating` キーワードを使用してメソッドをマークします。これにより、構造体と列挙型がそのメソッド要件を満たしてプロトコルに準拠することができます。
+
+> NOTE  
+> プロトコルのインスタンスメソッドの要件を変更としてマークする場合、クラスがそのメソッドを実装するときに、`mutating` キーワードを記述する必要はありません。`mutating` キーワードは、構造体と列挙型によってのみ使用されます。
+
+下記の例では、`Togglable` というプロトコルが定義されています。これは、`toggle` という単一のインスタンスメソッド要件を定義しています。その名前が示すように、`toggle()` メソッドは、通常、その型のプロパティを変更することによって、準拠する型の状態をトグルまたは反転することを目的としています。
+
+`toggle()` メソッドは、`Togglable` プロトコル定義の一部として `mutating` キーワードがマークされており、メソッドが呼び出されたときに準拠するインスタンスの状態を変更される可能性を示しています。
+
+構造体または列挙型に対して `Togglable` プロトコルを実装する場合、その構造体または列挙型は、`mutating` がマークされている `toggle()` メソッドの実装を提供することにより、プロトコルに準拠できます。
+
+下記の例では、`OnOffSwitch` という列挙型を定義しています。この列挙型は、`on` と `off` の 2 つのケースによって示される 2 つの状態を切り替えます。列挙型の `toggle` 実装は、`Togglable` プロトコルの要件に一致するように、`mutating` としてマークされています:
+
+```swift
+enum OnOffSwitch: Togglable {
+    case off, on
+    mutating func toggle() {
+        switch self {
+        case .off:
+            self = .on
+        case .on:
+            self = .off
+        }
+    }
+}
+var lightSwitch = OnOffSwitch.off
+lightSwitch.toggle()
+// lightSwitch は .on
+```
+
 ## Initializer Requirements(イニシャライザ要件)
 
 ### Class Implementations of Protocol Initializer Requirements(プロトコルイニシャライザ要件のクラス実装)
