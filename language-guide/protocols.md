@@ -636,7 +636,69 @@ protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
 > NOTE  
 > そのプロトコルの要件によって定義された動作が、準拠する型が値型のセマンティクスではなく参照型のセマンティクスを持つことを想定または要求する場合は、クラス専用プロトコルを使用してください。参照型と値型のセマンティクスの詳細については、[Structures and Enumerations Are Value Types](./structures-and-classes.md#structures-and-enumerations-are-value-types構造体と列挙型は値型)、[Classes Are Reference Types](./structures-and-classes.md#classes-are-reference-typesclassは参照型)を参照ください。
 
-## Protocol Composition(プロトコルの組み合わせ)
+## Protocol Composition(プロトコル合成)
+
+同時に複数のプロトコルに準拠するように型を要求すると便利な場合があります。プロトコル合成を使用して、複数のプロトコルを 1 つの要件に組み合わせることができます。プロトコル合成は、合成内の全てのプロトコルの要件を組み合わせた一時的なローカル プロトコルを定義したかのように動作します。プロトコル合成は、新しいプロトコル 型を定義しません。
+
+プロトコル合成は `SomeProtocol & AnotherProtocol` という形式で記述します。アンパサンド (`&`) で区切って、必要な数のプロトコルを並べることができます。プロトコルのリストに加えて、プロトコル合成には、必要なスーパークラスを 1 つ含めることもできます。
+
+`Named` と `Aged` という 2 つのプロトコルを組み合わせて、関数引数の単一のプロトコル合成要件にした例を次に示します:
+
+```swift
+protocol Named {
+    var name: String { get }
+}
+protocol Aged {
+    var age: Int { get }
+}
+struct Person: Named, Aged {
+    var name: String
+    var age: Int
+}
+func wishHappyBirthday(to celebrator: Named & Aged) {
+    print("Happy birthday, \(celebrator.name), you're \(celebrator.age)!")
+}
+let birthdayPerson = Person(name: "Malcolm", age: 21)
+wishHappyBirthday(to: birthdayPerson)
+// "Happy birthday, Malcolm, you're 21!"
+```
+
+この例では、`Named` プロトコルには、`name` という `String` 型の get プロパティという 1 つの要件があります。`Aged` プロトコルには、`age` と呼ばれる `Int` 型の get プロパティという 1 つの要件があります。どちらのプロトコルも、`Person` と呼ばれる構造体に準拠されています。
+
+この例では、`wishHappyBirthday(to:)` 関数も定義されています。`celebrator` 引数の型は `Named & Aged` です。これは、「`Named` プロトコルと `Aged` プロトコルの両方に準拠する任意の型」を意味します。必要なプロトコルの両方に準拠している限り、関数に渡される特定の型は問題ではありません。
+
+次に、この例では、`birthdayPerson` という名前の新しい `Person` インスタンスを作成し、この新しいインスタンスを `wishHappyBirthday(to:)` 関数に渡します。`Person` は両方のプロトコルに準拠しているため、`wishHappyBirthday(to:)` 関数は誕生日の挨拶を出力できます。
+
+先ほどの例の `Named` プロトコルと `Location` クラスを組み合わせた例を次に示します:
+
+```swift
+class Location {
+    var latitude: Double
+    var longitude: Double
+    init(latitude: Double, longitude: Double) {
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+}
+class City: Location, Named {
+    var name: String
+    init(name: String, latitude: Double, longitude: Double) {
+        self.name = name
+        super.init(latitude: latitude, longitude: longitude)
+    }
+}
+func beginConcert(in location: Location & Named) {
+    print("Hello, \(location.name)!")
+}
+
+let seattle = City(name: "Seattle", latitude: 47.6, longitude: -122.3)
+beginConcert(in: seattle)
+// "Hello, Seattle!"
+```
+
+`beginConcert(in:)` 関数は、型 `Location & Named` の引数を受け取ります。これは、「`Locatio`n のサブクラスで、`Named` プロトコルに準拠する任意の型」を意味します。この場合、`City` は両方の要件を満たしています。
+
+`Person` は `Location` のサブクラスではないため、`beginConcert(in:)` 関数に `birthdayPerson` を渡すことは無効です。同様に、`Named` プロトコルに準拠していない `Location` のサブクラスを作成した場合、その型のインスタンスで `beginConcert(in:)` を呼び出すことも無効です。
 
 ## Checking for Protocol Conformance(プロトコル準拠チェック)
 
