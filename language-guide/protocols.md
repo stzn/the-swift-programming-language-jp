@@ -623,6 +623,19 @@ print(game.prettyTextualDescription)
 
 ## Class-Only Protocols(クラス専用プロトコル)
 
+`AnyObjec`t プロトコルをプロトコルの継承の一覧に追加することで、プロトコルへの準拠を(構造体や列挙型ではなく)クラス型に制限できます:
+
+```swift
+protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
+    // クラス専用プロトコルの実装をここに
+}
+```
+
+上記の例では、`SomeClassOnlyProtocol` はクラス型でのみ準拠できます。`SomeClassOnlyProtocol` に準拠しようとする構造体または列挙型の定義を作成すると、コンパイルエラーになります。
+
+> NOTE  
+> そのプロトコルの要件によって定義された動作が、準拠する型が値型のセマンティクスではなく参照型のセマンティクスを持つことを想定または要求する場合は、クラス専用プロトコルを使用してください。参照型と値型のセマンティクスの詳細については、[Structures and Enumerations Are Value Types](./structures-and-classes.md#structures-and-enumerations-are-value-types構造体と列挙型は値型)、[Classes Are Reference Types](./structures-and-classes.md#classes-are-reference-typesclassは参照型)を参照ください。
+
 ## Protocol Composition(プロトコルの組み合わせ)
 
 ## Checking for Protocol Conformance(プロトコル準拠チェック)
