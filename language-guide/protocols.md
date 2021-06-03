@@ -781,3 +781,9 @@ for object in objects {
 基礎となるオブジェクトは、キャストで変更されないことに注目してください。彼らは Circle、Country、Animal です。ただし、オブジェクトが `objectWithArea` 定数に格納されている時点では、`HasArea` 型とのみ認識されているため、アクセスできるのは `area` プロパティのみです。
 
 ## Optional Protocol Requirements(オプショナルのプロトコル要件)
+
+## Protocol Extensions(プロトコル拡張)
+
+### Providing Default Implementations(デフォルト実装の提供)
+
+### Adding Constraints to Protocol Extensions(プロトコル拡張に制約の追加)
