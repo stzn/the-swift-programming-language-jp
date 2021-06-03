@@ -524,7 +524,7 @@ Swift は、次の種類の独自の型に対して `Hashable` の既定実装�
 
 `hash(into:)` の既定実装を受け取るには、`hash(into:)` メソッドを自分で実装せずに、元の宣言を含むファイルで `Hashable` への準拠を宣言します。
 
-Swift は、Raw Value を持たない列挙型の `Comparable` の既定実装を提供します。列挙に型が関連値がある場合、それらはすべて `Comparable` プロトコルに準拠している必要があります。`<` の既定実装を受け取るには、自分で `<` 演算子を実装せずに、元の列挙宣言を含むファイルで `Comparable` への準拠を宣言します。残りの比較演算子(`<=`、`>`、および `>=`)は `Comparable` プロトコルがデフォルトで実装を提供してます。
+Swift は、Raw Value を持たない列挙型の `Comparable` の既定実装を提供します。列挙に型が関連値がある場合、それらは全て `Comparable` プロトコルに準拠している必要があります。`<` の既定実装を受け取るには、自分で `<` 演算子を実装せずに、元の列挙宣言を含むファイルで `Comparable` への準拠を宣言します。残りの比較演算子(`<=`、`>`、および `>=`)は `Comparable` プロトコルがデフォルトで実装を提供してます。
 
 下記の例では、初心者、中級者、および専門家向けのケースを含む `SkillLevel` 列挙型を定義しています。エキスパートは、持っている星の数によってさらにランク付けされます。
 
@@ -567,6 +567,59 @@ for thing in things {
 Thing 定数は `TextRepresentable` 型なことに注目してください。内部の実際のインスタンスがそれらの型の 1 つの場合でも、型は `Dice`、`DiceGame`、または `Hamster` ではありません。これは `TextRepresentable` 型で、`TextRepresentable` は全て `textualDescription` プロパティを持つことがわかっているため、ループ処理の中で安全に `thing.textualDescription` にアクセスできます。
 
 ## Protocol Inheritance(プロトコル継承)
+
+プロトコルは 1 つ以上の他のプロトコルを継承でき、継承する要件の上にさらに要件を追加できます。プロトコル継承の構文はクラス継承の構文に似ていますが、継承された複数のプロトコルをカンマ(`,`)で区切って並べることができます:
+
+```swift
+protocol InheritingProtocol: SomeProtocol, AnotherProtocol {
+    // プロトコルの実装をここに
+}
+```
+
+上の `TextRepresentable` プロトコルを継承するプロトコルの例を次に示します:
+
+```swift
+protocol PrettyTextRepresentable: TextRepresentable {
+    var prettyTextualDescription: String { get }
+}
+```
+
+この例では、`TextRepresentable` から継承する新しいプロトコル `PrettyTextRepresentable` を定義しています。`PrettyTextRepresentable` に準拠するものは全て、`TextRepresentable` の全ての要件に加えて、`PrettyTextRepresentable` の追加の要件を満たす必要があります。この例では、`PrettyTextRepresentable` は、`String` を返す `prettyTextualDescription` という get プロパティを提供するための 1 つの要件を追加します。
+
+`SnakesAndLadders` クラスを拡張して、`PrettyTextRepresentable` に準拠させることができます:
+
+```swift
+extension SnakesAndLadders: PrettyTextRepresentable {
+    var prettyTextualDescription: String {
+        var output = textualDescription + ":\n"
+        for index in 1...finalSquare {
+            switch board[index] {
+            case let ladder where ladder > 0:
+                output += "▲ "
+            case let snake where snake < 0:
+                output += "▼ "
+            default:
+                output += "○ "
+            }
+        }
+        return output
+    }
+}
+```
+
+この拡張機能は、`PrettyTextRepresentable` プロトコルに準拠し、`SnakesAndLadders` 型の `prettyTextualDescription` プロパティの実装を提供していることを示しています。`PrettyTextRepresentable` に準拠するものは必ず全て `TextRepresentable` なので、 `prettyTextualDescription` の実装は、`TextRepresentable` プロトコルの `textualDescription` プロパティにアクセスするから出力文字列を開始します。コロン(`:`)と改行(`\n`)を追加し、これをテキストの開始表現として使用します。次に、ボードの正方形の配列を繰り返し処理し、各正方形の内容を表す幾何学的形状を追加します:
+
+* 正方形の値が `0` より大きい場合、それははしごのベースで、`▲` で表されます
+* マスの値が `0` 未満の場合、それはヘビの頭で、`▼` で表されます
+* それ以外の場合、正方形の値は `0` で、それは `○` で表される「自由な」正方形です
+
+`prettyTextualDescription` プロパティを使用して、`SnakesAndLadders` インスタンスの説明をきれいに表示できるようになりました:
+
+```swift
+print(game.prettyTextualDescription)
+// A game of Snakes and Ladders with 25 squares:
+// ○ ○ ▲ ○ ○ ▲ ○ ○ ▲ ▲ ○ ○ ○ ▼ ○ ○ ○ ○ ▼ ○ ○ ▼ ○ ▼ ○
+```
 
 ## Class-Only Protocols(クラス専用プロトコル)
 
