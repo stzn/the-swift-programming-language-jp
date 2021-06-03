@@ -778,9 +778,118 @@ for object in objects {
 
 配列内のオブジェクトが `HasArea` プロトコルに準拠している場合は、常に `as?` 演算子は、`objectWithArea` と呼ばれる定数へオプショナルバインドでアンラップされます。`objectWithArea` 定数は `HasArea` 型なことがわかっているため、その `area` プロパティは型安全な方法でアクセスおよび出力できます。
 
-基礎となるオブジェクトは、キャストで変更されないことに注目してください。彼らは Circle、Country、Animal です。ただし、オブジェクトが `objectWithArea` 定数に格納されている時点では、`HasArea` 型とのみ認識されているため、アクセスできるのは `area` プロパティのみです。
+プロトコルに準拠したオブジェクトは、キャストで変更されないことに注目してください。それらはそれぞれ　`Circle`、`Country`、`Animal` です。ただし、オブジェクトが `objectWithArea` 定数に格納されている時点では、`HasArea` 型とのみ認識されているため、アクセスできるのは `area` プロパティのみです。
 
 ## Optional Protocol Requirements(オプショナルのプロトコル要件)
+
+プロトコルのオプショナルの要件を定義できます。これらの要件は、プロトコルに準拠する型によって実装される必要はありません。オプショナルの要件には、プロトコルの定義の一部として `optional` 修飾子が付けられます。Objective-C と相互運用するコードを作成できるように、オプショナルの要件が利用可能です。プロトコルとオプショナルの要件の両方が `@objc` 属性でマークされている必要があります。`@objc` プロトコルは、Objective-C クラスまたは他の `@objc` クラスから継承するクラスによってのみ準拠できることに注目してください。構造体や列挙型が準拠することはできません。
+
+オプショナルの要件でメソッドまたはプロパティを使用すると、その型は自動的にオプショナルになります。たとえば、`(Int) -> String` 型のメソッドは `((Int) -> String)?` になります。メソッドの戻り値ではなく、関数型全体がオプショナルになっていることに注目してください。
+
+プロトコルに準拠する型によって要件が実装されていない可能性を考慮して、オプショナルのプロトコル要件をオプショナルチェーンで呼び出すことができます。オプショナルメソッドの実装を確認するには、メソッドの呼び出し時にメソッド名の後に疑問符(`?`)を記述します(`someOptionalMethod?(someArgument)` など)。オプショナルの連鎖については、[Optional Chaining](./optional-chaining.md)を参照ください。
+
+次の例では、`Counter` という整数をカウントするクラスを定義しています。これは、外部データソースを使用して増分量を提供します。このデータソースは、次の 2 つのオプショナルの要件がある `CounterDataSource` プロトコルによって定義されます:
+
+```swift
+@objc protocol CounterDataSource {
+    @objc optional func increment(forCount count: Int) -> Int
+    @objc optional var fixedIncrement: Int { get }
+}
+```
+
+`CounterDataSource` プロトコルは、`increment(forCount:)` と呼ばれるオプショナルメソッドの要件と、`fixedIncrement` と呼ばれるオプショナルプロパティの要件を定義します。これらの要件は、データソースが `Counter` インスタンスに適切な増分量を提供するための 2 つの異なる方法を定義します。
+
+> NOTE  
+> 厳密に言えば、いずれのプロトコル要件を実装していなくても、`CounterDataSource` に準拠する独自クラスを作成できます。結局のところ、どちらもオプショナルです。技術的には許可されていますが、これはあまり良いデータソースではありません。
+
+以下で定義される `Counter` クラスには、`CounterDataSource?` 型のオプショナルの `dataSource` プロパティがあります:
+
+```swift
+class Counter {
+    var count = 0
+    var dataSource: CounterDataSource?
+    func increment() {
+        if let amount = dataSource?.increment?(forCount: count) {
+            count += amount
+        } else if let amount = dataSource?.fixedIncrement {
+            count += amount
+        }
+    }
+}
+```
+
+`Counter` クラスは、現在の値を `count` という変数プロパティに保存します。`Counter` クラスは、メソッドが呼び出されるたびに `count` プロパティを増加する `increment` というメソッドも定義します。
+
+`increment()` メソッドは、最初に、データソースで `increment(forCount:)` メソッドの実装を呼び出して、増分量を取得しようとします。`increment()` メソッドは、オプショナルの連鎖を使用して `increment(forCount:)` の呼び出しを試み、現在の `count` をメソッドの単一の引数として渡します。
+
+ここでは、2 つの階層のオプショナルの連鎖が行われていることに注目してください。まず、`dataSource` が `nil` の可能性があるため、`dataSource` にはその名前の後に疑問符(`?`)があり、`dataSource` が `nil` でない場合にのみ `increment(forCount:)` を呼び出す必要があることを示しています。次に、`dataSource` が存在する場合でも、オプショナルのため、`increment(forCount:)` が必ず実装されている保証はありません。ここで、`increment(forCount:)` が実装されない可能性も、オプショナルの連鎖によって処理されます。`increment(forCount:)` の呼び出しは、`increment(forCount:)` が存在する場合、つまり `nil` でない場合にのみ発生します。これが `increment(forCount:)` にも名前の後に疑問符を付いている理由です。
+
+`increment(forCount:)` の呼び出しはこれら 2 つの理由のいずれかで失敗する可能性があるため、呼び出しはオプショナルの `Int` 値を返します。これは、`CounterDataSource` の定義で `increment(forCount:)` がオプショナルではない `Int` 値を返すように定義されている場合でも当てはまります。オプショナルの連鎖は 2 回行われていますが、結果は 1 つのオプショナルにラップされます。複数のオプショナルの連鎖の詳細については、[Linking Multiple Levels of Chaining](./optional-chaining.md#linking-multiple-levels-of-chaining複数階層の連鎖のリンク)を参照ください。
+
+`increment(forCount:)` を呼び出した後、それが返すオプショナルの `Int` は、オプショナルバインディングを使用して、`amount` という定数にアンラップされます。オプショナルの `Int` `に値が含まれている場合、つまり、デリゲートとメソッドの両方が存在し、メソッドが値を返した場合、`count` 格納プロパティに値が追加され、増加する動作が完了します。
+
+`increment(forCount:)` メソッドから値を取得できない場合(`dataSource` が `nil` か、データソースが `increment(forCount:)` を実装していないため)、 `increment()` メソッドはデータソースの `fixedIncrement` プロパティから値を取得しようとします。`fixedIncrement` プロパティもオプショナルの要件のため、その値はオプショナルの `Int` 値です。ただし、`fixedIncrement` は、`CounterDataSource` プロトコル定義の一部として非オプショナルの `Int` プロパティとして定義されています。
+
+これは、`fixedIncrement` にアクセスされる度にデータソースが定数 `3` を返す簡単な `CounterDataSource` 実装です。これは、オプショナルの `fixedIncrement` プロパティ要件を実装することでこれを行います。
+
+下記は、定数 3 を返すシンプルな `CounterDataSource` の実装です。オプショナルの `fixedIncrement` プロパティ要件を実装することでこれを行います。
+
+```swift
+class ThreeSource: NSObject, CounterDataSource {
+    let fixedIncrement = 3
+}
+```
+
+`ThreeSource` のインスタンスを新しい `Counter` インスタンスのデータソースとして使用できます:
+
+```swift
+var counter = Counter()
+counter.dataSource = ThreeSource()
+for _ in 1...4 {
+    counter.increment()
+    print(counter.count)
+}
+// 3
+// 6
+// 9
+// 12
+```
+
+上記のコードは、新しい `Counter` インスタンスを作成します。データソースを新しい `ThreeSource` インスタンスに設定します。そして、カウンターの `increment()` メソッドを 4 回呼び出します。予想どおり、カウンタの count プロパティは、`increment()` が呼び出されるたびに 3 ずつ増加します。
+
+下記は `TowardsZeroSource` と呼ばれるより複雑なデータソースで、`Counter` インスタンスを現在の `count` からゼロに向かってカウントアップまたはカウントダウンします:
+
+```swift
+class TowardsZeroSource: NSObject, CounterDataSource {
+    func increment(forCount count: Int) -> Int {
+        if count == 0 {
+            return 0
+        } else if count < 0 {
+            return 1
+        } else {
+            return -1
+        }
+    }
+}
+```
+
+`TowardsZeroSource` クラスは、`CounterDataSource` プロトコルからオプショナルの `increment(forCount:)` メソッドを実装し、`count` 引数を使用して、カウントする方向を決定します。`count` が既にゼロの場合、メソッドは `0` を返し、それ以上のカウントが行われないことを示します。
+
+`TowardsZeroSource` のインスタンスを既存の `Counter` インスタンスとともに使用して、-4 から 0 までカウントできます。カウンタがゼロに達すると、それ以上のカウントは行われません:
+
+```swift
+counter.count = -4
+counter.dataSource = TowardsZeroSource()
+for _ in 1...5 {
+    counter.increment()
+    print(counter.count)
+}
+// -3
+// -2
+// -1
+// 0
+// 0
+```
 
 ## Protocol Extensions(プロトコル拡張)
 
