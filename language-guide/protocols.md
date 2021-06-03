@@ -891,7 +891,31 @@ for _ in 1...5 {
 // 0
 ```
 
-## Protocol Extensions(プロトコル拡張)
+## Protocol Extensions(プロトコル extension)
+
+プロトコル extension を使用して、準拠する型にメソッド、イニシャライザ、subscript、および計算プロパティの実装を提供できます。これにより、準拠する個々の型やグローバル関数ではなく、プロトコル自体に動作を定義できます。
+
+例えば、`RandomNumberGenerator` プロトコルを拡張して、必須要件の `random()` メソッドを使用してランダムな `Bool` 値を返す `randomBool()` メソッドを提供できます:
+
+```swift
+extension RandomNumberGenerator {
+    func randomBool() -> Bool {
+        return random() > 0.5
+    }
+}
+```
+
+プロトコル extension を作成することにより、全ての準拠型は、追加の変更なしでこのメソッドの実装を自動的に使用することができます。
+
+```swift
+let generator = LinearCongruentialGenerator()
+print("Here's a random number: \(generator.random())")
+// "Here's a random number: 0.3746499199817101"
+print("And here's a random Boolean: \(generator.randomBool())")
+// "And here's a random Boolean: true"
+```
+
+プロトコル extension は、準拠する型に実装を追加できますが、別のプロトコルを拡張したり、別のプロトコルを継承することはできません。プロトコルの継承は、常にプロトコル宣言内で指定されます。
 
 ### Providing Default Implementations(デフォルト実装の提供)
 
