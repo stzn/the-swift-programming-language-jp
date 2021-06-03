@@ -702,4 +702,82 @@ beginConcert(in: seattle)
 
 ## Checking for Protocol Conformance(プロトコル準拠チェック)
 
+[Type Casting](./type-casting.md)で説明されている `is` および `as` 演算子を使用して、プロトコルの準拠を確認し、特定のプロトコルにキャストできます。プロトコルのチェックと型へのキャストは、型のチェックと型へのキャストとまったく同じ構文を使用します。
+
+* `is` 演算子は、インスタンスがプロトコルに準拠している場合は `true` を返し、準拠していない場合は `false` を返します
+* ダウンキャスト演算子の `as?` は、プロトコルの型のオプショナル値を返します。インスタンスがそのプロトコルに準拠していない場合、この値は `nil` です
+* ダウンキャスト演算子の `as！` は、強制的にダウンキャストし、ダウンキャストが成功しない場合は実行時エラーを引き起こします
+
+この例では、`HasArea` というプロトコルを定義しています。このプロトコルには、`area` という `Double` 型の get プロパティの単一のプロパティ要件があります:
+
+```swift
+class Circle: HasArea {
+    let pi = 3.1415927
+    var radius: Double
+    var area: Double { return pi * radius * radius }
+    init(radius: Double) { self.radius = radius }
+}
+class Country: HasArea {
+    var area: Double
+    init(area: Double) { self.area = area }
+}
+```
+
+`Circle` と `Country` の 2 つのクラスがあり、どちらも `HasArea` プロトコルに準拠しています:
+
+```swift
+class Circle: HasArea {
+    let pi = 3.1415927
+    var radius: Double
+    var area: Double { return pi * radius * radius }
+    init(radius: Double) { self.radius = radius }
+}
+class Country: HasArea {
+    var area: Double
+    init(area: Double) { self.area = area }
+}
+```
+
+`Circle` クラスは、`radius` という格納プロパティに基づいて、計算プロパティとして `area` プロパティの要件を実装します。`Country` クラスは、格納プロパティとして `area` プロパティのを直接実装します。どちらのクラスも、`HasArea` プロトコルに正しく準拠しています。
+
+下記は、`HasArea` プロトコルに準拠していない `Animal` というクラスです:
+
+```swift
+class Animal {
+    var legs: Int
+    init(legs: Int) { self.legs = legs }
+}
+```
+
+`Circle`、`Country`、および `Animal` クラスには、共有の基本クラスがありません。とはいえ、それらは全てクラスなため、3 つ全ての型のインスタンスを使用して、`AnyObject` 型の値を格納する配列を初期化できます:
+
+```swift
+let objects: [AnyObject] = [
+    Circle(radius: 2.0),
+    Country(area: 243_610),
+    Animal(legs: 4)
+]
+```
+
+`objects` の配列は、半径 2 単位の `Circle` インスタンス、英国の表面積を平方キロメートル単位で初期化した `Country` インスタンス。そして 4 本の足を持つ Animal インスタンスを含む配列リテラルで初期化されています
+
+`objects` 配列を繰り返し処理して、配列内の各オブジェクトをチェックして、`HasArea` プロトコルに準拠しているかどうかを確認できます:
+
+```swift
+for object in objects {
+    if let objectWithArea = object as? HasArea {
+        print("Area is \(objectWithArea.area)")
+    } else {
+        print("Something that doesn't have an area")
+    }
+}
+// Area is 12.5663708
+// Area is 243610.0
+// Something that doesn't have an area
+```
+
+配列内のオブジェクトが `HasArea` プロトコルに準拠している場合は、常に `as?` 演算子は、`objectWithArea` と呼ばれる定数へオプショナルバインドでアンラップされます。`objectWithArea` 定数は `HasArea` 型なことがわかっているため、その `area` プロパティは型安全な方法でアクセスおよび出力できます。
+
+基礎となるオブジェクトは、キャストで変更されないことに注目してください。彼らは Circle、Country、Animal です。ただし、オブジェクトが `objectWithArea` 定数に格納されている時点では、`HasArea` 型とのみ認識されているため、アクセスできるのは `area` プロパティのみです。
+
 ## Optional Protocol Requirements(オプショナルのプロトコル要件)
