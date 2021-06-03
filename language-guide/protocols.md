@@ -891,9 +891,9 @@ for _ in 1...5 {
 // 0
 ```
 
-## Protocol Extensions(プロトコル extension)
+## Protocol Extensions(プロトコル Extension)
 
-プロトコル extension を使用して、準拠する型にメソッド、イニシャライザ、subscript、および計算プロパティの実装を提供できます。これにより、準拠する個々の型やグローバル関数ではなく、プロトコル自体に動作を定義できます。
+プロトコル Extension を使用して、準拠する型にメソッド、イニシャライザ、subscript、および計算プロパティの実装を提供できます。これにより、準拠する個々の型やグローバル関数ではなく、プロトコル自体に動作を定義できます。
 
 例えば、`RandomNumberGenerator` プロトコルを拡張して、必須要件の `random()` メソッドを使用してランダムな `Bool` 値を返す `randomBool()` メソッドを提供できます:
 
@@ -905,7 +905,7 @@ extension RandomNumberGenerator {
 }
 ```
 
-プロトコル extension を作成することにより、全ての準拠型は、追加の変更なしでこのメソッドの実装を自動的に使用することができます。
+プロトコル Extension を作成することにより、全ての準拠型は、追加の変更なしでこのメソッドの実装を自動的に使用することができます。
 
 ```swift
 let generator = LinearCongruentialGenerator()
@@ -915,8 +915,23 @@ print("And here's a random Boolean: \(generator.randomBool())")
 // "And here's a random Boolean: true"
 ```
 
-プロトコル extension は、準拠する型に実装を追加できますが、別のプロトコルを拡張したり、別のプロトコルを継承することはできません。プロトコルの継承は、常にプロトコル宣言内で指定されます。
+プロトコル Extension は、準拠する型に実装を追加できますが、別のプロトコルを拡張したり、別のプロトコルを継承することはできません。プロトコルの継承は、常にプロトコル宣言内で指定されます。
 
 ### Providing Default Implementations(デフォルト実装の提供)
 
-### Adding Constraints to Protocol Extensions(プロトコル拡張に制約の追加)
+プロトコル Extension を使用して、そのプロトコルのメソッドまたは計算プロパティ要件にデフォルトの実装を提供できます。準拠する型が必要なメソッドまたはプロパティの独自の実装を提供する場合、プロトコル Extension によって提供されるものの代わりに、準拠する型の実装が使用されます。
+
+> NOTE  
+> 拡張機能によって提供されるデフォルト実装のプロトコル要件は、オプショナルのプロトコル要件とは異なります。準拠する型は、独自の実装を提供する必要はありませんが、デフォルトの実装を持つ要件は、オプショナルチェーンなしで呼び出すことができます。
+
+例えば、`TextRepresentable` プロトコルを継承する `PrettyTextRepresentable` プロトコルは、要件の `prettyTextualDescription` プロパティのデフォルト実装を提供して、単に `textualDescription` プロパティにアクセスした結果を返すことができます:
+
+```swift
+extension PrettyTextRepresentable  {
+    var prettyTextualDescription: String {
+        return textualDescription
+    }
+}
+```
+
+### Adding Constraints to Protocol Extensions(プロトコル Extensionに制約の追加)
