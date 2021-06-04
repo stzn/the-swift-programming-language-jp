@@ -239,7 +239,7 @@ if (john.residence?.address = someAddress) != nil {
 
 ## Accessing Subscripts Through Optional Chaining(オプショナル連鎖を通したsubscriptへのアクセス)
 
-オプショナルの連鎖を使用して、subscript の値を取得/設定し、その subscript の呼び出しが成功したかどうかを確認できます。
+オプショナルの連鎖を使用して、subscript の値を get/設定し、その subscript の呼び出しが成功したかどうかを確認できます。
 
 > NOTE  
 >オプショナルの連鎖を通じてオプショナルの subscript にアクセスする場合、疑問符は subscript の大括弧の後(`]`)ではなく前(`[`)に置きます。オプショナルの連鎖の場合、疑問符(`?`)は、常に式のオプショナル部分の直後に続きます。
