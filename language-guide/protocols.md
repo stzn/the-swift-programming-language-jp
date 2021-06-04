@@ -1,8 +1,8 @@
 # Protocols
 
-最終更新日:
+最終更新日: 2021/6/4
 
-プロトコル(*protocol*)は、特定のタスクまたは機能に適合するメソッド、プロパティ、およびその他の要件の設計図を定義します。プロトコルは、クラス、構造体、または列挙型で準拠でき、それらの要件の実装を提供します。プロトコルの要件を満たす全ての型は、そのプロトコルに準拠しているといいます。
+プロトコル(*protocol*)は、特定のタスクまたは機能に準拠するメソッド、プロパティ、およびその他の要件の設計図を定義します。プロトコルは、クラス、構造体、または列挙型で準拠でき、それらの要件の実装を提供します。プロトコルの要件を満たす全ての型は、そのプロトコルに準拠しているといいます。
 
 準拠する型が実装する必要がある要件を指定することに加えて、プロトコルを拡張して、これらの要件の一部を実装したり、準拠する型が利用できる追加機能を実装したりできます。
 
@@ -16,7 +16,7 @@ protocol SomeProtocol {
 }
 ```
 
-カスタム型は、定義の一部として、型名の後にプロトコル名をコロン(`:`)で区切って配置することにより、特定のプロトコルに準拠することを示します。複数のプロトコルをリストでき、コンマで区切ることができます:
+カスタム型は、定義の一部として、型名の後にプロトコル名をコロン(`:`)で区切って配置することにより、特定のプロトコルに準拠することを示します。複数のプロトコルにも準拠でき、カンマ(`,`)区切りで並べます:
 
 ```swift
 struct SomeStructure: FirstProtocol, AnotherProtocol {
@@ -24,7 +24,7 @@ struct SomeStructure: FirstProtocol, AnotherProtocol {
 }
 ```
 
-クラスにスーパークラスがある場合は、準拠するプロトコルの前にスーパークラス名をリストし、その後にコンマを続けます:
+クラスにスーパークラスがある場合は、準拠するプロトコルの前にスーパークラス名を記述し、その後にカンマを続けます:
 
 ```swift
 class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
@@ -34,11 +34,11 @@ class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
 
 ## Property Requirements(プロパティ要件)
 
-プロトコルは、特定の名前と型のインスタンスプロパティまたは型プロパティに準拠することを要件にできます。プロトコルは、プロパティが格納プロパティか計算プロパティかを指定しません。必要なプロパティの名前と型を指定するだけです。プロトコルは、各プロパティが取得のみか、取得可能、設定可能どちらも必要かどうかも指定します。
+プロトコルは、特定の名前と型のインスタンスプロパティまたは型プロパティを要件にできます。プロトコルでは、格納プロパティか計算プロパティかを指定しません。必要なプロパティの名前と型を指定するだけです。プロトコルは、各プロパティが get のみか、get/set どちらも必要かどうかも指定します。
 
-プロトコルがプロパティに取得可能+設定可能を要求する場合、そのプロパティ要件は、定数格納プロパティまたは読み取り専用の計算プロパティでは満たされません。プロトコルが取得可能のみを要求する場合でも、その要件はあらゆる種類のプロパティによって満たされ、必要ならば実装の方でプロパティが設定可能でも要件を満たします。
+プロトコルが get/set を要求する場合、そのプロパティ要件は、定数格納プロパティまたは読み取り専用の計算プロパティでは満たされません。プロトコルが get のみを要求する場合でも、その要件はあらゆる種類のプロパティによって満たされ、必要ならば実装の方でプロパティが set でも要件を満たします。
 
-プロパティ要件は常に変数プロパティとして宣言され、前に `var` キーワードが付きます。取得可能+set プロパティは型宣言の後に `{ get set }` を記述することで示し、get プロパティは `{ get }` を記述することで示します。
+プロパティ要件は常に変数プロパティとして宣言され、前に `var` キーワードが付きます。get/set プロパティは型宣言の後に `{ get set }` を記述することで示し、get プロパティは `{ get }` で示します。
 
 ```swift
 protocol SomeProtocol {
@@ -47,7 +47,7 @@ protocol SomeProtocol {
 }
 ```
 
-プロトコルで、型プロパティの要件の前には、必ず `static` キーワードを付けてください。このルールは、クラスによって実装されるときに、型プロパティに `class` または `static` キーワードをプレフィックスを付けても要件を満たします:
+プロトコルで、型プロパティの要件の前には、必ず `static` キーワードを付けてください。クラスによって実装されるときは、`class` または `static` キーワードをプレフィックスを付けても要件を満たします:
 
 ```swift
 protocol AnotherProtocol {
@@ -55,7 +55,7 @@ protocol AnotherProtocol {
 }
 ```
 
-単一のインスタンスプロパティ要件を持つプロトコルの例を次に示します:
+単一のインスタンスプロパティを要件に持つプロトコルの例を次に示します:
 
 ```swift
 protocol FullyNamed {
@@ -63,7 +63,7 @@ protocol FullyNamed {
 }
 ```
 
-`FullyNamed` プロトコルでは、完全修飾名を提供するための準拠する型が必要です。プロトコルは、準拠する型の性質について他に何も指定していません。型がそれ自体の完全な名前を提供できる必要があることを指定するだけです。プロトコルでは、`FullyNamed` 型には、`String` 型の `fullName` という取得可能インスタンスプロパティが宣言されています。
+完全修飾名を提供するために、`FullyNamed` プロトコルに準拠する型が必要です。プロトコルは、準拠する型の性質について他に何も指定していません。型が完全修飾名を提供する必要があることを指定するだけです。プロトコルでは、`FullyNamed` 型には、`String` 型の `fullName` という get インスタンスプロパティが宣言されています。
 
 `FullyNamed` プロトコルに準拠するシンプルな構造体の例を次に示します:
 
@@ -75,11 +75,11 @@ let john = Person(fullName: "John Appleseed")
 // john.fullName は "John Appleseed"
 ```
 
-この例では、特定の名前付き人物を表す `Person` という構造体を定義しています。その定義の最初の行の一部として `FullyNamed` プロトコルに準拠すると述べています。
+この例では、特定の名前を持つ人物を表す `Person` という構造体を定義しています。その定義の最初の行の一部として `FullyNamed` プロトコルに準拠することが記述されています。
 
-`Person` の各インスタンスには、`String` 型の `fullName` という 1 つの格納プロパティがあります。これは、`FullyNamed` プロトコルの単一の要件と一致し、`Person` がプロトコルに正しく準拠していることを意味します。(プロトコル要件が満たされていない場合、Swift はコンパイルエラーが発生します)
+`Person` の各インスタンスには、`String` 型の `fullName` という 1 つの格納プロパティがあります。これは、`FullyNamed` プロトコルの単一の要件と一致し、`Person` がプロトコルに正しく準拠していることを意味します。(プロトコル要件が満たされていない場合、コンパイルエラーが発生します)
 
-これも `FullyNamed` プロトコルに準拠する、より複雑なクラスです:
+下記も `FullyNamed` プロトコルに準拠する、より複雑なクラスです:
 
 ```swift
 class Starship: FullyNamed {
@@ -97,13 +97,13 @@ var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
 // ncc1701.fullName は "USS Enterprise"
 ```
 
-このクラスは、宇宙船の計算された読み取り専用プロパティとして `fullName` プロパティを実装します。各 `Starship` クラスのインスタンスは、必須の `name` とオプショナルの `prefix` を格納します。`fullName` プロパティは、プレフィックス値が存在する場合はそれを使用し、名前の先頭に追加して宇宙船のフルネームを作成します。
+このクラスは、宇宙船の読み取り専用の計算プロパティとして `fullName` プロパティを実装します。各 `Starship` クラスのインスタンスは、必須の `name` とオプショナルの `prefix` を格納します。`fullName` プロパティは、プレフィックス値が存在する場合はそれを使用し、名前の先頭に追加して宇宙船のフルネームを作成します。
 
 ## Method Requirements(メソッド要件)
 
-プロトコルでは、特定のインスタンスメソッドと型に準拠することで型メソッドの実装が必要になる場合があります。これらのメソッドは、通常のインスタンスおよび型メソッドとまったく同じ方法でプロトコルの定義の一部として記述されますが、中括弧(`{}`)やメソッド本文はありません。通常のメソッドと同じ規則に従って、可変個引数を使用できます。ただし、プロトコルの定義内のメソッドの引数にデフォルト値を指定することはできません。
+プロトコルはインスタンスメソッドと型メソッドを要件にすることもできます。これらのメソッドは、通常のインスタンスおよび型メソッドとまったく同じ方法でプロトコルの定義の一部として記述されますが、中括弧(`{}`)やメソッド本文はありません。通常のメソッドと同じ規則に従って、可変個引数を使用できます。ただし、プロトコルの定義内のメソッドの引数にデフォルト値を指定することはできません。
 
-型プロパティの要件と同様に、プロトコルで定義するときは、常に型メソッドの要件の前に `static` キーワードを付けます。これは、クラスによって実装されるときに、型メソッドの要件に `class` または `static` キーワードが付いている場合にも当てはまります:
+型プロパティの要件と同様に、型メソッドをプロトコルで定義するときは、常に要件の前に `static` キーワードを付けます。これは、クラスによって実装されるときに、型メソッドの要件に `class` または `static` キーワードが付いている場合にも当てはまります:
 
 ```swift
 protocol SomeProtocol {
@@ -119,11 +119,11 @@ protocol RandomNumberGenerator {
 }
 ```
 
-このプロトコル `RandomNumberGenerator` では、準拠するには `random` と呼ばれるインスタンスメソッドが必要です。このインスタンスメソッドは、呼び出されるたびに `Double` 値を返します。プロトコルの一部として指定されていませんが、この値は `0.0` から `1.0`(ただし、`1.0` を含まない) までの数値が想定されています。
+このプロトコル `RandomNumberGenerator` に準拠するには `random` と呼ばれるインスタンスメソッドが必要です。このインスタンスメソッドは、呼び出される度に `Double` 値を返します。プロトコルでは指定されていませんが、この値は `0.0` から `1.0`(ただし、`1.0` を含まない) までの数値が想定されています。
 
-`RandomNumberGenerator` プロトコルは、各乱数がどのように生成されるかについて何も指定していません。単に、ジェネレータが新しい乱数を生成する標準的な方法を提供することを要求するだけです。
+`RandomNumberGenerator` プロトコルは、各乱数がどのように生成されるかについて何も指定していません。単に、ジェネレータが新しい乱数を生成する標準的な方法を要求するだけです。
 
-下記は、`RandomNumberGenerator` プロトコルに準拠するクラスの実装です。このクラスは、線形合同法発生器として知られる疑似乱数発生器アルゴリズムを実装します:
+下記は、`RandomNumberGenerator` プロトコルに準拠するクラスの実装です。このクラスは、線形合同法発生器として知られる疑似乱数発生器アルゴリズムを実装しています:
 
 ```swift
 class LinearCongruentialGenerator: RandomNumberGenerator {
@@ -146,16 +146,16 @@ print("And another one: \(generator.random())")
 
 ## Mutating Method Requirements(mutatingメソッド要件)
 
-メソッドが属するインスタンスを変更する必要がある場合があります。値型 (つまり、構造体と列挙型) のインスタンスメソッドの場合、メソッドの `func` キーワードの前に `mutating` キーワードを配置して、メソッドが属するインスタンスとそのインスタンスの全てのプロパティを変更できることを示します。このプロセスについては、[Modifying Value Types from Within Instance Methods(インスタンスメソッド内からの値型の変更)](./methods.md#modifying-value-types-from-within-instance-methodsインスタンスメソッド内からの値型の変更)で説明されています。
+メソッドが属するインスタンスを変更する必要がある場合があります。値型(つまり、構造体と列挙型)のインスタンスメソッドの場合、メソッドの `func` キーワードの前に `mutating` キーワードを配置して、メソッドが属するインスタンスとそのインスタンスの全てのプロパティを変更できることを示します。このプロセスについては、[Modifying Value Types from Within Instance Methods(インスタンスメソッド内からの値型の変更)](./methods.md#modifying-value-types-from-within-instance-methodsインスタンスメソッド内からの値型の変更)で説明されています。
 
-任意の型のインスタンスを変更することを目的としたプロトコルのインスタンスメソッド要件を定義する場合は、プロトコルの定義の一部として `mutating` キーワードを使用してメソッドをマークします。これにより、構造体と列挙型がそのメソッド要件を満たしてプロトコルに準拠することができます。
+任意の型のインスタンスを変更することを目的としたプロトコルのインスタンスメソッドの要件を定義する場合は、`mutating` キーワードをメソッドにマークします。これにより、構造体と列挙型がそのメソッド要件を満たしてプロトコルに準拠することができます。
 
 > NOTE  
-> プロトコルのインスタンスメソッドの要件を変更としてマークする場合、クラスがそのメソッドを実装するときに、`mutating` キーワードを記述する必要はありません。`mutating` キーワードは、構造体と列挙型によってのみ使用されます。
+> プロトコルのインスタンスメソッドの要件を `mutating` としてマークする場合、クラスがそのメソッドを実装するときに、`mutating` キーワードを記述する必要はありません。`mutating` キーワードは、構造体と列挙型のみ使用できます。
 
-下記の例では、`Togglable` というプロトコルが定義されています。これは、`toggle` という単一のインスタンスメソッド要件を定義しています。その名前が示すように、`toggle()` メソッドは、通常、その型のプロパティを変更することによって、準拠する型の状態をトグルまたは反転することを目的としています。
+下記の例では、`Togglable` というプロトコルが定義されています。これは、`toggle` という単一のインスタンスメソッドの要件を定義しています。その名前が示すように、`toggle()` メソッドは、通常、その型のプロパティを変更することによって、準拠する型の状態をトグル(反転)することを目的としています。
 
-`toggle()` メソッドは、`Togglable` プロトコル定義の一部として `mutating` キーワードがマークされており、メソッドが呼び出されたときに準拠するインスタンスの状態を変更される可能性を示しています。
+`toggle()` メソッドは、`Togglable` プロトコル定義の一部として `mutating` キーワードがマークされており、メソッドが呼び出されたときに準拠するインスタンスの状態を変更する可能性を示しています。
 
 構造体または列挙型に対して `Togglable` プロトコルを実装する場合、その構造体または列挙型は、`mutating` がマークされている `toggle()` メソッドの実装を提供することにより、プロトコルに準拠できます。
 
@@ -180,7 +180,7 @@ lightSwitch.toggle()
 
 ## Initializer Requirements(イニシャライザ要件)
 
-プロトコルでは、型に準拠することで特定のイニシャライザを実装が必要な場合があります。これらのイニシャライザは、通常のイニシャライザとまったく同じ方法でプロトコルの定義の一部として記述しますが、中括弧(`{}`)やイニシャライザ本文はありません:
+プロトコルでは、型に準拠するために特定のイニシャライザが必要な場合があります。このイニシャライザは、通常のイニシャライザとまったく同じ方法でプロトコルの定義の一部として記述できますが、中括弧(`{}`)やイニシャライザ本文はありません:
 
 ```swift
 protocol SomeProtocol {
@@ -190,7 +190,7 @@ protocol SomeProtocol {
 
 ### Class Implementations of Protocol Initializer Requirements(プロトコルイニシャライザ要件のクラス実装)
 
-プロトコルのイニシャライザ要件は、準拠するクラスで指定イニシャライザまたは convenience イニシャライザとして実装できます。どちらの場合も、`required` 修飾子でイニシャライザの実装をマークする必要があります:
+プロトコルのイニシャライザの要件は、準拠するクラスで指定イニシャライザまたは convenience イニシャライザとして実装できます。どちらの場合も、`required` 修飾子でイニシャライザの実装をマークする必要があります:
 
 ```swift
 class SomeClass: SomeProtocol {
@@ -200,7 +200,7 @@ class SomeClass: SomeProtocol {
 }
 ```
 
-`required` 修飾子を使用すると、準拠するクラスの全てのサブクラスでも、イニシャライザ要件を明示的または継承した実装で、プロトコルに準拠する必要があります。
+`required` 修飾子を使用すると、準拠するクラスの全てのサブクラスで、イニシャライザ要件を明示的に実装または継承して、プロトコルに準拠する必要があります。
 
 `required` イニシャライザの詳細については、[Required Initializers](./initialization.md#required-initializers必須イニシャライザ)を参照ください。
 
@@ -223,16 +223,16 @@ class SomeSuperClass {
 class SomeSubClass: SomeSuperClass, SomeProtocol {
     // "required" は SomeProtocol から、 "override" は SomeSuperClass から
     required override init() {
-        // initializer implementation goes here
+        // イニシャライザの実装をここに
     }
 }
 ```
 
 ### Failable Initializer Requirements(失敗可能イニシャライザ要件)
 
-プロトコルは、[Failable Initializers](./initialization.md#failable-initializers失敗可能イニシャライザ)で定義されているように、準拠する型の失敗可能イニシャライザの要件を定義できます。
+プロトコルは、[Failable Initializers](./initialization.md#failable-initializers失敗可能イニシャライザ)で定義されているように、失敗可能イニシャライザ要件を定義できます。
 
-失敗可能イニシャライザの要件は、準拠する型の失敗可能または失敗しないイニシャライザによって満たされます。失敗しないイニシャライザの要件は、失敗しないイニシャライザまたは暗黙的にアンラップされた失敗可能イニシャライザによって満たされます。
+失敗可能イニシャライザ要件は、準拠する型の失敗可能または失敗しないイニシャライザによって満たされます。失敗しないイニシャライザ要件は、失敗しないイニシャライザまたは暗黙的にアンラップされた失敗可能イニシャライザによって満たされます。
 
 ## Protocols as Types(型としてのプロトコル)
 
@@ -263,15 +263,15 @@ class Dice {
 }
 ```
 
-この例では、ボード ゲームで使用する n 面のサイコロを表す `Dice` という新しいクラスを定義しています。`Dice` のインスタンスには、側面の数を表す `sides` と呼ばれる整数のプロパティと、ダイスのロール値を作成するための乱数ジェネレーターを提供する `generator` と呼ばれるプロパティがあります。
+この例では、ボードゲームで使用する n 面のサイコロを表す `Dice` という新しいクラスを定義しています。`Dice` のインスタンスには、側面の数を表す `sides` と呼ばれる整数のプロパティと、ダイスの出目を作成するための乱数ジェネレーターを提供する `generator` と呼ばれるプロパティがあります。
 
-`generator` プロパティの型は `RandomNumberGenerator` です。したがって、`RandomNumberGenerator` プロトコルに準拠する任意の型のインスタンスに設定できます。このプロパティに割り当てるインスタンスには、インスタンスが `RandomNumberGenerator` プロトコルに準拠する必要があることを除いて、他に何も必要ありません。その型は `RandomNumberGenerator` なので、`Dice` クラス内のコードは、このプロトコルに準拠する全ての `generator` のみを使用できます。つまり、そのジェネレーターの具体的な型で定義されているメソッドやプロパティを使用することはできません。ただし、[Downcasting](./type-casting.md#downcastingダウンキャスト)で説明されているように、スーパークラスからサブクラスにダウンキャストできるのと同じ方法で、プロトコル型から準拠した具体的な型にダウンキャストできます。
+`generator` プロパティの型は `RandomNumberGenerator` です。したがって、`RandomNumberGenerator` プロトコルに準拠する任意の型のインスタンスを設定できます。このプロパティに割り当てるインスタンスには、インスタンスが `RandomNumberGenerator` プロトコルに準拠する必要があることを除いて、他に何も必要ありません。型は `RandomNumberGenerator` なので、`Dice` クラス内のコードは、このプロトコルに準拠する `generator` のみを使用できます。つまり、その具体的なジェネレータの型で定義されているメソッドやプロパティを使用することはできません。ただし、[Downcasting](./type-casting.md#downcastingダウンキャスト)で説明されているように、スーパークラスからサブクラスにダウンキャストできるのと同じ方法で、プロトコル型から準拠した具体的な型にダウンキャストできます。
 
-`Dice` には、初期状態を設定するためのイニシャライザもあります。このイニシャライザには、型も `RandomNumberGenerator` の `generator` と呼ばれる引数があります。新しい `Dice` インスタンスを初期化するときに、この引数に準拠する型の値を渡すことができます。
+`Dice` には、初期状態を設定するためのイニシャライザもあります。このイニシャライザには、`RandomNumberGenerator` 型の `generator` と呼ばれる引数があります。新しい `Dice` インスタンスを初期化するときに、この引数に `RandomNumberGenerator` に準拠する型の値を渡すことができます。
 
-`Dice` は、1 からサイコロの面の数までの整数値を返す 1 つのインスタンスメソッド、`roll` を提供しています。このメソッドは、ジェネレーターの `random()` メソッドを呼び出して `0.0` から `1.0` の間の新しい乱数を作成し、この乱数を使用して正しい範囲内でサイコロの目を作成します。`generator` は `RandomNumberGenerator` に準拠することがわかっているため、呼び出すべき `random()` メソッドがあることが保証されています。
+`Dice` は、1 からサイコロの面の数までの整数値を返す 1 つのインスタンスメソッド、`roll` を提供しています。このメソッドは、ジェネレータの `random()` メソッドを呼び出して `0.0` から `1.0` の間の新しい乱数を作成し、この乱数を使用して正しい範囲内でサイコロの目を作成します。`generator` は `RandomNumberGenerator` に準拠することがわかっているため、呼び出すべき `random()` メソッドが存在していることは保証されています。
 
-`Dice` クラスを使用して、`LinearCongruentialGenerator` インスタンスを乱数ジェネレーターとして使用して、6 面体のサイコロを作成する方法を次に示します:
+`Dice` クラスを使用して、`LinearCongruentialGenerator` インスタンスを乱数ジェネレータとして使用して、6 面体のサイコロを作成する方法を次に示します:
 
 ```swift
 
@@ -304,11 +304,11 @@ protocol DiceGameDelegate: AnyObject {
 }
 ```
 
-`DiceGame` プロトコルは、サイコロを使用する全てのゲームで準拠できるプロトコルです。
+`DiceGame` プロトコルは、サイコロを使用する全てのゲームに準拠できるプロトコルです。
 
-`DiceGameDelegate` プロトコルは、`DiceGame` の進行状況を追跡するために準拠できます。強参照(*strong reference*)循環を防ぐために、デリゲートは弱参照(*weak reference*)として宣言されます。弱参照については、[Strong Reference Cycles Between Class Instances](./automatic-reference-counting.md#strong-reference-cycles-between-class-instancesクラスインスタンス間の強参照循環)を参照ください。プロトコルをクラス専用としてマークすると、この章の後半で登場する `SnakesAndLadders` クラスがそのデリゲートが弱参照を使用しなければならないことを宣言できるようになります。クラス専用プロトコルは、[Class-Only Protocols](#class-only-protocolsクラス専用プロトコル)で説明されているように、`AnyObject` を継承します。
+`DiceGameDelegate` プロトコルは、`DiceGame` の進行状況を追跡するために準拠できます。強参照(*strong reference*)循環を防ぐために、デリゲートは弱参照(*weak reference*)として宣言されます。弱参照については、[Strong Reference Cycles Between Class Instances](./automatic-reference-counting.md#strong-reference-cycles-between-class-instancesクラスインスタンス間の強参照循環)を参照ください。プロトコルをクラス専用としてマークすると、この章の後半で登場する `SnakesAndLadders` クラスがそのデリゲートを弱参照で使用しなければならないことを宣言できるようになります。クラス専用プロトコルは、[Class-Only Protocols](#class-only-protocolsクラス専用プロトコル)で説明されているように、`AnyObject` を継承します。
 
-これは、最初に [Control Flow](./control-flow.md) で紹介した蛇とはしごゲームのバージョンです。このバージョンは、ダイスロールに `Dice` インスタンスを使用しています。`DiceGame` プロトコルに準拠すること。そして、その進行状況を `DiceGameDelegate` に通知します:
+これは、最初に [Control Flow](./control-flow.md) で紹介した「蛇とはしごゲーム」の別バージョンです。このバージョンは、ダイスロールに `Dice` インスタンスを使用しています。`SnakesAndLadders` は `DiceGame` プロトコルに準拠し、その進行状況を `DiceGameDelegate` に通知します:
 
 ```swift
 class SnakesAndLadders: DiceGame {
@@ -345,11 +345,11 @@ class SnakesAndLadders: DiceGame {
 
 蛇とはしごについては、[Break](./control-flow.md#break)を参照してください。
 
-このバージョンのゲームは、`DiceGame` プロトコルに準拠する `SnakesAndLadders` というクラスでラップされています。プロトコルに準拠するために、`dice` と呼ばれる get プロパティと `play()` メソッドを提供しています。(`dice` プロパティは、初期化後に変更する必要がないため、定数プロパティとして宣言されており、プロトコルでは取得可能なことのみを要件にしています)
+このバージョンでは、`DiceGame` プロトコルに準拠する `SnakesAndLadders` というクラスでラップされています。プロトコルに準拠するために、`dice` と呼ばれる get プロパティと `play()` メソッドを提供しています。(`dice` プロパティは、初期化後に変更する必要がないため、定数プロパティとして宣言されており、プロトコルでは get のみを要件にしています)
 
-蛇とはしごのゲームボードのセットアップは、クラスの `init()` イニシャライザ内で行われています。全てのゲームロジックは、プロトコルの `play` メソッドの中で行われています。このメソッドは、プロトコルで必須の `dice` プロパティを使用して、ダイスロール値を提供しています。
+蛇とはしごのゲームボードのセットアップは、クラスの `init()` イニシャライザ内で行われています。全てのゲームロジックは、プロトコルの `play` メソッドの中で行われています。このメソッドは、プロトコルで必須の `dice` プロパティを使用して、ダイスの出目を提供しています。
 
-ゲームをプレイするためにデリゲートは必要ないため、`delegate` プロパティはオプショナルの `DiceGameDelegate` として定義されていることに注目してください。これはオプショナル型なので、`delegate` プロパティは自動的に `nil` で初期化されます。その後、ゲームのイニシャライザには、プロパティを適切なデリゲートに設定することができます。`DiceGameDelegate` プロトコルはクラス専用のため、デリゲートを `weak` として宣言し、循環参照を防ぐことができます。
+ゲームをプレイするためにデリゲートは必要ないため、`delegate` プロパティはオプショナルの `DiceGameDelegate` として定義されていることに注目してください。これはオプショナル型なので、`delegate` プロパティは自動的に `nil` で初期化されます。その後、ゲームのイニシャライザには、プロパティに適切なデリゲートを設定することができます。`DiceGameDelegate` プロトコルはクラス専用のため、デリゲートを `weak` として宣言し、循環参照を防ぐことができます。
 
 `DiceGameDelegate` は、ゲームの進行状況を追跡するための 3 つのメソッドを提供しています。これらの 3 つのメソッドは、上記の `play()` メソッド内のゲームロジックに組み込まれており、新しいゲームの開始、新しいターンの開始、またはゲームの終了時に呼び出されます。
 
@@ -379,9 +379,9 @@ class DiceGameTracker: DiceGameDelegate {
 
 `DiceGameTracker` は、`DiceGameDelegate` に必要な 3 つのメソッド全てを実装します。これらのメソッドを使用して、ゲームが経過したターン数を追跡します。これは、ゲームの開始時に `numberOfTurns` プロパティをゼロにリセットし、新しいターンが開始される度にそれを増加し、ゲームが終了すると合計ターン数を出力します。
 
-上記の `gameDidStart(_:)` の実装では、`game` 引数を使用して、これからプレイするゲームに関するいくつかのイントロダクションを出力します。`game` 引数の型は `SnakesAndLadders` ではなく `DiceGame` のため、`gameDidStart(_:)` は、`DiceGame` プロトコルの一部として実装されているメソッドとプロパティのみ使用できます。ただし、メソッドは引き続き型キャストを使用して、準拠したインスタンスの型を照会できます。この例では、`game` が実際に内部で `SnakesAndLadders` のインスタンスかどうかを確認し、その場合は適切なメッセージを出力します。
+上記の `gameDidStart(_:)` の実装では、`game` 引数を使用して、これからプレイするゲームに関するいくつかのイントロダクションを出力します。`game` 引数の型は `SnakesAndLadders` ではなく `DiceGame` のため、`gameDidStart(_:)` は、`DiceGame` プロトコルの一部として実装されているメソッドとプロパティのみを使用できます。ただし、メソッドは引き続き型キャストを使用して、準拠したインスタンスの型を照会できます。この例では、`game` が実際に内部で `SnakesAndLadders` のインスタンスかどうかを確認し、その場合は適切なメッセージを出力します。
 
-`gameDidStart(_:)` メソッドは、渡された `game` 引数の `dice` プロパティにもアクセスしています。`game` は `DiceGame` プロトコルに準拠しているため、`dice` プロパティを持つことが保証されているため、`gameDidStart(_:)` メソッドは、プレイされているゲームの種類に関係なく、`dice` の `side` プロパティにアクセスして出力できます。
+`gameDidStart(_:)` メソッドは、渡された `game` 引数の `dice` プロパティにもアクセスしています。`game` は `DiceGame` プロトコルに準拠しているため、`dice` プロパティを持つことが保証されているため、`gameDidStart(_:)` メソッドは、プレイされているゲームの種類に関係なく、`dice` の `sides` プロパティにアクセスして出力できます。
 
 `DiceGameTracker` の実際の挙動は次のとおりです:
 
@@ -405,7 +405,7 @@ game.play()
 > NOTE  
 > 型の既存のインスタンスは、extension でそのインスタンスの型がプロトコルに準拠すると、自動的にプロトコルに準拠します。
 
-例えば、`TextRepresentable` と呼ばれるこのプロトコルは、テキストとして表現できる任意の型で実装できます。これは、それ自体の説明、または現在の状態のテキストバージョンの場合があります:
+例えば、`TextRepresentable` と呼ばれるプロトコルは、テキストとして表現できる任意の型で実装できます。これは、それ自体の説明や、現在の状態の説明などの可能性があります:
 
 ```swift
 protocol TextRepresentable {
@@ -423,7 +423,7 @@ extension Dice: TextRepresentable {
 }
 ```
 
-この extension は、`Dice` が元の実装とまったく同じ方法で新しいプロトコルに準拠しています。プロトコル名を型名の後にコロン(`:`)で区切って指定し、プロトコルの全ての要件の実装は extension の中括弧内(`{}`)に指定します。
+この extension は、`Dice` の元の実装とまったく同じ方法で新しいプロトコルに準拠しています。プロトコル名を型名の後にコロン(`:`)で区切って指定し、プロトコルの全ての要件の実装は extension の中括弧内(`{}`)に指定します。
 
 これで、どの `Dice` インスタンスも `TextRepresentable` として扱えるようになりました:
 
@@ -447,9 +447,9 @@ print(game.textualDescription)
 
 ### Conditionally Conforming to a Protocol(条件付きでのプロトコルへの準拠)
 
-ジェネリック型は、型のジェネリック引数がプロトコルに準拠している場合など、特定の条件下でのみプロトコルの要件を満たすことができる場合があります。型を拡張するときに制約を並べることで、ジェネリック型を条件付きでプロトコルに準拠させることができます。`where` 句を記述して、準拠するプロトコルの名前の後にこれらの制約を記述します。ジェネリック `where` 句の詳細については、[Generic Where Clauses](./generics.md#generic-where-clauses)を参照ください。
+ジェネリック型は、型のジェネリック引数がプロトコルに準拠している場合など、特定の条件下でのみプロトコルの要件を満たすことができるようにします。型を拡張するときに制約を並べることで、ジェネリック型を条件付きでプロトコルに準拠させることができます。`where` 句を記述して、準拠するプロトコルの名前の後にこれらの制約を記述します。ジェネリック `where` 句の詳細については、[Generic Where Clauses](./generics.md#generic-where-clauses)を参照ください。
 
-次の拡張により、`Array` インスタンスが `TextRepresentable` に準拠する型の要素を格納する場合は常に、`TextRepresentable` プロトコルに準拠するようになります:
+次の拡張により、`Array` インスタンスが `TextRepresentable` に準拠する型の要素を格納する場合は、常に `TextRepresentable` プロトコルに準拠するようになります:
 
 ```swift
 extension Array: TextRepresentable where Element: TextRepresentable {
@@ -477,7 +477,7 @@ struct Hamster {
 extension Hamster: TextRepresentable {}
 ```
 
-これで `TextRepresentable` が必要な型ならば、`Hamster` のインスタンスを使用できるようになりました:
+これで `TextRepresentable` が必要な型へ、`Hamster` のインスタンスを使用できるようになりました:
 
 ```swift
 let simonTheHamster = Hamster(name: "Simon")
@@ -491,17 +491,17 @@ print(somethingTextRepresentable.textualDescription)
 
 ## Adopting a Protocol Using a Synthesized Implementation(既定実装を使用したプロトコル準拠)
 
-Swift は、多くのシンプルなケースで、`Equatable`、`Hashable`、および `Comparable` のプロトコル準拠を自動的に提供できます。この既定実装を使用すると、プロトコル要件を自分で実装するために、繰り返しコードを記述する必要がなくなります。
+Swift は、多くのシンプルなケースで、`Equatable`、`Hashable`、および `Comparable` のプロトコルへの準拠を自動的に提供できます。この既定実装を使用すると、プロトコル要件を自分で実装するために、繰り返しコードを記述する必要がなくなります。
 
 Swift は、次の種類の独自の型に対して `Equatable` の既定実装を提供します。
 
-* `Equatable` プロトコルに準拠した格納プロパティのみの構造体
-* 関連値のが `Equatable` プロトコルに準拠する型のみの列挙型
+* `Equatable` プロトコルに準拠した型の格納プロパティのみで構成される構造体
+* 関連値が `Equatable` プロトコルに準拠する型のみの列挙型
 * 関連値のない列挙型
 
 `==` の既定実装を受け取るには、自分で `==` 演算子を実装せずに、元の宣言を含むファイルで `Equatable` への準拠を宣言します。`Equatable` プロトコルは、`!=` のデフォルトの実装を提供しています。
 
-下記の例では、`Vector2D` 構造体と同様に、3 次元位置ベクトル `(x、y、z)` の `Vector3D` 構造体を定義しています。`x`、`y`、`z` プロパティは全て `Equatable` 型なので、`Vector3D` は等価演算子の既定実装を受け取ります。
+下記の例では、`Vector2D` 構造体と同様に、3 次元位置ベクトル `(x、y、z)` の `Vector3D` 構造体を定義しています。`x`、`y`、`z` プロパティは全て `Equatable` に準拠した型なので、`Vector3D` は等価演算子の既定実装を受け取ります。
 
 ```swift
 struct Vector3D: Equatable {
@@ -518,13 +518,13 @@ if twoThreeFour == anotherTwoThreeFour {
 
 Swift は、次の種類の独自の型に対して `Hashable` の既定実装を提供します。
 
-* `Hashable` プロトコルに準拠した格納プロパティのみの構造体
+* `Hashable` プロトコルに準拠した型の格納プロパティのみで構成される構造体
 * 関連値が `Hashable` プロトコルに準拠する型のみの列挙型
 * 関連値のない列挙型
 
 `hash(into:)` の既定実装を受け取るには、`hash(into:)` メソッドを自分で実装せずに、元の宣言を含むファイルで `Hashable` への準拠を宣言します。
 
-Swift は、Raw Value を持たない列挙型の `Comparable` の既定実装を提供します。列挙に型が関連値がある場合、それらは全て `Comparable` プロトコルに準拠している必要があります。`<` の既定実装を受け取るには、自分で `<` 演算子を実装せずに、元の列挙宣言を含むファイルで `Comparable` への準拠を宣言します。残りの比較演算子(`<=`、`>`、および `>=`)は `Comparable` プロトコルがデフォルトで実装を提供してます。
+Swift は、Raw Value を持たない列挙型に `Comparable` の既定実装を提供します。列挙型に関連値がある場合、それらは全て `Comparable` プロトコルに準拠している必要があります。`<` の既定実装を受け取るには、自分で `<` 演算子を実装せずに、元の列挙宣言を含むファイルで `Comparable` への準拠を宣言します。残りの比較演算子(`<=`、`>`、および `>=`)は `Comparable` プロトコルがデフォルトで実装を提供してます。
 
 下記の例では、初心者、中級者、および専門家向けのケースを含む `SkillLevel` 列挙型を定義しています。エキスパートは、持っている星の数によってさらにランク付けされます。
 
@@ -564,11 +564,11 @@ for thing in things {
 // A hamster named Simon
 ```
 
-Thing 定数は `TextRepresentable` 型なことに注目してください。内部の実際のインスタンスがそれらの型の 1 つの場合でも、型は `Dice`、`DiceGame`、または `Hamster` ではありません。これは `TextRepresentable` 型で、`TextRepresentable` は全て `textualDescription` プロパティを持つことがわかっているため、ループ処理の中で安全に `thing.textualDescription` にアクセスできます。
+`Thing` 定数は `TextRepresentable` 型なことに注目してください。内部の実際のインスタンスがそれらの型の 1 つの場合でも、型は `Dice`、`DiceGame`、または `Hamster` ではありません。これは `TextRepresentable` 型で、`TextRepresentable` は全て `textualDescription` プロパティを持つことがわかっているため、ループ処理の中で安全に `thing.textualDescription` にアクセスできます。
 
 ## Protocol Inheritance(プロトコル継承)
 
-プロトコルは 1 つ以上の他のプロトコルを継承でき、継承する要件の上にさらに要件を追加できます。プロトコル継承の構文はクラス継承の構文に似ていますが、継承された複数のプロトコルをカンマ(`,`)で区切って並べることができます:
+プロトコルは 1 つ以上の他のプロトコルを継承でき、継承する要件の上にさらに要件を追加できます。プロトコル継承の構文はクラス継承の構文に似ていますが、継承された複数のプロトコルをカンマ(`,`)で区切って並べます:
 
 ```swift
 protocol InheritingProtocol: SomeProtocol, AnotherProtocol {
@@ -607,9 +607,9 @@ extension SnakesAndLadders: PrettyTextRepresentable {
 }
 ```
 
-この拡張機能は、`PrettyTextRepresentable` プロトコルに準拠し、`SnakesAndLadders` 型の `prettyTextualDescription` プロパティの実装を提供していることを示しています。`PrettyTextRepresentable` に準拠するものは必ず全て `TextRepresentable` なので、 `prettyTextualDescription` の実装は、`TextRepresentable` プロトコルの `textualDescription` プロパティにアクセスするから出力文字列を開始します。コロン(`:`)と改行(`\n`)を追加し、これをテキストの開始表現として使用します。次に、ボードの正方形の配列を繰り返し処理し、各正方形の内容を表す幾何学的形状を追加します:
+この extension は、`SnakesAndLadders` 型が `PrettyTextRepresentable` プロトコルに準拠し、の `prettyTextualDescription` プロパティの実装を提供していることを示しています。`PrettyTextRepresentable` に準拠するものは全て必ず `TextRepresentable` なので、`prettyTextualDescription` の実装は、`TextRepresentable` プロトコルの `textualDescription` プロパティにアクセスして出力文字列を開始します。コロン(`:`)と改行(`\n`)を追加し、これをテキストの開始表現として使用します。次に、ボードの正方形の配列を繰り返し処理し、各正方形の内容を表す幾何学的形状を追加します:
 
-* 正方形の値が `0` より大きい場合、それははしごのベースで、`▲` で表されます
+* 正方形の値が `0` より大きい場合、それははしごの根本で、`▲` で表されます
 * マスの値が `0` 未満の場合、それはヘビの頭で、`▼` で表されます
 * それ以外の場合、正方形の値は `0` で、それは `○` で表される「自由な」正方形です
 
@@ -623,7 +623,7 @@ print(game.prettyTextualDescription)
 
 ## Class-Only Protocols(クラス専用プロトコル)
 
-`AnyObjec`t プロトコルをプロトコルの継承の一覧に追加することで、プロトコルへの準拠を(構造体や列挙型ではなく)クラス型に制限できます:
+`AnyObject` プロトコルをプロトコル継承の一覧に追加することで、プロトコルへの準拠を(構造体や列挙型ではなく)クラス型に制限できます:
 
 ```swift
 protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
@@ -634,15 +634,15 @@ protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
 上記の例では、`SomeClassOnlyProtocol` はクラス型でのみ準拠できます。`SomeClassOnlyProtocol` に準拠しようとする構造体または列挙型の定義を作成すると、コンパイルエラーになります。
 
 > NOTE  
-> そのプロトコルの要件によって定義された動作が、準拠する型が値型のセマンティクスではなく参照型のセマンティクスを持つことを想定または要求する場合は、クラス専用プロトコルを使用してください。参照型と値型のセマンティクスの詳細については、[Structures and Enumerations Are Value Types](./structures-and-classes.md#structures-and-enumerations-are-value-types構造体と列挙型は値型)、[Classes Are Reference Types](./structures-and-classes.md#classes-are-reference-typesclassは参照型)を参照ください。
+> そのプロトコルの要件によって定義された動作が、準拠する型が値型のセマンティクスではなく参照型のセマンティクスであることを想定(要求)する場合は、クラス専用プロトコルを使用してください。参照型と値型のセマンティクスの詳細については、[Structures and Enumerations Are Value Types](./structures-and-classes.md#structures-and-enumerations-are-value-types構造体と列挙型は値型)、[Classes Are Reference Types](./structures-and-classes.md#classes-are-reference-typesclassは参照型)を参照ください。
 
 ## Protocol Composition(プロトコル合成)
 
-同時に複数のプロトコルに準拠するように型を要求すると便利な場合があります。プロトコル合成を使用して、複数のプロトコルを 1 つの要件に組み合わせることができます。プロトコル合成は、合成内の全てのプロトコルの要件を組み合わせた一時的なローカル プロトコルを定義したかのように動作します。プロトコル合成は、新しいプロトコル 型を定義しません。
+同時に複数のプロトコルに準拠すると便利な場合があります。プロトコル合成を使用して、複数のプロトコルを 1 つの要件に組み合わせることができます。プロトコル合成は、合成内の全てのプロトコルの要件を組み合わせた一時的なローカルプロトコルを定義したかのように動作します。プロトコル合成は、新しいプロトコル型を定義しません。
 
-プロトコル合成は `SomeProtocol & AnotherProtocol` という形式で記述します。アンパサンド (`&`) で区切って、必要な数のプロトコルを並べることができます。プロトコルのリストに加えて、プロトコル合成には、必要なスーパークラスを 1 つ含めることもできます。
+プロトコル合成は `SomeProtocol & AnotherProtocol` という形式で記述します。アンパサンド (`&`) で区切って、必要な数のプロトコルを並べることができます。プロトコルに加えて、プロトコル合成には、必要なスーパークラスを 1 つ含めることもできます。
 
-`Named` と `Aged` という 2 つのプロトコルを組み合わせて、関数引数の単一のプロトコル合成要件にした例を次に示します:
+`Named` と `Aged` という 2 つのプロトコルを組み合わせて、単一の関数引数に指定した例を次に示します:
 
 ```swift
 protocol Named {
@@ -663,11 +663,11 @@ wishHappyBirthday(to: birthdayPerson)
 // "Happy birthday, Malcolm, you're 21!"
 ```
 
-この例では、`Named` プロトコルには、`name` という `String` 型の get プロパティという 1 つの要件があります。`Aged` プロトコルには、`age` と呼ばれる `Int` 型の get プロパティという 1 つの要件があります。どちらのプロトコルも、`Person` と呼ばれる構造体に準拠されています。
+この例では、`Named` プロトコルには、`name` という `String` 型の get プロパティ要件が 1 つのあります。`Aged` プロトコルには、`age` と呼ばれる `Int` 型の get プロパティ要件が 1 つあります。どちらのプロトコルも、`Person` と呼ばれる構造体に準拠されています。
 
 この例では、`wishHappyBirthday(to:)` 関数も定義されています。`celebrator` 引数の型は `Named & Aged` です。これは、「`Named` プロトコルと `Aged` プロトコルの両方に準拠する任意の型」を意味します。必要なプロトコルの両方に準拠している限り、関数に渡される特定の型は問題ではありません。
 
-次に、この例では、`birthdayPerson` という名前の新しい `Person` インスタンスを作成し、この新しいインスタンスを `wishHappyBirthday(to:)` 関数に渡します。`Person` は両方のプロトコルに準拠しているため、`wishHappyBirthday(to:)` 関数は誕生日の挨拶を出力できます。
+この例では、`birthdayPerson` という名前の新しい `Person` インスタンスを作成し、この新しいインスタンスを `wishHappyBirthday(to:)` 関数に渡しています。`Person` は両方のプロトコルに準拠しているため、`wishHappyBirthday(to:)` 関数は誕生日の挨拶を出力できます。
 
 先ほどの例の `Named` プロトコルと `Location` クラスを組み合わせた例を次に示します:
 
@@ -696,19 +696,19 @@ beginConcert(in: seattle)
 // "Hello, Seattle!"
 ```
 
-`beginConcert(in:)` 関数は、型 `Location & Named` の引数を受け取ります。これは、「`Locatio`n のサブクラスで、`Named` プロトコルに準拠する任意の型」を意味します。この場合、`City` は両方の要件を満たしています。
+`beginConcert(in:)` 関数は、`Location & Named` 型の引数を受け取ります。これは、「`Location` のサブクラスで、`Named` プロトコルに準拠する任意の型」を意味します。この場合、`City` は両方の要件を満たしています。
 
 `Person` は `Location` のサブクラスではないため、`beginConcert(in:)` 関数に `birthdayPerson` を渡すことは無効です。同様に、`Named` プロトコルに準拠していない `Location` のサブクラスを作成した場合、その型のインスタンスで `beginConcert(in:)` を呼び出すことも無効です。
 
 ## Checking for Protocol Conformance(プロトコル準拠チェック)
 
-[Type Casting](./type-casting.md)で説明されている `is` および `as` 演算子を使用して、プロトコルの準拠を確認し、特定のプロトコルにキャストできます。プロトコルのチェックと型へのキャストは、型のチェックと型へのキャストとまったく同じ構文を使用します。
+[Type Casting](./type-casting.md)で説明されている `is` および `as` 演算子を使用して、プロトコルの準拠を確認し、特定のプロトコルにキャストできます。プロトコルのチェックと型へのキャストは、型のチェックやキャストとまったく同じ構文を使用します。
 
 * `is` 演算子は、インスタンスがプロトコルに準拠している場合は `true` を返し、準拠していない場合は `false` を返します
 * ダウンキャスト演算子の `as?` は、プロトコルの型のオプショナル値を返します。インスタンスがそのプロトコルに準拠していない場合、この値は `nil` です
 * ダウンキャスト演算子の `as！` は、強制的にダウンキャストし、ダウンキャストが成功しない場合は実行時エラーを引き起こします
 
-この例では、`HasArea` というプロトコルを定義しています。このプロトコルには、`area` という `Double` 型の get プロパティの単一のプロパティ要件があります:
+この例では、`HasArea` というプロトコルを定義しています。このプロトコルには、`area` という `Double` 型の単一の get プロパティ要件があります:
 
 ```swift
 class Circle: HasArea {
@@ -738,7 +738,7 @@ class Country: HasArea {
 }
 ```
 
-`Circle` クラスは、`radius` という格納プロパティに基づいて、計算プロパティとして `area` プロパティの要件を実装します。`Country` クラスは、格納プロパティとして `area` プロパティのを直接実装します。どちらのクラスも、`HasArea` プロトコルに正しく準拠しています。
+`Circle` クラスは、`radius` という格納プロパティに基づいて、計算プロパティ `area` プロパティの要件を実装します。`Country` クラスは、格納プロパティとして `area` プロパティを直接実装します。どちらのクラスも、`HasArea` プロトコルに正しく準拠しています。
 
 下記は、`HasArea` プロトコルに準拠していない `Animal` というクラスです:
 
@@ -759,7 +759,7 @@ let objects: [AnyObject] = [
 ]
 ```
 
-`objects` の配列は、半径 2 単位の `Circle` インスタンス、英国の表面積を平方キロメートル単位で初期化した `Country` インスタンス。そして 4 本の足を持つ Animal インスタンスを含む配列リテラルで初期化されています
+`objects` の配列は、半径 2 の `Circle` インスタンス、英国の表面積を平方キロメートル単位で初期化した `Country` インスタンス。そして 4 本の足を持つ Animal インスタンスを含む配列リテラルで初期化されています。
 
 `objects` 配列を繰り返し処理して、配列内の各オブジェクトをチェックして、`HasArea` プロトコルに準拠しているかどうかを確認できます:
 
@@ -778,11 +778,11 @@ for object in objects {
 
 配列内のオブジェクトが `HasArea` プロトコルに準拠している場合は、常に `as?` 演算子は、`objectWithArea` と呼ばれる定数へオプショナルバインドでアンラップされます。`objectWithArea` 定数は `HasArea` 型なことがわかっているため、その `area` プロパティは型安全な方法でアクセスおよび出力できます。
 
-プロトコルに準拠したオブジェクトは、キャストで変更されないことに注目してください。それらはそれぞれ　`Circle`、`Country`、`Animal` です。ただし、オブジェクトが `objectWithArea` 定数に格納されている時点では、`HasArea` 型とのみ認識されているため、アクセスできるのは `area` プロパティのみです。
+プロトコルに準拠したオブジェクトは、キャストで変更されないことに注目してください。それらはそれぞれ `Circle`、`Country`、`Animal` です。ただし、オブジェクトが `objectWithArea` 定数に格納されている時点では、`HasArea` 型とのみ認識されているため、アクセスできるのは `area` プロパティのみです。
 
 ## Optional Protocol Requirements(オプショナルのプロトコル要件)
 
-プロトコルのオプショナルの要件を定義できます。これらの要件は、プロトコルに準拠する型によって実装される必要はありません。オプショナルの要件には、プロトコルの定義の一部として `optional` 修飾子が付けられます。Objective-C と相互運用するコードを作成できるように、オプショナルの要件が利用可能です。プロトコルとオプショナルの要件の両方が `@objc` 属性でマークされている必要があります。`@objc` プロトコルは、Objective-C クラスまたは他の `@objc` クラスから継承するクラスによってのみ準拠できることに注目してください。構造体や列挙型が準拠することはできません。
+プロトコルにオプショナルの要件を定義できます。これらの要件は、プロトコルに準拠する型によって実装される必要はありません。オプショナルの要件には、プロトコルの定義の一部として `optional` 修飾子が付けられます。Objective-C と相互運用するコードを作成できるように、オプショナルの要件が利用可能です。プロトコルとオプショナルの要件の両方が `@objc` 属性でマークされている必要があります。`@objc` プロトコルは、Objective-C クラスまたは他の `@objc` クラスから継承するクラスによってのみ準拠できることに注目してください。構造体や列挙型が準拠することはできません。
 
 オプショナルの要件でメソッドまたはプロパティを使用すると、その型は自動的にオプショナルになります。たとえば、`(Int) -> String` 型のメソッドは `((Int) -> String)?` になります。メソッドの戻り値ではなく、関数型全体がオプショナルになっていることに注目してください。
 
@@ -797,10 +797,10 @@ for object in objects {
 }
 ```
 
-`CounterDataSource` プロトコルは、`increment(forCount:)` と呼ばれるオプショナルメソッドの要件と、`fixedIncrement` と呼ばれるオプショナルプロパティの要件を定義します。これらの要件は、データソースが `Counter` インスタンスに適切な増分量を提供するための 2 つの異なる方法を定義します。
+`CounterDataSource` プロトコルは、`increment(forCount:)` と呼ばれるオプショナルメソッドの要件と、`fixedIncrement` と呼ばれるオプショナルプロパティの要件を定義しています。これらの要件は、データソースが `Counter` インスタンスに適切な増分量を提供するための 2 つの異なる方法を定義します。
 
 > NOTE  
-> 厳密に言えば、いずれのプロトコル要件を実装していなくても、`CounterDataSource` に準拠する独自クラスを作成できます。結局のところ、どちらもオプショナルです。技術的には許可されていますが、これはあまり良いデータソースではありません。
+> 厳密に言えば、いずれのプロトコル要件を実装していなくても、`CounterDataSource` に準拠する独自クラスを作成できます。結局のところ、どちらもオプショナルです。技術的には許可されていますが、これはあまり有用なデータソースではありません。
 
 以下で定義される `Counter` クラスには、`CounterDataSource?` 型のオプショナルの `dataSource` プロパティがあります:
 
@@ -822,7 +822,7 @@ class Counter {
 
 `increment()` メソッドは、最初に、データソースで `increment(forCount:)` メソッドの実装を呼び出して、増分量を取得しようとします。`increment()` メソッドは、オプショナルの連鎖を使用して `increment(forCount:)` の呼び出しを試み、現在の `count` をメソッドの単一の引数として渡します。
 
-ここでは、2 つの階層のオプショナルの連鎖が行われていることに注目してください。まず、`dataSource` が `nil` の可能性があるため、`dataSource` にはその名前の後に疑問符(`?`)があり、`dataSource` が `nil` でない場合にのみ `increment(forCount:)` を呼び出す必要があることを示しています。次に、`dataSource` が存在する場合でも、オプショナルのため、`increment(forCount:)` が必ず実装されている保証はありません。ここで、`increment(forCount:)` が実装されない可能性も、オプショナルの連鎖によって処理されます。`increment(forCount:)` の呼び出しは、`increment(forCount:)` が存在する場合、つまり `nil` でない場合にのみ発生します。これが `increment(forCount:)` にも名前の後に疑問符を付いている理由です。
+ここでは、2 つの階層のオプショナルの連鎖が行われていることに注目してください。まず、`dataSource` が `nil` の可能性があるため、`dataSource` にはその名前の後に疑問符(`?`)があり、`dataSource` が `nil` でない場合にのみ `increment(forCount:)` を呼び出す必要があることを示しています。次に、`dataSource` が存在する場合でも、`increment(forCount:)` がオプショナルのため、必ず実装されている保証はありません。ここで、`increment(forCount:)` が実装されない可能性も、オプショナルの連鎖によって処理されます。`increment(forCount:)` の呼び出しは、`increment(forCount:)` が存在する場合、つまり `nil` でない場合にのみ発生します。これが `increment(forCount:)` にも名前の後に疑問符が付いている理由です。
 
 `increment(forCount:)` の呼び出しはこれら 2 つの理由のいずれかで失敗する可能性があるため、呼び出しはオプショナルの `Int` 値を返します。これは、`CounterDataSource` の定義で `increment(forCount:)` がオプショナルではない `Int` 値を返すように定義されている場合でも当てはまります。オプショナルの連鎖は 2 回行われていますが、結果は 1 つのオプショナルにラップされます。複数のオプショナルの連鎖の詳細については、[Linking Multiple Levels of Chaining](./optional-chaining.md#linking-multiple-levels-of-chaining複数階層の連鎖のリンク)を参照ください。
 
@@ -830,7 +830,7 @@ class Counter {
 
 `increment(forCount:)` メソッドから値を取得できない場合(`dataSource` が `nil` か、データソースが `increment(forCount:)` を実装していないため)、 `increment()` メソッドはデータソースの `fixedIncrement` プロパティから値を取得しようとします。`fixedIncrement` プロパティもオプショナルの要件のため、その値はオプショナルの `Int` 値です。ただし、`fixedIncrement` は、`CounterDataSource` プロトコル定義の一部として非オプショナルの `Int` プロパティとして定義されています。
 
-これは、`fixedIncrement` にアクセスされる度にデータソースが定数 `3` を返す簡単な `CounterDataSource` 実装です。これは、オプショナルの `fixedIncrement` プロパティ要件を実装することでこれを行います。
+下記は、`fixedIncrement` にアクセスされる度にデータソースが定数 `3` を返す簡単な `CounterDataSource` の実装です。これは、オプショナルの `fixedIncrement` プロパティ要件を実装することでこれを行います。
 
 下記は、定数 3 を返すシンプルな `CounterDataSource` の実装です。オプショナルの `fixedIncrement` プロパティ要件を実装することでこれを行います。
 
@@ -915,16 +915,16 @@ print("And here's a random Boolean: \(generator.randomBool())")
 // "And here's a random Boolean: true"
 ```
 
-プロトコル Extension は、準拠する型に実装を追加できますが、別のプロトコルを拡張したり、別のプロトコルを継承することはできません。プロトコルの継承は、常にプロトコル宣言内で指定されます。
+プロトコル Extension は、準拠する型に実装を追加できますが、プロトコルにさらに定義を追加して拡張したり、別のプロトコルを継承することはできません。プロトコルの継承は、常にプロトコル宣言内で指定されます。
 
 ### Providing Default Implementations(デフォルト実装の提供)
 
-プロトコル Extension を使用して、そのプロトコルのメソッドまたは計算プロパティ要件にデフォルトの実装を提供できます。準拠する型が必要なメソッドまたはプロパティの独自の実装を提供する場合、プロトコル Extension によって提供されるものの代わりに、準拠する型の実装が使用されます。
+プロトコル Extension を使用して、そのプロトコルのメソッドまたは計算プロパティ要件にデフォルトの実装を提供できます。準拠する型が要件のメソッドまたはプロパティの実装を提供している場合、プロトコル Extension によって提供されるものの代わりに、準拠する型の実装が使用されます。
 
 > NOTE  
-> 拡張機能によって提供されるデフォルト実装のプロトコル要件は、オプショナルのプロトコル要件とは異なります。準拠する型は、独自の実装を提供する必要はありませんが、デフォルトの実装を持つ要件は、オプショナルチェーンなしで呼び出すことができます。
+> extension によって提供されるプロトコル要件のデフォルト実装は、オプショナルのプロトコル要件とは異なります。準拠する型は、独自の実装を提供する必要はありませんが、デフォルトの実装を持つ要件は、オプショナルチェーンなしで呼び出すことができます。
 
-例えば、`TextRepresentable` プロトコルを継承する `PrettyTextRepresentable` プロトコルは、要件の `prettyTextualDescription` プロパティのデフォルト実装を提供して、単に `textualDescription` プロパティにアクセスした結果を返すことができます:
+例えば、`TextRepresentable` プロトコルを継承する `PrettyTextRepresentable` プロトコルは、要件の `prettyTextualDescription` プロパティのデフォルト実装を提供して、`textualDescription` プロパティにアクセスした結果を返すことができます:
 
 ```swift
 extension PrettyTextRepresentable  {
@@ -936,9 +936,9 @@ extension PrettyTextRepresentable  {
 
 ### Adding Constraints to Protocol Extensions(プロトコル Extensionに制約の追加)
 
-プロトコル Extension を定義する場合、拡張したメソッドとプロパティが使用可能になる前に、準拠する型が満たす必要がある制約を指定できます。これらの制約は、拡張するプロトコルの名前の後にジェネリックの `where` 句を記述します。ジェネリック where 句の詳細については、[Generic Where Clauses](./generics.md#generic-where-clausesジェネリックWhere句)を参照ください。
+プロトコル Extension を定義する時、準拠する型が拡張したメソッドとプロパティを使用できる前に、その型が満たす必要がある制約を指定できます。これらの制約は、拡張するプロトコルの名前の後にジェネリックの `where` 句を記述します。ジェネリック `where` 句の詳細については、[Generic Where Clauses](./generics.md#generic-where-clausesジェネリックWhere句)を参照ください。
 
-例えば、要素が `Equatable` プロトコルに準拠しているコレクションに適用される `Collection` プロトコルの拡張を定義できます。コレクションの要素を標準ライブラリの一部の `Equatable` プロトコルに制約することで、`==` および `!=` 演算子を使用して、2 つの要素間の等価性と不等価性をチェックできます:
+例えば、要素が `Equatable` プロトコルに準拠しているコレクションに適用される `Collection` プロトコルの拡張を定義できます。コレクションの要素を標準ライブラリの `Equatable` プロトコルに制約することで、`==` および `!=` 演算子を使用して、2 つの要素間の等価性と不等価性をチェックできます:
 
 ```swift
 extension Collection where Element: Equatable {
@@ -962,7 +962,7 @@ let equalNumbers = [100, 100, 100, 100, 100]
 let differentNumbers = [100, 100, 200, 100, 200]
 ```
 
-配列は Collection に準拠し、整数は `Equatable` に準拠しているため、 `equalNumbers` および `differentNumbers` は `allEqual()` メソッドを使用できます:
+配列は `Collection` に準拠し、整数は `Equatable` に準拠しているため、 `equalNumbers` および `differentNumbers` は `allEqual()` メソッドを使用できます:
 
 ```swift
 print(equalNumbers.allEqual())
@@ -972,4 +972,4 @@ print(differentNumbers.allEqual())
 ```
 
 > NOTE  
-> 準拠する型が、複数の制約が付いた拡張の要件を満たす同じメソッドまたはプロパティの実装している場合、Swift は最も厳しい制約に対応する実装を使用します。
+> 準拠する型が、複数の制約が付いた拡張の要件を満たす同じメソッドまたはプロパティを実装している場合、Swift は最も厳しい制約がついている実装を選択して使用します。
