@@ -55,6 +55,46 @@ func swapTwoDoubles(_ a: inout Double, _ b: inout Double) {
 
 ## Generic Functions(ジェネリック関数)
 
+ジェネリック関数は、どの型でも機能します。これは、上記の `swapTwoInts(_:_:)` 関数の一般的なバージョンで、`swapTwoValues(_:_:)` と呼ばれます:
+
+```swift
+func swapTwoValues<T>(_ a: inout T, _ b: inout T) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+```
+
+`swapTwoValues(_:_:)` 関数の本体は、`swapTwoInts(_:_:)` 関数の本文と同じです。ただし、`swapTwoValues(_:_:)` の最初の行は    `swapTwoInts(_:_:)` とは少し異なります。最初の行を比較すると次のようになります:
+
+```swift
+func swapTwoInts(_ a: inout Int, _ b: inout Int)
+func swapTwoValues<T>(_ a: inout T, _ b: inout T)
+```
+
+ジェネリックバージョンの関数は、実際の型名(`Int`、`String`、`Double` など)の代わりにプレースホルダ型名 (この場合は `T`) を使用します。プレースホルダの型名は、`T` に何が必要かについては何も言いませんが、`a` と `b` の両方が、`T` が表すものにかかわらず、同じ型 `T` でなければならないことを示しています。`T` の代わりに使用する実際の型は、`swapTwoValues(_:_:)` 関数が呼び出される度に決定されます。
+
+ジェネリック関数と非ジェネリック関数のもう 1 つの違いは、ジェネリック関数の名前(`swapTwoValues(_:_:)`)の後に山かっこ(`<T>`)内にプレースホルダの型名(`T`)が続くことです。角かっこ(`<>`)は、`T` が `swapTwoValues(_:_:)` 関数定義内のプレースホルダ型名なことを Swift に伝えます。`T` はプレースホルダのため、Swift は `T` という実際の型を探しません。
+
+`swapTwoValues(_:_:)` 関数は `swapTwoInts` と同じ方法で呼び出すことができますが、2 つの値が互いに同じ型の限り、任意の型の 2 つの値を渡すことができます。`swapTwoValues(_:_:)` が呼び出されるたびに、`T` に使用する型は、関数に渡される値の型から推論されます。
+
+下記の 2 つの例では、`T` はそれぞれ `Int` と `String` と推論されます:
+
+```swift
+var someInt = 3
+var anotherInt = 107
+swapTwoValues(&someInt, &anotherInt)
+// someInt は 107 で anotherInt は 3
+
+var someString = "hello"
+var anotherString = "world"
+swapTwoValues(&someString, &anotherString)
+// someString は "world" で anotherString は "hello"
+```
+
+> NOTE  
+> 上記で定義された `swapTwoValues(_:_:)` 関数は、Swift 標準ライブラリの `swap` と呼ばれる自動で利用可能なジェネリック関数から来ています。独自のコードで `swapTwoValues(_:_:)` 関数の動作が必要な場合は、独自の実装を提供するのではなく、Swift の既存の `swap(_:_:)` 関数を使用できます。
+
 ## Type Parameters(型引数)
 
 ## Naming Type Parameters(型引数の命名)
