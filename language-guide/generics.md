@@ -112,7 +112,96 @@ swapTwoValues(&someString, &anotherString)
 
 ## Generic Types(ジェネリック型)
 
+ジェネリック関数に加えて、Swift では独自のジェネリック型を定義できます。これらは、`Array` や `Dictionary` と同様の方法で、独自のクラス、構造体、および列挙型の任意の型で機能します。
+
+このセクションでは、`Stack` と呼ばれる一般的なコレクション型を作成する方法を示します。スタックは、配列に似た順序付けられた値のセットですが、`Array` 型よりも操作が制限されています。配列を使用すると、配列内の任意の場所で新しい項目を挿入および削除できます。ただし、スタックでは、コレクションの最後にのみ新しい項目を追加できます(スタックに新しい値をプッシュする(*pushing*)と呼ばれています)。同様に、スタックでは、コレクションの最後からのみアイテムを削除できます(スタックから値をポップする(*popping*)と呼ばれています)。
+
+> NOTE  
+> `UINavigationController` クラスは、スタックの概念を使用して、ナビゲーション階層内の view controller をモデル化します。`UINavigationController` クラスの `pushViewController(_:animated:)` メソッドを呼び出して view controller をナビゲーションスタックに追加(プッシュ)し、popViewControllerAnimated(_:)    メソッドを呼び出してナビゲーションスタックから view controller を削除(ポップ)します。スタックは、コレクションの管理に厳密な「後入れ先出し(LIFO)」アプローチが必要な場合に役立つコレクションモデルです。
+
+下記の図は、スタックのプッシュとポップの動作を示しています:
+
+![スタックのプッシュとポップ](./../.gitbook/assets/stackPushPop_2x.png)
+
+1. 現在、スタックには 3 つの値があります
+2. 4 番目の値はスタックの一番上にプッシュされます
+3. スタックには 4 つの値が保持され、最新の値が一番上になります
+4. スタックの一番上のアイテムがポップされます
+5. 値をポップした後、スタックは再び 3 つの値を保持します
+
+スタックの非ジェネリックバージョンの `Int` のスタックを作成する方法は次のとおりです。
+
+```swift
+struct IntStack {
+    var items = [Int]()
+    mutating func push(_ item: Int) {
+        items.append(item)
+    }
+    mutating func pop() -> Int {
+        return items.removeLast()
+    }
+}
+```
+
+この構造体は、`items` と呼ばれる `Array` プロパティを使用して、値をスタックに格納します。`Stack` には、値をスタックにプッシュおよびポップするための 2 つのメソッド、`push` と `pop` が用意されています。これらのメソッドは、構造体の `items` 配列を変更する必要があるため、`mutating` とマークされています。
+
+ただし、上記の `IntStack` 型は `Int` 値でのみ使用できます。任意の型の値のスタックを管理できるジェネリックな `Stack` クラスを定義する方がはるかに便利です。
+
+同じコードのジェネリックなバージョンを次に示します:
+
+```swift
+struct Stack<Element> {
+    var items = [Element]()
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+}
+```
+
+Stack のジェネリックバージョンは、本質的に非ジェネリックバージョンと同じですが、実際の型 `Int` の代わりに `Element` という型引数を使用していることに注意してください。この型引数は、構造体の名前の直後に、一対の山かっこ (`<Element>`) 内に記述されます。
+
+`Element` は、後で提供される型のプレースホルダ名を定義します。この未来の型は、構造体の定義内のどこでも `Element` として参照できます。この場合、`Element` は 3 つの場所でプレースホルダとして使用されてます:
+
+* `Element` 型の値の空の配列で初期化される、`items` というプロパティを作成します
+* `push(_:)` メソッドに `item` と呼ばれる `Element` 型の単一の引数を指定しなければなりません
+* `pop()` メソッドの戻り値が `Element` 型を指定しなければなりません
+
+ジェネリック型のため、`Stack` を使用して、`Array` および `Dictionary` と同様の方法で、Swift で有効な型のスタックを作成できます。
+
+スタックに格納する型を山かっこ(`<>`)で囲んで、新しいスタック インスタンスを作成します。例えば、文字列の新しいスタックを作成するには、`Stack<String>()` を記述します。
+
+```swift
+var stackOfStrings = Stack<String>()
+stackOfStrings.push("uno")
+stackOfStrings.push("dos")
+stackOfStrings.push("tres")
+stackOfStrings.push("cuatro")
+// スタックは 4 つの文字列を格納しています
+```
+
+これらの 4 つの値をスタックにプッシュした後、`stackOfStrings` がどのように見えるかを次に示します:
+
+![4つの値をスタックにプッシュ](./../.gitbook/assets/stackPushedFourStrings_2x.png)
+
+スタックから値をポップすると、最上位の値 `"cuatro"` が削除されて返されます:
+
+```swift
+let fromTheTop = stackOfStrings.pop()
+// fromTheTop は "cuatro" に等しく、スタックは 3 つの文字列を含んでいます
+```
+
+最上位の値をポップした後のスタックは次のとおりです:
+
+![ポップした後のスタック](./../.gitbook/assets/stackPoppedOneString_2x.png)
+
 ## Extending a Generic Type(ジェネリック型の拡張)
+
+ジェネリック型を拡張する場合、extension の定義で型引数リストを提供しません。代わりに、元の型定義の型引数リストは extension の本文内で使用でき、元の型引数名は元の定義の型引数を参照するために使用てきます。
+
+次の例では、ジェネリックな Stack 型を拡張して、topItem と呼ばれる読み取り専用の計算済みプロパティを追加します。これは、スタックからポップせずにスタックの一番上のアイテムを返します。
 
 ## Type Constraints(型制約)
 
