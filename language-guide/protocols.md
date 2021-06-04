@@ -935,3 +935,41 @@ extension PrettyTextRepresentable  {
 ```
 
 ### Adding Constraints to Protocol Extensions(プロトコル Extensionに制約の追加)
+
+プロトコル Extension を定義する場合、拡張したメソッドとプロパティが使用可能になる前に、準拠する型が満たす必要がある制約を指定できます。これらの制約は、拡張するプロトコルの名前の後にジェネリックの `where` 句を記述します。ジェネリック where 句の詳細については、[Generic Where Clauses](./generics.md#generic-where-clausesジェネリックWhere句)を参照ください。
+
+例えば、要素が `Equatable` プロトコルに準拠しているコレクションに適用される `Collection` プロトコルの拡張を定義できます。コレクションの要素を標準ライブラリの一部の `Equatable` プロトコルに制約することで、`==` および `!=` 演算子を使用して、2 つの要素間の等価性と不等価性をチェックできます:
+
+```swift
+extension Collection where Element: Equatable {
+    func allEqual() -> Bool {
+        for element in self {
+            if element != self.first {
+                return false
+            }
+        }
+        return true
+    }
+}
+```
+
+`allEqual()` メソッドは、コレクション内の全ての要素が等しい場合にのみ `true` を返します。
+
+1 つは全ての要素が同じで、もう 1 つは要素が同じでない、整数の 2 つの配列を考えます:
+
+```swift
+let equalNumbers = [100, 100, 100, 100, 100]
+let differentNumbers = [100, 100, 200, 100, 200]
+```
+
+配列は Collection に準拠し、整数は `Equatable` に準拠しているため、 `equalNumbers` および `differentNumbers` は `allEqual()` メソッドを使用できます:
+
+```swift
+print(equalNumbers.allEqual())
+// "true"
+print(differentNumbers.allEqual())
+// "false"
+```
+
+> NOTE  
+> 準拠する型が、複数の制約が付いた拡張の要件を満たす同じメソッドまたはプロパティの実装している場合、Swift は最も厳しい制約に対応する実装を使用します。
