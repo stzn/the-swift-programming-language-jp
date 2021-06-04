@@ -105,6 +105,11 @@ swapTwoValues(&someString, &anotherString)
 
 ## Naming Type Parameters(型引数の命名)
 
+ほとんどの場合、型引数には、`Dictionary<Key, Value>` の `Key` と `Value`、`Array<Element>` の `Element` などのその型引数の意味を表す名前が付いています。ただし、型引数に意味がない場合、上記の `swapTwoValues(_:_:)` 関数の `T` など、`T`、`U`、`V` などの 1 文字の名前を付けるのが伝統的です。
+
+> NOTE  
+> 型引数には常に大文字のキャメルケース名(`T` や `MyTypeParameter` など)を指定して、それらが値ではなく型のプレースホルダであることを示します。
+
 ## Generic Types(ジェネリック型)
 
 ## Extending a Generic Type(ジェネリック型の拡張)
