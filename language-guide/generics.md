@@ -484,6 +484,84 @@ extension IntStack: SuffixableContainer {
 
 ## Generic Where Clauses(ジェネリックWhere句)
 
+[Type Constraints](#type-constraints型制約)で説明されているように、型制約を使用すると、ジェネリック関数、subscript、または型に関連した型引数の要件を定義できます。
+
+関連型の要件を定義するのにも役立ちます。これを行うには、ジェネリックな where 句を定義します。ジェネリック `where` 句を使用すると、関連型が特定のプロトコルに準拠する必要があること、または特定の型引数と関連型が同じな必要があることを要求できます。ジェネリック `where` 句は `where` キーワードで始まり、その後に関連型の制約、または型と関連型の間の等価関係が続きます。型または関数の本文の開始中括弧(`{`)の直前に、ジェネリックな `where` 句を記述します。
+
+下記の例では、2 つの `Container` インスタンスに同じアイテムが同じ順序で含まれているかどうかを確認する `allItemsMatch` というジェネリック関数を定義しています。この関数は、全てのアイテムが一致する場合はブール値 `true` を返し、一致しない場合は `false` の値を返します。
+
+チェックする 2 つのコンテナは、同じ型の必要はありませんが(同じ型のコンテナでもかまいません)、同じ型のアイテムを保持している必要があります。この要件は、型制約とジェネリック `where` 句の組み合わせによって表現されます:
+
+```swift
+func allItemsMatch<C1: Container, C2: Container>
+    (_ someContainer: C1, _ anotherContainer: C2) -> Bool
+    where C1.Item == C2.Item, C1.Item: Equatable {
+
+        // 両方のコンテナに同じ数のアイテムが含まれていることを確認します
+        if someContainer.count != anotherContainer.count {
+            return false
+        }
+
+        // アイテムの各ペアをチェックして、同等かどうかを確認します
+        for i in 0..<someContainer.count {
+            if someContainer[i] != anotherContainer[i] {
+                return false
+            }
+        }
+
+        // 全ての項目が一致するため、true を返します
+        return true
+}
+```
+
+この関数は、`someContainer` と `anotherContainer` という 2 つの引数を取ります。`someContainer` 引数は `C1` 型で、`otherContainer` 引数は `C2` 型です。`C1` と `C2` はどちらも、関数が呼び出されたときに決定される 2 つの `Container` 型の型引数です。
+
+関数の 2 つの型引数には、次の要件が適用されます。
+
+* `C1` は、`Container` プロトコル(`C1: Container` と表記)に準拠する必要があります
+* `C2` は、`Container` プロトコル(`C2: Container` と表記)にも準拠している必要があります
+* `C1` の `Item` は、`C2` のアイテムと同じな必要があります(`C1.Item == C2.Item` と記述)
+* `C1` の `Item` は、`Equatable` プロトコル(`C1.Item: Equatable` と表記)に準拠する必要があります
+
+1 番目と 2 番目の要件は関数の型引数リストで定義され、3 番目と 4 番目の要件は関数のジェネリック `where` 句で定義されます。
+
+これらの要件は次のことを意味します。
+
+* `someContainer` は `C1` 型  のコンテナです
+* `anotherContainer` は、`C2` 型  のコンテナです
+* `someContainer` と `anotherContainer` には、同じ型のアイテムが含まれています
+* `someContainer` 内の `Item` は、不等演算子 (`!=`) を使用して、互いに異なるかどうかを確認できます
+
+3 番目と 4 番目の要件を組み合わせると、`otherContainer` の項目は `someContainer` の項目とまったく同じ型のため、`!=` 演算子を使用してチェックすることもできます。
+
+これらの要件により、`allItemsMatch(_:_:)` 関数は、2 つのコンテナが異なるコンテナ型でも、それらを比較できます。
+
+`allItemsMatch(_:_:)` 関数は、両方のコンテナに同じ数のアイテムが含まれていることを確認することから始まります。それらに含まれるアイテムの数が異なる場合、一致する可能性はなく、関数は `false` を返します。
+
+このチェックを行った後、関数は `for-in` ループと半壊範囲演算子(`..<`)を使用して `someContainer` 内の全ての項目を反復します。各項目について、関数は `someContainer` の項目が `anotherContainer` の対応する項目と等しくないかどうかをチェックします。2 つの項目が等しくない場合、2 つのコンテナは一致せず、関数は `false` を返します。
+
+不一致が見つからずにループが終了した場合、2 つのコンテナは一致し、関数は `true` を返します。
+
+`allItemsMatch(_:_:)` 関数の実際の動作は次のとおりです:
+
+```swift
+var stackOfStrings = Stack<String>()
+stackOfStrings.push("uno")
+stackOfStrings.push("dos")
+stackOfStrings.push("tres")
+
+var arrayOfStrings = ["uno", "dos", "tres"]
+
+if allItemsMatch(stackOfStrings, arrayOfStrings) {
+    print("All items match.")
+} else {
+    print("Not all items match.")
+}
+// "All items match."
+```
+
+上記の例では、`String` 値を格納する `Stack` インスタンスを作成し、3 つの文字列をスタックにプッシュします。この例では、スタックと同じ 3 つの文字列を含む配列リテラルで初期化された `Array` インスタンスも作成します。スタックと配列は型が異なりますが、どちらも `Container` プロトコルに準拠しており、両方に同じ型の値が含まれています。したがって、これら 2 つのコンテナを引数として `allItemsMatch(_:_:)` 関数を呼び出すことができます。上記の例では、`allItemsMatch(_:_:)` 関数は、2 つの項目の全てが合致していることを出力します。
+
 ## Extensions with a Generic Where Clause(ジェネリックWhere句を使った拡張)
 
 ## Contextual Where Clauses(コンテキストのWhere句)
