@@ -174,3 +174,78 @@ func `repeat`<T: Shape>(shape: T, count: Int) -> some Collection {
 この場合、戻り値の基になる型は `T` によって異なります。どの形状が渡されても、`repeat(shape:count:)` はその形状の配列を作成して返します。それにもかかわらず、戻り値は常に同じ `[T]` の基になる型のため、Opaque Type な戻り値の型を持つ関数は単一の型の値のみを返す必要があるという要件に従います。
 
 ## Differences Between Opaque Types and Protocol Types(Opaque Typeとプロトコルの違い)
+
+Opaque Type を返すことは、プロトコル型を関数の戻り型として使用する場合と非常によく似ていますが、これら 2 種類の戻り型は、型の同一性を保持するかどうかが異なります。Opaque Type は 1 つの特定の型を参照しますが、関数の呼び出し側はどの型を参照するかはわかりません。プロトコル型は、プロトコルに準拠する任意の型を参照できます。一般に、プロトコル型では、格納する値の基になる型についてより柔軟に対応でき、Opaque Type を使用すると、基になる型についてより強力な保証を行うことができます。
+
+例えば、Opaque Type の代わりにプロトコル型を戻り値の型として使用する、`flip(_:)` のバージョンを次に示します:
+
+```swift
+func protoFlip<T: Shape>(_ shape: T) -> Shape {
+    return FlippedShape(shape: shape)
+}
+```
+
+このバージョンの `protoFlip(_:)` は、`flip(_:)` と同じ本文を持ち、常に同じ型の値を返します。`flip(_:)` とは異なり、`protoFlip(_:)` が返す値は、常に同じ型にする必要はありません。つまり、`Shape` プロトコルに準拠する必要があります。別の言い方をすれば、`protoFlip(_:)` は、`flip(_:)` よりも呼び出し元との API コントラクトをはるかに緩くします。複数の型の値を返す柔軟性を確保しています:
+
+```swift
+func protoFlip<T: Shape>(_ shape: T) -> Shape {
+    if shape is Square {
+        return shape
+    }
+
+    return FlippedShape(shape: shape)
+}
+```
+
+このコードの改訂版は、渡された形状に応じて、`Square` のインスタンスまたは `FlippedShape` のインスタンスを返します。この関数によって返される 2 つの反転した形状は、まったく異なる型を持つ可能性があります。この関数の他の有効なバージョンは、同じ形状の複数のインスタンスを反転するときに、異なる型の値を返す可能性があります。`protoFlip(_:)` からの戻り値の型情報がそれほど具体的でないということは、型情報に依存する多くの操作が戻り値で使用できないことを意味します。例えば、この関数によって返される結果を比較する `==` 演算子を記述することはできません。
+
+```swift
+let protoFlippedTriangle = protoFlip(smallTriangle)
+let sameThing = protoFlip(smallTriangle)
+protoFlippedTriangle == sameThing  // エラー
+```
+
+例の最終行のエラーは、いくつかの理由で発生します。当面の問題は、`Shape` のプロトコル要件に `==` 演算子が含まれていないことです。追加しようとすると、次に遭遇する問題は、`==` 演算子がその左辺と右辺の引数の型を知る必要があることです。この種の演算子は通常、`Self` 型の引数を取り、プロトコルに準拠する具体的な型に一致しますが、プロトコルに `Self` 要件を追加しても、プロトコルを型として使用することができなくなります。
+
+プロトコル型を関数の戻り値の型として使用すると、プロトコルに準拠する任意の型を柔軟に返すことができます。ただし、その柔軟性の犠牲は、返された値に対して一部の操作ができないことです。この例は、`==` 演算子が使用できないことを示しています。これは、プロトコル型を使用しても保持されない特定の型情報に依存しています。
+
+このアプローチのもう 1 つの問題は、形状変換がネストしないことです。三角形を反転した結果は、`Shape` 型の値で、`protoFlip(_:)` 関数は、`Shape` プロトコルに準拠した何らかの型の引数を取ります。ただし、プロトコル型の値はそのプロトコルに準拠していません。`protoFlip(_:)` によって返される値は `Shape` に準拠していません。これは、反転した形状が `protoFlip(_:)` の有効な引数ではないため、複数の変換を適用する `protoFlip(protoFlip(smallTriange))` のようなコードは無効なをこと意味します。
+
+対照的に、Opaque Type は、基になる型の識別を保持します。Swift は関連型を推論できるため、プロトコル型を戻り値として使用できない場所で Opaque Type な戻り値を使用できます。例えば、これは [Generics](./generics.md)Generics の `Container` プロトコルのバージョンです:
+
+```swift
+protocol Container {
+    associatedtype Item
+    var count: Int { get }
+    subscript(i: Int) -> Item { get }
+}
+extension Array: Container { }
+```
+
+このプロトコルには関連型があるため、`Container` を関数の戻り値の型として使用することはできません。また、ジェネリック型が必要なものを推論するための関数本文の外部に十分な情報がないため、ジェネリック戻り値の型の制約として使用することもできません。
+
+```swift
+// エラー: 関連型があるプロトコルは、戻り値の型として使用できません
+func makeProtocolContainer<T>(item: T) -> Container {
+    return [item]
+}
+
+// エラー: C を推論するための十分な情報がありません
+func makeProtocolContainer<T, C: Container>(item: T) -> C {
+    return [item]
+}
+```
+
+Opaque Type を使用して、`some Container` を戻り値の型として使用すると、望ましい API が表現できます。関数はコンテナを返しますが、コンテナの型は特定しません。
+
+```swift
+func makeOpaqueContainer<T>(item: T) -> some Container {
+    return [item]
+}
+let opaqueContainer = makeOpaqueContainer(item: 12)
+let twelve = opaqueContainer[0]
+print(type(of: twelve))
+// "Int"
+```
+
+`twelve` の型は `Int` だと推論されます。これは、型推論が Opaque Type で機能することを示しています。`makeOpaqueContainer(item:)` の実装では、`opaqueContainer` の基になる型は `[T]` です。この場合、`T` は `Int` のため、戻り値は整数の配列で、関連型 `Item` は `Int` だと推論されます。`Container` の subscript は `Item` を返します。これは、`twelve` の型も `Int` だと推論されることを意味します。
