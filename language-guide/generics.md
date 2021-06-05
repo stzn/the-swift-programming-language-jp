@@ -435,6 +435,53 @@ protocol Container {
 
 ### Using a Protocol in Its Associated Type’s Constraints(関連型に制約へのプロトコルの使用)
 
+プロトコルは、独自の要件の一部として表示できます。例えば、下記は `Container` プロトコルを改良し、`suffix(_:)` メソッドの要件を追加するプロトコルです。`suffix(_:)` メソッドは、コンテナの最後から指定された数の要素を返し、それらを `Suffix` 型のインスタンスに格納します。
+
+```swift
+protocol SuffixableContainer: Container {
+    associatedtype Suffix: SuffixableContainer where Suffix.Item == Item
+    func suffix(_ size: Int) -> Suffix
+}
+```
+
+このプロトコルでは、`Suffix` は、上記の `Container` の例の `Item` 型のように、関連型です。Suffix には 2 つの制約があります。`SuffixableContainer` プロトコル(現在定義されているプロトコル)に準拠している必要があり、その `Item` 型は `Container` の `Item` 型と同じな必要があります。`Item` の制約はジェネリックな `where` 句です。これについては、以下の[Associated Types with a Generic Where Clause](#associated-types-with-a-generic-where-clauseジェネリックwhere句を使用した関連型)で説明します。
+
+`SuffixableContainer` プロトコルへの準拠を追加する、上記の[Generic Types](#generic-typesジェネリック型)の `Stack` 型の拡張を次に示します。
+
+```swift
+extension Stack: SuffixableContainer {
+    func suffix(_ size: Int) -> Stack {
+        var result = Stack()
+        for index in (count-size)..<count {
+            result.append(self[index])
+        }
+        return result
+    }
+    // Suffix が Stack であると推論されます
+}
+var stackOfInts = Stack<Int>()
+stackOfInts.append(10)
+stackOfInts.append(20)
+stackOfInts.append(30)
+let suffix = stackOfInts.suffix(2)
+// サフィックスには 20 と 30 が含まれます
+```
+
+上記の例では、`Suffix` の関連型も `Stack` のため、`Stack` の suffix 操作は別の `Stack` を返します。他にも、`SuffixableContainer` に準拠する型は、それ自体とは異なる `Suffix` 型を持つことができます。つまり、suffix 操作は異なる型を返すことができます。例えば、`IntStack` の代わりに `Stack<Int>` を `Suffix` 型として使用して、`SuffixableContainer` への準拠を追加する非ジェネリック `IntStack` 型の extension を次に示します:
+
+```swift
+extension IntStack: SuffixableContainer {
+    func suffix(_ size: Int) -> Stack<Int> {
+        var result = Stack<Int>()
+        for index in (count-size)..<count {
+            result.append(self[index])
+        }
+        return result
+    }
+    // Suffix が Stack<Int> であると推論されます
+}
+```
+
 ## Generic Where Clauses(ジェネリックWhere句)
 
 ## Extensions with a Generic Where Clause(ジェネリックWhere句を使った拡張)
