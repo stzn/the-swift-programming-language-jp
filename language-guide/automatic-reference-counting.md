@@ -167,6 +167,77 @@ Swift は、クラス型のプロパティを操作するときに強参照循�
 
 ### Weak References(弱参照)
 
+弱参照(*weak reference*)は、参照するインスタンスを強く保持しない参照で、ARC に参照されたインスタンスが破棄されません。この動作により、参照が強参照循環の一部になるのを防ぎます。プロパティまたは変数宣言の前に `weak` キーワードを配置することにより、弱参照を示します。
+
+弱参照は参照するインスタンスを強く保持しないため、弱参照が参照している間にそのインスタンスの割り当てが解除される可能性があります。したがって、ARC は、参照するインスタンスの割り当てが解除されると、自動的に弱参照を `nil` に設定します。また、弱参照は実行時に値を `nil` に変更できるようにする必要があるため、常にオプショナル型の定数ではなく変数として宣言されます。
+
+他のオプショナルの値と同様に、弱参照内の値の存在を確認できます。存在しない無効なインスタンスへの参照で終わることはありません。
+
+> NOTE  
+> ARC が弱参照を `nil` に設定した場合、プロパティオブザーバは呼び出されません。
+
+下記の例は、上記の `Person` と `Apartment` の例と同じですが、1 つの重要な違いがあります。今回は、`Apartment` 型の `tenant` プロパティが弱参照として宣言されています:
+
+```swift
+class Person {
+    let name: String
+    init(name: String) { self.name = name }
+    var apartment: Apartment?
+    deinit { print("\(name) is being deinitialized") }
+}
+
+class Apartment {
+    let unit: String
+    init(unit: String) { self.unit = unit }
+    weak var tenant: Person?
+    deinit { print("Apartment \(unit) is being deinitialized") }
+}
+```
+
+2 つの変数(`john` と `unit4A`)からの強参照と、2 つのインスタンス間のリンクは、以前と同じように作成されます。
+
+```swift
+var john: Person?
+var unit4A: Apartment?
+
+john = Person(name: "John Appleseed")
+unit4A = Apartment(unit: "4A")
+
+john!.apartment = unit4A
+unit4A!.tenant = john
+```
+
+2 つのインスタンスをリンクしたので、参照は次のようになります:
+
+![弱参照1](./../.gitbook/assets/weakReference01_2x.png)
+
+`Person` インスタンスは依然として `Apartment` インスタンスへの強参照を持っていますが、`Apartment` インスタンスは `Person` インスタンスへの弱参照を持っています。これは、`john` 変数を `nil` に設定してその強参照を解除すると、`Person` インスタンスへの強参照がなくなることを意味します。
+
+```swift
+john = nil
+// "John Appleseed is being deinitialized"
+```
+
+`Person` インスタンスへの強参照がなくなったため、割り当てが解除され、`tenant` プロパティが `nil` に設定されます:
+
+![弱参照2](./../.gitbook/assets/weakReference02_2x.png)
+
+`Apartment` インスタンスへの唯一の強参照は、`unit4A` 変数からです。その強参照がなくなると、`Apartment` インスタンスへの強参照はなくなります。
+
+```swift
+unit4A = nil
+// "Apartment 4A is being deinitialized"
+```
+
+`Apartment` インスタンスへの強参照がなくなったため、この割り当ても解除されます:
+
+![弱参照3](./../.gitbook/assets/weakReference03_2x.png)
+
+> NOTE  
+> ガベージ コレクションを使用するシステムでは、メモリプレッシャーによってガベージコレクションがトリガーされた場合にのみ、
+> 強参照を持たないオブジェクトの割り当てが解除されるため、シンプルなキャッシュメカニズムを実装するために弱いポインタが使用されることがあります。
+> ただし、ARC では、最後の強参照が削除されるとすぐに値の割り当てが解除されるため、弱参照はそのような目的には適していません。
+
 ### Unowned References(非所有参照)
 
 ### Unowned Optional References(非所有オプショナル参照)
