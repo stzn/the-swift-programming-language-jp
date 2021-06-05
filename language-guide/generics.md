@@ -564,6 +564,83 @@ if allItemsMatch(stackOfStrings, arrayOfStrings) {
 
 ## Extensions with a Generic Where Clause(ジェネリックWhere句を使った拡張)
 
+extension にジェネリック `where` 句を使用することもできます。下記の例では、前の例のジェネリックな `Stack` 構造体を拡張して、`isTop(_:)` メソッドを追加しています:
+
+```swift
+extension Stack where Element: Equatable {
+    func isTop(_ item: Element) -> Bool {
+        guard let topItem = items.last else {
+            return false
+        }
+        return topItem == item
+    }
+}
+```
+
+この新しい `isTop(_:)` メソッドは、最初にスタックが空でないことを確認してから、指定されたアイテムをスタックの最上位のアイテムと比較します。`isTop(_:)` の実装では `==` 演算子を使用していますが、`Stack` の定義ではそのアイテムが `Equatable` の要件を設定していないため、`==` 演算子はコンパイルエラーになります。ジェネリック `where` 句を使用すると、 extension に新しい要件を追加できるため、extension はスタック内のアイテムが `Equatable` 同等の場合にのみ `isTop(_:)` メソッドを追加します。
+
+`isTop(_:)` メソッドの実際の動作は次のとおりです:
+
+```swift
+if stackOfStrings.isTop("tres") {
+    print("Top element is tres.")
+} else {
+    print("Top element is something else.")
+}
+// "Top element is tres."
+```
+
+要素が `Equatable` でないスタックで `isTop(_:)` メソッドを呼び出そうとすると、コンパイルエラーが発生します。
+
+```swift
+struct NotEquatable { }
+var notEquatableStack = Stack<NotEquatable>()
+let notEquatableValue = NotEquatable()
+notEquatableStack.push(notEquatableValue)
+notEquatableStack.isTop(notEquatableValue)  // エラー
+```
+
+プロトコルの extension にジェネリック `where` 句を使用できます。下記の例では、前の例の `Container` プロトコルを拡張して、`startsWith(_:)` メソッドを追加しています。
+
+```swift
+extension Container where Item: Equatable {
+    func startsWith(_ item: Item) -> Bool {
+        return count >= 1 && self[0] == item
+    }
+}
+```
+
+`startsWith(_:)` メソッドは、まずコンテナに少なくとも 1 つのアイテムがあることを確認し、次にコンテナ内の最初のアイテムが指定されたアイテムと一致するかどうかを確認します。この新しい `startsWith(_:)` メソッドは、コンテナのアイテムが同等な限り、`Container` プロトコルに準拠する任意の型で使用できます。
+
+```swift
+if [9, 9, 9].startsWith(42) {
+    print("Starts with 42.")
+} else {
+    print("Starts with something else.")
+}
+// "Starts with something else."
+```
+
+上記の例のジェネリック `where` 句では、`Item` がプロトコルに準拠する必要がありますが、`Item` を特定の型にする必要があるジェネリック `where` 句を作成することもできます。例えば:
+
+```swift
+extension Container where Item == Double {
+    func average() -> Double {
+        var sum = 0.0
+        for index in 0..<count {
+            sum += self[index]
+        }
+        return sum / Double(count)
+    }
+}
+print([1260.0, 1200.0, 98.6, 37.0].average())
+// "648.9"
+```
+
+この例では、`Item` 型が `Double` のコンテナに `average()` メソッドを追加します。コンテナ内のアイテムを繰り返して合計し、コンテナの数で除算して平均を計算します。浮動小数点除算ができるように、カウントを `Int` から `Double` に明示的に変換します。
+
+他の場所で作成したジェネリックな `where` 句の場合と同様に、extension にあるジェネリック `where` 句に複数の要件を含めることができます。リスト内の各要件はコンマで区切ります。
+
 ## Contextual Where Clauses(コンテキストのWhere句)
 
 ## Associated Types with a Generic Where Clause(ジェネリックWhere句を使用した関連型)
