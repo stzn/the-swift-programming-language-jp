@@ -240,6 +240,81 @@ unit4A = nil
 
 ### Unowned References(非所有参照)
 
+弱参照と同様に、非所有参照は、参照するインスタンスを強く保持しません。ただし、弱参照とは異なり、非所有参照は、他のインスタンスの存続期間が同じか、存続期間が長い場合に使用します。プロパティまたは変数の宣言の前に `unowned` キーワードを配置することにより、非所有参照を示します。弱参照とは異なり、非所有参照は常に値を持つことが期待されます。その結果、値を `unowned` としてマークしてもオプショナルにはなりません。また、ARC は非所有参照の値を nil に設定することはありません。
+
+> NOTE  
+> 参照が常に割​​り当て解除されていないインスタンスを参照していることが確実な場合にのみ、非所有参照を使用してください。
+
+インスタンスの割り当てが解除された後に非所有参照の値にアクセスしようとすると、実行時エラーが発生します。
+次の例では、2 つのクラス、`Customer` と `CreditCard` を定義しています。これらのクラスは、銀行の顧客と、その顧客のクレジットカードの候補をモデル化しています。これら 2 つのクラスはそれぞれ、もう一方のクラスのインスタンスをプロパティとして保存します。この関係は、強参照循環を作成する可能性があります。
+
+`Customer` と `CreditCard` の関係は、上記の弱参照の例に見られる `Apartment` と `Person` の関係とは少し異なります。このデータモデルでは、顧客はクレジットカードを持っている場合と持っていない場合がありますが、クレジットカードは常に顧客に関連付けられます。`CreditCard` インスタンスは、それが参照する顧客より長生きすることはありません。これを表すために、`Customer` クラスにはオプショナルのカードプロパティがありますが、`CreditCard` クラスには所有されていない(オプショナルではない)顧客プロパティがあります。
+
+さらに、新しい `CreditCard` インスタンスは、数値と顧客インスタンスを独自の `CreditCard` イニシャライザに渡すことによってのみ作成できます。これにより、`CreditCard` インスタンスの作成時に、`CreditCard` インスタンスに常に顧客インスタンスが関連付けられます。
+
+クレジットカードには常に顧客がいるため、強参照循環を避けるために、その顧客プロパティを非所有参照として定義します:
+
+```swift
+class Customer {
+    let name: String
+    var card: CreditCard?
+    init(name: String) {
+        self.name = name
+    }
+    deinit { print("\(name) is being deinitialized") }
+}
+
+class CreditCard {
+    let number: UInt64
+    unowned let customer: Customer
+    init(number: UInt64, customer: Customer) {
+        self.number = number
+        self.customer = customer
+    }
+    deinit { print("Card #\(number) is being deinitialized") }
+}
+```
+
+> NOTE  
+> `CreditCard` クラスの `number` プロパティは、`Int` ではなく `UInt64` の型で定義され、`number` プロパティの容量が 32 ビットと 64 ビットの両方のシステムで 16 桁のカード番号を格納するのに十分な大きさであることを確認します。
+
+この次のコードスニペットは、`john` というオプショナルの `Customer` 変数を定義します。この変数は、特定の顧客への参照を保存するために使用されます。この変数はオプショナルのため、初期値は `nil` です:
+
+```swift
+var john: Customer?
+```
+
+これで `Customer` インスタンスを作成し、それを使用して新しい `CreditCard` インスタンスを初期化し、その顧客の `card` プロパティとして割り当てることができます:
+
+```swift
+john = Customer(name: "John Appleseed")
+john!.card = CreditCard(number: 1234_5678_9012_3456, customer: john!)
+```
+
+2 つのインスタンスをリンクしたので、参照は次のようになります:
+
+![非所有参照1](./../.gitbook/assets/unownedReference01_2x.png)
+
+`Customer` インスタンスには、`CreditCard` インスタンスへの強参照があり、`CreditCard` インスタンスには、`Customer` インスタンスへの非所有参照があります。
+
+`customer` は非所有参照のため、`john` 変数によって保持されている強参照を解除すると、`Customer` インスタンスへの強参照はなくなります:
+
+![非所有参照2](./../.gitbook/assets/unownedReference02_2x.png)
+
+`Customer` インスタンスへの強参照がなくなったため、割り当てが解除されます。これが発生すると、`CreditCard` インスタンスへの強参照はなくなり、割り当ても解除されます。
+
+```swift
+john = nil
+// "John Appleseed is being deinitialized"
+// "Card #1234567890123456 is being deinitialized"
+```
+
+上記の最後のコードスニペットは、`john` 変数が `nil` に設定された後、`Customer` インスタンスと `CreditCard` インスタンスのデイニシャライザプログラムが両方とも"deinitialized"メッセージを出力することを示しています。
+
+> NOTE  
+> 上記の例は、安全な非所有参照の使用方法を示しています。 Swift は、パフォーマンス上の理由などで、ランタイムの安全性チェックを無効にする必要がある場合に、安全でない非所有参照も提供します。全ての安全でない操作と同様、そのコードの安全性をチェックする責任はあなたにあります。  
+> `unowned(unsafe)` と書くことで、安全でない非所有参照を示します。参照しているインスタンスの割り当てが解除された後で、所有されていない安全でない参照にアクセスしようとすると、プログラムはインスタンスがかつて存在していたメモリアドレスにアクセスしようとしますが、これは安全ではありません。
+
 ### Unowned Optional References(非所有オプショナル参照)
 
 ### Unowned References and Implicitly Unwrapped Optional Properties(非所有参照と暗黙的にアンラップしたオプショナルプロパティ)
