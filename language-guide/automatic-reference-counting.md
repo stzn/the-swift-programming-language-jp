@@ -312,10 +312,66 @@ john = nil
 上記の最後のコードスニペットは、`john` 変数が `nil` に設定された後、`Customer` インスタンスと `CreditCard` インスタンスのデイニシャライザプログラムが両方とも"deinitialized"メッセージを出力することを示しています。
 
 > NOTE  
-> 上記の例は、安全な非所有参照の使用方法を示しています。 Swift は、パフォーマンス上の理由などで、ランタイムの安全性チェックを無効にする必要がある場合に、安全でない非所有参照も提供します。全ての安全でない操作と同様、そのコードの安全性をチェックする責任はあなたにあります。  
+> 上記の例は、安全な非所有参照の使用方法を示しています。Swift は、パフォーマンス上の理由などで、ランタイムの安全性チェックを無効にする必要がある場合に、安全でない非所有参照も提供します。全ての安全でない操作と同様、そのコードの安全性をチェックする責任はあなたにあります。  
+>
 > `unowned(unsafe)` と書くことで、安全でない非所有参照を示します。参照しているインスタンスの割り当てが解除された後で、所有されていない安全でない参照にアクセスしようとすると、プログラムはインスタンスがかつて存在していたメモリアドレスにアクセスしようとしますが、これは安全ではありません。
 
-### Unowned Optional References(非所有オプショナル参照)
+### Unowned Optional References(オプショナル非所有参照)
+
+クラスへのオプショナルの参照を unowned としてマークできます。ARC 所有権モデルに関しては、オプショナルの非所有参照と弱参照の両方を同じコンテキストで使用できます。違いは、オプショナルの非所有参照を使用する場合、それが常に有効なオブジェクトを参照するのか、`nil` に設定されていることを確認する責任があることです。
+
+学校の特定の学科が提供するコースを追跡する例を次に示します:
+
+```swift
+class Department {
+    var name: String
+    var courses: [Course]
+    init(name: String) {
+        self.name = name
+        self.courses = []
+    }
+}
+
+class Course {
+    var name: String
+    unowned var department: Department
+    unowned var nextCourse: Course?
+    init(name: String, in department: Department) {
+        self.name = name
+        self.department = department
+        self.nextCourse = nil
+    }
+}
+```
+
+`Department` は、学科が提供する各コースへの強参照を維持します。ARC 所有権モデルでは、学科がそのコースを所有します。`Course` には非所有参照が 2 つあります。1 つは学科へ、もう 1 つは学生が受講する必要がある次のコースです。コースはこれらのオブジェクトのいずれも所有しません。全てのコースはいくつかの部門の一部のため、`department` プロパティはオプショナルではありません。ただし、一部のコースには推奨される次のコースがないため、`nextCourse` プロパティはオプショナルです。
+
+これらのクラスの使用例を次に示します:
+
+```swift
+let department = Department(name: "Horticulture")
+
+let intro = Course(name: "Survey of Plants", in: department)
+let intermediate = Course(name: "Growing Common Herbs", in: department)
+let advanced = Course(name: "Caring for Tropical Plants", in: department)
+
+intro.nextCourse = intermediate
+intermediate.nextCourse = advanced
+department.courses = [intro, intermediate, advanced]
+```
+
+上記のコードは、学科とその 3 つのコースを作成します。入門コースと中級コースの両方には、`nextCourse` プロパティに保存された次のコースの提案があり、このコースを完了した後に学生が受講する必要があるコースへのオプショナルの非所有参照が維持されます。
+
+![オプショナル非所有参照](./../.gitbook/assets/unownedOptionalReference_2x.png)
+
+オプショナル非所有参照は、ラップするクラスのインスタンスを強く保持しないため、ARC によるインスタンスの割り当て解除を妨げません。これは、オプショナル非所有参照が `nil` にできることを除いて、ARC での非所有参照と同じように動作します。
+
+オプショナル非所有参照と同様に、`nextCourse` が常に割り当てが解除されていないコースを参照するようにする必要があります。この場合、例えば、`department.courses` からコースを削除するときに、他のコースが持つ可能性のあるそのコースへの参照も全て削除する必要があります。
+
+> NOTE  
+> オプショナル値の基になる型は `Optional` です。これは、Swift 標準ライブラリの列挙型です。`Optional` は、値型を `unowned` でマークできないという規則の例外です。  
+>
+> クラスをラップするオプショナルは参照カウントを使用しないため、オプショナルへの強参照を維持する必要はありません。
 
 ### Unowned References and Implicitly Unwrapped Optional Properties(非所有参照と暗黙的にアンラップしたオプショナルプロパティ)
 
