@@ -199,9 +199,32 @@ let fromTheTop = stackOfStrings.pop()
 
 ## Extending a Generic Type(ジェネリック型の拡張)
 
-ジェネリック型を拡張する場合、extension の定義で型引数リストを提供しません。代わりに、元の型定義の型引数リストは extension の本文内で使用でき、元の型引数名は元の定義の型引数を参照するために使用てきます。
+ジェネリック型を拡張する場合、extension の定義で型引数リストを提供しません。代わりに、元の型定義の型引数リストは extension の本文内でも使用でき、元の型引数名は元の定義の型引数を参照するために使用します。
 
-次の例では、ジェネリックな Stack 型を拡張して、topItem と呼ばれる読み取り専用の計算済みプロパティを追加します。これは、スタックからポップせずにスタックの一番上のアイテムを返します。
+次の例では、ジェネリックな Stack 型を拡張して、`topItem` と呼ばれる読み取り専用の計算プロパティを追加します。これは、スタックからポップせずにスタックの一番上のアイテムを返します:
+
+```swift
+extension Stack {
+    var topItem: Element? {
+        return items.isEmpty ? nil : items[items.count - 1]
+    }
+}
+```
+
+`topItem` プロパティは、`Element` 型のオプショナルの値を返します。スタックが空の場合、`topItem` は `nil` を返します。スタックが空でない場合、`topItem` は `items` 配列の最後の項目を返します。
+
+この extension は型引数リストを定義していないことに注目してください。代わりに、`Stack` 型の既存の型引数名の `Element` が extension 内で使用され、`topItem 計算プロパティのオプショナルの型を示しています。
+
+任意の `Stack` インスタンスで `topItem` 計算プロパティを使用して最上位のアイテムを削除せずにアクセスできるようになりました。
+
+```swift
+if let topItem = stackOfStrings.topItem {
+    print("The top item on the stack is \(topItem).")
+}
+// "The top item on the stack is tres."
+```
+
+ジェネリック型の extension には、下記の[Extensions with a Generic Where Clause](#extensions-with-a-generic-where-clauseジェネリックwhere句を使った拡張)で説明されているように、新しい機能を取得するために拡張した型のインスタンスが満たさなければならない要件を含めることもできます。
 
 ## Type Constraints(型制約)
 
