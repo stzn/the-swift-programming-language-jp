@@ -22,6 +22,65 @@ Swift は自動参照カウント(以下*ARC*)を使用して、アプリのメ�
 
 ## ARC in Action(ARCの挙動)
 
+ARC の仕組みの例を次に示します。この例は、`name` という名前の定数格納プロパティを定義する `Person` という単純なクラスから始まります。
+
+```swift
+class Person {
+    let name: String
+    init(name: String) {
+        self.name = name
+        print("\(name) is being initialized")
+    }
+    deinit {
+        print("\(name) is being deinitialized")
+    }
+}
+```
+
+`Person` クラスには、インスタンスの `name` プロパティを設定し、初期化が進行中なことを示すメッセージを出力するイニシャライザがあります。`Person` クラスには、インスタンスの割り当てが解除されたときにメッセージを出力するデイニシャライザもあります。
+
+次のコードスニペットでは、`Person?` 型の 3 つの変数を定義しています。これらの変数は、後続のコードスニペットで新しい `Person` インスタンスへの複数の参照を設定するために使用されます。これらの変数はオプショナルの型(`Person?`、`Person` ではない)のため、`nil` で自動的に初期化され、現在 `Person` インスタンスを参照していません。
+
+```swift
+var reference1: Person?
+var reference2: Person?
+var reference3: Person?
+```
+
+新しい `Person` インスタンスを作成して、次の 3 つの変数のいずれかに割り当てることができます。
+
+```swift
+reference1 = Person(name: "John Appleseed")
+// "John Appleseed is being initialized"
+```
+
+`Person` クラスのイニシャライザを呼び出した時点で、`"John Appleseed is being initialized"` というメッセージが出力されることに注目してください。これは、初期化が行われたことを確認します。
+
+新しい `Person` インスタンスが `reference1` 変数に割り当てられているため、`reference1` から新しい `Person` インスタンスへの強参照があります。少なくとも 1 つの強参照があるため、ARC はこの `Person` がメモリに保持され、割り当てが解除されないようにします。
+
+同じ `Person` インスタンスをさらに 2 つの変数に割り当てると、そのインスタンスへのさらに 2 つの強参照が確立されます。
+
+```swift
+reference2 = reference1
+reference3 = reference1
+```
+
+現在、この単一の `Person` インスタンスへの 3 つの強参照があります。
+
+2 つの変数に `nil` を代入してこれらの 2 つの強参照(元の参照を含む)を解除すると、1 つの強参照が残り、`Person` インスタンスの割り当てが解除されません。
+
+```swift
+reference1 = nil
+reference2 = nil
+```
+
+ARC は、最後の 3 番目の強参照がなくなるまで、`Person` インスタンスの割り当てを解除しません。強参照がなくなった時点で、`Person` インスタンスを使用していないことが明らかになります。
+
+```swift
+reference3 = nil
+// "John Appleseed is being deinitialized"
+```
+
 ## Strong Reference Cycles Between Class Instances(クラスインスタンス間の強参照循環)
 
 ## Resolving Strong Reference Cycles Between Class Instances(クラスインスタンス間の強参照循環の解消)
