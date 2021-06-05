@@ -501,7 +501,7 @@ print(paragraph!.asHTML())
 
 残念ながら、上記の `HTMLElement` クラスは、`HTMLElement` インスタンスと、デフォルトの `asHTML` 値に使用されるクロージャとの間に強参照循環を作成します。サイクルは次のようになります:
 
-![クロージャ強参照循環](./../.gitbook/assets/closureReferenceCycle01_2x.png)
+![クロージャ強参照循環1](./../.gitbook/assets/closureReferenceCycle01_2x.png)
 
 インスタンスの `asHTML` プロパティは、そのクロージャへの強参照を保持します。ただし、クロージャは(`self.name` および `self.text` を参照する方法として)本文内の `self` を参照するため、クロージャは `self` をキャプチャします。つまり、クロージャは `HTMLElement` インスタンスへの強参照を保持します。2 つの間に強参照循環が作成されます。(クロージャでの値のキャプチャの詳細については、[Capturing Values](./closures.md#capturing-values値のキャプチャ)を参照してください)
 
@@ -547,3 +547,61 @@ lazy var someClosure = {
 ```
 
 ## Weak and Unowned References(弱参照と非所有参照)
+
+クロージャとキャプチャするインスタンスが常に相互に参照し、常に同時に割り当てが解除される場合は、クロージャ内のキャプチャを非所有参照として定義します。
+
+逆に、キャプチャされた参照が将来のある時点でゼロになる可能性がある場合は、キャプチャを弱参照として定義します。弱参照は常にオプショナル型で、参照するインスタンスの割り当てが解除されると、自動的に `nil` になります。これにより、クロージャの本文内に存在するかどうかを確認できます。
+
+> NOTE  
+> キャプチャされた参照が `nil` にならない場合は、弱参照ではなく、常に非所有参照としてキャプチャする必要があります。
+
+非所有参照は、上記のクロージャの強参照循環の `HTMLElement` の例の強参照循環を解決するために使用する適切なキャプチャ方法です。循環を回避するための `HTMLElement` クラスの作成方法は次のとおりです:
+
+```swift
+class HTMLElement {
+
+    let name: String
+    let text: String?
+
+    lazy var asHTML: () -> String = {
+        [unowned self] in
+        if let text = self.text {
+            return "<\(self.name)>\(text)</\(self.name)>"
+        } else {
+            return "<\(self.name) />"
+        }
+    }
+
+    init(name: String, text: String? = nil) {
+        self.name = name
+        self.text = text
+    }
+
+    deinit {
+        print("\(name) is being deinitialized")
+    }
+}
+```
+
+この `HTMLElement` の実装は、`asHTML` クロージャ内にキャプチャリストが追加されていることを除けば、前の実装と同じです。この場合、キャプチャリストは `[unowned self]` で、「強参照ではなく、非所有参照として `self` をキャプチャする」という意味です。
+
+先ほどと同じように `HTMLElement` インスタンスを作成して出力できます。
+
+```swift
+var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
+print(paragraph!.asHTML())
+// "<p>hello, world</p>"
+```
+
+キャプチャリストを配置した場合の参照は次のようになります：
+
+![クロージャ強参照循環2](./../.gitbook/assets/closureReferenceCycle02_2x.png)
+
+今回は、クロージャによる `self` のキャプチャは非所有参照で、キャプチャした `HTMLElement` インスタンスを強く保持しません。`paragraph` 変数からの強参照を `nil` に設定すると、`HTMLElement` インスタンスの割り当てが解除されます。これは、下記の例のデイニシャライザメッセージの出力からもわかります:
+
+```swift
+paragraph = nil
+// "p is being deinitialized"
+```
+
+キャプチャリストの詳細については、[Capture Lists](./../language-reference/expressions.md#capture-listsキャプチャリスト)を参照ください。
