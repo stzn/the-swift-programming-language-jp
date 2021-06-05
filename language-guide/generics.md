@@ -228,6 +228,14 @@ if let topItem = stackOfStrings.topItem {
 
 ## Type Constraints(型制約)
 
+`swapTwoValues(_:_:)` 関数と `Stack` 型は、どの型でも機能します。ただし、ジェネリック関数およびジェネリック型で使用できる型に特定の型制約を適用すると便利な場合があります。型制約は、型引数が特定のクラスから継承するか、特定のプロトコルまたは合成したプロトコルに準拠する必要があることを指定できます。
+
+例えば、Swift の `Dictionary` 型では、辞書のキーとして使用できる型に制限があります。[Dictionaries](./collection-types.md#dictionaries辞書)で説明されているように、辞書のキーの型はハッシュ可能でなければなりません。つまり、個々のキーがユニークなことを表明する方法を提供する必要があります。`Dictionary` は、特定のキーの値がすでに含まれているかどうかを確認できるように、そのキーがハッシュ可能な必要があります。この要件がなければ、`Dictionary` は特定のキーの値を挿入または置換するべきかどうかを判断できず、すでに存在する特定のキーの値を見つけることもできません。
+
+この要件は、`Dictionary` のキーの型制約によって強制されます。これは、キーの型が Swift 標準ライブラリで定義された `Hashable` プロトコルに準拠する必要があることを指定します。Swift のすべての基本型(`String`、`Int`、`Double`、`Bool` など)は、デフォルトでハッシュ可能です。独自の型を `Hashable` プロトコルに準拠させる方法については、[Conforming to the Hashable Protocol](https://developer.apple.com/documentation/swift/hashable#2849490)を参照ください。
+
+独自のジェネリック型を作成するときに、独自の型制約を定義できます。これらの制約は、多くのジェネリックプログラミングの強力な機能を提供します。`Hashable` のような抽象的な概念は、具体的な型ではなく、概念的な特性の観点から型を特徴付けます。
+
 ### Type Constraint Syntax(型制約構文)
 
 ### Type Constraints in Action(型制約の挙動)
