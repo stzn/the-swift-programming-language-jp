@@ -427,6 +427,95 @@ print("\(country.name)'s capital city is called \(country.capitalCity.name)")
 
 ## Strong Reference Cycles for Closures(クロージャの強参照循環)
 
+2 つのクラス インスタンスプロパティが互いに強参照を保持している場合に、強参照循環がどのように作成されるかを上で説明しました。また、弱参照と非所有参照を使用して、これらの強参照循環を破る方法についても説明しました。
+
+クラスインスタンスのプロパティにクロージャを割り当て、そのクロージャの本文がインスタンスをキャプチャした場合にも、強参照循環が発生する可能性があります。このキャプチャは、クロージャの本文がインスタンスのプロパティ(`self.someProperty` など) にアクセスした場合、またはクロージャがインスタンスのメソッド(`self.someMethod()` など)を呼び出した場合に発生する可能性があります。いずれの場合も、これらのアクセスにより、クロージャが `self` を「キャプチャ」し、強参照循環が作成されます。
+
+この強参照循環が発生するのは、クロージャがクラスと同様に参照型のためです。プロパティにクロージャを割り当てると、そのクロージャへの参照が割り当てられます。本質的に、これは上記と同じ問題です。2 つの強参照がお互いを生かしています。ただし、2 つのクラスインスタンスではなく、今回はクラスインスタンスとクロージャがお互いを生かしています。
+
+Swift は、クロージャキャプチャリスト(*closure capture list*)と呼ばれるこの問題に対するエレガントなソリューションを提供します。ただし、クロージャキャプチャリストを使用して強参照循環を中断する方法を学ぶ前に、そのような循環がどのように発生するかを理解しておくと役立ちます。
+
+下記の例は、`self` を参照するクロージャを使用する場合に強参照循環を作成する方法を示しています。この例では、`HTMLElement` というクラスを定義しています。これは、HTML ドキュメント内の個々の要素にシンプルなモデルを提供します:
+
+```swift
+class HTMLElement {
+
+    let name: String
+    let text: String?
+
+    lazy var asHTML: () -> String = {
+        if let text = self.text {
+            return "<\(self.name)>\(text)</\(self.name)>"
+        } else {
+            return "<\(self.name) />"
+        }
+    }
+
+    init(name: String, text: String? = nil) {
+        self.name = name
+        self.text = text
+    }
+
+    deinit {
+        print("\(name) is being deinitialized")
+    }
+
+}
+```
+
+`HTMLElement` クラスは、見出し要素の場合は `"h1"`、段落要素の場合は `"p"`、改行要素の場合は `"br"` など、要素の名前を示す `name` プロパティを定義します。 `HTMLElement` は、オプショナルの `text` プロパティも定義します。このプロパティは、その HTML 要素内でレンダリングされるテキストを表す文字列に設定できます。
+
+これら 2 つのシンプルなプロパティに加えて、`HTMLElement` クラスは `asHTML` と呼ばれる遅延プロパティを定義します。このプロパティは、`name` と `text` を HTML 文字列フラグメントに結合するクロージャを参照します。`asHTML` プロパティの型は `() -> String`、または「引数を受け取らず、`String` 値を返す関数」です。
+
+デフォルトでは、`asHTML` プロパティには、HTML タグの文字列表現を返すクロージャが割り当てられます。このタグには、(存在する場合)オプショナルの `text` 値が含まれます。`text` が存在しない場合、テキストコンテンツは含まれません。段落要素の場合、クロージャは `text` プロパティが `"some text"` または `nil` かどうかに応じて、`"<p>some text</p>"` または `"<p />"` を返します。
+
+`asHTML` プロパティには名前が付けられ、インスタンスメソッドのように使用されます。ただし、`asHTML` はインスタンスメソッドではなくクロージャプロパティのため、特定の HTML 要素の HTML レンダリングを変更する場合は、`asHTML` プロパティのデフォルト値を独自のクロージャに置き換えることができます。
+
+例えば、表現が空の HTML タグを返さないようにするために、`asHTML` プロパティは、`text` プロパティが `nil` の場合にデフォルトで何らかのテキストになるクロージャに設定できます。
+
+```swift
+let heading = HTMLElement(name: "h1")
+let defaultText = "some default text"
+heading.asHTML = {
+    return "<\(heading.name)>\(heading.text ?? defaultText)</\(heading.name)>"
+}
+print(heading.asHTML())
+// "<h1>some default text</h1>"
+```
+
+> NOTE  
+> `asHTML` プロパティは遅延プロパティとして宣言されています。これは、要素が実際にHTML 出力ターゲットの文字列値の一部としてレンダリングされる必要がある場合にのみ必要になるためです。`asHTML` が遅延プロパティであるということは、デフォルトクロージャ内で `self` を参照できることを意味します。これは、初期化が完了し、`self` が存在することがわかるまで遅延プロパティにアクセスできないためです。
+
+`HTMLElement` クラスは単一のイニシャライザを提供します。このイニシャライザは、新しい要素を初期化するための `name` 引数と(必要に応じて)`text` 引数を受け取ります。このクラスは、`HTMLElement` インスタンスの割り当てが解除されたときに表示するメッセージを出力するデイニシャライザも定義しています。
+
+`HTMLElement` クラスを使用して新しいインスタンスを作成および出力する方法は次のとおりです:
+
+```swift
+var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
+print(paragraph!.asHTML())
+// "<p>hello, world</p>"
+```
+
+> NOTE  
+> 上記の `paragraph` 変数はオプショナルの `HTMLElement` として定義されているため、下記では `nil` に設定して、強参照循環の存在を示すことができます。
+
+残念ながら、上記の `HTMLElement` クラスは、`HTMLElement` インスタンスと、デフォルトの `asHTML` 値に使用されるクロージャとの間に強参照循環を作成します。サイクルは次のようになります:
+
+![クロージャ強参照循環](./../.gitbook/assets/closureReferenceCycle01_2x.png)
+
+インスタンスの `asHTML` プロパティは、そのクロージャへの強参照を保持します。ただし、クロージャは(`self.name` および `self.text` を参照する方法として)本文内の `self` を参照するため、クロージャは `self` をキャプチャします。つまり、クロージャは `HTMLElement` インスタンスへの強参照を保持します。2 つの間に強参照循環が作成されます。(クロージャでの値のキャプチャの詳細については、[Capturing Values](./closures.md#capturing-values値のキャプチャ)を参照してください)
+
+> NOTE  
+> クロージャは `self` を複数回参照していますが、`HTMLElement` インスタンスへの強参照を 1 つだけキャプチャします。
+
+`paragraph` 変数を `nil` に設定し、`HTMLElement` インスタンスへの強参照を解除すると、強参照循環のため、`HTMLElement` インスタンスもそのクロージャも割り当てを解除できません。
+
+```swift
+paragraph = nil
+```
+
+`HTMLElement` のデイニシャライザのメッセージは出力されないことに注目してください。これは、`HTMLElement` インスタンスが割り当て解除されていないことを示しています。
+
 ## Resolving Strong Reference Cycles for Closures(クロージャの強参照循環の解消)
 
 ## Defining a Capture List(キャプチャリストの定義)
