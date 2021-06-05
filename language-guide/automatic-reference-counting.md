@@ -83,6 +83,80 @@ reference3 = nil
 
 ## Strong Reference Cycles Between Class Instances(クラスインスタンス間の強参照循環)
 
+上記の例では、ARC は、作成した新しい `Person` インスタンスへの参照の数を追跡し、不要になったらその `Person` インスタンスの割り当てを解除できます。
+
+ただし、クラスインスタンスの強参照がゼロにならないコードを書いてしまう可能性があります。これは、2 つのクラスインスタンスが互いに強参照を保持している場合に発生する可能性があります。これは、強参照循環(*Strong Reference Cycles*)と呼ばれています。
+
+クラス間の関係の一部を強参照ではなく、弱参照または非所有参照として定義することにより、強参照循環を解決します。このプロセスは、[Resolving Strong Reference Cycles Between Class Instances](#resolving-strong-reference-cycles-between-class-instancesクラスインスタンス間の強参照循環の解消)で説明されています。ただし、強参照循環を解決する方法を学ぶ前に、そのようなサイクルがどのように発生するかを理解しておくと役に立ちます。
+
+強参照循環が偶発的に発生する例を次に示します。この例では、`Person` と `Apartment` という 2 つのクラスを定義しており、アパートのブロックとその住人をモデル化しています。
+
+```swift
+class Person {
+    let name: String
+    init(name: String) { self.name = name }
+    var apartment: Apartment?
+    deinit { print("\(name) is being deinitialized") }
+}
+
+class Apartment {
+    let unit: String
+    init(unit: String) { self.unit = unit }
+    var tenant: Person?
+    deinit { print("Apartment \(unit) is being deinitialized") }
+}
+```
+
+全ての `Person` インスタンスには、`String` 型の `name` プロパティと、最初は `nil` のオプショナルの `apartment` プロパティがあります。人は常にアパートを所有しているとは限らないため、`apartment` のプロパティはオプショナルです。
+
+同様に、全ての `Apartment` インスタンスには `String` 型の `unit` プロパティがあり、最初は `nil` のオプショナルの `tenant` プロパティがあります。アパートには常にテナントがいるとは限らないため、`tenant` プロパティはオプショナルです。
+
+これらのクラスは両方とも、そのクラスのインスタンスがメモリから割り当て解除されているという事実を出力する `deinit` も定義しています。これにより、`Person` と `Apartment` のインスタンスが期待どおりに割り当て解除されているかどうかを確認できます。
+
+この次のコードスニペットは、`john` と `unit4A` と呼ばれるオプショナルの型の 2 つの変数を定義してます。これらは、下記の特定の `Apartment` および `Person` インスタンスに設定されています。これらの変数は両方とも、オプショナルなため、初期値は `nil` です:
+
+```swift
+var john: Person?
+var unit4A: Apartment?
+```
+
+特定の `Person` インスタンスと `Apartment` インスタンスを作成し、これらの新しいインスタンスを `john` 変数と `unit4A` 変数に割り当てることができます:
+
+```swift
+john = Person(name: "John Appleseed")
+unit4A = Apartment(unit: "4A")
+```
+
+これら 2 つのインスタンスを作成して割り当てた後、強参照がどのように見えるかを次に示します。`john` 変数には新しい `Person` インスタンスへの強参照があり、`unit4A` 変数には新しい `Apartment` インスタンスへの強参照があります:
+
+![強参照循環1](./../.gitbook/assets/referenceCycle01_2x.png)
+
+2 つのインスタンスをリンクして、その人にアパートを持ち、そのアパートにテナントがあるようにすることができます。感嘆符(`!`)は、オプショナルの `john` および `unit4A` 変数内に格納されているインスタンスをアンラップしてアクセスするために使用されるため、これらのインスタンスのプロパティを設定できます:
+
+```swift
+john!.apartment = unit4A
+unit4A!.tenant = john
+```
+
+2 つのインスタンスをリンクした後、強参照がどのように見えるかを次に示します。
+
+![強参照循環2](./../.gitbook/assets/referenceCycle02_2x.png)
+
+残念ながら、これら 2 つのインスタンスをリンクすると、それらの間に強参照循環が作成されます。`Person` インスタンスは `Apartment` インスタンスへの強参照を持ち、`Apartment` インスタンスは `Person` インスタンスへの強参照を持つようになりました。したがって、`john` 変数と `unit4A` 変数によって保持されている強参照を解除しても、参照カウントはゼロにはならず、インスタンスは ARC によって割り当て解除されません。
+
+```swift
+john = nil
+unit4A = nil
+```
+
+これら 2 つの変数を `nil` に設定したときには、どちらのデイニシャライザも呼び出されなかったことに注目してください。強参照循環により、`Person` インスタンスと `Apartment` インスタンスの割り当てが解除されることがなくなり、アプリでメモリリークが発生します。
+
+`john` 変数と `unit4A` 変数を `nil` に設定した後、強参照がどのように見えるかを次に示します。
+
+![強参照循環3](./../.gitbook/assets/referenceCycle03_2x.png)
+
+`Person` インスタンスと `Apartment` インスタンス間の強参照は残り、なくなることはありません。
+
 ## Resolving Strong Reference Cycles Between Class Instances(クラスインスタンス間の強参照循環の解消)
 
 ### Weak References(弱参照)
