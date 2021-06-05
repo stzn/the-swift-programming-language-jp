@@ -375,6 +375,56 @@ department.courses = [intro, intermediate, advanced]
 
 ### Unowned References and Implicitly Unwrapped Optional Properties(非所有参照と暗黙的にアンラップしたオプショナルプロパティ)
 
+上記の弱参照と非所有参照の例は、強参照循環を断ち切る必要がある、より一般的な 2 つのシナリオをカバーしています。
+
+`Person` と `Apartment` の例は、両方とも `nil` にすることができる 2 つのプロパティが、強参照循環を引き起こす可能性がある状況を示しています。このシナリオは、弱参照で解決するのが最善です。
+
+`Customer` と `CreditCard` の例は、`nil` にできる 1 つのプロパティと `nil` にできない別のプロパティが、強参照循環を引き起こす可能性がある状況を示しています。このシナリオは、非所有参照で解決するのが最善です。
+
+ただし、3 番目のシナリオでは、両方のプロパティに常に値が必要で、初期化が完了すると、どちらのプロパティも `nil` にはできません。このシナリオでは、一方のクラスの unowned プロパティと、もう一方のクラスの暗黙的にアンラップされたオプショナルプロパティと組み合わせると便利です。
+
+これにより、初期化が完了すると、参照循環を回避しながら、両方のプロパティに直接(オプショナルのアンラップなしで)アクセスできます。このセクションでは、そのような関係を設定する方法を示します。
+
+下記の例では、`Country` と `City` の 2 つのクラスが定義されており、それぞれが他のクラスのインスタンスをプロパティとして保持しています。このデータモデルでは、全ての国には常に首都が必要で、全ての都市は常に国に属している必要があります。これを表すために、`Country` クラスには `capitalCity` プロパティがあり、`City` クラスには `country` プロパティがあります:
+
+```swift
+class Country {
+    let name: String
+    var capitalCity: City!
+    init(name: String, capitalName: String) {
+        self.name = name
+        self.capitalCity = City(name: capitalName, country: self)
+    }
+}
+
+class City {
+    let name: String
+    unowned let country: Country
+    init(name: String, country: Country) {
+        self.name = name
+        self.country = country
+    }
+}
+```
+
+2 つのクラス間の相互依存関係を設定するために、`City` のイニシャライザは `Country` インスタンスを取得し、このインスタンスを `country` プロパティに格納します。
+
+`City` のイニシャライザは、`Country` のイニシャライザ内から呼び出されます。ただし、[Two-Phase Initialization](./initialization.md#two-phase-initializationイニシャライザの2フェーズ)で説明されているように、新しい `Country` インスタンスが完全に初期化されるまで、`Country` のイニシャライザは `self` を `City` イニシャライザに渡すことはできません。
+
+この要件に対処するには、`Country` の `capitalCity` プロパティを、型注釈の最後に感嘆符で示される、暗黙的にアンラップされたオプショナルプロパティ(`City!`)として宣言しています。これは、他のオプショナルと同様に、`capitalCity` プロパティのデフォルト値は `nil` ですが、[Implicitly Unwrapped Optionals](./the-basics.md#implicitly-unwrapped-optionals暗黙アンラップオプショナル)で説明されているように、その値をアンラップする必要なくアクセスできることを意味します。
+
+`capitalCity` にはデフォルトの `nil` 値があるため、新しい `Country` インスタンスは、`Country` インスタンスがイニシャライザ内で `name` プロパティを設定するとすぐに完全に初期化されたと見なされます。これは、`name` プロパティが設定されるとすぐに、`Country` イニシャライザが暗黙的な `self` プロパティの参照の受け渡しを開始できることを意味します。したがって、`Country` イニシャライザが独自の `capitalCity` プロパティを設定している場合、`Country` イニシャライザは `City` イニシャライザの引数の 1 つとして `self` を渡すことができます。
+
+これで全て、強参照循環を作成せずに単一の文で `Country` と `City` のインスタンスを作成できることを意味します。また、オプショナルの値をアンラップするために感嘆符を使用する必要なく、`capitalCity` プロパティに直接アクセスできます:
+
+```swift
+var country = Country(name: "Canada", capitalName: "Ottawa")
+print("\(country.name)'s capital city is called \(country.capitalCity.name)")
+// "Canada's capital city is called Ottawa"
+```
+
+上記の例では、暗黙的にアンラップされたオプショナルを使用することは、2 フェーズのクラスイニシャライザの要件が全て満たされることを意味します。`capitalCity` プロパティは、初期化が完了すると、強参照循環を回避しつつ、オプショナルではない値のように使用およびアクセスできます。
+
 ## Strong Reference Cycles for Closures(クロージャの強参照循環)
 
 ## Resolving Strong Reference Cycles for Closures(クロージャの強参照循環の解消)
