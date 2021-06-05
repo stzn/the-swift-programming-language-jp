@@ -238,6 +238,16 @@ if let topItem = stackOfStrings.topItem {
 
 ### Type Constraint Syntax(型制約構文)
 
+型引数リストの一部として、型引数の名前の後にコロン(`:`)で区切って単一のクラスまたはプロトコルを配置することで、型制約を記述します。ジェネリック関数の型制約の基本的な構文を以下に示します(構文はジェネリック型でも同じです)。
+
+```swift
+func someFunction<T: SomeClass, U: SomeProtocol>(someT:T, someU:U) {
+     // ここに関数本文が入ります
+}
+```
+
+上記の関数には、2 つの型引数があります。最初の型引数 `T` には、`T` が `SomeClass` のサブクラスの必要がある型制約があります。2 番目の型引数 `U` には、`U` が `SomeProtocol` プロトコルに準拠する必要がある型制約があります。
+
 ### Type Constraints in Action(型制約の挙動)
 
 ## Associated Types(関連型)
