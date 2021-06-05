@@ -318,6 +318,8 @@ let stringIndex = findIndex(of: "Andrea", in: ["Mike", "Malcolm", "Andrea"])
 
 ## Associated Types(関連型)
 
+プロトコルを定義するとき、プロトコルの定義に 1 つ以上の関連型を宣言すると便利な場合があります。関連型は、プロトコルの一部として使用される型にプレースホルダ名を与えます。その関連型に使用する実際の型は、プロトコルに準拠するまで指定されません。関連型は、`associatedtype` キーワードで指定します。
+
 ### Associated Types in Action(関連型の挙動)
 
 ### Extending an Existing Type to Specify an Associated Type(関連型を特定するための既存の型の拡張)
