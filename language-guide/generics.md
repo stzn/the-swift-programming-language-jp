@@ -114,7 +114,7 @@ swapTwoValues(&someString, &anotherString)
 
 ジェネリック関数に加えて、Swift では独自のジェネリック型を定義できます。これらは、`Array` や `Dictionary` と同様の方法で、独自のクラス、構造体、および列挙型の任意の型で機能します。
 
-このセクションでは、`Stack` と呼ばれる一般的なコレクション型を作成する方法を示します。スタックは、配列に似た順序付けられた値のセットですが、`Array` 型よりも操作が制限されています。配列を使用すると、配列内の任意の場所で新しい項目を挿入および削除できます。ただし、スタックでは、コレクションの最後にのみ新しい項目を追加できます(スタックに新しい値をプッシュする(*pushing*)と呼ばれています)。同様に、スタックでは、コレクションの最後からのみアイテムを削除できます(スタックから値をポップする(*popping*)と呼ばれています)。
+このセクションでは、`Stack` と呼ばれる一般的なコレクション型を作成する方法を示します。スタックは、配列に似た順序付けられた値のセットですが、`Array` 型よりも操作が制限されています。配列を使用すると、配列内の任意の場所で新しいアイテムを挿入および削除できます。ただし、スタックでは、コレクションの最後にのみ新しいアイテムを追加できます(スタックに新しい値をプッシュする(*pushing*)と呼ばれています)。同様に、スタックでは、コレクションの最後からのみアイテムを削除できます(スタックから値をポップする(*popping*)と呼ばれています)。
 
 > NOTE  
 > `UINavigationController` クラスは、スタックの概念を使用して、ナビゲーション階層内の view controller をモデル化します。`UINavigationController` クラスの `pushViewController(_:animated:)` メソッドを呼び出して view controller をナビゲーションスタックに追加(プッシュ)し、popViewControllerAnimated(_:)    メソッドを呼び出してナビゲーションスタックから view controller を削除(ポップ)します。スタックは、コレクションの管理に厳密な「後入れ先出し(LIFO)」アプローチが必要な場合に役立つコレクションモデルです。
@@ -211,7 +211,7 @@ extension Stack {
 }
 ```
 
-`topItem` プロパティは、`Element` 型のオプショナルの値を返します。スタックが空の場合、`topItem` は `nil` を返します。スタックが空でない場合、`topItem` は `items` 配列の最後の項目を返します。
+`topItem` プロパティは、`Element` 型のオプショナルの値を返します。スタックが空の場合、`topItem` は `nil` を返します。スタックが空でない場合、`topItem` は `items` 配列の最後のアイテムを返します。
 
 この extension は型引数リストを定義していないことに注目してください。代わりに、`Stack` 型の既存の型引数名の `Element` が extension 内で使用され、`topItem 計算プロパティのオプショナルの型を示しています。
 
@@ -509,7 +509,7 @@ func allItemsMatch<C1: Container, C2: Container>
             }
         }
 
-        // 全ての項目が一致するため、true を返します
+        // 全てのアイテムが一致するため、true を返します
         return true
 }
 ```
@@ -532,13 +532,13 @@ func allItemsMatch<C1: Container, C2: Container>
 * `someContainer` と `anotherContainer` には、同じ型のアイテムが含まれています
 * `someContainer` 内の `Item` は、不等演算子 (`!=`) を使用して、互いに異なるかどうかを確認できます
 
-3 番目と 4 番目の要件を組み合わせると、`otherContainer` の項目は `someContainer` の項目とまったく同じ型のため、`!=` 演算子を使用してチェックすることもできます。
+3 番目と 4 番目の要件を組み合わせると、`otherContainer` のアイテムは `someContainer` のアイテムとまったく同じ型のため、`!=` 演算子を使用してチェックすることもできます。
 
 これらの要件により、`allItemsMatch(_:_:)` 関数は、2 つのコンテナが異なるコンテナ型でも、それらを比較できます。
 
 `allItemsMatch(_:_:)` 関数は、両方のコンテナに同じ数のアイテムが含まれていることを確認することから始まります。それらに含まれるアイテムの数が異なる場合、一致する可能性はなく、関数は `false` を返します。
 
-このチェックを行った後、関数は `for-in` ループと半壊範囲演算子(`..<`)を使用して `someContainer` 内の全ての項目を反復します。各項目について、関数は `someContainer` の項目が `anotherContainer` の対応する項目と等しくないかどうかをチェックします。2 つの項目が等しくない場合、2 つのコンテナは一致せず、関数は `false` を返します。
+このチェックを行った後、関数は `for-in` ループと半壊範囲演算子(`..<`)を使用して `someContainer` 内の全てのアイテムを反復します。各アイテムについて、関数は `someContainer` のアイテムが `anotherContainer` の対応するアイテムと等しくないかどうかをチェックします。2 つのアイテムが等しくない場合、2 つのコンテナは一致せず、関数は `false` を返します。
 
 不一致が見つからずにループが終了した場合、2 つのコンテナは一致し、関数は `true` を返します。
 
@@ -560,7 +560,7 @@ if allItemsMatch(stackOfStrings, arrayOfStrings) {
 // "All items match."
 ```
 
-上記の例では、`String` 値を格納する `Stack` インスタンスを作成し、3 つの文字列をスタックにプッシュします。この例では、スタックと同じ 3 つの文字列を含む配列リテラルで初期化された `Array` インスタンスも作成します。スタックと配列は型が異なりますが、どちらも `Container` プロトコルに準拠しており、両方に同じ型の値が含まれています。したがって、これら 2 つのコンテナを引数として `allItemsMatch(_:_:)` 関数を呼び出すことができます。上記の例では、`allItemsMatch(_:_:)` 関数は、2 つの項目の全てが合致していることを出力します。
+上記の例では、`String` 値を格納する `Stack` インスタンスを作成し、3 つの文字列をスタックにプッシュします。この例では、スタックと同じ 3 つの文字列を含む配列リテラルで初期化された `Array` インスタンスも作成します。スタックと配列は型が異なりますが、どちらも `Container` プロトコルに準拠しており、両方に同じ型の値が含まれています。したがって、これら 2 つのコンテナを引数として `allItemsMatch(_:_:)` 関数を呼び出すことができます。上記の例では、`allItemsMatch(_:_:)` 関数は、2 つのアイテムの全てが合致していることを出力します。
 
 ## Extensions with a Generic Where Clause(ジェネリックWhere句を使った拡張)
 
@@ -641,7 +641,52 @@ print([1260.0, 1200.0, 98.6, 37.0].average())
 
 他の場所で作成したジェネリックな `where` 句の場合と同様に、extension にあるジェネリック `where` 句に複数の要件を含めることができます。リスト内の各要件はコンマで区切ります。
 
-## Contextual Where Clauses(コンテキストのWhere句)
+## Contextual Where Clauses(文脈上のWhere句)
+
+既にジェネリック型を使っている文脈上で、型制約を持たない宣言にジェネリック `where` 句を作成できます。例えば、ジェネリック型の subscript、またはジェネリック型の extension のメソッドにジェネリック `where` 句を記述できます。`Container` 構造体はジェネリックで、下記の例の `where` 句は、新しいメソッドを `Container` で使用できるようにするために満たす必要のある型制約を指定しています。
+
+```swift
+extension Container {
+    func average() -> Double where Item == Int {
+        var sum = 0.0
+        for index in 0..<count {
+            sum += Double(self[index])
+        }
+        return sum / Double(count)
+    }
+    func endsWith(_ item: Item) -> Bool where Item: Equatable {
+        return count >= 1 && self[count-1] == item
+    }
+}
+let numbers = [1260, 1200, 98, 37]
+print(numbers.average())
+// "648.75"
+print(numbers.endsWith(37))
+// "true"
+```
+
+この例では、アイテムが整数の場合は `average()` メソッドを `Container` に追加し、アイテムが `Equatable` の場合は `endsWith(_:)` メソッドを追加します。どちらの関数にも、`Container` で宣言したジェネリックな `Item` 型引数に型制約を追加するジェネリック `where` 句が含まれています。
+
+文脈上の `where` 句を使用せずにこのコードを記述したい場合は、ジェネリック `where` 句ごとに 1 つずつ、2 つの拡張を記述します。上記の例と以下の例は同じ動をします。
+
+```swift
+extension Container where Item == Int {
+    func average() -> Double {
+        var sum = 0.0
+        for index in 0..<count {
+            sum += Double(self[index])
+        }
+        return sum / Double(count)
+    }
+}
+extension Container where Item: Equatable {
+    func endsWith(_ item: Item) -> Bool {
+        return count >= 1 && self[count-1] == item
+    }
+}
+```
+
+文脈上の `where` 句を使用するこの例のバージョンでは、各メソッドのジェネリック `where` 句が、そのメソッドを使用可能にするために満たす必要がある要件を示しているため、`average()` と `endsWith(_:)` の実装は両方とも同じ extension 内にあります。これらの要件を extension のジェネリック `where` 句に移動すると、同じ状況でメソッドを使用できるようになりますが、要件ごとに 1 つの extension が必要になります。
 
 ## Associated Types with a Generic Where Clause(ジェネリックWhere句を使用した関連型)
 
