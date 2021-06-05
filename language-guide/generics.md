@@ -322,6 +322,90 @@ let stringIndex = findIndex(of: "Andrea", in: ["Mike", "Malcolm", "Andrea"])
 
 ### Associated Types in Action(関連型の挙動)
 
+下記は、`Item` と呼ばれる関連型を宣言する `Container` と呼ばれるプロトコルの例です:
+
+```swift
+protocol Container {
+    associatedtype Item
+    mutating func append(_ item: Item)
+    var count: Int { get }
+    subscript(i: Int) -> Item { get }
+}
+```
+
+`Container`  プロトコルは、コンテナが提供しなければならない 3 つの必須機能を定義しています:
+
+* `append(_:)` メソッドを使用して、コンテナに新しいアイテムを追加できる必要があります
+* `Int` 値を返す `count` プロパティを介して、コンテナ内のアイテムの数にアクセスできる必要があります
+* `Int` のインデックスを取る subscript を使用して、コンテナ内の各アイテムを取得できる必要があります
+
+このプロトコルは、コンテナ内のアイテムの保存方法や、許可される型を指定していません。プロトコルは、`Container` と見なされるために型が提供しなければならない 3 つ小さな機能のみを指定します。準拠する型は、これら 3 つの要件を満たす限り、追加の機能を提供できます。
+
+`Container` プロトコルに準拠する全ての型は、格納する値の型を指定する必要があります。具体的には、正しい型のアイテムのみがコンテナに追加されるようにする必要があり、subscript で返されるアイテムの型を明確にする必要があります。
+
+これらの要件を定義するために、`Container` プロトコルは、コンテナが保持する要素の型を参照する必要がありますが、特定のコンテナの型が何かを知る必要はありません。`Container` プロトコルは、`append(_:)` メソッドに渡される値がコンテナの要素の型と同じ型の必要があり、コンテナの `subscript` によって返される値がコンテナの要素の型と同じ型を指定する必要があります。
+
+これを実現するために、`Container` プロトコルは `Item` と呼ばれる関連型を `associatedtype Item` として記述することで宣言しています。プロトコルはアイテムが何かを定義しません。その情報は、準拠する型が提供します。それにもかかわらず、`Item` エイリアスは、`Container` 内のアイテムの型を参照し、`append(_:)` メソッドと `subscript` で使用する型を定義して、どんな `Container` でも期待通りに動くことを保証する方法を提供します。
+
+下記は、`Container` プロトコルに準拠した、上記の[Generic Types](#generic-typesジェネリック型)の非ジェネリック型 `IntStack` のジェネリックバージョンです:
+
+```swift
+struct IntStack: Container {
+    // 元の IntStack 実装
+    var items = [Int]()
+    mutating func push(_ item: Int) {
+        items.append(item)
+    }
+    mutating func pop() -> Int {
+        return items.removeLast()
+    }
+    // Container プロトコルへの準拠
+    typealias Item = Int
+    mutating func append(_ item: Int) {
+        self.push(item)
+    }
+    var count: Int {
+        return items.count
+    }
+    subscript(i: Int) -> Int {
+        return items[i]
+    }
+}
+```
+
+`IntStack` 型は、`Container` プロトコルの 3 つの要件全てを実装し、それぞれの要件を満たすために `IntStack` 型の既存の機能を一部使用してます。
+
+さらに、`IntStack` は、`Container` の実装の中で使用する `Item` に `Int` 型を指定しています。`typealias Item = Int` の定義により、抽象的な `Item` が、具象的な `Int` に変わります。
+
+Swift の型推論のおかげで、`IntStack` の定義の中で具体的な `Item` として `Int`  を実際に宣言する必要はありません。`IntStack` は `Container` プロトコルの全ての要件に準拠しているため、`append(_:)` メソッドの `item` 引数の型と subscript の戻り型から、使用する適切な `Item` を推論できます。実際、上記のコードから `typealias Item = Int` 行を削除しても、`Item` に使用する型が明確になっているため、全てが引き続き機能します。
+
+ジェネリックな `Stack` 型を `Container` プロトコルに準拠させることもできます:
+
+```swift
+struct Stack<Element>: Container {
+    // 元の Stack<Element> 実装
+    var items = [Element]()
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+    // Container プロトコルへの準拠
+    mutating func append(_ item: Element) {
+        self.push(item)
+    }
+    var count: Int {
+        return items.count
+    }
+    subscript(i: Int) -> Element {
+        return items[i]
+    }
+}
+```
+
+今回は、`append(_:)` メソッドの `item` 引数の型と subscript の戻り値の型として型引数 `Element` を使用しています。したがって、Swift は、`Element` がこの特定のコンテナの `Item` として使用する型を適切に推論できます。
+
 ### Extending an Existing Type to Specify an Associated Type(関連型を特定するための既存の型の拡張)
 
 ### Adding Constraints to an Associated Type(関連型への制約の追加)
