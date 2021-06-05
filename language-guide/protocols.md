@@ -936,7 +936,7 @@ extension PrettyTextRepresentable  {
 
 ### Adding Constraints to Protocol Extensions(プロトコル Extensionに制約の追加)
 
-プロトコル Extension を定義する時、準拠する型が拡張したメソッドとプロパティを使用できる前に、その型が満たす必要がある制約を指定できます。これらの制約は、拡張するプロトコルの名前の後にジェネリックの `where` 句を記述します。ジェネリック `where` 句の詳細については、[Generic Where Clauses](./generics.md#generic-where-clausesジェネリックWhere句)を参照ください。
+プロトコル Extension を定義する時、準拠する型が拡張したメソッドとプロパティを使用できる前に、その型が満たす必要がある制約を指定できます。これらの制約は、拡張するプロトコルの名前の後にジェネリックの `where` 句を記述します。ジェネリック `where` 句の詳細については、[Generic Where Clauses](./generics.md#generic-where-clausesジェネリックwhere句)を参照ください。
 
 例えば、要素が `Equatable` プロトコルに準拠しているコレクションに適用される `Collection` プロトコルの拡張を定義できます。コレクションの要素を標準ライブラリの `Equatable` プロトコルに制約することで、`==` および `!=` 演算子を使用して、2 つの要素間の等価性と不等価性をチェックできます:
 

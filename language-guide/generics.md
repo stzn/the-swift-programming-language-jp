@@ -482,7 +482,7 @@ extension IntStack: SuffixableContainer {
 }
 ```
 
-## Generic Where Clauses(ジェネリックWhere句)
+## Generic Where Clauses(ジェネリックwhere句)
 
 [Type Constraints](#type-constraints型制約)で説明されているように、型制約を使用すると、ジェネリック関数、subscript、または型に関連した型引数の要件を定義できます。
 
@@ -562,7 +562,7 @@ if allItemsMatch(stackOfStrings, arrayOfStrings) {
 
 上記の例では、`String` 値を格納する `Stack` インスタンスを作成し、3 つの文字列をスタックにプッシュします。この例では、スタックと同じ 3 つの文字列を含む配列リテラルで初期化された `Array` インスタンスも作成します。スタックと配列は型が異なりますが、どちらも `Container` プロトコルに準拠しており、両方に同じ型の値が含まれています。したがって、これら 2 つのコンテナを引数として `allItemsMatch(_:_:)` 関数を呼び出すことができます。上記の例では、`allItemsMatch(_:_:)` 関数は、2 つのアイテムの全てが合致していることを出力します。
 
-## Extensions with a Generic Where Clause(ジェネリックWhere句を使った拡張)
+## Extensions with a Generic Where Clause(ジェネリックwhere句を使った拡張)
 
 extension にジェネリック `where` 句を使用することもできます。下記の例では、前の例のジェネリックな `Stack` 構造体を拡張して、`isTop(_:)` メソッドを追加しています:
 
@@ -688,6 +688,51 @@ extension Container where Item: Equatable {
 
 文脈上の `where` 句を使用するこの例のバージョンでは、各メソッドのジェネリック `where` 句が、そのメソッドを使用可能にするために満たす必要がある要件を示しているため、`average()` と `endsWith(_:)` の実装は両方とも同じ extension 内にあります。これらの要件を extension のジェネリック `where` 句に移動すると、同じ状況でメソッドを使用できるようになりますが、要件ごとに 1 つの extension が必要になります。
 
-## Associated Types with a Generic Where Clause(ジェネリックWhere句を使用した関連型)
+## Associated Types with a Generic Where Clause(ジェネリックwhere句を使用した関連型)
+
+関連型にジェネリック `where` 句を含めることができます。例えば、標準ライブラリの `Sequence` プロトコルで使用するようなイテレータを含む `Container` のバージョンを作成するとします。書き方は次のとおりです:
+
+```swift
+protocol Container {
+    associatedtype Item
+    mutating func append(_ item: Item)
+    var count: Int { get }
+    subscript(i: Int) -> Item { get }
+
+    associatedtype Iterator: IteratorProtocol where Iterator.Element == Item
+    func makeIterator() -> Iterator
+}
+```
+
+`Iterator` のジェネリック `where` 句では、`Iterator` の型に関係なく、コンテナのアイテムと同じアイテム型の要素をイテレータが繰り返し処理する必要があります。`makeIterator()` 関数は、コンテナのイテレータへのアクセスを提供します。
+
+別のプロトコルを継承したプロトコルの場合、プロトコル宣言にジェネリック `where` 句を含めることにより、継承した関連型に制約を追加できます。例えば、次のコードは、`Item` が `Comparable` に準拠することを要求する `ComparableContainer` プロトコルを宣言しています:
+
+```swift
+protocol ComparableContainer: Container where Item: Comparable { }
+```
 
 ## Generic Subscripts(ジェネリックsubscript)
+
+subscript はジェネリックにすることができ、ジェネリック `where` 句を含めることができます。subscript の後の山括弧内(`<>`)にプレースホルダ型名を記述し、subscript の本文の開始中かっこ(`{`)の直前にジェネリック `where` 句を記述します。例えば:
+
+```swift
+extension Container {
+    subscript<Indices: Sequence>(indices: Indices) -> [Item]
+        where Indices.Iterator.Element == Int {
+            var result = [Item]()
+            for index in indices {
+                result.append(self[index])
+            }
+            return result
+    }
+}
+```
+
+`Container` プロトコルへのこの extension は、インデックスのシーケンスを受け取り、指定された各インデックスのアイテムを含む配列を返す subscript を追加します。このジェネリックな subscript は、次のように制約されます:
+
+* 山かっこ(`<>`)内のジェネリック引数のインデックスは、標準ライブラリの `Sequence` プロトコルに準拠した型の必要があります
+* subscript は、その `Indices` 型のインスタンスの単一の引数 `indexs` を取ります
+* ジェネリック `where` 句では、シーケンスのイテレータが `Int` 型の要素を繰り返し処理することを要求します。これにより、シーケンス内のインデックスは、コンテナに使用されるインデックスと同じ型なことが保証されます
+
+まとめると、これらの制約は、`indices` 引数に渡される値が整数のシーケンスだということを意味します。
