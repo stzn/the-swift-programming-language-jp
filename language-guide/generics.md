@@ -420,6 +420,19 @@ extension Array: Container {}
 
 ### Adding Constraints to an Associated Type(関連型への制約の追加)
 
+プロトコルの関連型に型制約を追加して、準拠する型がそれらの制約を満たすことを要求できます。例えば、次のコードは、`Container` 内のアイテムが等価比較可能(*equatable*)なバージョンを定義しています。
+
+```swift
+protocol Container {
+    associatedtype Item: Equatable
+    mutating func append(_ item: Item)
+    var count: Int { get }
+    subscript(i: Int) -> Item { get }
+}
+```
+
+このバージョンのコンテナに準拠するには、コンテナのアイテム型が `Equatable` プロトコルに準拠している必要があります。
+
 ### Using a Protocol in Its Associated Type’s Constraints(関連型に制約へのプロトコルの使用)
 
 ## Generic Where Clauses(ジェネリックWhere句)
