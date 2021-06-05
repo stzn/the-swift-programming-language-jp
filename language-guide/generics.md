@@ -408,6 +408,16 @@ struct Stack<Element>: Container {
 
 ### Extending an Existing Type to Specify an Associated Type(関連型を特定するための既存の型の拡張)
 
+[Adding Protocol Conformance with an Extension](./protocols.md#adding-protocol-conformance-with-an-extension拡張機能を使ったプロトコル準拠の追加)で説明されているように、既存の型を拡張してプロトコルへの準拠を追加できます。これには、関連型を持つプロトコルが含まれます。
+
+Swift の `Array` 型は、要素を取得するために、`append(_:)` メソッド、`count` プロパティ、および `Int` インデックスの subscript を既存で提供しています。これら 3 つの機能は、`Container` プロトコルの要件に準拠します。これは、`Array` がプロトコルに準拠することを宣言するだけで、`Container` プロトコルに準拠するように `Array` を拡張できることを意味します。[Declaring Protocol Adoption with an Extension](./protocols.md#declaring-protocol-adoption-with-an-extension拡張機能を使ったプロトコル準拠の宣言)で説明されているように、これは空の extension で行います:
+
+```swift
+extension Array: Container {}
+```
+
+`Array` の既存の `append(_:)` メソッドと subscript により、Swift は、上記のジェネリックな `Stack` 型と同様に、`Item` に使用する適切な型を推論できます。この extension を定義した後、任意の配列を `Container` として使用できます。
+
 ### Adding Constraints to an Associated Type(関連型への制約の追加)
 
 ### Using a Protocol in Its Associated Type’s Constraints(関連型に制約へのプロトコルの使用)
