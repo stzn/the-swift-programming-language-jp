@@ -51,7 +51,7 @@ func swapTwoDoubles(_ a: inout Double, _ b: inout Double) {
 任意の型の 2 つの値を交換する 1 つの関数を作成する方が、より便利で、はるかに柔軟です。ジェネリックコードを使用すると、そのような関数を作成できます。(これらの関数の一般的なバージョンは、下記で定義されています)
 
 > NOTE  
-> 3 つの関数すべてで、`a` と `b` の型は同じでなければなりません。`a` と `b` が同じ型でない場合、それらの値を交換することはできません。Swift は型安全な言語であり、(例えば)`String` 型の変数と `Double` 型の変数が互いに値を交換することを許可しません。そうしようとすると、コンパイルエラーが発生します。
+> 3 つの関数全てで、`a` と `b` の型は同じでなければなりません。`a` と `b` が同じ型でない場合、それらの値を交換することはできません。Swift は型安全な言語であり、(例えば)`String` 型の変数と `Double` 型の変数が互いに値を交換することを許可しません。そうしようとすると、コンパイルエラーが発生します。
 
 ## Generic Functions(ジェネリック関数)
 
@@ -232,7 +232,7 @@ if let topItem = stackOfStrings.topItem {
 
 例えば、Swift の `Dictionary` 型では、辞書のキーとして使用できる型に制限があります。[Dictionaries](./collection-types.md#dictionaries辞書)で説明されているように、辞書のキーの型はハッシュ可能でなければなりません。つまり、個々のキーがユニークなことを表明する方法を提供する必要があります。`Dictionary` は、特定のキーの値がすでに含まれているかどうかを確認できるように、そのキーがハッシュ可能な必要があります。この要件がなければ、`Dictionary` は特定のキーの値を挿入または置換するべきかどうかを判断できず、すでに存在する特定のキーの値を見つけることもできません。
 
-この要件は、`Dictionary` のキーの型制約によって強制されます。これは、キーの型が Swift 標準ライブラリで定義された `Hashable` プロトコルに準拠する必要があることを指定します。Swift のすべての基本型(`String`、`Int`、`Double`、`Bool` など)は、デフォルトでハッシュ可能です。独自の型を `Hashable` プロトコルに準拠させる方法については、[Conforming to the Hashable Protocol](https://developer.apple.com/documentation/swift/hashable#2849490)を参照ください。
+この要件は、`Dictionary` のキーの型制約によって強制されます。これは、キーの型が Swift 標準ライブラリで定義された `Hashable` プロトコルに準拠する必要があることを指定します。Swift の全ての基本型(`String`、`Int`、`Double`、`Bool` など)は、デフォルトでハッシュ可能です。独自の型を `Hashable` プロトコルに準拠させる方法については、[Conforming to the Hashable Protocol](https://developer.apple.com/documentation/swift/hashable#2849490)を参照ください。
 
 独自のジェネリック型を作成するときに、独自の型制約を定義できます。これらの制約は、多くのジェネリックプログラミングの強力な機能を提供します。`Hashable` のような抽象的な概念は、具体的な型ではなく、概念的な特性の観点から型を特徴付けます。
 
@@ -249,6 +249,72 @@ func someFunction<T: SomeClass, U: SomeProtocol>(someT:T, someU:U) {
 上記の関数には、2 つの型引数があります。最初の型引数 `T` には、`T` が `SomeClass` のサブクラスの必要がある型制約があります。2 番目の型引数 `U` には、`U` が `SomeProtocol` プロトコルに準拠する必要がある型制約があります。
 
 ### Type Constraints in Action(型制約の挙動)
+
+下記は、`findIndex(ofString:in:)` という名前の非ジェネリック関数です。これには、検索する `String` 値と、その `String` が含まれているかを検索する `String` の配列が与えられています。`findIndex(ofString:in:)` 関数は、オプショナルの `Int` 値を返します。これは、配列内で最初に一致する文字列が見つかった場合はそのインデックス、文字列が見つからない場合は `nil` になります。
+
+```swift
+func findIndex(ofString valueToFind: String, in array: [String]) -> Int? {
+    for (index, value) in array.enumerated() {
+        if value == valueToFind {
+            return index
+        }
+    }
+    return nil
+}
+```
+
+`findIndex(ofString:in:)` 関数を使用して、文字列が配列内に存在するかどうかを検索できます。
+
+```swift
+let strings = ["cat", "dog", "llama", "parakeet", "terrapin"]
+if let foundIndex = findIndex(ofString: "llama", in: strings) {
+    print("The index of llama is \(foundIndex)")
+}
+// "The index of llama is 2"
+```
+
+ただし、配列内の値のインデックスを見つけるという動作は、文字列だけに役立つわけではありません。文字列の言及を何らかの `T` 型の値に置き換えることで、ジェネリック関数と同じ機能を作成できます。
+
+次は、`findIndex(of:in:)` と呼ばれる、`findIndex(ofString:in:)` のジェネリックバージョンを示しています。この関数は配列のオプショナルの値ではなく、オプショナルのインデックスの番号を返すため、この関数の戻り値の型は引き続き `Int?` なことに注目してください。ただし、次の例の後に説明する理由により、この関数はコンパイルされないことに注意してください:
+
+```swift
+func findIndex<T>(of valueToFind: T, in array:[T]) -> Int? {
+    for (index, value) in array.enumerated() {
+        if value == valueToFind {
+            return index
+        }
+    }
+    return nil
+}
+```
+
+この関数は上記のようにコンパイルできません。問題は、等価チェック `"if value == valueToFind"` にあります。Swift の全ての型を等号演算子(`==`)で比較できるわけではありません。例えば、複雑なデータモデルを表す独自のクラスまたは構造体を作成する場合、そのクラスまたは構造体の「等しい」の意味は Swift が推論できるものではありません。このため、このコードが全ての型 `T` で機能することを保証することはできず、コードをコンパイルしようとすると、適切なエラーが報告されます。
+
+ただし、全てが失われるわけではありません。Swift 標準ライブラリは、`Equatable` と呼ばれるプロトコルを定義します。このプロトコルでは、準拠する型で、その型の 2 つの値を比較するために、等号演算子(`==`)および不等号演算子(`!=`)を実装する必要があります。Swift の全ての標準型は、`Equatable` プロトコルを自動的にサポートしています。
+
+`Equatable` に準拠する全ての型は、等価演算子をサポートすることが保証されているため、`findIndex(of:in:)` 関数で安全に使用できます。この事実を表現するには、関数を定義するときに、型引数の定義に `Equatable` の型制約を記述します:
+
+```swift
+func findIndex<T: Equatable>(of valueToFind: T, in array:[T]) -> Int? {
+    for (index, value) in array.enumerated() {
+        if value == valueToFind {
+            return index
+        }
+    }
+    return nil
+}
+```
+
+`findIndex(of:in:)` の単一の型引数は `T: Equatable` と記述されます。これは、"`Equatable` プロトコルに準拠する任意の型 `T`"を意味します。
+
+`findIndex(of:in:)` 関数は正常にコンパイルされ、`Double` や `String` などの `Equatable` に準拠する任意の型で使用できるようになりました:
+
+```swift
+let doubleIndex = findIndex(of: 9.3, in: [3.14159, 0.1, 0.25])
+// doubleIndex は、9.3 が配列にないため、オプショナルの Int です。
+let stringIndex = findIndex(of: "Andrea", in: ["Mike", "Malcolm", "Andrea"])
+// stringIndex は、2 を含むオプショナルの Int です
+```
 
 ## Associated Types(関連型)
 
