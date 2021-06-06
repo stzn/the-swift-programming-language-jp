@@ -448,3 +448,147 @@ let plusMinusVector = firstVector +- secondVector
 > 前置または後置演算子を定義するときは、優先順位を指定しません。ただし、前置と後置演算子の両方を同じオペランドに適用すると、後置演算子が最初に適用されます。
 
 ## Result Builders(リザルトビルダー)
+
+Result Builders は、リストやツリーなどのネストされたデータを自然な宣言的な方法で作成するための構文を追加する、ユーザー定義の型です。Result Builders を使用するコードには、条件付きまたは繰り返しのデータを処理するために、`if` や `for` などの通常の Swift 構文を含めることができます。
+
+下記のコードは、星とテキストを使用して 1 行に描画するためのいくつかの型を定義します。
+
+```swift
+protocol Drawable {
+    func draw() -> String
+}
+struct Line: Drawable {
+    var elements: [Drawable]
+    func draw() -> String {
+        return elements.map { $0.draw() }.joined(separator: "")
+    }
+}
+struct Text: Drawable {
+    var content: String
+    init(_ content: String) { self.content = content }
+    func draw() -> String { return content }
+}
+struct Space: Drawable {
+    func draw() -> String { return " " }
+}
+struct Stars: Drawable {
+    var length: Int
+    func draw() -> String { return String(repeating: "*", count: length) }
+}
+struct AllCaps: Drawable {
+    var content: Drawable
+    func draw() -> String { return content.draw().uppercased() }
+}
+```
+
+`Drawable` プロトコルは、線や形状などの描画可能なものの要件を定義します: 型は `draw()` メソッドを実装する必要があります。 `Line` 構造体は 1 行の描画を表し、ほとんどの描画のトップレベルのコンテナとして機能します。`Line` を描画するために、構造体はラインの各コンポーネントで `draw()` を呼び出し、結果の文字列を単一の文字列に連結します。`Text` 構造体は、文字列をラップして描画の一部にします。`AllCaps` 構造体は、別の描画をラップしてテキストを大文字に変換します。
+
+イニシャライザを呼び出すことで、これらの型の描画を作成できます:
+
+```swift
+let name: String? = "Ravi Patel"
+let manualDrawing = Line(elements: [
+    Stars(length: 3),
+    Text("Hello"),
+    Space(),
+    AllCaps(content: Text((name ?? "World") + "!")),
+    Stars(length: 2),
+    ])
+print(manualDrawing.draw())
+// "***Hello RAVI PATEL!**"
+```
+
+このコードは機能しますが、少し扱いに​​くいです。`AllCaps` の後の深くネストされた括弧は読みにくいです。`name` が `nil` の場合に「World」を使用するフォールバックロジックは、`??` を使用してインラインで実行する必要があります。これは、より複雑なものでは困難です。描画の一部を構成するために `switch` または `for` ループを含める必要がある場合、それを行う方法はありません。Result Builders を使用すると、このようなコードを書き換えて、通常の Swift コードのように見せることができます。
+
+Result Builders を定義するには、型宣言に `@resultBuilder` 属性を記述します。例えば、次のコードは `DrawingBuilder` という Result Builders を定義します。これにより、宣言的な構文を使用して描画できます:
+
+```swift
+@resultBuilder
+struct DrawingBuilder {
+    static func buildBlock(_ components: Drawable...) -> Drawable {
+        return Line(elements: components)
+    }
+    static func buildEither(first: Drawable) -> Drawable {
+        return first
+    }
+    static func buildEither(second: Drawable) -> Drawable {
+        return second
+    }
+}
+```
+
+`DrawingBuilder` 構造体は、Result Builders 構文の一部を実装する 3 つのメソッドを定義します。`buildBlock(_:)` メソッドは、コードのブロックに一連の行を書き込むためのサポートを追加します。そのブロック内のコンポーネントを `Line` に結合します。 `buildEither(first:)` および `buildEither(second:)` メソッドは、`if-else` のサポートを追加します。
+
+`@DrawingBuilding` を関数の引数に適用すると、関数に渡されたクロージャを、Result Builders がそのクロージャから作成する値に変換できます。例えば:
+
+```swift
+func draw(@DrawingBuilder content: () -> Drawable) -> Drawable {
+    return content()
+}
+func caps(@DrawingBuilder content: () -> Drawable) -> Drawable {
+    return AllCaps(content: content())
+}
+
+func makeGreeting(for name: String? = nil) -> Drawable {
+    let greeting = draw {
+        Stars(length: 3)
+        Text("Hello")
+        Space()
+        caps {
+            if let name = name {
+                Text(name + "!")
+            } else {
+                Text("World!")
+            }
+        }
+        Stars(length: 2)
+    }
+    return greeting
+}
+let genericGreeting = makeGreeting()
+print(genericGreeting.draw())
+// "***Hello WORLD!**"
+
+let personalGreeting = makeGreeting(for: "Ravi Patel")
+print(personalGreeting.draw())
+// "***Hello RAVI PATEL!**"
+```
+
+`makeGreeting(for:)` 関数は `name` 引数を受け取り、それを使用してパーソナライズされた挨拶を描画します。`draw(_:)` 関数と `caps(_:)` 関数はどちらも、`@DrawingBuilder` 属性でマークされた単一のクロージャを引数として受け取ります。これらの関数を呼び出すときは、`DrawingBuilder` が定義する特別な構文を使用します。Swift は、描画の宣言的な記述を `DrawingBuilder` のメソッドへの一連の呼び出しに変換し、関数の引数として渡される値を構築します。例えば、Swift は例の `caps(_:)` の呼び出しを次のようなコードに変換します:
+
+```swift
+let capsDrawing = caps {
+    let partialDrawing: Drawable
+    if let name = name {
+        let text = Text(name + "!")
+        partialDrawing = DrawingBuilder.buildEither(first: text)
+    } else {
+        let text = Text("World!")
+        partialDrawing = DrawingBuilder.buildEither(second: text)
+    }
+    return partialDrawing
+}
+```
+
+Swift は `if-else` ブロックを `buildEither(first:)` および `buildEither(second:)` メソッドの呼び出しに変換します。これらのメソッドを自身で呼び出すことはありませんが、`DrawingBuilder` 構文を使用すると、変換の結果を表示して、 Swift がコードをどのように変換するかを簡単に確認できます。
+
+特別な描画構文での `for` ループの記述のサポートを追加するには、`buildArray(_:)` メソッドを追加します。
+
+```swift
+extension DrawingBuilder {
+    static func buildArray(_ components: [Drawable]) -> Drawable {
+        return Line(elements: components)
+    }
+}
+let manyStars = draw {
+    Text("Stars:")
+    for length in 1...3 {
+        Space()
+        Stars(length: length)
+    }
+}
+```
+
+上記のコードでは、`for` ループが描画の配列を作成し、`buildArray(_:)` メソッドがその配列を `Line` に変換します。
+
+Swift が builder 構文を builder 型のメソッドの呼び出しに変換する方法の完全なリストについては、[resultBuilder](./../language-reference/attributes.md#resultBuilder)を参照ください。
