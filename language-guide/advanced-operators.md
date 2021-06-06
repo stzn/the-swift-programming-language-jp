@@ -35,6 +35,18 @@ let invertedBits = ~initialBits  // 11110000 と等しい
 
 ### Bitwise AND Operator(ビットAND演算子)
 
+ビット AND 演算子(`&`)は、2 つの数値のビットを合成します。両方の入力数値のビットが 1 の場合にのみ、ビットが 1 になり、新しい数値を返します:
+
+![ビットAND演算子](./../.gitbook/assets/bitwiseAND_2x.png)
+
+下記の例では、`firstSixBits` と `lastSixBits` の値は両方とも、1 に等しい 4 つの中間ビットを持っています。ビット AND 演算子はそれらを組み合わせて、符号なし 10 進数の `60` に等しい数値 `00111100` を作成します。
+
+```swift
+let firstSixBits: UInt8 = 0b11111100
+let lastSixBits: UInt8  = 0b00111111
+let middleFourBits = firstSixBits & lastSixBits  // 00111100 と等しい
+```
+
 ### Bitwise OR Operator(ビットOR演算子)
 
 ### Bitwise XOR Operator(ビットXOR演算子)
