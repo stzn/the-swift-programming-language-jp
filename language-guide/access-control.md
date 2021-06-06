@@ -62,7 +62,7 @@ Swift のアクセスレベルは、全体の指針に従います: より低い
 
 ### Access Levels for Unit Test Targets(単体テストターゲットのアクセスレベル)
 
-単体テストターゲットを使用してアプリを作成する場合、アプリのコードをテストするには、そのモジュールで使用できるようにする必要があります。デフォルトでは、open または public としてマークされたエンティティのみが他のモジュールにアクセスできます。 ただし、製品モジュールのインポート宣言を `@testable` 属性でマークし、テストを有効にしてその製品モジュールをコンパイルすると、単体テストターゲットは任意の内部エンティティにアクセスできます。
+単体テストターゲットを使用してアプリを作成する場合、アプリのコードをテストするには、そのモジュールで使用できるようにする必要があります。デフォルトでは、open または public としてマークされたエンティティのみが他のモジュールにアクセスできます。ただし、製品モジュールのインポート宣言を `@testable` 属性でマークし、テストを有効にしてその製品モジュールをコンパイルすると、単体テストターゲットは任意の内部エンティティにアクセスできます。
 
 ## Access Control Syntax(アクセス制御構文)
 
@@ -125,7 +125,7 @@ private class SomePrivateClass {                // 明示的な private クラ�
 タプル型のアクセスレベルは、そのタプルで使用される全ての型の中で最も制限の厳しいアクセスレベルになります。例えば、1 つは internal、もう 1 つは private の 2 つの異なる型からタプルを構成する場合、その複合タプル型のアクセスレベルは private になります。
 
 > NOTE  
-> タプル型には、クラス、構造体、列挙型、および関数のような独立した定義がありません。 タプル型のアクセスレベルは、タプル型を構成する型から自動的に決定され、明示的に指定することはできません。
+> タプル型には、クラス、構造体、列挙型、および関数のような独立した定義がありません。タプル型のアクセスレベルは、タプル型を構成する型から自動的に決定され、明示的に指定することはできません。
 
 ### Function Types(関数型)
 
@@ -212,7 +212,66 @@ internal class B: A {
 
 ## Constants, Variables, Properties, and Subscripts(定数、変数、プロパティ、subscript)
 
+定数、変数、またはプロパティは、その型よりも低いアクセスレベルにすることはできません。例えば、public プロパティを private 型で記述することはできません。同様に、subscript は、そのインデックス型または戻り型よりも低いアクセスレベルにすることはできません。
+
+定数、変数、プロパティ、または subscript が private 型を使用する場合、定数、変数、プロパティ、または subscript も private としてマークする必要があります。
+
+```swift
+private var privateInstance = SomePrivateClass()
+```
+
 ### Getters and Setters(get と set)
+
+定数、変数、プロパティ、および subscript の get と set は、それらが属する定数、変数、プロパティ、または subscript と同じアクセスレベルを自動的に受け取ります。
+
+その変数、プロパティ、または subscript の読み取り/書き込みスコープを制限するために、対応する get よりも低いアクセス レベルを set に与えることができます。`var` または `subscript` の前に `fileprivate(set)`、`private(set)`、または `internal(set)` を記述して、より低いアクセスレベルを割り当てます。
+
+> NOTE  
+> このルールは、格納プロパティと計算プロパティに適用されます。格納プロパティに明示的な get と set を作成しなくても、Swift は暗黙的な get と set を合成して、格納プロパティのバッキングストレージへのアクセスを提供します。`fileprivate(set)`、`private(set)`、および `internal(set)` を使用して、格納プロパティの明示的な set の場合とまったく同じ方法で、合成された set のアクセス レベルを変更します。
+
+下記の例では、文字列プロパティが変更された回数を追跡する `TrackedString` という構造体を定義しています:
+
+```swift
+struct TrackedString {
+    private(set) var numberOfEdits = 0
+    var value: String = "" {
+        didSet {
+            numberOfEdits += 1
+        }
+    }
+}
+```
+
+`TrackedString` 構造体は、`value` と呼ばれる文字列の格納プロパティを定義し、初期値は "" (空の文字列) です。この構造体は、`numberOfEdits` という整数格納プロパティも定義しています。これは、値が変更された回数を追跡するために使用されています。この変更追跡は、`value` プロパティに `didSet` プロパティオブザーバを使用して実装され、`value` プロパティに新しい値に設定される度に `numberOfEdits` を増加します。
+
+`TrackedString` 構造体と `value` プロパティは明示的なアクセスレベル修飾子を提供していないため、両方ともデフォルトの internal アクセスレベルを受け取ります。ただし、`numberOfEdits` プロパティのアクセスレベルは `private(set)` 修飾子でマークされており、プロパティの get には引き続きデフォルトのアクセスレベル internal が設定され、プロパティは `TrackedString` 構造体の一部のコード内からのみ設定可能なことを示しています。これにより、`TrackedString` は `numberOfEdits` プロパティを内部的に変更できますが、構造体の定義の外部で使用される場合は、プロパティを読み取り専用プロパティとして表示できます。
+
+`TrackedString` インスタンスを作成し、その文字列値を数回変更すると、`numberOfEdits` プロパティの値が変更の数に一致するように更新されていることがわかります。
+
+```swift
+var stringToEdit = TrackedString()
+stringToEdit.value = "This string will be tracked."
+stringToEdit.value += " This edit will increment numberOfEdits."
+stringToEdit.value += " So will this one."
+print("The number of edits is \(stringToEdit.numberOfEdits)")
+// "The number of edits is 3"
+```
+
+`numberOfEdits` プロパティの現在の値へ別のソースファイルからアクセスすることはできますが、別のソースファイルからプロパティを変更することはできません。この制限により、`TrackedString` 編集追跡機能の実装の詳細が保護されつつ、その機能の便利な一側面へのアクセスは提供することができています。
+
+必要に応じて、get と set の両方に明示的なアクセスレベルを割り当てることができることに注目してください。下記の例は、構造体が public の明示的なアクセスレベルで定義されている `TrackedString` 構造体のバージョンを示しています。したがって、構造体のメンバー(`numberOfEdits` プロパティを含む) には、デフォルトで internal アクセスレベルが設定されています。`public` と `private(set)` のアクセスレベル修飾子を組み合わせることで、構造体の `numberOfEdits` プロパティの get を public にし、そのプロパティの set を private にすることができます。
+
+```swift
+public struct TrackedString {
+    public private(set) var numberOfEdits = 0
+    public var value: String = "" {
+        didSet {
+            numberOfEdits += 1
+        }
+    }
+    public init() {}
+}
+```
 
 ## Initializers(初期化)
 
