@@ -174,6 +174,8 @@ public enum CompassPoint {
 
 ### Nested Types(ネストされた型)
 
+ネストされた型のアクセスレベルは、ラップされている型が public でない限り、ラップされている型と同じです。public 型内のネストされた型には、internal が自動で設定されています。public 型内のネストされた型を public に使用できるようにする場合は、ネストされた型を public として明示的に宣言する必要があります。
+
 ## Subclassing(サブクラス)
 
 ## Constants, Variables, Properties, and Subscripts(定数、変数、プロパティ、subscript)
