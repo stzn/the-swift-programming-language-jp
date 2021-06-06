@@ -308,7 +308,7 @@ incrementByTen()
 ```
 
 > NOTE  
-> class インスタンスのプロパティにクロージャを代入して、クロージャがインスタンスまたはそのメンバーを参照して、そのインスタンスをキャプチャする場合、クロージャとインスタンスの間に循環参照(strong reference cycle)が作成されます。Swift は、キャプチャリストを使用して、これらの循環参照を防ぎます。詳細については、 [StrongReference Cycles for Closures](./automatic-reference-counting.md#strong-reference-cycles-for-closures) を参照ください。
+> class インスタンスのプロパティにクロージャを代入して、クロージャがインスタンスまたはそのメンバを参照して、そのインスタンスをキャプチャする場合、クロージャとインスタンスの間に循環参照(strong reference cycle)が作成されます。Swift は、キャプチャリストを使用して、これらの循環参照を防ぎます。詳細については、 [StrongReference Cycles for Closures](./automatic-reference-counting.md#strong-reference-cycles-for-closures) を参照ください。
 
 ## Closures Are Reference Types(クロージャは参照型）
 
