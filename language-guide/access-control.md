@@ -66,7 +66,59 @@ Swift のアクセスレベルは、全体の指針に従います: より低い
 
 ## Access Control Syntax(アクセス制御構文)
 
+エンティティの宣言の先頭に `open`、`public`、`internal`、`fileprivate`、または `private` 修飾子を配置して、エンティティのアクセスレベルを定義します。
+
+```swift
+public class SomePublicClass {}
+internal class SomeInternalClass {}
+fileprivate class SomeFilePrivateClass {}
+private class SomePrivateClass {}
+
+public var somePublicVariable = 0
+internal let someInternalConstant = 0
+fileprivate func someFilePrivateFunction() {}
+private func somePrivateFunction() {}
+```
+
+特に指定がない限り、デフォルトのアクセスレベルは、[Default Access Levels](#default-access-levelsデフォルトのアクセスレベル)で説明されているように、internal です。これは、`SomeInternalClass` と `someInternalConstant` が明示的なアクセスレベル修飾子なしで記述でき、internal アクセスレベルを持つことを意味します。
+
+```swift
+class SomeInternalClass {}  // 暗黙的に internal
+let someInternalConstant = 0  // 暗黙的に internal
+```
+
 ## Custom Types(独自型)
+
+独自型に明示的なアクセスレベルを指定する場合は、型を定義する時点で指定します。新しい型は、アクセスレベルが許可する場所ではどこでも使用できます。例えば、fileprivate クラスを定義する場合、そのクラスは、fileprivate クラスが定義されているソースファイル内で、プロパティの型、または関数引数または戻り値の型としてのみ使用できます。
+
+型のアクセス制御レベルは、その型のメンバ(そのプロパティ、メソッド、イニシャライザ、および subscript)のデフォルトのアクセスレベルにも影響します。型のアクセスレベルを private または fileprivate として定義すると、そのメンバのデフォルトのアクセスレベルも private または fileprivate になります。型のアクセスレベルを internal または public として定義する場合(またはアクセスレベルを明示的に指定せずに内部の既定のアクセスレベルを使用する場合)、型のメンバの既定のアクセスレベルは internal になります。
+
+> IMPORTANT  
+> public 型のメンバは、public ではなく、internal のアクセスレベルがデフォルト設定されています。メンバを public にする場合は、明示的にそのようにマークする必要があります。この要件により、型の API を選択的に公開することができ、型の内部動作を誤って API として公開することを回避できます。
+
+```swift
+public class SomePublicClass {                  // 明示的な public クラス
+    public var somePublicProperty = 0            // 明示的な public クラス メンバ
+    var someInternalProperty = 0                 // 暗黙的な internal クラス メンバ
+    fileprivate func someFilePrivateMethod() {}  // 明示的な file-private クラス メンバ
+    private func somePrivateMethod() {}          // 明示的な private クラス メンバ
+}
+
+class SomeInternalClass {                       // 暗黙的な internal クラス
+    var someInternalProperty = 0                 // 暗黙的な internal クラスメンバ
+    fileprivate func someFilePrivateMethod() {}  // 明示的な file-private クラスメンバ
+    private func somePrivateMethod() {}          // 明示的な private クラスメンバ
+}
+
+fileprivate class SomeFilePrivateClass {        // 明示的な file-privateクラス
+    func someFilePrivateMethod() {}              // 暗黙的な file-private クラスメンバ
+    private func somePrivateMethod() {}          // 明示的な private クラスメンバ
+}
+
+private class SomePrivateClass {                // 明示的な private クラス
+    func somePrivateMethod() {}                  // 暗黙的な private クラスメンバ
+}
+```
 
 ### Tuple Types(タプル型)
 
