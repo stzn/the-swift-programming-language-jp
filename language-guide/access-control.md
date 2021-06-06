@@ -178,6 +178,38 @@ public enum CompassPoint {
 
 ## Subclassing(サブクラス)
 
+現在のアクセスコンテキストでアクセスでき、同じモジュールで定義されている任意のクラスをサブクラス化できます。別のモジュールで定義されている open クラスをサブクラス化することもできます。サブクラスは、そのスーパークラスよりも高いアクセスレベルを持つことはできません。例えば、internal スーパークラスから public サブクラスを作成することはできません。
+
+さらに、同じモジュールで定義されているクラスの場合、特定のアクセスコンテキストでアクセス可能な任意のクラスのメンバ(メソッド、プロパティ、イニシャライザ、または subscript) をオーバーライドできます。別のモジュールで定義されているクラスの場合、open クラスのメンバをオーバーライドできます。
+
+オーバーライドにより、継承されたクラスメンバは、そのスーパークラスのバージョンよりもアクセスしやすくなります。下記の例では、クラス `A` は `someMethod()` と呼ばれる fileprivate メソッドを持つ public クラスです。クラス `B` は `A` のサブクラスで、アクセスレベルが「internal」に制限されています。それにもかかわらず、クラス `B` は、`someMethod()` の元の実装よりも高い「internal」のアクセスレベルで `someMethod()` のオーバーライドを提供します。
+
+```swift
+public class A {
+    fileprivate func someMethod() {}
+}
+
+internal class B: A {
+    override internal func someMethod() {}
+}
+```
+
+スーパークラスのメンバへの呼び出しが許可されたアクセスレベルコンテキスト内で行われる限り、サブクラスのメンバがそれよりも低いアクセスレベルを持つスーパークラスのメンバを呼び出すことも可能です(つまり、スーパークラスと同じソースファイル内で fileprivate メンバ呼び出しや、スーパークラスと同じモジュール内の internal メンバー呼び出し):
+
+```swift
+public class A {
+    fileprivate func someMethod() {}
+}
+
+internal class B: A {
+    override internal func someMethod() {
+        super.someMethod()
+    }
+}
+```
+
+スーパークラス `A` とサブクラス `B` は同じソースファイルで定義されているため、`someMethod()` の B 実装で `super.someMethod()` を呼び出すことは有効です。
+
 ## Constants, Variables, Properties, and Subscripts(定数、変数、プロパティ、subscript)
 
 ### Getters and Setters(get と set)
