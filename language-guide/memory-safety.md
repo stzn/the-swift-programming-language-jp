@@ -29,7 +29,7 @@ print("We're number \(one)!")
 この例は、メモリへのアクセスの競合を修正するときに発生する可能性のある問題も示しています。競合を修正するには複数の方法があり、異なる回答が生成される場合があり、どちらの回答が正しいかは必ずしも明らかではありません。この例では、元の合計金額または更新された合計金額のどちらが必要かに応じて、5 ドルまたは 320 ドルが正しい答えになる可能性があります。競合するアクセスを修正する前に、それが何を意図していたかを判断する必要があります。
 
 > NOTE  
-> 同時実行またはマルチスレッドコードを作成したことがある場合、メモリへのアクセスの競合はよくある問題かもしれません。ただし、ここで説明するアクセスの競合はシングルスレッドで発生する可能性があり、同時実行またはマルチスレッド化されたコードは関係しません。  
+> 同時実行またはマルチスレッドコードを作成したことがある場合、メモリへのアクセスの競合はよくある問題かもしれません。ただし、ここで説明するアクセスの競合はシングルスレッドで発生する可能性があり、同時実行またはマルチスレッド化されたコードは関係しません。
 >
 > シングルスレッド内からメモリへのアクセスが競合している場合、Swift はコンパイル時または実行時にエラーを確実に発生します。マルチスレッドコードの場合は、[Thread Sanitizer](https://developer.apple.com/documentation/xcode/diagnosing-memory-thread-and-crash-issues-early)を使用して、スレッド間で競合するアクセスを検出します。
 
@@ -62,8 +62,61 @@ print(myNumber)
 
 オーバーラップアクセスは、主に、関数とメソッド、または構造体の変更メソッドで `inout` 引数を使用するコードで発生します。長期アクセスを使用する特定の種類の Swift コードについては、次のセクションで説明します。
 
-## Conflicting Access to In-Out Parameters(In-Out引数へのアクセスの競合)
+## Conflicting Access to In-Out Parameters(In-Out引数のアクセスの競合)
 
-## Conflicting Access to self in Methods(メソッド内のselfへのアクセスの競合)
+関数には、全ての in-out 引数への長期書き込みアクセスできます。in-out 引数への書き込みアクセスは、全ての in-out 以外の引数が評価された後に開始され、その関数呼び出しの全期間にわたって続きます。複数の in-out 引数がある場合、書き込みアクセスは引数が現れるのと同じ順序で開始されます。
 
-## Conflicting Access to Properties(プロパティへのアクセスの競合)
+この長期書き込みアクセスの問題の 1 つは、スコープルールとアクセス制御で許可されていても、in-out として渡された元の変数にアクセスできないことです。元の変数にアクセスすると、競合が発生します。例えば:
+
+```swift
+var stepSize = 1
+
+func increment(_ number: inout Int) {
+    number += stepSize
+}
+
+increment(&stepSize)
+// エラー: stepSize へのアクセスが競合しています
+```
+
+上記のコードでは、`stepSize` はグローバル変数で、通常は `increment(_:)` 内からアクセスできます。ただし、`stepSize` への読み取りアクセスは、`number` への書き込みアクセスと重複します。次の図に示すように、`number` と `stepSize` は両方メモリ内の同じ場所を参照します。読み取りと書き込みアクセスは同じメモリを参照し、それらが重複して競合が発生します。
+
+![in-out引数のメモリアクセスの競合](./../.gitbook/assets/memory_increment_2x.png)
+
+この競合を解決する 1 つの方法は、`stepSize` の明示的なコピーを作成することです。
+
+```swift
+// 明示的なコピーを作成します
+var copyOfStepSize = stepSize
+increment(&copyOfStepSize)
+
+// オリジナルを更新します
+stepSize = copyOfStepSize
+// stepSize は 2 になりました
+```
+
+`increment(_:)` を呼び出す前に `stepSize` のコピーを作成すると、`copyOfStepSize` の値が現在の `stepSize` によって増分されることが明らかです。書き込みアクセスが開始される前に読み取りアクセスが終了するため、競合はありません。
+
+in-out 引数への長期書き込みアクセスの別の問題として、同じ関数の複数の in-out 引数として単一の変数を渡すと、競合が発生します。例えば:
+
+```swift
+func balance(_ x: inout Int, _ y: inout Int) {
+    let sum = x + y
+    x = sum / 2
+    y = sum - x
+}
+var playerOneScore = 42
+var playerTwoScore = 30
+balance(&playerOneScore, &playerTwoScore)  // OK
+balance(&playerOneScore, &playerOneScore)
+// エラー: playerOneScore へのアクセスが競合しています
+```
+
+上記の `balance(_:_:)` 関数は、その 2 つの引数を変更して、合計値をそれらの間で均等に分割します。`playerOneScore` と `playerTwoScore` を引数として呼び出しても競合は発生しません。時間的に重複する 2 つの書き込みアクセスがありますが、メモリ内の異なる場所にアクセスします。対照的に、両方の引数の値として `playerOneScore` を渡すと、メモリ内の同じ場所への 2 つの書き込みアクセスを同時に実行しようとするため、競合が発生します。
+
+> NOTE  
+> 演算子は関数であるため、in-out 引数に長期アクセスすることもできます。たとえば、`balance(_:_:)` が `<^>` という演算子である場合、`playerOneScore <^> playerOneScore` と記述すると、`balance(&playerOneScore, &playerOneScore)` と同じ競合が発生します。
+
+## Conflicting Access to self in Methods(メソッド内のselfのアクセスの競合)
+
+## Conflicting Access to Properties(プロパティのアクセスの競合)
