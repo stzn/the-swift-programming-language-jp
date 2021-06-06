@@ -316,6 +316,30 @@ let combinedVector = vector + anotherVector
 
 ### Prefix and Postfix Operators(前置、後置演算子)
 
+上記の例は、バイナリの中置演算子の独自実装を示しています。クラスと構造体は、標準の単項演算子の実装を提供することもできます。単項演算子は、単一のターゲットで動作します。ターゲットの前にある場合はプレフィックス(`-a` など)で、ターゲットの後にある場合は後置演算子(`b!` など)です。
+
+演算子メソッドを宣言するときに、`func` キーワードの前に `prefix` または `postfix` 修飾子を記述して、プレフィックス(*prefix*)またはポストフィックス(*postfix*)単項演算子を実装します。
+
+```swift
+extension Vector2D {
+    static prefix func - (vector: Vector2D) -> Vector2D {
+        return Vector2D(x: -vector.x, y: -vector.y)
+    }
+}
+```
+
+上記の例では、`Vector2D` インスタンスに単項マイナス演算子(`-a`)を実装しています。単項マイナス演算子はプレフィックス演算子のため、このメソッドは `prefix` 修飾子で修飾する必要があります。
+
+シンプルな数値の場合、単項マイナス演算子は正の数値を負の同等の数値に変換し、その逆も同様です。`Vector2D` インスタンスの対応する実装は、`x` プロパティと `y` プロパティの両方でこの操作を実行します:
+
+```swift
+let positive = Vector2D(x: 3.0, y: 4.0)
+let negative = -positive
+//負の値は(-3.0, -4.0)の Vector2D インスタンスです
+let alsoPositive = -negative
+// alsoPositive は、値が (3.0, 4.0) の Vector2D インスタンスです。
+```
+
 ### Compound Assignment Operators(合成代入演算子)
 
 ### Equivalence Operators(比較演算子)
