@@ -423,4 +423,28 @@ let afterDoubling = +++toBeDoubled
 
 ### Precedence for Custom Infix Operators(カスタム中置演算子の優先順位)
 
+カスタム中置演算子は、それぞれ優先順位グループ(*precedence group*)に属します。優先順位グループは、他の中置演算子に対する演算子の優先順位、および演算子の結合規則を指定します。これらの特性が、中置演算子と他の中置演算子との相互作用にどのように影響するかについては、[Precedence and Associativity](#precedence-and-associativity優先順位と結合規則)を参照ください。
+
+優先順位グループに明示的に配置されていないカスタム中置演算子には、三項条件演算子の優先順位よりもすぐに高い優先順位を持つデフォルトの優先順位グループが与えられます。
+
+次の例では、優先順位グループ `AdditionPrecedence` に属する `+-` という新しいカスタム中置演算子を定義しています:
+
+```swift
+infix operator +-: AdditionPrecedence
+extension Vector2D {
+    static func +- (left: Vector2D, right: Vector2D) -> Vector2D {
+        return Vector2D(x: left.x + right.x, y: left.y - right.y)
+    }
+}
+let firstVector = Vector2D(x: 1.0, y: 2.0)
+let secondVector = Vector2D(x: 3.0, y: 4.0)
+let plusMinusVector = firstVector +- secondVector
+// plusMinusVector は、値が (4.0, -2.0) の Vector2D インスタンスです
+```
+
+この演算子は、2 つのベクトルの `x` 値を加算し、最初のベクトルから 2 番目のベクトルの `y` 値を減算します。これは本質的に「加算」演算子のため、`+` や `-` などの加算中置演算子と同じ優先順位グループが与えられています。演算子の優先順位グループと結合規則設定の完全なリストを含む、Swift 標準ライブラリによって提供される演算子については、[Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。優先順位グループの詳細と、独自の演算子と優先順位グループを定義するための構文については、[Operator Declarations](./../language-reference/declarations.md#operator-declarations演算子の宣言)を参照ください。
+
+> NOTE  
+> 前置または後置演算子を定義するときは、優先順位を指定しません。ただし、前置と後置演算子の両方を同じオペランドに適用すると、後置演算子が最初に適用されます。
+
 ## Result Builders(リザルトビルダー)
