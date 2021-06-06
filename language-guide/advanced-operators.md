@@ -77,6 +77,10 @@ let outputBits = firstBits ^ otherBits  // 00010001 と等しい
 
 ### Bitwise Left and Right Shift Operators(ビット左右シフト演算子)
 
+ビット左シフト演算子(`<<`)およびビット右シフト演算子(`>>`)は、下記で定義されている規則に従って、数値内の全てのビットを特定の桁数だけ左または右に移動します。
+
+ビット左シフトと右シフトには、整数を 2 倍に乗算または除算する効果があります。整数のビットを 1 桁左にシフトするとその値は 2 倍になり、1 桁右にシフトすると値は半分になります。
+
 #### Shifting Behavior for Unsigned Integers(符号なし整数のシフト演算)
 
 #### Shifting Behavior for Signed Integers(符号あり整数のシフト演算)
