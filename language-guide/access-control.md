@@ -325,6 +325,34 @@ extension を使用してプロトコル準拠を追加している場合、そ�
 
 ### Private Members in Extensions(extensionのprivateメンバ)
 
+拡張するクラス、構造体、または列挙型と同じファイルにある extension は、extension のコードが元の型の宣言の一部として記述されているかのように動作します。その結果、次のことができます。
+
+* 元の宣言で private メンバを宣言している場合、同じファイル内の extension からそのメンバにアクセスできます
+* 1 つの extension で private メンバを宣言している場合、同じファイル内の別の extension からそのメンバにアクセスできます
+* extension で private メンバを宣言している場合、同じファイル内の元の宣言からそのメンバにアクセスできます
+
+この動作は、型に private エンティティがあるかどうかに関係なく、同じ方法で extension を使用してコードを整理できることを意味します。例えば、次のシンプルなプロトコルがあるとします:
+
+```swift
+protocol SomeProtocol {
+    func doSomething()
+}
+```
+
+extension を使用して、次のようにプロトコル準拠も追加できます:
+
+```swift
+struct SomeStruct {
+    private var privateVariable = 12
+}
+
+extension SomeStruct: SomeProtocol {
+    func doSomething() {
+        print(privateVariable)
+    }
+}
+```
+
 ## Generics(ジェネリクス)
 
 ## Type Aliases(型エイリアス)
