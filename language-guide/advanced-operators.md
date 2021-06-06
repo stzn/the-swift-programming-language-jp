@@ -49,7 +49,7 @@ let middleFourBits = firstSixBits & lastSixBits  // 00111100 と等しい
 
 ### Bitwise OR Operator(ビットOR演算子)
 
-ビット OR 演算子(`|`)は、2 つの数値のビットを比較します。演算子は、いずれかの入力数値のビットが `1` に等しい場合、ビットは `1` になり、新しい数値を返します。
+ビット OR 演算子(`|`)は、2 つの数値のビットを比較します。演算子は、いずれかの入力数値のビットが `1` に等しい場合、ビットは `1` になり、新しい数値を返します:
 
 ![ビットOR演算子](./../.gitbook/assets/bitwiseOR_2x.png)
 
@@ -62,6 +62,18 @@ let combinedbits = someBits | moreBits  // 11111110 と等しい
 ```
 
 ### Bitwise XOR Operator(ビットXOR演算子)
+
+ビット XOR 演算子、つまり「排他的論理和演算子」(`^`)は、2 つの数値のビットを比較します。演算子は、入力ビットが異なる場合はビットに `1` が設定され、入力ビットが同じ場合は `0` が設定される新しい数値を返します:
+
+![ビットXOR演算子](./../.gitbook/assets/bitwiseXOR_2x.png)
+
+下記の例では、`firstBits` と `otherBits` の値はそれぞれ、他の場所にはないビットに `1` が設定されています。ビット XOR 演算子は、これらのビット両方に `1` を設定します。`firstBits` および `otherBits` の他の全てのビットは値が一致しているので、`0` が設定されます。
+
+```swift
+let firstBits: UInt8 = 0b00010100
+let otherBits: UInt8 = 0b00000101
+let outputBits = firstBits ^ otherBits  // 00010001 と等しい
+```
 
 ### Bitwise Left and Right Shift Operators(ビット左右シフト演算子)
 
