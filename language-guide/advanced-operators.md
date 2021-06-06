@@ -368,6 +368,33 @@ original += vectorToAdd
 
 ### Equivalence Operators(比較演算子)
 
+デフォルトでは、独自のクラスと構造体には、等号演算子(`==`)および不等号演算子(`!=`)として知られる等価演算子の実装がありません。通常は `==` 演算子を実装し、標準ライブラリの `==` 演算子の結果を否定する `!=` 演算子のデフォルト実装を使用します。`==` 演算子を実装するには 2 つの方法があります。自分で実装するか、多くの型の場合、Swift に実装を合成するよう依頼することができます。どちらの場合も、標準ライブラリの `Equatable` プロトコルに準拠を追加します。
+
+`==` 演算子の実装は、他の中置演算子を実装するのと同じ方法で提供します:
+
+```swift
+extension Vector2D: Equatable {
+    static func == (left: Vector2D, right: Vector2D) -> Bool {
+        return (left.x == right.x) && (left.y == right.y)
+    }
+}
+```
+
+上記の例では、`==` 演算子を実装して、2 つの `Vector2D` インスタンスが同等の値を持つかどうかを確認しています。`Vector2D` では、「等しい」を「両方のインスタンスが同じ `x` 値と `y` 値を持つ」ことを意味すると考えるのが理にかなっているため、これはオペレータの実装で使用されるロジックです。
+
+この演算子を使用して、2 つの `Vector2D` インスタンスが同等かどうかを確認できるようになりました:
+
+```swift
+let twoThree = Vector2D(x: 2.0, y: 3.0)
+let anotherTwoThree = Vector2D(x: 2.0, y: 3.0)
+if twoThree == anotherTwoThree {
+    print("These two vectors are equivalent.")
+}
+// 「これら 2 つのベクトルは同等です」を出力します。
+```
+
+多くのシンプルなケースでは、Swift に等価演算子の合成実装を提供するように依頼できます([Adopting a Protocol Using a Synthesized Implementation](./protocols.md#adopting-a-protocol-using-a-synthesized-implementation既定実装を使用したプロトコル準拠)で説明されています)。
+
 ## Custom Operators(カスタム演算子)
 
 ### Precedence for Custom Infix Operators(カスタム中置演算子の優先順位)
