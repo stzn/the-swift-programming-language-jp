@@ -279,6 +279,41 @@ signedOverflow = signedOverflow &- 1
 
 ## Operator Methods(演算子メソッド)
 
+クラスと構造体は、既存の演算子の独自の実装を提供できます。これは、既存の演算子のオーバーロードとして知られています。
+
+下記の例は、独自の構造体に算術加算演算子(`+`)を実装する方法を示しています。算術加算演算子は、2 つのターゲットで動作するため 2 項演算子で、これら 2 つのターゲットの間に現れるため、中置と呼ばれます。
+
+この例では、2 次元位置ベクトル(x, y)の `Vector2D` 構造体を定義し、その後に `Vector2D` 構造体のインスタンスを加算する演算子メソッドの定義が続きます。
+
+```swift
+struct Vector2D {
+    var x = 0.0, y = 0.0
+}
+
+extension Vector2D {
+    static func + (left: Vector2D, right: Vector2D) -> Vector2D {
+        return Vector2D(x: left.x + right.x, y: left.y + right.y)
+    }
+}
+```
+
+演算子メソッドは、`Vector2D` の型メソッドとして定義され、オーバーロードされる演算子(`+`)に一致するメソッド名を使用します。加算はベクトルの本質的な動作の一部ではないため、型メソッドは、`Vector2D` のメイのン構造体宣言ではなく、extension で定義されています。算術加算演算子は 2 項演算子のため、この演算子メソッドは `Vector2D` 型の 2 つの入力引数を受け取り、同じく `Vector2D` 型の 1 つの出力値を返します。
+
+この実装では、`+` 演算子の左側と右側にある `Vector2D` インスタンスを表すために、入力引数に `left` および `right` という名前が付けられています。このメソッドは、新しい `Vector2D` インスタンスを返します。このインスタンスの `x` および `y` プロパティは、2 つの `Vector2D` インスタンスからの `x` プロパティと `y` プロパティの合計で初期化されます。
+
+型メソッドは、既存の `Vector2D` インスタンス間の中置演算子として使用できます。
+
+```swift
+let vector = Vector2D(x: 3.0, y: 1.0)
+let anotherVector = Vector2D(x: 2.0, y: 4.0)
+let combinedVector = vector + anotherVector
+// combinedVector は、値が (5.0, 5.0) の Vector2D インスタンスです。
+```
+
+この例では、下記に示すように、ベクトル `(3.0, 1.0)` と `(2.0, 4.0)` を加算してベクトル `(5.0, 5.0)` を作成します:
+
+![ベクトルの加算](./../.gitbook/assets/vectorAddition_2x.png)
+
 ### Prefix and Postfix Operators(前置、後置演算子)
 
 ### Compound Assignment Operators(合成代入演算子)
