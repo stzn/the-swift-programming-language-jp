@@ -39,7 +39,7 @@ let invertedBits = ~initialBits  // 11110000 と等しい
 
 ![ビットAND演算子](./../.gitbook/assets/bitwiseAND_2x.png)
 
-下記の例では、`firstSixBits` と `lastSixBits` の値は両方とも、1 に等しい 4 つの中間ビットを持っています。ビット AND 演算子はそれらを組み合わせて、符号なし 10 進数の `60` に等しい数値 `00111100` を作成します。
+下記の例では、`firstSixBits` と `lastSixBits` の値は両方とも、4 つの中間ビットに `1` が設定されています。ビット AND 演算子はそれらを組み合わせて、符号なし 10 進数の `60` に等しい数値 `00111100` を作成します。
 
 ```swift
 let firstSixBits: UInt8 = 0b11111100
@@ -48,6 +48,18 @@ let middleFourBits = firstSixBits & lastSixBits  // 00111100 と等しい
 ```
 
 ### Bitwise OR Operator(ビットOR演算子)
+
+ビット OR 演算子(`|`)は、2 つの数値のビットを比較します。演算子は、いずれかの入力数値のビットが `1` に等しい場合、ビットは `1` になり、新しい数値を返します。
+
+![ビットOR演算子](./../.gitbook/assets/bitwiseOR_2x.png)
+
+下記の例では、`someBits` と `moreBits` の値の異なるビットに `1` が設定されています。ビットごとの OR 演算子はそれらを組み合わせて、符号なし 10 進数の `254` に等しい `11111110` という数値を作成します。
+
+```swift
+let someBits: UInt8 = 0b10110010
+let moreBits: UInt8 = 0b01011110
+let combinedbits = someBits | moreBits  // 11111110 と等しい
+```
 
 ### Bitwise XOR Operator(ビットXOR演算子)
 
