@@ -275,7 +275,7 @@ signedOverflow = signedOverflow &- 1
 演算子の優先順位グループと結合規則設定の完全なリストを含む、Swift 標準ライブラリが提供する演算子については、[Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
 
 > NOTE  
-> Swift の演算子の優先順位と結合規則は、C 言語や Objective-C にあるものよりもシンプルで予測可能です。ただし、これは、C 言語ベースの言語とまったく同じではないことを意味します。既存のコードを Swift に移植するときは、オペレーターの作用が意図したとおりに動作するかを確認してください。
+> Swift の演算子の優先順位と結合規則は、C 言語や Objective-C にあるものよりもシンプルで予測可能です。ただし、これは、C 言語ベースの言語とまったく同じではないことを意味します。既存のコードを Swift に移植するときは、演算子ーの作用が意図したとおりに動作するかを確認してください。
 
 ## Operator Methods(演算子メソッド)
 
@@ -342,7 +342,7 @@ let alsoPositive = -negative
 
 ### Compound Assignment Operators(複合代入演算子)
 
-複合代入演算子(*compound assignment operator*)は、代入(`=`)と別の演算子を組み合わせます。例えば、加算代入演算子(`+=`)は、加算と代入を 1 つの演算に結合します。引数の値はオペレータメソッド内から直接変更されるため、複合代入演算子の左側の入力引数型を `inout` としてマークします。
+複合代入演算子(*compound assignment operator*)は、代入(`=`)と別の演算子を組み合わせます。例えば、加算代入演算子(`+=`)は、加算と代入を 1 つの演算に結合します。引数の値は演算子メソッド内から直接変更されるため、複合代入演算子の左側の入力引数型を `inout` としてマークします。
 
 下記の例では、Vector2D インスタンスの加算代入演算子メソッドを実装しています:
 
@@ -380,7 +380,7 @@ extension Vector2D: Equatable {
 }
 ```
 
-上記の例では、`==` 演算子を実装して、2 つの `Vector2D` インスタンスが同等の値を持つかどうかを確認しています。`Vector2D` では、「等しい」を「両方のインスタンスが同じ `x` 値と `y` 値を持つ」ことを意味すると考えるのが理にかなっているため、これはオペレータの実装で使用されるロジックです。
+上記の例では、`==` 演算子を実装して、2 つの `Vector2D` インスタンスが同等の値を持つかどうかを確認しています。`Vector2D` では、「等しい」を「両方のインスタンスが同じ `x` 値と `y` 値を持つ」ことを意味すると考えるのが理にかなっているため、これは演算子の実装で使用されるロジックです。
 
 この演算子を使用して、2 つの `Vector2D` インスタンスが同等かどうかを確認できるようになりました:
 
@@ -396,6 +396,30 @@ if twoThree == anotherTwoThree {
 多くのシンプルなケースでは、Swift に等価演算子の合成実装を提供するように依頼できます([Adopting a Protocol Using a Synthesized Implementation](./protocols.md#adopting-a-protocol-using-a-synthesized-implementation既定実装を使用したプロトコル準拠)で説明されています)。
 
 ## Custom Operators(カスタム演算子)
+
+Swift が提供する標準演算子に加えて、独自の演算子を宣言して実装できます。カスタム演算子の定義に使用できる文字のリストについては、[Operators](./../language-reference/lexical-structure.md#operators演算子)を参照ください。
+
+新しい演算子は、`operator` キーワードを使用してグローバルレベルで宣言され、`prefix`、`infix` または `postfix` 修飾子でマークされます。
+
+```swift
+prefix operator +++
+```
+
+上記の例では、`+++` という新しいプレフィックス演算子を定義しています。この演算子は Swift では既存の意味を持たないため、`Vector2D` インスタンスを操作する特定のコンテキストでは、下記に独自のカスタムの意味が与えられます。この例では、`+++` は新しい「プレフィックスダブリング(*prefix doubling*)」演算子として扱われます。前に定義した加算代入演算子を使用してベクトルをそれ自体に追加することにより、Vector2D インスタンスの `x` 値と `y` 値を 2 倍にします。`+++` 演算子を実装するには、次のように `+++` という型メソッドを `Vector2D` に追加します。
+
+```swift
+extension Vector2D {
+    static prefix func +++ (vector: inout Vector2D) -> Vector2D {
+        vector += vector
+        return vector
+    }
+}
+
+var toBeDoubled = Vector2D(x: 1.0, y: 4.0)
+let afterDoubling = +++toBeDoubled
+// toBeDoubled の値は (2.0, 8.0) になりました
+// afterDoubling も (2.0, 8.0) です
+```
 
 ### Precedence for Custom Infix Operators(カスタム中置演算子の優先順位)
 
