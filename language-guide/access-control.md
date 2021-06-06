@@ -275,7 +275,15 @@ public struct TrackedString {
 
 ## Initializers(初期化)
 
+独自イニシャライザには、初期化する型以下のアクセスレベルを割り当てることができます。唯一の例外は、必須イニシャライザ([Required Initializers](./initialization.md#required-initializers必須イニシャライザ)で定義) です。必須イニシャライザは、それが属するクラスと同じアクセスレベルを持っている必要があります。
+
+関数とメソッドの引数と同様に、イニシャライザの引数の型は、イニシャライザ自身のアクセスレベルよりも private にすることはできません。
+
 ### Default Initializers(デフォルトイニシャライザ)
+
+[Default Initializers](./initialization.md#default-initializersデフォルトイニシャライザ)で説明されているように、Swift は、全てのプロパティにデフォルト値を提供し、1 つもイニシャライザを提供しない構造体または基本クラスに引数なしのデフォルトのイニシャライザを自動的に提供します。
+
+デフォルトイニシャライザは、その型が public として定義されていない限り、初期化する型と同じアクセスレベルを持ちます。public として定義されている型の場合、デフォルトのイニシャライザは internal と見なされます。public 型を別のモジュールで使用するときに引数なしのイニシャライザで初期化できるようにする場合は、型の定義で public 型の引数なしのイニシャライザを明示的に提供する必要があります。
 
 ### Default Memberwise Initializers for Structure Types(構造体のデフォルトのメンバごとのイニシャライザ)
 
