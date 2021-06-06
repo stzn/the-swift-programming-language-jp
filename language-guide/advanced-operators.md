@@ -340,7 +340,31 @@ let alsoPositive = -negative
 // alsoPositive は、値が (3.0, 4.0) の Vector2D インスタンスです。
 ```
 
-### Compound Assignment Operators(合成代入演算子)
+### Compound Assignment Operators(複合代入演算子)
+
+複合代入演算子(*compound assignment operator*)は、代入(`=`)と別の演算子を組み合わせます。例えば、加算代入演算子(`+=`)は、加算と代入を 1 つの演算に結合します。引数の値はオペレータメソッド内から直接変更されるため、複合代入演算子の左側の入力引数型を `inout` としてマークします。
+
+下記の例では、Vector2D インスタンスの加算代入演算子メソッドを実装しています:
+
+```swift
+extension Vector2D {
+    static func += (left: inout Vector2D, right: Vector2D) {
+        left = left + right
+    }
+}
+```
+
+加算演算子は以前に定義されているため、ここで加算プロセスを再実装する必要はありません。代わりに、加算代入演算子メソッドは既存の加算演算子メソッドを利用し、それを使用して左の値を左の値に右の値を足します:
+
+```swift
+var original = Vector2D(x: 1.0, y: 2.0)
+let vectorToAdd = Vector2D(x: 3.0, y: 4.0)
+original += vectorToAdd
+// 元の値は (4.0, 6.0) になりました
+```
+
+> NOTE  
+> デフォルトの代入演算子(`=`)をオーバーロードすることはできません。複合代入演算子のみをオーバーロードできます。同様に、三項条件演算子(`a ? b : c`)はオーバーロードできません。
 
 ### Equivalence Operators(比較演算子)
 
