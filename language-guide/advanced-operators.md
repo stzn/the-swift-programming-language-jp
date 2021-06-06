@@ -18,6 +18,21 @@ Swift は、下記で説明するように、C 言語に見られる全てのビ
 
 ### Bitwise NOT Operator(ビットNOT演算子)
 
+ビット NOT 演算子(`~`)は、数値の全てのビットを反転します。
+
+![ビットNOT演算子](./../.gitbook/assets/bitwiseNOT_2x.png)
+
+ビット NOT 演算子は前置演算子で、空白を含めずに演算対象の値の直前に置きます。
+
+```swift
+let initialBits: UInt8 = 0b00001111
+let invertedBits = ~initialBits  // 11110000 と等しい
+```
+
+`UInt8` 整数には 8 ビットの、`0` から `255` までの任意の値を格納できます。この例では、`UInt8` 整数をバイナリ値 `00001111` で初期化し、最初の 4 ビットが `0` に設定され、2 番目の 4 ビットが `1` に設定されています。これは、10 進数の `15` に相当します。
+
+次に、ビット NOT 演算子を使用して、`invertedBits` と呼ばれる新しい定数を作成します。これは `initialBits` と同じですが、全てのビットが反転されています。ゼロは 1 になり、1 はゼロになります。`invertedBits` の値は `11110000` で、符号なし 10 進数の `240` に相当します。
+
 ### Bitwise AND Operator(ビットAND演算子)
 
 ### Bitwise OR Operator(ビットOR演算子)
