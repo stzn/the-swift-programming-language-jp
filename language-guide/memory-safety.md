@@ -45,7 +45,7 @@ print("We're number \(one)!")
 
 C 言語のアトミック操作を使用する場合のみ、操作はアトミックです。それ以外の場合は非アトミックです。これらの関数のリストについては、`stdatomic(3)` のマニュアルページを参照してください。
 
-アクセスが開始されてから終了する前に他のコードを実行できない場合、アクセスは瞬時に行われます。その性質上、2 つの瞬間的なアクセスは同時に発生することはありません。ほとんどのメモリアクセスは瞬時に行われます。たとえば、下記のコードリストの全ての読み取りおよび書き込みアクセスは瞬時に行われます:
+アクセスが開始されてから終了する前に他のコードを実行できない場合、アクセスは瞬時に行われます。その性質上、2 つの瞬間的なアクセスは同時に発生することはありません。ほとんどのメモリアクセスは瞬時に行われます。例えば、下記のコードリストの全ての読み取りおよび書き込みアクセスは瞬時に行われます:
 
 ```swift
 func oneMore(than number: Int) -> Int {
@@ -115,8 +115,52 @@ balance(&playerOneScore, &playerOneScore)
 上記の `balance(_:_:)` 関数は、その 2 つの引数を変更して、合計値をそれらの間で均等に分割します。`playerOneScore` と `playerTwoScore` を引数として呼び出しても競合は発生しません。時間的に重複する 2 つの書き込みアクセスがありますが、メモリ内の異なる場所にアクセスします。対照的に、両方の引数の値として `playerOneScore` を渡すと、メモリ内の同じ場所への 2 つの書き込みアクセスを同時に実行しようとするため、競合が発生します。
 
 > NOTE  
-> 演算子は関数であるため、in-out 引数に長期アクセスすることもできます。たとえば、`balance(_:_:)` が `<^>` という演算子である場合、`playerOneScore <^> playerOneScore` と記述すると、`balance(&playerOneScore, &playerOneScore)` と同じ競合が発生します。
+> 演算子は関数であるため、in-out 引数に長期アクセスすることもできます。例えば、`balance(_:_:)` が `<^>` という演算子である場合、`playerOneScore <^> playerOneScore` と記述すると、`balance(&playerOneScore, &playerOneScore)` と同じ競合が発生します。
 
 ## Conflicting Access to self in Methods(メソッド内のselfのアクセスの競合)
+
+構造体の mutating メソッドは、メソッド呼び出しの間、`self` への書き込みアクセスを持ちます。例えば、各プレイヤーがダメージを受けると減少する活力値と、特殊能力を使用すると減少するエネルギー量を持つゲームを考えてみましょう。
+
+```swift
+struct Player {
+    var name: String
+    var health: Int
+    var energy: Int
+
+    static let maxHealth = 10
+    mutating func restoreHealth() {
+        health = Player.maxHealth
+    }
+}
+```
+
+上記の `restoreHealth()` メソッドでは、`self` への書き込みアクセスはメソッドの最初から、メソッドが戻り値を返すまで続きます。この場合、`restoreHealth()` 内には、`Player` インスタンスのプロパティへのアクセスが重複する可能性のある他のコードはありません。下記の `shareHealth(with:)` メソッドは、別の `Player` インスタンスを in-out 引数として受け取り、アクセスが重複する可能性があります。
+
+```swift
+extension Player {
+    mutating func shareHealth(with teammate: inout Player) {
+        balance(&teammate.health, &health)
+    }
+}
+
+var oscar = Player(name: "Oscar", health: 10, energy: 10)
+var maria = Player(name: "Maria", health: 5, energy: 10)
+oscar.shareHealth(with: &maria)  // OK
+```
+
+上記の例では、Oscar のプレーヤーが Maria のプレーヤーと活力を共有するために `shareHealth(with:)` メソッドを呼び出しても、競合は発生しません。 `oscar` は変化するメソッドの `self` の値のため、メソッド呼び出し中に `oscar` への書き込みアクセスがあり、`maria` が in-out 引数として渡されるため、同じ期間、`maria` への書き込みアクセスがあります。次の図に示すように、これらはメモリ内の異なる場所にアクセスします。2 つの書き込みアクセスは時間的に重複していますが、競合しません。
+
+![in-outのメモリアクセス競合OK例](./../.gitbook/assets/memory_share_health_maria_2x.png)
+
+ただし、`oscar` を `shareHealth(with:)` の引数として渡すと、競合が発生します。
+
+```swift
+oscar.shareHealth(with: &oscar)
+// エラー: オスカーへのアクセスが競合しています
+```
+
+mutating メソッドは、メソッド実行中に `self` への書き込みアクセスを必要とし、in-out 引数は、同じ期間中に `teammate` への書き込みアクセス権を必要とします。メソッド内では、下の図に示すように、`self` と `teammate` の両方がメモリ内の同じ場所を参照します。2 つの書き込みアクセスは同じメモリを参照し、それらが重複して競合が発生します。
+
+![in-outのメモリアクセス競合NG例](./../.gitbook/assets/memory_share_health_oscar_2x.png)
 
 ## Conflicting Access to Properties(プロパティのアクセスの競合)
