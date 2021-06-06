@@ -153,6 +153,19 @@ private func someFunction() -> (SomeInternalClass, SomePrivateClass) {
 
 ### Enumeration Types(列挙型)
 
+列挙型の個々のケースは、それらが属する列挙型と同じアクセスレベルを自動的に受け取ります。個々の列挙型ケースに異なるアクセスレベルを指定することはできません。
+
+下記の例では、`CompassPoint` 列挙型に public の明示的なアクセスレベルが設定されています。したがって、列挙型ケースの `north`、 `south`、 `east`、 および `west` にも public のアクセスレベルがあります。
+
+```swift
+public enum CompassPoint {
+    case north
+    case south
+    case east
+    case west
+}
+```
+
 #### Raw Values and Associated Values(Raw Valueと関連値)
 
 ---
