@@ -82,11 +82,48 @@ true             // ブールリテラル
 
 > GRAMMAR OF A LITERAL  
 > *literal* → numeric-literal | string-literal | boolean-literal | nil-literal  
-> *numeric-literal* → -<sub>*opt*</sub> integer-literal | -<sub>*opt*</sub> floating-point-literal  
+> *numeric-literal* → -<sub>*opt*</sub> *integer-literal* | -<sub>*opt*</sub> floating-point-literal  
 > *boolean-literal* → **true** | **false**  
 > *nil-literal* → **nil**
 
 ### Integer Literals(整数リテラル)
+
+整数リテラル(*integer literal*)は、不特定の精度の整数値を表します。デフォルトでは、整数リテラルは 10 進数で表されます。プレフィックスを使用して他の基数を指定できます。 2 進数リテラルは `0b` で始まり、8 進数リテラルは `0o` で始まり、16 進数リテラルは `0x` で始まります。
+
+10 進数リテラルには `0` ～ `9` の数字が含まれます。2 進数リテラルには `0` と `1` が含まれ、8 進数リテラルには `0` ～ `7` が含まれ、16 進数リテラルには `0` ～ `9` および大文字または小文字の `A` ～ `F` が含まれます。
+
+負の整数リテラルは、`-42` のように、整数リテラルの前にマイナス記号(`-`)を付けることで表現されます。
+
+アンダースコア(`_`)は読みやすくするために数字の間に使用できますが、無視されるため、リテラルの値には影響しません。整数リテラルは先行ゼロ(`0`)で始めることができますが、同様に無視され、リテラルの基数または値には影響しません。
+
+特に指定がない限り、整数リテラルのデフォルトの推論型は Swift 標準ライブラリの型 `Int` です。Swift 標準ライブラリは、[Integers](./../language-guide/the-basics.md#integers整数)で説明されているように、様々なサイズの符号付き整数および符号なし整数の型も定義します。
+
+> GRAMMAR OF AN INTEGER LITERAL
+> *integer-literal* → binary-literal  
+> *integer-literal* → octal-literal  
+> *integer-literal* → decimal-literal  
+> *integer-literal* → hexadecimal-literal  
+> 
+> *binary-literal* → **0b** binary-digit binary-literal-characters<sub>*opt*</sub>  
+> *binary-digit* → 桁 0 または 1  
+> *binary-literal-character* → binary-digit | _  
+> *binary-literal-characters* → binary-literal-character binary-literal-characters<sub>*opt*</sub>  
+> 
+> *octal-literal* → **0o** octal-digit octal-literal-characters<sub>*opt*</sub>  
+> *octal-digit* → 桁 0 ~ 7  
+> *octal-literal-character* → octal-digit |_  
+> *octal-literal-characters* → octal-literal-character octal-literal-characters<sub>*opt*</sub>  
+> 
+> *decimal-literal* → decimal-digit decimal-literal-characters<sub>*opt*</sub>  
+> *decimal-digit* → 桁 0 ~ 9  
+> *decimal-digits* → decimal-digit decimal-digits<sub>*opt*</sub>  
+> *decimal-literal-character* → decimal-digit | _  
+> *decimal-literal-characters* → decimal-literal-character decimal-literal-characters<sub>*opt*</sub>  
+> 
+> *hexadecimal-literal* → **0x** hexadecimal-digit hexadecimal-literal-characters<sub>*opt*</sub>  
+> *hexadecimal-digit* → 桁 0 ~ 9、 a ~ f、 or A ~ F  
+> *hexadecimal-literal-character* → hexadecimal-digit |_  
+> *hexadecimal-literal-characters* → hexadecimal-literal-character hexadecimal-literal-characters<sub>*opt*</sub>  
 
 ### Floating-Point Literals(浮動小数点リテラル)
 
