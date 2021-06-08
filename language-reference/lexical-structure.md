@@ -139,7 +139,7 @@ true             // ブールリテラル
 
 アンダースコア(`_`)は読みやすくするために数字の間に使用できますが、無視されるため、リテラルの値には影響しません。浮動小数点リテラルは先行ゼロ(`0`)で始めることができますが、同様に無視され、リテラルの基数または値には影響しません。
 
-特に指定されていない限り、浮動小数点リテラルのデフォルトの推定型は、64 ビット浮動小数点数を表す Swift の標準ライブラリ `Double` 型です。Swift 標準ライブラリでは、32 ビットの浮動小数点数を表す `Float` 型も定義されています。
+特に指定されていない限り、浮動小数点リテラルのデフォルトの推論型は、64 ビット浮動小数点数を表す Swift の標準ライブラリ `Double` 型です。Swift 標準ライブラリでは、32 ビットの浮動小数点数を表す `Float` 型も定義されています。
 
 > GRAMMAR OF A FLOATING-POINT LITERAL  
 > *floating-point-literal* → decimal-literal decimal-fraction<sub>*opt*</sub> decimal-exponent<sub>*opt*</sub>  
@@ -155,6 +155,112 @@ true             // ブールリテラル
 > *floating-point-p* → **p** | **P**  
 > *sign* → **+** | **-**  
 
-### String Literals((文字列リテラル))
+### String Literals(文字列リテラル)
+
+文字列リテラル(*string literal*)は、引用符で囲まれた一連の文字です。単一行の文字列リテラルは二重引用符で囲まれ、次の形式になります:
+
+![単一行の文字列リテラル](./../.gitbook/assets/singleline_strings.png)
+
+文字列リテラルには、エスケープされていない二重引用符(`"`)、エスケープされていないバックスラッシュ (`\`)、キャリッジリターン、またはラインフィードを含めることはできません。
+
+複数行の文字列リテラルは、3 つの二重引用符で囲まれ、次の形式になります。
+
+![複数行の文字列リテラル](./../.gitbook/assets/multipleline_strings.png)
+
+単一行の文字列リテラルとは異なり、複数行の文字列リテラルには、エスケープされていない二重引用符 (`"`)、キャリッジリターン、およびラインフィードを含めることができます。3 つのエスケープされていない二重引用符を隣り合わせに含めることはできません。
+
+複数行の文字列リテラルを開始する `"""` の後の改行は文字列の一部ではありません。リテラルを終了する `"""` の前の改行も文字列の一部ではありません。改行で開始または終了する複数行の文字列リテラルを作成するには、最初または最後の行として空白行を記述します。
+
+複数行の文字列リテラルは、スペースとタブの任意の組み合わせを使用してインデントできます。このインデントは文字列に含まれていません。リテラルを終了する `"""` は、インデントを決定します。リテラル内のすべての非空白行は、閉じている `"""` の前に表示されるものと同じインデントで開始する必要があります。タブとスペース間の変換はありません。インデントの後に追加のスペースとタブを含めることができます。これらのスペースとタブは文字列に表示されます。
+
+複数行の文字列リテラルの改行は、改行文字を使用するように正規化されます。ソースファイルにキャリッジリターンとラインフィードが混在している場合でも、文字列内のすべての改行は同じになります。
+
+複数行の文字列リテラルでは、行末にバックスラッシュ(`\`)を記述すると、文字列からその改行が省略されます。バックスラッシュと改行の間の空白もすべて省略されます。この構文を使用すると、結果の文字列の値を変更せずに、ソースコードで複数行の文字列リテラルをハードラップできます。
+
+次のエスケープシーケンスを使用して、単一行形式と複数行形式の両方の文字列リテラルに特殊文字を含めることができます:
+
+* ヌル文字(`\0`)
+* バックスラッシュ(`\`)
+* 水平タブ(`\t`)
+* 改行(`\n`)
+* キャリッジリターン(`\r`)
+* 二重引用符(`\"`)
+* 単一引用符(`\'`)
+* Unicode スカラー(`\u{n}`)、`n` は 1 ～ 8 桁の 16 進数
+
+式の値を文字列リテラルに挿入するには、式をバックスラッシュ(`\`)の後にかっこで囲みます。補間された式には文字列リテラルを含めることができますが、エスケープされていないバックスラッシュ、キャリッジリターン、またはラインフィードを含めることはできません。
+
+例えば、次の文字列リテラルはすべて同じ値です:
+
+```swift
+"1 2 3"
+"1 2 \("3")"
+"1 2 \(3)"
+"1 2 \(1 + 2)"
+let x = 3; "1 2 \(x)"
+```
+
+拡張区切り文字で区切られた文字列は、引用符で囲まれた一連の文字と、1 つ以上の文字列の両側に同じ数のシャープ記号(`#`) のセットです。拡張区切り文字で区切られた文字列には、次の形式があります:
+
+![拡張区切り文字で区切られた文字列](./../.gitbook/assets/string_delimited_by_extended_delimiters.png)
+
+拡張区切り文字で区切られた文字列内の特殊文字は、結果の文字列では特殊文字ではなく通常の文字として表示されます。拡張区切り文字を使用して、通常は文字列補間の生成、エスケープシーケンスの開始、文字列の終了などの特殊な効果を持つ文字を使って通常の文字列を作成できます。
+
+次の例は、同等の文字列値を作成する拡張区切り文字で区切られた文字列リテラルと文字列を示しています:
+
+```swift
+let string = #"\(x) \ " \u{2603}"#
+let escaped = "\\(x) \\ \" \\u{2603}"
+print(string)
+// "\(x) \ " \u{2603}"
+print(string == escaped)
+// "true"
+```
+
+複数の番号記号を使用して、拡張区切り文字で区切られた文字列を形成する場合は、番号記号の間に空白を入れないでください。
+
+```swift
+print(###"Line 1\###nLine 2"###) // OK
+print(# # #"Line 1\# # #nLine 2"# # #) // Error
+```
+
+拡張区切り文字を使用して作成する複数行文字列リテラルには、通常の複数行文字列リテラルと同じインデント要件があります。
+
+文字列リテラルのデフォルトの推論型は `String` です。`String` 型の詳細については、[Strings and Characters](./../language-guide/strings-and-characters.md)、[String](https://developer.apple.com/documentation/swift/string)を参照ください。
+
+`+` 演算子によって連結された文字列リテラルは、コンパイル時に連結されます。例えば、下記の例の `textA` と `textB` の値は同じで、実行時に連結は実行されません。
+
+```swift
+let textA = "Hello " + "world"
+let textB = "Hello world"
+```
+
+> GRAMMAR OF A STRING LITERAL  
+> *string-literal* → static-string-literal | interpolated-string-literal  
+> *string-literal-opening-delimiter* → extended-string-literal-delimiter<sub>*opt*</sub> **"**  
+> *string-literal-closing-delimiter* → **"** extended-string-literal-delimiter<sub>*opt*</sub>  
+> *static-string-literal* → string-literal-opening-delimiter quoted-text<sub>*opt*</sub> string-literal-closing-delimiter  
+> *static-string-literal* → multiline-string-literal-opening-delimiter multiline-quoted-text<sub>*opt*</sub> multiline-string-literal-closing-delimiter  
+> *multiline-string-literal-opening-delimiter* → extended-string-literal-delimiter **"""**  
+> *multiline-string-literal-closing-delimiter* → **"""** extended-string-literal-delimiter  
+> *extended-string-literal-delimiter* → **#** extended-string-literal-delimiter<sub>*opt*</sub>  
+> *quoted-text* → quoted-text-item quoted-text<sub>*opt*</sub>  
+> *quoted-text-item* → escaped-character  
+> *quoted-text-item* → Any Unicode scalar value except **"**, **\**, U+000A, or U+000D  
+> *multiline-quoted-text* → *multiline-quoted-text-item* multiline-quoted-text<sub>*opt*</sub>  
+> *multiline-quoted-text-item* → escaped-character  
+> *multiline-quoted-text-item* → Any Unicode scalar value except **\**  
+> *multiline-quoted-text-item* → escaped-newline  
+> *interpolated-string-literal* → string-literal-opening-delimiter interpolated-text<sub>*opt*</sub> string-literal-closing-delimiter  
+> *interpolated-string-literal* → multiline-string-literal-opening-delimiter multiline-interpolated-text<sub>*opt*</sub> multiline-string-literal-closing-delimiter  
+> *interpolated-text* → interpolated-text-item interpolated-text<sub>*opt*</sub>  
+> *interpolated-text-item* → **\\** **(** expression **)** | quoted-text-item  
+> *multiline-interpolated-text* → multiline-interpolated-text-item multiline-interpolated-text<sub>*opt*</sub>  
+> *multiline-interpolated-text-item* → **\\** **(** expression **)** | multiline-quoted-text-item  
+> *escape-sequence* → **\** extended-string-literal-delimiter  
+> *escaped-character* → escape-sequence **0** | escape-sequence **\** | escape-sequence **t** | escape-sequence **n** | escape-sequence **r** | escape-sequence **"** | escape-sequence **'**  
+> *escaped-character* → escape-sequence **u** **{** unicode-scalar-digits **}**  
+> *unicode-scalar-digits* → Between one and eight hexadecimal digits  
+> *escaped-newline* → escape-sequence inline-spaces<sub>*opt*</sub> line-break  
 
 ## Operators(演算子)
