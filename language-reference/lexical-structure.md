@@ -88,7 +88,7 @@ true             // ブールリテラル
 
 ### Integer Literals(整数リテラル)
 
-整数リテラル(*integer literal*)は、不特定の精度の整数値を表します。デフォルトでは、整数リテラルは 10 進数で表されます。プレフィックスを使用して他の基数を指定できます。 2 進数リテラルは `0b` で始まり、8 進数リテラルは `0o` で始まり、16 進数リテラルは `0x` で始まります。
+整数リテラル(*integer literal*)は、不特定の精度の整数値を表します。デフォルトでは、整数リテラルは 10 進数で表されます。プレフィックスを使用して他の基数を指定できます。2 進数リテラルは `0b` で始まり、8 進数リテラルは `0o` で始まり、16 進数リテラルは `0x` で始まります。
 
 10 進数リテラルには `0` ～ `9` の数字が含まれます。2 進数リテラルには `0` と `1` が含まれ、8 進数リテラルには `0` ～ `7` が含まれ、16 進数リテラルには `0` ～ `9` および大文字または小文字の `A` ～ `F` が含まれます。
 
@@ -126,6 +126,34 @@ true             // ブールリテラル
 > *hexadecimal-literal-characters* → hexadecimal-literal-character hexadecimal-literal-characters<sub>*opt*</sub>  
 
 ### Floating-Point Literals(浮動小数点リテラル)
+
+浮動小数点リテラルは、不特定の精度の浮動小数点値を表します。
+
+デフォルトでは、浮動小数点リテラルは 10 進数(プレフィックスなし)で表されますが、16 進数(`0x` プレフィックス付き)で表すこともできます。
+
+10 進数の浮動小数点リテラルは、10 進数の数字のシーケンスと、その後に続く 10 進数の小数、10 進数の指数、またはその両方で構成されます。小数部は、小数点(`.`)とそれに続く一連の 10 進数で構成されます。指数は、大文字または小文字の `e` プレフィックスと、その後に続く 10 進数の数字のシーケンスで構成され、`e` の前の値に 10 の累乗が掛けられます。例えば、`1.25e2` は 1.25 x $10^{2}$ を表し、`125.0` に評価されます。同様に、`1.25e-2` は 1.25 x $10^{-2}$ を表し、`0.0125` に評価されます。
+
+16 進数の浮動小数点リテラルは、`0x` プレフィックス、オプションの 16 進数分数、16 進指数で構成されます。16 進数は、小数点とそれに続く 16 進数の数字で構成されます。指数は、大文字または小文字の `p` プレフィックスと、その後に続く 10 進数の数字のシーケンスで構成されます。これは、`p` の前の値に乗算される 2 のべき乗を示します。例えば、`0xFp2` は 15 x $2^{2}$ を表し、`60` に評価されます。同様に、`0xFp-2` は 15 x $2^{-2}$ を表し、`3.75` に評価されます。
+
+負の浮動小数点リテラルは、`-42.5` のように、浮動小数点リテラルの前にマイナス記号(`-`)を付けることで表現されます。
+
+アンダースコア(`_`)は読みやすくするために数字の間に使用できますが、無視されるため、リテラルの値には影響しません。浮動小数点リテラルは先行ゼロ(`0`)で始めることができますが、同様に無視され、リテラルの基数または値には影響しません。
+
+特に指定されていない限り、浮動小数点リテラルのデフォルトの推定型は、64 ビット浮動小数点数を表す Swift の標準ライブラリ `Double` 型です。Swift 標準ライブラリでは、32 ビットの浮動小数点数を表す `Float` 型も定義されています。
+
+> GRAMMAR OF A FLOATING-POINT LITERAL  
+> *floating-point-literal* → decimal-literal decimal-fraction<sub>*opt*</sub> decimal-exponent<sub>*opt*</sub>  
+> *floating-point-literal* → hexadecimal-literal hexadecimal-fraction<sub>*opt*</sub> hexadecimal-exponent  
+> 
+> *decimal-fraction* → **.** decimal-literal  
+> *decimal-exponent* → floating-point-e sign<sub>*opt*</sub> decimal-literal  
+> 
+> *hexadecimal-fraction* → **.** hexadecimal-digit hexadecimal-literal-characters<sub>*opt*</sub>  
+> *hexadecimal-exponent* → floating-point-p sign<sub>*opt*</sub> decimal-literal  
+> 
+> *floating-point-e* → **e** | **E**  
+> *floating-point-p* → **p** | **P**  
+> *sign* → **+** | **-**  
 
 ### String Literals((文字列リテラル))
 
