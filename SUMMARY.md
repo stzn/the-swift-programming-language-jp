@@ -26,6 +26,7 @@
 * [Initialization (初期化)](language-guide/initialization.md)
 * [Deinitialization (デイニシャライゼーション)](language-guide/deinitialization.md)
 * [Optional Chaining (オプショナルの連鎖)](language-guide/optional-chaining.md)
+* [Concurrency (同時並行処理)](language-guide/concurrency.md)
 * [Error Handling (エラー処理)](language-guide/error-handling.md)
 * [Type Casting (型キャスト)](language-guide/type-casting.md)
 * [Nested Types (ネストした型)](language-guide/nested-types.md)
