@@ -135,8 +135,37 @@ show(photos)
 
 ## Tasks and Task Groups(タスクとタスクグループ)
 
+タスク(*task*)は、プログラムの一部として非同期に実行できる作業単位です。全ての非同期コードはいくつかのタスクの一部として実行されます。前のセクションで説明されている `async-let` 構文は子タスク(*child task*)を作成します。タスクグループ(*task group*)を作成し、そのグループに子タスクを追加することもできます。これにより、優先順位とキャンセルをより制御しやすくし、動的な数のタスクを作成できます。
+
+タスクは階層内に配置されています。タスクグループ内の各タスクは同じ親タスクを持ち、各タスクには子タスクを持つことができます。タスクとタスクグループの間の明示的な関係のために、このアプローチは構造化同時並行性(*structured concurrency*)と呼ばれます。正確さを保つためのいくつかの責務は開発者にありますが、タスク間の明示的な親子関係によって、Swift は、キャンセルの伝播のようないくつかの行動を迅速に処理し、そして迅速にコンパイル時にいくつかのエラーを検出することができます。
+
+```swift
+await withTaskGroup(of: Data.self) { taskGroup in
+    let photoNames = await listPhotos(inGallery: "Summer Vacation")
+    for name in photoNames {
+        taskGroup.async { await downloadPhoto(named: name) }
+    }
+}
+```
+
+タスクグループの詳細については、[TaskGroup](https://developer.apple.com/documentation/swift/taskgroup)を参照ください。
+
 ### Unstructured Concurrency(非構造化同時並行処理)
 
+前のセクションで説明されている同時並行処理への構造化アプローチに加えて、Swift は非構造化同時並行処理(*unstructured concurrency*)もサポートしています。タスクグループの一部のタスクとは異なり、非構造化タスクには親タスクがありません。プログラムが必要などんな方法でも、非構造化タスクを管理するのに完全な柔軟性があります。しかし、それらの正しさを保証することは完全に開発者が責任を負います。現在のアクター上で実行される非構造化タスクを作成するには、`[async(priority:operation:)](https://developer.apple.com/documentation/swift/3816404-async)` 関数を呼びます。現在のアクター上で実行されないタスクを作成するには、`[asyncDetached(priority:operation:)](https://developer.apple.com/documentation/swift/3816406-asyncdetached)` 関数を呼び出します。これらの関数は両方ともタスクハンドルを返し、例えば、その結果を待つかキャンセルすることができます。
+
+```swift
+let newPhoto = // ... ある写真データ ...
+let handle = async {
+    return await add(newPhoto, toGalleryNamed: "Spring Adventures")
+}
+let result = await handle.get()
+```
+
+独立したタスクの管理の詳細については、[Task.Handle](https://developer.apple.com/documentation/swift/task/handle)を参照ください。
+
 ### Task Cancellation(タスクのキャンセル)
+
+
 
 ## Actors(アクター)
