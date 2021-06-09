@@ -177,3 +177,60 @@ Swift の同時並行処理は協調キャンセルモデル(*cooperative cancel
 キャンセルを手動で伝播するには、`[Task.handle.cancel()](https://developer.apple.com/documentation/swift/task/handle/3814781-cancel)` を呼び出します。
 
 ## Actors(アクター)
+
+クラスのように、アクター(*actors*)は参照型ですので、[Classes Are Reference Types](./structures-and-classes.md#classes-are-reference-typesclassは参照型)の中のクラスの値型と参照型の比較はアクターにも適用されます。クラスとは異なり、アクターの可変状態にアクセスできるのは一度に 1 つのタスクだけです。これにより、複数のタスク内のコードがアクターの同じインスタンスに安全にアクセスできるようになります。例えば、ここに気温を記録するアクターがあります:
+
+```swift
+actor TemperatureLogger {
+    let label: String
+    var measurements: [Int]
+    private(set) var max: Int
+
+    init(label: String, measurement: Int) {
+        self.label = label
+        self.measurements = [measurement]
+        self.max = measurement
+    }
+}
+```
+
+中括弧ペア(`{}`)で定義の前に `actor` キーワードを付けてアクターを導入します。`TemperatureLogger` アクターには、外部の他のコードがアクセスできるプロパティがあり、`max` プロパティはアクター内のコードのみが最大値を更新できるように制限されています。
+
+構造体やクラスと同じイニシャライザの構文を使用して、アクターのインスタンスを作成します。アクターのプロパティやメソッドにアクセスする時、潜在的な中断点をマークするために `await` を使用します。例えば:
+
+```swift
+let logger = TemperatureLogger(label: "Outdoors", measurement: 25)
+print(await logger.max)
+// "25"
+```
+
+この例では、`logger.max` へのアクセスは中断する可能性があります。アクターはその可変な状態にアクセスすることを一度に 1 つのタスクのみに許可しているため、別のタスクからのコードが既にロガーとやり取りしている場合、このコードはプロパティへのアクセスを待機します。
+
+対照的に、アクターのプロパティにアクセスするときに、アクターの一部のコードは `await` を記載しません。例えば、下記は `TemperatureLogsger` を新しい温度で更新するメソッドです:
+
+```swift
+extension TemperatureLogger {
+    func update(with measurement: Int) {
+        measurements.append(measurement)
+        if measurement > max {
+            max = measurement
+        }
+    }
+}
+```
+
+`update(with:)` メソッドは既にアクター上で実行されているので、それは `max` のようなプロパティへのアクセスに `await` を書きません。このメソッドはまた、アクターが一度に 1 つのタスクしかそれらの可変状態とやり取りすること許さない理由の 1 つを示しています: アクターの状態の更新は一時的に不変性を壊します。`TemperatureLogger` アクターは温度のリストと最大温度を追跡し、新しい測定を記録するときに最高温度を更新します。アップデートの途中で、新しい測定値が追加されでも最大値が更新される前に、温度ロガーは一時的に矛盾した状態にあります。次の一連のイベントのように、複数のタスクが同じインスタンスと同時にやり取りする問題を防ぎます:
+
+1. `update(with:)` を呼び出して、まず `measurements` 配列を更新します
+2. コードが `max` を更新する前に、他の場所では最大値と気温の配列を読み取ります
+3. コードは `max` を変更することによって更新を終了します
+
+この場合、データが一時的に不正になっていた間に、`update(with:)` の途中で割り込んでアクターへアクセスされた場合、他の場所に実行されているコードが不正な情報を読み取るかもしれません。Swift のアクターを使用すると、それらの状態に対して一度に 1 つの操作のみ可能なので、そのコードは `await` をマークする場所でのみ中断される可能性があり、この問題を防ぐことができます。 `update(with:)` では中断点が含まれていないため、他のコードは `update` の途中で他のコードからデータにアクセスできません。
+
+クラスのインスタンスを使用すると、アクターの外部からそれらのプロパティにアクセスしようとすると、コンパイルエラーが発生します。例えば:
+
+```swift
+print(logger.max)  // Error
+```
+
+アクターのプロパティはそのアクターの独立したローカル状態の一部のため、`await` を書くことなく `logger.max` へのアクセスは失敗します。Swift は、アクター内のコードのみがアクターのローカル状態にアクセスできることを保証します。この保証はアクターの独立(*actor isolation*)と呼ばれています。
