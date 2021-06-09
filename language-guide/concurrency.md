@@ -81,6 +81,21 @@ show(photo)
 
 ## Asynchronous Sequences(非同期シーケンス)
 
+`listPhotos(inGallery:)` は、前のセクションの `listPhotos(inGallery:)` 関数が非同期的に配列全体を一度に返し、全ての配列の要素は準備ができています。もう 1 つの方法は、非同期シーケンス(*asynchronous sequence*)を使用して、一度にコレクションの 1 つの要素を待機することです。下記は非同期シーケンスを繰り返しています:
+
+```swift
+import Foundation
+
+let handle = FileHandle.standardInput
+for try await line in handle.bytes.lines {
+    print(line)
+}
+```
+
+通常の `for-in` ループを使用する代わりに、上記の例は `for` の後に `await` を書きます。非同期関数またはメソッドを呼び出す時のように、`await` は中断する可能性を示します。`for-await-in` ループは、次の要素が利用可能になるのを待っている間、各繰り返しの開始時に実行を中断する可能性があります。
+
+[Sequence](https://developer.apple.com/documentation/swift/sequence)プロトコルへの準拠することで、`for-in` ループで独自の型を使用できるのと同じように、[AsyncSequence](https://developer.apple.com/documentation/swift/asyncsequence)プロトコルに準拠することで、`for-await-in` ループで独自の型を使用できます。
+
 ## Calling Asynchronous Functions in Parallel(非同期関数を並列に呼び出す)
 
 ## Tasks and Task Groups(タスクとタスクグループ)
