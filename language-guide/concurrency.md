@@ -98,6 +98,41 @@ for try await line in handle.bytes.lines {
 
 ## Calling Asynchronous Functions in Parallel(非同期関数を並列に呼び出す)
 
+`await` を使用して非同期関数を呼び出すと、一度に 1 つのコードしか実行されません。非同期コードが実行されている間、呼び出し側は、次のコード行を実行する前にそのコードが終了するのを待ちます。例えば、ギャラリーから最初の 3 つの写真を取得するには、次のように `downloadPhoto(named:)` 関数への 3 つの呼び出しを待つことができます:
+
+```swift
+let firstPhoto = await downloadPhoto(named: photoNames[0])
+let secondPhoto = await downloadPhoto(named: photoNames[1])
+let thirdPhoto = await downloadPhoto(named: photoNames[2])
+
+let photos = [firstPhoto, secondPhoto, thirdPhoto]
+show(photos)
+```
+
+このアプローチには重要な欠点があります: ダウンロードは非同期で、それが進行中の他の作業が行われますが、`downloadPhoto(named:)` の呼び出しは一度に 1 つの呼び出ししか実行されません。次の写真がダウンロードを開始する前に、各写真はダウンロードを完了します。しかし、これらの操作を待機する必要はありません。各写真は独立して、または同時にダウンロードできます。
+
+非同期関数を呼び出して、それ周りのコードを使って同時並行にダウンロードを実行するには、`let` の前に `async` を書き、この定数を使用する度に `await` を書きます。
+
+```swift
+async let firstPhoto = downloadPhoto(named: photoNames[0])
+async let secondPhoto = downloadPhoto(named: photoNames[1])
+async let thirdPhoto = downloadPhoto(named: photoNames[2])
+
+let photos = await [firstPhoto, secondPhoto, thirdPhoto]
+show(photos)
+```
+
+この例では、`downloadPhoto(named:)` の 3 つの呼び出しは、前のものが完了するのを待たずに開始します。利用可能な十分なシステムリソースがある場合は、これらは同時並行に実行できます。これらの関数呼び出しには `await` がマークされていないため、関数の結果を待つためにコードが中断されません。代わりに、`photos` が定義されている行まで処理は継続し、その時点で、プログラムはこれらの非同期呼び出しの結果を必要とするため、3 つの写真が完了するまで実行を一時中断するために `await` を書きます。
+
+下記が、これら 2 つのアプローチの違いについてどう考えるかを説明します:
+
+* 次の行のコードがその機能の結果に依存している場合は、`await` を使用して非同期関数を呼び出します。これにより、順次実行されるタスクが作成されます
+* 後々のコードまで​​結果が必要ない場合、`async-let` を使用して非同期関数を呼び出すと、同時並行に実行できるタスクが作成されます
+* `await` と `async-let` のどちらも、中断されている間に他のコードを実行できるようにします
+* どちらの場合も、非同期関数が返されるまで、必要に応じて実行が一時中断することを示すために、`await` を使って中断点を示します
+
+これらのアプローチの両方を混在させることもできます。
+
 ## Tasks and Task Groups(タスクとタスクグループ)
 
 ### Unstructured Concurrency(非構造化同時並行処理)
