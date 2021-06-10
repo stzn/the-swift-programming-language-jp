@@ -29,14 +29,14 @@ Swift では、名前付き型(*named　type*)と複合型(*compound type*)の 2
 
 ## Type Annotation(型アノテーション)
 
-型アノテーションは、変数または式の型を明示的に指定します。 次の例に示すように、型アノテーションはコロン(`:`)で始まり、型で終わります。
+型アノテーションは、変数または式の型を明示的に指定します。次の例に示すように、型アノテーションはコロン(`:`)で始まり、型で終わります。
 
 ```swift
 let someTuple: (Double, Double) = (3.14159, 2.71828)
 func someFunction(a: Int) { /* ... */ }
 ```
 
-最初の例では、表現がタプル型 `(Double, Double)` を持つように指定されています。 2 番目の例では、`someFunction` 関数の引数 `a` が `Int` 型なことが指定されています。
+最初の例では、表現がタプル型 `(Double, Double)` を持つように指定されています。2 番目の例では、`someFunction` 関数の引数 `a` が `Int` 型なことが指定されています。
 
 型アノテーションは、型の前に型属性のオプショナルのリストを含めることができます。
 
@@ -66,7 +66,28 @@ var someValue: ExampleModule.MyType
 > type-identifier → [type-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-name)  [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause) opt \|  [type-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-name)  [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause) opt `.`[type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  
 > type-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
-## Tuple Type
+## Tuple Type(タプル型)
+
+タプル型(*tuple type*)は、括弧に囲まれた、型のカンマ区切りのリストです。
+
+関数が複数の値を含む単一のタプルを返すことを可能にするために、関数の戻り値の型としてタプル型を使用できます。タプル型の要素に名前を付けることもでき、それらの名前を使用して個々の要素の値を参照することもできます。要素名はコロン(`:`)の直前に識別子を指定します。これらの機能の両方を示す例については、[Functions with Multiple Return Values](./../language-guide/functions.md#functions-with-multiple-return-values複数の戻り値がある関数)を参照ください。
+
+タプル型の要素に名前がある場合、その名前は型の一部です。
+
+```swift
+var someTuple = (top: 10, bottom: 12)  // someTuple の型は (top: Int, bottom: Int)
+someTuple = (top: 4, bottom: 42) // OK: 名前が一致しています
+someTuple = (9, 99)              // OK: 名前が推論されます
+someTuple = (left: 5, right: 5)  // Error: 名前が一致していません
+```
+
+全てのタプル型には、空のタプル型 `()` の型エイリアスの `Void` を除いて、2 つ以上の型が含まれています。
+
+> GRAMMAR OF A TUPLE TYPE  
+> tuple-type → `(` `)` \|  `(` [tuple-type-element](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type-element)  `,` [tuple-type-element-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type-element-list)  `)`   
+> tuple-type-element-list → [tuple-type-element](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type-element) \|  [tuple-type-element](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type-element)  `,` [tuple-type-element-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type-element-list)  
+> tuple-type-element → [element-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_element-name)  [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation) \|  [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
+> element-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
 ## Function Type
 
