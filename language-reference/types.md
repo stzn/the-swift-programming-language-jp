@@ -2,7 +2,7 @@
 
 最終更新日:
 
-Swift では、名前付き型(*named　type*)と複合型(*compound type**)の 2 種類があります。名前付き型は、定義されているときに特定の名前を指定できる型です。名前付き型には、クラス、構造体、列挙型、およびプロトコルが含まれます。例えば、`MyClass` という名前のユーザ定義クラスのインスタンスは `MyClass` 型です。ユーザ定義の型に加えて、Swift 標準ライブラリは、配列、辞書、およびオプショナルの値を含む多くの一般的に使用されている名前の型を定義します。
+Swift では、名前付き型(*named　type*)と複合型(*compound type*)の 2 種類があります。名前付き型は、定義されているときに特定の名前を指定できる型です。名前付き型には、クラス、構造体、列挙型、およびプロトコルが含まれます。例えば、`MyClass` という名前のユーザ定義クラスのインスタンスは `MyClass` 型です。ユーザ定義の型に加えて、Swift 標準ライブラリは、配列、辞書、およびオプショナルの値を含む多くの一般的に使用されている名前の型を定義します。
 
 通常、数字、文字、文字列を表す型など、他の言語で基本的またはプリミティブと見なされるデータ型は、Swift 標準ライブラリでは構造体を使用して、定義され、実装されている名前付き型です。名前付き型のため、[Extensions](./expressions.md)、 [Extension Declaration](./declarations.md#extension-declaration拡張宣言)で説明されている拡張宣言を使用して、プログラムのニーズに合わせて振る舞いを拡張することができます。
 
@@ -12,22 +12,36 @@ Swift では、名前付き型(*named　type*)と複合型(*compound type**)の 
 
 この章では、Swift 言語自体で定義されている型について説明し、Swift の型推論の動作について説明します。
 
-> GRAMMAR OF A TYPE
-> *type* → 関数型(function type)  
-> *type* → 配列型(array type)  
-> *type* → 辞書型(dictionary type)  
-> *type* → 型識別子(type identifier)  
-> *type* → タプル型(tuple type)  
-> *type* → オプショナル型(optional type)  
-> *type* → 暗黙アンラップオプショナル型(implicitly unwrapped optional type)  
-> *type* → プロトコル合成型(protocol composition type)  
-> *type* → Opaque Type(opaque type)  
-> *type* → メタタイプ型(metatype type)  
-> *type* → Any型(any type)  
-> *type* → Self型(self type)  
-> *type* → **(** 型 **)**  
+> GRAMMAR OF A TYPE  
+> type → [function-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type)  
+> type → [array-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_array-type)  
+> type → [dictionary-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_dictionary-type)  
+> type → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  
+> type → [tuple-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type)  
+> type → [optional-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_optional-type)  
+> type → [implicitly-unwrapped-optional-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_implicitly-unwrapped-optional-type)  
+> type → [protocol-composition-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_protocol-composition-type)  
+> type → [opaque-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_opaque-type)  
+> type → [metatype-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_metatype-type)  
+> type → [any-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_any-type)  
+> type → [self-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_self-type)  
+> type → `(` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `)`
 
 ## Type Annotation(型アノテーション)
+
+型アノテーションは、変数または式の型を明示的に指定します。 次の例に示すように、型アノテーションはコロン(`:`)で始まり、型で終わります。
+
+```swift
+let someTuple: (Double, Double) = (3.14159, 2.71828)
+func someFunction(a: Int) { /* ... */ }
+```
+
+最初の例では、表現がタプル型 `(Double, Double)` を持つように指定されています。 2 番目の例では、`someFunction` 関数の引数 `a` が `Int` 型なことが指定されています。
+
+型アノテーションは、型の前に型属性のオプショナルのリストを含めることができます。
+
+> GRAMMAR OF A TYPE ANNOTATION  
+> type-annotation → `:` [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> **inout**<sub>*opt*</sub> [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
 
 ## Type Identifier
 
