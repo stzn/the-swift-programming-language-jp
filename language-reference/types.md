@@ -195,7 +195,29 @@ Swift 標準ライブラリの配列型の詳細については、[Arrays](./../
 > GRAMMAR OF AN ARRAY TYPE  
 > array-type → `[` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `]`
 
-## Dictionary Type
+## Dictionary Type(辞書型)
+
+Swift は、標準ライブラリの `Dictionary<Key, Value>` 型に次の糖衣構文(シンタックシュガー)を提供します。
+
+![辞書](./../.gitbook/assets/dictionary_type.png)
+
+次の 2 つの宣言は同等です。
+
+```swift
+let someDictionary: [String: Int] = ["Alex": 31, "Paul": 39]
+let someDictionary: Dictionary<String, Int> = ["Alex": 31, "Paul": 39]
+```
+
+どちらの場合も、定数の `someDictionary` は、文字列をキーと整数をバリューとした辞書として宣言されています。
+
+辞書の値は、角括弧(`[]`)で対応するキーを指定してバリューにアクセスすることができます。`someDictionary["Alex"]` は、キー `"Alex"` に関連するバリューを指します。 `subscript` は辞書の値型のオプショナルの値を返します。 指定されたキーが辞書に含まれていない場合、`subscript` は `nil` を返します。
+
+辞書のキーの型は、Swift 標準ライブラリの `Hashable` に準拠している必要があります。
+
+Swift 標準ライブラリ `Dictionary` 型の詳細については、[Dictionaries](./../language-guide/collection-types.md#dictionaries辞書)を参照ください。
+
+> GRAMMAR OF A DICTIONARY TYPE  
+> dictionary-type → `[` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `:` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `]`
 
 ## Optional Type
 
