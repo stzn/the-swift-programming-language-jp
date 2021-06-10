@@ -77,7 +77,7 @@ var someValue: ExampleModule.MyType
 ```swift
 var someTuple = (top: 10, bottom: 12)  // someTuple の型は (top: Int, bottom: Int)
 someTuple = (top: 4, bottom: 42) // OK: 名前が一致しています
-someTuple = (9, 99)              // OK: 名前が推論されます
+someTuple = (9, 99)          // OK: 名前が推論されます
 someTuple = (left: 5, right: 5)  // Error: 名前が一致していません
 ```
 
@@ -113,26 +113,59 @@ func anotherFunction(left: Int, right: Int) {}
 func functionWithDifferentLabels(top: Int, bottom: Int) {}
 
 var f = someFunction // f の型は (Int, Int) -> Void で (left: Int, right: Int) -> Void はありません
-f = anotherFunction              // OK
+f = anotherFunction          // OK
 f = functionWithDifferentLabels  // OK
 
 func functionWithDifferentArgumentTypes(left: Int, right: String) {}
-f = functionWithDifferentArgumentTypes     // エラー
+f = functionWithDifferentArgumentTypes    // エラー
 
 func functionWithDifferentNumberOfArguments(left: Int, right: Int, top: Int) {}
 f = functionWithDifferentNumberOfArguments // エラー
 Because argument labels aren’t part of a function’s type, you omit them when writing a function type.
 
-var operation: (lhs: Int, rhs: Int) -> Int     // エラー
+var operation: (lhs: Int, rhs: Int) -> Int    // エラー
 var operation: (_ lhs: Int, _ rhs: Int) -> Int // OK
-var operation: (Int, Int) -> Int               // OK
+var operation: (Int, Int) -> Int          // OK
 ```
 
 関数型に 1 つ以上の矢印(`->`)が含まれている場合、関数型は右から左にグループ化されます。例えば、関数型 `(Int) -> (Int) -> Int` は、`(Int) -> ((Int) -> Int)` です。`Int` を返します。
 
 エラーをスロー(*throw*)または再スロー(*rethrow*)関数型は、`throws` キーワードでマークする必要があります。`throws` キーワードは関数型の一部で、スローしない(*nonthrow*)関数はスロー関数のサブタイプです。その結果、スロー関数が使われる場所で、スローしない関数を使用できます。スロー関数や再スロー関数は、[Throwing Functions and Methods](./declarations.md#throwing-functions-and-methodsスロー関数とメソッド)、[Rethrowing Functions and Methods](./declarations.md#rethrowing-functions-and-methodsスロー関数とメソッド)で説明されています。
 
-### Restrictions for Nonescaping Closures
+### Restrictions for Nonescaping Closures(非エスケープクロージャの制限)
+
+非エスケープ(*nonescaping*)関数の引数は、`Any` 型のプロパティ、変数、または定数に格納することはできません。
+
+非エスケープ関数の引数は、引数として別の非エスケープ関数を引数として渡すことはできません。この制限によって、Swift が実行時ではなくコンパイル時にメモリへのアクセス競合をチェックすることができます。例えば:
+
+```swift
+let external: (() -> Void) -> Void = { _ in () }
+func takesTwoFunctions(first: (() -> Void) -> Void, second: (() -> Void) -> Void) {
+   first { first {} }     // エラー
+   second { second {}  }   // エラー
+
+   first { second {} }    // エラー
+   second { first {} }    // エラー
+
+   first { external {} }   // OK
+   external { first {} }   // OK
+}
+```
+
+上記のコードでは、`takesTwoFunctions(first:second:)` の引数は関数型です。どちらも `@esescaping` がマークされていないため、非エスケープで
+す。
+
+上記の例で「エラー」とマークされた 4 つの関数呼び出しは、コンパイラエラーが発生します。最初と 2 番目の引数は非エスケープ関数のため、引数として別の非エスケープ関数を引数に渡すことはできません。対照的に、「OK」とマークされた 2 つの関数呼び出しは、コンパイラエラーが発生しません。これらの関数呼び出しは、`external` が `takesTwoFunctions(first:second:)` の引数ではないため、制限に違反しません。
+
+この制限を回避する必要がある場合は、いずれかの引数を `@esescaping` とマークしたり、引数の非エスケープ関数の 1 つを `withoutActuallyEscaping(_:do:)` を使ってエスケープ関数に一時的に変換します。メモリへのアクセス競合を回避する方法については、[Memory Safety](./../language-guide/memory-safety.md#memory-safetyメモリ安全性)を参照ください。
+
+> GRAMMAR OF A FUNCTION TYPE  
+> function-type → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub>  [function-type-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument-clause)  `throws`<sub>*opt*</sub>  `->` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
+> function-type-argument-clause → `(` `)`  
+> function-type-argument-clause → `(` [function-type-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument-list)  `...`<sub>*opt*</sub> `)`  
+> function-type-argument-list → [function-type-argument](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument) \|  [function-type-argument](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument)  `,` [function-type-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument-list)  
+> function-type-argument → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub>  `inout`<sub>*opt*</sub> [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) \|  [argument-label](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_argument-label)  [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)  
+> argument-label → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
 ## Array Type
 
