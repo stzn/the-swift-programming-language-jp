@@ -130,7 +130,7 @@ var operation: (Int, Int) -> Int          // OK
 
 関数型に 1 つ以上の矢印(`->`)が含まれている場合、関数型は右から左にグループ化されます。例えば、関数型 `(Int) -> (Int) -> Int` は、`(Int) -> ((Int) -> Int)` です。`Int` を返します。
 
-エラーをスロー(*throw*)または再スロー(*rethrow*)関数型は、`throws` キーワードでマークする必要があります。`throws` キーワードは関数型の一部で、スローしない(*nonthrow*)関数はスロー関数のサブタイプです。その結果、スロー関数が使われる場所で、スローしない関数を使用できます。スロー関数や再スロー関数は、[Throwing Functions and Methods](./declarations.md#throwing-functions-and-methodsスロー関数とメソッド)、[Rethrowing Functions and Methods](./declarations.md#rethrowing-functions-and-methodsスロー関数とメソッド)で説明されています。
+エラーをスロー(*throw*)または再スロー(*rethrow*)関数型は、`throws` キーワードでマークする必要があります。`throws` キーワードは関数型の一部で、スローしない(*nonthrow*)関数はスロー関数のサブ型です。その結果、スロー関数が使われる場所で、スローしない関数を使用できます。スロー関数や再スロー関数は、[Throwing Functions and Methods](./declarations.md#throwing-functions-and-methodsスロー関数とメソッド)、[Rethrowing Functions and Methods](./declarations.md#rethrowing-functions-and-methodsスロー関数とメソッド)で説明されています。
 
 ### Restrictions for Nonescaping Closures(非エスケープクロージャの制限)
 
@@ -167,7 +167,33 @@ func takesTwoFunctions(first: (() -> Void) -> Void, second: (() -> Void) -> Void
 > function-type-argument → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub>  `inout`<sub>*opt*</sub> [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) \|  [argument-label](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_argument-label)  [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)  
 > argument-label → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
-## Array Type
+## Array Type(配列型)
+
+Swift は、標準ライブラリ `Array<Element>` の次の糖衣構文(シンタックシュガー)を提供します。
+
+![Array Type](./../.gitbook/assets/array_type.png)
+
+言い換えれば、次の 2 つの宣言は同等です。
+
+```swift
+let someArray: Array<String> = ["Alex", "Brian", "Dave"]
+let someArray: [String] = ["Alex", "Brian", "Dave"]
+```
+
+どちらの場合も、定数の `SomeArray` は文字列の配列として宣言されています。角括弧(`[]`)内の有効範囲内のインデックスを指定することによって配列の要素にアクセスすることができます。`someArray[0]` は、インデックス `0` の要素の `"Alex"` を指します。
+
+要素の型名の周りの角括弧を入れ子にすることで多次元配列を作成できます。例えば、3 つの角括弧を使用して、整数の 3 次元配列を作成できます。
+
+```swift
+var array3D: [[[Int]]] = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
+```
+
+多次元配列内の要素にアクセスするとき、左端の `subscript` のインデックスは、最も外側の配列内のインデックスの要素を指します。次の右の `subscript` のインデックスは、1 階層ネストされている配列内のインデックスの要素になります。これは、上記の例では、`array3D[0]` は `[[1, 2], [3, 4]]`、`array3D[0][1]` は `[3,4]`、`array3D[0][1][1]` は値 `4` を表します。
+
+Swift 標準ライブラリの配列型の詳細については、[Arrays](./../language-guide/collection-types.md#array配)を参照ください。
+
+> GRAMMAR OF AN ARRAY TYPE  
+> array-type → `[` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `]`
 
 ## Dictionary Type
 
