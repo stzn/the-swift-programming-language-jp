@@ -49,11 +49,11 @@ func someFunction(a: Int) { /* ... */ }
 
 ほとんどの場合、型識別子は識別子と同じ名前の名前付き型を直接参照します。例えば、`Int` は、名前付き型 `Int` を直接参照する型識別子で、型識別子 `Dictionary<String, Int>` は直接指定された `Dictionary<String, Int>` を参照します。
 
-型識別子が同じ名前の型を参照していない 2 つのケースがあります。最初のケースは、型識別子は、名前付きまたは複合型のエイリアスを参照する場合です。例えば、下記の例では、型アノテーション内の `Point` はタプル型 `(Int, Int)` を表します。
+型識別子が同じ名前の型を参照していない 2 つのケースがあります。最初のケースは、型識別子は、名前付きまたは複合型のエイリアスを参照する場合です。例えば、下記の例では、型アノテーション内の `PoInt` はタプル型 `(Int, Int)` を表します。
 
 ```swift
-typealias Point = (Int, Int)
-let origin: Point = (0, 0)
+typealias PoInt = (Int, Int)
+let origin: PoInt = (0, 0)
 ```
 
 2 番目のケースは、型識別子が他のモジュールで宣言された名前付き型または他の型内にネストされた名前の型を参照するためにドット(`.`)構文を使用します。例えば、次のコードの型識別子は、`ExamPleModule` モジュールで宣言されている名前付き型 `MyType` を参照しています。
@@ -84,12 +84,53 @@ someTuple = (left: 5, right: 5)  // Error: 名前が一致していません
 全てのタプル型には、空のタプル型 `()` の型エイリアスの `Void` を除いて、2 つ以上の型が含まれています。
 
 > GRAMMAR OF A TUPLE TYPE  
-> tuple-type → `(` `)` \|  `(` [tuple-type-element](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type-element)  `,` [tuple-type-element-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type-element-list)  `)`   
+> tuple-type → `(` `)` \|  `(` [tuple-type-element](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type-element)  `,` [tuple-type-element-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type-element-list)  `)`  
 > tuple-type-element-list → [tuple-type-element](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type-element) \|  [tuple-type-element](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type-element)  `,` [tuple-type-element-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type-element-list)  
 > tuple-type-element → [element-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_element-name)  [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation) \|  [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
 > element-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
-## Function Type
+## Function Type(関数型)
+
+関数型は関数、メソッド、またはクロージャの型を表し、引数と矢印で区切られた戻り型で構成されています(`->`)。
+
+![Function Type](./../.gitbook/assets/function_type.png)
+
+引数型は、型のカンマ(`,`)区切りのリストです。戻り値の型はタプル型の可能性があるため、関数型は複数の値を返す機能とメソッドをサポートします。
+
+関数型の引数 `() -> T`(`T` は任意の型)では、呼び出しサイトで暗黙的にクロージャを作成するために、`autoclosure` を適用できます。これは、関数を呼び出すときに明示的にクロージャを書くことなく、式を遅延評価するための構文上の便利な方法を提供します。`autoclosure` の関数型の引数の例については、[AutoClosures](./../language-guide/closures.md#autoclosures自動クロージャ) を参照してください。
+
+関数型は、その引数型に多様な引数を持つことができます。構文上、可変長引数は、`Int...` のように要素の型名の後ろに 3 つのドット(`...`)で構成され、要素の型の配列として扱われます。例えば、variadic 引数 `Int...` は `[Int]` として扱われます。可変長引数を使用する例については、[Variadic Parameters](./../language-guide/functions.md#variadic-parameters可変個引数)を参照ください。
+
+in-out 引数を使用するには、`inout` キーワードを引数の型の前に付けます。可変長引数または戻り値の型にマークすることはできません。in-out 引数は、[In-Out Parameters](./../language-guide/functions.md#in-out-parametersin-out引数)で説明されています。
+
+関数型に引数が 1 つしかなく、タプル型の場合、関数型を書くときにタプル型を括弧(`()`)で囲む必要があります。例えば、`((Int, Int)) -> Void` は、タプル型 `(Int, Int)` を単一の引数として受け取り、値を返さない関数の型です。対照的に、括弧なしで `(Int, Int) -> Void` と書いた場合は 2 つの `Int` 引数を受け取り、値を返さない関数型です。同様に、`Void` は `()` のエイリアスのため、`(Void)-> Void` は `(())->()` と同じで、空のタプルの単一の引数を受け取ります。`()->()` は引数を受け取らないので同じではありません。
+
+関数とメソッドの引数名は、対応する関数型の一部ではありません。例えば:
+
+```swift
+func someFunction(left: Int, right: Int) {}
+func anotherFunction(left: Int, right: Int) {}
+func functionWithDifferentLabels(top: Int, bottom: Int) {}
+
+var f = someFunction // f の型は (Int, Int) -> Void で (left: Int, right: Int) -> Void はありません
+f = anotherFunction              // OK
+f = functionWithDifferentLabels  // OK
+
+func functionWithDifferentArgumentTypes(left: Int, right: String) {}
+f = functionWithDifferentArgumentTypes     // エラー
+
+func functionWithDifferentNumberOfArguments(left: Int, right: Int, top: Int) {}
+f = functionWithDifferentNumberOfArguments // エラー
+Because argument labels aren’t part of a function’s type, you omit them when writing a function type.
+
+var operation: (lhs: Int, rhs: Int) -> Int     // エラー
+var operation: (_ lhs: Int, _ rhs: Int) -> Int // OK
+var operation: (Int, Int) -> Int               // OK
+```
+
+関数型に 1 つ以上の矢印(`->`)が含まれている場合、関数型は右から左にグループ化されます。例えば、関数型 `(Int) -> (Int) -> Int` は、`(Int) -> ((Int) -> Int)` です。`Int` を返します。
+
+エラーをスロー(*throw*)または再スロー(*rethrow*)関数型は、`throws` キーワードでマークする必要があります。`throws` キーワードは関数型の一部で、スローしない(*nonthrow*)関数はスロー関数のサブタイプです。その結果、スロー関数が使われる場所で、スローしない関数を使用できます。スロー関数や再スロー関数は、[Throwing Functions and Methods](./declarations.md#throwing-functions-and-methodsスロー関数とメソッド)、[Rethrowing Functions and Methods](./declarations.md#rethrowing-functions-and-methodsスロー関数とメソッド)で説明されています。
 
 ### Restrictions for Nonescaping Closures
 
