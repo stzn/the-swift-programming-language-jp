@@ -152,7 +152,7 @@ await withTaskGroup(of: Data.self) { taskGroup in
 
 ### Unstructured Concurrency(非構造同時並行処理)
 
-前のセクションで説明されている構造同時並行処理のアプローチに加えて、Swift は非構造同時並行処理(*unstructured concurrency*)もサポートしています。タスクグループの一部のタスクとは異なり、非構造タスクには親タスクがありません。どんな方法で使われたとしても、非構造タスクを完全に柔軟に管理することができます。しかし、それらの正しい動作を保証することは完全に開発者の責任です。現在のアクター(*actor*)上で実行される非構造タスクを作成するには、`[async(priority:operation:)](https://developer.apple.com/documentation/swift/3816404-async)` 関数を呼びます。現在のアクター上で実行されないタスク(特にデタッチタスク(*detached task*))を作成するには、`[asyncDetached(priority:operation:)](https://developer.apple.com/documentation/swift/3816406-asyncdetached)` 関数を呼び出します。これらの関数は両方ともタスクハンドル(*task handle*)を返し、例えば、その結果を待つかキャンセルすることができます。
+前のセクションで説明されている構造同時並行処理のアプローチに加えて、Swift は非構造同時並行処理(*unstructured concurrency*)もサポートしています。タスクグループの一部のタスクとは異なり、非構造タスクには親タスクがありません。どんな方法で使われたとしても、非構造タスクを完全に柔軟に管理することができます。しかし、それらの正しい動作を保証することは完全に開発者の責任です。現在のアクター(*actor*)上で実行される非構造タスクを作成するには、[async(priority:operation:)](https://developer.apple.com/documentation/swift/3816404-async) 関数を呼びます。現在のアクター上で実行されないタスク(特にデタッチタスク(*detached task*))を作成するには、[asyncDetached(priority:operation:)](https://developer.apple.com/documentation/swift/3816406-asyncdetached) 関数を呼び出します。これらの関数は両方ともタスクハンドル(*task handle*)を返し、例えば、その結果を待つかキャンセルすることができます。
 
 ```swift
 let newPhoto = // ... ある写真データ ...
