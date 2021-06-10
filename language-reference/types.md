@@ -43,7 +43,28 @@ func someFunction(a: Int) { /* ... */ }
 > GRAMMAR OF A TYPE ANNOTATION  
 > type-annotation → `:` [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> **inout**<sub>*opt*</sub> [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
 
-## Type Identifier
+## Type Identifier(型識別子)
+
+型識別子とは、名前付き型または名前付き型または複合型の型別名を参照します。
+
+ほとんどの場合、型識別子は識別子と同じ名前の名前付き型を直接参照します。例えば、`Int` は、名前付き型 `Int` を直接参照する型識別子で、型識別子 `Dictionary<String, Int>` は直接指定された `Dictionary<String, Int>` を参照します。
+
+型識別子が同じ名前の型を参照していない 2 つのケースがあります。最初のケースは、型識別子は、名前付きまたは複合型のエイリアスを参照する場合です。例えば、下記の例では、型アノテーション内の `Point` はタプル型 `(Int, Int)` を表します。
+
+```swift
+typealias Point = (Int, Int)
+let origin: Point = (0, 0)
+```
+
+2 番目のケースは、型識別子が他のモジュールで宣言された名前付き型または他の型内にネストされた名前の型を参照するためにドット(`.`)構文を使用します。例えば、次のコードの型識別子は、`ExamPleModule` モジュールで宣言されている名前付き型 `MyType` を参照しています。
+
+```swift
+var someValue: ExampleModule.MyType
+```
+
+> GRAMMAR OF A TYPE IDENTIFIER  
+> type-identifier → [type-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-name)  [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause) opt \|  [type-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-name)  [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause) opt `.`[type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  
+> type-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
 ## Tuple Type
 
