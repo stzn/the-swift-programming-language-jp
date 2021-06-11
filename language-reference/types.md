@@ -173,7 +173,7 @@ Swift は、標準ライブラリ `Array<Element>` の次の糖衣構文(シン�
 
 ![Array Type](./../.gitbook/assets/array_type.png)
 
-言い換えれば、次の 2 つの宣言は同等です。
+言い換えれば、次の 2 つの宣言は同等です:
 
 ```swift
 let someArray: Array<String> = ["Alex", "Brian", "Dave"]
@@ -201,7 +201,7 @@ Swift は、標準ライブラリの `Dictionary<Key, Value>` 型に次の糖衣
 
 ![辞書](./../.gitbook/assets/dictionary_type.png)
 
-次の 2 つの宣言は同等です。
+言い換えれば、次の 2 つの宣言は同等です:
 
 ```swift
 let someDictionary: [String: Int] = ["Alex": 31, "Paul": 39]
@@ -210,7 +210,7 @@ let someDictionary: Dictionary<String, Int> = ["Alex": 31, "Paul": 39]
 
 どちらの場合も、定数の `someDictionary` は、文字列をキーと整数をバリューとした辞書として宣言されています。
 
-辞書の値は、角括弧(`[]`)で対応するキーを指定してバリューにアクセスすることができます。`someDictionary["Alex"]` は、キー `"Alex"` に関連するバリューを指します。 `subscript` は辞書の値型のオプショナルの値を返します。 指定されたキーが辞書に含まれていない場合、`subscript` は `nil` を返します。
+辞書の値は、角括弧(`[]`)で対応するキーを指定してバリューにアクセスすることができます。`someDictionary["Alex"]` は、キー `"Alex"` に関連するバリューを指します。`subscript` は辞書の値型のオプショナルの値を返します。指定されたキーが辞書に含まれていない場合、`subscript` は `nil` を返します。
 
 辞書のキーの型は、Swift 標準ライブラリの `Hashable` に準拠している必要があります。
 
@@ -219,20 +219,239 @@ Swift 標準ライブラリ `Dictionary` 型の詳細については、[Dictiona
 > GRAMMAR OF A DICTIONARY TYPE  
 > dictionary-type → `[` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `:` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `]`
 
-## Optional Type
+## Optional Type(オプショナル型)
 
-## Implicitly Unwrapped Optional Type
+Swift は、標準ライブラリで、名前付き型の `Optional<Wrapped>` の糖衣構文(シンタックシュガー)として、Postfix の `?` が定義されています。言い換えれば、次の 2 つの宣言は同等です:
 
-## Protocol Composition Type
+```swift
+var optionalInteger: Int?
+var optionalInteger: Optional<Int>
+```
 
-## Opaque Type
+どちらの場合も、変数 `optionalInteger` はオプショナルの整数の型を持つように宣言されています。型と `?` の間にスペースがないことに注目してください。
 
-## Meta*type* Type
+`Optional<Wrapped>` 型は、`none` と `some(Wrapped)` の 2 つのケースを持った列挙型です。任意の型で、オプショナルの型を明示的に(または暗黙的に変換するよう)に宣言することができます。オプショナルの変数またはプロパティを宣言するときに初期値を指定しない場合、その値は自動的に `nil` になります。
 
-## Any Type
+オプショナル型のインスタンスに値が含まれている場合は、後述のように後置演算子の `!` を使用してその値にアクセスできます:
 
-## Self Type
+```swift
+optionalInteger = 42
+optionalInteger! // 42
+```
 
-## Type Inheritance Clause
+`!` を使って `nil` の値をオプショナルをアンラップしようとした場合、実行時エラーになります。
+
+オプショナルチェーンとオプショナルバインディングを使用して、式で操作を実行することもできます。値が `nil` の場合、操作は実行されず、したがって実行時エラーが発生しません。
+
+オプショナル型の使用方法を示す例を示した詳細については、[Optionals](./../language-guide/the-basics.md#optionalsオプショナル)を参照ください。
+
+> GRAMMAR OF AN OPTIONAL TYPE  
+> optional-type → [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `?`
+
+## Implicitly Unwrapped Optional Type(暗黙アンラップオプショナル型)
+
+Swift は、標準ライブラリで定義されている名前付き型の `Optional<Wrapped>` の後に `!` を付けると、アクセス時に暗黙的にアンラップされる機能を追加する糖衣構文(シンタックシュガー)を定義しています。`nil` の暗黙アンラップオプショナルを使用しようとすると、実行時エラーが発生します。暗黙アンラップの動作を以外は、次の 2 つの宣言は同等です:
+
+```swift
+var implicitlyUnwrappedString: String!
+var explicitlyUnwrappedString: Optional<String>
+```
+
+型と `!` の間にスペースを入れないことに注意してください。
+
+暗黙アンラップは、その型を含む宣言の意味を変更します。タプル型の内側にネストされているオプショナル型、または辞書や配列の要素型などの一般的な型のオプショナル型は、暗黙アンラップできません。例えば:
+
+```swift
+let tupleOfImplicitlyUnwrappedElements: (Int!, Int!)  // エラー
+let implicitlyUnwrappedTuple: (Int, Int)!             // OK
+
+let arrayOfImplicitlyUnwrappedElements: [Int!]        // エラー
+let implicitlyUnwrappedArray: [Int]!                  // OK
+```
+
+暗黙アンラップオプショナルは、オプショナルの値として `Optional<Wrapped>` 型と同じように使用できるコード内の全ての場所で使用できます。例えば、暗黙アンラップオプショナルの値をオプショナルの変数、定数、およびプロパティに割り当てることができます。
+
+オプショナルと同様に、暗黙アンラップされたオプショナル変数またはプロパティを宣言するときに初期値を指定しない場合、その値は自動的に `nil` になります。
+
+条件付きで暗黙アンラップオプショナル式で操作を実行するには、オプショナルチェーンを使用します。値が `nil` の場合、操作は実行されず、したがって実行時エラーが発生しません。
+
+暗黙アンラップされたオプショナル型の詳細については、[Implicitly Unwrapped Optionals(暗黙アンラップオプショナル)](./../language-guide/the-basics.md#implicitly-unwrapped-optionals暗黙アンラップオプショナル)を参照ください。
+
+> GRAMMAR OF AN IMPLICITLY UNWRAPPED OPTIONAL TYPE  
+> implicitly-unwrapped-optional-type → [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `!`
+
+## Protocol Composition Type(プロトコル合成型)
+
+プロトコル合成型は、指定されたプロトコルリスト内の各プロトコルに準拠した型、または特定のクラスのサブクラスの型を定義し、指定されたプロトコルリスト内の各プロトコルに準拠します。プロトコル合成型は、型アノテーション、ジェネリックの引数句、およびジェネリックの `where` 句内に型を指定する場合にのみ使用できます。
+
+プロトコル合成型は次の形式です:
+
+![プロトコル合成型](./../.gitbook/assets/protocol_compose_type.png)
+
+プロトコル合成型を使用すると、型に準拠したい各プロトコルから継承する新しい名前のプロトコルを明示的に定義することなく、型が複数のプロトコルの要件に適合する値を指定できます。例えば、`ProtocolA` と `ProtocolB` と `ProtocolC` を継承する新しいプロトコルを宣言する代わりに、プロトコル合成型の `ProtocolA & ProtocolB & ProtocolC` を使用できます。同様に、スーパークラスのサブクラスの新しいプロトコルを宣言する代わりにスーパークラスとプロトコルを使用することができ、`ProtocolA` に準拠できます。
+
+プロトコル合成リスト内の各項目は、次のいずれかです。リストにはクラスは 1 つのみ含めることができます:
+
+* クラスの名前
+* プロトコルの名前
+* 基になる型がプロトコル合成型、プロトコル、またはクラスの型エイリアス
+
+プロトコル合成型に型エイリアスが含まれている場合、定義の中で同じプロトコルが重複でしている可能性があります - そしてその重複は無視されます。例えば、下記のコードの `PQR` の定義は、`P＆Q＆R` と同じです。
+
+```swift
+typealias PQ = P & Q
+typealias PQR = PQ & Q & R
+```
+
+> GRAMMAR OF A PROTOCOL COMPOSITION TYPE  
+> protocol-composition-type → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  `&` [protocol-composition-continuation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_protocol-composition-continuation)  
+> protocol-composition-continuation → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier) \|  [protocol-composition-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_protocol-composition-type)
+
+## Opaque Type(Opaque型)
+
+opaque 型は、基礎となる具体的な型を特定することなく、プロトコルまたはプロトコル合成に準拠する型を定義します。
+
+opaque 型は、関数または `subscript` の戻り型、またはプロパティの型として使用できます。opaque 型は、タプル型の一部や配列の要素型やオプショナルの `Wrapped` 型などジェネリック型には使用できません。
+
+opaque 型は次の形式です:
+
+![Opaque 型](./../.gitbook/assets/opaque_type.png)
+
+`constraint` に入るには、クラス型、プロトコル型、プロトコル合成型、または Any 型です。値にはは、リストされているプロトコルまたはプロトコル合成に準拠した型、またはリストされているクラスを継承した型のインスタンスのみ使用できます。opaque 型の値とやり取りするコードは、`constraint` に定義されたインターフェイスの一部にすることでしか値を使用できません。
+
+プロトコル宣言には opaque 型を含めることはできません。クラスは、`final` ではないメソッドの戻り値の型として opaque 型を使用することはできません。
+
+戻り値の型として opaque 型を使用する関数は、単一の共通した基になる型を持つ値を返す必要があります。戻り値の型には、関数のジェネリックな型引数の一部を含めることができます。例えば、`someFunction<T>()` は `T` 型または `Dictionary<String, T>` 型の値を返すことができます。
+
+> GRAMMAR OF AN OPAQUE TYPE  
+> opaque-type → `some` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
+
+## Metatype Type(Metatype型)
+
+metatype 型は、クラス型、構造型、列挙型、およびプロトコル型を含む、任意の型の型を指します。
+
+クラス、構造体、または列挙型の metaType は、その型の名前に `.Type` が続きます。実行時のプロトコルに準拠した具体的な型ではなく、プロトコル型の Metatype は、そのプロトコルの名前に `.Protocol` が続きます。例えば、クラス型 `SomeClass` の metatype は `SomeClass.Type` で、`SomeProtocol` の metaType は `SomeProtocol.Protocol` です。
+
+型に値としてアクセスするには後置 `self` 式を使用します。例えば、`SomeClass.self` は `SomeClass` のインスタンスではなく、`Someclass` 自体を返します。そして、`someProtocol.self` は、実行時に `SomeProtocol` に準拠した型のインスタンスではなく、`SomeProtocol` 自体を返します。次の例に示すように、そのインスタンスの動的な実行時の型にアクセスするには、型のインスタンスを使用して型を呼び出すことができます。
+
+```swift
+class SomeBaseClass {
+    class func printClassName() {
+        print("SomeBaseClass")
+    }
+}
+class SomeSubClass: SomeBaseClass {
+    override class func printClassName() {
+        print("SomeSubClass")
+    }
+}
+let someInstance: SomeBaseClass = SomeSubClass()
+// コンパイル時の someInstance の型は somebaseclass です
+// 実行時の someInstance の型は SomesubClass です
+type(of: someInstance).printClassName()
+// "SomeSubClass"
+```
+
+詳細については、標準ライブラリの[type(of:)](https://developer.apple.com/documentation/swift/2885064-type)を参照ください。
+
+その型の metatype 値からイニシャライザ式を使用して、型のインスタンスを構築します。クラスインスタンスの場合、`required` キーワードが付いたイニシャライザ、または `final` のクラスでなければなりません。
+
+```swift
+class AnotherSubClass: SomeBaseClass {
+    let string: String
+    required init(string: String) {
+        self.string = string
+    }
+    override class func printClassName() {
+        print("AnotherSubClass")
+    }
+}
+let metatype: AnotherSubClass.Type = AnotherSubClass.self
+let anotherInstance = metatype.init(string: "some string")
+```
+
+> GRAMMAR OF A METATYPE TYPE  
+> metatype-type → [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `.` `Type` \|  [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `.` `Protocol`
+
+## Any Type(Any型)
+
+Any 型には、他の全ての型からの値を含めることができます。`Any` は下記のいずれかの型の具体的なインスタンスの型として使用できます。
+
+* クラス、構造体、または列挙型
+* `Int.self` のような metatype
+* コンポーネントの種類を持つタプル
+* クロージャまたは関数型
+
+```swift
+let mixed: [Any] = ["one", 2, true, (4, 5.3), { () -> Int in return 6 }]
+```
+
+インスタンスの具体的な型として `Any` を使用する場合は、そのプロパティやメソッドにアクセスする前に、インスタンスを元の型にキャストする必要があります。`Any` 型のインスタンスは元の動的な型の情報を保持しており、型キャスト演算子(`as` または `as?`、または `as!`)のいずれかを使用して元の型にキャストできます。例えば、異なる型の値を格納する配列内の最初のオブジェクトを条件付きでダウンキャストするには、次のようにします:
+
+```swift
+if let first = mixed.first as? String {
+    print("The first item, '\(first)', is a string.")
+}
+// "The first item, 'one', is a string."
+```
+
+キャスティングの詳細については、[Type Casting](./../language-guide/type-casting.md)を参照ください。
+
+`AnyObject` プロトコルは `Any` 型と似ています。全てのクラスは暗黙的に `AnyObject` に準拠しています。言語によって定義されているものとは異なり、`AnyObject` は標準ライブラリで定義されています。詳細については、[Class-Only Protocols](./../language-guide/protocols.md#class-only-protocolsクラス専用プロトコル)と [AnyObject](https://developer.apple.com/documentation/swift/anyobject)を参照ください。
+
+> GRAMMAR OF AN ANY TYPE  
+> any-type → `Any`
+
+## Self Type(Self型)
+
+`Self` 型は特定の型ではなく、その型の名前を繰り返したり明確にすることなく現在の型を都合よく参照できるようにします。
+
+プロトコル宣言またはプロトコルメンバ宣言では、`Self` 型は最終的にプロトコルに準拠した型を指します。
+
+構造体、クラス、または列挙型宣言では、`Self` 型は宣言によって導入された型を指します。型のメンバの宣言の内部では、`Self` 型はその型を表します。クラス宣言のメンバでは、`Self` は次のように表示されます:
+
+* メソッドの戻り値の型として
+* 読み取り専用 `subscript` の戻り値の型として
+* 読み取り専用の計算プロパティの型として
+* メソッドの本文内で
+
+例えば、下記のコードは、戻り値の型が `Self` 型インスタンスメソッド `f` を示しています
+
+```swift
+class Superclass {
+    func f() -> Self { return self }
+}
+let x = Superclass()
+print(type(of: x.f()))
+// "Superclass"
+
+class Subclass: Superclass { }
+let y = Subclass()
+print(type(of: y.f()))
+// "Subclass"
+
+let z: Superclass = Subclass()
+print(type(of: z.f()))
+// "Subclass"
+```
+
+上記の例の最後の部分は、`Self` は、コンパイル時のスーパークラスの型ではなく、`z` の実行時のサブクラスの型を参照しています。
+
+ネストされた型宣言内では、`Self` 型は、最も内側の型を指します。
+
+`Self` 型は、標準ライブラリの型と[type(of:)](https://developer.apple.com/documentation/swift/2885064-type)関数と同じ型を指します。現在の型のメンバにアクセスするめに `Self.SomeStaticMember` を書くことは、`type(of: self).someStaticMember` を書くのと同じです。
+
+> GRAMMAR OF A SELF TYPE  
+> self-type → `Self`
+
+## Type Inheritance Clause(型継承句)
+
+型継承句(*type inheritance clause*)は、名前付き型がどのクラスを継承しているか、どのプロトコルに準拠しているかを指定するために使用されます。型継承句はコロン(`:`)で始まり、その後に型識別子のリストが続きます。
+
+クラス型は、単一のスーパークラスを継承し、任意の数のプロトコルに準拠できます。クラスを定義するときは、スーパークラスの名前が最初に型識別子のリストに表示され、その後にクラスが準拠しなければならないプロトコルが続きます。クラスが別のクラスから継承しない場合、リストは代わりにプロトコルから始めることができます。より発展的な議論とクラス継承の例については、[Inheritance](./../language-guide/inheritance.md)を参照ください。
+
+その他の名前付き型は、プロトコルにのみ継承または準拠することができます。プロトコル型は、任意の数の他のプロトコルを継承できます。プロトコル型が他のプロトコルを継承すると、他のプロトコルの要件も集約され、現在のプロトコルから継承する型は全ての要件に準拠している必要があります。
+
+列挙型定義の型継承句は、プロトコルのリスト、または列挙型のケースに Raw Value を割り当てる型の場合、それらの Raw Value の型を特定する単一の名前付き型を継承することができます。型継承句を使用して Raw Value 型を指定する列挙型定義の例については、[Raw Values](./../language-guide/enumerations.md#raw-values)を参照ください。
 
 ## Type Inference
