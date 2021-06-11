@@ -1,8 +1,8 @@
-# Extensions
+# Extensions \(拡張\)
 
 最終更新日: 2021/6/1
 
-拡張機能(*extension*)は、既存のクラス、構造体、列挙型、またはプロトコル型に新しい機能を追加します。これは、(遡及モデリング(*retroactive modeling*)と呼ばれる)、元のソースコードにアクセスできない型を拡張することもできます。拡張機能は、Objective-C のカテゴリに似ています。(ただし、Objective-C のカテゴリとは異なり、Swift の拡張機能には名前がありません)
+拡張機能\(_extension_\)は、既存のクラス、構造体、列挙型、またはプロトコル型に新しい機能を追加します。これは、\(遡及モデリング\(_retroactive modeling_\)と呼ばれる\)、元のソースコードにアクセスできない型を拡張することもできます。拡張機能は、Objective-C のカテゴリに似ています。\(ただし、Objective-C のカテゴリとは異なり、Swift の拡張機能には名前がありません\)
 
 拡張機能は次のことができます。
 
@@ -13,12 +13,12 @@
 * 新しくネストされた型を定義する
 * 既存の型をプロトコルに準拠させる
 
-Swift では、プロトコルを拡張してその要件の実装を提供したり、準拠する型が利用できる機能を追加することもできます。詳細については、[Protocol Extensions](./protocols.md#protocol-extensionsプロトコルの拡張)を参照ください。
+Swift では、プロトコルを拡張してその要件の実装を提供したり、準拠する型が利用できる機能を追加することもできます。詳細については、[Protocol Extensions](protocols.md#protocol-extensionsプロトコルの拡張)を参照ください。
 
 > NOTE  
 > 拡張機能は型に新しい機能を追加できますが、既存の機能をオーバーライドすることはできません。
 
-## Extension Syntax(拡張機能の構文)
+## Extension Syntax\(拡張機能の構文\)
 
 `extension` キーワードを使用して拡張機能を宣言します:
 
@@ -36,14 +36,14 @@ extension SomeType: SomeProtocol, AnotherProtocol {
 }
 ```
 
-この方法でプロトコル準拠を追加する方法は、[Adding Protocol Conformance with an Extension](./protocols.md#adding-protocol-conformance-with-an-extension拡張機能を使用したプロトコル準拠の追加)で説明されています。
+この方法でプロトコル準拠を追加する方法は、[Adding Protocol Conformance with an Extension](protocols.md#adding-protocol-conformance-with-an-extension拡張機能を使用したプロトコル準拠の追加)で説明されています。
 
-拡張機能は、[Extending a Generic Type](./generics.md#extending-a-generic-typeジェネリック型の拡張)で説明されているように、既存のジェネリック型を拡張するためにも使用できます。ジェネリック型を拡張して、条件付きで機能を追加することもできます([Extensions with a Generic Where Clause](./generics.md#extensions-with-a-generic-where-clauseジェネリックなWhere句を使用した拡張機能)を参照ください)。
+拡張機能は、[Extending a Generic Type](generics.md#extending-a-generic-typeジェネリック型の拡張)で説明されているように、既存のジェネリック型を拡張するためにも使用できます。ジェネリック型を拡張して、条件付きで機能を追加することもできます\([Extensions with a Generic Where Clause](generics.md#extensions-with-a-generic-where-clauseジェネリックなWhere句を使用した拡張機能)を参照ください\)。
 
 > NOTE  
 > 拡張機能を定義して既存の型に新しい機能を追加すると、拡張機能が定義される前に作成されたものであっても、その型の既存の全てのインスタンスで新しい機能を使用できます。
 
-## Computed Properties(計算プロパティ)
+## Computed Properties\(計算プロパティ\)
 
 拡張機能は、計算インスタンスプロパティと計算型プロパティを既存の型に追加できます。この例では、5 つの計算インスタンスプロパティを Swift の `Double` 型に追加して、距離単位を使用するための基本的な機能を提供します。
 
@@ -63,7 +63,7 @@ print("Three feet is \(threeFeet) meters")
 // "Three feet is 0.914399970739201 meters"
 ```
 
-これらの計算プロパティは、`Double` の値を特定の長さの単位と見なしています。計算プロパティとして実装されていますが、ドット構文(`.`)を使用して浮動小数点リテラルの後に追加して使用できます。
+これらの計算プロパティは、`Double` の値を特定の長さの単位と見なしています。計算プロパティとして実装されていますが、ドット構文\(`.`\)を使用して浮動小数点リテラルの後に追加して使用できます。
 
 この例では、`Double` の値 `1.0` が「1 メートル」を表しているため、計算プロパティ `m` は `self` を返します。式 `1.m` は、`Double` の値 `1.0` を計算していると見なされます。
 
@@ -80,13 +80,13 @@ print("A marathon is \(aMarathon) meters long")
 > NOTE  
 > 拡張機能は新しい計算プロパティを追加できますが、格納プロパティを追加したり、既存のプロパティにプロパティオブザーバを追加したりすることはできません。
 
-## Initializers(イニシャライザ)
+## Initializers\(イニシャライザ\)
 
 拡張機能は、既存の型に新しいイニシャライザを追加できます。他の型を拡張して、独自のカスタム型を初期化引数として受け入れたり、型の元の実装の一部として含まれていなかった追加の初期化オプションを提供したりできます。
 
 拡張機能は、新しい convenience イニシャライザをクラスに追加できますが、新しい指定イニシャライザまたはデイニシャライザを追加することはできません。指定イニシャライザとデイニシャライザは、常に元のクラス実装によって提供される必要があります。
 
-拡張機能を使用して、カスタムイニシャライザを定義しない値型に全ての格納プロパティの既定値を提供するイニシャライザを追加する場合は、拡張機能のイニシャライザ内からデフォルトイニシャライザとメンバワイズイニシャライザを呼び出すことができます。[Initializer Delegation for Value Types](./initialization.md#initializer-delegation-for-value-types値型のイニシャライザの委譲)で説明されているように、値型の元の実装の一部としてイニシャライザを作成した場合は、これに当てはまりません。
+拡張機能を使用して、カスタムイニシャライザを定義しない値型に全ての格納プロパティの既定値を提供するイニシャライザを追加する場合は、拡張機能のイニシャライザ内からデフォルトイニシャライザとメンバワイズイニシャライザを呼び出すことができます。[Initializer Delegation for Value Types](initialization.md#initializer-delegation-for-value-types値型のイニシャライザの委譲)で説明されているように、値型の元の実装の一部としてイニシャライザを作成した場合は、これに当てはまりません。
 
 別のモジュールで宣言された構造体にイニシャライザを追加する場合、新しいイニシャライザは、定義モジュールからイニシャライザを呼び出されるまで、`self` にアクセスできません。
 
@@ -105,7 +105,7 @@ struct Rect {
 }
 ```
 
-`Rect` 構造体はその全てのプロパティに既定値を提供しているため、[Default Initializers](./initialization.md#default-initializersデフォルトイニシャライザ)で説明されているように、デフォルトイニシャライザとメンバワイズイニシャライザを自動的に受け取ります。これらのイニシャライザを使用して、新しい `Rect` インスタンスを作成できます:
+`Rect` 構造体はその全てのプロパティに既定値を提供しているため、[Default Initializers](initialization.md#default-initializersデフォルトイニシャライザ)で説明されているように、デフォルトイニシャライザとメンバワイズイニシャライザを自動的に受け取ります。これらのイニシャライザを使用して、新しい `Rect` インスタンスを作成できます:
 
 ```swift
 let defaultRect = Rect()
@@ -136,7 +136,7 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0),
 > NOTE  
 > 拡張機能で新しいイニシャライザを提供する場合でも、イニシャライザが完了前に完全に初期化が完了していなければなりません。
 
-## Methods(メソッド)
+## Methods\(メソッド\)
 
 拡張機能は、新しいインスタンスメソッドと型メソッドを既存の型に追加できます。次の例では、`repetitions` という新しいインスタンスメソッドを `Int` 型に追加しています:
 
@@ -163,7 +163,7 @@ extension Int {
 // Hello!
 ```
 
-### Mutating Instance Methods(mutatingインスタンスメソッド)
+### Mutating Instance Methods\(mutatingインスタンスメソッド\)
 
 拡張機能を使用して追加されたインスタンスメソッドは、インスタンス自体を変更することもできます。`self` またはそのプロパティを変更する構造体および列挙型メソッドは、元の実装のメソッドを変更するのと同じように、インスタンスメソッドを `mutating` としてマークする必要があります。
 
@@ -217,7 +217,7 @@ extension Int {
 0746381295[9]
 ```
 
-## Nested Types(ネストされた型)
+## Nested Types\(ネストされた型\)
 
 拡張機能は、新しいネストされた型を既存のクラス、構造体、および列挙型に追加できます:
 
@@ -267,3 +267,4 @@ printIntegerKinds([3, 19, -27, 0, -6, 0, 7])
 
 > NOTE  
 > `number.kind` は `Int.Kind` 型であることがすでにわかっているため、`Int.Kind` の各ケースは、`Int.Kind.negative` ではなく `.negative` など、`switch` 文内では省略して記述できます。
+

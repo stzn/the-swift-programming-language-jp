@@ -1,17 +1,17 @@
-# Optional Chaining
+# Optional Chaining \(オプショナルの連鎖\)
 
 最終更新日: 2021/5/30
 
-オプショナルの連鎖(*optional chaining*)は、`nil` になる可能性のあるオプショナルのプロパティ、メソッド、および subscript を照会して呼び出すためのプロセスです。オプショナルに値が含まれている場合、プロパティ、メソッド、または subscript の呼び出しは成功します。オプショナルが `nil` の場合、プロパティ、メソッド、または subscript の呼び出しは `nil` を返します。複数の照会を一気に連鎖させることができ、ある連鎖が `nil` の場合、連鎖全体が失敗します。
+オプショナルの連鎖\(_optional chaining_\)は、`nil` になる可能性のあるオプショナルのプロパティ、メソッド、および subscript を照会して呼び出すためのプロセスです。オプショナルに値が含まれている場合、プロパティ、メソッド、または subscript の呼び出しは成功します。オプショナルが `nil` の場合、プロパティ、メソッド、または subscript の呼び出しは `nil` を返します。複数の照会を一気に連鎖させることができ、ある連鎖が `nil` の場合、連鎖全体が失敗します。
 
 > NOTE  
 > Swift のオプショナルの連鎖は、Objective-C の `nil` のメッセージングに似ていますが、どの型にでも機能し、成功または失敗をチェックできます。
 
-## Optional Chaining as an Alternative to Forced Unwrapping (強制アンラップの代替としてのオプショナル連鎖)
+## Optional Chaining as an Alternative to Forced Unwrapping \(強制アンラップの代替としてのオプショナル連鎖\)
 
-オプショナルが `nil` 以外の場合、プロパティ、メソッド、または subscript を呼び出すオプショナルの後に疑問符(`?`)を配置して、オプショナルの連鎖を指定します。これは、オプショナルの後に感嘆符(`!`)を配置して、その値を強制アンラップするのによく似ています。主な違いは、オプショナルが `nil` の場合、オプショナルの連鎖が失敗するのに対し、強制アンラップは実行時エラーを引き起こすことです。
+オプショナルが `nil` 以外の場合、プロパティ、メソッド、または subscript を呼び出すオプショナルの後に疑問符\(`?`\)を配置して、オプショナルの連鎖を指定します。これは、オプショナルの後に感嘆符\(`!`\)を配置して、その値を強制アンラップするのによく似ています。主な違いは、オプショナルが `nil` の場合、オプショナルの連鎖が失敗するのに対し、強制アンラップは実行時エラーを引き起こすことです。
 
-オプショナルの連鎖が `nil` 値で呼び出される可能性があるということを反映するために、照会しているプロパティ、メソッド、または subscript が非オプショナルの値を返した場合でも、オプショナルの連鎖の呼び出しの結果は、常にオプショナルになります。このオプショナルの戻り値を使用して、オプショナルの連鎖が成功したか(返されたオプショナルに値が含まれているか)、連鎖中に `nil` が存在して失敗したか(返されたオプショナルが `nil` か)を確認できます。
+オプショナルの連鎖が `nil` 値で呼び出される可能性があるということを反映するために、照会しているプロパティ、メソッド、または subscript が非オプショナルの値を返した場合でも、オプショナルの連鎖の呼び出しの結果は、常にオプショナルになります。このオプショナルの戻り値を使用して、オプショナルの連鎖が成功したか\(返されたオプショナルに値が含まれているか\)、連鎖中に `nil` が存在して失敗したか\(返されたオプショナルが `nil` か\)を確認できます。
 
 具体的には、オプショナルの連鎖を介してアクセスされた場合、オプショナルの連鎖の結果は、期待される戻り値と同じ型ですが、オプショナルでラップされています。`Int` を返すプロパティは `Int?` を返します。
 
@@ -37,7 +37,7 @@ class Residence {
 let john = Person()
 ```
 
-この人の `residence` の `numberOfRooms` プロパティにアクセスしようとすると、`residence` の後に感嘆符(`!`)を置いてその値を強制アンラップすると、`residence` に値がないため、実行時エラーが発生します。
+この人の `residence` の `numberOfRooms` プロパティにアクセスしようとすると、`residence` の後に感嘆符\(`!`\)を置いてその値を強制アンラップすると、`residence` に値がないため、実行時エラーが発生します。
 
 ```swift
 let roomCount = john.residence!.numberOfRooms
@@ -46,7 +46,7 @@ let roomCount = john.residence!.numberOfRooms
 
 上記のコードは、`john.residence` の値が `nil` 以外の場合に成功し、`roomCount` に適切な部屋数を含む `Int` 値を設定します。ただし、上に示したように、このコードは、`residence` が `nil` の場合、常に実行時エラーを引き起こします。
 
-オプショナルの連鎖は、`numberOfRooms` の値にアクセスする別の方法を提供します。オプショナルの連鎖を使用するには、感嘆符(`!`)の代わりに疑問符(`?`)を使用します:
+オプショナルの連鎖は、`numberOfRooms` の値にアクセスする別の方法を提供します。オプショナルの連鎖を使用するには、感嘆符\(`!`\)の代わりに疑問符\(`?`\)を使用します:
 
 ```swift
 if let roomCount = john.residence?.numberOfRooms {
@@ -80,7 +80,7 @@ if let roomCount = john.residence?.numberOfRooms {
 // "John's residence has 1 room(s)."
 ```
 
-## Defining Model Classes for Optional Chaining(オプショナルの連鎖モデルのクラスの定義)
+## Defining Model Classes for Optional Chaining\(オプショナルの連鎖モデルのクラスの定義\)
 
 1 階層以上の深さのプロパティ、メソッド、および subscript の呼び出しにもオプショナルの連鎖を使用できます。これにより、複雑なモデル内の関連する型のサブプロパティまで掘り下げて、それらのプロパティ、メソッド、および subscript にアクセスできるかどうかを確認できます。
 
@@ -155,9 +155,9 @@ class Address {
 
 `Address` クラスはまた、`String?` の戻り型を持つ `buildingIdentifier()` というメソッドも提供します。このメソッドは、住所のプロパティをチェックし、`buildingName` に値がある場合は `buildingName` を返し、`street` と `buildingNumber` の両方に値がある場合は 2 つを繋げた値を返し、それ以外は `nil` を返します
 
-## Accessing Properties Through Optional Chaining(オプショナル連鎖を通したプロパティへのアクセス)
+## Accessing Properties Through Optional Chaining\(オプショナル連鎖を通したプロパティへのアクセス\)
 
-[Optional Chaining as an Alternative to Forced Unwrapping](#optional-chaining-as-an-alternative-to-forced-unwrapping-強制アンラップの代替としてのオプショナル連鎖)で示されているように、オプショナルの連鎖を使用してオプショナルのプロパティにアクセスし、アクセスが成功したかどうかを確認できます。
+[Optional Chaining as an Alternative to Forced Unwrapping](optional-chaining.md#optional-chaining-as-an-alternative-to-forced-unwrapping-強制アンラップの代替としてのオプショナル連鎖)で示されているように、オプショナルの連鎖を使用してオプショナルのプロパティにアクセスし、アクセスが成功したかどうかを確認できます。
 
 上で定義したクラスを使用して新しい `Person` インスタンスを作成し、以前と同じように `numberOfRooms` プロパティにアクセスしてみます:
 
@@ -201,7 +201,7 @@ john.residence?.address = createAddress()
 
 何も出力されないため、`createAddress()` 関数が呼び出されていないことがわかります。
 
-## Calling Methods Through Optional Chaining(オプショナル連鎖を通したメソッドの呼び出し)
+## Calling Methods Through Optional Chaining\(オプショナル連鎖を通したメソッドの呼び出し\)
 
 オプショナルの連鎖を使用して、オプショナルの値でメソッドを呼び出し、そのメソッドの呼び出しが成功したかどうかを確認できます。そのメソッドが戻り値を定義していなくても、これを行うことができます。
 
@@ -213,7 +213,7 @@ func printNumberOfRooms() {
 }
 ```
 
-このメソッドは戻り値の型を指定しません。ただし、[Functions Without Return Values](./functions.md#functions-without-return-values戻り値のない関数)で説明されているように、戻り型のない関数とメソッドには、暗黙的な戻り型 `Void` があります。これは、`()` の値、または空のタプルを返すことを意味します。
+このメソッドは戻り値の型を指定しません。ただし、[Functions Without Return Values](functions.md#functions-without-return-values戻り値のない関数)で説明されているように、戻り型のない関数とメソッドには、暗黙的な戻り型 `Void` があります。これは、`()` の値、または空のタプルを返すことを意味します。
 
 オプショナルの連鎖を使用してオプショナルの値でこのメソッドを呼び出す場合、メソッドの戻り値の型は `Void` ではなく `Void?` になります。これにより、メソッド自体が戻り値を定義していなくても、`if` 文を使用して、`printNumberOfRooms()` メソッドを呼び出すことができたかどうかを確認できます。`printNumberOfRooms` の呼び出しからの戻り値を `nil` と比較して、メソッド呼び出しが成功したかどうかを確認します:
 
@@ -226,7 +226,7 @@ if john.residence?.printNumberOfRooms() != nil {
 // "It was not possible to print the number of rooms."
 ```
 
-オプショナルの連鎖によってプロパティを設定しようとする場合も同様です。[Accessing Properties Through Optional Chaining](#accessing-properties-through-optional-chainingオプショナル連鎖を通したプロパティへのアクセス)の上記の例では、`residence` プロパティが `nil` にもかかわらず、`john.residence` のアドレス値を設定しようとしています。オプショナルの連鎖によってプロパティを設定しようとすると、`Void?` 型の値が返されます。これにより、`nil` と比較して、プロパティが正常に設定されたかどうかを確認できます:
+オプショナルの連鎖によってプロパティを設定しようとする場合も同様です。[Accessing Properties Through Optional Chaining](optional-chaining.md#accessing-properties-through-optional-chainingオプショナル連鎖を通したプロパティへのアクセス)の上記の例では、`residence` プロパティが `nil` にもかかわらず、`john.residence` のアドレス値を設定しようとしています。オプショナルの連鎖によってプロパティを設定しようとすると、`Void?` 型の値が返されます。これにより、`nil` と比較して、プロパティが正常に設定されたかどうかを確認できます:
 
 ```swift
 if (john.residence?.address = someAddress) != nil {
@@ -237,12 +237,12 @@ if (john.residence?.address = someAddress) != nil {
 // "It was not possible to set the address."
 ```
 
-## Accessing Subscripts Through Optional Chaining(オプショナル連鎖を通したsubscriptへのアクセス)
+## Accessing Subscripts Through Optional Chaining\(オプショナル連鎖を通したsubscriptへのアクセス\)
 
 オプショナルの連鎖を使用して、subscript の値を get/設定し、その subscript の呼び出しが成功したかどうかを確認できます。
 
 > NOTE  
->オプショナルの連鎖を通じてオプショナルの subscript にアクセスする場合、疑問符は subscript の大括弧の後(`]`)ではなく前(`[`)に置きます。オプショナルの連鎖の場合、疑問符(`?`)は、常に式のオプショナル部分の直後に続きます。
+> オプショナルの連鎖を通じてオプショナルの subscript にアクセスする場合、疑問符は subscript の大括弧の後\(`]`\)ではなく前\(`[`\)に置きます。オプショナルの連鎖の場合、疑問符\(`?`\)は、常に式のオプショナル部分の直後に続きます。
 
 下記の例では、`Residence` クラスで定義された subscript を使用して、`john.residence` プロパティの `rooms` 配列内の最初の部屋の名前を取得しようとしています。`john.residence` は現在 `nil` のため、subscript の呼び出しは失敗します。
 
@@ -255,7 +255,7 @@ if let firstRoomName = john.residence?[0].name {
 // "Unable to retrieve the first room name."
 ```
 
-`john.residence` がオプショナルの値のため、疑問符(`?`)は、`john.residence` の直後、subscript の括弧(`[`)の前に置かれます。
+`john.residence` がオプショナルの値のため、疑問符\(`?`\)は、`john.residence` の直後、subscript の括弧\(`[`\)の前に置かれます。
 
 同様に、オプショナルの連鎖を使用して、subscript を介して新しい値の設定を試みることができます:
 
@@ -281,9 +281,9 @@ if let firstRoomName = john.residence?[0].name {
 // "The first room name is Living Room."
 ```
 
-### Accessing Subscripts of Optional Type(オプショナル型のsubscriptへのアクセス)
+### Accessing Subscripts of Optional Type\(オプショナル型のsubscriptへのアクセス\)
 
-subscript がオプショナル型の値 (Swift の Dictionary 型のキーsubscript など) を返す場合、そのオプショナルの戻り値を連鎖させるために、subscript の閉じ括弧(`]`)の後に疑問符(`?`)を置きます:
+subscript がオプショナル型の値 \(Swift の Dictionary 型のキーsubscript など\) を返す場合、そのオプショナルの戻り値を連鎖させるために、subscript の閉じ括弧\(`]`\)の後に疑問符\(`?`\)を置きます:
 
 ```swift
 var testScores = ["Dave": [86, 82, 84], "Bev": [79, 94, 81]]
@@ -295,7 +295,7 @@ testScores["Brian"]?[0] = 72
 
 上記の例では、`String` 型のキーを `Int` 型の配列にマップする `testScores` という辞書を定義しています。この例では、オプショナルの連鎖を使用して、`"Dave"` 配列の最初の項目を `91` に設定し、`"Bev"` 配列の最初の項目を `1` ずつ増やし、`"Brian"` キーの配列の最初のアイテムを設定しようとします。`testScores` 辞書には `"Dave"` と `"Bev"` のキーが含まれているため、最初の 2 つの呼び出しは成功します。しかし、`testScores` 辞書に `"Brian"` のキーが含まれていないため、3 番目の呼び出しは失敗します。
 
-## Linking Multiple Levels of Chaining(複数階層の連鎖のリンク)
+## Linking Multiple Levels of Chaining\(複数階層の連鎖のリンク\)
 
 オプショナルの連鎖の複数の階層を一気にリンクして、モデル内のより深いプロパティ、メソッド、および subscript まで掘り下げることができます。ただし、複数階層のオプショナルの連鎖は、戻り値に階層分のオプショナルを追加しません。
 
@@ -342,7 +342,7 @@ if let johnsStreet = john.residence?.address?.street {
 
 この例では、`john.residence` の値に現在 `Residence` インスタンスが含まれているため、`john.residence` の `address` プロパティを設定する試みは成功します。
 
-## Chaining on Methods with Optional Return Values(オプショナルの戻り値を持つメソッドの連鎖)
+## Chaining on Methods with Optional Return Values\(オプショナルの戻り値を持つメソッドの連鎖\)
 
 前の例は、オプショナルの連鎖を通じてオプショナルの型のプロパティの値を取得する方法を示しています。また、オプショナルの連鎖を使用して、オプショナル型の値を返すメソッドを呼び出し、必要に応じてそのメソッドの戻り値を連鎖することもできます。
 
@@ -355,7 +355,7 @@ if let buildingIdentifier = john.residence?.address?.buildingIdentifier() {
 // "John's building identifier is The Larches."
 ```
 
-このメソッドの戻り値に対してさらにオプショナルの連鎖を実行する場合は、メソッドの括弧(`)`)の後に疑問符(`?`)を配置します。
+このメソッドの戻り値に対してさらにオプショナルの連鎖を実行する場合は、メソッドの括弧\(`)`\)の後に疑問符\(`?`\)を配置します。
 
 ```swift
 if let beginsWithThe =
@@ -371,3 +371,4 @@ if let beginsWithThe =
 
 > NOTE  
 > 上記の例では、連鎖するオプショナルの値が `buildingIdentifier()` メソッド自体ではなく、`buildingIdentifier()` メソッドの戻り値のため、括弧の後に疑問符を配置します。
+

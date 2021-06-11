@@ -1,4 +1,4 @@
-# Version Compatibility
+# Version Compatibility \(バージョン互換性\)
 
 最終更新日: 2020/5/9
 
@@ -11,3 +11,4 @@ Swift4 または Swift4.2 のコードをビルドするのに Xcode12.5 を利�
 * 大きな値の integer リテラルの初期化時に、正しい integer が推論される。例えば、 `UInt64(0xffff_ffff_ffff_ffff)` はオーバーフローせず、正しい値に評価される
 
 Swift5.4 で書かれた target は Swift4.2 または Swift4 で書かれた target に依存する場合があります\(逆も同様\)。すなわち、例えば複数のフレームワークに別れた大きなプロジェクトを扱っている場合、一度に 1 つのフレームワークを Swift4 から Swift5.4 に migrate することができます。
+

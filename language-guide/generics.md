@@ -1,12 +1,12 @@
-# Generics
+# Generics \(ジェネリクス\)
 
 最終更新日: 2021/6/5
 
 ジェネリックなコードを使用すると、定義した要件に従って、任意の型で機能する柔軟で再利用可能な関数と型を作成できます。重複を避け、その意図を明確で抽象的な方法で表現するコードを書くことができます。
 
-ジェネリクス(*Generics*)は Swift の最も強力な機能の 1 つで、Swift 標準ライブラリの多くはジェネリックコードで構築されています。気づかないかもしれませんが、この言語ガイド全体でもジェネリクスを使用しています。例えば、Swift の `Array` 型と `Dictionary` 型はどちらもジェネリックコレクションです。`Int` 値を保持する配列、`String` 値を保持する配列、または Swift で作成できる他のどんな型の配列も作成できます。同様に、指定された型の値を格納する辞書を作成でき、その型に制限はありません。
+ジェネリクス\(_Generics_\)は Swift の最も強力な機能の 1 つで、Swift 標準ライブラリの多くはジェネリックコードで構築されています。気づかないかもしれませんが、この言語ガイド全体でもジェネリクスを使用しています。例えば、Swift の `Array` 型と `Dictionary` 型はどちらもジェネリックコレクションです。`Int` 値を保持する配列、`String` 値を保持する配列、または Swift で作成できる他のどんな型の配列も作成できます。同様に、指定された型の値を格納する辞書を作成でき、その型に制限はありません。
 
-## The Problem That Generics Solve(ジェネリクスが解決する問題)
+## The Problem That Generics Solve\(ジェネリクスが解決する問題\)
 
 これは `swapTwoInts(_:_:)` と呼ばれる標準の非ジェネリック関数で、2 つの `Int` 値を交換します:
 
@@ -18,7 +18,7 @@ func swapTwoInts(_ a: inout Int, _ b: inout Int) {
 }
 ```
 
-この関数は、[In-Out Parameters](./functions.md#in-Out-ParametersIn-Out引数)で説明されているように、inout 引数を使用して `a` と `b` の値を交換します。
+この関数は、[In-Out Parameters](functions.md#in-Out-ParametersIn-Out引数)で説明されているように、inout 引数を使用して `a` と `b` の値を交換します。
 
 `swapTwoInts(_:_:)` 関数は、`b` の値を `a` に、`a` の値を `b` に入れ替えます。この関数を呼び出して、2 つの `Int` 値の変数を交換できます:
 
@@ -46,14 +46,14 @@ func swapTwoDoubles(_ a: inout Double, _ b: inout Double) {
 }
 ```
 
-`swapTwoInts(_:_:)`、`swapTwoStrings(_:_:)`、および `swapTwoDoubles(_:_:)` 関数の本体が同一なことに気付いたかもしれません。唯一の違いは、受け入れられる値の型(`Int`、`String`、および `Double`)です。
+`swapTwoInts(_:_:)`、`swapTwoStrings(_:_:)`、および `swapTwoDoubles(_:_:)` 関数の本体が同一なことに気付いたかもしれません。唯一の違いは、受け入れられる値の型\(`Int`、`String`、および `Double`\)です。
 
-任意の型の 2 つの値を交換する 1 つの関数を作成する方が、より便利で、はるかに柔軟です。ジェネリックコードを使用すると、そのような関数を作成できます。(これらの関数のジェネリックなバージョンは、下記で定義されています)
+任意の型の 2 つの値を交換する 1 つの関数を作成する方が、より便利で、はるかに柔軟です。ジェネリックコードを使用すると、そのような関数を作成できます。\(これらの関数のジェネリックなバージョンは、下記で定義されています\)
 
 > NOTE  
-> 3 つの関数全てで、`a` と `b` の型は同じでなければなりません。`a` と `b` が同じ型でない場合、それらの値を交換することはできません。Swift は型安全な言語であり、(例えば)`String` 型の変数と `Double` 型の変数が互いに値を交換することを許可しません。そうしようとすると、コンパイルエラーが発生します。
+> 3 つの関数全てで、`a` と `b` の型は同じでなければなりません。`a` と `b` が同じ型でない場合、それらの値を交換することはできません。Swift は型安全な言語であり、\(例えば\)`String` 型の変数と `Double` 型の変数が互いに値を交換することを許可しません。そうしようとすると、コンパイルエラーが発生します。
 
-## Generic Functions(ジェネリック関数)
+## Generic Functions\(ジェネリック関数\)
 
 ジェネリック関数は、どの型でも機能します。これは、上記の `swapTwoInts(_:_:)` 関数のジェネリックなバージョンで、`swapTwoValues(_:_:)` と呼ばれます:
 
@@ -72,9 +72,9 @@ func swapTwoInts(_ a: inout Int, _ b: inout Int)
 func swapTwoValues<T>(_ a: inout T, _ b: inout T)
 ```
 
-ジェネリックバージョンの関数は、実際の型名(`Int`、`String`、`Double` など)の代わりにプレースホルダ型名 (この場合は `T`) を使用します。プレースホルダの型名は、`T` に何が必要かについては何も言いませんが、`T` が表すものに関わらず、`a` と `b` の両方が、同じ型 `T` でなければならないことを示しています。`T` の代わりに使用する実際の型は、`swapTwoValues(_:_:)` 関数が呼び出される度に決定されます。
+ジェネリックバージョンの関数は、実際の型名\(`Int`、`String`、`Double` など\)の代わりにプレースホルダ型名 \(この場合は `T`\) を使用します。プレースホルダの型名は、`T` に何が必要かについては何も言いませんが、`T` が表すものに関わらず、`a` と `b` の両方が、同じ型 `T` でなければならないことを示しています。`T` の代わりに使用する実際の型は、`swapTwoValues(_:_:)` 関数が呼び出される度に決定されます。
 
-ジェネリック関数と非ジェネリック関数のもう 1 つの違いは、ジェネリック関数の名前(`swapTwoValues(_:_:)`)の後に山かっこ内にプレースホルダの型名(`<T>`)を記述します。山かっこは、`T` が `swapTwoValues(_:_:)` 関数定義内のプレースホルダ型名なことを Swift に伝えます。`T` はプレースホルダのため、Swift は `T` という実際の型を探しません。
+ジェネリック関数と非ジェネリック関数のもう 1 つの違いは、ジェネリック関数の名前\(`swapTwoValues(_:_:)`\)の後に山かっこ内にプレースホルダの型名\(`<T>`\)を記述します。山かっこは、`T` が `swapTwoValues(_:_:)` 関数定義内のプレースホルダ型名なことを Swift に伝えます。`T` はプレースホルダのため、Swift は `T` という実際の型を探しません。
 
 `swapTwoValues(_:_:)` 関数は `swapTwoInts` と同じ方法で呼び出すことができますが、2 つの値が互いに同じ型の限り、任意の型の 2 つの値を渡すことができます。`swapTwoValues(_:_:)` が呼び出される度に、`T` に使用する型は、関数に渡される値の型から推論されます。
 
@@ -95,33 +95,33 @@ swapTwoValues(&someString, &anotherString)
 > NOTE  
 > 上記で定義された `swapTwoValues(_:_:)` 関数は、Swift 標準ライブラリの `swap` と呼ばれる自動で利用可能なジェネリック関数に由来します。独自のコードで `swapTwoValues(_:_:)` 関数の動作が必要な場合は、独自の実装を提供するのではなく、Swift の既存の `swap(_:_:)` 関数を使用できます。
 
-## Type Parameters(型引数)
+## Type Parameters\(型引数\)
 
-上記の `swapTwoValues(_:_:)` の例では、プレースホルダ型 `T` は型引数の例です。型引数は、(`<T>` のように)プレースホルダ型を指定して名前を付け、関数名の直後に山括弧のペアの間に記述されます。
+上記の `swapTwoValues(_:_:)` の例では、プレースホルダ型 `T` は型引数の例です。型引数は、\(`<T>` のように\)プレースホルダ型を指定して名前を付け、関数名の直後に山括弧のペアの間に記述されます。
 
-型引数を指定すると、それを使用して関数の引数の型(`swapTwoValues(_:_:)` 関数の `a` および `b` 引数など)を定義したり、関数の戻り型として、または関数の本文内のアノテーションの型として定義できます。いずれの場合も、関数が呼び出される度に、型引数が実際の型に置き換えられます。(上記の `swapTwoValues(_:_:)` の例では、関数が最初に呼び出されたときに `T` が `Int` に置き換えられ、2 回目に呼び出されたときは `String` に置き換えられました)
+型引数を指定すると、それを使用して関数の引数の型\(`swapTwoValues(_:_:)` 関数の `a` および `b` 引数など\)を定義したり、関数の戻り型として、または関数の本文内のアノテーションの型として定義できます。いずれの場合も、関数が呼び出される度に、型引数が実際の型に置き換えられます。\(上記の `swapTwoValues(_:_:)` の例では、関数が最初に呼び出されたときに `T` が `Int` に置き換えられ、2 回目に呼び出されたときは `String` に置き換えられました\)
 
-山かっこ内に複数の型引数名をカンマ(`,`)で区切って記述することにより、複数の型引数も指定できます。
+山かっこ内に複数の型引数名をカンマ\(`,`\)で区切って記述することにより、複数の型引数も指定できます。
 
-## Naming Type Parameters(型引数の命名)
+## Naming Type Parameters\(型引数の命名\)
 
 ほとんどの場合、型引数には、`Dictionary<Key, Value>` の `Key` と `Value`、`Array<Element>` の `Element` などのその型引数の意味を表す名前が付いています。ただし、型引数に意味がない場合、上記の `swapTwoValues(_:_:)` 関数の `T` など、`T`、`U`、`V` などの 1 文字の名前を付けるのが伝統的です。
 
 > NOTE  
-> 型引数には常に大文字のキャメルケース名(`T` や `MyTypeParameter` など)を指定して、それらが値ではなく型のプレースホルダであることを示します。
+> 型引数には常に大文字のキャメルケース名\(`T` や `MyTypeParameter` など\)を指定して、それらが値ではなく型のプレースホルダであることを示します。
 
-## Generic Types(ジェネリック型)
+## Generic Types\(ジェネリック型\)
 
 ジェネリック関数に加えて、Swift では独自のジェネリック型を定義できます。これらは、`Array` や `Dictionary` と同様の方法で、独自のクラス、構造体、および列挙型の任意の型で機能します。
 
-このセクションでは、`Stack` と呼ばれるジェネリックなコレクション型を作成する方法を示します。スタックは、配列に似た順序付けられた値のセットですが、`Array` 型よりも操作が制限されています。配列を使用すると、配列内の任意の場所で新しいアイテムを挿入および削除できます。ただし、スタックでは、コレクションの最後にのみ新しいアイテムを追加できます(スタックに新しい値をプッシュする(*pushing*)と呼ばれています)。同様に、スタックでは、コレクションの最後からのみアイテムを削除できます(スタックから値をポップする(*popping*)と呼ばれています)。
+このセクションでは、`Stack` と呼ばれるジェネリックなコレクション型を作成する方法を示します。スタックは、配列に似た順序付けられた値のセットですが、`Array` 型よりも操作が制限されています。配列を使用すると、配列内の任意の場所で新しいアイテムを挿入および削除できます。ただし、スタックでは、コレクションの最後にのみ新しいアイテムを追加できます\(スタックに新しい値をプッシュする\(_pushing_\)と呼ばれています\)。同様に、スタックでは、コレクションの最後からのみアイテムを削除できます\(スタックから値をポップする\(_popping_\)と呼ばれています\)。
 
 > NOTE  
-> `UINavigationController` クラスは、スタックの概念を使用して、ナビゲーション階層内の view controller をモデル化します。`UINavigationController` クラスの `pushViewController(_:animated:)` メソッドを呼び出して view controller をナビゲーションスタックに追加(プッシュ)し、popViewControllerAnimated(_:) メソッドを呼び出してナビゲーションスタックから view controller を削除(ポップ)します。スタックは、コレクションの管理に厳密な「後入れ先出し(LIFO)」アプローチが必要な場合に役立つコレクションモデルです。
+> `UINavigationController` クラスは、スタックの概念を使用して、ナビゲーション階層内の view controller をモデル化します。`UINavigationController` クラスの `pushViewController(_:animated:)` メソッドを呼び出して view controller をナビゲーションスタックに追加\(プッシュ\)し、popViewControllerAnimated\(\_:\) メソッドを呼び出してナビゲーションスタックから view controller を削除\(ポップ\)します。スタックは、コレクションの管理に厳密な「後入れ先出し\(LIFO\)」アプローチが必要な場合に役立つコレクションモデルです。
 
 下記の図は、スタックのプッシュとポップの動作を示しています:
 
-![スタックのプッシュとポップ](./../.gitbook/assets/stackPushPop_2x.png)
+![&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x306E;&#x30D7;&#x30C3;&#x30B7;&#x30E5;&#x3068;&#x30DD;&#x30C3;&#x30D7;](../.gitbook/assets/stackPushPop_2x.png)
 
 1. 現在、スタックには 3 つの値があります
 2. 4 番目の値はスタックの一番上にプッシュされます
@@ -161,7 +161,7 @@ struct Stack<Element> {
 }
 ```
 
-Stack のジェネリックバージョンは、本質的に非ジェネリックバージョンと同じですが、実際の型 `Int` の代わりに `Element` という型引数を使用していることに注意してください。この型引数は、構造体の名前の直後に、一対の山かっこ (`<Element>`) 内に記述されます。
+Stack のジェネリックバージョンは、本質的に非ジェネリックバージョンと同じですが、実際の型 `Int` の代わりに `Element` という型引数を使用していることに注意してください。この型引数は、構造体の名前の直後に、一対の山かっこ \(`<Element>`\) 内に記述されます。
 
 `Element` は、後で提供される型のプレースホルダ名を定義します。この未来の型は、構造体の定義内のどこでも `Element` として参照できます。この場合、`Element` は 3 つの場所でプレースホルダとして使用されてます:
 
@@ -171,7 +171,7 @@ Stack のジェネリックバージョンは、本質的に非ジェネリッ�
 
 ジェネリック型のため、`Stack` を使用して、`Array` および `Dictionary` と同様の方法で、Swift で有効な型のスタックを作成できます。
 
-スタックに格納する型を山かっこ(`<>`)で囲んで、新しいスタック インスタンスを作成します。例えば、文字列の新しいスタックを作成するには、`Stack<String>()` を記述します。
+スタックに格納する型を山かっこ\(`<>`\)で囲んで、新しいスタック インスタンスを作成します。例えば、文字列の新しいスタックを作成するには、`Stack<String>()` を記述します。
 
 ```swift
 var stackOfStrings = Stack<String>()
@@ -184,7 +184,7 @@ stackOfStrings.push("cuatro")
 
 これらの 4 つの値をスタックにプッシュした後、`stackOfStrings` がどのように見えるかを次に示します:
 
-![4つの値をスタックにプッシュ](./../.gitbook/assets/stackPushedFourStrings_2x.png)
+![4&#x3064;&#x306E;&#x5024;&#x3092;&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x306B;&#x30D7;&#x30C3;&#x30B7;&#x30E5;](../.gitbook/assets/stackPushedFourStrings_2x.png)
 
 スタックから値をポップすると、最上位の値 `"cuatro"` が削除されて返されます:
 
@@ -195,9 +195,9 @@ let fromTheTop = stackOfStrings.pop()
 
 最上位の値をポップした後のスタックは次のとおりです:
 
-![ポップした後のスタック](./../.gitbook/assets/stackPoppedOneString_2x.png)
+![&#x30DD;&#x30C3;&#x30D7;&#x3057;&#x305F;&#x5F8C;&#x306E;&#x30B9;&#x30BF;&#x30C3;&#x30AF;](../.gitbook/assets/stackPoppedOneString_2x.png)
 
-## Extending a Generic Type(ジェネリック型の拡張)
+## Extending a Generic Type\(ジェネリック型の拡張\)
 
 ジェネリック型を拡張する場合、extension の定義で型引数リストを提供しません。代わりに、元の型定義の型引数リストは extension の本文内でも使用でき、元の型引数名は元の定義の型引数を参照するために使用します。
 
@@ -224,21 +224,21 @@ if let topItem = stackOfStrings.topItem {
 // "The top item on the stack is tres."
 ```
 
-ジェネリック型の extension には、下記の[Extensions with a Generic Where Clause](#extensions-with-a-generic-where-clauseジェネリックwhere句を使った拡張)で説明されているように、新しい機能を取得するために拡張した型のインスタンスが満たさなければならない要件を含めることもできます。
+ジェネリック型の extension には、下記の[Extensions with a Generic Where Clause](generics.md#extensions-with-a-generic-where-clauseジェネリックwhere句を使った拡張)で説明されているように、新しい機能を取得するために拡張した型のインスタンスが満たさなければならない要件を含めることもできます。
 
-## Type Constraints(型制約)
+## Type Constraints\(型制約\)
 
 `swapTwoValues(_:_:)` 関数と `Stack` 型は、どの型でも使用できます。ただし、ジェネリック関数およびジェネリック型で使用できる型に特定の型制約を適用すると便利な場合があります。型制約は、型引数が特定のクラスから継承する必要があるか、特定のプロトコルまたは合成したプロトコルに準拠する必要があるかなどを指定できます。
 
-例えば、Swift の `Dictionary` 型では、辞書のキーとして使用できる型に制限があります。[Dictionaries](./collection-types.md#dictionaries辞書)で説明されているように、辞書のキーの型はハッシュ可能でなければなりません。つまり、個々のキーがユニークなことを表明する方法を提供する必要があります。`Dictionary` は、特定のキーの値がすでに含まれているかどうかを確認できるように、そのキーがハッシュ可能なことが必要な場合があります。この要件がなければ、`Dictionary` は特定のキーの値を挿入または置換するべきかどうかを判断できず、すでに存在する特定のキーの値を見つけることもできません。
+例えば、Swift の `Dictionary` 型では、辞書のキーとして使用できる型に制限があります。[Dictionaries](collection-types.md#dictionaries辞書)で説明されているように、辞書のキーの型はハッシュ可能でなければなりません。つまり、個々のキーがユニークなことを表明する方法を提供する必要があります。`Dictionary` は、特定のキーの値がすでに含まれているかどうかを確認できるように、そのキーがハッシュ可能なことが必要な場合があります。この要件がなければ、`Dictionary` は特定のキーの値を挿入または置換するべきかどうかを判断できず、すでに存在する特定のキーの値を見つけることもできません。
 
-この要件は、`Dictionary` のキーの型制約によって強制されています。これは、キーの型が Swift 標準ライブラリで定義された `Hashable` プロトコルに準拠する必要があることを指定します。Swift の全ての基本型(`String`、`Int`、`Double`、`Bool` など)は、デフォルトでハッシュ可能です。独自の型を `Hashable` プロトコルに準拠させる方法については、[Conforming to the Hashable Protocol](https://developer.apple.com/documentation/swift/hashable#2849490)を参照ください。
+この要件は、`Dictionary` のキーの型制約によって強制されています。これは、キーの型が Swift 標準ライブラリで定義された `Hashable` プロトコルに準拠する必要があることを指定します。Swift の全ての基本型\(`String`、`Int`、`Double`、`Bool` など\)は、デフォルトでハッシュ可能です。独自の型を `Hashable` プロトコルに準拠させる方法については、[Conforming to the Hashable Protocol](https://developer.apple.com/documentation/swift/hashable#2849490)を参照ください。
 
 独自のジェネリック型を作成するときに、独自の型制約を定義できます。これらの制約は、多くのジェネリックプログラミングに強力な機能を提供します。`Hashable` のような抽象的な概念は、具体的な型ではなく、概念的な特性の観点から型を特徴付けます。
 
-### Type Constraint Syntax(型制約構文)
+### Type Constraint Syntax\(型制約構文\)
 
-型引数リストの一部として、型引数の名前の後にコロン(`:`)で区切って単一のクラスまたはプロトコルを配置することで、型制約を記述します。ジェネリック関数の型制約の基本的な構文を以下に示します(構文はジェネリック型でも同じです)。
+型引数リストの一部として、型引数の名前の後にコロン\(`:`\)で区切って単一のクラスまたはプロトコルを配置することで、型制約を記述します。ジェネリック関数の型制約の基本的な構文を以下に示します\(構文はジェネリック型でも同じです\)。
 
 ```swift
 func someFunction<T: SomeClass, U: SomeProtocol>(someT:T, someU:U) {
@@ -248,7 +248,7 @@ func someFunction<T: SomeClass, U: SomeProtocol>(someT:T, someU:U) {
 
 上記の関数には、2 つの型引数があります。最初の型引数 `T` には、`T` が `SomeClass` を継承する必要がある型制約です。2 番目の型引数 `U` には、`U` が `SomeProtocol` プロトコルに準拠する必要がある型制約です。
 
-### Type Constraints in Action(型制約の挙動)
+### Type Constraints in Action\(型制約の挙動\)
 
 下記は、`findIndex(ofString:in:)` という名前の非ジェネリック関数です。これには、検索する `String` 値と、その `String` が含まれているかを検索する `String` の配列が与えられています。`findIndex(ofString:in:)` 関数は、オプショナルの `Int` 値を返します。これは、配列内で最初に一致する文字列が見つかった場合はそのインデックス、文字列が見つからない場合は `nil` になります。
 
@@ -288,9 +288,9 @@ func findIndex<T>(of valueToFind: T, in array:[T]) -> Int? {
 }
 ```
 
-この関数はコンパイルできません。問題は、等価チェック `"if value == valueToFind"` にあります。Swift の全ての型を等号演算子(`==`)で比較できるわけではありません。例えば、複雑なデータモデルを表す独自のクラスまたは構造体を作成する場合、そのクラスまたは構造体の「等しい」の意味は Swift が推論できるものではありません。このため、このコードが全ての型 `T` で機能することを保証することはできず、コードをコンパイルしようとすると、適切なエラーが報告されます。
+この関数はコンパイルできません。問題は、等価チェック `"if value == valueToFind"` にあります。Swift の全ての型を等号演算子\(`==`\)で比較できるわけではありません。例えば、複雑なデータモデルを表す独自のクラスまたは構造体を作成する場合、そのクラスまたは構造体の「等しい」の意味は Swift が推論できるものではありません。このため、このコードが全ての型 `T` で機能することを保証することはできず、コードをコンパイルしようとすると、適切なエラーが報告されます。
 
-ただし、全てが失われるわけではありません。Swift 標準ライブラリは、`Equatable` と呼ばれるプロトコルを定義しています。このプロトコルでは、準拠する型で、その型の 2 つの値を比較するために、等号演算子(`==`)および不等号演算子(`!=`)を実装する必要があります。Swift の全ての標準型は、`Equatable` プロトコルを自動的にサポートしています。
+ただし、全てが失われるわけではありません。Swift 標準ライブラリは、`Equatable` と呼ばれるプロトコルを定義しています。このプロトコルでは、準拠する型で、その型の 2 つの値を比較するために、等号演算子\(`==`\)および不等号演算子\(`!=`\)を実装する必要があります。Swift の全ての標準型は、`Equatable` プロトコルを自動的にサポートしています。
 
 `Equatable` に準拠する全ての型は、等価演算子をサポートすることが保証されているため、`findIndex(of:in:)` 関数で安全に使用できます。この事実を表現するには、関数を定義するときに、型引数の定義に `Equatable` の型制約を記述します:
 
@@ -316,11 +316,11 @@ let stringIndex = findIndex(of: "Andrea", in: ["Mike", "Malcolm", "Andrea"])
 // stringIndex は、2 を含むオプショナルの Int です
 ```
 
-## Associated Types(関連型)
+## Associated Types\(関連型\)
 
-プロトコルを定義するとき、1 つ以上の関連型(*associated types*)を宣言すると便利な場合があります。関連型は、プロトコル内で使用される型にプレースホルダ名を与えます。その関連型に使用する実際の型は、プロトコルが準拠されるまで指定されません。関連型は、`associatedtype` キーワードで指定します。
+プロトコルを定義するとき、1 つ以上の関連型\(_associated types_\)を宣言すると便利な場合があります。関連型は、プロトコル内で使用される型にプレースホルダ名を与えます。その関連型に使用する実際の型は、プロトコルが準拠されるまで指定されません。関連型は、`associatedtype` キーワードで指定します。
 
-### Associated Types in Action(関連型の挙動)
+### Associated Types in Action\(関連型の挙動\)
 
 下記は、`Item` と呼ばれる関連型を持つ `Container` と呼ばれるプロトコルの例です:
 
@@ -347,7 +347,7 @@ protocol Container {
 
 これを実現するために、`Container` プロトコルは `Item` と呼ばれる関連型を `associatedtype Item` として記述することで宣言しています。プロトコルは `Item` が何かを定義しません。その情報は、準拠する型が提供します。それにもかかわらず、`Item` エイリアスを通して、`Container` 内のアイテムの型への参照、`append(_:)` メソッドと `subscript` で使用する型の定義、どんな `Container` でも期待通りに動くことを保証する方法、を提供します。
 
-下記は、`Container` プロトコルに準拠した、上記の[Generic Types](#generic-typesジェネリック型)の非ジェネリック型 `IntStack` のジェネリックバージョンです:
+下記は、`Container` プロトコルに準拠した、上記の[Generic Types](generics.md#generic-typesジェネリック型)の非ジェネリック型 `IntStack` のジェネリックバージョンです:
 
 ```swift
 struct IntStack: Container {
@@ -406,11 +406,11 @@ struct Stack<Element>: Container {
 
 今回は、`append(_:)` メソッドの `item` 引数の型と subscript の戻り値の型として型引数 `Element` を使用しています。したがって、Swift は、`Element` がこの特定のコンテナの `Item` として使用する型を適切に推論できます。
 
-### Extending an Existing Type to Specify an Associated Type(関連型を特定するための既存の型の拡張)
+### Extending an Existing Type to Specify an Associated Type\(関連型を特定するための既存の型の拡張\)
 
-[Adding Protocol Conformance with an Extension](./protocols.md#adding-protocol-conformance-with-an-extension拡張機能を使ったプロトコル準拠の追加)で説明されているように、既存の型を拡張してプロトコルへの準拠を追加できます。これには、関連型を持つプロトコルが含まれます。
+[Adding Protocol Conformance with an Extension](protocols.md#adding-protocol-conformance-with-an-extension拡張機能を使ったプロトコル準拠の追加)で説明されているように、既存の型を拡張してプロトコルへの準拠を追加できます。これには、関連型を持つプロトコルが含まれます。
 
-Swift の `Array` 型は、要素を取得するために、`append(_:)` メソッド、`count` プロパティ、および `Int` インデックスの subscript を既存で提供しています。これら 3 つの機能は、`Container` プロトコルの要件に準拠します。これは、`Array` がプロトコルに準拠することを宣言するだけで、`Container` プロトコルに準拠するように `Array` を拡張できることを意味します。[Declaring Protocol Adoption with an Extension](./protocols.md#declaring-protocol-adoption-with-an-extension拡張機能を使ったプロトコル準拠の宣言)で説明されているように、これは空の extension で行います:
+Swift の `Array` 型は、要素を取得するために、`append(_:)` メソッド、`count` プロパティ、および `Int` インデックスの subscript を既存で提供しています。これら 3 つの機能は、`Container` プロトコルの要件に準拠します。これは、`Array` がプロトコルに準拠することを宣言するだけで、`Container` プロトコルに準拠するように `Array` を拡張できることを意味します。[Declaring Protocol Adoption with an Extension](protocols.md#declaring-protocol-adoption-with-an-extension拡張機能を使ったプロトコル準拠の宣言)で説明されているように、これは空の extension で行います:
 
 ```swift
 extension Array: Container {}
@@ -418,9 +418,9 @@ extension Array: Container {}
 
 `Array` の既存の `append(_:)` メソッドと subscript により、Swift は、上記のジェネリックな `Stack` 型と同様に、`Item` に使用する適切な型を推論できます。この extension を定義した後、任意の配列を `Container` として使用できます。
 
-### Adding Constraints to an Associated Type(関連型への制約の追加)
+### Adding Constraints to an Associated Type\(関連型への制約の追加\)
 
-プロトコルの関連型に型制約を追加して、準拠する型がそれらの制約を満たすことを要求できます。例えば、次のコードは、`Container` 内のアイテムが等価比較可能(*equatable*)なバージョンを定義しています。
+プロトコルの関連型に型制約を追加して、準拠する型がそれらの制約を満たすことを要求できます。例えば、次のコードは、`Container` 内のアイテムが等価比較可能\(_equatable_\)なバージョンを定義しています。
 
 ```swift
 protocol Container {
@@ -433,7 +433,7 @@ protocol Container {
 
 このバージョンのコンテナに準拠するには、コンテナのアイテム型が `Equatable` プロトコルに準拠している必要があります。
 
-### Using a Protocol in Its Associated Type’s Constraints(関連型に制約へのプロトコルの使用)
+### Using a Protocol in Its Associated Type’s Constraints\(関連型に制約へのプロトコルの使用\)
 
 プロトコルは、独自の要件を表現できます。例えば、下記は `Container` プロトコルを改良し、`suffix(_:)` メソッドの要件を追加するプロトコルです。`suffix(_:)` メソッドは、コンテナの最後から指定された数の要素を返し、それらを `Suffix` 型のインスタンスに格納します。
 
@@ -444,9 +444,9 @@ protocol SuffixableContainer: Container {
 }
 ```
 
-このプロトコルでは、`Suffix` は、上記の `Container` の例の `Item` 型のように、関連型です。Suffix には 2 つの制約があります。`SuffixableContainer` プロトコル(現在定義されているプロトコル)に準拠している必要があり、その `Item` 型は `Container` の `Item` 型と同じにする必要があります。`Item` の制約はジェネリックな `where` 句です。これについては、下記の[Associated Types with a Generic Where Clause](#associated-types-with-a-generic-where-clauseジェネリックwhere句を使用した関連型)で説明します。
+このプロトコルでは、`Suffix` は、上記の `Container` の例の `Item` 型のように、関連型です。Suffix には 2 つの制約があります。`SuffixableContainer` プロトコル\(現在定義されているプロトコル\)に準拠している必要があり、その `Item` 型は `Container` の `Item` 型と同じにする必要があります。`Item` の制約はジェネリックな `where` 句です。これについては、下記の[Associated Types with a Generic Where Clause](generics.md#associated-types-with-a-generic-where-clauseジェネリックwhere句を使用した関連型)で説明します。
 
-上記の[Generic Types](#generic-typesジェネリック型)の `Stack` 型に `SuffixableContainer` プロトコルへの準拠を追加した拡張を次に示します:
+上記の[Generic Types](generics.md#generic-typesジェネリック型)の `Stack` 型に `SuffixableContainer` プロトコルへの準拠を追加した拡張を次に示します:
 
 ```swift
 extension Stack: SuffixableContainer {
@@ -482,15 +482,15 @@ extension IntStack: SuffixableContainer {
 }
 ```
 
-## Generic Where Clauses(ジェネリックwhere句)
+## Generic Where Clauses\(ジェネリックwhere句\)
 
-[Type Constraints](#type-constraints型制約)で説明されているように、型制約を使用すると、ジェネリック関数、subscript、または型に関連した型引数の要件を定義できます。
+[Type Constraints](generics.md#type-constraints型制約)で説明されているように、型制約を使用すると、ジェネリック関数、subscript、または型に関連した型引数の要件を定義できます。
 
-関連型の要件を定義するのにも役立ちます。これを行うには、ジェネリックな where 句を定義します。ジェネリック `where` 句を使用すると、関連型が特定のプロトコルに準拠する必要があること、または特定の型引数と関連型を同じにする必要があることを要求できます。ジェネリック `where` 句は `where` キーワードで始まり、その後に関連型の制約、または型と関連型の間の等価関係が続きます。型または関数の本文の開始中括弧(`{`)の直前に、ジェネリック `where` 句を記述します。
+関連型の要件を定義するのにも役立ちます。これを行うには、ジェネリックな where 句を定義します。ジェネリック `where` 句を使用すると、関連型が特定のプロトコルに準拠する必要があること、または特定の型引数と関連型を同じにする必要があることを要求できます。ジェネリック `where` 句は `where` キーワードで始まり、その後に関連型の制約、または型と関連型の間の等価関係が続きます。型または関数の本文の開始中括弧\(`{`\)の直前に、ジェネリック `where` 句を記述します。
 
 下記の例では、2 つの `Container` インスタンスに同じアイテムが同じ順序で含まれているかどうかを確認する `allItemsMatch` というジェネリック関数を定義しています。この関数は、全てのアイテムが一致する場合はブール値 `true` を返し、一致しない場合は `false` の値を返します。
 
-チェックする 2 つのコンテナは、同じ型の必要はありませんが(同じ型のコンテナでもかまいません)、同じ型のアイテムを保持している必要があります。この要件は、型制約とジェネリック `where` 句の組み合わせによって表現されます:
+チェックする 2 つのコンテナは、同じ型の必要はありませんが\(同じ型のコンテナでもかまいません\)、同じ型のアイテムを保持している必要があります。この要件は、型制約とジェネリック `where` 句の組み合わせによって表現されます:
 
 ```swift
 func allItemsMatch<C1: Container, C2: Container>
@@ -518,10 +518,10 @@ func allItemsMatch<C1: Container, C2: Container>
 
 関数の 2 つの型引数には、次の要件が適用されます。
 
-* `C1` は、`Container` プロトコル(`C1: Container` と表記)に準拠する必要があります
-* `C2` も、`Container` プロトコル(`C2: Container` と表記)に準拠する必要があります
-* `C1` の `Item` は、`C2` の `Item` と同じにする必要があります(`C1.Item == C2.Item` と記述)
-* `C1` の `Item` は、`Equatable` プロトコル(`C1.Item: Equatable` と表記)に準拠する必要があります
+* `C1` は、`Container` プロトコル\(`C1: Container` と表記\)に準拠する必要があります
+* `C2` も、`Container` プロトコル\(`C2: Container` と表記\)に準拠する必要があります
+* `C1` の `Item` は、`C2` の `Item` と同じにする必要があります\(`C1.Item == C2.Item` と記述\)
+* `C1` の `Item` は、`Equatable` プロトコル\(`C1.Item: Equatable` と表記\)に準拠する必要があります
 
 1 番目と 2 番目の要件は関数の型引数リストで定義され、3 番目と 4 番目の要件は関数のジェネリック `where` 句で定義されます。
 
@@ -530,7 +530,7 @@ func allItemsMatch<C1: Container, C2: Container>
 * `someContainer` は `C1` 型のコンテナです
 * `anotherContainer` は、`C2` 型のコンテナです
 * `someContainer` と `anotherContainer` には、同じ型のアイテムが含まれています
-* `someContainer` 内の `Item` は、不等演算子 (`!=`) を使用して、互いに異なるかどうかを確認できます
+* `someContainer` 内の `Item` は、不等演算子 \(`!=`\) を使用して、互いに異なるかどうかを確認できます
 
 3 番目と 4 番目の要件を組み合わせると、`otherContainer` のアイテムは `someContainer` のアイテムとまったく同じ型のため、`!=` 演算子を使用してチェックすることもできます。
 
@@ -538,7 +538,7 @@ func allItemsMatch<C1: Container, C2: Container>
 
 `allItemsMatch(_:_:)` 関数は、両方のコンテナに同じ数のアイテムが含まれていることを確認することから始まります。それらに含まれるアイテムの数が異なる場合、一致する可能性はなく、関数は `false` を返します。
 
-このチェックを行った後、関数は `for-in` ループと半開範囲演算子(`..<`)を使用して `someContainer` 内の全てのアイテムを反復します。各アイテムについて、関数は `someContainer` のアイテムが `anotherContainer` の対応するアイテムと等しくないかどうかをチェックします。2 つのアイテムが等しくない場合、2 つのコンテナは一致せず、関数は `false` を返します。
+このチェックを行った後、関数は `for-in` ループと半開範囲演算子\(`..<`\)を使用して `someContainer` 内の全てのアイテムを反復します。各アイテムについて、関数は `someContainer` のアイテムが `anotherContainer` の対応するアイテムと等しくないかどうかをチェックします。2 つのアイテムが等しくない場合、2 つのコンテナは一致せず、関数は `false` を返します。
 
 不一致が見つからずにループが終了した場合、2 つのコンテナは一致し、関数は `true` を返します。
 
@@ -562,7 +562,7 @@ if allItemsMatch(stackOfStrings, arrayOfStrings) {
 
 上記の例では、`String` 値を格納する `Stack` インスタンスを作成し、3 つの文字列をスタックにプッシュします。この例では、スタックと同じ 3 つの文字列を含む配列リテラルで初期化された `Array` インスタンスも作成します。スタックと配列は型が異なりますが、どちらも `Container` プロトコルに準拠しており、両方に同じ型の値が含まれています。したがって、これら 2 つのコンテナを引数として `allItemsMatch(_:_:)` 関数を呼び出すことができます。上記の例では、`allItemsMatch(_:_:)` 関数は、2 つのアイテムの全てが合致していることを出力します。
 
-## Extensions with a Generic Where Clause(ジェネリックwhere句を使った拡張)
+## Extensions with a Generic Where Clause\(ジェネリックwhere句を使った拡張\)
 
 extension にジェネリック `where` 句を使用することもできます。下記の例では、前の例のジェネリックな `Stack` 構造体を拡張して、`isTop(_:)` メソッドを追加しています:
 
@@ -639,9 +639,9 @@ print([1260.0, 1200.0, 98.6, 37.0].average())
 
 この例では、`Item` 型が `Double` のコンテナに `average()` メソッドを追加します。コンテナ内のアイテムを繰り返して合計し、コンテナの数で除算して平均を計算します。浮動小数点除算ができるように、`count` を `Int` から `Double` に明示的に変換します。
 
-他の場所で記述したジェネリック `where` 句の場合と同様に、extension にあるジェネリック `where` 句に複数の要件を含めることができます。各要件はカンマ(`,`)で区切ります。
+他の場所で記述したジェネリック `where` 句の場合と同様に、extension にあるジェネリック `where` 句に複数の要件を含めることができます。各要件はカンマ\(`,`\)で区切ります。
 
-## Contextual Where Clauses(文脈上のWhere句)
+## Contextual Where Clauses\(文脈上のWhere句\)
 
 既にジェネリック型を使っている文脈上で、型制約を持たない宣言にジェネリック `where` 句を記述できます。例えば、ジェネリック型の subscript、またはジェネリック型の extension のメソッドにジェネリック `where` 句を記述できます。`Container` 構造体はジェネリックで、下記の例の `where` 句は、新しいメソッドを `Container` で使用できるようにするために満たす必要のある型制約を指定しています。
 
@@ -688,7 +688,7 @@ extension Container where Item: Equatable {
 
 文脈上の `where` 句を使用する例のバージョンでは、各メソッドのジェネリック `where` 句が、そのメソッドを使用可能にするために満たす必要がある要件を示しているため、`average()` と `endsWith(_:)` の実装は両方とも同じ extension 内にありました。これらの要件を extension のジェネリック `where` 句に移動すると、同じ状況でメソッドを使用できるようになりますが、要件ごとに 1 つの extension が必要になります。
 
-## Associated Types with a Generic Where Clause(ジェネリックwhere句を使用した関連型)
+## Associated Types with a Generic Where Clause\(ジェネリックwhere句を使用した関連型\)
 
 関連型にジェネリック `where` 句を含めることができます。例えば、標準ライブラリの `Sequence` プロトコルで使用するようなイテレータを含む `Container` のバージョンを作成するとします。書き方は次のとおりです:
 
@@ -712,9 +712,9 @@ protocol Container {
 protocol ComparableContainer: Container where Item: Comparable { }
 ```
 
-## Generic Subscripts(ジェネリックsubscript)
+## Generic Subscripts\(ジェネリックsubscript\)
 
-subscript はジェネリックにすることができ、ジェネリック `where` 句を含めることができます。subscript の後の山括弧内(`<>`)にプレースホルダ型名を記述し、subscript の本文の開始中かっこ(`{`)の直前にジェネリック `where` 句を記述します。例えば:
+subscript はジェネリックにすることができ、ジェネリック `where` 句を含めることができます。subscript の後の山括弧内\(`<>`\)にプレースホルダ型名を記述し、subscript の本文の開始中かっこ\(`{`\)の直前にジェネリック `where` 句を記述します。例えば:
 
 ```swift
 extension Container {
@@ -731,8 +731,9 @@ extension Container {
 
 `Container` プロトコルへのこの extension は、インデックスのシーケンスを受け取り、指定された各インデックスのアイテムを含む配列を返す subscript を追加します。このジェネリックな subscript は、次のように制約されます:
 
-* 山かっこ(`<>`)内のジェネリック引数のインデックスは、標準ライブラリの `Sequence` プロトコルに準拠した型にする必要があります
+* 山かっこ\(`<>`\)内のジェネリック引数のインデックスは、標準ライブラリの `Sequence` プロトコルに準拠した型にする必要があります
 * subscript は、その `Indices` 型のインスタンスの単一の引数 `indexs` を受け取ります
 * ジェネリック `where` 句では、シーケンスのイテレータが `Int` 型の要素を繰り返し処理することを要求します。これにより、シーケンス内のインデックスは、コンテナに使用されるインデックスと同じ型なことが保証されます
 
 まとめると、これらの制約は、`indices` 引数に渡される値が整数のシーケンスだということを意味します。
+

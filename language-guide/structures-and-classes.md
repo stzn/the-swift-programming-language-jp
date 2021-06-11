@@ -1,15 +1,15 @@
-# Structures and Classes
+# Structures and Classes \(構造体とクラス\)
 
 最終更新日: 2021/5/27
 
-構造体(*struct*)とクラス(*class*)は、プログラムのコードの構成要素を構築する汎用的で柔軟な構造概念です。定数、変数、関数の定義に使用するのと同じ構文を使用して、プロパティとメソッドを定義して機能を追加します。
+構造体\(_struct_\)とクラス\(_class_\)は、プログラムのコードの構成要素を構築する汎用的で柔軟な構造概念です。定数、変数、関数の定義に使用するのと同じ構文を使用して、プロパティとメソッドを定義して機能を追加します。
 
 他のプログラミング言語とは異なり、Swift では、インターフェイスと実装ファイルを別々に作成する必要はありません。構造体またはクラスを 1 つのファイルで定義すると、その外部インターフェイスは自動的に他のコードで使用できるようになります。
 
 > NOTE  
-> 昔からオブジェクト(*object*)はクラスのインスタンスはとして知られています。ただし、 Swift の 構造体とクラスは、他の言語よりも機能がかなり似ていて、この章でも、構造体またはクラス型のインスタンスのどちらにも当てはまる機能について説明しています。このため、より一般的な意味合いでインスタンスという用語を使用します。
+> 昔からオブジェクト\(_object_\)はクラスのインスタンスはとして知られています。ただし、 Swift の 構造体とクラスは、他の言語よりも機能がかなり似ていて、この章でも、構造体またはクラス型のインスタンスのどちらにも当てはまる機能について説明しています。このため、より一般的な意味合いでインスタンスという用語を使用します。
 
-## Comparing Structures and Classes(構造体とクラスの比較)
+## Comparing Structures and Classes\(構造体とクラスの比較\)
 
 Swift の構造体とクラスには多くの共通点があります。いずれも下記のようなことができます:
 
@@ -20,22 +20,22 @@ Swift の構造体とクラスには多くの共通点があります。いず�
 * `extension` による機能拡張
 * 特定の種類の標準機能を提供するためのプロトコルに準拠
 
-これらの機能の詳細については、[Properties](./properties.md)、[Methods](./methods.md)、[Initialization](./initialization.md)、[Extensions](../language-guide/extensions.md)および[Protocols](./protocols.md)を参照ください。
+これらの機能の詳細については、[Properties](properties.md)、[Methods](methods.md)、[Initialization](initialization.md)、[Extensions](extensions.md)および[Protocols](protocols.md)を参照ください。
 
 一方で、クラスには、構造体にはない追加の機能があります。
 
 * あるクラスが別のクラスの特性を継承
 * 型キャストによる実行時のクラスインスタンスの型の確認と解釈
-* デイニシャライザ(*`deinit`*)を使ったクラスのインスタンスに割り当てられているリソースの解放
-* 参照カウント(*reference counting*)を使ったある同じクラスインスタンスへの複数からの参照
+* デイニシャライザ\(_`deinit`_\)を使ったクラスのインスタンスに割り当てられているリソースの解放
+* 参照カウント\(_reference counting_\)を使ったある同じクラスインスタンスへの複数からの参照
 
-これらの機能の詳細については、[Inheritance](./inheritance.md)、[Type Casting](./type-casting.md)、[Deinitialization](./deinitialization.md)、[Automatic Reference Counting](./automatic-reference-counting.md)を参照ください。
+これらの機能の詳細については、[Inheritance](inheritance.md)、[Type Casting](type-casting.md)、[Deinitialization](deinitialization.md)、[Automatic Reference Counting](automatic-reference-counting.md)を参照ください。
 
 クラスは追加の機能をサポートしている分、複雑さが増します。一般的なガイドラインとして、構造体の方が扱いやすく推奨されます。クラスは適切または必要な場合にのみ使用してください。つまり、実際は、独自に定義するデータ型のほとんどが構造体と列挙型になることを意味します。より詳細な比較は[Choosing Between Structures and Classes](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes)を参照ください。
 
-### Definition Syntax(定義構文)
+### Definition Syntax\(定義構文\)
 
-構造体とクラスの定義構文は似ています。`struct` キーワードを使用して構造体を作成し、`class` キーワードを使用してクラスを作成します。どちらも、定義全体を中括弧のペア(`{}`)内に配置します:
+構造体とクラスの定義構文は似ています。`struct` キーワードを使用して構造体を作成し、`class` キーワードを使用してクラスを作成します。どちらも、定義全体を中括弧のペア\(`{}`\)内に配置します:
 
 ```swift
 struct SomeStructure {
@@ -64,11 +64,11 @@ class VideoMode {
 }
 ```
 
-上記の例では、`Resolution` と呼ばれる新しい構造体を定義して、ピクセルベースのディスプレイ解像度を記述しています。この構造体には、`width` と `height` という 2 つの格納プロパティ(*stored propert*)があります。格納プロパティは、構造体またはクラスの一部として紐付け、格納される定数または変数です。これらの 2 つのプロパティは、初期値に `0` を設定することにより、 `Int` 型だと推論されます。
+上記の例では、`Resolution` と呼ばれる新しい構造体を定義して、ピクセルベースのディスプレイ解像度を記述しています。この構造体には、`width` と `height` という 2 つの格納プロパティ\(_stored propert_\)があります。格納プロパティは、構造体またはクラスの一部として紐付け、格納される定数または変数です。これらの 2 つのプロパティは、初期値に `0` を設定することにより、 `Int` 型だと推論されます。
 
-上記の例では、ビデオ表示用の特定のビデオモードを記述するために、`VideoMode` と呼ばれる新しいクラスも定義しています。このクラスには、4 つの格納プロパティの変数があります。最初の `resolution` は、新しい `Resolution` 構造体インスタンスで初期化されており `Resolution` 型だと推論されます。他の 3 つのプロパティに関しては、`interlaced` に (「非インターレースビデオ」を意味する)`false` を、再生フレームレートに `0.0`、および `name` と呼ばれるオプショナルの `String` 値で初期化されます。`name` プロパティはオプショナル型のため、デフォルトで `nil` が自動的に設定されます。
+上記の例では、ビデオ表示用の特定のビデオモードを記述するために、`VideoMode` と呼ばれる新しいクラスも定義しています。このクラスには、4 つの格納プロパティの変数があります。最初の `resolution` は、新しい `Resolution` 構造体インスタンスで初期化されており `Resolution` 型だと推論されます。他の 3 つのプロパティに関しては、`interlaced` に \(「非インターレースビデオ」を意味する\)`false` を、再生フレームレートに `0.0`、および `name` と呼ばれるオプショナルの `String` 値で初期化されます。`name` プロパティはオプショナル型のため、デフォルトで `nil` が自動的に設定されます。
 
-### Structure and Class Instances(structとclassのインスタンス)
+### Structure and Class Instances\(structとclassのインスタンス\)
 
 `Resolution` 構造体の定義と `VideoMode` クラスの定義は、`Resolution` または `VideoMode` がどのようなものかを説明しているだけです。それら自体は、特定の解像度やビデオモードについては説明していません。そうするためには、構造体またはクラスのインスタンスを作成する必要があります。
 
@@ -79,11 +79,11 @@ let someResolution = Resolution()
 let someVideoMode = VideoMode()
 ```
 
-構造体とクラスはどちらも、新しいインスタンスに初期化構文(`init`)を使用します。初期化構文の最もシンプルな形式では、クラスまたは構造体の型名の後に、`Resolution()` や `VideoMode()` などの空の括弧(`()`)が続きます。これにより、クラスまたは構造の新しいインスタンスが作成され、プロパティはデフォルト値で初期化されます。クラスと構造体の初期化については、[Initialization](./initialization.md)で詳しく説明しています。
+構造体とクラスはどちらも、新しいインスタンスに初期化構文\(`init`\)を使用します。初期化構文の最もシンプルな形式では、クラスまたは構造体の型名の後に、`Resolution()` や `VideoMode()` などの空の括弧\(`()`\)が続きます。これにより、クラスまたは構造の新しいインスタンスが作成され、プロパティはデフォルト値で初期化されます。クラスと構造体の初期化については、[Initialization](initialization.md)で詳しく説明しています。
 
-### Accessing Properties(プロパティへのアクセス)
+### Accessing Properties\(プロパティへのアクセス\)
 
-ドット構文を使用して、インスタンスのプロパティにアクセスできます。ドット構文では、インスタンス名の直後に、スペースを入れずにピリオド(`.`)で区切ってプロパティ名を記述します。
+ドット構文を使用して、インスタンスのプロパティにアクセスできます。ドット構文では、インスタンス名の直後に、スペースを入れずにピリオド\(`.`\)で区切ってプロパティ名を記述します。
 
 ```swift
 print("The width of someResolution is \(someResolution.width)")
@@ -107,21 +107,21 @@ print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
 // "The width of someVideoMode is now 1280"
 ```
 
-### Memberwise Initializers for Structure Types(構造体のメンバワイズイニシャライザ)
+### Memberwise Initializers for Structure Types\(構造体のメンバワイズイニシャライザ\)
 
-全ての構造体には、メンバ全てに値を設定して初期化するイニシャライザ(*memberwise initializer*)が自動的に生成されます。新しいインスタンスのプロパティの初期値は、プロパティ名でイニシャライザに渡すことができます。
+全ての構造体には、メンバ全てに値を設定して初期化するイニシャライザ\(_memberwise initializer_\)が自動的に生成されます。新しいインスタンスのプロパティの初期値は、プロパティ名でイニシャライザに渡すことができます。
 
 ```swift
 let vga = Resolution(width: 640, height: 480)
 ```
 
-構造体とは異なり、クラスはデフォルトのイニシャライザを自動で生成しません。イニシャライザについては、[Initialization](./initialization.md)で詳しく説明しています。
+構造体とは異なり、クラスはデフォルトのイニシャライザを自動で生成しません。イニシャライザについては、[Initialization](initialization.md)で詳しく説明しています。
 
-## Structures and Enumerations Are Value Types(構造体と列挙型は値型)
+## Structures and Enumerations Are Value Types\(構造体と列挙型は値型\)
 
-値型は、変数または定数に値が割り当てられたとき、または関数に渡されたときに値がコピーされる型(*value type*)です。
+値型は、変数または定数に値が割り当てられたとき、または関数に渡されたときに値がコピーされる型\(_value type_\)です。
 
-これまでの章では、実際に値型を多く使用してきました。実際、Swift の基本的な型(整数、浮動小数点数、ブール値、文字列、配列、辞書)はすべて値型で、内部では、構造体として実装されています。
+これまでの章では、実際に値型を多く使用してきました。実際、Swift の基本的な型\(整数、浮動小数点数、ブール値、文字列、配列、辞書\)はすべて値型で、内部では、構造体として実装されています。
 
 全ての構造体と列挙型は値型です。つまり、作成した構造体と列挙型のインスタンス、およびそれらがプロパティとして持つ値型は、コードで渡されるときに常にコピーされます。
 
@@ -135,11 +135,11 @@ let hd = Resolution(width: 1920, height: 1080)
 var cinema = hd
 ```
 
-この例では、`hd` という定数を宣言し、フル HD ビデオの幅と高さ(幅 1920 ピクセル、高さ 1080 ピクセル)で初期化された `Resolution` インスタンスに設定します。
+この例では、`hd` という定数を宣言し、フル HD ビデオの幅と高さ\(幅 1920 ピクセル、高さ 1080 ピクセル\)で初期化された `Resolution` インスタンスに設定します。
 
 次に、`cinema` という変数を宣言し、`hd` の現在の値を設定します。`Resolution` は構造体のため、既存のインスタンスのコピーが作成され、この新しいコピーが `cinema` に割り当てられます。`hd` と `cinema` の幅と高さは同じになりましたが、内部ではまったく異なる 2 つのインスタンスです。
 
-次に、`cinema` の `width` プロパティは、デジタルシネマ映写に使用される、わずかに幅の広い 2K 標準の幅(幅 2048 ピクセル、高さ 1080 ピクセル)に修正されます。
+次に、`cinema` の `width` プロパティは、デジタルシネマ映写に使用される、わずかに幅の広い 2K 標準の幅\(幅 2048 ピクセル、高さ 1080 ピクセル\)に修正されます。
 
 ```swift
 cinema.width = 2048
@@ -161,7 +161,7 @@ print("hd is still \(hd.width) pixels wide")
 
 `cinema` に `hd` の現在の値が与えられると、`hd` に保存されている値が新しい `cinema` インスタンスにコピーされます。これらは、同じ数値を含む 2 つの完全に別個のインスタンスですが、次の図に示すように、`cinema` の幅を 2048 に設定しても、`hd` に保存される幅には影響しません。
 
-![構造体の共有状態](./../.gitbook/assets/sharedStateStruct_2x.png)
+![&#x69CB;&#x9020;&#x4F53;&#x306E;&#x5171;&#x6709;&#x72B6;&#x614B;](../.gitbook/assets/sharedStateStruct_2x.png)
 
 列挙型でも同じように動きます。
 
@@ -184,9 +184,9 @@ print("The remembered direction is \(rememberedDirection)")
 
 `RememberedDirection` に `currentDirection` の値が割り当てられると、実際にはその値のコピーが設定されます。その後、`currentDirection` の値を変更しても、`rememberedDirection` に保存されていた元の値には影響しません。
 
-## Classes Are Reference Types(classは参照型)
+## Classes Are Reference Types\(classは参照型\)
 
-値型とは異なり、参照型(*reference type*)は、変数または定数に割り当てられたとき、または関数に渡されたときにコピーされません。コピーではなく、同じ既存のインスタンスへの参照が使用されます。
+値型とは異なり、参照型\(_reference type_\)は、変数または定数に割り当てられたとき、または関数に渡されたときにコピーされません。コピーではなく、同じ既存のインスタンスへの参照が使用されます。
 
 上記で定義した `VideoMode` クラスを使用した例を次に示します。
 
@@ -209,7 +209,7 @@ alsoTenEighty.frameRate = 30.0
 
 クラスは参照型のため、`tenEighty` と `alsoTenEighty` は両方とも同じ `VideoMode` インスタンスを参照しています。事実上、次の図に示すように、これらは同じインスタンスに 2 つの異なる名前を付けているだけです。
 
-![クラスの共有状態](./../.gitbook/assets/sharedStateClass_2x.png)
+![&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x5171;&#x6709;&#x72B6;&#x614B;](../.gitbook/assets/sharedStateClass_2x.png)
 
 `tenEighty` の `frameRate` プロパティを確認すると、基になる `VideoMode` インスタンスから `30.0` の新しいフレームレートが正しく設定されていることがわかります。
 
@@ -222,14 +222,14 @@ print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 
 `tenEighty` と `alsoTenEighty` は、変数ではなく定数として宣言されていることに注目してください。それでも、`tenEighty` および `alsoTenEighty` 定数自体の値は実際には変更されないため、`tenEighty.frameRate` および `alsoTenEighty.frameRate` を変更することはできます。`tenEighty` と `alsoTenEighty` 自体は、`VideoMode` インスタンスを「格納」しません。代わりに、どちらも内部で同じ `VideoMode` インスタンスを参照します。変更されるのは、基になる `VideoMode` の `frameRate` プロパティで、その `VideoMode` への参照を持つ定数ではありません。
 
-### Identity Operators(同一性演算子)
+### Identity Operators\(同一性演算子\)
 
-クラスは参照型のため、複数の定数と変数が内部でクラスの同じインスタンスを参照する可能性があります。(構造体や列挙型は、定数や変数に割り当てられたとき、または関数に渡されたときに常にコピーされるため異なります)
+クラスは参照型のため、複数の定数と変数が内部でクラスの同じインスタンスを参照する可能性があります。\(構造体や列挙型は、定数や変数に割り当てられたとき、または関数に渡されたときに常にコピーされるため異なります\)
 
-2 つの定数または変数が参照しているかどうかを確認すると便利な場合があります。これを有効にするために、Swift は 2 つの同一性演算子(*identity operator*)を提供します:
+2 つの定数または変数が参照しているかどうかを確認すると便利な場合があります。これを有効にするために、Swift は 2 つの同一性演算子\(_identity operator_\)を提供します:
 
-* 同一(`===`)
-* 同一ではない(`!==`)
+* 同一\(`===`\)
+* 同一ではない\(`!==`\)
 
 これらの演算子を使用して、2 つの定数または変数が同じインスタンスを参照しているかどうかを確認します。
 
@@ -240,10 +240,11 @@ if tenEighty === alsoTenEighty {
 // "tenEighty and alsoTenEighty refer to the same VideoMode instance."
 ```
 
-「同一」(3 つの等号または `===`)は、「等しい」(2 つの等号または `==` で表される)と同じではないことに注意してください。「同一」とは、クラスタイプの 2 つの定数または変数がまったく同じクラスインスタンスを参照することを意味します。「等しい」とは、型の設計者が定義する「等しい」という観点で、適切に 2 つのインスタンスの値が等しいまたは同等だと見なされることを意味します。
+「同一」\(3 つの等号または `===`\)は、「等しい」\(2 つの等号または `==` で表される\)と同じではないことに注意してください。「同一」とは、クラスタイプの 2 つの定数または変数がまったく同じクラスインスタンスを参照することを意味します。「等しい」とは、型の設計者が定義する「等しい」という観点で、適切に 2 つのインスタンスの値が等しいまたは同等だと見なされることを意味します。
 
-独自の構造体とクラスを定義するときは、2 つのインスタンスがどうすれば等しいと見なされるのかを決定するのはあなた次第です。`==` および `！=` 演算子の独自の実装を定義するプロセスは、[Equivalence Operators](./advanced-operators.md#equivalence-operators)で説明されています。
+独自の構造体とクラスを定義するときは、2 つのインスタンスがどうすれば等しいと見なされるのかを決定するのはあなた次第です。`==` および `！=` 演算子の独自の実装を定義するプロセスは、[Equivalence Operators](advanced-operators.md#equivalence-operators)で説明されています。
 
-### Pointers(ポインタ)
+### Pointers\(ポインタ\)
 
-C 言語、C ++、または Objective-C の経験がある場合は、これらの言語がポインタ(*pointer*)を使用してメモリ内のアドレスを参照することを知っているかもしれません。ある参照型のインスタンスを参照する Swift の定数または変数は、C 言語のポインタに似ていますが、メモリ内のアドレスへのポインタを直接示しているではなく、参照を示すためにアスタリスク(`*`)を記述する必要はありません。代わりに、これらの参照は、Swift の他の定数または変数と同様に定義されます。標準ライブラリには、ポインタを直接操作する必要がある場合に使用できるポインタとバッファ型が用意されています。[Manual Memory Management](https://developer.apple.com/documentation/swift/swift_standard_library/manual_memory_management)を参照ください。
+C 言語、C ++、または Objective-C の経験がある場合は、これらの言語がポインタ\(_pointer_\)を使用してメモリ内のアドレスを参照することを知っているかもしれません。ある参照型のインスタンスを参照する Swift の定数または変数は、C 言語のポインタに似ていますが、メモリ内のアドレスへのポインタを直接示しているではなく、参照を示すためにアスタリスク\(`*`\)を記述する必要はありません。代わりに、これらの参照は、Swift の他の定数または変数と同様に定義されます。標準ライブラリには、ポインタを直接操作する必要がある場合に使用できるポインタとバッファ型が用意されています。[Manual Memory Management](https://developer.apple.com/documentation/swift/swift_standard_library/manual_memory_management)を参照ください。
+
