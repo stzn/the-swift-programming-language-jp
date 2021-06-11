@@ -42,11 +42,11 @@ var x = 0.0, y = 0.0, z = 0.0
 > NOTE  
 > コードで保持している値がこの先変更されない場合は、 `let` を使用して定数として定義してください。変数は変更できるようにする必要がある場合にのみ使用してください。
 
-### Type Annotations\(型アノテーション）
+### Type Annotations\(型注釈）
 
-定数や変数を定義する時に、保持する値の種類をより明確にするために、型アノテーションを使用することもできます。定数や変数の名前の後にコロン\(`:`\)を置いて、型アノテーションを書きましょう。
+定数や変数を定義する時に、保持する値の種類をより明確にするために、型注釈を使用することもできます。定数や変数の名前の後にコロン\(`:`\)を置いて、型注釈を書きましょう。
 
-この例では `welcomeMessage` という変数に型アノテーションを書いて `String` が保持されることを示しています。
+この例では `welcomeMessage` という変数に型注釈を書いて `String` が保持されることを示しています。
 
 ```swift
 var welcomeMessage: String
@@ -64,14 +64,14 @@ var welcomeMessage: String
 welcomeMessage = "Hello"
 ```
 
-1 行の中で、同じ型の複数の変数をカンマで区切って定義することもできます。この際、型アノテーションは最後の変数の後に 1 つ付けます。
+1 行の中で、同じ型の複数の変数をカンマで区切って定義することもできます。この際、型注釈は最後の変数の後に 1 つ付けます。
 
 ```swift
 var red, green, blue: Double
 ```
 
 > NOTE  
-> 実際に型アノテーションを書く必要はあまりありません。定義時に定数や変数に初期値を与えた場合、 Swift はたいていそれらの型を推論できます\(詳細は[Type Safety and Type Inference](the-basics.md#type-safety-and-type-inference型安全と型推論)\)。 上記の `welcomeMessage` の例では、初期値を与えていないため、推論をすることができないため、`welcomeMessage` 変数は型アノテーションで型を特定しています。
+> 実際に型注釈を書く必要はあまりありません。定義時に定数や変数に初期値を与えた場合、 Swift はたいていそれらの型を推論できます\(詳細は[Type Safety and Type Inference](the-basics.md#type-safety-and-type-inference型安全と型推論)\)。 上記の `welcomeMessage` の例では、初期値を与えていないため、推論をすることができないため、`welcomeMessage` 変数は型注釈で型を特定しています。
 
 ### Naming Constants and Variables\(定数と変数の命名）
 

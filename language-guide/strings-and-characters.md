@@ -174,7 +174,7 @@ for character in "Dog!🐶" {
 
 `for-in` ループについては[For-In Loops](control-flow.md#for-in-loopsFor-Inループ)に記載されています。
 
-もしくは、`Character` 型アノテーションを与えて 1 文字のリテラルから `Character` 型の定数や変数を作ることもできます:
+もしくは、`Character` 型注釈を与えて 1 文字のリテラルから `Character` 型の定数や変数を作ることもできます:
 
 ```swift
 let exclamationMark: Character = "!"
