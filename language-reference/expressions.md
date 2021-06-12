@@ -2,6 +2,14 @@
 
 最終更新日:
 
+Swift では、前置式、バイナリ式、基本式、後置式の 4 種類の式があります。式が評価されると、値を返すか、副作用を起こすか、またはその両方を引き起こします。
+
+前置式とバイナリ式を使用すると、演算子をより小さな式に適用できます。基本式は概念的には最も簡単な種類の式で、値にアクセスする方法を提供します。後置式は、前置式やバイナリ式と同様に、関数呼び出しやメンバアクセスなどの後置式を使用してより複雑な式を構築できます。各式は、下記のセクションで詳しく説明されています。
+
+> GRAMMAR OF AN EXPRESSION  
+> expression → [try-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_try-operator)<sub>*opt*</sub> [prefix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression)  [binary-expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_binary-expressions)<sub>*opt*</sub>   
+> expression-list → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) \|  [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `,` [expression-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression-list)
+
 ## Prefix Expressions(前置式)
 
 ### In-Out Expression(inout式)
@@ -18,7 +26,7 @@
 
 ### Type-Casting Operators(型キャスト演算子)
 
-## Primary Expressions(一次式)
+## Primary Expressions(基本式)
 
 ### Literal Expression(リテラル式)
 
