@@ -525,6 +525,16 @@ let z: SomeClass = .sharedSubclass
 
 ### Wildcard Expression(ワイルドカード式)
 
+ワイルドカード式は、代入中に値を明示的に無視するために使用されます。例えば、次の代入式 `10` は `x` に割り当てられますが、`20` は無視されています:
+
+```swift
+(x, _) = (10, 20)
+// x は 10 で 20 は 無視されます
+```
+
+> GRAMMAR OF A WILDCARD EXPRESSION  
+> wildcard-expression → `_`
+
 ### Key-Path Expression(KeyPath式)
 
 ### Selector Expression(セレクタ式)
