@@ -384,6 +384,78 @@ myFunction { $0 + $1 }
 
 ---
 
+デフォルトでは、クロージャ式は、周囲のスコープのそれらの値への強い参照を持って、周囲の範囲から定数と変数をキャプチャします。キャプチャリストを使用して、クロージャ内で値をキャプチャする方法を明示的に制御できます。
+
+キャプチャリストは、引数のリストの前に、角括弧(`[]`)で囲まれた式のカンマ(`,`)区切りのリストとして書かれています。キャプチャリストを使用する場合は、引数名、引数型、および戻り値の型を省略しても、`in` キーワードを使用する必要があります。
+
+キャプチャリストへの各エントリは、クロージャが作成されたときに初期化されます。キャプチャリスト内の各エントリに対して、定数は周囲のスコープに同じ名前を持つ定数または変数の値で初期化できます。たとえば、下記のコードでは、`a` はキャプチャリストに含まれていますが、`b` は含まれていません。
+
+```swift
+var a = 0
+var b = 0
+let closure = { [a] in
+    print(a, b)
+}
+
+a = 10
+b = 10
+closure()
+```
+
+クロージャの範囲内の定数と周囲の範囲内の変数という 2 つ `a` という名前の異なるものがありますが、`b` という名前の変数は 1 つだけです。内部スコープ内の `a` は、クロージャが作成されたときに外側の `a` 値で初期化されますが、それらの値は特別な方法で繋がっていません。つまり、これは、外側の範囲内の `a` の値の変化が内側の範囲内の `a` の値に影響を与えないことも、クロージャの内側の値の変化が外側の `a` 影響を与えるません。対照的に、`b` という名前の変数は外側の範囲内の 1 つ `b` しかなく、クロージャの内側または外側からの変化は両方に影響を与えます。
+
+キャプチャされた変数の型に参照セマンティクスがある場合、この区別はありません。例えば、下のコードに `x` という 2 つのものがありますが、外部スコープの変数と内部スコープの定数は、両方とも参照セマンティクスのために同じオブジェクトを参照します。
+
+```swift
+class SimpleClass {
+    var value: Int = 0
+}
+var x = SimpleClass()
+var y = SimpleClass()
+let closure = { [x] in
+    print(x.value, y.value)
+}
+
+x.value = 10
+y.value = 10
+closure()
+// "10 10"
+```
+
+式の値の型がクラスの場合は、式の値へ弱参照または非所有参照で取り込むために、キャプチャリスト内の式に `weak` または `unowned` をマークすることができます。
+
+```swift
+myFunction { print(self.title) }                    // 暗黙的な強参照
+myFunction { [self] in print(self.title) }          // 明示的な強参照
+myFunction { [weak self] in print(self!.title) }    // 弱参照
+myFunction { [unowned self] in print(self.title) }  // 非所有参照
+```
+
+任意の式をキャプチャリスト内の名前付きの値にバインドすることもできます。クロージャが作成されたときに式が評価され、値は指定された強度でキャプチャされます。例えば:
+
+```swift
+// parent として self.parent を弱参照する
+myFunction { [weak parent = self.parent] in print(parent!.title) }
+```
+
+クロージャ式の詳細と例については、[Closure Expressions](./../language-guide/closures.md#closure-expressionsクロージャ式)を参照ください。キャプチャリストの詳細および例については、[Resolving Strong Reference Cycles for Closures](./../language-guide/automatic-reference-counting.md#resolving-strong-reference-cycles-for-closuresクロージャの強参照循環の解消)を参照ください。
+
+> GRAMMAR OF A CLOSURE EXPRESSION  
+> closure-expression → `{` [closure-signature](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-signature)<sub>*opt*</sub> [statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements)<sub>*opt*</sub> `}`  
+> closure-signature → [capture-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list) opt [closure-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-clause)  `throws`<sub>*opt*</sub> [function-result](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-result)<sub>*opt*</sub> `in`  
+> closure-signature → [capture-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list)  `in`  
+> closure-parameter-clause → `(` `)` \|  `(` [closure-parameter-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-list)  `)` \|  [identifier-list](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier-list)  
+> closure-parameter-list → [closure-parameter](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter) \|  [closure-parameter](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter)  `,` [closure-parameter-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-list)  
+> closure-parameter → [closure-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-name)  [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)<sub>*opt*</sub>  
+> closure-parameter → [closure-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-name)  [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)  `...`  
+> closure-parameter-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
+> capture-list → `[` [capture-list-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list-items)  `]`  
+> capture-list-items → [capture-list-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list-item) \|  [capture-list-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list-item)  `,` [capture-list-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list-items)  
+> capture-list-item → [capture-specifier](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-specifier)<sub>*opt*</sub> [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
+> capture-list-item → [capture-specifier](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-specifier)<sub>*opt*</sub> [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `=` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  
+> capture-list-item → [capture-specifier](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-specifier)<sub>*opt*</sub> [self-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-expression)  
+> capture-specifier → `weak` \|  `unowned` \|  `unowned(safe)` \|  `unowned(unsafe)`
+
 ### Implicit Member Expression(暗黙メンバ式)
 
 ### Parenthesized Expression(括弧で囲まれた式)
