@@ -330,6 +330,20 @@ struct Point {
 
 ### Superclass Expression(スーパークラス式)
 
+スーパークラス式は、クラスがスーパークラスとやり取りすることを可能にします。次のいずれかの形式があります:
+
+![スーパークラス式](./../.gitbook/assets/superclass_expression.png)
+
+最初の形式はスーパークラスのメンバにアクセスするために使用されます。2 番目の形式は、スーパークラスの subscript の実装にアクセスするために使用されます。3 番目の形式は、スーパークラスのイニシャライザにアクセスするために使用されます。
+
+サブクラスは、スーパークラスの実装を利用するために、メンバ、subscript、およびイニシャライザの実装でスーパークラス式を使用できます。
+
+> GRAMMAR OF A SUPERCLASS EXPRESSION  
+> superclass-expression → [superclass-method-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_superclass-method-expression) \|  [superclass-subscript-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_superclass-subscript-expression) \|  [superclass-initializer-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_superclass-initializer-expression)  
+> superclass-method-expression → `super` `.` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
+> superclass-subscript-expression → `super` `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  `]`  
+> superclass-initializer-expression → `super` `.` `init`
+
 ### Closure Expression(クロージャ式)
 
 #### Capture Lists(キャプチャリスト)
