@@ -507,6 +507,22 @@ let z: SomeClass = .sharedSubclass
 
 ### Tuple Expression(タプル式)
 
+タプル式は、括弧で囲まれた式のカンマ区切りのリストで構成されています。各式は、コロン(`:`)で区切られ、その前に識別子を持つこともできます。次の形式です:
+
+![タプル式](./../.gitbook/assets/tuple_expression.png)
+
+タプル式の各識別子は、タプル式の範囲内で一意になる必要があります。ネストされたタプル式では、同じレベルでネストされた識別子が一意になる必要があります。例えば、`(a: 10, a: 20)` はラベル `a` が同じレベルで 2 回使用されているため無効です。 ただし、`(a: 10, b: (a: 1, x: 2))` は有効です。`a` は 2 回使用されていますが、外側のタプルに 1 回、内側のタプルに一度使用されています。
+
+タプル式は式を含めなくても、2 つ以上の式を含めることもできます。 括弧内の単一の式は括弧内の式です。
+
+> NOTE  
+> 空のタプル式と空のタプル型はいずれもSwiftでは `()` で書かれています。`Void` は `()` のタイプエイリアスのため、空のタプル型を書くために使用できます。 ただし、全てのタイプエイリアスと同様に、`Void` は常に型で、空のタプル式を書くためには使用できません。
+
+> GRAMMAR OF A TUPLE EXPRESSION  
+> tuple-expression → `(` `)` \|  `(` [tuple-element](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element)  `,` [tuple-element-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element-list)  `)`   
+> tuple-element-list → [tuple-element](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element) \|  [tuple-element](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element)  `,` [tuple-element-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element-list)  
+> tuple-element → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) \|  [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
+
 ### Wildcard Expression(ワイルドカード式)
 
 ### Key-Path Expression(KeyPath式)
