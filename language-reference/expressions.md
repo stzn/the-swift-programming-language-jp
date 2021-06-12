@@ -7,7 +7,7 @@ Swift では、前置式、バイナリ式、基本式、後置式の 4 種類�
 前置式とバイナリ式を使用すると、演算子をより小さな式に適用できます。基本式は概念的には最も簡単な種類の式で、値にアクセスする方法を提供します。後置式は、前置式やバイナリ式と同様に、関数呼び出しやメンバアクセスなどの後置式を使用してより複雑な式を構築できます。各式は、下記のセクションで詳しく説明されています。
 
 > GRAMMAR OF AN EXPRESSION  
-> expression → [try-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_try-operator)<sub>*opt*</sub> [prefix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression)  [binary-expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_binary-expressions)<sub>*opt*</sub>   
+> expression → [try-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_try-operator)<sub>*opt*</sub> [prefix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression)  [binary-expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_binary-expressions)<sub>*opt*</sub>  
 > expression-list → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) \|  [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `,` [expression-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression-list)
 
 ## Prefix Expressions(前置式)
@@ -206,7 +206,7 @@ f(x as Any)
 基本式は最も基本的な種類の式です。それらは自身を式として使用することができたり、他のトークンと組み合わせたり、前置式、バイナリ式、および後置式を作成することができます。
 
 > GRAMMAR OF A PRIMARY EXPRESSION  
-> primary-expression → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause)<sub>*opt*</sub>   
+> primary-expression → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause)<sub>*opt*</sub>  
 > primary-expression → [literal-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_literal-expression)  
 > primary-expression → [self-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-expression)  
 > primary-expression → [superclass-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_superclass-expression)  
@@ -219,8 +219,78 @@ f(x as Any)
 > primary-expression → [selector-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_selector-expression)  
 > primary-expression → [key-path-string-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-string-expression)
 
-
 ### Literal Expression(リテラル式)
+
+リテラル式は、通常のリテラル(文字列や数など)、配列または辞書リテラル、playground リテラル、または下記の特別なリテラルのいずれかで構成されています。
+
+| Literal | Type | Value |
+| :---: | :---: | :---: |
+| `#file` | `String` | 使用されているファイルへのパス |
+| `#fileID` | `String` | 使用されているファイルとモジュールの名前 |
+| `#filePath` | `String` | 表示されているファイルへのパス |
+| `#line` | `Int` | 使用されている行番号 |
+| `#column` | `Int` | 開始列番号 |
+| `#function` | `String` | 使用されている宣言の名前 |
+| `#dsohandle` | `UnsafeRawPointer` | 使用中の動的共有オブジェクト(*dynamic shared object*(DSO))ハンドル |
+
+`#file` の文字列値は、古い `#filePath` から新しい `#fileID` への移行を有効にするために、言語のバージョンによって異なります。現在、`#file` は `#filePath` と同じ値を持ちます。将来の Swift のバージョンでは、`#file` は代わりに `#fileID` と同じ値を持ちます。将来のバージョンの挙動を適用するには、`#file` を `#fileID` または `#filepath` に置き換える必要があります。
+
+`#fileID` 式の文字列値にはモジュール/ファイル形式があります。ここで言う、「ファイル」は式が使用されているファイルの名前で、「モジュール」は、がこのファイルが属しているモジュールの名前です。`#filePath` 式の文字列値は、式が使用されているファイルへのフルパスです。[Line Control Statement](./statements.md#line-control-statement行制御文)で説明されているように、これらの値はどちらも `#sourceLocation` に変わる可能性があります。`#fileID` は `#filePath` とは異なり、ソースファイルへのフルパスをソースファイルに埋め込むことはできませんので、より良いプライバシーを提供し、コンパイルされたバイナリのサイズを減させることができます。テスト、ビルドスクリプト、また配布プログラムの一部にはならないコードの外側で `#filePath` を使用しないでください。
+
+> NOTE  
+> `#fileID` 式は、最初のスラッシュ(`/`）の前のテキストをモジュール名、最後のスラッシュ(`/`）の後のテキストをファイル名と読んでください。将来的には、`MyModule/some/disambigation/myfile.swift` などのように、複数のスラッシュが含まれている可能性があります。
+
+`#function` の値は、関数内ではその関数の名前です。メソッド内では、そのメソッドの名前、プロパティ get または set 内ではプロパティ名、`init` や `subscript` のような特別なメンバ内では、そのキーワード名、およびファイルのトップレベルでは、現在のモジュールの名です。
+
+関数またはメソッドの引数のデフォルト値として使用すると、呼び出し側でデフォルト値の式が評価されると、特別なリテラル値が決定します。
+
+```swift
+func logFunctionName(string: String = #function) {
+   print(string)
+}
+func myFunction() {
+   logFunctionName() // "myFunction()".
+}
+```
+
+配列リテラルは、値の順序付けられた集合です。次の形式です:
+
+![配列リテラル](./../.gitbook/assets/array_expression.png)
+
+配列内の最後の式の後にカンマ(`,`)を続けることもできます。配列リテラルの値は `[T]` 型で、`T` はその内部の式の型です。複数の型の式がある場合、`T` はそれらに最も近い共通スーパー型になります。空の配列リテラルは、空の角括弧(`[]`)を使用し、指定された型の空の配列を作成するためにも使用できます。
+
+```swift
+var emptyArray: [Double] = []
+```
+
+辞書リテラルは、順序のないキーバリューペアのコレクションです。次の形式です:
+
+![辞書リテラル](./../.gitbook/assets/dictionary_expression.png)
+
+辞書内の最後の式の後にカンマ(`,`)を続けることができます。辞書リテラルの値は `[Key：Value]` 型で、`Key` はそのキー式の型、`Value` はその値の式の型です。複数の型の式がある場合、キーとバリューはそれぞれの値に最も近い共通のスーパー型になります。空の辞書リテラルは、空の配列リテラルと区別するために、一対の括弧内にコロンを書きます(`[:]`)。空の辞書リテラルを使用して、指定されたキーとバリュー型の空の辞書リテラルを作成できます。
+
+```swift
+var emptyDictionary: [String: Double] = [:]
+```
+
+`playground` リテラルは、プログラムエディタ内の色、ファイル、または画像の対話型な表現を作成するために Xcode によって使用されます。Xcode の外側のプレーンテキストの `playground` リテラルには、特別なリテラル構文を使用します。
+
+Xcode の playground リテラルの使用方法については、Xcode ヘルプ内の[Add a color, file, or image literal](https://help.apple.com/xcode/mac/current/#/dev4c60242fc)を参照ください。
+
+> GRAMMAR OF A LITERAL EXPRESSION  
+> literal-expression → [literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_literal)  
+> literal-expression → [array-literal](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal) \|  [dictionary-literal](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal) \|  [playground-literal](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_playground-literal)  
+> literal-expression → `#file` \|  `#fileID` \|  `#filePath`  
+> literal-expression → `#line` \|  `#column` \|  `#function` \|  `#dsohandle`  
+> array-literal → `[` [array-literal-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal-items)<sub>*opt*</sub> `]`  
+> array-literal-items → [array-literal-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal-item)  `,`<sub>*opt*</sub> \|  [array-literal-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal-item)  `,` [array-literal-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal-items)  
+> array-literal-item → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  
+> dictionary-literal → `[` [dictionary-literal-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal-items)  `]` \|  `[` `:` `]`  
+> dictionary-literal-items → [dictionary-literal-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal-item)  `,`<sub>*opt*</sub> \|  [dictionary-literal-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal-item)  `,` [dictionary-literal-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal-items)  
+> dictionary-literal-item → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  
+> playground-literal → `#colorLiteral` `(` `red` `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `,` `green` `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `,` `blue` `:`[expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `,` `alpha` `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `)`  
+> playground-literal → `#fileLiteral` `(` `resourceName` `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `)`  
+> playground-literal → `#imageLiteral` `(` `resourceName` `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `)`
 
 ### Self Expression(Self式)
 
