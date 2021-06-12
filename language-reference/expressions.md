@@ -238,7 +238,7 @@ f(x as Any)
 `#fileID` 式の文字列値にはモジュール/ファイル形式があります。ここで言う、「ファイル」は式が使用されているファイルの名前で、「モジュール」は、がこのファイルが属しているモジュールの名前です。`#filePath` 式の文字列値は、式が使用されているファイルへのフルパスです。[Line Control Statement](./statements.md#line-control-statement行制御文)で説明されているように、これらの値はどちらも `#sourceLocation` に変わる可能性があります。`#fileID` は `#filePath` とは異なり、ソースファイルへのフルパスをソースファイルに埋め込むことはできませんので、より良いプライバシーを提供し、コンパイルされたバイナリのサイズを減させることができます。テスト、ビルドスクリプト、また配布プログラムの一部にはならないコードの外側で `#filePath` を使用しないでください。
 
 > NOTE  
-> `#fileID` 式は、最初のスラッシュ(`/`）の前のテキストをモジュール名、最後のスラッシュ(`/`）の後のテキストをファイル名と読んでください。将来的には、`MyModule/some/disambigation/myfile.swift` などのように、複数のスラッシュが含まれている可能性があります。
+> `#fileID` 式は、最初のスラッシュ(`/`)の前のテキストをモジュール名、最後のスラッシュ(`/`)の後のテキストをファイル名と読んでください。将来的には、`MyModule/some/disambigation/myfile.swift` などのように、複数のスラッシュが含まれている可能性があります。
 
 `#function` の値は、関数内ではその関数の名前です。メソッド内では、そのメソッドの名前、プロパティ get または set 内ではプロパティ名、`init` や `subscript` のような特別なメンバ内では、そのキーワード名、およびファイルのトップレベルでは、現在のモジュールの名です。
 
@@ -457,6 +457,46 @@ myFunction { [weak parent = self.parent] in print(parent!.title) }
 > capture-specifier → `weak` \|  `unowned` \|  `unowned(safe)` \|  `unowned(unsafe)`
 
 ### Implicit Member Expression(暗黙メンバ式)
+
+暗黙メンバ式は、型推論が暗黙の型を決定できるコンテキストにおいて、列挙型の場合や型メソッドなどの型のメンバにアクセスするための省略記法です。次の形式です:
+
+![暗黙メンバ式](./../.gitbook/assets/implicit_member_expression.png)
+
+例えば:
+
+```swift
+var x = MyEnumeration.someValue
+x = .anotherValue
+```
+
+推論された型がオプショナルの場合は、暗黙メンバ式でオプショナルでない型のメンバを使用することもできます。
+
+```swift
+var someOptional: MyEnumeration? = .someValue
+```
+
+暗黙メンバ式の後に[Postfix Expressions](#postfix-expressions後置式)でリストられている後置演算子またはその他の後置構文を続けることができます。これは暗黙的メンバ式チェーンと呼ばれます。後置式チェーンの全てが同じ型を持つことは一般的ですが、連結された暗黙メンバ式全体がそのコンテキストによって暗黙的に変換可能な必要があります。具体的には、暗黙の型がオプショナルの場合は、オプショナル以外の型の値を使用でき、暗黙の型がクラス型の場合、そのサブクラスを使用できます。例えば:
+
+```swift
+class SomeClass {
+    static var shared = SomeClass()
+    static var sharedSubclass = SomeSubclass()
+    var a = AnotherClass()
+}
+class SomeSubclass: SomeClass { }
+class AnotherClass {
+    static var s = SomeClass()
+    func f() -> SomeClass { return AnotherClass.s }
+}
+let x: SomeClass = .shared.a.f()
+let y: SomeClass? = .shared
+let z: SomeClass = .sharedSubclass
+```
+
+上記のコードでは、`x` の型はそのコンテキストから暗黙的に推論された型と正確に一致し、`y` の型は `Someclass` から `SomeClass?` に変換され、`z` の型は `SomeSubclass` から `SomeClass` に変換されます。
+
+> GRAMMAR OF A IMPLICIT MEMBER EXPRESSION  
+> implicit-member-expression → `.` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
 ### Parenthesized Expression(括弧で囲まれた式)
 
