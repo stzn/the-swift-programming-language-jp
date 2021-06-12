@@ -516,7 +516,7 @@ let z: SomeClass = .sharedSubclass
 タプル式は式を含めなくても、2 つ以上の式を含めることもできます。 括弧内の単一の式は括弧内の式です。
 
 > NOTE  
-> 空のタプル式と空のタプル型はいずれもSwiftでは `()` で書かれています。`Void` は `()` のタイプエイリアスのため、空のタプル型を書くために使用できます。 ただし、全てのタイプエイリアスと同様に、`Void` は常に型で、空のタプル式を書くためには使用できません。
+> 空のタプル式と空のタプル型はいずれもSwiftでは `()` で書かれています。`Void` は `()` の型エイリアスのため、空のタプル型を書くために使用できます。 ただし、全ての型エイリアスと同様に、`Void` は常に型で、空のタプル式を書くためには使用できません。
 
 > GRAMMAR OF A TUPLE EXPRESSION  
 > tuple-expression → `(` `)` \|  `(` [tuple-element](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element)  `,` [tuple-element-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element-list)  `)`   
@@ -535,11 +535,177 @@ let z: SomeClass = .sharedSubclass
 > GRAMMAR OF A WILDCARD EXPRESSION  
 > wildcard-expression → `_`
 
-### Key-Path Expression(KeyPath式)
+### Key-Path Expression(Key-Path式)
+
+Key-Path 式は、型のプロパティまたは subscript を参照します。key-value observing などのような、動的プログラミングタスクで Key-Path 式を使用します。次の形式があります:
+
+![Key-Path式](./../.gitbook/assets/key-path_expression.png)
+
+type name には、`String`、`[Int]`、や `Set<Int>` などのジェネリックな引数を含めた、具体的な型の名前です。
+
+path は、プロパティ名、subscript、オプショナルチェーン式、および強制アンラップ式で構成されます。これらの Key-Path コンポーネントのそれぞれは、必要に応じて任意の順序で繰り返すことができます。
+
+コンパイル時には、Key-Path 式は [KeyPath](https://developer.apple.com/documentation/swift/keypath)クラスのインスタンスに置き換えられます。
+
+Key-Path を使用して値にアクセスするには、KeyPath を `subscript(keyPath:)` subscript に渡します。これは全ての型で利用可能です。例えば:
+
+```swift
+struct SomeStructure {
+    var someValue: Int
+}
+
+let s = SomeStructure(someValue: 12)
+let pathToProperty = \SomeStructure.someValue
+
+let value = s[keyPath: pathToProperty]
+// value は 12
+```
+
+型名は、型推論が暗黙の型を決定できるコンテキストでは省略できます。次のコードは、`\ someClass.someProperty` の代わりに `\.someProperty` を使用しています。:
+
+```swift
+class SomeClass: NSObject {
+    @objc dynamic var someProperty: Int
+    init(someProperty: Int) {
+        self.someProperty = someProperty
+    }
+}
+
+let c = SomeClass(someProperty: 10)
+c.observe(\.someProperty) { object, change in
+    // ...
+}
+```
+
+path は、識別 Key-Path`(\.self)` を作成するために `self` を参照できます。 識別 Key-Path は、インスタンス全体を参照しているので、それを使用して、変数に格納されている全てのデータを単一のステップでアクセスして変更できます。例えば：:
+
+```swift
+var compoundValue = (a: 1, b: 2)
+// compoundValue = (a: 10, b: 20) と同じ
+compoundValue[keyPath: \.self] = (a: 10, b: 20)
+```
+
+path には、プロパティのプロパティを参照するために、ピリオドで区切られた複数のプロパティ名を含めることができます。このコードは、Key-Path 式 `\OuterStructure.outer.someValue` を使用して、`OuterStructure` 型の `outer` プロパティの `someValue` プロパティにアクセスしています:
+
+```swift
+struct OuterStructure {
+    var outer: SomeStructure
+    init(someValue: Int) {
+        self.outer = SomeStructure(someValue: someValue)
+    }
+}
+
+let nested = OuterStructure(someValue: 24)
+let nestedKeyPath = \OuterStructure.outer.someValue
+
+let nestedValue = nested[keyPath: nestedKeyPath]
+// nestedValue は 24
+```
+
+path は、subscript の引数型が `Hashable` プロトコルに準拠している限り角括弧(`[]`)を使用して subscript を含めることができます。この例では、Key-Path の subscript を使用して、配列の 2 番目の要素にアクセスしています。
+
+```swift
+let greetings = ["hello", "hola", "bonjour", "안녕"]
+let myGreeting = greetings[keyPath: \[String].[1]]
+// myGreeting は 'hola'
+```
+
+subscript で使用される値は、名前付きの値またはリテラルです。値は値セマンティクスを使用して Key-Path にキャプチャされます。次のコードは、Key-Path 式と `greetings` 配列の 3 番目の要素の両方にアクセスするために、可変の `index` を使用しています。`index` が変更されると、Key-Path 式は依然として 3 番目の要素を参照し、クロージャは新しいインデックスを使用します。
+
+```swift
+var index = 2
+let path = \[String].[index]
+let fn: ([String]) -> String = { strings in strings[index] }
+
+print(greetings[keyPath: path])
+// "bonjour"
+print(fn(greetings))
+// "bonjour"
+
+// index に新しい値を設定しても、path には影響しません
+index += 1
+print(greetings[keyPath: path])
+// "bonjour"
+
+// fn が index を参照するので、新しい値を使用しています
+print(fn(greetings))
+// "안녕"
+```
+
+path はオプショナルチェーンと強制的アンラップを使用できます。このコードは、オプショナルの文字列のプロパティにアクセスするための Key-Path でオプショナルチェーンを使用しています。
+
+```swift
+let firstGreeting: String? = greetings.first
+print(firstGreeting?.count as Any)
+// "Optional(5)"
+
+// Key-Path を使用して同じことをしています
+let count = greetings[keyPath: \[String].first?.count]
+print(count as Any)
+// "Optional(5)"
+```
+
+Key-Path のコンポーネントを、型内に深くネストされている値にアクセスために組み合わせることができます。次のコードは、これらのコンポーネントを組み合わせた Key-Path 式を使用して、配列の辞書のプロパティの様々な値にアクセスしています:
+
+```swift
+let interestingNumbers = ["prime": [2, 3, 5, 7, 11, 13, 17],
+                          "triangular": [1, 3, 6, 10, 15, 21, 28],
+                          "hexagonal": [1, 6, 15, 28, 45, 66, 91]]
+print(interestingNumbers[keyPath: \[String: [Int]].["prime"]] as Any)
+// "Optional([2, 3, 5, 7, 11, 13, 17])"
+print(interestingNumbers[keyPath: \[String: [Int]].["prime"]![0]])
+// "2"
+print(interestingNumbers[keyPath: \[String: [Int]].["hexagonal"]!.count])
+// "7"
+print(interestingNumbers[keyPath: \[String: [Int]].["hexagonal"]!.count.bitWidth])
+// "64"
+```
+
+関数またはクロージャを通常に提供できるコンテキストでは、Key-Path 式を使用できます。具体的には、`(SomeType) -> Value` 型の関数やクロージャの代わりに、基の型が `SomeType` で、その path が `Value` 型の値を生成することができます。
+
+```swift
+struct Task {
+    var description: String
+    var completed: Bool
+}
+var toDoList = [
+    Task(description: "Practice ping-pong.", completed: false),
+    Task(description: "Buy a pirate costume.", completed: true),
+    Task(description: "Visit Boston in the Fall.", completed: false),
+]
+
+// 以下の両方のアプローチは同等です
+let descriptions = toDoList.filter(\.completed).map(\.description)
+let descriptions2 = toDoList.filter { $0.completed }.map { $0.description }
+```
+
+Key-Path 式の副作用は、式が評価される時点でのみ評価されます。例えば、Key-Path 式で subscript の内側の関数呼び出しを行うと、関数は、Key-Path が使用される度にではなく、式を評価する際に 1 回だけ呼び出されます。
+
+```swift
+func makeIndex() -> Int {
+    print("Made an index")
+    return 0
+}
+// 下の行は makeIndex（） を呼び出します
+let taskKeyPath = \[Task][makeIndex()]
+// "Made an index"
+
+// taskKeyPath を使用すると makeIndex（） は再び呼び出されません。
+let someTask = toDoList[keyPath: taskKeyPath]
+```
+
+Objective-C API とやり取りするコード内の Key-Path の使用方法の詳細については、[Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift)を参照ください。key-value coding や key-value observing については、[Key-Value Coding Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i)と[Key-Value Observing Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i)を参照ください。
+
+> GRAMMAR OF A KEY-PATH EXPRESSION  
+> key-path-expression → `\` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)<sub>*opt*</sub> `.` [key-path-components](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-components)  
+> key-path-components → [key-path-component](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-component) \|  [key-path-component](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-component)  `.` [key-path-components](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-components)  
+> key-path-component → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  [key-path-postfixes](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes)<sub>*opt*</sub> \|  [key-path-postfixes](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes)  
+> key-path-postfixes → [key-path-postfix](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfix)  [key-path-postfixes](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes)<sub>*opt*</sub>   
+> key-path-postfix → `?` \|  `!` \|  `self` \|  `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  `]`
 
 ### Selector Expression(セレクタ式)
 
-### Key-Path String Expression(KeyPath文字列式)
+### Key-Path String Expression(Key-Path文字列式)
 
 ## Postfix Expressions(後置式)
 
