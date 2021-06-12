@@ -694,7 +694,7 @@ let taskKeyPath = \[Task][makeIndex()]
 let someTask = toDoList[keyPath: taskKeyPath]
 ```
 
-Objective-C API とやり取りするコード内の Key-Path の使用方法の詳細については、[Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift)を参照ください。key-value coding や key-value observing については、[Key-Value Coding Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i)と[Key-Value Observing Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i)を参照ください。
+Objective-C API とやり取りするコード内の Key-Path の使用方法の詳細については、[Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift)を参照ください。Key-Value Coding や Key-Value Observing については、[Key-Value Coding Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i)と[Key-Value Observing Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i)を参照ください。
 
 > GRAMMAR OF A KEY-PATH EXPRESSION  
 > key-path-expression → `\` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)<sub>*opt*</sub> `.` [key-path-components](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-components)  
@@ -751,6 +751,51 @@ Objective-C API とやり取りする Swift コードでセレクタを使用す
 > selector-expression → `#selector` `(` `setter:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `)`
 
 ### Key-Path String Expression(Key-Path文字列式)
+
+Key-Path 文字列式を使用すると、Key-Value Coding や Key-Value Observing API で使用するために、Objective-C のプロパティを参照するための文字列にアクセスできます。次の形式です:
+
+![Key-Path文字列式](./../.gitbook/assets/key-path_string_expression.png)
+
+プロパティ名は、Objective-C ランタイムで使用可能なプロパティを参照する必要があります。コンパイル時には、Key-Path 文字列式は文字列リテラルに置き換えられます。例えば:
+
+```swift
+class SomeClass: NSObject {
+    @objc var someProperty: Int
+    init(someProperty: Int) {
+        self.someProperty = someProperty
+    }
+}
+
+let c = SomeClass(someProperty: 12)
+let keyPath = #keyPath(SomeClass.someProperty)
+
+if let value = c.value(forKey: keyPath) {
+    print(value)
+}
+// "12"
+```
+
+クラス内で Key-Path 文字列式を使用すると、クラス名なしでプロパティ名だけを書くことでそのクラスのプロパティを参照できます。
+
+```swift
+extension SomeClass {
+    func getSomeKeyPath() -> String {
+        return #keyPath(someProperty)
+    }
+}
+print(keyPath == c.getSomeKeyPath())
+// "true"
+```
+
+Key-Path 文字列は実行時ではなく、コンパイル時に作成されているため、コンパイラはプロパティが存在すること、およびそのプロパティが Objective-C ランタイムに公開されていることを確認できます。
+
+Objective-C API とやり取りする Swift コードで Key-Path を使用する方法の詳細については、[Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift)を参照ください。Key-Value Coding と Key-Value Observing については、[Key-Value Coding Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i)と[Key-Value Observing Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i)を参照ください。
+
+> NOTE  
+> プロパティ名は式ですが、それらは決して評価されません。
+
+> GRAMMAR OF A KEY-PATH STRING EXPRESSION  
+> key-path-string-expression → `#keyPath` `(` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `)`
 
 ## Postfix Expressions(後置式)
 
