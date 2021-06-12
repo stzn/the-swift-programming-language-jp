@@ -498,7 +498,12 @@ let z: SomeClass = .sharedSubclass
 > GRAMMAR OF A IMPLICIT MEMBER EXPRESSION  
 > implicit-member-expression → `.` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
-### Parenthesized Expression(括弧で囲まれた式)
+### Parenthesized Expression(括弧内の式)
+
+括弧内の式は、括弧で囲まれた式で構成されます。式を明示的にグループ化することで、括弧を使用して操作の優先順位を指定できます。括弧のグループ化は式の型を変更しません(例：`(1)` はただの `Int` です。
+
+> GRAMMAR OF A PARENTHESIZED EXPRESSION  
+> parenthesized-expression → `(` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `)`
 
 ### Tuple Expression(タプル式)
 
