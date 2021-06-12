@@ -294,6 +294,40 @@ Xcode の playground リテラルの使用方法については、Xcode ヘル�
 
 ### Self Expression(Self式)
 
+Self 式は、それが出現する現在の型またはインスタンスへの明示的な参照です。次の形式です:
+
+![Self式](./../.gitbook/assets/self_expression.png)
+
+イニシャライザ、subscript、またはインスタンスメソッドでは、`self` は、それが出現する現在の型のインスタンスを表します。型メソッドでは、`self` はそれが出現する現在の型を表します。
+
+`self` 式は、関数引数などのスコープ内に同じ名前の別の変数があり、何を指すのかが曖昧な場合に、メンバへアクセスするときに指定します。例えば:
+
+```swift
+class SomeClass {
+    var greeting: String
+    init(greeting: String) {
+        self.greeting = greeting
+    }
+}
+```
+
+値型の mutating メソッドでは、その値型の新しいインスタンスを `self` に代入できます。例えば:
+
+```swift
+struct Point {
+    var x = 0.0, y = 0.0
+    mutating func moveBy(x deltaX: Double, y deltaY: Double) {
+        self = Point(x: x + deltaX, y: y + deltaY)
+    }
+}
+```
+
+> GRAMMAR OF A SELF EXPRESSION  
+> self-expression → `self` \|  [self-method-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-method-expression) \|  [self-subscript-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-subscript-expression) \|  [self-initializer-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-initializer-expression)  
+> self-method-expression → `self` `.` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
+> self-subscript-expression → `self` `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  `]`  
+> self-initializer-expression → `self` `.` `init`
+
 ### Superclass Expression(スーパークラス式)
 
 ### Closure Expression(クロージャ式)
