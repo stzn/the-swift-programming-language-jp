@@ -1048,6 +1048,17 @@ let x = [10, 3, 20, 15, 4]
 
 ### Subscript Expression(subscript式)
 
+subscript 式は、対応する subscript 宣言の get と set を使用して subscript へのアクセスを提供します。次の形式です:
+
+![subscript式](./../.gitbook/assets/subscript_expression.png)
+
+subscript 式の値を評価するには、expression 型の subscript の get が subscript の引数として渡される index expressions を使って呼び出されます。値を設定するために、subscript の set を同じ方法で呼び出します。
+
+subscript 宣言については、[Protocol Subscript Declaration](./declarations.md#protocol-subscript-declarationプロトコルのsubscript宣言)を参照ください。
+
+> GRAMMAR OF A SUBSCRIPT EXPRESSION  
+> subscript-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  `]`
+
 ### Forced-Value Expression(強制アンラップ式)
 
 ### Optional-Chaining Expression(オプショナルチェーン式)
