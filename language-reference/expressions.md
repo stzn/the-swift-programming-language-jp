@@ -111,6 +111,24 @@ sum = (await someAsyncFunction()) + anotherAsyncFunction()
 
 ## Binary Expressions(バイナリ式)
 
+バイナリ式は、左右の引数を受け取る式と中置(*infix*)バイナリ演算子を組み合わせます。次の形式です:
+
+![Binary Expressions](./../.gitbook/assets/binary_expression.png)
+
+これらの演算子の動作については、[Basic Operators](./../language-guide/basic-operators.md) と [Advanced Operators](./../language-guide/advanced-operators.md)を参照ください。
+
+標準ライブラリによって提供されている演算子については、[Operator Declarations](https://developer.apple.com/documentation/swift/operator_declarations)を参照ください。
+
+> NOTE  
+> 構文解析時には、式はフラットなリストとして表されたバイナリ演算子で構成されていました。 このリストは、演算子の優先順位を適用することによってツリーに変換されます。 例えば、式 `2 + 3 * 5` は、最初は5つの項目、`2`、`+`、`3`、`*`、および `5` として解釈され、その後 `(2 + (3 * 5))` のツリーに変換します  
+
+> GRAMMAR OF A BINARY EXPRESSION  
+> binary-expression → [binary-operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_binary-operator)  [prefix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression)  
+> binary-expression → [assignment-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_assignment-operator)  [try-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_try-operator)<sub>*opt*</sub> [prefix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression)  
+> binary-expression → [conditional-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_conditional-operator)  [try-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_try-operator)<sub>*opt*</sub> [prefix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression)  
+> binary-expression → [type-casting-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_type-casting-operator)  
+> binary-expressions → [binary-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_binary-expression)  [binary-expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_binary-expressions)<sub>*opt*</sub>
+
 ### Assignment Operator(代入演算子)
 
 ### Ternary Conditional Operator(三項条件演算子)
