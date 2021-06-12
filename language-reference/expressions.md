@@ -12,6 +12,16 @@ Swift では、前置式、バイナリ式、基本式、後置式の 4 種類�
 
 ## Prefix Expressions(前置式)
 
+前置式は、オプショナルの前置演算子を式と組み合わせます。前置演算子は 1 つの引数を受け取り、その後に式が続きます。
+
+これらの演算子の動作については、[Basic Operators](./../language-guide/basic-operators.md)と[Advanced Operators](./../language-guide/advanced-operators.md)を参照ください。
+
+Swift 標準ライブラリによって提供されている演算子については、[Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
+
+> GRAMMAR OF A PREFIX EXPRESSION  
+> prefix-expression → [prefix-operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_prefix-operator)<sub>*opt*</sub> [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  
+> prefix-expression → [in-out-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_in-out-expression)
+
 ### In-Out Expression(inout式)
 
 ### Try Operator(try演算子)
