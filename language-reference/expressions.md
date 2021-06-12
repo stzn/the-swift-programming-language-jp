@@ -700,10 +700,55 @@ Objective-C API とやり取りするコード内の Key-Path の使用方法の
 > key-path-expression → `\` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)<sub>*opt*</sub> `.` [key-path-components](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-components)  
 > key-path-components → [key-path-component](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-component) \|  [key-path-component](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-component)  `.` [key-path-components](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-components)  
 > key-path-component → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  [key-path-postfixes](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes)<sub>*opt*</sub> \|  [key-path-postfixes](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes)  
-> key-path-postfixes → [key-path-postfix](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfix)  [key-path-postfixes](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes)<sub>*opt*</sub>   
+> key-path-postfixes → [key-path-postfix](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfix)  [key-path-postfixes](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes)<sub>*opt*</sub>  
 > key-path-postfix → `?` \|  `!` \|  `self` \|  `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  `]`
 
 ### Selector Expression(セレクタ式)
+
+セレクタ式を使用すると、Objective-C のメソッドまたはプロパティの get や set を参照するために使用されるセレクタにアクセスできます。次の形式です:
+
+![セレクタ式](./../.gitbook/assets/selector_expression.png)
+
+メソッド名とプロパティ名は、Objective-C ランタイムで使用可能なメソッドまたはプロパティへの参照にする必要があります。セレクタ式の値は `Selector` 型のインスタンスです。例えば:
+
+```swift
+class SomeClass: NSObject {
+    @objc let property: String
+
+    @objc(doSomethingWithInt:)
+    func doSomething(_ x: Int) { }
+
+    init(property: String) {
+        self.property = property
+    }
+}
+let selectorForMethod = #selector(SomeClass.doSomething(_:))
+let selectorForPropertyGetter = #selector(getter: SomeClass.property)
+```
+
+プロパティの get のセレクタを作成すると、プロパティ名は変数または定数プロパティを参照できます。対照的に、プロパティの set のセレクタを作成すると、プロパティ名は変数プロパティのみを参照する必要があります。
+
+同じ名前でシグネチャが異なるメソッド間の曖昧さを軽減するために `as` 演算子と一緒にグループ化するための括弧を含めることができます。例えば:
+
+```swift
+extension SomeClass {
+    @objc(doSomethingWithString:)
+    func doSomething(_ x: String) { }
+}
+let anotherSelector = #selector(SomeClass.doSomething(_:) as (SomeClass) -> (String) -> Void)
+```
+
+セレクタが実行時ではなくコンパイル時に作成されるため、コンパイラはメソッドまたはプロパティが存在すること、およびそれらが Objective-C ランタイムに公開されていることを確認できます。
+
+> NOTE  
+> メソッド名とプロパティ名は式ですが、それらは決して評価されません。
+
+Objective-C API とやり取りする Swift コードでセレクタを使用する方法の詳細については、[Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift)を参照ください。
+
+> GRAMMAR OF A SELECTOR EXPRESSION  
+> selector-expression → `#selector` `(` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `)`  
+> selector-expression → `#selector` `(` `getter:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `)`  
+> selector-expression → `#selector` `(` `setter:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `)`
 
 ### Key-Path String Expression(Key-Path文字列式)
 
