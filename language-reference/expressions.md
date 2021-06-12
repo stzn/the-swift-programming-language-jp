@@ -511,12 +511,12 @@ let z: SomeClass = .sharedSubclass
 
 ![タプル式](./../.gitbook/assets/tuple_expression.png)
 
-タプル式の各識別子は、タプル式の範囲内で一意になる必要があります。ネストされたタプル式では、同じレベルでネストされた識別子が一意になる必要があります。例えば、`(a: 10, a: 20)` はラベル `a` が同じレベルで 2 回使用されているため無効です。 ただし、`(a: 10, b: (a: 1, x: 2))` は有効です。`a` は 2 回使用されていますが、外側のタプルに 1 回、内側のタプルに一度使用されています。
+タプル式の各識別子は、タプル式の範囲内で一意になる必要があります。ネストされたタプル式では、同じレベルでネストされた識別子が一意になる必要があります。例えば、`(a: 10, a: 20)` はラベル `a` が同じレベルで 2 回使用されているため無効です。ただし、`(a: 10, b: (a: 1, x: 2))` は有効です。`a` は 2 回使用されていますが、外側のタプルに 1 回、内側のタプルに一度使用されています。
 
-タプル式は式を含めなくても、2 つ以上の式を含めることもできます。 括弧内の単一の式は括弧内の式です。
+タプル式は式を含めなくても、2 つ以上の式を含めることもできます。括弧内の単一の式は括弧内の式です。
 
 > NOTE  
-> 空のタプル式と空のタプル型はいずれもSwiftでは `()` で書かれています。`Void` は `()` の型エイリアスのため、空のタプル型を書くために使用できます。 ただし、全ての型エイリアスと同様に、`Void` は常に型で、空のタプル式を書くためには使用できません。
+> 空のタプル式と空のタプル型はいずれもSwiftでは `()` で書かれています。`Void` は `()` の型エイリアスのため、空のタプル型を書くために使用できます。ただし、全ての型エイリアスと同様に、`Void` は常に型で、空のタプル式を書くためには使用できません。
 
 > GRAMMAR OF A TUPLE EXPRESSION  
 > tuple-expression → `(` `)` \|  `(` [tuple-element](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element)  `,` [tuple-element-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element-list)  `)`   
@@ -577,7 +577,7 @@ c.observe(\.someProperty) { object, change in
 }
 ```
 
-path は、識別 Key-Path`(\.self)` を作成するために `self` を参照できます。 識別 Key-Path は、インスタンス全体を参照しているので、それを使用して、変数に格納されている全てのデータを単一のステップでアクセスして変更できます。例えば：:
+path は、識別 Key-Path`(\.self)` を作成するために `self` を参照できます。識別 Key-Path は、インスタンス全体を参照しているので、それを使用して、変数に格納されている全てのデータを単一のステップでアクセスして変更できます。例えば：:
 
 ```swift
 var compoundValue = (a: 1, b: 2)
@@ -854,7 +854,7 @@ myData.someMethod { $0 == 13 }
 | :---: | :---: | :---: |
 | ラベル付き | ラベル付き | ラベルが同じ場合、クロージャは引数と一致します。それ以外の場合は、引数はスキップされます |
 | ラベル付き | ラベルなし | 引数はスキップされます |
-| ラベルなし | ラベル付きまたはラベルなし | 下記に定義されているように、引数が関数型に類似している場合、クロージャは引数と一致します。それ以外の場合は、引数はスキップされます。 |
+| ラベルなし | ラベル付きまたはラベルなし | 下記に定義されているように、引数が関数型に類似している場合、クロージャは引数と一致します。それ以外の場合は、引数はスキップされます。|
 
 末尾クロージャは、それが一致する関数の引数に渡されます。スキャンプロセス中にスキップされた引数は、値が渡されません。例えば、デフォルトの引数を使用できます。一致する引数を見つけた後、スキャンは次の末尾クロージャと次の引数に続きます。マッチングプロセスの最後に、全ての末尾クロージャが一致している必要があります。
 
@@ -949,7 +949,7 @@ class SomeSubClass: SomeSuperClass {
 関数のように、イニシャライザを値として使用することができます。例えば:
 
 ```swift
-// タイプアノテーションは、文字列に複数のイニシャイザがあるため必要です
+// 型注釈は、文字列に複数のイニシャイザがあるため必要です
 let initializer: (Int) -> String = String.init
 let oneTwoThree = [1, 2, 3].map(initializer).reduce("", +)
 print(oneTwoThree)
@@ -971,6 +971,67 @@ let s4 = type(of: someValue)(data: 5)       // エラー
 > initializer-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `.` `init` `(` [argument-names](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names)  `)`
 
 ### Explicit Member Expression(明示的メンバ式)
+
+明示的なメンバ式では、名前付き型、タプル、またはモジュールのメンバへのアクセスを許可します。アイテムとそのメンバの識別子の間のピリオド(`.`)で構成されています。
+
+![明示的メンバ式](./../.gitbook/assets/explicit_member_expression.png)
+
+名前付き型のメンバは、型の宣言または拡張子の一部として指定されます。例えば:
+
+```swift
+class SomeClass {
+    var someProperty = 42
+}
+let c = SomeClass()
+let y = c.someProperty  // メンバへのアクセス
+```
+
+タプルのメンバは、0 から始まる整数が順番に暗黙的に指定されており、使用することができます。例えば:
+
+```swift
+var t = (10, 20, 30)
+t.0 = t.1
+// t は今 (20, 20, 30)
+```
+
+モジュールのメンバはそのモジュールの最上位の宣言にアクセスします。
+
+`dynamicMemberLookup` 属性で宣言された型には、[Attributes](./attributes.md)で説明されているように、実行時に検索できるメンバが含まれています。
+
+引数名だけが異なるメソッドまたはイニシャライザを区別するには、引数名を括弧内に入れ、引数名の後にコロン(`:`)を書きます。名前のない引数にアンダースコア(`_`)を書きます。オーバーロードされたメソッドを区別するには、型注釈を使用してください。例えば:
+
+```swift
+class SomeClass {
+    func someMethod(x: Int, y: Int) {}
+    func someMethod(x: Int, z: Int) {}
+    func overloadedMethod(x: Int, y: Int) {}
+    func overloadedMethod(x: Int, y: Bool) {}
+}
+let instance = SomeClass()
+
+let a = instance.someMethod              // あいまい
+let b = instance.someMethod(x:y:)        // 明確
+
+let d = instance.overloadedMethod        // あいまい
+let d = instance.overloadedMethod(x:y:)  // まだあいまい
+let d: (Int, Bool) -> Void  = instance.overloadedMethod(x:y:)  // 明確
+```
+
+ピリオドが行の先頭に示されている場合は、暗黙メンバ式としてではなく、明示的メンバ式の一部として解釈されます。例えば、次のリストはメソッドチェーンで呼び出しが複数行にわたって分割されたコールを示しています:
+
+```swift
+let x = [10, 3, 20, 15, 4]
+    .sorted()
+    .filter { $0 > 5 }
+    .map { $0 * 100 }
+```
+
+> GRAMMAR OF AN EXPLICIT MEMBER EXPRESSION  
+> explicit-member-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `.` [decimal-digits](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits)  
+> explicit-member-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `.` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause)<sub>*opt*</sub>  
+> explicit-member-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `.` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `(` [argument-names](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names)  `)`  
+> argument-names → [argument-name](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-name)  [argument-names](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names)<sub>*opt*</sub>  
+> argument-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `:`
 
 ### Postfix Self Expression(後置Self式)
 
