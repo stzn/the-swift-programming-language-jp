@@ -1033,7 +1033,18 @@ let x = [10, 3, 20, 15, 4]
 > argument-names → [argument-name](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-name)  [argument-names](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names)<sub>*opt*</sub>  
 > argument-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `:`
 
-### Postfix Self Expression(後置Self式)
+### Postfix Self Expression(後置self式)
+
+後置 `self` 式は、型や式の直後に `.self` を付けて構成します。次の形式があります:
+
+![後置self式](./../.gitbook/assets/postfix_self_expression.png)
+
+最初の形式は expression の値に評価されます。例えば、`x.self` は `x` に評価されます。
+
+2 番目の形式は type の値に評価されます。この形式を使用して、型に値としてアクセスします。例えば、`SomeClass.self` は `SomeClass` 型自体と評価されるため、型レベルの引数を受け取る関数またはメソッドに渡すことができます。
+
+> GRAMMAR OF A POSTFIX SELF EXPRESSION  
+> postfix-self-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `.` `self`
 
 ### Subscript Expression(subscript式)
 
