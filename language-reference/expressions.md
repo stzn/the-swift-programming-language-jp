@@ -43,7 +43,7 @@ Try 演算子は、`try` 演算子の後にエラーをスローできる式が�
 
 `try` 式の値は expression の値です。
 
-オプショナル try 式は `try?` 演算子の後にエラーをスローできる式が続く形で構成されます。オペレータの後にエラーをスローできる式が続きます。次の形式です:
+オプショナル try 式は `try?` 演算子の後にエラーをスローできる式が続く形で構成されます。演算子の後にエラーをスローできる式が続きます。次の形式です:
 
 ![try?式](./../.gitbook/assets/try?_expression.png)
 
@@ -144,7 +144,7 @@ sum = (await someAsyncFunction()) + anotherAsyncFunction()
 
 代入演算子は任意の値を返しません。
 
-> GRAMMAR OF AN ASSIGNMENT OPERATOR  
+> GRAMMAR OF AN asSIGNMENT OPERATOR  
 > assignment-operator → `=`
 
 ### Ternary Conditional Operator(三項条件演算子)
@@ -161,6 +161,45 @@ sum = (await someAsyncFunction()) + anotherAsyncFunction()
 > conditional-operator → `?` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `:`
 
 ### Type-Casting Operators(型キャスト演算子)
+
+4 つの型のキャスト演算子があります: `is` 演算子、`as` 演算子、`as?` 演算子、そして `as!` 演算子。
+
+それらは次の形式を持っています:
+
+![Type-Casting Operators](./../.gitbook/assets/type_casting_operator.png)
+
+`is` 演算子は実行時に式が指定された型にキャストできるかどうかを確認します。式が指定された型にキャストできる場合は `true` を返します。それ以外の場合は、`false` を返します。
+
+`as` 演算子は、コンパイル時にキャストが常に成功するとわかっている場合にキャストを実行します。アップキャストは、中間変数を使用せずに型のスーパー型のインスタンスとして式を使用できます。下記のアプローチは同等です。
+
+```swift
+func f(_ any: Any) { print("Function for Any") }
+func f(_ int: Int) { print("Function for Int") }
+let x = 10
+f(x)
+// "Function for Int"
+
+let y: Any = x
+f(y)
+// "Function for Any"
+
+f(x as Any)
+// "Function for Any"
+```
+
+ブリッジングを使用すると、新しいインスタンスを作成せずに、`String` などの Swift 標準ライブラリ型の式を、それに相応する `NSString` などの Foudation 型で使用できるようにしています。ブリッジングの詳細については、[Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective_c_apis/working_with_foundation_types)を参照ください。
+
+`as?` 演算子は、指定型へ条件付きキャストを実行します。`as?` 演算子は指定された型のオプショナルを返します。実行時に、キャストが成功した場合、式の値がオプショナルで返されます。それ以外の場合、返される値は `nil` です。指定された型へのキャストが失敗するか、成功することが明らかな場合は、コンパイルエラーが発生します。
+
+`as!` 演算子は、指定された型に強制キャストを実行します。`as!` 演算子は、オプショナル型ではなく、指定された型の値を返します。キャストが失敗した場合は、実行時エラーが発生します。`x as! T` は `(x as? T)!` の挙動と同じです。
+
+型キャストの詳細や型キャスト演算子を使用する例については、[Type Casting](./../language-guide/type-casting.md)を参照ください。
+
+> GRAMMAR OF A TYPE-CASTING OPERATOR  
+> type-casting-operator → `is` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
+> type-casting-operator → `as` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
+> type-casting-operator → `as` `?` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
+> type-casting-operator → `as` `!` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
 
 ## Primary Expressions(基本式)
 
