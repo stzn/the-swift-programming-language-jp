@@ -149,6 +149,17 @@ sum = (await someAsyncFunction()) + anotherAsyncFunction()
 
 ### Ternary Conditional Operator(三項条件演算子)
 
+三項条件演算子は、条件の値に基づいて、2 つの値のうちの 1 つに評価されます。次の形式です:
+
+![Ternary Conditional Operator](./../.gitbook/assets/ternary_conditional_operator.png)
+
+条件が `true` と評価された場合、条件演算子は最初の式を評価し、その値を返します。それ以外の場合は、2 番目の式を評価してその値を返します。未使用の式は評価されません。
+
+三項条件演算子を使用する例については、[Ternary Conditional Operator](./../language-guide/basic-operators.md#ternary-conditional-operator三項条件演算子)を参照ください。
+
+> GRAMMAR OF A CONDITIONAL OPERATOR  
+> conditional-operator → `?` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `:`
+
 ### Type-Casting Operators(型キャスト演算子)
 
 ## Primary Expressions(基本式)
