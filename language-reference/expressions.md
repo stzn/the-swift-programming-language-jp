@@ -1061,4 +1061,25 @@ subscript 宣言については、[Protocol Subscript Declaration](./declaration
 
 ### Forced-Value Expression(強制アンラップ式)
 
+強制アンラップ式は、特定の値が `nil` ではないオプショナルの値を表示します。次の形式です:
+
+![強制アンラップ式](./../.gitbook/assets/forced-Value_expression.png)
+
+式の値が `nil` でない場合、オプショナルの値はアンラップされ、対応するオプショナルの非オプショナルの型で返されます。それ以外の場合は、実行時エラーが発生します。
+
+強制的にアンラップされた値は、値自体を変化させる、またはその値のメンバの 1 つに割り当てることによって、変更できます。例えば:
+
+```swift
+var x: Int? = 0
+x! += 1
+// x は 1
+
+var someDictionary = ["a": [1, 2, 3], "b": [10, 20]]
+someDictionary["a"]![0] = 100
+// someDictionary は ["a": [100, 2, 3], "b": [10, 20]]
+```
+
+> GRAMMAR OF A SUBSCRIPT EXPRESSION  
+> subscript-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  `]`
+
 ### Optional-Chaining Expression(オプショナルチェーン式)
