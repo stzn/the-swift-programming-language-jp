@@ -37,6 +37,46 @@ In-Out 式は、[Implicit Conversion to a Pointer Type](#implicit-conversion-to-
 
 ### Try Operator(try演算子)
 
+Try 演算子は、`try` 演算子の後にエラーをスローできる式が続く形で構成されます。次の形式です:
+
+![try式](./../.gitbook/assets/try_expression.png)
+
+`try` 式の値は expression の値です。
+
+オプショナル try 式は `try?` 演算子の後にエラーをスローできる式が続く形で構成されます。オペレータの後にエラーをスローできる式が続きます。次の形式です:
+
+![try?式](./../.gitbook/assets/try?_expression.png)
+
+式がエラーをスローしない場合、`try?` の値は式の値を含むオプショナルです。それ以外の場合は、`try?` の値は `nil` です。
+
+強制 try 式は `try!` 演算子の後にエラーをスローできる式が続く形で構成されます。次の形式です:
+
+![try!式](./../.gitbook/assets/try!_expression.png)
+
+`try!` の値は式の値です。式がエラーをスローすると、実行時エラーが発生します。
+
+バイナリ演算子の左側の式に `try`、`try?` または `try!`、がマークされている場合、その演算子はバイナリ式全体に適用されます。一方で、括弧(`()`)を使用して、演算子の適用範囲を明示することもできます。
+
+```swift
+//両方の関数呼び出しに適用されます
+sum = try someThrowingFunction() + anotherThrowingFunction()
+
+//両方の関数呼び出しに適用されます
+sum = try (someThrowingFunction() + anotherThrowingFunction())
+
+//エラー：最初の関数呼び出しにのみ適用されます
+sum = (try someThrowingFunction()) + anotherThrowingFunction()
+```
+
+バイナリ演算子が代入演算子の場合、または `try` 式が括弧に囲まれていない限り、`try` 式はバイナリ演算子の右側に付けることはできません。
+
+`try` と `await` 演算子の両方を含む場合は、最初に `try` が来なければなりません。
+
+`try`、`try?` と `try!` の使用方法についての詳細は[Error Handling](./../language-guide/error-handling.md)を参照ください。
+
+> GRAMMAR OF A TRY EXPRESSION  
+> try-operator → `try` \|  `try` `?` \|  `try` `!`
+
 ### Await Operator(await演算子)
 
 ## Binary Expressions(バイナリ式)
