@@ -892,6 +892,43 @@ someFunction { return $0 } secondClosure: { return $0 }  // "10 20"
 
 ---
 
+関数呼び出し式で、引数と引数に渡された値に異なる型がある場合、コンパイラは次のリストに暗黙的な変換の 1 つを適用することによって、その型が一致するようにします。
+
+* `inout SomeType` は、`UnsafePointer<SomeType>` または `UnsafeMutablePointer<SomeType>` になる可能性があります
+* `inout Array<SomeType>` は、`UnsafePointer<SomeType>` または `UnsafeMutablePointer<SomeType>` になる可能性があります
+* `Array<SomeType>` は、`UnsafePointer<SomeType>` になる可能性があります
+* `String` は `UnsafePointer<CChar>` になる可能性があります
+
+次の 2 つの関数呼び出しは同等です:
+
+```swift
+func unsafeFunction(pointer: UnsafePointer<Int>) {
+    // ...
+}
+var myNumber = 1234
+
+unsafeFunction(pointer: &myNumber)
+withUnsafePointer(to: myNumber) { unsafeFunction(pointer: $0) }
+```
+
+これらの暗黙の変換によって作成されたポインタは、関数呼び出しの間だけ有効です。未定義の動作を避けるために、関数呼び出しが終了した後までポインタを保持しないようにしてください。
+
+> NOTE  
+> 配列を暗黙的に安全でないポインタに変換すると、Swift は、配列のストレージが必要に応じて配列を変換またはコピーすることによって連続していることを保証します。例えば、この構文は、そのストレージに関する API の契約がない(動作が定義されているか定かではない) `NSArray` のサブクラスから `Array` にブリッジされた配列でこの構文を使用できます。配列のストレージがすでに隣接していることを保証する必要がある場合、暗黙の変換はこの作業を行わないようにするために、`Array` の代わりに `ContigureArray` を使用します
+
+`withUnsafePointer(to:)` のような明示的な機能の代わりに、`&` を使うことで、低レベル C 関数の呼び出しを読みやすくするのに役立ちます。ただし、他の Swift コードから関数を呼び出すときは、安全でない API を明示的に使用する代わりとして `&` を使用しないでください。
+
+> GRAMMAR OF A FUNCTION CALL EXPRESSION  
+> function-call-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  [function-call-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-clause)  
+> function-call-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  [function-call-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-clause) opt [trailing-closures](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_trailing-closures)  
+> function-call-argument-clause → `(` `)` \|  `(` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  `)`  
+> function-call-argument-list → [function-call-argument](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument) \|  [function-call-argument](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument)  `,` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  
+> function-call-argument → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) \|  [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  
+> function-call-argument → [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator) \|  [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `:` [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator)  
+> trailing-closures → [closure-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-expression)  [labeled-trailing-closures](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_labeled-trailing-closures)<sub>*opt*</sub>  
+> labeled-trailing-closures → [labeled-trailing-closure](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_labeled-trailing-closure)  [labeled-trailing-closures](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_labeled-trailing-closures)<sub>*opt*</sub>  
+> labeled-trailing-closure → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `:` [closure-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-expression)
+
 ### Initializer Expression(イニシャライザ式)
 
 ### Explicit Member Expression(明示的メンバ式)
