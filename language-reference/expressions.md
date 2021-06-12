@@ -1083,3 +1083,47 @@ someDictionary["a"]![0] = 100
 > subscript-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  `]`
 
 ### Optional-Chaining Expression(オプショナルチェーン式)
+
+オプショナルチェーン式は、後置式でオプショナルの値を使用するための簡単な構文を提供します。次の形式です:
+
+![オプショナルチェーン式](./../.gitbook/assets/optional-chaining_expression.png)
+
+後置 `?` 演算子は式の値を変更せずに式からオプショナルチェーン式を作成します。
+
+オプショナルチェーン式は、後置式で使用しなければならず、後置式を特別な方法で評価します。オプショナルチェーン式の値が `nil` の場合、後置式の他の全ての操作は無視され、後置式全体が `nil` に評価されます。`nil` ではない場合、値はアンラップされ、後置式の残りの部分を評価するために使用されます。どちらの場合も、後置式の値は依然としてオプショナル型です。
+
+オプショナルチェーン式を含む後置式が他の後置式の内側にネストされている場合は、最も外側の式だけがオプショナル型を返します。下記の例では、`c` が `nil` ではない場合、その値はアンラップされ、その値が `.performAction()` を評価するために使用される `.property` を評価するために使用されます。全体の式 `c？.property.performAction()` はオプショナルの型の値を持ちます。
+
+```swift
+var c: SomeClass?
+var result: Bool? = c?.property.performAction()
+```
+
+次の例は、オプショナルチェーンを使用せずに上記の例の動作を表現しています。
+
+```swift
+var result: Bool?
+if let unwrappedC = c {
+    result = unwrappedC.property.performAction()
+}
+```
+
+オプショナルチェーン式のアンラップ値は、値自体を変える、またはその値のメンバに代入することで変更できます。オプショナルチェーン式の値が `nil` の場合、代入演算子の右側の式は評価されません。例えば:
+
+```swift
+func someFunctionWithSideEffects() -> Int {
+    return 42  // 実際の副作用はありません
+}
+var someDictionary = ["a": [1, 2, 3], "b": [10, 20]]
+
+someDictionary["not here"]?[0] = someFunctionWithSideEffects()
+// someFunctionWithSideEffects は評価されません
+// someDictionary はまだ ["a": [1, 2, 3], "b": [10, 20]]
+
+someDictionary["a"]?[0] = someFunctionWithSideEffects()
+// someFunctionWithSideEffects は評価され、42 を返します
+// someDictionary は今 ["a": [42, 2, 3], "b": [10, 20]]
+```
+
+> GRAMMAR OF AN OPTIONAL-CHAINING EXPRESSION  
+> optional-chaining-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `?`
