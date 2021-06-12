@@ -22,7 +22,18 @@ Swift 標準ライブラリによって提供されている演算子につい�
 > prefix-expression → [prefix-operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_prefix-operator)<sub>*opt*</sub> [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  
 > prefix-expression → [in-out-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_in-out-expression)
 
-### In-Out Expression(inout式)
+### In-Out Expression(In-Out式)
+
+in-out 式は、関数呼び出し式に in-out 引数として渡される変数をマークします。
+
+![In-Out式](./../.gitbook/assets/inout_expression.png)
+
+In-Out 引数の詳細については、[In-Out Parameters](./../language-guide/functions.md#in-Out-ParametersIn-Out引数)を参照ください。
+
+In-Out 式は、[Implicit Conversion to a Pointer Type](#implicit-conversion-to-a-pointer-typeポインタ型への暗黙変換)で説明されているように、ポインタが必要なコンテキスト内の非ポインタ引数を指定するときにも使用されます。
+
+> GRAMMAR OF AN IN-OUT EXPRESSION  
+> in-out-expression → `&` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
 ### Try Operator(try演算子)
 
