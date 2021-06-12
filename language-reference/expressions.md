@@ -931,6 +931,45 @@ withUnsafePointer(to: myNumber) { unsafeFunction(pointer: $0) }
 
 ### Initializer Expression(イニシャライザ式)
 
+イニシャライザ式は型のイニシャライザへのアクセスします。次の形式です:
+
+![イニシャライザ式](./../.gitbook/assets/initializer_expression.png)
+
+関数呼び出し式のイニシャライザ式を使用して、型の新しいインスタンスを初期化します。スーパークラスのイニシャライザに委譲するイニシャライザ式を使用することもします。
+
+```swift
+class SomeSubClass: SomeSuperClass {
+    override init() {
+        // subclass の初期化処理をここに
+        super.init()
+    }
+}
+```
+
+関数のように、イニシャライザを値として使用することができます。例えば:
+
+```swift
+// タイプアノテーションは、文字列に複数のイニシャイザがあるため必要です
+let initializer: (Int) -> String = String.init
+let oneTwoThree = [1, 2, 3].map(initializer).reduce("", +)
+print(oneTwoThree)
+// "123"
+```
+
+名前で型を指定した場合は、イニシャライザ式を使用せずに型のイニシャライザにアクセスできます。他の場合では、イニシャライザ式を使用する必要があります。
+
+```swift
+let s1 = SomeType.init(data: 3)  // 有効
+let s2 = SomeType(data: 1)       // これも有効
+
+let s3 = type(of: someValue).init(data: 7)  // 有効
+let s4 = type(of: someValue)(data: 5)       // エラー
+```
+
+> GRAMMAR OF AN INITIALIZER EXPRESSION  
+> initializer-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `.` `init`  
+> initializer-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `.` `init` `(` [argument-names](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names)  `)`
+
 ### Explicit Member Expression(明示的メンバ式)
 
 ### Postfix Self Expression(後置Self式)
