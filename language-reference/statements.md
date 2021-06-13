@@ -405,6 +405,88 @@ Swift の `do` 文は、コードブロックを区切るために使用され�
 
 ### Conditional Compilation Block(条件付きコンパイルブロック)
 
+条件付きコンパイルブロックを使用すると、1 つ以上のコンパイル条件の値に応じてコードを条件付きでコンパイルできます。
+
+全ての条件付きコンパイルブロックは、`＃if` コンパイルディレクティブで始まり、`＃endif` コンパイルディレクティブで終わります。単純な条件付きコンパイルブロックの形式は次のとおりです。
+
+![if条件付きコンパイルブロック](./../.gitbook/assets/if_compiler_statement.png)
+
+`if` 文の条件とは異なり、コンパイル条件はコンパイル時に評価されます。その結果、文は、コンパイル時にコンパイル条件が `true` と評価された場合にのみ、コンパイルおよび実行されます。
+
+コンパイル条件には、`true` および `false` のブールリテラル、`-D` コマンドラインフラグで使用される識別子、または下記の表にリストされているプラットフォーム条件のいずれかを含めることができます。
+
+| **プラットフォーム条件** | **有効な引数** |
+| :---: | :---: |
+| `os()` | `macOS`, `iOS`, `watchOS`, `tvOS`, `Linux`, `Windows` |
+| `arch()` | `i386`, `x86_64`, `arm`, `arm64` |
+| `swift()` | `>=` または `<` の後ろにバージョン番号 |
+| `compiler()` | `>=` または `<` の後ろにバージョン番号 |
+| `canImport()` | モジュール名 |
+| `targetEnvironment()` | `simulator`, `macCatalyst` |
+
+`swift()` および `compiler()` プラットフォーム条件のバージョン番号は、メジャー番号、任意のマイナー番号、任意のパッチ番号などで構成され、バージョン番号の各部分をドット(`.`)で区切ります。比較演算子とバージョン番号の間にスペースがあってはなりません。コンパイラに渡される Swift バージョンの設定に関係なく、`compiler()` のバージョンはコンパイラのバージョンです。`swift()` のバージョンは、現在コンパイルされている言語バージョンです。例えば、Swift4.2 モードで Swift5 のコンパイラを使用してコードをコンパイルする場合、コンパイラのバージョンは `5` で、言語のバージョンは `4.2` です。これらの設定では、次のコードは 3 つのメッセージ全てを出力します:
+
+```swift
+#if compiler(>=5)
+print("Compiled with the Swift 5 compiler or later")
+#endif
+#if swift(>=4.2)
+print("Compiled in Swift 4.2 mode or later")
+#endif
+#if compiler(>=5) && swift(<5)
+print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 5")
+#endif
+// "Compiled with the Swift 5 compiler or later"
+// "Compiled in Swift 4.2 mode or later"
+// "Compiled with the Swift 5 compiler or later in a Swift mode earlier than 5"
+```
+
+`canImport()` プラットフォーム条件の引数は、全てのプラットフォームに存在するとは限らないモジュールの名前です。この条件は、モジュールをインポートできるかどうかをテストしますが、実際にはインポートしません。モジュールが存在する場合、プラットフォーム条件は `true` を返します。それ以外の場合は、`false` を返します。
+
+`targetEnvironment()` プラットフォーム条件は、指定された環境用にコードがコンパイルされているときに `true` を返します。それ以外の場合は、false を返します。
+
+> NOTE  
+> `arch（arm）` プラットフォーム条件は、ARM64 デバイスでは `true` を返しません。コードが 32 ビット iOS シミュレーター用にコンパイルされると、`arch（i386）` プラットフォーム条件は `true` を返します。
+
+論理演算子 `&&`、`||`、および `！` を使用して、コンパイル条件の合成や反転を行ったり、グループ化に括弧を使用できます。これらの演算子は、通常のブール式を組み合わせるために使用される論理演算子と同じ結合規則と優先順位を持っています。
+
+`if` 文と同様に、複数の条件分岐を追加して、様々なコンパイル条件をテストできます。`#elseif` 句を使用して、分岐をいくつでも追加できます。`#else` 句を使用して、最後の分岐を追加することもできます。複数のブランチを含む条件付きコンパイルブロックの形式は次のとおりです:
+
+![ifelse条件付きコンパイルブロック](./../.gitbook/assets/if_elseif_compiler_statement.png)
+
+> NOTE  
+> 条件付きコンパイルブロックの本文にある各文は、コンパイルされていない場合でも解析されます。ただし、コンパイル条件に `swift()` または `compiler()` プラットフォーム条件が含まれている場合は例外です。文は、言語またはコンパイラのバージョンがプラットフォーム条件で指定されているものと一致する場合にのみ解析されます。この例外により、古いコンパイラが新しいバージョンの Swift で導入された構文を解析しないことが保証されます。
+
+> GRAMMAR OF A CONDITIONAL COMPILATION BLOCK  
+> conditional-compilation-block → [if-directive-clause](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_if-directive-clause)  [elseif-directive-clauses](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_elseif-directive-clauses)<sub>*opt*</sub> [else-directive-clause](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_else-directive-clause)<sub>*opt*</sub> [endif-directive](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_endif-directive)  
+> if-directive-clause → [if-directive](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_if-directive)  [compilation-condition](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compilation-condition)  [statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements)<sub>*opt*</sub>  
+> elseif-directive-clauses → [elseif-directive-clause](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_elseif-directive-clause)  [elseif-directive-clauses](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_elseif-directive-clauses)<sub>*opt*</sub>  
+> elseif-directive-clause → [elseif-directive](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_elseif-directive)  [compilation-condition](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compilation-condition)  [statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements)<sub>*opt*</sub>  
+> else-directive-clause → [else-directive](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_else-directive)  [statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements)<sub>*opt*</sub>  
+> if-directive → `#if`  
+> elseif-directive → `#elseif`  
+> else-directive → `#else`  
+> endif-directive → `#endif`  
+> compilation-condition → [platform-condition](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_platform-condition)  
+> compilation-condition → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
+> compilation-condition → [boolean-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_boolean-literal)  
+> compilation-condition → `(` [compilation-condition](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compilation-condition)  `)`  
+> compilation-condition → `!` [compilation-condition](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compilation-condition)  
+> compilation-condition → [compilation-condition](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compilation-condition)  `&&` [compilation-condition](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compilation-condition)  
+> compilation-condition → [compilation-condition](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compilation-condition)  `||` [compilation-condition](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compilation-condition)  
+> platform-condition → `os` `(` [operating-system](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_operating-system)  `)`  
+> platform-condition → `arch` `(` [architecture](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_architecture)  `)`  
+> platform-condition → `swift` `(` `>=` [swift-version](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_swift-version)  `)` \|  `swift` `(` `<` [swift-version](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_swift-version)  `)`  
+> platform-condition → `compiler` `(` `>=` [swift-version](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_swift-version)  `)` \|  `compiler` `(` `<` [swift-version](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_swift-version)  `)`  
+> platform-condition → `canImport` `(` [module-name](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_module-name)  `)`  
+> platform-condition → `targetEnvironment` `(` [environment](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_environment)  `)`  
+> operating-system → `macOS` \|  `iOS` \|  `watchOS` \|  `tvOS` \|  `Linux` \|  `Windows`  
+> architecture → `i386` \|  `x86_64` \|  `arm` \|  `arm64`  
+> swift-version → [decimal-digits](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits)  [swift-version-continuation](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_swift-version-continuation)<sub>*opt*</sub>  
+> swift-version-continuation → `.` [decimal-digits](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits)  [swift-version-continuation](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_swift-version-continuation)<sub>*opt*</sub>  
+> module-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
+> environment → `simulator` \|  `macCatalyst`
+
 ### Line Control Statement(行制御文)
 
 ### Compile-Time Diagnostic Statement(コンパイル時診断文)
