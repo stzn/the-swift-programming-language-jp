@@ -474,9 +474,15 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 スローメソッドは再スローメソッドをオーバーライドできず、再スローメソッドのプロトコル要件を満たすことができません。逆に、再スローメソッドはスローメソッドをオーバーライドでき、再スローメソッドはスローメソッドのプロトコル要件を満たすことができます。
 
-### Asynchronous Functions and Methods(async関数とメソッド)
+### Asynchronous Functions and Methods(非同期関数とメソッド)
 
+非同期に実行される関数とメソッドは、`async` キーワードでマークされている必要があります。これらの関数とメソッドは、非同期関数(*asynchronous function*)と非同期メソッド(*asynchronous method*)と世呼ばれています。形式は次のとおりです:
 
+![非同期関数とメソッド](./../.gitbook/assets/asynchronous_functions_and_methods.png)
+
+非同期関数またはメソッドの呼び出しは、`await` でラップされていなければなりません。
+
+`async` キーワードは関数の型の一部で、同期関数は非同期関数のサブタイプです。その結果、非同期関数が期待されるコンテキストで同期関数を使用できます。例えば、同期メソッドを使用して非同期メソッドをオーバーライドでき、同期メソッドは非同期メソッドのプロトコル要件を満たすことができます。
 
 ### Functions that Never Return
 
