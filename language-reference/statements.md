@@ -340,6 +340,33 @@ case .suppressed:
 
 ## Defer Statement(Defer文)
 
+`defer` 文は、`defer` 文が使用されるスコープ外にプログラム制御を転送する直前にコードを実行するために使用されます。
+
+`defer` 文の形式は次のとおりです:
+
+![Defer文](./../.gitbook/assets/defer_statement.png)
+
+`defer` 文内の文は、プログラム制御がどのように転送されても実行されます。つまり、`defer` 文を使用して、例えば、ファイル記述子を閉じるなどの手動のリソース管理を実行したり、エラーがスローされた場合でも実行する必要のあるアクションを実行したりできます。
+
+複数の `defer` 文が同じスコープに表示される場合、それらが登場する順序は、実行される順序の逆になります。特定のスコープで最後の `defer` 文を最初に実行するということは、その最後の `defer` 文内の文が、他の `defer` 文によってクリーンアップされるリソースを参照できることを意味します。
+
+```swift
+func f() {
+    defer { print("First defer") }
+    defer { print("Second defer") }
+    print("End of function")
+}
+f()
+// "End of function"
+// "Second defer"
+// "First defer"
+```
+
+`defer` 文内の文は、プログラム制御を `defer` 文の外部に移すことはできません。
+
+> GRAMMAR OF A DEFER STATEMENT  
+> defer-statement → `defer` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
+
 ## Do Statement(Do文)
 
 ## Compiler Control Statements(コンパイラ制御文)
