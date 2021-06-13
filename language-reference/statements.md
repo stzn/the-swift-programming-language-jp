@@ -507,4 +507,15 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 ### Compile-Time Diagnostic Statement(コンパイル時診断文)
 
+コンパイル時診断文により、コンパイラはコンパイル中にエラーまたは警告を発行します。コンパイル時診断文の形式は次のとおりです:
+
+![コンパイル時診断文](./../.gitbook/assets/error_warning_compiler_statement.png)
+
+最初の形式は、致命的なエラーとして error message を出力し、コンパイルプロセスを終了します。2 番目の形式は、致命的ではない警告として warning message を出力し、コンパイルを続行できるようにします。 診断メッセージは静的文字列リテラルとして記述します。 静的文字列リテラルは、文字列補間や文字列連結などの機能を使用できませんが、複数行の文字列リテラル構文を使用できます。
+
+> GRAMMAR OF A COMPILE-TIME DIAGNOSTIC STATEMENT  
+> diagnostic-statement → `#error` `(` [diagnostic-message](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_diagnostic-message)  `)`  
+> diagnostic-statement → `#warning` `(` [diagnostic-message](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_diagnostic-message)  `)`  
+> diagnostic-message → [static-string-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_static-string-literal)
+
 ## Availability Condition(Availability条件)
