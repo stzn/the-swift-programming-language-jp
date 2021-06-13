@@ -87,7 +87,7 @@ print("The second number is \(secondNumber).")
 // "The second number is 42."
 ```
 
-型注釈(`:type`)は、[Type Inference](./types.md#type-inference型推論)で説明されているように、定数名の型を推論できる場合は、任意です。
+型注釈(`:type`)は、[Type Inference](./types.md#type-inference型推論)で説明されているように、定数名の型を推論できる場合は、省略可能です。
 
 定数型プロパティを宣言するには、宣言に `static` 修飾子をマークします。クラスの定数型プロパティは常に暗黙的に `final` です。サブクラスによるオーバーライドを許可または禁止するために、`class` または `final` 修飾子をマークすることはできません。型プロパティは、[Type Properties](./../language-guide/properties.md#type-properties型プロパティ)で説明されています。
 
@@ -110,21 +110,35 @@ print("The second number is \(secondNumber).")
 
 [Overriding](./../language-guide/inheritance.md#overridingオーバーライド)で説明されているように、サブクラスのプロパティ宣言に `override` 宣言修飾子でマークすることで、サブクラス内でプロパティをオーバーライドできます。
 
-### Stored Variables and Stored Variable Properties(格納変数、格納変数プロパティ)
+### Stored Variables and Stored Variable Properties(格納変数、格納可変プロパティ)
 
 次の形式は、格納変数や格納可変プロパティを宣言します。
 
 ![格納変数、格納可変プロパティ](./../.gitbook/assets/variable_declaration.png)
 
-この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラスまたは構造体宣言のコンテキストで定義できます。このフォームの変数宣言が、グローバルスコープまたは関数のローカルスコープで宣言されている場合は、格納変数(*stored variable*)と呼ばれます。クラスまたは構造体宣言のコンテキストで宣言されている場合は、格納変数プロパティ(*stored variable property*)と呼ばれます。
+この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラスまたは構造体宣言のコンテキストで定義できます。このフォームの変数宣言が、グローバルスコープまたは関数のローカルスコープで宣言されている場合は、格納変数(*stored variable*)と呼ばれます。クラスまたは構造体宣言のコンテキストで宣言されている場合は、格納可変プロパティ(*stored variable property*)と呼ばれます。
 
-イニシャライザ式はプロトコル宣言に定義できませんが、他の全てのコンテキストでは、イニシャライザ式は任意です。つまり、イニシャライザ式が存在しない場合、変数宣言に明示的な型注釈(`: type`)を含める必要があります。
+イニシャライザ式はプロトコル宣言に定義できませんが、他の全てのコンテキストでは、イニシャライザ式は省略可能です。つまり、イニシャライザ式が存在しない場合、変数宣言に明示的な型注釈(`: type`)を含める必要があります。
 
 定数宣言と同様に、変数名がタプルの場合、タプル内の各項目の名前は、イニシャライザ式の対応する値にバインドされます。
 
-それらの名前が示唆するように、格納変数または格納変数プロパティの値がメモリに格納されています。
+それらの名前が示唆するように、格納変数または格納可変プロパティの値がメモリに格納されています。
 
-### Computed Variables and Computed Properties
+### Computed Variables and Computed Properties(計算変数、計算変数プロパティ)
+
+次の形式は、計算変数または計算プロパティを宣言します。
+
+![計算変数、計算変数プロパティ](./../.gitbook/assets/computed_variables_and_computed_properties.png)
+
+この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラス、構造体、列挙型、または extension のコンテキストで定義できます。この形式の変数宣言がグローバルスコープまたは関数のローカルスコープで宣言されている場合は、計算変数(*computed variable*)と呼ばれます。クラス、構造体、または extension のコンテキストで宣言されている場合は、それは計算プロパティ(*computed property*)と呼ばれています。
+
+get は値を読み取るために使用され、set は値を書き込むために使用されます。set 句は省略可能で、get のみが必要な場合は、[Read-Only Computed Properties](./../language-guide/properties.md#read-Only-computed-properties読み取り専用計算プロパティ)で説明されているように、両方の句を省略し、シンプルに要求された値を直接返すことができます。しかし、set 句を指定した場合は、get 句も提供する必要があります。
+
+setter name とそれを囲む括弧は省略可能です。setter name を指定した場合は、set への引数の名前として使用されます。setter name を指定しない場合は、[Shorthand Setter Declaration](./../language-guide/properties.md#shorthand-setter-declaration短縮setプロパティ宣言)で説明されているように、set へのデフォルトの引数名は `newValue` です。
+
+格納変数や格納可変プロパティとは異なり、計算変数または計算プロパティの値はメモリに格納されません。
+
+詳細や計算プロパティの例は、[Computed Properties](./../language-guide/properties.md#computed-properties計算プロパティ)を参照ください。
 
 ### Stored Variable Observers and Property Observers
 
