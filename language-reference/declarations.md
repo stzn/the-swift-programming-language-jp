@@ -103,14 +103,26 @@ print("The second number is \(secondNumber).")
 
 変数宣言では、プログラムに変数の名前付き値を導入し、`var` キーワードを使用して宣言されています。
 
-変数宣言には、格納/計算変数やプロパティ、および格納変数やプロパティオブザーバ、および静的変数プロパティなど、様々な種類の名前付きで可変な値を宣言するいくつかの形式があります。適切な形式は、変数が宣言されているスコープと宣言する予定の変数の種類によって異なります。
+変数宣言には、格納/計算変数や格納/計算プロパティ、プロパティオブザーバ、および静的変数プロパティなど、様々な種類の名前付きで可変な値を宣言するいくつかの形式があります。適切な形式は、変数が宣言されているスコープと宣言する予定の変数の種類によって異なります。
 
 > NOTE  
 > [Protocol Property Declaration](#protocol-property-declarationプロトコルプロパティ宣言)で説明されているように、プロトコル宣言のコンテキストでプロパティを宣言することもできます。
 
 [Overriding](./../language-guide/inheritance.md#overridingオーバーライド)で説明されているように、サブクラスのプロパティ宣言に `override` 宣言修飾子でマークすることで、サブクラス内でプロパティをオーバーライドできます。
 
-### Stored Variables and Stored Variable Properties
+### Stored Variables and Stored Variable Properties(格納変数、格納変数プロパティ)
+
+次の形式は、格納変数や格納可変プロパティを宣言します。
+
+![格納変数、格納可変プロパティ](./../.gitbook/assets/variable_declaration.png)
+
+この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラスまたは構造体宣言のコンテキストで定義できます。このフォームの変数宣言が、グローバルスコープまたは関数のローカルスコープで宣言されている場合は、格納変数(*stored variable*)と呼ばれます。クラスまたは構造体宣言のコンテキストで宣言されている場合は、格納変数プロパティ(*stored variable property*)と呼ばれます。
+
+イニシャライザ式はプロトコル宣言に定義できませんが、他の全てのコンテキストでは、イニシャライザ式は任意です。つまり、イニシャライザ式が存在しない場合、変数宣言に明示的な型注釈(`: type`)を含める必要があります。
+
+定数宣言と同様に、変数名がタプルの場合、タプル内の各項目の名前は、イニシャライザ式の対応する値にバインドされます。
+
+それらの名前が示唆するように、格納変数または格納変数プロパティの値がメモリに格納されています。
 
 ### Computed Variables and Computed Properties
 
@@ -164,15 +176,15 @@ print("The second number is \(secondNumber).")
 
 ### Protocol Method Declaration
 
-### Protocol Initializer Declaration
+### Protocol イニシャライザ Declaration
 
 ### Protocol Subscript Declaration
 
 ### Protocol Associated Type Declaration
 
-## Initializer Declaration
+## イニシャライザ Declaration
 
-### Failable Initializers
+### Failable イニシャライザs
 
 ## Deinitializer Declaration
 
