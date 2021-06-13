@@ -129,6 +129,28 @@ condition の値は、`Bool` 型または `Bool` にブリッジされた型の�
 
 ### Guard Statement(Guard文)
 
+`guard` 文は、1 つ以上の条件が満たされない場合に、プログラム制御をスコープ外に転送するために使用されます。
+
+`guard` 文の形式は次のとおりです:
+
+![Guard文](./../.gitbook/assets/guard_statement.png)
+
+`guard` 文の条件の値は、`Bool` 型または `Bool` にブリッジされた型の必要があります。[Optional Binding](./../language-guide/the-basics.md#optional-bindingオプショナルバインディング)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
+
+`guard` 文条件のオプショナルバインディング宣言から定数または変数へ値を代入することができ、`guard` 文で囲んでいるスコープの残りの部分で使用できます。
+
+`guard` 文の else 句は必須で、次の文のいずれかを使用して、`Never` 型の戻り値を持つ関数を呼び出すか、`guard` 文を呼び出したスコープ外にプログラム制御を転送する必要があります。
+
+* `return`
+* `break`
+* `continue`
+* `throw`
+
+制御転送文については、下記の[Control Transfer Statements](#control-transfer-statements制御転送文)で説明します。 `Never` 型の戻り値を持つ関数の詳細については、[Functions that Never Return](./declarations.md#functions-that-never-return)を参照ください。
+
+> GRAMMAR OF A GUARD STATEMENT  
+> guard-statement → `guard` [condition-list](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_condition-list)  `else` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
+
 ### Switch Statement(Switch文)
 
 #### Switch Statements Must Be Exhaustive(Switch文は網羅的でなければならない)
