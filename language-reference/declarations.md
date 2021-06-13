@@ -229,15 +229,15 @@ newAndOld.x = 200
 > willSet-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> `willSet` [setter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-name)<sub>*opt*</sub> [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  
 > didSet-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> `didSet` [setter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-name)<sub>*opt*</sub> [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
 
-## Type Alias Declaration(タイプエイリアス宣言)
+## Type Alias Declaration(型エイリアス宣言)
 
-タイプエイリアス宣言では、既存の型に別名を導入します。タイプエイリアス宣言は、`typealias` キーワードを使用して宣言され、形式は次のとおりです:
+型エイリアス宣言では、既存の型に別名を導入します。型エイリアス宣言は、`typealias` キーワードを使用して宣言され、形式は次のとおりです:
 
-![タイプエイリアス宣言](./../.gitbook/assets/type_alias_declaration.png)
+![型エイリアス宣言](./../.gitbook/assets/type_alias_declaration.png)
 
-タイプエイリアスが宣言された後、プログラム内の既存の型の代わりに注釈名を使用できます。既存の型は、名前付き型または複合型にすることができます。タイプエイリアスは新しい型を作成しません。それらは単に名前が既存の型を参照することを可能にします。
+型エイリアスが宣言された後、プログラム内の既存の型の代わりに注釈名を使用できます。既存の型は、名前付き型または複合型にすることができます。型エイリアスは新しい型を作成しません。それらは単に名前が既存の型を参照することを可能にします。
 
-タイプエイリアス宣言は、ジェネリック引数を使用して既存のジェネリック型に名前を付けることができます。タイプエイリアスは、既存の型のジェネリック引数の一部または全部に具体的な型を提供できます。例えば:
+型エイリアス宣言は、ジェネリック引数を使用して既存のジェネリック型に名前を付けることができます。型エイリアスは、既存の型のジェネリック引数の一部または全部に具体的な型を提供できます。例えば:
 
 ```swift
 typealias StringDictionary<Value> = Dictionary<String, Value>
@@ -247,21 +247,21 @@ var dictionary1: StringDictionary<Int> = [:]
 var dictionary2: Dictionary<String, Int> = [:]
 ```
 
-タイプエイリアスがジェネリック引数で宣言されると、それらの引数の制約は既存の型のジェネリック引数の制約と正確に一致する必要があります。例えば:
+型エイリアスがジェネリック引数で宣言されると、それらの引数の制約は既存の型のジェネリック引数の制約と正確に一致する必要があります。例えば:
 
 ```swift
 typealias DictionaryOfInts<Key: Hashable> = Dictionary<Key, Int>
 ```
 
-タイプエイリアスと既存の型を互換的に使用できるため、タイプエイリアスは追加のジェネリック制約を導入できません。
+型エイリアスと既存の型を互換的に使用できるため、型エイリアスは追加のジェネリック制約を導入できません。
 
-タイプエイリアスは、宣言から全てのジェネリック引数を省略することで、既存の型のジェネリック引数を転送できます。例えば、ここで宣言されている `Diccionario` 型の別名は、`Dictionary` と同じジェネリック引数と制約を持ちます。
+型エイリアスは、宣言から全てのジェネリック引数を省略することで、既存の型のジェネリック引数を転送できます。例えば、ここで宣言されている `Diccionario` 型の別名は、`Dictionary` と同じジェネリック引数と制約を持ちます。
 
 ```swift
 typealias Diccionario = Dictionary
 ```
 
-プロトコル宣言の内部では、タイプエイリアスは頻繁に使用される型に短くて便利な名前を付けることができます。例えば:
+プロトコル宣言の内部では、型エイリアスは頻繁に使用される型に短くて便利な名前を付けることができます。例えば:
 
 ```swift
 protocol Sequence {
@@ -274,7 +274,7 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 }
 ```
 
-このタイプエイリアスがないと、`sum` 関数は関連型を `T.Element` ではなく `T.Iterator.Element` として参照する必要があります。
+この型エイリアスがないと、`sum` 関数は関連型を `T.Element` ではなく `T.Iterator.Element` として参照する必要があります。
 
 [Protocol Associated Type Declaration](#protocol-associated-type-declarationプロトコル関連型宣言)も参照ください。
 
@@ -305,7 +305,31 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 
 入れ子関数については、[Nested Functions](./../language-guide/functions.md#nested-Functions入れ子関数)を参照ください。
 
-### Parameter Names
+### Parameter Names(引数名)
+
+関数引数は、各引数がいくつかの形式のうちの 1 つを持つカンマ区切りのリストです。関数呼び出し内の引数の順序は、関数の宣言内の引数の順序と一致する必要があります。引数リスト内の最もシンプルなエントリの形式は次のとおりです:
+
+![引数名](./../.gitbook/assets/parameter_names.png)
+
+引数には、関数本文内で使用されている名前、および関数またはメソッドを呼び出すときに使用される引数ラベルがあります。デフォルトでは、引数名は引数ラベルとしても使用されます。例えば:
+
+```swift
+func f(x: Int, y: Int) -> Int { return x + y }
+f(x: 1, y: 2) // x と y の両方にラベルがあります
+```
+
+次のいずれかの形式で、引数ラベルのデフォルトの動作を上書きできます。
+
+![引数名2](./../.gitbook/assets/parameter_names2.png)
+
+引数名の前の名前は、引数の明示的な引数ラベルで、引数名とは異なる可能性があります。関数呼び出しまたはメソッド呼び出し時は、対応する引数に指定された引数ラベルを使用する必要があります。
+
+引数名の前のアンダースコア(`_`)は、引数ラベルを抑制します。関数呼び出しまたはメソッド呼び出し時は、対応する引数には、ラベルが付いてはなりません。
+
+```swift
+func repeatGreeting(_ greeting: String, count n: Int) { /* n 回あいさつ */ }
+repeatGreeting("Hello, world!", count: 2) //  count は ラベルあち, greeting は ラベルなし
+```
 
 ### In-Out Parameters(In-Out引数)
 
