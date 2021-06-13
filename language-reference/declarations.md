@@ -283,11 +283,31 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 > typealias-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
 > typealias-assignment → `=` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
 
-## Function Declaration
+## Function Declaration(関数宣言)
+
+関数宣言では、プログラムに関数またはメソッドを導入します。クラス、構造体、列挙型、またはプロトコルのコンテキストで宣言されている関数はメソッドと呼ばれます。関数宣言は `func` キーワードを使用して宣言され、形式は次のとおりです:
+
+![関数宣言](./../.gitbook/assets/function_declaration.png)
+
+関数に戻り値の型 `Void` がある場合は、次のように戻り値の型を省略できます:
+
+![関数宣言戻り値の型Void](./../.gitbook/assets/function_declaration2.png)
+
+各引数の型を含める必要があります。推論できません。引数型の前に `inout` を書くと、その関数の範囲内で引数を変更できます。In-Out 引数については、下記の[In-Out Parameters](#in-out-parametersIn-Out引数)で詳細に説明されています。
+
+文が単一の式のみを含む関数宣言は、その式の値を返すことが明らかです。この暗黙的なリターン構文は、式の型と関数の戻り型が `Void` ではなく、ケースを持たない `Never` のような列挙型ではない場合にのみ使用できます。
+
+関数は、関数の戻り値の型としてタプル型を使用して複数の値を返すことができます。
+
+関数定義は他の関数宣言の内部に登場することがあります。この種の関数は入れ子関数(*nested functio*)と呼ばれます。
+
+入れ子関数は、In-Out 引数のように決してエスケープしない、または非エスケープ関数引数として渡されることが保証されている値をキャプチャする場合は、非エスケープです。それ以外の場合、入れ子関数はエスケープ関数です。
+
+入れ子関数については、[Nested Functions](./../language-guide/functions.md#nested-Functions入れ子関数)を参照ください。
 
 ### Parameter Names
 
-### In-Out Parameters
+### In-Out Parameters(In-Out引数)
 
 ### Special Kinds of Parameters
 
