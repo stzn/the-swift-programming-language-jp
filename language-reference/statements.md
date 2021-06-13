@@ -61,7 +61,7 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 
 condition の値は、statements が実行される前に評価されるため、`while` 文内の statements は 0 回以上実行されます。
 
-condition の値は、`Bool` 型または `Bool` にブリッジされたタイプでなければなりません。[Optional Binding](./../language-guide/the-basics.md#optional-bindingオプショナルバインディング)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
+condition の値は、`Bool` 型または `Bool` にブリッジされた型でなければなりません。[Optional Binding](./../language-guide/the-basics.md#optional-bindingオプショナルバインディング)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
 
 > GRAMMAR OF A WHILE STATEMENT  
 > while-statement → `while` [condition-list](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_condition-list)  [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  
@@ -89,7 +89,19 @@ condition の値は statements の実行後に評価されるため、`repeat-wh
 
 condition の値は、`Bool` 型または `Bool` にブリッジされた型の必要があります。[Optional Binding](./../language-guide/the-basics.md#optional-bindingオプショナルバインディング)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
 
+> GRAMMAR OF A REPEAT-WHILE STATEMENT  
+> repeat-while-statement → `repeat` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  `while` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
+
 ## Branch Statements(分岐文)
+
+分岐文を使用すると、プログラムは 1 つ以上の条件の値に応じてコードの特定の部分を実行できます。分岐文で指定された条件の値は、プログラムの分岐方法、したがって実行されるコードブロックを制御します。Swift には、`if` 文、`guard` 文、および `switch` 文の 3 つの分岐文があります。
+
+`if` 文または `switch` 文の制御フローは `break` 文によって変更できます。これについては、以下の [Break Statement](#break-statementbreak文)で説明します。
+
+> GRAMMAR OF A BRANCH STATEMENT  
+> branch-statement → [if-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_if-statement)  
+> branch-statement → [guard-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_guard-statement)  
+> branch-statement → [switch-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_switch-statement)
 
 ### If Statement(If文)
 
