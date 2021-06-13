@@ -146,12 +146,34 @@ condition の値は、`Bool` 型または `Bool` にブリッジされた型の�
 * `continue`
 * `throw`
 
-制御転送文については、下記の[Control Transfer Statements](#control-transfer-statements制御転送文)で説明します。 `Never` 型の戻り値を持つ関数の詳細については、[Functions that Never Return](./declarations.md#functions-that-never-return)を参照ください。
+制御転送文については、下記の[Control Transfer Statements](#control-transfer-statements制御転送文)で説明します。`Never` 型の戻り値を持つ関数の詳細については、[Functions that Never Return](./declarations.md#functions-that-never-return)を参照ください。
 
 > GRAMMAR OF A GUARD STATEMENT  
 > guard-statement → `guard` [condition-list](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_condition-list)  `else` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
 
 ### Switch Statement(Switch文)
+
+`switch` 文を使用すると、制御式の値に応じて特定のコードブロックを実行できます。
+
+`switch` 文の形式は次のとおりです。
+
+![Switch文](./../.gitbook/assets/switch_statement.png)
+
+`switch` 文の control expression が評価され、それぞれの場合に指定されたパターンと比較されます。一致するものが見つかった場合、プログラムはそのケースの範囲内にリストされている statements を実行します。各ケースのスコープを空にすることはできません。そのため、各ケースラベルのコロン(`:`)の後に少なくとも 1 つの文を含める必要があります。一致したケースの本文でコードを実行する予定がない場合は、単一の `break` ステートメントを使用します。
+
+コードが分岐できる式の値は非常に柔軟です。例えば、整数や文字などのスカラー型の値に加えて、浮動小数点数、文字列、タプル、独自で作成したクラスのインスタンス、オプショナルなど、任意の型の値で分岐できます。control expression の値は、列挙型内のケースの値と一致させて、指定された値の範囲に含まれているかどうかを確認することもできます。`switch` 文でこれらの様々な種類の値を使用する方法の例については、[Control Flow](./../language-guide/control-flow.md)の [Switch](./../language-guide/control-flow.md#switch)を参照してください。
+
+`switch` のケースには、各パターンの後に where 句を含めることができます。where 句は、`where` キーワードの後に​​式が続くことで導入され、ケースのパターンが制御式に一致すると見なされる前に追加の条件を提供するために使用されます。where 句が存在する場合、関連するケース内の statements は、control expression の値がケースのパターンの 1 つと一致し、where 句の式が `true` と評価された場合にのみ実行されます。例えば、control expression は、`(1、1)` など、同じ値の 2 つの要素を含むタプルの場合にのみ、下記の例のケースに一致します。
+
+```swift
+case let (x, y) where x == y:
+```
+
+上記の例が示すように、ケースのパターンは、`let` キーワードを使用して定数をバインドすることもできます(`var` キーワードを使用して変数をバインドすることもできます)。これらの定数（または変数）は、対応する `where` 句で、およびケースのスコープ内の残りのコード全体で参照できます。ケースに制御式に一致する複数のパターンが含まれている場合、全てのパターンで同じ定数または変数にバインディングされ、バインドされた各変数または定数は、全てのケースのパターンで同じ型が必要です。
+
+`switch` 文には、`default` キーワードによって導入されたデフォルトのケースを含めることもできます。デフォルトのケース内のコードは、他のケースが制御式に一致しない場合にのみ実行されます。`switch` 文には、デフォルトのケースを 1 つだけ含めることができます。これは、`switch` 文の最後に書く必要があります。
+
+パターンマッチングの実際の実行順序、特に場合によってはパターンの評価順序は指定されていませんが、`switch` 文でのパターンマッチングは、評価がソースの順序、つまり、コードに現れる順序で評価されているかのように動作します。その結果、複数のケースに同じ値と評価されるパターンが含まれていて、制御式の値と一致する可能性がある場合、プログラムは最初に一致したケース内のコードのみをソース順に実行します。
 
 #### Switch Statements Must Be Exhaustive(Switch文は網羅的でなければならない)
 
