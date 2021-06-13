@@ -105,6 +105,28 @@ condition の値は、`Bool` 型または `Bool` にブリッジされた型の�
 
 ### If Statement(If文)
 
+`if` 文は、1 つ以上の条件の評価に基づいてコードを実行するために使用されます。
+
+`if` 文には 2 つの基本的な形式があります。それぞれの形式で、開閉中括弧(`{}`)が必要です。
+
+最初の形式では、条件が真の場合にのみコードを実行でき、形式は次のとおりです:
+
+![If文](./../.gitbook/assets/if_statement.png)
+
+`if` 文の 2 番目の形式は、追加の (`else` キーワードによって導入される)else 句を提供し、条件が true の場合にコードの一部を実行し、false の場合にコードの別の部分を実行するために使用されます。else 句が 1 つ存在する場合、`if` 文の形式は次のとおりです:
+
+![If-Else文](./../.gitbook/assets/if_else_statement.png)
+
+`if` 文の else 句には、複数の条件を検証するための別の `if` 文を含めることができます。このように連鎖された `if` 文の形式は次のとおりです:
+
+![If-ElseId文](./../.gitbook/assets/if_elseif_statement.png)
+
+`if` 文の条件の値は、`Bool` 型または `Bool` にブリッジされた型の必要があります。[Optional Binding](./../language-guide/the-basics.md#optional-bindingオプショナルバインディング)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
+
+> GRAMMAR OF AN IF STATEMENT  
+> if-statement → `if` [condition-list](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_condition-list)  [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  [else-clause](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_else-clause)<sub>*opt*</sub>  
+> else-clause → `else` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block) \|  `else` [if-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_if-statement)
+
 ### Guard Statement(Guard文)
 
 ### Switch Statement(Switch文)
