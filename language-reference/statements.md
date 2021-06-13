@@ -35,7 +35,7 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 
 `for-in` 文は、[Sequence](https://developer.apple.com/documentation/swift/sequence)に準拠したコレクション(または任意の型)内の各項目に対して 1 回のコードブロックを実行できます。
 
-`for-in` 文は次の形式です。
+`for-in` 文の形式は次のとおりです:
 
 ![For-In文](./../.gitbook/assets/for-in_statement.png)
 
@@ -48,7 +48,7 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 
 `while` 文は、条件が true な限り、コードブロックを繰り返し実行できます。
 
-`while` 文は次の形式です:
+`while` 文の形式は次のとおりです:
 
 ![While文](./../.gitbook/assets/while_statement.png)
 
@@ -71,6 +71,23 @@ condition の値は、`Bool` 型または `Bool` にブリッジされたタイ�
 > optional-binding-condition → `let` [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)  [initializer](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer) \|  `var` [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)  [initializer](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer)
 
 ### Repeat-While Statement(Repeat-While文)
+
+`repeat-while` 文は、条件が true な限り、コードブロックを 1 回以上実行できます。
+
+`repeat-while` 文の形式は次のとおりです:
+
+![Repeat-While文](./../.gitbook/assets/repeat-while_statement.png)
+
+`repeat-while` 文は次のように実行されます。
+
+1. プログラムは statements を実行し、実行はステップ 2 に進みます
+
+2. condition が評価されます
+`true` の場合、実行はステップ 1 に戻ります。`false` の場合、プログラムは `repeat-while` 文の実行を終了します
+
+condition の値は statements の実行後に評価されるため、`repeat-while` 文の文は少なくとも 1 回実行されます。
+
+condition の値は、`Bool` 型または `Bool` にブリッジされた型の必要があります。[Optional Binding](./../language-guide/the-basics.md#optional-bindingオプショナルバインディング)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
 
 ## Branch Statements(分岐文)
 
