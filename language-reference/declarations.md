@@ -99,7 +99,16 @@ print("The second number is \(secondNumber).")
 > pattern-initializer → [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)  [initializer](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer)<sub>*opt*</sub>  
 > initializer → `=` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
 
-## Variable Declaration
+## Variable Declaration(変数宣言)
+
+変数宣言では、プログラムに変数の名前付き値を導入し、`var` キーワードを使用して宣言されています。
+
+変数宣言には、格納/計算変数やプロパティ、および格納変数やプロパティオブザーバ、および静的変数プロパティなど、様々な種類の名前付きで可変な値を宣言するいくつかの形式があります。適切な形式は、変数が宣言されているスコープと宣言する予定の変数の種類によって異なります。
+
+> NOTE  
+> [Protocol Property Declaration](#protocol-property-declarationプロトコルプロパティ宣言)で説明されているように、プロトコル宣言のコンテキストでプロパティを宣言することもできます。
+
+[Overriding](./../language-guide/inheritance.md#overridingオーバーライド)で説明されているように、サブクラスのプロパティ宣言に `override` 宣言修飾子でマークすることで、サブクラス内でプロパティをオーバーライドできます。
 
 ### Stored Variables and Stored Variable Properties
 
@@ -151,7 +160,7 @@ print("The second number is \(secondNumber).")
 
 ## Protocol Declaration
 
-### Protocol Property Declaration
+### Protocol Property Declaration(プロトコルプロパティ宣言)
 
 ### Protocol Method Declaration
 
