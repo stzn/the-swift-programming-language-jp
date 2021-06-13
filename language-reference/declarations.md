@@ -333,6 +333,44 @@ repeatGreeting("Hello, world!", count: 2) //  count は ラベルあち, greetin
 
 ### In-Out Parameters(In-Out引数)
 
+In-Out 引数は次のように渡されます。
+
+1. 関数が呼び出されると、引数の値がコピーされます
+2. 関数の本文では、コピーが変更されます
+3. 関数から戻ると、コピーの値が元の引数に割り当てられます
+
+この動作はコピーインコピーアウト(*copy-in copy-out*)または値渡し(*call by value result*)と呼ばれます。例えば、計算プロパティまたはオブザーバを持つプロパティが In-Out 引数として渡されると、その get は関数呼び出しの一部として呼び出され、その set は関数リターンの一部として呼び出されます。
+
+最適化として、引数がメモリ内の物理アドレスに格納されている値の場合、関数本文の内側と外側の両方で同じメモリアドレスが使用されます。最適化された動作は、参照渡し(*call by reference*)と呼ばれます。これはコピーのオーバーヘッドを削減しながら、コピーインコピーアウトモデルの全ての要件を満たします。参照渡しに依存せず、コピーインコピーアウトで与えられたモデルを使用してコードを書きましょう。そうすれば、最適化の有無にかかわらず正しく動作します。
+
+関数内で、元の値が現在のスコープで使用可能でも、In-Out 引数として渡された値にアクセスしないでください。元の値へのアクセスは、Swift のメモリ排他性に対する保証に違反する、値への同時アクセスです。同じ理由で、同じ値を複数の In-Out 引数に渡すことはできません。
+
+メモリの安全性とメモリの排他性の詳細については、[Memory Safety](./../language-guide/memory-safety.md)を参照ください。
+
+In-Out 引数をキャプチャするクロージャまたはネスト関数は、非エスケープでなければなりません。それを変えることなく In-Out 引数をキャプチャする必要がある場合は、キャプチャリストを使用して、不変引数を明示的にキャプチャします。
+
+```swift
+func someFunction(a: inout Int) -> () -> Int {
+    return { [a] in return a + 1 }
+}
+```
+
+In-Out 引数をキャプチャして変更する必要がある場合は、マルチスレッドコードで関数が返される前に全ての変更が終了したことを保証するように、明示的にローカルコピーを使用してください。
+
+```swift
+func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
+    // 手動でローカルコピーを作成します
+    var localX = x
+    defer { x = localX }
+
+    // localXを非同期的に操作してから、戻る前に待機します
+    queue.async { someMutatingOperation(&localX) }
+    queue.sync {}
+}
+```
+
+より多くの議論と In-Out 引数の例については、[In-Out Parameters](./../language-guide/functions.md#in-Out-parametersIn-Out引数)を参照ください。
+
 ### Special Kinds of Parameters
 
 ### Special Kinds of Methods
