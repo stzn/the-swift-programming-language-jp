@@ -305,6 +305,22 @@ case .suppressed:
 
 ### Return Statement(Return文)
 
+`return` 文は、関数またはメソッド定義の本文で発生し、プログラムの実行を呼び出し元の関数またはメソッドに戻します。プログラムの実行は、関数またはメソッドの呼び出しの直後から続行されます。
+
+下記に示すように、`return` 文は `return` キーワードのみで構成することも、`return` キーワードとそれに続く式で構成することもできます。
+
+![Return文](./../.gitbook/assets/return_statement.png)
+
+`return` 文の後に式が続く場合、式の値は呼び出し元の関数またはメソッドに返されます。式の値が関数またはメソッドで宣言された戻り値の型と一致しない場合、式の値は、呼び出し元の関数またはメソッドに返される前に戻り値の型に変換されます。
+
+> NOTE  
+> [Failable Initializers](./../language-guide/initialization.md#failable-initializers敗可能イニシャライザ)で説明されているように、失敗可能なイニシャライザで特別な形式の `return` 文（`return nil`）を使用して、イニシャライザの失敗を示すことができます。
+
+`return` 文の後に式がない場合は、値を返さない関数またはメソッド(つまり、関数またはメソッドの戻り値の型が `Void` または `()` の場合）のみで使用できます
+
+> GRAMMAR OF A RETURN STATEMENT  
+> return-statement → `return` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)<sub>*opt*</sub>
+
 ### Throw Statement(Throw文)
 
 ## Defer Statement(Defer文)
