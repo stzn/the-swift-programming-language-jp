@@ -62,7 +62,42 @@ Swift ソースファイルのトップレベルコードは、0 個以上の文
 > import-path → [import-path-identifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path-identifier) \|  [import-path-identifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path-identifier)  `.` [import-path](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path)  
 > import-path-identifier → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) \|  [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator)
 
-## Constant Declaration
+## Constant Declaration(定数宣言)
+
+定数宣言では、プログラムに定数の名前付き値を導入します。定数宣言は `let` キーワードを使用して宣言されており、形式は次のとおりです。
+
+![Constant Declaration](./../.gitbook/assets/constant_declaration.png)
+
+定数宣言は、定数名とイニシャライザ式の値の間の不変のバインディングを定義します。定数の値が設定されたら、変更できません。つまり、定数がクラスオブジェクトで初期化されている場合、オブジェクト自体は変更できますが、定数名とそれが参照するオブジェクトの間のバインディングは変更できません。
+
+定数がグローバルスコープで宣言されている場合は、値を使って初期化する必要があります。関数またはメソッドのコンテキストで定数宣言が登場すると、その値が初めて読み込まれる前に値が設定されることが保証されている限り、後で初期化できます。コンパイラが定数の値が読み取られないことをわかっている場合、必ずしも定数は値を設定する必要はありません。クラスまたは構造体宣言のコンテキストで定数宣言が登場した場合は、定数プロパティと見なされます。定数宣言は計算プロパティではなく、get または set を持っていません。
+
+定数宣言の定数名がタプルの場合、タプル内の各項目の名前は、イニシャライザ式で対応する値にバインドされます。
+
+```swift
+let (firstNumber, secondNumber) = (10, 42)
+```
+
+この例では、`firstNumber` は値 `10` の名前付き定数で、`secondNumber` は `42` の名前付き定数です。両方の定数は独立して使用できます。
+
+```swift
+print("The first number is \(firstNumber).")
+// "The first number is 10."
+print("The second number is \(secondNumber).")
+// "The second number is 42."
+```
+
+型注釈(`:type`)は、[Type Inference](./types.md#type-inference型推論)で説明されているように、定数名の型を推論できる場合は、任意です。
+
+定数型プロパティを宣言するには、宣言に `static` 修飾子をマークします。クラスの定数型プロパティは常に暗黙的に `final` です。サブクラスによるオーバーライドを許可または禁止するために、`class` または `final` 修飾子をマークすることはできません。型プロパティは、[Type Properties](./../language-guide/properties.md#type-properties型プロパティ)で説明されています。
+
+定数の詳細およびそれらを使用するときのガイダンスについては、[Constants and Variables](./../language-guide/the-basics.md#constants-and-variables定数と変数)と[Stored Properties](./../language-guide/properties.md#stored-properties格納プロパティ)を参照ください。
+
+> GRAMMAR OF A CONSTANT DECLARATION  
+> constant-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>*opt*</sub> `let` [pattern-initializer-list](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_pattern-initializer-list)  
+> pattern-initializer-list → [pattern-initializer](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_pattern-initializer) \|  [pattern-initializer](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_pattern-initializer)  `,` [pattern-initializer-list](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_pattern-initializer-list)  
+> pattern-initializer → [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)  [initializer](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer)<sub>*opt*</sub>  
+> initializer → `=` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
 
 ## Variable Declaration
 
