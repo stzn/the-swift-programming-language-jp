@@ -37,19 +37,19 @@ In-Out 式は、[Implicit Conversion to a Pointer Type](#implicit-conversion-to-
 
 ### Try Operator(Try演算子)
 
-Try 演算子は、`try` 演算子の後にエラーをスローできる式が続く形で構成されます。次の形式です:
+Try 演算子は、`try` 演算子の後にエラーをスローできる式が続く形で構成されます。形式は次のとおりです:
 
 ![try演算子](./../.gitbook/assets/try_operator.png)
 
 `try` 式の値は expression の値です。
 
-オプショナル try 式は `try?` 演算子の後にエラーをスローできる式が続く形で構成されます。次の形式です:
+オプショナル try 式は `try?` 演算子の後にエラーをスローできる式が続く形で構成されます。形式は次のとおりです:
 
 ![try?演算子](./../.gitbook/assets/try?_operator.png)
 
 式がエラーをスローしない場合、`try?` の値は式の値を含むオプショナルです。それ以外の場合、`try?` の値は `nil` です。
 
-強制 try 式は `try!` 演算子の後にエラーをスローできる式が続く形で構成されます。次の形式です:
+強制 try 式は `try!` 演算子の後にエラーをスローできる式が続く形で構成されます。形式は次のとおりです:
 
 ![try!演算子](./../.gitbook/assets/try!_operator.png)
 
@@ -79,7 +79,7 @@ sum = (try someThrowingFunction()) + anotherThrowingFunction()
 
 ### Await Operator(Await演算子)
 
-await 式は、`await` 演算子の後に非同期関数の結果を返す式が続けて構成されます。次の形式です:
+await 式は、`await` 演算子の後に非同期関数の結果を返す式が続けて構成されます。形式は次のとおりです:
 
 ![await演算子](./../.gitbook/assets/await_operator.png)
 
@@ -111,7 +111,7 @@ sum = (await someAsyncFunction()) + anotherAsyncFunction()
 
 ## Binary Expressions(バイナリ式)
 
-バイナリ式は、左右の引数を受け取る式と中置(*infix*)バイナリ演算子を組み合わせます。次の形式です:
+バイナリ式は、左右の引数を受け取る式と中置(*infix*)バイナリ演算子を組み合わせます。形式は次のとおりです:
 
 ![Binary Expressions](./../.gitbook/assets/binary_expression.png)
 
@@ -131,7 +131,7 @@ sum = (await someAsyncFunction()) + anotherAsyncFunction()
 
 ### Assignment Operator(代入演算子)
 
-代入演算子は特定の式に新しい値を設定します。次の形式です:
+代入演算子は特定の式に新しい値を設定します。形式は次のとおりです:
 
 ![Assignment Operator](./../.gitbook/assets/assignment_operator.png)
 
@@ -149,7 +149,7 @@ value を評価した結果得られた値が expression に設定されます�
 
 ### Ternary Conditional Operator(三項条件演算子)
 
-三項条件演算子は、条件の値に基づいて、2 つの値のうちの 1 つに評価されます。次の形式です:
+三項条件演算子は、条件の値に基づいて、2 つの値のうちの 1 つに評価されます。形式は次のとおりです:
 
 ![Ternary Conditional Operator](./../.gitbook/assets/ternary_conditional_operator.png)
 
@@ -253,7 +253,7 @@ func myFunction() {
 }
 ```
 
-配列リテラルは、順序付けられた値の集合です。次の形式です:
+配列リテラルは、順序付けられた値の集合です。形式は次のとおりです:
 
 ![配列リテラル](./../.gitbook/assets/array_expression.png)
 
@@ -263,7 +263,7 @@ func myFunction() {
 var emptyArray: [Double] = []
 ```
 
-辞書リテラルは、順序のないキーバリューペアのコレクションです。次の形式です:
+辞書リテラルは、順序のないキーバリューペアのコレクションです。形式は次のとおりです:
 
 ![辞書リテラル](./../.gitbook/assets/dictionary_expression.png)
 
@@ -294,7 +294,7 @@ Xcode の playground リテラルの使用方法については、Xcode ヘル�
 
 ### Self Expression(self式)
 
-`self` 式は、それが使用さえている現在の型またはインスタンスへの明示的な参照です。次の形式です:
+`self` 式は、それが使用さえている現在の型またはインスタンスへの明示的な参照です。形式は次のとおりです:
 
 ![Self式](./../.gitbook/assets/self_expression.png)
 
@@ -346,7 +346,7 @@ struct Point {
 
 ### Closure Expression(クロージャ式)
 
-クロージャ式は、他のプログラミング言語では、ラムダまたは匿名関数とも呼ばれているクロージャを作成します。関数宣言のように、クロージャには文が含まれており、その囲まれている範囲から定数と変数をキャプチャします。次の形式です:
+クロージャ式は、他のプログラミング言語では、ラムダまたは匿名関数とも呼ばれているクロージャを作成します。関数宣言のように、クロージャには文が含まれており、その囲まれている範囲から定数と変数をキャプチャします。形式は次のとおりです:
 
 ![クロージャ式](./../.gitbook/assets/closure_expression.png)
 
@@ -460,7 +460,7 @@ myFunction { [weak parent = self.parent] in print(parent!.title) }
 
 ### Implicit Member Expression(暗黙メンバ式)
 
-暗黙メンバ式は、型推論によって暗黙的に型を決定できるコンテキストにおいて、列挙型のケースや型メソッドなどの型のメンバにアクセスするための省略記法です。次の形式です:
+暗黙メンバ式は、型推論によって暗黙的に型を決定できるコンテキストにおいて、列挙型のケースや型メソッドなどの型のメンバにアクセスするための省略記法です。形式は次のとおりです:
 
 ![暗黙メンバ式](./../.gitbook/assets/implicit_member_expression.png)
 
@@ -509,7 +509,7 @@ let z: SomeClass = .sharedSubclass
 
 ### Tuple Expression(タプル式)
 
-タプル式は、括弧で囲まれた式のカンマ区切りのリストで構成されています。各式は、コロン(`:`)で区切られ、その前に識別子を指定することもできます。次の形式です:
+タプル式は、括弧で囲まれた式のカンマ区切りのリストで構成されています。各式は、コロン(`:`)で区切られ、その前に識別子を指定することもできます。形式は次のとおりです:
 
 ![タプル式](./../.gitbook/assets/tuple_expression.png)
 
@@ -707,7 +707,7 @@ Objective-C API とやり取りするコード内の Key-Path の使用方法の
 
 ### Selector Expression(セレクタ式)
 
-セレクタ式を使用すると、Objective-C のメソッドまたはプロパティの get や set を参照するために使用されるセレクタにアクセスできます。次の形式です:
+セレクタ式を使用すると、Objective-C のメソッドまたはプロパティの get や set を参照するために使用されるセレクタにアクセスできます。形式は次のとおりです:
 
 ![セレクタ式](./../.gitbook/assets/selector_expression.png)
 
@@ -754,7 +754,7 @@ Objective-C API とやり取りする Swift コードでセレクタを使用す
 
 ### Key-Path String Expression(Key-Path文字列式)
 
-Key-Path 文字列式を使用すると、Key-Value Coding や Key-Value Observing API で使用するために、Objective-C のプロパティを参照するための文字列にアクセスできます。次の形式です:
+Key-Path 文字列式を使用すると、Key-Value Coding や Key-Value Observing API で使用するために、Objective-C のプロパティを参照するための文字列にアクセスできます。形式は次のとおりです:
 
 ![Key-Path文字列式](./../.gitbook/assets/key-path_string_expression.png)
 
@@ -820,13 +820,13 @@ Swift 標準ライブラリによって提供されている演算子につい�
 
 ### Function Call Expression(関数呼び出し式)
 
-関数呼び出し式は、関数名とそれに続く関数の引数のカンマ区切りリストからなる関数名で構成されています。関数呼び出し式は次の形式です:
+関数呼び出し式は、関数名とそれに続く関数の引数のカンマ区切りリストからなる関数名で構成されています。関数呼び出し式は形式は次のとおりです:
 
 ![関数呼び出し式1](./../.gitbook/assets/function_call_expression1.png)
 
 function name は、関数型の任意の式です。
 
-関数定義に引数名が含まれている場合、関数呼び出しは、コロン(`:`)で区切られた引数値の前に名前を含める必要があります。この種の関数呼び出し式は次の形式です:
+関数定義に引数名が含まれている場合、関数呼び出しは、コロン(`:`)で区切られた引数値の前に名前を含める必要があります。この種の関数呼び出し式は形式は次のとおりです:
 
 ![引数名を含んだ関数呼び出し式](./../.gitbook/assets/function_call_expression2.png)
 
@@ -933,7 +933,7 @@ withUnsafePointer(to: myNumber) { unsafeFunction(pointer: $0) }
 
 ### Initializer Expression(イニシャライザ式)
 
-イニシャライザ式は型のイニシャライザへアクセスします。次の形式です:
+イニシャライザ式は型のイニシャライザへアクセスします。形式は次のとおりです:
 
 ![イニシャライザ式](./../.gitbook/assets/initializer_expression.png)
 
@@ -1050,7 +1050,7 @@ let x = [10, 3, 20, 15, 4]
 
 ### Subscript Expression(subscript式)
 
-subscript 式は、対応する subscript 宣言の get と set を使用して subscript へのアクセスすることができます。次の形式です:
+subscript 式は、対応する subscript 宣言の get と set を使用して subscript へのアクセスすることができます。形式は次のとおりです:
 
 ![subscript式](./../.gitbook/assets/subscript_expression.png)
 
@@ -1063,7 +1063,7 @@ subscript 宣言については、[Protocol Subscript Declaration](./declaration
 
 ### Forced-Value Expression(強制アンラップ式)
 
-強制アンラップ式は、特定の値が `nil` ではないオプショナルの値を表示します。次の形式です:
+強制アンラップ式は、特定の値が `nil` ではないオプショナルの値を表示します。形式は次のとおりです:
 
 ![強制アンラップ式](./../.gitbook/assets/forced-Value_expression.png)
 
@@ -1086,7 +1086,7 @@ someDictionary["a"]![0] = 100
 
 ### Optional-Chaining Expression(オプショナルチェーン式)
 
-オプショナルチェーン式は後置式で、オプショナルの値を使用するための簡単な構文を提供します。次の形式です:
+オプショナルチェーン式は後置式で、オプショナルの値を使用するための簡単な構文を提供します。形式は次のとおりです:
 
 ![オプショナルチェーン式](./../.gitbook/assets/optional-chaining_expression.png)
 
