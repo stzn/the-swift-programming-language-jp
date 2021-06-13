@@ -489,6 +489,22 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 ### Line Control Statement(行制御文)
 
+行制御文は、コンパイルされるソースコードの行番号およびファイル名とは異なる可能性のある行番号およびファイル名を指定するために使用されます。行制御文を使用して、診断およびデバッグの目的で Swift が使用するソースコードの場所を変更します。
+
+行制御文の形式は次のとおりです:
+
+![sourceLocation制御文](./../.gitbook/assets/sourceLocation_compiler_statement.png)
+
+最初の形式は、行制御文に続くコード行から始めて、`＃line`、`＃file`、`＃fileID`、および `#filePath` リテラル式の値を変更します。 line number は `#line` の値を変更し、0 より大きい任意の整数リテラルです。file path は、`＃file`、`＃fileID`、および `#filePath` の値を変更する文字列リテラルです。指定された文字列が `#filePath` の値になり、文字列の最後のパスコンポーネントが `#fileID` の値として使用されます。`＃file`、`＃fileID`、および `#filePath` については、[Literal Expression](./expressions.md#literal-expressionリテラル式)を参照ください。
+
+行制御文の 2 番目の形式の `#sourceLocation()` は、ソースコードの場所をデフォルトの行番号とファイルパスにリセットします。
+
+> GRAMMAR OF A LINE CONTROL STATEMENT  
+> line-control-statement → `#sourceLocation` `(` `file:` [file-path](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_file-path)  `,` `line:` [line-number](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_line-number)  `)`  
+> line-control-statement → `#sourceLocation` `(` `)`  
+> line-number → 0 以上の 10進整数  
+> file-path → [static-string-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_static-string-literal)
+
 ### Compile-Time Diagnostic Statement(コンパイル時診断文)
 
 ## Availability Condition(Availability条件)
