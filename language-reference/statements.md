@@ -235,7 +235,7 @@ case .suppressed:
 
 ラベルあり文のスコープは、文ラベルに続く文全体です。ラベルあり文はネストできますが、各文ラベルの名前を一意にする必要があります。
 
-文ラベルの詳細および使用例については、[Control Flow](./../language-guide/control-flow.md)の [Labeled Statements](./../language-guide/control-flow.md#labeled-statementsラベル付き文)を参照ください。
+文ラベルの詳細および使用例については、[Control Flow](./../language-guide/control-flow.md)の[Labeled Statements](./../language-guide/control-flow.md#labeled-statementsラベル付き文)を参照ください。
 
 > GRAMMAR OF A LABELED STATEMENT  
 > labeled-statement → [statement-label](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statement-label)  [loop-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_loop-statement)  
@@ -257,6 +257,21 @@ case .suppressed:
 > control-transfer-statement → [throw-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_throw-statement)
 
 ### Break Statement(Break文)
+
+`break` 文は、ループ、`if` 文、または `switch` 文のプログラム実行を終了します。以下に示すように、`break` 文は、`break` キーワードのみで構成することも、`break` キーワードの後に文ラベルが続けることもできます。
+
+![Break文](./../.gitbook/assets/break_statement.png)
+
+`break` 文の後に文ラベルの名前が続かない場合、そのラベルで指定されたループ、`if` 文、または `switch` 文のプログラム実行を終了します。
+
+`break` 文の後に文ラベルの名前が続かない場合は、`switch` 文またはそれが発生する最も内側のループ文のプログラム実行を終了します。ラベルのない `break` 文を使用して `if` 文から抜け出すことはできません。
+
+どちらの場合も、プログラム制御は、囲んでいるループまたは `switch` 文（存在する場合）に続くコードの最初の行に移されます。
+
+`break` 文の使用方法の例については、[Control Flow](./../language-guide/control-flow.md)の[Break](#break-statementbreak文)と[Labeled Statements](./../language-guide/control-flow.md#labeled-statementsラベル付き文)を参照ください。
+
+> GRAMMAR OF A BREAK STATEMENT  
+> break-statement → `break` [label-name](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_label-name)<sub>*opt*</sub>
 
 ### Continue Statement(Continue文)
 
