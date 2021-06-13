@@ -29,7 +29,7 @@
 * [Concurrency (同時並行処理)](language-guide/concurrency.md)
 * [Error Handling (エラー処理)](language-guide/error-handling.md)
 * [Type Casting (型キャスト)](language-guide/type-casting.md)
-* [Nested Types (ネストした型)](language-guide/nested-types.md)
+* [Nested Types (入れ子型)](language-guide/nested-types.md)
 * [Extensions (拡張)](language-guide/extensions.md)
 * [Protocols (プロトコル)](language-guide/protocols.md)
 * [Generics (ジェネリクス)](language-guide/generics.md)
