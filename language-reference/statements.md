@@ -396,6 +396,13 @@ Swift の `do` 文は、コードブロックを区切るために使用され�
 
 ## Compiler Control Statements(コンパイラ制御文)
 
+コンパイラ制御文を使用すると、プログラムはコンパイラの動作を変更できます。Swift には、3 つのコンパイラ制御文があります。条件付きコンパイルブロックと、行制御文と、コンパイル時診断文です。
+
+> GRAMMAR OF A COMPILER CONTROL STATEMENT  
+> compiler-control-statement → [conditional-compilation-block](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_conditional-compilation-block)  
+> compiler-control-statement → [line-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_line-control-statement)  
+> compiler-control-statement → [diagnostic-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_diagnostic-statement)
+
 ### Conditional Compilation Block(条件付きコンパイルブロック)
 
 ### Line Control Statement(行制御文)
