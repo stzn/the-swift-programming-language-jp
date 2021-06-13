@@ -432,11 +432,11 @@ let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 
 `subscript(dynamicMember:)` は、[dynamicMemberLookup](./attributes.md#dynamicMemberLookup)で説明されているように、メンバを検索するの糖衣構文(シンタックスシュガー)を使用できるようにします。
 
-### Throwing Functions and Methods(エラーをスローする関数とメソッド)
+### Throwing Functions and Methods(スロー関数とメソッド)
 
-エラーをスローする関数とメソッドは、`throws` キーワードでマークされている必要があります。これらの関数およびメソッドは、スロー関数およびスローメソッドと呼ばれます。形式は次のとおりです:
+スロー関数とメソッドは、`throws` キーワードでマークされている必要があります。これらの関数およびメソッドは、スロー関数(*throwing function*)およびスローメソッド数(*throwing method*)と呼ばれます。形式は次のとおりです:
 
-![エラーをスローする関数とメソッド](./../.gitbook/assets/throwing_functions_and_methods.png)
+![スロー関数とメソッド](./../.gitbook/assets/throwing_functions_and_methods.png)
 
 スロー関数またはスローメソッドの呼び出しは、`try` または `try!` 式で囲まれていなければなりません(つまり、`try` または `try!` 演算子のスコープ内で)。
 
@@ -446,9 +446,37 @@ let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 
 スローメソッドは、非スローメソッドをオーバーライドすることができず、スローメソッドでは、非スローメソッドのプロトコル要件を満たすことができません。逆に、非スローメソッドはスローメソッドを上書きすることができ、非スローメソッドはスローメソッドのプロトコル要件を満たすことができます。
 
-### Rethrowing Functions and Methods
+### Rethrowing Functions and Methods(再スロー関数とメソッド)
 
-### Asynchronous Functions and Methods
+関数またはメソッドは、その関数引数の 1 つがエラーをスローした場合にのみエラーをスローすることを示すために `rethrows` キーワードを使って宣言することができます。これらの関数およびメソッドは、再スロー関数(*rethrowing function*)および再スローメソッド(*rethrowing method*)と呼ばれています。 再スロー関数とメソッドには、少なくとも 1 つのスローする関数の引数が必要です。
+
+```swift
+func someFunction(callback: () throws -> Void) rethrows {
+    try callback()
+}
+```
+
+再スロー関数またはメソッドには、`catch` 句内でのみ `throw` 文を含めることができます。これにより、`do-catch` 文内でスロー関数を呼び出し、`catch` 句で別のエラーを投げてエラーを処理できます。さらに、`catch` 句は、再スロー関数のスロー引数の 1 つからスローされたエラーのみを処理しなければなりません。例えば、次の例では、`catch` 句は `alwaySthrows()` によってスローされたエラーを処理するため、無効です:
+
+```swift
+func alwaysThrows() throws {
+    throw SomeError.error
+}
+func someFunction(callback: () throws -> Void) rethrows {
+    do {
+        try callback()
+        try alwaysThrows()  // alwaysThrows() はスロー引数ではないため無効です。 
+    } catch {
+        throw AnotherError.error
+    }
+}
+```
+
+スローメソッドは再スローメソッドをオーバーライドできず、再スローメソッドのプロトコル要件を満たすことができません。逆に、再スローメソッドはスローメソッドをオーバーライドでき、再スローメソッドはスローメソッドのプロトコル要件を満たすことができます。
+
+### Asynchronous Functions and Methods(async関数とメソッド)
+
+
 
 ### Functions that Never Return
 
