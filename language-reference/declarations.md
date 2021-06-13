@@ -484,7 +484,30 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 `async` キーワードは関数の型の一部で、同期関数は非同期関数のサブタイプです。その結果、非同期関数が期待されるコンテキストで同期関数を使用できます。例えば、同期メソッドを使用して非同期メソッドをオーバーライドでき、同期メソッドは非同期メソッドのプロトコル要件を満たすことができます。
 
-### Functions that Never Return
+### Functions that Never Return(ノーリターン関数)
+
+Swift は、関数またはメソッドがその呼び出し元に戻り値を返さないことを示す `Never` を定義しています。 戻り値のない型を持つ関数とメソッドは、ノーリターン(*nonreturning*)と呼ばれます。ノーリターン関数とメソッドは、回復不能なエラーを引き起こすか、または無期限に続く一連のタスクを始めます。つまり、呼び出し直後に実行されてしまうコードが、実行されないことを意味します。スロー関数や再スロー関数は、ノーリターンでも、適切な `catch` 句を使ってプログラムの制御を転送できます。
+
+[Guard Statement](./statements.md#guard-statementGuard文)で説明したように、ノーリターン関数またはメソッドを呼び出すことができます。
+
+ノーリターンメソッドはオーバーライドできますが、新しいメソッドはその戻り値の型とノーリターンの動作を保持する必要があります。
+
+> GRAMMAR OF A FUNCTION DECLARATION  
+> function-declaration → [function-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-head)  [function-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-name)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [function-signature](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-signature)[generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub> [function-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-body)<sub>*opt*</sub>  
+> function-head → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>*opt*</sub> `func`  
+> function-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) \|  [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator)  
+> function-signature → [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause) `async`<sub>*opt*</sub>  `throws`<sub>*opt*</sub> [function-result](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-result)<sub>*opt*</sub>  
+> function-signature → [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause) `async`<sub>*opt*</sub> `rethrows` [function-result](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-result)<sub>*opt*</sub>  
+> function-result → `->` [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
+> function-body → [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  
+> parameter-clause → `(` `)` \|  `(` [parameter-list](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-list)  `)`  
+> parameter-list → [parameter](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter) \|  [parameter](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter)  `,` [parameter-list](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-list)  
+> parameter → [external-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_external-parameter-name)<sub>*opt*</sub> [local-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_local-parameter-name)  [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)  [default-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_default-argument-clause)<sub>*opt*</sub>  
+> parameter → [external-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_external-parameter-name)<sub>*opt*</sub> [local-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_local-parameter-name)  [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)  
+> parameter → [external-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_external-parameter-name)<sub>*opt*</sub> [local-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_local-parameter-name)  [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)  `...`  
+> external-parameter-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
+> local-parameter-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
+> default-argument-clause → `=` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
 
 ## Enumeration Declaration
 
