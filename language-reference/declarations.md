@@ -371,7 +371,24 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 
 より多くの議論と In-Out 引数の例については、[In-Out Parameters](./../language-guide/functions.md#in-Out-parametersIn-Out引数)を参照ください。
 
-### Special Kinds of Parameters
+### Special Kinds of Parameters(特殊な種類の引数)
+
+引数を無視したり、複数の値を受け取ったり、デフォルト値を提供する形式は次のとおりです:
+
+![特殊な種類の引数](./../.gitbook/assets/special_kinds-of_parameters.png)
+
+アンダースコア(`_`)引数は明示的に無視され、関数の本文内でアクセスすることはできません。
+
+基本型名を持つ引数は、型名の直後に 3 つのドット(`...`)を続ける引数が、可変長引数として解釈されます。可変長引数のすぐ後に続く引数には、引数ラベルを持つ必要があります。関数は複数の可変長引数を持つことができます。可変長引数は、基本型名の要素の配列として扱われます。例えば、可変長引数 `Int...` は `[Int]` として扱われます。可変長引数を使用する例については、[Variadic Parameters](./../language-guide/functions.md#variadic-Parameters可変長引数)を参照ください。
+
+等式(`=`)を伴う引数とその型の後の式は、指定された式のデフォルト値を持つと解釈されます。指定された式は、関数が呼び出された時に評価されます。関数呼び出し時に引数を省略すると、デフォルト値が代わりに使用されます。
+
+```swift
+func f(x: Int = 42) -> Int { return x }
+f()       // 有効。デフォルト値を使用します
+f(x: 7)   // 有効。提供された値を使用します
+f(7)      // 無効。引数ラベルがありません
+```
 
 ### Special Kinds of Methods
 
