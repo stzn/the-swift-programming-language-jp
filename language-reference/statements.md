@@ -33,6 +33,17 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 
 ### For-In Statement(For-In文)
 
+`for-in` 文は、[Sequence](https://developer.apple.com/documentation/swift/sequence)に準拠したコレクション(または任意の型)内の各項目に対して 1 回のコードブロックを実行できます。
+
+`for-in` 文は次の形式です。
+
+![For-In文](./../.gitbook/assets/for-in_statement.png)
+
+`makeIterator()` メソッドは、[IteratorProtocol](https://developer.apple.com/documentation/swift/iteratorprotocol)プロトコルに準拠した型のイテレータ型の値を取得するために、collection 式で呼び出されます。プログラムは、イテレータ上で `next()` メソッドを呼び出すことによってループの実行を開始します。返された値が `nil` ではない場合、item に代入され、プログラムは statements を実行し、再びループの先頭から実行を続行します。それ以外の場合、プログラムは値の代入や、statements を実行せず、 `for-in` 文の実行は終了しています。
+
+> GRAMMAR OF A FOR-IN STATEMENT  
+> for-in-statement → `for` `case` $$_{opt}$$ [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)  `in` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  [where-clause](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_where-clause) $$_{opt}$$ [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
+
 ### While Statement(While文)
 
 ### Repeat-While Statement(Repeat-While文)
