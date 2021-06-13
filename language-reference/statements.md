@@ -294,6 +294,15 @@ case .suppressed:
 
 ### Fallthrough Statement(Fallthrough文)
 
+`fallthrough` 文は `fallthrough` キーワードで構成され、`switch` 文のケースブロックでのみ発生します。`fallthrough` 文により、プログラムの実行は、`switch` 文の 1 つのケースから次のケースに続行されます。ケースラベルのパターンが `switch` 文の制御式の値と一致しない場合でも、プログラムの実行は次のケースに進みます。
+
+`fallthrough` 文は、ケースブロックの最後の文としてだけでなく、`switch` 文内のどこにでも表示できますが、最後のケースブロックでは使用できません。また、パターンに値バインディングのパターンが含まれているケースのブロックに制御を移すこともできません。
+
+`switch` 文で `fallthrough` 文を使用する方法の例については、[Control Flow](./../language-guide/control-flow.md)の[Control Transfer Statements](./../language-guide/control-flow.md#control-transfer-statements制御転送文)を参照ください。
+
+> GRAMMAR OF A FALLTHROUGH STATEMENT  
+> fallthrough-statement → `fallthrough`
+
 ### Return Statement(Return文)
 
 ### Throw Statement(Throw文)
