@@ -495,7 +495,7 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 ![sourceLocation制御文](./../.gitbook/assets/sourceLocation_compiler_statement.png)
 
-最初の形式は、行制御文に続くコード行から始めて、`＃line`、`＃file`、`＃fileID`、および `#filePath` リテラル式の値を変更します。 line number は `#line` の値を変更し、0 より大きい任意の整数リテラルです。file path は、`＃file`、`＃fileID`、および `#filePath` の値を変更する文字列リテラルです。指定された文字列が `#filePath` の値になり、文字列の最後のパスコンポーネントが `#fileID` の値として使用されます。`＃file`、`＃fileID`、および `#filePath` については、[Literal Expression](./expressions.md#literal-expressionリテラル式)を参照ください。
+最初の形式は、行制御文に続くコード行から始めて、`＃line`、`＃file`、`＃fileID`、および `#filePath` リテラル式の値を変更します。line number は `#line` の値を変更し、0 より大きい任意の整数リテラルです。file path は、`＃file`、`＃fileID`、および `#filePath` の値を変更する文字列リテラルです。指定された文字列が `#filePath` の値になり、文字列の最後のパスコンポーネントが `#fileID` の値として使用されます。`＃file`、`＃fileID`、および `#filePath` については、[Literal Expression](./expressions.md#literal-expressionリテラル式)を参照ください。
 
 行制御文の 2 番目の形式の `#sourceLocation()` は、ソースコードの場所をデフォルトの行番号とファイルパスにリセットします。
 
@@ -511,7 +511,7 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 ![コンパイル時診断文](./../.gitbook/assets/error_warning_compiler_statement.png)
 
-最初の形式は、致命的なエラーとして error message を出力し、コンパイルプロセスを終了します。2 番目の形式は、致命的ではない警告として warning message を出力し、コンパイルを続行できるようにします。 診断メッセージは静的文字列リテラルとして記述します。 静的文字列リテラルは、文字列補間や文字列連結などの機能を使用できませんが、複数行の文字列リテラル構文を使用できます。
+最初の形式は、致命的なエラーとして error message を出力し、コンパイルプロセスを終了します。2 番目の形式は、致命的ではない警告として warning message を出力し、コンパイルを続行できるようにします。診断メッセージは静的文字列リテラルとして記述します。静的文字列リテラルは、文字列補間や文字列連結などの機能を使用できませんが、複数行の文字列リテラル構文を使用できます。
 
 > GRAMMAR OF A COMPILE-TIME DIAGNOSTIC STATEMENT  
 > diagnostic-statement → `#error` `(` [diagnostic-message](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_diagnostic-message)  `)`  
@@ -519,3 +519,29 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 > diagnostic-message → [static-string-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_static-string-literal)
 
 ## Availability Condition(Availability条件)
+
+Availability 条件は、`if`、`while`、および `guard` 文の条件として使用され、指定されたプラットフォームの引数に基づいて、実行時に API の使用可能かどうかを検証します。
+
+Availability 条件の形式は次のとおりです:
+
+![Availability条件](./../.gitbook/assets/05_availabilitycondition.png)
+
+使用する API が実行時に使用可能かどうかに応じて、Availability 条件を使用してコードのブロックを実行します。コンパイラは、そのコード・ブロック内の API が使用可能かどうかを確認するときに、Availability 条件からの情報を使用します。
+
+Availability 条件は、プラットフォーム名とバージョンのカンマ区切りのリストを取ります。プラットフォーム名には `iOS`、`macOS`、`watchOS`、`tvOS` を使用し、対応するバージョン番号を含めます。`*` 引数は必須で、他のプラットフォームでは、Availability 条件によって保護されたコードブロックの本文が、ターゲットで指定された最小のデプロイターゲットで実行されることを指定します。
+
+ブール条件とは異なり、`&&` や `||` などの論理演算子を使用して Availability 条件を組み合わせることはできません。
+
+> GRAMMAR OF AN AVAILABILITY CONDITION  
+> availability-condition → `#available` `(` [availability-arguments](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_availability-arguments)  `)`  
+> availability-arguments → [availability-argument](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_availability-argument) \|  [availability-argument](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_availability-argument)  `,` [availability-arguments](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_availability-arguments)  
+> availability-argument → [platform-name](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_platform-name)  [platform-version](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_platform-version)  
+> availability-argument → `*`  
+> platform-name → `iOS` \|  `iOSApplicationExtension`  
+> platform-name → `macOS` \|  `macOSApplicationExtension`  
+> platform-name → `macCatalyst` \|  `macCatalystApplicationExtension`  
+> platform-name → `watchOS`  
+> platform-name → `tvOS`  
+> platform-version → [decimal-digits](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits)  
+> platform-version → [decimal-digits](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits)  `.` [decimal-digits](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits)  
+> platform-version → [decimal-digits](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits)  `.` [decimal-digits](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits)  `.` [decimal-digits](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits)
