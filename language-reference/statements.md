@@ -369,6 +369,31 @@ f()
 
 ## Do Statement(Do文)
 
+`do` 文は、新しいスコープを導入するために使用され、1 つ以上の `catch` 句を含めることができます。これには、定義されたエラー条件に一致するパターンが含まれます。`do` 文のスコープで宣言された変数と定数には、そのスコープ内でのみアクセスできます。
+
+Swift の `do` 文は、コードブロックを区切るために使用される C 言語の大括弧(`{}`)に似ており、実行時にパフォーマンスコストが発生しません。
+
+`do` 文の形式は次のとおりです:
+
+![Do文](./../.gitbook/assets/do_catch_statement.png)
+
+`do` ブロック内のいずれかの文がエラーをスローした場合、プログラム制御は、パターンがエラーに一致する最初の `catch` 節に移されます。どの句も一致しない場合、エラーは周囲のスコープに伝播します。エラーがトップレベルで処理されない場合、プログラムの実行は実行時エラーで停止します。
+
+`switch` 文と同様に、コンパイラは `catch` 節が全てのエラーを網羅しているかどうかを推論しようとします。そのような決定ができ​​る場合、エラーは処理されたと見なされます。そうしないと、エラーがスコープ外に伝播する可能性があります。つまり、エラーは `catch` 句内で処理するか、関数を `throws` で宣言する必要があります。
+
+複数のパターンを持つ `catch` 句は、そのパターンのいずれかにエラーが一致する場合、エラーに一致すると見なされます。`catch` 句に複数のパターンが含まれている場合、全てのパターンで同じ定数または変数にバインドされる必要があり、バインドされた各変数または定数は、`catch` 句の全てのパターンで同じ型にする必要があります。
+
+エラーが確実に処理されるようにするには、ワイルドカードパターン(`_`)など、全てのエラーに一致するパターンで `catch` 句を使用します。`catch` 句でパターンが指定されていない場合、`catch` 句は全てのエラーと一致し、`error` という名前のローカル定数にバインドします。`catch` 句で使用できるパターンの詳細については、[Patterns](./patterns.md)を参照ください。
+
+複数の `catch` 句を指定して `do` 文を使用する方法の例については、[Handling Errors](./../language-guide/error-handling.md#handling-errorsエラー処理)を参照ください。
+
+> GRAMMAR OF A DO STATEMENT  
+> do-statement → `do` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  [catch-clauses](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_catch-clauses)<sub>*opt*</sub>  
+> catch-clauses → [catch-clause](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_catch-clause)  [catch-clauses](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_catch-clauses)<sub>*opt*</sub>  
+> catch-clause → `catch` [catch-pattern-list](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_catch-pattern-list)<sub>*opt*</sub> [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  
+> catch-pattern-list → [catch-pattern](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_catch-pattern) \|  [catch-pattern](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_catch-pattern)  `,` [catch-pattern-list](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_catch-pattern-list)  
+> catch-pattern → [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)  [where-clause](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_where-clause)<sub>*opt*</sub>
+
 ## Compiler Control Statements(コンパイラ制御文)
 
 ### Conditional Compilation Block(条件付きコンパイルブロック)
