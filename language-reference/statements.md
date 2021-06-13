@@ -268,12 +268,29 @@ case .suppressed:
 
 どちらの場合も、プログラム制御は、囲んでいるループまたは `switch` 文（存在する場合）に続くコードの最初の行に移されます。
 
-`break` 文の使用方法の例については、[Control Flow](./../language-guide/control-flow.md)の[Break](#break-statementbreak文)と[Labeled Statements](./../language-guide/control-flow.md#labeled-statementsラベル付き文)を参照ください。
+`break` 文の使用方法の例については、[Break](#break-statementbreak文)と[Control Flow](./../language-guide/control-flow.md)の[Labeled Statements](./../language-guide/control-flow.md#labeled-statementsラベル付き文)を参照ください。
 
 > GRAMMAR OF A BREAK STATEMENT  
 > break-statement → `break` [label-name](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_label-name)<sub>*opt*</sub>
 
 ### Continue Statement(Continue文)
+
+`continue` 文は、ループ文の現在の反復のプログラム実行を終了しますが、ループ文の実行を停止しません。次に示すように、`continue` 文は `continue` キーワードのみで構成することも、`continue` キーワードとそれに続く文ラベルで構成することもできます。
+
+![Continue文](./../.gitbook/assets/continue_statement.png)
+
+`continue` 文の後に文ラベルが続く場合、そのラベルで指定されたループの現在の反復のプログラムを終了します。
+
+`continue` 文の後に文ラベルが続かない場合、それが発生する最も内側のループの現在の反復のプログラムを終了します。
+
+どちらの場合も、プログラム制御は、それを囲むループ文の条件に移されます。
+
+`for` 文では、increment 式はループの本体の実行後に評価されるため、`continue` 文の実行後も increment 式は評価されます。
+
+`continue` 文の使用方法の例については、[Continue](#continue-statementcontinue文)と[Control Flow](./../language-guide/control-flow.md)の[Labeled Statements](./../language-guide/control-flow.md#labeled-statementsラベル付き文)を参照ください。
+
+> GRAMMAR OF A CONTINUE STATEMENT  
+> continue-statement → `continue` [label-name](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_label-name)<sub>*opt*</sub>
 
 ### Fallthrough Statement(Fallthrough文)
 
