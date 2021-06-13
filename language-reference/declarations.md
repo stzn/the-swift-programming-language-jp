@@ -103,7 +103,7 @@ print("The second number is \(secondNumber).")
 
 変数宣言では、プログラムに変数の名前付き値を導入し、`var` キーワードを使用して宣言されています。
 
-変数宣言には、格納/計算変数や格納/計算プロパティ、プロパティオブザーバ、および静的変数プロパティなど、様々な種類の名前付きで可変な値を宣言するいくつかの形式があります。適切な形式は、変数が宣言されているスコープと宣言する予定の変数の種類によって異なります。
+変数宣言には、格納/計算変数や格納/計算プロパティ、格納変数オブザーバやプロパティオブザーバ、および静的変数プロパティなど、様々な種類の名前付きで可変な値を宣言するいくつかの形式があります。適切な形式は、変数が宣言されているスコープと宣言する予定の変数の種類によって異なります。
 
 > NOTE  
 > [Protocol Property Declaration](#protocol-property-declarationプロトコルプロパティ宣言)で説明されているように、プロトコル宣言のコンテキストでプロパティを宣言することもできます。
@@ -130,7 +130,7 @@ print("The second number is \(secondNumber).")
 
 ![計算変数、計算変数プロパティ](./../.gitbook/assets/computed_variables_and_computed_properties.png)
 
-この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラス、構造体、列挙型、または extension のコンテキストで定義できます。この形式の変数宣言がグローバルスコープまたは関数のローカルスコープで宣言されている場合は、計算変数(*computed variable*)と呼ばれます。クラス、構造体、または extension のコンテキストで宣言されている場合は、それは計算プロパティ(*computed property*)と呼ばれています。
+この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラス、構造体、列挙型、または extension のコンテキストで定義できます。この形式の変数宣言がグローバルスコープまたは関数のローカルスコープで宣言されている場合は、計算変数(*computed variable*)と呼ばれます。クラス、構造体、または extension のコンテキストで宣言されている場合は、それは計算プロパティ(*computed property*)と呼びます。
 
 get は値を読み取るために使用され、set は値を書き込むために使用されます。set 句は省略可能で、get のみが必要な場合は、[Read-Only Computed Properties](./../language-guide/properties.md#read-Only-computed-properties読み取り専用計算プロパティ)で説明されているように、両方の句を省略し、シンプルに要求された値を直接返すことができます。しかし、set 句を指定した場合は、get 句も提供する必要があります。
 
@@ -140,7 +140,66 @@ setter name とそれを囲む括弧は省略可能です。setter name を指�
 
 詳細や計算プロパティの例は、[Computed Properties](./../language-guide/properties.md#computed-properties計算プロパティ)を参照ください。
 
-### Stored Variable Observers and Property Observers
+### Stored Variable Observers and Property Observers(格納変数オブザーバとプロパティオブザーバ)
+
+格納変数またはプロパティを `willSet` や `didSet` オブザーバと一緒に宣言することもできます。オブザーバで宣言された格納変数またはプロパティの形式は次のとおりです:
+
+![格納変数オブザーバとプロパティオブザーバ](./../.gitbook/assets/stored_variable_observers_and_property_observers.png)
+
+この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラスまたは構造体宣言のコンテキストで定義できます。この形式の変数宣言がグローバルスコープまたは関数のローカルスコープで宣言されている場合、オブザーバは格納変数オブザーバ(*stored variable observer*)と呼ばれます。クラスまたは構造体宣言のコンテキストで宣言されている場合、オブザーバはプロパティオブザーバ(*property observer*)と呼びます。
+
+任意の格納プロパティにプロパティオブザーバを追加できます。[Overriding Property Observers](./../language-guide/inheritance.md#overriding-property-observersプロパティオブザーバのオーバーライド)で説明されているように、サブクラス内でプロパティをオーバーライドすることで、継承したプロパティ(格納または計算)にプロパティオブサーバを追加することもできます。
+
+イニシャライザ式は、クラスまたは構造体宣言のコンテキストでは省略可能ですが、他の場所では必須です。型注釈は、型がイニシャライザ式から推論できる場合は省略可能です。この式は、プロパティの値を初めて読むときに評価されます。プロパティの値を読み込む前にプロパティの初期値を上書きする場合、この式はプロパティに初めて書き込まれる前に評価されます。
+
+`willSet` および `didSet` オブザーバは、変数またはプロパティの値が設定されるときに、その値を監視(そして適切に対応する）方法を提供します。変数またはプロパティが最初に初期化される場合は、オブザーバは呼び出されません。代わりに、それらは初期化以外で値が設定されている場合にのみ呼び出されます。
+
+`willSet` オブザーバは、変数またはプロパティの値が設定される直前に呼び出されます。新しい値が定数として `willSet` オブザーバに渡され、したがって `willSet` 句の実装では変更できません。`didSet` オブザーバは、新しい値が設定された直後に呼び出されます。`willSet` オブザーバとは対照的に、それにアクセスする必要がある場合は、変数またはプロパティの古い値が `didSet` オブザーバーに渡されます。つまり、自身の `didSet` オブザーバ句内で変数またはプロパティに値を割り当てた場合、`willSet` オブザーバに渡された値を置き換えます。
+
+`willSet` および `didSet` 句内の setter name とそれを囲む括弧内は省略可能です。setter name を指定した場合は、`willSet` と `didSet` オブザーバの引数名として使用されます。setter name を指定しない場合は、`willSet` オブザーバのデフォルトの引数名が `newValue` で、`didSet` オブザーバのデフォルトの引数名は `oldValue` です。
+
+`didSet` 句は、`willSet` 句を指定した場合は省略可能です。同様に、`didSet` 句を指定するときは、`willSet` 句は省略可能です。
+
+`didSet` オブザーバの本文が古い値を参照している場合、get はオブザーバの前に呼び出され、古い値を使用できます。それ以外の場合は、スーパークラスの get を呼び出さずに新しい値が格納されます。下記の例は、スーパークラスで定義され、オブザーバを追加するためにそのサブクラスでオーバーライドされた計算プロパティを示しています:
+
+```swift
+class Superclass {
+    private var xValue = 12
+    var x: Int {
+        get { print("Getter was called"); return xValue }
+        set { print("Setter was called"); xValue = newValue }
+    }
+}
+
+// このサブクラスは オブザーバ の oldValue を参照していません
+// SuperClass の get は、値を出力するために一度だけ呼び出されます。
+class New: Superclass {
+    override var x: Int {
+        didSet { print("New value \(x)") }
+    }
+}
+let new = New()
+new.x = 100
+// "Setter was called"
+// "Getter was called"
+// "New value 100"
+
+// このサブクラスはそのオブザーバの oldValue を参照しているので、スーパークラスの
+// get はセッターの前に一度呼び出され、また値を出力します
+class NewAndOld: Superclass {
+    override var x: Int {
+        didSet { print("Old value \(oldValue) - new value \(x)") }
+    }
+}
+let newAndOld = NewAndOld()
+newAndOld.x = 200
+// "Getter was called"
+// "Setter was called"
+// "Getter was called"
+// "Old value 12 - new value 200"
+```
+
+より詳細な情報やプロパティオブザーバの使用方法の例は、[Property Observers](./../language-guide/properties.md#property-observersプロパティオブザーバ)を参照ください。
 
 ### Type Variable Properties
 
