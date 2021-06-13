@@ -56,7 +56,7 @@ typealias PoInt = (Int, Int)
 let origin: PoInt = (0, 0)
 ```
 
-2 番目のケースは、型識別子が他のモジュールで宣言された名前付き型または他の型内にネストされた名前付き型を参照するためには、ドット(`.`)構文を使用します。例えば、次のコードの型識別子は、`ExamPleModule` モジュールで宣言されている名前付き型 `MyType` を参照しています。
+2 番目のケースは、型識別子が他のモジュールで宣言された名前付き型または他の型内に入れ子名前付き型を参照するためには、ドット(`.`)構文を使用します。例えば、次のコードの型識別子は、`ExamPleModule` モジュールで宣言されている名前付き型 `MyType` を参照しています。
 
 ```swift
 var someValue: ExampleModule.MyType
@@ -439,7 +439,7 @@ prInt(type(of: z.f()))
 
 上記の例の最後の部分は、`Self` は、コンパイル時のスーパークラスの型ではなく、`z` の実行時のサブクラスの型を参照しています。
 
-ネストされた型宣言内では、`Self` 型は、最も内側の型を指します。
+入れ子型宣言内では、`Self` 型は、最も内側の型を指します。
 
 `Self` 型は、標準ライブラリ[type(of:)](https://developer.apple.com/documentation/swift/2885064-type)関数と同じ型を指します。現在の型のメンバにアクセスするめに `Self.SomeStaticMember` を書くことは、`type(of: self).someStaticMember` を書くのと同じです。
 
