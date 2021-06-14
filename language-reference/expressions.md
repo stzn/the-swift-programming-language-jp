@@ -460,7 +460,7 @@ myFunction { [weak parent = self.parent] in print(parent!.title) }
 
 ### Implicit Member Expression(暗黙メンバ式)
 
-暗黙メンバ式は、型推論によって暗黙的に型を決定できるコンテキストにおいて、列挙型のケースや型メソッドなどの型のメンバにアクセスするための省略記法です。形式は次のとおりです:
+暗黙メンバ式は、型推論によって暗黙的に型を決定できるコンテキストにおいて、列挙ケースや型メソッドなどの型のメンバにアクセスするための省略記法です。形式は次のとおりです:
 
 ![暗黙メンバ式](./../.gitbook/assets/implicit_member_expression.png)
 
