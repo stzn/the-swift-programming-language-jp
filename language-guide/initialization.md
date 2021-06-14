@@ -731,9 +731,9 @@ if anonymousCreature == nil {
 
 ### Failable Initializers for Enumerations\(列挙型の失敗可能イニシャライザ\)
 
-失敗可能イニシャライザを使用して、1 つ以上の引数に基づいて適切な列挙型ケースを選択できます。提供された引数が適切な列挙型ケースと一致しない場合、イニシャライザは失敗する可能性があります。
+失敗可能イニシャライザを使用して、1 つ以上の引数に基づいて適切な列挙ケースを選択できます。提供された引数が適切な列挙ケースと一致しない場合、イニシャライザは失敗する可能性があります。
 
-以下の例では、3 つの可能な状態\(`kelvin`、`celsius`、`fahrenheit`\)を使用して、`TemperatureUnit` という列挙型を定義しています。温度記号を表す `Character` 値の適切な列挙型ケースを見つけるために、失敗可能イニシャライザが使用されます:
+以下の例では、3 つの可能な状態\(`kelvin`、`celsius`、`fahrenheit`\)を使用して、`TemperatureUnit` という列挙型を定義しています。温度記号を表す `Character` 値の適切な列挙ケースを見つけるために、失敗可能イニシャライザが使用されます:
 
 ```swift
 enum TemperatureUnit {
@@ -753,7 +753,7 @@ enum TemperatureUnit {
 }
 ```
 
-この失敗可能イニシャライザを使用して、3 つの可能な状態に対して適切な列挙型ケースを選択し、引数がこれらの状態のいずれかに一致しない場合に初期化を失敗させることができます。
+この失敗可能イニシャライザを使用して、3 つの可能な状態に対して適切な列挙ケースを選択し、引数がこれらの状態のいずれかに一致しない場合に初期化を失敗させることができます。
 
 ```swift
 let fahrenheitUnit = TemperatureUnit(symbol: "F")
@@ -771,7 +771,7 @@ if unknownUnit == nil {
 
 ### Failable Initializers for Enumerations with Raw Values\(Raw Valueを持つ列挙型の失敗可能イニシャライザ\)
 
-Raw Value を持つ列挙型は、適切な Raw Value 型の `rawValue` と呼ばれる引数を受け取り、一致する列挙型ケースが見つかった場合はそれを選択するか、一致する値がない場合は初期化に失敗する失敗可能イニシャライザ `init?(rawValue:)` を自動的に受け取ります。
+Raw Value を持つ列挙型は、適切な Raw Value 型の `rawValue` と呼ばれる引数を受け取り、一致する列挙ケースが見つかった場合はそれを選択するか、一致する値がない場合は初期化に失敗する失敗可能イニシャライザ `init?(rawValue:)` を自動的に受け取ります。
 
 上記の `TemperatureUnit` の例を書き直して、`Character` 型の Raw Value を使用し、`init?(rawValue:)` イニシャライザを利用できます:
 
