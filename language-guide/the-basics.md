@@ -8,9 +8,9 @@ Swift は C 言語と Objective-C の全ての基本的な型に対応した Swi
 
 C 言語のように、Swift は、名前を特定して、値を保持したり、その値を参照するために変数を使います。また、変数の値を変更できなくすることで、より幅広い方法で変数を使用することができます。これらは、定数として知られており、C 言語の定数よりもかなり強力です。定数は、値を変更する必要がない場合に、コードを、意図的に、より安全に、よりわかりやすくするために Swift 全体で使われます。
 
-これまで見たことがあるような型に加え、Swift は Objective-C にはなかった、tuple のようなより応用的な型を導入します。tuple は値を 1 つのグループとして扱うことができます。tuple を使用すると、関数から複数の値を 1 つの値の組み合わせにすることができます。
+これまで見たことがあるような型に加え、Swift は Objective-C にはなかった、tuple のようなより応用的な型を導入します。tuple は値を 1 つのグループとして扱うことができます。tuple を使用すると、関数から複数の値を 1 つの値の組み合わせにして返すことができます。
 
-Swift は値が存在しないかもしれない値を扱うオプショナル型を導入しています。オプショナルは、「値が存在していて、これは x と等しい」もしくは「値は一切存在しない」ということ表します。オプショナルは Objective-C のポインタと `nil` を扱うのに似ていますが、class だけではなく、あらゆる型に使用することができます。Objective-C の `nil` ポインタよりも、安全で表現豊かなだけでなく、Swift の数々の強力な特徴の中心に位置します。
+Swift は値が存在しないかもしれない値を扱うオプショナル型を導入しています。オプショナルは、「値が存在していて、これは x と等しい」もしくは「値は一切存在しない」ということを表します。オプショナルは Objective-C のポインタと `nil` を扱うのに似ていますが、class だけではなく、あらゆる型に使用することができます。Objective-C の `nil` ポインタよりも、安全で表現豊かなだけでなく、Swift の数々の強力な特徴の中心に位置します。
 
 Swift は型安全な言語です。つまり、言語として、コードで扱う値の型を明確にしてくれます。例えば、`String` が必要な場合に、この型安全な特徴が、間違って `Int` を渡してしまうことを防いでくれます。同様に、オプショナルではない `String` にオプショナルの `String` を誤って渡してしまうことも防いでくれます。型安全なことで、開発中に、素早いエラーの発見と修正をすることができます。
 
@@ -178,7 +178,7 @@ let minValue = UInt8.min  // minValue is equal to 0, and is of type UInt8
 let maxValue = UInt8.max  // maxValue is equal to 255, and is of type UInt8
 ```
 
-これらのプロパティの値は、適切なサイズの整数値型で\(上記の例だと\`\`UInt8\)で、同じ型の他の値と一緒に式の中で使用することができます。
+これらのプロパティの値は、適切なサイズの整数値型で\(上記の例だと`UInt8`)で、同じ型の他の値と一緒に式の中で使用することができます。
 
 ### Int
 
@@ -213,7 +213,7 @@ Swift は unsigned の整数値型も提供しています。これも、プラ�
 
 ## Type Safety and Type Inference\(型安全と型推論）
 
-Swwift は型安全な言語です。型安全な言語は、扱っている値の型を明確にします。`String` が必要な場合に、間違って `Int` を渡すようなことはありません。
+Swift は型安全な言語です。型安全な言語は、扱っている値の型を明確にします。`String` が必要な場合に、間違って `Int` を渡すようなことはありません。
 
 型安全なことから、コンパイル時に型チェックが行われ、間違った型に対してはエラーを示します。これによって開発時に素早くエラーに気がつき修正をすることができます。
 
@@ -394,7 +394,7 @@ if turnipsAreDelicious {
 
 `if` のような条件文については、[Control Flow](control-flow.md)でより詳細に記載しています。
 
-Swift は型安全なので、`Bool` の値を他の型に置き換えることはできません。次の例はコンパイルエラーになります:
+Swift は型安全なので、`Bool`以外の値を`Bool`として使うことはできません。次の例はコンパイルエラーになります:
 
 ```swift
 let i = 1
@@ -482,14 +482,14 @@ _optionals_は、値が存在しないかもしれない時に使用します。
 > NOTE  
 > オプショナルの概念は、 C 言語や Objective-C には存在しません。Objective-C は、メソッドから `nil` かオブジェクトを返すことができますが、ここでいう `nil` は妥当なオブジェクトが存在しない、ということを意味します。しかし、これはオブジェクトのみで機能し、構造体や基本的な C 言語の型、列挙型には使用できません。これらの型へは、値が存在しないことを示す特別な値\(`NSNotFound` など\)を返すのが通例です。この方法ですと、メソッドの呼び出し元が、この特別な値が返ってくることを前提としてチェックすることを想定しています。Swift では、この特別な値を必要とせず、どんな型に対しても値が存在しないことを示すことができます。
 
-下記にオプショナルがどのように値が存在しないことを表すかの例を示します。Switf の `Int` 型には `String` を `Int` へと変換するイニシャライザがあります。しかし、全ての文字列が `Int` に変換できるわけではありません。「`123`」という文字列は数値 `123` に変換できますが、「`hello world`」は変換することができません。
+下記にオプショナルがどのように値が存在しないことを表すかの例を示します。Swift の `Int` 型には `String` を `Int` へと変換するイニシャライザがあります。しかし、全ての文字列が `Int` に変換できるわけではありません。「`123`」という文字列は数値 `123` に変換できますが、「`hello world`」は変換することができません。
 
 下記の例は `String` を `Int` へ変換するイニシャライザの例です。
 
 ```swift
 let possibleNumber = "123"
 let convertedNumber = Int(possibleNumber)
-// convertedNumber is inferred to be of type "Int?", or "オプショナルInt"
+// convertedNumber is inferred to be of type "Int?", or "Optional<Int>"
 ```
 
 イニシャライザは失敗するかもしれないので、`Int` ではなく、オプショナルの `Int` を返します。オプショナルの `Int` は、`Int` ではなく `Int?` と書きます。`?` はオプショナルを示し、「ある `Int` 型の値を含んでいる」ことを表しています。\(`Bool` や `String` など他の型を含めることはできません。`Int`、または値を持たない\(`nil`\)の 2 つのみ可能です\)
@@ -506,7 +506,7 @@ serverResponseCode = nil
 ```
 
 > NOTE  
-> オプショナルではない定数と変数には `nil` を設定することができません。もし、ある条件で値のない状態を扱う必要がある場合、適切な型の オプショナル値として定義してください
+> オプショナルではない定数と変数には `nil` を設定することができません。もし、ある条件で値のない状態を扱う必要がある場合、適切な型のオプショナル値として定義してください
 
 もし、デフォルトで値を与えずにオプショナルな変数を定義した場合、その変数には自動で `nil` が設定されます:
 
@@ -516,7 +516,7 @@ var surveyAnswer: String?
 ```
 
 > NOTE  
-> Swift の `nil` は Objective-C の `nil` と同じではありません。Objective-C では、`nil` は存在しないオブジェクトのポインタです。Swift では、`nil` はポインタではありません。ある型の存在しない値です。オブジェクト型だけではなく、どんな型の オプショナルにも `nil` を設定することができます。
+> Swift の `nil` は Objective-C の `nil` と同じではありません。Objective-C では、`nil` は存在しないオブジェクトのポインタです。Swift では、`nil` はポインタではありません。ある型の存在しない値です。オブジェクト型だけではなく、どんな型のオプショナルにも `nil` を設定することができます。
 
 ### If Statements and Forced Unwrapping\(if文と強制アンラップ）
 
@@ -543,7 +543,7 @@ if convertedNumber != nil {
 `if` 文についての詳細は、[Control Flow](control-flow.md)を参照ください。
 
 > NOTE  
-> 値が存在しない オプショナル値に `!` と付けてアクセスしようとすると、実行時エラー\(runtime error\)が発生します。`!` を使った強制アンラップを行う際は、確実に non-`nil` であることを常に確かめましょう。
+> 値が存在しないオプショナル値に `!` と付けてアクセスしようとすると、実行時エラー\(runtime error\)が発生します。`!` を使った強制アンラップを行う際は、確実に non-`nil` であることを常に確かめましょう。
 
 ### Optional Binding\(オプショナルバインディング）
 
@@ -603,11 +603,11 @@ if let firstNumber = Int("4") {
 
 時々、オプショナルに一度値が設定された後は必ず値が存在するということが明らかなこともあります。このような場合、常に値があることはわかっているので、アクセスする度にオプショナル値のチェックとアンラップすることを省略できれば便利です。
 
-このようなオプショナルは、暗黙アンラップ optional\(implicitly unwrapped optionals\)として定義されます。`?` の代わりに `!` を型の後に付けることで、暗黙アンラップ オプショナルを書くことができます\(`String?` の代わりに `String!` と書くなど\)。コード内で使用するオプショナル値の後に `!` 付けるよりも、定義した型の後に `!` を付けます。
+このようなオプショナルは、暗黙アンラップ optional\(implicitly unwrapped optionals\)として定義されます。`?` の代わりに `!` を型の後に付けることで、暗黙アンラップオプショナルを書くことができます\(`String?` の代わりに `String!` と書くなど\)。コード内で使用するオプショナル値の後に `!` 付けるよりも、定義した型の後に `!` を付けます。
 
-暗黙アンラップ オプショナルは、オプショナル値が定義後すぐに値が設定され、それ以降はずっと値が存在していることが確実な場合に、役に立ちます。Swift での暗黙アンラップ オプショナルの主な使われ方としては、`class` の初期化時があります。[Unowned References and Implicitly Unwrapped Optional Properties](automatic-reference-counting.md#unowned-references-and-implicitly-unwrapped-optional-properties)で記載しています。
+暗黙アンラップオプショナルは、オプショナル値が定義後すぐに値が設定され、それ以降はずっと値が存在していることが確実な場合に、役に立ちます。Swift での暗黙アンラップオプショナルの主な使われ方としては、`class` の初期化時があります。[Unowned References and Implicitly Unwrapped Optional Properties](automatic-reference-counting.md#unowned-references-and-implicitly-unwrapped-optional-properties)で記載しています。
 
-暗黙アンラップ オプショナルは、内部的には通常の オプショナルですが、オプショナルではない値のように使用することもできます。次の例は、オプショナルと暗黙アンラップ オプショナルで、明示的に `String` を型として記載している値へアクセスする時の動きの違いを表しています。
+暗黙アンラップオプショナルは、内部的には通常のオプショナルですが、オプショナルではない値のように使用することもできます。次の例は、オプショナルと暗黙アンラップオプショナルで、明示的に `String` を型として記載している値へアクセスする時の動きの違いを表しています。
 
 ```swift
 let possibleString: String? = "An optional string."
@@ -617,16 +617,16 @@ let assumedString: String! = "An implicitly unwrapped optional string."
 let implicitString: String = assumedString // no need for an exclamation point
 ```
 
-暗黙アンラップ オプショナルを必要な時に オプショナル値へ強制アンラップできるようにしていると見なすことができます。暗黙アンラップ オプショナル値を使用する時、Swift は強制アンラップします。上記のコードでは、オプショナル値の `assumedString` は、`implicitString` が明示的にオプショナルではない `String` を宣言しているため、代入される前に強制アンラップされています。下記のコードでは、`optionalString` は明示的に型を宣言していないため、通常はオプショナルになります。
+暗黙アンラップオプショナルを必要な時にオプショナル値へ強制アンラップできるようにしていると見なすことができます。暗黙アンラップオプショナル値を使用する時、Swift は強制アンラップします。上記のコードでは、オプショナル値の `assumedString` は、`implicitString` が明示的にオプショナルではない `String` を宣言しているため、代入される前に強制アンラップされています。下記のコードでは、`optionalString` は明示的に型を宣言していないため、通常はオプショナルになります。
 
 ```swift
 let optionalString = assumedString
 // The type of optionalString is "String?" and assumedString isn't force-unwrapped.
 ```
 
-暗黙アンラップ オプショナルが `nil` の場合に内部の値にアクセスしようとすると、実行時エラー\(runtime error\)が発生します。これはに `!` を付けた通常のオプショナルで値が存在しない場合にアクセスした時の動きと同じです。
+暗黙アンラップオプショナルが `nil` の場合に内部の値にアクセスしようとすると、実行時エラー\(runtime error\)が発生します。これはに `!` を付けた通常のオプショナルで値が存在しない場合にアクセスした時の動きと同じです。
 
-暗黙アンラップ オプショナルが `nil` かどうかのチェックは通常のオプショナルと同じ方法でできます。
+暗黙アンラップオプショナルが `nil` かどうかのチェックは通常のオプショナルと同じ方法でできます。
 
 ```swift
 if assumedString != nil {
@@ -635,7 +635,7 @@ if assumedString != nil {
 // "An implicitly unwrapped optional string."
 ```
 
-暗黙アンラップ オプショナルはオプショナルバインディングもできます。1 つの文の中で、チェックとアンラップができます。
+暗黙アンラップオプショナルはオプショナルバインディングもできます。1 つの文の中で、チェックとアンラップができます。
 
 ```swift
 if let definiteString = assumedString {
@@ -645,7 +645,7 @@ if let definiteString = assumedString {
 ```
 
 > NOTE  
-> 暗黙アンラップ optionalを、後でnilになる可能性のある変数に使わないでください。変数が使用されている間に `nil` チェックが必要な場合は、通常の オプショナルを常に使いましょう
+> 暗黙アンラップ optionalを、後でnilになる可能性のある変数に使わないでください。変数が使用されている間に `nil` チェックが必要な場合は、通常のオプショナルを常に使いましょう
 
 ## Error Handling\(エラーハンドリング）
 
@@ -752,7 +752,7 @@ precondition は[precondition\(_:_:file:line:\)](https://developer.apple.com/doc
 precondition(index > 0, "Index must be greater than zero.")
 ```
 
-precondition が失敗したことを示すために、[preconditionFailure\(\_:file:line:\)](https://developer.apple.com/documentation/swift/1539374-preconditionfailure)関数を使用することもできます。例えば、switch 文の中で、本来ならば他の case で全ての妥当な入力値をカバーできるはずなのに、defalt の case の条件に当てはまるケースがあった場合などがあります。
+precondition が失敗したことを示すために、[preconditionFailure\(\_:file:line:\)](https://developer.apple.com/documentation/swift/1539374-preconditionfailure)関数を使用することもできます。例えば、switch 文の中で、本来ならば他の case で全ての妥当な入力値をカバーできるはずなのに、default の case の条件に当てはまるケースがあった場合などがあります。
 
-> NOTE もし\(`-Ounchecked`\)モードでコンパイルした場合、precondition はチェックされません。コンパイラはprecondition を常に `true` と見なしてコードの最適化を行います。一方で、`fatalError(_:file:line:)` 関数は最適化の設定をしても、常に実行を中断します。 `fatalError(_:file:line:)` 関数は、試作段階や開発の初期段階で、まだ未実装であることを示すためのスタブとして使用することができます\(`fatalError("Unimplemented")` と書くなど\)。fatal error はコードの最適化がされないため、assertion と precondition とは異なり、もしこのスタブメソッドに遭遇した場合は、確実に実行が中断させることができます
+> NOTE もし\(`-Ounchecked`\)モードでコンパイルした場合、precondition はチェックされません。コンパイラはprecondition を常に `true` と見なしてコードの最適化を行います。一方で、`fatalError(_:file:line:)` 関数は最適化の設定をしても、常に実行を中断します。 `fatalError(_:file:line:)` 関数は、試作段階や開発の初期段階で、まだ未実装であることを示すためのスタブとして使用することができます\(`fatalError("Unimplemented")` と書くなど\)。fatal error はコードの最適化がされないため、assertion と precondition とは異なり、もしこのスタブメソッドに遭遇した場合は、確実に実行を中断させることができます
 
