@@ -509,15 +509,94 @@ Swift は、関数またはメソッドがその呼び出し元に戻り値を�
 > local-parameter-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
 > default-argument-clause → `=` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
 
-## Enumeration Declaration
+## Enumeration Declaration(列挙型宣言)
 
-### Enumerations with Cases of Any Type
+列挙型宣言は、名前付き列挙型をプログラムに導入します。
 
-#### Enumerations with Indirection
+列挙型宣言には 2 つの基本的な形式があり、`enum` キーワードを使用して宣言されます。いずれかの形式を使用して宣言された列挙型の本文には、列挙型ケース(*enumeration case*)と呼ばれる 0 個以上の値と、計算プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、タイプエイリアス、さらには他の列挙型、構造体、クラス、アクター宣言を含めることができます。列挙型宣言には、デイニシャライザまたはプロトコル宣言を含めることはできません。
+
+列挙型は任意の数のプロトコルを採用できますが、クラス、構造体、またはその他の列挙型を継承することはできません。
+
+クラスや構造体とは異なり、列挙型には暗黙的に提供されるデフォルトのイニシャライザがありません。全てのイニシャライザを明示的に宣言する必要があります。イニシャライザは、列挙型内の他のイニシャライザに委譲できますが、初期化プロセスは、イニシャライザが列挙型ケースの 1 つを自分自身に割り当てた後にのみ完了します。
+
+構造体と似ていますが、クラスとは異なり、列挙型は値型です。列挙型のインスタンスは、変数または定数に割り当てられたとき、または引数として関数呼び出し時に渡されたときにコピーされます。値型の詳細については、[Structures and Enumerations Are Value Types](./../language-guide/strings-and-characters.md#structures-and-enumerations-are-value-yypes構造体と列挙型は値型)を参照ください。
+
+[Extension Declaration](#extension-declaration拡張宣言)で説明されているように、extension を使用して列挙型の動作を拡張できます。
+
+### Enumerations with Cases of Any Type(任意の型のケースを持つ列挙型)
+
+次の形式は、任意の型の列挙型を含む列挙型を宣言しています。
+
+![任意の型のケースを持つ列挙型](./../.gitbook/assets/enumerations_with_cases_of_any_type.png)
+
+この形式で宣言された列挙型は、他のプログラミング言語では判別共用体(*discriminated union*)と呼ばれることもあります。
+
+この形式では、各ケースブロックは、`case` キーワードと、それに続く 1 つ以上の列挙型ケースで構成され、カンマで区切られます。各ケースの名前は一意にする必要があります。各ケースでは、特定の型の値を格納するように指定することもできます。これらの型は、ケースの名前の直後にある、関連値型(*associated value type*)のタプルで指定できます。
+
+関連値を持つ列挙型ケースは、指定された関連値を使用して列挙型のインスタンスを作成する関数として使用できます。また、関数と同様に、列挙型のケースへの参照を取得して、後のコードで適用できます。
+
+```swift
+enum Number {
+    case integer(Int)
+    case real(Double)
+}
+let f = Number.integer
+// f は (Int） -> Number 型の関数です
+
+// f を適用して、整数値を持つ Number インスタンスの配列を作成します
+let evenInts: [Number] = [0, 2, 4, 6].map(f)
+```
+
+詳細および関連値型を持つケースの例については、[Associated Values](./../language-guide/enumerations.md#associated-values関連値)を参照ください。
+
+#### Enumerations with Indirection(indirect列挙型)
 
 ---
 
-### Enumerations with Cases of a Raw-Value Type
+列挙型は再帰的な構造を持つことができます。つまり、列挙型自体のインスタンスの値をケースの関連値として持つことができます。ただし、列挙型のインスタンスには値型のセマンティクスです。つまり、不変のメモリレイアウトを持っています。再帰をサポートするには、コンパイラは間接層を挿入する必要があります。
+
+特定の列挙型ケースの間接層を挿入するには、`indirect` 宣言修飾子でマークします。`indirect` ケースには、関連値が必要です。
+
+```swift
+enum Tree<T> {
+    case empty
+    indirect case node(value: T, left: Tree, right: Tree)
+}
+```
+
+関連値を持つ列挙型の全てのケースで `indirect` を有効にするには、列挙型全体に `indirect` 修飾子を付けます。これは、列挙型に `indirect` 修飾子でマークする必要があるケースが多く含まれている場合に便利です。
+
+`indirect` 修飾子でマークされた列挙型には、関連値を持つケースと関連値を持たないケースが混在している可能性があります。しかし、`indirect` 修飾子が付いているケースを含めることはできません。
+
+### Enumerations with Cases of a Raw-Value Type(Raw Valueb型のケースを持つ列挙型)
+
+次の形式は、同じ基となる型のケースを持つ列挙型を宣言しています。
+
+![Raw Value型のケースを持つ列挙型](./../.gitbook/assets/enumerations_with_cases_of_a_raw-value_type.png)
+
+この形式では、各ケースブロックは、`case` キーワードと、それに続く 1 つ以上の列挙型ケースで構成され、カンマで区切られます。最初の形式のケースとは異なり、各ケースには、同じ基本型の raw value と呼ばれる基になる値があります。これらの値の型は `raw-value type` で指定され、整数、浮動小数点数、文字列、または単一文字で表される必要があります。特に、`raw-value type` は、`Equatable` プロトコルおよび次のいずれかのプロトコルに準拠する必要があります: 整数リテラルの場合は `ExpressibleByIntegerLiteral`、浮動小数点リテラルの場合は `ExpressibleByFloatLiteral`、任意の数の文字を含む文字列リテラルの場合は `ExpressibleByStringLiteral`、文字列の場合は `ExpressibleByUnicodeScalarLiteral`、1 文字のみを含むリテラルの場合は `ExpressibleByExtendedGraphemeClusterLiteral` です。各ケースには一意の名前と Raw Value が割り当てられている必要があります。
+
+Raw Value の型が `Int` として指定されていて、ケースに値を明示的に割り当てられていない場合、ケースには `0`、`1`、`2` などの値が暗黙的に割り当てられます。`Int` 型の割り当てられていない各ケースには、前のケースの Raw Value から自動的にインクリメントされる Raw Value が暗黙的に割り当てられます。
+
+```swift
+enum ExampleEnum: Int {
+    case a, b, c = 5, d
+}
+```
+
+上記の例では、`ExampleEnum.a` の Raw Value は `0` で、`ExampleEnum.b` の値は `1` です。また、`ExampleEnum.c` の値は明示的に `5` に設定されているため、`ExampleEnum.d` の値は自動的に `5` からインクリメントされます。したがって、`6` です。
+
+Raw Value の型が文字列として指定されていて、ケースに値を明示的に割り当てない場合、割り当てられていない各ケースには、そのケースの名前と同じテキストの文字列が暗黙的に割り当てられます。
+
+```swift
+enum GamePlayMode: String {
+    case cooperative, individual, competitive
+}
+```
+
+上記の例では、`GamePlayMode.cooperative` の Raw Value は `"cooperative"`、`GamePlayMode.individual` の Raw Value は `"individual"`、`GamePlayMode.competitive` の Raw Value は `"competitive"` です。
+
+raw-value type のケースを持つ列挙型は、Swift 標準ライブラリで定義されている `RawRepresentable` プロトコルに暗黙的に準拠しています。その結果、`rawValue` プロパティと、`init?(rawValue: RawValue)` シグネチャを持つ失敗可能イニシャライザを持ちます。`ExampleEnum.b.rawValue` のように、`rawValue` プロパティを使用して、列挙型の Raw Value にアクセスできます。`ExampleEnum(rawValue: 5)` のように、Raw Value を使用して、オプショナルのケースを返す列挙型の失敗可能イニシャライザを呼び出すことにより、対応するケースがある場合はそのインスタンスを見つけることもできます。詳細および Raw Value 型のケースの例については、[Raw Values](./../language-guide/enumerations.md#raw-values)を参照ください。
 
 ### Accessing Enumeration Cases
 
@@ -545,7 +624,7 @@ Swift は、関数またはメソッドがその呼び出し元に戻り値を�
 
 ## Deinitializer Declaration
 
-## Extension Declaration
+## Extension Declaration(拡張宣言)
 
 ### Conditional Conformance
 
