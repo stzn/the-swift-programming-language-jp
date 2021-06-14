@@ -630,7 +630,7 @@ raw-value type のケースを持つ列挙型は、Swift 標準ライブラリ�
 
 ![構造体宣言](./../.gitbook/assets/structure_declaration.png)
 
-構造体の本体には、0 個以上の宣言が含まれています。これらの宣言には、格納プロパティと計算プロパティ、型プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、subscript、タイプエイリアス、さらにはその他の構造体、クラス、アクター、列挙型の宣言を含めることができます。構造体宣言にデイニシャライザまたはプロトコル宣言を含めることはできません。様々な種類の宣言を含む構造体の説明といくつかの例については、[構造体とクラス](./../language-guide/structures-and-classes.md)を参照ください。
+構造体の本体には、0 個以上の declarations が含まれています。これらの declarations には、格納プロパティと計算プロパティ、型プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、subscript、タイプエイリアス、さらにはその他の構造体、クラス、アクター、列挙型の宣言を含めることができます。構造体宣言にデイニシャライザまたはプロトコル宣言を含めることはできません。様々な種類の宣言を含む構造体の説明といくつかの例については、[構造体とクラス](./../language-guide/structures-and-classes.md)を参照ください。
 
 構造体型は任意の数のプロトコルに準拠できますが、クラス、列挙型、またはその他の構造体を継承することはできません。
 
@@ -656,6 +656,39 @@ raw-value type のケースを持つ列挙型は、Swift 標準ライブラリ�
 
 ## Class Declaration(クラス宣言)
 
+クラス宣言は、名前付きクラス型をプログラムに導入します。クラス宣言は、`class` キーワードを使用して宣言され、形式は次のとおりです。
+
+![クラス宣言](./../.gitbook/assets/class_declaration.png)
+
+クラスの本文には、0 個以上の declarations が含まれています。これらの declarations には、格納プロパティと計算プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、単一の非イニシャライザ、subscript、タイプエイリアス、さらには他のクラス、構造、アクター、列挙型の宣言を含めることができます。クラス宣言にプロトコル宣言を含めることはできません。様々な種類の宣言を含むクラスの説明といくつかの例については、[Structures and Classes](./../language-guide/structures-and-classes.md)を参照ください。
+
+クラス型は、1 つの親クラス(superclass)からのみ継承できますが、任意の数のプロトコルに準拠できます。superclass は、class name とコロン(`:`)の後の最初に表示され、その後に adopted protocols が続きます。ジェネリッククラスは他のジェネリッククラスと非ジェネリッククラスから継承できますが、非ジェネリッククラスは他の非ジェネリッククラスからのみ継承できます。コロンの後にジェネリックなスーパークラスクラスの名前を書き込むときは、ジェネリック引数を含めたそのジェネリッククラスの全てを含める必要があります。
+
+[Initializer Declaration](#initializer-declarationイニシャライザ宣言)で説明されているように、クラスには指定イニシャライザと convenience イニシャライザを含めることができます。クラスの指定イニシャライザは、クラスの宣言された全てのプロパティを初期化する必要があり、スーパークラスの指定イニシャライザを呼び出す前に初期化する必要があります。
+
+クラスは、そのスーパークラスのプロパティ、メソッド、subscript、およびイニシャライザをオーバーライドできます。オーバーライドされたプロパティ、メソッド、subscript、および指定イニシャライザは、`override` 修飾子でマークする必要があります。
+
+サブクラスでもスーパークラスのイニシャライザの実装を必須にするには、スーパークラスのイニシャライザに `required` 修飾子をマークします。そのイニシャライザのサブクラスの実装にも、`required` 修飾子を付ける必要があります。
+
+スーパークラスで宣言されたプロパティとメソッドは現在のクラスに継承されますが、スーパークラスで宣言された指定イニシャライザは、サブクラスが[Automatic Initializer Inheritance](./../language-guide/initialization.md#automatic-initializer-inheritance自動イニシャライザの継承)で説明されている条件を満たす場合にのみ継承されます。Swift クラスは、全てに共通する基本クラスを継承しません。
+
+宣言されたクラスのインスタンスを作成するには、次の 2 つの方法があります:
+
+* [Initializers](./../language-guide/initialization.md#initializersイニシャライザ)で説明されているように、クラス内で宣言されたイニシャライザの 1 つを呼び出します
+* イニシャライザが宣言されておらず、クラス宣言の全てのプロパティに初期値が指定されている場合は、[Default Initializers](./../language-guide/initialization.md#default-initializersデフォルトイニシャライザ)で説明されているように、クラスのデフォルトイニシャライザを呼び出します
+* [Accessing Properties](./../language-guide/structures-and-classes.md#accessing-propertiesプロパティへのアクセス)で説明されているように、ドット(`.`)構文を使用してクラスインスタンスのプロパティにアクセスします
+
+クラスは参照型です。クラスのインスタンスは、変数や定数に割り当てられたとき、または関数呼び出し時に引数として渡されたときに、コピーされるのではなく参照が渡されます。参照型の詳細については、[Classes Are Reference Types](./../language-guide/structures-and-classes.md#classes-are-reference-typesclassは参照型)を参照ください。
+
+[Extension Declaration](#extension-declaration拡張宣言)で説明されているように、extension を使用してクラス型の動作を拡張できます。
+
+> GRAMMAR OF A CLASS DECLARATION  
+> class-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>*opt*</sub> `final`<sub>*opt*</sub> `class` [class-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-name)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>*opt*</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub> [class-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-body)  
+> class-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> `final` [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>*opt*</sub> `class` [class-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-name)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>*opt*</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub> [class-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-body)  
+> class-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
+> class-body → `{` [class-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-members)<sub>*opt*</sub> `}`  
+> class-members → [class-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-member)  [class-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-members)<sub>*opt*</sub>  
+> class-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \|  [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
 
 ## Actor Declaration
 
@@ -671,7 +704,7 @@ raw-value type のケースを持つ列挙型は、Swift 標準ライブラリ�
 
 ### Protocol Associated Type Declaration(プロトコル関連型宣言)
 
-## Initializer Declaration
+## Initializer Declaration(イニシャライザ宣言)
 
 ### Failable Initializers
 
