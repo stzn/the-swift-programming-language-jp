@@ -229,15 +229,15 @@ newAndOld.x = 200
 > willSet-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> `willSet` [setter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-name)<sub>*opt*</sub> [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  
 > didSet-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> `didSet` [setter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-name)<sub>*opt*</sub> [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
 
-## Type Alias Declaration(型エイリアス宣言)
+## Type Alias Declaration(タイプエイリアス宣言)
 
-型エイリアス宣言では、既存の型に別名を導入します。型エイリアス宣言は、`typealias` キーワードを使用して宣言され、形式は次のとおりです:
+タイプエイリアス宣言では、既存の型に別名を導入します。タイプエイリアス宣言は、`typealias` キーワードを使用して宣言され、形式は次のとおりです:
 
-![型エイリアス宣言](./../.gitbook/assets/type_alias_declaration.png)
+![タイプエイリアス宣言](./../.gitbook/assets/type_alias_declaration.png)
 
-型エイリアスが宣言された後、プログラム内の既存の型の代わりに注釈名を使用できます。既存の型は、名前付き型または複合型にすることができます。型エイリアスは新しい型を作成しません。それらは単に名前が既存の型を参照することを可能にします。
+タイプエイリアスが宣言された後、プログラム内の既存の型の代わりに注釈名を使用できます。既存の型は、名前付き型または複合型にすることができます。タイプエイリアスは新しい型を作成しません。それらは単に名前が既存の型を参照することを可能にします。
 
-型エイリアス宣言は、ジェネリック引数を使用して既存のジェネリック型に名前を付けることができます。型エイリアスは、既存の型のジェネリック引数の一部または全部に具体的な型を提供できます。例えば:
+タイプエイリアス宣言は、ジェネリック引数を使用して既存のジェネリック型に名前を付けることができます。タイプエイリアスは、既存の型のジェネリック引数の一部または全部に具体的な型を提供できます。例えば:
 
 ```swift
 typealias StringDictionary<Value> = Dictionary<String, Value>
@@ -247,21 +247,21 @@ var dictionary1: StringDictionary<Int> = [:]
 var dictionary2: Dictionary<String, Int> = [:]
 ```
 
-型エイリアスがジェネリック引数で宣言されると、それらの引数の制約は既存の型のジェネリック引数の制約と正確に一致する必要があります。例えば:
+タイプエイリアスがジェネリック引数で宣言されると、それらの引数の制約は既存の型のジェネリック引数の制約と正確に一致する必要があります。例えば:
 
 ```swift
 typealias DictionaryOfInts<Key: Hashable> = Dictionary<Key, Int>
 ```
 
-型エイリアスと既存の型を互換的に使用できるため、型エイリアスは追加のジェネリック制約を導入できません。
+タイプエイリアスと既存の型を互換的に使用できるため、タイプエイリアスは追加のジェネリック制約を導入できません。
 
-型エイリアスは、宣言から全てのジェネリック引数を省略することで、既存の型のジェネリック引数を転送できます。例えば、ここで宣言されている `Diccionario` 型の別名は、`Dictionary` と同じジェネリック引数と制約を持ちます。
+タイプエイリアスは、宣言から全てのジェネリック引数を省略することで、既存の型のジェネリック引数を転送できます。例えば、ここで宣言されている `Diccionario` 型の別名は、`Dictionary` と同じジェネリック引数と制約を持ちます。
 
 ```swift
 typealias Diccionario = Dictionary
 ```
 
-プロトコル宣言の内部では、型エイリアスは頻繁に使用される型に短くて便利な名前を付けることができます。例えば:
+プロトコル宣言の内部では、タイプエイリアスは頻繁に使用される型に短くて便利な名前を付けることができます。例えば:
 
 ```swift
 protocol Sequence {
@@ -274,7 +274,7 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 }
 ```
 
-この型エイリアスがないと、`sum` 関数は関連型を `T.Element` ではなく `T.Iterator.Element` として参照する必要があります。
+このタイプエイリアスがないと、`sum` 関数は関連型を `T.Element` ではなく `T.Iterator.Element` として参照する必要があります。
 
 [Protocol Associated Type Declaration](#protocol-associated-type-declarationプロトコル関連型宣言)も参照ください。
 
@@ -519,7 +519,7 @@ Swift は、関数またはメソッドがその呼び出し元に戻り値を�
 
 クラスや構造体とは異なり、列挙型には暗黙的に提供されるデフォルトのイニシャライザがありません。全てのイニシャライザを明示的に宣言する必要があります。イニシャライザは、列挙型内の他のイニシャライザに委譲できますが、初期化プロセスは、イニシャライザが列挙ケースの 1 つを自分自身に割り当てた後にのみ完了します。
 
-構造体と似ていますが、クラスとは異なり、列挙型は値型です。列挙型のインスタンスは、変数または定数に割り当てられたとき、または引数として関数呼び出し時に渡されたときにコピーされます。値型の詳細については、[Structures and Enumerations Are Value Types](./../language-guide/strings-and-characters.md#structures-and-enumerations-are-value-yypes構造体と列挙型は値型)を参照ください。
+構造体と似ていますが、クラスとは異なり、列挙型は値型です。列挙型のインスタンスは、変数または定数に割り当てられたとき、または引数として関数呼び出し時に渡されたときにコピーされます。値型の詳細については、[Structures and Enumerations Are Value Types](./../language-guide/strings-and-characters.md#structures-and-enumerations-are-value-types構造体と列挙型は値型)を参照ください。
 
 [Extension Declaration](#extension-declaration拡張宣言)で説明されているように、extension を使用して列挙型の動作を拡張できます。
 
@@ -624,9 +624,38 @@ raw-value type のケースを持つ列挙型は、Swift 標準ライブラリ�
 > raw-value-assignment → `=` [raw-value-literal](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_raw-value-literal)  
 > raw-value-literal → [numeric-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_numeric-literal) \|  [static-string-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_static-string-literal) \|  [boolean-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_boolean-literal)
 
-## Structure Declaration
+## Structure Declaration(構造体宣言)
 
-## Class Declaration
+構造体宣言は、名前付きの構造体型をプログラムに導入します。構造体宣言は `struct` キーワードを使用して宣言され、形式は次のとおりです。
+
+![構造体宣言](./../.gitbook/assets/structure_declaration.png)
+
+構造体の本体には、0 個以上の宣言が含まれています。これらの宣言には、格納プロパティと計算プロパティ、型プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、subscript、タイプエイリアス、さらにはその他の構造体、クラス、アクター、列挙型の宣言を含めることができます。構造体宣言にデイニシャライザまたはプロトコル宣言を含めることはできません。様々な種類の宣言を含む構造体の説明といくつかの例については、[構造体とクラス](./../language-guide/structures-and-classes.md)を参照ください。
+
+構造体型は任意の数のプロトコルに準拠できますが、クラス、列挙型、またはその他の構造体を継承することはできません。
+
+宣言された構造体のインスタンスを作成するには、次の 3 つの方法があります。
+
+* [Initializers](./../language-guide/initialization.md#initializersイニシャライザ)で説明されているように、構造体内で宣言されたイニシャライザの 1 つを呼び出します
+* イニシャライザが宣言されていない場合は、[Memberwise Initializers for Structure Types](./../language-guide/initialization.md#memberwise-initializers-for-structuretypes構造体のメンバワイズイニシャライザ)で説明されているように、構造体のメンバワイズイニシャライザを呼び出します
+* イニシャライザが宣言されておらず、構造体宣言の全てプロパティに初期値が指定されている場合は、[Default Initializers](./../language-guide/initialization.md#default-initializersデフォルトイニシャライザ)で説明されているように、構造体のデフォルトイニシャライザを呼び出します
+* 構造体の宣言されたプロパティを初期化するプロセスは、[Initialization](./../language-guide/initialization.md)初期化で説明されています
+
+構造体インスタンスのプロパティには、[Accessing Properties](./../language-guide/structures-and-classes.md#accessing-propertiesプロパティへのアクセス)で説明されているように、ドット(`.`)構文を使用してアクセスできます。
+
+構造体は値型です。構造体のインスタンスは、変数または定数に割り当てられたとき、または引数として関数呼び出し時に渡されたときにコピーされます。値型の詳細については、[Structures and Enumerations Are Value Types](./../language-guide/strings-and-characters.md#structures-and-enumerations-are-value-types構造体と列挙型は値型)を参照ください。
+
+[Extension Declaration](#extension-declaration拡張宣言)で説明されているように、extension を使用して構造体の動作を拡張できます。
+
+> GRAMMAR OF A STRUCTURE DECLARATION  
+> struct-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>*opt*</sub> `struct` [struct-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_struct-name)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>*opt*</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub> [struct-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_struct-body)  
+> struct-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
+> struct-body → `{` [struct-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_struct-members)<sub>*opt*</sub> `}`  
+> struct-members → [struct-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_struct-member)  [struct-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_struct-members)<sub>*opt*</sub>  
+> struct-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \|  [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
+
+## Class Declaration(クラス宣言)
+
 
 ## Actor Declaration
 
