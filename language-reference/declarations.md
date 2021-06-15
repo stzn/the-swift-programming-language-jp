@@ -843,6 +843,29 @@ subscript 宣言は、プロトコルに準拠する型の最小ゲッターお�
 
 ### Protocol Associated Type Declaration\(プロトコル関連型宣言\)
 
+プロトコルは、`associatedtype` キーワードを使用して関連型を宣言します。関連型は、プロトコルの宣言の一部として使用される型の別名を提供します。関連型は、ジェネリック引数句の型引数に似ていますが、宣言されているプロトコルでは `Self` に関連付けられています。この文脈では、`Self` はプロトコルに準拠する最終的な型を指します。詳細と例については、[Associated Types](./../language-guide/generics.md#associated-types関連型)を参照ください。
+
+プロトコル宣言でジェネリック `where` 句を使用して、関連型を再宣言せずに、別のプロトコルから継承された関連型に制約を追加します。例えば、下記の `SubProtocol` の宣言は同等です:
+
+```swift
+protocol SomeProtocol {
+    associatedtype SomeType
+}
+
+protocol SubProtocolA: SomeProtocol {
+    //この構文は警告を生成します
+    associatedtype SomeType: Equatable
+}
+
+//この構文が推奨されます
+protocol SubProtocolB: SomeProtocol where SomeType: Equatable { }
+```
+
+[Type Alias Declaration](#type-alias-declarationタイプエイリアス宣言)も参照ください。
+
+> GRAMMAR OF A PROTOCOL ASSOCIATED TYPE DECLARATION  
+> protocol-associated-type-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>*opt*</sub> `associatedtype`[typealias-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-name) [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>*opt*</sub> [typealias-assignment](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-assignment)<sub>*opt*</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub>
+
 ## Initializer Declaration\(イニシャライザ宣言\)
 
 ### Failable Initializers
