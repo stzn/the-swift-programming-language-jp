@@ -203,7 +203,7 @@ newAndOld.x = 200
 
 ### Type Variable Properties\(型変数プロパティ\)
 
-型変数プロパティを宣言するには、宣言を `static` 修飾子をマークします。クラスは、サブクラスがスーパークラスの実装をオーバーライドできるようにするには、代わりに `class` 修飾子を使用して型計算プロパティをマークすることができます。 型プロパティは、[Type Properties](./../language-guide/properties.md#type-properties型プロパティ)で説明されています。
+型変数プロパティを宣言するには、宣言を `static` 修飾子をマークします。クラスは、サブクラスがスーパークラスの実装をオーバーライドできるようにするには、代わりに `class` 修飾子を使用して型計算プロパティをマークすることができます。型プロパティは、[Type Properties](./../language-guide/properties.md#type-properties型プロパティ)で説明されています。
 
 > GRAMMAR OF A VARIABLE DECLARATION  
 > variable-declaration → [variable-declaration-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-declaration-head)  [pattern-initializer-list](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_pattern-initializer-list)  
@@ -421,7 +421,7 @@ callable.callAsFunction(4, scale: 2)
 // 両方の関数は印刷 208 を出力します
 ```
 
-call-as-function メソッドと `dynamicCallable` 属性のメソッドは、型システムにどのくらいの情報を与え、ランタイム時にでどのくらい動的な動作が可能かの間で異なるトレードオフがあります。 call-as-function メソッドを宣言すると、引数の数、および各引数の型とラベルを指定します。 `dynamicCallable` 属性のメソッドは、引数の配列を保持するために使用される型だけを指定します。
+call-as-function メソッドと `dynamicCallable` 属性のメソッドは、型システムにどのくらいの情報を与え、ランタイム時にでどのくらい動的な動作が可能かの間で異なるトレードオフがあります。call-as-function メソッドを宣言すると、引数の数、および各引数の型とラベルを指定します。`dynamicCallable` 属性のメソッドは、引数の配列を保持するために使用される型だけを指定します。
 
 call-as-function メソッド、または `dynamicCallable` 属性のメソッドを定義することは、任意のコンテキスト内で関数呼び出し以外の関数のようにその型のインスタンスを使用してはいけません。例えば:
 
@@ -448,7 +448,7 @@ let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 
 ### Rethrowing Functions and Methods\(再スロー関数とメソッド\)
 
-関数またはメソッドは、その関数引数の 1 つがエラーをスローした場合にのみエラーをスローすることを示すために `rethrows` キーワードを使って宣言することができます。これらの関数およびメソッドは、再スロー関数(*rethrowing function*)および再スローメソッド(*rethrowing method*)と呼ばれています。 再スロー関数とメソッドには、少なくとも 1 つのスローする関数の引数が必要です。
+関数またはメソッドは、その関数引数の 1 つがエラーをスローした場合にのみエラーをスローすることを示すために `rethrows` キーワードを使って宣言することができます。これらの関数およびメソッドは、再スロー関数(*rethrowing function*)および再スローメソッド(*rethrowing method*)と呼ばれています。再スロー関数とメソッドには、少なくとも 1 つのスローする関数の引数が必要です。
 
 ```swift
 func someFunction(callback: () throws -> Void) rethrows {
@@ -465,7 +465,7 @@ func alwaysThrows() throws {
 func someFunction(callback: () throws -> Void) rethrows {
     do {
         try callback()
-        try alwaysThrows()  // alwaysThrows() はスロー引数ではないため無効です。 
+        try alwaysThrows()  // alwaysThrows() はスロー引数ではないため無効です。
     } catch {
         throw AnotherError.error
     }
@@ -486,7 +486,7 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 ### Functions that Never Return\(ノーリターン関数\)
 
-Swift は、関数またはメソッドがその呼び出し元に戻り値を返さないことを示す `Never` を定義しています。 戻り値のない型を持つ関数とメソッドは、ノーリターン(*nonreturning*)と呼ばれます。ノーリターン関数とメソッドは、回復不能なエラーを引き起こすか、または無期限に続く一連のタスクを始めます。つまり、呼び出し直後に実行されてしまうコードが、実行されないことを意味します。スロー関数や再スロー関数は、ノーリターンでも、適切な `catch` 句を使ってプログラムの制御を転送できます。
+Swift は、関数またはメソッドがその呼び出し元に戻り値を返さないことを示す `Never` を定義しています。戻り値のない型を持つ関数とメソッドは、ノーリターン(*nonreturning*)と呼ばれます。ノーリターン関数とメソッドは、回復不能なエラーを引き起こすか、または無期限に続く一連のタスクを始めます。つまり、呼び出し直後に実行されてしまうコードが、実行されないことを意味します。スロー関数や再スロー関数は、ノーリターンでも、適切な `catch` 句を使ってプログラムの制御を転送できます。
 
 [Guard Statement](./statements.md#guard-statementGuard文)で説明したように、ノーリターン関数またはメソッドを呼び出すことができます。
 
@@ -767,7 +767,7 @@ protocol SomeProtocol: AnyObject {
 同様に `AnyObject` でマークされたプロトコルを継承するプロトコルは、クラス型でのみ準拠できます。
 
 > NOTE  
-> プロトコルが `objc` 属性でマークされている場合、`AnyObject` はそのプロトコルに暗黙的に準拠します。 `AnyObject` でプロトコルを明示的にマークする必要はありません。
+> プロトコルが `objc` 属性でマークされている場合、`AnyObject` はそのプロトコルに暗黙的に準拠します。`AnyObject` でプロトコルを明示的にマークする必要はありません。
 
 プロトコルは名前付き型のため、[Protocols as Types](./../language-guide/protocols.md#protocols-as-types型としてのプロトコル)で説明されているように、コード内の他の名前付き型と同じ場所に登場することもあります。ただし、プロトコルは実際には指定された要件の実装を提供しないため、プロトコルのインスタンスを構築することはできません。
 
@@ -814,7 +814,19 @@ get と set の要件は、様々な方法で準拠型は満たすことがで�
 > GRAMMAR OF A PROTOCOL METHOD DECLARATION  
 > protocol-method-declaration → [function-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-head)  [function-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-name)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [function-signature](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-signature) [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub>
 
-### Protocol Initializer Declaration
+### Protocol Initializer Declaration\(プロトコルイニシャライザ宣言\)
+
+プロトコルは、プロトコル宣言の本文にプロトコルイニシャライザ宣言を含めることにより、準拠型がイニシャライザを実装する必要があることを宣言します。プロトコルイニシャライザ宣言は、イニシャライザの本文が含まれていないことを除いて、イニシャライザ宣言と同じ形式です。
+
+準拠型は、失敗しないイニシャライザまたは `init!` 失敗可能イニシャライザを実装することにより、プロトコルの失敗しないイニシャライザの要件を満たすことができます。準拠型は、任意のイニシャライザを実装することにより、プロトコルの失敗可能イニシャライザの要件を満たすことができます。
+
+クラスがプロトコルのイニシャライザ要件を満たすためのイニシャライザを実装する場合、クラスが `final` 修飾子でマークされていない場合、イニシャライザは `required` 修飾子でマークされる必要があります。
+
+[Initializer Declaration](#initializer-declarationイニシャライザ宣言)も参照ください。
+
+> GRAMMAR OF A PROTOCOL INITIALIZER DECLARATION  
+> protocol-initializer-declaration → [initializer-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-head)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)`throws`$$_{opt}$$ [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub>  
+> protocol-initializer-declaration → [initializer-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-head)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)`rethrows` [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub>
 
 ### Protocol Subscript Declaration
 
