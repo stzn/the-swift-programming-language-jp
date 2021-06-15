@@ -901,7 +901,51 @@ convenience イニシャライザは、初期化プロセスを別の convenienc
 
 様々な種類の宣言のイニシャライザの例を確認するには、[Initialization](./../language-guide/initialization.md)初期化を参照ください。
 
-### Failable Initializers
+### Failable Initializers\(失敗可能イニシャライザ\)
+
+失敗可能イニシャライザは、イニシャライザが宣言されている型のオプショナルのインスタンスまたは暗黙的にアンラップされたオプショナルのインスタンスを生成するイニシャライザです。その結果、失敗可能イニシャライザは、初期化が失敗したことを示すために `nil` を返すことができます。
+
+オプショナルのインスタンスを生成する失敗可能イニシャライザを宣言するには、イニシャライザ宣言の `init` キーワードに疑問符(`?`)を追加します(`init?`)。暗黙的にアンラップされたオプショナルのインスタンスを生成する失敗可能イニシャライザを宣言するには、代わりに感嘆符(`!`)を追加します(`init!`)。下記の例は構造体のオプショナルのインスタンスを生成する `init?` の失敗可能イニシャライザを示していますか。
+
+```swift
+struct SomeStruct {
+    let property: String
+    // SomeStruct のオプショナルのインスタンスを生成します
+    init?(input: String) {
+        if input.isEmpty {
+            // nil を返します
+            return nil
+        }
+        property = input
+    }
+}
+```
+
+結果がオプショナルなことを除いて、失敗しないイニシャライザを呼び出すのと同じ方法で `init?` イニシャライザを呼び出すことができます。
+
+```swift
+if let actualInstance = SomeStruct(input: "Hello") {
+    // SomeStructのインスタンスで何かをします
+} else {
+    // 'SomeStruct'の初期化に失敗し、イニシャライザが 'nil'を返しました
+}
+```
+
+失敗可能イニシャライザは、イニシャライザの本文の任意の時点で `nil` を返すことができます。
+
+失敗可能イニシャライザは、任意の種類のイニシャライザに委譲できます。失敗しないイニシャライザは、別の失敗しないイニシャライザまたは `init!` イニシャライザに委譲できます。失敗しないイニシャライザは例えば `super.init()!` と書くことで、スーパークラスのイニシャライザの結果を強制アンラップすることで `init?` イニシャライザに委譲できます。初期化の失敗は、イニシャライザの委譲を通じて伝播します。具体的には、失敗可能イニシャライザが別のイニシャライザに委譲している場合に、失敗して `nil` を返した場合、委譲したイニシャライザも暗黙的に `nil` を返します。失敗しないイニシャライザが `init!` に委譲して失敗した場合、(`!` 演算子を使用して nil 値を持つオプショナルをアンラップしたかのように)実行時エラーが発生します。
+
+失敗可能指定イニシャライザは、サブクラスの任意の種類の指定イニシャライザでオーバーライドできます。失敗ない指定イニシャライの場合は、失敗しない指定イニシャライザによってのみオーバーライドできます。
+
+詳細および失敗可能イニシャライザの例については、[Failable Initializers](./../language-guide/initialization.md#failable-initializers失敗可能イニシャライザ)を参照ください。
+
+> GRAMMAR OF AN INITIALIZER DECLARATION  
+> initializer-declaration → [initializer-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-head)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)  `throws`opt[generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub> [initializer-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-body)  
+> initializer-declaration → [initializer-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-head)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)  `rethrows`[generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub> [initializer-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-body)  
+> initializer-head → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>*opt*</sub> `init`   
+> initializer-head → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>*opt*</sub> `init` `?`   
+> initializer-head → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>*opt*</sub> `init` `!`   
+> initializer-body → [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
 
 ## Deinitializer Declaration
 
