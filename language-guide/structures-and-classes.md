@@ -47,7 +47,7 @@ class SomeClass {
 ```
 
 > NOTE  
-> 新しい構造体またはクラスを定義するときはいつでも、新しい Swift の型を定義します。標準の Swift の型（`String`、`Int`、`Bool` など）と同じように、型に `UpperCamelCase` 名（ここでは `SomeStructure` や `SomeClass` など）にします。プロパティとメソッドは `lowerCamelCase` 名（`frameRate` や `incrementCount` など）として、型名と区別します。
+> 新しい構造体またはクラスを定義するときはいつでも、新しい Swift の型を定義します。標準の Swift の型\(`String`、`Int`、`Bool` など\)と同じように、型に `UpperCamelCase` 名\(ここでは `SomeStructure` や `SomeClass` など\)にします。プロパティとメソッドは `lowerCamelCase` 名\(`frameRate` や `incrementCount` など\)として、型名と区別します。
 
 構造体定義とクラス定義の例を次に示します。
 
