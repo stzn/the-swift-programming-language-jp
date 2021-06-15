@@ -726,7 +726,65 @@ raw-value type のケースを持つ列挙型は、Swift 標準ライブラリ�
 > actor-members → [actor-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-member)  [actor-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-members)<sub>*opt*</sub>  
 > actor-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \|  [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
 
-## Protocol Declaration
+## Protocol Declaration(プロトコル宣言)
+
+プロトコル宣言は、名前付きプロトコル型をプログラムに導入します。プロトコル宣言は、`protocol` キーワードを使用してグローバルスコープで宣言され、形式は次のとおりです。
+
+![プロトコル宣言](./../.gitbook/assets/protocol_declaration.png)
+
+プロトコルの本文には、プロトコルに準拠する全ての型が満たさなければならない 0 個以上の protocol member declarations が含まれています。特に、プロトコルは、準拠する型が特定のプロパティ、メソッド、イニシャライザ、および subscript を実装する必要があることを宣言できます。プロトコルは、関連型(*associated types*)と呼ばれる特別な種類のタイプエイリアスを宣言することもできます。これにより、プロトコルの様々な宣言間の関係を指定できます。プロトコル宣言には、クラス、構造体、列挙型、またはその他のプロトコル宣言を含めることはできません。プロトコルメンバの宣言については、下記で詳しく説明します。
+
+プロトコル型は、他の任意の数のプロトコルから継承できます。プロトコル型が他のプロトコルを継承する場合、それら他のプロトコルからの一連の要件が集約され、現在のプロトコルを継承する型は全て、それらの要件全てに準拠する必要があります。プロトコル継承の使用方法の例については、[Protocol Inheritance](./../language-guide/protocols.md#protocol-inheritanceプロトコル継承)を参照ください。
+
+> NOTE  
+> [Protocol Composition Type](./types.md#protocol-composition-typeプロトコル合成型)および[](./../language-guide/protocols.md#protocol-compositionプロトコル合成)で説明されているように、プロトコル合成型を使用して、複数のプロトコルの要件を集約することもできます。
+
+その型の extension でプロトコルに準拠することにより、事前に宣言された型にプロトコルを準拠させることができます。extension では、準拠したプロトコルの要件を全て実装する必要があります。型が既に全ての要件を実装している場合は、extension の本文を空のままにしておくことができます。
+
+デフォルトでは、プロトコルに準拠する型は、プロトコルで宣言されている全てのプロパティ、メソッド、および subscript を実装する必要があります。しかし、これらのプロトコルメンバ宣言を `optional` 修飾子でマークして、準拠する型の実装をオプショナルにすることもできます。`optional` 修飾子は、`objc` 属性でマークされているメンバにのみ適用でき、`objc` 属性でマークされているプロトコルのメンバにのみ適用できます。その結果、クラス型のみが、オプショナルのメンバ要件を含むプロトコルに準拠できます。`optional` 修飾子の使用方法の詳細と、オプショナルのプロトコルメンバにアクセスする方法のガイダンス(例えば、準拠する型がそれらを実装しているかどうかわからない場合など)については、[Optional Protocol Requirements](./../language-guide/protocols.md#optional-protocol-requirementsオプショナルのプロトコル要件)を参照ください。
+
+列挙型の場合は、型メンバのプロトコル要件を満たすことができます。具体的には、関連値のない列挙ケースは、`Self` 型の get-only の型変数のプロトコル要件を満たし、関連値のある列挙ケースは、引数とその引数ラベルがケース名と一致する `Self` を返す関数のプロトコル要件を満たします。例えば:
+
+```swift
+protocol SomeProtocol {
+    static var someValue: Self { get }
+    static func someFunction(x: Int) -> Self
+}
+enum MyEnum: SomeProtocol {
+    case someValue
+    case someFunction(x: Int)
+}
+```
+
+プロトコルの準拠をクラス型のみに制限するには、コロン(`:`)の後に継承されたプロトコルリストに `AnyObject` プロトコルを含めます。例えば、次のプロトコルはクラス型でのみ準拠できます。
+
+```swift
+protocol SomeProtocol: AnyObject {
+    /* プロトコルメンバーはここに */
+}
+```
+
+同様に `AnyObject` でマークされたプロトコルを継承するプロトコルは、クラス型でのみ準拠できます。
+
+> NOTE  
+> プロトコルが `objc` 属性でマークされている場合、`AnyObject` はそのプロトコルに暗黙的に準拠します。 `AnyObject` でプロトコルを明示的にマークする必要はありません。
+
+プロトコルは名前付き型のため、[Protocols as Types](./../language-guide/protocols.md#protocols-as-types型としてのプロトコル)で説明されているように、コード内の他の名前付き型と同じ場所に登場することもあります。ただし、プロトコルは実際には指定された要件の実装を提供しないため、プロトコルのインスタンスを構築することはできません。
+
+[Delegation](./../language-guide/protocols.md#delegation委譲)で説明されているように、クラスまたは構造体のデリゲートが実装する必要があるメソッドを宣言するのにプロトコルを使用できます。
+
+> GRAMMAR OF A PROTOCOL DECLARATION  
+> protocol-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>*opt*</sub> `protocol` [protocol-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-name)  [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>*opt*</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub> [protocol-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-body)  
+> protocol-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
+> protocol-body → `{` [protocol-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-members)<sub>*opt*</sub> `}`  
+> protocol-members → [protocol-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-member)  [protocol-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-members)<sub>*opt*</sub>  
+> protocol-member → [protocol-member-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-member-declaration) \|  [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)  
+> protocol-member-declaration → [protocol-property-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-property-declaration)  
+> protocol-member-declaration → [protocol-method-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-method-declaration)  
+> protocol-member-declaration → [protocol-initializer-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-initializer-declaration)  
+> protocol-member-declaration → [protocol-subscript-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-subscript-declaration)  
+> protocol-member-declaration → [protocol-associated-type-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-associated-type-declaration)  
+> protocol-member-declaration → [typealias-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-declaration)
 
 ### Protocol Property Declaration(プロトコルプロパティ宣言)
 
