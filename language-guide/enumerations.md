@@ -267,7 +267,7 @@ let possiblePlanet = Planet(rawValue: 7)
 // possiblePlanet の型は Planet? で Planet.uranus と等しい
 ```
 
-ただし、全ての `Int` 値が惑星に一致するわけではありません。このため、raw value のイニシャライザは常にオプショナルの列挙型を返します。上記の例では、`possiblePlanet` は Planet?`または オプショナルの`Planet\`型です。
+ただし、全ての `Int` 値が惑星に一致するわけではありません。このため、raw value のイニシャライザは常にオプショナルの列挙型を返します。上記の例では、`possiblePlanet` は Planet?`または オプショナルの`Planet`型です。
 
 > NOTE  
 > 全ての raw value が列挙型を返すわけではないため、raw valueイニシャライザは `nil` を返す可能性があります。詳細については、[Failable Initializers](../language-reference/declarations.md#failable-initializers)を参照ください。
@@ -315,7 +315,7 @@ indirect enum ArithmeticExpression {
 }
 ```
 
-この列挙型には、シンプルな数値、2 つの式の加算、および乗算の 3 種類の算術式を格納できます。`addition` と `multiplication` のケースには、同じく算術式を関連値として格納しています。これらの関連値により、式をネストできます。例えば、式 `\(5 + 4\)* 2` には、乗算の右側に数値があり、乗算の左側に別の式があります。データがネストしているため、データを格納する列挙ケースもネストをサポートする必要があります。つまり、再帰的でなければなりません。下記のコードは、`\(5 + 4\)* 2` に対する `ArithmeticExpression` の再帰的列挙を作成する方法を示しています。
+この列挙型には、シンプルな数値、2 つの式の加算、および乗算の 3 種類の算術式を格納できます。`addition` と `multiplication` のケースには、同じく算術式を関連値として格納しています。これらの関連値により、式をネストできます。例えば、式 `(5 + 4)* 2` には、乗算の右側に数値があり、乗算の左側に別の式があります。データがネストしているため、データを格納する列挙ケースもネストをサポートする必要があります。つまり、再帰的でなければなりません。下記のコードは、`(5 + 4)* 2` に対する `ArithmeticExpression` の再帰的列挙を作成する方法を示しています。
 
 ```swift
 let five = ArithmeticExpression.number(5)
