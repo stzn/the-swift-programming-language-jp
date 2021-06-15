@@ -803,7 +803,16 @@ get と set の要件は、様々な方法で準拠型は満たすことがで�
 > GRAMMAR OF A PROTOCOL PROPERTY DECLARATION  
 > protocol-property-declaration → [variable-declaration-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-declaration-head)  [variable-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-name)  [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)  [getter-setter-keyword-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-setter-keyword-block)
 
-### Protocol Method Declaration
+### Protocol Method Declaration\(プロトコルメソッド宣言\)
+
+プロトコルは、準拠型がプロトコル宣言の本文にプロトコルメソッド宣言を含めることによってメソッドを実装する必要があることを宣言します。プロトコルメソッド宣言は、関数宣言と同じ形式ですが、2 つの例外があります。関数本文が含まれていないことと、関数宣言の一部としてデフォルト引数を指定できないことです。プロトコルのメソッド要件を実装する準拠型の例については、[](./../language-guide/protocols.md#method-requirementsメソッド要件)を参照ください。
+
+プロトコル宣言でクラスまたは静的メソッドの要件を宣言するには、`static` 修飾子を使用してメソッド宣言をマークします。プロトコルに準拠する構造体と列挙型は、`static` キーワードを使用してメソッドを宣言し、プロトコルに準拠するクラスは、`static` または `class` キーワードを使用してメソッドを宣言します。構造体、列挙型、またはクラスにプロトコル準拠を追加する extension は、extension が使用する型と同じキーワードを使用します。型メソッド要件のデフォルト実装を提供する extension は、`static` キーワードを使用します。
+
+[Function Declaration](#function-declaration関数宣言)も参照ください。
+
+> GRAMMAR OF A PROTOCOL METHOD DECLARATION  
+> protocol-method-declaration → [function-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-head)  [function-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-name)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [function-signature](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-signature) [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub>
 
 ### Protocol Initializer Declaration
 
