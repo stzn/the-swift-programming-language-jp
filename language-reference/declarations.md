@@ -24,7 +24,7 @@ Swift では、ほとんどの宣言は、宣言されているのと同時に�
 > declaration → [precedence-group-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-declaration)  
 > declarations → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration)  [declarations](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declarations)<sub>*opt*</sub>
 
-## Top-Level Code(トップレベルコード)
+## Top-Level Code\(トップレベルコード\)
 
 Swift ソースファイルのトップレベルコードは、0 個以上の文、宣言、式で構成されています。デフォルトでは、ソースファイルのトップレベルで宣言されている変数、定数、およびその他の名前付き宣言は、同じモジュールの全てのソースファイル内のコードからアクセスできます。[Access Control Levels](#access-control-levelsアクセス制御レベル)で説明されているように、宣言をアクセスレベル修飾子でマークすることで、このデフォルトの動作をオーバーライドできます。
 
@@ -35,7 +35,7 @@ Swift ソースファイルのトップレベルコードは、0 個以上の文
 > GRAMMAR OF A TOP-LEVEL DECLARATION  
 > top-level-declaration → [statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements)<sub>*opt*</sub>
 
-## Code Blocks(コードブロック)
+## Code Blocks\(コードブロック\)
 
 コードブロックは、文をグループ化するための様々な宣言および制御構造によって使用されます。形式は次のとおりです:
 
@@ -46,7 +46,7 @@ Swift ソースファイルのトップレベルコードは、0 個以上の文
 > GRAMMAR OF A CODE BLOCK  
 > code-block → `{` [statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements)<sub>*opt*</sub> `}`
 
-## Import Declaration(インポート宣言)
+## Import Declaration\(インポート宣言\)
 
 インポート宣言を使用すると、現在のファイルの外部で宣言されているシンボルにアクセスできます。基本形式はモジュール全体をインポートします。`import` キーワードとそれに続くモジュール名で構成されます:
 
@@ -62,7 +62,7 @@ Swift ソースファイルのトップレベルコードは、0 個以上の文
 > import-path → [import-path-identifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path-identifier) \|  [import-path-identifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path-identifier)  `.` [import-path](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path)  
 > import-path-identifier → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) \|  [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator)
 
-## Constant Declaration(定数宣言)
+## Constant Declaration\(定数宣言\)
 
 定数宣言では、プログラムに定数の名前付き値を導入します。定数宣言は `let` キーワードを使用して宣言されており、形式は次のとおりです。
 
@@ -99,7 +99,7 @@ print("The second number is \(secondNumber).")
 > pattern-initializer → [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)  [initializer](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer)<sub>*opt*</sub>  
 > initializer → `=` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
 
-## Variable Declaration(変数宣言)
+## Variable Declaration\(変数宣言\)
 
 変数宣言では、プログラムに変数の名前付き値を導入し、`var` キーワードを使用して宣言されています。
 
@@ -110,7 +110,7 @@ print("The second number is \(secondNumber).")
 
 [Overriding](./../language-guide/inheritance.md#overridingオーバーライド)で説明されているように、サブクラスのプロパティ宣言に `override` 宣言修飾子でマークすることで、サブクラス内でプロパティをオーバーライドできます。
 
-### Stored Variables and Stored Variable Properties(格納変数、格納可変プロパティ)
+### Stored Variables and Stored Variable Properties\(格納変数、格納可変プロパティ\)
 
 次の形式は、格納変数や格納可変プロパティを宣言します。
 
@@ -124,7 +124,7 @@ print("The second number is \(secondNumber).")
 
 それらの名前が示唆するように、格納変数または格納可変プロパティの値がメモリに格納されています。
 
-### Computed Variables and Computed Properties(計算変数、計算変数プロパティ)
+### Computed Variables and Computed Properties\(計算変数、計算変数プロパティ\)
 
 次の形式は、計算変数または計算プロパティを宣言します。
 
@@ -140,7 +140,7 @@ setter name とそれを囲む括弧は省略可能です。setter name を指�
 
 詳細や計算プロパティの例は、[Computed Properties](./../language-guide/properties.md#computed-properties計算プロパティ)を参照ください。
 
-### Stored Variable Observers and Property Observers(格納変数オブザーバとプロパティオブザーバ)
+### Stored Variable Observers and Property Observers\(格納変数オブザーバとプロパティオブザーバ\)
 
 格納変数またはプロパティを `willSet` や `didSet` オブザーバと一緒に宣言することもできます。オブザーバで宣言された格納変数またはプロパティの形式は次のとおりです:
 
@@ -201,7 +201,7 @@ newAndOld.x = 200
 
 より詳細な情報やプロパティオブザーバの使用方法の例は、[Property Observers](./../language-guide/properties.md#property-observersプロパティオブザーバ)を参照ください。
 
-### Type Variable Properties(型変数プロパティ)
+### Type Variable Properties\(型変数プロパティ\)
 
 型変数プロパティを宣言するには、宣言を `static` 修飾子をマークします。クラスは、サブクラスがスーパークラスの実装をオーバーライドできるようにするには、代わりに `class` 修飾子を使用して型計算プロパティをマークすることができます。 型プロパティは、[Type Properties](./../language-guide/properties.md#type-properties型プロパティ)で説明されています。
 
@@ -229,7 +229,7 @@ newAndOld.x = 200
 > willSet-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> `willSet` [setter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-name)<sub>*opt*</sub> [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  
 > didSet-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> `didSet` [setter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-name)<sub>*opt*</sub> [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
 
-## Type Alias Declaration(タイプエイリアス宣言)
+## Type Alias Declaration\(タイプエイリアス宣言\)
 
 タイプエイリアス宣言では、既存の型に別名を導入します。タイプエイリアス宣言は、`typealias` キーワードを使用して宣言され、形式は次のとおりです:
 
@@ -283,7 +283,7 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 > typealias-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
 > typealias-assignment → `=` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
 
-## Function Declaration(関数宣言)
+## Function Declaration\(関数宣言\)
 
 関数宣言では、プログラムに関数またはメソッドを導入します。クラス、構造体、列挙型、またはプロトコルのコンテキストで宣言されている関数はメソッドと呼ばれます。関数宣言は `func` キーワードを使用して宣言され、形式は次のとおりです:
 
@@ -305,7 +305,7 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 
 入れ子関数については、[Nested Functions](./../language-guide/functions.md#nested-Functions入れ子関数)を参照ください。
 
-### Parameter Names(引数名)
+### Parameter Names\(引数名\)
 
 関数引数は、各引数がいくつかの形式のうちの 1 つを持つカンマ区切りのリストです。関数呼び出し内の引数の順序は、関数の宣言内の引数の順序と一致する必要があります。引数リスト内の最もシンプルなエントリの形式は次のとおりです:
 
@@ -331,7 +331,7 @@ func repeatGreeting(_ greeting: String, count n: Int) { /* n 回あいさつ */ 
 repeatGreeting("Hello, world!", count: 2) //  count は ラベルあち, greeting は ラベルなし
 ```
 
-### In-Out Parameters(In-Out引数)
+### In-Out Parameters\(In-Out引数\)
 
 In-Out 引数は次のように渡されます。
 
@@ -371,7 +371,7 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 
 より多くの議論と In-Out 引数の例については、[In-Out Parameters](./../language-guide/functions.md#in-Out-parametersIn-Out引数)を参照ください。
 
-### Special Kinds of Parameters(特殊な種類の引数)
+### Special Kinds of Parameters\(特殊な種類の引数\)
 
 引数を無視したり、複数の値を受け取ったり、デフォルト値を提供する形式は次のとおりです:
 
@@ -390,7 +390,7 @@ f(x: 7)   // 有効。提供された値を使用します
 f(7)      // 無効。引数ラベルがありません
 ```
 
-### Special Kinds of Methods(特殊な種類のメソッド)
+### Special Kinds of Methods\(特殊な種類のメソッド\)
 
 `self` を変更する列挙型または構造体のメソッドは、`mutating` 修飾子でマークされてなければなりません。
 
@@ -398,7 +398,7 @@ f(7)      // 無効。引数ラベルがありません
 
 型のインスタンスではなく型に紐づいたメソッドは、列挙型および構造体の `static` 修飾子、またはクラスの `static` または `class` 修飾子のいずれかでマークされている必要があります。`class` 修飾子でマークされたクラス型メソッドは、サブクラスの実装によって上書きされます。`class final` または `static` でマークされたクラス型メソッドをオーバーライドできません。
 
-### Methods with Special Names(特別な名前のメソッド)
+### Methods with Special Names\(特別な名前のメソッド\)
 
 いくつかの特別な名前のメソッドは、関数呼び出しの糖衣構文(シンタックスシュガー)を使用できます。型がこれらのメソッドの 1 つを定義している場合、そのインスタンスを関数呼び出し構文を使って使用できます。関数呼び出しは、そのインスタンス上の特別な名前のメソッドの 1 つへの呼び出しだと解釈されます。
 
@@ -432,7 +432,7 @@ let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 
 `subscript(dynamicMember:)` は、[dynamicMemberLookup](./attributes.md#dynamicMemberLookup)で説明されているように、メンバを検索するの糖衣構文(シンタックスシュガー)を使用できるようにします。
 
-### Throwing Functions and Methods(スロー関数とメソッド)
+### Throwing Functions and Methods\(スロー関数とメソッド\)
 
 スロー関数とメソッドは、`throws` キーワードでマークされている必要があります。これらの関数およびメソッドは、スロー関数(*throwing function*)およびスローメソッド数(*throwing method*)と呼ばれます。形式は次のとおりです:
 
@@ -446,7 +446,7 @@ let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 
 スローメソッドは、非スローメソッドをオーバーライドすることができず、スローメソッドでは、非スローメソッドのプロトコル要件を満たすことができません。逆に、非スローメソッドはスローメソッドを上書きすることができ、非スローメソッドはスローメソッドのプロトコル要件を満たすことができます。
 
-### Rethrowing Functions and Methods(再スロー関数とメソッド)
+### Rethrowing Functions and Methods\(再スロー関数とメソッド\)
 
 関数またはメソッドは、その関数引数の 1 つがエラーをスローした場合にのみエラーをスローすることを示すために `rethrows` キーワードを使って宣言することができます。これらの関数およびメソッドは、再スロー関数(*rethrowing function*)および再スローメソッド(*rethrowing method*)と呼ばれています。 再スロー関数とメソッドには、少なくとも 1 つのスローする関数の引数が必要です。
 
@@ -474,7 +474,7 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 スローメソッドは再スローメソッドをオーバーライドできず、再スローメソッドのプロトコル要件を満たすことができません。逆に、再スローメソッドはスローメソッドをオーバーライドでき、再スローメソッドはスローメソッドのプロトコル要件を満たすことができます。
 
-### Asynchronous Functions and Methods(非同期関数とメソッド)
+### Asynchronous Functions and Methods\(非同期関数とメソッド\)
 
 非同期に実行される関数とメソッドは、`async` キーワードでマークされている必要があります。これらの関数とメソッドは、非同期関数(*asynchronous function*)と非同期メソッド(*asynchronous method*)と世呼ばれています。形式は次のとおりです:
 
@@ -484,7 +484,7 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 `async` キーワードは関数の型の一部で、同期関数は非同期関数のサブタイプです。その結果、非同期関数が期待されるコンテキストで同期関数を使用できます。例えば、同期メソッドを使用して非同期メソッドをオーバーライドでき、同期メソッドは非同期メソッドのプロトコル要件を満たすことができます。
 
-### Functions that Never Return(ノーリターン関数)
+### Functions that Never Return\(ノーリターン関数\)
 
 Swift は、関数またはメソッドがその呼び出し元に戻り値を返さないことを示す `Never` を定義しています。 戻り値のない型を持つ関数とメソッドは、ノーリターン(*nonreturning*)と呼ばれます。ノーリターン関数とメソッドは、回復不能なエラーを引き起こすか、または無期限に続く一連のタスクを始めます。つまり、呼び出し直後に実行されてしまうコードが、実行されないことを意味します。スロー関数や再スロー関数は、ノーリターンでも、適切な `catch` 句を使ってプログラムの制御を転送できます。
 
@@ -509,7 +509,7 @@ Swift は、関数またはメソッドがその呼び出し元に戻り値を�
 > local-parameter-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
 > default-argument-clause → `=` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
 
-## Enumeration Declaration(列挙型宣言)
+## Enumeration Declaration\(列挙型宣言\)
 
 列挙型宣言は、名前付き列挙型をプログラムに導入します。
 
@@ -523,7 +523,7 @@ Swift は、関数またはメソッドがその呼び出し元に戻り値を�
 
 [Extension Declaration](#extension-declaration拡張宣言)で説明されているように、extension を使用して列挙型の動作を拡張できます。
 
-### Enumerations with Cases of Any Type(任意の型のケースを持つ列挙型)
+### Enumerations with Cases of Any Type\(任意の型のケースを持つ列挙型\)
 
 次の形式は、任意の型の列挙型を含む列挙型を宣言しています。
 
@@ -549,7 +549,7 @@ let evenInts: [Number] = [0, 2, 4, 6].map(f)
 
 詳細および関連値型を持つケースの例については、[Associated Values](./../language-guide/enumerations.md#associated-values関連値)を参照ください。
 
-#### Enumerations with Indirection(indirect列挙型)
+#### Enumerations with Indirection\(indirect列挙型\)
 
 ---
 
@@ -568,7 +568,7 @@ enum Tree<T> {
 
 `indirect` 修飾子でマークされた列挙型には、関連値を持つケースと関連値を持たないケースが混在している可能性があります。しかし、`indirect` 修飾子が付いているケースを含めることはできません。
 
-### Enumerations with Cases of a Raw-Value Type(Raw Valueb型のケースを持つ列挙型)
+### Enumerations with Cases of a Raw-Value Type\(Raw Valueb型のケースを持つ列挙型\)
 
 次の形式は、同じ基となる型のケースを持つ列挙型を宣言しています。
 
@@ -598,7 +598,7 @@ enum GamePlayMode: String {
 
 raw-value type のケースを持つ列挙型は、Swift 標準ライブラリで定義されている `RawRepresentable` プロトコルに暗黙的に準拠しています。その結果、`rawValue` プロパティと、`init?(rawValue: RawValue)` シグネチャを持つ失敗可能イニシャライザを持ちます。`ExampleEnum.b.rawValue` のように、`rawValue` プロパティを使用して、列挙型の Raw Value にアクセスできます。`ExampleEnum(rawValue: 5)` のように、Raw Value を使用して、オプショナルのケースを返す列挙型の失敗可能イニシャライザを呼び出すことにより、対応するケースがある場合はそのインスタンスを見つけることもできます。詳細および Raw Value 型のケースの例については、[Raw Values](./../language-guide/enumerations.md#raw-values)を参照ください。
 
-### Accessing Enumeration Cases(列挙ケースへのアクセス)
+### Accessing Enumeration Cases\(列挙ケースへのアクセス\)
 
 列挙ケースを参照するには、`EnumerationType.enumerationCase` と同様に、ドット(`.`)構文を使用します。列挙の型を推論できる場合は、[Enumeration Syntax](./../language-guide/enumerations.md#enumeration-syntax列挙型構文)と[Implicit Member Expression](./expressions.md#implicit-member-expression暗黙メンバ式)で説明されているように、型名を省略することができます(ドットは依然として必要です)。
 
@@ -624,7 +624,7 @@ raw-value type のケースを持つ列挙型は、Swift 標準ライブラリ�
 > raw-value-assignment → `=` [raw-value-literal](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_raw-value-literal)  
 > raw-value-literal → [numeric-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_numeric-literal) \|  [static-string-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_static-string-literal) \|  [boolean-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_boolean-literal)
 
-## Structure Declaration(構造体宣言)
+## Structure Declaration\(構造体宣言\)
 
 構造体宣言は、名前付きの構造体型をプログラムに導入します。構造体宣言は `struct` キーワードを使用して宣言され、形式は次のとおりです。
 
@@ -654,7 +654,7 @@ raw-value type のケースを持つ列挙型は、Swift 標準ライブラリ�
 > struct-members → [struct-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_struct-member)  [struct-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_struct-members)<sub>*opt*</sub>  
 > struct-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \|  [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
 
-## Class Declaration(クラス宣言)
+## Class Declaration\(クラス宣言\)
 
 クラス宣言は、名前付きクラス型をプログラムに導入します。クラス宣言は、`class` キーワードを使用して宣言され、形式は次のとおりです。
 
@@ -690,7 +690,7 @@ raw-value type のケースを持つ列挙型は、Swift 標準ライブラリ�
 > class-members → [class-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-member)  [class-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-members)<sub>*opt*</sub>  
 > class-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \|  [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
 
-## Actor Declaration(アクター宣言)
+## Actor Declaration\(アクター宣言\)
 
 アクター宣言は、名前付きアクター型をプログラムに導入します。アクター宣言は、`actor` キーワードを使用して宣言され、形式は次のとおりです。
 
@@ -726,7 +726,7 @@ raw-value type のケースを持つ列挙型は、Swift 標準ライブラリ�
 > actor-members → [actor-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-member)  [actor-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-members)<sub>*opt*</sub>  
 > actor-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \|  [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
 
-## Protocol Declaration(プロトコル宣言)
+## Protocol Declaration\(プロトコル宣言\)
 
 プロトコル宣言は、名前付きプロトコル型をプログラムに導入します。プロトコル宣言は、`protocol` キーワードを使用してグローバルスコープで宣言され、形式は次のとおりです。
 
@@ -786,7 +786,7 @@ protocol SomeProtocol: AnyObject {
 > protocol-member-declaration → [protocol-associated-type-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-associated-type-declaration)  
 > protocol-member-declaration → [typealias-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-declaration)
 
-### Protocol Property Declaration(プロトコルプロパティ宣言)
+### Protocol Property Declaration\(プロトコルプロパティ宣言\)
 
 ### Protocol Method Declaration
 
@@ -794,15 +794,15 @@ protocol SomeProtocol: AnyObject {
 
 ### Protocol Subscript Declaration
 
-### Protocol Associated Type Declaration(プロトコル関連型宣言)
+### Protocol Associated Type Declaration\(プロトコル関連型宣言\)
 
-## Initializer Declaration(イニシャライザ宣言)
+## Initializer Declaration\(イニシャライザ宣言\)
 
 ### Failable Initializers
 
 ## Deinitializer Declaration
 
-## Extension Declaration(拡張宣言)
+## Extension Declaration\(拡張宣言\)
 
 ### Conditional Conformance
 
@@ -830,4 +830,4 @@ protocol SomeProtocol: AnyObject {
 
 ## Declaration Modifiers
 
-## Access Control Levels(アクセス制御レベル)
+## Access Control Levels\(アクセス制御レベル\)
