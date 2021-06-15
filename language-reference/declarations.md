@@ -947,9 +947,44 @@ if let actualInstance = SomeStruct(input: "Hello") {
 > initializer-head → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>*opt*</sub> `init` `!`   
 > initializer-body → [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
 
-## Deinitializer Declaration
+## Deinitializer Declaration\(デイニシャライザ宣言\)
+
+デイニシャライザ宣言は、クラス型のデイニシャライザを宣言します。デイニシャライザーはパラメーターを受け取らず、形式は次のとおりです:
+
+![デイニシャライザ宣言](./../.gitbook/assets/deinitializer_declaration.png)
+
+デイニシャライザは、クラスオブジェクトへの参照がなくなると、クラスオブジェクトの割り当てが解除される直前に、自動的に呼び出されます。デイニシャライザは、クラス宣言の本文でのみ宣言できますが、クラスの extension では宣言できません。各クラスは最大で 1 つのデイニシャライザを持つことができます。
+
+サブクラスは、スーパークラスのデイニシャライザを継承します。デイニシャライザは、サブクラスオブジェクトの割り当てが解除される直前に暗黙的に呼び出されます。サブクラスオブジェクトは、継承チェーン内の全てのデイニシャライザの実行が完了するまで、割り当てが解除されません。
+
+デイニシャライザは直接呼び出せません。
+
+クラス宣言でデイニシャライザを使用する方法の例については、[Deinitialization](./../language-guide/deinitialization.md)を参照ください。
+
+> GRAMMAR OF A DEINITIALIZER DECLARATION  
+> deinitializer-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> `deinit` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
 
 ## Extension Declaration\(拡張宣言\)
+
+拡張宣言を使用すると、既存の型の動作を拡張できます。拡張宣言は、`extension` キーワードを使用して宣言され、形式は次のとおりです:
+
+![拡張宣言](./../.gitbook/assets/extension_declaration.png)
+
+拡張宣言の本体には、0 個以上の declarations が含まれています。これらの declarations には、計算プロパティ、計算型プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、subscript、さらにはクラス、構造体、列挙型の宣言を含めることができます。拡張宣言には、デイニシャライザ、プロトコル宣言、格納プロパティ、プロパティオブザーバ、またはその他の拡張宣言を含めることはできません。プロトコルの extension は `final` をマークすることはできません。様々な種類の宣言を含む extension の説明といくつかの例については、[Extensions](./expressions.md)を参照ください。
+
+type name がクラス、構造体、または列挙型の場合、extension はその型を拡張します。type name がプロトコルの場合、extension はそのプロトコルに準拠する全ての型を拡張します。
+
+ジェネリック型または関連型を持つプロトコルを拡張する extension には、requirements を含めることができます。拡張した型または拡張したプロトコルに準拠する型のインスタンスが requirements を満たしている場合、そのインスタンスは宣言で指定された動作を取得できます。
+
+extension には、イニシャライザ宣言を含めることができます。ただし、拡張する型が別のモジュールで定義されている場合、その型のメンバーが適切に初期化されるように、イニシャライザ宣言はそのモジュールで既に定義されているイニシャライザに委譲する必要があります。
+
+既存の型のプロパティ、メソッド、およびイニシャライザは、その型の extension でオーバーライドできません。
+
+extension は、既存のクラス、構造体、または列挙型に adopted protocols を指定することで、プロトコルへの準拠を追加できます。
+
+![拡張宣言2](./../.gitbook/assets/extension_declaration2.png)
+
+extension は既存のクラスへの継承を追加できないため、type name とコロン(`:`)の後にプロトコルのリストのみを指定できます。
 
 ### Conditional Conformance
 
