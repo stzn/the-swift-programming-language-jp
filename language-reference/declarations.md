@@ -828,7 +828,18 @@ get と set の要件は、様々な方法で準拠型は満たすことがで�
 > protocol-initializer-declaration → [initializer-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-head)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)`throws`$$_{opt}$$ [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub>  
 > protocol-initializer-declaration → [initializer-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-head)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)`rethrows` [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub>
 
-### Protocol Subscript Declaration
+### Protocol Subscript Declaration\(プロトコルsubscript宣言\)
+
+プロトコルは、準拠型がプロトコル宣言の本文にプロトコル subscript 宣言を含めることによって subscript を実装する必要があることを宣言します。プロトコル subscript 宣言には、特殊な形式の subscript 宣言があります。
+
+![プロトコルsubscript宣言](./../.gitbook/assets/protocol_subscript_declaration.png)
+
+subscript 宣言は、プロトコルに準拠する型の最小ゲッターおよびセッター実装要件のみを宣言します。subscript 宣言に `get` キーワードと `set` キーワードの両方が含まれている場合、準拠型は get 句と set 句の両方を実装する必要があります。subscript 宣言に `get` キーワードのみが含まれている場合、準拠型は少なくとも get 句を実装する必要があり、任意で set 句を実装できます。
+
+プロトコル宣言で静的 subscript 要件を宣言するには、`static` 修飾子を使用して subscript 宣言をマークします。プロトコルに準拠する構造体と列挙型は、`static` キーワードを使用して subscript を宣言し、プロトコルに準拠するクラスは、`static` または `class` キーワードを使用して subscript を宣言します。構造体、列挙型、またはクラスにプロトコルの準拠を追加する extension は、extension が使用する型と同じキーワードを使用します。静的 subscript 要件のデフォルト実装を提供する extension は、`static` キーワードを使用します。
+
+> GRAMMAR OF A PROTOCOL SUBSCRIPT DECLARATION  
+> protocol-subscript-declaration → [subscript-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-head)  [subscript-result](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-result)  [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub> [getter-setter-keyword-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-setter-keyword-block)
 
 ### Protocol Associated Type Declaration\(プロトコル関連型宣言\)
 
