@@ -690,7 +690,41 @@ raw-value type のケースを持つ列挙型は、Swift 標準ライブラリ�
 > class-members → [class-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-member)  [class-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-members)<sub>*opt*</sub>  
 > class-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \|  [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
 
-## Actor Declaration
+## Actor Declaration(アクター宣言)
+
+アクター宣言は、名前付きアクター型をプログラムに導入します。アクター宣言は、`actor` キーワードを使用して宣言され、形式は次のとおりです。
+
+![アクター宣言](./../.gitbook/assets/actor_declaration.png)
+
+アクターの本文には、0 個以上の declarations が含まれています。これらの declarations には、格納プロパティと計算プロパテ、インスタンスメソッド、型メソッド、イニシャライザ、単一のデイニシャライザ、subscript、タイプエイリアス、さらには他のクラス、構造体、列挙型の宣言を含めることができます。様々な種類の宣言を含むアクターの説明といくつかの例については、[Actors](./../language-guide/concurrency.md#Actorsアクター)を参照ください。
+
+アクター型は任意の数のプロトコルに準拠できますが、クラス、列挙型、構造体、または他のアクターを継承することはできません。ただし、`@objc` 属性でマークされたアクターは、暗黙的に `NSObjectProtocol` プロトコルに準拠し、`NSObject` のサブタイプとして Objective-C ランタイムに公開されます。
+
+宣言されたアクターのインスタンスを作成するには、次の 2 つの方法があります:
+
+* [Initializers](./../language-guide/initialization.md#initializersイニシャライザ)で説明されているように、アクター内で宣言されたイニシャライザの 1 つを呼び出します
+* イニシャライザが宣言されておらず、アクター宣言の全てのプロパティに初期値が指定されている場合は、[Default Initializers](./../language-guide/initialization.md#default-initializersデフォルトイニシャライザ)で説明されているように、アクターのデフォルトイニシャライザを呼び出します
+
+デフォルトでは、アクターのメンバはそのアクターに隔離(*isolated*)されています。メソッドの本文やプロパティの get などのコードは、そのアクターで実行されます。アクター内のコードは、そのコードが既に同じアクターで実行されていることがわかっているため、同期的にやり取りできますが、アクター外のコードは、このコードが別のアクターで非同期に実行されているコードなことを示すために、`await` でマークする必要があります。Key path は、アクターの isolated メンバを参照することはできません。アクターの isolated 格納プロパティは、同期関数に入出力引数として渡すことができますが、非同期関数には渡すことができません。
+
+アクターは、宣言が `nonisolated` キーワードでマークされている nonisolated メンバを持つこともできます。nonisolated メンバは、アクターの外部のコードのように実行されます。アクターの isolated な状態とやり取りすることはできず、呼び出し元は、使用時に `await` マークを付けません。
+
+アクターのメンバは、nonisolated または非同期の場合にのみ `@objc` 属性でマークできます。
+
+アクターの宣言されたプロパティを初期化するプロセスは、[Initialization](./../language-guide/initialization.md)で説明されています。
+
+アクターインスタンスのプロパティには、[Accessing Properties](./../language-guide/structures-and-classes.md#accessing-propertiesプロパティへのアクセス)で説明されているように、ドット(`.`)構文を使用してアクセスできます。
+
+アクターは参照型です。アクターのインスタンスは、変数または定数に割り当てられたとき、または関数呼び出し時に引数として渡されたときに、コピーされるのではなく参照が渡されます。参照型の詳細については、[Classes Are Reference Types](./../language-guide/structures-and-classes.md#classes-are-reference-typesclassは参照型)を参照ください。
+
+[Extension Declaration](#extension-declaration拡張宣言)で説明されているように、extension を使用してアクター型の動作を拡張できます。
+
+> GRAMMAR OF A ACTOR DECLARATION  
+> actor-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>*opt*</sub> `actor` [struct-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-name)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>*opt*</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub> [actor-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-body)  
+> actor-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
+> actor-body → `{` [actor-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-members)<sub>*opt*</sub> `}`  
+> actor-members → [actor-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-member)  [actor-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-members)<sub>*opt*</sub>  
+> actor-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \|  [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
 
 ## Protocol Declaration
 
