@@ -949,7 +949,7 @@ if let actualInstance = SomeStruct(input: "Hello") {
 
 ## Deinitializer Declaration\(デイニシャライザ宣言\)
 
-デイニシャライザ宣言は、クラス型のデイニシャライザを宣言します。デイニシャライザーはパラメーターを受け取らず、形式は次のとおりです:
+デイニシャライザ宣言は、クラス型のデイニシャライザを宣言します。デイニシャライザーは引数ーを受け取らず、形式は次のとおりです:
 
 ![デイニシャライザ宣言](./../.gitbook/assets/deinitializer_declaration.png)
 
@@ -1057,11 +1057,11 @@ doSomething(with: oneAndTwo)
 
 `doSomething(_ :)` に渡されたインスタンスで `log()` が呼び出されると、カスタマイズされたタイトルがログに記録された文字列から省略されます。
 
-### Protocol Conformance Must Not Be Redundant(プロトコル準拠は冗長であってはならない)
+### Protocol Conformance Must Not Be Redundant\(プロトコル準拠は冗長であってはならない\)
 
 具象型は、特定のプロトコルに 1 回だけ準拠できます。Swift は、冗長なプロトコル準拠をエラーとしてマークします。この種のエラーは、2 種類の状況で発生する可能性があります。最初の状況は、プロトコルの異なった要件に準拠するために同じプロトコルに複数回明示的に準拠している場合です。2 番目の状況は、同じプロトコルから暗黙的に複数回継承する場合です。これらの状況については、以下のセクションで説明します。
 
-#### Resolving Explicit Redundancy(明示的な冗長の解決)
+#### Resolving Explicit Redundancy\(明示的な冗長の解決\)
 
 ---
 
@@ -1099,7 +1099,7 @@ extension Array: Serializable where Element: SerializableInArray {
 }
 ```
 
-#### Resolving Implicit Redundancy(暗黙的な冗長の解決)
+#### Resolving Implicit Redundancy\(暗黙的な冗長の解決\)
 
 ---
 
@@ -1144,7 +1144,27 @@ extension Array: Loggable where Element: MarkedLoggable { }
 > extension-members → [extension-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_extension-member)  [extension-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_extension-members)<sub>*opt*</sub>   
 > extension-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \|  [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
 
-## Subscript Declaration(subscript宣言)
+## Subscript Declaration\(subscript宣言\)
+
+subscript 宣言を使用すると、特定の型のオブジェクトに subscript のサポートを追加できます。通常、コレクション、リスト、またはシーケンス内の要素にアクセスするための便利な構文を提供するために使用されます。subscript 宣言は、`subscript` キーワードを使用して宣言され、形式は次のとおりです:
+
+![subscript宣言](./../.gitbook/assets/subscript_declaration.png)
+
+subscript 宣言は、クラス、構造体、列挙型、 extension、またはプロトコル宣言のコンテキストでのみ表示できます。
+
+parameters は、subscript 式の対応する型の要素にアクセスするために使用される 1 つ以上のインデックスを指定します（例えば、式 `object[i]` の `i`）。要素へのアクセスに使用されるインデックスは任意の型にすることができますが、各引数ーには、各インデックスの型を指定するためのタイプエイリアスを含める必要があります。return type は、アクセスされる要素の型を指定します。
+
+計算プロパティと同様に、subscript 宣言は、アクセスされた要素の値の読み取りと書き込みをサポートします。get は値の読み取りに使用され、set は値の書き込みに使用されます。set 句はオプションで、get のみが必要な場合は、両方の句を省略して、要求された値を直接返すことができます。一方で、set 句を指定する場合は、get 句も指定する必要があります。
+
+setter name とそれを囲む括弧は省略可能です。set 名を指定すると、set への引数の名前として使用されます。set 名を指定しない場合、set のデフォルトの引数名は `value` です。set の引数の型は、return type と同じです。
+
+parameters または return type がオーバーロードしているものと異なる限り、宣言されている型の subscript 宣言をオーバーロードできます。スーパークラスから継承された subscript 宣言をオーバーライドすることもできます。その際、オーバーライドされた subscript 宣言を `override` 修飾子でマークする必要があります。
+
+subscript の引数は、2 つの例外を除いて、関数引数と同じ規則に従います。デフォルトでは、subscript で使用される引数には、関数、メソッド、イニシャライザとは異なり、引数ラベルがありません。ただし、関数、メソッド、およびイニシャライザが使用するのと同じ構文を使用して、明示的な引数ラベルを提供できます。さらに、subscript に In-Out 引数を含めることはできません。subscript 引数は、[Special Kinds of Parameters](#special-kinds-of-parameters特殊な種類の引数)で説明されている構文を使用して、デフォルト値を持つことができます。
+
+[Protocol Subscript Declaration](#protocol-subscript-declarationプロトコルsubscript宣言)で説明されているように、プロトコル宣言のコンテキストで subscript を宣言することもできます。
+
+subscript の詳細と subscript 宣言の例については、[Subscripts](./../language-guide/subscripts.md)を参照ください。
 
 ### Type Subscript Declarations
 
