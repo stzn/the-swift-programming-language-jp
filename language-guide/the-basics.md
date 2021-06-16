@@ -83,7 +83,7 @@ let 你好 = "你好世界"
 let 🐶🐮 = "dogcow"
 ```
 
-定数名と変数名に、ホワイトスペース、数学記号、矢印、公式ではない Unicode スカラ値、罫線素片罫線素片、書式文字は含められません。また、数字から始めることはできません\(他の位置に数字を含めることはできます\)
+定数名と変数名に、ホワイトスペース、数学記号、矢印、公式ではない Unicode スカラ値、罫線素片、書式文字は含められません。また、数字から始めることはできません\(他の位置に数字を含めることはできます\)
 
 一度ある型の定数や変数を定義すると、同じ名前で再定義することはできません。また、異なる型の値を保持することもできません。定数を変数に、変数を定数に変換することもできません。
 
@@ -137,7 +137,7 @@ Swift のコメントは C 言語のコメントにとてもよく似ていま�
 // This is a comment.
 ```
 
-複数行の場合は、アスタリスク+スラッシュ\(/\*\)で開始し、スラッシュ+アスタリスク\(\*\)で終了します。
+複数行の場合は、スラッシュ+アスタリスク\(/\*\)で開始し、アスタリスク+スラッシュ\(\*/\)で終了します。
 
 ```swift
 /* This is also a comment
@@ -270,7 +270,7 @@ let hexadecimalInteger = 0x11     // 17 in hexadecimal notation
 
 `e`\(`exp`\)を持つ 10 進数では、元の値に 10 の指数\(`10exp`\)を掛けます。
 
-* `1.25e2` は 1.25 x $10^{2}$ または 125.0 と等しい
+* `1.25e2` は 1.25 x $10^{2}$ または `125.0` と等しい
 * `1.25e-2` は 1.25 x $10^{-2}$ または `0.0125` と等しい
 
 `p`\(`exp`\)を持つ 16 進数では、元の値に 2 の指数\(`2exp`\)を掛けます。
@@ -595,7 +595,7 @@ if let firstNumber = Int("4") {
 ```
 
 > NOTE  
-> `if` 文の中でオプショナルバインディングによって作られた定数や変数は、`if` 文の中でしか使えません。もし他でも使用したい場合は、`guard` 文 を使用することで、`guard` 文の次から使用することができます。詳細は[Early Exit](control-flow.md#early-exit早期リターン)に記載しています。
+> `if` 文の中でオプショナルバインディングによって作られた定数や変数は、`if` 文の中でしか使えません。もし他でも使用したい場合は、`guard` 文を使用することで、`guard` 文の次から使用することができます。詳細は[Early Exit](control-flow.md#early-exit早期リターン)に記載しています。
 
 ### Implicitly Unwrapped Optionals\(暗黙アンラップオプショナル\)
 
@@ -624,7 +624,7 @@ let optionalString = assumedString
 // The type of optionalString is "String?" and assumedString isn't force-unwrapped.
 ```
 
-暗黙アンラップオプショナルが `nil` の場合に内部の値にアクセスしようとすると、実行時エラー\(runtime error\)が発生します。これはに `!` を付けた通常のオプショナルで値が存在しない場合にアクセスした時の動きと同じです。
+暗黙アンラップオプショナルが `nil` の場合に内部の値にアクセスしようとすると、実行時エラー\(runtime error\)が発生します。これは `!` を付けた通常のオプショナルで値が存在しない場合にアクセスした時の動きと同じです。
 
 暗黙アンラップオプショナルが `nil` かどうかのチェックは通常のオプショナルと同じ方法でできます。
 
@@ -754,5 +754,6 @@ precondition(index > 0, "Index must be greater than zero.")
 
 precondition が失敗したことを示すために、[preconditionFailure\(\_:file:line:\)](https://developer.apple.com/documentation/swift/1539374-preconditionfailure)関数を使用することもできます。例えば、switch 文の中で、本来ならば他の case で全ての妥当な入力値をカバーできるはずなのに、default の case の条件に当てはまるケースがあった場合などがあります。
 
-> NOTE もし\(`-Ounchecked`\)モードでコンパイルした場合、precondition はチェックされません。コンパイラはprecondition を常に `true` と見なしてコードの最適化を行います。一方で、`fatalError(_:file:line:)` 関数は最適化の設定をしても、常に実行を中断します。 `fatalError(_:file:line:)` 関数は、試作段階や開発の初期段階で、まだ未実装であることを示すためのスタブとして使用することができます\(`fatalError("Unimplemented")` と書くなど\)。fatal error はコードの最適化がされないため、assertion と precondition とは異なり、もしこのスタブメソッドに遭遇した場合は、確実に実行を中断させることができます
+> NOTE
+> もし\(`-Ounchecked`\)モードでコンパイルした場合、precondition はチェックされません。コンパイラはpreconditionを常に `true` と見なしてコードの最適化を行います。一方で、`fatalError(_:file:line:)` 関数は最適化の設定をしても、常に実行を中断します。 `fatalError(_:file:line:)` 関数は、試作段階や開発の初期段階で、まだ未実装であることを示すためのスタブとして使用することができます\(`fatalError("Unimplemented")` と書くなど\)。fatal error はコードの最適化がされないため、assertion と precondition とは異なり、もしこのスタブメソッドに遭遇した場合は、確実に実行を中断させることができます
 
