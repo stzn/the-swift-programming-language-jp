@@ -1152,7 +1152,7 @@ subscript 宣言を使用すると、特定の型のオブジェクトに subscr
 
 subscript 宣言は、クラス、構造体、列挙型、 extension、またはプロトコル宣言のコンテキストでのみ表示できます。
 
-parameters は、subscript 式の対応する型の要素にアクセスするために使用される 1 つ以上のインデックスを指定します（例えば、式 `object[i]` の `i`）。要素へのアクセスに使用されるインデックスは任意の型にすることができますが、各引数ーには、各インデックスの型を指定するためのタイプエイリアスを含める必要があります。return type は、アクセスされる要素の型を指定します。
+parameters は、subscript 式の対応する型の要素にアクセスするために使用される 1 つ以上のインデックスを指定します(例えば、式 `object[i]` の `i`)。要素へのアクセスに使用されるインデックスは任意の型にすることができますが、各引数ーには、各インデックスの型を指定するためのタイプエイリアスを含める必要があります。return type は、アクセスされる要素の型を指定します。
 
 計算プロパティと同様に、subscript 宣言は、アクセスされた要素の値の読み取りと書き込みをサポートします。get は値の読み取りに使用され、set は値の書き込みに使用されます。set 句はオプションで、get のみが必要な場合は、両方の句を省略して、要求された値を直接返すことができます。一方で、set 句を指定する場合は、get 句も指定する必要があります。
 
@@ -1177,9 +1177,48 @@ subscript の詳細と subscript 宣言の例については、[Subscripts](./..
 > subscript-head → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>*opt*</sub> `subscript` [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)  
 > subscript-result → `->` [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
 
-## Operator Declaration
+## Operator Declaration\(演算子宣言\)
 
-## Precedence Group Declaration
+演算子宣言は、新しい中置、前置、または後置演算子をプログラムに導入し、`operator` キーワードを使用して宣言されます。
+
+中置、前置、後置の 3 つの異なるフィクシティ(fixity)を宣言できます。演算子のフィクシティは、オペランドに対する演算子の相対位置を指定します。
+
+演算子宣言には 3 つの基本的な形式があり、各フィクシティに 1 つずつあります。演算子のフィクシティは、`operator` キーワードの前に、`infix`、`prefix` または `postfix` 修飾子を使用して演算子宣言をマークすることによって指定されます。各フォームで、演算子の名前には、[Operators](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID418)で定義された演算子文字のみを含めることができます。
+
+次の形式は、新しい中置演算子を宣言します。
+
+![中置演算子](./../.gitbook/assets/infix_operator_declaration.png)
+
+infix operator は、式 `1 + 2` でおなじみの加算演算子(`+`)など、2 つのオペランドの間に記述される二項演算子です。
+
+中置演算子は、任意で優先順位グループ(*precedence group*) を指定できます。演算子の優先順位グループを省略すると、Swift はデフォルトの優先順位グループの `DefaultPrecedence` を使用します。これは、`TernaryPrecedence` よりも少し高い優先順位を指定します。詳細については、[Precedence Group Declaration](#precedence-group-declaration優先順位グループ宣言)を参照ください。
+
+次の形式は、新しい前置演算子を宣言します。
+
+![前置演算子](./../.gitbook/assets/prefix_operator_declaration.png)
+
+prefix operator は、式 `!a` のような前置論理 `NOT` 演算子(`!`)など、オペランドの直前に記述される単項演算子です。
+
+前置演算子の宣言は、優先順位レベルを指定しません。前置演算子は非結合です。
+
+次の形式は、新しい後置演算子を宣言します。
+
+![後置演算子](./../.gitbook/assets/postfix_operator_declaration.png)
+
+後置演算子は、式 `a!` のような後置強制アンラップ演算子(`!`)など、オペランドの直後に記述される単項演算子です。
+
+前置演算子と同様に、後置演算子の宣言では優先順位レベルを指定しません。後置演算子は非結合です。
+
+新しい演算子を宣言した後、演算子と同じ名前の静的メソッドを宣言して実装します。静的メソッドは、演算子が引数として取る値の型のメンバの 1 つです。例えば、`Double` に `Int` を乗算する演算子は、`Double` または `Int` 構造体のいずれかに静的メソッドとして実装されます。前置または後置演算子を実装している場合は、そのメソッド宣言に対応する `prefix` または `postfix` 修飾子もマークする必要があります。新しい演算子を作成して実装する方法の例については、[Custom Operators](./../language-guide/advanced-operators.md#custom-operatorsカスタム演算子)を参照ください。
+
+> GRAMMAR OF AN OPERATOR DECLARATION  
+> operator-declaration → [prefix-operator-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_prefix-operator-declaration) \|  [postfix-operator-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_postfix-operator-declaration) \|  [infix-operator-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_infix-operator-declaration)  
+> prefix-operator-declaration → `prefix` `operator` [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator)  
+> postfix-operator-declaration → `postfix` `operator` [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator)  
+> infix-operator-declaration → `infix` `operator` [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator)  [infix-operator-group](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_infix-operator-group)<sub>*opt*</sub>  
+> infix-operator-group → `:` [precedence-group-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-name)
+
+## Precedence Group Declaration\(優先順位グループ宣言\)
 
 ## Declaration Modifiers
 
