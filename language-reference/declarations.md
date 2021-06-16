@@ -541,7 +541,7 @@ enum Number {
     case real(Double)
 }
 let f = Number.integer
-// f は (Int） -> Number 型の関数です
+// f は (Int) -> Number 型の関数です
 
 // f を適用して、整数値を持つ Number インスタンスの配列を作成します
 let evenInts: [Number] = [0, 2, 4, 6].map(f)
@@ -794,7 +794,7 @@ protocol SomeProtocol: AnyObject {
 
 他のプロトコルメンバ宣言と同様に、これらのプロパティ宣言は、プロトコルの準拠型の get と set の要件のみを宣言します。その結果、get または set を、それが宣言されているプロトコルに直接実装することはありません。
 
-get と set の要件は、様々な方法で準拠型は満たすことができます。プロパティ宣言に `get` キーワードと `set` キーワードの両方が含まれている場合、準拠型は、格納変数プロパティ、または読み取りと書き込みの両方が可能な計算プロパティ(つまり、get と set の両方を実装するプロパティ）を使用して実装できます。ただし、そのプロパティ宣言は、定数プロパティまたは読み取り専用の計算プロパティとして実装することはできません。プロパティ宣言に `get` キーワードのみが含まれている場合は、任意の種類のプロパティとして実装できます。プロトコルのプロパティ要件を実装する準拠型の例については、[Property Requirements](./../language-guide/protocols.md#property-requirementsプロパティ要件)を参照ください。
+get と set の要件は、様々な方法で準拠型は満たすことができます。プロパティ宣言に `get` キーワードと `set` キーワードの両方が含まれている場合、準拠型は、格納変数プロパティ、または読み取りと書き込みの両方が可能な計算プロパティ(つまり、get と set の両方を実装するプロパティ)を使用して実装できます。ただし、そのプロパティ宣言は、定数プロパティまたは読み取り専用の計算プロパティとして実装することはできません。プロパティ宣言に `get` キーワードのみが含まれている場合は、任意の種類のプロパティとして実装できます。プロトコルのプロパティ要件を実装する準拠型の例については、[Property Requirements](./../language-guide/protocols.md#property-requirementsプロパティ要件)を参照ください。
 
 プロトコル宣言で型プロパティ要件を宣言するには、`static` キーワードでプロパティ宣言をマークします。プロトコルに準拠する構造体と列挙型は、`static` キーワードを使用してプロパティを宣言し、プロトコルに準拠するクラスは、`static` または `class` キーワードを使用してプロパティを宣言します。構造体、列挙型、またはクラスにプロトコルの準拠を追加する extension は、extension を使用する型と同じキーワードを使用します。型プロパティ要件のデフォルト実装を提供する extension は、`static` キーワードを使用します。
 
@@ -986,11 +986,76 @@ extension は、既存のクラス、構造体、または列挙型に adopted p
 
 extension は既存のクラスへの継承を追加できないため、type name とコロン(`:`)の後にプロトコルのリストのみを指定できます。
 
-### Conditional Conformance
+### Conditional Conformance\(条件付き準拠\)
 
-#### Overridden Requirements Aren’t Used in Some Generic Contexts
+ジェネリック型を拡張して条件付きでプロトコルに準拠させることができるため、特定の要件が満たされた場合にのみ、型のインスタンスがプロトコルに準拠します。extension に requirements を含めることで、プロトコルに条件付き準拠を追加します。
+
+#### Overridden Requirements Aren’t Used in Some Generic Contexts(ジェネリックなコンテキストではオーバーライドされた要件は使用されない)
 
 ---
+
+一部のジェネリックなコンテキストでは、プロトコルに条件付き準拠することで動作を取得する型は、このより特化した実装を常に使用するとは限りません。この動作を説明するために、次の例では、2 つのプロトコルと、両方のプロトコルに条件付き準拠するジェネリック型を定義します。
+
+```swift
+protocol Loggable {
+    func log()
+}
+extension Loggable {
+    func log() {
+        print(self)
+    }
+}
+
+protocol TitledLoggable: Loggable {
+    static var logTitle: String { get }
+}
+extension TitledLoggable {
+    func log() {
+        print("\(Self.logTitle): \(self)")
+    }
+}
+
+struct Pair<T>: CustomStringConvertible {
+    let first: T
+    let second: T
+    var description: String {
+        return "(\(first), \(second))"
+    }
+}
+
+extension Pair: Loggable where T: Loggable { }
+extension Pair: TitledLoggable where T: TitledLoggable {
+    static var logTitle: String {
+        return "Pair of '\(T.logTitle)'"
+    }
+}
+
+extension String: TitledLoggable {
+    static var logTitle: String {
+        return "String"
+    }
+}
+```
+
+`Pair` 構造体は、ジェネリック型がそれぞれ `Loggable` または `TitledLoggable` に準拠している場合は常に、`Loggable` および `TitledLoggable` に準拠します。下記の例では、`oneAndTwo` は `Pair<String>` のインスタンスで、`String` は `TitledLoggable` に準拠しているため、`Pair<String>` は `TitledLoggable` に準拠しています。`log()` メソッドが `oneAndTwo` から呼び出されると、タイトル文字列を含むより特化したバージョンが使用されます。
+
+```swift
+let oneAndTwo = Pair(first: "one", second: "two")
+oneAndTwo.log()
+// "Pair of 'String': (one, two)"
+```
+
+ただし、`oneAndTwo` がジェネリックなコンテキストや `Loggable` プロトコルのインスタンスとして使用される場合、より特化したバージョンは使用されません。Swift は、`Pair` が `Loggable` に準拠するために必要な最小要件のみを参照して、呼び出す `log()` の実装を選択します。このため、代わりに `Loggable` プロトコルによって提供されるデフォルト実装が使用されます。
+
+```swift
+func doSomething<T: Loggable>(with x: T) {
+    x.log()
+}
+doSomething(with: oneAndTwo)
+// "(one, two)"
+```
+
+`doSomething(_ :)` に渡されたインスタンスで `log()` が呼び出されると、カスタマイズされたタイトルがログに記録された文字列から省略されます。
 
 ### Protocol Conformance Must Not Be Redundant
 
