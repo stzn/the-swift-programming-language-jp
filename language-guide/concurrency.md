@@ -11,7 +11,7 @@ Swift には、構造化された方法で非同期および同時並行コー�
 > NOTE  
 > 過去に同時並行コードを書いたことがある場合は、スレッドの操作に慣れているかもしれません。Swiftの 同時並行モデルはスレッドの上に構築されていますが、直接スレッドとやり取りすることはありません。Swift の非同期関数は、実行中のスレッドを放棄することができ、最初の関数がブロックされている間、そのスレッド上で別の非同期関数を実行できます。
 
-Swift の言語サポートを使用せずに同時並行処理を書くことは可能ですが、そのコードは読みにくくなりやすい傾向があります。例えば、次のコードは写真名のリストをダウンロードし、そのリストの最初の写真をダウンロードし、その写真をユーザに表示します。
+Swift の言語サポートを使用せずに同時並行処理を書くことは可能ですが、そのコードは読みにくくなる傾向があります。例えば、次のコードは写真名のリストをダウンロードし、そのリストの最初の写真をダウンロードし、その写真をユーザに表示します。
 
 ```swift
 listPhotos(inGallery: "Summer Vacation") { photoNames in
@@ -23,7 +23,7 @@ listPhotos(inGallery: "Summer Vacation") { photoNames in
 }
 ```
 
-このような単純なケースでも、コードには一連の完了ハンドラを記述する必要があるため、入れ子クロージャを書くことになります。このスタイルでは、深いネストを持つより複雑なコードはすぐに扱いにくくなる可能性があります。
+このような単純なケースでも、コードには一連の完了ハンドラを記述する必要があるため、入れ子クロージャを書くことになります。このスタイルでは、より複雑な深いネストを持つコードはすぐに扱いにくくなってしまいます。
 
 ## Defining and Calling Asynchronous Functions\(非同期関数の定義と呼び出し\)
 
@@ -52,13 +52,13 @@ let photo = await downloadPhoto(named: name)
 show(photo)
 ```
 
-`listPhotos(inGallery:)` と `downloadPhoto(named:)` 関数は両方ともネットワークリクエストをする必要があり、完了するまでかなり時間がかかる可能性があります。戻り値の型の矢印の前に `async` を書くことで両方とも非同期にすると、このコードが写真を取得するのを待っている間も、他のアプリのコードのは実行し続けることができます。
+`listPhotos(inGallery:)` と `downloadPhoto(named:)` 関数は両方ともネットワークリクエストをする必要があり、完了するまでかなり時間がかかる可能性があります。戻り値の型の矢印の前に `async` を書くことで両方とも非同期にすると、このコードが写真を取得するのを待っている間も、他のアプリのコードは実行し続けることができます。
 
 上記の例の同時並行性を理解するために、ここでは 1 つの起こりうる実行順序について示します:
 
 1. コードは最初の行から実行を開始し、最初の `await` まで実行されます。`listPhotos(inGallery:)` 関数を呼び出し、その関数が返されるのを待つ間、実行を中断します
 2. このコードの実行は中断されていますが、同じプログラム内の他の同時並行処理が行われます。例えば、長期間実行されるバックグラウンドタスクは、新しいフォトギャラリのリストを更新し続けます。そのコードは、`await` が書かれた次の中断ポイント、または処理が完了するまで実行されます
-3. `listphotos(inGallery:)` から戻り値が返された後、その地点から処理は再開され `photoNames` 戻り値を割り当てます
+3. `listphotos(inGallery:)` から戻り値が返された後、その地点から処理は再開され `photoNames` に戻り値を割り当てます
 4. `sortedNames` と `name` を定義する行は、通常の同期処理です。これらの行では何もマークされていないため、中断される可能性はありません
 5. 次の `await` は、`downloadPhoto(named:)` 関数の呼び出し時に示されています。このコードは、その関数が戻り値が返すまで再び実行を一時中断し、他の同時並行処理を実行する機会を与えます
 6. `downloadPhoto(named:)` が戻り値を返し、その戻り値が `photo` に割り当てられ、`show(_:)` を呼び出すときに引数として渡されています
@@ -98,7 +98,7 @@ for try await line in handle.bytes.lines {
 
 ## Calling Asynchronous Functions in Parallel\(非同期関数を並列に呼び出す\)
 
-`await` を使用して非同期関数を呼び出すと、一度に 1 つのコードしか実行されません。非同期コードが実行されている間、呼び出し側は、次のコード行を実行する前にそのコードが終了するのを待ちます。例えば、ギャラリから最初の 3 つの写真を取得するには、次のように `downloadPhoto(named:)` 関数を 3 回の呼び出して、結果を待つことができます:
+`await` を使用して非同期関数を呼び出すと、一度に 1 つのコードしか実行されません。非同期コードが実行されている間、呼び出し側は、次のコード行を実行する前にそのコードが終了するのを待ちます。例えば、ギャラリから最初の 3 つの写真を取得するには、次のように `downloadPhoto(named:)` 関数を 3 回呼び出して、結果を待つことができます:
 
 ```swift
 let firstPhoto = await downloadPhoto(named: photoNames[0])
@@ -172,13 +172,13 @@ Swift の同時並行処理は協調キャンセルモデル\(_cooperative cance
 * `nil` または空のコレクションを返す
 * 部分的に完了したタスクを返す
 
-タスクがキャンセルされたかどうかをチェックするには、キャンセルされていた場合に `CancellationError` をスローする[Task.checkCancellation\(\)](https://developer.apple.com/documentation/swift/task/3814826-checkcancellation)を呼び出すか、[Task.isCancelled](https://developer.apple.com/documentation/swift/task/3814832-iscancelled)の値を確認し、自分でコードのキャンセルを処理します。例えば、ギャラリから写真をダウンロードしているタスクは、一部だけダウンロードされたデータを削除してとネットワークを切断する必要があるかもしれません。
+タスクがキャンセルされたかどうかをチェックするには、キャンセルされていた場合に `CancellationError` をスローする[Task.checkCancellation\(\)](https://developer.apple.com/documentation/swift/task/3814826-checkcancellation)を呼び出すか、[Task.isCancelled](https://developer.apple.com/documentation/swift/task/3814832-iscancelled)の値を確認し、自分でコードのキャンセルを処理します。例えば、ギャラリから写真をダウンロードしているタスクは、一部だけダウンロードされたデータを削除してネットワークを切断する必要があるかもしれません。
 
-キャンセルを手動で伝播するには、`[Task.handle.cancel()](https://developer.apple.com/documentation/swift/task/handle/3814781-cancel)` を呼び出します。
+キャンセルを手動で伝播するには、[Task.handle.cancel()](https://developer.apple.com/documentation/swift/task/handle/3814781-cancel) を呼び出します。
 
 ## Actors\(アクター\)
 
-クラスのように、アクター\(_actors_\)は参照型ですので、[Classes Are Reference Types](structures-and-classes.md#classes-are-reference-typesclassは参照型)の中のクラスの値型と参照型の比較はアクターにも当てはまります。しかし、クラスとは異なり、アクターの可変状態\(_mutable state_\)にアクセスできるのは一度に 1 つのタスクだけです。これにより、複数のタスクが、同じアクターのインスタンスとやり取りする必要があるコードでも、安全にアクセスできるようになります。例えば、下記は気温を記録するアクターです:
+クラスのように、アクター\(_actors_\)は参照型なので、[Classes Are Reference Types](structures-and-classes.md#classes-are-reference-typesclassは参照型)の中のクラスの値型と参照型の比較はアクターにも当てはまります。しかし、クラスとは異なり、アクターの可変状態\(_mutable state_\)にアクセスできるのは一度に 1 つのタスクだけです。これにより、複数のタスクが、同じアクターのインスタンスとやり取りする必要があるコードでも、安全にアクセスできるようになります。例えば、下記は気温を記録するアクターです:
 
 ```swift
 actor TemperatureLogger {
