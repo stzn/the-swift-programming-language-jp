@@ -389,7 +389,7 @@ if twoThree == anotherTwoThree {
 // 「これら 2 つのベクトルは同等です」を出力します。
 ```
 
-多くのシンプルなケースでは、Swift の等価演算子の既定実装を使用できます\([Adopting a Protocol Using a Synthesized Implementation](protocols.md#adopting-a-protocol-using-a-synthesized-implementation既定実装を使用したプロトコル準拠)で説明されています\)。
+多くのシンプルなケースでは、Swift の等価演算子のデフォルト実装を使用できます\([Adopting a Protocol Using a Synthesized Implementation](protocols.md#adopting-a-protocol-using-a-synthesized-implementationデフォルト実装を使用したプロトコル準拠)で説明されています\)。
 
 ## Custom Operators\(カスタム演算子\)
 
