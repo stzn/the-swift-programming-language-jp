@@ -197,7 +197,7 @@ struct CompactRect {
 }
 ```
 
-get プロパティからの戻り値の省略は、[Functions With an Implicit Return](functions.md#functions-with-an-implicit-return暗黙的な戻り値がある関数)で説明されているように、関数からの戻り値を省略した場合と同じ規則に従います。
+get プロパティからの戻り値の省略は、[Functions With an Implicit Return](functions.md#functions-with-an-implicit-return(暗黙的な戻り値がある関数))で説明されているように、関数からの戻り値を省略した場合と同じ規則に従います。
 
 ### Read-Only Computed Properties\(読み取り専用計算プロパティ\)
 
