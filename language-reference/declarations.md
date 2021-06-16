@@ -237,7 +237,7 @@ newAndOld.x = 200
 
 タイプエイリアスが宣言された後、プログラム内の既存の型の代わりに注釈名を使用できます。既存の型は、名前付き型または複合型にすることができます。タイプエイリアスは新しい型を作成しません。それらは単に名前が既存の型を参照することを可能にします。
 
-タイプエイリアス宣言は、ジェネリック引数を使用して既存のジェネリック型に名前を付けることができます。タイプエイリアスは、既存の型のジェネリック引数の一部または全部に具体的な型を提供できます。例えば:
+タイプエイリアス宣言は、ジェネリック引数を使用して既存のジェネリック型に名前を付けることができます。タイプエイリアスは、既存の型のジェネリック引数の一部または全部に具象型を提供できます。例えば:
 
 ```swift
 typealias StringDictionary<Value> = Dictionary<String, Value>
@@ -1059,17 +1059,92 @@ doSomething(with: oneAndTwo)
 
 ### Protocol Conformance Must Not Be Redundant(プロトコル準拠は冗長であってはならない)
 
-具体的な型は、特定のプロトコルに 1 回だけ準拠できます。Swift は、冗長なプロトコル準拠をエラーとしてマークします。この種のエラーは、2 種類の状況で発生する可能性があります。最初の状況は、プロトコルの異なった要件に準拠するために同じプロトコルに複数回明示的に準拠している場合です。2 番目の状況は、同じプロトコルから暗黙的に複数回継承する場合です。これらの状況については、以下のセクションで説明します。
+具象型は、特定のプロトコルに 1 回だけ準拠できます。Swift は、冗長なプロトコル準拠をエラーとしてマークします。この種のエラーは、2 種類の状況で発生する可能性があります。最初の状況は、プロトコルの異なった要件に準拠するために同じプロトコルに複数回明示的に準拠している場合です。2 番目の状況は、同じプロトコルから暗黙的に複数回継承する場合です。これらの状況については、以下のセクションで説明します。
 
-#### Resolving Explicit Redundancy
-
----
-
-#### Resolving Implicit Redundancy
+#### Resolving Explicit Redundancy(明示的な冗長の解決)
 
 ---
 
-## Subscript Declaration
+具象型の extension は、extension の中の要件が排他的でも、同じプロトコルに準拠することはできません。この制限は、下記の例に示されています。2 つの extension が `Serializable` プロトコルに条件付き準拠を追加しようとします。1 つは `Int` の配列で、もう 1 つは `String` の配列です。
+
+```swift
+protocol Serializable {
+    func serialize() -> Any
+}
+
+extension Array: Serializable where Element == Int {
+    func serialize() -> Any {
+        // 実装
+    }
+}
+extension Array: Serializable where Element == String {
+    func serialize() -> Any {
+        // 実装
+    }
+}
+// エラー: Array <Element>のプロトコル Serializable への冗長な準拠
+```
+
+複数の具象型に基づいて条件付き準拠を追加する必要がある場合は、各型が準拠できる新しいプロトコルを作成し、条件付き準拠を宣言する際の要件としてそのプロトコルを使用します。
+
+```swift
+protocol SerializableInArray { }
+extension Int: SerializableInArray { }
+extension String: SerializableInArray { }
+
+extension Array: Serializable where Element: SerializableInArray {
+    func serialize() -> Any {
+        // 実装
+    }
+}
+```
+
+#### Resolving Implicit Redundancy(暗黙的な冗長の解決)
+
+---
+
+具象型が条件付きでプロトコルに準拠している場合、その型は同じ要件を持つ親プロトコルにも暗黙的に準拠します。
+
+単一の親から継承する 2 つのプロトコルに条件付きで準拠する型が必要な場合は、親プロトコルへの準拠を明示的に宣言します。これにより、異なる要件で親プロトコルに 2 回暗黙的に準拠することが回避できます。
+
+次の例では、`TitledLoggable` プロトコルと新しい `MarkedLoggable` プロトコルの両方への条件付き準拠を宣言するときに競合を回避するために、配列から `Loggable` への条件付き準拠を明示的に宣言しています。
+
+```swift
+protocol MarkedLoggable: Loggable {
+    func markAndLog()
+}
+
+extension MarkedLoggable {
+    func markAndLog() {
+        print("----------")
+        log()
+    }
+}
+
+extension Array: Loggable where Element: Loggable { }
+extension Array: TitledLoggable where Element: TitledLoggable {
+    static var logTitle: String {
+        return "Array of '\(Element.logTitle)'"
+    }
+}
+extension Array: MarkedLoggable where Element: MarkedLoggable { }
+```
+
+`Loggable` への条件付き準拠を明示的に宣言する extension がないと、他の配列の extension はこの宣言を暗黙的に作成し、エラーが発生します。
+
+```swift
+extension Array: Loggable where Element: TitledLoggable { }
+extension Array: Loggable where Element: MarkedLoggable { }
+// エラー： Array <Element> のプロトコル Loggable への冗長な準拠
+```
+
+> GRAMMAR OF AN EXTENSION DECLARATION  
+> extension-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>*opt*</sub> `extension` [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>*opt*</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub> [extension-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_extension-body)  
+> extension-body → `{` [extension-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_extension-members)<sub>*opt*</sub> `}`   
+> extension-members → [extension-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_extension-member)  [extension-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_extension-members)<sub>*opt*</sub>   
+> extension-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \|  [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
+
+## Subscript Declaration(subscript宣言)
 
 ### Type Subscript Declarations
 
