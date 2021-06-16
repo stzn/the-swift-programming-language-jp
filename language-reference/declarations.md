@@ -1185,7 +1185,7 @@ subscript の詳細と subscript 宣言の例については、[Subscripts](./..
 
 演算子宣言には 3 つの基本的な形式があり、各フィクシティに 1 つずつあります。演算子のフィクシティは、`operator` キーワードの前に、`infix`、`prefix` または `postfix` 修飾子を使用して演算子宣言をマークすることによって指定されます。各フォームで、演算子の名前には、[Operators](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID418)で定義された演算子文字のみを含めることができます。
 
-次の形式は、新しい中置演算子を宣言します。
+次の形式で新しい中置演算子を宣言します:
 
 ![中置演算子](./../.gitbook/assets/infix_operator_declaration.png)
 
@@ -1193,7 +1193,7 @@ infix operator は、式 `1 + 2` でおなじみの加算演算子(`+`)など、
 
 中置演算子は、任意で優先順位グループ(*precedence group*) を指定できます。演算子の優先順位グループを省略すると、Swift はデフォルトの優先順位グループの `DefaultPrecedence` を使用します。これは、`TernaryPrecedence` よりも少し高い優先順位を指定します。詳細については、[Precedence Group Declaration](#precedence-group-declaration優先順位グループ宣言)を参照ください。
 
-次の形式は、新しい前置演算子を宣言します。
+次の形式で新しい前置演算子を宣言します:
 
 ![前置演算子](./../.gitbook/assets/prefix_operator_declaration.png)
 
@@ -1201,7 +1201,7 @@ prefix operator は、式 `!a` のような前置論理 `NOT` 演算子(`!`)な�
 
 前置演算子の宣言は、優先順位レベルを指定しません。前置演算子は非結合です。
 
-次の形式は、新しい後置演算子を宣言します。
+次の形式で新しい後置演算子を宣言します:
 
 ![後置演算子](./../.gitbook/assets/postfix_operator_declaration.png)
 
@@ -1219,6 +1219,38 @@ prefix operator は、式 `!a` のような前置論理 `NOT` 演算子(`!`)な�
 > infix-operator-group → `:` [precedence-group-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-name)
 
 ## Precedence Group Declaration\(優先順位グループ宣言\)
+
+優先順位グループ宣言は、プログラムに中置演算子の優先順位の新しいグループ化の方法を導入します。演算子の優先順位は、グループ化する括弧(`()`)がない場合に、演算子がオペランドにどのようにバインドするかを指定します。
+
+優先順位グループ宣言の形式は次のとおりです:
+
+![優先順位グループ宣言](./../.gitbook/assets/precedence_group_declaration.png)
+
+lower group names と higher group names のリストは、既存の優先順位グループに対する新しい優先順位グループの関係を指定します。`lowerThan` 優先順位グループ属性は、現在のモジュールの外部で宣言された優先順位グループを参照するためにのみ使用できます。式 `2 + 3 * 5` のように、2 つの演算子のオペランドが競合する場合、相対的に優先順位の高い演算子がオペランドにバインドされます。
+
+> NOTE  
+> lower group names と higher group namesを使用して相互に関連付けられた優先順位グループは、単一の関係階層に収める必要がありますが、直線的な階層を形成する必要はありません。これは、相対的な優先順位が定義されていない優先順位グループを持つことができることを意味します。これらの優先順位グループの演算子は、グループ化する括弧なしで隣に並べて使用することはできません。
+
+Swift は、標準ライブラリが提供する演算子へ多数の優先順位グループを定義しています。例えば、加算(`+`)および減算(`-`)演算子は `AdditionPrecedence` グループに属し、乗算(`*`)および除算(`/`)演算子は `MultiplicationPrecedence` グループに属します。Swift 標準ライブラリによって提供される優先順位グループの完全なリストについては、[Operator Declarations](https://developer.apple.com/documentation/swift/operator_declarations)を参照ください。
+
+演算子の associativity は、グループ化する括弧がない場合に、同じ優先順位レベルを持つ一連の演算子をグループ化する方法を指定します。演算子の結合規則を指定するには、コンテキスト依存のキーワード `left`、`right`、または `none` を記述します。結合規則を省略した場合、デフォルトは `none` です。左結合規則の演算子は左から右にグループ化します。例えば、減算演算子(`-`)は左結合のため、式 `4 - 5 - 6` は `(4 - 5) - 6` としてグループ化され、`-7` と評価されます。右結合規則の演算子、および `none` 結合規則の演算子は、全く結合しません。同じ優先順位レベルの非結合演算子は、互いに隣接して表示することはできません。例えば、`<` 演算子の結合規則は `none` です。これは、`1 < 2 < 3` が有効な式ではないことを意味します。
+
+優先順位グループの assignment は、オプショナルチェーンを含む操作で使用される場合の演算子の優先順位を指定します。`true` にすると、対応する優先順位グループの演算子は、オプショナルチェーン中に、標準ライブラリの代入演算子と同じグループ化結合規則を使用します。それ以外の場合、`false` にするか省略すると、優先順位グループの演算子は、割り当てを実行しない演算子と同じオプショナルチェーンの結合規則に従います。
+
+> GRAMMAR OF A PRECEDENCE GROUP DECLARATION  
+> precedence-group-declaration → `precedencegroup` [precedence-group-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-name)  `{` [precedence-group-attributes](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-attributes)<sub>*opt*</sub> `}`  
+> precedence-group-attributes → [precedence-group-attribute](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-attribute)  [precedence-group-attributes](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-attributes)<sub>*opt*</sub>  
+> precedence-group-attribute → [precedence-group-relation](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-relation)  
+> precedence-group-attribute → [precedence-group-assignment](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-assignment)  
+> precedence-group-attribute → [precedence-group-associativity](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-associativity)  
+> precedence-group-relation → `higherThan` `:` [precedence-group-names](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-names)  
+> precedence-group-relation → `lowerThan` `:` [precedence-group-names](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-names)  
+> precedence-group-assignment → `assignment` `:` [boolean-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_boolean-literal)  
+> precedence-group-associativity → `associativity` `:` `left`  
+> precedence-group-associativity → `associativity` `:` `right`  
+> precedence-group-associativity → `associativity` `:` `none`  
+> precedence-group-names → [precedence-group-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-name) \|  [precedence-group-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-name)  `,` [precedence-group-names](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-names)  
+> precedence-group-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
 ## Declaration Modifiers
 
