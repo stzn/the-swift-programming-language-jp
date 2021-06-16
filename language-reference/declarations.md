@@ -1057,7 +1057,9 @@ doSomething(with: oneAndTwo)
 
 `doSomething(_ :)` に渡されたインスタンスで `log()` が呼び出されると、カスタマイズされたタイトルがログに記録された文字列から省略されます。
 
-### Protocol Conformance Must Not Be Redundant
+### Protocol Conformance Must Not Be Redundant(プロトコル準拠は冗長であってはならない)
+
+具体的な型は、特定のプロトコルに 1 回だけ準拠できます。Swift は、冗長なプロトコル準拠をエラーとしてマークします。この種のエラーは、2 種類の状況で発生する可能性があります。最初の状況は、プロトコルの異なった要件に準拠するために同じプロトコルに複数回明示的に準拠している場合です。2 番目の状況は、同じプロトコルから暗黙的に複数回継承する場合です。これらの状況については、以下のセクションで説明します。
 
 #### Resolving Explicit Redundancy
 
