@@ -74,7 +74,7 @@ numberOfLegs["bird"] = 2
 
 subscript は、任意の数の入力引数を受け取ることができ、これらの入力引数は任意の型にすることができます。subscript は、任意の型の値を返すこともできます。
 
-関数と同様に、subscript は様々な数の引数を受け取り、引数の既定値を提供できます。これについては、[Variadic Parameters](functions.md#variadic-parameters可変長引数)と[Default Parameter Values](functions.md#default-parameter-valuesデフォルト引数値)で説明しています。ただし、関数とは異なり、subscript は `inout` 引数を使用できません。
+関数と同様に、subscript は様々な数の引数を受け取り、引数のデフォルト値を提供できます。これについては、[Variadic Parameters](functions.md#variadic-parameters可変長引数)と[Default Parameter Values](functions.md#default-parameter-valuesデフォルト引数値)で説明しています。ただし、関数とは異なり、subscript は `inout` 引数を使用できません。
 
 クラスまたは構造体は、必要なだけ subscript の実装を提供でき、使用される適切な subscript は、subscript が使用される時点で subscript のブラケット\(`[]`\)内に含まれる値の型に基づいて推論されます。この複数の subscript の定義は、subscript のオーバーロードとして知られています。
 

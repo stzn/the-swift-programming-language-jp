@@ -701,7 +701,7 @@ do {
 
 ## Assertions and Preconditions\(アサーションと事前条件\)
 
-_Assertions_と_Preconditions_は実行時のチェックです。他のコードが実行される前に必要不可欠な条件が満たされているかどうかを確かめることができます。assertion や precondition のブール値が `true` と評価される場合、コードは通常通りの継続します。`false` の場合、現在のプログラムの状態は不正となり、コードの実行は中断し、アプリは終了します。
+_Assertions_と_Preconditions_は実行時のチェックです。他のコードが実行される前に必要不可欠な条件が満たされているかどうかを確かめることができます。assertion や precondition のブール値が `true` と評価される場合、コードは通常通り継続します。`false` の場合、現在のプログラムの状態は不正となり、コードの実行は中断し、アプリは終了します。
 
 assertion と precondition はコード上での前提条件や期待値を表すために使います。assertion は開発中の間違いや間違った想定を見つけやすくし、precondition は開発中の問題を検知しやすくします。
 

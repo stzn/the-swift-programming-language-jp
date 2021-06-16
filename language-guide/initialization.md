@@ -217,7 +217,7 @@ class ShoppingListItem {
 var item = ShoppingListItem()
 ```
 
-`ShoppingListItem` クラスの全てのプロパティにはデフォルト値があり、スーパークラスを持たない基本クラスのため、`ShoppingListItem` は、全てのプロパティにデフォルト値が設定された新しいインスタンスを作成するイニシャライザの実装を自動で獲得します\(`name` プロパティはオプショナルの `String` プロパティのため、この値がコードに記述されていなくても、既定値の `nil` が自動的に設定されます\)。上記の例では、`ShoppingListItem` クラスのデフォルトイニシャライザを使用して `ShoppingListItem()` と記述し、新しいインスタンスを作成して `item` という変数に割り当てています。
+`ShoppingListItem` クラスの全てのプロパティにはデフォルト値があり、スーパークラスを持たない基本クラスのため、`ShoppingListItem` は、全てのプロパティにデフォルト値が設定された新しいインスタンスを作成するイニシャライザの実装を自動で獲得します\(`name` プロパティはオプショナルの `String` プロパティのため、この値がコードに記述されていなくても、デフォルト値の `nil` が自動的に設定されます\)。上記の例では、`ShoppingListItem` クラスのデフォルトイニシャライザを使用して `ShoppingListItem()` と記述し、新しいインスタンスを作成して `item` という変数に割り当てています。
 
 ### Memberwise Initializers for Structure Types\(構造体のメンバワイズイニシャライザ\)
 

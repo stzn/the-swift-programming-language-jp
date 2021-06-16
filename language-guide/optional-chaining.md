@@ -7,7 +7,7 @@
 > NOTE  
 > Swift のオプショナルチェーンは、Objective-C の `nil` のメッセージングに似ていますが、どの型にでも機能し、成功または失敗をチェックできます。
 
-## Optional Chaining as an Alternative to Forced Unwrapping \(強制アンラップの代替としてのオプショナル連鎖\)
+## Optional Chaining as an Alternative to Forced Unwrapping\(強制アンラップの代替としてのオプショナルチェーン\)
 
 オプショナルが `nil` 以外の場合、プロパティ、メソッド、または subscript を呼び出すオプショナルの後に疑問符(`?`)を配置して、オプショナルチェーンを指定します。これは、オプショナルの後に感嘆符(`!`)を配置して、その値を強制アンラップするのによく似ています。主な違いは、オプショナルが `nil` の場合、オプショナルチェーンが失敗するのに対し、強制アンラップは実行時エラーを引き起こすことです。
 
@@ -155,9 +155,9 @@ class Address {
 
 `Address` クラスはまた、`String?` の戻り型を持つ `buildingIdentifier()` というメソッドも提供します。このメソッドは、住所のプロパティをチェックし、`buildingName` に値がある場合は `buildingName` を返し、`street` と `buildingNumber` の両方に値がある場合は 2 つを繋げた値を返し、それ以外は `nil` を返します
 
-## Accessing Properties Through Optional Chaining\(オプショナル連鎖を通したプロパティへのアクセス\)
+## Accessing Properties Through Optional Chaining\(オプショナルチェーンを通したプロパティへのアクセス\)
 
-[Optional Chaining as an Alternative to Forced Unwrapping](#optional-chaining-as-an-alternative-to-forced-unwrapping-強制アンラップの代替としてのオプショナル連鎖)で示されているように、オプショナルチェーンを使用してオプショナルのプロパティにアクセスし、アクセスが成功したかどうかを確認できます。
+[Optional Chaining as an Alternative to Forced Unwrapping](#optional-chaining-as-an-alternative-to-forced-unwrapping-強制アンラップの代替としてのオプショナルチェーン)で示されているように、オプショナルチェーンを使用してオプショナルのプロパティにアクセスし、アクセスが成功したかどうかを確認できます。
 
 上で定義したクラスを使用して新しい `Person` インスタンスを作成し、以前と同じように `numberOfRooms` プロパティにアクセスしてみます:
 
@@ -201,7 +201,7 @@ john.residence?.address = createAddress()
 
 何も出力されないため、`createAddress()` 関数が呼び出されていないことがわかります。
 
-## Calling Methods Through Optional Chaining\(オプショナル連鎖を通したメソッドの呼び出し\)
+## Calling Methods Through Optional Chaining\(オプショナルチェーンを通したメソッドの呼び出し\)
 
 オプショナルチェーンを使用して、オプショナルの値でメソッドを呼び出し、そのメソッドの呼び出しが成功したかどうかを確認できます。そのメソッドが戻り値を定義していなくても、これを行うことができます。
 
@@ -226,7 +226,7 @@ if john.residence?.printNumberOfRooms() != nil {
 // "It was not possible to print the number of rooms."
 ```
 
-オプショナルチェーンによってプロパティを設定しようとする場合も同様です。[Accessing Properties Through Optional Chaining](#accessing-properties-through-optional-chainingオプショナル連鎖を通したプロパティへのアクセス)の上記の例では、`residence` プロパティが `nil` にもかかわらず、`john.residence` のアドレス値を設定しようとしています。オプショナルチェーンによってプロパティを設定しようとすると、`Void?` 型の値が返されます。これにより、`nil` と比較して、プロパティが正常に設定されたかどうかを確認できます:
+オプショナルチェーンによってプロパティを設定しようとする場合も同様です。[Accessing Properties Through Optional Chaining](#accessing-properties-through-optional-chainingオプショナルチェーンを通したプロパティへのアクセス)の上記の例では、`residence` プロパティが `nil` にもかかわらず、`john.residence` のアドレス値を設定しようとしています。オプショナルチェーンによってプロパティを設定しようとすると、`Void?` 型の値が返されます。これにより、`nil` と比較して、プロパティが正常に設定されたかどうかを確認できます:
 
 ```swift
 if (john.residence?.address = someAddress) != nil {
@@ -237,9 +237,9 @@ if (john.residence?.address = someAddress) != nil {
 // "It was not possible to set the address."
 ```
 
-## Accessing Subscripts Through Optional Chaining\(オプショナル連鎖を通したsubscriptへのアクセス\)
+## Accessing Subscripts Through Optional Chaining\(オプショナルチェーンを通したsubscriptへのアクセス\)
 
-オプショナルチェーンを使用して、subscript の値を get/設定し、その subscript の呼び出しが成功したかどうかを確認できます。
+オプショナルチェーンを使用して、subscript の値を get/set し、その subscript の呼び出しが成功したかどうかを確認できます。
 
 > NOTE  
 >オプショナルチェーンを通じてオプショナルの subscript にアクセスする場合、疑問符は subscript の大括弧の後(`]`)ではなく前(`[`)に置きます。オプショナルチェーンの場合、疑問符(`?`)は、常に式のオプショナル部分の直後に続きます。
@@ -307,7 +307,7 @@ testScores["Brian"]?[0] = 72
 したがって:
 
 * オプショナルチェーンを通じて `Int` の値を取得しようとすると、連鎖の階層数に関係なく、常に `Int?` が返されます
-* 同様に、オプショナルチェーンを通じて `Int?` の値を取得しようとすると、連鎖の階層数に関係なく、常に `Int？` が返されます
+* 同様に、オプショナルチェーンを通じて `Int?` の値を取得しようとすると、連鎖の階層数に関係なく、常に `Int?` が返されます
 
 下記の例では、`john` の `residence` プロパティの `address` プロパティの `street` プロパティにアクセスしようとしています。ここでは、2 階層分のオプショナルチェーンを使用して、`residence` と `address` のプロパティを連鎖します。どちらもオプショナルの型です:
 
@@ -322,9 +322,9 @@ if let johnsStreet = john.residence?.address?.street {
 
 `john.residence` の値には現在 `Residence` インスタンスが含まれています。ただし、`john.residence.address` の値は現在 `nil` です。このため、`john.residence?.address?.street` への呼び出しは失敗します。
 
-上記の例では、`street` プロパティの値を取得しようとしていることに注目してください。このプロパティの型は `String?` です。したがって、2 階層分のオプショナル連鎖が適用されていますが、`john.residence?.address?.street` の戻り値も `String?` です。
+上記の例では、`street` プロパティの値を取得しようとしていることに注目してください。このプロパティの型は `String?` です。したがって、2 階層分のオプショナルチェーンが適用されていますが、`john.residence?.address?.street` の戻り値も `String?` です。
 
-`john.residence.address` の値として `Address` インスタンスを設定し、住所の `street` プロパティに値を設定すると、複数階層のオプショナル連鎖を通じて `street` プロパティの値にアクセスできます:
+`john.residence.address` の値として `Address` インスタンスを設定し、住所の `street` プロパティに値を設定すると、複数階層のオプショナルチェーンを通じて `street` プロパティの値にアクセスできます:
 
 ```swift
 let johnsAddress = Address()
