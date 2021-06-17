@@ -760,7 +760,7 @@ enum MyEnum: SomeProtocol {
 
 ```swift
 protocol SomeProtocol: AnyObject {
-    /* プロトコルメンバーはここに */
+    /* プロトコルメンバはここに */
 }
 ```
 
@@ -976,7 +976,7 @@ type name がクラス、構造体、または列挙型の場合、extension は
 
 ジェネリック型または関連型を持つプロトコルを拡張する extension には、requirements を含めることができます。拡張した型または拡張したプロトコルに準拠する型のインスタンスが requirements を満たしている場合、そのインスタンスは宣言で指定された動作を取得できます。
 
-extension には、イニシャライザ宣言を含めることができます。ただし、拡張する型が別のモジュールで定義されている場合、その型のメンバーが適切に初期化されるように、イニシャライザ宣言はそのモジュールで既に定義されているイニシャライザに委譲する必要があります。
+extension には、イニシャライザ宣言を含めることができます。ただし、拡張する型が別のモジュールで定義されている場合、その型のメンバが適切に初期化されるように、イニシャライザ宣言はそのモジュールで既に定義されているイニシャライザに委譲する必要があります。
 
 既存の型のプロパティ、メソッド、およびイニシャライザは、その型の extension でオーバーライドできません。
 
@@ -1154,7 +1154,7 @@ subscript 宣言は、クラス、構造体、列挙型、 extension、または
 
 parameters は、subscript 式の対応する型の要素にアクセスするために使用される 1 つ以上のインデックスを指定します(例えば、式 `object[i]` の `i`)。要素へのアクセスに使用されるインデックスは任意の型にすることができますが、各引数ーには、各インデックスの型を指定するためのタイプエイリアスを含める必要があります。return type は、アクセスされる要素の型を指定します。
 
-計算プロパティと同様に、subscript 宣言は、アクセスされた要素の値の読み取りと書き込みをサポートします。get は値の読み取りに使用され、set は値の書き込みに使用されます。set 句はオプションで、get のみが必要な場合は、両方の句を省略して、要求された値を直接返すことができます。一方で、set 句を指定する場合は、get 句も指定する必要があります。
+計算プロパティと同様に、subscript 宣言は、アクセスされた要素の値の読み取りと書き込みをサポートします。get は値の読み取りに使用され、set は値の書き込みに使用されます。set 句はオプショナルで、get のみが必要な場合は、両方の句を省略して、要求された値を直接返すことができます。一方で、set 句を指定する場合は、get 句も指定する必要があります。
 
 setter name とそれを囲む括弧は省略可能です。set 名を指定すると、set への引数の名前として使用されます。set 名を指定しない場合、set のデフォルトの引数名は `value` です。set の引数の型は、return type と同じです。
 
@@ -1252,6 +1252,68 @@ Swift は、標準ライブラリが提供する演算子へ多数の優先順�
 > precedence-group-names → [precedence-group-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-name) \|  [precedence-group-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-name)  `,` [precedence-group-names](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-names)  
 > precedence-group-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
-## Declaration Modifiers
+## Declaration Modifiers\(宣言修飾子\)
+
+宣言修飾子は、宣言の動作または意味を変更するキーワードまたはコンテキスト依存キーワードです。(存在する場合)宣言の属性と宣言を導入するキーワードの間に適切なキーワードまたはコンテキスト依存キーワードを記述することにより、宣言修飾子を指定します。
+
+`class`
+
+この修飾子をクラスのメンバに適用して、メンバがクラスのインスタンスのメンバではなく、クラス自体のメンバなことを示します。この修飾子があり、`final` 修飾子がないスーパークラスのメンバは、サブクラスでオーバーライドできます。
+
+`dynamic`
+
+この修飾子は、Objective-C で使用できるクラスの全てのメンバに適用します。`dynamic` 修飾子を使用してメンバ宣言をマークすると、そのメンバへのアクセスは常に Objective-C ランタイムを使用して動的にディスパッチされます。そのメンバへのアクセスは、コンパイラによってインライン化または非仮想化されることはありません。
+
+`dynamic` 修飾子でマークされた宣言は Objective-C ランタイムを使用してディスパッチされるため、`objc` 属性でマークする必要があります。
+
+`final`
+
+この修飾子をクラス、またはクラスのプロパティ、メソッド、または subscript メンバに適用します。クラスに適用するとサブクラスできないことを示し、クラスのプロパティ、メソッド、または subscript に適用すると、クラスメンバがどのサブクラスでもオーバーライドできないことを示します。`final` 属性の使用方法の例については、[Preventing Overrides\(オーバーライドを防ぐ\)](./../language-guide/inheritance.md#preventing-overridesオーバーライドを防ぐ)を参照ください。
+
+`lazy`
+
+この修飾子をクラスまたは構造体の格納変数プロパティに適用すると、プロパティが最初にアクセスされたときに、一度だけプロパティの初期値が計算され、格納されることを示します。lazy 修飾子の使用方法の例については、[Lazy Stored Properties](./../language-guide/properties.md#lazy-stored-properties遅延格納プロパティ)を参照ください。
+
+`optional`
+
+この修飾子をプロトコルのプロパティ、メソッド、または subscript のメンバに適用して、準拠する型がこれらのメンバを実装する必要がないことを示します。
+
+`optional` 修飾子は、`objc` 属性でマークされているプロトコルにのみ適用できます。その結果、クラス型のみが、オプショナルのメンバ要件を含むプロトコルに準拠できます。`optional` 修飾子の使用方法の詳細と、オプショナルのプロトコルメンバにアクセスする方法のガイダンス(例えば、準拠する型がそれらを実装しているかどうかわからない場合)については、[](./../language-guide/protocols.md#optional-protocol-requirementsオプショナルのプロトコル要件)を参照ください。
+
+<dt>required</dt>
+<dd>
+
+この修飾子をクラスの指定イニシャライザまたは convenience イニシャライザに適用して、全てのサブクラスがそのイニシャライザを実装する必要があることを示します。そのイニシャライザのサブクラスの実装にも、`required` 修飾子を付ける必要があります。
+</dd>
+
+<dt>static</dt>
+<dd>
+
+この修飾子を構造体、クラス、列挙型、またはプロトコルのメンバに適用して、メンバがその型のインスタンスのメンバではなく、その型のメンバなことを示します。クラス宣言のスコープでは、メンバ宣言に `static` 修飾子を書き込むことは、そのメンバ宣言に `class` および `final` 修飾子を書き込むことと同じ効果があります。ただし、クラスの定数型プロパティは例外です:`static` は、宣言に `class` または `final` を記述できないため、通常はクラスではない、という意味があります。
+</dd>
+
+<dt>unowned</dt>
+<dd>
+
+この修飾子を格納変数、定数、または格納プロパティに適用して、変数またはプロパティがその値として格納されたオブジェクトに所有されていない参照を持っていることを示します。オブジェクトの割り当てが解除された後で変数またはプロパティにアクセスしようとすると、実行時エラーが発生します。弱参照と同様に、プロパティまたは値の型はクラス型の必要があります。ただし、弱参照とは異なり、型はオプショナルではありません。`unowned` 修飾子の例と詳細については、[Unowned References](./../language-guide/automatic-reference-counting.md#unowned-references非所有参照)を参照ください。
+</dd>
+
+<dt>unowned(safe)</dt>
+<dd>
+
+`unowned` の明示的な記述。
+</dd>
+
+<dt>unowned(unsafe)</dt>
+<dd>
+
+この修飾子を格納変数、定数、または格納プロパティに適用して、変数またはプロパティがその値として格納されたオブジェクトに所有されていない参照を持っていることを示します。オブジェクトの割り当てが解除された後で変数またはプロパティにアクセスしようとすると、オブジェクトがあった場所のメモリにアクセスします。これは、メモリに安全でない操作です。弱参照と同様に、プロパティまたは値の型はクラス型の必要があります。ただし、弱参照とは異なり、型はオプショナルではありません。 `unowned` 修飾子の例と詳細については、[Unowned References](./../language-guide/automatic-reference-counting.md#unowned-references非所有参照)を参照ください。
+</dd>
+
+<dt>weak</dt>
+<dd>
+
+この修飾子を格納変数または格納変数プロパティに適用して、変数またはプロパティがその値として格納されているオブジェクトへ弱い参照を持っていることを示します。変数またはプロパティの型は、オプショナルのクラス型の必要があります。オブジェクトの割り当てが解除された後に変数またはプロパティにアクセスすると、その値は `nil` になります。`weak` 修飾子の例と詳細については、[Weak References](./../language-guide/automatic-reference-counting.md#weak-references弱参照)を参照ください。
+</dd>
 
 ## Access Control Levels\(アクセス制御レベル\)
