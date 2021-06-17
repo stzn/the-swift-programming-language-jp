@@ -1317,3 +1317,52 @@ Swift は、標準ライブラリが提供する演算子へ多数の優先順�
 </dd>
 
 ## Access Control Levels\(アクセス制御レベル\)
+
+Swift は、open、public, internal、file private と private の 5 つのレベルのアクセス制御を提供します。下記のアクセスレベル修飾子のいずれかで宣言をマークして、宣言のアクセスレベルを指定できます。アクセス制御については、[Access Control](./../language-guide/access-control.md)で詳しく説明しています。
+
+<dt>open</dt>
+<dd>
+
+この修飾子を宣言に適用すると、同じモジュール内のコードから宣言にアクセスしたり、サブクラス化できることを示します。`open` 修飾子でマークされた宣言は、その宣言を含むモジュールをインポートしたモジュール内のコードからアクセスおよびサブクラス化することもできます。
+</dd>
+
+<dt>public</dt>
+<dd>
+
+この修飾子を宣言に適用すると、同じモジュール内のコードから宣言にアクセスしたり、サブクラス化できることを示します。`public` 修飾子でマークされた宣言は、その宣言を含むモジュールをインポートするモジュール内のコードからアクセスできます(ただし、サブクラス化はできません)。
+</dd>
+
+<dt>internal</dt>
+<dd>
+
+この修飾子を宣言に適用すると、同じモジュール内のコードからのみ宣言にアクセスできることを示します。デフォルトでは、ほとんどの宣言は、`internal` 修飾子で暗黙的にマークされています。
+</dd>
+
+<dt>fileprivate</dt>
+<dd>
+
+この修飾子を宣言に適用すると、宣言と同じソースファイル内のコードからのみ宣言にアクセスできることを示します。
+</dd>
+
+<dt>private</dt>
+<dd>
+
+この修飾子を宣言に適用すると、宣言で囲んだスコープ内のコードからのみ宣言にアクセスできることを示します。
+</dd>
+
+アクセス制御の目的で、同じファイル内にある同じ型の extension は、アクセス制御スコープを共有します。それらが拡張する型も同じファイル内にある場合、それらは型のアクセス制御スコープを共有します。型の宣言で宣言されたプライベートメンバは extension からアクセスでき、1 つの extension で宣言されたプライベートメンバは、他の extension および型の宣言からもアクセスできます。
+
+上記の各アクセスレベル修飾子は、任意で、括弧で囲まれた `set` キーワードを受け入れます(例えば、`private(set)`)。[Getters and Setters](./../language-guide/access-control.md#getters-and-settersgetとset)で説明されているように、変数または subscript 自体のアクセスレベル以下のアクセスレベルを変数または subscript の set に指定する場合は、この形式のアクセスレベル修飾子を使用します。
+
+> GRAMMAR OF A DECLARATION MODIFIER  
+> declaration-modifier → `class` \|  `convenience` \|  `dynamic` \|  `final` \|  `infix` \|  `lazy` \|  `optional` \| `override` \|  `postfix` \|  `prefix` \|  `required` \|  `static` \|  `unowned` \|  `unowned` `(` `safe` `)` \|  `unowned(` `unsafe` `)` \|  `weak`  
+> declaration-modifier → [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)  
+> declaration-modifier → [mutation-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_mutation-modifier)  
+> declaration-modifiers → [declaration-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifier)  [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>*opt*</sub>  
+> access-level-modifier → `private` \|  `private` `(` `set` `)`  
+> access-level-modifier → `fileprivate` \|  `fileprivate` `(` `set` `)`  
+> access-level-modifier → `internal` \|  `internal` `(` `set` `)`  
+> access-level-modifier → `public` \|  `public` `(` `set` `)`  
+> access-level-modifier → `open` \|  `open` `(` `set` `)`  
+> mutation-modifier → `mutating` \|  `nonmutating`
+> actor-isolation-modifier → `nonisolated`
