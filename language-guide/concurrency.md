@@ -92,7 +92,7 @@ for try await line in handle.bytes.lines {
 }
 ```
 
-通常の `for-in` ループを使用する代わりに、上記の例は `for` の後に `await` を書きます。非同期関数またはメソッドを呼び出す時のように、`await` は中断する可能性を示します。`for-await-in` ループは、次の要素が利用可能になるのを待っている間、各繰り返しの開始時に処理の実行を中断する可能性があります。
+通常の `for-in` ループを使用する代わりに、上記の例は `for` の後に `await` を書きます。非同期関数またはメソッドを呼び出すときのように、`await` は中断する可能性を示します。`for-await-in` ループは、次の要素が利用可能になるのを待っている間、各繰り返しの開始時に処理の実行を中断する可能性があります。
 
 [Sequence](https://developer.apple.com/documentation/swift/sequence)プロトコルに準拠することで、`for-in` ループで独自の型を使用できるのと同じように、[AsyncSequence](https://developer.apple.com/documentation/swift/asyncsequence)プロトコルに準拠することで、`for-await-in` ループで独自の型を使用できます。
 
@@ -196,7 +196,7 @@ actor TemperatureLogger {
 
 中括弧ペア\(`{}`\)の定義の前に `actor` キーワードを付けてアクターを導入します `TemperatureLogger` アクターには、外部の他のコードがアクセスできるプロパティがあり、`max` プロパティはアクター内のコードのみが最大値を更新できるように制限されています。
 
-構造体やクラスと同じイニシャライザの構文を使用して、アクターのインスタンスを作成します。アクターのプロパティやメソッドにアクセスする時、中断する可能性のあるポイントを示すために `await` を使用します。例えば:
+構造体やクラスと同じイニシャライザの構文を使用して、アクターのインスタンスを作成します。アクターのプロパティやメソッドにアクセスするとき、中断する可能性のあるポイントを示すために `await` を使用します。例えば:
 
 ```swift
 let logger = TemperatureLogger(label: "Outdoors", measurement: 25)
