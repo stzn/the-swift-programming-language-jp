@@ -825,13 +825,11 @@ class Counter {
 
 `increment(forCount:)` の呼び出しはこれら 2 つの理由のいずれかで失敗する可能性があるため、呼び出しはオプショナルの `Int` 値を返します。これは、`CounterDataSource` の定義で `increment(forCount:)` がオプショナルではない `Int` 値を返すように定義されている場合でも当てはまります。オプショナルチェーンは 2 回行われていますが、結果は 1 つのオプショナルにラップされます。複数のオプショナルチェーンの詳細については、[Linking Multiple Levels of Chaining](./optional-chaining.md#linking-multiple-levels-of-chaining複数階層の連鎖のリンク)を参照ください。
 
-`increment(forCount:)` を呼び出した後、それが返すオプショナルの `Int` は、オプショナルバインディングを使用して、`amount` という定数にアンラップされます。オプショナルの `Int` `に値が含まれている場合、つまり、デリゲートとメソッドの両方が存在し、メソッドが値を返した場合、`count\` 格納プロパティに値が追加され、増加する動作が完了します。
+`increment(forCount:)` を呼び出した後、それが返すオプショナルの `Int` は、オプショナルバインディングを使用して、`amount` という定数にアンラップされます。オプショナルの `Int` に値が含まれている場合、つまり、デリゲートとメソッドの両方が存在し、メソッドが値を返した場合、`count\` 格納プロパティに値が追加され、増加する動作が完了します。
 
 `increment(forCount:)` メソッドから値を取得できない場合\(`dataSource` が `nil` か、データソースが `increment(forCount:)` を実装していないため\)、 `increment()` メソッドはデータソースの `fixedIncrement` プロパティから値を取得しようとします。`fixedIncrement` プロパティもオプショナルの要件のため、その値はオプショナルの `Int` 値です。ただし、`fixedIncrement` は、`CounterDataSource` プロトコル定義の一部として非オプショナルの `Int` プロパティとして定義されています。
 
 下記は、`fixedIncrement` にアクセスされる度にデータソースが定数 `3` を返す簡単な `CounterDataSource` の実装です。これは、オプショナルの `fixedIncrement` プロパティ要件を実装することでこれを行います。
-
-下記は、定数 3 を返すシンプルな `CounterDataSource` の実装です。オプショナルの `fixedIncrement` プロパティ要件を実装することでこれを行います。
 
 ```swift
 class ThreeSource: NSObject, CounterDataSource {
@@ -935,7 +933,7 @@ extension PrettyTextRepresentable  {
 
 ### Adding Constraints to Protocol Extensions\(プロトコル Extensionに制約の追加\)
 
-プロトコル Extension を定義する時、準拠する型が拡張したメソッドとプロパティを使用できる前に、その型が満たす必要がある制約を指定できます。これらの制約は、拡張するプロトコルの名前の後にジェネリックの `where` 句を記述します。ジェネリック `where` 句の詳細については、[Generic Where Clauses](generics.md#generic-where-clausesジェネリックwhere句)を参照ください。
+プロトコル Extension を定義するとき、準拠する型が拡張したメソッドとプロパティを使用できる前に、その型が満たす必要がある制約を指定できます。これらの制約は、拡張するプロトコルの名前の後のジェネリックの `where` 句によって記述されます。ジェネリック `where` 句の詳細については、[Generic Where Clauses](generics.md#generic-where-clausesジェネリックwhere句)を参照ください。
 
 例えば、要素が `Equatable` プロトコルに準拠しているコレクションに適用される `Collection` プロトコルの拡張を定義できます。コレクションの要素を標準ライブラリの `Equatable` プロトコルに制約することで、`==` および `!=` 演算子を使用して、2 つの要素間の等価性と不等価性をチェックできます:
 

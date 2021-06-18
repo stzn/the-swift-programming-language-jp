@@ -91,7 +91,7 @@ var shoppingList: [String] = ["Eggs", "Milk"]
 
 この例では、配列リテラルには 2 つの `String` を含んでいます。これは `shoppingList` 変数の宣言時の型\(`String` しか含めない\)に合致しているので、`shoppingList` に配列リテラルを代入して 2 つに初期値で初期化することができます。
 
-Swift の型推論のおかげで、同じ型の値を含んだ配列リテラルで初期化する時に配列の型を書く必要はありません。先ほどの `shoppingList` の例の初期化は、より簡潔な方法で書くことができました:
+Swift の型推論のおかげで、同じ型の値を含んだ配列リテラルで初期化するときに配列の型を書く必要はありません。先ほどの `shoppingList` の例の初期化は、より簡潔な方法で書くことができました:
 
 ```swift
 var shoppingList = ["Eggs", "Milk"]
@@ -154,7 +154,7 @@ shoppingList[0] = "Six eggs"
 // リストの最初のアイテムは "Eggs" ではなく、 "Six eggs"
 ```
 
-subscript シンタックスを使用する時、指定した index は値の存在する範囲内でなければなりません。例えば、配列の最後に値を追加しようとして `shoppingList[shoppingList.count] = "Salt"` と書くと、実行時エラーになります。
+subscript シンタックスを使用するとき、指定した index は値の存在する範囲内でなければなりません。例えば、配列の最後に値を追加しようとして `shoppingList[shoppingList.count] = "Salt"` と書くと、実行時エラーになります。
 
 ある一定範囲の値を一度に変更する場合にも、`subscript` シンタックスを使用することができます。これは置き換えたい値のセットの数と指定した置き換える範囲の長さが異なっていても可能です。次の例は `"Chocolate Spread"`、`"Cheese"`、`"Butter"` を `"Bananas"`、`"Apples"` に置き換えています。
 
@@ -183,7 +183,7 @@ let mapleSyrup = shoppingList.remove(at: 0)
 ```
 
 > NOTE  
-> 配列の既存の境界を超えた index の値にアクセスしたり、変更したりしようとすると、実行時エラーになるでしょう。`count` プロパティと index を比較して、index が妥当かどうかをチェックしてください。配列は 0 から始まる index 方式なので、妥当な最大のindexは `count - 1` です。しかし、`count` が `0` の時\(配列が空の時\)、妥当な index は存在しません。
+> 配列の既存の境界を超えた index の値にアクセスしたり、変更したりしようとすると、実行時エラーになるでしょう。`count` プロパティと index を比較して、index が妥当かどうかをチェックしてください。配列は 0 から始まる index 方式なので、妥当な最大のindexは `count - 1` です。しかし、`count` が `0` のとき\(配列が空のとき\)、妥当な index は存在しません。
 
 アイテムが削除された時配列内の隙間は埋められ、index `0` の値は再び `"Six eggs"` になります。
 
@@ -434,7 +434,7 @@ farmAnimals.isDisjoint(with: cityAnimals)
 
 ## Dictionaries\(辞書\)
 
-辞書は、特定の型のキーと、特定の型のバリューをペアとして関連づけ、順序なしでコレクションに保持します。それぞれのアイテムは、辞書内で識別子の役割を果たす一意なキーに紐づいています。配列のアイテムとは異なり、辞書のアイテムに順序はありません。辞書は、現実に特定の単語を辞書で調べるのと同じように、識別子から値を探したい時に使います。
+辞書は、特定の型のキーと、特定の型のバリューをペアとして関連づけ、順序なしでコレクションに保持します。それぞれのアイテムは、辞書内で識別子の役割を果たす一意なキーに紐づいています。配列のアイテムとは異なり、辞書のアイテムに順序はありません。辞書は、現実に特定の単語を辞書で調べるのと同じように、識別子から値を探したいときに使います。
 
 > NOTE  
 > `Dictionary` はFoundationの `NSDictionary` とスムーズにやりとりできるようにしています。 FoundationとCocoaを使った `Dictionary` の使用方法に関しては、[Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239)を参照ください
