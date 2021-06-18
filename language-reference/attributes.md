@@ -9,3 +9,67 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 ![属性](./../.gitbook/assets/attributes.png)
 
 一部の宣言属性は、属性とそれが特定の宣言にどのように適用されるかについての詳細情報を指定する引数を受け入れます。これらの attribute arguments は括弧で囲まれ、その形式は属する属性によって定義されています。
+
+## Declaration Attributes
+
+### available
+
+### discardableResult
+
+### dynamicCallable
+
+### dynamicMemberLookup
+
+### frozen
+
+### GKInspectable
+
+### inlinable
+
+### main
+
+### nonobjc
+
+### NSApplicationMain
+
+### NSCopying
+
+### NSManaged
+
+### objc
+
+### objcMembers
+
+### propertyWrapper
+
+### resultBuilder
+
+#### Result-Building Methods
+
+#### Result Transformations
+
+#### Custom Result-Builder Attributes
+
+### requires_stored_property_inits
+
+### testable
+
+### UIApplicationMain
+
+### usableFromInline
+
+### warn_unqualified_access
+
+### Declaration Attributes Used by Interface Builder
+
+## Type Attributes
+
+### autoclosure
+
+### convention
+
+### escaping
+
+## Switch Case Attributes
+
+### unknown
