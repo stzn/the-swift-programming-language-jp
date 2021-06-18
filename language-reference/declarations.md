@@ -884,7 +884,7 @@ protocol SubProtocolB: SomeProtocol where SomeType: Equatable { }
 
 クラスの convenience イニシャライザを宣言するには、`convenience` 修飾子を使用してイニシャライザ宣言をマークします。
 
-![イニシャライザ宣言2](./../.gitbook/assets/initializer_declaration2.png)
+![convenience イニシャライザ宣言](./../.gitbook/assets/initializer_declaration2.png)
 
 convenience イニシャライザは、初期化プロセスを別の convenience イニシャライザまたはクラスの指定イニシャライザの 1 つに委譲できます。つまり、初期化プロセスは、最終的にクラスのプロパティを初期化するために、指定イニシャライザを呼び出して終える必要があります。convenience イニシャライザは、スーパークラスのイニシャライザを呼び出すことはできません。
 
