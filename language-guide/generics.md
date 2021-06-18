@@ -74,7 +74,7 @@ func swapTwoValues<T>(_ a: inout T, _ b: inout T)
 
 ジェネリックバージョンの関数は、実際の型名\(`Int`、`String`、`Double` など\)の代わりにプレースホルダ型名 \(この場合は `T`\) を使用します。プレースホルダの型名は、`T` に何が必要かについては何も言いませんが、`T` が表すものにかかわらず、`a` と `b` の両方が、同じ型 `T` でなければならないことを示しています。`T` の代わりに使用する実際の型は、`swapTwoValues(_:_:)` 関数が呼び出される度に決定されます。
 
-ジェネリック関数と非ジェネリック関数のもう 1 つの違いは、ジェネリック関数の名前\(`swapTwoValues(_:_:)`\)の後に山かっこ内にプレースホルダの型名\(`<T>`\)を記述します。山かっこは、`T` が `swapTwoValues(_:_:)` 関数定義内のプレースホルダ型名なことを Swift に伝えます。`T` はプレースホルダのため、Swift は `T` という実際の型を探しません。
+ジェネリック関数と非ジェネリック関数のもう 1 つの違いは、ジェネリック関数の名前\(`swapTwoValues(_:_:)`\)の後に山かっこ内にプレースホルダの型名\(`<T>`\)を記述することです。山かっこは、`T` が `swapTwoValues(_:_:)` 関数定義内のプレースホルダ型名なことを Swift に伝えます。`T` はプレースホルダのため、Swift は `T` という実際の型を探しません。
 
 `swapTwoValues(_:_:)` 関数は `swapTwoInts` と同じ方法で呼び出すことができますが、2 つの値が互いに同じ型の限り、任意の型の 2 つの値を渡すことができます。`swapTwoValues(_:_:)` が呼び出される度に、`T` に使用する型は、関数に渡される値の型から推論されます。
 
@@ -241,7 +241,7 @@ if let topItem = stackOfStrings.topItem {
 型引数リストの一部として、型引数の名前の後にコロン\(`:`\)で区切って単一のクラスまたはプロトコルを配置することで、型制約を記述します。ジェネリック関数の型制約の基本的な構文を以下に示します\(構文はジェネリック型でも同じです\)。
 
 ```swift
-func someFunction<T: SomeClass, U: SomeProtocol>(someT:T, someU:U) {
+func someFunction<T: SomeClass, U: SomeProtocol>(someT: T, someU: U) {
      // ここに関数本文が入ります
 }
 ```
@@ -305,7 +305,7 @@ func findIndex<T: Equatable>(of valueToFind: T, in array:[T]) -> Int? {
 }
 ```
 
-`findIndex(of:in:)` の単一の型引数は `T: Equatable` と記述されます。これは、"`Equatable` プロトコルに準拠する任意の型 `T`"を意味します。
+`findIndex(of:in:)` の単一の型引数は `T: Equatable` と記述されます。これは、「`Equatable` プロトコルに準拠する任意の型 `T`」を意味します。
 
 `findIndex(of:in:)` 関数は正常にコンパイルされ、`Double` や `String` などの `Equatable` に準拠する任意の型で使用できるようになりました:
 
