@@ -2,7 +2,7 @@
 
 最終更新日:
 
-Swift には、宣言に適用される属性と型に適用される属性の 2 種類があります。属性は、宣言または型に関する追加情報を提供します。たとえば、関数宣言の `discardableResult` 属性は、関数は値を返しますが、戻り値が使用されていない場合、コンパイラは警告を生成しないことを示します。
+Swift には、宣言に適用される属性と型に適用される属性の 2 種類があります。属性は、宣言または型に関する追加情報を提供します。例えば、関数宣言の `discardableResult` 属性は、関数は値を返しますが、戻り値が使用されていない場合、コンパイラは警告を生成しないことを示します。
 
 `@` 記号に続けて属性の名前と、属性が受け入れる引数を書き込むことにより、属性を指定します。
 
@@ -356,6 +356,69 @@ class ExampleClass: NSObject {
 ほとんどのコードでは、代わりに `objc` 属性を使用して、必要な宣言のみを公開する必要があります。多くの宣言を公開する必要がある場合は、`objc` 属性を持つ extension でグループ化できます。`objcMembers` 属性は、Objective-C ランタイムのリフレクション機能を多用するライブラリにとって便利です。必要のないときに `objc` 属性を適用すると、バイナリサイズが大きくなり、パフォーマンスに悪影響を与える可能性があります。
 
 ### propertyWrapper
+
+この属性をクラス、構造体、または列挙型宣言に適用すると、その型をプロパティラッパとして使用します。この属性を型に適用すると、型と同じ名前のカスタム属性が作成されます。その新しい属性をクラス、構造体、または列挙型のプロパティに適用して、ラッパ型のインスタンスを介してプロパティへのアクセスをラップします。属性をローカルの格納変数宣言に適用して、変数へのアクセスを同じ方法でラップします。計算変数、グローバル変数、および定数には、プロパティラッパを使用できません。
+
+ラッパは `wrappedValue` インスタンスプロパティを定義する必要があります。プロパティのラップされた値は、このプロパティの get と set が公開する値です。ほとんどの場合、`wrappedValue` は計算値ですが、代わりに格納値にすることもできます。ラッパは、ラップされた値に必要な基になるストレージを定義および管理します。コンパイラは、ラップされたプロパティの名前の前にアンダースコア(`_`)を付けることにより、ラッパ型のインスタンスのストレージを合成します。例えば、`someProperty` のラッパは `_someProperty` として格納されます。ラッパの合成ストレージのアクセス制御レベルは `private` です。
+
+プロパティラッパを持つプロパティには、`willSet` ブロックと `didSet` ブロックを含めることができますが、コンパイラで合成された `get` ブロックまたは `set` ブロックをオーバーライドすることはできません。
+
+Swift は、プロパティラッパを初期化するための 2 つの形式の糖衣構文(シンタックスシュガー)を提供します。ラップされた値の定義で代入構文を使用して、代入の右側にある式を、プロパティラッパのイニシャライザの `wrappedValue` の引数として渡すことができます。属性をプロパティに適用するときに属性に引数を指定することもでき、それらの引数はプロパティラッパのイニシャライザに渡されます。例えば、下記のコードでは、`SomeStruct` は `SomeWrapper` が定義する各イニシャライザを呼び出します。
+
+```swift
+@propertyWrapper
+struct SomeWrapper {
+    var wrappedValue: Int
+    var someValue: Double
+    init() {
+        self.wrappedValue = 100
+        self.someValue = 12.3
+    }
+    init(wrappedValue: Int) {
+        self.wrappedValue = wrappedValue
+        self.someValue = 45.6
+    }
+    init(wrappedValue value: Int, custom: Double) {
+        self.wrappedValue = value
+        self.someValue = custom
+    }
+}
+
+struct SomeStruct {
+    // init() を使用します
+    @SomeWrapper var a: Int
+
+    // init(wrappedValue:) を使用します
+    @SomeWrapper var b = 10
+
+    // どちらも init(wrappedValue:custom:) を使用します
+    @SomeWrapper(custom: 98.7) var c = 30
+    @SomeWrapper(wrappedValue: 30, custom: 98.7) var d
+}
+```
+
+ラップされたプロパティの projected value は、プロパティラッパが追加機能を公開するために使用できる 2 番目の値です。プロパティラッパ型の作成者は、その projected value の意味を決定し、projected value が公開するインターフェイスを定義する責任があります。プロパティラッパから値を projected value を提供するには、ラッパ型で `projectedValue` インスタンスプロパティを定義します。コンパイラは、ラップされたプロパティの名前の前にドル記号(`$`)を付けることにより、projected value の識別子を合成します。例えば、`someProperty` の projected value は `$someProperty` です。projected value は、元のラップされたプロパティと同じアクセス制御レベルを持ちます。
+
+```swift
+@propertyWrapper
+struct WrapperWithProjection {
+    var wrappedValue: Int
+    var projectedValue: SomeProjection {
+        return SomeProjection(wrapper: self)
+    }
+}
+struct SomeProjection {
+    var wrapper: WrapperWithProjection
+}
+
+struct SomeStruct {
+    @WrapperWithProjection var x = 123
+}
+let s = SomeStruct()
+s.x           // Int 値
+s.$x          // SomeProjection 値
+s.$x.wrapper  // WrapperWithProjection 値
+```
 
 ### resultBuilder
 
