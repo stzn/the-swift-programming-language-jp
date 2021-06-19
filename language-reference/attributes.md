@@ -115,7 +115,73 @@ struct MyStruct {
 
 ### discardableResult
 
+この属性を関数またはメソッドの宣言に適用すると、値を返す関数またはメソッドがその結果を使用せずに呼び出されたときのコンパイラの警告を抑制します。
+
 ### dynamicCallable
+
+この属性をクラス、構造体、列挙型、またはプロトコルに適用すると、型のインスタンスを呼び出し可能な関数として扱います。この型は、`dynamicallyCall(withArguments:)` メソッド、`dynamicallyCall(withKeywordArguments:)` メソッド、またはその両方を実装する必要があります。
+
+動的に呼び出し可能な型のインスタンスは、任意の数の引数を取る関数のように呼び出すことができます。
+
+```swift
+@dynamicCallable
+struct TelephoneExchange {
+    func dynamicallyCall(withArguments phoneNumber: [Int]) {
+        if phoneNumber == [4, 1, 1] {
+            print("Get Swift help on forums.swift.org")
+        } else {
+            print("Unrecognized number")
+        }
+    }
+}
+
+let dial = TelephoneExchange()
+
+// 動的メソッド呼び出しを使用します
+dial(4, 1, 1)
+// "Get Swift help on forums.swift.org"
+
+dial(8, 6, 7, 5, 3, 0, 9)
+// "Unrecognized number"
+
+// 基になるメソッドを直接呼び出します
+dial.dynamicallyCall(withArguments: [4, 1, 1])
+```
+
+`dynamicallyCall(withArguments:)` メソッドの宣言には、上記の例の `[Int]` のように、p[ExpressibleByArrayLiteral](https://developer.apple.com/documentation/swift/expressiblebyarrayliteral)プロトコルに準拠する単一の引数が必要です。戻り値の型は任意の型にすることができます。
+
+`dynamicallyCall(withKeywordArguments:)` メソッドを実装する場合は、動的メソッド呼び出しにラベルを含めることができます。
+
+```swift
+@dynamicCallable
+struct Repeater {
+    func dynamicallyCall(withKeywordArguments pairs: KeyValuePairs<String, Int>) -> String {
+        return pairs
+            .map { label, count in
+                repeatElement(label, count: count).joined(separator: " ")
+            }
+            .joined(separator: "\n")
+    }
+}
+
+let repeatLabels = Repeater()
+print(repeatLabels(a: 1, b: 2, c: 3, b: 2, a: 1))
+// a
+// b b
+// c c c
+// b b
+// a
+```
+
+`dynamicallyCall(withKeywordArguments:)` メソッドの宣言には、[ExpressibleByDictionaryLiteral](https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral)プロトコルに準拠する単一の引数が必要で、戻り値の型は任意の型にすることができます。引数の[Key](https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral/2294108-key)は[ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral)の必要があります。前の例では、引数型として[KeyValuePairs](https://developer.apple.com/documentation/swift/keyvaluepairs)を使用しているため、呼び出し元は重複する引数ラベルを含めることができます。つまり、`a` と `b` は、`repeat` の呼び出しに複数回表示されます。
+
+両方の `dynamiclyCall` メソッドを実装する場合、メソッド呼び出しにキーワード引数が含まれていると、`dynamicallyCall(withKeywordArguments:)` が呼び出されます。他の全ての場合、`dynamicallyCall(withArguments:)` が呼び出されます。
+
+動的に呼び出すことができるインスタンスは、`dynamicCall` メソッドの実装の 1 つで指定した型と一致する引数と戻り値を使用してのみ呼び出すことができます。次の例の呼び出しは、`KeyValuePairs <String、String>` を受け取る `dynamicallyCall(withArguments:)` の実装がないため、コンパイルできません。
+
+```swift
+repeatLabels(a: "four") // エラー
+```
 
 ### dynamicMemberLookup
 
