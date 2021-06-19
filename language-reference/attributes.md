@@ -88,7 +88,7 @@ protocol MyRenamedProtocol {
 typealias MyProtocol = MyRenamedProtocol
 ```
 
-1 つの宣言に複数の `available` 属性を適用して、様々なプラットフォームおよび様々なバージョンの Swift での宣言の availability を指定できます。属性が現在のターゲットと一致しないプラットフォームまたは言語バージョンを指定している場合、`available` 属性が適用される宣言は無視されます。複数の使用可能な属性を使用する場合、効果的な可用性は、プラットフォームと Swift の可用性の組み合わせです。
+1 つの宣言に複数の `available` 属性を適用して、様々なプラットフォームおよび様々なバージョンの Swift での宣言の availability を指定できます。属性が現在のターゲットと一致しないプラットフォームまたは言語バージョンを指定している場合、`available` 属性が適用される宣言は無視されます。複数の使用可能な属性を使用する場合、効果的な availability は、プラットフォームと Swift の availability の組み合わせです。
 
 `available` 属性がプラットフォームまたは言語名の引数に加えて `introduced` 引数を指定するだけの場合は、代わりに次の省略構文を使用できます:
 
@@ -443,19 +443,19 @@ Result Builder の作成方法は次のとおりです:
 <dt>static func buildOptional(_ component: Component?) -> Component</dt>
 <dd>
 
-`nil` になる可能性のある部分的な結果から部分的な結果を構築します。このメソッドを実装して、`else` 句を含まない `if` ステートメントをサポートします。
+`nil` になる可能性のある部分的な結果から部分的な結果を構築します。このメソッドを実装して、`else` 句を含まない `if` 文をサポートします。
 </dd>
 
 <dt>static func buildEither(first: Component) -> Component</dt>
 <dd>
 
-条件によって値が変化する部分的な結果を作成します。このメソッドと `buildEither(second:)` の両方を実装して、`switch` ステートメントと `else` 句を含む `if` ステートメントをサポートします。
+条件によって値が変化する部分的な結果を作成します。このメソッドと `buildEither(second:)` の両方を実装して、`switch` 文と `else` 句を含む `if` 文をサポートします。
 </dd>
 
 <dt>static func buildEither(second: Component) -> Component</dt>
 <dd>
 
-条件によって値が変化する部分的な結果を作成します。このメソッドと `buildEither(first:)` の両方を実装して、`switch` ステートメントと `else` 句を含む `if` ステートメントをサポートします。
+条件によって値が変化する部分的な結果を作成します。このメソッドと `buildEither(first:)` の両方を実装して、`switch` 文と `else` 句を含む `if` 文をサポートします。
 </dd>
 
 <dt>static func buildArray(_ components: [Component]) -> Component</dt>
@@ -479,7 +479,7 @@ Result Builder の作成方法は次のとおりです:
 <dt>static func buildLimitedAvailability(_ component: Component) -> Component</dt>
 <dd>
 
-可用性チェックを実行するコンパイラ制御文の外部で型情報を伝播または消去する部分的な結果を作成します。これを使用して、条件分岐間で異なる型情報を消去できます。
+availability チェックを実行するコンパイラ制御文の外部で型情報を伝播または消去する部分的な結果を作成します。これを使用して、条件分岐間で異なる型情報を消去できます。
 </dd>
 
 例えば、下記のコードは、整数の配列を作成するシンプルな Result Builder を定義しています。このコードは、`Compontent` と `Expression` をタイプエイリアスとして定義し、下記の例を上記のメソッドのリストに簡単に一致させることができます。
@@ -512,6 +512,189 @@ struct ArrayBuilder {
 ```
 
 #### Result Transformations
+
+---
+
+次の構文変換は、Result Builder 構文を使用するコードを、Result Builder 型の静的メソッドを呼び出すコードに変換するために再帰的に適用されます。
+
+* Result Builder に `buildExpression(_:)` メソッドがある場合、各式はそのメソッドの呼び出しになります。この変換は常に最初に行われます。例えば、次の宣言は同等です:
+
+```swift
+@ArrayBuilder var builderNumber: [Int] { 10 }
+var manualNumber = ArrayBuilder.buildExpression(10)
+```
+
+* 代入文は式のように変換されますが、`()` に評価されると解釈されます。代入を具体的に処理するために `()` 型の引数を取る `buildExpression(_:)` のオーバーロードを定義できます
+
+* availability 条件をチェックする分岐文は、`buildLimitedAvailability(_:)` メソッドの呼び出しになります。この変換は、`buildEither(first:)`、`buildEither(second:)`、または `buildOptional(_:)` の呼び出しに変換される前に行われます。`buildLimitedAvailability(_:)` メソッドを使用して、取得する分岐に応じて変化する型情報を消去します。例えば、下記の `buildEither(first:)` メソッドと `buildEither(second:)` メソッドは、両方の分岐に関する型情報をキャプチャするジェネリック型を使用します
+
+```swift
+protocol Drawable {
+    func draw() -> String
+}
+struct Text: Drawable {
+    var content: String
+    init(_ content: String) { self.content = content }
+    func draw() -> String { return content }
+}
+struct Line<D: Drawable>: Drawable {
+    var elements: [D]
+    func draw() -> String {
+        return elements.map { $0.draw() }.joined(separator: "")
+    }
+}
+struct DrawEither<First: Drawable, Second: Drawable>: Drawable {
+    var content: Drawable
+    func draw() -> String { return content.draw() }
+}
+
+@resultBuilder
+struct DrawingBuilder {
+    static func buildBlock<D: Drawable>(_ components: D...) -> Line<D> {
+        return Line(elements: components)
+    }
+    static func buildEither<First, Second>(first: First)
+        -> DrawEither<First, Second> {
+            return DrawEither(content: first)
+    }
+    static func buildEither<First, Second>(second: Second)
+        -> DrawEither<First, Second> {
+            return DrawEither(content: second)
+    }
+}
+```
+
+ただし、このアプローチでは、availability チェックがあるコードで問題が発生します:
+
+```swift
+@available(macOS 99, *)
+struct FutureText: Drawable {
+    var content: String
+    init(_ content: String) { self.content = content }
+    func draw() -> String { return content }
+}
+@DrawingBuilder var brokenDrawing: Drawable {
+    if #available(macOS 99, *) {
+        FutureText("Inside.future")  // Problem
+    } else {
+        Text("Inside.present")
+    }
+}
+// brokenDrawing の型は Line<DrawEither<Line<FutureText>, Line<Text>>>
+```
+
+上記のコードでは、`FutureText` は `DrawEither` ジェネリック型の 1 つのため、`brokenDrawing` の型の一部として使用されています。これにより、`FutureText` が実行時に使用できない場合、その型が明示的に使用されていない場合でも、プログラムがクラッシュする可能性があります。
+
+この問題を解決するには、`buildLimitedAvailability(_:)` メソッドを実装して型情報を消去します。例えば、下記のコードは、availability チェックから `AnyDrawable` 値を作成します。
+
+```swift
+struct AnyDrawable: Drawable {
+    var content: Drawable
+    func draw() -> String { return content.draw() }
+}
+extension DrawingBuilder {
+    static func buildLimitedAvailability(_ content: Drawable) -> AnyDrawable {
+        return AnyDrawable(content: content)
+    }
+}
+
+@DrawingBuilder var typeErasedDrawing: Drawable {
+    if #available(macOS 99, *) {
+        FutureText("Inside.future")
+    } else {
+        Text("Inside.present")
+    }
+}
+// typeErasedDrawing の型は Line<DrawEither<AnyDrawable, Line<Text>>>
+```
+
+* 分岐文は、`buildEither(first:)` メソッドと `buildEither(second:)` メソッドへの一連のネストされた呼び出しになります。文の条件とケースはバイナリツリーのリーフノードにマッピングされ、文はルートノードからそのリーフノードへのパスをたどる `buildEither` メソッドへのネストされた呼び出しになります
+
+例えば、3 つのケースを持つ `switch` 文を作成する場合、コンパイラは 3 つのリーフノードを持つバイナリツリーを使用します。同様に、ルートノードから 2 番目のケースへのパスは「2 番目の子」の「最初の子」のため、そのケースは `buildEither(first: buildEither(second: ... ))` のようなネストされた呼び出しになります。次の宣言は同等です:
+
+```swift
+let someNumber = 19
+@ArrayBuilder var builderConditional: [Int] {
+    if someNumber < 12 {
+        31
+    } else if someNumber == 19 {
+        32
+    } else {
+        33
+    }
+}
+
+var manualConditional: [Int]
+if someNumber < 12 {
+    let partialResult = ArrayBuilder.buildExpression(31)
+    let outerPartialResult = ArrayBuilder.buildEither(first: partialResult)
+    manualConditional = ArrayBuilder.buildEither(first: outerPartialResult)
+} else if someNumber == 19 {
+    let partialResult = ArrayBuilder.buildExpression(32)
+    let outerPartialResult = ArrayBuilder.buildEither(second: partialResult)
+    manualConditional = ArrayBuilder.buildEither(first: outerPartialResult)
+} else {
+    let partialResult = ArrayBuilder.buildExpression(33)
+    manualConditional = ArrayBuilder.buildEither(second: partialResult)
+}
+```
+
+* `else` 句のない `if` 文のように、値を生成しない可能性のある分岐文は、`buildOptional(_:)` の呼び出しになります。`if` 文の条件が満たされると、そのコードブロックが変換され、引数として渡されます。それ以外の場合、`buildOptional(_:)` は引数として `nil` を使用して呼び出されます。例えば、次の宣言は同等です:
+
+```swift
+@ArrayBuilder var builderOptional: [Int] {
+    if (someNumber % 2) == 1 { 20 }
+}
+
+var partialResult: [Int]? = nil
+if (someNumber % 2) == 1 {
+    partialResult = ArrayBuilder.buildExpression(20)
+}
+var manualOptional = ArrayBuilder.buildOptional(partialResult)
+```
+
+コードブロックまたは `do` 文は、`buildBlock(_:)` メソッドの呼び出しになります。ブロック内の各文は一度に 1 つずつ変換され、`buildBlock(_:)` メソッドの引数になります。例えば、次の宣言は同等です:
+
+```swift
+@ArrayBuilder var builderBlock: [Int] {
+    100
+    200
+    300
+}
+
+var manualBlock = ArrayBuilder.buildBlock(
+    ArrayBuilder.buildExpression(100),
+    ArrayBuilder.buildExpression(200),
+    ArrayBuilder.buildExpression(300)
+)
+```
+
+* `for` ループは一時変数、`for` ループ、`buildArray(_:)` メソッドの呼び出し、になります。新しい `for` ループはシーケンスを繰り返し処理し、それぞれの部分的な結果をその配列に追加します。一時配列は、`buildArray(_:)` 呼び出しの引数として渡されます。例えば、次の宣言は同等です:
+
+```swift
+@ArrayBuilder var builderArray: [Int] {
+    for i in 5...7 {
+        100 + i
+    }
+}
+
+var temporary: [[Int]] = []
+for i in 5...7 {
+    let partialResult = ArrayBuilder.buildExpression(100 + i)
+    temporary.append(partialResult)
+}
+let manualArray = ArrayBuilder.buildArray(temporary)
+```
+
+* Result Builder に `buildFinalResult(_:)` メソッドがある場合、最終結果はそのメソッドの呼び出しになります。この変換は常に最後に行われます
+
+変換の動作は一時変数の観点から説明されていますが、Result Builder を使用しても、コードの残りの部分から見える新しい宣言は実際には作成されません。
+
+Result Builder が変換するコードで、`break`、`continue`、`defer`、`guard`、`return` 文、`while` 文、または `do-catch` 文を使用することはできません。
+
+変換プロセスでは、コード内の宣言は変更されません。これにより、一時的な定数と変数を使用して、1 つずつ式を構築します。また、`throw` 文、コンパイル時の診断文、または `return` 文を含むクロージャも変更しません。
+
+可能な限り、変換は合体します。例えば、式 `4 + 5 * 6` は、その関数への複数の呼び出しではなく、`buildExpression(4 + 5 * 6)` になります。同様に、ネストされた分岐文は、`buildEither` メソッドへの呼び出しの単一のバイナリツリーになります。
 
 #### Custom Result-Builder Attributes
 
