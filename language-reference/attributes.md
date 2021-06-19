@@ -1,14 +1,14 @@
 # Attributes \(属性\)
 
-最終更新日:
+最終更新日: 2021/6/19
 
-Swift には、宣言に適用される属性と型に適用される属性の 2 種類があります。属性は、宣言または型に関する追加情報を提供します。例えば、関数宣言の `discardableResult` 属性は、関数は値を返しますが、戻り値が使用されていない場合、コンパイラは警告を生成しないことを示します。
+Swift には、宣言に適用される属性と型に適用される属性の 2 種類があります。属性は、宣言または型に関する追加情報を提供します。例えば、関数宣言の `discardableResult` 属性は、関数は値を返しますが、戻り値が使用されていない場合に、コンパイラが警告を生成しないことを示します。
 
 `@` 記号に続けて属性の名前と、属性が受け入れる引数を書き込むことにより、属性を指定します。
 
 ![属性](./../.gitbook/assets/attributes.png)
 
-一部の宣言属性は、属性とそれが特定の宣言にどのように適用されるかについての詳細情報を指定する引数を受け入れます。これらの attribute arguments は括弧で囲まれ、その形式は属する属性によって定義されています。
+一部の宣言属性は、属性とそれが特定の宣言にどのように適用されるかについての詳細情報を指定する引数を受け入れます。これらの attribute arguments は括弧(`()`)で囲まれ、その形式は属する属性によって定義されています。
 
 ## Declaration Attributes\(宣言属性\)
 
@@ -16,9 +16,9 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 
 ### available
 
-この属性を適用して、特定の Swift 言語バージョンまたは特定のプラットフォームとオペレーティングシステムのバージョンに関連する宣言のライフサイクルを示します。
+この属性を適用すると、特定の Swift 言語バージョンまたは特定のプラットフォームとオペレーティングシステムのバージョンに関連する宣言のライフサイクルを示します。
 
-`available` 属性は、常に 2 つ以上のカンマ区切りの属性引数のリストを伴います。これらの引数は、次のプラットフォーム名または言語名のいずれかで始まります:
+`available` 属性は、常に 2 つ以上のカンマ区切り(`,`)の属性引数のリストを伴います。これらの引数は、次のプラットフォーム名または言語名のいずれかで始まります:
 
 * `iOS`
 * `iOSApplicationExtension`
@@ -34,9 +34,9 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 
 アスタリスク(`*`)を使用して、上記の全てのプラットフォーム名で宣言が使用可能なことを示すこともできます。Swift のバージョン番号を使用して availability を指定する `available` 属性では、アスタリスクを使用できません。
 
-残りの引数は任意の順序で表示でき、重要なマイルストーンなど、宣言のライフサイクルに関する追加情報を指定できます。
+残りの引数は任意の順序で記述でき、重要なマイルストーンなど、宣言のライフサイクルに関する追加情報を指定できます。
 
-* `unavailable` 引数は、指定されたプラットフォームで宣言が使用できないことを示します。この引数は、Swift バージョンの availability を指定する場合は使用できません
+* `unavailable` 引数は、指定されたプラットフォームで宣言が使用できないことを示します。この引数は、Swift の availability バージョンを指定している場合は使用できません
 
 * `introduced` 引数は、宣言が導入された特定のプラットフォームまたは言語の最初のバージョンを示します。形式は次のとおりです:
 
@@ -48,7 +48,7 @@ version number は、ピリオド(`.`)で区切られた 1〜3 個の正の整�
 
 ![deprecated引数](./../.gitbook/assets/deprecated.png)
 
-任意の version number は、ピリオド(`.`)で区切られた 1〜3 個の正の整数で構成されます。バージョン番号を省略すると、deprecated がいつ発生したかについての情報を提供せずに、宣言が現在 deprecated になっていることを示します。バージョン番号を省略する場合は、コロン(`:`)も省略してください。
+任意の version number は、ピリオド(`.`)で区切られた 1〜3 個の正の整数で構成されます。バージョン番号を省略すると、deprecated がいつ発生したかについての情報を提供せずに、宣言が現在 deprecated になっていることのみを示します。バージョン番号を省略する場合は、コロン(`:`)も省略してください。
 
 * `obsoleted` 引数は、宣言が廃止された特定のプラットフォームまたは言語の最初のバージョンを示します。宣言が廃止されると、指定されたプラットフォームまたは言語から削除され、使用できなくなります。形式は次のとおりです:
 
@@ -56,19 +56,19 @@ version number は、ピリオド(`.`)で区切られた 1〜3 個の正の整�
 
 version number は、ピリオド(`.`)で区切られた 1〜3 個の正の整数で構成されます。
 
-* `message` 引数は、廃止または deprecated された宣言の使用した際に、コンパイラが表示する警告またはエラーのテキストメッセージを提供します。形式は次のとおりです:
+* `message` 引数は、deprecated または obsoleted された宣言に使用した際に、コンパイラが表示する警告またはエラーのテキストメッセージを提供します。形式は次のとおりです:
 
 ![message引数](./../.gitbook/assets/message.png)
 
 message は文字列リテラルで構成されます。
 
-* `renamed` 引数は、名前が変更された宣言の新しい名前を示すテキストメッセージを提供します。コンパイラは、名前が変更された宣言の使用に対してエラーを発行する際に、新しい名前を表示します。形式は次のとおりです:
+* `renamed` 引数は、名前が変更された宣言の新しい名前を示すテキストメッセージを提供します。コンパイラは、名前が変更された宣言が使用された際にエラーを発行し、新しい名前を表示します。形式は次のとおりです:
 
 ![renamed引数](./../.gitbook/assets/renamed.png)
 
 new name は文字列リテラルで構成されます。
 
-下記に示すように、`renamed` 引数と `unavailable` 引数を使用してフレームワークまたはライブラリのリリース間で宣言の名前が変更されたことを示すために、`available` 属性をタイプエイリアス宣言に適用することができます。この組み合わせにより、宣言の名前が変更されたというコンパイルエラーが発生します。
+下記に示すように、フレームワークまたはライブラリのリリース間で宣言の名前が変更されたことを示すために、`renamed` 引数と `unavailable` 引数と一緒に `available` 属性をタイプエイリアス宣言に適用することができます。この組み合わせにより、宣言の名前が変更されたというコンパイルエラーが発生します。
 
 ```swift
 // 初回リリース
@@ -88,7 +88,7 @@ protocol MyRenamedProtocol {
 typealias MyProtocol = MyRenamedProtocol
 ```
 
-1 つの宣言に複数の `available` 属性を適用して、様々なプラットフォームおよび様々なバージョンの Swift での宣言の availability を指定できます。属性が現在のターゲットと一致しないプラットフォームまたは言語バージョンを指定している場合、`available` 属性が適用される宣言は無視されます。複数の使用可能な属性を使用する場合、効果的な availability は、プラットフォームと Swift の availability の組み合わせです。
+1 つの宣言に複数の `available` 属性を適用して、様々なプラットフォームおよび様々なバージョンの Swift の availability を指定できます。属性が現在のターゲットと一致しないプラットフォームまたは言語バージョンを指定している場合、`available` 属性が適用される宣言は無視されます。複数の `available` 属性を使用する場合、有効な availability は、プラットフォームと Swift の availability の組み合わせです。
 
 `available` 属性がプラットフォームまたは言語名の引数に加えて `introduced` 引数を指定するだけの場合は、代わりに次の省略構文を使用できます:
 
@@ -148,7 +148,7 @@ dial(8, 6, 7, 5, 3, 0, 9)
 dial.dynamicallyCall(withArguments: [4, 1, 1])
 ```
 
-`dynamicallyCall(withArguments:)` メソッドの宣言には、上記の例の `[Int]` のように、p[ExpressibleByArrayLiteral](https://developer.apple.com/documentation/swift/expressiblebyarrayliteral)プロトコルに準拠する単一の引数が必要です。戻り値の型は任意の型にすることができます。
+`dynamicallyCall(withArguments:)` メソッドの宣言には、上記の例の `[Int]` のように、[ExpressibleByArrayLiteral](https://developer.apple.com/documentation/swift/expressiblebyarrayliteral)プロトコルに準拠する単一の引数が必要です。戻り値の型は任意の型にすることができます。
 
 `dynamicallyCall(withKeywordArguments:)` メソッドを実装する場合は、動的メソッド呼び出しにラベルを含めることができます。
 
@@ -173,11 +173,11 @@ print(repeatLabels(a: 1, b: 2, c: 3, b: 2, a: 1))
 // a
 ```
 
-`dynamicallyCall(withKeywordArguments:)` メソッドの宣言には、[ExpressibleByDictionaryLiteral](https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral)プロトコルに準拠する単一の引数が必要で、戻り値の型は任意の型にすることができます。引数の[Key](https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral/2294108-key)は[ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral)の必要があります。前の例では、引数型として[KeyValuePairs](https://developer.apple.com/documentation/swift/keyvaluepairs)を使用しているため、呼び出し元は重複する引数ラベルを含めることができます。つまり、`a` と `b` は、`repeat` の呼び出しに複数回表示されます。
+`dynamicallyCall(withKeywordArguments:)` メソッドの宣言には、[ExpressibleByDictionaryLiteral](https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral)プロトコルに準拠する単一の引数が必要で、戻り値の型は任意の型にすることができます。引数の[Key](https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral/2294108-key)は[ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral)に準拠する必要があります。前の例では、引数型として[KeyValuePairs](https://developer.apple.com/documentation/swift/keyvaluepairs)を使用しているため、呼び出し元は重複する引数ラベルを含めることができます。つまり、`a` と `b` は、`repeatLabels` の呼び出し時に複数回使用されています。
 
 両方の `dynamiclyCall` メソッドを実装する場合、メソッド呼び出しにキーワード引数が含まれていると、`dynamicallyCall(withKeywordArguments:)` が呼び出されます。他の全ての場合、`dynamicallyCall(withArguments:)` が呼び出されます。
 
-動的に呼び出すことができるインスタンスは、`dynamicCall` メソッドの実装の 1 つで指定した型と一致する引数と戻り値を使用してのみ呼び出すことができます。次の例の呼び出しは、`KeyValuePairs <String、String>` を受け取る `dynamicallyCall(withArguments:)` の実装がないため、コンパイルできません。
+動的に呼び出すことができるインスタンスは、`dynamicCall` メソッドの実装の 1 つで指定した型と一致する引数と戻り値を使用した場合にのみ呼び出すことができます。次の例の呼び出しは、`KeyValuePairs <String、String>` を受け取る `dynamicallyCall(withArguments:)` の実装がないため、コンパイルできません。
 
 ```swift
 repeatLabels(a: "four") // エラー
@@ -240,7 +240,7 @@ print(wrapper.x)
 > NOTE  
 > コンパイラが library evolution mode でない場合、全ての構造体と列挙型は暗黙的に frozen にされ、この属性は無視されます。
 
-library evolution mode では、nonfrozen の構造体や列挙型のメンバと相互作用するコードは、ライブラリの将来のバージョンでその型のメンバの一部が追加、削除、または並べ替えられた場合でも、再コンパイルせずに作業を継続できるようにコンパイルされます。コンパイラは、実行時に情報を検索したり、間接層を追加したりするなどの手法を使用して、これを可能にします。構造体または列挙型を frozen でマークすると、パフォーマンスを向上させるためのこの柔軟性が失われます。ライブラリの将来のバージョンでは、型に限定的な変更しか加えることができませんが、コンパイラは、型のメンバとやり取りするコードに追加の最適化を行うことができます。
+library evolution mode では、nonfrozen の構造体や列挙型のメンバとやり取りするコードは、ライブラリの将来のバージョンでその型のメンバの一部が追加、削除、または並べ替えられた場合でも、再コンパイルせずに作業を継続できるようにコンパイルされます。コンパイラは、実行時に情報を検索したり、間接層を追加したりするなどの手法を使用して、これを可能にします。構造体または列挙型を frozen でマークすると、パフォーマンスを向上させるためにこの柔軟性が失われます。ライブラリの将来のバージョンでは、型に限定的な変更しか加えることができませんが、コンパイラは、型のメンバとやり取りするコードに追加の最適化を行うことができます。
 
 frozen 型、frozen 構造体の格納プロパティの型、および frozen 列挙ケースの関連値は、public か、`usableFromInline` 属性がマークされている必要があります。frozen 構造体のプロパティはプロパティオブザーバを持つことができず、格納インスタンスプロパティの初期値を提供する式は、[inlinable](#inlinable) で説明されているように inlinable 関数と同じ制限に従う必要があります。
 
@@ -273,7 +273,7 @@ struct MyTopLevel {
 }
 ```
 
-`main` 属性の要件を説明する別の方法は、この属性を書き込む型が、次の架空のプロトコルに準拠する型と同じ要件を満たさなければならないということです。
+`main` 属性の要件を記述する別の方法は、この属性を追加する型が、次の架空のプロトコルに準拠する型と同じ要件を満たさなければならないということです。
 
 ```swift
 protocol ProvidesMain {
@@ -281,11 +281,11 @@ protocol ProvidesMain {
 }
 ```
 
-実行可能ファイルを作成するためにコンパイルする Swift コードには、[Top-Level Code](./declarations.md#top-Level-Codeトップレベルコード)で説明されているように、最大で 1 つのトップレベルのエントリポイントを含めることができます。
+実行可能ファイルを作成するためにコンパイルする Swift コードには、[Top-Level Code](./declarations.md#top-Level-Codeトップレベルコード)で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。
 
 ### nonobjc
 
-この属性をメソッド、プロパティ、subscript、またはイニシャライザ宣言に適用すると、暗黙の `objc` 属性を抑制します。`nonobjc` 属性は、Objective-C で宣言を表すことができる場合でも、Objective-C コードで宣言を使用できないようにするようコンパイラに指示します。
+この属性をメソッド、プロパティ、subscript、またはイニシャライザ宣言に適用すると、暗黙の `objc` 属性を抑制します。`nonobjc` 属性は、Objective-C で宣言を使用することができる場合でも、使用できないようにするようコンパイラに指示します。
 
 この属性を extension に適用すると、`objc` 属性が明示的にマークされていないその extension の全てのメンバに適用するのと同じ効果があります。
 
@@ -304,7 +304,7 @@ import AppKit
 NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
 ```
 
-実行可能ファイルを作成するためにコンパイルする Swift コードには、[Top-Level Code](./declarations.md#top-Level-Codeトップレベルコード)で説明されているように、最大で 1 つのトップレベルのエントリポイントを含めることができます。
+実行可能ファイルを作成するためにコンパイルする Swift コードには、[Top-Level Code](./declarations.md#top-Level-Codeトップレベルコード)で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。
 
 ### NSCopying
 
@@ -314,21 +314,21 @@ NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
 
 ### NSManaged
 
-この属性を `NSManagedObject` を継承するクラスのインスタンスメソッドまたは格納変数プロパティに適用して、関連付けられたエンティティの記述に基づいて、CoreData が実行時にその実装を動的に提供することを示します。`NSManaged` 属性がマークされたプロパティの場合、CoreData は実行時にストレージも提供します。この属性を適用すると、`objc` 属性も暗黙的に追加されます。
+この属性を `NSManagedObject` を継承するクラスのインスタンスメソッドまたは格納変数プロパティに適用すると、関連付けられたエンティティの記述に基づいて、CoreData が実行時にその実装を動的に提供することを示します。`NSManaged` 属性がマークされたプロパティの場合、CoreData は実行時にストレージも提供します。この属性を適用すると、`objc` 属性も暗黙的に追加されます。
 
 ### objc
 
 この属性は Objective-C で使用することができる全ての宣言に適用します。例えば、ネストされていないクラス、プロトコル、(整数の RawValue 型の)非ジェネリック列挙型、クラスのプロパティとメソッド(get と set を含む)、プロトコル、およびオプショナルのプロトコル、イニシャライザ、および subscript。`objc` 属性は、Objective-C コードで宣言を使用できることをコンパイラに通知します。
 
-この属性を extension に適用すると、`nonobjc` 属性が明示的にマークされていないその extension の全てのメンバに適用するのと同じ効果があります。
+この属性を extension に適用すると、`nonobjc` 属性が明示的にマークされていないその extension 内の全てのメンバに適用するのと同じ効果があります。
 
 コンパイラは、Objective-C で定義されたクラスのサブクラスに `objc` 属性を暗黙的に追加します。ただし、サブクラスはジェネリックにはできず、ジェネリッククラスから継承してはなりません。これらの条件を満たすサブクラスに `objc` 属性を明示的に追加して、下記で説明するように、その Objective-C 名を指定できます。`objc` 属性がマークされているプロトコルは、`objc` 属性がマークされていないプロトコルから継承できません。
 
 objc 属性は、次の場合にも暗黙的に追加されます:
 
-* 宣言はサブクラスのオーバーライドで、スーパークラスの宣言には `objc` 属性があります
-* 宣言は、`objc` 属性を持つプロトコルの要件を満たしています
-* 宣言には、`IBAction`、`IBSegueAction`、`IBOutlet`、`IBDesignable`、`IBInspectable`、`NSManaged`、または `GKInspectable` 属性があります
+* 宣言がサブクラスのオーバーライドで、スーパークラスの宣言に `objc` 属性がある場合
+* 宣言が `objc` 属性を持つプロトコルの要件を満たす場合
+* 宣言に、`IBAction`、`IBSegueAction`、`IBOutlet`、`IBDesignable`、`IBInspectable`、`NSManaged`、または `GKInspectable` 属性がある場合
 
 `objc` 属性を列挙型に適用すると、各列挙ケースは、列挙型名とケース名を連結して Objective-C コードに公開されます。ケース名の最初の文字は大文字です。例えば、Swift では `Planet` 列挙型内の `venus` という名前のケースは、`PlanetVenus` という名前のケースとして Objective-C コードに公開されます。
 
@@ -347,7 +347,7 @@ class ExampleClass: NSObject {
 詳細については、Swift の [Importing Swift into Objective-C](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_swift_into_objective-c)を参照ください。
 
 > NOTE  
-> `objc` 属性の引数は、その宣言のランタイム名を変更することもできます。`NSClassFromString` などの Objective-C ランタイムとやり取りする関数を呼び出すとき、およびアプリの `Info.plist` ファイルでクラス名を指定するときに、ランタイム名を使用します。引数を渡して名前を指定すると、その名前が Objective-C コードの名前およびランタイム名として使用されます。引数を省略すると、Objective-C コードで使用される名前は Swift コードの名前と一致し、ランタイム名は通常の Swift コンパイラの名前修飾規則に従います。
+> `objc` 属性の引数は、その宣言の実行時名を変更することもできます。`NSClassFromString` などの Objective-C ランタイムとやり取りする関数を呼び出すとき、およびアプリの `Info.plist` ファイルでクラス名を指定するときに、実行時名を使用します。引数を渡して名前を指定すると、その名前が Objective-C コードの名前および実行時名として使用されます。引数を省略すると、Objective-C コードで使用される名前は Swift コードの名前と一致し、実行時名は通常の Swift コンパイラの名前修飾規則に従います。
 
 ### objcMembers
 
@@ -357,9 +357,9 @@ class ExampleClass: NSObject {
 
 ### propertyWrapper
 
-この属性をクラス、構造体、または列挙型宣言に適用すると、その型をプロパティラッパとして使用します。この属性を型に適用すると、型と同じ名前のカスタム属性が作成されます。その新しい属性をクラス、構造体、または列挙型のプロパティに適用して、ラッパ型のインスタンスを介してプロパティへのアクセスをラップします。属性をローカルの格納変数宣言に適用して、変数へのアクセスを同じ方法でラップします。計算変数、グローバル変数、および定数には、プロパティラッパを使用できません。
+この属性をクラス、構造体、または列挙型宣言に適用すると、その型をプロパティラッパとして使用できます。この属性を型に適用すると、型と同じ名前のカスタム属性が作成されます。その新しい属性をクラス、構造体、または列挙型のプロパティに適用して、ラッパ型のインスタンスを介してプロパティへのアクセスをラップします。属性をローカルの格納変数宣言に適用して、変数へのアクセスを同じ方法でラップします。計算変数、グローバル変数、および定数には、プロパティラッパを使用できません。
 
-ラッパは `wrappedValue` インスタンスプロパティを定義する必要があります。プロパティのラップされた値は、このプロパティの get と set が公開する値です。ほとんどの場合、`wrappedValue` は計算値ですが、代わりに格納値にすることもできます。ラッパは、ラップされた値に必要な基になるストレージを定義および管理します。コンパイラは、ラップされたプロパティの名前の前にアンダースコア(`_`)を付けることにより、ラッパ型のインスタンスのストレージを合成します。例えば、`someProperty` のラッパは `_someProperty` として格納されます。ラッパの合成ストレージのアクセス制御レベルは `private` です。
+ラッパは `wrappedValue` インスタンスプロパティを定義する必要があります。プロパティのラップされた値は、このプロパティの get と set が公開する値です。ほとんどの場合、`wrappedValue` は計算値ですが、代わりに格納値にすることもできます。ラッパは、ラップされた値に必要なストレージを定義および管理します。コンパイラは、ラップされたプロパティの名前の前にアンダースコア(`_`)を付けることにより、ラッパ型のインスタンスのストレージを合成します。例えば、`someProperty` のラッパは `_someProperty` として格納されます。ラッパの合成ストレージのアクセス制御レベルは `private` です。
 
 プロパティラッパを持つプロパティには、`willSet` ブロックと `didSet` ブロックを含めることができますが、コンパイラで合成された `get` ブロックまたは `set` ブロックをオーバーライドすることはできません。
 
@@ -422,15 +422,15 @@ s.$x.wrapper  // WrapperWithProjection 値
 
 ### resultBuilder
 
-この属性をクラス、構造体、列挙型に適用して、その型を Result Builder として使用します。Result Builder は、ネストされたデータ構造を段階的に構築する型です。Result Builder を使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語(DSL)を実装します。`resultBuilder` 属性の使用方法の例については、[Result Builders](./../language-guide/advanced-operators.md#result-buildersリザルトビルダー)を参照ください。
+この属性をクラス、構造体、列挙型に適用して、その型を Result Builder として使用できます。Result Builder は、ネストされたデータ構造を段階的に構築する型です。Result Builder を使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語(DSL)を実装します。`resultBuilder` 属性の使用方法の例については、[Result Builders](./../language-guide/advanced-operators.md#result-buildersリザルトビルダー)を参照ください。
 
 #### Result-Building Methods
 
 ---
 
-Result Builder は、下記で説明する静的メソッドを実装します。Result Builder の全ての機能は静的メソッドを介して公開されるため、その型のインスタンスを初期化することはありません。`buildBlock(_:)` メソッドが必要です。DSL の追加機能を有効にする他の方法は省略可能です。Result Builder 型の宣言には、プロトコル準拠を含める必要はありません。
+Result Builder は、下記で説明する静的メソッドを実装します。Result Builder の全ての機能は静的メソッドを介して公開されるため、その型のインスタンスを初期化することはありません。`buildBlock(_:)` メソッドが必要です。DSL の追加機能を有効にする他の方法は省略可能です。Result Builder 型の宣言には、プロトコルの準拠を含める必要はありません。
 
-静的メソッドの記述では、プレースホルダとして 3 つの型を使用しています。Expression 型は、Result Builder の入力の型のプレースホルダで、`Component` は、部分的な結果の型のプレースホルダで、`FinalResult` は、Result Builder が生成する結果の型のプレースホルダです。これらの型を、Result Builder が使用する実際の型に置き換えます。Result Builder メソッドで `Expression` または `FinalResult` の型が指定されていない場合、デフォルトで `Component` と同じになります。
+静的メソッドの記述では、プレースホルダとして 3 つの型を使用しています。Expression 型は、Result Builder の入力の型のプレースホルダで、`Component` は、部分的な結果の型のプレースホルダで、`FinalResult` は、Result Builder が生成する最終的な結果の型のプレースホルダです。これらの型を、Result Builder が使用する実際の型に置き換えます。Result Builder メソッドで `Expression` または `FinalResult` の型が指定されていない場合、デフォルトで `Component` と同じになります。
 
 Result Builder の作成方法は次のとおりです:
 
@@ -669,7 +669,7 @@ var manualBlock = ArrayBuilder.buildBlock(
 )
 ```
 
-* `for` ループは一時変数、`for` ループ、`buildArray(_:)` メソッドの呼び出し、になります。新しい `for` ループはシーケンスを繰り返し処理し、それぞれの部分的な結果をその配列に追加します。一時配列は、`buildArray(_:)` 呼び出しの引数として渡されます。例えば、次の宣言は同等です:
+* `for` ループは一時変数、`for` ループ、`buildArray(_:)` メソッドの呼び出し、に分かれます。新しい `for` ループはシーケンスを繰り返し処理し、それぞれの部分的な結果をその配列に追加します。一時配列は、`buildArray(_:)` メソッドの引数として渡されます。例えば、次の宣言は同等です:
 
 ```swift
 @ArrayBuilder var builderArray: [Int] {
@@ -700,11 +700,11 @@ Result Builder が変換するコードで、`break`、`continue`、`defer`、`g
 
 Result Builder 型を作成すると、同じ名前のカスタム属性が作成されます。その属性は、次の場所に適用できます:
 
-* 関数宣言で、Result Builder は関数の本文を作成します
+* 関数宣言では、Result Builder は関数の本文を作成します
 * get を含む変数または subscript の宣言で、Result Builder は get の本文を作成します
-* 関数宣言の引数で、Result Builder は対応する引数として渡されるクロージャの本文を作成します
+* 関数宣言の引数では、Result Builder は対応する引数として渡されるクロージャの本文を作成します
 
-Result Builder 属性を適用しても、ABI の互換性には影響しません。Result Builder 属性を引数に適用すると、その属性が関数のインターフェースの一部になり、ソースの互換性に影響を与える可能性があります。
+resultBuilder 属性を適用しても、ABI の互換性には影響しません。Result Builder 属性を引数に適用すると、その属性が関数のインターフェースの一部になり、ソースの互換性に影響を与える可能性があります。
 
 ### requires_stored_property_inits
 
@@ -712,37 +712,37 @@ Result Builder 属性を適用しても、ABI の互換性には影響しませ�
 
 ### testable
 
-この属性をインポート宣言に適用して、モジュールのコードのテストを簡単にするために、アクセス制御へ変更を加えて、そのモジュールをインポートします。`internal` 修飾子がマークされているインポートされたモジュール内のエンティティは、`public` 修飾子で宣言されているかのようにインポートされます。`internal` または `public` 修飾子がマークされたクラスおよびクラスメンバは、`open` 修飾子で宣言されたかのようにインポートされます。インポートされたモジュールは、テストを有効にしてコンパイルする必要があります。
+モジュールのコードのテストを簡単にするために、この属性をインポート宣言に適用すると、アクセス制御へ変更を加えて、そのモジュールをインポートします。インポートされたモジュール内の `internal` 修飾子がマークされているエンティティは、`public` 修飾子で宣言されているかのようにインポートされます。`internal` または `public` 修飾子がマークされたクラスおよびクラスメンバは、`open` 修飾子で宣言されたかのようにインポートされます。インポートされたモジュールは、テストを有効にしてコンパイルする必要があります。
 
 ### UIApplicationMain
 
 この属性をクラスに適用して、それがアプリケーションデリゲートなことを示します。この属性を使用することは、`UIApplicationMain` 関数を呼び出し、このクラスの名前をデリゲートクラスの名前として渡すことと同じです。
 
-この属性を使用しない場合は、[UIApplicationMain(_:_:_:_:)](https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain)関数を呼び出すトップレベルのコードを `main.swift` ファイルに指定します。例えば、アプリが `UIApplication` の独自のサブクラスを主要クラスとして使用している場合、この属性を使用する代わりに `UIApplicationMain(_:_:_:_:)` 関数を呼び出します。
+この属性を使用しない場合は、[UIApplicationMain(_:_:_:_:)](https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain)関数を呼び出すトップレベルのコードを `main.swift` ファイルに指定します。例えば、アプリが `UIApplication` の独自のサブクラスをメインクラスとして使用している場合、この属性を使用する代わりに `UIApplicationMain(_:_:_:_:)` 関数を呼び出します。
 
-実行可能ファイルを作成するためにコンパイルする Swift コードには、[Top-Level Code](./declarations.md#top-Level-Codeトップレベルコード)で説明されているように、最大で 1 つのトップレベルのエントリポイントを含めることができます。
+実行可能ファイルを作成するためにコンパイルする Swift コードには、[Top-Level Code](./declarations.md#top-Level-Codeトップレベルコード)で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。
 
 ### usableFromInline
 
 この属性を関数、メソッド、計算プロパティ、subscript、イニシャライザ、またはデイニシャライザの宣言に適用すると、宣言と同じモジュールで定義されているインライン化されたコードでそのシンボルを使用できるようにします。宣言には、`internal` 修飾子が必要です。`usedFromInline` がマークされた構造体またはクラスは、そのプロパティに `public` または `usableFromInline` の型のみを使用できます。`usedFromInline` がマークされた列挙型は、そのケースの Raw Value と関連値に対して、`public` または `usableFromInline` の型のみを使用できます。
 
-`public` 修飾子と同様に、この属性はモジュールのパブリックインターフェイスの一部として宣言を公開します。`public` とは異なり、コンパイラは、宣言のシンボルがエクスポートされている場合でも、`usableFromInline` がマークされた宣言をモジュール外のコードで参照することを許可しません。ただし、モジュール外のコードは、ランタイム動作を使用して宣言のシンボルとやり取りできる場合があります。
+`public` 修飾子と同様に、この属性はモジュールの public インターフェイスの一部として宣言が公開されます。`public` とは異なり、コンパイラは、宣言のシンボルがエクスポートされている場合でも、`usableFromInline` がマークされた宣言をモジュール外のコードで参照することを許可しません。ただし、モジュール外のコードは、ランタイム時の動作を使用して宣言のシンボルとやり取りできることもあります。
 
 `inlinable` 属性がマークされた宣言は、inlinable コードから暗黙的に使用できます。`inlinable` または `usableFromInline` のいずれかを `internal` 宣言に適用できますが、両方の属性を適用するとエラーです。
 
 ### warn_unqualified_access
 
-この属性をトップレベルの関数、インスタンスメソッド、またはクラスまたは静的メソッドに適用すると、その関数またはメソッドがモジュール名、型名、インスタンス変数または定数などを直前の修飾子なしで使用された場合に警告をトリガーします。この属性を使用して、同じスコープからアクセスできる同じ名前の関数間のあいまいさを回避できます。
+この属性をトップレベルの関数、インスタンスメソッド、またはクラスまたは静的メソッドに適用すると、その関数またはメソッドがモジュール名、型名、インスタンス変数または定数などを修飾子なしで使用された場合に警告を出力します。この属性を使用して、同じスコープからアクセスできる同じ名前の関数間のあいまいさを回避できます。
 
-例えば、Swift 標準ライブラリには、トップレベルの[min(_:_:)](https://developer.apple.com/documentation/swift/1538339-min/)関数と、同等の要素を持つシーケンスの `min()` メソッドの両方が含まれています。sequence メソッドは `warn_unqualified_access` 属性で宣言されており、`Sequence` extension 内からどちらかを使用しようとするときの混乱を減らすのに役立ちます。
+例えば、Swift 標準ライブラリには、トップレベルの[min(_:_:)](https://developer.apple.com/documentation/swift/1538339-min/)関数と、同等の要素を持つ `Sequence` の `min()` メソッドの両方が含まれています。`Sequence` メソッドは `warn_unqualified_access` 属性で宣言されており、`Sequence` extension 内からどちらかを使用しようとするときの混乱を減らすのに役立ちます。
 
 ### Declaration Attributes Used by Interface Builder
 
 Interface Builder 属性は、Xcode と同期するために InterfaceBuilder によって使用される宣言属性です。Swift は、次の Interface Builder 属性を提供します: `IBAction`、`IBSegueAction`、`IBOutlet`、`IBDesignable`、および `IBInspectable`。これらの属性は、Objective-C の対応する属性と概念的に同じです。
 
-`IBOutlet` 属性と `IBInspectable` 属性をクラスのプロパティ宣言に適用します。`IBAction` 属性と `IBSegueAction` 属性をクラスのメソッド宣言に適用し、`IBDesignable` 属性をクラス宣言に適用します。
+`IBOutlet` 属性と `IBInspectable` 属性はクラスのプロパティ宣言に適用できます。`IBAction` 属性と `IBSegueAction` 属性はクラスのメソッド宣言に適用でき、`IBDesignable` 属性はクラス宣言に適用できます。
 
-`IBAction`、`IBSegueAction`、`IBOutlet`、`IBDesignable`、または `IBInspectable` 属性を適用することは、`objc` 属性も暗黙的に追加されます。
+`IBAction`、`IBSegueAction`、`IBOutlet`、`IBDesignable`、または `IBInspectable` 属性を適用すると、`objc` 属性も暗黙的に追加されます。
 
 ## Type Attributes
 
@@ -750,23 +750,23 @@ Interface Builder 属性は、Xcode と同期するために InterfaceBuilder �
 
 ### autoclosure
 
-この属性を適用すると、引数のないクロージャで式を自動的にラップすることにより、式の評価を遅らせます。関数またはメソッド宣言の引数が、引数をとらず式の型の値を返す関数型場合に適用できます。`autoclosure` 属性の使用方法の例については、[Autoclosures](./../language-guide/closures.md#autoclosures自動クロージャ)と[Function Type](./types.md#function-type関数型)を参照ください。
+この属性を適用すると、引数のないクロージャで式を自動的にラップすることにより、式の評価を遅らせます。関数またはメソッド宣言の引数が、引数を受け取らず式の型の値を返す関数型の場合に適用できます。`autoclosure` 属性の使用方法の例については、[Autoclosures](./../language-guide/closures.md#autoclosures自動クロージャ)と[Function Type](./types.md#function-type関数型)を参照ください。
 
 ### convention
 
-この属性を関数の型に適用すると、呼び出し規約を示します。
+呼び出し規約を示すために、この属性を関数の型に適用します。
 
 `convention` 属性は、常に次のいずれかの引数で表示されます:
 
 * `swift` 引数は、Swift 関数の参照を示します。これは、Swift の関数値の標準的な呼び出し規約です
-* `block` 引数は、Objective-C 互換のブロック参照を示します。関数値は、ブロックオブジェクトへの参照として表されます。ブロックオブジェクトは、その呼び出し関数をオブジェクト内に埋め込む `id` 互換の Objective-C オブジェクトです。呼び出し関数は C 言語の呼び出し規約を使用します
+* `block` 引数は、Objective-C 互換のブロック参照を示します。関数値は、ブロックオブジェクトへの参照として表されます。ブロックオブジェクトは、その呼び出し関数をオブジェクト内に埋め込む `id` 互換の Objective-C オブジェクトへの参照です。呼び出し関数は C 言語の呼び出し規約を使用します
 * `c` 引数は、C 言語関数の参照を示します。関数値はコンテキストを持たず、C 言語の呼び出し規約を使用します
 
-いくつかの例外を除いて、他の呼び出し規約の関数が必要な場合は、任意の呼び出し規約の関数を使用できます。非ジェネリックグローバル関数、ローカル変数をキャプチャしないローカル関数、またはローカル変数をキャプチャしないクロージャは、C 言語呼び出し規約に変換できます。他の Swift 関数は C 言語の呼び出し規約に変換できません。Objective-C の block 呼び出し規約を持つ関数は、C 言語の呼び出し規約に変換できません。
+いくつかの例外を除いて、他の呼び出し規約の関数が必要な場合は、任意の呼び出し規約の関数を使用できます。非ジェネリックグローバル関数、ローカル変数をキャプチャしないローカル関数、またはローカル変数をキャプチャしないクロージャは、C 言語の呼び出し規約に変換できます。他の Swift 関数は C 言語の呼び出し規約に変換できません。Objective-C の block 呼び出し規約を持つ関数は、C 言語の呼び出し規約に変換できません。
 
 ### escaping
 
-この属性を関数またはメソッド宣言の引数の型に適用すると、引数の値を後で実行するために保持されることがあることを示します。これは、値が呼び出し側の存続期間を超えて存続できることを意味します。`escaping` 属性を持つ関数型引数は、プロパティまたはメソッドに対して `self` を明示的に使用する必要があります。`escaping` 属性の使用方法の例については、[Escaping Closures](./../language-guide/closures.md#escaping-closuresエスケープクロージャ)を参照ください。
+この属性を関数またはメソッド宣言の引数の型に適用すると、引数の値を後で実行するために保持されることがあることを示します。これは、値が呼び出し側の生存期間を超えて存続できることを意味します。`escaping` 属性を持つ関数型引数は、プロパティまたはメソッドに対して `self` を明示的に使用する必要があります。`escaping` 属性の使用方法の例については、[Escaping Closures](./../language-guide/closures.md#escaping-closuresエスケープクロージャ)を参照ください。
 
 ## Switch Case Attributes
 
@@ -774,7 +774,7 @@ switch case 属性は、switch 文のケースにのみ適用できます。
 
 ### unknown
 
-この属性を switch ケースに適用すると、コードのコンパイル時にわかっているどの列挙ケースとも一致することが期待されないことを示します。`unknown` 属性の使用方法の例については、[Switching Over Future Enumeration Cases](./statements.md#switching-over-future-enumeration-cases列挙型の将来のケースのスイッチング)を参照ください。
+この属性を switch ケースに適用すると、コードのコンパイル時にわかっているどの列挙ケースとも一致することがない可能性を示します。`unknown` 属性の使用方法の例については、[Switching Over Future Enumeration Cases](./statements.md#switching-over-future-enumeration-cases列挙型の将来のケースのスイッチング)を参照ください。
 
 > GRAMMAR OF AN ATTRIBUTE  
 > attribute → `@` [attribute-name](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attribute-name)  [attribute-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attribute-argument-clause)<sub>*opt*</sub>  
