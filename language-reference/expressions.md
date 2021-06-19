@@ -705,11 +705,11 @@ Objective-C API とやり取りするコード内の Key-Path の使用方法の
 > key-path-postfixes → [key-path-postfix](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfix)  [key-path-postfixes](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes)<sub>*opt*</sub>  
 > key-path-postfix → `?` \|  `!` \|  `self` \|  `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  `]`
 
-### Selector Expression(セレクタ式)
+### Selector Expression(Selector式)
 
 セレクタ式を使用すると、Objective-C のメソッドまたはプロパティの get や set を参照するために使用されるセレクタにアクセスできます。形式は次のとおりです:
 
-![セレクタ式](./../.gitbook/assets/selector_expression.png)
+![Selector式](./../.gitbook/assets/selector_expression.png)
 
 メソッド名とプロパティ名は、Objective-C ランタイムで使用可能なメソッドまたはプロパティへの参照にする必要があります。セレクタ式の値は `Selector` 型のインスタンスです。例えば:
 
