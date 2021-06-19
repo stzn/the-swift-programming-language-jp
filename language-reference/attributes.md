@@ -698,6 +698,14 @@ Result Builder が変換するコードで、`break`、`continue`、`defer`、`g
 
 #### Custom Result-Builder Attributes
 
+Result Builder 型を作成すると、同じ名前のカスタム属性が作成されます。その属性は、次の場所に適用できます:
+
+* 関数宣言で、Result Builder は関数の本文を作成します
+* get を含む変数または subscript の宣言で、Result Builder は get の本文を作成します
+* 関数宣言の引数で、Result Builder は対応する引数として渡されるクロージャの本文を作成します
+
+Result Builder 属性を適用しても、ABI の互換性には影響しません。Result Builder 属性を引数に適用すると、その属性が関数のインターフェースの一部になり、ソースの互換性に影響を与える可能性があります。
+
 ### requires_stored_property_inits
 
 ### testable
