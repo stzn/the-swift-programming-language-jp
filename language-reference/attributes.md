@@ -422,7 +422,94 @@ s.$x.wrapper  // WrapperWithProjection 値
 
 ### resultBuilder
 
+この属性をクラス、構造体、列挙型に適用して、その型を Result Builder として使用します。Result Builder は、ネストされたデータ構造を段階的に構築する型です。Result Builder を使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語(DSL)を実装します。`resultBuilder` 属性の使用方法の例については、[Result Builders](./../language-guide/advanced-operators.md#result-buildersリザルトビルダー)を参照ください。
+
 #### Result-Building Methods
+
+---
+
+Result Builder は、下記で説明する静的メソッドを実装します。Result Builder の全ての機能は静的メソッドを介して公開されるため、その型のインスタンスを初期化することはありません。`buildBlock(_:)` メソッドが必要です。DSL の追加機能を有効にする他の方法は省略可能です。Result Builder 型の宣言には、プロトコル準拠を含める必要はありません。
+
+静的メソッドの記述では、プレースホルダとして 3 つの型を使用しています。Expression 型は、Result Builder の入力の型のプレースホルダで、`Component` は、部分的な結果の型のプレースホルダで、`FinalResult` は、Result Builder が生成する結果の型のプレースホルダです。これらの型を、Result Builder が使用する実際の型に置き換えます。Result Builder メソッドで `Expression` または `FinalResult` の型が指定されていない場合、デフォルトで `Component` と同じになります。
+
+Result Builder の作成方法は次のとおりです:
+
+<dt>static func buildBlock(_ components: Component...) -> Component</dt>
+<dd>
+
+部分的な結果の配列を単一の部分的な結果に結合します。Result Builder は、このメソッドを実装する必要があります。
+</dd>
+
+<dt>static func buildOptional(_ component: Component?) -> Component</dt>
+<dd>
+
+`nil` になる可能性のある部分的な結果から部分的な結果を構築します。このメソッドを実装して、`else` 句を含まない `if` ステートメントをサポートします。
+</dd>
+
+<dt>static func buildEither(first: Component) -> Component</dt>
+<dd>
+
+条件によって値が変化する部分的な結果を作成します。このメソッドと `buildEither(second:)` の両方を実装して、`switch` ステートメントと `else` 句を含む `if` ステートメントをサポートします。
+</dd>
+
+<dt>static func buildEither(second: Component) -> Component</dt>
+<dd>
+
+条件によって値が変化する部分的な結果を作成します。このメソッドと `buildEither(first:)` の両方を実装して、`switch` ステートメントと `else` 句を含む `if` ステートメントをサポートします。
+</dd>
+
+<dt>static func buildArray(_ components: [Component]) -> Component</dt>
+<dd>
+
+部分的な結果の配列から部分的な結果を構築します。このメソッドを実装して、ループをサポートします。
+</dd>
+
+<dt>static func buildExpression(_ expression: Expression) -> Component</dt>
+<dd>
+
+式から部分的な結果を作成します。このメソッドを実装して、前処理(例えば、式を内部型に変換する)を実行したり、使用側で型推論のための追加情報を提供したりできます。
+</dd>
+
+<dt>static func buildFinalResult(_ component: Component) -> FinalResult</dt>
+<dd>
+
+部分的な結果から最終結果を作成します。このメソッドは、部分結果と最終結果で異なる型を使用する Result Builder の一部として実装したり、結果を返す前に結果に対して後処理を実行したりできます。
+</dd>
+
+<dt>static func buildLimitedAvailability(_ component: Component) -> Component</dt>
+<dd>
+
+可用性チェックを実行するコンパイラ制御文の外部で型情報を伝播または消去する部分的な結果を作成します。これを使用して、条件分岐間で異なる型情報を消去できます。
+</dd>
+
+例えば、下記のコードは、整数の配列を作成するシンプルな Result Builder を定義しています。このコードは、`Compontent` と `Expression` をタイプエイリアスとして定義し、下記の例を上記のメソッドのリストに簡単に一致させることができます。
+
+```swift
+@resultBuilder
+struct ArrayBuilder {
+    typealias Component = [Int]
+    typealias Expression = Int
+    static func buildExpression(_ element: Expression) -> Component {
+        return [element]
+    }
+    static func buildOptional(_ component: Component?) -> Component {
+        guard let component = component else { return [] }
+        return component
+    }
+    static func buildEither(first component: Component) -> Component {
+        return component
+    }
+    static func buildEither(second component: Component) -> Component {
+        return component
+    }
+    static func buildArray(_ components: [Component]) -> Component {
+        return Array(components.joined())
+    }
+    static func buildBlock(_ components: Component...) -> Component {
+        return Array(components.joined())
+    }
+}
+```
 
 #### Result Transformations
 
