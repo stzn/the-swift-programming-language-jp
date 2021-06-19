@@ -32,7 +32,7 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 * `tvOSApplicationExtension`
 * `swift`
 
-アスタリスク(`*`)を使用して、上記のすべてのプラットフォーム名で宣言が使用可能なことを示すこともできます。Swift のバージョン番号を使用して availability を指定する `available` 属性では、アスタリスクを使用できません。
+アスタリスク(`*`)を使用して、上記の全てのプラットフォーム名で宣言が使用可能なことを示すこともできます。Swift のバージョン番号を使用して availability を指定する `available` 属性では、アスタリスクを使用できません。
 
 残りの引数は任意の順序で表示でき、重要なマイルストーンなど、宣言のライフサイクルに関する追加情報を指定できます。
 
@@ -242,7 +242,7 @@ print(wrapper.x)
 
 library evolution mode では、nonfrozen の構造体や列挙型のメンバと相互作用するコードは、ライブラリの将来のバージョンでその型のメンバの一部が追加、削除、または並べ替えられた場合でも、再コンパイルせずに作業を継続できるようにコンパイルされます。コンパイラは、実行時に情報を検索したり、間接層を追加したりするなどの手法を使用して、これを可能にします。構造体または列挙型を frozen でマークすると、パフォーマンスを向上させるためのこの柔軟性が失われます。ライブラリの将来のバージョンでは、型に限定的な変更しか加えることができませんが、コンパイラは、型のメンバとやり取りするコードに追加の最適化を行うことができます。
 
-frozen 型、frozen 構造体の格納プロパティの型、および frozen 列挙ケースの関連値は、public か、`usableFromInline` 属性でマークされている必要があります。frozen 構造体のプロパティはプロパティオブザーバを持つことができず、格納インスタンスプロパティの初期値を提供する式は、[inlinable](#inlinable) で説明されているように inlinable 関数と同じ制限に従う必要があります。
+frozen 型、frozen 構造体の格納プロパティの型、および frozen 列挙ケースの関連値は、public か、`usableFromInline` 属性がマークされている必要があります。frozen 構造体のプロパティはプロパティオブザーバを持つことができず、格納インスタンスプロパティの初期値を提供する式は、[inlinable](#inlinable) で説明されているように inlinable 関数と同じ制限に従う必要があります。
 
 コマンドラインで library evolution mode を有効にするには、`-enable-library-evolution` オプションを Swift コンパイラに渡します。Xcode で有効にするには、[Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba)の説明に従って、「Build Libraries for Distribution」のビルド設定(`BUILD_LIBRARY_FOR_DISTRIBUTION`)を Yes に設定します。
 
@@ -256,7 +256,7 @@ frozen 列挙型の switch 文は、[Switching Over Future Enumeration Cases(列
 
 この属性を関数、メソッド、計算プロパティ、subscript、convenience イニシャライザ、またはデイニシャライザ宣言に適用すると、モジュールのパブリックインターフェイスの一部としてその宣言の実装を公開します。コンパイラは、inlinable シンボルへの呼び出しを、呼び出し側のシンボルの実装のコピーに置き換えることができます。
 
-inlinable コードは、任意のモジュールで宣言された `public` シンボルとやり取りし、`usableFromInline` 属性でマークされた同じモジュールで宣言された `internal` シンボルとやり取りできます。inline 化できないコードは、`private` シンボルまたは fileprivate シンボルとやり取りできません。
+inlinable コードは、任意のモジュールで宣言された `public` シンボルとやり取りし、`usableFromInline` 属性がマークされた同じモジュールで宣言された `internal` シンボルとやり取りできます。inline 化できないコードは、`private` シンボルまたは fileprivate シンボルとやり取りできません。
 
 この属性は、関数内にネストされている宣言や、`fileprivate` 宣言または `private` 宣言には適用できません。inlinable 関数内で定義された関数とクロージャは、この属性をマークすることはできませんが、暗黙的に inlinable です。
 
@@ -287,11 +287,11 @@ protocol ProvidesMain {
 
 この属性をメソッド、プロパティ、subscript、またはイニシャライザ宣言に適用すると、暗黙の `objc` 属性を抑制します。`nonobjc` 属性は、Objective-C で宣言を表すことができる場合でも、Objective-C コードで宣言を使用できないようにするようコンパイラに指示します。
 
-この属性を extension に適用すると、`objc` 属性で明示的にマークされていないその extension の全てのメンバに適用するのと同じ効果があります。
+この属性を extension に適用すると、`objc` 属性が明示的にマークされていないその extension の全てのメンバに適用するのと同じ効果があります。
 
-`nonobjc` 属性を使用して、`objc` 属性でマークされたクラスのブリッジメソッドの循環性を解決し、`objc` 属性でマークされたクラスのメソッドとイニシャライザのオーバーロードを許可します。
+`nonobjc` 属性を使用して、`objc` 属性がマークされたクラスのブリッジメソッドの循環性を解決し、`objc` 属性がマークされたクラスのメソッドとイニシャライザのオーバーロードを許可します。
 
-`nonobjc` 属性でマークされたメソッドは、`objc` 属性でマークされたメソッドをオーバーライドできません。ただし、`objc` 属性でマークされたメソッドは、`nonobjc` 属性でマークされたメソッドをオーバーライドできます。同様に、`nonobjc` 属性でマークされたメソッドは、`objc` 属性でマークされたメソッドのプロトコル要件を満たすことができません。
+`nonobjc` 属性がマークされたメソッドは、`objc` 属性がマークされたメソッドをオーバーライドできません。ただし、`objc` 属性がマークされたメソッドは、`nonobjc` 属性がマークされたメソッドをオーバーライドできます。同様に、`nonobjc` 属性がマークされたメソッドは、`objc` 属性がマークされたメソッドのプロトコル要件を満たすことができません。
 
 ### NSApplicationMain
 
@@ -308,11 +308,52 @@ NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
 
 ### NSCopying
 
+この属性をクラスの格納変数プロパティに適用します。この属性により、プロパティの set は、プロパティ自体の値ではなく、`copyWithZone(_:)` メソッドによって返されるプロパティの値のコピーと同期されます。プロパティの型は、`NSCopying` プロトコルに準拠している必要があります。
+
+`NSCopying` 属性は、Objective-C のコピープロパティ属性と同じように動作します。
+
 ### NSManaged
+
+この属性を `NSManagedObject` を継承するクラスのインスタンスメソッドまたは格納変数プロパティに適用して、関連付けられたエンティティの記述に基づいて、CoreData が実行時にその実装を動的に提供することを示します。`NSManaged` 属性がマークされたプロパティの場合、CoreData は実行時にストレージも提供します。この属性を適用すると、`objc` 属性も暗黙的に追加されます。
 
 ### objc
 
+この属性は Objective-C で使用することができる全ての宣言に適用します。例えば、ネストされていないクラス、プロトコル、(整数の RawValue 型の)非ジェネリック列挙型、クラスのプロパティとメソッド(get と set を含む)、プロトコル、およびオプショナルのプロトコル、イニシャライザ、および subscript。`objc` 属性は、Objective-C コードで宣言を使用できることをコンパイラに通知します。
+
+この属性を extension に適用すると、`nonobjc` 属性が明示的にマークされていないその extension の全てのメンバに適用するのと同じ効果があります。
+
+コンパイラは、Objective-C で定義されたクラスのサブクラスに `objc` 属性を暗黙的に追加します。ただし、サブクラスはジェネリックにはできず、ジェネリッククラスから継承してはなりません。これらの条件を満たすサブクラスに `objc` 属性を明示的に追加して、下記で説明するように、その Objective-C 名を指定できます。`objc` 属性がマークされているプロトコルは、`objc` 属性がマークされていないプロトコルから継承できません。
+
+objc 属性は、次の場合にも暗黙的に追加されます:
+
+* 宣言はサブクラスのオーバーライドで、スーパークラスの宣言には `objc` 属性があります
+* 宣言は、`objc` 属性を持つプロトコルの要件を満たしています
+* 宣言には、`IBAction`、`IBSegueAction`、`IBOutlet`、`IBDesignable`、`IBInspectable`、`NSManaged`、または `GKInspectable` 属性があります
+
+`objc` 属性を列挙型に適用すると、各列挙ケースは、列挙型名とケース名を連結して Objective-C コードに公開されます。ケース名の最初の文字は大文字です。例えば、Swift では `Planet` 列挙型内の `venus` という名前のケースは、`PlanetVenus` という名前のケースとして Objective-C コードに公開されます。
+
+`objc` 属性は、任意で、識別子に単一の属性引数を受け取ります。識別子は、`objc` 属性が適用されるエンティティの Objective-C に公開される名前を指定します。この引数を使用して、クラス、列挙型、列挙ケース、プロトコル、メソッド、get、set、およびイニシャライザに名前を付けることができます。クラス、プロトコル、または列挙型に Objective-C 名を指定する場合は、[Programming with Objective-C](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011210)の[Conventions](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Conventions/Conventions.html#//apple_ref/doc/uid/TP40011210-CH10-SW1)で説明されているように、名前に 3 文字のプレフィックスを含めます。下記の例では、`ExampleClass` の `enabled` プロパティの get を、プロパティ自体の名前としてではなく、`isEnabled` として Objective-C コードに公開しています。
+
+```swift
+class ExampleClass: NSObject {
+    @objc var enabled: Bool {
+        @objc(isEnabled) get {
+            // 適切な値を返します
+        }
+    }
+}
+```
+
+詳細については、Swift の [Importing Swift into Objective-C](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_swift_into_objective-c)を参照ください。
+
+> NOTE  
+> `objc` 属性の引数は、その宣言のランタイム名を変更することもできます。`NSClassFromString` などの Objective-C ランタイムとやり取りする関数を呼び出すとき、およびアプリの `Info.plist` ファイルでクラス名を指定するときに、ランタイム名を使用します。引数を渡して名前を指定すると、その名前が Objective-C コードの名前およびランタイム名として使用されます。引数を省略すると、Objective-C コードで使用される名前は Swift コードの名前と一致し、ランタイム名は通常の Swift コンパイラの名前修飾規則に従います。
+
 ### objcMembers
+
+この属性をクラス宣言に適用すると、クラスの全ての Objective-C に互換性のあるメンバ、その extension、そのサブクラス、およびそのサブクラスの全ての extension に `objc` 属性を暗黙的に追加します。
+
+ほとんどのコードでは、代わりに `objc` 属性を使用して、必要な宣言のみを公開する必要があります。多くの宣言を公開する必要がある場合は、`objc` 属性を持つ extension でグループ化できます。`objcMembers` 属性は、Objective-C ランタイムのリフレクション機能を多用するライブラリにとって便利です。必要のないときに `objc` 属性を適用すると、バイナリサイズが大きくなり、パフォーマンスに悪影響を与える可能性があります。
 
 ### propertyWrapper
 
