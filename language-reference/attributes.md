@@ -732,7 +732,17 @@ Result Builder 属性を適用しても、ABI の互換性には影響しませ�
 
 ### warn_unqualified_access
 
+この属性をトップレベルの関数、インスタンスメソッド、またはクラスまたは静的メソッドに適用すると、その関数またはメソッドがモジュール名、型名、インスタンス変数または定数などを直前の修飾子なしで使用された場合に警告をトリガーします。この属性を使用して、同じスコープからアクセスできる同じ名前の関数間のあいまいさを回避できます。
+
+例えば、Swift 標準ライブラリには、トップレベルの[min(_:_:)](https://developer.apple.com/documentation/swift/1538339-min/)関数と、同等の要素を持つシーケンスの `min()` メソッドの両方が含まれています。sequence メソッドは `warn_unqualified_access` 属性で宣言されており、`Sequence` extension 内からどちらかを使用しようとするときの混乱を減らすのに役立ちます。
+
 ### Declaration Attributes Used by Interface Builder
+
+Interface Builder 属性は、Xcode と同期するために InterfaceBuilder によって使用される宣言属性です。Swift は、次の Interface Builder 属性を提供します: `IBAction`、`IBSegueAction`、`IBOutlet`、`IBDesignable`、および `IBInspectable`。これらの属性は、Objective-C の対応する属性と概念的に同じです。
+
+`IBOutlet` 属性と `IBInspectable` 属性をクラスのプロパティ宣言に適用します。`IBAction` 属性と `IBSegueAction` 属性をクラスのメソッド宣言に適用し、`IBDesignable` 属性をクラス宣言に適用します。
+
+`IBAction`、`IBSegueAction`、`IBOutlet`、`IBDesignable`、または `IBInspectable` 属性を適用することは、`objc` 属性も暗黙的に追加されます。
 
 ## Type Attributes
 
