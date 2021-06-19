@@ -185,6 +185,54 @@ repeatLabels(a: "four") // エラー
 
 ### dynamicMemberLookup
 
+この属性をクラス、構造体、列挙型、またはプロトコルに適用すると、実行時にメンバを名前で検索できるようになります。型は `subscript(dynamicMember:)`subscript を実装する必要があります。
+
+明示的なメンバ式では、指定されたメンバに対応する宣言がない場合、式は型の `subscript(dynamicMember:)`subscript の呼び出しとして解釈され、メンバに関する情報を引数として渡します。subscript は、KeyPath またはメンバ名のいずれかで引数を受け取ることができます。両方の subscript を実装する場合、KeyPath 引数を取る subscript が使用されます。
+
+`subscript(dynamicMember:)` の実装は、[KeyPath](https://developer.apple.com/documentation/swift/keypath)、[WritableKeyPath](https://developer.apple.com/documentation/swift/writablekeypath)、または [ReferenceWritableKeyPath](https://developer.apple.com/documentation/swift/referencewritablekeypath)の引数を使用して KeyPath を受け取ることができます。[ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral)プロトコル(ほとんどの場合、`String`)に準拠する型の引数を使用して、メンバ名を受け入れることができます。subscript の戻り値の型は任意の型にすることができます。
+
+メンバ名による動的なメンバ検索を使用して、他の言語のデータを Swift にブリッジする場合など、コンパイル時に型チェックできないデータのラッパ型を作成できます。例えば:
+
+```swift
+@dynamicMemberLookup
+struct DynamicStruct {
+    let dictionary = ["someDynamicMember": 325,
+                      "someOtherMember": 787]
+    subscript(dynamicMember member: String) -> Int {
+        return dictionary[member] ?? 1054
+    }
+}
+let s = DynamicStruct()
+
+//動的メンバ検索を使用します。
+let dynamic = s.someDynamicMember
+print(dynamic)
+// "325"
+
+// 基になる subscript を直接呼び出します
+let equivalent = s[dynamicMember: "someDynamicMember"]
+print(dynamic == equivalent)
+// "true"
+```
+
+KeyPath による動的メンバ検索を使用して、コンパイル時の型チェックをサポートする方法でラッパ型を実装できます。例えば:
+
+```swift
+struct Point { var x, y: Int }
+
+@dynamicMemberLookup
+struct PassthroughWrapper<Value> {
+    var value: Value
+    subscript<T>(dynamicMember member: KeyPath<Value, T>) -> T {
+        get { return value[keyPath: member] }
+    }
+}
+
+let point = Point(x: 381, y: 431)
+let wrapper = PassthroughWrapper(value: point)
+print(wrapper.x)
+```
+
 ### frozen
 
 ### GKInspectable
