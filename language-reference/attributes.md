@@ -244,13 +244,13 @@ library evolution mode では、nonfrozen の構造体や列挙型のメンバ�
 
 frozen 型、frozen 構造体の格納プロパティの型、および frozen 列挙ケースの関連値は、public か、`usableFromInline` 属性でマークされている必要があります。frozen 構造体のプロパティはプロパティオブザーバを持つことができず、格納インスタンスプロパティの初期値を提供する式は、[inlinable](#inlinable) で説明されているように inlinable 関数と同じ制限に従う必要があります。
 
-コマンドラインで library evolution mode を有効にするには、`-enable-library-evolution` オプションを Swift コンパイラに渡します。 Xcode で有効にするには、[Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba)の説明に従って、「Build Libraries for Distribution」のビルド設定(`BUILD_LIBRARY_FOR_DISTRIBUTION`)を Yes に設定します。
+コマンドラインで library evolution mode を有効にするには、`-enable-library-evolution` オプションを Swift コンパイラに渡します。Xcode で有効にするには、[Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba)の説明に従って、「Build Libraries for Distribution」のビルド設定(`BUILD_LIBRARY_FOR_DISTRIBUTION`)を Yes に設定します。
 
 frozen 列挙型の switch 文は、[Switching Over Future Enumeration Cases(列挙型の将来のケースのスイッチング)](./attributes.md#switching-over-future-enumeration-cases列挙型の将来のケースのスイッチング)で説明されているように、デフォルトのケースを必要としません。frozen 列挙型を切り替えるときに `default` または `@unknown default` のケースを含めると、そのコードは実行されないため、警告が生成されます。
 
 ### GKInspectable
 
-この属性を適用して、独自の GameplayKit コンポーネントプロパティを SpriteKit エディタ UI に公開します。 この属性を適用すると、`objc` 属性も暗黙的に追加されます。
+この属性を適用して、独自の GameplayKit コンポーネントプロパティを SpriteKit エディタ UI に公開します。この属性を適用すると、`objc` 属性も暗黙的に追加されます。
 
 ### inlinable
 
@@ -262,9 +262,49 @@ inlinable コードは、任意のモジュールで宣言された `public` シ
 
 ### main
 
+この属性を構造体、クラス、または列挙型の宣言に適用すると、プログラムフローのトップレベルのエントリポイントが含まれていることを示します。型は、引数をとらずに `Void` を返す `main` 型関数を提供する必要があります。例えば:
+
+```swift
+@main
+struct MyTopLevel {
+    static func main() {
+         // トップレベルのコードをここに
+    }
+}
+```
+
+`main` 属性の要件を説明する別の方法は、この属性を書き込む型が、次の架空のプロトコルに準拠する型と同じ要件を満たさなければならないということです。
+
+```swift
+protocol ProvidesMain {
+    static func main() throws
+}
+```
+
+実行可能ファイルを作成するためにコンパイルする Swift コードには、[Top-Level Code](./declarations.md#top-Level-Codeトップレベルコード)で説明されているように、最大で 1 つのトップレベルのエントリポイントを含めることができます。
+
 ### nonobjc
 
+この属性をメソッド、プロパティ、subscript、またはイニシャライザ宣言に適用すると、暗黙の `objc` 属性を抑制します。`nonobjc` 属性は、Objective-C で宣言を表すことができる場合でも、Objective-C コードで宣言を使用できないようにするようコンパイラに指示します。
+
+この属性を extension に適用すると、`objc` 属性で明示的にマークされていないその extension の全てのメンバに適用するのと同じ効果があります。
+
+`nonobjc` 属性を使用して、`objc` 属性でマークされたクラスのブリッジメソッドの循環性を解決し、`objc` 属性でマークされたクラスのメソッドとイニシャライザのオーバーロードを許可します。
+
+`nonobjc` 属性でマークされたメソッドは、`objc` 属性でマークされたメソッドをオーバーライドできません。ただし、`objc` 属性でマークされたメソッドは、`nonobjc` 属性でマークされたメソッドをオーバーライドできます。同様に、`nonobjc` 属性でマークされたメソッドは、`objc` 属性でマークされたメソッドのプロトコル要件を満たすことができません。
+
 ### NSApplicationMain
+
+この属性をクラスに適用すると、それがアプリケーションデリゲートなことを示します。この属性を使用することは、`NSApplicationMain(_:_:)` 関数を呼び出すことと同じです。
+
+この属性を使用しない場合は、次のように `NSApplicationMain(_:_:)` 関数を呼び出すトップレベルのコードを `main.swift` ファイルに指定します。
+
+```swift
+import AppKit
+NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
+```
+
+実行可能ファイルを作成するためにコンパイルする Swift コードには、[Top-Level Code](./declarations.md#top-Level-Codeトップレベルコード)で説明されているように、最大で 1 つのトップレベルのエントリポイントを含めることができます。
 
 ### NSCopying
 
