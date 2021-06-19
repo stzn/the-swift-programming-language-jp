@@ -235,6 +235,19 @@ print(wrapper.x)
 
 ### frozen
 
+この属性を構造体または列挙型宣言に適用すると、型に加えることができる変更の種類を制限します。この属性は、library evolution mode でコンパイルする場合にのみ許可されます。ライブラリの将来のバージョンでは、列挙型のケースまたは構造体の格納インスタンスプロパティを追加、削除、または並べ替えて宣言を変更することはできません。これらの変更は nonfrozen 型で許可されますが、frozen 型の ABI 互換性が損なわれます。
+
+> NOTE  
+> コンパイラが library evolution mode でない場合、全ての構造体と列挙型は暗黙的に frozen にされ、この属性は無視されます。
+
+library evolution mode では、nonfrozen の構造体や列挙型のメンバと相互作用するコードは、ライブラリの将来のバージョンでその型のメンバの一部が追加、削除、または並べ替えられた場合でも、再コンパイルせずに作業を継続できるようにコンパイルされます。コンパイラは、実行時に情報を検索したり、間接層を追加したりするなどの手法を使用して、これを可能にします。構造体または列挙型を frozen でマークすると、パフォーマンスを向上させるためのこの柔軟性が失われます。ライブラリの将来のバージョンでは、型に限定的な変更しか加えることができませんが、コンパイラは、型のメンバとやり取りするコードに追加の最適化を行うことができます。
+
+frozen 型、frozen 構造体の格納プロパティの型、および frozen 列挙ケースの関連値は、public か、`usableFromInline` 属性でマークされている必要があります。frozen 構造体のプロパティはプロパティオブザーバを持つことができず、格納インスタンスプロパティの初期値を提供する式は、[inlinable](#inlinable) で説明されているように inlinable 関数と同じ制限に従う必要があります。
+
+コマンドラインで library evolution mode を有効にするには、`-enable-library-evolution` オプションを Swift コンパイラに渡します。 Xcode で有効にするには、[Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba)の説明に従って、「Build Libraries for Distribution」のビルド設定(`BUILD_LIBRARY_FOR_DISTRIBUTION`)を Yes に設定します。
+
+frozen 列挙型の switch 文は、[Switching Over Future Enumeration Cases(列挙型の将来のケースのスイッチング)](./attributes.md#switching-over-future-enumeration-cases列挙型の将来のケースのスイッチング)で説明されているように、デフォルトのケースを必要としません。frozen 列挙型を切り替えるときに `default` または `@unknown default` のケースを含めると、そのコードは実行されないため、警告が生成されます。
+
 ### GKInspectable
 
 ### inlinable
