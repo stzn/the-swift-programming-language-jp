@@ -250,7 +250,15 @@ frozen 列挙型の switch 文は、[Switching Over Future Enumeration Cases(列
 
 ### GKInspectable
 
+この属性を適用して、独自の GameplayKit コンポーネントプロパティを SpriteKit エディタ UI に公開します。 この属性を適用すると、`objc` 属性も暗黙的に追加されます。
+
 ### inlinable
+
+この属性を関数、メソッド、計算プロパティ、subscript、convenience イニシャライザ、またはデイニシャライザ宣言に適用すると、モジュールのパブリックインターフェイスの一部としてその宣言の実装を公開します。コンパイラは、inlinable シンボルへの呼び出しを、呼び出し側のシンボルの実装のコピーに置き換えることができます。
+
+inlinable コードは、任意のモジュールで宣言された `public` シンボルとやり取りし、`usableFromInline` 属性でマークされた同じモジュールで宣言された `internal` シンボルとやり取りできます。inline 化できないコードは、`private` シンボルまたは fileprivate シンボルとやり取りできません。
+
+この属性は、関数内にネストされている宣言や、`fileprivate` 宣言または `private` 宣言には適用できません。inlinable 関数内で定義された関数とクロージャは、この属性をマークすることはできませんが、暗黙的に inlinable です。
 
 ### main
 
