@@ -688,11 +688,11 @@ func makeIndex() -> Int {
     print("Made an index")
     return 0
 }
-// 下の行は makeIndex（） を呼び出します
+// 下の行は makeIndex() を呼び出します
 let taskKeyPath = \[Task][makeIndex()]
 // "Made an index"
 
-// taskKeyPath を使用すると makeIndex（） は再び呼び出されません。
+// taskKeyPath を使用すると makeIndex() は再び呼び出されません。
 let someTask = toDoList[keyPath: taskKeyPath]
 ```
 

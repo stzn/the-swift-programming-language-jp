@@ -18,7 +18,7 @@ print("Hello, world!")
 >
 > [Download Playground](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.playground.zip)
 
-## Simple Values\(シンプルな値）
+## Simple Values\(シンプルな値)
 
 定数を作成するのに `let`、変数を作成するのに `var` を使います。定数の値はコンパイル時に知る必要はありませんが、正確に一度だけ値を設定しなければなりません。つまり、値を指定をたった一度だけ行い、他のあらゆる場所から利用するために定数を活用できます。
 
@@ -232,7 +232,7 @@ print(total)
 
 `..<` では後の値は除外され、`...` は両方の値を含みます。
 
-## Functions and Closures\(関数とクロージャ）
+## Functions and Closures\(関数とクロージャ)
 
 関数の定義には `func` を使います。\(\)の中に引数のリスト、その前に関数の名前を付けることで関数の呼び出します。また、`->` の後ろに戻り値の型を指定して、関数名や引数と区別します。
 
@@ -337,7 +337,7 @@ print(sortedNumbers)
 // "[20, 19, 12, 7]"
 ```
 
-## Objects and Classes\(オブジェクトとクラス）
+## Objects and Classes\(オブジェクトとクラス)
 
 `class` を class 名の前に付けることで class を作成することができます。class 内のプロパティの宣言は、class 内にあるということを除いて、定数や変数の宣言方法と同じです。同様に、メソッドや関数の宣言も同じように書くことができます。
 
@@ -489,7 +489,7 @@ let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
 let sideLength = optionalSquare?.sideLength
 ```
 
-## Enumerations and Structures\(列挙型と構造体）
+## Enumerations and Structures\(列挙型と構造体)
 
 列挙型を作成するには `enum` を使います。class やその他の名前の付いた型と同様に、列挙型もメソッドを持つことができます。
 
@@ -601,7 +601,7 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 > Experiment  
 > rank と suit を持った全種類の card を含む array を返すメソッドを書いてみよう。
 
-## Protocols and Extensions\(プロトコルと拡張）
+## Protocols and Extensions\(プロトコルと拡張)
 
 protocol を宣言するために `protocol` を使います。
 
@@ -671,7 +671,7 @@ print(protocolValue.simpleDescription)
 
 変数 `protocolValue` が実行時には `SimpleClass` なことはわかるものの、コンパイラはこれをとある `ExampleProtocol` として扱います。つまり、protocol で定義されたメソッドやプロパティ以外へアクセスすることはできません。
 
-## Error Handling\(エラーハンドリング）
+## Error Handling\(エラーハンドリング)
 
 `Error` protocol に準拠することでどんな型もエラーを表現することができます。
 
@@ -755,7 +755,7 @@ print(fridgeIsOpen)
 // "false"
 ```
 
-## Generics\(ジェネリクス）
+## Generics\(ジェネリクス)
 
 generic な関数や型を作成するには、かぎ括弧\(&lt;&gt;\)の中に名前を書きます。
 
