@@ -2,7 +2,7 @@
 
 最終更新日:
 
-パターンは、単一の値または複合値の構造を表します。例えば、タプル `(1、2)` の構造は、2 つの要素のカンマ区切り(`,`)のリストです。パターンは特定の値ではなく値の構造を表すため、様々な値と一致させることができます。例えば、パターン `(x、y)` は、タプル `(1、2)` およびその他の 2 つの要素のタプルと一致します。パターンを値と照合することに加えて、複合値の一部または全てを抽出し、各部分を定数または変数名にバインドできます。
+パターンは、単一の値または複合値の構造を表します。例えば、タプル `(1、2)` の構造は、2 つの要素のカンマ区切りのリストです。パターンは特定の値ではなく値の構造を表すため、様々な値と一致させることができます。例えば、パターン `(x、y)` は、タプル `(1、2)` およびその他の 2 つの要素のタプルと一致します。パターンを値と照合することに加えて、複合値の一部または全てを抽出し、各部分を定数または変数名にバインドできます。
 
 Swift には、2 つの基本的な種類のパターンがあります: 任意の種類の値に正常に一致するパターンと、実行時に指定された値に一致しない可能性のあるパターンです。
 
@@ -69,12 +69,146 @@ case let (x, y):
 > GRAMMAR OF A VALUE-BINDING PATTERN  
 > value-binding-pattern → `var` [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern) \|  `let` [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)
 
-## Tuple Pattern\(タプル\)
+## Tuple Pattern\(タプルパターン\)
+
+タプルパターンは、括弧内に囲まれた 0 個以上のパターンのカンマ区切りのリストです。タプルパターンに対応するタプル型の値を一致させます。
+
+型注釈を使用して、特定の種類のタプル型を一致させるために、タプルパターンを制約することができます。例えば、タプルパターン `(x, y): (Int, Int)` は、定数宣言 `let (x, y): (Int, Int) = (1,2)` の両方の要素が `Int` 型のタプル型のみに一致します。
+
+タプルパターンが `for-in` 文のパターンとして、または変数または定数宣言のパターンとして使用される場合は、ワイルドカードパターン、識別子パターン、オプショナルパターン、またはそれらを含む他のタプルパターンのみを含めることができます。例えば、タプルパターン `(x, 0)` の要素 `0` が式パターンのため、次のコードは有効ではありません。
+
+```swift
+let points = [(0, 0), (1, 0), (1, 1), (2, 0), (2, 1)]
+// このコードは無効です
+for (x, 0) in points {
+    /* ... */
+}
+```
+
+単一の要素を含むタプルパターンの括弧は効果がありません。パターンはその単一要素の型の値と一致します。例えば、下記は同等です:
+
+```swift
+let a = 2        // a: Int = 2
+let (a) = 2      // a: Int = 2
+let (a): Int = 2 // a: Int = 2
+```
+
+> GRAMMAR OF A TUPLE PATTERN  
+> tuple-pattern → `(` [tuple-pattern-element-list](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element-list)<sub>*opt*</sub> `)`  
+> tuple-pattern-element-list → [tuple-pattern-element](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element) \|  [tuple-pattern-element](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element)  `,` [tuple-pattern-element-list](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element-list)  
+> tuple-pattern-element → [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern) \|  [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `:` [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)
 
 ## Enumeration Case Pattern\(列挙型のケースパターン\)
 
+列挙型ケースパターンは、既存の列挙型のケースと一致します。列挙型ケースパターンは、`switch` 文のケースラベル、および `if`、`guard`、および `for-in` 文の条件で使用できます。
+
+一致させようとしている列挙ケースに関連値がある場合、対応する列挙型ケースパターンは、関連値に対して 1 つの要素を含むタプルパターンを指定する必要があります。関連値を含む列挙ケースを一致させるために `switch` 文を使用する例については、[Associated Values](./../language-guide/enumerations.md#associated-values関連値)を参照ください。
+
+列挙型ケースパターンは、オプショナルでラップされたケースの値にも一致します。この単純化された構文を使用すると、オプショナルのパターンを省略できます。なお、`Optional` は列挙型として実装されているため、`.none`、`.some` は、列挙型の場合と同じ switch の中で使用できます。
+
+```swift
+enum SomeEnum { case left, right }
+let x: SomeEnum? = .left
+switch x {
+case .left:
+    print("Turn left")
+case .right:
+    print("Turn right")
+case nil:
+    print("Keep going straight")
+}
+// "Turn left"
+```
+
+> GRAMMAR OF AN ENUMERATION CASE PATTERN  
+> enum-case-pattern → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)<sub>*opt*</sub> `.` [enum-case-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_enum-case-name)  [tuple-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern)<sub>*opt*</sub>
+
 ## Optional Pattern\(オプショナルパターン\)
 
-## Type-Casting Patterns\(式パターン\)
+オプショナルパターンは、`Optional<Wrapped>` 列挙型の `some(Wrapped)` の場合にラップされた値と一致します。オプショナルパターンは識別子パターンの直後に疑問符を置くことで構成されており、列挙型ケースパターンと同じ場所に使用できます。
 
-## Expression Pattern\(型キャストパターン\)
+オプショナルパターンはオプショナルの列挙型ケースパターンの糖衣構文(シンタックスシュガー)のため、次のものは同等です:
+
+```swift
+let someOptional: Int? = 42
+// 列挙型ケースパターンを使用して一致します
+if case .some(let x) = someOptional {
+    print(x)
+}
+
+// オプショナルのパターンを使用して一致します
+if case let x? = someOptional {
+    print(x)
+}
+```
+
+オプショナルパターンは、`for-in` 文内のオプショナルの値の配列を繰り返し処理する便利な方法を提供し、`nil` 以外の要素に対してのみループの本文を実行します。
+
+```swift
+let arrayOfOptionalInts: [Int?] = [nil, 2, 3, nil, 5]
+// Match only non-nil values.
+for case let number? in arrayOfOptionalInts {
+    print("Found a \(number)")
+}
+// Found a 2
+// Found a 3
+// Found a 5
+```
+
+> GRAMMAR OF AN OPTIONAL PATTERN  
+> optional-pattern → [identifier-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_identifier-pattern)  `?`
+
+## Type-Casting Patterns\(型キャストパターン\)
+
+2 つのタイプの型キャストパターンがあり、`is` パターンと `as` パターンです。`is` パターンは `switch` 文のケースラベルにのみ使用できます。`is` と `as` パターンの形式は次のとおりです。
+
+![型キャストパターン](./../.gitbook/assets/type-casting_patterns.png)
+
+`is` パターンは、実行時の値の型が、`is` パターンの右側で指定された型、またはその型のサブクラスと同じ型の場合、値と一致します。`is` パターンは、両方とも型キャストを実行しますが、返された型を破棄するという点で、`is` 演算子のように動作します。
+
+`as` パターンは、実行時の値の種類が、`as` パターンの右側に指定された型、またはその型のサブクラスと同じ型の場合、値と一致します。一致した場合、一致した値の種類は、`as` パターンの右側に指定されたパターンにキャストされます。
+
+`switch` 文を使用して `is` パターンを一致させる例については、[Type Casting for Any and AnyObject](./../language-guide/type-casting.md#type-casting-for-any-and-anyObjectAnyおよびAnyObjectの型キャスト)を参照ください。
+
+> GRAMMAR OF A TYPE CASTING PATTERN  
+> type-casting-pattern → [is-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_is-pattern) \|  [as-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_as-pattern)  
+> is-pattern → `is` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
+> as-pattern → [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)  `as` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
+
+## Expression Pattern\(式パターン\)
+
+式パターンは式の値を表します。式パターンは `switch` 文のケースにのみ使用できます。
+
+式パターンで表される式は、Swift 標準ライブラリ `~=` 演算子を使用して入力式の値と比較されます。`〜=` 演算子が `true` を返すと、一致します。デフォルトでは、`~=` 演算子は `==` 演算子を使用して同じ型の 2 つの値を比較します。次の例に示すように、値が範囲内に含まれているかどうかを確認することによって、値の範囲の値と一致させることもできます。
+
+```swift
+let point = (1, 2)
+switch point {
+case (0, 0):
+    print("(0, 0) is at the origin.")
+case (-2...2, -2...2):
+    print("(\(point.0), \(point.1)) is near the origin.")
+default:
+    print("The point is at (\(point.0), \(point.1)).")
+}
+// "(1, 2) is near the origin."
+```
+
+`~=` 演算子をオーバーロードして、独自の式マッチングの動作を提供できます。例えば、`point` 式を point の文字列表現と比較するために上記の例を書き換えることができます。
+
+```swift
+// 整数を含む文字列と一致するように ~= 演算子をオーバーロードします
+func ~= (pattern: String, value: Int) -> Bool {
+    return pattern == "\(value)"
+}
+switch point {
+case ("0", "0"):
+    print("(0, 0) is at the origin.")
+default:
+    print("The point is at (\(point.0), \(point.1)).")
+}
+// "The point is at (1, 2)."
+```
+
+> GRAMMAR OF AN EXPRESSION PATTERN  
+> expression-pattern → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
