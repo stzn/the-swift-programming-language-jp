@@ -1,4 +1,4 @@
-# Attributes \(属性\)
+# Attributes
 
 最終更新日: 2021/6/19
 
