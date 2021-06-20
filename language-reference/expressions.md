@@ -1081,8 +1081,8 @@ someDictionary["a"]![0] = 100
 // someDictionary は ["a": [100, 2, 3], "b": [10, 20]]
 ```
 
-> GRAMMAR OF A SUBSCRIPT EXPRESSION  
-> subscript-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  `]`
+> GRAMMAR OF A FORCED-VALUE EXPRESSION  
+> forced-value-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `!`
 
 ### Optional-Chaining Expression(オプショナルチェーン式)
 

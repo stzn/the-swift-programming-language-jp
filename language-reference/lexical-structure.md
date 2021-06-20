@@ -1,4 +1,4 @@
-# Lexical Structure \(構文の構造\)
+# Lexical Structure
 
 最終更新日: 2021/6/9
 

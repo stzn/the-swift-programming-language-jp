@@ -1,4 +1,4 @@
-# Generic Parameters and Arguments \(ジェネリックパラメータと引数\)
+# Generic Parameters and Arguments
 
 最終更新日: 2021/6/20
 

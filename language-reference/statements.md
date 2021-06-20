@@ -1,4 +1,4 @@
-# Statements \(文\)
+# Statements
 
 最終更新日: 2021/6/13
 

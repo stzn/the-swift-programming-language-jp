@@ -1,4 +1,4 @@
-# Types \(型\)
+# Types
 
 最終更新日: 2021/6/11
 
@@ -455,6 +455,10 @@ prInt(type(of: z.f()))
 その他の名前付き型は、プロトコルのみ継承または準拠することができます。プロトコル型は、任意の数の他のプロトコルを継承できます。プロトコル型が他のプロトコルを継承すると、他のプロトコルの要件も集約され、現在のプロトコルから継承する型は全ての要件に準拠する必要があります。
 
 列挙型の型継承句は、プロトコルのリスト、または列挙ケースに Raw Value を割り当てる型の場合は、それらの Raw Value の型を特定する単一の名前付き型を継承することができます。型継承句を使用して Raw Value 型を指定する列挙型の定義の例については、[Raw Values](./../language-guide/enumerations.md#raw-values)を参照ください。
+
+> GRAMMAR OF A TYPE INHERITANCE CLAUSE  
+> type-inheritance-clause → `:` [type-inheritance-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-list)  
+> type-inheritance-list → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier) \|  [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  `,` [type-inheritance-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-list)
 
 ## Type Inference(型推論)
 
