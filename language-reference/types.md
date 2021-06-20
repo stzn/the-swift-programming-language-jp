@@ -323,7 +323,7 @@ opaque 型の形式は次のとおりです:
 
 プロトコルの宣言には opaque 型を含めることはできません。また、クラスは、`final` ではないメソッドの戻り値の型として opaque 型を使用することはできません。
 
-戻り値の型として opaque 型を使用する関数は、単一の型の値を返す必要があります。戻り値の型には、関数のジェネリックな型引数の一部を含めることができます。例えば、`someFunction<T>()` は `T` 型または `Dictionary<String, T>` 型の値を返すことができます。
+戻り値の型として opaque 型を使用する関数は、単一の型の値を返す必要があります。戻り値の型には、関数のジェネリックな型パラメータの一部を含めることができます。例えば、`someFunction<T>()` は `T` 型または `Dictionary<String, T>` 型の値を返すことができます。
 
 > GRAMMAR OF AN OPAQUE TYPE  
 > opaque-type → `some` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)

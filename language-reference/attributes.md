@@ -766,7 +766,7 @@ Interface Builder 属性は、Xcode と同期するために InterfaceBuilder �
 
 ### escaping
 
-この属性を関数またはメソッド宣言の引数の型に適用すると、引数の値を後で実行するために保持されることがあることを示します。これは、値が呼び出し側の生存期間を超えて存続できることを意味します。`escaping` 属性を持つ関数型引数は、プロパティまたはメソッドに対して `self` を明示的に使用する必要があります。`escaping` 属性の使用方法の例については、[Escaping Closures](./../language-guide/closures.md#escaping-closuresエスケープクロージャ)を参照ください。
+この属性を関数またはメソッド宣言の引数の型に適用すると、引数の値を後で実行するために保持されることがあることを示します。これは、値が呼び出し側の生存期間を超えて存続できることを意味します。`escaping` 属性を持つ関数型パラメータは、プロパティまたはメソッドに対して `self` を明示的に使用する必要があります。`escaping` 属性の使用方法の例については、[Escaping Closures](./../language-guide/closures.md#escaping-closuresエスケープクロージャ)を参照ください。
 
 ## Switch Case Attributes
 
