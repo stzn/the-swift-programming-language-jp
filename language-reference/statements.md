@@ -169,7 +169,7 @@ condition の値は、`Bool` 型または `Bool` にブリッジされた型に�
 case let (x, y) where x == y:
 ```
 
-上記の例が示すように、ケースのパターンは、`let` キーワードを使用して定数をバインドすることもできます(`var` キーワードを使用して変数をバインドすることもできます)。これらの定数（または変数）は、対応する `where` 句で、およびケースのスコープ内で参照できます。control expression に一致する複数のパターンがケース含まれている場合、全てのパターンで同じ定数または変数にバインディングされ、バインドされた各変数または定数は同じ型でなければなりません。
+上記の例が示すように、ケースのパターンは、`let` キーワードを使用して定数をバインドすることもできます(`var` キーワードを使用して変数をバインドすることもできます)。これらの定数(または変数)は、対応する `where` 句で、およびケースのスコープ内で参照できます。control expression に一致する複数のパターンがケース含まれている場合、全てのパターンで同じ定数または変数にバインディングされ、バインドされた各変数または定数は同じ型でなければなりません。
 
 `switch` 文には、`default` キーワードによって導入されたデフォルトのケースを含めることもできます。デフォルトのケース内のコードは、他のケースが制御式に一致しない場合にのみ実行されます。`switch` 文には、デフォルトのケースを 1 つだけ含めることができます。これは、`switch` 文の最後に書く必要があります。
 
@@ -266,7 +266,7 @@ case .suppressed:
 
 `break` 文の後に文ラベルが続かない場合は、`switch` 文またはそれが登場する最も内側のループ文のプログラムの実行を終了します。ラベルのない `break` 文を使用して `if` 文から抜け出すことはできません。
 
-どちらの場合も、プログラム制御は、ループまたは `switch` 文（存在する場合）で囲まれているコードの次の行に移ります。
+どちらの場合も、プログラム制御は、ループまたは `switch` 文(存在する場合)で囲まれているコードの次の行に移ります。
 
 `break` 文の使用方法の例については、[Break](#break-statementbreak文)と[Control Flow](./../language-guide/control-flow.md)の[Labeled Statements](./../language-guide/control-flow.md#labeled-statementsラベル付き文)を参照ください。
 
@@ -314,9 +314,9 @@ case .suppressed:
 `return` 文の後に式が続く場合、式の値は呼び出し元の関数またはメソッドに返されます。式の値が関数またはメソッドで宣言された戻り値の型と一致しない場合、式の値は、呼び出し元の関数またはメソッドに返される前に戻り値の型に変換されます。
 
 > NOTE  
-> [Failable Initializers](./../language-guide/initialization.md#failable-initializers敗可能イニシャライザ)で説明されているように、失敗可能なイニシャライザで特別な形式の `return` 文（`return nil`）を使用して、イニシャライザの失敗を示すことができます。
+> [Failable Initializers](./../language-guide/initialization.md#failable-initializers敗可能イニシャライザ)で説明されているように、失敗可能なイニシャライザで特別な形式の `return` 文(`return nil`)を使用して、イニシャライザの失敗を示すことができます。
 
-`return` 文の後に式がない場合は、値を返さない関数またはメソッド(つまり、関数またはメソッドの戻り値の型が `Void` または `()` の場合）のみで使用できます
+`return` 文の後に式がない場合は、値を返さない関数またはメソッド(つまり、関数またはメソッドの戻り値の型が `Void` または `()` の場合)のみで使用できます
 
 > GRAMMAR OF A RETURN STATEMENT  
 > return-statement → `return` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)<sub>*opt*</sub>
@@ -446,7 +446,7 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 `targetEnvironment()` プラットフォーム条件は、指定された環境用にコードがコンパイルされているときに `true` を返します。それ以外の場合は、false を返します。
 
 > NOTE  
-> `arch（arm）` プラットフォーム条件は、ARM64 デバイスでは `true` を返しません。コードが 32 ビット iOS シミュレーター用にコンパイルされると、`arch（i386）` プラットフォーム条件は `true` を返します。
+> `arch(arm)` プラットフォーム条件は、ARM64 デバイスでは `true` を返しません。コードが 32 ビット iOS シミュレーター用にコンパイルされると、`arch(i386)` プラットフォーム条件は `true` を返します。
 
 論理演算子 `&&`、`||`、および `！` を使用して、コンパイル条件を組み合わせたり、無効にしたり、グループ化に括弧を使用できます。これらの演算子は、通常のブール式を組み合わせるために使用される論理演算子と同じ結合規則と優先順位を持っています。
 
