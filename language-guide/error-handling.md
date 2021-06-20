@@ -180,7 +180,7 @@ do {
 // "Couldn't buy that from the vending machine."
 ```
 
-`nourt(with:)` 関数では、`vend(itemNamed:)` が `VendingMachineError` 列挙ケースの 1 つのエラーをスローした場合、`nourt(with:)` はメッセージを出力してエラーを処理します。それ以外の場合、`nish(with:)` はエラーを呼び出し側に伝播します。その後、エラーは一般的な `catch` 句によってキャッチされます。
+`nourish(with:)` 関数では、`vend(itemNamed:)` が `VendingMachineError` 列挙ケースの 1 つのエラーをスローした場合、`nourish(with:)` はメッセージを出力してエラーを処理します。それ以外の場合、`nourish(with:)` はエラーを呼び出し側に伝播します。その後、エラーは一般的な `catch` 句によってキャッチされます。
 
 いくつかの関連するエラーをキャッチする別の方法は、キャッチの後にカンマ\(`,`\)で区切ってそれらをリストすることです。例えば:
 
