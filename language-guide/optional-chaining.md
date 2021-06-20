@@ -153,7 +153,7 @@ class Address {
 }
 ```
 
-`Address` クラスはまた、`String?` の戻り型を持つ `buildingIdentifier()` というメソッドも提供します。このメソッドは、住所のプロパティをチェックし、`buildingName` に値がある場合は `buildingName` を返し、`street` と `buildingNumber` の両方に値がある場合は 2 つを繋げた値を返し、それ以外は `nil` を返します
+`Address` クラスはまた、`String?` の戻り値の型を持つ `buildingIdentifier()` というメソッドも提供します。このメソッドは、住所のプロパティをチェックし、`buildingName` に値がある場合は `buildingName` を返し、`street` と `buildingNumber` の両方に値がある場合は 2 つを繋げた値を返し、それ以外は `nil` を返します
 
 ## Accessing Properties Through Optional Chaining\(オプショナルチェーンを通したプロパティへのアクセス\)
 
@@ -213,7 +213,7 @@ func printNumberOfRooms() {
 }
 ```
 
-このメソッドは戻り値の型を指定しません。ただし、[Functions Without Return Values](functions.md#functions-without-return-values戻り値のない関数)で説明されているように、戻り型のない関数とメソッドには、暗黙的な戻り型 `Void` があります。これは、`()` の値、または空のタプルを返すことを意味します。
+このメソッドは戻り値の型を指定しません。ただし、[Functions Without Return Values](functions.md#functions-without-return-values戻り値のない関数)で説明されているように、戻り値の型のない関数とメソッドには、暗黙的な戻り値の型 `Void` があります。これは、`()` の値、または空のタプルを返すことを意味します。
 
 オプショナルチェーンを使用してオプショナルの値でこのメソッドを呼び出す場合、メソッドの戻り値の型は `Void` ではなく `Void?` になります。これにより、メソッド自体が戻り値を定義していなくても、`if` 文を使用して、`printNumberOfRooms()` メソッドを呼び出すことができたかどうかを確認できます。`printNumberOfRooms` の呼び出しからの戻り値を `nil` と比較して、メソッド呼び出しが成功したかどうかを確認します:
 
@@ -346,7 +346,7 @@ if let johnsStreet = john.residence?.address?.street {
 
 前の例は、オプショナルチェーンを通じてオプショナルの型のプロパティの値を取得する方法を示しています。また、オプショナルチェーンを使用して、オプショナル型の値を返すメソッドを呼び出し、必要に応じてそのメソッドの戻り値を連鎖することもできます。
 
-下記の例では、オプショナルチェーンを通じて `Address` クラスの `buildingIdentifier()` メソッドを呼び出します。このメソッドは、`String?` 型の値を返します。上で説明したように、オプショナルチェーン後のこのメソッド呼び出しの最終的な戻り型も `String?` です。
+下記の例では、オプショナルチェーンを通じて `Address` クラスの `buildingIdentifier()` メソッドを呼び出します。このメソッドは、`String?` 型の値を返します。上で説明したように、オプショナルチェーン後のこのメソッド呼び出しの最終的な戻り値の型も `String?` です。
 
 ```swift
 if let buildingIdentifier = john.residence?.address?.buildingIdentifier() {
