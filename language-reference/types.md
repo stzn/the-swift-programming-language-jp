@@ -27,7 +27,7 @@ Swift では、名前付き型(*named type*)と複合型(*compound type*)の 2 �
 > type → [self-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_self-type)  
 > type → `(` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `)`
 
-## Type Annotation(型注釈)
+## Type Annotation\(型注釈\)
 
 型注釈は、変数または式の型を明示的に指定します。次の例に示すように、型注釈はコロン(`:`)で始まり、型で終わります。
 
@@ -66,7 +66,7 @@ var someValue: ExampleModule.MyType
 > type-identifier → [type-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-name)  [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause) opt \|  [type-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-name)  [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause) opt `.`[type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  
 > type-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
-## Tuple Type(タプル型)
+## Tuple Type\(タプル型\)
 
 タプル型(*tuple type*)は、括弧に囲まれた、型のカンマ区切りのリストです。
 
@@ -89,7 +89,7 @@ someTuple = (left: 5, right: 5)  // Error: 名前が一致していません
 > tuple-type-element → [element-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_element-name)  [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation) \|  [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
 > element-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
-## Function Type(関数型)
+## Function Type\(関数型\)
 
 関数型は関数、メソッド、またはクロージャの型を表し、引数と矢印で区切られた戻り値の型で構成されています(`->`)。
 
@@ -135,7 +135,7 @@ var operation: (Int, Int) -> Int          // OK
 
 エラーをスロー(*throw*)または再スロー(*rethrow*)する関数型は、`throws` キーワードでマークする必要があります。`throws` キーワードは関数型の一部で、スローしない(*nonthrow*)関数はスロー関数のサブタイプです。その結果、スロー関数が使われる場所で、スローしない関数を使用できます。スロー関数や再スロー関数は、[Throwing Functions and Methods](./declarations.md#throwing-functions-and-methodsスロー関数とメソッド)、[Rethrowing Functions and Methods](./declarations.md#rethrowing-functions-and-methodsスロー関数とメソッド)で説明されています。
 
-### Restrictions for Nonescaping Closures(非エスケープクロージャの制限)
+### Restrictions for Nonescaping Closures\(非エスケープクロージャの制限\)
 
 非エスケープ(*nonescaping*)関数の引数には、エスケープできる可能性があるため、`Any` 型のプロパティ、変数、または定数を格納することはできません。
 
@@ -169,7 +169,7 @@ func takesTwoFunctions(first: (() -> Void) -> Void, second: (() -> Void) -> Void
 > function-type-argument → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub>  `inout`<sub>*opt*</sub> [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) \|  [argument-label](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_argument-label)  [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)  
 > argument-label → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
-## Array Type(配列型)
+## Array Type\(配列型\)
 
 Swift は、標準ライブラリで定義されている `Array<Element>` の次の糖衣構文(シンタックスシュガー)を提供しています。
 
@@ -197,7 +197,7 @@ Swift 標準ライブラリの配列型の詳細については、[Arrays](./../
 > GRAMMAR OF AN ARRAY TYPE  
 > array-type → `[` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `]`
 
-## Dictionary Type(辞書型)
+## Dictionary Type\(辞書型\)
 
 Swift は、標準ライブラリで定義されている `Dictionary<Key, Value>` 型に次の糖衣構文(シンタックスシュガー)を提供しています。
 
@@ -221,7 +221,7 @@ let someDictionary: Dictionary<String, Int> = ["Alex": 31, "Paul": 39]
 > GRAMMAR OF A DICTIONARY TYPE  
 > dictionary-type → `[` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `:` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `]`
 
-## Optional Type(オプショナル型)
+## Optional Type\(オプショナル型\)
 
 Swift は、標準ライブラリで定義されている、名前付き型の `Optional<Wrapped>` の糖衣構文(シンタックスシュガー)として、後置演算子の `?` を定義しています。つまり、次の 2 つの宣言は同等です:
 
@@ -250,7 +250,7 @@ optionalInteger! // 42
 > GRAMMAR OF AN OPTIONAL TYPE  
 > optional-type → [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `?`
 
-## Implicitly Unwrapped Optional Type(暗黙アンラップオプショナル型)
+## Implicitly Unwrapped Optional Type\(暗黙アンラップオプショナル型\)
 
 Swift は、標準ライブラリで定義されている、名前付き型の `Optional<Wrapped>` の後に `!` を付けると、アクセス時に暗黙的にアンラップされる糖衣構文(シンタックスシュガー)を定義しています。`nil` に暗黙アンラップオプショナルを使用しようとすると、実行時エラーが発生します。暗黙アンラップの動作以外は、次の 2 つの宣言は同等です:
 
@@ -282,7 +282,7 @@ let implicitlyUnwrappedArray: [Int]!                  // OK
 > GRAMMAR OF AN IMPLICITLY UNWRAPPED OPTIONAL TYPE  
 > implicitly-unwrapped-optional-type → [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `!`
 
-## Protocol Composition Type(プロトコル合成型)
+## Protocol Composition Type\(プロトコル合成型\)
 
 プロトコル合成型は、指定されたプロトコルリスト内の各プロトコルに準拠した型、または特定のクラスのサブクラスの型を定義し、指定されたプロトコルリスト内の各プロトコルに準拠します。プロトコル合成型は、型注釈、ジェネリックの引数句、およびジェネリックの `where` 句内に型を指定する場合にのみ使用できます。
 
@@ -309,7 +309,7 @@ typealias PQR = PQ & Q & R
 > protocol-composition-type → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  `&` [protocol-composition-continuation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_protocol-composition-continuation)  
 > protocol-composition-continuation → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier) \|  [protocol-composition-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_protocol-composition-type)
 
-## Opaque Type(Opaque型)
+## Opaque Type\(Opaque型\)
 
 opaque 型は、基となる具体的な型を特定することなく、プロトコルまたはプロトコル合成に準拠する型を定義します。
 
@@ -328,7 +328,7 @@ opaque 型の形式は次のとおりです:
 > GRAMMAR OF AN OPAQUE TYPE  
 > opaque-type → `some` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
 
-## Metatype Type(Metatype型)
+## Metatype Type\(Metatype型\)
 
 Metatype は、クラス型、構造体、列挙型、およびプロトコル型を含む、任意の型の型情報を参照します。
 
@@ -375,7 +375,7 @@ let anotherInstance = metatype.init(string: "some string")
 > GRAMMAR OF A METATYPE TYPE  
 > metatype-type → [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `.` `Type` \|  [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `.` `Protocol`
 
-## Any Type(Any型)
+## Any Type\(Any型\)
 
 Any 型には、他の全ての型からの値を含めることができます。`Any` は下記のいずれかの型の具体的なインスタンスの型として使用できます。
 
@@ -404,7 +404,7 @@ if let first = mixed.first as? String {
 > GRAMMAR OF AN ANY TYPE  
 > any-type → `Any`
 
-## Self Type(Self型)
+## Self Type\(Self型\)
 
 `Self` 型は特定の型ではなく、その型の名前を繰り返したり明確にすることなく現在の型を都合よく参照できるようにします。
 
@@ -446,7 +446,7 @@ prInt(type(of: z.f()))
 > GRAMMAR OF A SELF TYPE  
 > self-type → `Self`
 
-## Type Inheritance Clause(型継承句)
+## Type Inheritance Clause\(型継承句\)
 
 型継承句(*type inheritance clause*)は、名前付き型がどのクラスを継承しているか、どのプロトコルに準拠しているかを指定するために使用されます。型継承句はコロン(`:`)で始まり、その後に型識別子のリストが続きます。
 
@@ -460,7 +460,7 @@ prInt(type(of: z.f()))
 > type-inheritance-clause → `:` [type-inheritance-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-list)  
 > type-inheritance-list → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier) \|  [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  `,` [type-inheritance-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-list)
 
-## Type Inference(型推論)
+## Type Inference\(型推論\)
 
 Swift は型推論(*type inference*)を広く使用し、コード内の多くの変数と式の型またはその一部を省略することができます。例えば、`var x：Int = 0` と書く代わりに、`var x = 0` と書くことができ、型を完全に省略すると、コンパイラが `x` は `Int` 型だと推論します。同様に、完全に型をコンテキストから推論できる場合は、型の一部を省略することができます。例えば、`let dict: Dictionary = ["A": 1]` と書いた場合、コンパイラは `dict` が`Dictionary<String, Int>型だと推論します。
 

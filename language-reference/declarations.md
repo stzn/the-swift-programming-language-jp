@@ -568,7 +568,7 @@ enum Tree<T> {
 
 `indirect` 修飾子でマークされた列挙型には、関連値を持つケースと関連値を持たないケースが混在している可能性があります。しかし、ケースに `indirect` 修飾子を付いることはできません。
 
-### Enumerations with Cases of a Raw-Value Type\(Raw Valueb型のケースを持つ列挙型\)
+### Enumerations with Cases of a Raw-Value Type\(Raw Value型のケースを持つ列挙型\)
 
 次の形式は、同じ基となる型のケースを持つ列挙型を宣言しています。
 

@@ -1,4 +1,4 @@
-# Memory Safety \(メモリ安全性\)
+# Memory Safety
 
 最終更新日: 2021/6/6
 

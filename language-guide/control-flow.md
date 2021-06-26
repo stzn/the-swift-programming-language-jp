@@ -668,7 +668,7 @@ print("Game over!")
 > もし `break` が `gameLoop` ラベルを付けなかった場合、`while` ではなく `switch` から抜けます。`gameLoop` ラベルを使用することで、どの制御文から抜けるのかを明確にできます  
 > 次のループに移動するのに `continue gameLoop` と `gameLoop` ラベルを使用する必要は厳密にはありません。ゲーム内にループは 1 つしかなく、どのループに `continue` が影響を与えるかが明確です。しかし、`gameLoop` ラベルを使用しても害はなく、そうすることで `break` のラベルと一貫性ができ、ロジックを読みやすく理解しやすくすることができます。
 
-## Early Exit\(早期リターン)
+## Early Exit\(早期リターン\)
 
 `guard` 文は `if` 文と同様に、式のブール値に応じて文を実行します。`guard` 文は、`guard` の後のコードを実行するために、`guard` の条件が `true` でなければならない場合に使います。`if` 文と異なり、`guard` 文は常に `else` 句が必要で、条件が `false` の場合に `else` 内が実行されます。
 
@@ -702,7 +702,7 @@ greet(person: ["name": "Jane", "location": "Cupertino"])
 
 `guard` 文を必須条件に使用することで、`if` 文で同じことを行うよりも可読性を改善させることができます。概ね `else` ブロックで包むことなくコードを書くことができたり、必須条件のすぐ下で条件を満たさない case を処理することができます。
 
-## Checking API Availability\(API使用可能性チェック)
+## Checking API Availability\(API使用可能性チェック\)
 
 Swift は API の使用可能性(_availability_\)のチェックをビルトインでサポートしています。つまり、あるデプロイターゲットでは利用できない API を間違って使わないことが保証できます。
 
