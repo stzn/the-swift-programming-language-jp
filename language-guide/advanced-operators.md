@@ -443,7 +443,7 @@ let plusMinusVector = firstVector +- secondVector
 > NOTE  
 > 前置または後置演算子を定義するときは、優先順位を指定しません。ただし、前置と後置演算子の両方を同じオペランドに適用すると、後置演算子が最初に適用されます。
 
-## Result Builders\(リザルトビルダー\)
+## Result Builders\(リザルトビルダ\)
 
 Result Builders は、リストやツリーなどの入れ子データを自然な宣言的な方法で作成するための構文を追加する、ユーザ定義の型です。Result Builders を使用するコードには、条件または繰り返しのデータを処理するために、`if` や `for` などの通常の Swift 構文を含めることができます。
 

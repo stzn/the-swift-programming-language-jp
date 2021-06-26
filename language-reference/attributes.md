@@ -422,7 +422,7 @@ s.$x.wrapper  // WrapperWithProjection 値
 
 ### resultBuilder
 
-この属性をクラス、構造体、列挙型に適用して、その型を Result Builder として使用できます。Result Builder は、ネストされたデータ構造を段階的に構築する型です。Result Builder を使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語(DSL)を実装します。`resultBuilder` 属性の使用方法の例については、[Result Builders](./../language-guide/advanced-operators.md#result-buildersリザルトビルダー)を参照ください。
+この属性をクラス、構造体、列挙型に適用して、その型を Result Builder として使用できます。Result Builder は、ネストされたデータ構造を段階的に構築する型です。Result Builder を使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語(DSL)を実装します。`resultBuilder` 属性の使用方法の例については、[Result Builders](./../language-guide/advanced-operators.md#result-buildersリザルトビルダ)を参照ください。
 
 #### Result-Building Methods
 
