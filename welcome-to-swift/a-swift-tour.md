@@ -18,7 +18,7 @@ print("Hello, world!")
 >
 > [Download Playground](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.playground.zip)
 
-## Simple Values\(シンプルな値)
+## Simple Values\(シンプルな値\)
 
 定数を作成するのに `let`、変数を作成するのに `var` を使います。定数の値はコンパイル時に知る必要はありませんが、正確に一度だけ値を設定しなければなりません。つまり、値を指定をたった一度だけ行い、他のあらゆる場所から利用するために定数を活用できます。
 
