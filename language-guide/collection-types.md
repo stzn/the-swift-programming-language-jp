@@ -1,29 +1,29 @@
 # Collection Types \(コレクション型\)
 
-最終更新日: 2021/5/19
+最終更新日: 2021/6/27
 
-Swift は、配列\(arrays\)、セット\(set\)、辞書\(dictionaries\)と呼ばれる 3 つの基本的なコレクション型を提供しています。配列は順序が決まったコレクションです。セットは値の重複がない順序のないコレクションです。辞書はキーとバリューに関連性を持たせた順序のないコレクションです。
+Swift は、配列、セット、辞書と呼ばれる 3 つの基本的な*コレクション型*を提供しています。配列は順序が決まったコレクションです。セットは値の重複と順序のないコレクションです。辞書はキーとバリューに関連性を持たせた順序のないコレクションです。
 
 ![Collection Types](../.gitbook/assets/collectiontypes_intro_2x.png)
 
-Swift の配列、セット、辞書は、常に保持できるキーやバリューの型が明確です。つまり、間違った型の値を挿入することができません。これは、コレクションから取得する値の型がはっきりとわかっていることにもなります。
+Swift の配列、セット、辞書は、常に保持しているキーやバリューの型が明確です。つまり、間違った型の値を挿入することができません。これは、コレクションから取得する値の型がはっきりとわかっていることにもなります。
 
 > NOTE  
-> Swift の配列、セット、辞書は、ジェネリックなコレクションとして実装されています。ジェネリック型やコレクションについての詳細は[Generics](generics.md)を参照ください。
+> Swift の配列、セット、辞書は、*ジェネリックなコレクション*として実装されています。ジェネリックな型やコレクションについての詳細は[Generics](generics.md)を参照ください。
 
 ## Mutability of Collections\(コレクションの可変性\)
 
 もし配列、セット、辞書を変数に代入した場合、作成されたコレクションは可変です。つまり、追加、削除、要素の変更など、後々そのコレクションを取り替え\(または変更\)できます。もし配列、セット、辞書を定数に代入した場合、コレクションは不変で、そのサイズや内容を変更できません。
 
 > NOTE  
-> コレクションの変更が必要ない場合は、不変なコレクションを作成するのが良いプラクティスです。そうすることで、コードを理解しやすくし、Swiftのコンパイラもコレクションのパフォーマンスを最適化することができます。
+> コレクションの変更が必要ない場合は、不変なコレクションを作成するのが良いプラクティスです。そうすることで、コードを理解しやすくし、Swift のコンパイラもコレクションのパフォーマンスを最適化することができます。
 
 ## Arrays\(配列\)
 
 配列は同じ型の値を順序立ったリストの中に保持します。配列の中に同じ値を複数回入れることができます。
 
 > NOTE  
-> `Array` はFoundationの `NSArray` とスムーズにやりとりできるようにしています。 FoundationとCocoaを使った `Array` の使用方法に関しては、[Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730)を参照ください
+> `Array` は Foundation の `NSArray` とスムーズにやりとりできるようにしています。Foundation と Cocoa を使った `Array` の使用方法に関しては、[Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730)を参照ください
 
 ### Array Type Shorthand Syntax\(配列型の短縮構文\)
 
@@ -31,7 +31,7 @@ Swift の配列の型は全体で `Array<Element>` と書きます。`Element` �
 
 ### Creating an Empty Array\(空の配列の作成\)
 
-イニシャライザのシンタックスを使用して、ある型の空の配列を作成できます。
+イニシャライザの構文を使用して、ある型の空の配列を作成できます。
 
 ```swift
 var someInts = [Int]()
@@ -73,7 +73,7 @@ var sixDoubles = threeDoubles + anotherThreeDoubles
 
 ### Creating an Array with an Array Literal\(配列リテラルを使った配列の作成\)
 
-配列リテラルからも配列を初期化できます。これは、1 つ以上の要素を持った配列コレクションの簡略記法です。配列リテラルはカンマ区切りの角括弧\(\[\]\)で囲んだ値のリストです:
+配列リテラルからも配列を初期化できます。これは、1 つ以上の要素を持った配列コレクションの簡略記法です。配列リテラルはカンマ区切りの角括弧(`[]`)で囲んだ値のリストです:
 
 ![Array Literal](../.gitbook/assets/arrayliteral_2x.png)
 
@@ -87,7 +87,7 @@ var shoppingList: [String] = ["Eggs", "Milk"]
 `shoppingList` 変数は、`[String]` と書くことで「文字列を保持する配列」として宣言されています。この配列は値の型が `String` で特定されているので、`String` のみを保持することができます。ここで、`shoppingList` 配列は、配列リテラルの中で `"Eggs"` と `"Milk"` の 2 つの値で初期化しています。
 
 > NOTE  
-> 後の例でさらにアイテムを追加するので、`shoppingList` 配列は `let` で宣言された定数ではなく、`var` で変数で宣言されてます。
+> 後の例でさらにアイテムを追加するので、`shoppingList` 配列は `let` で宣言された定数ではなく、`var` で変数として宣言されてます。
 
 この例では、配列リテラルには 2 つの `String` を含んでいます。これは `shoppingList` 変数の宣言時の型\(`String` しか含めない\)に合致しているので、`shoppingList` に配列リテラルを代入して 2 つに初期値で初期化することができます。
 
@@ -101,7 +101,7 @@ var shoppingList = ["Eggs", "Milk"]
 
 ### Accessing and Modifying an Array\(配列へのアクセスと変更\)
 
-メソッドやプロパティ、subscript シンタックスを通して配列の要素へのアクセス、変更ができます。
+メソッドやプロパティ、subscript 構文を通して配列の要素へのアクセス、変更ができます。
 
 配列のアイテムの数を調べるために、読み取り専用の `count` プロパティをチェックします。
 
@@ -137,7 +137,7 @@ shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
 // shoppingList は 7 つのアイテムを含んでいます
 ```
 
-subscript シンタックスを使用すると、配列から値を取得します。配列名のすぐ後の角括弧\(`[]`\)の中に、取得したい値の index を渡します。
+subscript 構文を使用すると、配列から値を取得します。配列名のすぐ後の角括弧\(`[]`\)の中に、取得したい値のインデックスを渡します。
 
 ```swift
 var firstItem = shoppingList[0]
@@ -145,25 +145,25 @@ var firstItem = shoppingList[0]
 ```
 
 > NOTE  
-> 配列の最初のアイテムのindexは `0` であって `1` ではありません。SwiftのArrayはいつも 0 から始まる index 方式です。
+> 配列の最初のアイテムのindexは `0` であって `1` ではありません。SwiftのArrayはいつも 0 から始まるインデックス方式です。
 
-ある index の既存の値を変更したい場合も `subscript` シンタックスを使います。
+あるインデックスの既存の値を変更したい場合も subscript 構文を使います。
 
 ```swift
 shoppingList[0] = "Six eggs"
 // リストの最初のアイテムは "Eggs" ではなく、 "Six eggs"
 ```
 
-subscript シンタックスを使用するとき、指定した index は値の存在する範囲内でなければなりません。例えば、配列の最後に値を追加しようとして `shoppingList[shoppingList.count] = "Salt"` と書くと、実行時エラーになります。
+subscript 構文を使用するとき、指定したインデックスは値の存在する範囲内でなければなりません。例えば、配列の最後に値を追加しようとして `shoppingList[shoppingList.count] = "Salt"` と書くと、実行時エラーになります。
 
-ある一定範囲の値を一度に変更する場合にも、`subscript` シンタックスを使用することができます。これは置き換えたい値のセットの数と指定した置き換える範囲の長さが異なっていても可能です。次の例は `"Chocolate Spread"`、`"Cheese"`、`"Butter"` を `"Bananas"`、`"Apples"` に置き換えています。
+ある一定範囲の値を一度に変更する場合にも、subscript 構文を使用することができます。これは置き換えたい値のセットの数と指定した置き換える範囲の長さが異なっていても可能です。次の例は `"Chocolate Spread"`、`"Cheese"`、`"Butter"` を `"Bananas"`、`"Apples"` に置き換えています。
 
 ```swift
 shoppingList[4...6] = ["Bananas", "Apples"]
 // shoppingList は 6 つのアイテムを含んでいます
 ```
 
-配列の特定の index にアイテムを挿入したい場合、`insert(_:at:)` メソッドを使います。
+配列の特定のインデックスにアイテムを挿入したい場合、`insert(_:at:)` メソッドを使います。
 
 ```swift
 shoppingList.insert("Maple Syrup", at: 0)
@@ -171,21 +171,21 @@ shoppingList.insert("Maple Syrup", at: 0)
 // "Maple Syrup" は最初のアイテムです
 ```
 
-この例では `insert(_:at:)` に `"Maple Syrup"` と index 0 を指定して、ショッピングリストの先頭に新しいアイテムを挿入しています。
+この例では `insert(_:at:)` に `"Maple Syrup"` とインデックス 0 を指定して、ショッピングリストの先頭に新しいアイテムを挿入しています。
 
-同様に `remove(at:)` を使用して配列からアイテムを削除できます。このメソッドは特定の index のアイテムを削除し、削除したアイテムを返します\(必要なければ戻り値は無視できます\):
+同様に `remove(at:)` を使用して配列からアイテムを削除できます。このメソッドは特定のインデックスのアイテムを削除し、削除したアイテムを返します\(必要なければ戻り値は無視できます\):
 
 ```swift
 let mapleSyrup = shoppingList.remove(at: 0)
-// index 0 にあったアイテムは削除されました
+// インデックス 0 にあったアイテムは削除されました
 // shoppingList は 6 つのアイテムを含んでいますが、 Maple Syrupはありません
 // mapleSyrup 定数は削除した "Maple Syrup" 文字列と等しい
 ```
 
 > NOTE  
-> 配列の既存の境界を超えた index の値にアクセスしたり、変更したりしようとすると、実行時エラーになるでしょう。`count` プロパティと index を比較して、index が妥当かどうかをチェックしてください。配列は 0 から始まる index 方式なので、妥当な最大のindexは `count - 1` です。しかし、`count` が `0` のとき\(配列が空のとき\)、妥当な index は存在しません。
+> 配列の既存の境界を超えたインデックスの値にアクセスしたり、変更したりしようとすると、実行時エラーになるでしょう。`count` プロパティとインデックスを比較して、インデックスが妥当かどうかをチェックしてください。配列は 0 から始まるインデックス方式なので、妥当な最大のインデックスは `count - 1` です。しかし、`count` が `0` のとき\(配列が空のとき\)、妥当なインデックスは存在しません。
 
-アイテムが削除された時配列内の隙間は埋められ、index `0` の値は再び `"Six eggs"` になります。
+アイテムが削除された時、配列内の隙間は埋められ、インデックス `0` の値は再び `"Six eggs"` になります。
 
 ```swift
 firstItem = shoppingList[0]
@@ -216,7 +216,7 @@ for item in shoppingList {
 // Bananas
 ```
 
-各アイテムの index が必要な場合は、`enumerated()` を代わりに使いましょう。`enumerated()` は数値の index とアイテムを組み合わせたタプルを返します。数値の開始は `0` で、`1` ずつ増加していきます。つまり全体を繰り返し処理すると、数値はアイテムの index と一致します。繰り返し処理の中で、index とアイテムのタプルを一時的な定数や変数に展開することができます。
+各アイテムのインデックスが必要な場合は、`enumerated()` を代わりに使いましょう。`enumerated()` は数値のインデックスとアイテムを組み合わせたタプルを返します。数値の開始は `0` で、`1` ずつ増加していきます。つまり全体を繰り返し処理すると、数値はアイテムのインデックスと一致します。繰り返し処理の中で、インデックスとアイテムのタプルを一時的な定数や変数に展開することができます。
 
 ```swift
 for (index, value) in shoppingList.enumerated() {
@@ -233,26 +233,26 @@ for (index, value) in shoppingList.enumerated() {
 
 ## Sets\(セット\)
 
-セット\(_set_\)はコレクション内に、同じ型の値を、決まった順序と値の重複なしに保持します。アイテムの順序が重要でない場合や、アイテムに重複がないことを保証したい場合に、配列\(_array_\)の変わりにセットを使用することができます。
+*セット*はコレクション内に、同じ型の値を、決まった順序と値の重複なしに保持します。アイテムの順序が重要でない場合や、アイテムに重複がないことを保証したい場合に、配列の変わりにセットを使用することができます。
 
-> `Set` はFoundationの `NSSet` とスムーズにやりとりできるようにしています。 FoundationとCocoaを使った `Set` の使用方法に関しては、[Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530)を参照ください
+> `Set` は Foundation の `NSSet` とスムーズにやりとりできるようにしています。Foundation と Cocoa を使った `Set` の使用方法に関しては、[Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530)を参照ください
 
 ### Hash Values for Set Types\(セット型のハッシュ値\)
 
 セットに保存する型はハッシュ化が可能でなければなりません。つまり、その型はハッシュ値を計算する方法をセットに知らせる必要があります。ハッシュ値は、`Int` 型で、等価比較が可能な全てのオブジェクトで、例えば `a == b` の場合、`a` のハッシュ値は `b` のハッシュ値と等しくなります。
 
-Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デフォルトでハッシュ化が可能で、セットや辞書のキーに使用することができます。associated value を持たない列挙型の case \([Enumerations](enumerations.md)\)もデフォルトでハッシュ化が可能です。
+Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デフォルトでハッシュ化が可能で、セットや辞書のキーに使用することができます。関連値を持たない列挙型のケース\([Enumerations](enumerations.md)\)もデフォルトでハッシュ化が可能です。
 
 > NOTE  
 > Swift 標準ライブラリの `Hashable` プロトコルに準拠することで、独自で作成した型をセットや辞書のキーに使用できます。`hash(into:)` メソッドの実装については、[Hashable](https://developer.apple.com/documentation/swift/hashable)を参照ください。プロトコルの準拠については、[Protocols](protocols.md)を参照ください。
 
 ### Set Type Syntax\(セット型構文\)
 
-セット\(_Set_\)型は `Set<Element>` と書きます。`Element` はセットが保持できる型です。セットには、配列のような簡略記法\(`[Element]`\)はありません。
+セット型は `Set<Element>` と書きます。`Element` はセットが保持できる型です。セットには、配列のような簡略記法\(`[Element]`\)はありません。
 
 ### Creating and Initializing an Empty Set\(空のセットの作成と初期化\)
 
-イニシャライザのシンタックスを使用して、ある型の空のセットを作成できます。
+イニシャライザの構文を使用して、ある型の空のセットを作成できます。
 
 ```swift
 var letters = Set<Character>()
@@ -283,7 +283,7 @@ var favoriteGenres: Set<String> = ["Rock", "Classical", "Hip hop"]
 // favoriteGenres は 3 つ の初期値で初期化されている
 ```
 
-`favoriteGenres` 変数は `Set<String>` と書くことで、「`String` のセット」を宣言しています。`String` 型の値をしているため、このセットには `String` しか保持できません。ここでは `favoriteGenres` セットに 3 つの `String` を含めた配列リテラルを使用して初期化しています。
+`favoriteGenres` 変数は `Set<String>` と書くことで、「`String` のセット」を宣言しています。`String` 型の値を保持しているため、このセットには `String` しか保持できません。ここでは `favoriteGenres` セットに 3 つの `String` を含めた配列リテラルを使用して初期化しています。
 
 > NOTE  
 > 後の例でアイテムの追加や削除を行なっているため、`favoriteGenres` は定数ではなく変数で定義されています。
@@ -383,7 +383,7 @@ for genre in favoriteGenres.sorted() {
 
 下記のイラストでは、`a` と `b` の 2 つのセットに対して、それぞれ操作を行い、色の付いた部分が結果\(戻り値\)を表しています。
 
-![Set&#x306E;&#x64CD;&#x4F5C;&#x7D50;&#x679C;](../.gitbook/assets/setvenndiagram_2x.png)
+![Setのベン図](../.gitbook/assets/setvenndiagram_2x.png)
 
 * `intersection(_:)` は、2 つのセットの共通要素を含めた新しいセットを作成します
 * `symmetricDifference(_:)` は、どちらかのセットにあるものの、両方には含まれていない要素を含めた新しいセットを作成します
@@ -408,12 +408,11 @@ oddDigits.symmetricDifference(singleDigitPrimeNumbers).sorted()
 ### Set Membership and Equality\(セットの要素と等価性\)
 
 下記のイラストでは、`a`、`b`、`c` の 3 つのセットで共有している要素の領域を表しています。
+`a` は、`b` に含まれる全ての要素を含んでいるため、`b` の*上位集合*です。反対に、`b` は `a` の*下位集合*です。`b` と `c` は、共通の要素がないため、互いに*素*です。
 
-![Set&#x306E;&#x5171;&#x901A;&#x9818;&#x57DF;](../.gitbook/assets/seteulerdiagram_2x.png)
+![Setのオイラー図](../.gitbook/assets/seteulerdiagram_2x.png)
 
-`a` は、`b` に含まれる全ての要素を含んでいるため、`b` の上位集合\(_superset_\)です。反対に、`b` は `a` の下位集合\(_subset_\)です。`b` と `c` は、共通の要素がないため、互いに素\(_disjoint_\)です。
-
-* 等号演算子\(_==_\)を使用して、2 つのセットの要素が全て同じかどうかを判定できます
+* 等号演算子(`==`)を使用して、2 つのセットの要素が全て同じかどうかを判定できます
 * `isSubset(of:)` を使用してあるセットの要素が他のセットに全て含まれているかどうかを判定できます
 * `isSuperset(of:)` を使用してあるセットが他のセットの全ての要素を含んでいるかどうかを判定できます
 * `isStrictSubset(of:)` や `isStrictSuperset(of:)` は、あるセットが他のセットの上位集合か下位集合かどうかを判定できます\(等しい場合は `false` です\)
@@ -434,10 +433,10 @@ farmAnimals.isDisjoint(with: cityAnimals)
 
 ## Dictionaries\(辞書\)
 
-辞書は、特定の型のキーと、特定の型のバリューをペアとして関連づけ、順序なしでコレクションに保持します。それぞれのアイテムは、辞書内で識別子の役割を果たす一意なキーに紐づいています。配列のアイテムとは異なり、辞書のアイテムに順序はありません。辞書は、現実に特定の単語を辞書で調べるのと同じように、識別子から値を探したいときに使います。
+*辞書*は、特定の型のキーと、特定の型のバリューをペアとして関連づけ、順序なしでコレクションに保持します。それぞれのアイテムは、辞書内で識別子の役割を果たす一意なキーに紐づいています。配列のアイテムとは異なり、辞書のアイテムに順序はありません。辞書は、現実に特定の単語を辞書で調べるのと同じように、識別子から値を探したいときに使います。
 
 > NOTE  
-> `Dictionary` はFoundationの `NSDictionary` とスムーズにやりとりできるようにしています。 FoundationとCocoaを使った `Dictionary` の使用方法に関しては、[Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239)を参照ください
+> `Dictionary` は Foundation の `NSDictionary` とスムーズにやりとりできるようにしています。Foundation と Cocoa を使った `Dictionary` の使用方法に関しては、[Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239)を参照ください
 
 ### Dictionary Type Shorthand Syntax\(辞書型の短縮構文\)
 
@@ -450,7 +449,7 @@ Swift の辞書は、全体で `Dictionary<Key, Value>` と書きます。`Key` 
 
 ### Creating an Empty Dictionary\(空の辞書型の作成\)
 
-配列と同様に、ある型の空の `Dictionary` をイニシャライザのシンタックスを使用して作成できます。
+配列と同様に、ある型の空の `Dictionary` をイニシャライザの構文を使用して作成できます。
 
 ```swift
 var namesOfIntegers = [Int: String]()
@@ -459,7 +458,7 @@ var namesOfIntegers = [Int: String]()
 
 この例では、数字を人が理解できる名前として保持するために、`[Int: String]` 型の空の辞書を作成しています。キーは `Int` 型でバリューは `String` 型です。
 
-既に型情報が分かっている場合は、空の辞書リテラルを `[:]` と書くことができます。\(角括弧\(`[]`\)の中にコロン\(`:`\)\):
+既に型情報が分かっている場合は、空の辞書リテラルを `[:]` と書くことができます。(角括弧(`[]`)の中にコロン(`:`)):
 
 ```swift
 namesOfIntegers[16] = "sixteen"
@@ -470,11 +469,11 @@ namesOfIntegers = [:]
 
 ### Creating a Dictionary with a Dictionary Literal\(辞書リテラルを使った辞書の作成\)
 
-先ほど見た配列リテラルと似たようなシンタックスの辞書リテラル\(_dictionary literal_\)を使った初期化もできます。辞書リテラルは、1 つ以上のキーバリューペアから `Dictionary` のコレクションを作成する簡略記法です。
+先ほど見た配列リテラルと似たような構文の*辞書リテラル*を使った初期化もできます。辞書リテラルは、1 つ以上のキーバリューペアから `Dictionary` のコレクションを作成する簡略記法です。
 
-キーバリューペア\(_key-value pair_\)は、キーとバリューの組み合わせです。辞書リテラルは、それぞれのキーバリューペアのキーとバリューをコロン\(`:`\)で分けます。複数のキーバリューペアは、カンマ\(`,`\)区切りのリストを角括弧\(`[]`\)で囲みます:
+*キーバリューペア*は、キーとバリューの組み合わせです。辞書リテラルは、それぞれのキーバリューペアのキーとバリューをコロン\(`:`\)で分けます。複数のキーバリューペアは、カンマ\(`,`\)区切りのリストを角括弧\(`[]`\)で囲みます:
 
-![&#x8F9E;&#x66F8;&#x30EA;&#x30C6;&#x30E9;&#x30EB;](../.gitbook/assets/04_dictionarycreating.png)
+![辞書の作成](../.gitbook/assets/04_dictionarycreating.png)
 
 下記の例では、国際空港の名前を保持する辞書を作成します。この辞書は、3 文字の国際空港コードをキーに、空港名をバリューにしています。
 
@@ -501,7 +500,7 @@ var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 ### Accessing and Modifying a Dictionary\(辞書へのアクセスと変更\)
 
-メソッドやプロパティ、subscript シンタックスを通して、辞書へのアクセス、変更ができます。
+メソッドやプロパティ、subscript 構文を通して、辞書へのアクセス、変更ができます。
 
 配列と同様に、`Dictionary` のアイテムの数を調べるために、読み取り専用の `count` プロパティをチェックします。
 
@@ -521,7 +520,7 @@ if airports.isEmpty {
 // "The airports dictionary isn't empty."
 ```
 
-subscript シンタックスを使用して、新しいアイテムを追加することができます。適切な型の新しいキーを subscript の index に入れ、適切な型の新しいバリューを代入します。
+subscript 構文を使用して、新しいアイテムを追加することができます。適切な型の新しいキーを subscript のインデックスに入れ、適切な型の新しいバリューを代入できます。
 
 ```swift
 airports["LHR"] = "London"
@@ -537,7 +536,7 @@ shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
 // shoppingList は 7 つのアイテムを含んでいます
 ```
 
-subscript シンタックスを使用すると、特定のキーのバリューを変更することもできます。
+subscript 構文を使用すると、特定のキーのバリューを変更することもできます。
 
 ```swift
 airports["LHR"] = "London Heathrow"
@@ -555,7 +554,7 @@ if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
 // "The old value for DUB was Dublin."
 ```
 
-subscript シンタックスを使用して特定のキーのバリューを取得することもできます。バリューの存在しないキーに対してもリクエストすることが可能で、バリューの型のオプショナル値を返します。存在しなければ `nil` を返します:
+subscript 構文を使用して特定のキーのバリューを取得することもできます。バリューの存在しないキーに対してもリクエストすることが可能で、バリューの型のオプショナル値を返します。存在しなければ `nil` を返します:
 
 ```swift
 if let airportName = airports["DUB"] {
@@ -566,7 +565,7 @@ if let airportName = airports["DUB"] {
 // "The name of the airport is Dublin Airport."
 ```
 
-subscript シンタックスを使用して、キーに `nil` を代入することで、キーバリューペアを削除できます:
+subscript 構文を使用して、キーに `nil` を代入することで、キーバリューペアを削除できます:
 
 ```swift
 airports["APL"] = "Apple International"
@@ -601,7 +600,7 @@ for item in shoppingList {
 // Bananas
 ```
 
-各アイテムの index が必要な場合は、`enumerated()` を代わりに使いましょう。各アイテムは `(key, value)` のタプルを返し、繰り返し処理の中で、このタプルを一時的な定数や変数に展開することができます。
+各アイテムのインデックスが必要な場合は、`enumerated()` を代わりに使いましょう。各アイテムは `(key, value)` のタプルを返し、繰り返し処理の中で、このタプルを一時的な定数や変数に展開することができます。
 
 ```swift
 for (airportCode, airportName) in airports {
@@ -611,7 +610,7 @@ for (airportCode, airportName) in airports {
 // YYZ: Toronto Pearson
 ```
 
-`for-in` ループについては、[For-In Loops](control-flow.md#for-in-loopsFor-Inループ)をご参照ください。
+`for-in` ループについては、[For-In Loops](control-flow.md#for-in-loopsFor-Inループ)を参照ください。
 
 `keys` と `values` プロパティを使用して、キーとバリューそれぞれのリストを取得することもできます:
 
@@ -640,4 +639,3 @@ let airportNames = [String](airports.values)
 ```
 
 `Dictionary` 型には決まった順序がありません。特定の順番で値を繰り返し処理をしたい場合、`keys` か `values` プロパティの `sorted()` メソッドを使いましょう。
-
