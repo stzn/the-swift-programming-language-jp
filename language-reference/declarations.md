@@ -134,7 +134,7 @@ print("The second number is \(secondNumber).")
 
 get は値を読み取るために使用され、set は値を書き込むために使用されます。set 句は省略可能で、get のみが必要な場合は、[Read-Only Computed Properties](./../language-guide/properties.md#read-Only-computed-properties読み取り専用計算プロパティ)で説明されているように、両方の句を省略し、シンプルに要求された値を直接返すことができます。しかし、set 句を指定した場合は、get 句も提供する必要があります。
 
-setter name とそれを囲む括弧は省略可能です。setter name を指定した場合は、set へのパラメータの名前として使用されます。setter name を指定しない場合は、[Shorthand Setter Declaration](./../language-guide/properties.md#shorthand-setter-declaration短縮setプロパティ宣言)で説明されているように、set へのデフォルトのパラメータ名は `newValue` です。
+setter name とそれを囲む括弧は省略可能です。setter name を指定した場合は、set へのパラメータの名前として使用されます。setter name を指定しない場合は、[Shorthand Setter Declaration](./../language-guide/properties.md#shorthand-setter-declaration省略setプロパティ宣言)で説明されているように、set へのデフォルトのパラメータ名は `newValue` です。
 
 格納変数や格納可変プロパティとは異なり、計算変数または計算プロパティの値はメモリに格納されません。
 
@@ -295,7 +295,7 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 
 各パラメータには型を含める必要があります。推論することはできません。パラメータ型の前に `inout` を書くと、その関数の範囲内でパラメータを変更できます。in-out パラメータについては、下記の[In-Out Parameters](#in-out-parametersIn-Outパラメータ)で詳細に説明されています。
 
-statements が単一の式のみを含む関数宣言は、その式の値を返すことが明らかです。この暗黙的なリターン構文は、式の型と関数の戻り値の型が `Void` やケースを持たない `Never` のような列挙型ではない場合にのみ使用できます。
+statements が単一式のみを含む関数宣言は、その式の値を返すことが明らかです。この暗黙的なリターン構文は、式の型と関数の戻り値の型が `Void` やケースを持たない `Never` のような列挙型ではない場合にのみ使用できます。
 
 関数は、戻り値の型としてタプル型を使用して複数の値を返すことができます。
 

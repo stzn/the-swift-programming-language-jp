@@ -38,7 +38,7 @@ class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
 
 プロトコルが get/set を要求する場合、そのプロパティ要件は、定数格納プロパティまたは読み取り専用の計算プロパティでは満たされません。プロトコルが get のみを要求する場合でも、その要件はあらゆる種類のプロパティによって満たされ、必要ならば実装の方でプロパティが set でも要件を満たします。
 
-プロパティ要件は常に変数プロパティとして宣言され、前に `var` キーワードが付きます。get/set プロパティは型宣言の後に `{ get set }` を記述することで示し、get プロパティは `{ get }` で示します。
+プロパティ要件は常に変数プロパティとして宣言され、前に `var` キーワードが付きます。get/プロパティの set は型宣言の後に `{ get set }` を記述することで示し、プロパティの get は `{ get }` で示します。
 
 ```swift
 protocol SomeProtocol {
@@ -344,7 +344,7 @@ class SnakesAndLadders: DiceGame {
 
 蛇とはしごについては、[Break](control-flow.md#break)を参照してください。
 
-このバージョンでは、`DiceGame` プロトコルに準拠する `SnakesAndLadders` というクラスでラップされています。プロトコルに準拠するために、`dice` と呼ばれる get プロパティと `play()` メソッドを提供しています。\(`dice` プロパティは、初期化後に変更する必要がないため、定数プロパティとして宣言されており、プロトコルでは get のみを要件にしています\)
+このバージョンでは、`DiceGame` プロトコルに準拠する `SnakesAndLadders` というクラスでラップされています。プロトコルに準拠するために、`dice` と呼ばれるプロパティの get と `play()` メソッドを提供しています。\(`dice` プロパティは、初期化後に変更する必要がないため、定数プロパティとして宣言されており、プロトコルでは get のみを要件にしています\)
 
 蛇とはしごのゲームボードのセットアップは、クラスの `init()` イニシャライザ内で行われています。全てのゲームロジックは、プロトコルの `play` メソッドの中で行われています。このメソッドは、プロトコルで必須の `dice` プロパティを使用して、ダイスの出目を提供しています。
 
@@ -583,7 +583,7 @@ protocol PrettyTextRepresentable: TextRepresentable {
 }
 ```
 
-この例では、`TextRepresentable` から継承する新しいプロトコル `PrettyTextRepresentable` を定義しています。`PrettyTextRepresentable` に準拠するものは全て、`TextRepresentable` の全ての要件に加えて、`PrettyTextRepresentable` の追加の要件を満たす必要があります。この例では、`PrettyTextRepresentable` は、`String` を返す `prettyTextualDescription` という get プロパティを提供するための 1 つの要件を追加します。
+この例では、`TextRepresentable` から継承する新しいプロトコル `PrettyTextRepresentable` を定義しています。`PrettyTextRepresentable` に準拠するものは全て、`TextRepresentable` の全ての要件に加えて、`PrettyTextRepresentable` の追加の要件を満たす必要があります。この例では、`PrettyTextRepresentable` は、`String` を返す `prettyTextualDescription` というプロパティの get を提供するための 1 つの要件を追加します。
 
 `SnakesAndLadders` クラスを拡張して、`PrettyTextRepresentable` に準拠させることができます:
 
@@ -662,7 +662,7 @@ wishHappyBirthday(to: birthdayPerson)
 // "Happy birthday, Malcolm, you're 21!"
 ```
 
-この例では、`Named` プロトコルには、`name` という `String` 型の get プロパティ要件が 1 つのあります。`Aged` プロトコルには、`age` と呼ばれる `Int` 型の get プロパティ要件が 1 つあります。どちらのプロトコルも、`Person` と呼ばれる構造体に準拠されています。
+この例では、`Named` プロトコルには、`name` という `String` 型のプロパティの get 要件が 1 つのあります。`Aged` プロトコルには、`age` と呼ばれる `Int` 型のプロパティの get 要件が 1 つあります。どちらのプロトコルも、`Person` と呼ばれる構造体に準拠されています。
 
 この例では、`wishHappyBirthday(to:)` 関数も定義されています。`celebrator` パラメータの型は `Named & Aged` です。これは、「`Named` プロトコルと `Aged` プロトコルの両方に準拠する任意の型」を意味します。必要なプロトコルの両方に準拠している限り、関数に渡される特定の型は問題ではありません。
 
@@ -707,7 +707,7 @@ beginConcert(in: seattle)
 * ダウンキャスト演算子の `as?` は、プロトコルの型のオプショナル値を返します。インスタンスがそのプロトコルに準拠していない場合、この値は `nil` です
 * ダウンキャスト演算子の `as!` は、強制的にダウンキャストし、ダウンキャストが成功しない場合は実行時エラーを引き起こします
 
-この例では、`HasArea` というプロトコルを定義しています。このプロトコルには、`area` という `Double` 型の単一の get プロパティ要件があります:
+この例では、`HasArea` というプロトコルを定義しています。このプロトコルには、`area` という `Double` 型の単一のプロパティの get 要件があります:
 
 ```swift
 class Circle: HasArea {

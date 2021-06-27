@@ -25,7 +25,7 @@ Swift の配列、セット、辞書は、常に保持しているキーやバ�
 > NOTE  
 > `Array` は Foundation の `NSArray` とスムーズにやりとりできるようにしています。Foundation と Cocoa を使った `Array` の使用方法に関しては、[Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730)を参照ください
 
-### Array Type Shorthand Syntax\(配列型の短縮構文\)
+### Array Type Shorthand Syntax\(配列型の省略構文\)
 
 Swift の配列の型は全体で `Array<Element>` と書きます。`Element` はその配列が保持できる値の型です。簡略記法として `[Element]` とも書けます。この 2 つの形式は機能的に同じですが、簡略記法の方が好まれ、このガイド内でも配列の型を参照する際はこちらの形式を使います。
 
@@ -438,7 +438,7 @@ farmAnimals.isDisjoint(with: cityAnimals)
 > NOTE  
 > `Dictionary` は Foundation の `NSDictionary` とスムーズにやりとりできるようにしています。Foundation と Cocoa を使った `Dictionary` の使用方法に関しては、[Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239)を参照ください
 
-### Dictionary Type Shorthand Syntax\(辞書型の短縮構文\)
+### Dictionary Type Shorthand Syntax\(辞書型の省略構文\)
 
 Swift の辞書は、全体で `Dictionary<Key, Value>` と書きます。`Key` には辞書のキーとして使える値の型を、`Value` にはそのキーに紐づいた辞書で保持するバリューの型です。
 

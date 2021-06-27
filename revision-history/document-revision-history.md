@@ -47,7 +47,7 @@
 * [Opaque Types](./../language-guide/opaque-types.md)の章に、戻り値に特定の名前の戻り値の型を提供するのではなく、戻り値が準拠するプロトコルを指定する関数についての情報を追加しました
 * [Property Wrappers](./../language-guide/properties.md#property-wrappersプロパティラッパ)セクションに、プロパティラッパについての情報を追加しました
 * [frozen](./../language-reference/attributes.md#frozen)セクションに、library evolution のための frozen な列挙型と構造体についての情報を追加しました
-* [Functions With an Implicit Return](./../language-guide/functions.md#functions-with-an-implicit-return暗黙的な戻り値がある関数)と[Shorthand Getter Declaration](./../language-guide/properties.md#shorthand-getter-declaration短縮getプロパティ宣言)セクションに、`return` を省略した関数についての情報を追加しました
+* [Functions With an Implicit Return](./../language-guide/functions.md#functions-with-an-implicit-return暗黙的な戻り値がある関数)と[Shorthand Getter Declaration](./../language-guide/properties.md#shorthand-getter-declaration省略getプロパティ宣言)セクションに、`return` を省略した関数についての情報を追加しました
 * [Type Subscripts](./../language-guide/subscripts.md#type-subscripts型subscript)セクションに、型への subscript の使用について情報を追加しました
 * [Enumeration Case Pattern](./../language-reference/patterns.md#enumeration-case-pattern列挙型のケースパターン)セクションを更新しました。列挙型ケースとオプショナル値をマッチングできるようになりました
 * [Memberwise Initializers for Structure Types](./../language-guide/structures-and-classes.md#memberwise-initializers-for-structure-types構造体のメンバワイズイニシャライザ)セクションを更新しました。メンバワイズイニシャライザがデフォルト値を持つプロパティのパラメータを省略することができるようになりました
@@ -302,8 +302,8 @@
 * カスタム演算子([Custom Operators](./../language-guide/advanced-operators.md#custom-operatorsカスタム演算子))を定義するときに使用できる文字の全リストを明確にしました
 * `nil` とブール値 `true` と `false` は[Literals](./../language-reference/lexical-structure.md#literalsリテラル)になりました
 * Swift の `Array` 型には、完全に値型のセマンティクスになりました。[Mutability of Collections](./../language-guide/collection-types.md#mutability-of-collectionsコレクションの可変性)と[Arrays](./../language-guide/collection-types.md#arrays配列)を更新し、新しいアプローチを反映しました
-* 配列型の短縮構文([Array Type Shorthand Syntax](./../language-guide/collection-types.md#array-type-shorthand-syntax配列型の短縮構文))は `SomeType[]` ではなく `[SomeType]` として書くようになりました
-* 辞書型の短縮構文([Dictionary Type Shorthand Syntax](./../language-guide/collection-types.md#dictionary-type-shorthand-syntax辞書型の短縮構文))は、`[KeyType: ValueType]` と書くように新しいセクションを追加しました
+* 配列型の省略構文([Array Type Shorthand Syntax](./../language-guide/collection-types.md#array-type-shorthand-syntax配列型の省略構文))は `SomeType[]` ではなく `[SomeType]` として書くようになりました
+* 辞書型の省略構文([Dictionary Type Shorthand Syntax](./../language-guide/collection-types.md#dictionary-type-shorthand-syntax辞書型の省略構文))は、`[KeyType: ValueType]` と書くように新しいセクションを追加しました
 * セット型のハッシュ値([Hash Values for Set Types](./../language-guide/collection-types.md#hash-values-for-set-typesセット型のハッシュ値))についての新しいセクションを追加しました
 * [Closure Expressions](./../language-guide/closures.md#closure-expressionsクロージャ式)の例に、グローバルの `sort(_:_:)` 関数ではなくグローバルの `sorted(_:_:)` 関数を使用して、配列の新しい値型のセマンティクスを反映しています
 * [Memberwise Initializers for Structure Types](./../language-guide/initialization.md#memberwise-initializers-for-structure-types構造体のメンバワイズイニシャライザ)についての情報を更新し、構造体の格納プロパティにデフォルト値がない場合でもメンバワイズイニシャライザが使用可能なことを明確にしました
