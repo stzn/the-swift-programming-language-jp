@@ -20,7 +20,7 @@
 * Swift 5.3 に更新しました
 * [Trailing Closures](./../language-guide/closures.md#trailing-closures末尾クロージャ)セクションに、複数の末尾クロージャについての情報を追加し、[Function Call Expression](./../language-reference/expressions.md#function-call-expression関数呼び出し式)セクションに、複数の末尾クロージャを引数に合わせる方法についての情報を追加しました
 * [Adopting a Protocol Using a Synthesized Implementation](./../language-guide/protocols.md#adopting-a-protocol-using-a-synthesized-implementationデフォルト実装を使用したプロトコル準拠)セクションに、列挙型が `Comparable` プロトコルに準拠するための合成実装についての情報を追加しました
-* [Contextual Where Clauses](./../language-guide/generics.md#contextual-where-clauses文脈上のWhere句)セクションに、ジェネリックな `where` 句をより多くの場所に記載できる旨を追加しました
+* [Contextual Where Clauses](./../language-guide/generics.md#contextual-where-clausesコンテキスト上のWhere句)セクションに、ジェネリックな `where` 句をより多くの場所に記載できる旨を追加しました
 * [Unowned Optional References](./../language-guide/automatic-reference-counting.md#unowned-optional-referencesオプショナル非所有参照)セクションに、オプショナル値を `unowned` 参照に使用する方法についての情報を追加しました
 * [main](./../.gitbook/assets/attributes.png#main)セクションに `@main` 属性についての情報を追加しました
 * [Literal Expression](./../language-reference/expressions.md#literal-expressionリテラル式)セクションに、`#filePath` を追加し、`#file` の記載を更新しました
@@ -238,7 +238,7 @@
 * [Overflow Operators](./../language-guide/advanced-operators.md#overflow-operatorsオーバーフロー演算子)からオーバーフロー分割演算子(`&/`)とオーバーフロ剰余演算子(`&%`)を削除しました
 * 定数および定数プロパティ宣言と初期化のルールを更新しました。詳細については、[Constant Declaration](./../language-reference/declarations.md#constant-declaration定数宣言)を参照ください
 * 文字列リテラル内の Unicode スカラの定義を更新しました。[Special Characters in String Literals](./../language-guide/strings-and-characters.md#special-characters-in-string-literals文字列内の特殊文字)を参照ください
-* [Range Operators](./../language-guide/basic-operators.md#range-operators範囲演算子)を更新し、開始と終了インデックスが同じ Half-Open 範囲は空になることを記載しました
+* [Range Operators](./../language-guide/basic-operators.md#range-operators範囲演算子)を更新し、開始と終了インデックスが同じ半開範囲は空になることを記載しました
 * [Closures Are Reference Types](./../language-guide/closures.md#closures-are-reference-typesクロージャは参照型)を更新し、変数のキャプチャルールを明確にしました
 * [Value Overflow](./../language-guide/advanced-operators.md#value-overflow値のオーバーフロー)を更新し、符号付き整数と符号なし整数のオーバーフローの動作を明確にしました
 * [Protocol Declaration](./../language-reference/declarations.md#protocol-declarationプロトコル宣言)を更新し、プロトコル宣言の範囲とメンバを明確にしました
