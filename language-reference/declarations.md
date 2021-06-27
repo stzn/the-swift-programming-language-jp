@@ -970,7 +970,7 @@ if let actualInstance = SomeStruct(input: "Hello") {
 
 ![拡張宣言](./../.gitbook/assets/extension_declaration.png)
 
-拡張宣言の本体には、0 個以上の declarations が含まれています。これらの declarations には、計算プロパティ、計算型プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、subscript、さらにはクラス、構造体、列挙型の宣言を含めることができます。拡張宣言には、デイニシャライザ、プロトコル宣言、格納プロパティ、プロパティオブザーバ、またはその他の拡張宣言を含めることはできません。プロトコルの extension は `final` をマークすることはできません。様々な種類の宣言を含む extension の説明といくつかの例については、[Extensions](./expressions.md)を参照ください。
+拡張宣言の本文には、0 個以上の declarations が含まれています。これらの declarations には、計算プロパティ、計算型プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、subscript、さらにはクラス、構造体、列挙型の宣言を含めることができます。拡張宣言には、デイニシャライザ、プロトコル宣言、格納プロパティ、プロパティオブザーバ、またはその他の拡張宣言を含めることはできません。プロトコルの extension は `final` をマークすることはできません。様々な種類の宣言を含む extension の説明といくつかの例については、[Extensions](./expressions.md)を参照ください。
 
 type name がクラス、構造体、または列挙型の場合、extension はその型を拡張します。type name がプロトコルの場合、extension はそのプロトコルに準拠する全ての型を拡張します。
 

@@ -285,7 +285,7 @@ case .suppressed:
 
 どちらの場合も、プログラム制御は、それを囲むループ文の条件に移されます。
 
-`for` 文では、increment 式はループの本体の実行後に評価されるため、`continue` 文の実行後も increment 式は評価されます。
+`for` 文では、increment 式はループの本文の実行後に評価されるため、`continue` 文の実行後も increment 式は評価されます。
 
 `continue` 文の使用方法の例については、[Continue](#continue-statementcontinue文)と[Control Flow](./../language-guide/control-flow.md)の[Labeled Statements](./../language-guide/control-flow.md#labeled-statementsラベル付き文)を参照ください。
 
