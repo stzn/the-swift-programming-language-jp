@@ -29,7 +29,7 @@ func simpleMax<T: Comparable>(_ x: T, _ y: T) -> T {
 }
 ```
 
-例えば、`Int` と `Double` は、どちらも `Comparable` プロトコルに準拠しているため、この関数はどちらの型の引数も受け入れます。ジェネリック型とは対照的に、ジェネリック関数やイニシャライザを使用するときはジェネリック引数句を指定しません。型パラメータは、関数またはイニシャライザに渡された引数の型から推論されます。
+例えば、`Int` と `Double` は、どちらも `Comparable` プロトコルに準拠しているため、この関数はどちらの型の引数も受け入れます。ジェネリック型とは対照的に、ジェネリック関数やイニシャライザを使用するときはジェネリックパラメータ句を指定しません。型引数は、関数またはイニシャライザに渡された引数の型から推論されます。
 
 ```swift
 simpleMax(17, 42) // T は Int に推論されます
@@ -46,7 +46,7 @@ simpleMax(3.14159, 2.71828) // T は Double となると推論されます
 
 `==` 演算子を使用して、2 つの型が同じという要件を指定することもできます。例えば、`<S1: Sequence, S2: Sequence> where S1.Iterator.Element == S2.Iterator.Element` は `S1` と `S2` が `Sequence` プロトコルに準拠し、両方のシーケンスの要素が同じ型でなければならない制約を表現します。
 
-型パラメータに置き換えられた任意の型パラメータは、型パラメータの全て制約と要件を満たす必要があります。
+型パラメータに置き換えられた任意の型引数は、型パラメータの全て制約と要件を満たす必要があります。
 
 ジェネリック `where` 句は、型パラメータを含む宣言の一部として、または型パラメータを含む宣言の中にネストされている宣言の一部として使用することができます。ネストされた宣言のジェネリック `where` 句は、その宣言をラップしている宣言の型パラメータを参照できます。ただし、その要件は、`where` 句が書かれている宣言にのみ適用されます。
 
@@ -79,11 +79,11 @@ extension Collection where Element: SomeProtocol {
 
 ## Generic Argument Clause\(ジェネリック引数句\)
 
-ジェネリック引数句は、ジェネリック型の型パラメータを指定します。ジェネリック引数句は山括弧(`<>`)で囲まれており、形式は次のとおりです。
+generic argument clause 句は、ジェネリック型の型引数を指定します。ジェネリック引数句は山括弧(`<>`)で囲まれており、形式は次のとおりです。
 
 ![ジェネリック引数句](./../.gitbook/assets/generic-argument-list.png)
 
-generic argument list は、型パラメータのカンマ区切りのリストです。型パラメータは、ジェネリック型のジェネリックパラメータ句に対応する型パラメータを置き換えた実際の具象型の名前です。つまり、そのジェネリック型の型特化バージョンです。下記の例は、Swift 標準ライブラリのジェネリックな辞書型のシンプルなバージョンを示しています。
+generic argument list は、型パラメータのカンマ区切りのリストです。型引数は、ジェネリック型のジェネリックパラメータ句に対応する型パラメータを置き換えた実際の具象型の名前です。つまり、そのジェネリック型の型特化バージョンです。下記の例は、Swift 標準ライブラリのジェネリックな辞書型のシンプルなバージョンを示しています。
 
 ```swift
 struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLiteral {
@@ -91,15 +91,15 @@ struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLite
 }
 ```
 
-ジェネリック `Dictionary` 型の型特化バージョン、`Dictionary<String, Int>` は、ジェネリックパラメータ `Key: Hashable` と `Value` を具象型の `String` と `Int` に置き換えることで形成されます。各型パラメータは、それが置き換えるジェネリックパラメータの全ての制約を満たす必要があります。上記の例では、`Key` 型パラメータは `Hashable` プロトコルに準拠するように制約され、したがって文字列も `Hashable` プロトコルに準拠していなければなりません。
+ジェネリック `Dictionary` 型の型特化バージョン、`Dictionary<String, Int>` は、ジェネリックパラメータ `Key: Hashable` と `Value` を具象型の `String` と `Int` に置き換えることで形成されます。各型引数は、それが置き換えるジェネリックパラメータの全ての制約を満たす必要があります。上記の例では、`Key` 型パラメータは `Hashable` プロトコルに準拠するように制約され、したがって文字列も `Hashable` プロトコルに準拠していなければなりません。
 
-(適切な制約と要件を満たす場合)ジェネリック型の型特化バージョンで、型パラメータを型パラメータで置き換えることもできます。例えば、`Array<Element>` の型パラメータ `Element` を配列 `Array<Int>` で置き換えることができ、要素が整数の配列を形成することができます。
+(適切な制約と要件を満たす場合)ジェネリック型の型特化バージョンで、型パラメータを型引数で置き換えることもできます。例えば、`Array<Element>` の型パラメータ `Element` を配列 `Array<Int>` で置き換えることができ、要素が整数の配列を形成することができます。
 
 ```swift
 let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 ```
 
-[Generic Parameter Clause](#generic-parameter-clauseジェネリックパラメータ句)で述べたように、ジェネリック関数またはイニシャライザの型パラメータを指定する場合には、ジェネリック引数句を使用しません。
+[Generic Parameter Clause](#generic-parameter-clauseジェネリックパラメータ句)で述べたように、ジェネリック関数またはイニシャライザの型引数を指定する場合には、ジェネリック引数句を使用しません。
 
 > GRAMMAR OF A GENERIC ARGUMENT CLAUSE  
 > generic-argument-clause → `<` [generic-argument-list](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-list)  `>`  

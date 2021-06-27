@@ -11,14 +11,14 @@
 
 * Swift 5.4 に更新しました
 * [ResultBuilder](./../language-guide/advanced-operators.md#result-buildersリザルトビルダ)と[resultBuilder](./../language-reference/attributes.md#resultBuilder)セクションに、リザルトビルダについての情報を追加しました
-* [Implicit Conversion to a Pointer Type](./../language-guide/extensions.md#implicit-conversion-to-a-pointer-typeポインタ型への暗黙変換)セクションに、関数呼び出しの中で In-Out 引数を unsafe pointer に暗黙的に変換する方法についての情報を追加しました
-* [Variadic Parameters](./../language-guide/functions.md#variadic-parameters可変長引数)と[Function Declaration](./../language-reference/declarations.md#function-declaration関数宣言)セクションを更新しました。関数は複数の可変長引数を受け取ることができるようになりました
+* [Implicit Conversion to a Pointer Type](./../language-guide/extensions.md#implicit-conversion-to-a-pointer-typeポインタ型への暗黙変換)セクションに、関数呼び出しの中で in-out パラメータを unsafe pointer に暗黙的に変換する方法についての情報を追加しました
+* [Variadic Parameters](./../language-guide/functions.md#variadic-parameters可変長パラメータ)と[Function Declaration](./../language-reference/declarations.md#function-declaration関数宣言)セクションを更新しました。関数は複数の可変長パラメータを受け取ることができるようになりました
 * [Implicit Member Expression](./../language-reference/expressions.md#implicit-member-expression暗黙メンバ式)セクションを更新しました。暗黙メンバ式を繋げて使えるようになりました
 
 ## 2020-09-16
 
 * Swift 5.3 に更新しました
-* [Trailing Closures](./../language-guide/closures.md#trailing-closures末尾クロージャ)セクションに、複数の末尾クロージャについての情報を追加し、[Function Call Expression](./../language-reference/expressions.md#function-call-expression関数呼び出し式)セクションに、複数の末尾クロージャを引数に合わせる方法についての情報を追加しました
+* [Trailing Closures](./../language-guide/closures.md#trailing-closures末尾クロージャ)セクションに、複数の末尾クロージャについての情報を追加し、[Function Call Expression](./../language-reference/expressions.md#function-call-expression関数呼び出し式)セクションに、複数の末尾クロージャをパラメータに合わせる方法についての情報を追加しました
 * [Adopting a Protocol Using a Synthesized Implementation](./../language-guide/protocols.md#adopting-a-protocol-using-a-synthesized-implementationデフォルト実装を使用したプロトコル準拠)セクションに、列挙型が `Comparable` プロトコルに準拠するための合成実装についての情報を追加しました
 * [Contextual Where Clauses](./../language-guide/generics.md#contextual-where-clausesコンテキスト上のWhere句)セクションに、ジェネリックな `where` 句をより多くの場所に記載できる旨を追加しました
 * [Unowned Optional References](./../language-guide/automatic-reference-counting.md#unowned-optional-referencesオプショナル非所有参照)セクションに、オプショナル値を `unowned` 参照に使用する方法についての情報を追加しました
@@ -37,7 +37,7 @@
 * Swift 5.2 に更新しました
 * [Key-Path Expression](./../language-reference/expressions.md#key-Path-expressionKey-Path式)セクションに、クロージャの代わりに KeyPath を渡すことについての情報を追加しました
 * [Methods with Special Names](./../language-reference/declarations.md#methods-with-special-names特別な名前のメソッド)セクションに、関数呼び出し構文にクラス、構造体、および列挙型のインスタンスを使用できるようにする糖衣構文(シンタックスシュガー)についての情報を追加しました
-* [Subscript Options](./../language-guide/subscripts.md#subscript-options様々なsubscript)セクションを更新しました。subscript でデフォルト引数を使用できるようになりました
+* [Subscript Options](./../language-guide/subscripts.md#subscript-options様々なsubscript)セクションを更新しました。subscript でデフォルトパラメータを使用できるようになりました
 * [Self Type](./../language-reference/types.md#self-typeSelf型)セクションを更新しました。より多くのコンテキストで `Self` が使えるようになりました
 * [Implicitly Unwrapped Optionals](./../language-guide/the-basics.md#implicitly-unwrapped-optionals暗黙アンラップオプショナル)セクションを更新して、暗黙アンラップオプショナル値をオプショナルまたは非オプショナルのどちらでも使用できることをより明確にしました
 
@@ -50,7 +50,7 @@
 * [Functions With an Implicit Return](./../language-guide/functions.md#functions-with-an-implicit-return暗黙的な戻り値がある関数)と[Shorthand Getter Declaration](./../language-guide/properties.md#shorthand-getter-declaration短縮getプロパティ宣言)セクションに、`return` を省略した関数についての情報を追加しました
 * [Type Subscripts](./../language-guide/subscripts.md#type-subscripts型subscript)セクションに、型への subscript の使用について情報を追加しました
 * [Enumeration Case Pattern](./../language-reference/patterns.md#enumeration-case-pattern列挙型のケースパターン)セクションを更新しました。列挙型ケースとオプショナル値をマッチングできるようになりました
-* [Memberwise Initializers for Structure Types](./../language-guide/structures-and-classes.md#memberwise-initializers-for-structure-types構造体のメンバワイズイニシャライザ)セクションを更新しました。メンバワイズイニシャライザがデフォルト値を持つプロパティの引数を省略することができるようになりました
+* [Memberwise Initializers for Structure Types](./../language-guide/structures-and-classes.md#memberwise-initializers-for-structure-types構造体のメンバワイズイニシャライザ)セクションを更新しました。メンバワイズイニシャライザがデフォルト値を持つプロパティのパラメータを省略することができるようになりました
 * [dynamicMemberLookup](./../language-reference/attributes.md#dynamicMemberLookup)セクションに、実行時に KeyPath で検索された動的メンバについての情報を追加しました
 * [Conditional Compilation Block](./../language-reference/statements.md#conditional-compilation-block条件付きコンパイルブロック)のターゲット環境のリストに `macCatalyst` を追加しました
 * [Self Type](./../language-reference/types.md#self-typeSelf型)セクションを更新しました。`Self` を使用して、現在のクラス、構造体、または列挙型宣言で導入された型を参照することができるようになりました
@@ -109,7 +109,7 @@
 * [Declaration Attributes](./../language-reference/attributes.md#declaration-attributes宣言属性)セクションに、 Swift 言語バージョンを使用した `available` 属性の使い方についての情報を追加しました
 * [Function Type](./../language-reference/types.md#function-type関数型)セクションの説明を更新し、関数型に引数ラベルを書くことができないことを記載しました
 * [Conditional Compilation Block](./../language-reference/statements.md#conditional-compilation-block条件付きコンパイルブロック)セクションの Swift 言語バージョン番号の説明を更新しました。オプショナルのパッチ番号が使用できるようになりました
-* [Function Type](./../language-reference/types.md#function-type関数型)セクションの説明を更新し、Swift は、タプル型の単一の引数を受け取る関数と、複数の引数を受け取る関数を区別するようになりました
+* [Function Type](./../language-reference/types.md#function-type関数型)セクションの説明を更新し、Swift は、タプル型の単一のパラメータを受け取る関数と、複数のパラメータを受け取る関数を区別するようになりました
 * [Expressions](./../language-reference/expressions.md)の章から動的型式のセクションを削除しました。`type(of:)` は Swift 標準ライブラリ関数になりました
 
 ## 2016-10-27
@@ -123,10 +123,10 @@
 ## 2016-09-13
 
 * Swift 3.0 に更新しました
-* [Functions](./../language-guide/functions.md)の章と[Function Declaration](./../language-reference/declarations.md#function-declaration関数宣言)セクションの関数の説明を、デフォルトで全ての引数が引数ラベルを持つように更新しました
+* [Functions](./../language-guide/functions.md)の章と[Function Declaration](./../language-reference/declarations.md#function-declaration関数宣言)セクションの関数の説明を、デフォルトで全てのパラメータが引数ラベルを持つように更新しました
 * [Advanced Operators](./../language-guide/advanced-operators.md)の章の演算子の説明を更新しました。これらの演算子をグローバル関数としてはなく型メソッドとして実装するようになりました
 * [Access Control](./../language-guide/access-control.md)の章に、`open` アクセスレベル修飾子と `filePrivate` アクセスレベル修飾子についての情報を追加しました
-* [Function Declaration](./../language-reference/declarations.md#function-declaration関数宣言)セクションの `inout` の説明を、引数名の前ではなく引数の型の前に使用するように更新しました
+* [Function Declaration](./../language-reference/declarations.md#function-declaration関数宣言)セクションの `inout` の説明を、パラメータ名の前ではなくパラメータの型の前に使用するように更新しました
 * [Escaping Closures](./../language-guide/closures.md#escaping-closuresエスケープクロージャ)と[Autoclosures](./../language-guide/closures.md#autoclosures自動クロージャ)セクションと、[Attributes](./../language-reference/attributes.md)の章の説明で、`@noescape` および `@autoclosures` 属性を宣言属性から型属性へ更新しました
 * [Advanced Operators](./../language-guide/advanced-operators.md)の章の[Precedence for Custom Infix Operators](./../language-guide/advanced-operators.md#precedence-for-custom-infix-operatorsカスタム中置演算子の優先順位)セクションと、[Declaration](./../language-reference/declarations.md)の章の[Precedence Group Declaration](./../language-reference/declarations.md#precedence-group-declaration優先順位グループ宣言)セクションに、演算子の優先順位グループについての情報を追加しました
 * OS X の変わりに macOS、`ErrorProtocol` の代わりに `Error`、`StringLiteralConvertible` の代わりに `ExpressibleByStringLiteral` などのプロトコル名を使用するように説明を更新しました
@@ -140,17 +140,17 @@
 * [Line Control Statement](./../language-reference/statements.md#line-control-statement行制御文)セクションで、`#sourceLocation(file:line:)` 構文を使用するように、行制御文の説明を更新しました
 * [Functions that Never Return](./../language-reference/declarations.md#functions-that-never-returnノーリターン関数)の説明を更新し、新しい `Never` 型を使用するようになりました
 * [Literal Expression](./../language-reference/expressions.md#literal-expressionリテラル式)セクションに、playground リテラルについての情報を追加しました
-* [In-Out Parameters](./../language-reference/declarations.md#in-Out-parametersIn-Out引数)セクションの説明を更新し、非エスケープクロージャのみが In-Out 引数をキャプチャできることを記載しました
-* [Default Parameter Values](./../language-guide/functions.md#default-parameter-valuesデフォルト引数値)セクションのデフォルト引数の説明を更新しました。関数呼び出し時に並べ替えることができなくなりました
+* [In-Out Parameters](./../language-reference/declarations.md#in-Out-parametersIn-Outパラメータ)セクションの説明を更新し、非エスケープクロージャのみが in-out パラメータをキャプチャできることを記載しました
+* [Default Parameter Values](./../language-guide/functions.md#default-parameter-valuesデフォルトパラメータ値)セクションのデフォルトパラメータの説明を更新しました。関数呼び出し時に並べ替えることができなくなりました
 * [Attributes](./../language-reference/attributes.md)の章でコロンを使用するように属性引数を更新しました
 * [Rethrowing Functions and Methods](./../language-reference/declarations.md#rethrowing-functions-and-methods再スロー関数と再スローメソッド)セクションに、再スロー関数のキャッチブロック内でエラーをスローすることについての情報を追加しました
 * [Selector Expression](./../language-reference/expressions.md#selector-expressionSelector式)セクションに、Objective-C プロパティの get または set のセレクタへのアクセスについての情報を追加しました
 * [Type Alias Declaration](./document-revision-history.md#type-alias-declarationタイプエイリアス宣言)セクションに、ジェネリックなタイプエイリアスとプロトコル内でのタイプエイリアスの使用について情報を追加しました
-* [Function Type](./../language-reference/types.md#function-type関数型)セクションの説明を更新し、引数型の周囲に括弧が必須なことを記載しました
+* [Function Type](./../language-reference/types.md#function-type関数型)セクションの説明を更新し、パラメータ型の周囲に括弧が必須なことを記載しました
 * [Attributes](./../language-reference/attributes.md)の章を更新して、`@IBAction`、`@IBOutlet`、および `@NSManaged` 属性は `@objc` 属性を暗黙的に含んでいることを記載しました
 * [Declaration Attributes](./../language-reference/attributes.md#declaration-attributes宣言属性)セクションに、`@GKInspectable` 属性についての情報を追加しました
 * [Optional Protocol Requirements](./../language-guide/protocols.md#optional-protocol-requirementsオプショナルのプロトコル要件)のオプショナルのプロトコル要件の説明を更新し、Objective-C と相互運用されるコードでのみ使用されることを明確にしました
-* [Function Declaration](./../language-reference/declarations.md#function-declaration関数宣言)セクションから、関数引数を使用して明示的に `let` を使用することの説明を削除しました
+* [Function Declaration](./../language-reference/declarations.md#function-declaration関数宣言)セクションから、関数パラメータを使用して明示的に `let` を使用することの説明を削除しました
 * [Statement](./../language-reference/statements.md)の章から `Boolean` プロトコルの説明を削除しました。このプロトコルは SWwift 標準ライブラリから削除されました
 * [Declaration Attributes](./../language-reference/attributes.md#declaration-attributes宣言属性)セクションの `@NSApplicationMain` 属性の説明を修正しました
 
@@ -163,11 +163,11 @@
 * [Associated Types](./../language-guide/generics.md#associated-types関連型)と[Protocol Associated Type Declaration](./../language-reference/declarations.md#protocol-associated-type-declarationプロトコル関連型宣言)セクションの、`associatedtype` キーワードを使った関連型の説明を更新しました
 * [Failable Initializers](./../language-guide/initialization.md#failable-initializers失敗可能イニシャライザ)セクションの、インスタンスが完全に初期化される前に `nil` を返すイニシャライザについての情報を更新しました
 * [Comparison Operators](./../language-guide/basic-operators.md#comparison-operators比較演算子)セクションに、タプルの比較についての情報を追加しました
-* [Keywords and Punctuation](./../language-reference/lexical-structure.md#keywords-and-punctuation単語と句読点)セクションに、外部引数名にキーワードを使用する方法についての情報を追加しました
+* [Keywords and Punctuation](./../language-reference/lexical-structure.md#keywords-and-punctuation単語と句読点)セクションに、外部パラメータ名にキーワードを使用する方法についての情報を追加しました
 * [Declaration Attributes](./../language-reference/attributes.md#declaration-attributes宣言属性)セクションの `@objc` 属性の説明を更新し、列挙型と列挙ケースでもこの属性を使用できることを記載しました
 * [Operators](./../language-reference/lexical-structure.md#operators演算子)セクションの、ドットを含むカスタム演算子の説明を更新しました
 * [Rethrowing Functions and Methods](./../language-reference/declarations.md#rethrowing-functions-and-methods再スロー関数と再スローメソッド)セクションに、再スロー関数が直接エラーをスローできないことを記載した記載を追加しました
-* [Property Observers](./../language-guide/properties.md#property-observersプロパティオブザーバ)セクションに、In-Out 引数としてプロパティを渡した際に呼ばれるプロパティオブサーバについての記載を追加しました
+* [Property Observers](./../language-guide/properties.md#property-observersプロパティオブザーバ)セクションに、in-out パラメータとしてプロパティを渡した際に呼ばれるプロパティオブサーバについての記載を追加しました
 * [A Swift Tour](./../welcome-to-swift-swift/a-swift-tour.md)の章に、エラー処理についてのセクションを追加しました
 * [Weak References](./../language-guide/automatic-reference-counting.md#weak-references弱参照)セクションに、メモリ割り当て解除プロセスをより明確に表示するために図を更新しました
 * C 言語スタイルの `for` ループ、`++` 前置および後置演算子、`--` 前置および後置演算子の説明を削除しました
@@ -179,7 +179,7 @@
 * [String Interpolation](./../language-guide/strings-and-characters.md#string-interpolation文字列補間)と[String Literals](./../language-guide/strings-and-characters.md#string-literals文字列リテラル)セクションを更新しました。文字列補間に文字列リテラルを含めることができるようになりました
 * [Escaping Closures](./../language-guide/closures.md#escaping-closuresエスケープクロージャ)セクションに、`@noescape` 属性についての情報を追加しました
 * [Declaration Attributes](./../language-reference/attributes.md#declaration-attributes宣言属性)セクションと[Conditional Compilation Block](./../language-reference/statements.md#conditional-compilation-block条件付きコンパイルブロック)セクションの、tvOS についての情報をを更新しました
-* [In-Out Parameters](./../language-reference/declarations.md#in-Out-parametersIn-Out引数)セクションに、In-Out 引数の動作についての情報を追加しました
+* [In-Out Parameters](./../language-reference/declarations.md#in-Out-parametersIn-Outパラメータ)セクションに、in-out パラメータの動作についての情報を追加しました
 * [Capture Lists](./../language-guide/extensions.md#capture-listsキャプチャリスト)セクションに、キャプチャリストで指定された値がキャプチャされる方法についての情報を追加しました
 * [Accessing Properties Through Optional Chaining](./../language-guide/optional-chaining.md#accessing-properties-through-optional-chainingオプショナルチェーンを通したプロパティへのアクセス)セクションを更新し、オプショナルチェーンを介して代入する方法が明確になるようにしました
 * [Autoclosures](./../language-guide/closures.md#autoclosures自動クロージャ)セクションの autoclosure の説明を改善しました
@@ -209,7 +209,7 @@
 * [Metatype Type](./../language-reference/types.md#metatype-typeMetatype型)セクションに、イニシャライザ式を使用してインスタンスを構築する際の Metatype の比較についての情報を追加しました
 * [Debugging with Assertions](./../language-guide/the-basics.md#debugging-with-assertionsアサーションを使ったデバッグ)セクションに、ユーザ定義のアサーションが無効になる場合についての記載を追加しました
 * [Declaration Attributes](./../language-reference/attributes.md#declaration-attributes宣言属性)セクションの `@NSManaged` 属性の説明を更新しました。属性を特定のインスタンスメソッドに適用できるようになりました
-* [Variadic Parameters](./../language-guide/functions.md#variadic-parameters可変長引数)セクションを更新しました。可変長引数は、関数の引数リスト内の任意の位置で宣言できるようになりました
+* [Variadic Parameters](./../language-guide/functions.md#variadic-parameters可変長パラメータ)セクションを更新しました。可変長パラメータは、関数のパラメータリスト内の任意の位置で宣言できるようになりました
 * [Overriding a Failable Initializer](./../language-guide/initialization.md#overriding-a-failable-initializer失敗可能イニシャライザのオーバーライド)セクションに、スーパークラスのイニシャライザの結果を強制アンラップすることで、失敗しないイニシャライザから失敗可能イニシャライザに委譲できることについての情報を追加しました
 * [Enumerations with Cases of Any Type](./../language-reference/declarations.md#enumerations-with-cases-of-any-type任意の型のケースを持つ列挙型)セクションに、関数を列挙ケースをとして使用できることについての情報を追加しました
 * [Initializer Expression](./../language-reference/expressions.md#initializer-expressionイニシャライザ式)セクションに、イニシャライザを明示的に参照する方法についての情報を追加しました
@@ -231,7 +231,7 @@
 
 * Swift 1.2 に更新しました
 * Swift ネイティブの `Set` コレクション型ができました。詳細については、[Sets](./../language-guide/collection-types.md#Setsセット)を参照ください
-* `@autoclosure` は、型ではなく、引数宣言の属性になりました。新しい `@noescape` 引数属性もあります。詳細については、[Declaration Attributes](./../language-reference/attributes.md#declaration-attributes宣言属性)を参照ください
+* `@autoclosure` は、型ではなく、パラメータ宣言の属性になりました。新しい `@noescape` パラメータ属性もあります。詳細については、[Declaration Attributes](./../language-reference/attributes.md#declaration-attributes宣言属性)を参照ください
 * 型メソッドと型プロパティは、宣言修飾子として `static` キーワードを使用できるようになりました。詳細については、[Type Variable Properties](./../language-reference/declarations.md#type-variable-properties型変数プロパティ)を参照ください
 * Swift に `as?` と `as?` の失敗可能ダウンキャスト演算子が含まれました。詳細については、[Checking for Protocol Conformance](./../language-guide/protocols.md#checking-for-protocol-conformanceプロトコル準拠チェック)を参照ください
 * 文字列インデックス([String Indices](./../language-guide/strings-and-characters.md#string-indices文字列のインデックス))について新しいガイドセクションを追加しました
@@ -257,7 +257,7 @@
 * 失敗可能イニシャライザ([Failable Initializers](./../language-guide/initialization.md#failable-initializers失敗可能イニシャライザ))の全ガイドを追加しました
 * プロトコルの失敗可能イニシャライザ要件([Failable Initializer Requirements](./../language-guide/protocols.md#failable-initializer-requirements失敗可能イニシャライザ要件))の説明を追加しました
 * `Any` 型の定数と変数に関数インスタンスを含めることができるようになりました。`switch` 文内での関数型のチェックとキャスト方法を示すために、[Type Casting for Any and AnyObject](./../language-guide/type-casting.md#type-casting-for-any-and-anyObjectAnyおよびAnyObjectの型キャスト)の例を更新しました
-* Raw Value を持つ列挙型は、`toRaw()` メソッドではなく `rawValue` プロパティ、 `fromRaw()` メソッドではなく `rawValue` 引数を持つ失敗可能イニシャライザを持つようになりました。 詳しくは、[Raw Values](./../language-guide/enumerations.md#raw-values)と[Enumerations with Cases of a Raw-Value Type](./../language-reference/declarations.md#enumerations-with-cases-of-a-raw-Value-typeRawValue型のケースを持つ列挙型)を参照ください
+* Raw Value を持つ列挙型は、`toRaw()` メソッドではなく `rawValue` プロパティ、 `fromRaw()` メソッドではなく `rawValue` パラメータを持つ失敗可能イニシャライザを持つようになりました。 詳しくは、[Raw Values](./../language-guide/enumerations.md#raw-values)と[Enumerations with Cases of a Raw-Value Type](./../language-reference/declarations.md#enumerations-with-cases-of-a-raw-Value-typeRawValue型のケースを持つ列挙型)を参照ください
 * 初期化の失敗を引き起こす失敗可能イニシャライザ([Failable Initializers](./../language-guide/initialization.md#failable-initializers失敗可能イニシャライザ))についての新しいセクションを追加しました
 * カスタム演算子に `?` を含めることができるようになりました。[Operators](./../language-reference/lexical-structure.md#operators演算子)を更新し、改訂されたルールを記載しました。カスタム演算子([Custom Operators](./../language-guide/advanced-operators.md#custom-operatorsカスタム演算子))から有効な演算子文字セットの説明の重複を削除しました
 
@@ -292,7 +292,7 @@
 * [String Literals](./../language-guide/strings-and-characters.md#string-literals文字列リテラル)セクションを更新し、文字列内の Unicode スカラを `\u{n}`(n には 0 から 10FFFF の間の 16 進数が入る)で書けることを記載しました
 * `NSString` の `length` プロパティは、`utf16count` ではなく、Swift のネイティブの `String` 型の `utf16count` にマッピングされるようになりました
 * Swift のネイティブ `String` 型は、`uppercaseString` または `lowercasestring` プロパティを使用しなくなりました。[Strings and Characters](./../language-guide/strings-and-characters.md)の対応するセクションは削除され、様々なコード例を更新しました
-* [Initializer Parameters Without Argument Labels](./../language-guide/initialization.md#initializer-parameters-without-argument-labels引数ラベルのないイニシャライザ引数)についての新しいセクションを追加しました
+* [Initializer Parameters Without Argument Labels](./../language-guide/initialization.md#initializer-parameters-without-argument-labels引数ラベルのないイニシャライザパラメータ)についての新しいセクションを追加しました
 * [Required Initializers](./../language-guide/initialization.md#required-initializers必須イニシャライザ)についての新しいセクションを追加しました
 * [Optional Tuple Return Types](./../language-guide/functions.md#optional-tuple-return-typesオプショナルのタプルの戻り値の型)についての新しいセクションを追加しました
 * [Type Annotations](./../language-guide/the-basics.md#type-annotations型注釈)セクションを更新し、1 つの型注釈を持つ単一の行に複数の関連変数を定義できることを記載しました

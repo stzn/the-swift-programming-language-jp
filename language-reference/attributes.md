@@ -148,7 +148,7 @@ dial(8, 6, 7, 5, 3, 0, 9)
 dial.dynamicallyCall(withArguments: [4, 1, 1])
 ```
 
-`dynamicallyCall(withArguments:)` メソッドの宣言には、上記の例の `[Int]` のように、[ExpressibleByArrayLiteral](https://developer.apple.com/documentation/swift/expressiblebyarrayliteral)プロトコルに準拠する単一の引数が必要です。戻り値の型は任意の型にすることができます。
+`dynamicallyCall(withArguments:)` メソッドの宣言には、上記の例の `[Int]` のように、[ExpressibleByArrayLiteral](https://developer.apple.com/documentation/swift/expressiblebyarrayliteral)プロトコルに準拠する単一のパラメータが必要です。戻り値の型は任意の型にすることができます。
 
 `dynamicallyCall(withKeywordArguments:)` メソッドを実装する場合は、動的メソッド呼び出しにラベルを含めることができます。
 
@@ -173,7 +173,7 @@ print(repeatLabels(a: 1, b: 2, c: 3, b: 2, a: 1))
 // a
 ```
 
-`dynamicallyCall(withKeywordArguments:)` メソッドの宣言には、[ExpressibleByDictionaryLiteral](https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral)プロトコルに準拠する単一の引数が必要で、戻り値の型は任意の型にすることができます。引数の[Key](https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral/2294108-key)は[ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral)に準拠する必要があります。前の例では、引数型として[KeyValuePairs](https://developer.apple.com/documentation/swift/keyvaluepairs)を使用しているため、呼び出し元は重複する引数ラベルを含めることができます。つまり、`a` と `b` は、`repeatLabels` の呼び出し時に複数回使用されています。
+`dynamicallyCall(withKeywordArguments:)` メソッドの宣言には、[ExpressibleByDictionaryLiteral](https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral)プロトコルに準拠する単一のパラメータが必要で、戻り値の型は任意の型にすることができます。パラメータの[Key](https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral/2294108-key)は[ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral)に準拠する必要があります。前の例では、パラメータの型として[KeyValuePairs](https://developer.apple.com/documentation/swift/keyvaluepairs)を使用しているため、呼び出し元は重複するパラメータラベルを含めることができます。つまり、`a` と `b` は、`repeatLabels` の呼び出し時に複数回使用されています。
 
 両方の `dynamiclyCall` メソッドを実装する場合、メソッド呼び出しにキーワード引数が含まれていると、`dynamicallyCall(withKeywordArguments:)` が呼び出されます。他の全ての場合、`dynamicallyCall(withArguments:)` が呼び出されます。
 
@@ -187,7 +187,7 @@ repeatLabels(a: "four") // エラー
 
 この属性をクラス、構造体、列挙型、またはプロトコルに適用すると、実行時にメンバを名前で検索できるようになります。型は `subscript(dynamicMember:)`subscript を実装する必要があります。
 
-明示的なメンバ式では、指定されたメンバに対応する宣言がない場合、式は型の `subscript(dynamicMember:)`subscript の呼び出しとして解釈され、メンバに関する情報を引数として渡します。subscript は、KeyPath またはメンバ名のいずれかで引数を受け取ることができます。両方の subscript を実装する場合、KeyPath 引数を取る subscript が使用されます。
+明示的なメンバ式では、指定されたメンバに対応する宣言がない場合、式は型の `subscript(dynamicMember:)`subscript の呼び出しとして解釈され、メンバに関する情報を引数として渡します。subscript は、KeyPath またはメンバ名のいずれかでパラメータを受け取ることができます。両方の subscript を実装する場合、KeyPath 引数を取る subscript が使用されます。
 
 `subscript(dynamicMember:)` の実装は、[KeyPath](https://developer.apple.com/documentation/swift/keypath)、[WritableKeyPath](https://developer.apple.com/documentation/swift/writablekeypath)、または [ReferenceWritableKeyPath](https://developer.apple.com/documentation/swift/referencewritablekeypath)の引数を使用して KeyPath を受け取ることができます。[ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral)プロトコル(ほとんどの場合、`String`)に準拠する型の引数を使用して、メンバ名を受け入れることができます。subscript の戻り値の型は任意の型にすることができます。
 
@@ -363,7 +363,7 @@ class ExampleClass: NSObject {
 
 プロパティラッパを持つプロパティには、`willSet` ブロックと `didSet` ブロックを含めることができますが、コンパイラで合成された `get` ブロックまたは `set` ブロックをオーバーライドすることはできません。
 
-Swift は、プロパティラッパを初期化するための 2 つの形式の糖衣構文(シンタックスシュガー)を提供します。ラップされた値の定義で代入構文を使用して、代入の右側にある式を、プロパティラッパのイニシャライザの `wrappedValue` の引数として渡すことができます。属性をプロパティに適用するときに属性に引数を指定することもでき、それらの引数はプロパティラッパのイニシャライザに渡されます。例えば、下記のコードでは、`SomeStruct` は `SomeWrapper` が定義する各イニシャライザを呼び出します。
+Swift は、プロパティラッパを初期化するための 2 つの形式の糖衣構文(シンタックスシュガー)を提供します。ラップされた値の定義で代入構文を使用して、代入の右側にある式を、プロパティラッパのイニシャライザの `wrappedValue` パラメータとして渡すことができます。属性をプロパティに適用するときに属性に引数を指定することもでき、それらの引数はプロパティラッパのイニシャライザに渡されます。例えば、下記のコードでは、`SomeStruct` は `SomeWrapper` が定義する各イニシャライザを呼び出します。
 
 ```swift
 @propertyWrapper
@@ -702,9 +702,9 @@ Result Builder 型を作成すると、同じ名前のカスタム属性が作�
 
 * 関数宣言では、Result Builder は関数の本文を作成します
 * get を含む変数または subscript の宣言で、Result Builder は get の本文を作成します
-* 関数宣言の引数では、Result Builder は対応する引数として渡されるクロージャの本文を作成します
+* 関数宣言のパラメータでは、Result Builder は対応する引数として渡されるクロージャの本文を作成します
 
-resultBuilder 属性を適用しても、ABI の互換性には影響しません。Result Builder 属性を引数に適用すると、その属性が関数のインターフェースの一部になり、ソースの互換性に影響を与える可能性があります。
+resultBuilder 属性を適用しても、ABI の互換性には影響しません。Result Builder 属性をパラメータに適用すると、その属性が関数のインターフェースの一部になり、ソースの互換性に影響を与える可能性があります。
 
 ### requires_stored_property_inits
 
@@ -750,7 +750,7 @@ Interface Builder 属性は、Xcode と同期するために InterfaceBuilder �
 
 ### autoclosure
 
-この属性を適用すると、引数のないクロージャで式を自動的にラップすることにより、式の評価を遅らせます。関数またはメソッド宣言の引数が、引数を受け取らず式の型の値を返す関数型の場合に適用できます。`autoclosure` 属性の使用方法の例については、[Autoclosures](./../language-guide/closures.md#autoclosures自動クロージャ)と[Function Type](./types.md#function-type関数型)を参照ください。
+この属性を適用すると、引数のないクロージャで式を自動的にラップすることにより、式の評価を遅らせます。関数またはメソッド宣言のパラメータに、引数を受け取らず式の型の値を返す関数型を適用できます。`autoclosure` 属性の使用方法の例については、[Autoclosures](./../language-guide/closures.md#autoclosures自動クロージャ)と[Function Type](./types.md#function-type関数型)を参照ください。
 
 ### convention
 
@@ -766,7 +766,7 @@ Interface Builder 属性は、Xcode と同期するために InterfaceBuilder �
 
 ### escaping
 
-この属性を関数またはメソッド宣言の引数の型に適用すると、引数の値を後で実行するために保持されることがあることを示します。これは、値が呼び出し側の生存期間を超えて存続できることを意味します。`escaping` 属性を持つ関数型パラメータは、プロパティまたはメソッドに対して `self` を明示的に使用する必要があります。`escaping` 属性の使用方法の例については、[Escaping Closures](./../language-guide/closures.md#escaping-closuresエスケープクロージャ)を参照ください。
+この属性を関数またはメソッド宣言のパラメータの型に適用すると、パラメータの値を後で実行するために保持されることがあることを示します。これは、値が呼び出し側の生存期間を超えて存続できることを意味します。`escaping` 属性を持つ関数型パラメータは、プロパティまたはメソッドに対して `self` を明示的に使用する必要があります。`escaping` 属性の使用方法の例については、[Escaping Closures](./../language-guide/closures.md#escaping-closuresエスケープクロージャ)を参照ください。
 
 ## Switch Case Attributes
 

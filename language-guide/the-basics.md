@@ -115,7 +115,7 @@ print(friendlyWelcome)
 // "Bonjour!"
 ```
 
-`print(_:separator:terminator:)` 関数はグローバル関数で、1 つ以上の値を適切なアウトプット先に出力します。Xcode では、`print(_:separator:terminator:)` 関数を使用すると、 Xcode のコンソールパネルへ値を出力します。`separator` と `terminator` 引数には、デフォルト値が用意されているので省略可能です。デフォルトでは最後に改行を追加します。改行を付けたくない場合は `terminator` に空文字を渡してください。例えば `print(someValue, terminator: "")`。詳細は[Default Parameter Values](functions.md#default-parameter-values)。
+`print(_:separator:terminator:)` 関数はグローバル関数で、1 つ以上の値を適切なアウトプット先に出力します。Xcode では、`print(_:separator:terminator:)` 関数を使用すると、 Xcode のコンソールパネルへ値を出力します。`separator` と `terminator` パラメータには、デフォルト値が用意されているので省略可能です。デフォルトでは最後に改行を追加します。改行を付けたくない場合は `terminator` に空文字を渡してください。例えば `print(someValue, terminator: "")`。詳細は[Default Parameter Values](functions.md#default-parameter-valuesデフォルトパラメータ値)。
 
 Swift は長い文字列の中で定数や変数をプレースホルダとして使用したい場合、*文字列補間*を使い、定数や変数の現在値に置き換えるように Swift に伝えることができます。名前を括弧(`()`)で囲み、開始括弧の前にバックスラッシュ(`\`)を付けます。
 
@@ -696,7 +696,7 @@ do {
 
 この例では、`makeASandwich()` 関数は、綺麗な皿を使えない場合や材料が足りない場合、エラーをスローします。`makeASandwich()` はエラーをスローする可能性があるため、この関数の呼び出しは `try` 式で包まれています。`do` 文で関数の呼び出しを包み、スローされたエラーは `catch` 句でキャッチされます。
 
-エラーがスローされない場合、`eatASandwich()` 関数が呼ばれます。エラーがスローされ、それが `SandwichError.outOfCleanDishes`case と合致する場合、`washDishes()` 関数が呼ばれます。`SandwichError.missingIngredients` ケースに合致する場合、`buyGroceries(_:)` 関数が `catch` でキャッチされた `[String]` 値を引数に呼び出されます。
+エラーがスローされない場合、`eatASandwich()` 関数が呼ばれます。エラーがスローされ、それが `SandwichError.outOfCleanDishes`case と合致する場合、`washDishes()` 関数が呼ばれます。`SandwichError.missingIngredients` ケースに合致する場合、`buyGroceries(_:)` 関数が `catch` でキャッチされた `[String]` 値をパラメータに呼び出されます。
 
 エラーのスロー、キャッチそして伝播は、[Error Handling](error-handling.md)でより詳細に書かれています。
 
@@ -714,7 +714,7 @@ do {
 
 ### Debugging with Assertions\(アサーションを使ったデバッグ\)
 
-Swift の標準ライブラリの [assert\(_:_:file:line:\)](https://developer.apple.com/documentation/swift/1541112-assert)関数を呼ぶことでアサーションを書くことができます。`true` か `false` と評価される式と、`false` だった場合に出力するメッセージを引数として渡すことができます。例えば:
+Swift の標準ライブラリの [assert\(_:_:file:line:\)](https://developer.apple.com/documentation/swift/1541112-assert)関数を呼ぶことでアサーションを書くことができます。`true` か `false` と評価される式と、`false` だった場合に出力するメッセージを式として渡すことができます。例えば:
 
 ```swift
 let age = -3
@@ -744,9 +744,9 @@ if age > 10 {
 
 ### Enforcing Preconditions\(事前条件を強制する\)
 
-`false` になる可能性があるものの、コードの実行を継続するためには必ず `true` にならなければならない条件に対しては、事前条件を使いましょう。例えば、subscript が範囲超えエラーを起こしていないかの確認や、適切な値を関数の引数に渡しているかなどには、事前条件を使いましょう。
+`false` になる可能性があるものの、コードの実行を継続するためには*必ず* `true` にならなければならない条件に対しては、事前条件を使いましょう。例えば、subscript が範囲超えエラーを起こしていないかの確認や、適切な値を関数に渡しているかなどには、事前条件を使いましょう。
 
-事前条件は[precondition(_:_:file:line:)](https://developer.apple.com/documentation/swift/1540960-precondition)関数を呼ぶことで、事前条件を書けます。`true` か `false` と評価される式と、`false` だった場合に出力するメッセージを引数として渡すことができます。例えば:
+事前条件は[precondition(_:_:file:line:)](https://developer.apple.com/documentation/swift/1540960-precondition)関数を呼ぶことで、事前条件を書けます。`true` か `false` と評価される式と、`false` だった場合に出力するメッセージを式として渡すことができます。例えば:
 
 ```swift
 // subscript の実装内で
