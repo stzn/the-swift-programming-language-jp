@@ -1,14 +1,14 @@
 # Subscripts \(サブスクリプト\)
 
-最終更新日: 2021/5/29
+最終更新日: 2021/6/28
 
-クラス、構造体、および列挙型は、コレクション、リスト、またはシーケンスのメンバ要素にアクセスするためのショートカットとして subscript を定義できます。subscript を使用すると、インデックスを使って値を設定および取得でき、設定と取得に個別のメソッドを必要としません。例えば、`Array` インスタンスの要素には `someArray[index]` としてアクセスし、`Dictionary` インスタンスの要素には `someDictionary[Key]` としてアクセスします。
+クラス、構造体、および列挙型は、コレクション、リスト、またはシーケンスの要素にアクセスするためのショートカットとして subscript を定義できます。subscript を使用すると、インデックスを使って値を設定および取得でき、設定と取得に個別のメソッドを必要としません。例えば、`Array` インスタンスの要素には `someArray[index]` としてアクセスし、`Dictionary` インスタンスの要素には `someDictionary[key]` としてアクセスします。
 
-単一の型に対して複数の subscript を定義でき、使用する適切な subscript のオーバーロードは、subscript に渡すインデックス値の型に基づいて選択されます。subscript は 1 つの次元に限定されず、カスタムの型のニーズに合わせて複数の入力パラメータで subscript を定義することもできます。
+単一の型に対して複数の subscript を定義でき、使用する適切な subscript のオーバーロードは、subscript に渡すインデックスの型に基づいて選択されます。subscript は 1 つの次元に限定されず、カスタムの型のニーズに合わせて複数の入力パラメータで subscript を定義することもできます。
 
 ## Subscript Syntax\(subscript構文\)
 
-subscript を使用すると、インスタンス名の後に 1 つ以上の値を角括弧\(`[]`\)で囲むことで、型のインスタンスをクエリできます。それらの構文は、インスタンスメソッドの構文と計算プロパティの構文の両方に似ています。インスタンスメソッドと同じ方法で、`subscript` キーワードを使用して subscript 定義を記述し、1 つ以上の入力パラメータと戻り値の型を指定します。インスタンスメソッドとは異なり、subscript は読み取り/書き込みまたは読み取り専用にすることができます。この挙動は、計算プロパティの場合と同じ方法で get/set とやり取りをします。
+subscript を使用すると、インスタンス名の後に 1 つ以上の値を角括弧\(`[]`\)で囲むことで、型のインスタンスをク検索できます。それらの構文は、インスタンスメソッドの構文と計算プロパティの構文の両方に似ています。インスタンスメソッドと同じ方法で、`subscript` キーワードを使用して subscript 定義を記述し、1 つ以上の入力パラメータと戻り値の型を指定します。インスタンスメソッドとは異なり、subscript は読み取り/書き込みまたは読み取り専用にすることができます。この挙動は、計算プロパティの場合と同じ方法で get/set とやり取りをします。
 
 ```swift
 subscript(index: Int) -> Int {
@@ -21,7 +21,7 @@ subscript(index: Int) -> Int {
 }
 ```
 
-`newValue` の型は、subscript の戻り値と同じです。計算プロパティと同様に、プロパティの set の `(newValue)` パラメータを指定しないこともできます。自分で設定しない場合、`newValue` というデフォルトのパラメータがプロパティの set に提供されます。
+`newValue` の型は、subscript の戻り値と同じです。計算プロパティと同様に、set の `(newValue)` パラメータを指定しないこともできます。自分で設定しない場合、`newValue` というデフォルトのパラメータが set に提供されます。
 
 読み取り専用の計算プロパティと同様に、`get` キーワードとその中括弧\(`{}`\)を削除することで、読み取り専用の subscript の宣言を簡単にできます:
 
@@ -47,14 +47,14 @@ print("six times three is \(threeTimesTable[6])")
 
 この例では、`TimesTable` の新しいインスタンスが作成され、3 の倍数テーブルを表します。上記では、インスタンスの `multiplier` パラメータに使用する値として、構造体のイニシャライザに値 `3` を渡しています。
 
-`threeTimesTable[6]` への呼び出しでも示されているように、subscript を呼び出すことで `threeTimesTable` インスタンスにクエリを実行できます。これは、3 の倍数テーブルの `6` 番目のエントリを要求し、値 `18`、つまり 3 x 6 を返します。
+`threeTimesTable[6]` で示されているように、subscript を呼び出すことで `threeTimesTable` インスタンスの検索を実行できます。これは、3 の倍数テーブルの `6` 番目のエントリを要求し、値 `18`、つまり 3 x 6 を返します。
 
 > NOTE  
-> n 倍数テーブル は、決まった数学ルールに基づいています。`threeTimesTable[someIndex]` を新しい値に設定することは適切ではないため、`TimesTable` のsubscript は読み取り専用の subscript として定義されています。
+> n 倍数テーブル は、決まった数学ルールに基づいています。`threeTimesTable[someIndex]` に新しい値に設定することは適切ではないため、`TimesTable` のsubscript は読み取り専用として定義されています。
 
 ## Subscript Usage\(subscriptの利用\)
 
-subscript の正確な意味合いは、使用されるコンテキストによって異なります。subscript は通常、コレクション、リスト、またはシーケンス内のメンバ要素にアクセスするためのショートカットとして使用されます。特定のクラスまたは構造体の機能に最も適した方法で、自由に subscript を実装できます。
+subscript の正確な意味合いは、使用されるコンテキストによって異なります。subscript は通常、コレクション、リスト、またはシーケンス内の要素にアクセスするためのショートカットとして使用されます。特定のクラスまたは構造体の機能に最も適した方法で、自由に subscript を実装できます。
 
 例えば、Swift の `Dictionary` 型は、`Dictionary` インスタンスに格納されているバリューを設定および取得するための subscript を実装します。辞書にバリューを設定するには、辞書のキーの型を subscript の角括弧\(`[]`\)で囲み、辞書のバリューの型の値を subscript に割り当てます:
 
@@ -68,7 +68,7 @@ numberOfLegs["bird"] = 2
 `Dictionary` の subscript の詳細については、[Accessing and Modifying a Dictionary](collection-types.md#accessing-and-modifying-a-dictionary辞書へのアクセスと変更)を参照ください。
 
 > NOTE  
-> Swift の `Dictionary` 型は、オプショナルの型を受け取って返す subscript としてキーの subscript を実装します。上記の `numberOfLegs` 辞書の場合、キーとバリューの subscript は `Int?` または オプショナルInt 型の値を受け取って返します。`Dictionary` 型は、 オプショナルの subscript の型を使用して、全てのキーにバリューがあるわけではないということをモデル化し、そのキーに `nil` 値を割り当てることによってキーのバリューを削除する方法を提供します。
+> Swift の `Dictionary` 型は、オプショナルの型を受け取って返す subscript としてキーバリューの subscript を実装します。上記の `numberOfLegs` 辞書の場合、キーとバリューの subscript は `Int?` または オプショナル Int 型の値を受け取って返します。`Dictionary` 型は、 オプショナルの subscript の型を使用して、全てのキーにバリューがあるわけではないということをモデル化し、そのキーに `nil` 値を割り当てることによってキーに対応したバリューを削除する方法を提供します。
 
 ## Subscript Options\(様々なsubscript\)
 
@@ -115,7 +115,7 @@ var matrix = Matrix(rows: 2, columns: 2)
 
 上記の例では、2 行 2 列の新しい `Matrix` インスタンスを作成します。この `Matrix` インスタンスの `grid` 配列は、左上から右下に読み取られるように、事実上、フラット化されたバージョンのマトリックスです:
 
-![Subscript Matrix](../.gitbook/assets/subscriptMatrix01_2x.png)
+![フラット化されたマトリックス](../.gitbook/assets/subscriptMatrix01_2x.png)
 
 行列の値は、行と列の値をカンマで区切って subscript に渡すことで設定できます。
 
@@ -124,9 +124,9 @@ matrix[0, 1] = 1.5
 matrix[1, 0] = 3.2
 ```
 
-これらの 2 つの文は、subscript のプロパティの set を呼び出して、行列の右上の位置\(`row` は 0、`column` は 1\) に 1.5 の値を設定し、左下の位置 \(`row` は `1`、`column` は `0`\) に `3.2` の値を設定します。
+これらの 2 つの文は、subscript の set を呼び出して、行列の右上の位置\(`row` は 0、`column` は 1\) に 1.5 の値を設定し、左下の位置 \(`row` は `1`、`column` は `0`\) に `3.2` の値を設定します。
 
-![Subscript Matrix2](../.gitbook/assets/subscriptMatrix02_2x.png)
+![行列の右上と左下の位置に値を設定](../.gitbook/assets/subscriptMatrix02_2x.png)
 
 `Matrix` subscript の get/set には、subscript の `row` と `column` の値が有効なことを確認するためのアサーションが含まれています。これらのアサーションを支援するために、`Matrix` には `indexIsValid(row:column:)` という便利なメソッドが含まれています。これは、要求された `row` と `column` が行列の境界内にあるかどうかをチェックします:
 
@@ -145,7 +145,7 @@ let someValue = matrix[2, 2]
 
 ## Type Subscripts\(型subscript\)
 
-上で説明したように、インスタンスの subscript は、特定の型のインスタンスで呼び出す subscript です。加えて、型自体で呼び出される subscript を定義することもできます。この種の subscript は、型 subscript\(_type subscript_\)と呼ばれます。`subscript` キーワードの前に `static` キーワードを記述して、型 subscript を示します。クラスは代わりに `class` キーワードを使用すると、サブクラスがその subscript のスーパークラスの実装をオーバーライドすることができます。下記の例は、型 subscript を定義して呼び出す方法を示しています。
+上で説明したように、インスタンスの subscript は、特定の型のインスタンスで呼び出す subscript です。加えて、型自体で呼び出される subscript を定義することもできます。この種の subscript は、*型 subscript*と呼ばれます。`subscript` キーワードの前に `static` キーワードを記述して、型 subscript を示します。クラスは代わりに `class` キーワードを使用すると、サブクラスがその subscript のスーパークラスの実装をオーバーライドすることができます。下記の例は、型 subscript を定義して呼び出す方法を示しています。
 
 ```swift
 enum Planet: Int {
@@ -157,4 +157,3 @@ enum Planet: Int {
 let mars = Planet[4]
 print(mars)
 ```
-
