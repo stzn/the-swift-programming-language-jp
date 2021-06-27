@@ -641,9 +641,9 @@ print([1260.0, 1200.0, 98.6, 37.0].average())
 
 他の場所で記述したジェネリック `where` 句の場合と同様に、extension にあるジェネリック `where` 句に複数の要件を含めることができます。各要件はカンマ\(`,`\)で区切ります。
 
-## Contextual Where Clauses\(文脈上のWhere句\)
+## Contextual Where Clauses\(コンテキスト上のWhere句\)
 
-既にジェネリック型を使っている文脈上で、型制約を持たない宣言にジェネリック `where` 句を記述できます。例えば、ジェネリック型の subscript、またはジェネリック型の extension のメソッドにジェネリック `where` 句を記述できます。`Container` 構造体はジェネリックで、下記の例の `where` 句は、新しいメソッドを `Container` で使用できるようにするために満たす必要のある型制約を指定しています。
+既にジェネリック型を使っているコンテキスト上で、型制約を持たない宣言にジェネリック `where` 句を記述できます。例えば、ジェネリック型の subscript、またはジェネリック型の extension のメソッドにジェネリック `where` 句を記述できます。`Container` 構造体はジェネリックで、下記の例の `where` 句は、新しいメソッドを `Container` で使用できるようにするために満たす必要のある型制約を指定しています。
 
 ```swift
 extension Container {
@@ -667,7 +667,7 @@ print(numbers.endsWith(37))
 
 この例では、アイテムが整数の場合は `average()` メソッドを `Container` に追加し、アイテムが `Equatable` の場合は `endsWith(_:)` メソッドを追加します。どちらの関数にも、`Container` で宣言したジェネリックな `Item` 型パラメータに型制約を追加するジェネリック `where` 句が含まれています。
 
-文脈上の `where` 句を使用せずにこのコードを記述したい場合は、ジェネリック `where` 句ごとに 1 つずつ、2 つの extension を記述します。上記の例と下記の例は同じ動きをします。
+コンテキスト上の `where` 句を使用せずにこのコードを記述したい場合は、ジェネリック `where` 句ごとに 1 つずつ、2 つの extension を記述します。上記の例と下記の例は同じ動きをします。
 
 ```swift
 extension Container where Item == Int {
@@ -686,7 +686,7 @@ extension Container where Item: Equatable {
 }
 ```
 
-文脈上の `where` 句を使用する例のバージョンでは、各メソッドのジェネリック `where` 句が、そのメソッドを使用可能にするために満たす必要がある要件を示しているため、`average()` と `endsWith(_:)` の実装は両方とも同じ extension 内にありました。これらの要件を extension のジェネリック `where` 句に移動すると、同じ状況でメソッドを使用できるようになりますが、要件ごとに 1 つの extension が必要になります。
+コンテキスト上の `where` 句を使用する例のバージョンでは、各メソッドのジェネリック `where` 句が、そのメソッドを使用可能にするために満たす必要がある要件を示しているため、`average()` と `endsWith(_:)` の実装は両方とも同じ extension 内にありました。これらの要件を extension のジェネリック `where` 句に移動すると、同じ状況でメソッドを使用できるようになりますが、要件ごとに 1 つの extension が必要になります。
 
 ## Associated Types with a Generic Where Clause\(ジェネリックwhere句を使用した関連型\)
 

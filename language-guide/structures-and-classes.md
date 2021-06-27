@@ -222,11 +222,11 @@ print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 
 `tenEighty` と `alsoTenEighty` は、変数ではなく定数として宣言されていることに注目してください。それでも、`tenEighty` および `alsoTenEighty` 定数自体の値は実際には変更されないため、`tenEighty.frameRate` および `alsoTenEighty.frameRate` を変更することはできます。`tenEighty` と `alsoTenEighty` 自体は、`VideoMode` インスタンスを「格納」しません。代わりに、どちらも内部で同じ `VideoMode` インスタンスを参照します。変更されるのは、基になる `VideoMode` の `frameRate` プロパティで、その `VideoMode` への参照を持つ定数ではありません。
 
-### Identity Operators\(同一性演算子\)
+### Identity Operators\(恒等作用素\)
 
 クラスは参照型のため、複数の定数と変数が内部でクラスの同じインスタンスを参照する可能性があります。\(構造体や列挙型は、定数や変数に割り当てられたとき、または関数に渡されたときに常にコピーされるため異なります\)
 
-2 つの定数または変数が同じインスタンスを参照しているかどうかを確認すると便利な場合があります。これを可能にするために、Swift は 2 つの同一性演算子\(_identity operator_\)を提供します:
+2 つの定数または変数が同じインスタンスを参照しているかどうかを確認すると便利な場合があります。これを可能にするために、Swift は 2 つの恒等作用素\(_identity operator_\)を提供します:
 
 * 同一\(`===`\)
 * 同一ではない\(`!==`\)
