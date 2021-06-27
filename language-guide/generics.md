@@ -46,7 +46,7 @@ func swapTwoDoubles(_ a: inout Double, _ b: inout Double) {
 }
 ```
 
-`swapTwoInts(_:_:)`、`swapTwoStrings(_:_:)`、および `swapTwoDoubles(_:_:)` 関数の本体が同一なことに気付いたかもしれません。唯一の違いは、受け入れられる値の型\(`Int`、`String`、および `Double`\)です。
+`swapTwoInts(_:_:)`、`swapTwoStrings(_:_:)`、および `swapTwoDoubles(_:_:)` 関数の本文が同一なことに気付いたかもしれません。唯一の違いは、受け入れられる値の型\(`Int`、`String`、および `Double`\)です。
 
 任意の型の 2 つの値を交換する 1 つの関数を作成する方が、より便利で、はるかに柔軟です。ジェネリックコードを使用すると、そのような関数を作成できます。\(これらの関数のジェネリックなバージョンは、下記で定義されています\)
 
@@ -65,7 +65,7 @@ func swapTwoValues<T>(_ a: inout T, _ b: inout T) {
 }
 ```
 
-`swapTwoValues(_:_:)` 関数の本体は、`swapTwoInts(_:_:)` 関数の本文と同じです。ただし、`swapTwoValues(_:_:)` の最初の行は `swapTwoInts(_:_:)` とは少し異なります。最初の行を比較すると次のようになります:
+`swapTwoValues(_:_:)` 関数の本文は、`swapTwoInts(_:_:)` 関数の本文と同じです。ただし、`swapTwoValues(_:_:)` の最初の行は `swapTwoInts(_:_:)` とは少し異なります。最初の行を比較すると次のようになります:
 
 ```swift
 func swapTwoInts(_ a: inout Int, _ b: inout Int)
