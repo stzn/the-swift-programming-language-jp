@@ -308,7 +308,7 @@ NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
 
 ### NSCopying
 
-この属性をクラスの格納変数プロパティに適用します。この属性により、プロパティの set は、プロパティ自体の値ではなく、`copyWithZone(_:)` メソッドによって返されるプロパティの値のコピーと同期されます。プロパティの型は、`NSCopying` プロトコルに準拠している必要があります。
+この属性をクラスの格納変数プロパティに適用します。この属性により、set は、プロパティ自体の値ではなく、`copyWithZone(_:)` メソッドによって返されるプロパティの値のコピーと同期されます。プロパティの型は、`NSCopying` プロトコルに準拠している必要があります。
 
 `NSCopying` 属性は、Objective-C のコピープロパティ属性と同じように動作します。
 

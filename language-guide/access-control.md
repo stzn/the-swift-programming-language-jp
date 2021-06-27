@@ -242,7 +242,7 @@ struct TrackedString {
 
 `TrackedString` 構造体は、`value` と呼ばれる文字列の格納プロパティを定義し、初期値は "" \(空の文字列\) です。この構造体は、`numberOfEdits` という整数格納プロパティも定義しています。これは、値が変更された回数を追跡するために使用されています。この変更追跡は、`value` プロパティに `didSet` プロパティオブザーバを使用して実装され、`value` プロパティに新しい値に設定される度に `numberOfEdits` を増加します。
 
-`TrackedString` 構造体と `value` プロパティは明示的なアクセスレベル修飾子を提供していないため、両方ともデフォルトの internal アクセスレベルを受け取ります。ただし、`numberOfEdits` プロパティのアクセスレベルは `private(set)` 修飾子でマークされており、プロパティの get には引き続きデフォルトのアクセスレベル internal が設定され、プロパティは `TrackedString` 構造体の一部のコード内からのみ設定可能なことを示しています。これにより、`TrackedString` は `numberOfEdits` プロパティを内部的に変更できますが、構造体の定義の外部で使用される場合は、プロパティを読み取り専用プロパティとして表示できます。
+`TrackedString` 構造体と `value` プロパティは明示的なアクセスレベル修飾子を提供していないため、両方ともデフォルトの internal アクセスレベルを受け取ります。ただし、`numberOfEdits` プロパティのアクセスレベルは `private(set)` 修飾子でマークされており、get には引き続きデフォルトのアクセスレベル internal が設定され、プロパティは `TrackedString` 構造体の一部のコード内からのみ設定可能なことを示しています。これにより、`TrackedString` は `numberOfEdits` プロパティを内部的に変更できますが、構造体の定義の外部で使用される場合は、プロパティを読み取り専用プロパティとして表示できます。
 
 `TrackedString` インスタンスを作成し、その文字列値を数回変更すると、`numberOfEdits` プロパティの値が変更の数に一致するように更新されていることがわかります。
 
@@ -257,7 +257,7 @@ print("The number of edits is \(stringToEdit.numberOfEdits)")
 
 `numberOfEdits` プロパティの現在の値へ別のソースファイルからアクセスすることはできますが、別のソースファイルからプロパティを変更することはできません。この制限により、`TrackedString` 編集追跡機能の実装の詳細が保護されつつ、その機能の便利な一側面へのアクセスは提供することができています。
 
-必要に応じて、get と set の両方に明示的なアクセスレベルを割り当てることができることに注目してください。下記の例は、構造体が public の明示的なアクセスレベルで定義されている `TrackedString` 構造体のバージョンを示しています。したがって、構造体のメンバ\(`numberOfEdits` プロパティを含む\) には、デフォルトで internal アクセスレベルが設定されています。`public` と `private(set)` のアクセスレベル修飾子を組み合わせることで、構造体の `numberOfEdits` プロパティの get を public にし、そのプロパティの set を private にすることができます。
+必要に応じて、get と set の両方に明示的なアクセスレベルを割り当てることができることに注目してください。下記の例は、構造体が public の明示的なアクセスレベルで定義されている `TrackedString` 構造体のバージョンを示しています。したがって、構造体のメンバ\(`numberOfEdits` プロパティを含む\) には、デフォルトで internal アクセスレベルが設定されています。`public` と `private(set)` のアクセスレベル修飾子を組み合わせることで、構造体の `numberOfEdits` プロパティの get を public にし、その set を private にすることができます。
 
 ```swift
 public struct TrackedString {
