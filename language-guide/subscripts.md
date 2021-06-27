@@ -8,7 +8,7 @@
 
 ## Subscript Syntax\(subscript構文\)
 
-subscript を使用すると、インスタンス名の後に 1 つ以上の値を角括弧\(`[]`\)で囲むことで、型のインスタンスをクエリできます。それらの構文は、インスタンスメソッドの構文と計算プロパティの構文の両方に似ています。インスタンスメソッドと同じ方法で、`subscript` キーワードを使用して subscript 定義を記述し、1 つ以上の入力パラメータと戻り値の型を指定します。インスタンスメソッドとは異なり、subscript は読み取り/書き込みまたは読み取り専用にすることができます。この挙動は、計算プロパティの場合と同じ方法で get/プロパティの set とやり取りをします。
+subscript を使用すると、インスタンス名の後に 1 つ以上の値を角括弧\(`[]`\)で囲むことで、型のインスタンスをクエリできます。それらの構文は、インスタンスメソッドの構文と計算プロパティの構文の両方に似ています。インスタンスメソッドと同じ方法で、`subscript` キーワードを使用して subscript 定義を記述し、1 つ以上の入力パラメータと戻り値の型を指定します。インスタンスメソッドとは異なり、subscript は読み取り/書き込みまたは読み取り専用にすることができます。この挙動は、計算プロパティの場合と同じ方法で get/set とやり取りをします。
 
 ```swift
 subscript(index: Int) -> Int {
@@ -128,7 +128,7 @@ matrix[1, 0] = 3.2
 
 ![Subscript Matrix2](../.gitbook/assets/subscriptMatrix02_2x.png)
 
-`Matrix` subscript の get/プロパティの set には、subscript の `row` と `column` の値が有効なことを確認するためのアサーションが含まれています。これらのアサーションを支援するために、`Matrix` には `indexIsValid(row:column:)` という便利なメソッドが含まれています。これは、要求された `row` と `column` が行列の境界内にあるかどうかをチェックします:
+`Matrix` subscript の get/set には、subscript の `row` と `column` の値が有効なことを確認するためのアサーションが含まれています。これらのアサーションを支援するために、`Matrix` には `indexIsValid(row:column:)` という便利なメソッドが含まれています。これは、要求された `row` と `column` が行列の境界内にあるかどうかをチェックします:
 
 ```swift
 func indexIsValid(row: Int, column: Int) -> Bool {
