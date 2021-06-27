@@ -91,19 +91,19 @@ someTuple = (left: 5, right: 5)  // Error: 名前が一致していません
 
 ## Function Type\(関数型\)
 
-関数型は関数、メソッド、またはクロージャの型を表し、引数と矢印で区切られた戻り値の型で構成されています(`->`)。
+関数型は関数、メソッド、またはクロージャの型を表し、パラメータと矢印で区切られた戻り値の型で構成されています(`->`)。
 
 ![Function Type](./../.gitbook/assets/function_type.png)
 
-引数型(*parameter type*)は、型のカンマ(`,`)区切りのリストです。関数型は、戻り値の型(*return type*)はタプル型の可能性があるため、複数の値を返す関数とメソッドをサポートします。
+パラメータ型(*parameter type*)は、型のカンマ(`,`)区切りのリストです。関数型は、戻り値の型(*return type*)はタプル型の可能性があるため、複数の値を返す関数とメソッドをサポートします。
 
-関数型の引数 `() -> T`(`T` は任意の型)は、呼び出し側で暗黙的なクロージャを作成するために、`autoclosure` を適用できます。これは、関数を呼び出すときに明示的にクロージャを書くことなく、式を遅延評価するための構文上の便利な方法です。`autoclosure` の関数型の引数の例については、[AutoClosures](./../language-guide/closures.md#autoclosures自動クロージャ) を参照ください。
+関数型のパラメータ `() -> T`(`T` は任意の型)は、呼び出し側で暗黙的なクロージャを作成するために、`autoclosure` を適用できます。これは、関数を呼び出すときに明示的にクロージャを書くことなく、式を遅延評価するための構文上の便利な方法です。`autoclosure` の関数型のパラメータの例については、[AutoClosures](./../language-guide/closures.md#autoclosures自動クロージャ) を参照ください。
 
-関数型は、その引数型に多様な引数を持つことができます。構文上、可変長引数は、`Int...` のように要素の型名の後ろに 3 つのドット(`...`)を記載し、要素の型の配列として扱われます。例えば、可変長引数 `Int...` は `[Int]` として扱われます。可変長引数を使用する例については、[Variadic Parameters](./../language-guide/functions.md#variadic-parameters可変長引数)を参照ください。
+関数型は、そのパラメータ型に多様なパラメータを持つことができます。構文上、可変長パラメータは、`Int...` のように要素の型名の後ろに 3 つのドット(`...`)を記載し、要素の型の配列として扱われます。例えば、可変長パラメータ `Int...` は `[Int]` として扱われます。可変長パラメータを使用する例については、[Variadic Parameters](./../language-guide/functions.md#variadic-parameters可変長パラメータ)を参照ください。
 
-in-out 引数を使用するには、`inout` キーワードを引数の型の前に付けます。可変長引数または戻り値の型にマークすることはできません。in-out 引数は、[In-Out Parameters](./../language-guide/functions.md#in-out-parametersin-out引数)で説明されています。
+in-out パラメータを使用するには、`inout` キーワードをパラメータの型の前に付けます。可変長パラメータまたは戻り値の型にマークすることはできません。in-out パラメータは、[In-Out Parameters](./../language-guide/functions.md#in-out-parametersIn-Outパラメータ)で説明されています。
 
-関数型に引数が 1 つしかなく、タプル型の場合、関数型を書くときにタプル型を括弧(`()`)で囲む必要があります。例えば、`((Int, Int)) -> Void` は、タプル型 `(Int, Int)` を単一の引数として受け取り、値を返さない関数の型です。対照的に、括弧なしで `(Int, Int) -> Void` と書いた場合は 2 つの `Int` 引数を受け取り、値を返さない関数型です。同様に、`Void` は `()` のエイリアスのため、`(Void)-> Void` は `(()) -> ()` と同じで、空のタプルの単一の引数を受け取ります。`() -> ()` は引数を受け取らないので同じではありません。
+関数型にパラメータが 1 つしかなく、タプル型の場合、関数型を書くときにタプル型を括弧(`()`)で囲む必要があります。例えば、`((Int, Int)) -> Void` は、タプル型 `(Int, Int)` を単一のパラメータとして受け取り、値を返さない関数の型です。対照的に、括弧なしで `(Int, Int) -> Void` と書いた場合は 2 つの `Int` パラメータを受け取り、値を返さない関数型です。同様に、`Void` は `()` のエイリアスのため、`(Void)-> Void` は `(()) -> ()` と同じで、空のタプルの単一の引数を受け取ります。`() -> ()` は引数を受け取らないので同じではありません。
 
 関数とメソッドの引数名は、対応する関数型の一部ではありません。例えば:
 
@@ -137,9 +137,9 @@ var operation: (Int, Int) -> Int          // OK
 
 ### Restrictions for Nonescaping Closures\(非エスケープクロージャの制限\)
 
-非エスケープ(*nonescaping*)関数の引数には、エスケープできる可能性があるため、`Any` 型のプロパティ、変数、または定数を格納することはできません。
+非エスケープ(*nonescaping*)関数のパラメータには、エスケープできる可能性があるため、`Any` 型のプロパティ、変数、または定数を格納することはできません。
 
-非エスケープ関数の引数は、引数として別の非エスケープ関数を渡すことはできません。この制限によって、Swift が実行時ではなくコンパイル時にメモリへのアクセス競合をチェックすることができます。例えば:
+非エスケープ関数のパラメータは、引数として別の非エスケープ関数を渡すことはできません。この制限によって、Swift が実行時ではなくコンパイル時にメモリへのアクセス競合をチェックすることができます。例えば:
 
 ```swift
 let external: (() -> Void) -> Void = { _ in () }
@@ -155,11 +155,11 @@ func takesTwoFunctions(first: (() -> Void) -> Void, second: (() -> Void) -> Void
 }
 ```
 
-上記のコードでは、`takesTwoFunctions(first:second:)` の引数は関数型です。どちらも `@esescaping` がマークされていないため、非エスケープです。
+上記のコードでは、`takesTwoFunctions(first:second:)` のパラメータは関数型です。どちらも `@esescaping` がマークされていないため、非エスケープです。
 
-上記の例で「エラー」とマークされた 4 つの関数の呼び出しは、コンパイラエラーが発生します。最初と 2 番目の引数は非エスケープ関数のため、引数として別の非エスケープ関数を引数に渡すことはできません。対照的に、「OK」とマークされた 2 つの関数呼び出しは、コンパイラエラーが発生しません。これらの関数呼び出しは、`external` が `takesTwoFunctions(first:second:)` の引数ではないため、制限に違反しません。
+上記の例で「エラー」とマークされた 4 つの関数の呼び出しは、コンパイラエラーが発生します。最初と 2 番目のパラメータは非エスケープ関数のため、引数として別の非エスケープ関数のパラメータに渡すことはできません。対照的に、「OK」とマークされた 2 つの関数呼び出しは、コンパイラエラーが発生しません。これらの関数呼び出しは、`external` が `takesTwoFunctions(first:second:)` のパラメータではないため、制限に違反しません。
 
-この制限を回避する必要がある場合は、いずれかの引数を `@esescaping` とマークしたり、引数の非エスケープ関数の 1 つを `withoutActuallyEscaping(_:do:)` を使ってエスケープ関数に一時的に変換します。メモリへのアクセス競合を回避する方法については、[Memory Safety](./../language-guide/memory-safety.md#memory-safetyメモリ安全性)を参照ください。
+この制限を回避する必要がある場合は、いずれかのパラメータを `@esescaping` とマークしたり、パラメータの非エスケープ関数の 1 つを `withoutActuallyEscaping(_:do:)` を使ってエスケープ関数に一時的に変換します。メモリへのアクセス競合を回避する方法については、[Memory Safety](./../language-guide/memory-safety.md#memory-safetyメモリ安全性)を参照ください。
 
 > GRAMMAR OF A FUNCTION TYPE  
 > function-type → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub>  [function-type-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument-clause)  `throws`<sub>*opt*</sub>  `->` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
@@ -284,7 +284,7 @@ let implicitlyUnwrappedArray: [Int]!                  // OK
 
 ## Protocol Composition Type\(プロトコル合成型\)
 
-プロトコル合成型は、指定されたプロトコルリスト内の各プロトコルに準拠した型、または特定のクラスのサブクラスの型を定義し、指定されたプロトコルリスト内の各プロトコルに準拠します。プロトコル合成型は、型注釈、ジェネリックの引数句、およびジェネリックの `where` 句内に型を指定する場合にのみ使用できます。
+プロトコル合成型は、指定されたプロトコルリスト内の各プロトコルに準拠した型、または特定のクラスのサブクラスの型を定義し、指定されたプロトコルリスト内の各プロトコルに準拠します。プロトコル合成型は、型注釈、ジェネリックパラメータ句、およびジェネリックの `where` 句内に型を指定する場合にのみ使用できます。
 
 プロトコル合成型の形式は次のとおりです:
 

@@ -239,9 +239,9 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 * `willSet` は、値が格納される直前に呼び出されます
 * `didSet` は、新しい値が格納された直後に呼び出されます
 
-`willSet` オブザーバを実装すると、新しいプロパティ値が定数引数として渡されます。`willSet` 実装の一部として、この引数の名前を指定できます。実装内に引数名と括弧を記述しない場合、引数は `newValue` というのデフォルトの引数名で使用可能になります。
+`willSet` オブザーバを実装すると、新しいプロパティ値が定数パラメータとして渡されます。`willSet` 実装の一部として、このパラメータの名前を指定できます。実装内にパラメータ名と括弧を記述しない場合、パラメータは `newValue` というのデフォルトのパラメータ名で使用可能になります。
 
-同様に、 `didSet` オブザーバを実装する場合、古いプロパティ値を含む定数引数が渡されます。引数に名前を付けるか、`oldValue` というのデフォルト引数名を使用できます。独自の `didSet` オブザーバ内のプロパティに値を割り当てると、新しい値によって、設定されたばかりの値が置き換えられます。
+同様に、 `didSet` オブザーバを実装する場合、古いプロパティ値を含む定数パラメータが渡されます。パラメータに名前を付けるか、`oldValue` というのデフォルトパラメータ名を使用できます。独自の `didSet` オブザーバ内のプロパティに値を割り当てると、新しい値によって、設定されたばかりの値が置き換えられます。
 
 > NOTE  
 > スーパークラス プロパティの `willSet` および `didSet` オブザーバは、プロパティがサブクラスのイニシャライザで設定されると、スーパークラスのイニシャライザが呼び出された後に呼び出されます。スーパークラスのイニシャライザが呼び出される前に、サブクラスが独自のプロパティを設定している間は呼び出されません。 イニシャライザの委譲については、[Initializer Delegation for Value Types](initialization.md#initializer-delegation-for-value-types値型のイニシャライザの委譲)、[Initializer Delegation for Class Types](initialization.md#initializer-delegation-for-class-typesクラス型のイニシャライザの委譲)を参照ください。
@@ -277,12 +277,12 @@ stepCounter.totalSteps = 896
 
 プロパティに新しい値が割り当てられるたびに、`totalSteps` の `willSet` および `didSet` オブザーバが呼び出されます。これは、新しい値が現在の値と同じでも呼び出されます。
 
-この例の `willSet` オブザーバは、次の新しい値に `newTotalSteps` のカスタム引数名を使用します。この例では、設定しようとしている値を出力するだけです。
+この例の `willSet` オブザーバは、次の新しい値に `newTotalSteps` のカスタムパラメータ名を使用します。この例では、設定しようとしている値を出力するだけです。
 
-`didSet` オブザーバは、`totalSteps` の値が更新された後に呼び出されます。これは、`totalSteps` の新しい値を古い値と比較します。合計ステップ数が増えると、新しく何ステップ増えたかを示すメッセージが出力されます。`didSet` オブザーバは古い値のカスタム引数名を提供せず、代わりに `oldValue` のデフォルト名が使用されます。
+`didSet` オブザーバは、`totalSteps` の値が更新された後に呼び出されます。これは、`totalSteps` の新しい値を古い値と比較します。合計ステップ数が増えると、新しく何ステップ増えたかを示すメッセージが出力されます。`didSet` オブザーバは古い値のカスタムパラメータ名を提供せず、代わりに `oldValue` のデフォルト名が使用されます。
 
 > NOTE  
-> オブザーバを持つプロパティを関数に入出力引数として渡すと、`willSet` および `didSet` オブザーバが常に呼び出されます。これは、入力引数のコピーインコピーアウト\(copy-in copy-out\)メモリモデルによるものです。値は常に関数の最後でプロパティに書き戻されます。入出力引数の動作の詳細については、[In-Out Parameters](../language-reference/declarations.md#in-Out-parameters入出力引数)を参照ください。
+> オブザーバを持つプロパティを関数に入出力パラメータとして渡すと、`willSet` および `didSet` オブザーバが常に呼び出されます。これは、入力パラメータのコピーインコピーアウト\(copy-in copy-out\)メモリモデルによるものです。値は常に関数の最後でプロパティに書き戻されます。入出力パラメータの動作の詳細については、[In-Out Parameters](../language-reference/declarations.md#in-Out-parametersIn-Outパラメータ)を参照ください。
 
 ## Property Wrappers\(プロパティラッパ\)
 
@@ -410,7 +410,7 @@ print(unitRectangle.height, unitRectangle.width)
 
 ラッパを使用してプロパティに `= 1` を書き込むと、それは `init(wrappedValue:)` イニシャライザの呼び出しに変換されます。`height` と `width` をラップする `SmallNumber` のインスタンスは、`SmallNumber(wrappedValue: 1)` を呼び出すことによって作成されます。イニシャライザは、ここで指定されたラップされた値を使用し、デフォルトの最大値の `12` を使用します。
 
-カスタム属性の後の括弧内に引数を記述すると、Swift はそれらの引数を受け入れるイニシャライザ初期化子を使用してラッパを設定します。たとえば、初期値と最大値を指定すると、Swift は `init(wrappedValue:maximum:)` イニシャライザを使用します:
+カスタム属性の後の括弧内に引数を記述すると、Swift はそれらの引数を受け入れるイニシャライザを使用してラッパを設定します。たとえば、初期値と最大値を指定すると、Swift は `init(wrappedValue:maximum:)` イニシャライザを使用します:
 
 ```swift
 struct NarrowRectangle {

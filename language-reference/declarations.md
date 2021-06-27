@@ -134,7 +134,7 @@ print("The second number is \(secondNumber).")
 
 get は値を読み取るために使用され、set は値を書き込むために使用されます。set 句は省略可能で、get のみが必要な場合は、[Read-Only Computed Properties](./../language-guide/properties.md#read-Only-computed-properties読み取り専用計算プロパティ)で説明されているように、両方の句を省略し、シンプルに要求された値を直接返すことができます。しかし、set 句を指定した場合は、get 句も提供する必要があります。
 
-setter name とそれを囲む括弧は省略可能です。setter name を指定した場合は、set への引数の名前として使用されます。setter name を指定しない場合は、[Shorthand Setter Declaration](./../language-guide/properties.md#shorthand-setter-declaration短縮setプロパティ宣言)で説明されているように、set へのデフォルトの引数名は `newValue` です。
+setter name とそれを囲む括弧は省略可能です。setter name を指定した場合は、set へのパラメータの名前として使用されます。setter name を指定しない場合は、[Shorthand Setter Declaration](./../language-guide/properties.md#shorthand-setter-declaration短縮setプロパティ宣言)で説明されているように、set へのデフォルトのパラメータ名は `newValue` です。
 
 格納変数や格納可変プロパティとは異なり、計算変数または計算プロパティの値はメモリに格納されません。
 
@@ -156,7 +156,7 @@ setter name とそれを囲む括弧は省略可能です。setter name を指�
 
 `willSet` オブザーバは、変数またはプロパティの値が設定される直前に呼び出されます。新しい値が定数として `willSet` オブザーバに渡され、したがって `willSet` 句の実装では変更できません。`didSet` オブザーバは、新しい値が設定された直後に呼び出されます。`willSet` オブザーバとは対照的に、それにアクセスする必要がある場合は、変数またはプロパティの古い値が `didSet` オブザーバーに渡されます。つまり、自身の `didSet` オブザーバ句内で変数またはプロパティに値を割り当てた場合、`willSet` オブザーバに渡された値を置き換えます。
 
-`willSet` および `didSet` 句内の setter name とそれを囲む括弧は省略可能です。setter name を指定した場合は、`willSet` と `didSet` オブザーバの引数名として使用されます。setter name を指定しない場合は、`willSet` オブザーバのデフォルトの引数名が `newValue` で、`didSet` オブザーバのデフォルトの引数名は `oldValue` です。
+`willSet` および `didSet` 句内の setter name とそれを囲む括弧は省略可能です。setter name を指定した場合は、`willSet` と `didSet` オブザーバのパラメータ名として使用されます。setter name を指定しない場合は、`willSet` オブザーバのデフォルトのパラメータ名が `newValue` で、`didSet` オブザーバのデフォルトのパラメータ名は `oldValue` です。
 
 `didSet` 句は、`willSet` 句を指定した場合は省略可能です。同様に、`didSet` 句を指定するときは、`willSet` 句は省略可能です。
 
@@ -237,7 +237,7 @@ newAndOld.x = 200
 
 タイプエイリアスが宣言された後、プログラム内の既存の型の代わりに注釈された name を使用できます。existing type は、名前付き型または複合型にすることができます。タイプエイリアスは新しい型を作成しません。それらは単に名前が既存の型を参照することを可能にします。
 
-タイプエイリアス宣言は、ジェネリック引数を使用して既存のジェネリック型に名前を付けることができます。タイプエイリアスは、既存の型のジェネリック引数の一部または全部を使って具象型を提供できます。例えば:
+タイプエイリアス宣言は、ジェネリックパラメータを使用して既存のジェネリック型に名前を付けることができます。タイプエイリアスは、既存の型のジェネリックパラメータの一部または全部を使って具象型を提供できます。例えば:
 
 ```swift
 typealias StringDictionary<Value> = Dictionary<String, Value>
@@ -247,7 +247,7 @@ var dictionary1: StringDictionary<Int> = [:]
 var dictionary2: Dictionary<String, Int> = [:]
 ```
 
-タイプエイリアスがジェネリック引数で宣言されると、それらの引数の制約は既存の型のジェネリック引数の制約と正確に一致する必要があります。例えば:
+タイプエイリアスがジェネリックパラメータで宣言されると、それらのパラメータの制約は既存の型のジェネリックパラメータの制約と正確に一致する必要があります。例えば:
 
 ```swift
 typealias DictionaryOfInts<Key: Hashable> = Dictionary<Key, Int>
@@ -255,7 +255,7 @@ typealias DictionaryOfInts<Key: Hashable> = Dictionary<Key, Int>
 
 タイプエイリアスと既存の型を互換的に使用できるため、タイプエイリアスは追加のジェネリック制約を導入できません。
 
-タイプエイリアスは、宣言から全てのジェネリック引数を省略することで、既存の型のジェネリック引数を流用できます。例えば、ここで宣言されている `Diccionario` というタイプエイリアスは、`Dictionary` と同じジェネリック引数と制約を持ちます。
+タイプエイリアスは、宣言から全てのジェネリックパラメータを省略することで、既存の型のジェネリックパラメータを流用できます。例えば、ここで宣言されている `Diccionario` というタイプエイリアスは、`Dictionary` と同じジェネリックパラメータと制約を持ちます。
 
 ```swift
 typealias Diccionario = Dictionary
@@ -293,25 +293,25 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 
 ![関数宣言戻り値の型Void](./../.gitbook/assets/function_declaration2.png)
 
-各引数には型を含める必要があります。推論することはできません。引数型の前に `inout` を書くと、その関数の範囲内で引数を変更できます。In-Out 引数については、下記の[In-Out Parameters](#in-out-parametersIn-Out引数)で詳細に説明されています。
+各パラメータには型を含める必要があります。推論することはできません。パラメータ型の前に `inout` を書くと、その関数の範囲内でパラメータを変更できます。in-out パラメータについては、下記の[In-Out Parameters](#in-out-parametersIn-Outパラメータ)で詳細に説明されています。
 
 statements が単一の式のみを含む関数宣言は、その式の値を返すことが明らかです。この暗黙的なリターン構文は、式の型と関数の戻り値の型が `Void` やケースを持たない `Never` のような列挙型ではない場合にのみ使用できます。
 
 関数は、戻り値の型としてタプル型を使用して複数の値を返すことができます。
 
-関数定義は他の関数宣言の内部に現れることがあります。この種の関数は入れ子関数(*nested functio*)と呼ばれます。
+関数定義は他の関数宣言の内部に現れることがあります。この種の関数はネスト関数(*nested functio*)と呼ばれます。
 
-入れ子関数は、In-Out 引数のように決してエスケープしないことが確実な値をキャプチャしている場合、または非エスケープ関数の引数として渡される場合は、非エスケープです。それ以外の場合、入れ子関数はエスケープ関数です。
+ネスト関数は、in-out パラメータのように決してエスケープしないことが確実な値をキャプチャしている場合、または非エスケープ関数の引数として渡される場合は、非エスケープです。それ以外の場合、ネスト関数はエスケープ関数です。
 
-入れ子関数については、[Nested Functions](./../language-guide/functions.md#nested-Functions入れ子関数)を参照ください。
+ネスト関数については、[Nested Functions](./../language-guide/functions.md#nested-Functionsネスト関数)を参照ください。
 
-### Parameter Names\(引数名\)
+### Parameter Names\(パラメータ名\)
 
-関数引数は、各引数が複数の形式のうちの 1 つを持つカンマ区切りのリストです。関数呼び出し内の引数の順序は、関数の宣言内の引数の順序と一致する必要があります。引数リスト内の最もシンプルなエントリの形式は次のとおりです:
+関数パラメータは、各パラメータが複数の形式のうちの 1 つを持つカンマ区切りのリストです。関数呼び出し内の引数の順序は、関数の宣言内のパラメータの順序と一致する必要があります。パラメータリスト内の最もシンプルなエントリの形式は次のとおりです:
 
-![引数名](./../.gitbook/assets/parameter_names.png)
+![パラメータ名](./../.gitbook/assets/parameter_names.png)
 
-引数には、関数本文内で使用されている名前、および関数またはメソッドを呼び出すときに使用される引数ラベルがあります。デフォルトでは、引数名は引数ラベルとしても使用されます。例えば:
+パラメータには、関数本文内で使用されている名前、および関数またはメソッドを呼び出すときに使用される引数ラベルがあります。デフォルトでは、パラメータ名は引数ラベルとしても使用されます。例えば:
 
 ```swift
 func f(x: Int, y: Int) -> Int { return x + y }
@@ -320,34 +320,34 @@ f(x: 1, y: 2) // x と y の両方にラベルがあります
 
 次のいずれかの形式で、引数ラベルのデフォルトの動作を上書きできます。
 
-![引数名2](./../.gitbook/assets/parameter_names2.png)
+![パラメータ名2](./../.gitbook/assets/parameter_names2.png)
 
-引数名の前の名前は、引数の明示的な引数ラベルで、引数名とは異なる可能性があります。関数呼び出しまたはメソッド呼び出し時は、対応する引数に指定された引数ラベルを使用する必要があります。
+パラメータ名の前の名前は、パラメータの明示的な引数ラベルで、パラメータ名とは異なる可能性があります。関数呼び出しまたはメソッド呼び出し時は、対応する引数に指定された引数ラベルを使用する必要があります。
 
-引数名の前のアンダースコア(`_`)は、引数ラベルを省略します。関数呼び出しまたはメソッド呼び出し時は、対応する引数に、ラベルを付けてはなりません。
+パラメータ名の前のアンダースコア(`_`)は、引数ラベルを省略します。関数呼び出しまたはメソッド呼び出し時は、対応する引数に、ラベルを付けてはなりません。
 
 ```swift
 func repeatGreeting(_ greeting: String, count n: Int) { /* n 回あいさつ */ }
 repeatGreeting("Hello, world!", count: 2) //  count は ラベルあち, greeting は ラベルなし
 ```
 
-### In-Out Parameters\(In-Out引数\)
+### In-Out Parameters\(In-Outパラメータ\)
 
-In-Out 引数は次のように渡されます:
+in-out パラメータは次のように渡されます:
 
 1. 関数が呼び出されると、引数の値がコピーされます
 2. 関数の本文では、コピーが変更されます
 3. 関数から戻ると、コピーの値が元の引数に割り当てられます
 
-この動作はコピーインコピーアウト(*copy-in copy-out*)または値渡し(*call by value result*)と呼ばれます。例えば、計算プロパティまたはオブザーバを持つプロパティが In-Out 引数として渡されると、その get は関数呼び出しの一部として呼び出され、その set は関数リターンの一部として呼び出されます。
+この動作はコピーインコピーアウト(*copy-in copy-out*)または値渡し(*call by value result*)と呼ばれます。例えば、計算プロパティまたはオブザーバを持つプロパティが in-out パラメータとして渡されると、その get は関数呼び出しの一部として呼び出され、その set は関数リターンの一部として呼び出されます。
 
 最適化として、引数がメモリ内の物理アドレスに格納されている値の場合、関数本文の内側と外側の両方で同じメモリアドレスが使用されます。最適化された動作は、参照渡し(*call by reference*)と呼ばれます。これはコピーのオーバーヘッドを削減しながら、コピーインコピーアウトモデルの全ての要件を満たします。参照渡しに依存せず、コピーインコピーアウトで与えられたモデルを使用してコードを書きましょう。そうすれば、最適化の有無にかかわらず正しく動作します。
 
-関数内で、元の値が現在のスコープで使用可能でも、In-Out 引数として渡された値にアクセスしないでください。元の値へのアクセスは、Swift のメモリ排他性に対する保証に違反する値への同時アクセスです。同じ理由で、同じ値を複数の In-Out 引数に渡すことはできません。
+関数内で、元の値が現在のスコープで使用可能でも、in-out 引数として渡された値にアクセスしないでください。元の値へのアクセスは、Swift のメモリ排他性に対する保証に違反する値への同時アクセスです。同じ理由で、同じ値を複数の in-out パラメータに渡すことはできません。
 
 メモリの安全性とメモリの排他性の詳細については、[Memory Safety](./../language-guide/memory-safety.md)を参照ください。
 
-In-Out 引数をキャプチャするクロージャまたはネスト関数は、非エスケープでなければなりません。In-Out 引数を変えることなくキャプチャする必要がある場合は、キャプチャリストを使用して、引数を不変なものとして明示的にキャプチャします。
+in-out パラメータをキャプチャするクロージャまたはネスト関数は、非エスケープでなければなりません。in-out パラメータを変えることなくキャプチャする必要がある場合は、キャプチャリストを使用して、パラメータを不変なものとして明示的にキャプチャします。
 
 ```swift
 func someFunction(a: inout Int) -> () -> Int {
@@ -355,7 +355,7 @@ func someFunction(a: inout Int) -> () -> Int {
 }
 ```
 
-In-Out 引数をキャプチャして変更する必要がある場合は、マルチスレッドコードで関数が返される前に全ての変更が終了したことを保証するように、明示的にローカルコピーを使用してください。
+in-out パラメータをキャプチャして変更する必要がある場合は、マルチスレッドコードで関数が返される前に全ての変更が終了したことを保証するように、明示的にローカルコピーを使用してください。
 
 ```swift
 func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
@@ -369,19 +369,19 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 }
 ```
 
-より多くの議論と In-Out 引数の例については、[In-Out Parameters](./../language-guide/functions.md#in-Out-parametersIn-Out引数)を参照ください。
+より多くの議論と in-out パラメータの例については、[In-Out Parameters](./../language-guide/functions.md#in-Out-parametersIn-Outパラメータ)を参照ください。
 
-### Special Kinds of Parameters\(特殊な種類の引数\)
+### Special Kinds of Parameters\(特殊な種類のパラメータ\)
 
-引数を無視したり、1 つの引数に複数の値を受け取ったり、デフォルト値を提供できます。形式は次のとおりです:
+パラメータを無視したり、1 つのパラメータに複数の値を受け取ったり、デフォルト値を提供できます。形式は次のとおりです:
 
-![特殊な種類の引数](./../.gitbook/assets/special_kinds-of_parameters.png)
+![特殊な種類のパラメータ](./../.gitbook/assets/special_kinds-of_parameters.png)
 
-アンダースコア(`_`)引数は明示的に無視され、関数の本文内でアクセスすることはできません。
+アンダースコア(`_`)パラメータは明示的に無視され、関数の本文内でアクセスすることはできません。
 
-型名の直後に 3 つのドット(`...`)を続く引数は、可変長引数として解釈されます。可変長引数のすぐ後に続く引数には、引数ラベルが必要です。関数は複数の可変長引数を持つことができます。可変長引数は、型名の要素の配列として扱われます。例えば、可変長引数 `Int...` は `[Int]` として扱われます。可変長引数を使用する例については、[Variadic Parameters](./../language-guide/functions.md#variadic-Parameters可変長引数)を参照ください。
+型名の直後に 3 つのドット(`...`)を続くパラメータは、可変長パラメータとして解釈されます。可変長パラメータのすぐ後に続くパラメータには、引数ラベルが必要です。関数は複数の可変長パラメータを持つことができます。可変長パラメータは、型名の要素の配列として扱われます。例えば、可変長パラメータ `Int...` は `[Int]` として扱われます。可変長パラメータを使用する例については、[Variadic Parameters](./../language-guide/functions.md#variadic-Parameters可変長パラメータ)を参照ください。
 
-等式(`=`)引数と型の後に式を伴う引数は、指定された式をデフォルト値として解釈します。指定された式は、関数が呼び出された時に評価されます。関数呼び出し時に引数を省略すると、デフォルト値が代わりに使用されます。
+等式(`=`)パラメータと型の後に式を伴うパラメータは、指定された式をデフォルト値として解釈します。指定された式は、関数が呼び出された時に評価されます。関数呼び出し時にパラメータを省略すると、デフォルト値が代わりに使用されます。
 
 ```swift
 func f(x: Int = 42) -> Int { return x }
@@ -404,7 +404,7 @@ f(7)      // 無効。引数ラベルがありません
 
 クラス、構造体、または列挙型は、[dynamicCallable](./attributes.md#dynamicCallable)で説明されているように、`dynamicallyCall(withArguments:)` メソッドまたは `dynamicallyCall(withKeywordArguments:)` メソッドを定義することによって、または下記で説明されているように、call-as-function メソッドを定義することによって、関数呼び出し構文をサポートできます。型が call-as-function メソッドと `dynamicCallable` 属性のメソッドの両方を定義している場合、コンパイラはどちらの方法も使用できる状況では、call-as-function メソッドを選びます。
 
-call-as-function メソッドの名前は、`callAsFunction()`、または `callAsFunction(` で始まる別の名前(例えば、`callAsFunction(_:_:)`、`callAsFunction(something:)` も有効です。
+call-as-function メソッドの名前は、`callAsFunction()`、または `callAsFunction(` で始まり、ラベル有りまたはなしの引数を付けた別の名前(例えば、`callAsFunction(_:_:)`、`callAsFunction(something:)` も有効です。
 
 次の関数呼び出しは同等です:
 
@@ -448,7 +448,7 @@ let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 
 ### Rethrowing Functions and Methods\(再スロー関数と再スローメソッド\)
 
-関数またはメソッドが、その関数の引数の 1 つがエラーをスローした場合にのみエラーをスローすることを示すために `rethrows` キーワードを使うことができます。これらの関数およびメソッドは、再スロー関数(*rethrowing function*)および再スローメソッド(*rethrowing method*)と呼ばれます。再スロー関数と再スローメソッドには、少なくとも 1 つのエラーをスローする関数の引数が必要です。
+関数またはメソッドが、その関数のパラメータの 1 つがエラーをスローした場合にのみエラーをスローすることを示すために `rethrows` キーワードを使うことができます。これらの関数およびメソッドは、再スロー関数(*rethrowing function*)および再スローメソッド(*rethrowing method*)と呼ばれます。再スロー関数と再スローメソッドには、少なくとも 1 つのエラーをスローする関数のパラメータが必要です。
 
 ```swift
 func someFunction(callback: () throws -> Void) rethrows {
@@ -456,7 +456,7 @@ func someFunction(callback: () throws -> Void) rethrows {
 }
 ```
 
-再スロー関数または再スローメソッドには、`catch` 句内でのみ `throw` 文を含めることができます。これにより、`do-catch` 文内でスロー関数を呼び出し、`catch` 句で別のエラーを投げてエラーを処理できます。さらに、`catch` 句は、再スロー関数のスロー引数の 1 つからスローされたエラーのみを処理しなければなりません。例えば、次の例では、`catch` 句は `alwaySthrows()` からスローされたエラーを処理　しているため、無効です:
+再スロー関数または再スローメソッドには、`catch` 句内でのみ `throw` 文を含めることができます。これにより、`do-catch` 文内でスロー関数を呼び出し、`catch` 句で別のエラーを投げてエラーを処理できます。さらに、`catch` 句は、再スロー関数のスローパラメータの 1 つからスローされたエラーのみを処理しなければなりません。例えば、次の例では、`catch` 句は `alwaySthrows()` からスローされたエラーを処理　しているため、無効です:
 
 ```swift
 func alwaysThrows() throws {
@@ -465,7 +465,7 @@ func alwaysThrows() throws {
 func someFunction(callback: () throws -> Void) rethrows {
     do {
         try callback()
-        try alwaysThrows()  // alwaysThrows() はスロー引数ではないため無効です。
+        try alwaysThrows()  // alwaysThrows() はスローパラメータではないため無効です。
     } catch {
         throw AnotherError.error
     }
@@ -662,7 +662,7 @@ raw-value type のケースを持つ列挙型は、Swift 標準ライブラリ�
 
 クラスの本文には、0 個以上の declarations が含まれています。これらの declarations には、格納プロパティと計算プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、単一のデイニシャライザ、subscript、タイプエイリアス、さらには他のクラス、構造体、アクター、列挙型の宣言を含めることができます。クラス宣言にプロトコル宣言を含めることはできません。様々な種類の宣言を含むクラスの説明といくつかの例については、[Structures and Classes](./../language-guide/structures-and-classes.md)を参照ください。
 
-クラス型は、1 つの親クラス(superclass)のみ継承できますが、任意の数のプロトコルに準拠できます。superclass は、class name とコロン(`:`)の後の最初に表示され、その後に adopted protocols が続きます。ジェネリッククラスは他のジェネリッククラスと非ジェネリッククラスを継承できますが、非ジェネリッククラスは他の非ジェネリッククラスのみ継承できます。コロンの後にジェネリックなスーパークラスクラスの名前を書くときは、ジェネリック引数を含めたそのジェネリッククラスの全てを含める必要があります。
+クラス型は、1 つの親クラス(superclass)のみ継承できますが、任意の数のプロトコルに準拠できます。superclass は、class name とコロン(`:`)の後の最初に表示され、その後に adopted protocols が続きます。ジェネリッククラスは他のジェネリッククラスと非ジェネリッククラスを継承できますが、非ジェネリッククラスは他の非ジェネリッククラスのみ継承できます。コロンの後にジェネリックなスーパークラスクラスの名前を書くときは、ジェネリックパラメータを含めたそのジェネリッククラスの全てを含める必要があります。
 
 [Initializer Declaration](#initializer-declarationイニシャライザ宣言)で説明されているように、クラスには指定イニシャライザと convenience イニシャライザを含めることができます。クラスの指定イニシャライザは、クラスで宣言された全てのプロパティを初期化する必要があり、スーパークラスの指定イニシャライザを呼び出す前に初期化する必要があります。
 
@@ -705,7 +705,7 @@ superclass で宣言されたプロパティとメソッドは現在のクラス
 * [Initializers](./../language-guide/initialization.md#initializersイニシャライザ)で説明されているように、アクター内で宣言されたイニシャライザの 1 つを呼び出します
 * イニシャライザが宣言されておらず、アクター宣言の全てのプロパティに初期値が指定されている場合は、[Default Initializers](./../language-guide/initialization.md#default-initializersデフォルトイニシャライザ)で説明されているように、アクターのデフォルトイニシャライザを呼び出します
 
-デフォルトでは、アクターのメンバはそのアクターに隔離(*isolated*)されています。メソッドの本文やプロパティの get などのコードは、そのアクター内で実行されます。アクター内のコードは、そのコードが既に同じアクターで実行されることがわかっているため、同期的にやり取りできますが、アクター外のコードは、このコードが別のアクターで非同期に実行されているコードなことを示すために、`await` をマークする必要があります。Key path は、アクターの isolated メンバを参照することはできません。アクターの isolated 格納プロパティは、同期関数に In-Out 引数として渡すことができますが、非同期関数には渡すことができません。
+デフォルトでは、アクターのメンバはそのアクターに隔離(*isolated*)されています。メソッドの本文やプロパティの get などのコードは、そのアクター内で実行されます。アクター内のコードは、そのコードが既に同じアクターで実行されることがわかっているため、同期的にやり取りできますが、アクター外のコードは、このコードが別のアクターで非同期に実行されているコードなことを示すために、`await` をマークする必要があります。Key path は、アクターの isolated メンバを参照することはできません。アクターの isolated 格納プロパティは、同期関数に in-out パラメータとして渡すことができますが、非同期関数には渡すことができません。
 
 アクターは、宣言が `nonisolated` キーワードでマークされている非隔離(*nonisolated*) メンバを持つこともできます。nonisolated メンバは、アクターの外部のコードのように実行されます。アクターの isolated な状態と同期的にやり取りすることはできませんが、呼び出し元は、使用時に `await` マークを付けません。
 
@@ -743,7 +743,7 @@ superclass で宣言されたプロパティとメソッドは現在のクラス
 
 デフォルトでは、プロトコルに準拠する型は、プロトコルで宣言されている全てのプロパティ、メソッド、および subscript を実装する必要があります。しかし、これらのプロトコルメンバ宣言に `optional` 修飾子をマークして、準拠する型の実装を省略することもできます。`optional` 修飾子は、`objc` 属性でマークされているメンバにのみ適用でき、`objc` 属性でマークされているプロトコルのメンバにのみ適用できます。その結果、クラス型のみが、オプショナルのメンバ要件を含むプロトコルに準拠できます。`optional` 修飾子の使用方法の詳細と、オプショナルのプロトコルメンバにアクセスする方法のガイダンス(例えば、準拠する型がそれらを実装しているかどうかわからない場合など)については、[Optional Protocol Requirements](./../language-guide/protocols.md#optional-protocol-requirementsオプショナルのプロトコル要件)を参照ください。
 
-列挙型の場合は、型メンバのプロトコル要件を満たすことができます。具体的には、関連値のない列挙ケースは、`Self` 型の get-only の型変数のプロトコル要件を満たし、関連値のある列挙ケースは、引数とその引数ラベルがケース名と一致する `Self` を返す関数のプロトコル要件を満たします。例えば:
+列挙型の場合は、型メンバのプロトコル要件を満たすことができます。具体的には、関連値のない列挙ケースは、`Self` 型の get-only の型変数のプロトコル要件を満たし、関連値のある列挙ケースは、パラメータとその引数ラベルがケース名と一致する `Self` を返す関数のプロトコル要件を満たします。例えば:
 
 ```swift
 protocol SomeProtocol {
@@ -805,7 +805,7 @@ protocol SomeProtocol: AnyObject {
 
 ### Protocol Method Declaration\(プロトコルメソッド宣言\)
 
-プロトコルは、プロトコル宣言の本文にプロトコルメソッド宣言を含めることによって、準拠する型がそのメソッドを実装する必要があることを宣言します。プロトコルメソッド宣言は、関数宣言と同じ形式ですが、2 つの例外があります。関数本文が含まれていないことと、関数宣言の一部としてデフォルト引数を指定できないことです。プロトコルのメソッド要件を実装した例については、[Method Requirements](./../language-guide/protocols.md#method-requirementsメソッド要件)を参照ください。
+プロトコルは、プロトコル宣言の本文にプロトコルメソッド宣言を含めることによって、準拠する型がそのメソッドを実装する必要があることを宣言します。プロトコルメソッド宣言は、関数宣言と同じ形式ですが、2 つの例外があります。関数本文が含まれていないことと、関数宣言の一部としてデフォルトパラメータを指定できないことです。プロトコルのメソッド要件を実装した例については、[Method Requirements](./../language-guide/protocols.md#method-requirementsメソッド要件)を参照ください。
 
 プロトコル宣言でクラスまたは静的メソッドの要件を宣言するには、`static` 修飾子を使用してメソッド宣言をマークします。プロトコルに準拠する構造体と列挙型は、`static` キーワードを使用してメソッドを宣言し、プロトコルに準拠するクラスは、`static` または `class` キーワードを使用してメソッドを宣言します。構造体、列挙型、またはクラスにプロトコルの準拠を追加する extension は、拡張する型と同じキーワードを使用します。型メソッド要件のデフォルト実装を提供する extension は、`static` キーワードを使用します。
 
@@ -843,7 +843,7 @@ subscript 宣言は、プロトコルに準拠するために最低限必要な 
 
 ### Protocol Associated Type Declaration\(プロトコル関連型宣言\)
 
-プロトコルは、`associatedtype` キーワードを使用して関連型を宣言します。関連型は、プロトコルの宣言の一部として使用される型の別名を提供します。関連型は、ジェネリック引数句の型パラメータに似ていますが、宣言されているプロトコルでは `Self` に関連付けられています。このコンテキストでは、`Self` はプロトコルに準拠する最終的な型を指します。詳細と例については、[Associated Types](./../language-guide/generics.md#associated-types関連型)を参照ください。
+プロトコルは、`associatedtype` キーワードを使用して関連型を宣言します。関連型は、プロトコルの宣言の一部として使用される型の別名を提供します。関連型は、ジェネリックパラメータ句の型パラメータに似ていますが、宣言されているプロトコルでは `Self` に関連付けられています。このコンテキストでは、`Self` はプロトコルに準拠する最終的な型を指します。詳細と例については、[Associated Types](./../language-guide/generics.md#associated-types関連型)を参照ください。
 
 プロトコル宣言でジェネリック `where` 句を使用して、関連型を再宣言せずに、別のプロトコルから継承された関連型に制約を追加できます。例えば、下記の `SubProtocol` の宣言は同等です:
 
@@ -897,7 +897,7 @@ convenience イニシャライザは、初期化プロセスを別の convenienc
 > NOTE  
 > `required` 修飾子を使用してイニシャライザをマークする場合、サブクラスでそのイニシャライザをオーバーライドするときに、`override` 修飾子をマークする必要はありません。
 
-関数やメソッドと同様に、イニシャライザはエラーをスローまたは再スローできます。また、関数やメソッドと同様に、イニシャライザの引数の後に `throws` または `rethrows` キーワードを使用して、適切な動作を示します。
+関数やメソッドと同様に、イニシャライザはエラーをスローまたは再スローできます。また、関数やメソッドと同様に、イニシャライザのパラメータの後に `throws` または `rethrows` キーワードを使用して、適切な動作を示します。
 
 様々な種類の宣言のイニシャライザの例を確認するには、[Initialization](./../language-guide/initialization.md)を参照ください。
 
@@ -949,7 +949,7 @@ if let actualInstance = SomeStruct(input: "Hello") {
 
 ## Deinitializer Declaration\(デイニシャライザ宣言\)
 
-デイニシャライザ宣言は、クラス型のデイニシャライザを宣言します。デイニシャライザは引数を受け取らず、形式は次のとおりです:
+デイニシャライザ宣言は、クラス型のデイニシャライザを宣言します。デイニシャライザはパラメータを受け取らず、形式は次のとおりです:
 
 ![デイニシャライザ宣言](./../.gitbook/assets/deinitializer_declaration.png)
 
@@ -1152,15 +1152,15 @@ subscript 宣言を使用すると、特定の型のオブジェクトに subscr
 
 subscript 宣言は、クラス、構造体、列挙型、 extension、またはプロトコル宣言のコンテキストでのみ使用できます。
 
-parameters には、subscript 式に対応する型の要素にアクセスするために 1 つ以上のインデックスを指定します(例えば、式 `object[i]` の `i`)。要素へのアクセスに使用されるインデックスは任意の型にできますが、各引数には、各インデックスの型を指定するためのタイプエイリアスを含める必要があります。return type は、アクセスされる要素の型を指定します。
+parameters には、subscript 式に対応する型の要素にアクセスするために 1 つ以上のインデックスを指定します(例えば、式 `object[i]` の `i`)。要素へのアクセスに使用されるインデックスは任意の型にできますが、各パラメータには、各インデックスの型を指定するためのタイプエイリアスを含める必要があります。return type は、アクセスされる要素の型を指定します。
 
 計算プロパティと同様に、subscript 宣言は、アクセスされた要素の値の読み取りと書き込みをサポートします。get は値の読み取りに使用され、set は値の書き込みに使用されます。set 句は省略可能で、get のみが必要な場合は、両方の句を省略して、要求された値を直接返すことができます。一方で、set 句を指定する場合は、get 句も指定する必要があります。
 
-setter name とそれを囲む括弧は省略可能です。setter name を指定すると、set への引数の名前として使用されます。setter name を指定しない場合、set のデフォルトの引数名は `value` です。set の引数の型は、return type と同じです。
+setter name とそれを囲む括弧は省略可能です。setter name を指定すると、set へのパラメータの名前として使用されます。setter name を指定しない場合、set のデフォルトのパラメータ名は `value` です。set のパラメータの型は、return type と同じです。
 
 parameters または return type がオーバーロードしているものと異なる限り、宣言されている型の subscript 宣言をオーバーロードできます。スーパークラスから継承された subscript 宣言をオーバーライドすることもできます。その際、オーバーライドされた subscript 宣言を `override` 修飾子でマークする必要があります。
 
-subscript の引数は、2 つの例外を除いて、関数引数と同じ規則に従います。デフォルトでは、subscript で使用される引数には、関数、メソッド、イニシャライザとは異なり、引数ラベルがありません。ただし、関数、メソッド、およびイニシャライザが使用するのと同じ構文を使用して、明示的な引数ラベルを提供できます。さらに、subscript に In-Out 引数を含めることはできません。subscript 引数は、[Special Kinds of Parameters](#special-kinds-of-parameters特殊な種類の引数)で説明されている構文を使用して、デフォルト値を持つことができます。
+subscript のパラメータは、2 つの例外を除いて、関数パラメータと同じ規則に従います。デフォルトでは、subscript で使用されるパラメータには、関数、メソッド、イニシャライザとは異なり、引数ラベルがありません。ただし、関数、メソッド、およびイニシャライザが使用するのと同じ構文を使用して、明示的な引数ラベルを提供できます。さらに、subscript に in-out パラメータを含めることはできません。subscript パラメータは、[Special Kinds of Parameters](#special-kinds-of-parameters特殊な種類のパラメータ)で説明されている構文を使用して、デフォルト値を持つことができます。
 
 [Protocol Subscript Declaration](#protocol-subscript-declarationプロトコルsubscript宣言)で説明されているように、プロトコル宣言のコンテキストで subscript を宣言することもできます。
 
@@ -1209,7 +1209,7 @@ prefix operator は、式 `!a` のような前置論理 `NOT` 演算子(`!`)な�
 
 前置演算子と同様に、後置演算子の宣言では優先順位レベルを指定しません。後置演算子は非結合です。
 
-新しい演算子を宣言した後、演算子と同じ名前の静的メソッドを宣言して実装します。静的メソッドは、演算子が引数として取る値の型のメンバの 1 つです。例えば、`Double` に `Int` を乗算する演算子は、`Double` または `Int` 構造体のいずれかに静的メソッドとして実装されます。前置または後置演算子を実装している場合は、そのメソッド宣言に対応する `prefix` または `postfix` 修飾子もマークする必要があります。新しい演算子を作成して実装する方法の例については、[Custom Operators](./../language-guide/advanced-operators.md#custom-operatorsカスタム演算子)を参照ください。
+新しい演算子を宣言した後、演算子と同じ名前の静的メソッドを宣言して実装します。静的メソッドは、演算子が引数として受け取る値の型のメンバの 1 つです。例えば、`Double` に `Int` を乗算する演算子は、`Double` または `Int` 構造体のいずれかに静的メソッドとして実装されます。前置または後置演算子を実装している場合は、そのメソッド宣言に対応する `prefix` または `postfix` 修飾子もマークする必要があります。新しい演算子を作成して実装する方法の例については、[Custom Operators](./../language-guide/advanced-operators.md#custom-operatorsカスタム演算子)を参照ください。
 
 > GRAMMAR OF AN OPERATOR DECLARATION  
 > operator-declaration → [prefix-operator-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_prefix-operator-declaration) \|  [postfix-operator-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_postfix-operator-declaration) \|  [infix-operator-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_infix-operator-declaration)  
@@ -1352,7 +1352,7 @@ Swift は、open、public、internal、file private、 private の 5 つのレ�
 
 アクセス制御の目的で、同じファイル内にある同じ型の extension は、アクセス制御スコープを共有します。それ型を拡張する型も同じファイル内にある場合、同様にその型のアクセス制御スコープを共有します。型の宣言で宣言されたプライベートメンバは extension からもアクセスでき、1 つの extension で宣言されたプライベートメンバは、他の extension および型の宣言からもアクセスできます。
 
-上記の各アクセスレベル修飾子は、任意で、括弧で囲まれた `set` キーワードを受け入れます(例えば、`private(set)`)。[Getters and Setters](./../language-guide/access-control.md#getters-and-settersgetとset)で説明されているように、変数または subscript 自体のアクセスレベル以下のアクセスレベルを変数または subscript の set に指定する場合は、この形式のアクセスレベル修飾子を使用します。
+上記の各アクセスレベル修飾子は、任意で 1 つの引数、括弧で囲まれた `set` キーワード(例えば、`private(set)`)を受け入れます。[Getters and Setters](./../language-guide/access-control.md#getters-and-settersgetとset)で説明されているように、変数または subscript 自体のアクセスレベル以下のアクセスレベルを変数または subscript の set に指定する場合は、この形式のアクセスレベル修飾子を使用します。
 
 > GRAMMAR OF A DECLARATION MODIFIER  
 > declaration-modifier → `class` \|  `convenience` \|  `dynamic` \|  `final` \|  `infix` \|  `lazy` \|  `optional` \| `override` \|  `postfix` \|  `prefix` \|  `required` \|  `static` \|  `unowned` \|  `unowned` `(` `safe` `)` \|  `unowned(` `unsafe` `)` \|  `weak`  

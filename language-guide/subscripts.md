@@ -4,11 +4,11 @@
 
 クラス、構造体、および列挙型は、コレクション、リスト、またはシーケンスのメンバ要素にアクセスするためのショートカットとして subscript を定義できます。subscript を使用すると、インデックスを使って値を設定および取得でき、設定と取得に個別のメソッドを必要としません。例えば、`Array` インスタンスの要素には `someArray[index]` としてアクセスし、`Dictionary` インスタンスの要素には `someDictionary[Key]` としてアクセスします。
 
-単一の型に対して複数の subscript を定義でき、使用する適切な subscript のオーバーロードは、subscript に渡すインデックス値の型に基づいて選択されます。subscript は 1 つの次元に限定されず、カスタムの型のニーズに合わせて複数の入力引数で subscript を定義することもできます。
+単一の型に対して複数の subscript を定義でき、使用する適切な subscript のオーバーロードは、subscript に渡すインデックス値の型に基づいて選択されます。subscript は 1 つの次元に限定されず、カスタムの型のニーズに合わせて複数の入力パラメータで subscript を定義することもできます。
 
 ## Subscript Syntax\(subscript構文\)
 
-subscript を使用すると、インスタンス名の後に 1 つ以上の値を角括弧\(`[]`\)で囲むことで、型のインスタンスをクエリできます。それらの構文は、インスタンスメソッドの構文と計算プロパティの構文の両方に似ています。インスタンスメソッドと同じ方法で、`subscript` キーワードを使用して subscript 定義を記述し、1 つ以上の入力引数と戻り値の型を指定します。インスタンスメソッドとは異なり、subscript は読み取り/書き込みまたは読み取り専用にすることができます。この挙動は、計算プロパティの場合と同じ方法で get/set プロパティとやり取りをします。
+subscript を使用すると、インスタンス名の後に 1 つ以上の値を角括弧\(`[]`\)で囲むことで、型のインスタンスをクエリできます。それらの構文は、インスタンスメソッドの構文と計算プロパティの構文の両方に似ています。インスタンスメソッドと同じ方法で、`subscript` キーワードを使用して subscript 定義を記述し、1 つ以上の入力パラメータと戻り値の型を指定します。インスタンスメソッドとは異なり、subscript は読み取り/書き込みまたは読み取り専用にすることができます。この挙動は、計算プロパティの場合と同じ方法で get/set プロパティとやり取りをします。
 
 ```swift
 subscript(index: Int) -> Int {
@@ -21,7 +21,7 @@ subscript(index: Int) -> Int {
 }
 ```
 
-`newValue` の型は、subscript の戻り値と同じです。計算プロパティと同様に、set プロパティの `(newValue)` 引数を指定しないこともできます。自分で設定しない場合、`newValue` というデフォルトの引数が set プロパティに提供されます。
+`newValue` の型は、subscript の戻り値と同じです。計算プロパティと同様に、set プロパティの `(newValue)` パラメータを指定しないこともできます。自分で設定しない場合、`newValue` というデフォルトのパラメータが set プロパティに提供されます。
 
 読み取り専用の計算プロパティと同様に、`get` キーワードとその中括弧\(`{}`\)を削除することで、読み取り専用の subscript の宣言を簡単にできます:
 
@@ -45,7 +45,7 @@ print("six times three is \(threeTimesTable[6])")
 // "six times three is 18"
 ```
 
-この例では、`TimesTable` の新しいインスタンスが作成され、3 の倍数テーブルを表します。上記では、インスタンスの `multiplier` 引数に使用する値として、構造体のイニシャライザに値 `3` を渡しています。
+この例では、`TimesTable` の新しいインスタンスが作成され、3 の倍数テーブルを表します。上記では、インスタンスの `multiplier` パラメータに使用する値として、構造体のイニシャライザに値 `3` を渡しています。
 
 `threeTimesTable[6]` への呼び出しでも示されているように、subscript を呼び出すことで `threeTimesTable` インスタンスにクエリを実行できます。これは、3 の倍数テーブルの `6` 番目のエントリを要求し、値 `18`、つまり 3 x 6 を返します。
 
@@ -72,13 +72,13 @@ numberOfLegs["bird"] = 2
 
 ## Subscript Options\(様々なsubscript\)
 
-subscript は、任意の数の入力引数を受け取ることができ、これらの入力引数は任意の型にすることができます。subscript は、任意の型の値を返すこともできます。
+subscript は、任意の数の入力パラメータを受け取ることができ、これらの入力パラメータは任意の型にすることができます。subscript は、任意の型の値を返すこともできます。
 
-関数と同様に、subscript は様々な数の引数を受け取り、引数のデフォルト値を提供できます。これについては、[Variadic Parameters](functions.md#variadic-parameters可変長引数)と[Default Parameter Values](functions.md#default-parameter-valuesデフォルト引数値)で説明しています。ただし、関数とは異なり、subscript は `inout` 引数を使用できません。
+関数と同様に、subscript は様々な数のパラメータを受け取り、パラメータのデフォルト値を提供できます。これについては、[Variadic Parameters](functions.md#variadic-parameters可変長パラメータ)と[Default Parameter Values](functions.md#default-parameter-valuesデフォルトパラメータ値)で説明しています。ただし、関数とは異なり、subscript は `inout` パラメータを使用できません。
 
 クラスまたは構造体は、必要なだけ subscript の実装を提供でき、使用される適切な subscript は、subscript が使用される時点で subscript のブラケット\(`[]`\)内に含まれる値の型に基づいて推論されます。この複数の subscript の定義は、subscript のオーバーロードとして知られています。
 
-subscript は単一の引数を取るのが最も一般的ですが、型に適している場合は、複数の引数を持つ subscript を定義することもできます。次の例では、`Double` 値の 2 次元マトリックスを表す `Matrix` 構造体を定義しています。`Matrix` 構造体の subscript は、2 つの整数引数を取ります:
+subscript は単一のパラメータを取るのが最も一般的ですが、型に適している場合は、複数のパラメータを持つ subscript を定義することもできます。次の例では、`Double` 値の 2 次元マトリックスを表す `Matrix` 構造体を定義しています。`Matrix` 構造体の subscript は、2 つの整数パラメータを取ります:
 
 ```swift
 struct Matrix {
@@ -105,7 +105,7 @@ struct Matrix {
 }
 ```
 
-`Matrix` は、`rows` と `columns` と呼ばれる 2 つの引数を受け取るイニシャライザを提供し、`Double` 型の `rows` \* `columns` の値を格納するのに十分な大きさの配列を作成します。マトリックス内の各位置には、`0.0` の初期値が与えられます。これを実現するために、配列のサイズと初期セル値 `0.0` が、正しいサイズの新しい配列を作成して初期化するイニシャライザに渡されます。このイニシャライザについては、[Creating an Array with a Default Value](collection-types.md#creating-an-array-with-a-default-valueデフォルト値を使った配列の作成)で詳しく説明しています。
+`Matrix` は、`rows` と `columns` と呼ばれる 2 つのパラメータを受け取るイニシャライザを提供し、`Double` 型の `rows` \* `columns` の値を格納するのに十分な大きさの配列を作成します。マトリックス内の各位置には、`0.0` の初期値が与えられます。これを実現するために、配列のサイズと初期セル値 `0.0` が、正しいサイズの新しい配列を作成して初期化するイニシャライザに渡されます。このイニシャライザについては、[Creating an Array with a Default Value](collection-types.md#creating-an-array-with-a-default-valueデフォルト値を使った配列の作成)で詳しく説明しています。
 
 適切な `rows` 数と `columns` 数をイニシャライザに渡すことで、新しい `Matrix` インスタンスを構築できます:
 

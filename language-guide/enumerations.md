@@ -258,7 +258,7 @@ let sunsetDirection = CompassPoint.west.rawValue
 
 ### Initializing from a Raw Value\(raw valueからの初期化\)
 
-raw value 型で列挙型を定義すると、列挙型は、raw value の型の値を\(`rawValue` と呼ばれる引数として\)受け取り、列挙型または `nil` のいずれかを返すイニシャライザを自動的に提供します。このイニシャライザを使用して、列挙型の新しいインスタンスを作成することができます。
+raw value 型で列挙型を定義すると、列挙型は、raw value の型の値を\(`rawValue` と呼ばれるパラメータとして\)受け取り、列挙型または `nil` のいずれかを返すイニシャライザを自動的に提供します。このイニシャライザを使用して、列挙型の新しいインスタンスを作成することができます。
 
 この例では、raw value`7` から天王星を識別します。
 

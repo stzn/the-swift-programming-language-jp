@@ -151,9 +151,9 @@ constantString += " and another Highlander"
 
 ## Strings Are Value Types\(文字列は値型\)
 
-`String` 型は*値型*です。新しい `String` を生成すると、関数やメソッドの引数で渡されるときや、他の定数、変数に代入されるときに、値のコピーが発生します。いずれの場合でも、既存の `String` のコピーが生成され、元の値ではなく新しいコピーが渡され\(または代入され\)ます。値型は[Structures and Enumerations Are Value Types](structures-and-classes.md)で記載されています。
+`String` 型は*値型*です。新しい `String` を生成すると、関数やメソッドのパラメータで渡されるときや、他の定数、変数に代入されるときに、値のコピーが発生します。いずれの場合でも、既存の `String` のコピーが生成され、元の値ではなく新しいコピーが渡され\(または代入され\)ます。値型は[Structures and Enumerations Are Value Types](structures-and-classes.md)で記載されています。
 
-Swift の、デフォルトでコピーをする `String` の挙動は、`String` が関数やメソッドの引数で渡されるときに、どこからその値が来たとしても、正しい `String` を所有していることが保証されます。つまり、渡された文字列は、自身で変更しない限り決して変更されることがありません。
+Swift の、デフォルトでコピーをする `String` の挙動は、`String` が関数やメソッドのパラメータで渡されるときに、どこからその値が来たとしても、正しい `String` を所有していることが保証されます。つまり、渡された文字列は、自身で変更しない限り決して変更されることがありません。
 
 内部では、Swift のコンパイラは本当に必要なときだけ実際にコピーが発生するように最適化をしています。つまり、値型として文字列を扱う場合に常に良いパフォーマンスを得ることができます。
 
@@ -180,7 +180,7 @@ for character in "Dog!🐶" {
 let exclamationMark: Character = "!"
 ```
 
-`String` は、`Character` の配列をイニシャライザの引数に渡して構築することができます:
+`String` は、`Character` の配列をイニシャライザの引数として渡して構築することができます:
 
 ```swift
 let catCharacters: [Character] = ["C", "a", "t", "!", "🐱"]
@@ -503,7 +503,7 @@ if latinCapitalLetterA != cyrillicCapitalLetterA {
 
 ### Prefix and Suffix Equality\(前方一致と後方一致\)
 
-ある文字列が特定の前置文字や後置文字を含んでいるかどうかをチェックするために、`hasPrefix(_:)` と `hasSuffix(_:)` メソッドを使います。どちらも 1 つの `String` 型の引数を取り、`Bool` 値を返します。
+ある文字列が特定の前置文字や後置文字を含んでいるかどうかをチェックするために、`hasPrefix(_:)` と `hasSuffix(_:)` メソッドを使います。どちらも 1 つの `String` 型の引数を受け取り、`Bool` 値を返します。
 
 下記の例では、シェークスピアのロミオとジュリエットの最初の 2 幕のシーンの場所を表した文字列の配列です。
 
