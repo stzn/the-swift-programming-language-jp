@@ -406,7 +406,7 @@ class City {
 
 2 つのクラス間の相互依存関係を設定するために、`City` のイニシャライザは `Country` インスタンスを取得し、このインスタンスを `country` プロパティに格納します。
 
-`City` のイニシャライザは、`Country` のイニシャライザ内から呼び出されます。ただし、[Two-Phase Initialization](initialization.md#two-phase-initializationイニシャライザの2フェーズ)で説明されているように、新しい `Country` インスタンスが完全に初期化されるまで、`Country` のイニシャライザは `self` を `City` イニシャライザに渡すことはできません。
+`City` のイニシャライザは、`Country` のイニシャライザ内から呼び出されます。ただし、[Two-Phase Initialization](initialization.md#two-phase-initialization2段階の初期化)で説明されているように、新しい `Country` インスタンスが完全に初期化されるまで、`Country` のイニシャライザは `self` を `City` イニシャライザに渡すことはできません。
 
 この要件に対処するには、`Country` の `capitalCity` プロパティを、型注釈の最後に感嘆符で示される、暗黙アンラップオプショナルプロパティ\(`City!`\)として宣言しています。これは、他のオプショナルと同様に、`capitalCity` プロパティのデフォルト値は `nil` ですが、[Implicitly Unwrapped Optionals](the-basics.md#implicitly-unwrapped-optionals暗黙アンラップオプショナル)で説明されているように、その値をアンラップする必要なくアクセスできることを意味します。
 
