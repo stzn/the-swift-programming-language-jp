@@ -117,7 +117,7 @@ condition の値は、`Bool` 型または `Bool` にブリッジされた型に�
 
 ![If-Else文](./../.gitbook/assets/if_else_statement.png)
 
-`if` 文の else 句には、複数の条件を検証するための別の `if` 文を含めることができます。このように連鎖された `if` 文の形式は次のとおりです:
+`if` 文の else 句には、複数の条件を検証するための別の `if` 文を含めることができます。このようにチェーンした `if` 文の形式は次のとおりです:
 
 ![If-ElseId文](./../.gitbook/assets/if_elseif_statement.png)
 
