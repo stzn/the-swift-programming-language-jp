@@ -42,7 +42,7 @@ simpleMax(3.14159, 2.71828) // T は Double となると推論されます
 
 ![ジェネリックwhere句](./../.gitbook/assets/generic-where-clauses.png)
 
-ジェネリック `where` 句の requirements は、型パラメータがクラスを継承するか、プロトコルまたはプロトコル合成に準拠することを指定します。ジェネリック `where` 句は型パラメータのシンプルな制約を表現するための糖衣構文(シンタックスシュガー)を提供しますが(例えば、`<T: Comparable>` は `<T> where T: Comparable` などと同等)、それを使用して複雑な制約を型パラメータや関連型に提供することもできます。例えば、プロトコルに準拠するために、関連型の型パラメータを制限することができます。例えば、`<S: Sequence> where S.Iterator.Element: Equatable` は、`S` が `Sequence` プロトコルに準拠し、関連型 `S.Iterator.Element` が `Equatable` プロトコルに準拠することを指定します。この制約は、シーケンスの各要素が `Equatable` なことを保証します。
+ジェネリック `where` 句の requirements は、型パラメータがクラスを継承するか、プロトコルまたはプロトコル合成に準拠することを指定します。ジェネリック `where` 句は型パラメータのシンプルな制約を表現するための糖衣構文(シンタックスシュガー)を提供しますが(例えば、`<T: Comparable>` は `<T> where T: Comparable` などと同等)、それを使用して複雑な制約を型パラメータや関連型に提供することもできます。例えば、プロトコルに準拠するために、関連型の型パラメータを制限することができます。例えば、`<S: Sequence> where S.Iterator.Element: Equatable` は、`S` が `Sequence` プロトコルに準拠し、関連型 `S.Iterator.Element` が `Equatable` プロトコルに準拠することを指定します。この制約は、シーケンスの各要素が `Equatable` だということを保証します。
 
 `==` 演算子を使用して、2 つの型が同じという要件を指定することもできます。例えば、`<S1: Sequence, S2: Sequence> where S1.Iterator.Element == S2.Iterator.Element` は `S1` と `S2` が `Sequence` プロトコルに準拠し、両方のシーケンスの要素が同じ型でなければならない制約を表現します。
 

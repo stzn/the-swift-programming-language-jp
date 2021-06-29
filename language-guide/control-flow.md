@@ -598,7 +598,7 @@ print(description)
 // "The number 5 is a prime number, and also an integer."
 ```
 
-この例では、`description` という新しい `String` 変数を宣言して、初期値を設定しています。この関数は `switch` 文で `integerToDescribe` を検証しています。`integerToDescribe` がリストの素数の 1 つの場合、この関数は `description` の末尾に、数字が素数なことを説明したテキストを追加します。`default` ケースにも「通り抜ける」ように、`fallthrough` キーワードを使用しています。`default` ケースでは、説明の末尾に追加のテキストを追加して `switch` 文は完了します。数字の説明は、`print(_:separator:terminator:)` 関数を使用して出力されています。この例では、素数として `5` が適切に特定されています。
+この例では、`description` という新しい `String` 変数を宣言して、初期値を設定しています。この関数は `switch` 文で `integerToDescribe` を検証しています。`integerToDescribe` がリストの素数の 1 つの場合、この関数は `description` の末尾に、数字が素数だと説明したテキストを追加します。`default` ケースにも「通り抜ける」ように、`fallthrough` キーワードを使用しています。`default` ケースでは、説明の末尾に追加のテキストを追加して `switch` 文は完了します。数字の説明は、`print(_:separator:terminator:)` 関数を使用して出力されています。この例では、素数として `5` が適切に特定されています。
 
 > NOTE  
 > `fallthrough` キーワードは、前のケースから通り抜けて実行されたケースの条件をチェックしません。`fallthrough` キーワードは次のケース\(または `default` ケース\)のブロック内の文に直接移動し、コードを実行します。これは C 言語と同じ挙動です。

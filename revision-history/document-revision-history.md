@@ -80,7 +80,7 @@
 * Swift 4.1 に更新しました
 * [Equivalence Operators](./../language-guide/advanced-operators.md#equivalence-operators比較演算子)セクションに、等価演算子の合成実装についての情報を追加しました
 * [Declarations](./../language-reference/declarations.md)の章の[Extension Declaration](./../language-guide/extensions.md#extension-declaration拡張宣言)セクションと、[Protocols](./../language-guide/protocols.md)の章の[Conditionally Conforming to a Protocol](./../language-guide/protocols.md#conditionally-conforming-to-a-protocol条件付きでのプロトコルへの準拠)セクションに、条件付きプロトコル準拠についての情報を追加しました
-* [Using a Protocol in Its Associated Type’s Constraints](./../language-guide/generics.md#using-a-protocol-in-its-associated-type’s-constraints関連型に制約へのプロトコルの使用)セクションに、再帰的プロトコル制約についての情報を追加しました
+* [Using a Protocol in Its Associated Type’s Constraints](./../language-guide/generics.md#using-a-protocol-in-its-associated-type’s-constraints関連型の制約へのプロトコルの使用)セクションに、再帰的プロトコル制約についての情報を追加しました
 * [Conditional Compilation Block](./../language-reference/statements.md#conditional-compilation-block条件付きコンパイルブロック)セクションに、`canImport()` と `targetEnvironment()` プラットフォーム条件についての情報を追加しました
 
 ## 2017-12-04
@@ -146,7 +146,7 @@
 * [Rethrowing Functions and Methods](./../language-reference/declarations.md#rethrowing-functions-and-methods再スロー関数と再スローメソッド)セクションに、再スロー関数のキャッチブロック内でエラーをスローすることについての情報を追加しました
 * [Selector Expression](./../language-reference/expressions.md#selector-expressionSelector式)セクションに、Objective-C プロパティの get または set のセレクタへのアクセスについての情報を追加しました
 * [Type Alias Declaration](./document-revision-history.md#type-alias-declarationタイプエイリアス宣言)セクションに、ジェネリックなタイプエイリアスとプロトコル内でのタイプエイリアスの使用について情報を追加しました
-* [Function Type](./../language-reference/types.md#function-type関数型)セクションの説明を更新し、パラメータ型の周囲に括弧が必須なことを記載しました
+* [Function Type](./../language-reference/types.md#function-type関数型)セクションの説明を更新し、パラメータ型の周囲に括弧が必須だということを記載しました
 * [Attributes](./../language-reference/attributes.md)の章を更新して、`@IBAction`、`@IBOutlet`、および `@NSManaged` 属性は `@objc` 属性を暗黙的に含んでいることを記載しました
 * [Declaration Attributes](./../language-reference/attributes.md#declaration-attributes宣言属性)セクションに、`@GKInspectable` 属性についての情報を追加しました
 * [Optional Protocol Requirements](./../language-guide/protocols.md#optional-protocol-requirementsオプショナルのプロトコル要件)のオプショナルのプロトコル要件の説明を更新し、Objective-C と相互運用されるコードでのみ使用されることを明確にしました
@@ -306,6 +306,6 @@
 * 辞書型の省略構文([Dictionary Type Shorthand Syntax](./../language-guide/collection-types.md#dictionary-type-shorthand-syntax辞書型の省略構文))は、`[KeyType: ValueType]` と書くように新しいセクションを追加しました
 * セット型のハッシュ値([Hash Values for Set Types](./../language-guide/collection-types.md#hash-values-for-set-typesセット型のハッシュ値))についての新しいセクションを追加しました
 * [Closure Expressions](./../language-guide/closures.md#closure-expressionsクロージャ式)の例に、グローバルの `sort(_:_:)` 関数ではなくグローバルの `sorted(_:_:)` 関数を使用して、配列の新しい値型のセマンティクスを反映しています
-* [Memberwise Initializers for Structure Types](./../language-guide/initialization.md#memberwise-initializers-for-structure-types構造体のメンバワイズイニシャライザ)についての情報を更新し、構造体の格納プロパティにデフォルト値がない場合でもメンバワイズイニシャライザが使用可能なことを明確にしました
+* [Memberwise Initializers for Structure Types](./../language-guide/initialization.md#memberwise-initializers-for-structure-types構造体のメンバワイズイニシャライザ)についての情報を更新し、構造体の格納プロパティにデフォルト値がない場合でもメンバワイズイニシャライザが使用可能だということを明確にしました
 * 半開範囲演算子([Half-Open Range Operator](./../language-guide/basic-operators.md#half-Open-range-operator半開範囲演算子))に `..` ではなく `..<` を使用するようになりました
 * [Extending a Generic Type](./../language-guide/generics.md#extending-a-generic-typeジェネリック型の拡張)の例を追加しました

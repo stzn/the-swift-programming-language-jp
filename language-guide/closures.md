@@ -82,7 +82,7 @@ reversedNames = names.sorted(by: { (s1: String, s2: String) -> Bool in
 reversedNames = names.sorted(by: { (s1: String, s2: String) -> Bool in return s1 > s2 } )
 ```
 
-これは、`sorted(by:)` メソッドへの呼び出しがいずれも同じなことを示しています。括弧のペア\(`()`\)は、メソッドの引数全体をラップしますが、引数はインラインクロージャです。
+これは、`sorted(by:)` メソッドへの呼び出しがいずれも同じだということを示しています。括弧のペア\(`()`\)は、メソッドの引数全体をラップしますが、引数はインラインクロージャです。
 
 ### Inferring Type From Context\(コンテキストから型の推論\)
 
