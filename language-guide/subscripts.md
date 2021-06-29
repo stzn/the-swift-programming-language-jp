@@ -128,7 +128,7 @@ matrix[1, 0] = 3.2
 
 ![行列の右上と左下の位置に値を設定](../.gitbook/assets/subscriptMatrix02_2x.png)
 
-`Matrix` subscript の get/set には、subscript の `row` と `column` の値が有効なことを確認するためのアサーションが含まれています。これらのアサーションを支援するために、`Matrix` には `indexIsValid(row:column:)` という便利なメソッドが含まれています。これは、要求された `row` と `column` が行列の境界内にあるかどうかをチェックします:
+`Matrix` subscript の get/set には、subscript の `row` と `column` の値が有効だということを確認するためのアサーションが含まれています。これらのアサーションを支援するために、`Matrix` には `indexIsValid(row:column:)` という便利なメソッドが含まれています。これは、要求された `row` と `column` が行列の境界内にあるかどうかをチェックします:
 
 ```swift
 func indexIsValid(row: Int, column: Int) -> Bool {

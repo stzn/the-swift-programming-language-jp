@@ -457,7 +457,7 @@ Swift では、3 つの方法で文字列同士を比較する方法を提供し
 
 ### String and Character Equality\(文字と文字列の等価性\)
 
-`String` または `Character` の完全一致は、は等号演算子\(`==`\)と不等号演算子\(`!=`\)を使用してチェックします。[Comparison Operators](basic-operators.md#comparison-operators比較演算子)
+`String` または `Character` の完全一致は、は等価演算子\(`==`\)と不等価演算子\(`!=`\)を使用してチェックします。[Comparison Operators](basic-operators.md#comparison-operators比較演算子)
 
 ```swift
 let quotation = "We're a lot alike, you and I."

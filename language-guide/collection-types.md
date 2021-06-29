@@ -412,7 +412,7 @@ oddDigits.symmetricDifference(singleDigitPrimeNumbers).sorted()
 
 ![Setのオイラー図](../.gitbook/assets/seteulerdiagram_2x.png)
 
-* 等号演算子(`==`)を使用して、2 つのセットの要素が全て同じかどうかを判定できます
+* 等価演算子(`==`)を使用して、2 つのセットの要素が全て同じかどうかを判定できます
 * `isSubset(of:)` を使用してあるセットの要素が他のセットに全て含まれているかどうかを判定できます
 * `isSuperset(of:)` を使用してあるセットが他のセットの全ての要素を含んでいるかどうかを判定できます
 * `isStrictSubset(of:)` や `isStrictSuperset(of:)` は、あるセットが他のセットの上位集合か下位集合かどうかを判定できます\(等しい場合は `false` です\)
