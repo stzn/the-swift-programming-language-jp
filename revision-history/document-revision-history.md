@@ -21,7 +21,7 @@
 * [Trailing Closures](./../language-guide/closures.md#trailing-closures末尾クロージャ)セクションに、複数の末尾クロージャについての情報を追加し、[Function Call Expression](./../language-reference/expressions.md#function-call-expression関数呼び出し式)セクションに、複数の末尾クロージャをパラメータに合わせる方法についての情報を追加しました
 * [Adopting a Protocol Using a Synthesized Implementation](./../language-guide/protocols.md#adopting-a-protocol-using-a-synthesized-implementationデフォルト実装を使用したプロトコル準拠)セクションに、列挙型が `Comparable` プロトコルに準拠するための合成実装についての情報を追加しました
 * [Contextual Where Clauses](./../language-guide/generics.md#contextual-where-clausesコンテキスト上のWhere句)セクションに、ジェネリックな `where` 句をより多くの場所に記載できる旨を追加しました
-* [Unowned Optional References](./../language-guide/automatic-reference-counting.md#unowned-optional-referencesオプショナル非所有参照)セクションに、オプショナル値を `unowned` 参照に使用する方法についての情報を追加しました
+* [Unowned Optional References](./../language-guide/automatic-reference-counting.md#unowned-optional-referencesオプショナル値への非所有参照)セクションに、オプショナル値を `unowned` 参照に使用する方法についての情報を追加しました
 * [main](./../.gitbook/assets/attributes.png#main)セクションに `@main` 属性についての情報を追加しました
 * [Literal Expression](./../language-reference/expressions.md#literal-expressionリテラル式)セクションに、`#filePath` を追加し、`#file` の記載を更新しました
 * [Escaping Closures](./../language-guide/closures.md#escaping-closuresエスケープクロージャ)セクションを更新しました。多くのシナリオでクロージャが暗黙的に `self` を参照できるようになりました
