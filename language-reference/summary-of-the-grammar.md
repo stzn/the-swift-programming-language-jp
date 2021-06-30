@@ -105,10 +105,10 @@
 > extended-string-literal-delimiter → `#` [extended-string-literal-delimiter](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_extended-string-literal-delimiter)_opt_  
 > quoted-text → [quoted-text-item](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_quoted-text-item) [quoted-text](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_quoted-text)_opt_  
 > quoted-text-item → [escaped-character](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escaped-character)  
-> quoted-text-item → **"**、**\**、 U+000A、または U+000D を除く任意のUnicodeスカラ値  
+> quoted-text-item → **"**、**\\**、 U+000A、または U+000D を除く任意のUnicodeスカラ値  
 > multiline-quoted-text → [multiline-quoted-text-item](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-quoted-text-item) [multiline-quoted-text](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-quoted-text)_opt_  
 > multiline-quoted-text-item → [escaped-character](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escaped-character)  
-> multiline-quoted-text-item → **\** を除く任意のUnicodeスカラ値  
+> multiline-quoted-text-item → **\\** を除く任意のUnicodeスカラ値  
 > multiline-quoted-text-item → [escaped-newline](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escaped-newline)  
 > interpolated-string-literal → [string-literal-opening-delimiter](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_string-literal-opening-delimiter) [interpolated-text](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_interpolated-text)_opt_ [string-literal-closing-delimiter](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_string-literal-closing-delimiter)  
 > interpolated-string-literal → [multiline-string-literal-opening-delimiter](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-string-literal-opening-delimiter) [multiline-interpolated-text](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-interpolated-text)_opt_ [multiline-string-literal-closing-delimiter](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-string-literal-closing-delimiter)  
