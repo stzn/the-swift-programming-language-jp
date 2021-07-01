@@ -20,10 +20,10 @@ Swift プログラミング言語の正式な文法を記述するために使�
 例として、getter-setter ブロックの文法は次のように定義されます:
 
 > GRAMMAR OF A GETTER-SETTER BLOCK  
-> getter-setter-block → `{` [getter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-clause)  [setter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-clause) <sub>*opt*</sub> `}` \|  `{` [setter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-clause)  [getter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-clause)  `}`
+> getter-setter-block → `{` [getter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-clause)  [setter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-clause)<sub>*opt*</sub> `}` \|  `{` [setter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-clause)  [getter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-clause)  `}`
 
 この定義は、getter-setter ブロックが、中括弧\(`{}`\)で囲まれたオプションの setter 句が続く getter 句、または中括弧で囲まれた getter 句が続く setter 句で構成できることを示しています。上記の文法生成は、次の 2 つの生成と同等で、代替案が明示的に記述されています
 
 > GRAMMAR OF A GETTER-SETTER BLOCK  
-> getter-setter-block → `{` [getter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-clause)  [setter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-clause) <sub>*opt*</sub> `}`   
+> getter-setter-block → `{` [getter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-clause)  [setter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-clause)<sub>*opt*</sub> `}`   
 > getter-setter-block → `{` [setter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-clause)  [getter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-clause)  `}`
