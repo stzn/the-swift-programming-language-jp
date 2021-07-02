@@ -1,6 +1,6 @@
 # Attributes
 
-最終更新日: 2021/6/19
+最終更新日: 2021/7/2
 
 Swift には、宣言に適用される属性と型に適用される属性の 2 種類があります。属性は、宣言または型に関する追加情報を提供します。例えば、関数宣言の `discardableResult` 属性は、関数は値を返しますが、戻り値が使用されていない場合に、コンパイラが警告を生成しないことを示します。
 
@@ -8,7 +8,7 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 
 ![属性](./../.gitbook/assets/attributes.png)
 
-一部の宣言属性は、属性とそれが特定の宣言にどのように適用されるかについての詳細情報を指定する引数を受け入れます。これらの attribute arguments は括弧(`()`)で囲まれ、その形式は属する属性によって定義されています。
+一部の宣言属性は、属性とそれが特定の宣言にどのように適用されるかについての詳細情報を指定する引数を受け入れます。これらの *attribute arguments* は括弧(`()`)で囲まれ、その形式は属する属性によって定義されています。
 
 ## Declaration Attributes\(宣言属性\)
 
@@ -32,43 +32,43 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 * `tvOSApplicationExtension`
 * `swift`
 
-アスタリスク(`*`)を使用して、上記の全てのプラットフォーム名で宣言が使用可能だと示すこともできます。Swift のバージョン番号を使用して availability を指定する `available` 属性では、アスタリスクを使用できません。
+アスタリスク(`*`)を使用して、上記の全てのプラットフォーム名で宣言が使用可能だと示すこともできます。Swift のバージョン番号を使用してアベイラビリティを指定する `available` 属性では、アスタリスクを使用できません。
 
 残りの引数は任意の順序で記述でき、重要なマイルストーンなど、宣言のライフサイクルに関する追加情報を指定できます。
 
-* `unavailable` 引数は、指定されたプラットフォームで宣言が使用できないことを示します。この引数は、Swift の availability バージョンを指定している場合は使用できません
+* `unavailable` 引数は、指定されたプラットフォームで宣言が使用できないことを示します。この引数は、Swift のアベイラビリティバージョンを指定している場合は使用できません
 
 * `introduced` 引数は、宣言が導入された特定のプラットフォームまたは言語の最初のバージョンを示します。形式は次のとおりです:
 
-![introduced引数](./../.gitbook/assets/introduced.png)
+![introduced 引数](./../.gitbook/assets/introduced.png)
 
-version number は、ピリオド(`.`)で区切られた 1〜3 個の正の整数で構成されます。
+*version number* は、ピリオド(`.`)で区切られた 1〜3 個の正の整数で構成されます。
 
 * `deprecated` 引数は、宣言が非推奨になった特定のプラットフォームまたは言語の最初のバージョンを示します。形式は次のとおりです:
 
-![deprecated引数](./../.gitbook/assets/deprecated.png)
+![deprecated 引数](./../.gitbook/assets/deprecated.png)
 
-任意の version number は、ピリオド(`.`)で区切られた 1〜3 個の正の整数で構成されます。バージョン番号を省略すると、deprecated がいつ発生したかについての情報を提供せずに、宣言が現在 deprecated になっていることのみを示します。バージョン番号を省略する場合は、コロン(`:`)も省略してください。
+任意の *version number* は、ピリオド(`.`)で区切られた 1〜3 個の正の整数で構成されます。バージョン番号を省略すると、deprecated がいつ発生したかについての情報を提供せずに、宣言が現在 deprecated になっていることのみを示します。バージョン番号を省略する場合は、コロン(`:`)も省略してください。
 
 * `obsoleted` 引数は、宣言が廃止された特定のプラットフォームまたは言語の最初のバージョンを示します。宣言が廃止されると、指定されたプラットフォームまたは言語から削除され、使用できなくなります。形式は次のとおりです:
 
-![obsoleted引数](./../.gitbook/assets/obsoleted.png)
+![obsoleted 引数](./../.gitbook/assets/obsoleted.png)
 
-version number は、ピリオド(`.`)で区切られた 1〜3 個の正の整数で構成されます。
+*version number* は、ピリオド(`.`)で区切られた 1〜3 個の正の整数で構成されます。
 
 * `message` 引数は、deprecated または obsoleted された宣言に使用した際に、コンパイラが表示する警告またはエラーのテキストメッセージを提供します。形式は次のとおりです:
 
-![message引数](./../.gitbook/assets/message.png)
+![message 引数](./../.gitbook/assets/message.png)
 
-message は文字列リテラルで構成されます。
+*message* は文字列リテラルで構成されます。
 
 * `renamed` 引数は、名前が変更された宣言の新しい名前を示すテキストメッセージを提供します。コンパイラは、名前が変更された宣言が使用された際にエラーを発行し、新しい名前を表示します。形式は次のとおりです:
 
-![renamed引数](./../.gitbook/assets/renamed.png)
+![renamed 引数](./../.gitbook/assets/renamed.png)
 
-new name は文字列リテラルで構成されます。
+*new name* は文字列リテラルで構成されます。
 
-下記に示すように、フレームワークまたはライブラリのリリース間で宣言の名前が変更されたことを示すために、`renamed` 引数と `unavailable` 引数と一緒に `available` 属性をタイプエイリアス宣言に適用することができます。この組み合わせにより、宣言の名前が変更されたというコンパイルエラーが発生します。
+下記に示すように、フレームワークまたはライブラリのリリース間で宣言の名前が変更されたことを示すために、タイプエイリアス宣言に `renamed` 引数と `unavailable` 引数を持つ `available` 属性を適用することができます。この組み合わせにより、宣言の名前が変更されたというコンパイルエラーが発生します。
 
 ```swift
 // 初回リリース
@@ -88,13 +88,13 @@ protocol MyRenamedProtocol {
 typealias MyProtocol = MyRenamedProtocol
 ```
 
-1 つの宣言に複数の `available` 属性を適用して、様々なプラットフォームおよび様々なバージョンの Swift の availability を指定できます。属性が現在のターゲットと一致しないプラットフォームまたは言語バージョンを指定している場合、`available` 属性が適用される宣言は無視されます。複数の `available` 属性を使用する場合、有効な availability は、プラットフォームと Swift の availability の組み合わせです。
+1 つの宣言に複数の `available` 属性を適用して、様々なプラットフォームおよび様々なバージョンの Swift のアベイラビリティを指定できます。属性が現在のターゲットと一致しないプラットフォームまたは言語バージョンを指定している場合、`available` 属性が適用される宣言は無視されます。複数の `available` 属性を使用する場合、有効なアベイラビリティは、プラットフォームと Swift のアベイラビリティの組み合わせです。
 
 `available` 属性がプラットフォームまたは言語名の引数に加えて `introduced` 引数を指定するだけの場合は、代わりに次の省略構文を使用できます:
 
 ![available属性](./../.gitbook/assets/available.png)
 
-`available` 属性の省略構文は、複数のプラットフォームの availability を簡潔に表しています。2 つの形式は機能的に同等ですが、可能な限り省略形が推奨されます。
+`available` 属性の省略構文は、複数のプラットフォームのアベイラビリティを簡潔に表しています。2 つの形式は機能的に同等ですが、可能な限り省略形が推奨されます。
 
 ```swift
 @available(iOS 10.0, macOS 10.12, *)
@@ -103,7 +103,7 @@ class MyClass {
 }
 ```
 
-Swift バージョン番号を使用して availability を指定する `available` 属性は、宣言のプラットフォームの availability を追加で指定することはできません。代わりに、個別の `available` 属性を使用して、Swift バージョンの availability と 1 つ以上のプラットフォームの availability を指定します。
+Swift バージョン番号を使用してアベイラビリティを指定する `available` 属性は、宣言のプラットフォームのアベイラビリティを追加で指定することはできません。代わりに、個別の `available` 属性を使用して、Swift バージョンのアベイラビリティと 1 つ以上のプラットフォームのアベイラビリティを指定します。
 
 ```swift
 @available(swift 3.0.2)
@@ -177,7 +177,7 @@ print(repeatLabels(a: 1, b: 2, c: 3, b: 2, a: 1))
 
 両方の `dynamiclyCall` メソッドを実装する場合、メソッド呼び出しにキーワード引数が含まれていると、`dynamicallyCall(withKeywordArguments:)` が呼び出されます。他の全ての場合、`dynamicallyCall(withArguments:)` が呼び出されます。
 
-動的に呼び出すことができるインスタンスは、`dynamicCall` メソッドの実装の 1 つで指定した型と一致する引数と戻り値を使用した場合にのみ呼び出すことができます。次の例の呼び出しは、`KeyValuePairs <String、String>` を受け取る `dynamicallyCall(withArguments:)` の実装がないため、コンパイルできません。
+動的に呼び出すことができるインスタンスは、`dynamicCall` メソッドの実装の 1 つで指定した型と一致する引数と戻り値を使用した場合にのみ呼び出すことができます。次の例の呼び出しは、`KeyValuePairs<String, String>` を受け取る `dynamicallyCall(withArguments:)` の実装がないため、コンパイルできません。
 
 ```swift
 repeatLabels(a: "four") // エラー
@@ -185,9 +185,9 @@ repeatLabels(a: "four") // エラー
 
 ### dynamicMemberLookup
 
-この属性をクラス、構造体、列挙型、またはプロトコルに適用すると、実行時にメンバを名前で検索できるようになります。型は `subscript(dynamicMember:)`subscript を実装する必要があります。
+この属性をクラス、構造体、列挙型、またはプロトコルに適用すると、実行時にメンバを名前で検索できるようになります。型は `subscript(dynamicMember:)` を実装する必要があります。
 
-明示的なメンバ式では、指定されたメンバに対応する宣言がない場合、式は型の `subscript(dynamicMember:)`subscript の呼び出しとして解釈され、メンバに関する情報を引数として渡します。subscript は、KeyPath またはメンバ名のいずれかでパラメータを受け取ることができます。両方の subscript を実装する場合、KeyPath 引数を取る subscript が使用されます。
+明示的なメンバ式では、指定されたメンバに対応する宣言がない場合、式は型の `subscript(dynamicMember:)` の呼び出しとして解釈され、メンバに関する情報を引数として渡します。subscript は、KeyPath またはメンバ名のいずれかでパラメータを受け取ることができます。両方の subscript を実装する場合、KeyPath 引数を取る subscript が使用されます。
 
 `subscript(dynamicMember:)` の実装は、[KeyPath](https://developer.apple.com/documentation/swift/keypath)、[WritableKeyPath](https://developer.apple.com/documentation/swift/writablekeypath)、または [ReferenceWritableKeyPath](https://developer.apple.com/documentation/swift/referencewritablekeypath)の引数を使用して KeyPath を受け取ることができます。[ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral)プロトコル(ほとんどの場合、`String`)に準拠する型の引数を使用して、メンバ名を受け入れることができます。subscript の戻り値の型は任意の型にすることができます。
 
@@ -235,16 +235,16 @@ print(wrapper.x)
 
 ### frozen
 
-この属性を構造体または列挙型宣言に適用すると、型に加えることができる変更の種類を制限します。この属性は、library evolution mode でコンパイルする場合にのみ許可されます。ライブラリの将来のバージョンでは、列挙型のケースまたは構造体の格納インスタンスプロパティを追加、削除、または並べ替えて宣言を変更することはできません。これらの変更は nonfrozen 型で許可されますが、frozen 型の ABI 互換性が損なわれます。
+この属性を構造体または列挙型宣言に適用すると、型に加えることができる変更の種類を制限します。この属性は、ライブラリエボリューションモードでコンパイルする場合にのみ許可されます。ライブラリの将来のバージョンでは、列挙型のケースまたは構造体の格納インスタンスプロパティを追加、削除、または並べ替えて宣言を変更することはできません。これらの変更は nonfrozen 型で許可されますが、frozen 型の ABI 互換性が損なわれます。
 
 > NOTE  
-> コンパイラが library evolution mode でない場合、全ての構造体と列挙型は暗黙的に frozen にされ、この属性は無視されます。
+> コンパイラが ライブラリエボリューションモードでない場合、全ての構造体と列挙型は暗黙的に frozen にされ、この属性は無視されます。
 
-library evolution mode では、nonfrozen の構造体や列挙型のメンバとやり取りするコードは、ライブラリの将来のバージョンでその型のメンバの一部が追加、削除、または並べ替えられた場合でも、再コンパイルせずに作業を継続できるようにコンパイルされます。コンパイラは、実行時に情報を検索したり、間接層を追加したりするなどの手法を使用して、これを可能にします。構造体または列挙型を frozen でマークすると、パフォーマンスを向上させるためにこの柔軟性が失われます。ライブラリの将来のバージョンでは、型に限定的な変更しか加えることができませんが、コンパイラは、型のメンバとやり取りするコードに追加の最適化を行うことができます。
+ライブラリエボリューションモードでは、nonfrozen の構造体や列挙型のメンバとやり取りするコードは、ライブラリの将来のバージョンでその型のメンバの一部が追加、削除、または並べ替えられた場合でも、再コンパイルせずに作業を継続できるようにコンパイルされます。コンパイラは、実行時に情報を検索したり、間接層を追加したりするなどの手法を使用して、これを可能にします。構造体または列挙型を frozen でマークすると、パフォーマンスを向上させるためにこの柔軟性が失われます。ライブラリの将来のバージョンでは、型に限定的な変更しか加えることができませんが、コンパイラは、型のメンバとやり取りするコードに追加の最適化を行うことができます。
 
 frozen 型、frozen 構造体の格納プロパティの型、および frozen 列挙ケースの関連値は、public か、`usableFromInline` 属性がマークされている必要があります。frozen 構造体のプロパティはプロパティオブザーバを持つことができず、格納インスタンスプロパティの初期値を提供する式は、[inlinable](#inlinable) で説明されているように inlinable 関数と同じ制限に従う必要があります。
 
-コマンドラインで library evolution mode を有効にするには、`-enable-library-evolution` オプションを Swift コンパイラに渡します。Xcode で有効にするには、[Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba)の説明に従って、「Build Libraries for Distribution」のビルド設定(`BUILD_LIBRARY_FOR_DISTRIBUTION`)を Yes に設定します。
+コマンドラインでライブラリエボリューションモードを有効にするには、`-enable-library-evolution` オプションを Swift コンパイラに渡します。Xcode で有効にするには、[Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba)の説明に従って、「Build Libraries for Distribution」のビルド設定(`BUILD_LIBRARY_FOR_DISTRIBUTION`)を Yes に設定します。
 
 frozen 列挙型の switch 文は、[Switching Over Future Enumeration Cases(列挙型の将来のケースのスイッチング)](./attributes.md#switching-over-future-enumeration-cases列挙型の将来のケースのスイッチング)で説明されているように、デフォルトのケースを必要としません。frozen 列挙型を切り替えるときに `default` または `@unknown default` のケースを含めると、そのコードは実行されないため、警告が生成されます。
 
@@ -254,11 +254,11 @@ frozen 列挙型の switch 文は、[Switching Over Future Enumeration Cases(列
 
 ### inlinable
 
-この属性を関数、メソッド、計算プロパティ、subscript、convenience イニシャライザ、またはデイニシャライザ宣言に適用すると、モジュールのパブリックインターフェイスの一部としてその宣言の実装を公開します。コンパイラは、inlinable シンボルへの呼び出しを、呼び出し側のシンボルの実装のコピーに置き換えることができます。
+この属性を関数、メソッド、計算プロパティ、subscript、convenience イニシャライザ、またはデイニシャライザ宣言に適用すると、モジュールのパブリックインターフェイスの一部としてその宣言の実装を公開します。コンパイラは、inlinable シンボルへの呼び出しを、呼び出し側でシンボルの実装のコピーに置き換えることができます。
 
-inlinable コードは、任意のモジュールで宣言された `public` シンボルとやり取りし、`usableFromInline` 属性がマークされた同じモジュールで宣言された `internal` シンボルとやり取りできます。inline 化できないコードは、`private` シンボルまたは fileprivate シンボルとやり取りできません。
+inlinable コードは、任意のモジュールで宣言された `public` シンボルとやり取りし、`usableFromInline` 属性がマークされた同じモジュールで宣言された `internal` シンボルとやり取りできます。inline 化したコードは、`private` シンボルまたは fileprivate シンボルとやり取りできません。
 
-この属性は、関数内にネストされている宣言や、`fileprivate` 宣言または `private` 宣言には適用できません。inlinable 関数内で定義された関数とクロージャは、この属性をマークすることはできませんが、暗黙的に inlinable です。
+この属性は、関数内にネストされている宣言や、`fileprivate` または `private` 宣言には適用できません。inlinable 関数内で定義された関数とクロージャは、この属性をマークすることはできませんが、暗黙的に inlinable です。
 
 ### main
 
@@ -318,7 +318,7 @@ NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
 
 ### objc
 
-この属性は Objective-C で使用することができる全ての宣言に適用します。例えば、ネストされていないクラス、プロトコル、(整数の RawValue 型の)非ジェネリック列挙型、クラスのプロパティとメソッド(get と set を含む)、プロトコル、およびオプショナルのプロトコル、イニシャライザ、および subscript。`objc` 属性は、Objective-C コードで宣言を使用できることをコンパイラに通知します。
+この属性は Objective-C で使用することができる全ての宣言に適用します。例えば、ネストされていないクラス、プロトコル、(整数の Raw Value 型の)非ジェネリック列挙型、クラスのプロパティとメソッド(get と set を含む)、プロトコル、およびオプショナルのプロトコル、イニシャライザ、および subscript など。`objc` 属性は、Objective-C コードで宣言を使用できることをコンパイラに通知します。
 
 この属性を extension に適用すると、`nonobjc` 属性が明示的にマークされていないその extension 内の全てのメンバに適用するのと同じ効果があります。
 
@@ -357,9 +357,9 @@ class ExampleClass: NSObject {
 
 ### propertyWrapper
 
-この属性をクラス、構造体、または列挙型宣言に適用すると、その型をプロパティラッパとして使用できます。この属性を型に適用すると、型と同じ名前のカスタム属性が作成されます。その新しい属性をクラス、構造体、または列挙型のプロパティに適用して、ラッパ型のインスタンスを介してプロパティへのアクセスをラップします。属性をローカルの格納変数宣言に適用して、変数へのアクセスを同じ方法でラップします。計算変数、グローバル変数、および定数には、プロパティラッパを使用できません。
+この属性をクラス、構造体、または列挙型宣言に適用すると、その型をプロパティラッパとして使用できます。この属性を型に適用すると、型と同じ名前のカスタム属性が作成されます。その新しい属性をクラス、構造体、または列挙型のプロパティに適用して、ラッパ型のインスタンスを介してプロパティへのアクセスをラップします。属性をローカルの格納変数宣言に適用して、変数へのアクセスを同じ方法でラップすることもできます。計算変数、グローバル変数、および定数には、プロパティラッパを使用できません。
 
-ラッパは `wrappedValue` インスタンスプロパティを定義する必要があります。プロパティのラップされた値は、このプロパティの get と set が公開する値です。ほとんどの場合、`wrappedValue` は計算値ですが、代わりに格納値にすることもできます。ラッパは、ラップされた値に必要なストレージを定義および管理します。コンパイラは、ラップされたプロパティの名前の前にアンダースコア(`_`)を付けることにより、ラッパ型のインスタンスのストレージを合成します。例えば、`someProperty` のラッパは `_someProperty` として格納されます。ラッパの合成ストレージのアクセス制御レベルは `private` です。
+ラッパは `wrappedValue` インスタンスプロパティを定義する必要があります。プロパティの*ラップされた値*は、このプロパティの get と set が公開する値です。ほとんどの場合、`wrappedValue` は計算値ですが、代わりに格納値にすることもできます。ラッパは、ラップされた値に必要なストレージを定義および管理します。コンパイラは、ラップされたプロパティの名前の前にアンダースコア(`_`)を付けることにより、ラッパ型のインスタンスのストレージを合成します。例えば、`someProperty` のラッパは `_someProperty` として格納されます。ラッパの合成ストレージのアクセス制御レベルは `private` です。
 
 プロパティラッパを持つプロパティには、`willSet` ブロックと `didSet` ブロックを含めることができますが、コンパイラで合成された `get` ブロックまたは `set` ブロックをオーバーライドすることはできません。
 
@@ -397,7 +397,7 @@ struct SomeStruct {
 }
 ```
 
-ラップされたプロパティの projected value は、プロパティラッパが追加機能を公開するために使用できる 2 番目の値です。プロパティラッパ型の作成者は、その projected value の意味を決定し、projected value が公開するインターフェイスを定義する責任があります。プロパティラッパから値を projected value を提供するには、ラッパ型で `projectedValue` インスタンスプロパティを定義します。コンパイラは、ラップされたプロパティの名前の前にドル記号(`$`)を付けることにより、projected value の識別子を合成します。例えば、`someProperty` の projected value は `$someProperty` です。projected value は、元のラップされたプロパティと同じアクセス制御レベルを持ちます。
+ラップされたプロパティの投影された値は、プロパティラッパが追加機能を公開するために使用できる 2 番目の値です。プロパティラッパ型の作成者は、その投影された値の意味を決定し、投影された値が公開するインターフェイスを定義する責任があります。プロパティラッパから値を投影された値を提供するには、ラッパ型で `projectedValue` インスタンスプロパティを定義します。コンパイラは、ラップされたプロパティの名前の前にドル記号(`$`)を付けることにより、投影された値の識別子を合成します。例えば、`someProperty` の投影された値は `$someProperty` です。投影された値は、元のラップされたプロパティと同じアクセス制御レベルを持ちます。
 
 ```swift
 @propertyWrapper
@@ -422,22 +422,22 @@ s.$x.wrapper  // WrapperWithProjection 値
 
 ### resultBuilder
 
-この属性をクラス、構造体、列挙型に適用して、その型を Result Builder として使用できます。Result Builder は、ネストされたデータ構造を段階的に構築する型です。Result Builder を使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語(DSL)を実装します。`resultBuilder` 属性の使用方法の例については、[Result Builders](./../language-guide/advanced-operators.md#result-buildersリザルトビルダ)を参照ください。
+この属性をクラス、構造体、列挙型に適用して、その型をリザルトビルダとして使用できます。*リザルトビルダ*は、ネストされたデータ構造を段階的に構築する型です。リザルトビルダを使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語(DSL)を実装します。`resultBuilder` 属性の使用方法の例については、[Result Builders](./../language-guide/advanced-operators.md#result-buildersリザルトビルダ)を参照ください。
 
 #### Result-Building Methods
 
 ---
 
-Result Builder は、下記で説明する静的メソッドを実装します。Result Builder の全ての機能は静的メソッドを介して公開されるため、その型のインスタンスを初期化することはありません。`buildBlock(_:)` メソッドが必要です。DSL の追加機能を有効にする他の方法は省略可能です。Result Builder 型の宣言には、プロトコルの準拠を含める必要はありません。
+リザルトビルダは、下記で説明する静的メソッドを実装します。リザルトビルダの全ての機能は静的メソッドを介して公開されるため、その型のインスタンスを初期化することはありません。`buildBlock(_:)` メソッドが必要です。DSL の追加機能を有効にする他の方法は省略可能です。リザルトビルダ型の宣言には、プロトコルの準拠を含める必要はありません。
 
-静的メソッドの記述では、プレースホルダとして 3 つの型を使用しています。Expression 型は、Result Builder の入力の型のプレースホルダで、`Component` は、部分的な結果の型のプレースホルダで、`FinalResult` は、Result Builder が生成する最終的な結果の型のプレースホルダです。これらの型を、Result Builder が使用する実際の型に置き換えます。Result Builder メソッドで `Expression` または `FinalResult` の型が指定されていない場合、デフォルトで `Component` と同じになります。
+静的メソッドの記述では、プレースホルダとして 3 つの型を使用しています。`Expression` 型は、リザルトビルダの入力の型のプレースホルダで、`Component` は、部分的な結果の型のプレースホルダで、`FinalResult` は、リザルトビルダが生成する最終的な結果の型のプレースホルダです。これらの型を、リザルトビルダが使用する実際の型に置き換えます。リザルトビルダメソッドで `Expression` または `FinalResult` の型が指定されていない場合、デフォルトで `Component` と同じになります。
 
-Result Builder の作成方法は次のとおりです:
+リザルトビルダの作成方法は次のとおりです:
 
 <dt>static func buildBlock(_ components: Component...) -> Component</dt>
 <dd>
 
-部分的な結果の配列を単一の部分的な結果に結合します。Result Builder は、このメソッドを実装する必要があります。
+部分的な結果の配列を単一の部分的な結果に結合します。リザルトビルダは、このメソッドを実装する必要があります。
 </dd>
 
 <dt>static func buildOptional(_ component: Component?) -> Component</dt>
@@ -473,16 +473,16 @@ Result Builder の作成方法は次のとおりです:
 <dt>static func buildFinalResult(_ component: Component) -> FinalResult</dt>
 <dd>
 
-部分的な結果から最終結果を作成します。このメソッドは、部分結果と最終結果で異なる型を使用する Result Builder の一部として実装したり、結果を返す前に結果に対して後処理を実行したりできます。
+部分的な結果から最終結果を作成します。このメソッドは、部分結果と最終結果で異なる型を使用するリザルトビルダの一部として実装したり、結果を返す前に結果に対して後処理を実行したりできます。
 </dd>
 
 <dt>static func buildLimitedAvailability(_ component: Component) -> Component</dt>
 <dd>
 
-availability チェックを実行するコンパイラ制御文の外部で型情報を伝播または消去する部分的な結果を作成します。これを使用して、条件分岐間で異なる型情報を消去できます。
+アベイラビリティチェックを実行するコンパイラ制御文の外部で型情報を伝播または消去する部分的な結果を作成します。これを使用して、条件分岐間で異なる型情報を消去できます。
 </dd>
 
-例えば、下記のコードは、整数の配列を作成するシンプルな Result Builder を定義しています。このコードは、`Compontent` と `Expression` をタイプエイリアスとして定義し、下記の例を上記のメソッドのリストに簡単に一致させることができます。
+例えば、下記のコードは、整数の配列を作成するシンプルなリザルトビルダを定義しています。このコードは、`Compontent` と `Expression` をタイプエイリアスとして定義し、下記の例を上記のメソッドのリストに簡単に一致させることができます。
 
 ```swift
 @resultBuilder
@@ -515,9 +515,9 @@ struct ArrayBuilder {
 
 ---
 
-次の構文変換は、Result Builder 構文を使用するコードを、Result Builder 型の静的メソッドを呼び出すコードに変換するために再帰的に適用されます。
+次の構文変換は、リザルトビルダ構文を使用するコードを、リザルトビルダ型の静的メソッドを呼び出すコードに変換するために再帰的に適用されます。
 
-* Result Builder に `buildExpression(_:)` メソッドがある場合、各式はそのメソッドの呼び出しになります。この変換は常に最初に行われます。例えば、次の宣言は同等です:
+* リザルトビルダに `buildExpression(_:)` メソッドがある場合、各式はそのメソッドの呼び出しになります。この変換は常に最初に行われます。例えば、次の宣言は同等です:
 
 ```swift
 @ArrayBuilder var builderNumber: [Int] { 10 }
@@ -526,7 +526,7 @@ var manualNumber = ArrayBuilder.buildExpression(10)
 
 * 代入文は式のように変換されますが、`()` に評価されると解釈されます。代入を具体的に処理するために `()` 型の引数を取る `buildExpression(_:)` のオーバーロードを定義できます
 
-* availability 条件をチェックする分岐文は、`buildLimitedAvailability(_:)` メソッドの呼び出しになります。この変換は、`buildEither(first:)`、`buildEither(second:)`、または `buildOptional(_:)` の呼び出しに変換される前に行われます。`buildLimitedAvailability(_:)` メソッドを使用して、取得する分岐に応じて変化する型情報を消去します。例えば、下記の `buildEither(first:)` メソッドと `buildEither(second:)` メソッドは、両方の分岐に関する型情報をキャプチャするジェネリック型を使用します
+* アベイラビリティ条件をチェックする分岐文は、`buildLimitedAvailability(_:)` メソッドの呼び出しになります。この変換は、`buildEither(first:)`、`buildEither(second:)`、または `buildOptional(_:)` の呼び出しに変換される前に行われます。`buildLimitedAvailability(_:)` メソッドを使用して、取得する分岐に応じて変化する型情報を消去します。例えば、下記の `buildEither(first:)` メソッドと `buildEither(second:)` メソッドは、両方の分岐に関する型情報をキャプチャするジェネリック型を使用します
 
 ```swift
 protocol Drawable {
@@ -564,7 +564,7 @@ struct DrawingBuilder {
 }
 ```
 
-ただし、このアプローチでは、availability チェックがあるコードで問題が発生します:
+ただし、このアプローチでは、アベイラビリティチェックがあるコードで問題が発生します:
 
 ```swift
 @available(macOS 99, *)
@@ -585,7 +585,7 @@ struct FutureText: Drawable {
 
 上記のコードでは、`FutureText` は `DrawEither` ジェネリック型の 1 つのため、`brokenDrawing` の型の一部として使用されています。これにより、`FutureText` が実行時に使用できない場合、その型が明示的に使用されていない場合でも、プログラムがクラッシュする可能性があります。
 
-この問題を解決するには、`buildLimitedAvailability(_:)` メソッドを実装して型情報を消去します。例えば、下記のコードは、availability チェックから `AnyDrawable` 値を作成します。
+この問題を解決するには、`buildLimitedAvailability(_:)` メソッドを実装して型情報を消去します。例えば、下記のコードは、アベイラビリティチェックから `AnyDrawable` 値を作成します。
 
 ```swift
 struct AnyDrawable: Drawable {
@@ -686,11 +686,11 @@ for i in 5...7 {
 let manualArray = ArrayBuilder.buildArray(temporary)
 ```
 
-* Result Builder に `buildFinalResult(_:)` メソッドがある場合、最終結果はそのメソッドの呼び出しになります。この変換は常に最後に行われます
+* リザルトビルダに `buildFinalResult(_:)` メソッドがある場合、最終結果はそのメソッドの呼び出しになります。この変換は常に最後に行われます
 
-変換の動作は一時変数の観点から説明されていますが、Result Builder を使用しても、コードの残りの部分から見える新しい宣言は実際には作成されません。
+変換の動作は一時変数の観点から説明されていますが、リザルトビルダを使用しても、コードの残りの部分から見える新しい宣言は実際には作成されません。
 
-Result Builder が変換するコードで、`break`、`continue`、`defer`、`guard`、`return` 文、`while` 文、または `do-catch` 文を使用することはできません。
+リザルトビルダが変換するコードで、`break`、`continue`、`defer`、`guard`、`return`、`while`、または `do-catch` を使用することはできません。
 
 変換プロセスでは、コード内の宣言は変更されません。これにより、一時的な定数と変数を使用して、1 つずつ式を構築します。また、`throw` 文、コンパイル時の診断文、または `return` 文を含むクロージャも変更しません。
 
@@ -698,13 +698,13 @@ Result Builder が変換するコードで、`break`、`continue`、`defer`、`g
 
 #### Custom Result-Builder Attributes
 
-Result Builder 型を作成すると、同じ名前のカスタム属性が作成されます。その属性は、次の場所に適用できます:
+リザルトビルダ型を作成すると、同じ名前のカスタム属性が作成されます。その属性は、次の場所に適用できます:
 
-* 関数宣言では、Result Builder は関数の本文を作成します
-* get を含む変数または subscript の宣言で、Result Builder は get の本文を作成します
-* 関数宣言のパラメータでは、Result Builder は対応する引数として渡されるクロージャの本文を作成します
+* 関数宣言では、リザルトビルダは関数の本文を作成します
+* get を含む変数または subscript の宣言で、リザルトビルダは get の本文を作成します
+* 関数宣言のパラメータでは、リザルトビルダは対応する引数として渡されるクロージャの本文を作成します
 
-resultBuilder 属性を適用しても、ABI の互換性には影響しません。Result Builder 属性をパラメータに適用すると、その属性が関数のインターフェースの一部になり、ソースの互換性に影響を与える可能性があります。
+resultBuilder 属性を適用しても、ABI の互換性には影響しません。リザルトビルダ属性をパラメータに適用すると、その属性が関数のインターフェースの一部になり、ソースの互換性に影響を与える可能性があります。
 
 ### requires_stored_property_inits
 
@@ -726,7 +726,7 @@ resultBuilder 属性を適用しても、ABI の互換性には影響しませ�
 
 この属性を関数、メソッド、計算プロパティ、subscript、イニシャライザ、またはデイニシャライザの宣言に適用すると、宣言と同じモジュールで定義されているインライン化されたコードでそのシンボルを使用できるようにします。宣言には、`internal` 修飾子が必要です。`usedFromInline` がマークされた構造体またはクラスは、そのプロパティに `public` または `usableFromInline` の型のみを使用できます。`usedFromInline` がマークされた列挙型は、そのケースの Raw Value と関連値に対して、`public` または `usableFromInline` の型のみを使用できます。
 
-`public` 修飾子と同様に、この属性はモジュールの public インターフェイスの一部として宣言が公開されます。`public` とは異なり、コンパイラは、宣言のシンボルがエクスポートされている場合でも、`usableFromInline` がマークされた宣言をモジュール外のコードで参照することを許可しません。ただし、モジュール外のコードは、ランタイム時の動作を使用して宣言のシンボルとやり取りできることもあります。
+`public` 修飾子と同様に、この属性はモジュールの公開インターフェイスの一部として宣言が公開されます。`public` とは異なり、コンパイラは、宣言のシンボルがエクスポートされている場合でも、`usableFromInline` がマークされた宣言をモジュール外のコードで参照することを許可しません。ただし、モジュール外のコードは、ランタイム時の動作を使用して宣言のシンボルとやり取りできることもあります。
 
 `inlinable` 属性がマークされた宣言は、inlinable コードから暗黙的に使用できます。`inlinable` または `usableFromInline` のいずれかを `internal` 宣言に適用できますが、両方の属性を適用するとエラーです。
 
@@ -770,7 +770,7 @@ Interface Builder 属性は、Xcode と同期するために InterfaceBuilder �
 
 ## Switch Case Attributes
 
-switch case 属性は、switch 文のケースにのみ適用できます。
+switch の case 属性は、switch 文のケースにのみ適用できます。
 
 ### unknown
 
