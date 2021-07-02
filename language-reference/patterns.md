@@ -1,6 +1,6 @@
 # Patterns
 
-最終更新日: 2021/6/20
+最終更新日: 2021/7/3
 
 パターンは、単一の値または複合値の構造を表します。例えば、タプル `(1, 2)` の構造は、2 つの要素のカンマ区切りのリストです。パターンは特定の値ではなく値の構造を表すため、様々な値と一致させることができます。例えば、パターン `(x, y)` は、タプル `(1, 2)` およびその他の 2 つの要素のタプルと一致します。パターンを値と照合することに加えて、複合値の一部または全てを抽出し、各部分を定数または変数名にバインドできます。
 
@@ -8,7 +8,7 @@ Swift には、2 つの基本的な種類のパターンがあります: 任意�
 
 最初の種類のパターンは、シンプルな変数、定数、およびオプショナルバインディングの値を破棄するために使用されます。これらには、ワイルドカードパターン、識別子パターン、およびそれらを含む値バインディングまたはタプルパターンが含まれます。これらのパターンの型注釈を指定して、特定の型の値にのみ一致するようにパターンを制約できます。
 
-2 番目の種類のパターンは、完全なパターンマッチングに使用されます。この場合、照合しようとしている値が実行時に存在しない可能性があります。これらには、列挙型のケースパターン、オプショナルパターン、式パターン、および型キャストパターンが含まれます。これらのパターンは、`switch` 文の `case` ラベル、`do` 文の `catch` 句、または `if`、`while`、`guard`、または `for-in` 文の `case` 条件で使用できます。
+2 番目の種類のパターンは、完全なパターンマッチングに使用されます。この場合、照合しようとしている値が実行時に存在しない可能性があります。これらには、列挙型ケースパターン、オプショナルパターン、式パターン、および型キャストパターンが含まれます。これらのパターンは、`switch` 文の `case` ラベル、`do` 文の `catch` 句、または `if`、`while`、`guard`、または `for-in` 文の `case` 条件で使用できます。
 
 > GRAMMAR OF A PATTERN  
 > pattern → [wildcard-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_wildcard-pattern)  [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)<sub>*opt*</sub>  
@@ -22,7 +22,7 @@ Swift には、2 つの基本的な種類のパターンがあります: 任意�
 
 ## Wildcard Pattern\(ワイルドカードパターン\)
 
-ワイルドカードパターンは、全ての値に一致して無視し、アンダースコア(`_`)で構成されます。一致する値を気にしない場合は、ワイルドカードパターンを使用します。例えば、次のコードは、ループの各反復での範囲の現在の値を無視して、Closed 範囲 `1...3` を反復します。
+*ワイルドカードパターン*は、全ての値に一致して無視し、アンダースコア(`_`)で構成されます。一致する値を気にしない場合は、ワイルドカードパターンを使用します。例えば、次のコードは、ループの各反復での範囲の現在の値を無視して、閉鎖範囲 `1...3` を反復します。
 
 ```swift
 for _ in 1...3 {
@@ -35,7 +35,7 @@ for _ in 1...3 {
 
 ## Identifier Pattern\(識別子パターン\)
 
-識別子パターンは任意の値と一致し、一致した値を変数名または定数名にバインドします。例えば、次の定数宣言では、`someValue` は `Int` 型の値 `42` に一致する識別子パターンです。
+*識別子パターン*は任意の値と一致し、一致した値を変数名または定数名にバインドします。例えば、次の定数宣言では、`someValue` は `Int` 型の値 `42` に一致する識別子パターンです。
 
 ```swift
 let someValue = 42
@@ -50,7 +50,7 @@ let someValue = 42
 
 ## Value-Binding Pattern\(値バインディングパターン\)
 
-値バインディングパターンは、一致した値を変数名または定数名にバインドします。例えば、一致した値を定数の名前にバインドする値バインドパターンは、`let` キーワードで始まります。変数の名前にバインドするものは、`var` キーワードで始まります。
+*値バインディングパターン*は、一致した値を変数名または定数名にバインドします。例えば、一致した値を定数の名前にバインドする値バインドパターンは、`let` キーワードで始まります。変数の名前にバインドするものは、`var` キーワードで始まります。
 
 値バインドパターン内の識別子パターンは、一致する値を新しい名前付き変数または定数ににバインドします。例えば、タプルの要素を分解し、各要素の値を対応する識別子パターンにバインドできます。
 
@@ -71,7 +71,7 @@ case let (x, y):
 
 ## Tuple Pattern\(タプルパターン\)
 
-タプルパターンは、括弧内に囲まれた 0 個以上のパターンのカンマ区切りのリストです。タプルパターンに対応するタプル型の値を一致させます。
+*タプルパターン*は、括弧内に囲まれた 0 個以上のパターンのカンマ区切りのリストです。タプルパターンに対応するタプル型の値を一致させます。
 
 型注釈を使用して、特定の種類のタプル型を一致させるために、タプルパターンを制約することができます。例えば、タプルパターン `(x, y): (Int, Int)` は、定数宣言 `let (x, y): (Int, Int) = (1, 2)` の両方の要素が `Int` 型のタプルにのみ一致します。
 
@@ -98,7 +98,7 @@ let (a): Int = 2 // a: Int = 2
 > tuple-pattern-element-list → [tuple-pattern-element](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element) \|  [tuple-pattern-element](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element)  `,` [tuple-pattern-element-list](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element-list)  
 > tuple-pattern-element → [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern) \|  [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `:` [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)
 
-## Enumeration Case Pattern\(列挙型のケースパターン\)
+## Enumeration Case Pattern\(列挙型ケースパターン\)
 
 列挙型ケースパターンは、既存の列挙型のケースと一致します。列挙型ケースパターンは、`switch` 文のケースラベル、および `if`、`guard`、および `for-in` 文の条件で使用できます。
 
@@ -136,7 +136,7 @@ if case .some(let x) = someOptional {
     print(x)
 }
 
-// オプショナルのパターンを使用して一致します
+// オプショナルパターンを使用して一致します
 if case let x? = someOptional {
     print(x)
 }
@@ -156,17 +156,17 @@ for case let number? in arrayOfOptionalInts {
 ```
 
 > GRAMMAR OF AN OPTIONAL PATTERN  
-> optional-pattern → [identifier-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_identifier-pattern)  `?`
+> optional-pattern → [identifier-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_identifier-pattern) `?`
 
 ## Type-Casting Patterns\(型キャストパターン\)
 
-2 つのタイプの型キャストパターン、`is` パターンと `as` パターンがあります。`is` パターンは `switch` 文のケースラベルにのみ使用できます。`is` と `as` パターンの形式は次のとおりです。
+2 つのタイプの*型キャストパターン*、`is` パターンと `as` パターンがあります。`is` パターンは `switch` 文のケースラベルにのみ使用できます。`is` と `as` パターンの形式は次のとおりです。
 
 ![型キャストパターン](./../.gitbook/assets/type-casting_patterns.png)
 
 `is` パターンは、実行時の値の型が、`is` パターンの右側で指定された型、またはその型のサブクラスと同じ型の場合に、値と一致します。`is` パターンは、両方とも型キャストを実行しますが、返された型を破棄するという点で、`is` 演算子のように動作します。
 
-`as` パターンは、実行時の値の種類が、`as` パターンの右側に指定された型、またはその型のサブクラスと同じ型の場合に、値と一致します。一致した場合、値の種類は、`as` パターンの右側に指定されたパターンにキャストされます。
+`as` パターンは、実行時の値の種類が、`as` パターンの右側に指定された型、またはその型のサブクラスと同じ型の場合に、値と一致します。一致した場合、値の種類は、`as` パターンの右側に指定された *pattern* にキャストされます。
 
 `switch` 文を使用して `is` パターンを一致させる例については、[Type Casting for Any and AnyObject](./../language-guide/type-casting.md#type-casting-for-any-and-anyObjectAnyおよびAnyObjectの型キャスト)を参照ください。
 
@@ -177,7 +177,7 @@ for case let number? in arrayOfOptionalInts {
 
 ## Expression Pattern\(式パターン\)
 
-式パターンは式の値を表します。式パターンは `switch` 文のケースにのみ使用できます。
+*式パターン*は式の値を表します。式パターンは `switch` 文のケースにのみ使用できます。
 
 式パターンで表される式は、Swift 標準ライブラリ `~=` 演算子を使用して入力式の値と比較されます。`~=` 演算子が `true` を返すと、一致します。デフォルトでは、`~=` 演算子は `==` 演算子を使用して同じ型の 2 つの値を比較します。次の例に示すように、値が範囲内に含まれているかどうかを確認することによって、範囲内の値と一致させることもできます。
 

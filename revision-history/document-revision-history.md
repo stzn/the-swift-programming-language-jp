@@ -49,7 +49,7 @@
 * [frozen](./../language-reference/attributes.md#frozen)セクションに、library evolution のための frozen な列挙型と構造体についての情報を追加しました
 * [Functions With an Implicit Return](./../language-guide/functions.md#functions-with-an-implicit-return暗黙的な戻り値がある関数)と[Shorthand Getter Declaration](./../language-guide/properties.md#shorthand-getter-declaration省略getプロパティ宣言)セクションに、`return` を省略した関数についての情報を追加しました
 * [Type Subscripts](./../language-guide/subscripts.md#type-subscripts型subscript)セクションに、型への subscript の使用について情報を追加しました
-* [Enumeration Case Pattern](./../language-reference/patterns.md#enumeration-case-pattern列挙型のケースパターン)セクションを更新しました。列挙型ケースとオプショナル値をマッチングできるようになりました
+* [Enumeration Case Pattern](./../language-reference/patterns.md#enumeration-case-pattern列挙型ケースパターン)セクションを更新しました。列挙型ケースとオプショナル値をマッチングできるようになりました
 * [Memberwise Initializers for Structure Types](./../language-guide/structures-and-classes.md#memberwise-initializers-for-structure-types構造体のメンバワイズイニシャライザ)セクションを更新しました。メンバワイズイニシャライザがデフォルト値を持つプロパティのパラメータを省略することができるようになりました
 * [dynamicMemberLookup](./../language-reference/attributes.md#dynamicMemberLookup)セクションに、実行時に KeyPath で検索された動的メンバについての情報を追加しました
 * [Conditional Compilation Block](./../language-reference/statements.md#conditional-compilation-block条件付きコンパイルブロック)のターゲット環境のリストに `macCatalyst` を追加しました
