@@ -444,7 +444,7 @@ protocol SuffixableContainer: Container {
 }
 ```
 
-このプロトコルでは、`Suffix` は、上記の `Container` の例の `Item` 型のように、関連型です。`Suffix` には 2 つの制約があります。`SuffixableContainer` プロトコル\(現在定義されているプロトコル\)に準拠している必要があり、その `Item` 型は `Container` の `Item` 型と同じだということが必要です。`Item` の制約はジェネリックな `where` 句です。これについては、下記の[Associated Types with a Generic Where Clause](generics.md#associated-types-with-a-generic-where-clauseジェネリックwhere句を使用した関連型)で説明します。
+このプロトコルでは、`Suffix` は、上記の `Container` の例の `Item` 型のように、関連型です。`Suffix` には 2 つの制約があります。`SuffixableContainer` プロトコル\(現在定義されているプロトコル\)に準拠している必要があり、その `Item` 型は `Container` の `Item` 型と同じだということが必要です。`Item` の制約はジェネリック `where` 句です。これについては、下記の[Associated Types with a Generic Where Clause](generics.md#associated-types-with-a-generic-where-clauseジェネリックwhere句を使用した関連型)で説明します。
 
 上記の[Generic Types](generics.md#generic-typesジェネリック型)の `Stack` 型に `SuffixableContainer` プロトコルへの準拠を追加した拡張を次に示します:
 
