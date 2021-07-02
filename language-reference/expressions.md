@@ -107,7 +107,7 @@ sum = (await someAsyncFunction()) + anotherAsyncFunction()
 式が `await` と `try` 演算子の両方を含む場合、最初に `try` 演算子が来なければなりません。
 
 > GRAMMAR OF AN AWAIT EXPRESSION  
-> *await-operator* → **await**
+> *await-operator* → `await`
 
 ## Binary Expressions(バイナリ式)
 
