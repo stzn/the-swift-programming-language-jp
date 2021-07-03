@@ -4,7 +4,7 @@
 
 この章では、ジェネリック型、関数、およびイニシャライザのパラメータと引数について説明します。ジェネリック型、関数、subscript、またはイニシャライザを宣言すると、ジェネリック型、関数、またはイニシャライザで使用できる型パラメータを指定します。これらの型パラメータは、ジェネリック型のインスタンスが作成されたとき、またはジェネリック関数またはイニシャライザが呼び出されたときに、実際の具象型の引数に置き換えられるプレースホルダとして機能します。
 
-Swift のジェネリックスの概要については、[Generics](./../language-guide/generics.md)を参照ください。
+Swift のジェネリックスの概要については、[Generics(ジェネリクス)](./../language-guide/generics.md)を参照ください。
 
 ## Generic Parameter Clause\(ジェネリックパラメータ句\)
 
@@ -62,7 +62,7 @@ extension Collection where Element: SomeProtocol {
 
 異なる制約、要件、またはその両方を提供することによって、ジェネリック関数またはイニシャライザをオーバーロードすることができます。オーバーロードされたジェネリック関数またはイニシャライザを呼び出すと、コンパイラはこれらの制約を使用して、どのオーバーロードされた関数またはイニシャライザを呼び出すかを決めます。
 
-ジェネリック `where` 句の詳しい情報とジェネリック関数宣言の例は、[Generic Where Clauses](./../language-guide/generics.md#generic-where-clausesジェネリックwhere句)を参照ください。
+ジェネリック `where` 句の詳しい情報とジェネリック関数宣言の例は、[Generic Where Clauses(ジェネリック where 句)](./../language-guide/generics.md#generic-where-clausesジェネリックwhere句)を参照ください。
 
 > GRAMMAR OF A GENERIC PARAMETER CLAUSE  
 > generic-parameter-clause → `<` [generic-parameter-list](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-list)  `>`  
@@ -99,7 +99,7 @@ struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLite
 let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 ```
 
-[Generic Parameter Clause](#generic-parameter-clauseジェネリックパラメータ句)で述べたように、ジェネリック関数またはイニシャライザの型引数を指定する場合には、ジェネリック引数句を使用しません。
+[Generic Parameter Clause(ジェネリックパラメータ句)](#generic-parameter-clauseジェネリックパラメータ句)で述べたように、ジェネリック関数またはイニシャライザの型引数を指定する場合には、ジェネリック引数句を使用しません。
 
 > GRAMMAR OF A GENERIC ARGUMENT CLAUSE  
 > generic-argument-clause → `<` [generic-argument-list](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-list)  `>`  

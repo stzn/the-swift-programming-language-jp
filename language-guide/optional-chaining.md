@@ -157,7 +157,7 @@ class Address {
 
 ## Accessing Properties Through Optional Chaining\(オプショナルチェーンを通したプロパティへのアクセス\)
 
-[Optional Chaining as an Alternative to Forced Unwrapping](#optional-chaining-as-an-alternative-to-forced-unwrapping-強制アンラップの代替としてのオプショナルチェーン)で示されているように、オプショナルチェーンを使用してオプショナルのプロパティにアクセスし、アクセスが成功したかどうかを確認できます。
+[Optional Chaining as an Alternative to Forced Unwrapping(強制アンラップの代替としてのオプショナルチェーン)](#optional-chaining-as-an-alternative-to-forced-unwrapping強制アンラップの代替としてのオプショナルチェーン)で示されているように、オプショナルチェーンを使用してオプショナルのプロパティにアクセスし、アクセスが成功したかどうかを確認できます。
 
 上で定義したクラスを使用して新しい `Person` インスタンスを作成し、以前と同じように `numberOfRooms` プロパティにアクセスしてみます:
 
@@ -213,7 +213,7 @@ func printNumberOfRooms() {
 }
 ```
 
-このメソッドは戻り値の型を指定しません。ただし、[Functions Without Return Values](functions.md#functions-without-return-values戻り値のない関数)で説明されているように、戻り値の型のない関数とメソッドには、暗黙的な戻り値の型 `Void` があります。これは、`()` の値、または空のタプルを返すことを意味します。
+このメソッドは戻り値の型を指定しません。ただし、[Functions Without Return Values(戻り値のない関数)](functions.md#functions-without-return-values戻り値のない関数)で説明されているように、戻り値の型のない関数とメソッドには、暗黙的な戻り値の型 `Void` があります。これは、`()` の値、または空のタプルを返すことを意味します。
 
 オプショナルチェーンを使用してオプショナルの値でこのメソッドを呼び出す場合、メソッドの戻り値の型は `Void` ではなく `Void?` になります。これにより、メソッド自体が戻り値を定義していなくても、`if` 文を使用して、`printNumberOfRooms()` メソッドを呼び出すことができたかどうかを確認できます。`printNumberOfRooms` の呼び出しからの戻り値を `nil` と比較して、メソッド呼び出しが成功したかどうかを確認します:
 
@@ -226,7 +226,7 @@ if john.residence?.printNumberOfRooms() != nil {
 // "It was not possible to print the number of rooms."
 ```
 
-オプショナルチェーンによってプロパティを設定しようとする場合も同様です。[Accessing Properties Through Optional Chaining](#accessing-properties-through-optional-chainingオプショナルチェーンを通したプロパティへのアクセス)の上記の例では、`residence` プロパティが `nil` にもかかわらず、`john.residence` のアドレス値を設定しようとしています。オプショナルチェーンによってプロパティを設定しようとすると、`Void?` 型の値が返されます。これにより、`nil` と比較して、プロパティが正常に設定されたかどうかを確認できます:
+オプショナルチェーンによってプロパティを設定しようとする場合も同様です。[Accessing Properties Through Optional Chaining(オプショナルチェーンを通したプロパティへのアクセス)](#accessing-properties-through-optional-chainingオプショナルチェーンを通したプロパティへのアクセス)の上記の例では、`residence` プロパティが `nil` にもかかわらず、`john.residence` のアドレス値を設定しようとしています。オプショナルチェーンによってプロパティを設定しようとすると、`Void?` 型の値が返されます。これにより、`nil` と比較して、プロパティが正常に設定されたかどうかを確認できます:
 
 ```swift
 if (john.residence?.address = someAddress) != nil {

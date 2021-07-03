@@ -37,7 +37,7 @@ for (animalName, legCount) in numberOfLegs {
 // spiders have 8 legs
 ```
 
-`Dictionary` の定数は元々順序がなく、ループ処理をするときに、取得されるキーバリューの順序も保証されていません。配列や辞書に関しては、[Collection Types](collection-types.md)を参照ください。
+`Dictionary` の定数は元々順序がなく、ループ処理をするときに、取得されるキーバリューの順序も保証されていません。配列や辞書に関しては、[Collection Types(コレクション型)](collection-types.md)を参照ください。
 
 数値の範囲にも `for-in` ループを使用することができます。下記の例では、5 の倍数の最初のいくつかを出力しています。
 
@@ -73,7 +73,7 @@ print("\(base) to the power of \(power) is \(answer)")
 
 最初と最後の両方を含める閉範囲を使用する必要がない場合もあるかもしれません。時計の分針を思い浮かべてください。`0` から始まる `60` 個の目盛が必要です。最初の値を含める半開範囲演算子(`..<`)を使いましょう。
 
-範囲についての詳細は、[Range Operators](basic-operators.md#range-operators範囲演算子)を参照ください。
+範囲についての詳細は、[Range Operators(範囲演算子)](basic-operators.md#range-operators範囲演算子)を参照ください。
 
 ```swift
 let minutes = 60
@@ -314,7 +314,7 @@ default:
 C 言語や Objective-C と異なり、Swift の `switch` 文は、デフォルトでは、それぞれのケースの下から次のケースに行くことはありません。その代わりに、最初に合致した `switch` ケースの実行が完了すると、明示的に `break` しなくても、全体の `switch` 文も完了します。こうすることで、C 言語の `switch` 文よりも、より安全に簡単に使えるようにしています。間違って 1 つ以上のケースを実行してしまうリスクを防ぎます。
 
 > NOTE  
-> `break` は必須ではありませんが、合致したけど何も実行しないような場合や、あるケースの中で最後まで実行される前にそのブロックを抜けたい場合に、`break` を使用することができます。詳細は、[Break in a Switch Statement](control-flow.md#break-in-a-switch-statementswitch内でbreak)を参照ください。
+> `break` は必須ではありませんが、合致したけど何も実行しないような場合や、あるケースの中で最後まで実行される前にそのブロックを抜けたい場合に、`break` を使用することができます。詳細は、[Break in a Switch Statement(switch 内で break)](control-flow.md#break-in-a-switch-statementswitch内でbreak)を参照ください。
 
 各ケースの本文は少なくとも 1 つの文を実行しなければなりません。次のコードは最初のケースの本文が空なので不正です。
 
@@ -345,7 +345,7 @@ default:
 // "The letter A"
 ```
 
-可読性のために、複合ケースを複数行に分けて書くこともできます。複合ケースについての詳細は[Compound Cases](#compound-cases複合ケース)を参照ください。
+可読性のために、複合ケースを複数行に分けて書くこともできます。複合ケースについての詳細は[Compound Cases(複合ケース)](#compound-cases複合ケース)を参照ください。
 
 > NOTE  
 > 特定のケースから次のケースの 本文 を実行したい場合は、`fallthrough` キーワードを使います。[Fallthrough](#fallthrough)に記載しています。
@@ -401,7 +401,7 @@ default:
 // "(1, 1) is inside the box"
 ```
 
-![switch&#x4F8B;&#x306E;&#x30B0;&#x30E9;&#x30D5;](../.gitbook/assets/coordinategraphsimple_2x.png)
+![switch文 座標分布図](../.gitbook/assets/coordinategraphsimple_2x.png)
 
 `switch` 文は、座標が原点 `(0、0)` にあるか、赤い x 軸上にあるか、オレンジ色の y 軸上にあるか、原点を中心とする青い 4x4 列のボックスの内側にあるか、ボックスの外側にあるかを判別します。
 
@@ -508,7 +508,7 @@ default:
 * `return`
 * `throw`
 
-`continue`、`break` と `fallthrough` は下記に記載しています。`return` は[Functions](functions.md)、`throw` は[Propagating Errors Using Throwing Functions](error-handling.md#propagating-errors-using-throwing-functions)に記載しています。
+`continue`、`break` と `fallthrough` は下記に記載しています。`return` は[Functions(関数)](functions.md)、`throw` は[Propagating Errors Using Throwing Functions](error-handling.md#propagating-errors-using-throwing-functions)に記載しています。
 
 ### Continue
 
@@ -720,6 +720,6 @@ if #available(iOS 10, macOS 10.12, *) {
 
 上記のアベイラビリティ条件は、iOS では、`if` 文が `iOS10` 以降でのみ実行されることを指定しています。`macOS` では、`macOS10.12` 以降のみになります。最後の引数 `*` は必須で、他のプラットフォームでは、`if` の本文がターゲットで指定された最小のデプロイメントターゲットで実行されることを示します。
 
-基本的な形式として、アベイラビリティ条件はプラットフォームの名前とバージョンのリストを受け取ります。`iOS`、`macOS`、`watchOS`、`tvOS` などをプラットフォームの名前として使います。全リストは[Declaration Attributes](../language-reference/attributes.md)を参照ください。`iOS 8` や `macOS 10.10` のようなメジャーバージョンに加え、`iOS 11.2.6` や `macOS 10.13.3` のようにマイナーバージョンも指定できます。
+基本的な形式として、アベイラビリティ条件はプラットフォームの名前とバージョンのリストを受け取ります。`iOS`、`macOS`、`watchOS`、`tvOS` などをプラットフォームの名前として使います。全リストは[Declaration Attributes(宣言属性)](../language-reference/attributes.md)を参照ください。`iOS 8` や `macOS 10.10` のようなメジャーバージョンに加え、`iOS 11.2.6` や `macOS 10.13.3` のようにマイナーバージョンも指定できます。
 
 ![APIアベイラビリティ条件](../.gitbook/assets/05_availabilitycondition.png)

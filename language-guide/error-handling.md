@@ -135,7 +135,7 @@ struct PurchasedSnack {
 
 ![do catch文](../.gitbook/assets/17_errorHandling.png)
 
-その句が処理できるエラーを示すには、`catch` の後にパターンを記述します。`catch` 句にパターンがない場合、句は全てのエラーに一致し、エラーを `error` という名前のローカル定数にバインドします。パターンマッチングの詳細については、[Patterns](../language-reference/patterns.md)を参照ください。
+その句が処理できるエラーを示すには、`catch` の後にパターンを記述します。`catch` 句にパターンがない場合、句は全てのエラーに一致し、エラーを `error` という名前のローカル定数にバインドします。パターンマッチングの詳細については、[Patterns(パターン)](../language-reference/patterns.md)を参照ください。
 
 例えば、次のコードは、`VendingMachineError` 列挙型の 3 つのケース全てに一致します:
 

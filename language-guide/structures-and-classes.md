@@ -20,7 +20,7 @@ Swift の構造体とクラスには多くの共通点があります。いず�
 * `extension` で機能を拡張できます
 * 特定の種類の標準機能を提供するためにプロトコルに準拠できます
 
-これらの機能の詳細については、[Properties](properties.md)、[Methods](methods.md)、[Initialization](initialization.md)、[Extensions](extensions.md)および[Protocols](protocols.md)を参照ください。
+これらの機能の詳細については、[Properties(プロパティ)](properties.md)、[Methods(メソッド)](methods.md)、[Initialization(初期化)](initialization.md)、[Extensions(拡張)](extensions.md)および[Protocols(プロトコル)](protocols.md)を参照ください。
 
 一方で、クラスには、構造体にはない追加の機能があります。
 
@@ -29,7 +29,7 @@ Swift の構造体とクラスには多くの共通点があります。いず�
 * *デイニシャライザ*を使ったクラスのインスタンスに割り当てられているリソースの解放
 * *参照カウント*を使ったある同じクラスインスタンスへ複数から参照できます
 
-これらの機能の詳細については、[Inheritance](inheritance.md)、[Type Casting](type-casting.md)、[Deinitialization](deinitialization.md)、[Automatic Reference Counting](automatic-reference-counting.md)を参照ください。
+これらの機能の詳細については、[Inheritance(継承)](inheritance.md)、[Type Casting(型キャスト)](type-casting.md)、[Deinitialization(デイニシャライザ)](deinitialization.md)、[Automatic Reference Counting(自動参照カウント)](automatic-reference-counting.md)を参照ください。
 
 クラスは追加の機能をサポートしている分、複雑さが増します。一般的なガイドラインとして、構造体の方が扱いやすく推奨されます。クラスは適切または必要な場合にのみ使用してください。つまり、実際は、独自に定義するデータ型のほとんどが構造体と列挙型になることを意味します。より詳細な比較は[Choosing Between Structures and Classes](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes)を参照ください。
 
@@ -79,7 +79,7 @@ let someResolution = Resolution()
 let someVideoMode = VideoMode()
 ```
 
-構造体とクラスはどちらも、新しいインスタンスに初期化構文\(`init`\)を使用します。初期化構文の最もシンプルな形式では、クラスまたは構造体の型名の後に、`Resolution()` や `VideoMode()` などの空の括弧\(`()`\)が続きます。これにより、クラスまたは構造の新しいインスタンスが作成され、プロパティはデフォルト値で初期化されます。クラスと構造体の初期化については、[Initialization](initialization.md)で詳しく説明しています。
+構造体とクラスはどちらも、新しいインスタンスに初期化構文\(`init`\)を使用します。初期化構文の最もシンプルな形式では、クラスまたは構造体の型名の後に、`Resolution()` や `VideoMode()` などの空の括弧\(`()`\)が続きます。これにより、クラスまたは構造の新しいインスタンスが作成され、プロパティはデフォルト値で初期化されます。クラスと構造体の初期化については、[Initialization(初期化)](initialization.md)で詳しく説明しています。
 
 ### Accessing Properties\(プロパティへのアクセス\)
 
@@ -115,7 +115,7 @@ print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
 let vga = Resolution(width: 640, height: 480)
 ```
 
-構造体とは異なり、クラスはデフォルトのイニシャライザを自動で生成しません。イニシャライザについては、[Initialization](initialization.md)で詳しく説明しています。
+構造体とは異なり、クラスはデフォルトのイニシャライザを自動で生成しません。イニシャライザについては、[Initialization(初期化)](initialization.md)で詳しく説明しています。
 
 ## Structures and Enumerations Are Value Types\(構造体と列挙型は値型\)
 
@@ -184,7 +184,7 @@ print("The remembered direction is \(rememberedDirection)")
 
 `RememberedDirection` に `currentDirection` の値が割り当てられると、実際にはその値のコピーが設定されます。その後、`currentDirection` の値を変更しても、`rememberedDirection` に保存されていた元の値には影響しません。
 
-## Classes Are Reference Types\(classは参照型\)
+## Classes Are Reference Types\(クラスは参照型\)
 
 値型とは異なり、*参照型*は、変数または定数に割り当てられたとき、または関数に渡されたときにコピーされません。コピーではなく、同じ既存のインスタンスへの参照が使用されます。
 
@@ -242,7 +242,7 @@ if tenEighty === alsoTenEighty {
 
 「同一」\(3 つの等号または `===`\)は、「等しい」\(2 つの等号または `==` で表される\)と同じではないことに注意してください。「同一」とは、クラスタイプの 2 つの定数または変数がまったく同じクラスインスタンスを参照することを意味します。「等しい」とは、型の設計者が定義する「等しい」という観点で、適切に 2 つのインスタンスの値が等しいまたは同等だと見なされることを意味します。
 
-独自の構造体とクラスを定義するときは、2 つのインスタンスがどうすれば等しいと見なされるのかを決定するのはあなた次第です。`==` および `!=` 演算子の独自の実装を定義するプロセスは、[Equivalence Operators](advanced-operators.md#equivalence-operators)で説明されています。
+独自の構造体とクラスを定義するときは、2 つのインスタンスがどうすれば等しいと見なされるのかを決定するのはあなた次第です。`==` および `!=` 演算子の独自の実装を定義するプロセスは、[Equivalence Operators(等価演算子)](advanced-operators.md#equivalence-operators)で説明されています。
 
 ### Pointers\(ポインタ\)
 

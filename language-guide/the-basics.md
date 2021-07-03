@@ -4,7 +4,7 @@
 
 Swift は iOS, macOS, watchOS, tyOS アプリ開発のための新しいプログラミング言語です。新しい言語ではあるものの、Swift の多くの部分は C 言語と Objective-C の開発経験があれば慣れ親しんだ部分もあるかと思います。
 
-Swift は C 言語と Objective-C の全ての基本的な型に対応した Swift 版の型を提供します。数値に対する `Int`、浮動小数点数に対する `Double` と `Float`、ブール値に対する `Bool`、文字データに対する `String` があります。また、3 つのより強力な collection 型(`Array`, `Set`, `Dictionary`)も提供しています。詳細は [Collection Types](collection-types.md)に記載しています。
+Swift は C 言語と Objective-C の全ての基本的な型に対応した Swift 版の型を提供します。数値に対する `Int`、浮動小数点数に対する `Double` と `Float`、ブール値に対する `Bool`、文字データに対する `String` があります。また、3 つのより強力な collection 型(`Array`, `Set`, `Dictionary`)も提供しています。詳細は [Collection Types(コレクション型)](collection-types.md)に記載しています。
 
 C 言語のように、Swift は、名前を特定して、値を保持したり、その値を参照するために変数を使います。また、変数の値を変更できなくすることで、より幅広い方法で変数を使用することができます。これらは、定数として知られており、C 言語の定数よりもかなり強力です。定数は、値を変更する必要がない場合に、コードを、意図的に、より安全に、よりわかりやすくするために Swift 全体で使われます。
 
@@ -71,7 +71,7 @@ var red, green, blue: Double
 ```
 
 > NOTE  
-> 実際に型注釈を書く必要はあまりありません。定義時に定数や変数に初期値を与えた場合、 Swift はたいていそれらの型を推論できます(詳細は[Type Safety and Type Inference](the-basics.md#type-safety-and-type-inference型安全と型推論))。 上記の `welcomeMessage` の例では、初期値を与えていないため、推論をすることができないため、`welcomeMessage` 変数は型注釈で型を特定しています。
+> 実際に型注釈を書く必要はあまりありません。定義時に定数や変数に初期値を与えた場合、 Swift はたいていそれらの型を推論できます(詳細は[Type Safety and Type Inference(型安全と型推論)](the-basics.md#type-safety-and-type-inference型安全と型推論))。 上記の `welcomeMessage` の例では、初期値を与えていないため、推論をすることができないため、`welcomeMessage` 変数は型注釈で型を特定しています。
 
 ### Naming Constants and Variables\(定数と変数の命名\)
 
@@ -115,7 +115,7 @@ print(friendlyWelcome)
 // "Bonjour!"
 ```
 
-`print(_:separator:terminator:)` 関数はグローバル関数で、1 つ以上の値を適切なアウトプット先に出力します。Xcode では、`print(_:separator:terminator:)` 関数を使用すると、 Xcode のコンソールパネルへ値を出力します。`separator` と `terminator` パラメータには、デフォルト値が用意されているので省略可能です。デフォルトでは最後に改行を追加します。改行を付けたくない場合は `terminator` に空文字を渡してください。例えば `print(someValue, terminator: "")`。詳細は[Default Parameter Values](functions.md#default-parameter-valuesデフォルトパラメータ値)。
+`print(_:separator:terminator:)` 関数はグローバル関数で、1 つ以上の値を適切なアウトプット先に出力します。Xcode では、`print(_:separator:terminator:)` 関数を使用すると、 Xcode のコンソールパネルへ値を出力します。`separator` と `terminator` パラメータには、デフォルト値が用意されているので省略可能です。デフォルトでは最後に改行を追加します。改行を付けたくない場合は `terminator` に空文字を渡してください。例えば `print(someValue, terminator: "")`。詳細は[Default Parameter Values(デフォルトパラメータ値)](functions.md#default-parameter-valuesデフォルトパラメータ値)。
 
 Swift は長い文字列の中で定数や変数をプレースホルダとして使用したい場合、*文字列補間*を使い、定数や変数の現在値に置き換えるように Swift に伝えることができます。名前を括弧(`()`)で囲み、開始括弧の前にバックスラッシュ(`\`)を付けます。
 
@@ -125,7 +125,7 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 ```
 
 > NOTE  
-> 文字列補間で使用できるオブションは[String Interpolation](strings-and-characters.md#string-interpolation文字列補間)に記載しています
+> 文字列補間で使用できるオブションは[String Interpolation(文字列補間)](strings-and-characters.md#string-interpolation文字列補間)に記載しています
 
 ## Comments\(コメント\)
 
@@ -198,7 +198,7 @@ Swift は符号なしの整数値型も提供しています。これも、プ�
 * 64 ビットのプラットフォームの場合、`UInt` は `UInt64` と等しい
 
 > NOTE  
-> `UInt` は特別にプラットフォームに応じて決まるサイズと同じサイズの 符号なし整数型を扱いたい場合にのみ使用してください。そうでない場合、負の値にならないとしても `Int` を使用する方が好ましいです。一貫して `Int` を整数値に使用することで、異なる整数値型間の変換を避け、合致する型をコンパイラが推論することで、互換性を保つことができます。詳細は[Type Safety and Type Inference](the-basics.md#type-safety-and-type-inference型安全と型推論)。
+> `UInt` は特別にプラットフォームに応じて決まるサイズと同じサイズの 符号なし整数型を扱いたい場合にのみ使用してください。そうでない場合、負の値にならないとしても `Int` を使用する方が好ましいです。一貫して `Int` を整数値に使用することで、異なる整数値型間の変換を避け、合致する型をコンパイラが推論することで、互換性を保つことができます。詳細は[Type Safety and Type Inference(型安全と型推論)](the-basics.md#type-safety-and-type-inference型安全と型推論)。
 
 ## Floating-Point Numbers\(浮動小数点数\)
 
@@ -325,7 +325,7 @@ let twoThousandAndOne = twoThousand + UInt16(one)
 
 今はどちらも `UInt16` なので、足し算は可能です。そして計算結果の定数(`twoThousandAndOne`)も `UInt16` に推論されます。
 
-`SomeType(ofInitialValue)` という形式は、初期値を渡して初期化を行う Swift のデフォルトの方法です。裏側では、`UInt16` 型が `UInt8` の値を受け取って、新しい `UInt16` 型の値を生成しています。とはいっても、あらゆる型を渡せるわけではありません。`UInt16` 型が提供するイニシャライザに合った型が必要です。新しい型を渡して初期化する方法は、[Extensions](extensions.md)に記載しています。
+`SomeType(ofInitialValue)` という形式は、初期値を渡して初期化を行う Swift のデフォルトの方法です。裏側では、`UInt16` 型が `UInt8` の値を受け取って、新しい `UInt16` 型の値を生成しています。とはいっても、あらゆる型を渡せるわけではありません。`UInt16` 型が提供するイニシャライザに合った型が必要です。新しい型を渡して初期化する方法は、[Extensions(拡張)](extensions.md)に記載しています。
 
 ### Integer and Floating-Point Conversion\(整数と浮動小数点数の変換\)
 
@@ -393,7 +393,7 @@ if turnipsAreDelicious {
 // "Eww, turnips are horrible."
 ```
 
-`if` のような条件文については、[Control Flow](control-flow.md)でより詳細に記載しています。
+`if` のような条件文については、[Control Flow(制御フロー)](control-flow.md)でより詳細に記載しています。
 
 Swift は型安全なので、`Bool` 以外の値を `Bool` として使うことはできません。次の例はコンパイルエラーになります:
 
@@ -413,7 +413,7 @@ if i == 1 {
 }
 ```
 
-`i == 1` の比較結果は `Bool` なので、型チェックを通過できます。`i == 1` のような比較については、[Basic Operators](basic-operators.md)でより詳しく記載しています。
+`i == 1` の比較結果は `Bool` なので、型チェックを通過できます。`i == 1` のような比較については、[Basic Operators(基本演算子)](basic-operators.md)でより詳しく記載しています。
 
 他の型安全性を示した例と同様に、型の違いによる予期せぬエラーの発生を防ぎ、型が明確なので、コードの意図をより明確に表すことができます。
 
@@ -474,7 +474,7 @@ print("The status message is \(http200Status.description)")
 // "The status message is OK"
 ```
 
-タプルは、特に関数の戻り値で有効に活用できます。Web ページを取得する関数は、取得の成否の結果を `(Int, String)` で返すかもしれません。2 つの異なる型の値を持ったタプルを返すことで、1 つの型の 1 つの値を返すよりも、関数はより有益な情報を提供できます。より詳しくは、[Functions with Multiple Return Values](functions.md#functions-with-multiple-return-values複数の戻り値がある関数)を参照ください。
+タプルは、特に関数の戻り値で有効に活用できます。Web ページを取得する関数は、取得の成否の結果を `(Int, String)` で返すかもしれません。2 つの異なる型の値を持ったタプルを返すことで、1 つの型の 1 つの値を返すよりも、関数はより有益な情報を提供できます。より詳しくは、[Functions with Multiple Return Values(複数の戻り値がある関数)](functions.md#functions-with-multiple-return-values複数の戻り値がある関数)を参照ください。
 
 ## Optionals\(オプショナル\)
 
@@ -541,14 +541,14 @@ if convertedNumber != nil {
 // "convertedNumber has an integer value of 123."
 ```
 
-`if` 文についての詳細は、[Control Flow](control-flow.md)を参照ください。
+`if` 文についての詳細は、[Control Flow(制御フロー)](control-flow.md)を参照ください。
 
 > NOTE  
 > 値が存在しないオプショナル値に `!` を付けてアクセスしようとすると、実行時エラーが発生します。`!` を使った強制アンラップを行う際は、確実に `nil` ではないことを常に確かめましょう。
 
 ### Optional Binding\(オプショナルバインディング\)
 
-オプショナル値に、*オプショナルバインディング*を使用して、値を含んでいるかどうかを判定できます。もし含んでいる場合は、一時的な定数や変数として値を使用できるようになります。オプショナルバインディングは、`if` や `while` 文の 1 つのアクションで、オプショナル値に値が存在することを証明し、定数や変数にその内部の値を設定することを、まとめて行うことができます。`if` や `while` の詳細は[Control Flow](control-flow.md)を参照ください。
+オプショナル値に、*オプショナルバインディング*を使用して、値を含んでいるかどうかを判定できます。もし含んでいる場合は、一時的な定数や変数として値を使用できるようになります。オプショナルバインディングは、`if` や `while` 文の 1 つのアクションで、オプショナル値に値が存在することを証明し、定数や変数にその内部の値を設定することを、まとめて行うことができます。`if` や `while` の詳細は[Control Flow(制御フロー)](control-flow.md)を参照ください。
 
 `if` 文でオプショナルバインディングを行う場合、次のように書きます:
 
@@ -558,7 +558,7 @@ if let constantName = someOptional {
 }
 ```
 
-[Optionals](the-basics.md#optionals)の中の例で出てきた `possibleNumber` は、強制アンラップの代わりに、オプショナルバインディングを使用して書き換えることができます。
+[Optionals(オプショナル)](the-basics.md#optionals)の中の例で出てきた `possibleNumber` は、強制アンラップの代わりに、オプショナルバインディングを使用して書き換えることができます。
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
@@ -596,7 +596,7 @@ if let firstNumber = Int("4") {
 ```
 
 > NOTE  
-> `if` 文の中でオプショナルバインディングによって作られた定数や変数は、`if` 文の中でしか使えません。もし他でも使用したい場合は、`guard` 文を使用することで、`guard` 文の次から使用することができます。詳細は[Early Exit](control-flow.md#early-exit早期リターン)に記載しています。
+> `if` 文の中でオプショナルバインディングによって作られた定数や変数は、`if` 文の中でしか使えません。もし他でも使用したい場合は、`guard` 文を使用することで、`guard` 文の次から使用することができます。詳細は[Early Exit(早期リターン)](control-flow.md#early-exit早期リターン)に記載しています。
 
 ### Implicitly Unwrapped Optionals\(暗黙アンラップオプショナル\)
 
@@ -606,7 +606,7 @@ if let firstNumber = Int("4") {
 
 このようなオプショナルは、*暗黙アンラップオプショナル*として定義されています。`?` の代わりに `!` を型の後に付けることで、暗黙アンラップオプショナルを書くことができます(`String?` の代わりに `String!` と書くなど)。コード内で使用するオプショナル値の後に `!` 付けるよりも、定義した型の後に `!` を付けます。
 
-暗黙アンラップオプショナルは、オプショナル値の定義後すぐに値が設定され、それ以降はずっと値が存在していることが確実な場合に、役に立ちます。Swift での暗黙アンラップオプショナルの主な使われ方としては、クラスの初期化時があります。[Unowned References and Implicitly Unwrapped Optional Properties](automatic-reference-counting.md#unowned-references-and-implicitly-unwrapped-optional-properties)に記載しています。
+暗黙アンラップオプショナルは、オプショナル値の定義後すぐに値が設定され、それ以降はずっと値が存在していることが確実な場合に、役に立ちます。Swift での暗黙アンラップオプショナルの主な使われ方としては、クラスの初期化時があります。[Unowned References and Implicitly Unwrapped Optional Properties(非所有参照と暗黙アンラップしたオプショナルプロパティ)](automatic-reference-counting.md#unowned-references-and-implicitly-unwrapped-optional-properties非所有参照と暗黙アンラップしたオプショナルプロパティ)に記載しています。
 
 暗黙アンラップオプショナルは、内部的には通常のオプショナルですが、オプショナルではない値のように使用することもできます。次の例は、オプショナルと暗黙アンラップオプショナルで、明示的に `String` を型として記載している値へアクセスするときの動きの違いを表しています。
 
@@ -698,7 +698,7 @@ do {
 
 エラーがスローされない場合、`eatASandwich()` 関数が呼ばれます。エラーがスローされ、それが `SandwichError.outOfCleanDishes`case と合致する場合、`washDishes()` 関数が呼ばれます。`SandwichError.missingIngredients` ケースに合致する場合、`buyGroceries(_:)` 関数が `catch` でキャッチされた `[String]` 値をパラメータに呼び出されます。
 
-エラーのスロー、キャッチそして伝播は、[Error Handling](error-handling.md)でより詳細に書かれています。
+エラーのスロー、キャッチそして伝播は、[Error Handling(エラーハンドリング)](error-handling.md)でより詳細に書かれています。
 
 ## Assertions and Preconditions\(アサーションと事前条件\)
 
@@ -706,7 +706,7 @@ do {
 
 アサーションと事前条件はコード上での前提となる条件や期待値を表すために使います。アサーションは開発中の間違いや間違った想定を見つけやすくし、事前条件は開発中の問題を検知しやすくします。
 
-実行時の期待値を確認することに加えて、アサーションと事前条件はコード内のドキュメントとしても有用です。[Error Handling](the-basics.md#error-handlingエラーハンドリング)で記載したエラー条件とは異なり、アサーションと事前条件は復帰可能ではなく、期待されたエラーをキャッチする手段として使用することはできません。アサーションや事前条件の失敗は、不正なプログラムの状態を表し、失敗したアサーションをキャッチする方法はありません。
+実行時の期待値を確認することに加えて、アサーションと事前条件はコード内のドキュメントとしても有用です。[Error Handling(エラーハンドリング)](the-basics.md#error-handlingエラーハンドリング)で記載したエラー条件とは異なり、アサーションと事前条件は復帰可能ではなく、期待されたエラーをキャッチする手段として使用することはできません。アサーションや事前条件の失敗は、不正なプログラムの状態を表し、失敗したアサーションをキャッチする方法はありません。
 
 アサーションと事前条件を使用することは、不正な条件を起こさないためのツールとしてコードをデザインするための代用品にはなりません。妥当なデータや状態を強制することで、不正な状態が起きた場合に、予測しやすい状態でアプリ終了させたり、プログラムをデバッグしやすくします。不正な状態が起きた際にすぐに実行を止めることで、不正な状態が与えるダメージを抑えることができます。
 

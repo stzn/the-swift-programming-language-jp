@@ -14,9 +14,9 @@ Swift では、前置式、バイナリ式、基本式、後置式の 4 種類�
 
 前置式は、式と任意の前置演算子を組み合わせます。前置演算子は 1 つの引数を受け取り、その後に式が続きます。
 
-これらの演算子の動作については、[Basic Operators](./../language-guide/basic-operators.md)と[Advanced Operators](./../language-guide/advanced-operators.md)を参照ください。
+これらの演算子の動作については、[Basic Operators(基本演算子)](./../language-guide/basic-operators.md)と[Advanced Operators(高度な演算子)](./../language-guide/advanced-operators.md)を参照ください。
 
-Swift 標準ライブラリによって提供されている演算子については、[Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
+Swift 標準ライブラリによって提供されている演算子については、[Operator Declarations(演算子宣言)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
 
 > GRAMMAR OF A PREFIX EXPRESSION  
 > prefix-expression → [prefix-operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_prefix-operator)<sub>*opt*</sub> [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  
@@ -28,9 +28,9 @@ in-out 式は、関数呼び出し式に in-out パラメータとして渡さ�
 
 ![in-out式](./../.gitbook/assets/inout_expression.png)
 
-in-out パラメータの詳細については、[In-Out Parameters](./../language-guide/functions.md#in-Out-ParametersIn-Outパラメータ)を参照ください。
+in-out パラメータの詳細については、[In-Out Parameters(In-Outパラメータ)](./../language-guide/functions.md#in-Out-ParametersIn-Outパラメータ)を参照ください。
 
-in-out 式は、[Implicit Conversion to a Pointer Type](#implicit-conversion-to-a-pointer-typeポインタ型への暗黙変換)で説明されているように、ポインタが必要なコンテキストに非ポインタ引数を指定するときにも使用されます。
+in-out 式は、[Implicit Conversion to a Pointer Type(ポインタ型への暗黙変換)](#implicit-conversion-to-a-pointer-typeポインタ型への暗黙変換)で説明されているように、ポインタが必要なコンテキストに非ポインタ引数を指定するときにも使用されます。
 
 > GRAMMAR OF AN IN-OUT EXPRESSION  
 > in-out-expression → `&` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
@@ -72,7 +72,7 @@ sum = (try someThrowingFunction()) + anotherThrowingFunction()
 
 `try` と `await` 演算子の両方を含む場合は、最初に `try` が来なければなりません。
 
-`try`、`try?` と `try!` の使用方法についての詳細は[Error Handling](./../language-guide/error-handling.md)を参照ください。
+`try`、`try?` と `try!` の使用方法についての詳細は[Error Handling(エラーハンドリング)](./../language-guide/error-handling.md)を参照ください。
 
 > GRAMMAR OF A TRY EXPRESSION  
 > try-operator → `try` \|  `try` `?` \|  `try` `!`
@@ -115,9 +115,9 @@ sum = (await someAsyncFunction()) + anotherAsyncFunction()
 
 ![バイナリ式](./../.gitbook/assets/binary_expression.png)
 
-これらの演算子の動作については、[Basic Operators](./../language-guide/basic-operators.md) と [Advanced Operators](./../language-guide/advanced-operators.md)を参照ください。
+これらの演算子の動作については、[Basic Operators(基本演算子)](./../language-guide/basic-operators.md) と [Advanced Operators(高度な演算子)](./../language-guide/advanced-operators.md)を参照ください。
 
-標準ライブラリによって提供されている演算子については、[Operator Declarations](https://developer.apple.com/documentation/swift/operator_declarations)を参照ください。
+標準ライブラリによって提供されている演算子については、[Operator Declarations(演算子宣言)](https://developer.apple.com/documentation/swift/operator_declarations)を参照ください。
 
 > NOTE  
 > 構文解析時には、式はバイナリ演算子のフラットなリストを構成します。このリストは、演算子の優先順位を適用することによってツリーに変換されます。例えば、式 `2 + 3 * 5` は、最初は5つの項目、`2`、`+`、`3`、`*`、および `5` として解釈され、その後 `(2 + (3 * 5))` のツリーに変換します  
@@ -155,7 +155,7 @@ value を評価した結果得られた値が expression に設定されます�
 
 条件が `true` と評価された場合、条件演算子は最初の式を評価し、その値を返します。それ以外の場合は、2 番目の式を評価してその値を返します。未使用の式は評価されません。
 
-三項条件演算子を使用する例については、[Ternary Conditional Operator](./../language-guide/basic-operators.md#ternary-conditional-operator三項条件演算子)を参照ください。
+三項条件演算子を使用する例については、[Ternary Conditional Operator(三項条件演算子)](./../language-guide/basic-operators.md#ternary-conditional-operator三項条件演算子)を参照ください。
 
 > GRAMMAR OF A CONDITIONAL OPERATOR  
 > conditional-operator → `?` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `:`
@@ -193,7 +193,7 @@ f(x as Any)
 
 `as!` 演算子は、指定された型に強制キャストを実行します。`as!` 演算子は、オプショナル型ではなく、指定された型の値を返します。キャストが失敗した場合は、実行時エラーが発生します。`x as! T` は `(x as? T)!` の挙動と同じです。
 
-型キャストの詳細や型キャスト演算子を使用する例については、[Type Casting](./../language-guide/type-casting.md)を参照ください。
+型キャストの詳細や型キャスト演算子を使用する例については、[Type Casting(型キャスト)](./../language-guide/type-casting.md)を参照ください。
 
 > GRAMMAR OF A TYPE-CASTING OPERATOR  
 > type-casting-operator → `is` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
@@ -235,7 +235,7 @@ f(x as Any)
 
 `#file` の文字列値は、古い `#filePath` から新しい `#fileID` への移行を有効にするために、言語のバージョンによって異なります。現在、`#file` は `#filePath` と同じ値を持ちます。将来の Swift のバージョンでは、`#file` は代わりに `#fileID` と同じ値を持ちます。将来のバージョンの挙動を適用するには、`#file` を `#fileID` または `#filePath` に置き換える必要があります。
 
-`#fileID` 式の文字列値はモジュール/ファイル形式です。ここで言う、「ファイル」は式が使用されているファイルの名前で、「モジュール」は、がこのファイルが属しているモジュールの名前です。`#filePath` 式の文字列値は、式が使用されているファイルへのフルパスです。[Line Control Statement](./statements.md#line-control-statement行制御文)で説明されているように、これらの値はどちらも `#sourceLocation` に変わる可能性があります。`#fileID` は `#filePath` とは異なり、ソースファイルへのフルパスをソースファイルに埋め込むことはできないため、より良いプライバシーを提供し、コンパイルされたバイナリのサイズを減させることができます。テスト、ビルドスクリプト、また配布されるプログラムの一部にはならないその他のコードの外側で `#filePath` を使用しないでください。
+`#fileID` 式の文字列値はモジュール/ファイル形式です。ここで言う、「ファイル」は式が使用されているファイルの名前で、「モジュール」は、がこのファイルが属しているモジュールの名前です。`#filePath` 式の文字列値は、式が使用されているファイルへのフルパスです。[Line Control Statement(行制御文)](./statements.md#line-control-statement行制御文)で説明されているように、これらの値はどちらも `#sourceLocation` に変わる可能性があります。`#fileID` は `#filePath` とは異なり、ソースファイルへのフルパスをソースファイルに埋め込むことはできないため、より良いプライバシーを提供し、コンパイルされたバイナリのサイズを減させることができます。テスト、ビルドスクリプト、また配布されるプログラムの一部にはならないその他のコードの外側で `#filePath` を使用しないでください。
 
 > NOTE  
 > `#fileID` 式は、最初のスラッシュ(`/`)の前のテキストをモジュール名、最後のスラッシュ(`/`)の後のテキストをファイル名と読んでください。将来的には、`MyModule/some/disambigation/myfile.swift` などのように、複数のスラッシュが含まれている可能性があります。
@@ -350,7 +350,7 @@ struct Point {
 
 ![クロージャ式](./../.gitbook/assets/closure_expression.png)
 
-[Function Declaration](./declarations.md#function-declaration関数宣言)で説明されているように、*parameters*は関数宣言内のパラメータと同じ形式です。
+[Function Declaration(関数宣言)](./declarations.md#function-declaration関数宣言)で説明されているように、*parameters*は関数宣言内のパラメータと同じ形式です。
 
 クロージャをより簡潔に書くことができるいくつかの特別な形式があります:
 
@@ -374,11 +374,11 @@ myFunction { return $0 + $1 }
 myFunction { $0 + $1 }
 ```
 
-関数の引数としてクロージャを渡す方法については、[Function Call Expression](#function-call-expression関数呼び出し式)を参照ください。
+関数の引数としてクロージャを渡す方法については、[Function Call Expression(関数呼び出し式)](#function-call-expression関数呼び出し式)を参照ください。
 
 クロージャ式は、関数呼び出しの一部としてすぐにクロージャを使用するときなど、可変または定数に格納されることなく使用できます。上記のコードの `myFunction` に渡されたクロージャ式は、即時に使用される例です。その結果、クロージャ式がエスケープか非エスケープかは、式の周囲のコンテキストによって異なります。クロージャ式は、即時に呼ばれるか、非エスケープ関数の引数として渡されると、非エスケープです。それ以外の場合、クロージャ式はエスケープです。
 
-クロージャのエスケープの詳細については、[Escaping Closures](./../language-guide/closures.md#escaping-closuresエスケープクロージャ)を参照ください。
+クロージャのエスケープの詳細については、[Escaping Closures(エスケープクロージャ)](./../language-guide/closures.md#escaping-closuresエスケープクロージャ)を参照ください。
 
 #### Capture Lists(キャプチャリスト)
 
@@ -440,7 +440,7 @@ myFunction { [unowned self] in print(self.title) }  // 非所有参照
 myFunction { [weak parent = self.parent] in print(parent!.title) }
 ```
 
-クロージャ式の詳細と例については、[Closure Expressions](./../language-guide/closures.md#closure-expressionsクロージャ式)を参照ください。キャプチャリストの詳細および例については、[Resolving Strong Reference Cycles for Closures](./../language-guide/automatic-reference-counting.md#resolving-strong-reference-cycles-for-closuresクロージャの強参照循環の解消)を参照ください。
+クロージャ式の詳細と例については、[Closure Expressions(クロージャ式)](./../language-guide/closures.md#closure-expressionsクロージャ式)を参照ください。キャプチャリストの詳細および例については、[Resolving Strong Reference Cycles for Closures(クロージャの強参照循環の解消)](./../language-guide/automatic-reference-counting.md#resolving-strong-reference-cycles-for-closuresクロージャの強参照循環の解消)を参照ください。
 
 > GRAMMAR OF A CLOSURE EXPRESSION  
 > closure-expression → `{` [closure-signature](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-signature)<sub>*opt*</sub> [statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements)<sub>*opt*</sub> `}`  
@@ -803,9 +803,9 @@ Objective-C API とやり取りする Swift コードで key-path を使用す�
 
 *後置式*は、後置演算子またはその他の後置構文を式に適用することによって形成されます。構文的には、全ての基本式も後置式です。
 
-これらの演算子の動作については、[Basic Operators](./../language-guide/basic-operators.md)と[Advanced Operators](./../language-guide/advanced-operators.md)を参照ください。
+これらの演算子の動作については、[Basic Operators(基本演算子)](./../language-guide/basic-operators.md)と[Advanced Operators(高度な演算子)](./../language-guide/advanced-operators.md)を参照ください。
 
-Swift 標準ライブラリによって提供されている演算子については、[Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
+Swift 標準ライブラリによって提供されている演算子については、[Operator Declarations(演算子宣言)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
 
 > GRAMMAR OF A POSTFIX EXPRESSION  
 > postfix-expression → [primary-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_primary-expression)  
@@ -888,7 +888,7 @@ someFunction { return $0 } secondClosure: { return $0 }  // "10 20"
 
 上記の例では、"Ambiguous"とマークされている関数の呼び出しは"- 120"が出力され、Swift 5.3 ではコンパイラが警告を生成します。それ以降の Swift のバージョンでは "110 -"が出力されます。
 
-クラス、構造体、または列挙型は、[Methods with Special Names](./declarations.md#methods-with-special-names特別な名前を持つメソッド)で説明されているような、いくつかのメソッドの 1 つを宣言することで、関数呼び出しの糖衣構文(シンタックスシュガー)を使うことができます。
+クラス、構造体、または列挙型は、[Methods with Special Names(特別な名前のメソッド)](./declarations.md#methods-with-special-names特別な名前を持つメソッド)で説明されているような、いくつかのメソッドの 1 つを宣言することで、関数呼び出しの糖衣構文(シンタックスシュガー)を使うことができます。
 
 #### Implicit Conversion to a Pointer Type(ポインタ型への暗黙変換)
 
@@ -998,7 +998,7 @@ t.0 = t.1
 
 モジュールのメンバはそのモジュールの最上位の宣言にアクセスします。
 
-`dynamicMemberLookup` 属性で宣言された型には、[Attributes](./attributes.md)で説明されているように、実行時に検索できるメンバが含まれています。
+`dynamicMemberLookup` 属性で宣言された型には、[Attributes(属性)](./attributes.md)で説明されているように、実行時に検索できるメンバが含まれています。
 
 パラメータ名だけが異なるメソッドまたはイニシャライザを区別するには、パラメータ名を括弧内に入れ、パラメータ名の後にコロン(`:`)を書きます。名前のない引数にはアンダースコア(`_`)を書きます。オーバーロードされたメソッドを区別するには、型注釈を使用してください。例えば:
 
@@ -1056,7 +1056,7 @@ let x = [10, 3, 20, 15, 4]
 
 subscript 式の値を評価するには、*expression* 型の subscript の get を subscript のパラメータとして*インデックス式*を渡して呼び出します。値を設定するために、subscript の set を同じ方法で呼び出します。
 
-subscript 宣言については、[Protocol Subscript Declaration](./declarations.md#protocol-subscript-declarationプロトコルのsubscript宣言)を参照ください。
+subscript 宣言については、[Protocol Subscript Declaration(プロトコル subscript 宣言)](./declarations.md#protocol-subscript-declarationプロトコルのsubscript宣言)を参照ください。
 
 > GRAMMAR OF A SUBSCRIPT EXPRESSION  
 > subscript-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  `]`

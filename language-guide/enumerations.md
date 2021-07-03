@@ -10,7 +10,7 @@ C 言語に馴染みがあれば、C 言語の列挙型が、関連する名前�
 
 Swift の列挙型は、それ自体が第一級の型です。これらは、列挙型の現在値の追加情報を提供する計算プロパティや、列挙型が表す値に関わる機能を提供するインスタンスメソッドなど、従来はクラスでのみサポートされていた多くの機能を使うことができます。列挙型は、初期のケース値を指定するイニシャライザも定義しています。`extension` で機能を拡張することもできます。また、プロトコルに準拠して標準機能を提供することもできます。
 
-これらの機能の詳細については、[Properties](properties.md)、[Methods](methods.md)、[Initialization](initialization.md)、[Extensions](extensions.md)および[Protocols](protocols.md)を参照ください。
+これらの機能の詳細については、[Properties](properties.md)、[Methods](methods.md)、[Initialization(イニシャライザ)](initialization.md)、[Extensions(拡張)](extensions.md)および[Protocols(プロトコル)](protocols.md)を参照ください。
 
 ## Enumeration Syntax\(列挙型構文\)
 
@@ -85,7 +85,7 @@ case .west:
 
 …などなど。
 
-[Control Flow](control-flow.md)で説明されているように、列挙ケースを検証するときは、`switch` 文で全てのケースを網羅する必要があります。`.west` の `case` を省略した場合、このコードはコンパイルできません。これによって、列挙ケースが誤って省略できないようにします。
+[Control Flow(制御フロー)](control-flow.md)で説明されているように、列挙ケースを検証するときは、`switch` 文で全てのケースを網羅する必要があります。`.west` の `case` を省略した場合、このコードはコンパイルできません。これによって、列挙ケースが誤って省略できないようにします。
 
 全ての列挙ケースの `case` を並べることが適切でない場合は、明示的に対処されていないケースをカバーする `default` のケースを提供できます。
 
@@ -124,7 +124,7 @@ for beverage in Beverage.allCases {
 // juice
 ```
 
-上記の例で使用されている構文では、[`CaseIterable`](https://developer.apple.com/documentation/swift/caseiterable) プロトコルに準拠しています。プロトコルの詳細については、[Protocols](protocols.md)を参照ください。
+上記の例で使用されている構文では、[`CaseIterable`](https://developer.apple.com/documentation/swift/caseiterable) プロトコルに準拠しています。プロトコルの詳細については、[Protocols(プロトコル)](protocols.md)を参照ください。
 
 ## Associated Values\(関連値\)
 
@@ -173,7 +173,7 @@ productBarcode = .qrCode("ABCDEFGHIJKLMNOP")
 
 この時点で、元の `Barcode.upc` とその整数値は、新しい `Barcode.qrCode` とその文字列値に置き換えられます。`Barcode` の定数と変数は、`.upc` または `.qrCode` のいずれかを\(関連値とともに\)格納できますが、一度に格納できるのはそのうちの 1 つだけです。
 
-[Matching Enumeration Values with a Switch Statement](enumerations.md#matching-enumeration-values-with-a-switch-statementswitch文を使った列挙値のパターンマッチング)の例と同様に、`switch` 文を使用して様々なバーコード型を確認できます。ただし、今回は、関連値が `switch` 文の一部として抽出されます。`switch` のケースの本文内で使用するために、関連値を定数\(`let` プレフィックス\)または変数\(`var` プレフィックス\)として抽出します。
+[Matching Enumeration Values with a Switch Statement(switch 文を使った列挙値のパターンマッチング)](enumerations.md#matching-enumeration-values-with-a-switch-statementswitch文を使った列挙値のパターンマッチング)の例と同様に、`switch` 文を使用して様々なバーコード型を確認できます。ただし、今回は、関連値が `switch` 文の一部として抽出されます。`switch` のケースの本文内で使用するために、関連値を定数\(`let` プレフィックス\)または変数\(`var` プレフィックス\)として抽出します。
 
 ```swift
 switch productBarcode {
@@ -199,7 +199,7 @@ case let .qrCode(productCode):
 
 ## Raw Values
 
-[Associated Values](enumerations.md#associated-values関連値)のバーコードの例は、列挙ケースが、様々な型に関連値を格納して宣言する方法を示しています。関連値の代わりに、列挙型には、全て同じ型のデフォルト値\(*Raw Values*と呼ばれる\)を事前に定義することもできます。
+[Associated Values(関連値)](enumerations.md#associated-values関連値)のバーコードの例は、列挙ケースが、様々な型に関連値を格納して宣言する方法を示しています。関連値の代わりに、列挙型には、全て同じ型のデフォルト値\(*Raw Values*と呼ばれる\)を事前に定義することもできます。
 
 名前付きの列挙ケースと一緒に ASCII 値を格納する例を次に示します。
 
@@ -211,7 +211,7 @@ enum ASCIIControlCharacter: Character {
 }
 ```
 
-ここで、`ASCIIControlCharacter` と呼ばれる列挙型の Raw Value は、`Character` 型で定義されており、一般的な ASCII 制御文字のいくつかが設定されています。`Character` 値は、[Strings and Characters](strings-and-characters.md)で説明しています。
+ここで、`ASCIIControlCharacter` と呼ばれる列挙型の Raw Value は、`Character` 型で定義されており、一般的な ASCII 制御文字のいくつかが設定されています。`Character` 値は、[Strings and Characters(文字列と文字)](strings-and-characters.md)で説明しています。
 
 Raw Value は、文字列、文字、または整数型または浮動小数点数型のいずれかです。各 Raw Value は、その列挙型内で一意でなければなりません。
 
@@ -270,7 +270,7 @@ let possiblePlanet = Planet(rawValue: 7)
 ただし、全ての `Int` 値が惑星に一致するわけではありません。このため、Raw Value のイニシャライザは常にオプショナルの列挙型を返します。上記の例では、`possiblePlanet` は Planet?`または オプショナルの`Planet`型です。
 
 > NOTE  
-> 全ての Raw Value が列挙型を返すわけではないため、Raw Valueイニシャライザは `nil` を返す可能性があります。詳細については、[Failable Initializers](../language-reference/declarations.md#failable-initializers失敗可能イニシャライザ)を参照ください。
+> 全ての Raw Value が列挙型を返すわけではないため、Raw Valueイニシャライザは `nil` を返す可能性があります。詳細については、[Failable Initializers(失敗可能イニシャライザ)](../language-reference/declarations.md#failable-initializers失敗可能イニシャライザ)を参照ください。
 
 位置が `11` の惑星を見つけようとすると、Raw Value のイニシャライザによって返されるオプショナルの `Planet` は `nil` になります。
 

@@ -8,7 +8,7 @@ Swift で構造体と列挙型がメソッドを定義できることは、C 言
 
 ## Instance Methods\(インスタンスメソッド\)
 
-インスタンスメソッドは、特定のクラス、構造体、または列挙型のインスタンスに属する関数です。それらは、インスタンスプロパティにアクセスしたり変更する方法を提供したり、インスタンスに関連する機能を提供することによって、そのインスタンスの機能をサポートします。[Functions](functions.md)で説明されているように、インスタンスメソッドの構文は関数とまったく同じです。
+インスタンスメソッドは、特定のクラス、構造体、または列挙型のインスタンスに属する関数です。それらは、インスタンスプロパティにアクセスしたり変更する方法を提供したり、インスタンスに関連する機能を提供することによって、そのインスタンスの機能をサポートします。[Functions(関数)](functions.md)で説明されているように、インスタンスメソッドの構文は関数とまったく同じです。
 
 インスタンスメソッドは、それが属する型の開き括弧\(`{`\)と閉じ括弧\(`}`\)内に記述します。インスタンスメソッドは、その型の他の全てのインスタンスメソッドおよびプロパティに暗黙的にアクセスできます。インスタンスメソッドは、それが属する型の特定のインスタンスでのみ呼び出すことができます。既存のインスタンスがなければ、単独で呼び出すことはできません。
 
@@ -50,7 +50,7 @@ counter.reset()
 // counter の値は 0
 ```
 
-[Function Argument Labels and Parameter Names](functions.md#function-argument-labels-and-parameter-names引数ラベルとパラメータ名)で説明されているように、関数パラメータは、\(関数の本文内で使用する\)名前と\(関数を呼び出すときに使用する\)引数ラベルの両方を持つことができます。メソッドは型に紐づいた関数にすぎないため、メソッドパラメータについても同じことが言えます。
+[Function Argument Labels and Parameter Names(引数ラベルとパラメータ名)](functions.md#function-argument-labels-and-parameter-names引数ラベルとパラメータ名)で説明されているように、関数パラメータは、\(関数の本文内で使用する\)名前と\(関数を呼び出すときに使用する\)引数ラベルの両方を持つことができます。メソッドは型に紐づいた関数にすぎないため、メソッドパラメータについても同じことが言えます。
 
 ### The self Property\(selfプロパティ\)
 
@@ -110,7 +110,7 @@ print("The point is now at (\(somePoint.x), \(somePoint.y))")
 
 上記の `Point` 構造体は、自身に変更を加える `moveBy(x:y:)` メソッドを定義します。これは、`Point` インスタンスを一定量移動します。新しいポイントを返す代わりに、呼び出されたポイントを実際に変更します。プロパティを変更できるようにするために、`mutating` キーワードがその定義に追加されてます。
 
-[Stored Properties of Constant Structure Instances](properties.md#stored-properties-of-constant-structure-instances定数の格納インスタンスのプロパティ)で説明されているように、構造体の定数内の変数プロパティを変更できないため、構造体の定数で変更メソッドを呼び出すことはできないことに注意してください。
+[Stored Properties of Constant Structure Instances(定数の格納インスタンスのプロパティ)](properties.md#stored-properties-of-constant-structure-instances定数の格納インスタンスのプロパティ)で説明されているように、構造体の定数内の変数プロパティを変更できないため、構造体の定数で変更メソッドを呼び出すことはできないことに注意してください。
 
 ```swift
 let fixedPoint = Point(x: 3.0, y: 3.0)
@@ -215,7 +215,7 @@ struct LevelTracker {
 
 型プロパティと型メソッドに加えて、`LevelTracker` は、ゲーム全体での個々のプレーヤーの進行状況を追跡します。これは、`currentLevel` というインスタンスプロパティを使用して、プレーヤーが現在再生しているレベルを追跡します。
 
-`currentLevel` プロパティの管理を容易にするために、`LevelTracker` は `advance(to:)` というインスタンスメソッドを定義します。`currentLevel` を更新する前に、このメソッドは、要求された新しいレベルが既に解放されているかどうかを確認します。`advance(to:)` メソッドは、`currentLevel` を実際に設定できたかどうかを示すブール値を返します。`advance(to:)` の戻り値を無視することもあるため、このメソッドは `@discardableResult` 属性でマークされています。この属性の詳細については、[Attributes](../language-reference/attributes.md)を参照ください。
+`currentLevel` プロパティの管理を容易にするために、`LevelTracker` は `advance(to:)` というインスタンスメソッドを定義します。`currentLevel` を更新する前に、このメソッドは、要求された新しいレベルが既に解放されているかどうかを確認します。`advance(to:)` メソッドは、`currentLevel` を実際に設定できたかどうかを示すブール値を返します。`advance(to:)` の戻り値を無視することもあるため、このメソッドは `@discardableResult` 属性でマークされています。この属性の詳細については、[Attributes(属性)](../language-reference/attributes.md)を参照ください。
 
 `LevelTracker` 構造体は、下記に示す `Player` クラスで使用され、個々のプレーヤーの進行状況を追跡および更新します:
 

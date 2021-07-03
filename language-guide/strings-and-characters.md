@@ -151,7 +151,7 @@ constantString += " and another Highlander"
 
 ## Strings Are Value Types\(文字列は値型\)
 
-`String` 型は*値型*です。新しい `String` を生成すると、関数やメソッドのパラメータで渡されるときや、他の定数、変数に代入されるときに、値のコピーが発生します。いずれの場合でも、既存の `String` のコピーが生成され、元の値ではなく新しいコピーが渡され\(または代入され\)ます。値型は[Structures and Enumerations Are Value Types](structures-and-classes.md)で記載されています。
+`String` 型は*値型*です。新しい `String` を生成すると、関数やメソッドのパラメータで渡されるときや、他の定数、変数に代入されるときに、値のコピーが発生します。いずれの場合でも、既存の `String` のコピーが生成され、元の値ではなく新しいコピーが渡され\(または代入され\)ます。値型は[Structures and Enumerations Are Value Types(構造体と列挙型は値型)](structures-and-classes.md#structures-and-enumerations-are-value-types構造体と列挙型は値型)で記載されています。
 
 Swift の、デフォルトでコピーをする `String` の挙動は、`String` が関数やメソッドのパラメータで渡されるときに、どこからその値が来たとしても、正しい `String` を所有していることが保証されます。つまり、渡された文字列は、自身で変更しない限り決して変更されることがありません。
 
@@ -172,7 +172,7 @@ for character in "Dog!🐶" {
 // 🐶
 ```
 
-`for-in` ループについては[For-In Loops](control-flow.md#for-in-loopsFor-Inループ)に記載されています。
+`for-in` ループについては[For-In Loops(For-In ループ)](control-flow.md#for-in-loopsFor-Inループ)に記載されています。
 
 もしくは、`Character` の型注釈を与えて 1 文字のリテラルから `Character` 型の定数や変数を作ることもできます:
 
@@ -457,7 +457,7 @@ Swift では、3 つの方法で文字列同士を比較する方法を提供し
 
 ### String and Character Equality\(文字と文字列の等価性\)
 
-`String` または `Character` の完全一致は、は等価演算子\(`==`\)と不等価演算子\(`!=`\)を使用してチェックします。[Comparison Operators](basic-operators.md#comparison-operators比較演算子)
+`String` または `Character` の完全一致は、は等価演算子\(`==`\)と不等価演算子\(`!=`\)を使用してチェックします。[Comparison Operators(比較演算子)](basic-operators.md#comparison-operators比較演算子)
 
 ```swift
 let quotation = "We're a lot alike, you and I."
@@ -553,13 +553,13 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 ```
 
 > NOTE  
-> `hasPrefix(_:)` と `hasSuffix(_:)` メソッドは、文字ごとに各文字列の拡張書記素クラスタを使用してルール上等しいかどうかを調べます\([String and Character Equality](strings-and-characters.md#string-and-character-equality文字と文字列の等価性)に記載\)。
+> `hasPrefix(_:)` と `hasSuffix(_:)` メソッドは、文字ごとに各文字列の拡張書記素クラスタを使用してルール上等しいかどうかを調べます\([String and Character Equality(文字と文字列の等価性)](strings-and-characters.md#string-and-character-equality文字と文字列の等価性)に記載\)。
 
 ## Unicode Representations of Strings\(文字列のUnicode表現\)
 
 Unicode 文字列は、テキストファイルや他のストレージに書かれるとき、Unicode 形式の 1 つに符号化\(エンコード\)されます。それぞれの形式は、文字列を*コードユニット*と呼ばれる小さな塊にエンコードします。これらには、UTF-8\(8 ビットのコードユニットで文字列を符号化\)、UTF-16\(16 ビットのコードユニットで文字列を符号化\)、UTF-32\(32 ビットのコードユニットで文字列を符号化\)があります。
 
-Swift では、複数の Unicode 形式で文字列にアクセスできます。`for-in` 文で文字列を繰り返し処理する場合、Unicode 拡張書記素クラスタとして個々の `Character` にアクセスできます。このプロセスは[Working with Characters](strings-and-characters.md#working-with-characters文字配列の取扱)で記載しています。
+Swift では、複数の Unicode 形式で文字列にアクセスできます。`for-in` 文で文字列を繰り返し処理する場合、Unicode 拡張書記素クラスタとして個々の `Character` にアクセスできます。このプロセスは[Working with Characters(文字配列の取扱)](strings-and-characters.md#working-with-characters文字配列の取扱)で記載しています。
 
 他にも 3 つの Unicode 準拠形式で `String` にアクセスできます:
 
