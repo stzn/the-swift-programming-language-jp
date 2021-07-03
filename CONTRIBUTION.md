@@ -2,7 +2,7 @@
 
 ## 参加方法
 
-1. [GitHub Issues](https://github.com/stzn/the-swift-programming-language-jp/issues)からアサインされていない issues 一覧からやりたい issue を選択します
+1. [GitHub Issues](https://github.com/stzn/the-swift-programming-language-jp/issues)からアサインされていない issues 一覧からやりたい issue を選択します(ない場合は無視してください)
 2. 選択した issue で、「翻訳やります」的なコメントをお願いします
 3. このリポジトリをフォークします
 4. 変更をコミットします: コミットメッセージの先頭に翻訳したページのタイトルを\[XXXX\]のような形で入れてもらえると助かります
@@ -12,6 +12,8 @@
 8. 問題がなければプルリクエストを送ります
 9. レビューで指摘事項があったら修正し、再度 Push します
 10. レビュー OK ならば、マージされて内容がドキュメントに反映されます
+
+※ PR を作成しなくても、間違いを見つけたり、もっとこうした方が良いなどのご意見がございましたら issue を立てて教えていただけるだけでも大変うれしいです🙏🏻
 
 ## 開発準備
 
