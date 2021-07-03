@@ -18,7 +18,7 @@ func swapTwoInts(_ a: inout Int, _ b: inout Int) {
 }
 ```
 
-この関数は、[In-Out Parameters](functions.md#in-Out-ParametersIn-Outパラメータ)で説明されているように、in-out パラメータを使用して `a` と `b` の値を交換します。
+この関数は、[In-Out Parameters(In-Outパラメータ)](functions.md#in-Out-ParametersIn-Outパラメータ)で説明されているように、in-out パラメータを使用して `a` と `b` の値を交換します。
 
 `swapTwoInts(_:_:)` 関数は、`b` の値を `a` に、`a` の値を `b` に入れ替えます。この関数を呼び出して、2 つの `Int` 値の変数を交換できます:
 
@@ -121,7 +121,7 @@ swapTwoValues(&someString, &anotherString)
 
 下記の図は、スタックのプッシュとポップの動作を示しています:
 
-![&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x306E;&#x30D7;&#x30C3;&#x30B7;&#x30E5;&#x3068;&#x30DD;&#x30C3;&#x30D7;](../.gitbook/assets/stackPushPop_2x.png)
+![スタックのプッシュとポップ](../.gitbook/assets/stackPushPop_2x.png)
 
 1. 現在、スタックには 3 つの値があります
 2. 4 番目の値はスタックの一番上にプッシュされます
@@ -184,7 +184,7 @@ stackOfStrings.push("cuatro")
 
 これらの 4 つの値をスタックにプッシュした後、`stackOfStrings` がどのように見えるかを次に示します:
 
-![4&#x3064;&#x306E;&#x5024;&#x3092;&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x306B;&#x30D7;&#x30C3;&#x30B7;&#x30E5;](../.gitbook/assets/stackPushedFourStrings_2x.png)
+![4 つの値をスタックにプッシュ](../.gitbook/assets/stackPushedFourStrings_2x.png)
 
 スタックから値をポップすると、最上位の値 `"cuatro"` が削除されて返されます:
 
@@ -195,7 +195,7 @@ let fromTheTop = stackOfStrings.pop()
 
 最上位の値をポップした後のスタックは次のとおりです:
 
-![&#x30DD;&#x30C3;&#x30D7;&#x3057;&#x305F;&#x5F8C;&#x306E;&#x30B9;&#x30BF;&#x30C3;&#x30AF;](../.gitbook/assets/stackPoppedOneString_2x.png)
+![最上位の値をポップ](../.gitbook/assets/stackPoppedOneString_2x.png)
 
 ## Extending a Generic Type\(ジェネリック型の拡張\)
 
@@ -224,13 +224,13 @@ if let topItem = stackOfStrings.topItem {
 // "The top item on the stack is tres."
 ```
 
-ジェネリック型の extension には、下記の[Extensions with a Generic Where Clause](generics.md#extensions-with-a-generic-where-clauseジェネリックwhere句を使った拡張)で説明されているように、新しい機能を取得するために拡張した型のインスタンスが満たさなければならない要件を含めることもできます。
+ジェネリック型の extension には、下記の[Extensions with a Generic Where Clause(ジェネリック where 句を使った拡張)](generics.md#extensions-with-a-generic-where-clauseジェネリックwhere句を使った拡張)で説明されているように、新しい機能を取得するために拡張した型のインスタンスが満たさなければならない要件を含めることもできます。
 
 ## Type Constraints\(型制約\)
 
 `swapTwoValues(_:_:)` 関数と `Stack` 型は、どの型でも使用できます。ただし、ジェネリック関数およびジェネリック型で使用できる型に特定の型制約を適用すると便利な場合があります。型制約は、型パラメータが特定のクラスを継承する必要があるか、特定のプロトコルまたはプロトコル合成に準拠する必要があるかなどを指定できます。
 
-例えば、Swift の `Dictionary` 型では、辞書のキーとして使用できる型に制限があります。[Dictionaries](collection-types.md#dictionaries辞書)で説明されているように、辞書のキーの型はハッシュ可能でなければなりません。つまり、個々のキーがユニークだということを表明する方法を提供する必要があります。`Dictionary` は、特定のキーの値がすでに含まれているかどうかを確認できるように、そのキーがハッシュ可能なことが必要な場合があります。この要件がなければ、`Dictionary` は特定のキーの値を挿入または置換するべきかどうかを判断できず、すでに存在する特定のキーの値を見つけることもできません。
+例えば、Swift の `Dictionary` 型では、辞書のキーとして使用できる型に制限があります。[Dictionaries(辞書)](collection-types.md#dictionaries辞書)で説明されているように、辞書のキーの型はハッシュ可能でなければなりません。つまり、個々のキーがユニークだということを表明する方法を提供する必要があります。`Dictionary` は、特定のキーの値がすでに含まれているかどうかを確認できるように、そのキーがハッシュ可能なことが必要な場合があります。この要件がなければ、`Dictionary` は特定のキーの値を挿入または置換するべきかどうかを判断できず、すでに存在する特定のキーの値を見つけることもできません。
 
 この要件は、`Dictionary` のキーの型制約によって強制されています。これは、キーの型が Swift 標準ライブラリで定義された `Hashable` プロトコルに準拠する必要があることを指定します。Swift の全ての基本型\(`String`、`Int`、`Double`、`Bool` など\)は、デフォルトでハッシュ可能です。独自の型を `Hashable` プロトコルに準拠させる方法については、[Conforming to the Hashable Protocol](https://developer.apple.com/documentation/swift/hashable#2849490)を参照ください。
 
@@ -347,7 +347,7 @@ protocol Container {
 
 これを実現するために、`Container` プロトコルは `Item` と呼ばれる関連型を `associatedtype Item` として記述することで宣言しています。プロトコルは `Item` が何かを定義しません。その情報は、準拠する型が提供します。それにもかかわらず、`Item` エイリアスを通して、`Container` 内のアイテムの型への参照、`append(_:)` メソッドと `subscript` で使用する型の定義は、どんな `Container` でも期待通りに動くことを保証しています。
 
-下記は、`Container` プロトコルに準拠した、上記の[Generic Types](generics.md#generic-typesジェネリック型)の非ジェネリック型 `IntStack` のジェネリックバージョンです:
+下記は、`Container` プロトコルに準拠した、上記の[Generic Types(ジェネリック型)](generics.md#generic-typesジェネリック型)の非ジェネリック型 `IntStack` のジェネリックバージョンです:
 
 ```swift
 struct IntStack: Container {
@@ -408,9 +408,9 @@ struct Stack<Element>: Container {
 
 ### Extending an Existing Type to Specify an Associated Type\(関連型を特定するための既存の型の拡張\)
 
-[Adding Protocol Conformance with an Extension](protocols.md#adding-protocol-conformance-with-an-extension拡張機能を使ったプロトコル準拠の追加)で説明されているように、既存の型を拡張してプロトコルへの準拠を追加できます。これには、関連型を持つプロトコルが含まれます。
+[Adding Protocol Conformance with an Extension(拡張機能を使ったプロトコル準拠の追加)](protocols.md#adding-protocol-conformance-with-an-extension拡張機能を使ったプロトコル準拠の追加)で説明されているように、既存の型を拡張してプロトコルへの準拠を追加できます。これには、関連型を持つプロトコルが含まれます。
 
-Swift の `Array` 型は、要素を取得するために、`append(_:)` メソッド、`count` プロパティ、および `Int` インデックスの subscript を既存で提供しています。これら 3 つの機能は、`Container` プロトコルの要件に準拠します。これは、`Array` がプロトコルに準拠することを宣言するだけで、`Container` プロトコルに準拠するように `Array` を拡張できることを意味します。[Declaring Protocol Adoption with an Extension](protocols.md#declaring-protocol-adoption-with-an-extension拡張機能を使ったプロトコル準拠の宣言)で説明されているように、これは空の extension で行います:
+Swift の `Array` 型は、要素を取得するために、`append(_:)` メソッド、`count` プロパティ、および `Int` インデックスの subscript を既存で提供しています。これら 3 つの機能は、`Container` プロトコルの要件に準拠します。これは、`Array` がプロトコルに準拠することを宣言するだけで、`Container` プロトコルに準拠するように `Array` を拡張できることを意味します。[Declaring Protocol Adoption with an Extension(拡張機能を使ったプロトコル準拠の宣言)](protocols.md#declaring-protocol-adoption-with-an-extension拡張機能を使ったプロトコル準拠の宣言)で説明されているように、これは空の extension で行います:
 
 ```swift
 extension Array: Container {}
@@ -444,9 +444,9 @@ protocol SuffixableContainer: Container {
 }
 ```
 
-このプロトコルでは、`Suffix` は、上記の `Container` の例の `Item` 型のように、関連型です。`Suffix` には 2 つの制約があります。`SuffixableContainer` プロトコル\(現在定義されているプロトコル\)に準拠している必要があり、その `Item` 型は `Container` の `Item` 型と同じだということが必要です。`Item` の制約はジェネリック `where` 句です。これについては、下記の[Associated Types with a Generic Where Clause](generics.md#associated-types-with-a-generic-where-clauseジェネリックwhere句を使用した関連型)で説明します。
+このプロトコルでは、`Suffix` は、上記の `Container` の例の `Item` 型のように、関連型です。`Suffix` には 2 つの制約があります。`SuffixableContainer` プロトコル\(現在定義されているプロトコル\)に準拠している必要があり、その `Item` 型は `Container` の `Item` 型と同じだということが必要です。`Item` の制約はジェネリック `where` 句です。これについては、下記の[Associated Types with a Generic Where Clause(ジェネリック where 句を使用した関連型)](generics.md#associated-types-with-a-generic-where-clauseジェネリックwhere句を使用した関連型)で説明します。
 
-上記の[Generic Types](generics.md#generic-typesジェネリック型)の `Stack` 型に `SuffixableContainer` プロトコルへの準拠を追加した拡張を次に示します:
+上記の[Generic Types(ジェネリック型)](generics.md#generic-typesジェネリック型)の `Stack` 型に `SuffixableContainer` プロトコルへの準拠を追加した拡張を次に示します:
 
 ```swift
 extension Stack: SuffixableContainer {
@@ -484,7 +484,7 @@ extension IntStack: SuffixableContainer {
 
 ## Generic Where Clauses\(ジェネリック where 句\)
 
-[Type Constraints](generics.md#type-constraints型制約)で説明されているように、型制約を使用すると、ジェネリック関数、subscript、または型に関連した型パラメータの要件を定義できます。
+[Type Constraints(型制約)](generics.md#type-constraints型制約)で説明されているように、型制約を使用すると、ジェネリック関数、subscript、または型に関連した型パラメータの要件を定義できます。
 
 関連型の要件を定義するのにも役立ちます。これを行うには、*ジェネリック where 句*を定義します。ジェネリック `where` 句を使用すると、関連型が特定のプロトコルに準拠する必要があること、または特定の型パラメータと関連型を同じにする必要があることを要求できます。ジェネリック `where` 句は `where` キーワードで始まり、その後に関連型の制約、または型と関連型の間の等価関係が続きます。型または関数の本文の開始中括弧\(`{`\)の直前に、ジェネリック `where` 句を記述します。
 

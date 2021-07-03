@@ -4,11 +4,11 @@
 
 *演算子*は、値のチェックや変更、合成するために使われる特殊な記号や用語です。例えば、加算演算子(`+`)は `let i = 1 + 2` のように 2 つの数値を足します。論理 AND 演算子(`&&`)は、`if enteredDoorCode && passedRetinaScan` のように 2 つのブール値を組み合わせます。
 
-Swift は、C 言語のような他の言語でおそらく見たことがある演算子をサポートするのに加え、よく起きるコーディング中のエラーを防ぐために改良を加えています。代入演算子(`=`)を、本当は等価演算子(`==`)を使おうと思っていた所へ間違って使えなくするために、値を返しません。算術演算子(`+`, `-`, `*`, `/`, `%` など)は、保持している値の型の許容範囲を超えて予期せぬ結果が起きることを防ぐために、オーバーフローを検知して発生しないようにしています。Swift のオーバーフロー演算子を使用することで、オーバーフローに対する挙動を変えることもできます。詳細は[Overflow Operators](advanced-operators.md#overflow-operators)に記載しています。
+Swift は、C 言語のような他の言語でおそらく見たことがある演算子をサポートするのに加え、よく起きるコーディング中のエラーを防ぐために改良を加えています。代入演算子(`=`)を、本当は等価演算子(`==`)を使おうと思っていた所へ間違って使えなくするために、値を返しません。算術演算子(`+`, `-`, `*`, `/`, `%` など)は、保持している値の型の許容範囲を超えて予期せぬ結果が起きることを防ぐために、オーバーフローを検知して発生しないようにしています。Swift のオーバーフロー演算子を使用することで、オーバーフローに対する挙動を変えることもできます。詳細は[Overflow Operators(オーバーフロー演算子)](advanced-operators.md#overflow-operatorsオーバーフロー演算子)に記載しています。
 
 また、C 言語にはなかった `a..<b` や `a...b` のような値の範囲を簡単に表すための範囲演算子も提供しています。
 
-この章では、Swift の基本的な演算子について記載します。[Advanced Operators](advanced-operators.md)ではより応用的な演算子をカバーしており、独自に作成できるカスタム演算子や、独自で定義した型へ Swift が用意している標準の演算子を実装する方法を記載しています。
+この章では、Swift の基本的な演算子について記載します。[Advanced Operators(高度な演算子)](advanced-operators.md)ではより応用的な演算子をカバーしており、独自に作成できるカスタム演算子や、独自で定義した型へ Swift が用意している標準の演算子を実装する方法を記載しています。
 
 ## Terminology\(用語\)
 
@@ -64,7 +64,7 @@ Swift は全ての数値型に対して 4 つの基本的な*算術演算子*を
 10.0 / 2.5  // 4.0
 ```
 
-C 言語や Objective-C と異なり、Swift はデフォルトでオーバーフローはできません。`a &+ b` のようにオーバーフロー演算子\(`&-`\)を使用してオーバーフローさせることができます。詳細は[Overflow Operators](advanced-operators.md#overflow-operators)を参照ください。
+C 言語や Objective-C と異なり、Swift はデフォルトでオーバーフローはできません。`a &+ b` のようにオーバーフロー演算子\(`&-`\)を使用してオーバーフローさせることができます。詳細は[Overflow Operators(オーバーフロー演算子)](advanced-operators.md#overflow-operatorsオーバーフロー演算子)を参照ください。
 
 加算演算子は `String` の連結もすることができます。
 
@@ -153,7 +153,7 @@ a += 2
 > NOTE  
 > 複合代入演算子は値を返しません。例えば、`let b = a += 2` と書くことはできません。
 
-Swift の標準ライブラリで提供している演算子については、[Operator Declarations](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
+Swift の標準ライブラリで提供している演算子については、[Operator Declarations(演算子宣言)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
 
 ## Comparison Operators\(比較演算子\)
 
@@ -167,7 +167,7 @@ Swift は、次の比較演算子をサポートしています。
 * 等しいかそれ以下\(`a <= b`\)
 
 > NOTE  
-> Swift では、2つの恒等作用素\(`===` と `!==`\)も提供しています。これは2つのオブジェクトが同じインスタンスを参照しているかどうかの確認ができます。より詳細は、[Identity Operators](structures-and-classes.md#identity-operators恒等作用素)を参照ください。
+> Swift では、2つの恒等作用素\(`===` と `!==`\)も提供しています。これは2つのオブジェクトが同じインスタンスを参照しているかどうかの確認ができます。より詳細は、[Identity Operators(恒等作用素)](structures-and-classes.md#identity-operators恒等作用素)を参照ください。
 
 それぞれの比較演算子は、そのステートメントが `true` かどうかのブール値を返します。
 
@@ -192,7 +192,7 @@ if name == "world" {
 // name は "world" と等しいので、"hello, world" が出力される。
 ```
 
-`if` については、[Control FLow](control-flow.md)を参照ください。同じ型、同じ数の値を持ったタプル同士の比較もできます。タプルは左から右へと順番に値を比較します。それぞれの値の比較結果が全体の結果に反映されます。全て等しい場合、タプル同士は等しいと見なされます。例えば:
+`if` については、[Control FLow(制御フロー)](control-flow.md)を参照ください。同じ型、同じ数の値を持ったタプル同士の比較もできます。タプルは左から右へと順番に値を比較します。それぞれの値の比較結果が全体の結果に反映されます。全て等しい場合、タプル同士は等しいと見なされます。例えば:
 
 ```swift
 (1, "zebra") < (2, "apple")   // 1 は 2 より小さいので true。"zebra" と "apple" は比較しない
@@ -309,7 +309,7 @@ for index in 1...5 {
 // 5 times 5 is 25
 ```
 
-`for-in` ループについては、[Control FLow](control-flow.md)を参照ください。
+`for-in` ループについては、[Control FLow(制御フロー)](control-flow.md)を参照ください。
 
 ### Half-Open Range Operator\(半開範囲演算子\)
 
@@ -329,7 +329,7 @@ for i in 0..<count {
 // Person 4 is called Jack
 ```
 
-この配列は 4 つの要素が含まれていますが、`0..<count` は半開範囲演算子なので `3`\(配列の最後のインデックス\)までしかカウントしないことに注目してください。配列については、[Arrays](collection-types.md#arrays)を参照ください。
+この配列は 4 つの要素が含まれていますが、`0..<count` は半開範囲演算子なので `3`\(配列の最後のインデックス\)までしかカウントしないことに注目してください。配列については、[Arrays(配列)](collection-types.md#arrays)を参照ください。
 
 ### One-Sided Ranges\(片側範囲演算子\)
 

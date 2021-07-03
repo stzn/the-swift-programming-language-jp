@@ -4,12 +4,12 @@
 
 Swift は、配列、セット、辞書と呼ばれる 3 つの基本的な*コレクション型*を提供しています。配列は順序が決まったコレクションです。セットは値の重複と順序のないコレクションです。辞書はキーとバリューに関連性を持たせた順序のないコレクションです。
 
-![Collection Types](../.gitbook/assets/collectiontypes_intro_2x.png)
+![Collection Types(コレクション型)](../.gitbook/assets/collectiontypes_intro_2x.png)
 
 Swift の配列、セット、辞書は、常に保持しているキーやバリューの型が明確です。つまり、間違った型の値を挿入することができません。これは、コレクションから取得する値の型がはっきりとわかっていることにもなります。
 
 > NOTE  
-> Swift の配列、セット、辞書は、*ジェネリックなコレクション*として実装されています。ジェネリックな型やコレクションについての詳細は[Generics](generics.md)を参照ください。
+> Swift の配列、セット、辞書は、*ジェネリックなコレクション*として実装されています。ジェネリックな型やコレクションについての詳細は[Generics(ジェネリクス)](generics.md)を参照ください。
 
 ## Mutability of Collections\(コレクションの可変性\)
 
@@ -229,7 +229,7 @@ for (index, value) in shoppingList.enumerated() {
 // Item 5: Bananas
 ```
 
-`for-in` ループについては、[For-In Loops](control-flow.md#for-in-loopsFor-Inループ)を参照ください。
+`for-in` ループについては、[For-In Loops(For-In ループ)](control-flow.md#for-in-loopsFor-Inループ)を参照ください。
 
 ## Sets\(セット\)
 
@@ -241,10 +241,10 @@ for (index, value) in shoppingList.enumerated() {
 
 セットに保存する型はハッシュ化が可能でなければなりません。つまり、その型はハッシュ値を計算する方法をセットに知らせる必要があります。ハッシュ値は、`Int` 型で、等価比較が可能な全てのオブジェクトで、例えば `a == b` の場合、`a` のハッシュ値は `b` のハッシュ値と等しくなります。
 
-Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デフォルトでハッシュ化が可能で、セットや辞書のキーに使用することができます。関連値を持たない列挙型のケース\([Enumerations](enumerations.md)\)もデフォルトでハッシュ化が可能です。
+Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デフォルトでハッシュ化が可能で、セットや辞書のキーに使用することができます。関連値を持たない列挙型のケース\([Enumerations(列挙型)](enumerations.md)\)もデフォルトでハッシュ化が可能です。
 
 > NOTE  
-> Swift 標準ライブラリの `Hashable` プロトコルに準拠することで、独自で作成した型をセットや辞書のキーに使用できます。`hash(into:)` メソッドの実装については、[Hashable](https://developer.apple.com/documentation/swift/hashable)を参照ください。プロトコルの準拠については、[Protocols](protocols.md)を参照ください。
+> Swift 標準ライブラリの `Hashable` プロトコルに準拠することで、独自で作成した型をセットや辞書のキーに使用できます。`hash(into:)` メソッドの実装については、[Hashable](https://developer.apple.com/documentation/swift/hashable)を参照ください。プロトコルの準拠については、[Protocols(プロトコル)](protocols.md)を参照ください。
 
 ### Set Type Syntax\(セット型構文\)
 
@@ -362,7 +362,7 @@ for genre in favoriteGenres {
 // Hip hop
 ```
 
-`for-in` ループについては、[For-In Loops](control-flow.md#for-in-loopsFor-Inループ)を参照ください。
+`for-in` ループについては、[For-In Loops(For-In ループ)](control-flow.md#for-in-loops)を参照ください。
 
 Swift の Set 型は決まった順序がありません。特定の順番で値を繰り返し処理したい場合、`sorted()` メソッドを使用すると、`<` 演算子を使用してソートされた配列として要素を返します。
 
@@ -610,7 +610,7 @@ for (airportCode, airportName) in airports {
 // YYZ: Toronto Pearson
 ```
 
-`for-in` ループについては、[For-In Loops](control-flow.md#for-in-loopsFor-Inループ)を参照ください。
+`for-in` ループについては、[For-In Loops(For-In ループ)](control-flow.md#for-in-loopsFor-Inループ)を参照ください。
 
 `keys` と `values` プロパティを使用して、キーとバリューそれぞれのリストを取得することもできます:
 

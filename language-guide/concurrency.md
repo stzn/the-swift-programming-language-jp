@@ -67,7 +67,7 @@ show(photo)
 
 * 非同期の関数、メソッド、プロパティの本文
 * `@main` でマークされている構造体、クラス、または列挙型の `static main()` メソッド内
-* 下記の[Unstructured Concurrency](concurrency.md#unstructured-concurrency非構造同時並行処理)で示す独立した子タスク\(_child task_\)のコード
+* 下記の[Unstructured Concurrency(非構造同時並行処理)](concurrency.md#unstructured-concurrency非構造同時並行処理)で示す独立した子タスク\(_child task_\)のコード
 
 > NOTE  
 > `Task.sleep(_:)` メソッドは、同時並行処理が機能する方法を学ぶために簡単なコードを書くときに役立ちます。このメソッドは何もしませんが、それがリターンする前に少なくとも指定されたナノ秒数処理を待ちます。下記は、ネットワーク操作の待機をシミュレートするために `sleep()` を使用する `listPhotos(inGallery:)` 関数のバージョンです。
@@ -178,7 +178,7 @@ Swift の同時並行処理は協調キャンセルモデル\(_cooperative cance
 
 ## Actors\(アクター\)
 
-クラスのように、アクター\(_actors_\)は参照型なので、[Classes Are Reference Types](structures-and-classes.md#classes-are-reference-typesclassは参照型)の中の値型と参照型の比較はアクターにも当てはまります。しかし、クラスとは異なり、アクターの可変状態\(_mutable state_\)にアクセスできるのは一度に 1 つのタスクだけです。これにより、複数のタスクが、同じアクターのインスタンスとやり取りする必要があるコードでも、安全にアクセスできるようになります。例えば、下記は気温を記録するアクターです:
+クラスのように、アクター\(_actors_\)は参照型なので、[Classes Are Reference Types(クラスは参照型)](structures-and-classes.md#classes-are-reference-typesクラスは参照型)の中の値型と参照型の比較はアクターにも当てはまります。しかし、クラスとは異なり、アクターの可変状態\(_mutable state_\)にアクセスできるのは一度に 1 つのタスクだけです。これにより、複数のタスクが、同じアクターのインスタンスとやり取りする必要があるコードでも、安全にアクセスできるようになります。例えば、下記は気温を記録するアクターです:
 
 ```swift
 actor TemperatureLogger {

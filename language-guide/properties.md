@@ -14,7 +14,7 @@
 
 最もシンプルな形式だと、*格納プロパティ*は、特定のクラスまたは構造体のインスタンスの一部として保存される定数または変数です。格納プロパティは、変数格納プロパティ\(`var` キーワードを使用\)または定数格納プロパティ\(`let` キーワードを使用\) のいずれかです。
 
-[Default Property Values](initialization.md#default-property-valuesデフォルトのプロパティ値)で説明されているように、格納プロパティのデフォルト値をその定義の一部として設定できます。また、初期化中に格納プロパティに初期値の設定や変更もできます。これは、[Assigning Constant Properties During Initialization](initialization.md#assigning-constant-properties-during-initialization初期化中の定数プロパティへの値の設定)で説明されているように、定数の格納プロパティにも当てはまります。
+[Default Property Values(デフォルトのプロパティ値)](initialization.md#default-property-valuesデフォルトのプロパティ値)で説明されているように、格納プロパティのデフォルト値をその定義の一部として設定できます。また、初期化中に格納プロパティに初期値の設定や変更もできます。これは、[Assigning Constant Properties During Initialization(初期化中の定数プロパティへの値の設定)](initialization.md#assigning-constant-properties-during-initialization初期化中の定数プロパティへの値の設定)で説明されているように、定数の格納プロパティにも当てはまります。
 
 下記の例では、`FixedLengthRange` という構造体を定義しています。これは、作成後に範囲の長さを変更できない整数の範囲を表します。
 
@@ -197,7 +197,7 @@ struct CompactRect {
 }
 ```
 
-get からの戻り値の省略は、[Functions With an Implicit Return](functions.md#functions-with-an-implicit-return暗黙的な戻り値がある関数)で説明されているように、関数からの戻り値を省略した場合と同じ規則に従います。
+get からの戻り値の省略は、[Functions With an Implicit Return(暗黙的な戻り値がある関数)](functions.md#functions-with-an-implicit-return暗黙的な戻り値がある関数)で説明されているように、関数からの戻り値を省略した場合と同じ規則に従います。
 
 ### Read-Only Computed Properties\(読み取り専用計算プロパティ\)
 
@@ -232,7 +232,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 * 継承した格納プロパティ
 * 継承した計算プロパティ
 
-継承したプロパティの場合、サブクラスでそのプロパティをオーバーライドすることにより、プロパティオブザーバを追加します。自身で定義した計算プロパティの場合、オブザーバを作成する代わりに、set を使用して値の変更を監視し、応答します。プロパティのオーバーライドについては、[Overriding](inheritance.md#overridingオーバーライド)オーバーライドで説明されています。
+継承したプロパティの場合、サブクラスでそのプロパティをオーバーライドすることにより、プロパティオブザーバを追加します。自身で定義した計算プロパティの場合、オブザーバを作成する代わりに、set を使用して値の変更を監視し、応答します。プロパティのオーバーライドについては、[Overriding(オーバーライド)](inheritance.md#overridingオーバーライド)で説明されています。
 
 プロパティにこれらのオブザーバの下記のいずれかまたは両方を定義できます:
 
@@ -244,7 +244,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 同様に、`didSet` オブザーバを実装する場合、古いプロパティ値を含む定数パラメータが渡されます。パラメータに名前を付けるか、`oldValue` というデフォルトパラメータ名を使用できます。独自の `didSet` オブザーバ内のプロパティに値を割り当てると、新しい値によって、設定されたばかりの値が置き換えられます。
 
 > NOTE  
-> スーパークラスのプロパティの `willSet` および `didSet` オブザーバは、プロパティがサブクラスのイニシャライザで設定されると、スーパークラスのイニシャライザが呼び出された後に呼び出されます。スーパークラスのイニシャライザが呼び出される前に、サブクラスが独自のプロパティを設定している間は呼び出されません。 イニシャライザの委譲については、[Initializer Delegation for Value Types](initialization.md#initializer-delegation-for-value-types値型のイニシャライザの委譲)、[Initializer Delegation for Class Types](initialization.md#initializer-delegation-for-class-typesクラス型のイニシャライザの委譲)を参照ください。
+> スーパークラスのプロパティの `willSet` および `didSet` オブザーバは、プロパティがサブクラスのイニシャライザで設定されると、スーパークラスのイニシャライザが呼び出された後に呼び出されます。スーパークラスのイニシャライザが呼び出される前に、サブクラスが独自のプロパティを設定している間は呼び出されません。 イニシャライザの委譲については、[Initializer Delegation for Value Types(値型のイニシャライザの委譲)](initialization.md#initializer-delegation-for-value-types値型のイニシャライザの委譲)、[Initializer Delegation for Class Types(クラス型のイニシャライザの委譲)](initialization.md#initializer-delegation-for-class-typesクラス型のイニシャライザの委譲)を参照ください。
 
 `willSet` と `didSet` の使用例を次に示します。下記の例では、`StepCounter` という名前の新しいクラスを定義しています。これは、人の合計歩数を追跡します。このクラスは、万歩計からの入力データやその他の日常生活での運動を追跡する歩数計に使われます。
 
@@ -282,7 +282,7 @@ stepCounter.totalSteps = 896
 `didSet` オブザーバは、`totalSteps` の値が更新された後に呼び出されます。これは、`totalSteps` の新しい値を古い値と比較します。合計ステップ数が増えると、新しく何ステップ増えたかを示すメッセージが出力されます。`didSet` オブザーバは古い値のカスタムパラメータ名を提供せず、代わりに `oldValue` のデフォルト名が使用されます。
 
 > NOTE  
-> オブザーバを持つプロパティを関数に入出力パラメータとして渡すと、`willSet` および `didSet` オブザーバが常に呼び出されます。これは、入出力パラメータのコピーインコピーアウト\(copy-in copy-out\)メモリモデルによるものです。値は常に関数の最後でプロパティに書き戻されます。入出力パラメータの動作の詳細については、[In-Out Parameters](../language-reference/declarations.md#in-Out-parametersIn-Outパラメータ)を参照ください。
+> オブザーバを持つプロパティを関数に入出力パラメータとして渡すと、`willSet` および `didSet` オブザーバが常に呼び出されます。これは、入出力パラメータのコピーインコピーアウト\(copy-in copy-out\)メモリモデルによるものです。値は常に関数の最後でプロパティに書き戻されます。入出力パラメータの動作の詳細については、[In-Out Parameters(In-Out パラメータ)](../language-reference/declarations.md#in-Out-parametersIn-Outパラメータ)を参照ください。
 
 ## Property Wrappers\(プロパティラッパ\)
 
@@ -304,7 +304,7 @@ struct TwelveOrLess {
 set は新しい値が `12` 未満だと確認し、get は格納された値を返します。
 
 > NOTE  
-> 上記の例の `number` の宣言は、変数を `private` としてマークします。これにより、`number` は `TwelveOrLess` の実装でのみ使用されます。それ以外の場所に記述されたコードは、`wrappedValue` のプロパティの get/set を通して値にアクセスし、数値を直接使用することはできません。`private` については、[Access Control](access-control.md)を参照ください。
+> 上記の例の `number` の宣言は、変数を `private` としてマークします。これにより、`number` は `TwelveOrLess` の実装でのみ使用されます。それ以外の場所に記述されたコードは、`wrappedValue` のプロパティの get/set を通して値にアクセスし、数値を直接使用することはできません。`private` については、[Access Control(アクセスコントロール)](access-control.md)を参照ください。
 
 プロパティラッパを適用するには、属性としてプロパティの前にラッパの名前を記述します。`TwelveOrLess` プロパティラッパを使用して、大きさが常に `12` 以下になるようにする四角形を格納する構造体を次に示します。
 
@@ -378,7 +378,7 @@ struct SmallNumber {
 }
 ```
 
-`SmallNumber` の定義には、`init()`、`init(wrappedValue:)`、および `init(wrappedValue:maximum:)` の 3 つのイニシャライザが含まれています。下記の例では、これらのイニシャライザを使用して、ラップされた値と最大値を設定します。イニシャライザとその構文については、[Initialization](initialization.md)を参照ください。
+`SmallNumber` の定義には、`init()`、`init(wrappedValue:)`、および `init(wrappedValue:maximum:)` の 3 つのイニシャライザが含まれています。下記の例では、これらのイニシャライザを使用して、ラップされた値と最大値を設定します。イニシャライザとその構文については、[Initialization(初期化)](initialization.md)を参照ください。
 
 プロパティラッパを適用し、初期値を指定しない場合、Swift は `init()` を使用してラッパを設定します。例えば:
 

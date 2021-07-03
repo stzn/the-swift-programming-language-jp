@@ -202,10 +202,10 @@ class SomeClass: SomeProtocol {
 
 `required` 修飾子を使用すると、準拠するクラスの全てのサブクラスで、イニシャライザ要件を明示的に実装または継承して、プロトコルに準拠する必要があります。
 
-`required` イニシャライザの詳細については、[Required Initializers](initialization.md#required-initializers必須イニシャライザ)を参照ください。
+`required` イニシャライザの詳細については、[Required Initializers(必須イニシャライザ)](initialization.md#required-initializers必須イニシャライザ)を参照ください。
 
 > NOTE  
-> `final` クラスはサブクラス化できないため、 `final` 修飾子でマークされているクラスでは、プロトコルのイニシャライザの実装を `required` 修飾子でマークする必要はありません。`final` 修飾子の詳細については、[Preventing Overrides](initialization.md#preventing-overridesオーバーライドを防ぐ)を参照ください。
+> `final` クラスはサブクラス化できないため、 `final` 修飾子でマークされているクラスでは、プロトコルのイニシャライザの実装を `required` 修飾子でマークする必要はありません。`final` 修飾子の詳細については、[Preventing Overrides(オーバーライドを防ぐ)](initialization.md#preventing-overridesオーバーライドを防ぐ)を参照ください。
 
 サブクラスがスーパークラスからの指定イニシャライザをオーバーライドし、そのイニシャライザがプロトコル要件も満たす場合、`required` 修飾子と `override` 修飾子の両方でイニシャライザの実装をマークします:
 
@@ -230,7 +230,7 @@ class SomeSubClass: SomeSuperClass, SomeProtocol {
 
 ### Failable Initializer Requirements\(失敗可能イニシャライザ要件\)
 
-プロトコルは、[Failable Initializers](initialization.md#failable-initializers失敗可能イニシャライザ)で定義されているように、失敗可能イニシャライザ要件を定義できます。
+プロトコルは、[Failable Initializers(失敗可能イニシャライザ)](initialization.md#failable-initializers失敗可能イニシャライザ)で定義されているように、失敗可能イニシャライザ要件を定義できます。
 
 失敗可能イニシャライザ要件は、準拠する型の失敗可能または失敗しないイニシャライザによって満たされます。失敗しないイニシャライザ要件は、失敗しないイニシャライザまたは暗黙的にアンラップされた失敗可能イニシャライザによって満たされます。
 
@@ -265,7 +265,7 @@ class Dice {
 
 この例では、ボードゲームで使用する n 面のサイコロを表す `Dice` という新しいクラスを定義しています。`Dice` のインスタンスには、側面の数を表す `sides` と呼ばれる整数のプロパティと、ダイスの出目を作成するための乱数ジェネレータを提供する `generator` と呼ばれるプロパティがあります。
 
-`generator` プロパティの型は `RandomNumberGenerator` です。したがって、`RandomNumberGenerator` プロトコルに準拠する任意の型のインスタンスを設定できます。このプロパティに割り当てるインスタンスには、インスタンスが `RandomNumberGenerator` プロトコルに準拠する必要があることを除いて、他に何も必要ありません。型は `RandomNumberGenerator` なので、`Dice` クラス内のコードは、このプロトコルに準拠する `generator` のみを使用できます。つまり、その具体的なジェネレータの型で定義されているメソッドやプロパティを使用することはできません。ただし、[Downcasting](type-casting.md#downcastingダウンキャスト)で説明されているように、スーパークラスからサブクラスにダウンキャストできるのと同じ方法で、プロトコル型から準拠した具体的な型にダウンキャストできます。
+`generator` プロパティの型は `RandomNumberGenerator` です。したがって、`RandomNumberGenerator` プロトコルに準拠する任意の型のインスタンスを設定できます。このプロパティに割り当てるインスタンスには、インスタンスが `RandomNumberGenerator` プロトコルに準拠する必要があることを除いて、他に何も必要ありません。型は `RandomNumberGenerator` なので、`Dice` クラス内のコードは、このプロトコルに準拠する `generator` のみを使用できます。つまり、その具体的なジェネレータの型で定義されているメソッドやプロパティを使用することはできません。ただし、[Downcasting(ダウンキャスト)](type-casting.md#downcastingダウンキャスト)で説明されているように、スーパークラスからサブクラスにダウンキャストできるのと同じ方法で、プロトコル型から準拠した具体的な型にダウンキャストできます。
 
 `Dice` には、初期状態を設定するためのイニシャライザもあります。このイニシャライザには、`RandomNumberGenerator` 型の `generator` と呼ばれるパラメータがあります。新しい `Dice` インスタンスを初期化するときに、このパラメータに `RandomNumberGenerator` に準拠する型の値を渡すことができます。
 
@@ -305,9 +305,9 @@ protocol DiceGameDelegate: AnyObject {
 
 `DiceGame` プロトコルは、サイコロを使用する全てのゲームに準拠できるプロトコルです。
 
-`DiceGameDelegate` プロトコルは、`DiceGame` の進行状況を追跡するために準拠できます。*強参照*循環を防ぐために、デリゲートは*弱参照*として宣言されます。弱参照については、[Strong Reference Cycles Between Class Instances](automatic-reference-counting.md#strong-reference-cycles-between-class-instancesクラスインスタンス間の強参照循環)を参照ください。プロトコルをクラス専用としてマークすると、この章の後半で登場する `SnakesAndLadders` クラスがそのデリゲートを弱参照で使用しなければならないことを宣言できるようになります。クラス専用プロトコルは、[Class-Only Protocols](protocols.md#class-only-protocolsクラス専用プロトコル)で説明されているように、`AnyObject` を継承します。
+`DiceGameDelegate` プロトコルは、`DiceGame` の進行状況を追跡するために準拠できます。*強参照*循環を防ぐために、デリゲートは*弱参照*として宣言されます。弱参照については、[Strong Reference Cycles Between Class Instances(クラスインスタンス間の強参照循環)](automatic-reference-counting.md#strong-reference-cycles-between-class-instancesクラスインスタンス間の強参照循環)を参照ください。プロトコルをクラス専用としてマークすると、この章の後半で登場する `SnakesAndLadders` クラスがそのデリゲートを弱参照で使用しなければならないことを宣言できるようになります。クラス専用プロトコルは、[Class-Only Protocols(クラス専用プロトコル)](protocols.md#class-only-protocolsクラス専用プロトコル)で説明されているように、`AnyObject` を継承します。
 
-これは、最初に [Control Flow](control-flow.md) で紹介した「蛇とはしごゲーム」の別バージョンです。このバージョンは、ダイスロールに `Dice` インスタンスを使用しています。`SnakesAndLadders` は `DiceGame` プロトコルに準拠し、その進行状況を `DiceGameDelegate` に通知します:
+これは、最初に [Control Flow(制御フロー)](control-flow.md) で紹介した「蛇とはしごゲーム」の別バージョンです。このバージョンは、ダイスロールに `Dice` インスタンスを使用しています。`SnakesAndLadders` は `DiceGame` プロトコルに準拠し、その進行状況を `DiceGameDelegate` に通知します:
 
 ```swift
 class SnakesAndLadders: DiceGame {
@@ -399,7 +399,7 @@ game.play()
 
 ## Adding Protocol Conformance with an Extension\(拡張機能を使ったプロトコル準拠の追加\)
 
-既存の型のソースコードにアクセスできない場合でも、既存の型を拡張して新しいプロトコルに準拠させることができます。extension は、新しいプロパティ、メソッド、および subscript を既存の型に追加できるため、プロトコルの要件を追加できます。拡張機能の詳細については、[Extensions](extensions.md)を参照ください。
+既存の型のソースコードにアクセスできない場合でも、既存の型を拡張して新しいプロトコルに準拠させることができます。extension は、新しいプロパティ、メソッド、および subscript を既存の型に追加できるため、プロトコルの要件を追加できます。拡張機能の詳細については、[Extensions(拡張)](extensions.md)を参照ください。
 
 > NOTE  
 > 型の既存のインスタンスは、extension でそのインスタンスの型がプロトコルに準拠すると、自動的にプロトコルに準拠します。
@@ -446,7 +446,7 @@ print(game.textualDescription)
 
 ### Conditionally Conforming to a Protocol\(条件付きでのプロトコルへの準拠\)
 
-ジェネリック型は、型のジェネリックパラメータがプロトコルに準拠している場合など、特定の条件下でのみプロトコルの要件を満たすことができるようにします。型を拡張するときに制約を並べることで、ジェネリック型を条件付きでプロトコルに準拠させることができます。`where` 句を記述して、準拠するプロトコルの名前の後にこれらの制約を記述します。ジェネリック `where` 句の詳細については、[Generic Where Clauses](generics.md#generic-where-clauses)を参照ください。
+ジェネリック型は、型のジェネリックパラメータがプロトコルに準拠している場合など、特定の条件下でのみプロトコルの要件を満たすことができるようにします。型を拡張するときに制約を並べることで、ジェネリック型を条件付きでプロトコルに準拠させることができます。`where` 句を記述して、準拠するプロトコルの名前の後にこれらの制約を記述します。ジェネリック `where` 句の詳細については、[Generic Where Clauses(ジェネリック where 句)](generics.md#generic-where-clausesジェネリックwhere句)を参照ください。
 
 次の拡張により、`Array` インスタンスが `TextRepresentable` に準拠する型の要素を格納する場合は、常に `TextRepresentable` プロトコルに準拠するようになります:
 
@@ -546,7 +546,7 @@ for level in levels.sorted() {
 
 ## Collections of Protocol Types\(プロトコル型のコレクション\)
 
-プロトコルは、[Protocols as Types](protocols.md#protocols-as-types型としてのプロトコル)で説明されているように、配列や辞書などのコレクションに格納される型として使用できます。この例では、`TextRepresentable` の配列を作成します。
+プロトコルは、[Protocols as Types(型としてのプロトコル)](protocols.md#protocols-as-types型としてのプロトコル)で説明されているように、配列や辞書などのコレクションに格納される型として使用できます。この例では、`TextRepresentable` の配列を作成します。
 
 ```swift
 let things: [TextRepresentable] = [game, d12, simonTheHamster]
@@ -634,7 +634,7 @@ protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
 上記の例では、`SomeClassOnlyProtocol` はクラス型でのみ準拠できます。`SomeClassOnlyProtocol` に準拠しようとする構造体または列挙型の定義を作成すると、コンパイルエラーになります。
 
 > NOTE  
-> そのプロトコルの要件によって定義された動作が、準拠する型が値型のセマンティクスではなく参照型のセマンティクスであることを想定\(要求\)する場合は、クラス専用プロトコルを使用してください。参照型と値型のセマンティクスの詳細については、[Structures and Enumerations Are Value Types](structures-and-classes.md#structures-and-enumerations-are-value-types構造体と列挙型は値型)、[Classes Are Reference Types](structures-and-classes.md#classes-are-reference-typesclassは参照型)を参照ください。
+> そのプロトコルの要件によって定義された動作が、準拠する型が値型のセマンティクスではなく参照型のセマンティクスであることを想定\(要求\)する場合は、クラス専用プロトコルを使用してください。参照型と値型のセマンティクスの詳細については、[Structures and Enumerations Are Value Types(構造体と列挙型は値型)](structures-and-classes.md#structures-and-enumerations-are-value-types構造体と列挙型は値型)、[Classes Are Reference Types(クラスは参照型)](structures-and-classes.md#classes-are-reference-typesクラスは参照型)を参照ください。
 
 ## Protocol Composition\(プロトコル合成\)
 
@@ -702,7 +702,7 @@ beginConcert(in: seattle)
 
 ## Checking for Protocol Conformance\(プロトコル準拠チェック\)
 
-[Type Casting](type-casting.md)で説明されている `is` および `as` 演算子を使用して、プロトコルの準拠を確認し、特定のプロトコルにキャストできます。プロトコルのチェックと型へのキャストは、型のチェックやキャストとまったく同じ構文を使用します。
+[Type Casting(型キャスト)](type-casting.md)で説明されている `is` および `as` 演算子を使用して、プロトコルの準拠を確認し、特定のプロトコルにキャストできます。プロトコルのチェックと型へのキャストは、型のチェックやキャストとまったく同じ構文を使用します。
 
 * `is` 演算子は、インスタンスがプロトコルに準拠している場合は `true` を返し、準拠していない場合は `false` を返します
 * ダウンキャスト演算子の `as?` は、プロトコルの型のオプショナル値を返します。インスタンスがそのプロトコルに準拠していない場合、この値は `nil` です
@@ -786,7 +786,7 @@ for object in objects {
 
 オプショナルの要件でメソッドまたはプロパティを使用すると、その型は自動的にオプショナルになります。たとえば、`(Int) -> String` 型のメソッドは `((Int) -> String)?` になります。メソッドの戻り値ではなく、関数型全体がオプショナルになっていることに注目してください。
 
-プロトコルに準拠する型によって要件が実装されていない可能性を考慮して、オプショナルのプロトコル要件をオプショナルチェーンで呼び出すことができます。オプショナルメソッドの実装を確認するには、メソッドの呼び出し時にメソッド名の後に疑問符(`?`)を記述します(`someOptionalMethod?(someArgument)` など)。オプショナルチェーンについては、[Optional Chaining](./optional-chaining.md)を参照ください。
+プロトコルに準拠する型によって要件が実装されていない可能性を考慮して、オプショナルのプロトコル要件をオプショナルチェーンで呼び出すことができます。オプショナルメソッドの実装を確認するには、メソッドの呼び出し時にメソッド名の後に疑問符(`?`)を記述します(`someOptionalMethod?(someArgument)` など)。オプショナルチェーンについては、[Optional Chaining(オプショナルチェーン)](./optional-chaining.md)を参照ください。
 
 次の例では、`Counter` という整数をカウントするクラスを定義しています。これは、外部データソースを使用して増分量を提供します。このデータソースは、次の 2 つのオプショナルの要件がある `CounterDataSource` プロトコルによって定義されます:
 
@@ -824,7 +824,7 @@ class Counter {
 
 ここでは、2 つの階層のオプショナルチェーンが行われていることに注目してください。まず、`dataSource` が `nil` の可能性があるため、`dataSource` にはその名前の後に疑問符(`?`)があり、`dataSource` が `nil` でない場合にのみ `increment(forCount:)` を呼び出す必要があることを示しています。次に、`dataSource` が存在する場合でも、`increment(forCount:)` がオプショナルのため、必ず実装されている保証はありません。ここで、`increment(forCount:)` が実装されない可能性も、オプショナルチェーンによって処理されます。`increment(forCount:)` の呼び出しは、`increment(forCount:)` が存在する場合、つまり `nil` でない場合にのみ発生します。これが `increment(forCount:)` にも名前の後に疑問符が付いている理由です。
 
-`increment(forCount:)` の呼び出しはこれら 2 つの理由のいずれかで失敗する可能性があるため、呼び出しはオプショナルの `Int` 値を返します。これは、`CounterDataSource` の定義で `increment(forCount:)` がオプショナルではない `Int` 値を返すように定義されている場合でも当てはまります。オプショナルチェーンは 2 回行われていますが、結果は 1 つのオプショナルにラップされます。複数のオプショナルチェーンの詳細については、[Linking Multiple Levels of Chaining](./optional-chaining.md#linking-multiple-levels-of-chaining複数階層のチェーンへのリンク)を参照ください。
+`increment(forCount:)` の呼び出しはこれら 2 つの理由のいずれかで失敗する可能性があるため、呼び出しはオプショナルの `Int` 値を返します。これは、`CounterDataSource` の定義で `increment(forCount:)` がオプショナルではない `Int` 値を返すように定義されている場合でも当てはまります。オプショナルチェーンは 2 回行われていますが、結果は 1 つのオプショナルにラップされます。複数のオプショナルチェーンの詳細については、[Linking Multiple Levels of Chaining(複数階層のチェーンへのリンク)](./optional-chaining.md#linking-multiple-levels-of-chaining複数階層のチェーンへのリンク)を参照ください。
 
 `increment(forCount:)` を呼び出した後、それが返すオプショナルの `Int` は、オプショナルバインディングを使用して、`amount` という定数にアンラップされます。オプショナルの `Int` に値が含まれている場合、つまり、デリゲートとメソッドの両方が存在し、メソッドが値を返した場合、`count` 格納プロパティに値が追加され、増加の動作が完了します。
 
@@ -934,7 +934,7 @@ extension PrettyTextRepresentable  {
 
 ### Adding Constraints to Protocol Extensions\(プロトコル Extensionに制約の追加\)
 
-プロトコル Extension を定義するとき、準拠する型が拡張したメソッドとプロパティを使用できる前に、その型が満たす必要がある制約を指定できます。これらの制約は、拡張するプロトコルの名前の後のジェネリックの `where` 句によって記述されます。ジェネリック `where` 句の詳細については、[Generic Where Clauses](generics.md#generic-where-clausesジェネリックwhere句)を参照ください。
+プロトコル Extension を定義するとき、準拠する型が拡張したメソッドとプロパティを使用できる前に、その型が満たす必要がある制約を指定できます。これらの制約は、拡張するプロトコルの名前の後のジェネリックの `where` 句によって記述されます。ジェネリック `where` 句の詳細については、[Generic Where Clauses(ジェネリック where 句)](generics.md#generic-where-clausesジェネリックwhere句)を参照ください。
 
 例えば、要素が `Equatable` プロトコルに準拠しているコレクションに適用される `Collection` プロトコルの拡張を定義できます。コレクションの要素を標準ライブラリの `Equatable` プロトコルに制約することで、`==` および `!=` 演算子を使用して、2 つの要素間の等価性と不等価性をチェックできます:
 

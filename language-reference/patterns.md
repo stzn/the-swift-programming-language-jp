@@ -168,7 +168,7 @@ for case let number? in arrayOfOptionalInts {
 
 `as` パターンは、実行時の値の種類が、`as` パターンの右側に指定された型、またはその型のサブクラスと同じ型の場合に、値と一致します。一致した場合、値の種類は、`as` パターンの右側に指定された *pattern* にキャストされます。
 
-`switch` 文を使用して `is` パターンを一致させる例については、[Type Casting for Any and AnyObject](./../language-guide/type-casting.md#type-casting-for-any-and-anyObjectAnyおよびAnyObjectの型キャスト)を参照ください。
+`switch` 文を使用して `is` パターンを一致させる例については、[Type Casting for Any and AnyObject(Any および AnyObject の型キャスト)](./../language-guide/type-casting.md#type-casting-for-any-and-anyObjectAnyおよびAnyObjectの型キャスト)を参照ください。
 
 > GRAMMAR OF A TYPE CASTING PATTERN  
 > type-casting-pattern → [is-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_is-pattern) \|  [as-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_as-pattern)  

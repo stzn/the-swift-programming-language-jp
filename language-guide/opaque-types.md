@@ -135,7 +135,7 @@ print(opaqueJoinedTriangles.draw())
 // *
 ```
 
-この例の `opaqueJoinedTriangles` の値は、この章の前半の[The Problem That Opaque Types Solve](#the-problem-that-opaque-types-solveopaque-型が解決する問題)セクションのジェネリクスの例の `joinedTriangles` と同じです。ただし、その例の値とは異なり、`flip(_:)` と `join(_:_:)` は、ジェネリックな形状の操作が返す基本的な型を Opaque でラップし、それらの型が外部からは見えないようにしています。どちらの関数も、依存する型がジェネリックなのでジェネリック関数で、型パラメータは `FlippedShape` と `JoinedShape` に必要な型情報を渡します。
+この例の `opaqueJoinedTriangles` の値は、この章の前半の[The Problem That Opaque Types Solve(Opaque 型が解決する問題)](#the-problem-that-opaque-types-solveOpaque型が解決する問題)セクションのジェネリクスの例の `joinedTriangles` と同じです。ただし、その例の値とは異なり、`flip(_:)` と `join(_:_:)` は、ジェネリックな形状の操作が返す基本的な型を Opaque でラップし、それらの型が外部からは見えないようにしています。どちらの関数も、依存する型がジェネリックなのでジェネリック関数で、型パラメータは `FlippedShape` と `JoinedShape` に必要な型情報を渡します。
 
 Opaque な戻り値の型を持つ関数が複数の場所から呼び出される場合、返す可能性のある戻り値は全て同じ型にする必要があります。ジェネリック関数の場合、その戻り値の型は関数のジェネリック型パラメータを使用できますが、それでも単一の型にする必要があります。例えば、正方形の特殊なケースを含む、形状反転関数の無効なバージョンを次に示します:
 
@@ -211,7 +211,7 @@ protoFlippedTriangle == sameThing  // エラー
 
 このアプローチのもう 1 つの問題は、形状変換をネストできないことです。三角形を反転した結果は、`Shape` 型の値で、`protoFlip(_:)` 関数は、`Shape` プロトコルに準拠した何らかの型の引数を取ります。ただし、プロトコル型はそのプロトコル自体に準拠しません。`protoFlip(_:)` によって返される値は `Shape` に準拠していません。これは、反転した形状が `protoFlip(_:)` の有効な引数ではないため、複数の変換を適用する `protoFlip(protoFlip(smallTriange))` のようなコードが無効だということを意味します。
 
-対照的に、Opaque 型は、基になる型情報を保持します。Swift は関連型を推論できるため、プロトコル型を戻り値として使用できない場所で Opaque 型な戻り値の型を使用できます。例えば、これは [Generics](./generics.md)の `Container` プロトコルの別のバージョンです:
+対照的に、Opaque 型は、基になる型情報を保持します。Swift は関連型を推論できるため、プロトコル型を戻り値として使用できない場所で Opaque 型な戻り値の型を使用できます。例えば、これは [Generics(ジェネリクス)](./generics.md)の `Container` プロトコルの別のバージョンです:
 
 ```swift
 protocol Container {
