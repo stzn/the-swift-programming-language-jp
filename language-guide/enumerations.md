@@ -173,7 +173,7 @@ productBarcode = .qrCode("ABCDEFGHIJKLMNOP")
 
 この時点で、元の `Barcode.upc` とその整数値は、新しい `Barcode.qrCode` とその文字列値に置き換えられます。`Barcode` の定数と変数は、`.upc` または `.qrCode` のいずれかを\(関連値とともに\)格納できますが、一度に格納できるのはそのうちの 1 つだけです。
 
-[Matching Enumeration Values with a Switch Statement(switch 文を使った列挙値のパターンマッチング)](enumerations.md#matching-enumeration-values-with-a-switch-statementswitch文を使った列挙値のパターンマッチング)の例と同様に、`switch` 文を使用して様々なバーコード型を確認できます。ただし、今回は、関連値が `switch` 文の一部として抽出されます。`switch` のケースの本文内で使用するために、関連値を定数\(`let` プレフィックス\)または変数\(`var` プレフィックス\)として抽出します。
+<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#matching-enumeration-values-with-a-switch-statementswitch-wottanopatnmatchingu" target="_self">Matching Enumeration Values with a Switch Statement(switch 文を使った列挙値のパターンマッチング)</a>の例と同様に、`switch` 文を使用して様々なバーコード型を確認できます。ただし、今回は、関連値が `switch` 文の一部として抽出されます。`switch` のケースの本文内で使用するために、関連値を定数\(`let` プレフィックス\)または変数\(`var` プレフィックス\)として抽出します。
 
 ```swift
 switch productBarcode {
@@ -199,7 +199,7 @@ case let .qrCode(productCode):
 
 ## Raw Values
 
-[Associated Values(関連値)](enumerations.md#associated-values関連値)のバーコードの例は、列挙ケースが、様々な型に関連値を格納して宣言する方法を示しています。関連値の代わりに、列挙型には、全て同じ型のデフォルト値\(*Raw Values*と呼ばれる\)を事前に定義することもできます。
+<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#associated-values-guan-lian-zhi" target="_self">Associated Values(関連値)</a>のバーコードの例は、列挙ケースが、様々な型に関連値を格納して宣言する方法を示しています。関連値の代わりに、列挙型には、全て同じ型のデフォルト値\(*Raw Values*と呼ばれる\)を事前に定義することもできます。
 
 名前付きの列挙ケースと一緒に ASCII 値を格納する例を次に示します。
 
@@ -270,7 +270,7 @@ let possiblePlanet = Planet(rawValue: 7)
 ただし、全ての `Int` 値が惑星に一致するわけではありません。このため、Raw Value のイニシャライザは常にオプショナルの列挙型を返します。上記の例では、`possiblePlanet` は Planet?`または オプショナルの`Planet`型です。
 
 > NOTE  
-> 全ての Raw Value が列挙型を返すわけではないため、Raw Valueイニシャライザは `nil` を返す可能性があります。詳細については、[Failable Initializers(失敗可能イニシャライザ)](../language-reference/declarations.md#failable-initializers失敗可能イニシャライザ)を参照ください。
+> 全ての Raw Value が列挙型を返すわけではないため、Raw Valueイニシャライザは `nil` を返す可能性があります。詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#failable-initializersinisharaiza" target="_self">Failable Initializers(失敗可能イニシャライザ)</a>を参照ください。
 
 位置が `11` の惑星を見つけようとすると、Raw Value のイニシャライザによって返されるオプショナルの `Planet` は `nil` になります。
 

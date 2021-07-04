@@ -7,7 +7,7 @@
 クロージャは、定数と変数への参照を、それらを定義したコンテキストから*キャプチャ*して保持できます。これは、これらの定数と変数をスコープに*閉じ込める*と呼ばれます。Swift は、キャプチャに関連した全てのメモリ管理を行います。
 
 > NOTE  
-> キャプチャの概念に慣れていなくても心配しないでください。これについては、[Capturing Values(値のキャプチャ)](closures.md#capturing-valuesのキャプチャ)で詳しく説明します。
+> キャプチャの概念に慣れていなくても心配しないでください。これについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#capturing-valuesnokyapucha" target="_self">Capturing Values(値のキャプチャ)</a>で詳しく説明します。
 
 [Functions(関数)](functions.md)で紹介したグローバル関数やネスト関数は、実際にはクロージャの特殊なケースです。クロージャは、次の 3 つの形式のいずれかを取ります:
 
@@ -24,7 +24,7 @@ Swift のクロージャは、一般的に、簡潔で、混乱のない構文�
 
 ## Closure Expressions\(クロージャ式\)
 
-[Nested Functions(ネスト関数)](functions.md#nested-functionsネスト関数)で紹介したネスト関数は、より大きな関数の一部として独立したコードブロックに名前を付けて定義するための便利な手段です。ただし、完全な宣言や名前を書かずに、関数のような構造のより短いバージョンを作成できれば便利な場合もあります。これは、1 つ以上の引数を受け取る関数またはメソッドで特に当てはまります。
+<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#nested-functionsnesuto" target="_self">Nested Functions(ネスト関数)</a>で紹介したネスト関数は、より大きな関数の一部として独立したコードブロックに名前を付けて定義するための便利な手段です。ただし、完全な宣言や名前を書かずに、関数のような構造のより短いバージョンを作成できれば便利な場合もあります。これは、1 つ以上の引数を受け取る関数またはメソッドで特に当てはまります。
 
 *クロージャ式*は、簡潔で明瞭にインラインのクロージャを記述する方法です。クロージャ式は、明確さや意図を失うことなく、省略された形式でクロージャを記述するためのいくつかの最適化を行うことができます。下記に出てくるクロージャ式は、複数回使用される `sorted(by:)` メソッドを、最適化してより簡潔なものに改良した例です。
 
@@ -126,7 +126,7 @@ reversedNames = names.sorted(by: { $0 > $1 } )
 reversedNames = names.sorted(by: >)
 ```
 
-演算子メソッドの詳細については、[Operator Methods(演算子メソッド)](advanced-operators.md#operator-methods演算子メソッド)を参照ください。
+演算子メソッドの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#operator-methodsmesoddo" target="_self">Operator Methods(演算子メソッド)</a>を参照ください。
 
 ## Trailing Closures\(末尾クロージャ\)
 
@@ -150,7 +150,7 @@ someFunctionThatTakesAClosure() {
 }
 ```
 
-上記の[Closure Expression Syntax(クロージャ式構文)](#closure-expression-syntaxクロージャ式構文)の文字列のソートクロージャは、`sorted(by:)` メソッドの括弧の外側に末尾クロージャとして記述できます。
+上記の<a href="#closure-expression-syntaxkurja" target="_self">Closure Expression Syntax(クロージャ式構文)</a>の文字列のソートクロージャは、`sorted(by:)` メソッドの括弧の外側に末尾クロージャとして記述できます。
 
 ```swift
 reversedNames = names.sorted() { $0 > $1 }
@@ -254,7 +254,7 @@ func makeIncrementer(forIncrement amount: Int) -> () -> Int {
 }
 ```
 
-`makeIncrementer` の戻り値の型は `() -> Int` です。これは、シンプルな値ではなく、関数を返すことを意味します。返される関数にはパラメータがなく、呼び出されるたびに `Int` 値を返します。関数が他の関数を返す方法については、[Function Types as Return Types(戻り値の型としての関数型)](functions.md#function-types-as-return-types#戻り値の型としての関数型)を参照ください。
+`makeIncrementer` の戻り値の型は `() -> Int` です。これは、シンプルな値ではなく、関数を返すことを意味します。返される関数にはパラメータがなく、呼び出されるたびに `Int` 値を返します。関数が他の関数を返す方法については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#function-types-as-return-typesrinotoshiteno" target="_self">Function Types as Return Types(戻り値の型としての関数型)</a>を参照ください。
 
 `makeIncrementer(forIncrement:)` 関数は、`runningTotal` と呼ばれる整数の変数を定義して、戻り値として返される `incrementer` の現在の合計を格納します。この変数は値 `0` で初期化されます。
 
@@ -307,7 +307,7 @@ incrementByTen()
 ```
 
 > NOTE  
-> クラスインスタンスのプロパティにクロージャを代入して、クロージャがインスタンスまたはそのメンバを参照して、そのインスタンスをキャプチャする場合、クロージャとインスタンスの間に循環参照\(strong reference cycle\)が作成されます。Swift は、キャプチャリストを使用して、これらの循環参照を防ぎます。詳細については、 [Strong Reference Cycles for Closures(クロージャの強参照循環)](automatic-reference-counting.md#strong-reference-cycles-for-closuresクロージャの強参照循環)を参照ください。
+> クラスインスタンスのプロパティにクロージャを代入して、クロージャがインスタンスまたはそのメンバを参照して、そのインスタンスをキャプチャする場合、クロージャとインスタンスの間に循環参照\(strong reference cycle\)が作成されます。Swift は、キャプチャリストを使用して、これらの循環参照を防ぎます。詳細については、 <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#function-types-as-return-typesrinotoshiteno" target="_self">Strong Reference Cycles for Closures(クロージャの強参照循環)</a>を参照ください。
 
 ## Closures Are Reference Types\(クロージャは参照型\)
 
@@ -382,7 +382,7 @@ class SomeOtherClass {
 }
 ```
 
-`self` が `struct` または `enum` のインスタンスの場合は、いつでも暗黙的に `self` を参照できます。ただし、`self` が `struct` または `enum` のインスタンスの場合、エスケープクロージャは `self` が変更できてしまうような場合、参照はキャプチャできません。[Structures and Enumerations Are Value Types(構造体と列挙型は値型)](structures-and-classes.md#structures-and-enumerations-are-value-types構造体と列挙型は値型)でも説明されているように、`struct` または `enum` は変更可能な値の共有はできません。
+`self` が `struct` または `enum` のインスタンスの場合は、いつでも暗黙的に `self` を参照できます。ただし、`self` が `struct` または `enum` のインスタンスの場合、エスケープクロージャは `self` が変更できてしまうような場合、参照はキャプチャできません。<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#structures-and-enumerations-are-value-typestoha" target="_self">Structures and Enumerations Are Value Types(構造体と列挙型は値型)</a>でも説明されているように、`struct` または `enum` は変更可能な値の共有はできません。
 
 ```swift
 struct SomeStruct {
@@ -446,7 +446,7 @@ serve(customer: customersInLine.remove(at: 0))
 > NOTE  
 > 自動クロージャを使いすぎると、コードが理解しにくくなる可能性があります。コンテキストと関数名で、遅延評価されていることを明確にする必要があります。
 
-エスケープする自動クロージャが必要な場合は、`@autoclosure` 属性と `@escaping` 属性の両方を使用します。`@escaping` 属性については、上記の[Escaping Closures(エスケープクロージャ)](closures.md#escaping-closures)で説明しています。
+エスケープする自動クロージャが必要な場合は、`@autoclosure` 属性と `@escaping` 属性の両方を使用します。`@escaping` 属性については、上記の<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#escaping-closuresesukpukurja" target="_self">Escaping Closures(エスケープクロージャ)</a>で説明しています。
 
 ```swift
 // customersInLine は ["Barry", "Daniella"]

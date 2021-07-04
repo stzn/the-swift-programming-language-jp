@@ -2,17 +2,17 @@
 
 最終更新日: 2021/6/29
 
-初期化\(_Initialization_\)は、使用するクラス、構造体、または列挙型のインスタンスを準備するプロセスです。このプロセスには、そのインスタンスに保存されている各プロパティの初期値の設定と、新しいインスタンスの使用準備が整う前に必要なその他の要素のセットアップや初期化の実行が含まれます。
+*初期化*は、使用するクラス、構造体、または列挙型のインスタンスを準備するプロセスです。このプロセスには、そのインスタンスに保存されている各プロパティの初期値の設定と、新しいインスタンスの使用準備が整う前に必要なその他の要素のセットアップや初期化の実行が含まれます。
 
-この初期化プロセスを実装するには、イニシャライザ\(_initializers_\)を定義します。イニシャライザは、特定の型の新しいインスタンスを作成するために呼び出すことができる特別なメソッドのようなものです。Objective-C のイニシャライザとは異なり、Swift のイニシャライザは値を返しません。主な役割は、型の新しいインスタンスが初めて使用される前に正しく初期化されていることを保証することです。
+この初期化プロセスを実装するには、*イニシャライザ*を定義します。イニシャライザは、特定の型の新しいインスタンスを作成するために呼び出すことができる特別なメソッドのようなものです。Objective-C のイニシャライザとは異なり、Swift のイニシャライザは値を返しません。主な役割は、型の新しいインスタンスが初めて使用される前に正しく初期化されていることを保証することです。
 
-クラス型のインスタンスは、そのクラスのインスタンスが解放される直前にカスタムのクリーンアップを実行するデイニシャライザ\(_deinitializer_\)を実装することもできます。デイニシャライザの詳細については、[Deinitialization(デイニシャライザ)](deinitialization.md)を参照ください。
+クラス型のインスタンスは、そのクラスのインスタンスが解放される直前にカスタムのクリーンアップを実行する*デイニシャライザ*を実装することもできます。デイニシャライザの詳細については、[Deinitialization(デイニシャライザ)](deinitialization.md)を参照ください。
 
 ## Setting Initial Values for Stored Properties\(格納プロパティの初期値の設定\)
 
 クラスと構造体は、そのクラスまたは構造体のインスタンスが作成されるまでに、全ての格納プロパティに適切な初期値を設定する必要があります。格納プロパティは、不確定な状態のままにすることはできません。
 
-イニシャライザ内、またはプロパティの定義の一部としてデフォルトのプロパティ値を割り当てることにより、格納プロパティの初期値を設定できます。これらのアクションについては、次のセクションで説明します。
+イニシャライザ内、またはプロパティの定義の一部としてプロパティのデフォルト値を割り当てることにより、格納プロパティの初期値を設定できます。これらのアクションについては、次のセクションで説明します。
 
 > NOTE  
 > 格納プロパティにデフォルト値を割り当てるか、イニシャライザ内でその初期値を設定すると、プロパティオブザーバを呼び出さずに、そのプロパティに値が直接設定されます。
@@ -43,7 +43,7 @@ print("The default temperature is \(f.temperature)° Fahrenheit")
 
 この構造体はパラメータのない単一のイニシャライザ `init` を定義します。これは、格納された温度を `32.0`\(華氏での水の凝固点\)の値で初期化します。
 
-### Default Property Values\(デフォルトのプロパティ値\)
+### Default Property Values\(プロパティのデフォルト値\)
 
 上記のように、イニシャライザ内から格納プロパティの初期値を設定できます。または、プロパティの宣言の一部として、定義時に初期値を割り当てることで*デフォルトプロパティ値*を指定します。
 
@@ -130,7 +130,7 @@ let veryGreen = Color(0.0, 1.0, 0.0)
 
 初期化パラメータに引数ラベルを使用したくない場合は、そのパラメータの明示的な引数ラベルの代わりにアンダースコア \(`_`\) を記述して、デフォルトの挙動をオーバーライドします。
 
-これは、上記の[Initialization Parameters(イニシャライザのパラメータ)](#initialization-parametersイニシャライザのパラメータ)の `Celsius` の例の拡張バージョンで、すでに摂氏スケールにある `Double` 値から新しい `Celsius` インスタンスを作成する追加のイニシャライザを備えています。
+これは、上記の<a href="#initialization-parametersinisharaizanoparamta" target="_self">Initialization Parameters(イニシャライザのパラメータ)</a>の `Celsius` の例の拡張バージョンで、すでに摂氏スケールにある `Double` 値から新しい `Celsius` インスタンスを作成する追加のイニシャライザを備えています。
 
 ```swift
 struct Celsius {
@@ -252,7 +252,7 @@ print(zeroByZero.width, zeroByZero.height)
 
 イニシャライザは、他のイニシャライザを呼び出して、インスタンスの初期化の一部を実行できます。*イニシャライザの委譲*と呼ばれるこのプロセスは、複数のイニシャライザ間でコードが重複するのを防ぎます。
 
-イニシャライザの委譲がどのように機能するか、および許可される委譲の形式に関する規則は、値型とクラス型で異なります。値型\(構造体と列挙型\)は継承をサポートしていないため、イニシャライザの委譲プロセスは比較的簡単です。ただし、[Inheritance(継承)](inheritance.md)で説明されているように、クラスは他のクラスを継承できます。これは、クラスが継承した全ての格納プロパティに、初期化中に適切な値が割り当てられることを保証する追加の責任があることを意味します。これらの責任は、下記の[Class Inheritance and Initialization(クラスの継承と初期化)](initialization.md#class-inheritance-and-initializationクラスの継承と初期化)で説明されています。
+イニシャライザの委譲がどのように機能するか、および許可される委譲の形式に関する規則は、値型とクラス型で異なります。値型\(構造体と列挙型\)は継承をサポートしていないため、イニシャライザの委譲プロセスは比較的簡単です。ただし、[Inheritance(継承)](inheritance.md)で説明されているように、クラスは他のクラスを継承できます。これは、クラスが継承した全ての格納プロパティに、初期化中に適切な値が割り当てられることを保証する追加の責任があることを意味します。これらの責任は、下記の<a href="#class-inheritance-and-initializationkurasunoto" target="_self">Class Inheritance and Initialization(クラスの継承と初期化)</a>で説明されています。
 
 値型の場合、独自のカスタムイニシャライザを作成するときに、`self.init` を使用して同じ値型から他のイニシャライザを参照します。`self.init` は、イニシャライザ内からのみ呼び出すことができます。
 
@@ -331,7 +331,7 @@ Swift は、クラス型に対して 2 種類のイニシャライザを定義�
 
 複数の指定イニシャライザを持つクラスはあまりなく、1 つだけ持つのが一般的です。指定イニシャライザは、初期化が行われる「漏斗」のような地点で、初期化プロセスはスーパークラスへチェーンして上に向かって続行します。
 
-全てのクラスには、少なくとも 1 つの指定イニシャライザが必要です。場合によっては、この要件は、以下の[Automatic Initializer Inheritance(自動イニシャライザの継承)](initialization.md#automatic-initializer-inheritance自動イニシャライザの継承)で説明されているように、スーパークラスから 1 つ以上の指定イニシャライザを継承することで満たされます。
+全てのクラスには、少なくとも 1 つの指定イニシャライザが必要です。場合によっては、この要件は、以下の<a href="#automatic-initializer-inheritanceinisharaizano" target="_self">Automatic Initializer Inheritance(自動イニシャライザの継承)</a>で説明されているように、スーパークラスから 1 つ以上の指定イニシャライザを継承することで満たされます。
 
 convenience イニシャライザは二次的なもので、クラスのイニシャライザをサポートします。convenience イニシャライザを定義して、指定イニシャライザのパラメータの一部をデフォルト値に設定し、convenience イニシャライザから指定イニシャライザを呼び出すことができます。また、特定のユースケースまたは入力値の型用にそのクラスのインスタンスを作成するために、convenience イニシャライザを定義することもできます。
 
@@ -449,18 +449,18 @@ Swift のコンパイラは、2 段階の初期化がエラーなしで完了し
 Objective-C のサブクラスとは異なり、Swift のサブクラスはデフォルトでスーパークラスのイニシャライザを継承しません。Swift のアプローチは、スーパークラスからのシンプルなイニシャライザが、より具体的なサブクラスによって継承され、完全または正しく初期化されていないサブクラスの新しいインスタンスを作成すること防ぎます。
 
 > NOTE  
-> スーパークラスのイニシャライザは特定の状況で継承できますが、安全で適切な場合に限ります。詳細については、以下の[Automatic Initializer Inheritance(自動イニシャライザの継承)](initialization.md#automatic-initializer-inheritance自動イニシャライザの継承)を参照してください。
+> スーパークラスのイニシャライザは特定の状況で継承できますが、安全で適切な場合に限ります。詳細については、以下の<a href="#automatic-initializer-inheritanceinisharaizano" target="_self">Automatic Initializer Inheritance(自動イニシャライザの継承)</a>を参照してください。
 
 サブクラスでそのスーパークラスの 1 つ以上の同じイニシャライザを使用したい場合、サブクラス内でそれらのイニシャライザをカスタムした実装を提供できます。
 
-スーパークラスの指定イニシャライザに一致するサブクラスのイニシャライザを作成すると、その指定イニシャライザのオーバーライドを効率的に提供することができます。これを行うためには、サブクラスのイニシャライザ定義の前に `override` 修飾子を記述する必要があります。[Default Initializers(デフォルトイニシャライザ)](initialization.md#default-initializersデフォルトイニシャライザ)で説明されているように、これは、自動的に提供されるデフォルトのイニシャライザをオーバーライドする場合にも当てはまります。
+スーパークラスの指定イニシャライザに一致するサブクラスのイニシャライザを作成すると、その指定イニシャライザのオーバーライドを効率的に提供することができます。これを行うためには、サブクラスのイニシャライザ定義の前に `override` 修飾子を記述する必要があります。<a href="#default-initializersdeforutoinisharaiza" target="_self">Default Initializers(デフォルトイニシャライザ)</a>で説明されているように、これは、自動的に提供されるデフォルトのイニシャライザをオーバーライドする場合にも当てはまります。
 
 オーバーライドされたプロパティ、メソッド、または subscript の場合と同様に、`override` 修飾子が存在すると、Swift は、スーパークラスにオーバーライドされる指定イニシャライザがあるかどうかを確認し、オーバーライドするイニシャライザのパラメータが意図したとおりの形になっていることを検証します。
 
 > NOTE  
 > サブクラスのイニシャライザの実装が convenience イニシャライザであっても、スーパークラスで指定イニシャライザをオーバーライドするときは、常に `override` 修飾子を記述します。
 
-逆に、スーパークラスの convenience イニシャライザと一致するサブクラスのイニシャライザを作成する場合、上記の[Initializer Delegation for Class Types(クラス型のイニシャライザの委譲)](initialization.md#initializer-delegation-for-class-typesクラス型のイニシャライザの委譲)で説明したルールに従って、そのスーパークラスの convenience イニシャライザがサブクラスから直接呼び出されることはありません。したがって、サブクラスは\(厳密に言えば\)スーパークラスのイニシャライザをオーバーライドしていません。その結果、スーパークラスの convenience イニシャライザに一致する実装を提供する場合は、`override` 修飾子を記述しません。
+逆に、スーパークラスの convenience イニシャライザと一致するサブクラスのイニシャライザを作成する場合、上記の<a href="#initializer-delegation-for-class-typeskurasunoinisharaizano" target="_self">Initializer Delegation for Class Types(クラス型のイニシャライザの委譲)</a>で説明したルールに従って、そのスーパークラスの convenience イニシャライザがサブクラスから直接呼び出されることはありません。したがって、サブクラスは\(厳密に言えば\)スーパークラスのイニシャライザをオーバーライドしていません。その結果、スーパークラスの convenience イニシャライザに一致する実装を提供する場合は、`override` 修飾子を記述しません。
 
 下記の例では、`Vehicle` という基本クラスを定義しています。この基本クラスは、デフォルトの `Int` 値が 0 の `numberOfWheels` という格納プロパティを宣言しています。`numberOfWheels` プロパティは、`description` という計算プロパティで使用され、乗り物の特性を説明しています:
 
@@ -473,7 +473,7 @@ class Vehicle {
 }
 ```
 
-`Vehicle` クラスは、その唯一の格納プロパティにデフォルト値を提供し、カスタムのイニシャライザを提供していません。その結果、[Default Initializers(デフォルトイニシャライザ)](initialization.md#default-initializersデフォルトイニシャライザ)で説明されているように、デフォルトのイニシャライザを自動的に受け取ります。デフォルトイニシャライザは、\(使用可能な場合\)常にクラスの指定イニシャライザで、`numberOfWheels` が `0` の新しい `Vehicle` インスタンスを作成するために使用できます:
+`Vehicle` クラスは、その唯一の格納プロパティにデフォルト値を提供し、カスタムのイニシャライザを提供していません。その結果、<a href="#default-initializersdeforutoinisharaiza" target="_self">Default Initializers(デフォルトイニシャライザ)</a>で説明されているように、デフォルトのイニシャライザを自動的に受け取ります。デフォルトイニシャライザは、\(使用可能な場合\)常にクラスの指定イニシャライザで、`numberOfWheels` が `0` の新しい `Vehicle` インスタンスを作成するために使用できます:
 
 ```swift
 let vehicle = Vehicle()
@@ -608,11 +608,11 @@ class RecipeIngredient: Food {
 
 ![RecipeIngredientクラスのイニシャライザのチェーン](../.gitbook/assets/initializersExample02_2x.png)
 
-`RecipeIngredient` クラスには、単一の指定イニシャライザ `init(name: String, amount: Int)` があり、これを使用して新しい `RecipeIngredient` インスタンスの全てのプロパティを設定できます。このイニシャライザは、渡された `quantity` 引数を `quantity` プロパティに割り当てることから開始します。これは、`RecipeIngredient` で定義された唯一の新しいプロパティです。その後、イニシャライザは `Food` クラスの `init(name: String)` イニシャライザに委譲します。このプロセスは、上記の[Two-Phase Initialization(2 段階の初期化)](initialization.md#two-phase-initialization2段階の初期化)の初期化の安全チェック 1 を満たしています。
+`RecipeIngredient` クラスには、単一の指定イニシャライザ `init(name: String, amount: Int)` があり、これを使用して新しい `RecipeIngredient` インスタンスの全てのプロパティを設定できます。このイニシャライザは、渡された `quantity` 引数を `quantity` プロパティに割り当てることから開始します。これは、`RecipeIngredient` で定義された唯一の新しいプロパティです。その後、イニシャライザは `Food` クラスの `init(name: String)` イニシャライザに委譲します。このプロセスは、上記の<a href="#two-phase-initialization-2-no" target="_self">Two-Phase Initialization(2 段階の初期化)</a>の初期化の安全チェック 1 を満たしています。
 
 `RecipeIngredient` は、名前だけで `RecipeIngredient` インスタンスを作成する convenience イニシャライザ `init(name: String)` も定義します。この convenience イニシャライザは、数量を `1` と想定して、明示的に数量を指定せずに `RecipeIngredient` インスタンスを作成します。この convenience イニシャライザの定義により、`RecipeIngredient` インスタンスの作成がより迅速かつ便利になり、単一量の `RecipeIngredient` インスタンスを複数作成する際にコードの重複が回避できます。この convenience イニシャライザは、単にクラスの指定イニシャライザに委譲し、`quantity` に `1` を渡します。
 
-`RecipeIngredient` によって提供される `init(name: String)` convenience イニシャライザは、`Food` の `init(name: String)` 指定イニシャライザと同じパラメータを受け取ります。つまり、この convenience イニシャライザはスーパークラスから指定イニシャライザをオーバーライドするため、`override` 修飾子を付ける必要があります\([Initializer Inheritance and Overriding(イニシャライザの継承とオーバーライド)](initialization.md#initializer-inheritance-and-overridingイニシャライザの継承とオーバーライド)を参照\)。
+`RecipeIngredient` によって提供される `init(name: String)` convenience イニシャライザは、`Food` の `init(name: String)` 指定イニシャライザと同じパラメータを受け取ります。つまり、この convenience イニシャライザはスーパークラスから指定イニシャライザをオーバーライドするため、`override` 修飾子を付ける必要があります\(<a href="#initializer-inheritance-and-overridinginisharaizanotobraido" target="_self">Initializer Inheritance and Overriding(イニシャライザの継承とオーバーライド)</a>を参照\)。
 
 `RecipeIngredient` は、convenience イニシャライザとして `init(name: String)` イニシャライザを提供していますが、さらにそのスーパークラスの指定イニシャライザの全ての実装を提供しています。したがって、`RecipeIngredient` は、そのスーパークラスの convenience イニシャライザも全て自動的に継承します。
 
@@ -958,13 +958,13 @@ class SomeSubclass: SomeClass {
 > NOTE  
 > 継承したイニシャライザで要件を満たすことができる場合、必須イニシャライザの明示的な実装を提供する必要はありません。
 
-## Setting a Default Property Value with a Closure or Function\(クロージャまたは関数を使用したデフォルトのプロパティ値の設定\)
+## Setting a Default Property Value with a Closure or Function\(クロージャまたは関数を使用したプロパティのデフォルト値の設定\)
 
 格納プロパティのデフォルト値にカスタマイズまたは設定が必要な場合は、クロージャまたはグローバル関数を使用して、そのプロパティにカスタマイズされたデフォルト値を提供できます。プロパティが属する型の新しいインスタンスが初期化されるたびに、クロージャまたは関数が呼び出され、その戻り値がプロパティのデフォルト値として割り当てられます。
 
 これらの種類のクロージャまたは関数は、通常、プロパティと同じ型の一時的な値を作成し、その値を調整して目的の初期状態にしてからその値を返し、プロパティのデフォルト値として使用します。
 
-クロージャを使用してデフォルトのプロパティ値を提供する方法の概要を次に示します:
+クロージャを使用してプロパティのデフォルト値を提供する方法の概要を次に示します:
 
 ```swift
 class SomeClass {
