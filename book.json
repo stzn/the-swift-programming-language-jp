@@ -1,0 +1,10 @@
+{
+    "plugins": [
+        "expand-active-chapter",
+        "page-treeview",
+        "custom-favicon"
+    ],
+	"pluginsConfig" : {
+		"favicon": "favicon.ico"
+	}
+}
