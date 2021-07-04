@@ -553,7 +553,7 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 ```
 
 > NOTE  
-> `hasPrefix(_:)` と `hasSuffix(_:)` メソッドは、文字ごとに各文字列の拡張書記素クラスタを使用してルール上等しいかどうかを調べます\([String and Character Equality(文字と文字列の等価性)](strings-and-characters.md#string-and-character-equality文字と文字列の等価性)に記載\)。
+> `hasPrefix(_:)` と `hasSuffix(_:)` メソッドは、文字ごとに各文字列の拡張書記素クラスタを使用してルール上等しいかどうかを調べます\([String and Character Equality(文字と文字列の等価性)](#string-and-character-equality文字と文字列の等価性)に記載\)。
 
 ## Unicode Representations of Strings\(文字列のUnicode表現\)
 
