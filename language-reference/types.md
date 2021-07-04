@@ -4,7 +4,7 @@
 
 Swift では、*名前付き型*(*named type*)と*複合型*(*compound type*)の 2 種類があります。名前付き型は、定義時に特定の名前を指定できる型です。名前付き型には、クラス、構造体、列挙型、およびプロトコルが含まれます。例えば、`MyClass` という名前のユーザ定義クラスのインスタンスは `MyClass` 型です。ユーザ定義の型に加えて、Swift 標準ライブラリは、配列、辞書、およびオプショナルの値を含む多くの広く使用される型の名前を定義します。
 
-通常、数字、文字、文字列を表す型など、他の言語で基本的またはプリミティブと見なされるデータ型は、Swift 標準ライブラリでは構造体を使用して定義、実装されている名前付き型です。名前付き型のため、[Extensions(拡張)](./expressions.md)、 [Extension Declaration(拡張宣言)](./declarations.md#extension-declaration拡張宣言)で説明されている extension を使用して、プログラムのニーズに合わせて振る舞いを拡張することができます。
+通常、数字、文字、文字列を表す型など、他の言語で基本的またはプリミティブと見なされるデータ型は、Swift 標準ライブラリでは構造体を使用して定義、実装されている名前付き型です。名前付き型のため、[Extensions(拡張)](./expressions.md)、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#extension-declaration-kuo-zhang-xuan-yan" target="_self">Extension Declaration(拡張宣言)</a>で説明されている extension を使用して、プログラムのニーズに合わせて振る舞いを拡張することができます。
 
 複合型は、Swift 言語で定義されている名前のない型です。関数型とタプル型の 2 つの複合型があります。複合型の種類は、名前付き型および他の複合型を含めることができます。例えば、タプル型 `(Int, (Int, Int))` には、名前付き型の `Int` と複合型の `(Int, Int)` の 2 つの要素が含まれています。
 
@@ -70,7 +70,7 @@ var someValue: ExampleModule.MyType
 
 *タプル型*は、括弧に囲まれた、型のカンマ区切りのリストです。
 
-関数が複数の値を含む単一の値を返すことを可能にするために、関数の戻り値の型としてタプル型を使用できます。タプル型の要素に名前を付けることもでき、それらの名前を使用して個々の要素の値を参照することもできます。要素名はコロン(`:`)の直前に識別子を指定します。これらの機能を示す例については、[Functions with Multiple Return Values](./../language-guide/functions.md#functions-with-multiple-return-values複数の戻り値がある関数)を参照ください。
+関数が複数の値を含む単一の値を返すことを可能にするために、関数の戻り値の型としてタプル型を使用できます。タプル型の要素に名前を付けることもでき、それらの名前を使用して個々の要素の値を参照することもできます。要素名はコロン(`:`)の直前に識別子を指定します。これらの機能を示す例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#functions-with-multiple-return-valuesnorigaaru" target="_self">Functions with Multiple Return Values(複数の戻り値がある関数)</a>を参照ください。
 
 タプル型の要素に名前がある場合、その名前は型の一部です。
 
@@ -97,11 +97,11 @@ someTuple = (left: 5, right: 5)  // Error: 名前が一致していません
 
 *パラメータ型*は、型のカンマ(`,`)区切りのリストです。関数型は、*戻り値の型*がタプル型の可能性があるため、複数の値を返す関数とメソッドをサポートします。
 
-関数型のパラメータ `() -> T`(`T` は任意の型)は、呼び出し側で暗黙的なクロージャを作成するために、`autoclosure` を適用できます。これは、関数を呼び出すときに明示的にクロージャを書くことなく、式を遅延評価するための構文上の便利な方法です。`autoclosure` の関数型のパラメータの例については、[AutoClosures(自動クロージャ)](./../language-guide/closures.md#autoclosures自動クロージャ) を参照ください。
+関数型のパラメータ `() -> T`(`T` は任意の型)は、呼び出し側で暗黙的なクロージャを作成するために、`autoclosure` を適用できます。これは、関数を呼び出すときに明示的にクロージャを書くことなく、式を遅延評価するための構文上の便利な方法です。`autoclosure` の関数型のパラメータの例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#autoclosureskurja" target="_self">AutoClosures(自動クロージャ)</a>を参照ください。
 
-関数型は、そのパラメータ型に多様なパラメータを持たせることができます。構文上、可変長パラメータは、`Int...` のように要素の型名の後ろに 3 つのドット(`...`)を記載し、要素の型の配列として扱われます。例えば、可変長パラメータ `Int...` は `[Int]` として扱われます。可変長パラメータを使用する例については、[Variadic Parameters(可変長パラメータ)](./../language-guide/functions.md#variadic-parameters可変長パラメータ)を参照ください。
+関数型は、そのパラメータ型に多様なパラメータを持たせることができます。構文上、可変長パラメータは、`Int...` のように要素の型名の後ろに 3 つのドット(`...`)を記載し、要素の型の配列として扱われます。例えば、可変長パラメータ `Int...` は `[Int]` として扱われます。可変長パラメータを使用する例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#variadic-parametersparamta" target="_self">Variadic Parameters(可変長パラメータ)</a>を参照ください。
 
-in-out パラメータを使用するには、`inout` キーワードをパラメータの型の前に付けます。可変長パラメータまたは戻り値の型にマークすることはできません。in-out パラメータは、[In-Out Parameters(In-Outパラメータ)](./../language-guide/functions.md#in-out-parametersIn-Outパラメータ)で説明されています。
+in-out パラメータを使用するには、`inout` キーワードをパラメータの型の前に付けます。可変長パラメータまたは戻り値の型にマークすることはできません。in-out パラメータは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#in-out-parametersin-outparamta" target="_self">In-Out Parameters(In-Out パラメータ)</a>で説明されています。
 
 関数型にパラメータが 1 つしかなく、タプル型の場合、関数型を書くときにタプル型を括弧(`()`)で囲む必要があります。例えば、`((Int, Int)) -> Void` は、タプル型 `(Int, Int)` を単一のパラメータとして受け取り、値を返さない関数の型です。対照的に、括弧なしで `(Int, Int) -> Void` と書いた場合は 2 つの `Int` パラメータを受け取り、値を返さない関数型です。同様に、`Void` は `()` のエイリアスのため、`(Void)-> Void` は `(()) -> ()` と同じで、空のタプルの単一の引数を受け取ります。`() -> ()` は引数を受け取らないので同じではありません。
 
@@ -133,7 +133,7 @@ var operation: (Int, Int) -> Int          // OK
 
 関数型に 1 つ以上の矢印(`->`)が含まれている場合、関数型は右から左にグループ化されます。例えば、関数型 `(Int) -> (Int) -> Int` は、`(Int) -> ((Int) -> Int)` で、`Int` を受け取り、別の `Int` を受け取り、`Int` を返す関数を返します。
 
-エラーを*スロー*または*再スロー*する関数型は、`throws` キーワードでマークする必要があります。`throws` キーワードは関数型の一部で、*スローしない*関数はスロー関数のサブタイプです。その結果、スロー関数が使われる場所で、スローしない関数を使用できます。スロー関数や再スロー関数は、[Throwing Functions and Methods](./declarations.md#throwing-functions-and-methodsスロー関数とメソッド)、[Rethrowing Functions and Methods(再スロー関数と再スローメソッド)](./declarations.md#rethrowing-functions-and-methodsスロー関数とメソッド)で説明されています。
+エラーを*スロー*または*再スロー*する関数型は、`throws` キーワードでマークする必要があります。`throws` キーワードは関数型の一部で、*スローしない*関数はスロー関数のサブタイプです。その結果、スロー関数が使われる場所で、スローしない関数を使用できます。スロー関数や再スロー関数は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#throwing-functions-and-methodssurtosurmesoddo" target="_self">Throwing Functions and Methods(スロー関数とメソッド)</a>、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#rethrowing-functions-and-methodssurtosurmesoddo" target="_self">Rethrowing Functions and Methods(再スロー関数と再スローメソッド)</a>で説明されています。
 
 ### Restrictions for Nonescaping Closures\(非エスケープクロージャの制限\)
 
@@ -159,7 +159,7 @@ func takesTwoFunctions(first: (() -> Void) -> Void, second: (() -> Void) -> Void
 
 上記の例で「エラー」とマークされた 4 つの関数の呼び出しは、コンパイラエラーが発生します。最初と 2 番目のパラメータは非エスケープ関数のため、引数として別の非エスケープ関数をパラメータに渡すことはできません。対照的に、「OK」とマークされた 2 つの関数呼び出しは、コンパイラエラーが発生しません。これらの関数呼び出しは、`external` が `takesTwoFunctions(first:second:)` のパラメータではないため、制限に違反しません。
 
-この制限を回避する必要がある場合は、いずれかのパラメータを `@esescaping` とマークしたり、パラメータの非エスケープ関数の 1 つを `withoutActuallyEscaping(_:do:)` を使ってエスケープ関数に一時的に変換します。メモリへのアクセス競合を回避する方法については、[Memory Safety(メモリ安全性)](./../language-guide/memory-safety.md#memory-safetyメモリ安全性)を参照ください。
+この制限を回避する必要がある場合は、いずれかのパラメータを `@esescaping` とマークしたり、パラメータの非エスケープ関数の 1 つを `withoutActuallyEscaping(_:do:)` を使ってエスケープ関数に一時的に変換します。メモリへのアクセス競合を回避する方法については、[Memory Safety(メモリ安全性)](./../language-guide/memory-safety.md)を参照ください。
 
 > GRAMMAR OF A FUNCTION TYPE  
 > function-type → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub>  [function-type-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument-clause) `throws`<sub>*opt*</sub>  `->` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
@@ -192,7 +192,7 @@ var array3D: [[[Int]]] = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
 
 多次元配列内の要素にアクセスするとき、左端の `subscript` のインデックスは、最も外側の配列内のインデックスの要素を指します。次に右の `subscript` のインデックスは、1 階層ネストされている配列内のインデックスの要素になります。これは、上記の例では、`array3D[0]` は `[[1, 2], [3, 4]]`、`array3D[0][1]` は `[3,4]`、`array3D[0][1][1]` は値 `4` を表します。
 
-Swift 標準ライブラリの配列型の詳細については、[Arrays(配列)](./../language-guide/collection-types.md#array配)を参照ください。
+Swift 標準ライブラリの配列型の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/collection-types#arrays-pei-lie" target="_self">Arrays(配列)</a>を参照ください。
 
 > GRAMMAR OF AN ARRAY TYPE  
 > array-type → `[` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `]`
@@ -216,7 +216,7 @@ let someDictionary: Dictionary<String, Int> = ["Alex": 31, "Paul": 39]
 
 辞書のキーの型は、Swift 標準ライブラリの `Hashable` に準拠している必要があります。
 
-標準ライブラリ `Dictionary` 型の詳細については、[Dictionaries(辞書)](./../language-guide/collection-types.md#dictionaries辞書)を参照ください。
+標準ライブラリ `Dictionary` 型の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/collection-types#dictionaries-ci-shu" target="_self">Dictionaries(辞書)</a>を参照ください。
 
 > GRAMMAR OF A DICTIONARY TYPE  
 > dictionary-type → `[` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `:` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `]`
@@ -245,7 +245,7 @@ optionalInteger! // 42
 
 オプショナルチェーンとオプショナルバインディングを使用して、式を操作することもできます。値が `nil` の場合、操作は実行されず、したがって実行時エラーが発生しません。
 
-オプショナル型の使用方法を示す例を示した詳細については、[Optionals(オプショナル)](./../language-guide/the-basics.md#optionalsオプショナル)を参照ください。
+オプショナル型の使用方法を示す例を示した詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#optionalsopushonaru" target="_self">Optionals(オプショナル)</a>を参照ください。
 
 > GRAMMAR OF AN OPTIONAL TYPE  
 > optional-type → [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  `?`
@@ -277,7 +277,7 @@ let implicitlyUnwrappedArray: [Int]!                  // OK
 
 条件付きで暗黙アンラップオプショナルの式を操作するには、オプショナルチェーンを使用します。値が `nil` の場合、操作は実行されず、したがって実行時エラーが発生しません。
 
-暗黙アンラップオプショナル型の詳細については、[Implicitly Unwrapped Optionals(暗黙アンラップオプショナル)](./../language-guide/the-basics.md#implicitly-unwrapped-optionals暗黙アンラップオプショナル)を参照ください。
+暗黙アンラップオプショナル型の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#implicitly-unwrapped-optionalsanrappuopushonaru" target="_self">Implicitly Unwrapped Optionals(暗黙アンラップオプショナル)</a>を参照ください。
 
 > GRAMMAR OF AN IMPLICITLY UNWRAPPED OPTIONAL TYPE  
 > implicitly-unwrapped-optional-type → [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) `!`
@@ -399,7 +399,7 @@ if let first = mixed.first as? String {
 
 キャストの詳細については、[Type Casting(型キャスト)](./../language-guide/type-casting.md)を参照ください。
 
-`AnyObject` プロトコルは `Any` 型と似ています。全てのクラスは暗黙的に `AnyObject` に準拠しています。言語によって定義されているものとは異なり、`AnyObject` は標準ライブラリで定義されています。詳細については、[Class-Only Protocols(クラス専用プロトコル)](./../language-guide/protocols.md#class-only-protocolsクラス専用プロトコル)と [AnyObject](https://developer.apple.com/documentation/swift/anyobject)を参照ください。
+`AnyObject` プロトコルは `Any` 型と似ています。全てのクラスは暗黙的に `AnyObject` に準拠しています。言語によって定義されているものとは異なり、`AnyObject` は標準ライブラリで定義されています。詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#class-only-protocolskurasupurotokoru" target="_self">Class-Only Protocols(クラス専用プロトコル)</a>と [AnyObject](https://developer.apple.com/documentation/swift/anyobject)を参照ください。
 
 > GRAMMAR OF AN ANY TYPE  
 > any-type → `Any`
@@ -454,7 +454,7 @@ prInt(type(of: z.f()))
 
 その他の名前付き型は、プロトコルのみ継承または準拠することができます。プロトコル型は、任意の数の他のプロトコルを継承できます。プロトコル型が他のプロトコルを継承すると、他のプロトコルの要件も集約され、現在のプロトコルから継承する型は全ての要件に準拠する必要があります。
 
-列挙型の型継承句は、プロトコルのリスト、または列挙ケースに Raw Value を割り当てる場合は、それらの Raw Value の型を特定する単一の名前付き型を継承することができます。型継承句を使用して Raw Value 型を指定する列挙型の定義の例については、[Raw Values](./../language-guide/enumerations.md#raw-values)を参照ください。
+列挙型の型継承句は、プロトコルのリスト、または列挙ケースに Raw Value を割り当てる場合は、それらの Raw Value の型を特定する単一の名前付き型を継承することができます。型継承句を使用して Raw Value 型を指定する列挙型の定義の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#raw-values" target="_self">Raw Values</a>を参照ください。
 
 > GRAMMAR OF A TYPE INHERITANCE CLAUSE  
 > type-inheritance-clause → `:` [type-inheritance-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-list)  
