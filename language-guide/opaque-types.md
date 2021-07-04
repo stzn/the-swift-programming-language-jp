@@ -135,7 +135,7 @@ print(opaqueJoinedTriangles.draw())
 // *
 ```
 
-この例の `opaqueJoinedTriangles` の値は、この章の前半の[The Problem That Opaque Types Solve(Opaque 型が解決する問題)](#the-problem-that-opaque-types-solveOpaque型が解決する問題)セクションのジェネリクスの例の `joinedTriangles` と同じです。ただし、その例の値とは異なり、`flip(_:)` と `join(_:_:)` は、ジェネリックな形状の操作が返す基本的な型を Opaque でラップし、それらの型が外部からは見えないようにしています。どちらの関数も、依存する型がジェネリックなのでジェネリック関数で、型パラメータは `FlippedShape` と `JoinedShape` に必要な型情報を渡します。
+この例の `opaqueJoinedTriangles` の値は、この章の前半の<a href="#the-problem-that-opaque-types-solveopaque-gasuru" target="_self">The Problem That Opaque Types Solve(Opaque 型が解決する問題)</a>セクションのジェネリクスの例の `joinedTriangles` と同じです。ただし、その例の値とは異なり、`flip(_:)` と `join(_:_:)` は、ジェネリックな形状の操作が返す基本的な型を Opaque でラップし、それらの型が外部からは見えないようにしています。どちらの関数も、依存する型がジェネリックなのでジェネリック関数で、型パラメータは `FlippedShape` と `JoinedShape` に必要な型情報を渡します。
 
 Opaque な戻り値の型を持つ関数が複数の場所から呼び出される場合、返す可能性のある戻り値は全て同じ型にする必要があります。ジェネリック関数の場合、その戻り値の型は関数のジェネリック型パラメータを使用できますが、それでも単一の型にする必要があります。例えば、正方形の特殊なケースを含む、形状反転関数の無効なバージョンを次に示します:
 

@@ -32,7 +32,7 @@ Swift は、コード内のエンティティに 5 つの異なるアクセス�
 
 open アクセスは最も高い\(制限の緩い\)アクセスレベルで、private アクセスは最も低い\(制限の厳しい\)アクセスレベルです
 
-[Subclassing(サブクラス)](access-control.md#subclassingサブクラス)でも話されているように、open アクセスはクラスとクラスメンバにのみ適用され、モジュール外のコードがサブクラス化およびオーバーライドできる点で public アクセスとは異なります。クラスを `open` として明示的にマークすることは、そのクラスをスーパークラスとして使用している他のモジュールからのコードの影響を考慮し、それに応じてクラスのコードを設計していることを示します。
+<a href="#strong-reference-cycles-for-closureskurjano" target="_self">Subclassing(サブクラス)</a>でも説明されているように、open アクセスはクラスとクラスメンバにのみ適用され、モジュール外のコードがサブクラス化およびオーバーライドできる点で public アクセスとは異なります。クラスを `open` として明示的にマークすることは、そのクラスをスーパークラスとして使用している他のモジュールからのコードの影響を考慮し、それに応じてクラスのコードを設計していることを示します。
 
 ### Guiding Principle of Access Levels\(アクセスレベルの指針\)
 
@@ -80,7 +80,7 @@ fileprivate func someFilePrivateFunction() {}
 private func somePrivateFunction() {}
 ```
 
-特に指定がない限り、デフォルトのアクセスレベルは、[Default Access Levels(デフォルトのアクセスレベル)](access-control.md#default-access-levelsデフォルトのアクセスレベル)で説明されているように、internal です。これは、`SomeInternalClass` と `someInternalConstant` が明示的なアクセスレベル修飾子なしで記述でき、internal アクセスレベルを持つことを意味します。
+特に指定がない限り、デフォルトのアクセスレベルは、<a href="#default-access-levelsdeforutonoakusesureberu" target="_self">Default Access Levels(デフォルトのアクセスレベル)</a>で説明されているように、internal です。これは、`SomeInternalClass` と `someInternalConstant` が明示的なアクセスレベル修飾子なしで記述でき、internal アクセスレベルを持つことを意味します。
 
 ```swift
 class SomeInternalClass {}  // 暗黙的に internal
@@ -139,7 +139,7 @@ func someFunction() -> (SomeInternalClass, SomePrivateClass) {
 }
 ```
 
-関数の戻り値の型は、上記の[Custom Types(独自型)](access-control.md#custom-types独自型)で定義された 2 つの独自クラスで構成されるタプル型です。これらのクラスの 1 つは internal として定義され、もう 1 つは private として定義されます。したがって、複合タプル型の全体的なアクセスレベルは private です\(タプルの構成型の最も厳しいアクセスレベル\)。
+関数の戻り値の型は、上記の<a href="#custom-types-du-zi-xing" target="_self">Custom Types(独自型)</a>で定義された 2 つの独自クラスで構成されるタプル型です。これらのクラスの 1 つは internal として定義され、もう 1 つは private として定義されます。したがって、複合タプル型の全体的なアクセスレベルは private です\(タプルの構成型の最も厳しいアクセスレベル\)。
 
 関数の戻り値の型は private なため、関数宣言が有効になるように、関数の全体的なアクセスレベルを `private` 修飾子でマークする必要があります。
 
@@ -273,13 +273,13 @@ public struct TrackedString {
 
 ## Initializers\(初期化\)
 
-独自イニシャライザには、初期化する型よりも制限の厳しいのアクセスレベルを割り当てることができます。唯一の例外は、必須イニシャライザ\([Required Initializers(必須イニシャライザ)](initialization.md#required-initializers必須イニシャライザ)で定義\) です。必須イニシャライザは、それが属するクラスと同じアクセスレベルを持っている必要があります。
+独自イニシャライザには、初期化する型よりも制限の厳しいのアクセスレベルを割り当てることができます。唯一の例外は、必須イニシャライザ\(<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#required-initializersinisharaiza" target="_self">Required Initializers(必須イニシャライザ)</a>で定義\) です。必須イニシャライザは、それが属するクラスと同じアクセスレベルを持っている必要があります。
 
 関数とメソッドのパラメータと同様に、イニシャライザのパラメータの型は、イニシャライザのアクセスレベルよりも制限の厳しいレベルにすることはできません。
 
 ### Default Initializers\(デフォルトイニシャライザ\)
 
-[Default Initializers(デフォルトイニシャライザ)](initialization.md#default-initializersデフォルトイニシャライザ)で説明されているように、Swift は、全てのプロパティにデフォルト値を提供している構造体または基本クラスに 1 つもイニシャライザを提供しない引数なしの*デフォルトイニシャライザ*を自動的に提供します。
+<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#default-initializersdeforutoinisharaiza" target="_self">Default Initializers(デフォルトイニシャライザ)</a>で説明されているように、Swift は、全てのプロパティにデフォルト値を提供している構造体または基本クラスに 1 つもイニシャライザを提供しない引数なしの*デフォルトイニシャライザ*を自動的に提供します。
 
 デフォルトイニシャライザは、その型が public として定義されていない限り、初期化する型と同じアクセスレベルを持ちます。public として定義されている型の場合、デフォルトのイニシャライザは internal と見なされます。public 型を別のモジュールで使用するときに引数なしのイニシャライザで初期化できるようにする場合は、型の定義で public 型の引数なしのイニシャライザを明示的に提供する必要があります。
 

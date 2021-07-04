@@ -33,7 +33,7 @@
 * [Extensions (拡張)](language-guide/extensions.md)
 * [Protocols (プロトコル)](language-guide/protocols.md)
 * [Generics (ジェネリクス)](language-guide/generics.md)
-* [Opaque 型](language-guide/opaque-types.md)
+* [Opaque Types (Opaque 型)](language-guide/opaque-types.md)
 * [Automatic Reference Counting (自動参照カウント ARC)](language-guide/automatic-reference-counting.md)
 * [Memory Safety (メモリ安全性)](language-guide/memory-safety.md)
 * [Access Control (アクセスコントロール)](language-guide/access-control.md)
