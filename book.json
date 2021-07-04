@@ -1,10 +1,21 @@
 {
     "plugins": [
         "expand-active-chapter",
+        "collapsible-chapters",
         "page-treeview",
-        "custom-favicon"
+        "custom-favicon",
+        "hide-published-with",
+        "navigator",
+        "atoc",
+        "intopic-toc",
+        "back-to-top-button"
     ],
 	"pluginsConfig" : {
-		"favicon": "favicon.ico"
+		"favicon": "favicon.ico",
+        "page-treeview": {
+            "copyright": "",
+            "minHeaderCount": "2",
+            "minHeaderDeep": "2"
+        }
 	}
 }
