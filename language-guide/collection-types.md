@@ -229,7 +229,7 @@ for (index, value) in shoppingList.enumerated() {
 // Item 5: Bananas
 ```
 
-`for-in` ループについては、[For-In Loops(For-In ループ)](control-flow.md#for-in-loopsFor-Inループ)を参照ください。
+`for-in` ループについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#for-in-loopsfor-inrpu" target="_self">For-In Loops(For-In ループ)</a>を参照ください。
 
 ## Sets\(セット\)
 
@@ -362,7 +362,7 @@ for genre in favoriteGenres {
 // Hip hop
 ```
 
-`for-in` ループについては、[For-In Loops(For-In ループ)](control-flow.md#for-in-loops)を参照ください。
+`for-in` ループについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#for-in-loopsfor-inrpu" target="_self">For-In Loops(For-In ループ)</a>を参照ください。
 
 Swift の Set 型は決まった順序がありません。特定の順番で値を繰り返し処理したい場合、`sorted()` メソッドを使用すると、`<` 演算子を使用してソートされた配列として要素を返します。
 
@@ -610,7 +610,7 @@ for (airportCode, airportName) in airports {
 // YYZ: Toronto Pearson
 ```
 
-`for-in` ループについては、[For-In Loops(For-In ループ)](control-flow.md#for-in-loopsFor-Inループ)を参照ください。
+`for-in` ループについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#for-in-loopsfor-inrpu" target="_self">For-In Loops(For-In ループ)</a>を参照ください。
 
 `keys` と `values` プロパティを使用して、キーとバリューそれぞれのリストを取得することもできます:
 
