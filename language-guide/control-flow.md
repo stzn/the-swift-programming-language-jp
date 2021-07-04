@@ -73,7 +73,7 @@ print("\(base) to the power of \(power) is \(answer)")
 
 最初と最後の両方を含める閉範囲を使用する必要がない場合もあるかもしれません。時計の分針を思い浮かべてください。`0` から始まる `60` 個の目盛が必要です。最初の値を含める半開範囲演算子(`..<`)を使いましょう。
 
-範囲についての詳細は、[Range Operators(範囲演算子)](basic-operators.md#range-operators範囲演算子)を参照ください。
+範囲についての詳細は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/basic-operators#range-operators-fan-tong-yan-suan-zi" target="_self">Range Operators(範囲演算子)</a>を参照ください。
 
 ```swift
 let minutes = 60
@@ -314,7 +314,7 @@ default:
 C 言語や Objective-C と異なり、Swift の `switch` 文は、デフォルトでは、それぞれのケースの下から次のケースに行くことはありません。その代わりに、最初に合致した `switch` ケースの実行が完了すると、明示的に `break` しなくても、全体の `switch` 文も完了します。こうすることで、C 言語の `switch` 文よりも、より安全に簡単に使えるようにしています。間違って 1 つ以上のケースを実行してしまうリスクを防ぎます。
 
 > NOTE  
-> `break` は必須ではありませんが、合致したけど何も実行しないような場合や、あるケースの中で最後まで実行される前にそのブロックを抜けたい場合に、`break` を使用することができます。詳細は、[Break in a Switch Statement(switch 内で break)](control-flow.md#break-in-a-switch-statementswitch内でbreak)を参照ください。
+> `break` は必須ではありませんが、合致したけど何も実行しないような場合や、あるケースの中で最後まで実行される前にそのブロックを抜けたい場合に、`break` を使用することができます。詳細は、<a href="#break-in-a-switch-statementswitchdebreak" target="_self">Break in a Switch Statement(switch 内で break)</a>Break in a Switch Statement(switch 内で break)</a>を参照ください。
 
 各ケースの本文は少なくとも 1 つの文を実行しなければなりません。次のコードは最初のケースの本文が空なので不正です。
 
@@ -345,10 +345,10 @@ default:
 // "The letter A"
 ```
 
-可読性のために、複合ケースを複数行に分けて書くこともできます。複合ケースについての詳細は[Compound Cases(複合ケース)](#compound-cases複合ケース)を参照ください。
+可読性のために、複合ケースを複数行に分けて書くこともできます。複合ケースについての詳細は<a href="#compound-casesksu" target="_self">[Compound Cases(複合ケース)]</a>を参照ください。
 
 > NOTE  
-> 特定のケースから次のケースの 本文 を実行したい場合は、`fallthrough` キーワードを使います。[Fallthrough](#fallthrough)に記載しています。
+> 特定のケースから次のケースの 本文 を実行したい場合は、`fallthrough` キーワードを使います。<a href="#fallthrough" target="_self">Fallthrough</a>に記載しています。
 
 #### Interval Matching\(範囲マッチング\)
 
@@ -508,7 +508,7 @@ default:
 * `return`
 * `throw`
 
-`continue`、`break` と `fallthrough` は下記に記載しています。`return` は[Functions(関数)](functions.md)、`throw` は[Propagating Errors Using Throwing Functions](error-handling.md#propagating-errors-using-throwing-functions)に記載しています。
+`continue`、`break` と `fallthrough` は下記に記載しています。`return` は[Functions(関数)](functions.md)、`throw` は<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/error-handling#propagating-errors-using-throwing-functionssurwoshitaerno" target="_self">Propagating Errors Using Throwing Functions</a>に記載しています。
 
 ### Continue
 
