@@ -212,7 +212,7 @@ unsignedOverflow = unsignedOverflow &- 1
 
 ![オーバーフロー減算演算子 00000000 から 1 を減算](../.gitbook/assets/overflowUnsignedSubtraction_2x.png)
 
-オーバーフローは、符号付き整数でも発生します。符号付き整数の加算と減算は全てビット単位で実行され、[Bitwise Left and Right Shift Operators(ビット左右シフト演算子)](advanced-operators.md#bitwise-left-and-right-shift-operatorsビット左右シフト演算子)で説明されているように、加算または減算される数値の一部として符号ビットが含まれます。
+オーバーフローは、符号付き整数でも発生します。符号付き整数の加算と減算は全てビット単位で実行され、<a href="#bitwise-left-and-right-shift-operatorsbittoshifuto" target="_self">Bitwise Left and Right Shift Operators(ビット左右シフト演算子)</a>で説明されているように、加算または減算される数値の一部として符号ビットが含まれます。
 
 ```swift
 var signedOverflow = Int8.min
@@ -389,11 +389,11 @@ if twoThree == anotherTwoThree {
 // These two vectors are equivalent.
 ```
 
-多くのシンプルなケースでは、Swift の等価演算子のデフォルト実装を使用できます\([Adopting a Protocol Using a Synthesized Implementation(デフォルト実装を使用したプロトコル準拠)](protocols.md#adopting-a-protocol-using-a-synthesized-implementationデフォルト実装を使用したプロトコル準拠)で説明されています\)。
+多くのシンプルなケースでは、Swift の等価演算子のデフォルト実装を使用できます\(<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#adopting-a-protocol-using-a-synthesized-implementationdeforutowoshitapurotokoru" target="_self">Adopting a Protocol Using a Synthesized Implementation(デフォルト実装を使用したプロトコル準拠)</a>で説明されています\)。
 
 ## Custom Operators\(カスタム演算子\)
 
-Swift が提供する標準演算子に加えて、独自の演算子を宣言して実装できます。カスタム演算子の定義に使用できる文字のリストについては、[Operators(演算子)](../language-reference/lexical-structure.md#operators演算子)を参照ください。
+Swift が提供する標準演算子に加えて、独自の演算子を宣言して実装できます。カスタム演算子の定義に使用できる文字のリストについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/lexical-structure#operators-yan-suan-zi" target="_self">Operators(演算子)</a>を参照ください。
 
 新しい演算子は、`operator` キーワードを使用してグローバルレベルで宣言され、`prefix`、`infix` または `postfix` 修飾子でマークされます。
 
@@ -419,7 +419,7 @@ let afterDoubling = +++toBeDoubled
 
 ### Precedence for Custom Infix Operators\(カスタム中置演算子の優先順位\)
 
-カスタム中置演算子は、それぞれある*優先順位グループ*に属します。優先順位グループは、他の中置演算子に対する演算子の優先順位および結合規則を指定します。これらの特性が、中置演算子と他の中置演算子との間でどのように影響するかについては、[Precedence and Associativity(優先順位と結合規則)](advanced-operators.md#precedence-and-associativity優先順位と結合規則)を参照ください。
+カスタム中置演算子は、それぞれある*優先順位グループ*に属します。優先順位グループは、他の中置演算子に対する演算子の優先順位および結合規則を指定します。これらの特性が、中置演算子と他の中置演算子との間でどのように影響するかについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#precedence-and-associativityto" target="_self">Precedence and Associativity(優先順位と結合規則)</a>を参照ください。
 
 優先順位グループに明示的に配置されていないカスタム中置演算子には、三項条件演算子の優先順位よりも 1 つ高い優先順位を持つデフォルトの優先順位グループが与えられます。
 
@@ -438,7 +438,7 @@ let plusMinusVector = firstVector +- secondVector
 // plusMinusVector は、値が (4.0, -2.0) の Vector2D インスタンスです
 ```
 
-この演算子は、2 つのベクトルの `x` 値を加算し、最初のベクトルから 2 番目のベクトルの `y` 値を減算します。これは本質的に「加算」演算子のため、`+` や `-` などの加算中置演算子と同じ優先順位グループが与えられています。演算子の優先順位グループと結合規則設定の完全なリストを含む、Swift 標準ライブラリによって提供される演算子については、[Operator Declarations(演算子宣言)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。優先順位グループの詳細と、独自の演算子と優先順位グループを定義するための構文については、[Operator Declarations(演算子の宣言)](../language-reference/declarations.md#operator-declarations演算子の宣言)を参照ください。
+この演算子は、2 つのベクトルの `x` 値を加算し、最初のベクトルから 2 番目のベクトルの `y` 値を減算します。これは本質的に「加算」演算子のため、`+` や `-` などの加算中置演算子と同じ優先順位グループが与えられています。演算子の優先順位グループと結合規則設定の完全なリストを含む、Swift 標準ライブラリによって提供される演算子については、[Operator Declarations(演算子宣言)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。優先順位グループの詳細と、独自の演算子と優先順位グループを定義するための構文については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#operator-declaration-yan-suan-zi-xuan-yan" target="_self">Operator Declarations(演算子の宣言)</a>を参照ください。
 
 > NOTE  
 > 前置または後置演算子を定義するときは、優先順位を指定しません。ただし、前置と後置演算子の両方を同じオペランドに適用すると、後置演算子が最初に適用されます。
@@ -587,4 +587,4 @@ let manyStars = draw {
 
 上記のコードでは、`for` ループが描画の配列を作成し、`buildArray(_:)` メソッドがその配列を `Line` に変換します。
 
-Swift が builder 構文を builder 型のメソッドの呼び出しに変換する方法の完全なリストについては、[resultBuilder](../language-reference/attributes.md#resultBuilder)を参照ください。
+Swift が builder 構文を builder 型のメソッドの呼び出しに変換する方法の完全なリストについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/attributes#resultbuilder" target="_self">resultBuilder</a>を参照ください。

@@ -146,7 +146,7 @@ print("And another one: \(generator.random())")
 
 ## Mutating Method Requirements\(mutatingメソッド要件\)
 
-メソッドが属するインスタンスを変更する必要がある場合があります。値型\(つまり、構造体と列挙型\)のインスタンスメソッドの場合、メソッドの `func` キーワードの前に `mutating` キーワードを配置して、メソッドが属するインスタンスとそのインスタンスの全てのプロパティを変更できることを示します。このプロセスについては、[Modifying Value Types from Within Instance Methods\(インスタンスメソッド内からの値型の変更\)](methods.md#modifying-value-types-from-within-instance-methodsインスタンスメソッド内からの値型の変更)で説明されています。
+メソッドが属するインスタンスを変更する必要がある場合があります。値型\(つまり、構造体と列挙型\)のインスタンスメソッドの場合、メソッドの `func` キーワードの前に `mutating` キーワードを配置して、メソッドが属するインスタンスとそのインスタンスの全てのプロパティを変更できることを示します。このプロセスについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/methods#modifying-value-types-from-within-instance-methodsinsutansumesoddokaranono" target="_self">Modifying Value Types from Within Instance Methods\(インスタンスメソッド内からの値型の変更\)</a>で説明されています。
 
 任意の型のインスタンスを変更することを目的としたプロトコルのインスタンスメソッドの要件を定義する場合は、`mutating` キーワードをメソッドにマークします。これにより、構造体と列挙型がそのメソッド要件を満たしてプロトコルに準拠することができます。
 
@@ -202,10 +202,10 @@ class SomeClass: SomeProtocol {
 
 `required` 修飾子を使用すると、準拠するクラスの全てのサブクラスで、イニシャライザ要件を明示的に実装または継承して、プロトコルに準拠する必要があります。
 
-`required` イニシャライザの詳細については、[Required Initializers(必須イニシャライザ)](initialization.md#required-initializers必須イニシャライザ)を参照ください。
+`required` イニシャライザの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#required-initializersinisharaiza" target="_self">Required Initializers(必須イニシャライザ)</a>を参照ください。
 
 > NOTE  
-> `final` クラスはサブクラス化できないため、 `final` 修飾子でマークされているクラスでは、プロトコルのイニシャライザの実装を `required` 修飾子でマークする必要はありません。`final` 修飾子の詳細については、[Preventing Overrides(オーバーライドを防ぐ)](initialization.md#preventing-overridesオーバーライドを防ぐ)を参照ください。
+> `final` クラスはサブクラス化できないため、 `final` 修飾子でマークされているクラスでは、プロトコルのイニシャライザの実装を `required` 修飾子でマークする必要はありません。`final` 修飾子の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/inheritance#preventing-overridesbraidowogu" target="_self">Preventing Overrides(オーバーライドを防ぐ)</a>を参照ください。
 
 サブクラスがスーパークラスからの指定イニシャライザをオーバーライドし、そのイニシャライザがプロトコル要件も満たす場合、`required` 修飾子と `override` 修飾子の両方でイニシャライザの実装をマークします:
 
@@ -230,7 +230,7 @@ class SomeSubClass: SomeSuperClass, SomeProtocol {
 
 ### Failable Initializer Requirements\(失敗可能イニシャライザ要件\)
 
-プロトコルは、[Failable Initializers(失敗可能イニシャライザ)](initialization.md#failable-initializers失敗可能イニシャライザ)で定義されているように、失敗可能イニシャライザ要件を定義できます。
+プロトコルは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#failable-initializersinisharaiza" target="_self">Failable Initializers(失敗可能イニシャライザ)</a>で定義されているように、失敗可能イニシャライザ要件を定義できます。
 
 失敗可能イニシャライザ要件は、準拠する型の失敗可能または失敗しないイニシャライザによって満たされます。失敗しないイニシャライザ要件は、失敗しないイニシャライザまたは暗黙的にアンラップされた失敗可能イニシャライザによって満たされます。
 
@@ -265,7 +265,7 @@ class Dice {
 
 この例では、ボードゲームで使用する n 面のサイコロを表す `Dice` という新しいクラスを定義しています。`Dice` のインスタンスには、側面の数を表す `sides` と呼ばれる整数のプロパティと、ダイスの出目を作成するための乱数ジェネレータを提供する `generator` と呼ばれるプロパティがあります。
 
-`generator` プロパティの型は `RandomNumberGenerator` です。したがって、`RandomNumberGenerator` プロトコルに準拠する任意の型のインスタンスを設定できます。このプロパティに割り当てるインスタンスには、インスタンスが `RandomNumberGenerator` プロトコルに準拠する必要があることを除いて、他に何も必要ありません。型は `RandomNumberGenerator` なので、`Dice` クラス内のコードは、このプロトコルに準拠する `generator` のみを使用できます。つまり、その具体的なジェネレータの型で定義されているメソッドやプロパティを使用することはできません。ただし、[Downcasting(ダウンキャスト)](type-casting.md#downcastingダウンキャスト)で説明されているように、スーパークラスからサブクラスにダウンキャストできるのと同じ方法で、プロトコル型から準拠した具体的な型にダウンキャストできます。
+`generator` プロパティの型は `RandomNumberGenerator` です。したがって、`RandomNumberGenerator` プロトコルに準拠する任意の型のインスタンスを設定できます。このプロパティに割り当てるインスタンスには、インスタンスが `RandomNumberGenerator` プロトコルに準拠する必要があることを除いて、他に何も必要ありません。型は `RandomNumberGenerator` なので、`Dice` クラス内のコードは、このプロトコルに準拠する `generator` のみを使用できます。つまり、その具体的なジェネレータの型で定義されているメソッドやプロパティを使用することはできません。ただし、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/type-casting#downcastingdaunkyasuto" target="_self">Downcasting(ダウンキャスト)</a>で説明されているように、スーパークラスからサブクラスにダウンキャストできるのと同じ方法で、プロトコル型から準拠した具体的な型にダウンキャストできます。
 
 `Dice` には、初期状態を設定するためのイニシャライザもあります。このイニシャライザには、`RandomNumberGenerator` 型の `generator` と呼ばれるパラメータがあります。新しい `Dice` インスタンスを初期化するときに、このパラメータに `RandomNumberGenerator` に準拠する型の値を渡すことができます。
 
@@ -305,7 +305,7 @@ protocol DiceGameDelegate: AnyObject {
 
 `DiceGame` プロトコルは、サイコロを使用する全てのゲームに準拠できるプロトコルです。
 
-`DiceGameDelegate` プロトコルは、`DiceGame` の進行状況を追跡するために準拠できます。*強参照*循環を防ぐために、デリゲートは*弱参照*として宣言されます。弱参照については、[Strong Reference Cycles Between Class Instances(クラスインスタンス間の強参照循環)](automatic-reference-counting.md#strong-reference-cycles-between-class-instancesクラスインスタンス間の強参照循環)を参照ください。プロトコルをクラス専用としてマークすると、この章の後半で登場する `SnakesAndLadders` クラスがそのデリゲートを弱参照で使用しなければならないことを宣言できるようになります。クラス専用プロトコルは、[Class-Only Protocols(クラス専用プロトコル)](protocols.md#class-only-protocolsクラス専用プロトコル)で説明されているように、`AnyObject` を継承します。
+`DiceGameDelegate` プロトコルは、`DiceGame` の進行状況を追跡するために準拠できます。*強参照*循環を防ぐために、デリゲートは*弱参照*として宣言されます。弱参照については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/automatic-reference-counting#strong-reference-cycles-between-class-instanceskurasuinsutansuno" target="_self">Strong Reference Cycles Between Class Instances(クラスインスタンス間の強参照循環)</a>を参照ください。プロトコルをクラス専用としてマークすると、この章の後半で登場する `SnakesAndLadders` クラスがそのデリゲートを弱参照で使用しなければならないことを宣言できるようになります。クラス専用プロトコルは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#class-only-protocolskurasupurotokoru" target="_self">Class-Only Protocols(クラス専用プロトコル)</a>で説明されているように、`AnyObject` を継承します。
 
 これは、最初に [Control Flow(制御フロー)](control-flow.md) で紹介した「蛇とはしごゲーム」の別バージョンです。このバージョンは、ダイスロールに `Dice` インスタンスを使用しています。`SnakesAndLadders` は `DiceGame` プロトコルに準拠し、その進行状況を `DiceGameDelegate` に通知します:
 
@@ -342,7 +342,7 @@ class SnakesAndLadders: DiceGame {
 }
 ```
 
-蛇とはしごについては、[Break](control-flow.md#break)を参照してください。
+蛇とはしごについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#break" target="_self">Break</a>を参照してください。
 
 このバージョンでは、`DiceGame` プロトコルに準拠する `SnakesAndLadders` というクラスでラップされています。プロトコルに準拠するために、`dice` と呼ばれるプロパティの get と `play()` メソッドを提供しています。\(`dice` プロパティは、初期化後に変更する必要がないため、定数プロパティとして宣言されており、プロトコルでは get のみを要件にしています\)
 
@@ -446,7 +446,7 @@ print(game.textualDescription)
 
 ### Conditionally Conforming to a Protocol\(条件付きでのプロトコルへの準拠\)
 
-ジェネリック型は、型のジェネリックパラメータがプロトコルに準拠している場合など、特定の条件下でのみプロトコルの要件を満たすことができるようにします。型を拡張するときに制約を並べることで、ジェネリック型を条件付きでプロトコルに準拠させることができます。`where` 句を記述して、準拠するプロトコルの名前の後にこれらの制約を記述します。ジェネリック `where` 句の詳細については、[Generic Where Clauses(ジェネリック where 句)](generics.md#generic-where-clausesジェネリックwhere句)を参照ください。
+ジェネリック型は、型のジェネリックパラメータがプロトコルに準拠している場合など、特定の条件下でのみプロトコルの要件を満たすことができるようにします。型を拡張するときに制約を並べることで、ジェネリック型を条件付きでプロトコルに準拠させることができます。`where` 句を記述して、準拠するプロトコルの名前の後にこれらの制約を記述します。ジェネリック `where` 句の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/generics#generic-where-clausesjenerikku-where" target="_self">Generic Where Clauses(ジェネリック where 句)</a>を参照ください。
 
 次の拡張により、`Array` インスタンスが `TextRepresentable` に準拠する型の要素を格納する場合は、常に `TextRepresentable` プロトコルに準拠するようになります:
 
@@ -546,7 +546,7 @@ for level in levels.sorted() {
 
 ## Collections of Protocol Types\(プロトコル型のコレクション\)
 
-プロトコルは、[Protocols as Types(型としてのプロトコル)](protocols.md#protocols-as-types型としてのプロトコル)で説明されているように、配列や辞書などのコレクションに格納される型として使用できます。この例では、`TextRepresentable` の配列を作成します。
+プロトコルは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#protocols-as-typestoshitenopurotokoru" target="_self">Protocols as Types(型としてのプロトコル)</a>で説明されているように、配列や辞書などのコレクションに格納される型として使用できます。この例では、`TextRepresentable` の配列を作成します。
 
 ```swift
 let things: [TextRepresentable] = [game, d12, simonTheHamster]
@@ -634,7 +634,7 @@ protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
 上記の例では、`SomeClassOnlyProtocol` はクラス型でのみ準拠できます。`SomeClassOnlyProtocol` に準拠しようとする構造体または列挙型の定義を作成すると、コンパイルエラーになります。
 
 > NOTE  
-> そのプロトコルの要件によって定義された動作が、準拠する型が値型のセマンティクスではなく参照型のセマンティクスであることを想定\(要求\)する場合は、クラス専用プロトコルを使用してください。参照型と値型のセマンティクスの詳細については、[Structures and Enumerations Are Value Types(構造体と列挙型は値型)](structures-and-classes.md#structures-and-enumerations-are-value-types構造体と列挙型は値型)、[Classes Are Reference Types(クラスは参照型)](structures-and-classes.md#classes-are-reference-typesクラスは参照型)を参照ください。
+> そのプロトコルの要件によって定義された動作が、準拠する型が値型のセマンティクスではなく参照型のセマンティクスであることを想定\(要求\)する場合は、クラス専用プロトコルを使用してください。参照型と値型のセマンティクスの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#protocols-as-typestoshitenopurotokoru" target="_self">Structures and Enumerations Are Value Types(構造体と列挙型は値型)</a>、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#classes-are-reference-typeskurasuha" target="_self">Classes Are Reference Types(クラスは参照型)</a>を参照ください。
 
 ## Protocol Composition\(プロトコル合成\)
 
@@ -824,7 +824,7 @@ class Counter {
 
 ここでは、2 つの階層のオプショナルチェーンが行われていることに注目してください。まず、`dataSource` が `nil` の可能性があるため、`dataSource` にはその名前の後に疑問符(`?`)があり、`dataSource` が `nil` でない場合にのみ `increment(forCount:)` を呼び出す必要があることを示しています。次に、`dataSource` が存在する場合でも、`increment(forCount:)` がオプショナルのため、必ず実装されている保証はありません。ここで、`increment(forCount:)` が実装されない可能性も、オプショナルチェーンによって処理されます。`increment(forCount:)` の呼び出しは、`increment(forCount:)` が存在する場合、つまり `nil` でない場合にのみ発生します。これが `increment(forCount:)` にも名前の後に疑問符が付いている理由です。
 
-`increment(forCount:)` の呼び出しはこれら 2 つの理由のいずれかで失敗する可能性があるため、呼び出しはオプショナルの `Int` 値を返します。これは、`CounterDataSource` の定義で `increment(forCount:)` がオプショナルではない `Int` 値を返すように定義されている場合でも当てはまります。オプショナルチェーンは 2 回行われていますが、結果は 1 つのオプショナルにラップされます。複数のオプショナルチェーンの詳細については、[Linking Multiple Levels of Chaining(複数階層のチェーンへのリンク)](./optional-chaining.md#linking-multiple-levels-of-chaining複数階層のチェーンへのリンク)を参照ください。
+`increment(forCount:)` の呼び出しはこれら 2 つの理由のいずれかで失敗する可能性があるため、呼び出しはオプショナルの `Int` 値を返します。これは、`CounterDataSource` の定義で `increment(forCount:)` がオプショナルではない `Int` 値を返すように定義されている場合でも当てはまります。オプショナルチェーンは 2 回行われていますが、結果は 1 つのオプショナルにラップされます。複数のオプショナルチェーンの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/optional-chaining#linking-multiple-levels-of-chainingnochnhenorinku" target="_self">Linking Multiple Levels of Chaining(複数階層のチェーンへのリンク)</a>を参照ください。
 
 `increment(forCount:)` を呼び出した後、それが返すオプショナルの `Int` は、オプショナルバインディングを使用して、`amount` という定数にアンラップされます。オプショナルの `Int` に値が含まれている場合、つまり、デリゲートとメソッドの両方が存在し、メソッドが値を返した場合、`count` 格納プロパティに値が追加され、増加の動作が完了します。
 
@@ -934,7 +934,7 @@ extension PrettyTextRepresentable  {
 
 ### Adding Constraints to Protocol Extensions\(プロトコル Extensionに制約の追加\)
 
-プロトコル Extension を定義するとき、準拠する型が拡張したメソッドとプロパティを使用できる前に、その型が満たす必要がある制約を指定できます。これらの制約は、拡張するプロトコルの名前の後のジェネリックの `where` 句によって記述されます。ジェネリック `where` 句の詳細については、[Generic Where Clauses(ジェネリック where 句)](generics.md#generic-where-clausesジェネリックwhere句)を参照ください。
+プロトコル Extension を定義するとき、準拠する型が拡張したメソッドとプロパティを使用できる前に、その型が満たす必要がある制約を指定できます。これらの制約は、拡張するプロトコルの名前の後のジェネリックの `where` 句によって記述されます。ジェネリック `where` 句の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/generics#generic-where-clausesjenerikku-where" target="_self">Generic Where Clauses(ジェネリック where 句)</a>を参照ください。
 
 例えば、要素が `Equatable` プロトコルに準拠しているコレクションに適用される `Collection` プロトコルの拡張を定義できます。コレクションの要素を標準ライブラリの `Equatable` プロトコルに制約することで、`==` および `!=` 演算子を使用して、2 つの要素間の等価性と不等価性をチェックできます:
 
