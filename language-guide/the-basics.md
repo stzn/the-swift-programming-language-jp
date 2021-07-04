@@ -71,7 +71,7 @@ var red, green, blue: Double
 ```
 
 > NOTE  
-> 実際に型注釈を書く必要はあまりありません。定義時に定数や変数に初期値を与えた場合、 Swift はたいていそれらの型を推論できます(詳細は[Type Safety and Type Inference(型安全と型推論)](#type-safety-and-type-inference型安全と型推論))。 上記の `welcomeMessage` の例では、初期値を与えていないため、推論をすることができないため、`welcomeMessage` 変数は型注釈で型を特定しています。
+> 実際に型注釈を書く必要はあまりありません。定義時に定数や変数に初期値を与えた場合、 Swift はたいていそれらの型を推論できます(詳細は<a href="#type-safety-and-type-inferenceto">Type Safety and Type Inference(型安全と型推論)</a>。上記の `welcomeMessage` の例では、初期値を与えていないため、推論をすることができないため、`welcomeMessage` 変数は型注釈で型を特定しています。
 
 ### Naming Constants and Variables\(定数と変数の命名\)
 
@@ -115,7 +115,7 @@ print(friendlyWelcome)
 // "Bonjour!"
 ```
 
-`print(_:separator:terminator:)` 関数はグローバル関数で、1 つ以上の値を適切なアウトプット先に出力します。Xcode では、`print(_:separator:terminator:)` 関数を使用すると、 Xcode のコンソールパネルへ値を出力します。`separator` と `terminator` パラメータには、デフォルト値が用意されているので省略可能です。デフォルトでは最後に改行を追加します。改行を付けたくない場合は `terminator` に空文字を渡してください。例えば `print(someValue, terminator: "")`。詳細は[Default Parameter Values(デフォルトパラメータ値)](functions.md#default-parameter-valuesデフォルトパラメータ値)。
+`print(_:separator:terminator:)` 関数はグローバル関数で、1 つ以上の値を適切なアウトプット先に出力します。Xcode では、`print(_:separator:terminator:)` 関数を使用すると、 Xcode のコンソールパネルへ値を出力します。`separator` と `terminator` パラメータには、デフォルト値が用意されているので省略可能です。デフォルトでは最後に改行を追加します。改行を付けたくない場合は `terminator` に空文字を渡してください。例えば `print(someValue, terminator: "")`。詳細は<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#default-parameter-valuesdeforutoparamta">Default Parameter Values(デフォルトパラメータ値)</a>。
 
 Swift は長い文字列の中で定数や変数をプレースホルダとして使用したい場合、*文字列補間*を使い、定数や変数の現在値に置き換えるように Swift に伝えることができます。名前を括弧(`()`)で囲み、開始括弧の前にバックスラッシュ(`\`)を付けます。
 
@@ -125,7 +125,7 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 ```
 
 > NOTE  
-> 文字列補間で使用できるオブションは[String Interpolation(文字列補間)](strings-and-characters.md#string-interpolation文字列補間)に記載しています
+> 文字列補間で使用できるオブションは<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/strings-and-characters#string-interpolation-wen-zi-lie-bu-jian">String Interpolation(文字列補間)</a>に記載しています
 
 ## Comments\(コメント\)
 
@@ -198,7 +198,7 @@ Swift は符号なしの整数値型も提供しています。これも、プ�
 * 64 ビットのプラットフォームの場合、`UInt` は `UInt64` と等しい
 
 > NOTE  
-> `UInt` は特別にプラットフォームに応じて決まるサイズと同じサイズの 符号なし整数型を扱いたい場合にのみ使用してください。そうでない場合、負の値にならないとしても `Int` を使用する方が好ましいです。一貫して `Int` を整数値に使用することで、異なる整数値型間の変換を避け、合致する型をコンパイラが推論することで、互換性を保つことができます。詳細は[Type Safety and Type Inference(型安全と型推論)](#type-safety-and-type-inference型安全と型推論)。
+> `UInt` は特別にプラットフォームに応じて決まるサイズと同じサイズの 符号なし整数型を扱いたい場合にのみ使用してください。そうでない場合、負の値にならないとしても `Int` を使用する方が好ましいです。一貫して `Int` を整数値に使用することで、異なる整数値型間の変換を避け、合致する型をコンパイラが推論することで、互換性を保つことができます。詳細は<a href="#type-safety-and-type-inferenceto">Type Safety and Type Inference(型安全と型推論)</a>。
 
 ## Floating-Point Numbers\(浮動小数点数\)
 
