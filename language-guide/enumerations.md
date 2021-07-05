@@ -199,7 +199,7 @@ case let .qrCode(productCode):
 
 ## Raw Values
 
-<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#associated-values-guan-lian-zhi" target="_self">Associated Values(関連値)</a>のバーコードの例は、列挙ケースが、様々な型に関連値を格納して宣言する方法を示しています。関連値の代わりに、列挙型には、全て同じ型のデフォルト値\(*Raw Values*と呼ばれる\)を事前に定義することもできます。
+<a href="#associated-values-guan-lian-zhi" target="_self">Associated Values(関連値)</a>のバーコードの例は、列挙ケースが、様々な型に関連値を格納して宣言する方法を示しています。関連値の代わりに、列挙型には、全て同じ型のデフォルト値\(*Raw Values*と呼ばれる\)を事前に定義することもできます。
 
 名前付きの列挙ケースと一緒に ASCII 値を格納する例を次に示します。
 

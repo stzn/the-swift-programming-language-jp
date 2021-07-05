@@ -546,7 +546,7 @@ for level in levels.sorted() {
 
 ## Collections of Protocol Types\(プロトコル型のコレクション\)
 
-プロトコルは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#protocols-as-typestoshitenopurotokoru" target="_self">Protocols as Types(型としてのプロトコル)</a>で説明されているように、配列や辞書などのコレクションに格納される型として使用できます。この例では、`TextRepresentable` の配列を作成します。
+プロトコルは、<a href="#protocols-as-typestoshitenopurotokoru" target="_self">Protocols as Types(型としてのプロトコル)</a>で説明されているように、配列や辞書などのコレクションに格納される型として使用できます。この例では、`TextRepresentable` の配列を作成します。
 
 ```swift
 let things: [TextRepresentable] = [game, d12, simonTheHamster]
