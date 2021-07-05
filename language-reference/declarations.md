@@ -331,7 +331,7 @@ func repeatGreeting(_ greeting: String, count n: Int) { /* n 回あいさつ */ 
 repeatGreeting("Hello, world!", count: 2) //  count は ラベルあち, greeting は ラベルなし
 ```
 
-### In-Out Parameters\(In-Outパラメータ\)
+### <a id="declarations-in-out-parameter">In-Out Parameters\(In-Outパラメータ\)</a>
 
 in-out パラメータは次のように渡されます:
 
