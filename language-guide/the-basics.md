@@ -558,7 +558,7 @@ if let constantName = someOptional {
 }
 ```
 
-[Optionals(オプショナル)](#optionalsオプショナル)の中の例で出てきた `possibleNumber` は、強制アンラップの代わりに、オプショナルバインディングを使用して書き換えることができます。
+<a href="#optionalsopushonaru" target="_self">Optionals(オプショナル)</a>の中の例で出てきた `possibleNumber` は、強制アンラップの代わりに、オプショナルバインディングを使用して書き換えることができます。
 
 ```swift
 if let actualNumber = Int(possibleNumber) {

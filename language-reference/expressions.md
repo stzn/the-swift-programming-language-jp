@@ -537,11 +537,11 @@ let z: SomeClass = .sharedSubclass
 > GRAMMAR OF A WILDCARD EXPRESSION  
 > wildcard-expression → `_`
 
-### Key-Path Expression(Key-Path式)
+### Key-Path Expression(Key-Path 式)
 
 *key-path 式*は、型のプロパティまたは subscript を参照します。key-value observing などのような、動的プログラミングのタスクで key-path 式を使用します。次の形式があります:
 
-![Key-Path式](./../.gitbook/assets/key-path_expression.png)
+![Key-Path 式](./../.gitbook/assets/key-path_expression.png)
 
 *type name* は、`String`、`[Int]`、や `Set<Int>` などのジェネリックなパラメータを含めた、具体的な型の名前です。
 
@@ -705,11 +705,11 @@ Objective-C API とやり取りするコード内のキーパスの使用方法�
 > key-path-postfixes → [key-path-postfix](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfix)  [key-path-postfixes](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes)<sub>*opt*</sub>  
 > key-path-postfix → `?` \|  `!` \|  `self` \|  `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  `]`
 
-### Selector Expression(Selector式)
+### Selector Expression(Selector 式)
 
 セレクタ式を使用すると、Objective-C のメソッドまたはプロパティの get や set を参照するために使用されるセレクタにアクセスできます。形式は次のとおりです:
 
-![Selector式](./../.gitbook/assets/selector_expression.png)
+![Selector 式](./../.gitbook/assets/selector_expression.png)
 
 メソッド名とプロパティ名は、Objective-C ランタイムで使用可能なメソッドまたはプロパティを参照する必要があります。セレクタ式の値は `Selector` 型のインスタンスです。例えば:
 
@@ -888,7 +888,7 @@ someFunction { return $0 } secondClosure: { return $0 }  // "10 20"
 
 上記の例では、"Ambiguous"とマークされている関数の呼び出しは"- 120"が出力され、Swift 5.3 ではコンパイラが警告を生成します。それ以降の Swift のバージョンでは "110 -"が出力されます。
 
-クラス、構造体、または列挙型は、[Methods with Special Names(特別な名前のメソッド)](./declarations.md#methods-with-special-names特別な名前を持つメソッド)で説明されているような、いくつかのメソッドの 1 つを宣言することで、関数呼び出しの糖衣構文(シンタックスシュガー)を使うことができます。
+クラス、構造体、または列挙型は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#special-kinds-of-methodsnanomesoddo" target="_self">Methods with Special Names(特別な名前のメソッド)</a>で説明されているような、いくつかのメソッドの 1 つを宣言することで、関数呼び出しの糖衣構文(シンタックスシュガー)を使うことができます。
 
 #### Implicit Conversion to a Pointer Type(ポインタ型への暗黙変換)
 

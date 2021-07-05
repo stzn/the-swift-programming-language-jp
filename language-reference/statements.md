@@ -24,7 +24,7 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 
 ループ文では、ループで指定された条件に応じて、コードブロックを繰り返し実行できます。Swift には 3 つのループ文があります。`for-in` 文、`while` 文、および `repeat-while` 文です。
 
-ループ文内の制御フローは、`break` 文と `continue` 文によって変更でき、下記の [Break Statement(Break 文)](#break-statementbreak文)と[Continue Statement](#continue-statementcontinue文)で説明します。
+ループ文内の制御フローは、`break` 文と `continue` 文によって変更でき、下記の<a href="#break-statementbreak-wen" target="_self">Break Statement(Break 文)</a>と<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#continue-statementcontinue-wen" target="_self">Continue Statement(Continue 文)</a>で説明します。
 
 > GRAMMAR OF A LOOP STATEMENT  
 > loop-statement → [for-in-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_for-in-statement)  
@@ -96,7 +96,7 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 
 分岐文を使用すると、プログラムは 1 つ以上の条件の値に応じてコードの特定の部分を実行できます。分岐文で指定された条件の値は、プログラムの分岐方法、したがって実行されるコードブロックを制御します。Swift には、`if` 文、`guard` 文、および `switch` 文の 3 つの分岐文があります。
 
-`if` 文または `switch` 文の制御フローは `break` 文によって変更できます。これについては、下記の [Break Statement(Break 文)](#break-statementbreak文)で説明します。
+`if` 文または `switch` 文の制御フローは `break` 文によって変更できます。これについては、下記の<a href="#break-statementbreak-wen" target="_self">Break Statement(Break 文)</a>で説明します。
 
 > GRAMMAR OF A BRANCH STATEMENT  
 > branch-statement → [if-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_if-statement)  
@@ -127,13 +127,13 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 > if-statement → `if` [condition-list](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_condition-list)  [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  [else-clause](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_else-clause)<sub>*opt*</sub>  
 > else-clause → `else` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block) \|  `else` [if-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_if-statement)
 
-### Guard Statement(Guard文)
+### Guard Statement(Guard 文)
 
 `guard` 文は、1 つ以上の条件が満たされない場合に、プログラム制御をスコープ外に転送するために使用されます。
 
 `guard` 文の形式は次のとおりです:
 
-![Guard文](./../.gitbook/assets/guard_statement.png)
+![Guard 文](./../.gitbook/assets/guard_statement.png)
 
 `guard` 文の条件の値は、`Bool` 型または `Bool` にブリッジされた型にする必要があります。<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#optional-bindingopushonarubaindingu" target="_self">Optional Binding(オプショナルバインディング)</a>で説明したように、条件はオプショナルバインディング宣言にすることもできます。
 
