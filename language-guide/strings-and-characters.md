@@ -157,7 +157,7 @@ Swift の、デフォルトでコピーをする `String` の挙動は、`String
 
 内部では、Swift のコンパイラは本当に必要なときだけ実際にコピーが発生するように最適化をしています。つまり、値型として文字列を扱う場合に常に良いパフォーマンスを得ることができます。
 
-## Working with Characters\(文字配列の取扱\)
+## <a id="working-with-characters">Working with Characters\(文字配列の取扱\)</a>
 
 `for-in` ループを使用して文字列を繰り返し処理することで、`String` の個々の `Character` にアクセスすることができます。
 
@@ -559,7 +559,7 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 
 Unicode 文字列は、テキストファイルや他のストレージに書かれるとき、Unicode 形式の 1 つに符号化\(エンコード\)されます。それぞれの形式は、文字列を*コードユニット*と呼ばれる小さな塊にエンコードします。これらには、UTF-8\(8 ビットのコードユニットで文字列を符号化\)、UTF-16\(16 ビットのコードユニットで文字列を符号化\)、UTF-32\(32 ビットのコードユニットで文字列を符号化\)があります。
 
-Swift では、複数の Unicode 形式で文字列にアクセスできます。`for-in` 文で文字列を繰り返し処理する場合、Unicode 拡張書記素クラスタとして個々の `Character` にアクセスできます。このプロセスは<a href="#working-with-charactersno">Working with Characters(文字配列の取扱)</a>で記載しています。
+Swift では、複数の Unicode 形式で文字列にアクセスできます。`for-in` 文で文字列を繰り返し処理する場合、Unicode 拡張書記素クラスタとして個々の `Character` にアクセスできます。このプロセスは<a href="#working-with-characters">Working with Characters(文字配列の取扱)</a>で記載しています。
 
 他にも 3 つの Unicode 準拠形式で `String` にアクセスできます:
 

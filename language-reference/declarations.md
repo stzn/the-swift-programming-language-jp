@@ -369,7 +369,7 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 }
 ```
 
-より多くの議論と in-out パラメータの例については、<a href="#functions-in-out-parameters" target="_self">In-Out Parameters(In-Out パラメータ)</a>を参照ください。
+より多くの議論と in-out パラメータの例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/functions#functions-in-out-parameters" target="_self">In-Out Parameters(In-Out パラメータ)</a>を参照ください。
 
 ### <a id="special-kinds-of-parameters">Special Kinds of Parameters\(特殊な種類のパラメータ\)</a>
 
@@ -829,7 +829,7 @@ protocol SomeProtocol: AnyObject {
 > protocol-initializer-declaration → [initializer-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-head)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)`throws`<sub>*opt*</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub>  
 > protocol-initializer-declaration → [initializer-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-head)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)`rethrows` [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub>
 
-### Protocol Subscript Declaration\(プロトコル subscript 宣言\)
+### <a id="protocol-subscript-declaration">Protocol Subscript Declaration\(プロトコル subscript 宣言\)</a>
 
 プロトコルは、プロトコル宣言の本文にプロトコル subscript 宣言を含めることによって準拠する型が subscript を実装する必要があることを宣言します。プロトコル subscript 宣言には、特殊な形式の subscript 宣言があります:
 
@@ -1163,7 +1163,7 @@ subscript 宣言は、クラス、構造体、列挙型、 extension、または
 
 subscript のパラメータは、2 つの例外を除いて、関数パラメータと同じ規則に従います。デフォルトでは、subscript で使用されるパラメータには、関数、メソッド、イニシャライザとは異なり、引数ラベルがありません。ただし、関数、メソッド、およびイニシャライザが使用するのと同じ構文を使用して、明示的な引数ラベルを提供できます。さらに、subscript に in-out パラメータを含めることはできません。subscript パラメータは、<a href="#special-kinds-of-parameters" target="_self">Special Kinds of Parameters(特殊な種類のパラメータ)</a>で説明されている構文を使用して、デフォルト値を持つことができます。
 
-<a href="#protocol-subscript-declarationpurotokoru-subscript" target="_self">Protocol Subscript Declaration(プロトコル subscript 宣言)</a>で説明されているように、プロトコル宣言のコンテキストで subscript を宣言することもできます。
+<a href="#protocol-subscript-declaration" target="_self">Protocol Subscript Declaration(プロトコル subscript 宣言)</a>で説明されているように、プロトコル宣言のコンテキストで subscript を宣言することもできます。
 
 subscript の詳細と subscript 宣言の例については、[Subscripts](./../language-guide/subscripts.md)を参照ください。
 
