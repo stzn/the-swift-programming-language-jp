@@ -50,7 +50,7 @@ counter.reset()
 // counter の値は 0
 ```
 
-<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#function-argument-labels-and-parameter-namesraberutoparamta" target="_self">Function Argument Labels and Parameter Names(引数ラベルとパラメータ名)</a>で説明されているように、関数パラメータは、\(関数の本文内で使用する\)名前と\(関数を呼び出すときに使用する\)引数ラベルの両方を持つことができます。メソッドは型に紐づいた関数にすぎないため、メソッドパラメータについても同じことが言えます。
+<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#function-argument-labels-and-parameter-names" target="_self">Function Argument Labels and Parameter Names(引数ラベルとパラメータ名)</a>で説明されているように、関数パラメータは、\(関数の本文内で使用する\)名前と\(関数を呼び出すときに使用する\)引数ラベルの両方を持つことができます。メソッドは型に紐づいた関数にすぎないため、メソッドパラメータについても同じことが言えます。
 
 ### The self Property\(selfプロパティ\)
 
@@ -86,7 +86,7 @@ if somePoint.isToTheRightOf(x: 1.0) {
 
 `self` プレフィックスがない場合、Swift は両方の `x` をメソッドパラメータを参照していると見なします。
 
-### Modifying Value Types from Within Instance Methods\(インスタンスメソッド内からの値型の変更\)
+### <a id="modifying-value-types-from-within-instance-methods">Modifying Value Types from Within Instance Methods\(インスタンスメソッド内からの値型の変更\)</a>
 
 構造体と列挙型は値型です。デフォルトでは、値型のプロパティはそのインスタンスメソッド内から変更できません。
 
@@ -110,7 +110,7 @@ print("The point is now at (\(somePoint.x), \(somePoint.y))")
 
 上記の `Point` 構造体は、自身に変更を加える `moveBy(x:y:)` メソッドを定義します。これは、`Point` インスタンスを一定量移動します。新しいポイントを返す代わりに、呼び出されたポイントを実際に変更します。プロパティを変更できるようにするために、`mutating` キーワードがその定義に追加されてます。
 
-<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#stored-properties-of-constant-structure-instancesnoinsutansunopuropati" target="_self">Stored Properties of Constant Structure Instances(定数の格納インスタンスのプロパティ)</a>で説明されているように、構造体の定数内の変数プロパティを変更できないため、構造体の定数で変更メソッドを呼び出すことはできないことに注意してください。
+<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#stored-properties-of-constant-structure-instances" target="_self">Stored Properties of Constant Structure Instances(定数の格納インスタンスのプロパティ)</a>で説明されているように、構造体の定数内の変数プロパティを変更できないため、構造体の定数で変更メソッドを呼び出すことはできないことに注意してください。
 
 ```swift
 let fixedPoint = Point(x: 3.0, y: 3.0)

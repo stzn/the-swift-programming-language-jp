@@ -24,9 +24,9 @@ Swift では、ほとんどの宣言は、宣言されているのと同時に�
 > declaration → [precedence-group-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-declaration)  
 > declarations → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration)  [declarations](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declarations)<sub>*opt*</sub>
 
-## Top-Level Code\(トップレベルコード\)
+## <a id="top-level-code">Top-Level Code\(トップレベルコード\)</a>
 
-Swift ソースファイルのトップレベルコードは、0 個以上の文、宣言、式で構成されています。デフォルトでは、ソースファイルのトップレベルで宣言されている変数、定数、およびその他の名前付き宣言は、同じモジュールの全てのソースファイル内のコードからアクセスできます。<a href="#access-control-levelsakusesureberu" target="_self">Access Control Levels(アクセス制御レベル)</a>で説明されているように、宣言をアクセスレベル修飾子でマークすることで、このデフォルトの動作をオーバーライドできます。
+Swift ソースファイルのトップレベルコードは、0 個以上の文、宣言、式で構成されています。デフォルトでは、ソースファイルのトップレベルで宣言されている変数、定数、およびその他の名前付き宣言は、同じモジュールの全てのソースファイル内のコードからアクセスできます。<a href="#access-control-levels" target="_self">Access Control Levels(アクセス制御レベル)</a>で説明されているように、宣言をアクセスレベル修飾子でマークすることで、このデフォルトの動作をオーバーライドできます。
 
 トップレベルコードには 2 種類あります: トップレベル宣言と実行可能トップレベルコードです。トップレベル宣言は宣言のみで構成され、全ての Swift ソースファイルで許可されています。実行可能トップレベルコードには、宣言だけでなく、文と式が含まれており、プログラムのトップレベルのエントリポイントとしてのみ使用できます。
 
@@ -62,7 +62,7 @@ Swift ソースファイルのトップレベルコードは、0 個以上の文
 > import-path → [import-path-identifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path-identifier) \|  [import-path-identifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path-identifier)  `.` [import-path](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path)  
 > import-path-identifier → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) \|  [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator)
 
-## Constant Declaration\(定数宣言\)
+## <a id="constant-declaration">Constant Declaration\(定数宣言\)</a>
 
 *定数宣言*では、プログラムに名前付きの定数値を導入します。定数宣言は `let` キーワードを使用して宣言され、形式は次のとおりです。
 
@@ -87,11 +87,11 @@ print("The second number is \(secondNumber).")
 // "The second number is 42."
 ```
 
-型注釈(`:type`)は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/types#type-inference-xing-tui-lun" target="_self">Type Inference(型推論)</a>で説明されているように、*constant name* の型を推論できる場合は、省略可能です。
+型注釈(`:type`)は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/types#type-inference" target="_self">Type Inference(型推論)</a>で説明されているように、*constant name* の型を推論できる場合は、省略可能です。
 
-定数型プロパティを宣言するには、宣言に `static` 修飾子をマークします。クラスの定数型プロパティは常に暗黙的に `final` です。サブクラスによるオーバーライドを許可または禁止するために、`class` または `final` 修飾子をマークすることはできません。型プロパティは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#type-propertiespuropati" target="_self">Type Properties(型プロパティ)</a>で説明されています。
+定数型プロパティを宣言するには、宣言に `static` 修飾子をマークします。クラスの定数型プロパティは常に暗黙的に `final` です。サブクラスによるオーバーライドを許可または禁止するために、`class` または `final` 修飾子をマークすることはできません。型プロパティは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#type-properties" target="_self">Type Properties(型プロパティ)</a>で説明されています。
 
-定数の詳細およびそれらを使用するときのガイダンスについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#constants-and-variablesto" target="_self">Constants and Variables(定数と変数)</a>と<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#stored-propertiespuropati" target="_self">Stored Properties(格納プロパティ)</a>を参照ください。
+定数の詳細およびそれらを使用するときのガイダンスについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#constants-and-variables" target="_self">Constants and Variables(定数と変数)</a>と<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#stored-properties" target="_self">Stored Properties(格納プロパティ)</a>を参照ください。
 
 > GRAMMAR OF A CONSTANT DECLARATION  
 > constant-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>*opt*</sub> `let` [pattern-initializer-list](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_pattern-initializer-list)  
@@ -99,16 +99,16 @@ print("The second number is \(secondNumber).")
 > pattern-initializer → [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)  [initializer](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer)<sub>*opt*</sub>  
 > initializer → `=` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
 
-## Variable Declaration\(変数宣言\)
+## <a id="variable-declaration">Variable Declaration\(変数宣言\)</a>
 
 *変数宣言*では、プログラムに名前付きの変数値を導入し、`var` キーワードを使用して宣言されます。
 
 変数宣言には、格納/計算変数や格納/計算プロパティ、格納変数オブザーバやプロパティオブザーバ、および静的変数プロパティなど、様々な種類の名前付きで可変な値を宣言する形式があります。適切な形式は、変数が宣言されているスコープと宣言する変数の種類によって異なります。
 
 > NOTE  
-> <a href="#protocol-property-declarationpurotokorupuropati" target="_self">Protocol Property Declaration(プロトコルプロパティ宣言)</a>で説明されているように、プロトコル宣言のコンテキストでプロパティを宣言することもできます。
+> <a href="#protocol-property-declaration" target="_self">Protocol Property Declaration(プロトコルプロパティ宣言)</a>で説明されているように、プロトコル宣言のコンテキストでプロパティを宣言することもできます。
 
-<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/inheritance#overridingbraido" target="_self">Overriding(オーバーライド)</a>で説明されているように、サブクラスのプロパティ宣言に `override` 修飾子をマークすることで、サブクラス内でプロパティをオーバーライドできます。
+<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/inheritance#overriding" target="_self">Overriding(オーバーライド)</a>で説明されているように、サブクラスのプロパティ宣言に `override` 修飾子をマークすることで、サブクラス内でプロパティをオーバーライドできます。
 
 ### Stored Variables and Stored Variable Properties\(格納変数、格納可変プロパティ\)
 
@@ -132,15 +132,15 @@ print("The second number is \(secondNumber).")
 
 この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラス、構造体、列挙型、または extension のコンテキストで定義できます。この形式の変数宣言がグローバルスコープまたは関数のローカルスコープで宣言されている場合は、*計算変数*と呼ばれます。クラス、構造体、または extension のコンテキストで宣言されている場合は、それは*計算プロパティ*と呼ばれます。
 
-get は値を読み取るために使用され、set は値を書き込むために使用されます。set 句は省略可能で、get のみが必要な場合は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#read-only-computed-propertiesmiripuropati" target="_self">Read-Only Computed Properties(読み取り専用計算プロパティ)</a>で説明されているように、両方の句を省略し、シンプルに要求された値を直接返すことができます。しかし、set 句を指定した場合は、get 句も提供する必要があります。
+get は値を読み取るために使用され、set は値を書き込むために使用されます。set 句は省略可能で、get のみが必要な場合は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#read-only-computed-properties" target="_self">Read-Only Computed Properties(読み取り専用計算プロパティ)</a>で説明されているように、両方の句を省略し、シンプルに要求された値を直接返すことができます。しかし、set 句を指定した場合は、get 句も提供する必要があります。
 
-*setter name* とそれを囲む括弧は省略可能です。setter name を指定した場合は、set のパラメータ名として使用されます。setter name を指定しない場合は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#shorthand-setter-declarationpuropati-set" target="_self">Shorthand Setter Declaration(省略 set プロパティ宣言)</a>で説明されているように、set へのデフォルトのパラメータ名は `newValue` です。
+*setter name* とそれを囲む括弧は省略可能です。setter name を指定した場合は、set のパラメータ名として使用されます。setter name を指定しない場合は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#shorthand-setter-declaration" target="_self">Shorthand Setter Declaration(省略 set プロパティ宣言)</a>で説明されているように、set へのデフォルトのパラメータ名は `newValue` です。
 
 格納変数や格納可変プロパティとは異なり、計算変数または計算プロパティの値はメモリに格納されません。
 
-詳細や計算プロパティの例は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#computed-propertiespuropati" target="_self">Computed Properties(計算プロパティ)</a>を参照ください。
+詳細や計算プロパティの例は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#properties-computed-properties" target="_self">Computed Properties(計算プロパティ)</a>を参照ください。
 
-### Stored Variable Observers and Property Observers\(格納変数オブザーバとプロパティオブザーバ\)
+### <a id="stored-variable-observers-and-property-observers">Stored Variable Observers and Property Observers\(格納変数オブザーバとプロパティオブザーバ\)</a>
 
 格納変数またはプロパティを `willSet` や `didSet` オブザーバと一緒に宣言することもできます。オブザーバで宣言された格納変数またはプロパティの形式は次のとおりです:
 
@@ -148,7 +148,7 @@ get は値を読み取るために使用され、set は値を書き込むため
 
 この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラスまたは構造体宣言のコンテキストで定義できます。この形式の変数宣言がグローバルスコープまたは関数のローカルスコープで宣言されている場合、オブザーバは*格納変数オブザーバ*と呼ばれます。クラスまたは構造体宣言のコンテキストで宣言されている場合、オブザーバは*プロパティオブザーバ*と呼ばれます。
 
-任意の格納プロパティにプロパティオブザーバを追加できます。<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/inheritance#overriding-property-observerspuropatiobuzbanobraido" target="_self">Overriding Property Observers(プロパティオブザーバのオーバーライド)</a>で説明されているように、サブクラス内でプロパティをオーバーライドすることで、継承したプロパティ(格納または計算プロパティ)にプロパティオブサーバを追加することもできます。
+任意の格納プロパティにプロパティオブザーバを追加できます。<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/inheritance#overriding-property-observers" target="_self">Overriding Property Observers(プロパティオブザーバのオーバーライド)</a>で説明されているように、サブクラス内でプロパティをオーバーライドすることで、継承したプロパティ(格納または計算プロパティ)にプロパティオブサーバを追加することもできます。
 
 値を初期化する *expression* は、クラスまたは構造体宣言のコンテキストでは省略可能ですが、他の場所では必須です。*型注釈*は、型が値を初期化する *expression* から推論できる場合は省略可能です。この式は、プロパティの値が初めて読まれるときに評価されます。プロパティの値を読み込む前にプロパティの初期値を上書きする場合、この式はプロパティに初めて書き込まれる前に評価されます。
 
@@ -199,11 +199,11 @@ newAndOld.x = 200
 // "Old value 12 - new value 200"
 ```
 
-より詳細な情報やプロパティオブザーバの使用方法の例は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#property-observerspuropatiobuzba" target="_self">Property Observers(プロパティオブザーバ)</a>を参照ください。
+より詳細な情報やプロパティオブザーバの使用方法の例は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#property-observers" target="_self">Property Observers(プロパティオブザーバ)</a>を参照ください。
 
-### Type Variable Properties\(型変数プロパティ\)
+### <a id="type-variable-properties">Type Variable Properties\(型変数プロパティ\)</a>
 
-型変数プロパティを宣言するには、宣言を `static` 修飾子でマークします。サブクラスがスーパークラスの実装をオーバーライドできるようにするには、代わりに `class` 修飾子を使用して型計算プロパティを宣言することができます。型プロパティは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#type-propertiespuropati" target="_self">Type Properties(型プロパティ)</a>で説明されています。
+型変数プロパティを宣言するには、宣言を `static` 修飾子でマークします。サブクラスがスーパークラスの実装をオーバーライドできるようにするには、代わりに `class` 修飾子を使用して型計算プロパティを宣言することができます。型プロパティは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#type-properties" target="_self">Type Properties(型プロパティ)</a>で説明されています。
 
 > GRAMMAR OF A VARIABLE DECLARATION  
 > variable-declaration → [variable-declaration-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-declaration-head)  [pattern-initializer-list](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_pattern-initializer-list)  
@@ -229,7 +229,7 @@ newAndOld.x = 200
 > willSet-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> `willSet` [setter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-name)<sub>*opt*</sub> [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  
 > didSet-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> `didSet` [setter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-name)<sub>*opt*</sub> [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
 
-## Type Alias Declaration\(タイプエイリアス宣言\)
+## <a id="type-alias-declaration">Type Alias Declaration\(タイプエイリアス宣言\)</a>
 
 *タイプエイリアス宣言*では、既存の型に別名を導入します。タイプエイリアス宣言は、`typealias` キーワードを使用して宣言され、形式は次のとおりです:
 
@@ -276,14 +276,14 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 
 このタイプエイリアスがないと、`sum` 関数は関連型を `T.Element` ではなく `T.Iterator.Element` として参照する必要があります。
 
-<a href="#protocol-associated-type-declarationpurotokoru" target="_self">Protocol Associated Type Declaration(プロトコル関連型宣言)</a>も参照ください。
+<a href="#protocol-associated-type-declaration" target="_self">Protocol Associated Type Declaration(プロトコル関連型宣言)</a>も参照ください。
 
 > GRAMMAR OF A TYPE ALIAS DECLARATION  
 > typealias-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>*opt*</sub> `typealias` [typealias-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-name)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [typealias-assignment](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-assignment)  
 > typealias-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
 > typealias-assignment → `=` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
 
-## Function Declaration\(関数宣言\)
+## <a id="function-declaration">Function Declaration\(関数宣言\)</a>
 
 *関数宣言*では、プログラムに関数またはメソッドを導入します。クラス、構造体、列挙型、またはプロトコルのコンテキストで宣言されている関数は*メソッド*と呼ばれます。関数宣言は `func` キーワードを使用して宣言され、形式は次のとおりです:
 
@@ -293,7 +293,7 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 
 ![関数宣言戻り値の型Void](./../.gitbook/assets/function_declaration2.png)
 
-各パラメータには型を含める必要があります。推論することはできません。パラメータ型の前に `inout` を書くと、その関数の範囲内でパラメータを変更できます。in-out パラメータについては、下記の<a href="#in-out-parametersin-outparamta" target="_self">In-Out Parameters(In-Out パラメータ)</a>で詳細に説明されています。
+各パラメータには型を含める必要があります。推論することはできません。パラメータ型の前に `inout` を書くと、その関数の範囲内でパラメータを変更できます。in-out パラメータについては、下記の<a href="#declarations-in-out-parameters" target="_self">In-Out Parameters(In-Out パラメータ)</a>で詳細に説明されています。
 
 *statements* が単一式のみを含む関数宣言は、その式の値を返すことが明らかです。この暗黙的なリターン構文は、式の型と関数の戻り値の型が `Void` やケースを持たない `Never` のような列挙型ではない場合にのみ使用できます。
 
@@ -303,7 +303,7 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 
 ネスト関数は、in-out パラメータのように決してエスケープしないことが確実な値をキャプチャしている場合、または非エスケープ関数の引数として渡される場合は、非エスケープです。それ以外の場合、ネスト関数はエスケープ関数です。
 
-ネスト関数については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#nested-functionsnesuto" target="_self"></a>を参照ください。
+ネスト関数については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#nested-functions" target="_self"></a>を参照ください。
 
 ### Parameter Names\(パラメータ名\)
 
@@ -331,7 +331,7 @@ func repeatGreeting(_ greeting: String, count n: Int) { /* n 回あいさつ */ 
 repeatGreeting("Hello, world!", count: 2) //  count は ラベルあち, greeting は ラベルなし
 ```
 
-### In-Out Parameters\(In-Outパラメータ\)
+### <a id="declarations-in-out-parameters">In-Out Parameters\(In-Outパラメータ\)</a>
 
 in-out パラメータは次のように渡されます:
 
@@ -369,9 +369,9 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 }
 ```
 
-より多くの議論と in-out パラメータの例については、<a href="#in-out-parametersin-outparamta" target="_self">In-Out Parameters(In-Out パラメータ)</a>を参照ください。
+より多くの議論と in-out パラメータの例については、<a href="#declarations-in-out-parameters" target="_self">In-Out Parameters(In-Out パラメータ)</a>を参照ください。
 
-### Special Kinds of Parameters\(特殊な種類のパラメータ\)
+### <a id="special-kinds-of-parameters">Special Kinds of Parameters\(特殊な種類のパラメータ\)</a>
 
 パラメータを無視したり、1 つのパラメータに複数の値を受け取ったり、デフォルト値を提供できます。形式は次のとおりです:
 
@@ -379,7 +379,7 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 
 アンダースコア(`_`)パラメータは明示的に無視され、関数の本文内でアクセスすることはできません。
 
-型名の直後に 3 つのドット(`...`)を続くパラメータは、可変長パラメータとして解釈されます。可変長パラメータのすぐ後に続くパラメータには、引数ラベルが必要です。関数は複数の可変長パラメータを持つことができます。可変長パラメータは、型名の要素の配列として扱われます。例えば、可変長パラメータ `Int...` は `[Int]` として扱われます。可変長パラメータを使用する例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#variadic-parametersparamta" target="_self">Variadic Parameters(可変長パラメータ)</a>を参照ください。
+型名の直後に 3 つのドット(`...`)を続くパラメータは、可変長パラメータとして解釈されます。可変長パラメータのすぐ後に続くパラメータには、引数ラベルが必要です。関数は複数の可変長パラメータを持つことができます。可変長パラメータは、型名の要素の配列として扱われます。例えば、可変長パラメータ `Int...` は `[Int]` として扱われます。可変長パラメータを使用する例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#variadic-parameters" target="_self">Variadic Parameters(可変長パラメータ)</a>を参照ください。
 
 等式(`=`)パラメータと型の後に式を伴うパラメータは、指定された式をデフォルト値として解釈します。指定された式は、関数が呼び出された時に評価されます。関数呼び出し時にパラメータを省略すると、デフォルト値が代わりに使用されます。
 
@@ -398,7 +398,7 @@ f(7)      // 無効。引数ラベルがありません
 
 型のインスタンスではなく型自体に紐づくメソッドは、列挙型および構造体の `static` 修飾子、またはクラスの `static` または `class` 修飾子のいずれかでマークされている必要があります。`class` 修飾子でマークされたクラス型メソッドは、サブクラスでオーバーライドできます。`class final` または `static` でマークされたクラス型メソッドはオーバーライドできません。
 
-### Methods with Special Names\(特別な名前のメソッド\)
+### <a id="methods-with-special-names">Methods with Special Names\(特別な名前のメソッド\)</a>
 
 いくつかの特別な名前のメソッドは、関数呼び出しの糖衣構文(シンタックスシュガー)を使用できます。ある型がこれらのメソッドの内の 1 つを定義している場合、そのインスタンスを関数呼び出し構文で使用できます。それは、そのインスタンス上の特別な名前のメソッドの呼び出しだと解釈されます。
 
@@ -432,7 +432,7 @@ let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 
 `subscript(dynamicMember:)` は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/attributes#dynamicmemberlookup" target="_self">dynamicMemberLookup</a>で説明されているように、メンバを検索するための糖衣構文(シンタックスシュガー)です。
 
-### Throwing Functions and Methods\(スロー関数とスローメソッド\)
+### <a id="throwing-functions-and-methods">Throwing Functions and Methods\(スロー関数とスローメソッド\)</a>
 
 スロー関数とスローメソッドは、`throws` キーワードでマークされている必要があります。これらの関数およびメソッドは、*スロー関数*および*スローメソッド*と呼ばれます。形式は次のとおりです:
 
@@ -446,7 +446,7 @@ let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 
 スローメソッドは、非スローメソッドをオーバーライドすることができず、非スローメソッドのプロトコル要件を満たすことができません。逆に、非スローメソッドはスローメソッドをオーバーライドすることができ、スローメソッドのプロトコル要件を満たすことができます。
 
-### Rethrowing Functions and Methods\(再スロー関数と再スローメソッド\)
+### <a id="rethrowing-functions-and-methods">Rethrowing Functions and Methods\(再スロー関数と再スローメソッド\)</a>
 
 関数またはメソッドが、そのパラメータの 1 つがエラーをスローした場合にのみエラーをスローすることを示すために `rethrows` キーワードを使うことができます。これらの関数およびメソッドは、*再スロー関数*および*再スローメソッド*と呼ばれます。再スロー関数と再スローメソッドには、少なくとも 1 つのエラーをスローする関数のパラメータが必要です。
 
@@ -474,7 +474,7 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 スローメソッドは再スローメソッドをオーバーライドできず、再スローメソッドのプロトコル要件を満たすことができません。逆に、再スローメソッドはスローメソッドをオーバーライドでき、再スローメソッドはスローメソッドのプロトコル要件を満たすことができます。
 
-### Asynchronous Functions and Methods\(非同期関数とメソッド\)
+### <a id="asynchronous-functions-and-asynchronous-methods">Asynchronous Functions and Methods\(非同期関数と非同期メソッド\)</a>
 
 非同期に実行される関数とメソッドは、`async` キーワードでマークされている必要があります。これらの関数とメソッドは、*非同期関数*と*非同期メソッド*と呼ばれています。形式は次のとおりです:
 
@@ -484,11 +484,11 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 `async` キーワードは関数の型の一部で、同期関数は非同期関数のサブタイプのため、非同期関数が期待されるコンテキストで同期関数を使用できます。例えば、同期メソッドを使用して非同期メソッドをオーバーライドでき、同期メソッドは非同期メソッドのプロトコル要件を満たすことができます。
 
-### Functions that Never Return\(ノーリターン関数\)
+### <a id="functions-that-never-return">Functions that Never Return\(ノーリターン関数\)</a>
 
 Swift は、関数またはメソッドがその呼び出し元に戻り値を返さないことを示す `Never` を定義しています。戻り値のない型を持つ関数とメソッドは、*ノーリターン*と呼ばれます。ノーリターン関数とノーリターンメソッドは、回復不能なエラーを引き起こすか、または無期限に続く一連のタスクを始めます。つまり、呼び出すとそれ以降のコードが決して実行されないことを意味します。スロー関数や再スロー関数では、ノーリターンでも、適切な `catch` 句を使ってプログラムの制御を転送できます。
 
-<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#guard-statementguard-wen" target="_self">Guard Statement(Guard 文)</a>で説明したように、ノーリターン関数またはノーリターンメソッドは guard 文の `else` 句を終わらせるために呼び出すことができます。
+<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#guard-statement" target="_self">Guard Statement(Guard 文)</a>で説明したように、ノーリターン関数またはノーリターンメソッドは guard 文の `else` 句を終わらせるために呼び出すことができます。
 
 ノーリターンメソッドはオーバーライドできますが、その新しいメソッドは戻り値の型とノーリターンの動作を保ち続ける必要があります。
 
@@ -519,11 +519,11 @@ Swift は、関数またはメソッドがその呼び出し元に戻り値を�
 
 クラスや構造体とは異なり、列挙型には暗黙的に提供されるデフォルトのイニシャライザがありません。全てのイニシャライザを明示的に宣言する必要があります。イニシャライザは、列挙型内の他のイニシャライザに委譲できますが、初期化プロセスは、イニシャライザが列挙ケースの 1 つを自分自身に割り当てた後にのみ完了します。
 
-構造体と似ていますが、クラスとは異なり、列挙型は値型です。列挙型のインスタンスは、変数または定数に割り当てられたとき、または引数として関数呼び出し時に渡されたときにコピーされます。値型の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#protocols-as-typestoshitenopurotokoru" target="_self">Structures and Enumerations Are Value Types(構造体と列挙型は値型)</a>を参照ください。
+構造体と似ていますが、クラスとは異なり、列挙型は値型です。列挙型のインスタンスは、変数または定数に割り当てられたとき、または引数として関数呼び出し時に渡されたときにコピーされます。値型の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#structures-and-enumerations-are-value-type" target="_self">Structures and Enumerations Are Value Types(構造体と列挙型は値型)</a>を参照ください。
 
-<a href="#extension-declaration-kuo-zhang-xuan-yan" target="_self">Extension Declaration(拡張宣言)</a>で説明されているように、extension を使用して列挙型の動作を拡張できます。
+<a href="#extension-declaration" target="_self">Extension Declaration(拡張宣言)</a>で説明されているように、extension を使用して列挙型の動作を拡張できます。
 
-### Enumerations with Cases of Any Type\(任意の型のケースを持つ列挙型\)
+### <a id="enumerations-with-cases-of-any-type">Enumerations with Cases of Any Type\(任意の型のケースを持つ列挙型\)</a>
 
 次の形式は、任意の型のケースを含む列挙型を宣言しています。
 
@@ -547,7 +547,7 @@ let f = Number.integer
 let evenInts: [Number] = [0, 2, 4, 6].map(f)
 ```
 
-詳細および関連値型を持つケースの例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#associated-values-guan-lian-zhi" target="_self">Associated Values(関連値)</a>を参照ください。
+詳細および関連値型を持つケースの例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#associated-values" target="_self">Associated Values(関連値)</a>を参照ください。
 
 #### Enumerations with Indirection\(再帰列挙型\)
 
@@ -568,7 +568,7 @@ enum Tree<T> {
 
 `indirect` 修飾子でマークされた列挙型には、関連値を持つケースと関連値を持たないケースが混在している可能性があります。しかし、ケースに `indirect` 修飾子を付けることはできません。
 
-### Enumerations with Cases of a Raw-Value Type\(Raw Value 型のケースを持つ列挙型\)
+### <a id="enumerations-with-cases-of-a-raw-value-type">Enumerations with Cases of a Raw-Value Type\(Raw Value 型のケースを持つ列挙型\)</a>
 
 次の形式は、同じ基となる型のケースを持つ列挙型を宣言しています。
 
@@ -600,9 +600,9 @@ Raw Value 型のケースを持つ列挙型は、Swift 標準ライブラリで�
 
 ### Accessing Enumeration Cases\(列挙ケースへのアクセス\)
 
-列挙ケースを参照するには、`EnumerationType.enumerationCase` と同様に、ドット(`.`)構文を使用します。列挙の型を推論できる場合は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#enumeration-syntax-lie-ju-xing-gou-wen" target="_self">Enumeration Syntax(列挙型構文)</a>と<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/expressions#implicit-member-expressionmenba" target="_self">Implicit Member Expression(暗黙メンバ式)</a>で説明されているように、型名を省略することができます(ドットは必要です)。
+列挙ケースを参照するには、`EnumerationType.enumerationCase` と同様に、ドット(`.`)構文を使用します。列挙の型を推論できる場合は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#enumeration-syntax" target="_self">Enumeration Syntax(列挙型構文)</a>と<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/expressions#implicit-member-expression" target="_self">Implicit Member Expression(暗黙メンバ式)</a>で説明されているように、型名を省略することができます(ドットは必要です)。
 
-列挙ケースの値を確認するには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#matching-enumeration-values-with-a-switch-statementswitch-wottanopatnmatchingu" target="_self">Matching Enumeration Values with a Switch Statement(Switch 文を使った列挙値のパターンマッチング)</a>で説明されているように、`switch` 文を使用します。列挙型は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/patterns#enumeration-case-patternksupatn" target="_self">Enumeration Case Pattern(列挙ケースパターン)</a>で説明されているように、`switch` 文のケースブロックの列挙ケースのパターンに対してパターンマッチングできます。
+列挙ケースの値を確認するには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#matching-enumeration-values-with-a-switch-statement" target="_self">Matching Enumeration Values with a Switch Statement(Switch 文を使った列挙値のパターンマッチング)</a>で説明されているように、`switch` 文を使用します。列挙型は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/patterns#enumeration-case-pattern" target="_self">Enumeration Case Pattern(列挙ケースパターン)</a>で説明されているように、`switch` 文のケースブロックの列挙ケースのパターンに対してパターンマッチングできます。
 
 > GRAMMAR OF AN ENUMERATION DECLARATION  
 > enum-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>*opt*</sub> [union-style-enum](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_union-style-enum)  
@@ -636,17 +636,17 @@ Raw Value 型のケースを持つ列挙型は、Swift 標準ライブラリで�
 
 宣言された構造体のインスタンスを作成するには、次の 3 つの方法があります。
 
-* <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#initializersinisharaiza" target="_self">Initializers(イニシャライザ)</a>で説明されているように、構造体内で宣言されたイニシャライザの 1 つを呼び出します
-* イニシャライザが宣言されていない場合は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#memberwise-initializers-for-structure-typesnomenbawaizuinisharaiza" target="_self">Memberwise Initializers for Structure Types(構造体のメンバワイズイニシャライザ)</a>で説明されているように、構造体のメンバワイズイニシャライザを呼び出します
-* イニシャライザが宣言されておらず、構造体宣言の全てプロパティに初期値が指定されている場合は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#default-initializersdeforutoinisharaiza" target="_self">Default Initializers(デフォルトイニシャライザ)</a>で説明されているように、構造体のデフォルトイニシャライザを呼び出します
+* <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#initialization-initializers" target="_self">Initializers(イニシャライザ)</a>で説明されているように、構造体内で宣言されたイニシャライザの 1 つを呼び出します
+* イニシャライザが宣言されていない場合は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#initialization-memberwise-initializers-for-structure-types" target="_self">Memberwise Initializers for Structure Types(構造体のメンバワイズイニシャライザ)</a>で説明されているように、構造体のメンバワイズイニシャライザを呼び出します
+* イニシャライザが宣言されておらず、構造体宣言の全てプロパティに初期値が指定されている場合は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#default-initializers" target="_self">Default Initializers(デフォルトイニシャライザ)</a>で説明されているように、構造体のデフォルトイニシャライザを呼び出します
 
 構造体の宣言されたプロパティを初期化するプロセスは、[Initialization(初期化)](./../language-guide/initialization.md)で説明されています
 
-構造体インスタンスのプロパティには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#accessing-propertiespuropatihenoakusesu" target="_self">Accessing Properties(プロパティへのアクセス)</a>で説明されているように、ドット(`.`)構文を使用してアクセスできます。
+構造体インスタンスのプロパティには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#accessing-properties" target="_self">Accessing Properties(プロパティへのアクセス)</a>で説明されているように、ドット(`.`)構文を使用してアクセスできます。
 
-構造体は値型です。構造体のインスタンスは、変数または定数に割り当てられたとき、または引数として関数呼び出し時に渡されたときにコピーされます。値型の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#protocols-as-typestoshitenopurotokoru" target="_self">Structures and Enumerations Are Value Types(構造体と列挙型は値型)</a>を参照ください。
+構造体は値型です。構造体のインスタンスは、変数または定数に割り当てられたとき、または引数として関数呼び出し時に渡されたときにコピーされます。値型の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#structures-and-enumerations-are-value-type" target="_self">Structures and Enumerations Are Value Types(構造体と列挙型は値型)</a>を参照ください。
 
-<a href="#extension-declaration-kuo-zhang-xuan-yan" target="_self">Extension Declaration(拡張宣言)</a>で説明されているように、extension を使用して構造体の動作を拡張できます。
+<a href="#extension-declaration" target="_self">Extension Declaration(拡張宣言)</a>で説明されているように、extension を使用して構造体の動作を拡張できます。
 
 > GRAMMAR OF A STRUCTURE DECLARATION  
 > struct-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>*opt*</sub> `struct` [struct-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_struct-name)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>*opt*</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub> [struct-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_struct-body)  
@@ -665,23 +665,23 @@ Raw Value 型のケースを持つ列挙型は、Swift 標準ライブラリで�
 
 クラス型は、1 つの *superclass* のみ継承できますが、任意の数のプロトコルに準拠できます。*superclass* は、*class name* とコロン(`:`)の後の最初に表示され、その後に *adopted protocols* が続きます。ジェネリッククラスは他のジェネリッククラスと非ジェネリッククラスを継承できますが、非ジェネリッククラスは他の非ジェネリッククラスのみ継承できます。コロンの後にジェネリックなスーパークラスの名前を書くときは、ジェネリックパラメータを含めたそのジェネリッククラスの全てを含める必要があります。
 
-<a href="#initializer-declarationinisharaiza" target="_self">Initializer Declaration(イニシャライザ宣言)</a>で説明されているように、クラスには指定イニシャライザと convenience イニシャライザを含めることができます。クラスの指定イニシャライザは、クラスで宣言された全てのプロパティを初期化する必要があり、スーパークラスの指定イニシャライザを呼び出す前に初期化する必要があります。
+<a href="#initializer-declaration" target="_self">Initializer Declaration(イニシャライザ宣言)</a>で説明されているように、クラスには指定イニシャライザと convenience イニシャライザを含めることができます。クラスの指定イニシャライザは、クラスで宣言された全てのプロパティを初期化する必要があり、スーパークラスの指定イニシャライザを呼び出す前に初期化する必要があります。
 
 クラスは、そのスーパークラスのプロパティ、メソッド、subscript、およびイニシャライザをオーバーライドできます。オーバーライドされたプロパティ、メソッド、subscript、および指定イニシャライザは、`override` 修飾子でマークされる必要があります。
 
 サブクラスでもスーパークラスのイニシャライザの実装を必須にするには、スーパークラスのイニシャライザに `required` 修飾子をマークします。そのイニシャライザのサブクラスの実装にも、`required` 修飾子でマークする必要があります。
 
-*superclass* で宣言されたプロパティとメソッドは現在のクラスに継承されますが、*superclass* で宣言された指定イニシャライザは、サブクラスが<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#automatic-initializer-inheritanceinisharaizano" target="_self">Automatic Initializer Inheritance(自動イニシャライザの継承)</a>で説明されている条件を満たす場合にのみ継承されます。Swift のクラスは、全てに共通する基本クラスを継承しません。
+*superclass* で宣言されたプロパティとメソッドは現在のクラスに継承されますが、*superclass* で宣言された指定イニシャライザは、サブクラスが<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#automatic-initializer-inheritance" target="_self">Automatic Initializer Inheritance(自動イニシャライザの継承)</a>で説明されている条件を満たす場合にのみ継承されます。Swift のクラスは、全てに共通する基本クラスを継承しません。
 
 宣言されたクラスのインスタンスを作成するには、次の 2 つの方法があります:
 
-* <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#initializersinisharaiza" target="_self">Initializers(イニシャライザ)</a>で説明されているように、クラス内で宣言されたイニシャライザの 1 つを呼び出します
-* イニシャライザが宣言されておらず、クラス宣言の全てのプロパティに初期値が指定されている場合は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#default-initializersdeforutoinisharaiza" target="_self">Default Initializers(デフォルトイニシャライザ)</a>で説明されているように、クラスのデフォルトイニシャライザを呼び出します
-* <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#accessing-propertiespuropatihenoakusesu" target="_self">Accessing Properties(プロパティへのアクセス)</a>で説明されているように、ドット(`.`)構文を使用してクラスインスタンスのプロパティにアクセスします
+* <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#initialization-initializers" target="_self">Initializers(イニシャライザ)</a>で説明されているように、クラス内で宣言されたイニシャライザの 1 つを呼び出します
+* イニシャライザが宣言されておらず、クラス宣言の全てのプロパティに初期値が指定されている場合は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#default-initializers" target="_self">Default Initializers(デフォルトイニシャライザ)</a>で説明されているように、クラスのデフォルトイニシャライザを呼び出します
+* <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#accessing-properties" target="_self">Accessing Properties(プロパティへのアクセス)</a>で説明されているように、ドット(`.`)構文を使用してクラスインスタンスのプロパティにアクセスします
 
-クラスは参照型です。クラスのインスタンスは、変数や定数に割り当てられたとき、または関数呼び出し時に引数として渡されたときに、コピーされるのではなく参照が渡されます。参照型の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#classes-are-reference-typeskurasuha" target="_self">Classes Are Reference Types(クラスは参照型)</a>を参照ください。
+クラスは参照型です。クラスのインスタンスは、変数や定数に割り当てられたとき、または関数呼び出し時に引数として渡されたときに、コピーされるのではなく参照が渡されます。参照型の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#classes-are-reference-types" target="_self">Classes Are Reference Types(クラスは参照型)</a>を参照ください。
 
-<a href="#extension-declaration-kuo-zhang-xuan-yan" target="_self">Extension Declaration(拡張宣言)</a>で説明されているように、extension を使用してクラス型の動作を拡張できます。
+<a href="#extension-declaration" target="_self">Extension Declaration(拡張宣言)</a>で説明されているように、extension を使用してクラス型の動作を拡張できます。
 
 > GRAMMAR OF A CLASS DECLARATION  
 > class-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>*opt*</sub> `final`<sub>*opt*</sub> `class` [class-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-name)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>*opt*</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub> [class-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-body)  
@@ -691,7 +691,7 @@ Raw Value 型のケースを持つ列挙型は、Swift 標準ライブラリで�
 > class-members → [class-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-member)  [class-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-members)<sub>*opt*</sub>  
 > class-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \|  [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
 
-## Actor Declaration\(アクター宣言\)
+## <a id="actor-declaration">Actor Declaration\(アクター宣言\)</a>
 
 アクター宣言は、名前付きのアクター型をプログラムに導入します。アクター宣言は、`actor` キーワードを使用して宣言され、形式は次のとおりです。
 
@@ -704,7 +704,7 @@ Raw Value 型のケースを持つ列挙型は、Swift 標準ライブラリで�
 宣言されたアクターのインスタンスを作成するには、次の 2 つの方法があります:
 
 * [Initializers(イニシャライザ)](./../language-guide/initialization.md#initializersイニシャライザ)で説明されているように、アクター内で宣言されたイニシャライザの 1 つを呼び出します
-* イニシャライザが宣言されておらず、アクター宣言の全てのプロパティに初期値が指定されている場合は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#default-initializersdeforutoinisharaiza" target="_self">Default Initializers(デフォルトイニシャライザ)</a>で説明されているように、アクターのデフォルトイニシャライザを呼び出します
+* イニシャライザが宣言されておらず、アクター宣言の全てのプロパティに初期値が指定されている場合は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#default-initializers" target="_self">Default Initializers(デフォルトイニシャライザ)</a>で説明されているように、アクターのデフォルトイニシャライザを呼び出します
 
 デフォルトでは、アクターのメンバはそのアクターに隔離(*isolated*)されています。メソッドの本文やプロパティの get などのコードは、そのアクター内で実行されます。アクター内のコードは、そのコードが既に同じアクターで実行されることがわかっているため、同期的にやり取りできますが、アクター外のコードは、このコードが別のアクターで非同期に実行されているコードだということを示すために、`await` をマークする必要があります。key path は、アクターの isolated メンバを参照することはできません。アクターの isolated 格納プロパティは、同期関数に in-out パラメータとして渡すことができますが、非同期関数には渡すことができません。
 
@@ -714,11 +714,11 @@ Raw Value 型のケースを持つ列挙型は、Swift 標準ライブラリで�
 
 アクターの宣言されたプロパティを初期化するプロセスは、[Initialization(イニシャライザ)](./../language-guide/initialization.md)で説明されています。
 
-アクターインスタンスのプロパティには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#accessing-propertiespuropatihenoakusesu" target="_self">Accessing Properties(プロパティへのアクセス)</a>で説明されているように、ドット(`.`)構文を使用してアクセスできます。
+アクターインスタンスのプロパティには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#accessing-properties" target="_self">Accessing Properties(プロパティへのアクセス)</a>で説明されているように、ドット(`.`)構文を使用してアクセスできます。
 
 アクターは参照型です。アクターのインスタンスは、変数または定数に割り当てられたとき、または関数呼び出し時に引数として渡されたときに、コピーされるのではなく参照が渡されます。参照型の詳細については、[Classes Are Reference Types(クラスは参照型)](./../language-guide/structures-and-classes.md#classes-are-reference-typesクラスは参照型)を参照ください。
 
-<a href="#extension-declaration-kuo-zhang-xuan-yan" target="_self">Extension Declaration(拡張宣言)</a>で説明されているように、extension を使用してアクター型の動作を拡張できます。
+<a href="#extension-declaration" target="_self">Extension Declaration(拡張宣言)</a>で説明されているように、extension を使用してアクター型の動作を拡張できます。
 
 > GRAMMAR OF A ACTOR DECLARATION  
 > actor-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>*opt*</sub> `actor` [struct-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-name)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>*opt*</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub> [actor-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-body)  
@@ -727,7 +727,7 @@ Raw Value 型のケースを持つ列挙型は、Swift 標準ライブラリで�
 > actor-members → [actor-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-member)  [actor-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-members)<sub>*opt*</sub>  
 > actor-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \|  [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
 
-## Protocol Declaration\(プロトコル宣言\)
+## <a id="protocol-declaration">Protocol Declaration\(プロトコル宣言\)</a>
 
 *プロトコル宣言*は、名前付きのプロトコル型をプログラムに導入します。プロトコル宣言は、`protocol` キーワードを使用してグローバルスコープで宣言され、形式は次のとおりです。
 
@@ -735,14 +735,14 @@ Raw Value 型のケースを持つ列挙型は、Swift 標準ライブラリで�
 
 プロトコルの本文には、プロトコルに準拠する全ての型が満たさなければならない 0 個以上の *protocol member declarations* が含まれています。特に、プロトコルは、準拠する型が特定のプロパティ、メソッド、イニシャライザ、および subscript を実装する必要があることを宣言できます。プロトコルは、*関連型*と呼ばれる特別な種類のタイプエイリアスを宣言することもできます。これにより、プロトコルの様々な宣言間の関係を指定できます。プロトコル宣言には、クラス、構造体、列挙型、またはその他のプロトコル宣言を含めることはできません。*protocol member declarations*の宣言については、下記で詳しく説明します。
 
-プロトコル型は、他の任意の数のプロトコルを継承できます。プロトコル型が他のプロトコルを継承する場合、それら他のプロトコルからの一連の要件が集約され、現在のプロトコルを継承する型は全て、それらの要件全てに準拠する必要があります。プロトコル継承の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#protocol-inheritancepurotokoru" target="_self">Protocol Inheritance(プロトコル継承)</a>を参照ください。
+プロトコル型は、他の任意の数のプロトコルを継承できます。プロトコル型が他のプロトコルを継承する場合、それら他のプロトコルからの一連の要件が集約され、現在のプロトコルを継承する型は全て、それらの要件全てに準拠する必要があります。プロトコル継承の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#protocols-protocol-inheritance" target="_self">Protocol Inheritance(プロトコル継承)</a>を参照ください。
 
 > NOTE  
-> <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/types#protocol-composition-typepurotokoru" target="_self">Protocol Composition Type(プロトコル合成型)</a>および<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#protocol-compositionpurotokoru" target="_self">Protocol Composition(プロトコル合成)</a>で説明されているように、プロトコル合成型を使用して、複数のプロトコルの要件を集約することもできます。
+> <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/types#protocol-composition-type" target="_self">Protocol Composition Type(プロトコル合成型)</a>および<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#protocol-composition" target="_self">Protocol Composition(プロトコル合成)</a>で説明されているように、プロトコル合成型を使用して、複数のプロトコルの要件を集約することもできます。
 
 その型の extension でプロトコルに準拠することにより、事前に宣言された型にプロトコルを準拠させることができます。extension では、準拠したプロトコルの要件を全て実装する必要があります。型が既に全ての要件を実装している場合は、extension の本文を空のままにしておくことができます。
 
-デフォルトでは、プロトコルに準拠する型は、プロトコルで宣言されている全てのプロパティ、メソッド、および subscript を実装する必要があります。しかし、これらのプロトコルメンバ宣言に `optional` 修飾子をマークして、準拠する型の実装を省略することもできます。`optional` 修飾子は、`objc` 属性でマークされているメンバにのみ適用でき、`objc` 属性でマークされているプロトコルのメンバにのみ適用できます。その結果、クラス型のみが、オプショナルのメンバ要件を含むプロトコルに準拠できます。`optional` 修飾子の使用方法の詳細と、オプショナルのプロトコルメンバにアクセスする方法のガイダンス(例えば、準拠する型がそれらを実装しているかどうかわからない場合など)については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#optional-protocol-requirementsopushonarunopurotokoru" target="_self">Optional Protocol Requirements(オプショナルのプロトコル要件)</a>を参照ください。
+デフォルトでは、プロトコルに準拠する型は、プロトコルで宣言されている全てのプロパティ、メソッド、および subscript を実装する必要があります。しかし、これらのプロトコルメンバ宣言に `optional` 修飾子をマークして、準拠する型の実装を省略することもできます。`optional` 修飾子は、`objc` 属性でマークされているメンバにのみ適用でき、`objc` 属性でマークされているプロトコルのメンバにのみ適用できます。その結果、クラス型のみが、オプショナルのメンバ要件を含むプロトコルに準拠できます。`optional` 修飾子の使用方法の詳細と、オプショナルのプロトコルメンバにアクセスする方法のガイダンス(例えば、準拠する型がそれらを実装しているかどうかわからない場合など)については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#optional-protocol-requirements" target="_self">Optional Protocol Requirements(オプショナルのプロトコル要件)</a>を参照ください。
 
 列挙型の場合は、型メンバのプロトコル要件を満たすことができます。具体的には、関連値のない列挙ケースは、`Self` 型の get-only の型変数のプロトコル要件を満たし、関連値のある列挙ケースは、パラメータとその引数ラベルがケース名と一致する `Self` を返す関数のプロトコル要件を満たします。例えば:
 
@@ -770,9 +770,9 @@ protocol SomeProtocol: AnyObject {
 > NOTE  
 > プロトコルが `objc` 属性でマークされている場合、`AnyObject` はそのプロトコルに暗黙的に準拠します。`AnyObject` を明示的にマークする必要はありません。
 
-プロトコルは名前付きの型のため、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#protocols-as-typestoshitenopurotokoru" target="_self">Protocols as Types(型としてのプロトコル)</a>で説明されているように、他の名前付きの型と同じようにコード内で型として使用できることもあります。ただし、プロトコルは実際には指定された要件の実装を提供しないため、プロトコルのインスタンスを構築することはできません。
+プロトコルは名前付きの型のため、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#protocols-as-types" target="_self">Protocols as Types(型としてのプロトコル)</a>で説明されているように、他の名前付きの型と同じようにコード内で型として使用できることもあります。ただし、プロトコルは実際には指定された要件の実装を提供しないため、プロトコルのインスタンスを構築することはできません。
 
-<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#delegation-wei-rang" target="_self">Delegation(委譲)</a>で説明されているように、クラスまたは構造体のデリゲートが実装するべきメソッドを宣言するためにプロトコルを使用できます。
+<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#delegation" target="_self">Delegation(委譲)</a>で説明されているように、クラスまたは構造体のデリゲートが実装するべきメソッドを宣言するためにプロトコルを使用できます。
 
 > GRAMMAR OF A PROTOCOL DECLARATION  
 > protocol-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>*opt*</sub> `protocol` [protocol-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-name)  [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>*opt*</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub> [protocol-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-body)  
@@ -787,7 +787,7 @@ protocol SomeProtocol: AnyObject {
 > protocol-member-declaration → [protocol-associated-type-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-associated-type-declaration)  
 > protocol-member-declaration → [typealias-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-declaration)
 
-### Protocol Property Declaration\(プロトコルプロパティ宣言\)
+### <a id="protocol-property-declaration">Protocol Property Declaration\(プロトコルプロパティ宣言\)</a>
 
 プロトコルは、プロトコル宣言の本文に*プロトコルプロパティ宣言*を含めることによって準拠する型がプロパティを実装する必要があることを宣言します。プロトコルプロパティ宣言には、変数宣言の特別な形式があります。
 
@@ -795,22 +795,22 @@ protocol SomeProtocol: AnyObject {
 
 他のプロトコルメンバ宣言と同様に、これらのプロパティ宣言は、プロトコルに準拠する型の get と set の要件のみを宣言します。その結果、get または set を、プロトコルの宣言で直接実装することはありません。
 
-準拠する型は get と set の要件を様々な方法で満たすことができます。プロパティ宣言に `get` キーワードと `set` キーワードの両方が含まれている場合、準拠する型は、格納変数プロパティ、または読み取りと書き込みの両方が可能な計算プロパティ(つまり、get と set の両方を実装するプロパティ)を使用して実装できます。ただし、そのプロパティ宣言は、定数プロパティまたは読み取り専用の計算プロパティとして実装することはできません。プロパティ宣言に `get` キーワードのみが含まれている場合は、任意の種類のプロパティを実装できます。プロトコルのプロパティ要件を実装した例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#property-requirementspuropati" target="_self">Property Requirements(プロパティ要件)</a>を参照ください。
+準拠する型は get と set の要件を様々な方法で満たすことができます。プロパティ宣言に `get` キーワードと `set` キーワードの両方が含まれている場合、準拠する型は、格納変数プロパティ、または読み取りと書き込みの両方が可能な計算プロパティ(つまり、get と set の両方を実装するプロパティ)を使用して実装できます。ただし、そのプロパティ宣言は、定数プロパティまたは読み取り専用の計算プロパティとして実装することはできません。プロパティ宣言に `get` キーワードのみが含まれている場合は、任意の種類のプロパティを実装できます。プロトコルのプロパティ要件を実装した例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#property-requirements" target="_self">Property Requirements(プロパティ要件)</a>を参照ください。
 
 プロトコル宣言で型プロパティ要件を宣言するには、`static` キーワードでプロパティ宣言をマークします。プロトコルに準拠する構造体と列挙型は、`static` キーワードを使用してプロパティを宣言し、プロトコルに準拠するクラスは、`static` または `class` キーワードを使用してプロパティを宣言します。構造体、列挙型、またはクラスにプロトコルの準拠を追加する extension は、拡張する型と同じキーワードを使用します。型プロパティ要件のデフォルト実装を提供する extension は、`static` キーワードを使用します。
 
-<a href="#variable-declaration-bian-shu-xuan-yan" target="_self">Variable Declaration(変数宣言)</a>も参照ください。
+<a href="#variable-declaration" target="_self">Variable Declaration(変数宣言)</a>も参照ください。
 
 > GRAMMAR OF A PROTOCOL PROPERTY DECLARATION  
 > protocol-property-declaration → [variable-declaration-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-declaration-head)  [variable-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-name)  [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)  [getter-setter-keyword-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-setter-keyword-block)
 
 ### Protocol Method Declaration\(プロトコルメソッド宣言\)
 
-プロトコルは、プロトコル宣言の本文にプロトコルメソッド宣言を含めることによって、準拠する型がそのメソッドを実装する必要があることを宣言します。プロトコルメソッド宣言は、関数宣言と同じ形式ですが、2 つの例外があります。関数本文が含まれていないことと、関数宣言の一部としてデフォルトパラメータを指定できないことです。プロトコルのメソッド要件を実装した例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#method-requirementsmesoddo" target="_self">Method Requirements(メソッド要件)</a>を参照ください。
+プロトコルは、プロトコル宣言の本文にプロトコルメソッド宣言を含めることによって、準拠する型がそのメソッドを実装する必要があることを宣言します。プロトコルメソッド宣言は、関数宣言と同じ形式ですが、2 つの例外があります。関数本文が含まれていないことと、関数宣言の一部としてデフォルトパラメータを指定できないことです。プロトコルのメソッド要件を実装した例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#method-requirements" target="_self">Method Requirements(メソッド要件)</a>を参照ください。
 
 プロトコル宣言でクラスまたは静的メソッドの要件を宣言するには、`static` 修飾子を使用してメソッド宣言をマークします。プロトコルに準拠する構造体と列挙型は、`static` キーワードを使用してメソッドを宣言し、プロトコルに準拠するクラスは、`static` または `class` キーワードを使用してメソッドを宣言します。構造体、列挙型、またはクラスにプロトコルの準拠を追加する extension は、拡張する型と同じキーワードを使用します。型メソッド要件のデフォルト実装を提供する extension は、`static` キーワードを使用します。
 
-<a href="#function-declaration-guan-shu-xuan-yan" target="_self">Function Declaration(関数宣言)</a>も参照ください。
+<a href="#function-declaration" target="_self">Function Declaration(関数宣言)</a>も参照ください。
 
 > GRAMMAR OF A PROTOCOL METHOD DECLARATION  
 > protocol-method-declaration → [function-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-head)  [function-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-name)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [function-signature](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-signature) [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub>
@@ -823,7 +823,7 @@ protocol SomeProtocol: AnyObject {
 
 クラスがプロトコルのイニシャライザ要件を満たすためのイニシャライザを実装する場合、クラスが `final` 修飾子でマークされていない場合、イニシャライザは `required` 修飾子をマークする必要があります。
 
-<a href="#initializer-declarationinisharaiza" target="_self">Initializer Declaration(イニシャライザ宣言)</a>も参照ください。
+<a href="#initializer-declaration" target="_self">Initializer Declaration(イニシャライザ宣言)</a>も参照ください。
 
 > GRAMMAR OF A PROTOCOL INITIALIZER DECLARATION  
 > protocol-initializer-declaration → [initializer-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-head)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)`throws`<sub>*opt*</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub>  
@@ -842,9 +842,9 @@ subscript 宣言は、プロトコルに準拠するために最低限必要な 
 > GRAMMAR OF A PROTOCOL SUBSCRIPT DECLARATION  
 > protocol-subscript-declaration → [subscript-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-head)  [subscript-result](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-result)  [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub> [getter-setter-keyword-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-setter-keyword-block)
 
-### Protocol Associated Type Declaration\(プロトコル関連型宣言\)
+### <a id="protocol-associated-type-declaration">Protocol Associated Type Declaration\(プロトコル関連型宣言\)</a>
 
-プロトコルは、`associatedtype` キーワードを使用して関連型を宣言します。関連型は、プロトコルの宣言の一部として使用される型の別名を提供します。関連型は、ジェネリックパラメータ句の型パラメータに似ていますが、宣言されているプロトコルでは `Self` に関連付けられています。このコンテキストでは、`Self` はプロトコルに準拠する最終的な型を指します。詳細と例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/generics#associated-types-guan-lian-xing" target="_self">Associated Types(関連型)</a>を参照ください。
+プロトコルは、`associatedtype` キーワードを使用して関連型を宣言します。関連型は、プロトコルの宣言の一部として使用される型の別名を提供します。関連型は、ジェネリックパラメータ句の型パラメータに似ていますが、宣言されているプロトコルでは `Self` に関連付けられています。このコンテキストでは、`Self` はプロトコルに準拠する最終的な型を指します。詳細と例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/generics#associated-types" target="_self">Associated Types(関連型)</a>を参照ください。
 
 プロトコル宣言でジェネリック `where` 句を使用して、関連型を再宣言せずに、別のプロトコルから継承された関連型に制約を追加できます。例えば、下記の `SubProtocol` の宣言は同等です:
 
@@ -862,12 +862,12 @@ protocol SubProtocolA: SomeProtocol {
 protocol SubProtocolB: SomeProtocol where SomeType: Equatable { }
 ```
 
-<a href="#type-alias-declarationtaipueiriasu" target="_self">Type Alias Declaration(タイプエイリアス宣言)</a>も参照ください。
+<a href="#type-alias-declaration" target="_self">Type Alias Declaration(タイプエイリアス宣言)</a>も参照ください。
 
 > GRAMMAR OF A PROTOCOL ASSOCIATED TYPE DECLARATION  
 > protocol-associated-type-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>*opt*</sub> `associatedtype`[typealias-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-name) [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>*opt*</sub> [typealias-assignment](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-assignment)<sub>*opt*</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub>
 
-## Initializer Declaration\(イニシャライザ宣言\)
+## <a id="initializer-declaration">Initializer Declaration\(イニシャライザ宣言\)</a>
 
 *イニシャライザ宣言*は、クラス、構造体、または列挙型のイニシャライザをプログラムに導入します。イニシャライザ宣言は、`init` キーワードを使用して宣言され、2 つの基本的な形式があります。
 
@@ -902,7 +902,7 @@ convenience イニシャライザは、初期化プロセスを別の convenienc
 
 様々な種類の宣言のイニシャライザの例を確認するには、[Initialization(イニシャライザ)](./../language-guide/initialization.md)を参照ください。
 
-### Failable Initializers\(失敗可能イニシャライザ\)
+### <a id="declarations-failable-initializers">Failable Initializers\(失敗可能イニシャライザ\)</a>
 
 *失敗可能イニシャライザ*は、イニシャライザが宣言されている型のオプショナルのインスタンスまたは暗黙的にアンラップされたオプショナルのインスタンスを生成するイニシャライザです。その結果、失敗可能イニシャライザは、初期化が失敗したことを示すために `nil` を返すことができます。
 
@@ -938,7 +938,7 @@ if let actualInstance = SomeStruct(input: "Hello") {
 
 失敗可能指定イニシャライザは、サブクラスの任意の種類の指定イニシャライザでオーバーライドできます。失敗しない指定イニシャライザの場合は、失敗しない指定イニシャライザによってのみオーバーライドできます。
 
-詳細および失敗可能イニシャライザの例については、<a href="#failable-initializersinisharaiza" target="_self">Failable Initializers(失敗可能イニシャライザ)</a>を参照ください。
+詳細および失敗可能イニシャライザの例については、<a href="#declarations-failable-initializers" target="_self">Failable Initializers(失敗可能イニシャライザ)</a>を参照ください。
 
 > GRAMMAR OF AN INITIALIZER DECLARATION  
 > initializer-declaration → [initializer-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-head)  [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)  `throws`opt[generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>*opt*</sub> [initializer-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-body)  
@@ -965,7 +965,7 @@ if let actualInstance = SomeStruct(input: "Hello") {
 > GRAMMAR OF A DEINITIALIZER DECLARATION  
 > deinitializer-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> `deinit` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
 
-## Extension Declaration\(拡張宣言\)
+## <a id="extension-declaration">Extension Declaration\(拡張宣言\)</a>
 
 *拡張宣言*を使用すると、既存の型の動作を拡張できます。拡張宣言は、`extension` キーワードを使用して宣言され、形式は次のとおりです:
 
@@ -1161,7 +1161,7 @@ subscript 宣言は、クラス、構造体、列挙型、 extension、または
 
 *parameters* または *return type* がオーバーロードしているものと異なる限り、宣言されている型の subscript 宣言をオーバーロードできます。スーパークラスから継承された subscript 宣言をオーバーライドすることもできます。その際は、オーバーライドされた subscript 宣言を `override` 修飾子でマークする必要があります。
 
-subscript のパラメータは、2 つの例外を除いて、関数パラメータと同じ規則に従います。デフォルトでは、subscript で使用されるパラメータには、関数、メソッド、イニシャライザとは異なり、引数ラベルがありません。ただし、関数、メソッド、およびイニシャライザが使用するのと同じ構文を使用して、明示的な引数ラベルを提供できます。さらに、subscript に in-out パラメータを含めることはできません。subscript パラメータは、<a href="#special-kinds-of-parametersnanoparamta" target="_self">Special Kinds of Parameters(特殊な種類のパラメータ)</a>で説明されている構文を使用して、デフォルト値を持つことができます。
+subscript のパラメータは、2 つの例外を除いて、関数パラメータと同じ規則に従います。デフォルトでは、subscript で使用されるパラメータには、関数、メソッド、イニシャライザとは異なり、引数ラベルがありません。ただし、関数、メソッド、およびイニシャライザが使用するのと同じ構文を使用して、明示的な引数ラベルを提供できます。さらに、subscript に in-out パラメータを含めることはできません。subscript パラメータは、<a href="#special-kinds-of-parameters" target="_self">Special Kinds of Parameters(特殊な種類のパラメータ)</a>で説明されている構文を使用して、デフォルト値を持つことができます。
 
 <a href="#protocol-subscript-declarationpurotokoru-subscript" target="_self">Protocol Subscript Declaration(プロトコル subscript 宣言)</a>で説明されているように、プロトコル宣言のコンテキストで subscript を宣言することもできます。
 
@@ -1178,7 +1178,7 @@ subscript の詳細と subscript 宣言の例については、[Subscripts](./..
 > subscript-head → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>*opt*</sub> `subscript` [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>*opt*</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)  
 > subscript-result → `->` [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub> [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
 
-## Operator Declaration\(演算子宣言\)
+## <a id="operator-declaration">Operator Declaration\(演算子宣言\)</a>
 
 *演算子宣言*は、新しい中置、前置、または後置演算子をプログラムに導入し、`operator` キーワードを使用して宣言されます。
 
@@ -1192,7 +1192,7 @@ subscript の詳細と subscript 宣言の例については、[Subscripts](./..
 
 *中置演算子*は、式 `1 + 2` でおなじみの加算演算子(`+`)など、2 つのオペランドの間に記述される二項演算子です。
 
-中置演算子は、任意で*優先順位グループ*を指定できます。演算子の優先順位グループを省略すると、Swift はデフォルトの優先順位グループの `DefaultPrecedence` を使用します。これは、`TernaryPrecedence` よりも少し高い優先順位を指定します。詳細については、<a href="#precedence-group-declarationgurpu" target="_self">Precedence Group Declaration(優先順位グループ宣言)</a>を参照ください。
+中置演算子は、任意で*優先順位グループ*を指定できます。演算子の優先順位グループを省略すると、Swift はデフォルトの優先順位グループの `DefaultPrecedence` を使用します。これは、`TernaryPrecedence` よりも少し高い優先順位を指定します。詳細については、<a href="#precedence-group-declaration" target="_self">Precedence Group Declaration(優先順位グループ宣言)</a>を参照ください。
 
 次の形式で新しい前置演算子を宣言します:
 
@@ -1210,7 +1210,7 @@ subscript の詳細と subscript 宣言の例については、[Subscripts](./..
 
 前置演算子と同様に、後置演算子の宣言では優先順位レベルを指定しません。後置演算子は非結合です。
 
-新しい演算子を宣言した後、演算子と同じ名前の静的メソッドを宣言して実装します。静的メソッドは、演算子が引数として受け取る値の型のメンバの 1 つです。例えば、`Double` に `Int` を乗算する演算子は、`Double` または `Int` 構造体のいずれかに静的メソッドとして実装されます。前置または後置演算子を実装している場合は、そのメソッド宣言に対応する `prefix` または `postfix` 修飾子もマークする必要があります。新しい演算子を作成して実装する方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#custom-operatorskasutamu" target="_self">Custom Operators(カスタム演算子)</a>を参照ください。
+新しい演算子を宣言した後、演算子と同じ名前の静的メソッドを宣言して実装します。静的メソッドは、演算子が引数として受け取る値の型のメンバの 1 つです。例えば、`Double` に `Int` を乗算する演算子は、`Double` または `Int` 構造体のいずれかに静的メソッドとして実装されます。前置または後置演算子を実装している場合は、そのメソッド宣言に対応する `prefix` または `postfix` 修飾子もマークする必要があります。新しい演算子を作成して実装する方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#custom-operators" target="_self">Custom Operators(カスタム演算子)</a>を参照ください。
 
 > GRAMMAR OF AN OPERATOR DECLARATION  
 > operator-declaration → [prefix-operator-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_prefix-operator-declaration) \|  [postfix-operator-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_postfix-operator-declaration) \|  [infix-operator-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_infix-operator-declaration)  
@@ -1219,7 +1219,7 @@ subscript の詳細と subscript 宣言の例については、[Subscripts](./..
 > infix-operator-declaration → `infix` `operator` [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator)  [infix-operator-group](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_infix-operator-group)<sub>*opt*</sub>  
 > infix-operator-group → `:` [precedence-group-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-name)
 
-## Precedence Group Declaration\(優先順位グループ宣言\)
+## <a id="precedence-group-declaration">Precedence Group Declaration\(優先順位グループ宣言\)</a>
 
 *優先順位グループ宣言*は、プログラムに中置演算子の優先順位に新しいグループ化の方法を導入します。演算子の優先順位は、グループ化する括弧(`()`)がない場合に、演算子がオペランドとどのようにバインドするかを指定します。
 
@@ -1253,7 +1253,7 @@ Swift は、標準ライブラリが提供する演算子に多数の優先順�
 > precedence-group-names → [precedence-group-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-name) \|  [precedence-group-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-name)  `,` [precedence-group-names](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-names)  
 > precedence-group-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
-## Declaration Modifiers\(宣言修飾子\)
+## <a id="declaration-modifiers">Declaration Modifiers\(宣言修飾子\)</a>
 
 *宣言修飾子*は、宣言の動作または意味を変更するキーワードまたはコンテキスト依存キーワードです。(存在する場合は)宣言の属性と宣言を導入するキーワードの間に適切なキーワードまたはコンテキスト依存キーワードを記述することにより、宣言修飾子を指定します。
 
@@ -1274,13 +1274,13 @@ Swift は、標準ライブラリが提供する演算子に多数の優先順�
 <dt>final</dt>
 <dd>
 
-この修飾子をクラス、またはクラスのプロパティ、メソッド、または subscript メンバに適用します。クラスに適用するとサブクラス化できないことを示し、クラスのプロパティ、メソッド、または subscript に適用すると、クラスメンバがどのサブクラスでもオーバーライドできないことを示します。`final` 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/inheritance#preventing-overridesbraidowogu" target="_self">Preventing Overrides(オーバーライドを防ぐ)</a>を参照ください。
+この修飾子をクラス、またはクラスのプロパティ、メソッド、または subscript メンバに適用します。クラスに適用するとサブクラス化できないことを示し、クラスのプロパティ、メソッド、または subscript に適用すると、クラスメンバがどのサブクラスでもオーバーライドできないことを示します。`final` 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/inheritance#preventing-overrides" target="_self">Preventing Overrides(オーバーライドを防ぐ)</a>を参照ください。
 </dd>
 
 <dt>lazy</dt>
 <dd>
 
-この修飾子をクラスまたは構造体の格納変数プロパティに適用すると、プロパティが最初にアクセスされたときに、一度だけプロパティの初期値が計算され、格納されることを示します。lazy 修飾子の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#lazy-stored-propertiespuropati" target="_self">Lazy Stored Properties(遅延格納プロパティ)</a>を参照ください。
+この修飾子をクラスまたは構造体の格納変数プロパティに適用すると、プロパティが最初にアクセスされたときに、一度だけプロパティの初期値が計算され、格納されることを示します。lazy 修飾子の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#lazy-stored-properties" target="_self">Lazy Stored Properties(遅延格納プロパティ)</a>を参照ください。
 </dd>
 
 <dt>optional</dt>
@@ -1288,7 +1288,7 @@ Swift は、標準ライブラリが提供する演算子に多数の優先順�
 
 この修飾子をプロトコルのプロパティ、メソッド、または subscript のメンバに適用して、準拠する型がこれらのメンバを実装する必要がないことを示します。
 
-`optional` 修飾子は、`objc` 属性でマークされているプロトコルにのみ適用できます。その結果、クラス型のみが、オプショナルのメンバ要件を含むプロトコルに準拠できます。`optional` 修飾子の使用方法の詳細と、オプショナルのプロトコルメンバにアクセスする方法のガイダンス(例えば、準拠する型がそれらを実装しているかどうかわからない場合)については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#optional-protocol-requirementsopushonarunopurotokoru" target="_self">Optional Protocol Requirements(オプショナルのプロトコル要件)</a>を参照ください。
+`optional` 修飾子は、`objc` 属性でマークされているプロトコルにのみ適用できます。その結果、クラス型のみが、オプショナルのメンバ要件を含むプロトコルに準拠できます。`optional` 修飾子の使用方法の詳細と、オプショナルのプロトコルメンバにアクセスする方法のガイダンス(例えば、準拠する型がそれらを実装しているかどうかわからない場合)については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#optional-protocol-requirements" target="_self">Optional Protocol Requirements(オプショナルのプロトコル要件)</a>を参照ください。
 </dd>
 
 <dt>required</dt>
@@ -1306,7 +1306,7 @@ Swift は、標準ライブラリが提供する演算子に多数の優先順�
 <dt>unowned</dt>
 <dd>
 
-この修飾子を格納変数、定数、または格納プロパティに適用すると、変数またはプロパティがその値に格納されたオブジェクトの参照を所有していないことを示します。オブジェクトの割り当てが解除された後で変数またはプロパティにアクセスしようとすると、実行時エラーが発生します。弱参照と同様に、プロパティまたは値の型はクラス型の必要があります。ただし、弱参照とは異なり、型はオプショナルではありません。`unowned` 修飾子の例と詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/automatic-reference-counting#unowned-references-fei-suo-you-can-zhao" target="_self">Unowned References(非所有参照)</a>を参照ください。
+この修飾子を格納変数、定数、または格納プロパティに適用すると、変数またはプロパティがその値に格納されたオブジェクトの参照を所有していないことを示します。オブジェクトの割り当てが解除された後で変数またはプロパティにアクセスしようとすると、実行時エラーが発生します。弱参照と同様に、プロパティまたは値の型はクラス型の必要があります。ただし、弱参照とは異なり、型はオプショナルではありません。`unowned` 修飾子の例と詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/automatic-reference-counting#unowned-references" target="_self">Unowned References(非所有参照)</a>を参照ください。
 </dd>
 
 <dt>unowned(safe)</dt>
@@ -1318,16 +1318,16 @@ Swift は、標準ライブラリが提供する演算子に多数の優先順�
 <dt>unowned(unsafe)</dt>
 <dd>
 
-この修飾子を格納変数、定数、または格納プロパティに適用すると、変数またはプロパティがその値に格納されたオブジェクトの参照を所有していないことを示します。オブジェクトの割り当てが解除された後で変数またはプロパティにアクセスしようとすると、オブジェクトがあった場所のメモリにアクセスします。これは、メモリ安全ではない操作です。弱参照と同様に、プロパティまたは値の型はクラス型の必要があります。ただし、弱参照とは異なり、型はオプショナルではありません。 `unowned` 修飾子の例と詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/automatic-reference-counting#unowned-references-fei-suo-you-can-zhao" target="_self">Unowned References(非所有参照)</a>を参照ください。
+この修飾子を格納変数、定数、または格納プロパティに適用すると、変数またはプロパティがその値に格納されたオブジェクトの参照を所有していないことを示します。オブジェクトの割り当てが解除された後で変数またはプロパティにアクセスしようとすると、オブジェクトがあった場所のメモリにアクセスします。これは、メモリ安全ではない操作です。弱参照と同様に、プロパティまたは値の型はクラス型の必要があります。ただし、弱参照とは異なり、型はオプショナルではありません。 `unowned` 修飾子の例と詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/automatic-reference-counting#unowned-references" target="_self">Unowned References(非所有参照)</a>を参照ください。
 </dd>
 
 <dt>weak</dt>
 <dd>
 
-この修飾子を格納変数または格納変数プロパティに適用すると、変数またはプロパティがその値に格納されているオブジェクトへ弱い参照を持っていることを示します。変数またはプロパティの型は、オプショナルのクラス型の必要があります。オブジェクトの割り当てが解除された後に変数またはプロパティにアクセスすると、その値は `nil` になります。`weak` 修飾子の例と詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/automatic-reference-counting#weak-references-ruo-can-zhao" target="_self">Weak References(弱参照)</a>を参照ください。
+この修飾子を格納変数または格納変数プロパティに適用すると、変数またはプロパティがその値に格納されているオブジェクトへ弱い参照を持っていることを示します。変数またはプロパティの型は、オプショナルのクラス型の必要があります。オブジェクトの割り当てが解除された後に変数またはプロパティにアクセスすると、その値は `nil` になります。`weak` 修飾子の例と詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/automatic-reference-counting#weak-references" target="_self">Weak References(弱参照)</a>を参照ください。
 </dd>
 
-## Access Control Levels\(アクセス制御レベル\)
+## <a id="access-control-levels">Access Control Levels\(アクセス制御レベル\)</a>
 
 Swift は、open、public、internal、file private、private の 5 つのレベルのアクセス制御を提供します。下記のアクセスレベル修飾子のいずれかで宣言をマークして、宣言のアクセスレベルを指定できます。アクセス制御については、[Access Control(アクセスコントロール)](./../language-guide/access-control.md)で詳しく説明しています。
 
@@ -1363,7 +1363,7 @@ Swift は、open、public、internal、file private、private の 5 つのレベ
 
 アクセス制御の目的で、同じファイル内にある同じ型の extension は、アクセス制御スコープを共有します。その型を拡張する型も同じファイル内にある場合、同様にその型のアクセス制御スコープを共有します。型の宣言で宣言されたプライベートメンバは extension からもアクセスでき、1 つの extension で宣言されたプライベートメンバは、他の extension および型の宣言からもアクセスできます。
 
-上記の各アクセスレベル修飾子は、任意で 1 つの引数、括弧で囲まれた `set` キーワード(例えば、`private(set)`)を受け入れます。<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/access-control#getters-and-settersget-to-set" target="_self">Getters and Setters(get と set)</a>で説明されているように、変数または subscript 自体のアクセスレベル以下のアクセスレベルを変数または subscript の set に指定する場合は、この形式のアクセスレベル修飾子を使用します。
+上記の各アクセスレベル修飾子は、任意で 1 つの引数、括弧で囲まれた `set` キーワード(例えば、`private(set)`)を受け入れます。<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/access-control#getters-and-setters" target="_self">Getters and Setters(get と set)</a>で説明されているように、変数または subscript 自体のアクセスレベル以下のアクセスレベルを変数または subscript の set に指定する場合は、この形式のアクセスレベル修飾子を使用します。
 
 > GRAMMAR OF A DECLARATION MODIFIER  
 > declaration-modifier → `class` \|  `convenience` \|  `dynamic` \|  `final` \|  `infix` \|  `lazy` \|  `optional` \| `override` \|  `postfix` \|  `prefix` \|  `required` \|  `static` \|  `unowned` \|  `unowned` `(` `safe` `)` \|  `unowned(` `unsafe` `)` \|  `weak`  

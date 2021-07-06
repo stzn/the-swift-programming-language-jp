@@ -4,7 +4,7 @@
 
 戻り値に不透明な型(以下*Opaque 型*)を持つ関数またはメソッドは、その戻り値の型情報を隠します。関数の戻り値の型として具体的な型を提供する代わりに、準拠するプロトコルの観点から戻り値を記述します。型情報を隠すことで、戻り値の基になる型を private のままにすることができるため、モジュールとモジュールを呼び出すコードの間に境界を設けることに役立ちます。プロトコル型の値を返すのとは異なり、Opaque 型は具体的な型情報を保持し続けます。コンパイラは型情報にアクセスできますが、モジュールのクライアントはアクセスできません。
 
-## The Problem That Opaque Types Solve(Opaque 型が解決する問題)
+## <a id="the-problem-that-opaque-types-solve">The Problem That Opaque Types Solve(Opaque 型が解決する問題)</a>
 
 例えば、ASCII アートを描画するモジュールを作成しているとします。ASCII アートの基本的な特徴は、その文字列表現を返す `draw()` 関数です。これは、`Shape` プロトコルの要件として使用されています:
 
@@ -135,7 +135,7 @@ print(opaqueJoinedTriangles.draw())
 // *
 ```
 
-この例の `opaqueJoinedTriangles` の値は、この章の前半の<a href="#the-problem-that-opaque-types-solveopaque-gasuru" target="_self">The Problem That Opaque Types Solve(Opaque 型が解決する問題)</a>セクションのジェネリクスの例の `joinedTriangles` と同じです。ただし、その例の値とは異なり、`flip(_:)` と `join(_:_:)` は、ジェネリックな形状の操作が返す基本的な型を Opaque でラップし、それらの型が外部からは見えないようにしています。どちらの関数も、依存する型がジェネリックなのでジェネリック関数で、型パラメータは `FlippedShape` と `JoinedShape` に必要な型情報を渡します。
+この例の `opaqueJoinedTriangles` の値は、この章の前半の<a href="#the-problem-that-opaque-types-solve" target="_self">The Problem That Opaque Types Solve(Opaque 型が解決する問題)</a>セクションのジェネリクスの例の `joinedTriangles` と同じです。ただし、その例の値とは異なり、`flip(_:)` と `join(_:_:)` は、ジェネリックな形状の操作が返す基本的な型を Opaque でラップし、それらの型が外部からは見えないようにしています。どちらの関数も、依存する型がジェネリックなのでジェネリック関数で、型パラメータは `FlippedShape` と `JoinedShape` に必要な型情報を渡します。
 
 Opaque な戻り値の型を持つ関数が複数の場所から呼び出される場合、返す可能性のある戻り値は全て同じ型にする必要があります。ジェネリック関数の場合、その戻り値の型は関数のジェネリック型パラメータを使用できますが、それでも単一の型にする必要があります。例えば、正方形の特殊なケースを含む、形状反転関数の無効なバージョンを次に示します:
 

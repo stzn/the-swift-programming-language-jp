@@ -37,7 +37,7 @@ print(greet(person: "Brian"))
 `greet(person:)` 関数を呼び出すには、`greet(person: "Anna")` のように、`person` 引数ラベルの後に `String` 型の値を渡します。この関数は `String` 型の値を返すため、上記のように、`greet(person:)` を `print(_:separator:terminator:)` 関数の呼び出しでラップして、その文字列を出力して戻り値を確認できます。
 
 > NOTE  
-> `print(_:separator:terminator:)` 関数には最初の引数にラベルがなく、他の引数にはデフォルト値があるため、引数を渡しても渡さなくても呼び出し可能です。関数の構文の種類に関しては<a href="#function-argument-labels-and-parameter-namesraberutoparamta" target="_self">Function Argument Labels and Parameter Names(引数ラベルとパラメータ名)</a>と<a href="#default-parameter-valuesdeforutoparamta" target="_self">Default Parameter Values(デフォルトパラメータ値)</a>に記載しています。
+> `print(_:separator:terminator:)` 関数には最初の引数にラベルがなく、他の引数にはデフォルト値があるため、引数を渡しても渡さなくても呼び出し可能です。関数の構文の種類に関しては<a href="#function-argument-labels-and-parameter-names" target="_self">Function Argument Labels and Parameter Names(引数ラベルとパラメータ名)</a>と<a href="#default-parameter-values" target="_self">Default Parameter Values(デフォルトパラメータ値)</a>に記載しています。
 
 `greet(person:)` 関数の本文は、`greeting` と呼ばれる新しい `String` 型の定数を定義し、それにシンプルな挨拶文に設定することから始まります。このメッセージは、`return` キーワードを使用して関数から戻り値を返します。`return greeting` という行で、関数は実行を終了し、`greeting` の現在の値を返します。
 
@@ -89,7 +89,7 @@ print(greet(person: "Tim", alreadyGreeted: true))
 
 `person` というラベルの付いた `String` 型の値と、括弧\(`()`\) 内にカンマ\(`,`\)で区切られた `alreadyGreeted` というラベルの付いた `Bool` 型の値の両方を渡して `great(person:alreadyGreeted:)` 関数を呼び出しています。この関数は、 前のセクションで示した `greet(person:)` 関数とは異なることに注意してください。どちらも `greet` という関数名ですが、`greet(person:alreadyGreeted:)` は 2 つの引数を取り、`greet(person:)` 関数は 1 つしか取りません。
 
-### Functions Without Return Values\(戻り値なし関数\)
+### <a id="functions-without-return-values">Functions Without Return Values\(戻り値なし関数\)</a>
 
 戻り値の型を定義することも必須ではありません。`greet(person:)` バージョンは `String` 型の値を返すのではなく、その値を出力します。
 
@@ -127,7 +127,7 @@ printWithoutCounting(string: "hello, world")
 > NOTE  
 > 戻り値は無視できますが、常に関数が値を返すことは示さなければなりません。戻り値の型が定義されている関数では、値を返さずに関数を使用することはできません。そうしようとすると、コンパイルエラーが発生します。
 
-### Functions with Multiple Return Values\(複数の戻り値がある関数\)
+### <a id="functions-with-multiple-return-values">Functions with Multiple Return Values\(複数の戻り値がある関数\)</a>
 
 タプル型を関数の戻り値の型として使用して、1 つの複合戻り値として複数の値を返すことができます。
 
@@ -162,7 +162,7 @@ print("min is \(bounds.min) and max is \(bounds.max)")
 
 タプルの各値は、関数の戻り値の型で名前がすでに指定されているため、関数からタプルが返されるときに名前を付ける必要がないことに注目してください。
 
-#### Optional Tuple Return Types\(オプショナルのタプルの戻り値の型\)
+#### <a id="optional-tuple-return-types">Optional Tuple Return Types\(オプショナルのタプルの戻り値の型\)</a>
 
 関数から返されるタプル型が、「値が存在しない」可能性がある場合は、オプショナルのタプル型を使用して、タプル全体が `nil` になる可能性があることを示すことができます。`(Int, Int)?` や `(String, Int, Bool)?` のように、タプル型の閉じ括弧\(`)`\)の後に疑問符\(`?`\)を配置して、オプショナルのタプル型を書きます。
 
@@ -198,7 +198,7 @@ if let bounds = minMax(array: [8, -6, 2, 109, 3, 71]) {
 // "min is -6 and max is 109"
 ```
 
-### Functions With an Implicit Return\(暗黙的な戻り値がある関数\)
+### <a id="functions-with-an-implicit-return">Functions With an Implicit Return\(暗黙的な戻り値がある関数\)</a>
 
 関数の本文全体が、単一式の場合は、関数は暗黙的にその式の結果を返します。例えば、下記の両方の関数の動作は同じです:
 
@@ -218,12 +218,12 @@ print(anotherGreeting(for: "Dave"))
 
 `greeting(for:)` 関数の全体の定義は、戻り値の挨拶文です。つまり、この短い形式を使用できます。`anotherGreeting(for:)` 関数は、複数の式を持つ関数と同様に `return` キーワードを使用して、同じ挨拶文を返しています。1 つの戻り行として記述した関数は、`return` を省略できます。
 
-<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#shorthand-getter-declarationpuropati-get" target="_self">Shorthand Getter Declaration(省略 get プロパティ宣言)</a>でも説明されていますが、プロパティの get でも暗黙的な戻り値を使用することができます。
+<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#shorthand-getter-declaration" target="_self">Shorthand Getter Declaration(省略 get プロパティ宣言)</a>でも説明されていますが、プロパティの get でも暗黙的な戻り値を使用することができます。
 
 > NOTE  
 > 暗黙の戻り値を使ったコードは、何かしらの値を返す必要があります。例えば、`fatalError("Oh no!")` または `print(13)` を暗黙の戻り値として使用することはできません。
 
-## Function Argument Labels and Parameter Names\(引数ラベルとパラメータ名\)
+## <a id="function-argument-labels-and-parameter-names">Function Argument Labels and Parameter Names\(引数ラベルとパラメータ名\)</a>
 
 各関数のパラメータには、引数ラベルとパラメータ名の両方持つことができます。引数ラベルは、関数を呼び出すときに使用されます。各引数は、その前に書かれた引数ラベルを使用して関数が呼び出されます。引数名は関数の内部で使用されます。デフォルトでは、パラメータ名を引数ラベルとして使用します。
 
@@ -273,7 +273,7 @@ someFunction(1, secondParameterName: 2)
 
 パラメータに引数ラベルがある場合、関数を呼び出すときに引数にラベルを付ける必要があります。
 
-### Default Parameter Values\(デフォルトパラメータ値\)
+### <a id="default-parameter-values">Default Parameter Values\(デフォルトパラメータ値\)</a>
 
 パラメータの型の後に値を代入することで、関数内の任意のパラメータの*デフォルト値*を定義できます。デフォルト値が定義されている場合は、関数を呼び出すときにそのパラメータを省略できます。
 
@@ -288,7 +288,7 @@ someFunction(parameterWithoutDefault: 4) // `parameterWithDefault` は 12
 
 デフォルト値のないパラメータは、関数のパラメータリストでデフォルト値のあるパラメータよりも前に置きましょう。通常、デフォルト値を持たないパラメータの方が重要です。最初にデフォルト値を持たないパラメータを置くと、デフォルトパラメータが省略されているかどうかに関係なく、同じ関数が呼び出されていることを認識しやすくなります。
 
-### Variadic Parameters\(可変長パラメータ\)
+### <a id="variadic-parameters">Variadic Parameters\(可変長パラメータ\)</a>
 
 *可変長パラメータ*は、指定された型の 0 個以上の値を受け入れます。可変長パラメータを使用すると、関数が呼び出されたときに、パラメータに様々な数の入力値を渡すことができます。パラメータの型名の後に 3 つのピリオド文字\(`...`\)を挿入して、可変長パラメータを記述します。
 
@@ -316,7 +316,7 @@ arithmeticMean(3, 8.25, 18.75)
 
 関数のパラメータはデフォルトで定数です。関数の本文からパラメータの値を変更しようとすると、コンパイルエラーが発生します。つまり、誤ってパラメータの値を変更することはできません。関数でパラメータの値を変更する必要があり、関数呼び出しが終了した後もそれらの変更を保持したい場合は、代わりに *in-out パラメータ*として定義します。
 
-パラメータの型の直前に `inout` キーワードを配置することにより、in-out パラメータを書きます。in-out パラメータに渡された値は、関数に渡され、変更され、元の値を置き換えて、関数から戻ってきます。in-out パラメータの動作および関連するコンパイラの最適化の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#in-out-parametersin-outparamta" target="_self">In-Out Parameters(In-Out パラメータ)</a>を参照ください。
+パラメータの型の直前に `inout` キーワードを配置することにより、in-out パラメータを書きます。in-out パラメータに渡された値は、関数に渡され、変更され、元の値を置き換えて、関数から戻ってきます。in-out パラメータの動作および関連するコンパイラの最適化の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#declarations-in-out-parameters" target="_self">In-Out Parameters(In-Out パラメータ)</a>を参照ください。
 
 in-out パラメータには、変数のみ渡すことができます。定数とリテラルは変更できないため、渡すことはできません。変数を in-out パラメータとして渡すときは、変数名の直前にアンパサンド\(`&`\)を付けて、関数で値が変更される可能性があることを示します。
 
@@ -430,7 +430,7 @@ printMathResult(addTwoInts, 3, 5)
 
 `printMathResult(_:_:_:)` の役割は、適切な型の数学関数の結果を出力することです。その関数が実際に何をするかは重要ではありません。関数が正しい型なことが重要です。これにより、`printMathResult(_:_:_:)` は、その機能の一部を関数の呼び出し元に型安全な方法で渡すことができます。
 
-### Function Types as Return Types\(戻り値の型としての関数型\)
+### <a id="function-types-as-return-types">Function Types as Return Types\(戻り値の型としての関数型\)</a>
 
 関数型を別の関数の戻り値の型として使用できます。これを行うには、関数の戻り矢印\(`->`\)の直後に完全な関数型を書きます。
 
@@ -471,7 +471,7 @@ print("zero!")
 // zero!
 ```
 
-## Nested Functions\(ネスト関数\)
+## <a id="nested-functions">Nested Functions\(ネスト関数\)</a>
 
 この章でこれまでに見てきた全ての関数は、グローバルスコープで定義されたグローバル関数の例でしたが、*ネスト関数*と呼ばれる、他の関数の本文内に関数を定義することもできます。
 

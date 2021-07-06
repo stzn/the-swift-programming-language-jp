@@ -21,7 +21,7 @@ Xcode の各ビルドターゲット\(アプリバンドルやフレームワー
 
 ソースファイルは、モジュール内の Swift のソースコードファイルです\(実際には、アプリまたはフレームワーク内の単一のファイル\)。個別のソースファイルで個々の型を定義するのが一般的ですが、1 つのソースファイルに複数の型や関数などの定義を含めることができます。
 
-## Access Levels\(アクセスレベル\)
+## <a id="access-levels">Access Levels\(アクセスレベル\)</a>
 
 Swift は、コード内のエンティティに 5 つの異なるアクセスレベルを提供します。これらのアクセスレベルは、エンティティが定義されているソースファイルに関連しており、ソースファイルが属するモジュールにも関連しています。
 
@@ -32,7 +32,7 @@ Swift は、コード内のエンティティに 5 つの異なるアクセス�
 
 open アクセスは最も高い\(制限の緩い\)アクセスレベルで、private アクセスは最も低い\(制限の厳しい\)アクセスレベルです
 
-<a href="#strong-reference-cycles-for-closureskurjano" target="_self">Subclassing(サブクラス)</a>でも説明されているように、open アクセスはクラスとクラスメンバにのみ適用され、モジュール外のコードがサブクラス化およびオーバーライドできる点で public アクセスとは異なります。クラスを `open` として明示的にマークすることは、そのクラスをスーパークラスとして使用している他のモジュールからのコードの影響を考慮し、それに応じてクラスのコードを設計していることを示します。
+<a href="#subclassing" target="_self">Subclassing(サブクラス)</a>でも説明されているように、open アクセスはクラスとクラスメンバにのみ適用され、モジュール外のコードがサブクラス化およびオーバーライドできる点で public アクセスとは異なります。クラスを `open` として明示的にマークすることは、そのクラスをスーパークラスとして使用している他のモジュールからのコードの影響を考慮し、それに応じてクラスのコードを設計していることを示します。
 
 ### Guiding Principle of Access Levels\(アクセスレベルの指針\)
 
@@ -45,7 +45,7 @@ Swift のアクセスレベルは、全体の指針に従います: より低い
 
 言語の様々な側面に対するこの指針の具体的な意味については、下記で詳しく説明します。
 
-### Default Access Levels\(デフォルトのアクセスレベル\)
+### <a id="default-access-levels">Default Access Levels\(デフォルトのアクセスレベル\)</a>
 
 自身で明示的なアクセスレベルを指定しない場合、コード内の全てのエンティティ\(この章の後半で説明するいくつかの特定の例外を除く\)には、デフォルトのアクセスレベル internal が設定されています。その結果、多くの場合、コードで明示的なアクセスレベルを指定する必要はありません。
 
@@ -60,7 +60,7 @@ Swift のアクセスレベルは、全体の指針に従います: より低い
 > NOTE  
 > フレームワークの内部実装の詳細は、引き続きデフォルトの internal アクセスレベルを使用するか、フレームワークの内部コードを他の部分から隠したい場合は private または fileprivate としてマークすることができます。エンティティをフレームワークの API の一部にする場合にのみ、エンティティを open または public としてマークする必要があります。
 
-### Access Levels for Unit Test Targets\(単体テストターゲットのアクセスレベル\)
+### <a id="access-levels-for-unit-test-targets">Access Levels for Unit Test Targets\(単体テストターゲットのアクセスレベル\)</a>
 
 単体テストターゲットを使用してアプリを作成する場合、アプリのコードをテストするには、そのモジュールで使用できるようにする必要があります。デフォルトでは、open または public としてマークされたエンティティのみが他のモジュールにアクセスできます。ただし、プロダクションモジュールのインポート宣言を `@testable` 属性でマークし、テストを有効にしてそのプロダクションモジュールをコンパイルすると、単体テストターゲットは任意の internal エンティティにアクセスできます。
 
@@ -80,14 +80,14 @@ fileprivate func someFilePrivateFunction() {}
 private func somePrivateFunction() {}
 ```
 
-特に指定がない限り、デフォルトのアクセスレベルは、<a href="#default-access-levelsdeforutonoakusesureberu" target="_self">Default Access Levels(デフォルトのアクセスレベル)</a>で説明されているように、internal です。これは、`SomeInternalClass` と `someInternalConstant` が明示的なアクセスレベル修飾子なしで記述でき、internal アクセスレベルを持つことを意味します。
+特に指定がない限り、デフォルトのアクセスレベルは、<a href="#default-access-levels" target="_self">Default Access Levels(デフォルトのアクセスレベル)</a>で説明されているように、internal です。これは、`SomeInternalClass` と `someInternalConstant` が明示的なアクセスレベル修飾子なしで記述でき、internal アクセスレベルを持つことを意味します。
 
 ```swift
 class SomeInternalClass {}  // 暗黙的に internal
 let someInternalConstant = 0  // 暗黙的に internal
 ```
 
-## Custom Types\(独自型\)
+## <a id="custom-types">Custom Types\(独自型\)</a>
 
 独自型に明示的なアクセスレベルを指定する場合は、型を定義する時点で指定します。新しい型は、アクセスレベルが許可する場所ではどこでも使用できます。例えば、fileprivate クラスを定義する場合、そのクラスは、fileprivate クラスが定義されているソースファイル内で、プロパティの型、または関数パラメータまたは戻り値の型としてのみ使用できます。
 
@@ -139,7 +139,7 @@ func someFunction() -> (SomeInternalClass, SomePrivateClass) {
 }
 ```
 
-関数の戻り値の型は、上記の<a href="#custom-types-du-zi-xing" target="_self">Custom Types(独自型)</a>で定義された 2 つの独自クラスで構成されるタプル型です。これらのクラスの 1 つは internal として定義され、もう 1 つは private として定義されます。したがって、複合タプル型の全体的なアクセスレベルは private です\(タプルの構成型の最も厳しいアクセスレベル\)。
+関数の戻り値の型は、上記の<a href="#custom-types" target="_self">Custom Types(独自型)</a>で定義された 2 つの独自クラスで構成されるタプル型です。これらのクラスの 1 つは internal として定義され、もう 1 つは private として定義されます。したがって、複合タプル型の全体的なアクセスレベルは private です\(タプルの構成型の最も厳しいアクセスレベル\)。
 
 関数の戻り値の型は private なため、関数宣言が有効になるように、関数の全体的なアクセスレベルを `private` 修飾子でマークする必要があります。
 
@@ -174,7 +174,7 @@ public enum CompassPoint {
 
 ネスト型のアクセスレベルは、ラップされている型が public でない限り、ラップされている型と同じです。public 型内のネスト型には、internal が自動で設定されています。public 型内のネスト型を public で使用できるようにする場合は、ネスト型を public として明示的に宣言する必要があります。
 
-## Subclassing\(サブクラス\)
+## <a id="subclassing">Subclassing\(サブクラス\)</a>
 
 現在のアクセスレベルのコンテキストで使用でき、同じモジュールで定義されている任意のクラスをサブクラス化できます。また、別のモジュールで定義されている open クラスをサブクラス化することもできます。サブクラスは、そのスーパークラスよりも制限の緩いアクセスレベルを設定することはできません。例えば、internal スーパークラスから public サブクラスを作成することはできません。
 
@@ -218,7 +218,7 @@ internal class B: A {
 private var privateInstance = SomePrivateClass()
 ```
 
-### Getters and Setters\(get と set\)
+### <a id="getters-and-setters">Getters and Setters\(get と set\)</a>
 
 定数、変数、プロパティ、および subscript の get と set は、それらが属する定数、変数、プロパティ、または subscript と同じアクセスレベルを自動的に受け取ります。
 
@@ -273,13 +273,13 @@ public struct TrackedString {
 
 ## Initializers\(初期化\)
 
-独自イニシャライザには、初期化する型よりも制限の厳しいのアクセスレベルを割り当てることができます。唯一の例外は、必須イニシャライザ\(<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#required-initializersinisharaiza" target="_self">Required Initializers(必須イニシャライザ)</a>で定義\) です。必須イニシャライザは、それが属するクラスと同じアクセスレベルを持っている必要があります。
+独自イニシャライザには、初期化する型よりも制限の厳しいのアクセスレベルを割り当てることができます。唯一の例外は、必須イニシャライザ\(<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#required-initializers" target="_self">Required Initializers(必須イニシャライザ)</a>で定義\) です。必須イニシャライザは、それが属するクラスと同じアクセスレベルを持っている必要があります。
 
 関数とメソッドのパラメータと同様に、イニシャライザのパラメータの型は、イニシャライザのアクセスレベルよりも制限の厳しいレベルにすることはできません。
 
 ### Default Initializers\(デフォルトイニシャライザ\)
 
-<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#default-initializersdeforutoinisharaiza" target="_self">Default Initializers(デフォルトイニシャライザ)</a>で説明されているように、Swift は、全てのプロパティにデフォルト値を提供している構造体または基本クラスに 1 つもイニシャライザを提供しない引数なしの*デフォルトイニシャライザ*を自動的に提供します。
+<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#default-initializers" target="_self">Default Initializers(デフォルトイニシャライザ)</a>で説明されているように、Swift は、全てのプロパティにデフォルト値を提供している構造体または基本クラスに 1 つもイニシャライザを提供しない引数なしの*デフォルトイニシャライザ*を自動的に提供します。
 
 デフォルトイニシャライザは、その型が public として定義されていない限り、初期化する型と同じアクセスレベルを持ちます。public として定義されている型の場合、デフォルトのイニシャライザは internal と見なされます。public 型を別のモジュールで使用するときに引数なしのイニシャライザで初期化できるようにする場合は、型の定義で public 型の引数なしのイニシャライザを明示的に提供する必要があります。
 

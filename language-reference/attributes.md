@@ -10,7 +10,7 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 
 一部の宣言属性は、属性とそれが特定の宣言にどのように適用されるかについての詳細情報を指定する引数を受け入れます。これらの *attribute arguments* は括弧(`()`)で囲まれ、その形式は属する属性によって定義されています。
 
-## Declaration Attributes\(宣言属性\)
+## <a id="declaration-attributes">Declaration Attributes\(宣言属性\)</a>
 
 宣言属性は宣言にのみ適用できます。
 
@@ -246,7 +246,7 @@ frozen 型、frozen 構造体の格納プロパティの型、および frozen �
 
 コマンドラインでライブラリエボリューションモードを有効にするには、`-enable-library-evolution` オプションを Swift コンパイラに渡します。Xcode で有効にするには、[Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba)の説明に従って、「Build Libraries for Distribution」のビルド設定(`BUILD_LIBRARY_FOR_DISTRIBUTION`)を Yes に設定します。
 
-frozen 列挙型の switch 文は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#switching-over-future-enumeration-casesnonoksunosuitchingu" target="_self">Switching Over Future Enumeration Cases(列挙型の将来のケースのスイッチング)</a>で説明されているように、デフォルトのケースを必要としません。frozen 列挙型を切り替えるときに `default` または `@unknown default` のケースを含めると、そのコードは実行されないため、警告が生成されます。
+frozen 列挙型の switch 文は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#switching-over-future-enumeration-cases" target="_self">Switching Over Future Enumeration Cases(列挙型の将来のケースのスイッチング)</a>で説明されているように、デフォルトのケースを必要としません。frozen 列挙型を切り替えるときに `default` または `@unknown default` のケースを含めると、そのコードは実行されないため、警告が生成されます。
 
 ### GKInspectable
 
@@ -281,7 +281,7 @@ protocol ProvidesMain {
 }
 ```
 
-実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-codetoppureberukdo" target="_self">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。
+実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-code" target="_self">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。
 
 ### nonobjc
 
@@ -304,7 +304,7 @@ import AppKit
 NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
 ```
 
-実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-codetoppureberukdo" target="_self">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。
+実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-code" target="_self">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。
 
 ### NSCopying
 
@@ -422,7 +422,7 @@ s.$x.wrapper  // WrapperWithProjection 値
 
 ### resultBuilder
 
-この属性をクラス、構造体、列挙型に適用して、その型をリザルトビルダとして使用できます。*リザルトビルダ*は、ネストされたデータ構造を段階的に構築する型です。リザルトビルダを使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語(DSL)を実装します。`resultBuilder` 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#result-buildersrizarutobiruda" target="_self">Result Builders(リザルトビルダ)</a>を参照ください。
+この属性をクラス、構造体、列挙型に適用して、その型をリザルトビルダとして使用できます。*リザルトビルダ*は、ネストされたデータ構造を段階的に構築する型です。リザルトビルダを使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語(DSL)を実装します。`resultBuilder` 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#result-builders" target="_self">Result Builders(リザルトビルダ)</a>を参照ください。
 
 #### Result-Building Methods
 
@@ -720,7 +720,7 @@ resultBuilder 属性を適用しても、ABI の互換性には影響しませ�
 
 この属性を使用しない場合は、[UIApplicationMain(_:_:_:_:)](https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain)関数を呼び出すトップレベルのコードを `main.swift` ファイルに指定します。例えば、アプリが `UIApplication` の独自のサブクラスをメインクラスとして使用している場合、この属性を使用する代わりに `UIApplicationMain(_:_:_:_:)` 関数を呼び出します。
 
-実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-codetoppureberukdo" target="_self">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。
+実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-code" target="_self">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。
 
 ### usableFromInline
 
@@ -750,7 +750,7 @@ Interface Builder 属性は、Xcode と同期するために InterfaceBuilder �
 
 ### autoclosure
 
-この属性を適用すると、引数のないクロージャで式を自動的にラップすることにより、式の評価を遅らせます。関数またはメソッド宣言のパラメータに、引数を受け取らず式の型の値を返す関数型を適用できます。`autoclosure` 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#autoclosureskurja" target="_self">AutoClosures(自動クロージャ)</a>と<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/types#function-type-guan-shu-xing" target="_self">Function Type(関数型)</a>を参照ください。
+この属性を適用すると、引数のないクロージャで式を自動的にラップすることにより、式の評価を遅らせます。関数またはメソッド宣言のパラメータに、引数を受け取らず式の型の値を返す関数型を適用できます。`autoclosure` 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#autoclosures" target="_self">AutoClosures(自動クロージャ)</a>と<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/types#types-function-type" target="_self">Function Type(関数型)</a>を参照ください。
 
 ### convention
 
@@ -766,7 +766,7 @@ Interface Builder 属性は、Xcode と同期するために InterfaceBuilder �
 
 ### escaping
 
-この属性を関数またはメソッド宣言のパラメータの型に適用すると、パラメータの値を後で実行するために保持されることがあることを示します。これは、値が呼び出し側の生存期間を超えて存続できることを意味します。`escaping` 属性を持つ関数型パラメータは、プロパティまたはメソッドに対して `self` を明示的に使用する必要があります。`escaping` 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#escaping-closuresesukpukurja" target="_self">Escaping Closures(エスケープクロージャ)</a>を参照ください。
+この属性を関数またはメソッド宣言のパラメータの型に適用すると、パラメータの値を後で実行するために保持されることがあることを示します。これは、値が呼び出し側の生存期間を超えて存続できることを意味します。`escaping` 属性を持つ関数型パラメータは、プロパティまたはメソッドに対して `self` を明示的に使用する必要があります。`escaping` 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#escaping-closures" target="_self">Escaping Closures(エスケープクロージャ)</a>を参照ください。
 
 ## Switch Case Attributes (Switch ケース属性)
 
@@ -774,7 +774,7 @@ switch の case 属性は、switch 文のケースにのみ適用できます。
 
 ### unknown
 
-この属性を switch ケースに適用すると、コードのコンパイル時にわかっているどの列挙ケースとも一致することがない可能性を示します。`unknown` 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#switching-over-future-enumeration-casesnonoksunosuitchingu" target="_self">Switching Over Future Enumeration Cases(列挙型の将来のケースのスイッチング)</a>を参照ください。
+この属性を switch ケースに適用すると、コードのコンパイル時にわかっているどの列挙ケースとも一致することがない可能性を示します。`unknown` 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#switching-over-future-enumeration-cases" target="_self">Switching Over Future Enumeration Cases(列挙型の将来のケースのスイッチング)</a>を参照ください。
 
 > GRAMMAR OF AN ATTRIBUTE  
 > attribute → `@` [attribute-name](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attribute-name)  [attribute-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attribute-argument-clause)<sub>*opt*</sub>  

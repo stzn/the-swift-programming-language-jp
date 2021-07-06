@@ -11,7 +11,7 @@
 > NOTE  
 > Swift のエラー処理は、Cocoa および Objective-C の NSError クラスを使用するエラー処理パターンと相互運用します。このクラスの詳細については、[Handling Cocoa Errors in Swift](https://developer.apple.com/documentation/swift/cocoa_design_patterns/handling_cocoa_errors_in_swift)を参照ください。
 
-## Representing and Throwing Errors\(エラーの表現とスロー\)
+## <a id="representing-and-throwing-errors">Representing and Throwing Errors\(エラーの表現とスロー\)</a>
 
 Swift では、エラーは `Error` プロトコルに準拠した型の値によって表されます。この空のプロトコルは、エラー処理に型を使用できることを示します。
 
@@ -42,7 +42,7 @@ Swift でエラーを処理する方法は 4 つあります。関数からそ�
 > NOTE  
 > Swift でのエラー処理は、他の言語での例外処理に似ており、`try`、`catch`、`throw` キーワードを使用しています。Objective-C を含む多くの言語の例外処理とは異なり、Swift でのエラー処理には、計算コストがかかる可能性のあるプロセスであるコールスタックの巻き戻しが含まれません。したがって、`throw` 文のパフォーマンスは、`return` 文のパフォーマンスに匹敵します。
 
-### Propagating Errors Using Throwing Functions\(スロー関数を使用したエラーの伝播\)
+### <a id="propagating-errors-using-throwing-functions">Propagating Errors Using Throwing Functions\(スロー関数を使用したエラーの伝播\)</a>
 
 関数、メソッド、またはイニシャライザがエラーをスローできることを示すには、関数の宣言のパラメータの後に `throws` キーワードを記述します。`throws` でマークされた関数は、*スロー*関数と呼ばれます。関数が戻り値の型を指定する戻り矢印 \(`->`\) の前に `throws` キーワードを記述します:
 
@@ -127,7 +127,7 @@ struct PurchasedSnack {
 }
 ```
 
-### Handling Errors Using Do-Catch\(do catchを使ったエラー処理\)
+### <a id="handling-errors-using-do-catch">Handling Errors Using Do-Catch\(do catchを使ったエラー処理\)</a>
 
 `do-catch` 文を使用して、コードブロックを実行することでエラーを処理します。`do` 句のコードによってエラーがスローされた場合、`catch` 句と照合され、エラーを処理できる `catch` 句を判断します。
 
@@ -196,7 +196,7 @@ func eat(item: String) throws {
 
 `eat(item:)` 関数は、キャッチする自動販売機のエラーをリストし、そのエラーテキストはそのリスト内のアイテムに対応します。リストされている 3 つのエラーのいずれかがスローされた場合、この `catch` 句はメッセージを出力してそれらを処理します。その他のエラーは、後で追加される可能性のある自動販売機のエラーを含め、周囲のスコープに伝播されます。
 
-### Converting Errors to Optional Values\(エラーからオプショナル値への変換\)
+### <a id="converting-errors-to-optional-values">Converting Errors to Optional Values\(エラーからオプショナル値への変換\)</a>
 
 エラーをオプショナルの値に変換して処理するには `try?` を使います。`try?` 式を評価中にエラーがスローされた場合、式の値は `nil` です。例えば、次のコードでは、`x` と `y` の値は挙動が同じです:
 

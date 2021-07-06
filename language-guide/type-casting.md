@@ -6,7 +6,7 @@
 
 Swift での型キャストは、`is` および `as` 演算子で実装されます。これらの 2 つの演算子は、値の型をチェックしたり、値を別の型にキャストしたりするためのシンプルで表現力豊かな方法を提供します。
 
-<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#checking-for-protocol-conformancepurotokoruchekku" target="_self">Checking for Protocol Conformance(プロトコル準拠チェック)</a>で説明されているように、型キャストを使用して、型がプロトコルに準拠しているかどうかを確認することもできます。
+<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#checking-for-protocol-conformance" target="_self">Checking for Protocol Conformance(プロトコル準拠チェック)</a>で説明されているように、型キャストを使用して、型がプロトコルに準拠しているかどうかを確認することもできます。
 
 ## Defining a Class Hierarchy for Type Casting\(型キャストのためのクラス階層の定義\)
 
@@ -84,7 +84,7 @@ print("Media library contains \(movieCount) movies and \(songCount) songs")
 
 `item is Movie` は、現在の `MediaItem` が `Movie` インスタンスの場合は `true` を返し、そうでない場合は `false` を返します。同様に、`item is Song` は、アイテムが `Song` インスタンスかどうかをチェックします。`for-in` ループの最後で、`movieCount` と `songCount` の値には、各型の `MediaItem` インスタンスがいくつ見つかったかをカウントしています。
 
-## Downcasting\(ダウンキャスト\)
+## <a id="downcasting">Downcasting\(ダウンキャスト\)</a>
 
 特定のクラス型の定数または変数は、実際には裏側でサブクラスのインスタンスを参照している場合があります。そのような場合は、型キャスト演算子 \(`as?` または `as!`\) を使用してサブクラス型への*ダウンキャスト*を試みることができます。
 
@@ -125,7 +125,7 @@ for item in library {
 > NOTE  
 > キャストは実際にインスタンスを変更したり、その内部の値を変更したりしません。基になるインスタンスは同じままです。キャストした型のインスタンスとして扱われ、アクセスされるだけです。
 
-## Type Casting for Any and AnyObject\(AnyおよびAnyObject の型キャスト\)
+## <a id="type-casting-for-any-and-anyobject">Type Casting for Any and AnyObject\(AnyおよびAnyObject の型キャスト\)</a>
 
 Swift は、型を特定できない型を操作するための 2 つの特別な型を提供しています。
 

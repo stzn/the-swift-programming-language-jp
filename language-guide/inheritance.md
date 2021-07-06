@@ -106,7 +106,7 @@ print("Tandem: \(tandem.description)")
 // Tandem: traveling at 22.0 miles per hour
 ```
 
-## Overriding\(オーバーライド\)
+## <a id="overriding">Overriding\(オーバーライド\)</a>
 
 サブクラスは、インスタンスメソッド、型メソッド、インスタンスプロパティ、型プロパティ、またはスーパークラスから継承する subscript の独自のカスタム実装を提供できます。これは*オーバーライド*と呼ばれます。
 
@@ -150,7 +150,7 @@ train.makeNoise()
 
 継承したインスタンスまたは型プロパティをオーバーライドして、そのプロパティに独自の get/set を提供したり、プロパティオブザーバを追加して、基になるプロパティ値が変更されたときにオーバーライドしたプロパティを通してその値を監視できます。
 
-#### Overriding Property Getters and Setters\(get/setのオーバーライド\)
+#### <a id="overriding-property-getters-and-setters">Overriding Property Getters and Setters\(get/setのオーバーライド\)</a>
 
 継承したプロパティが格納プロパティか計算プロパティかに関係なく、継承したプロパティをオーバーライドする独自の get \(および必要ならば set \)を提供できます。継承したプロパティの格納または計算プロパティの実装は、サブクラスには認識されません。継承したプロパティは、特定の名前と型を持っていることだけを認識します。オーバーライドしたプロパティの名前と型の両方を常に指定して、そのオーバーライドが同じ名前と型のスーパークラスのプロパティと一致することをコンパイラがチェックできるようにする必要があります。
 
@@ -182,9 +182,9 @@ print("Car: \(car.description)")
 // Car: traveling at 25.0 miles per hour in gear 3
 ```
 
-#### Overriding Property Observers\(プロパティオブザーバのオーバーライド\)
+#### <a id="overriding-property-observers">Overriding Property Observers\(プロパティオブザーバのオーバーライド\)</a>
 
-プロパティのオーバーライドを使用して、継承したプロパティのプロパティオブザーバを追加できます。これにより、継承したプロパティの値が変更されたときに、そのプロパティが最初にどのように実装されたかに関係なく通知を受け取ることができます。プロパティオブザーバの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#property-observerspuropatiobuzba" target="_self">Property Observers(プロパティオブザーバ)</a>を参照ください。
+プロパティのオーバーライドを使用して、継承したプロパティのプロパティオブザーバを追加できます。これにより、継承したプロパティの値が変更されたときに、そのプロパティが最初にどのように実装されたかに関係なく通知を受け取ることができます。プロパティオブザーバの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#property-observers" target="_self">Property Observers(プロパティオブザーバ)</a>を参照ください。
 
 > NOTE  
 > 継承した定数の格納プロパティまたは継承した読み取り専用計算プロパティにプロパティオブザーバを追加することはできません。これらのプロパティの値は変更できないため、オーバーライドの一部として `willSet` または `didSet` の実装を提供することは適切ではありません。 同じプロパティに対して、set のオーバーライドとプロパティオブザーバのオーバーライドの、両方を提供することはできないことにも注意してください。プロパティの値の変更を監視する必要があり、そのプロパティのカスタムの set を既に提供している場合は、カスタムの set 内から値の変更が簡単に監視できます。
@@ -210,7 +210,7 @@ print("AutomaticCar: \(automatic.description)")
 // AutomaticCar: traveling at 35.0 miles per hour in gear 4
 ```
 
-## Preventing Overrides\(オーバーライドを防ぐ\)
+## <a id="preventing-overrides">Preventing Overrides\(オーバーライドを防ぐ\)</a>
 
 メソッド、プロパティ、または subscript をオーバーライドされないようにすることができます。これを行うには、メソッド、プロパティ、または subscript のキーワードの前に `final` 修飾子を記述します\(`final var`、`final func`、`final class func` や `final subscript` など\)。
 

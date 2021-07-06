@@ -10,11 +10,11 @@
 
 を使用して、コードを再利用することもできます。
 
-## Stored Properties\(格納プロパティ\)
+## <a id="stored-properties">Stored Properties\(格納プロパティ\)</a>
 
 最もシンプルな形式だと、*格納プロパティ*は、特定のクラスまたは構造体のインスタンスの一部として保存される定数または変数です。格納プロパティは、変数格納プロパティ\(`var` キーワードを使用\)または定数格納プロパティ\(`let` キーワードを使用\) のいずれかです。
 
-<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#default-property-valuesdeforutonopuropati" target="_self">Default Property Values(プロパティのデフォルト値)</a>で説明されているように、格納プロパティのデフォルト値をその定義の一部として設定できます。また、初期化中に格納プロパティに初期値の設定や変更もできます。これは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#assigning-constant-properties-during-initializationnopuropatinorite" target="_self">Assigning Constant Properties During Initialization(初期化中の定数プロパティへの値の設定)</a>で説明されているように、定数の格納プロパティにも当てはまります。
+<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#default-property-values" target="_self">Default Property Values(プロパティのデフォルト値)</a>で説明されているように、格納プロパティのデフォルト値をその定義の一部として設定できます。また、初期化中に格納プロパティに初期値の設定や変更もできます。これは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#assigning-constant-properties-during-initialization" target="_self">Assigning Constant Properties During Initialization(初期化中の定数プロパティへの値の設定)</a>で説明されているように、定数の格納プロパティにも当てはまります。
 
 下記の例では、`FixedLengthRange` という構造体を定義しています。これは、作成後に範囲の長さを変更できない整数の範囲を表します。
 
@@ -31,7 +31,7 @@ rangeOfThreeItems.firstValue = 6
 
 `FixedLengthRange` のインスタンスには、`firstValue` と呼ばれる変数格納プロパティと `length` という定数格納プロパティがあります。上記の例では、定数のため、長さは新しい範囲が作成されたときに初期化され、それ以降は変更できません。
 
-### Stored Properties of Constant Structure Instances\(定数の格納インスタンスのプロパティ\)
+### <a id="stored-properties-of-constant-structure-instances">Stored Properties of Constant Structure Instances\(定数の格納インスタンスのプロパティ\)</a>
 
 構造体のインスタンスを作成し、そのインスタンスを定数に割り当てる場合、インスタンスのプロパティは、変数で宣言されていても変更できません。
 
@@ -104,7 +104,7 @@ print(manager.importer.filename)
 
 Swift は、これらの概念を単一のプロパティ宣言に統合しました。Swift のプロパティには対応するインスタンス変数がなく、プロパティのバッキングストアには直接アクセスしません。このアプローチにより、様々なコンテキストで値にアクセスできてしまうことから起きる混乱を回避し、ただ唯一のプロパティ宣言へと単純化されています。名前、型、メモリ管理の特性など、プロパティに関する全ての情報は、型の定義の一部として 1 つの場所に集約されています。
 
-## Computed Properties\(計算プロパティ\)
+## <a id="properties-computed-properties">Computed Properties\(計算プロパティ\)</a>
 
 格納プロパティに加えて、クラス、構造体、および列挙型は、値を保存しない計算プロパティを定義できます。代わりに、間接的に他のプロパティの値の取得する get と、値の設定を行う任意の set を提供します。
 
@@ -154,7 +154,7 @@ print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 
 ![計算プロパティ](../.gitbook/assets/computedProperties_2x.png)
 
-### Shorthand Setter Declaration\(省略プロパティ set 宣言\)
+### <a id="shorthand-setter-declaration">Shorthand Setter Declaration\(省略プロパティ set 宣言\)</a>
 
 計算プロパティの set が、設定される新しい値の名前を定義しない場合、デフォルト名の `newValue` が使用されます。下記はこの省略表記を利用した `Rect` 構造体の代替バージョンを次に示します:
 
@@ -176,7 +176,7 @@ struct AlternativeRect {
 }
 ```
 
-### Shorthand Getter Declaration\(省略プロパティ get 宣言\)
+### <a id="shorthand-getter-declaration">Shorthand Getter Declaration\(省略プロパティ get 宣言\)</a>
 
 get の本文全体が単一式の場合、暗黙的にその式を返します。この省略表記を利用した別のバージョンの `Rect` 構造体を次に示します:
 
@@ -197,9 +197,9 @@ struct CompactRect {
 }
 ```
 
-get からの戻り値の省略は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#functions-with-an-implicit-returnnarigaaru" target="_self">Functions With an Implicit Return(暗黙的な戻り値がある関数)</a>で説明されているように、関数からの戻り値を省略した場合と同じ規則に従います。
+get からの戻り値の省略は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#functions-with-an-implicit-return" target="_self">Functions With an Implicit Return(暗黙的な戻り値がある関数)</a>で説明されているように、関数からの戻り値を省略した場合と同じ規則に従います。
 
-### Read-Only Computed Properties\(読み取り専用計算プロパティ\)
+### <a id="read-only-computed-properties">Read-Only Computed Properties\(読み取り専用計算プロパティ\)</a>
 
 get のみの計算プロパティは、*読み取り専用計算プロパティ*と呼ばれます。読み取り専用計算プロパティは常に値を返し、ドット構文を介してアクセスできますが、別の値を設定することはできません。
 
@@ -222,7 +222,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 
 この例では、`Cuboid` という新しい構造体を定義します。これは、`width`、`height`、`depth` プロパティを持つ 3D の長方形のボックスを表します。この構造体には、`volume` と呼ばれる読み取り専用計算プロパティもあります。これは、直方体の現在のボリュームを計算して返します。特定のボリューム値に `width`、`height`、`depth` のどの値が使用されているかがあいまいなため、`volume` に set 可能にすることは意味がありません。それでも、`Cuboid` が読み取り専用計算プロパティを提供して、外部ユーザーが現在の計算済みボリュームを見られようにすると便利です。
 
-## Property Observers\(プロパティオブザーバ\)
+## <a id="property-observers">Property Observers\(プロパティオブザーバ\)</a>
 
 *プロパティオブザーバ*は、プロパティの値の変化を監視し、それに応じたアクションをすることができます。プロパティオブザーバは、新しい値がプロパティの現在の値と同じ場合でも、プロパティの値が設定されるたびに呼び出されます。
 
@@ -232,7 +232,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 * 継承した格納プロパティ
 * 継承した計算プロパティ
 
-継承したプロパティの場合、サブクラスでそのプロパティをオーバーライドすることにより、プロパティオブザーバを追加します。自身で定義した計算プロパティの場合、オブザーバを作成する代わりに、set を使用して値の変更を監視し、応答します。プロパティのオーバーライドについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/inheritance#overridingbraido" target="_self">Overriding(オーバーライド)</a>で説明されています。
+継承したプロパティの場合、サブクラスでそのプロパティをオーバーライドすることにより、プロパティオブザーバを追加します。自身で定義した計算プロパティの場合、オブザーバを作成する代わりに、set を使用して値の変更を監視し、応答します。プロパティのオーバーライドについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/inheritance#overriding" target="_self">Overriding(オーバーライド)</a>で説明されています。
 
 プロパティにこれらのオブザーバの下記のいずれかまたは両方を定義できます:
 
@@ -244,7 +244,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 同様に、`didSet` オブザーバを実装する場合、古いプロパティ値を含む定数パラメータが渡されます。パラメータに名前を付けるか、`oldValue` というデフォルトパラメータ名を使用できます。独自の `didSet` オブザーバ内のプロパティに値を割り当てると、新しい値によって、設定されたばかりの値が置き換えられます。
 
 > NOTE  
-> スーパークラスのプロパティの `willSet` および `didSet` オブザーバは、プロパティがサブクラスのイニシャライザで設定されると、スーパークラスのイニシャライザが呼び出された後に呼び出されます。スーパークラスのイニシャライザが呼び出される前に、サブクラスが独自のプロパティを設定している間は呼び出されません。 イニシャライザの委譲については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#initializer-delegation-for-value-typesnoinisharaizano" target="_self">Initializer Delegation for Value Types(値型のイニシャライザの委譲)</a>、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#initializer-delegation-for-class-typeskurasunoinisharaizano" target="_self">Initializer Delegation for Class Types(クラス型のイニシャライザの委譲)</a>を参照ください。
+> スーパークラスのプロパティの `willSet` および `didSet` オブザーバは、プロパティがサブクラスのイニシャライザで設定されると、スーパークラスのイニシャライザが呼び出された後に呼び出されます。スーパークラスのイニシャライザが呼び出される前に、サブクラスが独自のプロパティを設定している間は呼び出されません。 イニシャライザの委譲については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#initializer-delegation-for-value-types" target="_self">Initializer Delegation for Value Types(値型のイニシャライザの委譲)</a>、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#initializer-delegation-for-class-types" target="_self">Initializer Delegation for Class Types(クラス型のイニシャライザの委譲)</a>を参照ください。
 
 `willSet` と `didSet` の使用例を次に示します。下記の例では、`StepCounter` という名前の新しいクラスを定義しています。これは、人の合計歩数を追跡します。このクラスは、万歩計からの入力データやその他の日常生活での運動を追跡する歩数計に使われます。
 
@@ -282,9 +282,9 @@ stepCounter.totalSteps = 896
 `didSet` オブザーバは、`totalSteps` の値が更新された後に呼び出されます。これは、`totalSteps` の新しい値を古い値と比較します。合計ステップ数が増えると、新しく何ステップ増えたかを示すメッセージが出力されます。`didSet` オブザーバは古い値のカスタムパラメータ名を提供せず、代わりに `oldValue` のデフォルト名が使用されます。
 
 > NOTE  
-> オブザーバを持つプロパティを関数に入出力パラメータとして渡すと、`willSet` および `didSet` オブザーバが常に呼び出されます。これは、入出力パラメータのコピーインコピーアウト\(copy-in copy-out\)メモリモデルによるものです。値は常に関数の最後でプロパティに書き戻されます。入出力パラメータの動作の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#in-out-parametersin-outparamta" target="_self">In-Out Parameters(In-Out パラメータ)</a>を参照ください。
+> オブザーバを持つプロパティを関数に入出力パラメータとして渡すと、`willSet` および `didSet` オブザーバが常に呼び出されます。これは、入出力パラメータのコピーインコピーアウト\(copy-in copy-out\)メモリモデルによるものです。値は常に関数の最後でプロパティに書き戻されます。入出力パラメータの動作の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#declarations-in-out-parameters" target="_self">In-Out Parameters(In-Out パラメータ)</a>を参照ください。
 
-## Property Wrappers\(プロパティラッパ\)
+## <a id="property-wrappers">Property Wrappers\(プロパティラッパ\)</a>
 
 *プロパティラッパ*は、プロパティの格納方法を管理するコードと、プロパティを定義するコードとの間に境界レイヤを追加します。例えば、スレッドセーフチェックを提供するプロパティ、またはその基になるデータをデータベースに格納するプロパティがある場合、全てのプロパティにそのコードを記述する必要があります。プロパティラッパを使用すると、ラッパを定義するときに管理コードを 1 回記述し、その管理コードを複数のプロパティに適用して再利用できます。
 
@@ -547,7 +547,7 @@ func someFunction() {
 
 プロパティに小数を適用する場合と同様に、`myNumber` を 10 に設定することは有効です。プロパティラッパは 12 を超える値を許可しないため、`myNumber` を 24 ではなく 12 に設定します。
 
-## Type Properties\(型プロパティ\)
+## <a id="type-properties">Type Properties\(型プロパティ\)</a>
 
 インスタンスプロパティは、特定の型のインスタンスに属するプロパティです。その型の新しいインスタンスを作成するたびに、他のインスタンスとは別のプロパティ値のセットがあります。
 

@@ -32,7 +32,7 @@ class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
 }
 ```
 
-## Property Requirements\(プロパティ要件\)
+## <a id="property-requirements">Property Requirements\(プロパティ要件\)</a>
 
 プロトコルは、特定の名前と型のインスタンスプロパティまたは型プロパティを要件にできます。プロトコルでは、格納プロパティか計算プロパティかを指定しません。必要なプロパティの名前と型を指定するだけです。また、プロトコルは、各プロパティが get のみか、get/set どちらも必要かどうかも指定します。
 
@@ -99,7 +99,7 @@ var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
 
 このクラスは、宇宙船の読み取り専用計算プロパティとして `fullName` プロパティを実装します。各 `Starship` クラスのインスタンスは、必須の `name` とオプショナルの `prefix` を格納します。`fullName` プロパティは、プレフィックス値が存在する場合はそれを使用し、名前の先頭に追加して宇宙船のフルネームを作成します。
 
-## Method Requirements\(メソッド要件\)
+## <a id="method-requirements">Method Requirements\(メソッド要件\)</a>
 
 プロトコルはインスタンスメソッドと型メソッドを要件にすることもできます。これらのメソッドは、通常のインスタンスおよび型メソッドとまったく同じ方法でプロトコルの定義の一部として記述されますが、中括弧\(`{}`\)やメソッド本文はありません。通常のメソッドと同じ規則に従って、可変長パラメータを使用できます。ただし、プロトコルの定義内のメソッドのパラメータにデフォルト値を指定することはできません。
 
@@ -146,7 +146,7 @@ print("And another one: \(generator.random())")
 
 ## Mutating Method Requirements\(mutatingメソッド要件\)
 
-メソッドが属するインスタンスを変更する必要がある場合があります。値型\(つまり、構造体と列挙型\)のインスタンスメソッドの場合、メソッドの `func` キーワードの前に `mutating` キーワードを配置して、メソッドが属するインスタンスとそのインスタンスの全てのプロパティを変更できることを示します。このプロセスについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/methods#modifying-value-types-from-within-instance-methodsinsutansumesoddokaranono" target="_self">Modifying Value Types from Within Instance Methods\(インスタンスメソッド内からの値型の変更\)</a>で説明されています。
+メソッドが属するインスタンスを変更する必要がある場合があります。値型\(つまり、構造体と列挙型\)のインスタンスメソッドの場合、メソッドの `func` キーワードの前に `mutating` キーワードを配置して、メソッドが属するインスタンスとそのインスタンスの全てのプロパティを変更できることを示します。このプロセスについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/methods#modifying-value-types-from-within-instance-methods" target="_self">Modifying Value Types from Within Instance Methods\(インスタンスメソッド内からの値型の変更\)</a>で説明されています。
 
 任意の型のインスタンスを変更することを目的としたプロトコルのインスタンスメソッドの要件を定義する場合は、`mutating` キーワードをメソッドにマークします。これにより、構造体と列挙型がそのメソッド要件を満たしてプロトコルに準拠することができます。
 
@@ -178,7 +178,7 @@ lightSwitch.toggle()
 // lightSwitch は .on
 ```
 
-## Initializer Requirements\(イニシャライザ要件\)
+## <a id="initializer-requirements">Initializer Requirements\(イニシャライザ要件\)</a>
 
 プロトコルでは、型に準拠するために特定のイニシャライザが必要な場合があります。このイニシャライザは、通常のイニシャライザとまったく同じ方法でプロトコルの定義の一部として記述できますが、中括弧\(`{}`\)やイニシャライザ本文はありません:
 
@@ -202,10 +202,10 @@ class SomeClass: SomeProtocol {
 
 `required` 修飾子を使用すると、準拠するクラスの全てのサブクラスで、イニシャライザ要件を明示的に実装または継承して、プロトコルに準拠する必要があります。
 
-`required` イニシャライザの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#required-initializersinisharaiza" target="_self">Required Initializers(必須イニシャライザ)</a>を参照ください。
+`required` イニシャライザの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#required-initializers" target="_self">Required Initializers(必須イニシャライザ)</a>を参照ください。
 
 > NOTE  
-> `final` クラスはサブクラス化できないため、 `final` 修飾子でマークされているクラスでは、プロトコルのイニシャライザの実装を `required` 修飾子でマークする必要はありません。`final` 修飾子の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/inheritance#preventing-overridesbraidowogu" target="_self">Preventing Overrides(オーバーライドを防ぐ)</a>を参照ください。
+> `final` クラスはサブクラス化できないため、 `final` 修飾子でマークされているクラスでは、プロトコルのイニシャライザの実装を `required` 修飾子でマークする必要はありません。`final` 修飾子の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/inheritance#preventing-overrides" target="_self">Preventing Overrides(オーバーライドを防ぐ)</a>を参照ください。
 
 サブクラスがスーパークラスからの指定イニシャライザをオーバーライドし、そのイニシャライザがプロトコル要件も満たす場合、`required` 修飾子と `override` 修飾子の両方でイニシャライザの実装をマークします:
 
@@ -228,13 +228,13 @@ class SomeSubClass: SomeSuperClass, SomeProtocol {
 }
 ```
 
-### Failable Initializer Requirements\(失敗可能イニシャライザ要件\)
+### <a id="failable-initializer-requirements">Failable Initializer Requirements\(失敗可能イニシャライザ要件\)</a>
 
-プロトコルは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#failable-initializersinisharaiza" target="_self">Failable Initializers(失敗可能イニシャライザ)</a>で定義されているように、失敗可能イニシャライザ要件を定義できます。
+プロトコルは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#declarations-failable-initializers" target="_self">Failable Initializers(失敗可能イニシャライザ)</a>で定義されているように、失敗可能イニシャライザ要件を定義できます。
 
 失敗可能イニシャライザ要件は、準拠する型の失敗可能または失敗しないイニシャライザによって満たされます。失敗しないイニシャライザ要件は、失敗しないイニシャライザまたは暗黙的にアンラップされた失敗可能イニシャライザによって満たされます。
 
-## Protocols as Types\(型としてのプロトコル\)
+## <a id="protocols-as-types">Protocols as Types\(型としてのプロトコル\)</a>
 
 プロトコルは、実際には機能を実装しません。それにもかかわらず、コード内で完全な型としてプロトコルを使用できます。プロトコルを型として使用することは、*存在型*と呼ばれることもあります。これは、「T がプロトコルに準拠するような型 T が存在する」というフレーズから来ています。
 
@@ -265,7 +265,7 @@ class Dice {
 
 この例では、ボードゲームで使用する n 面のサイコロを表す `Dice` という新しいクラスを定義しています。`Dice` のインスタンスには、側面の数を表す `sides` と呼ばれる整数のプロパティと、ダイスの出目を作成するための乱数ジェネレータを提供する `generator` と呼ばれるプロパティがあります。
 
-`generator` プロパティの型は `RandomNumberGenerator` です。したがって、`RandomNumberGenerator` プロトコルに準拠する任意の型のインスタンスを設定できます。このプロパティに割り当てるインスタンスには、インスタンスが `RandomNumberGenerator` プロトコルに準拠する必要があることを除いて、他に何も必要ありません。型は `RandomNumberGenerator` なので、`Dice` クラス内のコードは、このプロトコルに準拠する `generator` のみを使用できます。つまり、その具体的なジェネレータの型で定義されているメソッドやプロパティを使用することはできません。ただし、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/type-casting#downcastingdaunkyasuto" target="_self">Downcasting(ダウンキャスト)</a>で説明されているように、スーパークラスからサブクラスにダウンキャストできるのと同じ方法で、プロトコル型から準拠した具体的な型にダウンキャストできます。
+`generator` プロパティの型は `RandomNumberGenerator` です。したがって、`RandomNumberGenerator` プロトコルに準拠する任意の型のインスタンスを設定できます。このプロパティに割り当てるインスタンスには、インスタンスが `RandomNumberGenerator` プロトコルに準拠する必要があることを除いて、他に何も必要ありません。型は `RandomNumberGenerator` なので、`Dice` クラス内のコードは、このプロトコルに準拠する `generator` のみを使用できます。つまり、その具体的なジェネレータの型で定義されているメソッドやプロパティを使用することはできません。ただし、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/type-casting#downcasting" target="_self">Downcasting(ダウンキャスト)</a>で説明されているように、スーパークラスからサブクラスにダウンキャストできるのと同じ方法で、プロトコル型から準拠した具体的な型にダウンキャストできます。
 
 `Dice` には、初期状態を設定するためのイニシャライザもあります。このイニシャライザには、`RandomNumberGenerator` 型の `generator` と呼ばれるパラメータがあります。新しい `Dice` インスタンスを初期化するときに、このパラメータに `RandomNumberGenerator` に準拠する型の値を渡すことができます。
 
@@ -285,7 +285,7 @@ for _ in 1...5 {
 // Random dice roll is 4
 ```
 
-## Delegation\(委譲\)
+## <a id="delegation">Delegation\(委譲\)</a>
 
 *委譲*は、クラスまたは構造体がその責任の一部を別の型のインスタンスに引き渡す\(または委譲する\)ことを可能にするデザインパターンです。このデザインパターンは、委譲される責任をカプセル化するプロトコルを定義することによって実装され、準拠する型 \(*デリゲート*と呼ばれる\)が委譲された機能を提供することを保証します。委譲を使用して、特定のアクションに応答したり、その準拠した具体的な型を知らなくても外部ソースからデータを取得したりできます。
 
@@ -305,7 +305,7 @@ protocol DiceGameDelegate: AnyObject {
 
 `DiceGame` プロトコルは、サイコロを使用する全てのゲームに準拠できるプロトコルです。
 
-`DiceGameDelegate` プロトコルは、`DiceGame` の進行状況を追跡するために準拠できます。*強参照*循環を防ぐために、デリゲートは*弱参照*として宣言されます。弱参照については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/automatic-reference-counting#strong-reference-cycles-between-class-instanceskurasuinsutansuno" target="_self">Strong Reference Cycles Between Class Instances(クラスインスタンス間の強参照循環)</a>を参照ください。プロトコルをクラス専用としてマークすると、この章の後半で登場する `SnakesAndLadders` クラスがそのデリゲートを弱参照で使用しなければならないことを宣言できるようになります。クラス専用プロトコルは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#class-only-protocolskurasupurotokoru" target="_self">Class-Only Protocols(クラス専用プロトコル)</a>で説明されているように、`AnyObject` を継承します。
+`DiceGameDelegate` プロトコルは、`DiceGame` の進行状況を追跡するために準拠できます。*強参照*循環を防ぐために、デリゲートは*弱参照*として宣言されます。弱参照については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/automatic-reference-counting#strong-reference-cycles-between-class-instances" target="_self">Strong Reference Cycles Between Class Instances(クラスインスタンス間の強参照循環)</a>を参照ください。プロトコルをクラス専用としてマークすると、この章の後半で登場する `SnakesAndLadders` クラスがそのデリゲートを弱参照で使用しなければならないことを宣言できるようになります。クラス専用プロトコルは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#class-only-protocols" target="_self">Class-Only Protocols(クラス専用プロトコル)</a>で説明されているように、`AnyObject` を継承します。
 
 これは、最初に [Control Flow(制御フロー)](control-flow.md) で紹介した「蛇とはしごゲーム」の別バージョンです。このバージョンは、ダイスロールに `Dice` インスタンスを使用しています。`SnakesAndLadders` は `DiceGame` プロトコルに準拠し、その進行状況を `DiceGameDelegate` に通知します:
 
@@ -397,7 +397,7 @@ game.play()
 // 5 が出ました
 ```
 
-## Adding Protocol Conformance with an Extension\(拡張機能を使ったプロトコル準拠の追加\)
+## <a id="adding-protocol-conformance-with-an-extension">Adding Protocol Conformance with an Extension\(拡張機能を使ったプロトコル準拠の追加\)</a>
 
 既存の型のソースコードにアクセスできない場合でも、既存の型を拡張して新しいプロトコルに準拠させることができます。extension は、新しいプロパティ、メソッド、および subscript を既存の型に追加できるため、プロトコルの要件を追加できます。拡張機能の詳細については、[Extensions(拡張)](extensions.md)を参照ください。
 
@@ -444,9 +444,9 @@ print(game.textualDescription)
 // "A game of Snakes and Ladders with 25 squares"
 ```
 
-### Conditionally Conforming to a Protocol\(条件付きでのプロトコルへの準拠\)
+### <a id="conditionally-conforming-to-a-protocol">Conditionally Conforming to a Protocol\(条件付きでのプロトコルへの準拠\)</a>
 
-ジェネリック型は、型のジェネリックパラメータがプロトコルに準拠している場合など、特定の条件下でのみプロトコルの要件を満たすことができるようにします。型を拡張するときに制約を並べることで、ジェネリック型を条件付きでプロトコルに準拠させることができます。`where` 句を記述して、準拠するプロトコルの名前の後にこれらの制約を記述します。ジェネリック `where` 句の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/generics#generic-where-clausesjenerikku-where" target="_self">Generic Where Clauses(ジェネリック where 句)</a>を参照ください。
+ジェネリック型は、型のジェネリックパラメータがプロトコルに準拠している場合など、特定の条件下でのみプロトコルの要件を満たすことができるようにします。型を拡張するときに制約を並べることで、ジェネリック型を条件付きでプロトコルに準拠させることができます。`where` 句を記述して、準拠するプロトコルの名前の後にこれらの制約を記述します。ジェネリック `where` 句の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/generics#generic-where-clauses" target="_self">Generic Where Clauses(ジェネリック where 句)</a>を参照ください。
 
 次の拡張により、`Array` インスタンスが `TextRepresentable` に準拠する型の要素を格納する場合は、常に `TextRepresentable` プロトコルに準拠するようになります:
 
@@ -462,7 +462,7 @@ print(myDice.textualDescription)
 // "[A 6-sided dice, A 12-sided dice]"
 ```
 
-### Declaring Protocol Adoption with an Extension\(拡張機能を使ったプロトコル準拠の宣言\)
+### <a id="declaring-protocol-adoption-with-an-extension">Declaring Protocol Adoption with an Extension\(拡張機能を使ったプロトコル準拠の宣言\)</a>
 
 型がすでにプロトコルの全ての要件を満たしているものの、そのプロトコルに準拠することを表明していない場合は、空の extension でプロトコルに準拠することができます:
 
@@ -488,7 +488,7 @@ print(somethingTextRepresentable.textualDescription)
 > NOTE  
 > 要件を満たすだけで、型が自動的にプロトコルに準拠するわけではありません。プロトコルへの準拠を常に明示的に宣言する必要があります。
 
-## Adopting a Protocol Using a Synthesized Implementation\(デフォルト実装を使用したプロトコル準拠\)
+## <a id="adopting-a-protocol-using-a-synthesized-implementation">Adopting a Protocol Using a Synthesized Implementation\(デフォルト実装を使用したプロトコル準拠\)</a>
 
 Swift は、多くのシンプルなケースで、`Equatable`、`Hashable`、および `Comparable` のプロトコルへの準拠を自動的に提供できます。このデフォルト実装を使用すると、プロトコル要件を自分で実装するために、繰り返しコードを記述する必要がなくなります。
 
@@ -546,7 +546,7 @@ for level in levels.sorted() {
 
 ## Collections of Protocol Types\(プロトコル型のコレクション\)
 
-プロトコルは、<a href="#protocols-as-typestoshitenopurotokoru" target="_self">Protocols as Types(型としてのプロトコル)</a>で説明されているように、配列や辞書などのコレクションに格納される型として使用できます。この例では、`TextRepresentable` の配列を作成します。
+プロトコルは、<a href="#protocols-as-types" target="_self">Protocols as Types(型としてのプロトコル)</a>で説明されているように、配列や辞書などのコレクションに格納される型として使用できます。この例では、`TextRepresentable` の配列を作成します。
 
 ```swift
 let things: [TextRepresentable] = [game, d12, simonTheHamster]
@@ -565,7 +565,7 @@ for thing in things {
 
 `Thing` 定数は `TextRepresentable` 型なことに注目してください。内部の実際のインスタンスがそれらの型の 1 つの場合でも、型は `Dice`、`DiceGame`、または `Hamster` ではありません。これは `TextRepresentable` 型で、`TextRepresentable` は全て `textualDescription` プロパティを持つことがわかっているため、ループ処理の中で安全に `thing.textualDescription` にアクセスできます。
 
-## Protocol Inheritance\(プロトコル継承\)
+## <a id="protocols-protocol-inheritance">Protocol Inheritance\(プロトコル継承\)</a>
 
 プロトコルは 1 つ以上の他のプロトコルを継承でき、継承する要件の上にさらに要件を追加できます。プロトコル継承の構文はクラス継承の構文に似ていますが、継承された複数のプロトコルをカンマ\(`,`\)で区切って並べます:
 
@@ -621,7 +621,7 @@ print(game.prettyTextualDescription)
 // ○ ○ ▲ ○ ○ ▲ ○ ○ ▲ ▲ ○ ○ ○ ▼ ○ ○ ○ ○ ▼ ○ ○ ▼ ○ ▼ ○
 ```
 
-## Class-Only Protocols\(クラス専用プロトコル\)
+## <a id="class-only-protocols">Class-Only Protocols\(クラス専用プロトコル\)</a>
 
 `AnyObject` プロトコルをプロトコル継承の一覧に追加することで、プロトコルへの準拠を\(構造体や列挙型ではなく\)クラス型に制限できます:
 
@@ -634,9 +634,9 @@ protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
 上記の例では、`SomeClassOnlyProtocol` はクラス型でのみ準拠できます。`SomeClassOnlyProtocol` に準拠しようとする構造体または列挙型の定義を作成すると、コンパイルエラーになります。
 
 > NOTE  
-> そのプロトコルの要件によって定義された動作が、準拠する型が値型のセマンティクスではなく参照型のセマンティクスであることを想定\(要求\)する場合は、クラス専用プロトコルを使用してください。参照型と値型のセマンティクスの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#protocols-as-typestoshitenopurotokoru" target="_self">Structures and Enumerations Are Value Types(構造体と列挙型は値型)</a>、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#classes-are-reference-typeskurasuha" target="_self">Classes Are Reference Types(クラスは参照型)</a>を参照ください。
+> そのプロトコルの要件によって定義された動作が、準拠する型が値型のセマンティクスではなく参照型のセマンティクスであることを想定\(要求\)する場合は、クラス専用プロトコルを使用してください。参照型と値型のセマンティクスの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#structures-and-enumerations-are-value-type" target="_self">Structures and Enumerations Are Value Types(構造体と列挙型は値型)</a>、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#classes-are-reference-types" target="_self">Classes Are Reference Types(クラスは参照型)</a>を参照ください。
 
-## Protocol Composition\(プロトコル合成\)
+## <a id="protocol-composition">Protocol Composition\(プロトコル合成\)</a>
 
 同時に複数のプロトコルに準拠すると便利な場合があります。プロトコル合成を使用して、複数のプロトコルを 1 つの要件に組み合わせることができます。プロトコル合成は、合成内の全てのプロトコルの要件を組み合わせた一時的なローカルプロトコルを定義したかのように動作します。プロトコル合成は、新しいプロトコル型を定義しません。
 
@@ -700,7 +700,7 @@ beginConcert(in: seattle)
 
 `Person` は `Location` のサブクラスではないため、`beginConcert(in:)` 関数に `birthdayPerson` を渡すことは無効です。同様に、`Named` プロトコルに準拠していない `Location` のサブクラスを作成した場合、その型のインスタンスで `beginConcert(in:)` を呼び出すことも無効です。
 
-## Checking for Protocol Conformance\(プロトコル準拠チェック\)
+## <a id="checking-for-protocol-conformance">Checking for Protocol Conformance\(プロトコル準拠チェック\)</a>
 
 [Type Casting(型キャスト)](type-casting.md)で説明されている `is` および `as` 演算子を使用して、プロトコルの準拠を確認し、特定のプロトコルにキャストできます。プロトコルのチェックと型へのキャストは、型のチェックやキャストとまったく同じ構文を使用します。
 
@@ -780,7 +780,7 @@ for object in objects {
 
 プロトコルに準拠したオブジェクトは、キャストで変更されないことに注目してください。それらはそれぞれ `Circle`、`Country`、`Animal` です。ただし、オブジェクトが `objectWithArea` 定数に格納されている時点では、`HasArea` 型とのみ認識されているため、アクセスできるのは `area` プロパティのみです。
 
-## Optional Protocol Requirements\(オプショナルのプロトコル要件\)
+## <a id="optional-protocol-requirements">Optional Protocol Requirements\(オプショナルのプロトコル要件\)</a>
 
 プロトコルにオプショナルの要件を定義できます。これらの要件は、プロトコルに準拠する型によって実装される必要はありません。オプショナルの要件には、プロトコルの定義の一部として `optional` 修飾子が付けられます。Objective-C と相互運用するコードを作成できるように、オプショナルの要件が利用可能です。プロトコルとオプショナルの要件の両方が `@objc` 属性でマークされている必要があります。`@objc` プロトコルは、Objective-C クラスまたは他の `@objc` クラスから継承するクラスによってのみ準拠できることに注目してください。構造体や列挙型が準拠することはできません。
 
@@ -824,7 +824,7 @@ class Counter {
 
 ここでは、2 つの階層のオプショナルチェーンが行われていることに注目してください。まず、`dataSource` が `nil` の可能性があるため、`dataSource` にはその名前の後に疑問符(`?`)があり、`dataSource` が `nil` でない場合にのみ `increment(forCount:)` を呼び出す必要があることを示しています。次に、`dataSource` が存在する場合でも、`increment(forCount:)` がオプショナルのため、必ず実装されている保証はありません。ここで、`increment(forCount:)` が実装されない可能性も、オプショナルチェーンによって処理されます。`increment(forCount:)` の呼び出しは、`increment(forCount:)` が存在する場合、つまり `nil` でない場合にのみ発生します。これが `increment(forCount:)` にも名前の後に疑問符が付いている理由です。
 
-`increment(forCount:)` の呼び出しはこれら 2 つの理由のいずれかで失敗する可能性があるため、呼び出しはオプショナルの `Int` 値を返します。これは、`CounterDataSource` の定義で `increment(forCount:)` がオプショナルではない `Int` 値を返すように定義されている場合でも当てはまります。オプショナルチェーンは 2 回行われていますが、結果は 1 つのオプショナルにラップされます。複数のオプショナルチェーンの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/optional-chaining#linking-multiple-levels-of-chainingnochnhenorinku" target="_self">Linking Multiple Levels of Chaining(複数階層のチェーンへのリンク)</a>を参照ください。
+`increment(forCount:)` の呼び出しはこれら 2 つの理由のいずれかで失敗する可能性があるため、呼び出しはオプショナルの `Int` 値を返します。これは、`CounterDataSource` の定義で `increment(forCount:)` がオプショナルではない `Int` 値を返すように定義されている場合でも当てはまります。オプショナルチェーンは 2 回行われていますが、結果は 1 つのオプショナルにラップされます。複数のオプショナルチェーンの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/optional-chaining#linking-multiple-levels-of-chaining" target="_self">Linking Multiple Levels of Chaining(複数階層のチェーンへのリンク)</a>を参照ください。
 
 `increment(forCount:)` を呼び出した後、それが返すオプショナルの `Int` は、オプショナルバインディングを使用して、`amount` という定数にアンラップされます。オプショナルの `Int` に値が含まれている場合、つまり、デリゲートとメソッドの両方が存在し、メソッドが値を返した場合、`count` 格納プロパティに値が追加され、増加の動作が完了します。
 
@@ -889,7 +889,7 @@ for _ in 1...5 {
 // 0
 ```
 
-## Protocol Extensions\(プロトコル Extension\)
+## <a id="protocol-extensions">Protocol Extensions\(プロトコル Extension\)</a>
 
 プロトコル Extension を使用して、準拠する型にメソッド、イニシャライザ、subscript、および計算プロパティの実装を提供できます。これにより、準拠する個々の型やグローバル関数ではなく、プロトコル自体に動作を定義できます。
 
@@ -934,7 +934,7 @@ extension PrettyTextRepresentable  {
 
 ### Adding Constraints to Protocol Extensions\(プロトコル Extensionに制約の追加\)
 
-プロトコル Extension を定義するとき、準拠する型が拡張したメソッドとプロパティを使用できる前に、その型が満たす必要がある制約を指定できます。これらの制約は、拡張するプロトコルの名前の後のジェネリックの `where` 句によって記述されます。ジェネリック `where` 句の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/generics#generic-where-clausesjenerikku-where" target="_self">Generic Where Clauses(ジェネリック where 句)</a>を参照ください。
+プロトコル Extension を定義するとき、準拠する型が拡張したメソッドとプロパティを使用できる前に、その型が満たす必要がある制約を指定できます。これらの制約は、拡張するプロトコルの名前の後のジェネリックの `where` 句によって記述されます。ジェネリック `where` 句の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/generics#generic-where-clauses" target="_self">Generic Where Clauses(ジェネリック where 句)</a>を参照ください。
 
 例えば、要素が `Equatable` プロトコルに準拠しているコレクションに適用される `Collection` プロトコルの拡張を定義できます。コレクションの要素を標準ライブラリの `Equatable` プロトコルに制約することで、`==` および `!=` 演算子を使用して、2 つの要素間の等価性と不等価性をチェックできます:
 

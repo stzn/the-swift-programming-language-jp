@@ -65,7 +65,7 @@ struct BlackjackCard {
 
 `BlackjackCard` 構造体には、`rank` と `suite` の 2 つのプロパティがあります。また、`description` と呼ばれる計算プロパティも定義します。このプロパティは、`rank` と `suit` に格納されている値を使用して、カードの名前と値を説明します。`description` プロパティは、オプショナルバインディングを使用して、表示する 2 番目の値があるかどうかを確認し、ある場合は、その 2 番目の値を追加の説明に挿入します。
 
-`BlackjackCard` はカスタムイニシャライザを持たない構造体のため、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#memberwise-initializers-for-structure-typesnomenbawaizuinisharaiza" target="_self">Memberwise Initializers for Structure Types(構造体のメンバワイズイニシャライザ)</a>で説明されているように、暗黙的なメンバワイズイニシャライザがあります。このイニシャライザを使用して、`theAceOfSpades` という新しい定数を初期化できます:
+`BlackjackCard` はカスタムイニシャライザを持たない構造体のため、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#initialization-memberwise-initializers-for-structure-types" target="_self">Memberwise Initializers for Structure Types(構造体のメンバワイズイニシャライザ)</a>で説明されているように、暗黙的なメンバワイズイニシャライザがあります。このイニシャライザを使用して、`theAceOfSpades` という新しい定数を初期化できます:
 
 ```swift
 let theAceOfSpades = BlackjackCard(rank: .ace, suit: .spades)

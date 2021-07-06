@@ -65,16 +65,16 @@ numberOfLegs["bird"] = 2
 
 上記の例では、`numberOfLegs` という変数を定義し、3 つのキーとバリューのペアを含む辞書リテラルで初期化します。`numberOfLegs` 辞書の型は `[String: Int]` だと推論されます。この例では、辞書を作成した後、subscript の割り当てを使用して、`"bird"` という `String` キーと 2 という `Int` のバリューを辞書に追加します。
 
-`Dictionary` の subscript の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/collection-types#accessing-and-modifying-a-dictionaryhenoakusesuto" target="_self">Accessing and Modifying a Dictionary(辞書へのアクセスと変更)</a>を参照ください。
+`Dictionary` の subscript の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/collection-types#accessing-and-modifying-a-dictionary" target="_self">Accessing and Modifying a Dictionary(辞書へのアクセスと変更)</a>を参照ください。
 
 > NOTE  
 > Swift の `Dictionary` 型は、オプショナルの型を受け取って返す subscript としてキーバリューの subscript を実装します。上記の `numberOfLegs` 辞書の場合、キーとバリューの subscript は `Int?` または オプショナル Int 型の値を受け取って返します。`Dictionary` 型は、 オプショナルの subscript の型を使用して、全てのキーにバリューがあるわけではないということをモデル化し、そのキーに `nil` 値を割り当てることによってキーに対応したバリューを削除する方法を提供します。
 
-## Subscript Options\(様々なsubscript\)
+## <a id="subscript-options">Subscript Options\(様々なsubscript\)</a>
 
 subscript は、任意の数の入力パラメータを受け取ることができ、これらの入力パラメータは任意の型にすることができます。subscript は、任意の型の値を返すこともできます。
 
-関数と同様に、subscript は様々な数のパラメータを受け取り、パラメータのデフォルト値を提供できます。これについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#variadic-parametersparamta" target="_self">Variadic Parameters(可変長パラメータ)</a>と<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#default-parameter-valuesdeforutoparamta" target="_self">Default Parameter Values(デフォルトパラメータ値)</a>で説明しています。ただし、関数とは異なり、subscript は `inout` パラメータを使用できません。
+関数と同様に、subscript は様々な数のパラメータを受け取り、パラメータのデフォルト値を提供できます。これについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#variadic-parameters" target="_self">Variadic Parameters(可変長パラメータ)</a>と<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#default-parameter-values" target="_self">Default Parameter Values(デフォルトパラメータ値)</a>で説明しています。ただし、関数とは異なり、subscript は `inout` パラメータを使用できません。
 
 クラスまたは構造体は、必要なだけ subscript の実装を提供でき、使用される適切な subscript は、subscript が使用される時点で subscript のブラケット\(`[]`\)内に含まれる値の型に基づいて推論されます。この複数の subscript の定義は、subscript のオーバーロードとして知られています。
 
@@ -105,7 +105,7 @@ struct Matrix {
 }
 ```
 
-`Matrix` は、`rows` と `columns` と呼ばれる 2 つのパラメータを受け取るイニシャライザを提供し、`Double` 型の `rows` \* `columns` の値を格納するのに十分な大きさの配列を作成します。マトリックス内の各位置には、`0.0` の初期値が与えられます。これを実現するために、配列のサイズと初期セル値 `0.0` が、正しいサイズの新しい配列を作成して初期化するイニシャライザに渡されます。このイニシャライザについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/collection-types#creating-an-array-with-a-default-valuedeforutowottano" target="_self">Creating an Array with a Default Value(デフォルト値を使った配列の作成)</a>で詳しく説明しています。
+`Matrix` は、`rows` と `columns` と呼ばれる 2 つのパラメータを受け取るイニシャライザを提供し、`Double` 型の `rows` \* `columns` の値を格納するのに十分な大きさの配列を作成します。マトリックス内の各位置には、`0.0` の初期値が与えられます。これを実現するために、配列のサイズと初期セル値 `0.0` が、正しいサイズの新しい配列を作成して初期化するイニシャライザに渡されます。このイニシャライザについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/collection-types#creating-an-array-with-a-default-value" target="_self">Creating an Array with a Default Value(デフォルト値を使った配列の作成)</a>で詳しく説明しています。
 
 適切な `rows` 数と `columns` 数をイニシャライザに渡すことで、新しい `Matrix` インスタンスを構築できます:
 
@@ -143,7 +143,7 @@ let someValue = matrix[2, 2]
 // [2, 2] は、行列の境界の外にあるので実行時エラーが発生します
 ```
 
-## Type Subscripts\(型subscript\)
+## <a id="type-subscripts">Type Subscripts\(型subscript\)</a>
 
 上で説明したように、インスタンスの subscript は、特定の型のインスタンスで呼び出す subscript です。加えて、型自体で呼び出される subscript を定義することもできます。この種の subscript は、*型 subscript*と呼ばれます。`subscript` キーワードの前に `static` キーワードを記述して、型 subscript を示します。クラスは代わりに `class` キーワードを使用すると、サブクラスがその subscript のスーパークラスの実装をオーバーライドすることができます。下記の例は、型 subscript を定義して呼び出す方法を示しています。
 
