@@ -369,7 +369,7 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 }
 ```
 
-より多くの議論と in-out パラメータの例については、<a href="#declarations-in-out-parameters" target="_self">In-Out Parameters(In-Out パラメータ)</a>を参照ください。
+より多くの議論と in-out パラメータの例については、<a href="#functions-in-out-parameters" target="_self">In-Out Parameters(In-Out パラメータ)</a>を参照ください。
 
 ### <a id="special-kinds-of-parameters">Special Kinds of Parameters\(特殊な種類のパラメータ\)</a>
 
