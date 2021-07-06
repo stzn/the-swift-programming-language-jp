@@ -81,7 +81,7 @@ let someVideoMode = VideoMode()
 
 構造体とクラスはどちらも、新しいインスタンスに初期化構文\(`init`\)を使用します。初期化構文の最もシンプルな形式では、クラスまたは構造体の型名の後に、`Resolution()` や `VideoMode()` などの空の括弧\(`()`\)が続きます。これにより、クラスまたは構造の新しいインスタンスが作成され、プロパティはデフォルト値で初期化されます。クラスと構造体の初期化については、[Initialization(初期化)](initialization.md)で詳しく説明しています。
 
-### Accessing Properties\(プロパティへのアクセス\)
+### <a id="accessing-properties">Accessing Properties\(プロパティへのアクセス\)</a>
 
 ドット構文を使用して、インスタンスのプロパティにアクセスできます。ドット構文では、インスタンス名の直後に、スペースを入れずにピリオド\(`.`\)で区切ってプロパティ名を記述します。
 
@@ -107,7 +107,7 @@ print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
 // "The width of someVideoMode is now 1280"
 ```
 
-### Memberwise Initializers for Structure Types\(構造体のメンバワイズイニシャライザ\)
+### <a id="structures-and-classes-memberwise-initializers-for-structure-types">Memberwise Initializers for Structure Types\(構造体のメンバワイズイニシャライザ\)</a>
 
 全ての構造体には、メンバ全てに値を設定して初期化するイニシャライザ\(*メンバワイズイニシャライザ*\)が自動的に生成されます。新しいインスタンスのプロパティの初期値は、プロパティ名でイニシャライザに渡すことができます。
 
@@ -117,7 +117,7 @@ let vga = Resolution(width: 640, height: 480)
 
 構造体とは異なり、クラスはデフォルトのイニシャライザを自動で生成しません。イニシャライザについては、[Initialization(初期化)](initialization.md)で詳しく説明しています。
 
-## Structures and Enumerations Are Value Types\(構造体と列挙型は値型\)
+## <a id="structures-and-enumerations-are-value-type">Structures and Enumerations Are Value Types\(構造体と列挙型は値型\)</a>
 
 値型は、変数または定数に値が割り当てられたとき、または関数に渡されたときに値がコピーされる型\(*値型*\)です。
 
@@ -184,7 +184,7 @@ print("The remembered direction is \(rememberedDirection)")
 
 `RememberedDirection` に `currentDirection` の値が割り当てられると、実際にはその値のコピーが設定されます。その後、`currentDirection` の値を変更しても、`rememberedDirection` に保存されていた元の値には影響しません。
 
-## Classes Are Reference Types\(クラスは参照型\)
+## <a id="classes-are-reference-types">Classes Are Reference Types\(クラスは参照型\)</a>
 
 値型とは異なり、*参照型*は、変数または定数に割り当てられたとき、または関数に渡されたときにコピーされません。コピーではなく、同じ既存のインスタンスへの参照が使用されます。
 
@@ -222,7 +222,7 @@ print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 
 `tenEighty` と `alsoTenEighty` は、変数ではなく定数として宣言されていることに注目してください。それでも、`tenEighty` および `alsoTenEighty` 定数自体の値は実際には変更されないため、`tenEighty.frameRate` および `alsoTenEighty.frameRate` を変更することはできます。`tenEighty` と `alsoTenEighty` 自体は、`VideoMode` インスタンスを「格納」しません。代わりに、どちらも内部で同じ `VideoMode` インスタンスを参照します。変更されるのは、基になる `VideoMode` の `frameRate` プロパティで、その `VideoMode` への参照を持つ定数ではありません。
 
-### Identity Operators\(恒等作用素\)
+### <a id="identity-operators">Identity Operators\(恒等作用素\)</a>
 
 クラスは参照型のため、複数の定数と変数が内部でクラスの同じインスタンスを参照する可能性があります。\(構造体や列挙型は、定数や変数に割り当てられたとき、または関数に渡されたときに常にコピーされるため異なります\)
 
@@ -242,7 +242,7 @@ if tenEighty === alsoTenEighty {
 
 「同一」\(3 つの等号または `===`\)は、「等しい」\(2 つの等号または `==` で表される\)と同じではないことに注意してください。「同一」とは、クラスタイプの 2 つの定数または変数がまったく同じクラスインスタンスを参照することを意味します。「等しい」とは、型の設計者が定義する「等しい」という観点で、適切に 2 つのインスタンスの値が等しいまたは同等だと見なされることを意味します。
 
-独自の構造体とクラスを定義するときは、2 つのインスタンスがどうすれば等しいと見なされるのかを決定するのはあなた次第です。`==` および `!=` 演算子の独自の実装を定義するプロセスは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#equivalence-operators-deng-si-yan-suan-zi" target="_self">Equivalence Operators(等価演算子)</a>で説明されています。
+独自の構造体とクラスを定義するときは、2 つのインスタンスがどうすれば等しいと見なされるのかを決定するのはあなた次第です。`==` および `!=` 演算子の独自の実装を定義するプロセスは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#equivalence-operators" target="_self">Equivalence Operators(等価演算子)</a>で説明されています。
 
 ### Pointers\(ポインタ\)
 

@@ -7,7 +7,7 @@
 > NOTE  
 > Swift のオプショナルチェーンは、Objective-C の `nil` のメッセージングに似ていますが、どの型にでも機能し、成功または失敗をチェックできます。
 
-## Optional Chaining as an Alternative to Forced Unwrapping\(強制アンラップの代替としてのオプショナルチェーン\)
+## <a id="optional-chaining-as-an-alternative-to-forced-unwrapping">Optional Chaining as an Alternative to Forced Unwrapping\(強制アンラップの代替としてのオプショナルチェーン\)</a>
 
 `nil` ではない場合に呼び出したいオプショナルのプロパティ、メソッド、または subscript の後に疑問符(`?`)を配置して、オプショナルチェーンを指定します。これは、オプショナルの後に感嘆符(`!`)を配置して、その値を強制アンラップするのによく似ています。主な違いは、オプショナルが `nil` の場合、オプショナルチェーンが失敗するのに対し、強制アンラップは実行時エラーを引き起こすことです。
 
@@ -155,9 +155,9 @@ class Address {
 
 `Address` クラスはまた、`String?` の戻り値の型を持つ `buildingIdentifier()` というメソッドも提供します。このメソッドは、住所のプロパティをチェックし、`buildingName` に値がある場合は `buildingName` を返し、`street` と `buildingNumber` の両方に値がある場合は 2 つを繋げた値を返し、それ以外は `nil` を返します
 
-## Accessing Properties Through Optional Chaining\(オプショナルチェーンを通したプロパティへのアクセス\)
+## <a id="accessing-properties-through-optional-chaining">Accessing Properties Through Optional Chaining\(オプショナルチェーンを通したプロパティへのアクセス\)</a>
 
-<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/optional-chaining#optional-chaining-as-an-alternative-to-forced-unwrappinganrappunotoshitenoopushonaruchn" target="_self">Optional Chaining as an Alternative to Forced Unwrapping(強制アンラップの代替としてのオプショナルチェーン)</a>で示されているように、オプショナルチェーンを使用してオプショナルのプロパティにアクセスし、アクセスが成功したかどうかを確認できます。
+<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/optional-chaining#optional-chaining-as-an-alternative-to-forced-unwrapping" target="_self">Optional Chaining as an Alternative to Forced Unwrapping(強制アンラップの代替としてのオプショナルチェーン)</a>で示されているように、オプショナルチェーンを使用してオプショナルのプロパティにアクセスし、アクセスが成功したかどうかを確認できます。
 
 上で定義したクラスを使用して新しい `Person` インスタンスを作成し、以前と同じように `numberOfRooms` プロパティにアクセスしてみます:
 
@@ -201,7 +201,7 @@ john.residence?.address = createAddress()
 
 何も出力されないため、`createAddress()` 関数が呼び出されていないことがわかります。
 
-## Calling Methods Through Optional Chaining\(オプショナルチェーンを通したメソッドの呼び出し\)
+## <a id="calling-methods-through-optional-chaining">Calling Methods Through Optional Chaining\(オプショナルチェーンを通したメソッドの呼び出し\)</a>
 
 オプショナルチェーンを使用して、オプショナルの値でメソッドを呼び出し、そのメソッドの呼び出しが成功したかどうかを確認できます。そのメソッドが戻り値を定義していなくても、これを行うことができます。
 
@@ -213,7 +213,7 @@ func printNumberOfRooms() {
 }
 ```
 
-このメソッドは戻り値の型を指定しません。ただし、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#functions-without-return-valuesrinashi" target="_self">Functions Without Return Values(戻り値のない関数)</a>で説明されているように、戻り値の型のない関数とメソッドには、暗黙的な戻り値の型 `Void` があります。これは、`()` の値、または空のタプルを返すことを意味します。
+このメソッドは戻り値の型を指定しません。ただし、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#functions-without-return-values" target="_self">Functions Without Return Values(戻り値のない関数)</a>で説明されているように、戻り値の型のない関数とメソッドには、暗黙的な戻り値の型 `Void` があります。これは、`()` の値、または空のタプルを返すことを意味します。
 
 オプショナルチェーンを使用してオプショナルの値でこのメソッドを呼び出す場合、メソッドの戻り値の型は `Void` ではなく `Void?` になります。これにより、メソッド自体が戻り値を定義していなくても、`if` 文を使用して、`printNumberOfRooms()` メソッドを呼び出すことができたかどうかを確認できます。`printNumberOfRooms` の呼び出しからの戻り値を `nil` と比較して、メソッド呼び出しが成功したかどうかを確認します:
 
@@ -226,7 +226,7 @@ if john.residence?.printNumberOfRooms() != nil {
 // "It was not possible to print the number of rooms."
 ```
 
-オプショナルチェーンによってプロパティを設定しようとする場合も同様です。<a href="#accessing-properties-through-optional-chainingopushonaruchnwoshitapuropatihenoakusesu" target="_self">Accessing Properties Through Optional Chaining(オプショナルチェーンを通したプロパティへのアクセス)</a>の上記の例では、`residence` プロパティが `nil` にもかかわらず、`john.residence` のアドレス値を設定しようとしています。オプショナルチェーンによってプロパティを設定しようとすると、`Void?` 型の値が返されます。これにより、`nil` と比較して、プロパティが正常に設定されたかどうかを確認できます:
+オプショナルチェーンによってプロパティを設定しようとする場合も同様です。<a href="#accessing-properties-through-optional-chaining" target="_self">Accessing Properties Through Optional Chaining(オプショナルチェーンを通したプロパティへのアクセス)</a>の上記の例では、`residence` プロパティが `nil` にもかかわらず、`john.residence` のアドレス値を設定しようとしています。オプショナルチェーンによってプロパティを設定しようとすると、`Void?` 型の値が返されます。これにより、`nil` と比較して、プロパティが正常に設定されたかどうかを確認できます:
 
 ```swift
 if (john.residence?.address = someAddress) != nil {
@@ -281,7 +281,7 @@ if let firstRoomName = john.residence?[0].name {
 // "The first room name is Living Room."
 ```
 
-### Accessing Subscripts of Optional Type\(オプショナル型のsubscriptへのアクセス\)
+### <a id="accessing-subscripts-of-optional-type">Accessing Subscripts of Optional Type\(オプショナル型のsubscriptへのアクセス\)</a>
 
 subscript がオプショナル型の値 \(Swift の `Dictionary` 型のキーの subscript など\) を返す場合、そのオプショナルの戻り値をチェーンさせるために、subscript の閉じ括弧\(`]`\)の*後に*疑問符\(`?`\)を置きます:
 
@@ -295,7 +295,7 @@ testScores["Brian"]?[0] = 72
 
 上記の例では、`String` 型のキーを `Int` 型の配列にマップする `testScores` という辞書を定義しています。この例では、オプショナルチェーンを使用して、`"Dave"` 配列の最初の項目を `91` に設定し、`"Bev"` 配列の最初の項目を `1` ずつ増やし、`"Brian"` キーの配列の最初のアイテムを設定しようとします。`testScores` 辞書には `"Dave"` と `"Bev"` のキーが含まれているため、最初の 2 つの呼び出しは成功します。しかし、`testScores` 辞書に `"Brian"` のキーが含まれていないため、3 番目の呼び出しは失敗します。
 
-## Linking Multiple Levels of Chaining\(複数階層のチェーンへのリンク\)
+## <a id="linking-multiple-levels-of-chaining">Linking Multiple Levels of Chaining\(複数階層のチェーンへのリンク\)</a>
 
 オプショナルチェーンの複数の階層を一気にリンクして、モデル内のより深いプロパティ、メソッド、および subscript まで掘り下げることができます。ただし、複数階層のオプショナルチェーンは、戻り値に階層分のオプショナルを追加しません。
 

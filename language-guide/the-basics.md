@@ -14,7 +14,7 @@ Swift は値が存在しないかもしれない値を扱うオプショナル�
 
 Swift は*型安全*な言語です。つまり、言語として、コードで扱う値の型を明確にしてくれます。例えば、`String` が必要な場合に、この型安全な特徴が、間違って `Int` を渡してしまうことを防いでくれます。同様に、オプショナルではない `String` にオプショナルの `String` を誤って渡してしまうことも防いでくれます。型安全なことで、開発中に、素早くエラーの発見と修正をすることができます。
 
-## Constants and Variables\(定数と変数\)
+## <a id="constants-and-variables">Constants and Variables\(定数と変数\)</a>
 
 定数と変数は特定の型の値(数字の `10` や文字列の `"Hello"` など)と名前(`maximumNumberOfLoginAttempts` や `welcomeMessage`)を関連付けます。*定数*は一度値を設定すると変更することはできません。一方で、*変数*は後で異なった値を設定できます。
 
@@ -42,7 +42,7 @@ var x = 0.0, y = 0.0, z = 0.0
 > NOTE  
 > コードで保持している値がこの先変更されない場合は、 `let` を使用して定数として定義してください。変数は変更できるようにする必要がある場合にのみ使用してください。
 
-### Type Annotations\(型注釈\)
+### <a id="type-annotations">Type Annotations\(型注釈\)</a>
 
 定数や変数を定義するときに、保持する値の種類をより明確にするために、型注釈を使用することができます。定数や変数の名前の後にコロン(`:`)を置いて、型注釈を書きましょう。
 
@@ -106,7 +106,7 @@ languageName = "Swift++"
 // コンパイルエラー: languageName は変更できません
 ```
 
-### Printing Constants and Variables\(定数と変数の出力\)
+### <a id="printing-constants-and-variables">Printing Constants and Variables\(定数と変数の出力\)</a>
 
 `print(_:separator:terminator:)` 関数を使用して、定数や変数の現在の値を出力することができます。
 
@@ -115,7 +115,7 @@ print(friendlyWelcome)
 // "Bonjour!"
 ```
 
-`print(_:separator:terminator:)` 関数はグローバル関数で、1 つ以上の値を適切なアウトプット先に出力します。Xcode では、`print(_:separator:terminator:)` 関数を使用すると、 Xcode のコンソールパネルへ値を出力します。`separator` と `terminator` パラメータには、デフォルト値が用意されているので省略可能です。デフォルトでは最後に改行を追加します。改行を付けたくない場合は `terminator` に空文字を渡してください。例えば `print(someValue, terminator: "")`。詳細は<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#default-parameter-valuesdeforutoparamta" target="_self">Default Parameter Values(デフォルトパラメータ値)</a>。
+`print(_:separator:terminator:)` 関数はグローバル関数で、1 つ以上の値を適切なアウトプット先に出力します。Xcode では、`print(_:separator:terminator:)` 関数を使用すると、 Xcode のコンソールパネルへ値を出力します。`separator` と `terminator` パラメータには、デフォルト値が用意されているので省略可能です。デフォルトでは最後に改行を追加します。改行を付けたくない場合は `terminator` に空文字を渡してください。例えば `print(someValue, terminator: "")`。詳細は<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#default-parameter-values" target="_self">Default Parameter Values(デフォルトパラメータ値)</a>。
 
 Swift は長い文字列の中で定数や変数をプレースホルダとして使用したい場合、*文字列補間*を使い、定数や変数の現在値に置き換えるように Swift に伝えることができます。名前を括弧(`()`)で囲み、開始括弧の前にバックスラッシュ(`\`)を付けます。
 
@@ -125,7 +125,7 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 ```
 
 > NOTE  
-> 文字列補間で使用できるオブションは<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/strings-and-characters#string-interpolation-wen-zi-lie-bu-jian" target="_self">String Interpolation(文字列補間)</a>に記載しています
+> 文字列補間で使用できるオブションは<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/strings-and-characters#string-interpolation" target="_self">String Interpolation(文字列補間)</a>に記載しています
 
 ## Comments\(コメント\)
 
@@ -164,7 +164,7 @@ let cat = "🐱"; print(cat)
 // "🐱"
 ```
 
-## Integers\(整数\)
+## <a id="integers">Integers\(整数\)</a>
 
 *整数*は小数点のない整数値を全部含みます(`42`、`-23` など)。整数とは*符号付き*(正の値、または 0、または負の値) または*符号なし*(正の値、または 0) です。
 
@@ -476,7 +476,7 @@ print("The status message is \(http200Status.description)")
 
 タプルは、特に関数の戻り値で有効に活用できます。Web ページを取得する関数は、取得の成否の結果を `(Int, String)` で返すかもしれません。2 つの異なる型の値を持ったタプルを返すことで、1 つの型の 1 つの値を返すよりも、関数はより有益な情報を提供できます。より詳しくは、[Functions with Multiple Return Values(複数の戻り値がある関数)](functions.md#functions-with-multiple-return-values複数の戻り値がある関数)を参照ください。
 
-## Optionals\(オプショナル\)
+## <a id="optionals">Optionals\(オプショナル\)</a>
 
 *オプショナル*は、値が存在しないかもしれないときに使用します。オプショナルは 2 つの可能性を表します: 値が*存在して*アンラップすることで値にアクセスすることができる、もしくは、値が全く*存在しない*
 
@@ -546,7 +546,7 @@ if convertedNumber != nil {
 > NOTE  
 > 値が存在しないオプショナル値に `!` を付けてアクセスしようとすると、実行時エラーが発生します。`!` を使った強制アンラップを行う際は、確実に `nil` ではないことを常に確かめましょう。
 
-### Optional Binding\(オプショナルバインディング\)
+### <a id="optional-binding">Optional Binding\(オプショナルバインディング\)</a>
 
 オプショナル値に、*オプショナルバインディング*を使用して、値を含んでいるかどうかを判定できます。もし含んでいる場合は、一時的な定数や変数として値を使用できるようになります。オプショナルバインディングは、`if` や `while` 文の 1 つのアクションで、オプショナル値に値が存在することを証明し、定数や変数にその内部の値を設定することを、まとめて行うことができます。`if` や `while` の詳細は[Control Flow(制御フロー)](control-flow.md)を参照ください。
 
@@ -558,7 +558,7 @@ if let constantName = someOptional {
 }
 ```
 
-<a href="#optionalsopushonaru" target="_self">Optionals(オプショナル)</a>の中の例で出てきた `possibleNumber` は、強制アンラップの代わりに、オプショナルバインディングを使用して書き換えることができます。
+<a href="#optionals" target="_self">Optionals(オプショナル)</a>の中の例で出てきた `possibleNumber` は、強制アンラップの代わりに、オプショナルバインディングを使用して書き換えることができます。
 
 ```swift
 if let actualNumber = Int(possibleNumber) {
@@ -598,7 +598,7 @@ if let firstNumber = Int("4") {
 > NOTE  
 > `if` 文の中でオプショナルバインディングによって作られた定数や変数は、`if` 文の中でしか使えません。もし他でも使用したい場合は、`guard` 文を使用することで、`guard` 文の次から使用することができます。詳細は[Early Exit(早期リターン)](control-flow.md#early-exit早期リターン)に記載しています。
 
-### Implicitly Unwrapped Optionals\(暗黙アンラップオプショナル\)
+### <a id="implicitly-unwrapped-optionals">Implicitly Unwrapped Optionals\(暗黙アンラップオプショナル\)</a>
 
 上記で書いているように、オプショナルは定数や変数に「値が存在しない」可能性があることを示します。オプショナルは値が存在するかどうかを `if` 文の中でチェックでき、存在している場合は、オプショナル内の値にアクセスするために、オプショナルバインディングを使用してアンラップすることができます。
 
@@ -700,7 +700,7 @@ do {
 
 エラーのスロー、キャッチそして伝播は、[Error Handling(エラーハンドリング)](error-handling.md)でより詳細に書かれています。
 
-## Assertions and Preconditions\(アサーションと事前条件\)
+## <a id="assertions-and-preconditions">Assertions and Preconditions\(アサーションと事前条件\)</a>
 
 *アサーション*と*事前条件*は実行時のチェックです。他のコードが実行される前に必要不可欠な条件が満たされているかどうかを確かめることができます。アサーションや事前条件のブール値が `true` と評価される場合、コードは通常通り継続します。`false` の場合、現在のプログラムの状態は不正となり、コードの実行は中断し、アプリは終了します。
 
@@ -712,7 +712,7 @@ do {
 
 アサーションと事前条件の違いは、チェックのタイミングにあります: アサーションはデバッグビルド時にしかチェックをせず、事前条件はデバッグとプロダクションの両方のビルドでチェックされます。プロダクションビルドでは、アサーションは評価されません。つまり、開発時にはアサーションを多用してもプロダクションのパフォーマンスに影響はありません。
 
-### Debugging with Assertions\(アサーションを使ったデバッグ\)
+### <a id="debugging-with-assertions">Debugging with Assertions\(アサーションを使ったデバッグ\)</a>
 
 Swift の標準ライブラリの [assert\(_:_:file:line:\)](https://developer.apple.com/documentation/swift/1541112-assert)関数を呼ぶことでアサーションを書くことができます。`true` か `false` と評価される式と、`false` だった場合に出力するメッセージを式として渡すことができます。例えば:
 

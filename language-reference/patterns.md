@@ -98,11 +98,11 @@ let (a): Int = 2 // a: Int = 2
 > tuple-pattern-element-list → [tuple-pattern-element](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element) \|  [tuple-pattern-element](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element)  `,` [tuple-pattern-element-list](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element-list)  
 > tuple-pattern-element → [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern) \|  [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `:` [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)
 
-## Enumeration Case Pattern\(列挙型ケースパターン\)
+## <a id="enumeration-case-pattern">Enumeration Case Pattern\(列挙型ケースパターン\)</a>
 
 列挙型ケースパターンは、既存の列挙型のケースと一致します。列挙型ケースパターンは、`switch` 文のケースラベル、および `if`、`guard`、および `for-in` 文の条件で使用できます。
 
-一致させようとしている列挙ケースに関連値がある場合、対応する列挙型ケースパターンは、関連値に対して 1 つの要素を含むタプルパターンを指定する必要があります。関連値を含む列挙ケースを一致させるために `switch` 文を使用する例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#associated-values-guan-lian-zhi" target="_self">Associated Values(関連値)</a>を参照ください。
+一致させようとしている列挙ケースに関連値がある場合、対応する列挙型ケースパターンは、関連値に対して 1 つの要素を含むタプルパターンを指定する必要があります。関連値を含む列挙ケースを一致させるために `switch` 文を使用する例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#associated-values" target="_self">Associated Values(関連値)</a>を参照ください。
 
 列挙型ケースパターンは、オプショナルでラップされたケースの値にも一致します。この単純化された構文を使用すると、オプショナルのパターンを省略できます。なお、`Optional` は列挙型として実装されているため、`.none`、`.some` は、列挙型のケースと同じ switch の中で使用できます。
 
@@ -123,7 +123,7 @@ case nil:
 > GRAMMAR OF AN ENUMERATION CASE PATTERN  
 > enum-case-pattern → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)<sub>*opt*</sub> `.` [enum-case-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_enum-case-name)  [tuple-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern)<sub>*opt*</sub>
 
-## Optional Pattern\(オプショナルパターン\)
+## <a id="optional-pattern">Optional Pattern\(オプショナルパターン\)</a>
 
 オプショナルパターンは、`Optional<Wrapped>` 列挙型の `some(Wrapped)` ケースにラップされた値と一致します。オプショナルパターンは識別子パターンの直後に疑問符を置くことで構成され、列挙型ケースパターンと同じ場所に使用できます。
 
@@ -168,7 +168,7 @@ for case let number? in arrayOfOptionalInts {
 
 `as` パターンは、実行時の値の種類が、`as` パターンの右側に指定された型、またはその型のサブクラスと同じ型の場合に、値と一致します。一致した場合、値の種類は、`as` パターンの右側に指定された *pattern* にキャストされます。
 
-`switch` 文を使用して `is` パターンを一致させる例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/type-casting#type-casting-for-any-and-anyobjectanyoyobianyobject-nokyasuto" target="_self">Type Casting for Any and AnyObject(Any および AnyObject の型キャスト)</a>を参照ください。
+`switch` 文を使用して `is` パターンを一致させる例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/type-casting#type-casting-for-any-and-anyobject" target="_self">Type Casting for Any and AnyObject(Any および AnyObject の型キャスト)</a>を参照ください。
 
 > GRAMMAR OF A TYPE CASTING PATTERN  
 > type-casting-pattern → [is-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_is-pattern) \|  [as-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_as-pattern)  

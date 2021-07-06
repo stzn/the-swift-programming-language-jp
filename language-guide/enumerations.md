@@ -12,7 +12,7 @@ Swift の列挙型は、それ自体が第一級の型です。これらは、�
 
 これらの機能の詳細については、[Properties](properties.md)、[Methods](methods.md)、[Initialization(イニシャライザ)](initialization.md)、[Extensions(拡張)](extensions.md)および[Protocols(プロトコル)](protocols.md)を参照ください。
 
-## Enumeration Syntax\(列挙型構文\)
+## <a id="enumeration-syntax">Enumeration Syntax\(列挙型構文\)</a>
 
 `enum` キーワードを使用して列挙型を導入し、それらの定義全体を中括弧のペア\(`{}`\)内に配置します。
 
@@ -60,7 +60,7 @@ directionToHead = .east
 
 `directionToHead` の型はすでにわかっているため、値を設定するときに型を省略できます。これにより、明示的に型指定された列挙型の値を操作するときに、非常に読みやすいコードが作成できます。
 
-## Matching Enumeration Values with a Switch Statement\(switch 文を使った列挙値のパターンマッチング\)
+## <a id="matching-enumeration-values-with-a-switch-statement">Matching Enumeration Values with a Switch Statement\(switch 文を使った列挙値のパターンマッチング\)</a>
 
 `switch` 文を使って、個々の列挙値をパターンマッチングできます。
 
@@ -100,7 +100,7 @@ default:
 // "Mostly harmless"
 ```
 
-## Iterating over Enumeration Cases\(列挙ケースの繰り返し処理\)
+## <a id="iterating-over-enumeration-cases">Iterating over Enumeration Cases\(列挙ケースの繰り返し処理\)</a>
 
 一部の列挙型では、その列挙型の全てのケースのコレクションがあると便利です。これを有効にするには、列挙型の名前の後に `:CaseIterable` を記述します。Swift は、全てのケースのコレクションを列挙型の `allCases` プロパティとして提供しています。次に例を示します:
 
@@ -126,7 +126,7 @@ for beverage in Beverage.allCases {
 
 上記の例で使用されている構文では、[`CaseIterable`](https://developer.apple.com/documentation/swift/caseiterable) プロトコルに準拠しています。プロトコルの詳細については、[Protocols(プロトコル)](protocols.md)を参照ください。
 
-## Associated Values\(関連値\)
+## <a id="associated-values">Associated Values\(関連値\)</a>
 
 前のセクションの例は、列挙ケースがそれ自体を定義された\(および型指定された\)値にする方法を示しています。定数または変数を `Planet.earth` に設定し、後でこの値を確認できます。ただし、これらのケース値と一緒に他の型の値を保持できると便利な場合があります。この追加情報は*関連値*と呼ばれ、コードでそのケースの値を使用する度に異なります。
 
@@ -173,7 +173,7 @@ productBarcode = .qrCode("ABCDEFGHIJKLMNOP")
 
 この時点で、元の `Barcode.upc` とその整数値は、新しい `Barcode.qrCode` とその文字列値に置き換えられます。`Barcode` の定数と変数は、`.upc` または `.qrCode` のいずれかを\(関連値とともに\)格納できますが、一度に格納できるのはそのうちの 1 つだけです。
 
-<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#matching-enumeration-values-with-a-switch-statementswitch-wottanopatnmatchingu" target="_self">Matching Enumeration Values with a Switch Statement(switch 文を使った列挙値のパターンマッチング)</a>の例と同様に、`switch` 文を使用して様々なバーコード型を確認できます。ただし、今回は、関連値が `switch` 文の一部として抽出されます。`switch` のケースの本文内で使用するために、関連値を定数\(`let` プレフィックス\)または変数\(`var` プレフィックス\)として抽出します。
+<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#matching-enumeration-values-with-a-switch-statement" target="_self">Matching Enumeration Values with a Switch Statement(switch 文を使った列挙値のパターンマッチング)</a>の例と同様に、`switch` 文を使用して様々なバーコード型を確認できます。ただし、今回は、関連値が `switch` 文の一部として抽出されます。`switch` のケースの本文内で使用するために、関連値を定数\(`let` プレフィックス\)または変数\(`var` プレフィックス\)として抽出します。
 
 ```swift
 switch productBarcode {
@@ -199,7 +199,7 @@ case let .qrCode(productCode):
 
 ## Raw Values
 
-<a href="#associated-values-guan-lian-zhi" target="_self">Associated Values(関連値)</a>のバーコードの例は、列挙ケースが、様々な型に関連値を格納して宣言する方法を示しています。関連値の代わりに、列挙型には、全て同じ型のデフォルト値\(*Raw Values*と呼ばれる\)を事前に定義することもできます。
+<a href="#associated-values" target="_self">Associated Values(関連値)</a>のバーコードの例は、列挙ケースが、様々な型に関連値を格納して宣言する方法を示しています。関連値の代わりに、列挙型には、全て同じ型のデフォルト値\(*Raw Values*と呼ばれる\)を事前に定義することもできます。
 
 名前付きの列挙ケースと一緒に ASCII 値を格納する例を次に示します。
 
@@ -218,7 +218,7 @@ Raw Value は、文字列、文字、または整数型または浮動小数点�
 > NOTE  
 > Raw Valueは、関連値と同じではありません。上記の3つの ASCII コードのように、コードで列挙型を最初に定義するときに、Raw Value は事前入力された値に設定されます。特定の列挙ケースの Raw Value は常に同じです。関連値は、列挙ケースに基づいて新しい定数または変数を作成するときに設定され、作成する度に異なる可能性があります。
 
-### Implicitly Assigned Raw Values\(暗黙的に割り当てられたRaw Value\)
+### <a id="implicitly-assigned-raw-values">Implicitly Assigned Raw Values\(暗黙的に割り当てられたRaw Value\)</a>
 
 整数または文字列の Raw Value を格納する列挙型を操作する場合、それぞれのケースに Raw Value を明示的に割り当てる必要はありません。代わりに Swift が自動的に値を割り当てます。
 
@@ -270,7 +270,7 @@ let possiblePlanet = Planet(rawValue: 7)
 ただし、全ての `Int` 値が惑星に一致するわけではありません。このため、Raw Value のイニシャライザは常にオプショナルの列挙型を返します。上記の例では、`possiblePlanet` は Planet?`または オプショナルの`Planet`型です。
 
 > NOTE  
-> 全ての Raw Value が列挙型を返すわけではないため、Raw Valueイニシャライザは `nil` を返す可能性があります。詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#failable-initializersinisharaiza" target="_self">Failable Initializers(失敗可能イニシャライザ)</a>を参照ください。
+> 全ての Raw Value が列挙型を返すわけではないため、Raw Valueイニシャライザは `nil` を返す可能性があります。詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#declarations-failable-initializers" target="_self">Failable Initializers(失敗可能イニシャライザ)</a>を参照ください。
 
 位置が `11` の惑星を見つけようとすると、Raw Value のイニシャライザによって返されるオプショナルの `Planet` は `nil` になります。
 
@@ -291,7 +291,7 @@ if let somePlanet = Planet(rawValue: positionToFind) {
 
 この例では、オプションバインディングを使用して、Raw Value が `11` の惑星にアクセスしようとします。`if let somePlanet = Planet(rawValue: 11)` は、オプショナルの `Planet` を作成し、取得できる場合は、`somePlanet` をそのオプショナルの `Planet` の値に設定します。この場合、位置が `11` の惑星を取得することはできないため、代わりに `else` の分岐が実行されます。
 
-## Recursive Enumerations\(再帰的列挙型\)
+## <a id="recursive-enumerations">Recursive Enumerations\(再帰的列挙型\)</a>
 
 *再帰的列挙型*は、1 つ以上の列挙ケースの関連値としてその列挙型の別のインスタンスを持つ列挙型です。列挙型が再帰的だということを示すには、その前に `indirect` を記述します。これにより、コンパイラに `indirect` のネストがあることを伝えることができます。
 

@@ -8,7 +8,7 @@ Swift の*字句構造*は、文字のシーケンスの中で Swift 言語で�
 
 ## Whitespace and Comments\(空白とコメント\)
 
-空白には 2 つの用途があります: 1 つは、ソースファイル内のトークンを分離する、もう 1 つは、*前置*、*後置*、およびバイナリ演算子を区別する\(<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/lexical-structure#operators-yan-suan-zi" target="_self">Operators(演算子)</a>を参照\)、それ以外の場合は無視されます。次の文字は空白と見なされます: スペース\(U+0020\)、ラインフィード\(U+000A\)、キャリッジリターン \(U+000D\)、水平タブ\(U+0009\)、垂直タブ\(U+000B\)、フォームフィード\(U +000C\) および null\(U+0000\)。
+空白には 2 つの用途があります: 1 つは、ソースファイル内のトークンを分離する、もう 1 つは、*前置*、*後置*、およびバイナリ演算子を区別する\(<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/lexical-structure#operators" target="_self">Operators(演算子)</a>を参照\)、それ以外の場合は無視されます。次の文字は空白と見なされます: スペース\(U+0020\)、ラインフィード\(U+000A\)、キャリッジリターン \(U+000D\)、水平タブ\(U+0009\)、垂直タブ\(U+000B\)、フォームフィード\(U +000C\) および null\(U+0000\)。
 
 コメントは、コンパイラによって空白として扱われます。単一行のコメントは `//` で始まり、ラインフィード\(U+000A\) またはキャリッジリターン\(U+000D\) まで続きます。複数行のコメントは `/*` で始まり、`*/` で終わります。複数行のコメントをネストすることはできますが、コメントマーカで始まりと終わりを囲む必要があります。
 
@@ -74,7 +74,7 @@ Swift の*字句構造*は、文字のシーケンスの中で Swift 言語で�
 > implicit-parameter-name → `$` [decimal-digits](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits)  
 > property-wrapper-projection → `$` [identifier-characters](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier-characters)
 
-## Keywords and Punctuation\(単語と句読点\)
+## <a id="keywords-and-punctuation">Keywords and Punctuation\(単語と句読点\)</a>
 
 次のキーワードは予約されており、識別子として前述のようにバッククォート\(\`\)でエスケープしない限り使用できません。`inout`、`var`、`let` 以外のキーワードは、バッククォートでエスケープすることなく、関数宣言または関数の引数名として使用できます。メンバの名前がキーワードと同じ場合、メンバの参照とキーワードの使用の間にあいまいさがある場合を除いて、そのメンバへの参照をバッククォートでエスケープする必要はありません。例えば、`self`、`Type`、および `Protocol` には明示的なメンバ式の中で特別な意味があるため、そのコンテキストではバッククォートでエスケープする必要があります。
 
@@ -92,7 +92,7 @@ Swift の*字句構造*は、文字のシーケンスの中で Swift 言語で�
 
 次のトークンは句読点として予約されており、カスタム演算子としては使用できません: `(`、 `)`、 `{`、 `}`、 `[`、 `]`、 `.`、 `,`、 `:`、 `;`、 `=`、 `@`、 `#`、 `&`\(前置演算子として\)、`->`、\`、`?`、および `!`\(後置演算子として\)
 
-## Literals\(リテラル\)
+## <a id="literals">Literals\(リテラル\)</a>
 
 *リテラル*は、数値や文字列といった型の値をソースコード上で表現するものです。
 
@@ -125,7 +125,7 @@ true  // ブールリテラル
 
 アンダースコア\(`_`\)を読みやすくするために数字の間に使用できますが、それ自体は無視されるため、リテラルの値には影響しません。整数リテラルは先行ゼロ\(`0`\)で始めることができますが、同様に無視され、リテラルの基数または値には影響しません。
 
-特に指定がない限り、整数リテラルのデフォルトの推論型は Swift 標準ライブラリの `Int` 型です。Swift 標準ライブラリは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#integers-zheng-shu" target="_self">Integers(整数)</a>で説明されているように、様々なサイズの符号付き整数および符号なし整数の型も定義します。
+特に指定がない限り、整数リテラルのデフォルトの推論型は Swift 標準ライブラリの `Int` 型です。Swift 標準ライブラリは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#integers" target="_self">Integers(整数)</a>で説明されているように、様々なサイズの符号付き整数および符号なし整数の型も定義します。
 
 > GRAMMAR OF AN INTEGER LITERAL  
 > integer-literal → [binary-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_binary-literal)  
@@ -176,7 +176,7 @@ true  // ブールリテラル
 > floating-point-p → `p` \| `P`  
 > sign → `+` \| `-`
 
-### String Literals\(文字列リテラル\)
+### <a id="lexical-structure-string-literals">String Literals\(文字列リテラル\)</a>
 
 *文字列リテラル*は、引用符で囲まれた一連の文字です。単一行の文字列リテラルは二重引用符で囲まれ、次の形式になります:
 
@@ -284,7 +284,7 @@ let textB = "Hello world"
 > unicode-scalar-digits → 0 から 8 までの16進数  
 > escaped-newline → [escape-sequence](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escape-sequence) [inline-spaces](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_inline-spaces)<sub>*opt*</sub> [line-break](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_line-break)
 
-## Operators\(演算子\)
+## <a id="operators">Operators\(演算子\)</a>
 
 Swift 標準ライブラリは、数多くの*演算子*を定義します。その多くは、[Basic Operators(基本演算子)](../language-guide/basic-operators.md)と[Advanced Operators(高度な演算子)](../language-guide/advanced-operators.md)で説明しています。このセクションでは、カスタム演算子を定義するために使用できる文字を説明します。
 
@@ -310,7 +310,7 @@ Swift 標準ライブラリは、数多くの*演算子*を定義します。そ
 
 特定の構成要素では、先頭に `<` または `>` を持つ演算子は 2 つ以上のトークンに分割されることもあります。残りの部分は同じ方法で扱われ、再び分割される可能性があります。その結果、`Dictionary<String、Array<Int>>` のようなコンストラクト内の閉じ `>` の間の文字は曖昧さを解消するために空白を追加する必要はありません。この例では、閉じ `>` を誤って単一のトークンのビットシフト\(`>>`\)としては解釈されません。
 
-新しいカスタム演算子を定義する方法については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#custom-operatorskasutamu" target="_self">Custom Operators(カスタム演算子)</a>と[Operator Declaration](declarations.md#operator-declaration演算子宣言)を参照ください。既存の演算子をオーバーロードについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#operator-declaration-yan-suan-zi-xuan-yan" target="_self">Operator Methods(演算子メソッド)</a>を参照ください
+新しいカスタム演算子を定義する方法については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#custom-operators" target="_self">Custom Operators(カスタム演算子)</a>と[Operator Declaration](declarations.md#operator-declaration演算子宣言)を参照ください。既存の演算子をオーバーロードについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#operator-declaration" target="_self">Operator Methods(演算子メソッド)</a>を参照ください
 
 > GRAMMAR OF OPERATORS  
 > operator → [operator-head](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator-head) [operator-characters](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator-characters)<sub>*opt*</sub>  

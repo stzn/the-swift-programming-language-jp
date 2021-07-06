@@ -11,21 +11,21 @@ Swift の配列、セット、辞書は、常に保持しているキーやバ�
 > NOTE  
 > Swift の配列、セット、辞書は、*ジェネリックなコレクション*として実装されています。ジェネリックな型やコレクションについての詳細は[Generics(ジェネリクス)](generics.md)を参照ください。
 
-## Mutability of Collections\(コレクションの可変性\)
+## <a id="mutability-of-collections">Mutability of Collections\(コレクションの可変性\)</a>
 
 もし配列、セット、辞書を変数に代入した場合、作成されたコレクションは可変です。つまり、追加、削除、要素の変更など、後々そのコレクションを取り替え\(または変更\)できます。もし配列、セット、辞書を定数に代入した場合、コレクションは不変で、そのサイズや内容を変更できません。
 
 > NOTE  
 > コレクションの変更が必要ない場合は、不変なコレクションを作成するのが良いプラクティスです。そうすることで、コードを理解しやすくし、Swift のコンパイラもコレクションのパフォーマンスを最適化することができます。
 
-## Arrays\(配列\)
+## <a id="arrays">Arrays\(配列\)</a>
 
 配列は同じ型の値を順序立ったリストの中に保持します。配列の中に同じ値を複数回入れることができます。
 
 > NOTE  
 > `Array` は Foundation の `NSArray` とスムーズにやりとりできるようにしています。Foundation と Cocoa を使った `Array` の使用方法に関しては、[Bridging Between Array and NSArray](https://developer.apple.com/documentation/swift/array#2846730)を参照ください
 
-### Array Type Shorthand Syntax\(配列型の省略構文\)
+### <a id="array-type-shorthand-syntax">Array Type Shorthand Syntax\(配列型の省略構文\)</a>
 
 Swift の配列の型は全体で `Array<Element>` と書きます。`Element` はその配列が保持できる値の型です。簡略記法として `[Element]` とも書けます。この 2 つの形式は機能的に同じですが、簡略記法の方が好まれ、このガイド内でも配列の型を参照する際はこちらの形式を使います。
 
@@ -50,7 +50,7 @@ someInts = []
 // someInts は空の配列だけど [Int] 型
 ```
 
-### Creating an Array with a Default Value\(デフォルト値を使った配列の作成\)
+### <a id="creating-an-array-with-a-default-value">Creating an Array with a Default Value\(デフォルト値を使った配列の作成\)</a>
 
 `Array` は同じデフォルト値を設定した特定にサイズの配列を作成するイニシャライザも提供しています。このイニシャライザに適切な型のデフォルト値\(`repeating`\)と、その値の繰り返し回数\(`count`\)を渡します。
 
@@ -99,7 +99,7 @@ var shoppingList = ["Eggs", "Milk"]
 
 配列リテラルの全ての値は同じ型なので、Swift は `shoppingList` 変数で使われている型は `[String]` が適切だと推論できます。
 
-### Accessing and Modifying an Array\(配列へのアクセスと変更\)
+### <a id="accessing-and-modifying-an-array">Accessing and Modifying an Array\(配列へのアクセスと変更\)</a>
 
 メソッドやプロパティ、subscript 構文を通して配列の要素へのアクセス、変更ができます。
 
@@ -229,15 +229,15 @@ for (index, value) in shoppingList.enumerated() {
 // Item 5: Bananas
 ```
 
-`for-in` ループについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#for-in-loopsfor-inrpu" target="_self">For-In Loops(For-In ループ)</a>を参照ください。
+`for-in` ループについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#for-in-loops" target="_self">For-In Loops(For-In ループ)</a>を参照ください。
 
-## Sets\(セット\)
+## <a id="sets">Sets\(セット\)</a>
 
 *セット*はコレクション内に、同じ型の値を、決まった順序と値の重複なしに保持します。アイテムの順序が重要でない場合や、アイテムに重複がないことを保証したい場合に、配列の変わりにセットを使用することができます。
 
 > `Set` は Foundation の `NSSet` とスムーズにやりとりできるようにしています。Foundation と Cocoa を使った `Set` の使用方法に関しては、[Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530)を参照ください
 
-### Hash Values for Set Types\(セット型のハッシュ値\)
+### <a id="hash-values-for-set-types">Hash Values for Set Types\(セット型のハッシュ値\)</a>
 
 セットに保存する型はハッシュ化が可能でなければなりません。つまり、その型はハッシュ値を計算する方法をセットに知らせる必要があります。ハッシュ値は、`Int` 型で、等価比較が可能な全てのオブジェクトで、例えば `a == b` の場合、`a` のハッシュ値は `b` のハッシュ値と等しくなります。
 
@@ -362,7 +362,7 @@ for genre in favoriteGenres {
 // Hip hop
 ```
 
-`for-in` ループについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#for-in-loopsfor-inrpu" target="_self">For-In Loops(For-In ループ)</a>を参照ください。
+`for-in` ループについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#for-in-loops" target="_self">For-In Loops(For-In ループ)</a>を参照ください。
 
 Swift の Set 型は決まった順序がありません。特定の順番で値を繰り返し処理したい場合、`sorted()` メソッドを使用すると、`<` 演算子を使用してソートされた配列として要素を返します。
 
@@ -431,14 +431,14 @@ farmAnimals.isDisjoint(with: cityAnimals)
 // true
 ```
 
-## Dictionaries\(辞書\)
+## <a id="dictionaries">Dictionaries\(辞書\)</a>
 
 *辞書*は、特定の型のキーと、特定の型のバリューをペアとして関連づけ、順序なしでコレクションに保持します。それぞれのアイテムは、辞書内で識別子の役割を果たす一意なキーに紐づいています。配列のアイテムとは異なり、辞書のアイテムに順序はありません。辞書は、現実に特定の単語を辞書で調べるのと同じように、識別子から値を探したいときに使います。
 
 > NOTE  
 > `Dictionary` は Foundation の `NSDictionary` とスムーズにやりとりできるようにしています。Foundation と Cocoa を使った `Dictionary` の使用方法に関しては、[Bridging Between Dictionary and NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239)を参照ください
 
-### Dictionary Type Shorthand Syntax\(辞書型の省略構文\)
+### <a id="dictionary-type-shorthand-syntax">Dictionary Type Shorthand Syntax\(辞書型の省略構文\)</a>
 
 Swift の辞書は、全体で `Dictionary<Key, Value>` と書きます。`Key` には辞書のキーとして使える値の型を、`Value` にはそのキーに紐づいた辞書で保持するバリューの型です。
 
@@ -498,7 +498,7 @@ var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 キーの型も、バリューの型も全ての同じなので、Swift は `airports` 辞書は `[String: String]` が正しい型だと推論できます。
 
-### Accessing and Modifying a Dictionary\(辞書へのアクセスと変更\)
+### <a id="accessing-and-modifying-a-dictionary">Accessing and Modifying a Dictionary\(辞書へのアクセスと変更\)</a>
 
 メソッドやプロパティ、subscript 構文を通して、辞書へのアクセス、変更ができます。
 
@@ -610,7 +610,7 @@ for (airportCode, airportName) in airports {
 // YYZ: Toronto Pearson
 ```
 
-`for-in` ループについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#for-in-loopsfor-inrpu" target="_self">For-In Loops(For-In ループ)</a>を参照ください。
+`for-in` ループについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#for-in-loops" target="_self">For-In Loops(For-In ループ)</a>を参照ください。
 
 `keys` と `values` プロパティを使用して、キーとバリューそれぞれのリストを取得することもできます:
 

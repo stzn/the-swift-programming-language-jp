@@ -8,7 +8,7 @@ Swift は、様々な制御フロー文を提供しています。1 つのタス
 
 Swift の `switch` 文は、C のような他の言語と比べてもかなり強力です。ケースは、範囲やタプル、特定の型へのキャストなど、様々なパターンに合致させることができます。また、`switch` のケースに合致した値は、ケースの本文内で使用するために変数や定数に紐づけることができます。各ケースに `where` を使用してより複雑な条件を作成することもできます。
 
-## For-In Loops\(For-Inループ)
+## <a id="for-in-loops">For-In Loops\(For-Inループ)</a>
 
 配列のアイテムや数値の範囲、文字列の文字などのシーケンスに対してループ処理を行うために `for-in` ループを使います。
 
@@ -73,7 +73,7 @@ print("\(base) to the power of \(power) is \(answer)")
 
 最初と最後の両方を含める閉範囲を使用する必要がない場合もあるかもしれません。時計の分針を思い浮かべてください。`0` から始まる `60` 個の目盛が必要です。最初の値を含める半開範囲演算子(`..<`)を使いましょう。
 
-範囲についての詳細は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/basic-operators#range-operators-fan-tong-yan-suan-zi" target="_self">Range Operators(範囲演算子)</a>を参照ください。
+範囲についての詳細は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/basic-operators#range-operators" target="_self">Range Operators(範囲演算子)</a>を参照ください。
 
 ```swift
 let minutes = 60
@@ -314,7 +314,7 @@ default:
 C 言語や Objective-C と異なり、Swift の `switch` 文は、デフォルトでは、それぞれのケースの下から次のケースに行くことはありません。その代わりに、最初に合致した `switch` ケースの実行が完了すると、明示的に `break` しなくても、全体の `switch` 文も完了します。こうすることで、C 言語の `switch` 文よりも、より安全に簡単に使えるようにしています。間違って 1 つ以上のケースを実行してしまうリスクを防ぎます。
 
 > NOTE  
-> `break` は必須ではありませんが、合致したけど何も実行しないような場合や、あるケースの中で最後まで実行される前にそのブロックを抜けたい場合に、`break` を使用することができます。詳細は、<a href="#break-in-a-switch-statementswitchdebreak" target="_self">Break in a Switch Statement(switch 内で break)</a>Break in a Switch Statement(switch 内で break)</a>を参照ください。
+> `break` は必須ではありませんが、合致したけど何も実行しないような場合や、あるケースの中で最後まで実行される前にそのブロックを抜けたい場合に、`break` を使用することができます。詳細は、< href="#break-in-a-switch-statement" target="_self">Break in a Switch Statement(switch 内で break)</a>を参照ください。
 
 各ケースの本文は少なくとも 1 つの文を実行しなければなりません。次のコードは最初のケースの本文が空なので不正です。
 
@@ -345,7 +345,7 @@ default:
 // "The letter A"
 ```
 
-可読性のために、複合ケースを複数行に分けて書くこともできます。複合ケースについての詳細は<a href="#compound-casesksu" target="_self">[Compound Cases(複合ケース)]</a>を参照ください。
+可読性のために、複合ケースを複数行に分けて書くこともできます。複合ケースについての詳細は<a href="#compound-cases" target="_self">Compound Cases(複合ケース)</a>を参照ください。
 
 > NOTE  
 > 特定のケースから次のケースの 本文 を実行したい場合は、`fallthrough` キーワードを使います。<a href="#fallthrough" target="_self">Fallthrough</a>に記載しています。
@@ -463,7 +463,7 @@ case let (x, y):
 
 最後のケースは、先の 2 つのケース以外の全ての値に合致するため、`switch` 文で全ての値を網羅するための `default` ケースは不要です。
 
-#### Compound Cases\(複合ケース\)
+#### <a id="compound-cases">Compound Cases\(複合ケース\)</a>
 
 各ケースをカンマ(`,`)で区切ってケースの後に書くことで、同じ本文を共有する複数のケースを書くことができます。その中の 1 つのケースに合致した場合に、合致したと見なされます。ケースのリストが長くなるような場合は、複数行にまたがって書くことができます。例えば:
 
@@ -498,7 +498,7 @@ default:
 
 上記のケースでは 2 つのパターンを含んでいます: `(let distance, 0)` は x 軸上にある点に合致し、`(0, let distance)` は y 軸上にある点に合致します。どちらのパターンでも、`distance` へのバインディングが含まれており、どちらも数値です。つまり、ケース内では常に `distance` にアクセスできます。
 
-## Control Transfer Statements\(制御転送文\)
+## <a id="control-flow-control-transfer-statements">Control Transfer Statements\(制御転送文\)</a>
 
 *制御転送文*は、コードの一部の制御を他の部分へ転送させることで、コードの実行順序を変更します。Swift には 5 つの制御転送文があります:
 
@@ -508,7 +508,7 @@ default:
 * `return`
 * `throw`
 
-`continue`、`break` と `fallthrough` は下記に記載しています。`return` は[Functions(関数)](functions.md)、`throw` は<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/error-handling#propagating-errors-using-throwing-functionssurwoshitaerno" target="_self">Propagating Errors Using Throwing Functions</a>に記載しています。
+`continue`、`break` と `fallthrough` は下記に記載しています。`return` は[Functions(関数)](functions.md)、`throw` は<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/error-handling#propagating-errors-using-throwing-functions" target="_self">Propagating Errors Using Throwing Functions</a>に記載しています。
 
 ### Continue
 
@@ -540,7 +540,7 @@ print(puzzleOutput)
 
 ループ文の内部で使用するとき、`break` はループの実行を即座に終了し、ループの末尾の閉じ括弧(`}`)の後に制御フローを移します。ループ内の続きの処理は実行されず、次のループも開始されません。
 
-#### Break in a Switch Statement\(Switch内でBreak\)
+#### <a id="break-in-a-switch-statement">Break in a Switch Statement\(Switch内でBreak\)</a>
 
 `switch` 文の内部で使用するとき、`break` は `switch` の実行を即座に終了し、`switch` の末尾の閉じ括弧(`}`)の後に制御フローを移します。`switch` 文は網羅的で空のケースが許されないため、明示的に何もしないことを伝えるために、わざと合致させて無視するときに必要になります。無視したいケースの本文に `break` のみを書きます。そのケースに合致した場合、ケース内の `break` が `switch` 文全体の実行を即時に終了させます。
 
@@ -603,7 +603,7 @@ print(description)
 > NOTE  
 > `fallthrough` キーワードは、前のケースから通り抜けて実行されたケースの条件をチェックしません。`fallthrough` キーワードは次のケース\(または `default` ケース\)のブロック内の文に直接移動し、コードを実行します。これは C 言語と同じ挙動です。
 
-### Labeled Statements\(ラベル付き文\)
+### <a id="labeled-statements">Labeled Statements\(ラベル付き文\)</a>
 
 Swift では、より複雑な制御フローを作成するために、ループや条件文の中にさらにループや条件文をネストできます。しかし、`break` を使用して早期に実行を終了させることもできます。そのため、どの文を `break` するのかを明示すると役に立つことがあります。同様に、複数のネストしたループで、どのループに `continue` が影響するかを明示することも役に立ちます。
 
@@ -668,7 +668,7 @@ print("Game over!")
 > もし `break` が `gameLoop` ラベルを付けなかった場合、`while` ではなく `switch` から抜けます。`gameLoop` ラベルを使用することで、どの制御文から抜けるのかを明確にできます  
 > 次のループに移動するのに `continue gameLoop` と `gameLoop` ラベルを使用する必要は厳密にはありません。ゲーム内にループは 1 つしかなく、どのループに `continue` が影響を与えるかが明確です。しかし、`gameLoop` ラベルを使用しても害はなく、そうすることで `break` のラベルと一貫性ができ、ロジックを読みやすく理解しやすくすることができます。
 
-## Early Exit\(早期リターン\)
+## <a id="early-exit">Early Exit\(早期リターン\)</a>
 
 `guard` 文は `if` 文と同様に、式のブール値に応じて文を実行します。`guard` 文は、`guard` の後のコードを実行するために、`guard` の条件が `true` でなければならない場合に使います。`if` 文と異なり、`guard` 文は常に `else` 句が必要で、条件が `false` の場合に `else` 内が実行されます。
 
@@ -702,7 +702,7 @@ greet(person: ["name": "Jane", "location": "Cupertino"])
 
 `guard` 文を必須条件に使用することで、`if` 文で同じことを行うよりも可読性を改善させることができます。概ね `else` ブロックで包むことなくコードを書くことができたり、必須条件のすぐ下で条件を満たさないケースを処理することができます。
 
-## Checking API Availability\(APIアベイラビリティチェック\)
+## <a id="checking-api-availability">Checking API Availability\(APIアベイラビリティチェック\)</a>
 
 Swift は API のアベイラビリティチェックをビルトインでサポートしています。つまり、あるデプロイターゲットでは利用できない API を間違って使わないことが保証できます。
 

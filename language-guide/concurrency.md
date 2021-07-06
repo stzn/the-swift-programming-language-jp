@@ -67,7 +67,7 @@ show(photo)
 
 * 非同期の関数、メソッド、プロパティの本文
 * `@main` でマークされている構造体、クラス、または列挙型の `static main()` メソッド内
-* 下記の<a href="#unstructured-concurrency-fei-gou-zao-tong-shi-bing-hang-chu-li" target="_self">Unstructured Concurrency(非構造同時並行処理)</a>で示す独立した子タスク\(_child task_\)のコード
+* 下記の<a href="#unstructured-concurrency" target="_self">Unstructured Concurrency(非構造同時並行処理)</a>で示す独立した子タスク\(_child task_\)のコード
 
 > NOTE  
 > `Task.sleep(_:)` メソッドは、同時並行処理が機能する方法を学ぶために簡単なコードを書くときに役立ちます。このメソッドは何もしませんが、それがリターンする前に少なくとも指定されたナノ秒数処理を待ちます。下記は、ネットワーク操作の待機をシミュレートするために `sleep()` を使用する `listPhotos(inGallery:)` 関数のバージョンです。
@@ -150,7 +150,7 @@ await withTaskGroup(of: Data.self) { taskGroup in
 
 タスクグループの詳細については、[TaskGroup](https://developer.apple.com/documentation/swift/taskgroup)を参照ください。
 
-### Unstructured Concurrency\(非構造同時並行処理\)
+### <a id="unstructured-concurrency">Unstructured Concurrency\(非構造同時並行処理\)</a>
 
 前のセクションで説明されている構造同時並行処理のアプローチに加えて、Swift は非構造同時並行処理\(_unstructured concurrency_\)もサポートしています。タスクグループの一部のタスクとは異なり、非構造タスクには親タスクがありません。どんな方法で使われたとしても、非構造タスクを完全に柔軟に管理することができます。しかし、それらの正しい動作を保証することは完全に開発者の責任です。現在のアクター\(_actor_\)上で実行される非構造タスクを作成するには、[async\(priority:operation:\)](https://developer.apple.com/documentation/swift/3816404-async) 関数を呼びます。現在のアクター上で実行されないタスク\(デタッチタスク\(_detached task_\)\)を作成するには、[asyncDetached\(priority:operation:\)](https://developer.apple.com/documentation/swift/3816406-asyncdetached) 関数を呼び出します。これらの関数は両方ともタスクハンドル\(_task handle_\)を返し、例えば、その結果を待つかキャンセルすることができます。
 
@@ -178,7 +178,7 @@ Swift の同時並行処理は協調キャンセルモデル\(_cooperative cance
 
 ## Actors\(アクター\)
 
-クラスのように、アクター\(_actors_\)は参照型なので、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#classes-are-reference-typeskurasuha" target="_self">Classes Are Reference Types(クラスは参照型)</a>の中の値型と参照型の比較はアクターにも当てはまります。しかし、クラスとは異なり、アクターの可変状態\(_mutable state_\)にアクセスできるのは一度に 1 つのタスクだけです。これにより、複数のタスクが、同じアクターのインスタンスとやり取りする必要があるコードでも、安全にアクセスできるようになります。例えば、下記は気温を記録するアクターです:
+クラスのように、アクター\(_actors_\)は参照型なので、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#classes-are-reference-types" target="_self">Classes Are Reference Types(クラスは参照型)</a>の中の値型と参照型の比較はアクターにも当てはまります。しかし、クラスとは異なり、アクターの可変状態\(_mutable state_\)にアクセスできるのは一度に 1 つのタスクだけです。これにより、複数のタスクが、同じアクターのインスタンスとやり取りする必要があるコードでも、安全にアクセスできるようになります。例えば、下記は気温を記録するアクターです:
 
 ```swift
 actor TemperatureLogger {

@@ -4,7 +4,7 @@
 
 *演算子*は、値のチェックや変更、合成するために使われる特殊な記号や用語です。例えば、加算演算子(`+`)は `let i = 1 + 2` のように 2 つの数値を足します。論理 AND 演算子(`&&`)は、`if enteredDoorCode && passedRetinaScan` のように 2 つのブール値を組み合わせます。
 
-Swift は、C 言語のような他の言語でおそらく見たことがある演算子をサポートするのに加え、よく起きるコーディング中のエラーを防ぐために改良を加えています。代入演算子(`=`)を、本当は等価演算子(`==`)を使おうと思っていた所へ間違って使えなくするために、値を返しません。算術演算子(`+`, `-`, `*`, `/`, `%` など)は、保持している値の型の許容範囲を超えて予期せぬ結果が起きることを防ぐために、オーバーフローを検知して発生しないようにしています。Swift のオーバーフロー演算子を使用することで、オーバーフローに対する挙動を変えることもできます。詳細は<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#overflow-operatorsbfur" target="_self">Overflow Operators(オーバーフロー演算子)</a>に記載しています。
+Swift は、C 言語のような他の言語でおそらく見たことがある演算子をサポートするのに加え、よく起きるコーディング中のエラーを防ぐために改良を加えています。代入演算子(`=`)を、本当は等価演算子(`==`)を使おうと思っていた所へ間違って使えなくするために、値を返しません。算術演算子(`+`, `-`, `*`, `/`, `%` など)は、保持している値の型の許容範囲を超えて予期せぬ結果が起きることを防ぐために、オーバーフローを検知して発生しないようにしています。Swift のオーバーフロー演算子を使用することで、オーバーフローに対する挙動を変えることもできます。詳細は<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#overflow-operators" target="_self">Overflow Operators(オーバーフロー演算子)</a>に記載しています。
 
 また、C 言語にはなかった `a..<b` や `a...b` のような値の範囲を簡単に表すための範囲演算子も提供しています。
 
@@ -64,7 +64,7 @@ Swift は全ての数値型に対して 4 つの基本的な*算術演算子*を
 10.0 / 2.5  // 4.0
 ```
 
-C 言語や Objective-C と異なり、Swift はデフォルトでオーバーフローはできません。`a &+ b` のようにオーバーフロー演算子\(`&-`\)を使用してオーバーフローさせることができます。詳細は<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#overflow-operatorsbfur" target="_self">Overflow Operators(オーバーフロー演算子)</a>を参照ください。
+C 言語や Objective-C と異なり、Swift はデフォルトでオーバーフローはできません。`a &+ b` のようにオーバーフロー演算子\(`&-`\)を使用してオーバーフローさせることができます。詳細は<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#overflow-operators" target="_self">Overflow Operators(オーバーフロー演算子)</a>を参照ください。
 
 加算演算子は `String` の連結もすることができます。
 
@@ -155,7 +155,7 @@ a += 2
 
 Swift の標準ライブラリで提供している演算子については、[Operator Declarations(演算子宣言)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
 
-## Comparison Operators\(比較演算子\)
+## <a id="comparison-operators">Comparison Operators\(比較演算子\)</a>
 
 Swift は、次の比較演算子をサポートしています。
 
@@ -167,7 +167,7 @@ Swift は、次の比較演算子をサポートしています。
 * 等しいかそれ以下\(`a <= b`\)
 
 > NOTE  
-> Swift では、2つの恒等作用素\(`===` と `!==`\)も提供しています。これは2つのオブジェクトが同じインスタンスを参照しているかどうかの確認ができます。より詳細は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#identity-operators-heng-deng-zuo-yong-su" target="_self">Identity Operators(恒等作用素)</a>を参照ください。
+> Swift では、2つの恒等作用素\(`===` と `!==`\)も提供しています。これは2つのオブジェクトが同じインスタンスを参照しているかどうかの確認ができます。より詳細は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#identity-operators" target="_self">Identity Operators(恒等作用素)</a>を参照ください。
 
 それぞれの比較演算子は、そのステートメントが `true` かどうかのブール値を返します。
 
@@ -212,7 +212,7 @@ if name == "world" {
 > NOTE  
 > Swift の標準ライブラリは 要素数が 7 つ以下のタプルの演算子を提供しています。7 つ以上の要素数のタプルへは自身で実装しなければなりません。
 
-## Ternary Conditional Operator\(三項条件演算子\)
+## <a id="basic-operator-ternary-conditional-operator">Ternary Conditional Operator\(三項条件演算子\)</a>
 
 *三項条件演算子*は、`question ? answer1 : answer2` という形式の、3 つの部分を持った特別な演算子です。これは、`question` が `true` か `false` かを基に 2 つの式のどちらかを評価するショートカットです。`question` が `true` ならば、`answer1` が評価され、`false` だと `answer2` が評価されます。
 
@@ -253,7 +253,7 @@ if hasHeader {
 
 三項条件演算子は 2 つの式のどちらが使われるのかを決める効率的なショートカットです。しかし、三項条件演算子にも注意が必要です。あまり使いすぎると可読性を損なう場合もあります。複数の三項条件演算子を 1 つのステートメントに含めることは避けましょう。
 
-## Nil-Coalescing Operator\(nil合体演算子\)
+## <a id="nilcoalescing-operator">Nil-Coalescing Operator\(nil合体演算子\)</a>
 
 `(a ?? b)` の *nil 合体演算子*は、オプショナルの `a` にもし値が存在すれば `a` をアンラップし、`a` が `nil` の場合は `b` をデフォルトとして返します。式 `a` は常にオプショナル型です。式 `b` は `a` が内包する値の型と一致していなけばなりません。
 
@@ -288,7 +288,7 @@ colorNameToUse = userDefinedColorName ?? defaultColorName
 // userDefinedColorName は nil ではないので、 colorNameToUse の "green" が設定されます
 ```
 
-## Range Operators\(範囲演算子\)
+## <a id="range-operators">Range Operators\(範囲演算子\)</a>
 
 Swift は、値の範囲を表すショートカットとして複数の*範囲演算子*を提供しています。
 
@@ -311,7 +311,7 @@ for index in 1...5 {
 
 `for-in` ループについては、[Control FLow(制御フロー)](control-flow.md)を参照ください。
 
-### Half-Open Range Operator\(半開範囲演算子\)
+### <a id="halfopen-range-operator">Half-Open Range Operator\(半開範囲演算子\)</a>
 
 `a..<b` のような*半開範囲演算子*は、`a` から `b` まで連続しているものの `b` は含まない範囲を定義します。`a` を `b` よりも大きい値にしてはいけません。`a` と `b` が等しい場合、範囲は空になります。
 
@@ -329,7 +329,7 @@ for i in 0..<count {
 // Person 4 is called Jack
 ```
 
-この配列は 4 つの要素が含まれていますが、`0..<count` は半開範囲演算子なので `3`\(配列の最後のインデックス\)までしかカウントしないことに注目してください。配列については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/collection-types#arrays-pei-lie" target="_self">Arrays(配列)</a>を参照ください。
+この配列は 4 つの要素が含まれていますが、`0..<count` は半開範囲演算子なので `3`\(配列の最後のインデックス\)までしかカウントしないことに注目してください。配列については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/collection-types#arrays" target="_self">Arrays(配列)</a>を参照ください。
 
 ### One-Sided Ranges\(片側範囲演算子\)
 

@@ -75,7 +75,7 @@ let otherBits: UInt8 = 0b00000101
 let outputBits = firstBits ^ otherBits  // 00010001 と等しい
 ```
 
-### Bitwise Left and Right Shift Operators\(ビット左右シフト演算子\)
+### <a id="bitwise-left-and-right-shift-operators">Bitwise Left and Right Shift Operators\(ビット左右シフト演算子\)</a>
 
 ビット左シフト演算子\(`<<`\)およびビット右シフト演算子\(`>>`\)は、下記で定義されている規則に従って、数値内の全てのビットを特定の桁数だけ左または右に移動します。
 
@@ -161,7 +161,7 @@ let blueComponent = pink & 0x0000FF           // blueComponent は 0x99 また�
 
 正の数と負の数は特殊な方法で保持されるため、どちらかを右にシフトすると `0` に近づきます。このシフト中でも符号ビットを保つということは、値が `0` に近づいても負の整数は負の値のままになることを意味します。
 
-## Overflow Operators\(オーバーフロー演算子\)
+## <a id="overflow-operators">Overflow Operators\(オーバーフロー演算子\)</a>
 
 その値を保持できない整数の定数または変数に数値を挿入しようとすると、Swift はデフォルトでは無効な値は作成せず、エラーを報告します。この動作により、大きすぎたり小さすぎたりする数値を処理するときの安全性がさらに高まります。
 
@@ -182,7 +182,7 @@ potentialOverflow += 1
 * オーバーフロー減算\(`&-`\)
 * オーバーフロー乗算\(`&*`\)
 
-### Value Overflow\(値のオーバーフロー\)
+### <a id="value-overflow">Value Overflow\(値のオーバーフロー\)</a>
 
 数値は、正の方向と負の方向の両方でオーバーフローする可能性があります。
 
@@ -212,7 +212,7 @@ unsignedOverflow = unsignedOverflow &- 1
 
 ![オーバーフロー減算演算子 00000000 から 1 を減算](../.gitbook/assets/overflowUnsignedSubtraction_2x.png)
 
-オーバーフローは、符号付き整数でも発生します。符号付き整数の加算と減算は全てビット単位で実行され、<a href="#bitwise-left-and-right-shift-operatorsbittoshifuto" target="_self">Bitwise Left and Right Shift Operators(ビット左右シフト演算子)</a>で説明されているように、加算または減算される数値の一部として符号ビットが含まれます。
+オーバーフローは、符号付き整数でも発生します。符号付き整数の加算と減算は全てビット単位で実行され、<a href="#bitwise-left-and-right-shift-operators" target="_self">Bitwise Left and Right Shift Operators(ビット左右シフト演算子)</a>で説明されているように、加算または減算される数値の一部として符号ビットが含まれます。
 
 ```swift
 var signedOverflow = Int8.min
@@ -227,7 +227,7 @@ signedOverflow = signedOverflow &- 1
 
 符号付き整数と符号なし整数の両方で、正の方向のオーバーフローは有効な整数値の最大値から最小値に巻き戻り、負の方向のオーバーフローは最小値から最大値に巻き戻ります。
 
-## Precedence and Associativity\(優先順位と結合規則\)
+## <a id="#precedence-and-associativity">Precedence and Associativity\(優先順位と結合規則\)</a>
 
 演算子の*優先順位*により、一部の演算子は他の演算子よりも優先されます。これらの演算子は最初に適用されます。
 
@@ -273,7 +273,7 @@ signedOverflow = signedOverflow &- 1
 > NOTE  
 > Swift の演算子の優先順位と結合規則は、C 言語や Objective-C のものよりもシンプルで結果が予測しやすくなっています。ただし、これは、C 言語ベースの言語とまったく同じではないことを意味します。既存のコードを Swift に移植するときは、演算子の作用が意図したとおりに動作するかを確認してください。
 
-## Operator Methods\(演算子メソッド\)
+## <a id="advanced-operators-operator-methods">Operator Methods\(演算子メソッド\)</a>
 
 クラスと構造体は、既存の演算子に独自の実装を提供できます。これは、既存の演算子のオーバーロードとして呼ばれています。
 
@@ -310,7 +310,7 @@ let combinedVector = vector + anotherVector
 
 ![Vector2Dの加算](../.gitbook/assets/vectorAddition_2x.png)
 
-### Prefix and Postfix Operators\(前置、後置演算子\)
+### <a id="prefix-and-postfix-operators">Prefix and Postfix Operators\(前置、後置演算子\)</a>
 
 上記の例は、2 進数の中置演算子の独自実装を示しています。クラスと構造体は、単項演算子の実装を提供することもできます。単項演算子は、単一のターゲットで動作します。ターゲットの前にある場合はプレフィックス\(`-a` など\)で、ターゲットの後にある場合は後置演算子\(`b!` など\)です。
 
@@ -336,7 +336,7 @@ let alsoPositive = -negative
 // alsoPositive は、値が (3.0, 4.0) の Vector2D インスタンスです。
 ```
 
-### Compound Assignment Operators\(複合代入演算子\)
+### <a id="advanced-operators-compound-assignment-operators">Compound Assignment Operators\(複合代入演算子\)</a>
 
 *複合代入演算子*は、代入\(`=`\)と別の演算子を組み合わせます。例えば、加算代入演算子\(`+=`\)は、加算と代入を 1 つの演算に結合します。パラメータの値は演算子メソッド内から直接変更されるため、複合代入演算子の左側の入力パラメータ型を `inout` としてマークします。
 
@@ -362,7 +362,7 @@ original += vectorToAdd
 > NOTE  
 > デフォルトの代入演算子\(`=`\)をオーバーロードすることはできません。複合代入演算子のみをオーバーロードできます。同様に、三項条件演算子\(`a ? b : c`\)はオーバーロードできません。
 
-### Equivalence Operators\(等価演算子\)
+### <a id="equivalence-operators">Equivalence Operators\(等価演算子\)</a>
 
 デフォルトでは、独自のクラスと構造体には、等価演算子\(`==`\)および不等価演算子\(`!=`\)として知られる等価演算子の実装がありません。通常は `==` 演算子を実装し、標準ライブラリの `==` 演算子の結果を否定する `!=` 演算子のデフォルト実装を使用します。`==` 演算子を実装するには 2 つの方法があります。自分で実装するか、多くの型の場合、Swift に実装を合成するよう依頼することができます。どちらの場合も、標準ライブラリの `Equatable` プロトコルに準拠を追加します。
 
@@ -389,11 +389,11 @@ if twoThree == anotherTwoThree {
 // These two vectors are equivalent.
 ```
 
-多くのシンプルなケースでは、Swift の等価演算子のデフォルト実装を使用できます\(<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#adopting-a-protocol-using-a-synthesized-implementationdeforutowoshitapurotokoru" target="_self">Adopting a Protocol Using a Synthesized Implementation(デフォルト実装を使用したプロトコル準拠)</a>で説明されています\)。
+多くのシンプルなケースでは、Swift の等価演算子のデフォルト実装を使用できます\(<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#adopting-a-protocol-using-a-synthesized-implementation" target="_self">Adopting a Protocol Using a Synthesized Implementation(デフォルト実装を使用したプロトコル準拠)</a>で説明されています\)。
 
-## Custom Operators\(カスタム演算子\)
+## <a id="custom-operators">Custom Operators\(カスタム演算子\)</a>
 
-Swift が提供する標準演算子に加えて、独自の演算子を宣言して実装できます。カスタム演算子の定義に使用できる文字のリストについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/lexical-structure#operators-yan-suan-zi" target="_self">Operators(演算子)</a>を参照ください。
+Swift が提供する標準演算子に加えて、独自の演算子を宣言して実装できます。カスタム演算子の定義に使用できる文字のリストについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/lexical-structure#operators" target="_self">Operators(演算子)</a>を参照ください。
 
 新しい演算子は、`operator` キーワードを使用してグローバルレベルで宣言され、`prefix`、`infix` または `postfix` 修飾子でマークされます。
 
@@ -417,9 +417,9 @@ let afterDoubling = +++toBeDoubled
 // afterDoubling も (2.0, 8.0) です
 ```
 
-### Precedence for Custom Infix Operators\(カスタム中置演算子の優先順位\)
+### <a id="precedence-for-custom-infix-operators">Precedence for Custom Infix Operators\(カスタム中置演算子の優先順位\)</a>
 
-カスタム中置演算子は、それぞれある*優先順位グループ*に属します。優先順位グループは、他の中置演算子に対する演算子の優先順位および結合規則を指定します。これらの特性が、中置演算子と他の中置演算子との間でどのように影響するかについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#precedence-and-associativityto" target="_self">Precedence and Associativity(優先順位と結合規則)</a>を参照ください。
+カスタム中置演算子は、それぞれある*優先順位グループ*に属します。優先順位グループは、他の中置演算子に対する演算子の優先順位および結合規則を指定します。これらの特性が、中置演算子と他の中置演算子との間でどのように影響するかについては、<a href="#precedence-and-associativity" target="_self">Precedence and Associativity(優先順位と結合規則)</a>を参照ください。
 
 優先順位グループに明示的に配置されていないカスタム中置演算子には、三項条件演算子の優先順位よりも 1 つ高い優先順位を持つデフォルトの優先順位グループが与えられます。
 
@@ -438,12 +438,12 @@ let plusMinusVector = firstVector +- secondVector
 // plusMinusVector は、値が (4.0, -2.0) の Vector2D インスタンスです
 ```
 
-この演算子は、2 つのベクトルの `x` 値を加算し、最初のベクトルから 2 番目のベクトルの `y` 値を減算します。これは本質的に「加算」演算子のため、`+` や `-` などの加算中置演算子と同じ優先順位グループが与えられています。演算子の優先順位グループと結合規則設定の完全なリストを含む、Swift 標準ライブラリによって提供される演算子については、[Operator Declarations(演算子宣言)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。優先順位グループの詳細と、独自の演算子と優先順位グループを定義するための構文については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#operator-declaration-yan-suan-zi-xuan-yan" target="_self">Operator Declarations(演算子の宣言)</a>を参照ください。
+この演算子は、2 つのベクトルの `x` 値を加算し、最初のベクトルから 2 番目のベクトルの `y` 値を減算します。これは本質的に「加算」演算子のため、`+` や `-` などの加算中置演算子と同じ優先順位グループが与えられています。演算子の優先順位グループと結合規則設定の完全なリストを含む、Swift 標準ライブラリによって提供される演算子については、[Operator Declarations(演算子宣言)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。優先順位グループの詳細と、独自の演算子と優先順位グループを定義するための構文については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#operator-declaration" target="_self">Operator Declarations(演算子の宣言)</a>を参照ください。
 
 > NOTE  
 > 前置または後置演算子を定義するときは、優先順位を指定しません。ただし、前置と後置演算子の両方を同じオペランドに適用すると、後置演算子が最初に適用されます。
 
-## Result Builders\(リザルトビルダ\)
+## <a id="result-builders">Result Builders\(リザルトビルダ\)</a>
 
 *リザルトビルダ*は、リストやツリーなどのネストデータを自然な宣言的な方法で作成するための構文を追加する、ユーザ定義の型です。リザルトビルダを使用するコードには、条件または繰り返しのデータを処理するために、`if` や `for` などの通常の Swift 構文を含めることができます。
 
