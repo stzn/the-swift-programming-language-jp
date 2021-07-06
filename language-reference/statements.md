@@ -44,7 +44,7 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 > GRAMMAR OF A FOR-IN STATEMENT  
 > for-in-statement → `for` `case`<sub>*opt*</sub> [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)  `in` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  [where-clause](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_where-clause)<sub>*opt*</sub> [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
 
-### <a id="while-statement">While Statement(While 文)</a>
+### <a id="while-statement">While Statement\(While 文\)</a>
 
 `while` 文は、条件が true な限り、コードブロックを繰り返し実行できます。
 
@@ -127,7 +127,7 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 > if-statement → `if` [condition-list](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_condition-list)  [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  [else-clause](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_else-clause)<sub>*opt*</sub>  
 > else-clause → `else` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block) \|  `else` [if-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_if-statement)
 
-### <a id="guard-statement">Guard Statement(Guard 文)</a>
+### <a id="guard-statement">Guard Statement\(Guard 文\)</a>
 
 `guard` 文は、1 つ以上の条件が満たされない場合に、プログラム制御をスコープ外に転送するために使用されます。
 
@@ -151,7 +151,7 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 > GRAMMAR OF A GUARD STATEMENT  
 > guard-statement → `guard` [condition-list](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_condition-list)  `else` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
 
-### <a id="switch-statement">Switch Statement(Switch 文)</a>
+### <a id="switch-statement">Switch Statement\(Switch 文\)</a>
 
 `switch` 文を使用すると、制御式の値に応じて特定のコードブロックを実行できます。
 
@@ -181,7 +181,7 @@ case let (x, y) where x == y:
 
 Swift では、制御式の型が取り得る全ての値は、ケースの内少なくとも 1 つのパターンと一致する必要があります。これが不可能な場合(例えば、制御式の型が `Int` の場合)、要件を満たすためにデフォルトのケースを含めることができます。
 
-#### <a id="switching-over-future-enumeration-cases">Switching Over Future Enumeration Cases(列挙型の将来のケースのスイッチング)</a>
+#### <a id="switching-over-future-enumeration-cases">Switching Over Future Enumeration Cases\(列挙型の将来のケースのスイッチング\)</a>
 
 ---
 
@@ -256,7 +256,7 @@ case .suppressed:
 > control-transfer-statement → [return-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_return-statement)  
 > control-transfer-statement → [throw-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_throw-statement)
 
-### <a id="break-statement">Break Statement(Break 文)</a>
+### <a id="break-statement">Break Statement\(Break 文\)</a>
 
 `break` 文は、ループ、`if` 文、または `switch` 文のプログラムの実行を終了します。下記に示すように、`break` 文は、`break` キーワードのみで構成することも、`break` キーワードの後に文ラベルを続けることもできます。
 
@@ -273,7 +273,7 @@ case .suppressed:
 > GRAMMAR OF A BREAK STATEMENT  
 > break-statement → `break` [label-name](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_label-name)<sub>*opt*</sub>
 
-### <a id="continue-statement">Continue Statement(Continue 文)</a>
+### <a id="continue-statement">Continue Statement\(Continue 文\)</a>
 
 `continue` 文は、ループ文の現在のイテレーションを終了しますが、ループ文の実行を停止しません。次に示すように、`continue` 文は `continue` キーワードのみで構成することも、`continue` キーワードとそれに続く文ラベルで構成することもできます。
 
@@ -292,7 +292,7 @@ case .suppressed:
 > GRAMMAR OF A CONTINUE STATEMENT  
 > continue-statement → `continue` [label-name](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_label-name)<sub>*opt*</sub>
 
-### <a id="fallthrough-statement">Fallthrough Statement(Fallthrough 文)</a>
+### <a id="fallthrough-statement">Fallthrough Statement\(Fallthrough 文\)</a>
 
 `fallthrough` 文は `fallthrough` キーワードで構成され、`switch` 文のケースブロックでのみ発生します。`fallthrough` 文により、プログラムの実行は、`switch` 文の 1 つのケースから次のケースに続行します。ケースラベルのパターンが `switch` 文の制御式の値と一致しない場合でも、プログラムの実行は次のケースに進みます。
 
@@ -321,7 +321,7 @@ case .suppressed:
 > GRAMMAR OF A RETURN STATEMENT  
 > return-statement → `return` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)<sub>*opt*</sub>
 
-### <a id="throw-statement">Throw Statement(Throw 文)</a>
+### <a id="throw-statement">Throw Statement\(Throw 文\)</a>
 
 `throw` 文は、エラーをスローする関数またはメソッドの本文、または型が `throws` キーワードでマークされているクロージャ式の本文で使用できます。
 
@@ -338,7 +338,7 @@ case .suppressed:
 > GRAMMAR OF A THROW STATEMENT  
 > throw-statement → `throw` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
 
-## <a id="defer-statement">Defer Statement(Defer 文)</a>
+## <a id="defer-statement">Defer Statement\(Defer 文\)</a>
 
 `defer` 文は、`defer` 文が使用されるスコープ外にプログラム制御を転送する直前にコードを実行するために使用されます。
 
@@ -367,7 +367,7 @@ f()
 > GRAMMAR OF A DEFER STATEMENT  
 > defer-statement → `defer` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
 
-## <a id="do-statement">Do Statement(Do 文)</a>
+## <a id="do-statement">Do Statement\(Do 文\)</a>
 
 `do` 文は、新しいスコープを導入するために使用され、1 つ以上の `catch` 句を含めることができます。これには、定義されたエラー条件に一致するパターンが含まれます。`do` 文のスコープで宣言された変数と定数は、そのスコープ内でのみアクセスできます。
 
@@ -394,7 +394,7 @@ Swift の `do` 文は、コードブロックを区切るために使用され�
 > catch-pattern-list → [catch-pattern](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_catch-pattern) \|  [catch-pattern](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_catch-pattern)  `,` [catch-pattern-list](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_catch-pattern-list)  
 > catch-pattern → [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)  [where-clause](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_where-clause)<sub>*opt*</sub>
 
-## <a id="compiler-control-statements">Compiler Control Statements(コンパイラ制御文)</a>
+## <a id="compiler-control-statements">Compiler Control Statements\(コンパイラ制御文\)</a>
 
 コンパイラ制御文を使用すると、プログラムはコンパイラの動作を変更できます。Swift には、3 つのコンパイラ制御文があります。条件付きコンパイルブロックと、行制御文と、コンパイル時診断文です。
 
@@ -403,7 +403,7 @@ Swift の `do` 文は、コードブロックを区切るために使用され�
 > compiler-control-statement → [line-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_line-control-statement)  
 > compiler-control-statement → [diagnostic-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_diagnostic-statement)
 
-### <a id="conditional-compilation-block">Conditional Compilation Block(条件付きコンパイルブロック)</a>
+### <a id="conditional-compilation-block">Conditional Compilation Block\(条件付きコンパイルブロック\)</a>
 
 条件付きコンパイルブロックを使用すると、1 つ以上のコンパイル条件の値に応じてコードを条件付きでコンパイルできます。
 
@@ -487,7 +487,7 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 > module-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
 > environment → `simulator` \|  `macCatalyst`
 
-### <a id="line-control-statement">Line Control Statement(行制御文)</a>
+### <a id="line-control-statement">Line Control Statement\(行制御文\)</a>
 
 行制御文は、コンパイルされるソースコードの行番号およびファイル名とは異なる可能性のある行番号およびファイル名を指定するために使用されます。行制御文を使用して、診断およびデバッグの目的で Swift が使用するソースコードの場所を変更します。
 
@@ -505,7 +505,7 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 > line-number → 0 以上の 10進整数  
 > file-path → [static-string-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_static-string-literal)
 
-### <a id="compile-time-diagnostic-statement">Compile-Time Diagnostic Statement(コンパイル時診断文)</a>
+### <a id="compile-time-diagnostic-statement">Compile-Time Diagnostic Statement\(コンパイル時診断文\)</a>
 
 コンパイル時診断文により、コンパイラはコンパイル中にエラーまたは警告を発行します。コンパイル時診断文の形式は次のとおりです:
 
@@ -518,7 +518,7 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 > diagnostic-statement → `#warning` `(` [diagnostic-message](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_diagnostic-message)  `)`  
 > diagnostic-message → [static-string-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_static-string-literal)
 
-## <a id="availability-condition">Availability Condition(アベイラビリティ条件)</a>
+## <a id="availability-condition">Availability Condition\(アベイラビリティ条件\)</a>
 
 *availability 条件*は、`if`、`while`、および `guard` 文の条件として使用され、指定されたプラットフォームの引数に基づいて、実行時に API が使用可能かどうかを検証します。
 
