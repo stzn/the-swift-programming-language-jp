@@ -4,7 +4,7 @@
 
 戻り値に不透明な型(以下*Opaque 型*)を持つ関数またはメソッドは、その戻り値の型情報を隠します。関数の戻り値の型として具体的な型を提供する代わりに、準拠するプロトコルの観点から戻り値を記述します。型情報を隠すことで、戻り値の基になる型を private のままにすることができるため、モジュールとモジュールを呼び出すコードの間に境界を設けることに役立ちます。プロトコル型の値を返すのとは異なり、Opaque 型は具体的な型情報を保持し続けます。コンパイラは型情報にアクセスできますが、モジュールのクライアントはアクセスできません。
 
-## <a id="the-problem-that-opaque-types-solve">The Problem That Opaque Types Solve(Opaque 型が解決する問題)</a>
+## <a id="the-problem-that-opaque-types-solve">The Problem That Opaque Types Solve\(Opaque 型が解決する問題\)</a>
 
 例えば、ASCII アートを描画するモジュールを作成しているとします。ASCII アートの基本的な特徴は、その文字列表現を返す `draw()` 関数です。これは、`Shape` プロトコルの要件として使用されています:
 
