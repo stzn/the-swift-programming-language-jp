@@ -77,7 +77,7 @@ sum = (try someThrowingFunction()) + anotherThrowingFunction()
 > GRAMMAR OF A TRY EXPRESSION  
 > try-operator → `try` \|  `try` `?` \|  `try` `!`
 
-### <a id="await-operator">Await Operator(Await 演算子)</a>
+### <a id="await-operator">Await Operator\(Await 演算子\)</a>
 
 *await 式*は、`await` 演算子の後に非同期関数の結果を返す式が続けて構成されます。形式は次のとおりです:
 
