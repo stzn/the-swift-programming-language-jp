@@ -11,8 +11,8 @@
 
 * Swift 5.4 に更新しました
 * <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#result-builders" target="_self">Result Builders(リザルトビルダ)</a>と<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/attributes#resultbuilder" target="_self">resultBuilder</a>セクションに、リザルトビルダについての情報を追加しました
-* <a href="#implicit-conversion-to-a-pointer-type" target="_self">Implicit Conversion to a Pointer Type(ポインタ型への暗黙変換)</a>セクションに、関数呼び出しの中で in-out パラメータを unsafe pointer に暗黙的に変換する方法についての情報を追加しました
-* <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#variadic-parameters" target="_self">Variadic Parameters(可変長パラメータ)</a>と<a href="#function-declaration" target="_self">Function Declaration(関数宣言)</a>セクションを更新しました。関数は複数の可変長パラメータを受け取ることができるようになりました
+* <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/expressions#implicit-conversion-to-a-pointer-type" target="_self">Implicit Conversion to a Pointer Type(ポインタ型への暗黙変換)</a>セクションに、関数呼び出しの中で in-out パラメータを unsafe pointer に暗黙的に変換する方法についての情報を追加しました
+* <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#variadic-parameters" target="_self">Variadic Parameters(可変長パラメータ)</a>と<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#function-declaration" target="_self">Function Declaration(関数宣言)</a>セクションを更新しました。関数は複数の可変長パラメータを受け取ることができるようになりました
 * <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/expressions#implicit-member-expression" target="_self">Implicit Member Expression(暗黙メンバ式)</a>セクションを更新しました。暗黙メンバ式を繋げて使えるようになりました
 
 ## 2020-09-16
@@ -150,7 +150,7 @@
 * [Attributes(属性)](./../language-reference/attributes.md)の章を更新して、`@IBAction`、`@IBOutlet`、および `@NSManaged` 属性は `@objc` 属性を暗黙的に含んでいることを記載しました
 * <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/attributes#declaration-attributes" target="_self">Declaration Attributes(宣言属性)</a>セクションに、`@GKInspectable` 属性についての情報を追加しました
 * <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#optional-protocol-requirements" target="_self">Optional Protocol Requirements(オプショナルのプロトコル要件)</a>のオプショナルのプロトコル要件の説明を更新し、Objective-C と相互運用されるコードでのみ使用できることを明確にしました
-* <a href="#function-declaration" target="_self">Function Declaration(関数宣言)</a>セクションから、関数パラメータを使用して明示的に `let` を使用することの説明を削除しました
+* <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#function-declaration" target="_self">Function Declaration(関数宣言)</a>セクションから、関数パラメータを使用して明示的に `let` を使用することの説明を削除しました
 * [Statement(文)](./../language-reference/statements.md)の章から `Boolean` プロトコルの説明を削除しました。このプロトコルは Swift 標準ライブラリから削除されました
 * <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/attributes#declaration-attributes" target="_self">Declaration Attributes(宣言属性)</a>セクションの `@NSApplicationMain` 属性の説明を修正しました
 
