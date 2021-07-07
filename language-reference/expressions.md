@@ -10,7 +10,7 @@ Swift では、前置式、バイナリ式、基本式、後置式の 4 種類�
 > expression → [try-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_try-operator)_opt_ [prefix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression) [binary-expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_binary-expressions)_opt_  
 > expression-list → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) \| [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `,` [expression-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression-list)
 
-## Prefix Expressions\(前置式\)
+## 前置式\(Prefix Expressions\)
 
 前置式は、式と任意の前置演算子を組み合わせます。前置演算子は 1 つの引数を受け取り、その後に式が続きます。
 
@@ -22,7 +22,7 @@ Swift 標準ライブラリによって提供されている演算子につい�
 > prefix-expression → [prefix-operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_prefix-operator)_opt_ [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  
 > prefix-expression → [in-out-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_in-out-expression)
 
-### In-Out Expression\(In-Out 式\)
+### In-Out 式\(In-Out Expression\)
 
 in-out 式は、関数呼び出し式に in-out パラメータとして渡された変数にマークをします。
 
@@ -35,7 +35,7 @@ in-out 式は、[Implicit Conversion to a Pointer Type\(ポインタ型への暗
 > GRAMMAR OF AN IN-OUT EXPRESSION  
 > in-out-expression → `&` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
-### [Try Operator\(Try 演算子\)](expressions.md) <a id="try-operator"></a>
+### <a id="try-operator">Try 演算子\(Try Operator\)</a>
 
 _Try 演算子_は、`try` 演算子の後にエラーをスローできる式が続く形で構成されます。形式は次のとおりです:
 
@@ -77,7 +77,7 @@ sum = (try someThrowingFunction()) + anotherThrowingFunction()
 > GRAMMAR OF A TRY EXPRESSION  
 > try-operator → `try` \| `try` `?` \| `try` `!`
 
-### [Await Operator\(Await 演算子\)](expressions.md) <a id="await-operator"></a>
+### <a id="await-operator">Await 演算子\(Await Operator\)</a>
 
 _await 式_は、`await` 演算子の後に非同期関数の結果を返す式が続けて構成されます。形式は次のとおりです:
 
@@ -109,7 +109,7 @@ sum = (await someAsyncFunction()) + anotherAsyncFunction()
 > GRAMMAR OF AN AWAIT EXPRESSION  
 > _await-operator_ → `await`
 
-## Binary Expressions\(バイナリ式\)
+## バイナリ式\(Binary Expressions\)
 
 _バイナリ式_は、左右の引数を受け取る式と中置バイナリ演算子を組み合わせます。形式は次のとおりです:
 
@@ -129,7 +129,7 @@ _バイナリ式_は、左右の引数を受け取る式と中置バイナリ演
 > binary-expression → [type-casting-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_type-casting-operator)  
 > binary-expressions → [binary-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_binary-expression) [binary-expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_binary-expressions)_opt_
 
-### Assignment Operator\(代入演算子\)
+### 代入演算子\(Assignment Operator\)
 
 代入演算子は特定の式に新しい値を設定します。形式は次のとおりです:
 
@@ -147,7 +147,7 @@ value を評価した結果得られた値が expression に設定されます�
 > GRAMMAR OF AN asSIGNMENT OPERATOR  
 > assignment-operator → `=`
 
-### Ternary Conditional Operator\(三項条件演算子\)
+### 三項条件演算子\(Ternary Conditional Operator\)
 
 三項条件演算子は、条件の値に基づいて、2 つの値のうちの 1 つに評価されます。形式は次のとおりです:
 
@@ -201,7 +201,7 @@ f(x as Any)
 > type-casting-operator → `as` `?` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
 > type-casting-operator → `as` `!` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
 
-## Primary Expressions\(基本式\)
+## 基本式\(Primary Expressions\)
 
 基本式は最も基本的な種類の式です。それらは自身を式として使用したり、他のトークンと組み合わせたり、前置式、バイナリ式、および後置式を作成することができます。
 
@@ -219,7 +219,7 @@ f(x as Any)
 > primary-expression → [selector-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_selector-expression)  
 > primary-expression → [key-path-string-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-string-expression)
 
-### [Literal Expression\(リテラル式\)](expressions.md) <a id="literal-expression"></a>
+### <a id="literal-expression">リテラル式\(Literal Expression\)</a>
 
 リテラル式は、通常のリテラル\(文字列や数など\)、配列または辞書リテラル、playground リテラル、または下記の特別なリテラルのいずれかで構成されます。
 
@@ -292,7 +292,7 @@ Xcode の playground リテラルの使用方法については、Xcode ヘル�
 > playground-literal → `#fileLiteral` `(` `resourceName` `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `)`  
 > playground-literal → `#imageLiteral` `(` `resourceName` `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `)`
 
-### Self Expression\(self式\)
+### self 式\(Self Expression\)
 
 `self` 式は、それが使用さえている現在の型またはインスタンスへの明示的な参照です。形式は次のとおりです:
 
@@ -328,7 +328,7 @@ struct Point {
 > self-subscript-expression → `self` `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list) `]`  
 > self-initializer-expression → `self` `.` `init`
 
-### Superclass Expression\(スーパークラス式\)
+### スーパークラス式\(Superclass Expression\)
 
 _スーパークラス式_は、クラスがスーパークラスとやり取りすることを可能にします。次のいずれかの形式があります:
 
@@ -344,7 +344,7 @@ _スーパークラス式_は、クラスがスーパークラスとやり取り
 > superclass-subscript-expression → `super` `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list) `]`  
 > superclass-initializer-expression → `super` `.` `init`
 
-### Closure Expression\(クロージャ式\)
+### クロージャ式\(Closure Expression\)
 
 _クロージャ式_は、他のプログラミング言語では、_ラムダ_または_匿名関数_とも呼ばれているクロージャを作成します。関数宣言のように、クロージャには文が含まれており、その囲まれている範囲から定数と変数をキャプチャします。形式は次のとおりです:
 
@@ -378,7 +378,9 @@ myFunction { $0 + $1 }
 
 クロージャ式は、関数呼び出しの一部としてすぐにクロージャを使用するときなど、可変または定数に格納されることなく使用できます。上記のコードの `myFunction` に渡されたクロージャ式は、即時に使用される例です。その結果、クロージャ式がエスケープか非エスケープかは、式の周囲のコンテキストによって異なります。クロージャ式は、即時に呼ばれるか、非エスケープ関数の引数として渡されると、非エスケープです。それ以外の場合、クロージャ式はエスケープです。
 
-クロージャのエスケープの詳細については、[Escaping Closures\(エスケープクロージャ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#escaping-closures)を参照ください。
+クロージャのエスケープの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#escaping-closures" target="_self">Escaping Closures(エスケープクロージャ)</a>を参照ください。
+
+#### <a id="capture-lists">キャプチャリスト\(Capture Lists\)</a>
 
 #### [Capture Lists\(キャプチャリスト\)](expressions.md) <a id="capture-lists"></a>
 
@@ -456,7 +458,7 @@ myFunction { [weak parent = self.parent] in print(parent!.title) }
 > capture-list-item → [capture-specifier](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-specifier)_opt_ [self-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-expression)  
 > capture-specifier → `weak` \| `unowned` \| `unowned(safe)` \| `unowned(unsafe)`
 
-### [Implicit Member Expression\(暗黙メンバ式\)](expressions.md) <a id="implicit-member-expression"></a>
+### <a id="implicit-member-expression">暗黙メンバ式\(Implicit Member Expression\)</a>
 
 _暗黙メンバ式_は、型推論によって暗黙的に型を決定できるコンテキストにおいて、列挙ケースや型メソッドなどの型のメンバにアクセスするための省略記法です。形式は次のとおりです:
 
@@ -498,14 +500,14 @@ let z: SomeClass = .sharedSubclass
 > GRAMMAR OF A IMPLICIT MEMBER EXPRESSION  
 > implicit-member-expression → `.` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
-### Parenthesized Expression\(括弧で囲まれた式\)
+### 括弧で囲まれた式\(Parenthesized Expression\)
 
 _括弧で囲まれた式_は、括弧で囲まれた式で構成されます。式を明示的にグループ化することで、括弧を使用して操作の優先順位を指定できます。括弧のグループ化は式の型を変更しません\(例：`(1)` はただの `Int` です。
 
 > GRAMMAR OF A PARENTHESIZED EXPRESSION  
 > parenthesized-expression → `(` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `)`
 
-### Tuple Expression\(タプル式\)
+### タプル式\(Tuple Expression\)
 
 タプル式は、括弧で囲まれた式のカンマ区切りのリストで構成されています。各式は、コロン\(`:`\)で区切られ、その前に識別子を指定することもできます。形式は次のとおりです:
 
@@ -523,7 +525,7 @@ _タプル式_の各識別子は、タプル式の範囲内で一意な必要が
 > tuple-element-list → [tuple-element](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element) \| [tuple-element](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element) `,` [tuple-element-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element-list)  
 > tuple-element → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) \| [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
 
-### Wildcard Expression\(ワイルドカード式\)
+### ワイルドカード式\(Wildcard Expression\)
 
 ワイルドカード式は、代入中に値を明示的に無視するために使用されます。例えば、次の代入式 `10` は `x` に代入されますが、`20` は無視されています:
 
@@ -535,7 +537,7 @@ _タプル式_の各識別子は、タプル式の範囲内で一意な必要が
 > GRAMMAR OF A WILDCARD EXPRESSION  
 > wildcard-expression → `_`
 
-### [Key-Path Expression\(Key-Path 式\)](expressions.md) <a id="keypath-expression"></a>
+### <a id="keypath-expression">Key-Path 式\(Key-Path Expression\)</a>
 
 _key-path 式_は、型のプロパティまたは subscript を参照します。key-value observing などのような、動的プログラミングのタスクで key-path 式を使用します。次の形式があります:
 
@@ -703,7 +705,7 @@ Objective-C API とやり取りするコード内のキーパスの使用方法�
 > key-path-postfixes → [key-path-postfix](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfix) [key-path-postfixes](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes)_opt_  
 > key-path-postfix → `?` \| `!` \| `self` \| `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list) `]`
 
-### [Selector Expression\(Selector 式\)](expressions.md) <a id="selector-expression"></a>
+### <a id="selector-expression">Selector 式\(Selector Expression\)</a>
 
 セレクタ式を使用すると、Objective-C のメソッドまたはプロパティの get や set を参照するために使用されるセレクタにアクセスできます。形式は次のとおりです:
 
@@ -750,7 +752,7 @@ Objective-C API とやり取りする Swift コードでセレクタを使用す
 > selector-expression → `#selector` `(` `getter:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `)`  
 > selector-expression → `#selector` `(` `setter:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `)`
 
-### Key-Path String Expression\(Key-Path文字列式\)
+### Key-Path 文字列式\(Key-Path String Expression\)
 
 key-path 文字列式を使用すると、Key-Value Coding や Key-Value Observing API で使用するために、Objective-C のプロパティを参照するための文字列にアクセスできます。形式は次のとおりです:
 
@@ -797,7 +799,7 @@ Objective-C API とやり取りする Swift コードで key-path を使用す�
 > GRAMMAR OF A KEY-PATH STRING EXPRESSION  
 > key-path-string-expression → `#keyPath` `(` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `)`
 
-## [Postfix Expressions\(後置式\)](expressions.md) <a id="postfix-expressions"></a>
+## <a id="postfix-expressions">後置式\(Postfix Expressions\)</a>
 
 _後置式_は、後置演算子またはその他の後置構文を式に適用することによって形成されます。構文的には、全ての基本式も後置式です。
 
@@ -816,7 +818,7 @@ Swift 標準ライブラリによって提供されている演算子につい�
 > postfix-expression → [forced-value-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_forced-value-expression)  
 > postfix-expression → [optional-chaining-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_optional-chaining-expression)
 
-### [Function Call Expression\(関数呼び出し式\)](expressions.md) <a id="function-call-expression"></a>
+### <a id="function-call-expression">関数呼び出し式\(Function Call Expression\)</a>
 
 _関数呼び出し式_は、関数名とそれに続く関数の引数のカンマ区切りのリストからなる関数名で構成されています。関数呼び出し式は形式は次のとおりです:
 
@@ -886,7 +888,9 @@ someFunction { return $0 } secondClosure: { return $0 }  // "10 20"
 
 上記の例では、"Ambiguous"とマークされている関数の呼び出しは"- 120"が出力され、Swift 5.3 ではコンパイラが警告を生成します。それ以降の Swift のバージョンでは "110 -"が出力されます。
 
-クラス、構造体、または列挙型は、[Methods with Special Names\(特別な名前のメソッド\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#methods-with-special-names)で説明されているような、いくつかのメソッドの 1 つを宣言することで、関数呼び出しの糖衣構文\(シンタックスシュガー\)を使うことができます。
+クラス、構造体、または列挙型は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#methods-with-special-names" target="_self">Methods with Special Names(特別な名前のメソッド)</a>で説明されているような、いくつかのメソッドの 1 つを宣言することで、関数呼び出しの糖衣構文(シンタックスシュガー)を使うことができます。
+
+#### <a id="implicit-conversion-to-a-pointer-type">ポインタ型への暗黙変換\(Implicit Conversion to a Pointer Type\)</a>
 
 #### [Implicit Conversion to a Pointer Type\(ポインタ型への暗黙変換\)](expressions.md) <a id="implicit-conversion-to-a-pointer-type"></a>
 
@@ -927,7 +931,7 @@ withUnsafePointer(to: myNumber) { unsafeFunction(pointer: $0) }
 > labeled-trailing-closures → [labeled-trailing-closure](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_labeled-trailing-closure) [labeled-trailing-closures](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_labeled-trailing-closures)_opt_  
 > labeled-trailing-closure → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) `:` [closure-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-expression)
 
-### [Initializer Expression\(イニシャライザ式\)](expressions.md) <a id="initializer-expression"></a>
+### <a id="initializer-expression">イニシャライザ式\(Initializer Expression\)</a>
 
 _イニシャライザ式_は型のイニシャライザへアクセスします。形式は次のとおりです:
 
@@ -968,7 +972,7 @@ let s4 = type(of: someValue)(data: 5)       // エラー
 > initializer-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) `.` `init`  
 > initializer-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) `.` `init` `(` [argument-names](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names) `)`
 
-### [Explicit Member Expression\(明示的メンバ式\)](expressions.md) <a id="explicit-member-expression"></a>
+### <a id="explicit-member-expression">明示的メンバ式\(Explicit Member Expression\)</a>
 
 _明示的メンバ式_では、名前付き型、タプル、またはモジュールのメンバへアクセスできます。アイテムとそのメンバの識別子の間のピリオド\(`.`\)で構成されています。
 
@@ -1031,7 +1035,7 @@ let x = [10, 3, 20, 15, 4]
 > argument-names → [argument-name](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-name) [argument-names](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names)_opt_  
 > argument-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) `:`
 
-### Postfix Self Expression\(後置 self 式\)
+### 後置 self 式\(Postfix Self Expression\)
 
 後置 `self` 式は、型や式の直後に `.self` を付けて構成します。次の形式があります:
 
@@ -1044,7 +1048,7 @@ let x = [10, 3, 20, 15, 4]
 > GRAMMAR OF A POSTFIX SELF EXPRESSION  
 > postfix-self-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) `.` `self`
 
-### Subscript Expression\(subscript 式\)
+### subscript 式\(Subscript Expression\)
 
 _subscript 式_は、対応する subscript 宣言の get と set を使用して subscript へのアクセスすることができます。形式は次のとおりです:
 
@@ -1057,7 +1061,7 @@ subscript 宣言については、[Protocol Subscript Declaration\(プロトコ�
 > GRAMMAR OF A SUBSCRIPT EXPRESSION  
 > subscript-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list) `]`
 
-### Forced-Value Expression\(強制アンラップ式\)
+### 強制アンラップ式\(Forced-Value Expression\)
 
 _強制アンラップ式_は、特定の値が `nil` ではないオプショナルの値を表します。形式は次のとおりです:
 
@@ -1080,7 +1084,7 @@ someDictionary["a"]![0] = 100
 > GRAMMAR OF A FORCED-VALUE EXPRESSION  
 > forced-value-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) `!`
 
-### [Optional-Chaining Expression\(オプショナルチェーン式\)](expressions.md) <a id="optional-chaining-expression"></a>
+### <a id="optional-chaining-expression">オプショナルチェーン式\(Optional-Chaining Expression\)</a>
 
 _オプショナルチェーン式_は後置式で、オプショナルの値を使用するための簡単な構文を提供します。形式は次のとおりです:
 

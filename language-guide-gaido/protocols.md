@@ -6,7 +6,7 @@ _プロトコル_は、特定のタスクまたは機能に準拠するメソッ
 
 プロトコルは、準拠する型が実装する必要がある要件を指定することに加えて、プロトコルを拡張して、これらの要件の一部を実装したり、準拠する型が利用できる追加機能を実装できます。
 
-## Protocol Syntax\(プロトコル構文\)
+## プロトコル構文\(Protocol Syntax\)
 
 クラス、構造体、および列挙型と非常によく似た方法でプロトコルを定義します:
 
@@ -32,7 +32,7 @@ class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
 }
 ```
 
-## [Property Requirements\(プロパティ要件\)](protocols.md) <a id="property-requirements"></a>
+## <a id="property-requirements">プロパティ要件\(Property Requirements\)</a>
 
 プロトコルは、特定の名前と型のインスタンスプロパティまたは型プロパティを要件にできます。プロトコルでは、格納プロパティか計算プロパティかを指定しません。必要なプロパティの名前と型を指定するだけです。また、プロトコルは、各プロパティが get のみか、get/set どちらも必要かどうかも指定します。
 
@@ -99,7 +99,7 @@ var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
 
 このクラスは、宇宙船の読み取り専用計算プロパティとして `fullName` プロパティを実装します。各 `Starship` クラスのインスタンスは、必須の `name` とオプショナルの `prefix` を格納します。`fullName` プロパティは、プレフィックス値が存在する場合はそれを使用し、名前の先頭に追加して宇宙船のフルネームを作成します。
 
-## [Method Requirements\(メソッド要件\)](protocols.md) <a id="method-requirements"></a>
+## <a id="method-requirements">メソッド要件\(Method Requirements\)</a>
 
 プロトコルはインスタンスメソッドと型メソッドを要件にすることもできます。これらのメソッドは、通常のインスタンスおよび型メソッドとまったく同じ方法でプロトコルの定義の一部として記述されますが、中括弧\(`{}`\)やメソッド本文はありません。通常のメソッドと同じ規則に従って、可変長パラメータを使用できます。ただし、プロトコルの定義内のメソッドのパラメータにデフォルト値を指定することはできません。
 
@@ -144,7 +144,7 @@ print("And another one: \(generator.random())")
 // "And another one: 0.729023776863283"
 ```
 
-## Mutating Method Requirements\(mutatingメソッド要件\)
+## mutating メソッド要件\(Mutating Method Requirements\)
 
 メソッドが属するインスタンスを変更する必要がある場合があります。値型\(つまり、構造体と列挙型\)のインスタンスメソッドの場合、メソッドの `func` キーワードの前に `mutating` キーワードを配置して、メソッドが属するインスタンスとそのインスタンスの全てのプロパティを変更できることを示します。このプロセスについては、[Modifying Value Types from Within Instance Methods\(インスタンスメソッド内からの値型の変更\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/methods#modifying-value-types-from-within-instance-methods)で説明されています。
 
@@ -178,7 +178,7 @@ lightSwitch.toggle()
 // lightSwitch は .on
 ```
 
-## [Initializer Requirements\(イニシャライザ要件\)](protocols.md) <a id="initializer-requirements"></a>
+## <a id="initializer-requirements">イニシャライザ要件\(Initializer Requirements\)</a>
 
 プロトコルでは、型に準拠するために特定のイニシャライザが必要な場合があります。このイニシャライザは、通常のイニシャライザとまったく同じ方法でプロトコルの定義の一部として記述できますが、中括弧\(`{}`\)やイニシャライザ本文はありません:
 
@@ -188,7 +188,7 @@ protocol SomeProtocol {
 }
 ```
 
-### Class Implementations of Protocol Initializer Requirements\(プロトコルイニシャライザ要件のクラス実装\)
+### プロトコルイニシャライザ要件のクラス実装\(Class Implementations of Protocol Initializer Requirements\)
 
 プロトコルのイニシャライザの要件は、準拠するクラスで指定イニシャライザまたは convenience イニシャライザとして実装できます。どちらの場合も、`required` 修飾子でイニシャライザの実装をマークする必要があります:
 
@@ -228,13 +228,13 @@ class SomeSubClass: SomeSuperClass, SomeProtocol {
 }
 ```
 
-### [Failable Initializer Requirements\(失敗可能イニシャライザ要件\)](protocols.md) <a id="failable-initializer-requirements"></a>
+### <a id="failable-initializer-requirements">失敗可能イニシャライザ要件\(Failable Initializer Requirements\)</a>
 
 プロトコルは、[Failable Initializers\(失敗可能イニシャライザ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#declarations-failable-initializers)で定義されているように、失敗可能イニシャライザ要件を定義できます。
 
 失敗可能イニシャライザ要件は、準拠する型の失敗可能または失敗しないイニシャライザによって満たされます。失敗しないイニシャライザ要件は、失敗しないイニシャライザまたは暗黙的にアンラップされた失敗可能イニシャライザによって満たされます。
 
-## [Protocols as Types\(型としてのプロトコル\)](protocols.md) <a id="protocols-as-types"></a>
+## <a id="protocols-as-types">型としてのプロトコル\(Protocols as Types\)</a>
 
 プロトコルは、実際には機能を実装しません。それにもかかわらず、コード内で完全な型としてプロトコルを使用できます。プロトコルを型として使用することは、_存在型_と呼ばれることもあります。これは、「T がプロトコルに準拠するような型 T が存在する」というフレーズから来ています。
 
@@ -285,7 +285,7 @@ for _ in 1...5 {
 // Random dice roll is 4
 ```
 
-## [Delegation\(委譲\)](protocols.md) <a id="delegation"></a>
+## <a id="delegation">委譲\(Delegation\)</a>
 
 _委譲_は、クラスまたは構造体がその責任の一部を別の型のインスタンスに引き渡す\(または委譲する\)ことを可能にするデザインパターンです。このデザインパターンは、委譲される責任をカプセル化するプロトコルを定義することによって実装され、準拠する型 \(_デリゲート_と呼ばれる\)が委譲された機能を提供することを保証します。委譲を使用して、特定のアクションに応答したり、その準拠した具体的な型を知らなくても外部ソースからデータを取得したりできます。
 
@@ -397,7 +397,7 @@ game.play()
 // 5 が出ました
 ```
 
-## [Adding Protocol Conformance with an Extension\(拡張機能を使ったプロトコル準拠の追加\)](protocols.md) <a id="adding-protocol-conformance-with-an-extension"></a>
+## <a id="adding-protocol-conformance-with-an-extension">拡張機能を使ったプロトコル準拠の追加\(Adding Protocol Conformance with an Extension\)</a>
 
 既存の型のソースコードにアクセスできない場合でも、既存の型を拡張して新しいプロトコルに準拠させることができます。extension は、新しいプロパティ、メソッド、および subscript を既存の型に追加できるため、プロトコルの要件を追加できます。拡張機能の詳細については、[Extensions\(拡張\)](extensions.md)を参照ください。
 
@@ -444,7 +444,7 @@ print(game.textualDescription)
 // "A game of Snakes and Ladders with 25 squares"
 ```
 
-### [Conditionally Conforming to a Protocol\(条件付きでのプロトコルへの準拠\)](protocols.md) <a id="conditionally-conforming-to-a-protocol"></a>
+### <a id="conditionally-conforming-to-a-protocol">条件付きでのプロトコルへの準拠\(Conditionally Conforming to a Protocol\)</a>
 
 ジェネリック型は、型のジェネリックパラメータがプロトコルに準拠している場合など、特定の条件下でのみプロトコルの要件を満たすことができるようにします。型を拡張するときに制約を並べることで、ジェネリック型を条件付きでプロトコルに準拠させることができます。`where` 句を記述して、準拠するプロトコルの名前の後にこれらの制約を記述します。ジェネリック `where` 句の詳細については、[Generic Where Clauses\(ジェネリック where 句\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/generics#generic-where-clauses)を参照ください。
 
@@ -462,7 +462,7 @@ print(myDice.textualDescription)
 // "[A 6-sided dice, A 12-sided dice]"
 ```
 
-### [Declaring Protocol Adoption with an Extension\(拡張機能を使ったプロトコル準拠の宣言\)](protocols.md) <a id="declaring-protocol-adoption-with-an-extension"></a>
+### <a id="declaring-protocol-adoption-with-an-extension">拡張機能を使ったプロトコル準拠の宣言\(Declaring Protocol Adoption with an Extension\)</a>
 
 型がすでにプロトコルの全ての要件を満たしているものの、そのプロトコルに準拠することを表明していない場合は、空の extension でプロトコルに準拠することができます:
 
@@ -488,7 +488,7 @@ print(somethingTextRepresentable.textualDescription)
 > NOTE  
 > 要件を満たすだけで、型が自動的にプロトコルに準拠するわけではありません。プロトコルへの準拠を常に明示的に宣言する必要があります。
 
-## [Adopting a Protocol Using a Synthesized Implementation\(デフォルト実装を使用したプロトコル準拠\)](protocols.md) <a id="adopting-a-protocol-using-a-synthesized-implementation"></a>
+## <a id="adopting-a-protocol-using-a-synthesized-implementation">デフォルト実装を使用したプロトコル準拠\(Adopting a Protocol Using a Synthesized Implementation\)</a>
 
 Swift は、多くのシンプルなケースで、`Equatable`、`Hashable`、および `Comparable` のプロトコルへの準拠を自動的に提供できます。このデフォルト実装を使用すると、プロトコル要件を自分で実装するために、繰り返しコードを記述する必要がなくなります。
 
@@ -544,7 +544,7 @@ for level in levels.sorted() {
 // "expert(stars: 5)"
 ```
 
-## Collections of Protocol Types\(プロトコル型のコレクション\)
+## プロトコル型のコレクション\(Collections of Protocol Types\)
 
 プロトコルは、[Protocols as Types\(型としてのプロトコル\)](protocols.md#protocols-as-types)で説明されているように、配列や辞書などのコレクションに格納される型として使用できます。この例では、`TextRepresentable` の配列を作成します。
 
@@ -565,7 +565,7 @@ for thing in things {
 
 `Thing` 定数は `TextRepresentable` 型なことに注目してください。内部の実際のインスタンスがそれらの型の 1 つの場合でも、型は `Dice`、`DiceGame`、または `Hamster` ではありません。これは `TextRepresentable` 型で、`TextRepresentable` は全て `textualDescription` プロパティを持つことがわかっているため、ループ処理の中で安全に `thing.textualDescription` にアクセスできます。
 
-## [Protocol Inheritance\(プロトコル継承\)](protocols.md) <a id="protocols-protocol-inheritance"></a>
+## <a id="protocols-protocol-inheritance">プロトコル継承\(Protocol Inheritance\)</a>
 
 プロトコルは 1 つ以上の他のプロトコルを継承でき、継承する要件の上にさらに要件を追加できます。プロトコル継承の構文はクラス継承の構文に似ていますが、継承された複数のプロトコルをカンマ\(`,`\)で区切って並べます:
 
@@ -620,7 +620,7 @@ print(game.prettyTextualDescription)
 // ○ ○ ▲ ○ ○ ▲ ○ ○ ▲ ▲ ○ ○ ○ ▼ ○ ○ ○ ○ ▼ ○ ○ ▼ ○ ▼ ○
 ```
 
-## [Class-Only Protocols\(クラス専用プロトコル\)](protocols.md) <a id="class-only-protocols"></a>
+## <a id="class-only-protocols">クラス専用プロトコル\(Class-Only Protocols\)</a>
 
 `AnyObject` プロトコルをプロトコル継承の一覧に追加することで、プロトコルへの準拠を\(構造体や列挙型ではなく\)クラス型に制限できます:
 
@@ -635,7 +635,7 @@ protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
 > NOTE  
 > そのプロトコルの要件によって定義された動作が、準拠する型が値型のセマンティクスではなく参照型のセマンティクスであることを想定\(要求\)する場合は、クラス専用プロトコルを使用してください。参照型と値型のセマンティクスの詳細については、[Structures and Enumerations Are Value Types\(構造体と列挙型は値型\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#structures-and-enumerations-are-value-type)、[Classes Are Reference Types\(クラスは参照型\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#classes-are-reference-types)を参照ください。
 
-## [Protocol Composition\(プロトコル合成\)](protocols.md) <a id="protocol-composition"></a>
+## <a id="protocol-composition">プロトコル合成\(Protocol Composition\)</a>
 
 同時に複数のプロトコルに準拠すると便利な場合があります。プロトコル合成を使用して、複数のプロトコルを 1 つの要件に組み合わせることができます。プロトコル合成は、合成内の全てのプロトコルの要件を組み合わせた一時的なローカルプロトコルを定義したかのように動作します。プロトコル合成は、新しいプロトコル型を定義しません。
 
@@ -699,7 +699,7 @@ beginConcert(in: seattle)
 
 `Person` は `Location` のサブクラスではないため、`beginConcert(in:)` 関数に `birthdayPerson` を渡すことは無効です。同様に、`Named` プロトコルに準拠していない `Location` のサブクラスを作成した場合、その型のインスタンスで `beginConcert(in:)` を呼び出すことも無効です。
 
-## [Checking for Protocol Conformance\(プロトコル準拠チェック\)](protocols.md) <a id="checking-for-protocol-conformance"></a>
+## <a id="checking-for-protocol-conformance">プロトコル準拠チェック\(Checking for Protocol Conformance\)</a>
 
 [Type Casting\(型キャスト\)](type-casting.md)で説明されている `is` および `as` 演算子を使用して、プロトコルの準拠を確認し、特定のプロトコルにキャストできます。プロトコルのチェックと型へのキャストは、型のチェックやキャストとまったく同じ構文を使用します。
 
@@ -779,7 +779,7 @@ for object in objects {
 
 プロトコルに準拠したオブジェクトは、キャストで変更されないことに注目してください。それらはそれぞれ `Circle`、`Country`、`Animal` です。ただし、オブジェクトが `objectWithArea` 定数に格納されている時点では、`HasArea` 型とのみ認識されているため、アクセスできるのは `area` プロパティのみです。
 
-## [Optional Protocol Requirements\(オプショナルのプロトコル要件\)](protocols.md) <a id="optional-protocol-requirements"></a>
+## <a id="optional-protocol-requirements">オプショナルのプロトコル要件\(Optional Protocol Requirements\)</a>
 
 プロトコルにオプショナルの要件を定義できます。これらの要件は、プロトコルに準拠する型によって実装される必要はありません。オプショナルの要件には、プロトコルの定義の一部として `optional` 修飾子が付けられます。Objective-C と相互運用するコードを作成できるように、オプショナルの要件が利用可能です。プロトコルとオプショナルの要件の両方が `@objc` 属性でマークされている必要があります。`@objc` プロトコルは、Objective-C クラスまたは他の `@objc` クラスから継承するクラスによってのみ準拠できることに注目してください。構造体や列挙型が準拠することはできません。
 
@@ -888,7 +888,7 @@ for _ in 1...5 {
 // 0
 ```
 
-## [Protocol Extensions\(プロトコル Extension\)](protocols.md) <a id="protocol-extensions"></a>
+## <a id="protocol-extensions">プロトコル Extension\(Protocol Extensions\)</a>
 
 プロトコル Extension を使用して、準拠する型にメソッド、イニシャライザ、subscript、および計算プロパティの実装を提供できます。これにより、準拠する個々の型やグローバル関数ではなく、プロトコル自体に動作を定義できます。
 
@@ -914,7 +914,7 @@ print("And here's a random Boolean: \(generator.randomBool())")
 
 プロトコル Extension は、準拠する型に実装を追加できますが、プロトコルにさらに定義を追加して拡張したり、別のプロトコルを継承することはできません。プロトコルの継承は、常にプロトコル宣言内で指定されます。
 
-### Providing Default Implementations\(デフォルト実装の提供\)
+### デフォルト実装の提供\(Providing Default Implementations\)
 
 プロトコル Extension を使用して、そのプロトコルのメソッドまたは計算プロパティ要件にデフォルトの実装を提供できます。準拠する型が要件のメソッドまたはプロパティの実装を提供している場合、プロトコル Extension によって提供されるものの代わりに、準拠する型の実装が使用されます。
 
@@ -931,7 +931,7 @@ extension PrettyTextRepresentable  {
 }
 ```
 
-### Adding Constraints to Protocol Extensions\(プロトコル Extensionに制約の追加\)
+### プロトコル Extensionに制約の追加\(Adding Constraints to Protocol Extensions\)
 
 プロトコル Extension を定義するとき、準拠する型が拡張したメソッドとプロパティを使用できる前に、その型が満たす必要がある制約を指定できます。これらの制約は、拡張するプロトコルの名前の後のジェネリックの `where` 句によって記述されます。ジェネリック `where` 句の詳細については、[Generic Where Clauses\(ジェネリック where 句\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/generics#generic-where-clauses)を参照ください。
 

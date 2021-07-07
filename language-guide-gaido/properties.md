@@ -10,7 +10,7 @@
 
 を使用して、コードを再利用することもできます。
 
-## [Stored Properties\(格納プロパティ\)](properties.md) <a id="stored-properties"></a>
+## <a id="stored-properties">格納プロパティ\(Stored Properties\)</a>
 
 最もシンプルな形式だと、_格納プロパティ_は、特定のクラスまたは構造体のインスタンスの一部として保存される定数または変数です。格納プロパティは、変数格納プロパティ\(`var` キーワードを使用\)または定数格納プロパティ\(`let` キーワードを使用\) のいずれかです。
 
@@ -31,7 +31,7 @@ rangeOfThreeItems.firstValue = 6
 
 `FixedLengthRange` のインスタンスには、`firstValue` と呼ばれる変数格納プロパティと `length` という定数格納プロパティがあります。上記の例では、定数のため、長さは新しい範囲が作成されたときに初期化され、それ以降は変更できません。
 
-### [Stored Properties of Constant Structure Instances\(定数の格納インスタンスのプロパティ\)](properties.md) <a id="stored-properties-of-constant-structure-instances"></a>
+### <a id="stored-properties-of-constant-structure-instances">定数の格納インスタンスのプロパティ\(Stored Properties of Constant Structure Instances\)</a>
 
 構造体のインスタンスを作成し、そのインスタンスを定数に割り当てる場合、インスタンスのプロパティは、変数で宣言されていても変更できません。
 
@@ -48,7 +48,7 @@ rangeOfFourItems.firstValue = 6
 
 参照型のクラスには同じことが当てはまりません。参照型のインスタンスを定数に割り当てた場合でも、そのインスタンスの変数を変更できます。
 
-### Lazy Stored Properties\(遅延格納プロパティ\)
+### 遅延格納プロパティ\(Lazy Stored Properties\)
 
 _遅延格納プロパティ_は、最初に使用されるまで初期値が計算されないプロパティです。宣言の前に `lazy` 修飾子を記述して、遅延格納プロパティを示します。
 
@@ -98,13 +98,13 @@ print(manager.importer.filename)
 > NOTE  
 > `lazy` 修飾子でマークされたプロパティが複数のスレッドから同時にアクセスされ、そのプロパティがまだ初期化されていない場合、そのプロパティが 1 回だけ初期化されるという保証はありません。
 
-### Stored Properties and Instance Variables\(格納プロパティはインスタンス変数\)
+### 格納プロパティはインスタンス変数\(Stored Properties and Instance Variables\)
 
 `Objective-C` の経験がある場合は、クラスインスタンスの一部として値と参照を格納する 2 つの方法が提供されていることを知っているかもしれません。プロパティに加えて、インスタンス変数をプロパティに格納されている値のバッキングストアとして使用できます。
 
 Swift は、これらの概念を単一のプロパティ宣言に統合しました。Swift のプロパティには対応するインスタンス変数がなく、プロパティのバッキングストアには直接アクセスしません。このアプローチにより、様々なコンテキストで値にアクセスできてしまうことから起きる混乱を回避し、ただ唯一のプロパティ宣言へと単純化されています。名前、型、メモリ管理の特性など、プロパティに関する全ての情報は、型の定義の一部として 1 つの場所に集約されています。
 
-## [Computed Properties\(計算プロパティ\)](properties.md) <a id="properties-computed-properties"></a>
+## <a id="properties-computed-properties">計算プロパティ\(Computed Properties\)</a>
 
 格納プロパティに加えて、クラス、構造体、および列挙型は、値を保存しない計算プロパティを定義できます。代わりに、間接的に他のプロパティの値の取得する get と、値の設定を行う任意の set を提供します。
 
@@ -154,7 +154,7 @@ print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 
 ![&#x8A08;&#x7B97;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;](../.gitbook/assets/computedProperties_2x.png)
 
-### [Shorthand Setter Declaration\(省略プロパティ set 宣言\)](properties.md) <a id="shorthand-setter-declaration"></a>
+### <a id="shorthand-setter-declaration">省略プロパティ set 宣言\(Shorthand Setter Declaration\)</a>
 
 計算プロパティの set が、設定される新しい値の名前を定義しない場合、デフォルト名の `newValue` が使用されます。下記はこの省略表記を利用した `Rect` 構造体の代替バージョンを次に示します:
 
@@ -176,7 +176,7 @@ struct AlternativeRect {
 }
 ```
 
-### [Shorthand Getter Declaration\(省略プロパティ get 宣言\)](properties.md) <a id="shorthand-getter-declaration"></a>
+### <a id="shorthand-getter-declaration">省略プロパティ get 宣言\(Shorthand Getter Declaration\)</a>
 
 get の本文全体が単一式の場合、暗黙的にその式を返します。この省略表記を利用した別のバージョンの `Rect` 構造体を次に示します:
 
@@ -199,7 +199,7 @@ struct CompactRect {
 
 get からの戻り値の省略は、[Functions With an Implicit Return\(暗黙的な戻り値がある関数\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#functions-with-an-implicit-return)で説明されているように、関数からの戻り値を省略した場合と同じ規則に従います。
 
-### [Read-Only Computed Properties\(読み取り専用計算プロパティ\)](properties.md) <a id="read-only-computed-properties"></a>
+### <a id="read-only-computed-properties">読み取り専用計算プロパティ\(Read-Only Computed Properties\)</a>
 
 get のみの計算プロパティは、_読み取り専用計算プロパティ_と呼ばれます。読み取り専用計算プロパティは常に値を返し、ドット構文を介してアクセスできますが、別の値を設定することはできません。
 
@@ -222,7 +222,7 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 
 この例では、`Cuboid` という新しい構造体を定義します。これは、`width`、`height`、`depth` プロパティを持つ 3D の長方形のボックスを表します。この構造体には、`volume` と呼ばれる読み取り専用計算プロパティもあります。これは、直方体の現在のボリュームを計算して返します。特定のボリューム値に `width`、`height`、`depth` のどの値が使用されているかがあいまいなため、`volume` に set 可能にすることは意味がありません。それでも、`Cuboid` が読み取り専用計算プロパティを提供して、外部ユーザーが現在の計算済みボリュームを見られようにすると便利です。
 
-## [Property Observers\(プロパティオブザーバ\)](properties.md) <a id="property-observers"></a>
+## <a id="property-observers">プロパティオブザーバ\(Property Observers\)</a>
 
 _プロパティオブザーバ_は、プロパティの値の変化を監視し、それに応じたアクションをすることができます。プロパティオブザーバは、新しい値がプロパティの現在の値と同じ場合でも、プロパティの値が設定されるたびに呼び出されます。
 
@@ -284,7 +284,7 @@ stepCounter.totalSteps = 896
 > NOTE  
 > オブザーバを持つプロパティを関数に入出力パラメータとして渡すと、`willSet` および `didSet` オブザーバが常に呼び出されます。これは、入出力パラメータのコピーインコピーアウト\(copy-in copy-out\)メモリモデルによるものです。値は常に関数の最後でプロパティに書き戻されます。入出力パラメータの動作の詳細については、[In-Out Parameters\(In-Out パラメータ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#declarations-in-out-parameters)を参照ください。
 
-## [Property Wrappers\(プロパティラッパ\)](properties.md) <a id="property-wrappers"></a>
+## <a id="property-wrappers">プロパティラッパ\(Property Wrappers\)</a>
 
 _プロパティラッパ_は、プロパティの格納方法を管理するコードと、プロパティを定義するコードとの間に境界レイヤを追加します。例えば、スレッドセーフチェックを提供するプロパティ、またはその基になるデータをデータベースに格納するプロパティがある場合、全てのプロパティにそのコードを記述する必要があります。プロパティラッパを使用すると、ラッパを定義するときに管理コードを 1 回記述し、その管理コードを複数のプロパティに適用して再利用できます。
 
@@ -348,7 +348,7 @@ struct SmallRectangle {
 
 `_height` および `_width` プロパティは、プロパティラッパ `TwelveOrLess` のインスタンスを格納します。`height` と `width` の get/set は、`wrappedValue` プロパティへのアクセスをラップします。
 
-### Setting Initial Values for Wrapped Properties\(ラップされたプロパティの初期値の設定\)
+### ラップされたプロパティの初期値の設定\(Setting Initial Values for Wrapped Properties\)
 
 上記の例のコードは、`TwelveOrLess` の定義で `number` に初期値を与えることにより、ラップされたプロパティの初期値を設定します。このプロパティラッパを使用するコードでは、`TwelveOrLess` でラップされたプロパティに異なる初期値を指定できません。例えば、`SmallRectangle` の定義では `height` や `width` の初期値を指定できません。初期値の設定やその他のカスタマイズをサポートするには、プロパティラッパでイニシャライザを追加する必要があります。これは、ラップされた値と最大値を設定するイニシャライザを定義する `SmallNumber` と呼ばれる `TwelveOrLess` の拡張バージョンです。
 
@@ -451,7 +451,7 @@ print(mixedRectangle.height)
 
 `height` をラップする `SmallNumber` のインスタンスは、デフォルトの最大値 12 を使用する `SmallNumber(wrappedValue: 1)` を呼び出すことによって作成されます。`width` をラップするインスタンスは、`SmallNumber(wrappedValue: 2, maximum: 9)` を呼び出すことによって作成されます。
 
-### Projecting a Value From a Property Wrapper\(Property Wrapperからの値の投影\)
+### Property Wrapperからの値の投影\(Projecting a Value From a Property Wrapper\)
 
 プロパティラッパは、ラップされた値に加えて、_projectedValue_ を定義することで追加機能を公開できます。例えば、データベースへのアクセスを管理するプロパティラッパは、その projectedValue で `flushDatabaseConnection()` メソッドを提供できます。projectedValue の名前は、ドル記号 \(`$`\) で始まることを除いて、ラップされた値と同じです。コードでは `$` で始まるプロパティを定義できないため、projectedValue が定義したプロパティにコードから干渉することはありません。
 
@@ -520,7 +520,7 @@ struct SizedRectangle {
 
 プロパティラッパの構文は、get/set の単なる糖衣構文\(シンタックスシュガー\)なので、`height` と `width` へのアクセスは、他のプロパティへのアクセスと同じように働きます。例えば、`resize(to:)` のコードは、プロパティラッパを使用して `height` と `width` にアクセスします。`resize(to: .large)` を呼び出すと、`.large` の switch の case により、長方形の高さと幅が 100 に設定されます。ラッパはそれぞれのプロパティが 12 を超えないようにするため、値を調整したことを記録し、projectedValue に `true` が設定されます。`resize(to:)` の最後で、`return` ステートメントは `$height` と `$width` をチェックして、プロパティラッパが `height` または `width` のいずれかを調整したかどうかを判断します。
 
-## Global and Local Variables\(グローバル変数とローカル変数\)
+## グローバル変数とローカル変数\(Global and Local Variables\)
 
 プロパティを計算および監視するための上記の機能は、グローバル変数とローカル変数でも使用できます。グローバル変数は、関数、メソッド、クロージャ、または型コンテキストなどの外部で定義される変数です。ローカル変数は、関数、メソッド、またはクロージャコンテキスト内で定義される変数です。
 
@@ -547,7 +547,7 @@ func someFunction() {
 
 プロパティに小数を適用する場合と同様に、`myNumber` を 10 に設定することは有効です。プロパティラッパは 12 を超える値を許可しないため、`myNumber` を 24 ではなく 12 に設定します。
 
-## [Type Properties\(型プロパティ\)](properties.md) <a id="type-properties"></a>
+## <a id="type-properties">型プロパティ\(Type Properties\)</a>
 
 インスタンスプロパティは、特定の型のインスタンスに属するプロパティです。その型の新しいインスタンスを作成するたびに、他のインスタンスとは別のプロパティ値のセットがあります。
 
@@ -560,7 +560,7 @@ func someFunction() {
 > NOTE  
 > 格納インスタンスプロパティとは異なり、格納型プロパティには常にデフォルト値を指定する必要があります。これは、型の初期化時に格納型プロパティに値を割り当てることができるイニシャライザがないためです。 格納型プロパティは、最初のアクセス時に遅延して初期化されます。それらは、複数のスレッドから同時にアクセスされた場合でも、1 回だけ初期化されることが保証されており、`lazy` 修飾子でマークする必要はありません。
 
-### Type Property Syntax\(型プロパティ構文\)
+### 型プロパティ構文\(Type Property Syntax\)
 
 C 言語および Objective-C では、静的定数および型に関連付けられた変数をグローバル静的変数として定義します。Swift では、型プロパティは型の定義の一部として、型定義の中括弧内\(`{}`\)に記述され、各型プロパティは、サポートする型に明示的にスコープされます。
 
@@ -593,7 +593,7 @@ class SomeClass {
 > NOTE  
 > 上記の計算型プロパティの例は、読み取り専用の計算型プロパティですが、計算インスタンスプロパティと同じ構文を使用して、読み書き可能な計算型プロパティを定義することもできます。
 
-### Querying and Setting Type Properties\(型プロパティへのアクセスと設定\)
+### 型プロパティへのアクセスと設定\(Querying and Setting Type Properties\)
 
 型プロパティは、インスタンスプロパティと同様に、ドット構文でアクセスおよび設定できます。ただし、型プロパティは、その型のインスタンスではなく、その型自体に対してクエリおよび設定します。例えば:
 

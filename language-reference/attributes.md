@@ -10,7 +10,7 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 
 一部の宣言属性は、属性とそれが特定の宣言にどのように適用されるかについての詳細情報を指定する引数を受け入れます。これらの _attribute arguments_ は括弧\(`()`\)で囲まれ、その形式は属する属性によって定義されています。
 
-## [Declaration Attributes\(宣言属性\)](attributes.md) <a id="declaration-attributes"></a>
+## <a id="declaration-attributes">宣言属性\(Declaration Attributes\)</a>
 
 宣言属性は宣言にのみ適用できます。
 
@@ -721,7 +721,7 @@ Interface Builder 属性は、Xcode と同期するために InterfaceBuilder �
 
 `IBAction`、`IBSegueAction`、`IBOutlet`、`IBDesignable`、または `IBInspectable` 属性を適用すると、`objc` 属性も暗黙的に追加されます。
 
-## Type Attributes\(型属性\)
+## 型属性\(Type Attributes\)
 
 型属性は型にのみ適用できます。
 

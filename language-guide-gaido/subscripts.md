@@ -6,7 +6,7 @@
 
 単一の型に対して複数の subscript を定義でき、使用する適切な subscript のオーバーロードは、subscript に渡すインデックスの型に基づいて選択されます。subscript は 1 つの次元に限定されず、カスタムの型のニーズに合わせて複数の入力パラメータで subscript を定義することもできます。
 
-## Subscript Syntax\(subscript構文\)
+## subscript 構文\(Subscript Syntax\)
 
 subscript を使用すると、インスタンス名の後に 1 つ以上の値を角括弧\(`[]`\)で囲むことで、型のインスタンスをク検索できます。それらの構文は、インスタンスメソッドの構文と計算プロパティの構文の両方に似ています。インスタンスメソッドと同じ方法で、`subscript` キーワードを使用して subscript 定義を記述し、1 つ以上の入力パラメータと戻り値の型を指定します。インスタンスメソッドとは異なり、subscript は読み取り/書き込みまたは読み取り専用にすることができます。この挙動は、計算プロパティの場合と同じ方法で get/set とやり取りをします。
 
@@ -52,7 +52,7 @@ print("six times three is \(threeTimesTable[6])")
 > NOTE  
 > n 倍数テーブル は、決まった数学ルールに基づいています。`threeTimesTable[someIndex]` に新しい値に設定することは適切ではないため、`TimesTable` のsubscript は読み取り専用として定義されています。
 
-## Subscript Usage\(subscriptの利用\)
+## subscript の利用\(Subscript Usage\)
 
 subscript の正確な意味合いは、使用されるコンテキストによって異なります。subscript は通常、コレクション、リスト、またはシーケンス内の要素にアクセスするためのショートカットとして使用されます。特定のクラスまたは構造体の機能に最も適した方法で、自由に subscript を実装できます。
 
@@ -70,7 +70,7 @@ numberOfLegs["bird"] = 2
 > NOTE  
 > Swift の `Dictionary` 型は、オプショナルの型を受け取って返す subscript としてキーバリューの subscript を実装します。上記の `numberOfLegs` 辞書の場合、キーとバリューの subscript は `Int?` または オプショナル Int 型の値を受け取って返します。`Dictionary` 型は、 オプショナルの subscript の型を使用して、全てのキーにバリューがあるわけではないということをモデル化し、そのキーに `nil` 値を割り当てることによってキーに対応したバリューを削除する方法を提供します。
 
-## [Subscript Options\(様々なsubscript\)](subscripts.md) <a id="subscript-options"></a>
+## <a id="subscript-options">様々な subscript\(Subscript Options\)</a>
 
 subscript は、任意の数の入力パラメータを受け取ることができ、これらの入力パラメータは任意の型にすることができます。subscript は、任意の型の値を返すこともできます。
 
@@ -143,7 +143,7 @@ let someValue = matrix[2, 2]
 // [2, 2] は、行列の境界の外にあるので実行時エラーが発生します
 ```
 
-## [Type Subscripts\(型subscript\)](subscripts.md) <a id="type-subscripts"></a>
+## <a id="type-subscripts">型 subscript\(Type Subscripts\)</a>
 
 上で説明したように、インスタンスの subscript は、特定の型のインスタンスで呼び出す subscript です。加えて、型自体で呼び出される subscript を定義することもできます。この種の subscript は、_型 subscript_と呼ばれます。`subscript` キーワードの前に `static` キーワードを記述して、型 subscript を示します。クラスは代わりに `class` キーワードを使用すると、サブクラスがその subscript のスーパークラスの実装をオーバーライドすることができます。下記の例は、型 subscript を定義して呼び出す方法を示しています。
 

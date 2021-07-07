@@ -6,7 +6,7 @@
 
 _ジェネリクス_は Swift の最も強力な機能の 1 つで、Swift 標準ライブラリの多くはジェネリックなコードで構築されています。気づかないかもしれませんが、この_言語ガイド_全体でもジェネリクスを使用しています。例えば、Swift の `Array` 型と `Dictionary` 型はどちらもジェネリックなコレクションです。`Int` 値を保持する配列、`String` 値を保持する配列、または Swift で作成できる他のどんな型の配列も作成できます。同様に、指定された型の値を格納する辞書を作成でき、その型に制限はありません。
 
-## The Problem That Generics Solve\(ジェネリクスが解決する問題\)
+## ジェネリクスが解決する問題\(The Problem That Generics Solve\)
 
 これは `swapTwoInts(_:_:)` と呼ばれる標準の非ジェネリック関数で、2 つの `Int` 値を交換します:
 
@@ -53,7 +53,7 @@ func swapTwoDoubles(_ a: inout Double, _ b: inout Double) {
 > NOTE  
 > 3 つの関数全てで、`a` と `b` の型は同じでなければなりません。`a` と `b` が同じ型でない場合、それらの値を交換することはできません。Swift は型安全な言語であり、\(例えば\)`String` 型の変数と `Double` 型の変数が互いに値を交換することを許可しません。そうしようとすると、コンパイルエラーが発生します。
 
-## Generic Functions\(ジェネリック関数\)
+## ジェネリック関数\(Generic Functions\)
 
 ジェネリック関数は、どの型でも機能します。これは、上記の `swapTwoInts(_:_:)` 関数のジェネリックなバージョンで、`swapTwoValues(_:_:)` と呼ばれます:
 
@@ -95,7 +95,7 @@ swapTwoValues(&someString, &anotherString)
 > NOTE  
 > 上記で定義された `swapTwoValues(_:_:)` 関数は、Swift 標準ライブラリの `swap` と呼ばれる自動で利用可能なジェネリック関数に由来します。独自のコードで `swapTwoValues(_:_:)` 関数の動作が必要な場合は、独自の実装を提供するのではなく、Swift の既存の `swap(_:_:)` 関数を使用できます。
 
-## Type Parameters\(型パラメータ\)
+## 型パラメータ\(Type Parameters\)
 
 上記の `swapTwoValues(_:_:)` の例では、プレースホルダ型 `T` は型パラメータの例です。型パラメータは、\(`<T>` のように\)プレースホルダ型を指定して名前を付け、関数名の直後に山括弧のペアの間に記述されます。
 
@@ -103,14 +103,14 @@ swapTwoValues(&someString, &anotherString)
 
 山括弧内に複数の型パラメータ名をカンマ\(`,`\)で区切って記述することにより、複数の型パラメータも指定できます。
 
-## Naming Type Parameters\(型パラメータの命名\)
+## 型パラメータの命名\(Naming Type Parameters\)
 
 ほとんどの場合、型パラメータには、`Dictionary<Key, Value>` の `Key` と `Value`、`Array<Element>` の `Element` などのその型パラメータの意味を表す名前が付いています。ただし、型パラメータに意味がない場合、上記の `swapTwoValues(_:_:)` 関数の `T` など、`T`、`U`、`V` などの 1 文字の名前を付けるのが伝統的です。
 
 > NOTE  
 > 型パラメータには常に大文字のキャメルケース名\(`T` や `MyTypeParameter` など\)を指定して、それらが値ではなく型のプレースホルダであることを示します。
 
-## [Generic Types\(ジェネリック型\)](generics.md) <a id="generic-types"></a>
+## <a id="generic-types">ジェネリック型\(Generic Types\)</a>
 
 ジェネリック関数に加えて、Swift では独自のジェネリック型を定義できます。これらは、`Array` や `Dictionary` と同様の方法で、独自のクラス、構造体、および列挙型の任意の型で機能します。
 
@@ -197,7 +197,7 @@ let fromTheTop = stackOfStrings.pop()
 
 ![&#x6700;&#x4E0A;&#x4F4D;&#x306E;&#x5024;&#x3092;&#x30DD;&#x30C3;&#x30D7;](../.gitbook/assets/stackPoppedOneString_2x.png)
 
-## [Extending a Generic Type\(ジェネリック型の拡張\)](generics.md) <a id="extending-a-generic-type"></a>
+## <a id="extending-a-generic-type">ジェネリック型の拡張\(Extending a Generic Type\)</a>
 
 ジェネリック型を拡張する場合、extension の定義で型パラメータリストを提供しません。代わりに、元の型定義の型パラメータリストは extension の本文内でも使用でき、元の型パラメータ名は元の定義の型パラメータを参照するために使用します。
 
@@ -226,7 +226,7 @@ if let topItem = stackOfStrings.topItem {
 
 ジェネリック型の extension には、下記の[Extensions with a Generic Where Clause\(ジェネリック where 句を使った拡張\)](generics.md#extensions-with-a-generic-where-clause)で説明されているように、新しい機能を取得するために拡張した型のインスタンスが満たさなければならない要件を含めることもできます。
 
-## [Type Constraints\(型制約\)](generics.md) <a id="type-constraints"></a>
+## <a id="type-constraints">型制約\(Type Constraints\)</a>
 
 `swapTwoValues(_:_:)` 関数と `Stack` 型は、どの型でも使用できます。ただし、ジェネリック関数およびジェネリック型で使用できる型に特定の型制約を適用すると便利な場合があります。型制約は、型パラメータが特定のクラスを継承する必要があるか、特定のプロトコルまたはプロトコル合成に準拠する必要があるかなどを指定できます。
 
@@ -236,7 +236,7 @@ if let topItem = stackOfStrings.topItem {
 
 独自のジェネリック型を作成するときに、独自の型制約を定義できます。これらの制約は、多くのジェネリックプログラミングに強力な機能を提供します。`Hashable` のような抽象的な概念は、具体的な型ではなく、概念的な特性の観点から型を特徴付けます。
 
-### Type Constraint Syntax\(型制約構文\)
+### 型制約構文\(Type Constraint Syntax\)
 
 型パラメータリストの一部として、型パラメータの名前の後にコロン\(`:`\)で区切って単一のクラスまたはプロトコルを配置することで、型制約を記述します。ジェネリック関数の型制約の基本的な構文を以下に示します\(構文はジェネリック型でも同じです\)。
 
@@ -248,7 +248,7 @@ func someFunction<T: SomeClass, U: SomeProtocol>(someT: T, someU: U) {
 
 上記の関数には、2 つの型パラメータがあります。最初の型パラメータ `T` には、`T` が `SomeClass` を継承する必要がある型制約です。2 番目の型パラメータ `U` には、`U` が `SomeProtocol` プロトコルに準拠する必要がある型制約です。
 
-### Type Constraints in Action\(型制約の挙動\)
+### 型制約の挙動\(Type Constraints in Action\)
 
 下記は、`findIndex(ofString:in:)` という名前の非ジェネリック関数です。これには、検索する `String` 値と、その `String` が含まれているかを検索する `String` の配列が与えられています。`findIndex(ofString:in:)` 関数は、オプショナルの `Int` 値を返します。これは、配列内で最初に一致する文字列が見つかった場合はそのインデックス、文字列が見つからない場合は `nil` になります。
 
@@ -316,11 +316,11 @@ let stringIndex = findIndex(of: "Andrea", in: ["Mike", "Malcolm", "Andrea"])
 // stringIndex は、2 を含むオプショナルの Int です
 ```
 
-## [Associated Types\(関連型\)](generics.md) <a id="associated-types"></a>
+## <a id="associated-types">関連型\(Associated Types\)</a>
 
 プロトコルを定義するとき、1 つ以上の_関連型_を宣言すると便利な場合があります。関連型は、プロトコル内で使用される型にプレースホルダ名を与えます。その関連型に使用する実際の型は、プロトコルが準拠されるまで特定されません。関連型は、`associatedtype` キーワードで指定します。
 
-### Associated Types in Action\(関連型の挙動\)
+### 関連型の挙動\(Associated Types in Action\)
 
 下記は、`Item` と呼ばれる関連型を持つ `Container` と呼ばれるプロトコルの例です:
 
@@ -406,7 +406,7 @@ struct Stack<Element>: Container {
 
 今回は、`append(_:)` メソッドの `item` パラメータの型と subscript の戻り値の型として型パラメータ `Element` を使用しています。したがって、Swift は、`Element` がこの特定のコンテナの `Item` として使用する型を適切に推論できます。
 
-### Extending an Existing Type to Specify an Associated Type\(関連型を特定するための既存の型の拡張\)
+### 関連型を特定するための既存の型の拡張\(Extending an Existing Type to Specify an Associated Type\)
 
 [Adding Protocol Conformance with an Extension\(拡張機能を使ったプロトコル準拠の追加\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#adding-protocol-conformance-with-an-extension)で説明されているように、既存の型を拡張してプロトコルへの準拠を追加できます。これには、関連型を持つプロトコルが含まれます。
 
@@ -418,7 +418,7 @@ extension Array: Container {}
 
 `Array` の既存の `append(_:)` メソッドと subscript により、Swift は、上記のジェネリックな `Stack` 型と同様に、`Item` に使用する適切な型を推論できます。この extension を定義した後、任意の配列を `Container` として使用できます。
 
-### Adding Constraints to an Associated Type\(関連型への制約の追加\)
+### 関連型への制約の追加\(Adding Constraints to an Associated Type\)
 
 プロトコルの関連型に型制約を追加して、準拠する型がそれらの制約を満たすことを要求できます。例えば、次のコードは、`Container` 内のアイテムが_等価比較可能_なバージョンを定義しています。
 
@@ -433,7 +433,7 @@ protocol Container {
 
 このバージョンのコンテナに準拠するには、コンテナのアイテム型が `Equatable` プロトコルに準拠している必要があります。
 
-### Using a Protocol in Its Associated Type’s Constraints\(関連型の制約へのプロトコルの使用\)
+### 関連型の制約へのプロトコルの使用\(Using a Protocol in Its Associated Type’s Constraints\)
 
 プロトコルは、独自の要件を表現できます。例えば、下記は `Container` プロトコルを改良し、`suffix(_:)` メソッドの要件を追加するプロトコルです。`suffix(_:)` メソッドは、コンテナの最後から指定された数の要素を返し、それらを `Suffix` 型のインスタンスに格納します。
 
@@ -482,7 +482,7 @@ extension IntStack: SuffixableContainer {
 }
 ```
 
-## [Generic Where Clauses\(ジェネリック where 句\)](generics.md) <a id="generic-where-clauses"></a>
+## <a id="generic-where-clauses">ジェネリック where 句\(Generic Where Clauses\)</a>
 
 [Type Constraints\(型制約\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/generics#type-constraints)で説明されているように、型制約を使用すると、ジェネリック関数、subscript、または型に関連した型パラメータの要件を定義できます。
 
@@ -562,7 +562,7 @@ if allItemsMatch(stackOfStrings, arrayOfStrings) {
 
 上記の例では、`String` 値を格納する `Stack` インスタンスを作成し、3 つの文字列をスタックにプッシュします。この例では、スタックと同じ 3 つの文字列を含む配列リテラルで初期化された `Array` インスタンスも作成します。スタックと配列は型が異なりますが、どちらも `Container` プロトコルに準拠しており、両方に同じ型の値が含まれています。したがって、これら 2 つのコンテナを引数として `allItemsMatch(_:_:)` 関数を呼び出すことができます。上記の例では、`allItemsMatch(_:_:)` 関数は、2 つのアイテムの全てが合致していることを出力します。
 
-## [Extensions with a Generic Where Clause\(ジェネリック where 句を使った拡張\)](generics.md) <a id="extensions-with-a-generic-where-clause"></a>
+## <a id="extensions-with-a-generic-where-clause">ジェネリック where 句を使った拡張\(Extensions with a Generic Where Clause\)</a>
 
 extension にジェネリック `where` 句を使用することもできます。下記の例では、前の例のジェネリックな `Stack` 構造体を拡張して、`isTop(_:)` メソッドを追加しています:
 
@@ -641,7 +641,7 @@ print([1260.0, 1200.0, 98.6, 37.0].average())
 
 他の場所で記述したジェネリック `where` 句の場合と同様に、extension にあるジェネリック `where` 句に複数の要件を含めることができます。各要件はカンマ\(`,`\)で区切ります。
 
-## [Contextual Where Clauses\(コンテキスト上のWhere句\)](generics.md) <a id="contextual-where-clauses"></a>
+## <a id="contextual-where-clauses">コンテキスト上の where 句\(Contextual Where Clauses\)</a>
 
 既にジェネリック型を使っているコンテキスト上で、型制約を持たない宣言にジェネリック `where` 句を記述できます。例えば、ジェネリック型の subscript、またはジェネリック型の extension のメソッドにジェネリック `where` 句を記述できます。`Container` 構造体はジェネリックで、下記の例の `where` 句は、新しいメソッドを `Container` で使用できるようにするために満たす必要のある型制約を指定しています。
 
@@ -688,7 +688,7 @@ extension Container where Item: Equatable {
 
 コンテキスト上の `where` 句を使用する例のバージョンでは、各メソッドのジェネリック `where` 句が、そのメソッドを使用可能にするために満たす必要がある要件を示しているため、`average()` と `endsWith(_:)` の実装は両方とも同じ extension 内にありました。これらの要件を extension のジェネリック `where` 句に移動すると、同じ状況でメソッドを使用できるようになりますが、要件ごとに 1 つの extension が必要になります。
 
-## [Associated Types with a Generic Where Clause\(ジェネリック where 句を使用した関連型\)](generics.md) <a id="associated-types-with-a-generic-where-clause"></a>
+## <a id="associated-types-with-a-generic-where-clause">ジェネリック where 句を使用した関連型\(Associated Types with a Generic Where Clause\)</a>
 
 関連型にジェネリック `where` 句を含めることができます。例えば、標準ライブラリの `Sequence` プロトコルで使用するようなイテレータを含む `Container` のバージョンを作成するとします。書き方は次のとおりです:
 
@@ -712,7 +712,7 @@ protocol Container {
 protocol ComparableContainer: Container where Item: Comparable { }
 ```
 
-## [Generic Subscripts\(ジェネリックsubscript\)](generics.md) <a id="generic-subscripts"></a>
+## <a id="generic-subscripts">ジェネリック subscript\(Generic Subscripts\)</a>
 
 subscript はジェネリックにすることができ、ジェネリック `where` 句を含めることができます。subscript の後の山括弧内\(`<>`\)にプレースホルダの型名を記述し、subscript の本文の開始の中括弧\(`{`\)の直前にジェネリック `where` 句を記述します。例えば:
 

@@ -6,7 +6,7 @@ Swift の_字句構造_は、文字のシーケンスの中で Swift 言語で�
 
 ほとんどの場合、トークンは、下記に指定されている文法の制約内で、入力テキストから可能な限り最長の部分文字列を検討して、Swift ソースファイルの文字から形成されます。この動作は、_最長一致_または_最大ムンク_と呼ばれます。
 
-## Whitespace and Comments\(空白とコメント\)
+## 空白とコメント\(Whitespace and Comments\)
 
 空白には 2 つの用途があります: 1 つは、ソースファイル内のトークンを分離する、もう 1 つは、_前置_、_後置_、およびバイナリ演算子を区別する\([Operators\(演算子\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/lexical-structure#operators)を参照\)、それ以外の場合は無視されます。次の文字は空白と見なされます: スペース\(U+0020\)、ラインフィード\(U+000A\)、キャリッジリターン \(U+000D\)、水平タブ\(U+0009\)、垂直タブ\(U+000B\)、フォームフィード\(U +000C\) および null\(U+0000\)。
 
@@ -35,7 +35,7 @@ Swift の_字句構造_は、文字のシーケンスの中で Swift 言語で�
 > multiline-comment-text-item → [comment-text-item](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_comment-text-item)  
 > multiline-comment-text-item → `/*` または `*/` を除く任意のUnicodeスカラ値
 
-## Identifiers\(識別子\)
+## 識別子\(Identifiers\)
 
 _識別子_は、大文字または小文字の `A` から `Z`、アンダースコア\(`_`\)、基本多言語平面内の非結合英数 `Unicode` 文字、または私用面にない基本多言語平面外の文字で始まります。最初の文字の後に、数字と `Unicode` 文字を組み合わせることもできます。
 
@@ -74,7 +74,7 @@ _識別子_は、大文字または小文字の `A` から `Z`、アンダース
 > implicit-parameter-name → `$` [decimal-digits](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits)  
 > property-wrapper-projection → `$` [identifier-characters](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier-characters)
 
-## [Keywords and Punctuation\(単語と句読点\)](lexical-structure.md) <a id="keywords-and-punctuation"></a>
+## <a id="keywords-and-punctuation">単語と句読点\(Keywords and Punctuation\)</a>
 
 次のキーワードは予約されており、識別子として前述のようにバッククォート\(\`\)でエスケープしない限り使用できません。`inout`、`var`、`let` 以外のキーワードは、バッククォートでエスケープすることなく、関数宣言または関数の引数名として使用できます。メンバの名前がキーワードと同じ場合、メンバの参照とキーワードの使用の間にあいまいさがある場合を除いて、そのメンバへの参照をバッククォートでエスケープする必要はありません。例えば、`self`、`Type`、および `Protocol` には明示的なメンバ式の中で特別な意味があるため、そのコンテキストではバッククォートでエスケープする必要があります。
 
@@ -87,7 +87,7 @@ _識別子_は、大文字または小文字の `A` から `Z`、アンダース
 
 次のトークンは句読点として予約されており、カスタム演算子としては使用できません: `(`、 `)`、 `{`、 `}`、 `[`、 `]`、 `.`、 `,`、 `:`、 `;`、 `=`、 `@`、 `#`、 `&`\(前置演算子として\)、`->`、\`、`?`、および `!`\(後置演算子として\)
 
-## [Literals\(リテラル\)](lexical-structure.md) <a id="literals"></a>
+## <a id="literals">リテラル\(Literals\)</a>
 
 _リテラル_は、数値や文字列といった型の値をソースコード上で表現するものです。
 
@@ -110,7 +110,7 @@ true  // ブールリテラル
 > boolean-literal → `true` \| `false`  
 > nil-literal → `nil`
 
-### Integer Literals\(整数リテラル\)
+### 整数リテラル\(Integer Literals\)
 
 _整数リテラル_は、不特定の精度の整数値を表します。デフォルトでは、整数リテラルは 10 進数で表されます。プレフィックスを使用して他の基数を指定できます。2 進数リテラルは `0b` で始まり、8 進数リテラルは `0o` で始まり、16 進数リテラルは `0x` で始まります。
 
@@ -144,7 +144,7 @@ _整数リテラル_は、不特定の精度の整数値を表します。デフ
 > hexadecimal-literal-character → [hexadecimal-digit](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_hexadecimal-digit) \| `_`  
 > hexadecimal-literal-characters → [hexadecimal-literal-character](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_hexadecimal-literal-character) [hexadecimal-literal-characters](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_hexadecimal-literal-characters)_opt_
 
-### Floating-Point Literals\(浮動小数点リテラル\)
+### 浮動小数点リテラル\(Floating-Point Literals\)
 
 _浮動小数点リテラル_は、不特定の精度の浮動小数点値を表します。
 
@@ -171,7 +171,7 @@ _浮動小数点リテラル_は、不特定の精度の浮動小数点値を表
 > floating-point-p → `p` \| `P`  
 > sign → `+` \| `-`
 
-### [String Literals\(文字列リテラル\)](lexical-structure.md) <a id="lexical-structure-string-literals"></a>
+### <a id="lexical-structure-string-literals">文字列リテラル\(String Literals\)</a>
 
 _文字列リテラル_は、引用符で囲まれた一連の文字です。単一行の文字列リテラルは二重引用符で囲まれ、次の形式になります:
 
@@ -279,7 +279,7 @@ let textB = "Hello world"
 > unicode-scalar-digits → 0 から 8 までの16進数  
 > escaped-newline → [escape-sequence](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escape-sequence) [inline-spaces](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_inline-spaces)_opt_ [line-break](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_line-break)
 
-## [Operators\(演算子\)](lexical-structure.md) <a id="operators"></a>
+## <a id="operators">演算子\(Operators\)</a>
 
 Swift 標準ライブラリは、数多くの_演算子_を定義します。その多くは、[Basic Operators\(基本演算子\)](../language-guide-gaido/basic-operators.md)と[Advanced Operators\(高度な演算子\)](../language-guide-gaido/advanced-operators.md)で説明しています。このセクションでは、カスタム演算子を定義するために使用できる文字を説明します。
 

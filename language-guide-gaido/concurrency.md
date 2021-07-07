@@ -25,7 +25,7 @@ listPhotos(inGallery: "Summer Vacation") { photoNames in
 
 このような単純なケースでも、コードには一連の完了ハンドラを記述する必要があるため、ネストしてクロージャを書くことになります。このスタイルでは、より複雑な深いネストを持つコードはすぐに扱いにくくなってしまいます。
 
-## Defining and Calling Asynchronous Functions\(非同期関数の定義と呼び出し\)
+## 非同期関数の定義と呼び出し\(Defining and Calling Asynchronous Functions\)
 
 非同期関数\(_asynchronous function_\)または非同期メソッド\(_asynchronous method_\)は、実行の途中で中断できる特別な種類の関数またはメソッドです。これは、完了するまで実行するか、エラーをスローするか、何も値を返さない通常の同期関数\(_synchronous function_\)や同期メソッド\(_synchronous method_\)とは対照的です。非同期関数またはメソッドは、これら 3 つのことのいずれかを行いますが、何かを待っているときに途中で一時中断する可能性があります。非同期関数またはメソッドの本文内で、実行が中断する可能性のある箇所を示します。
 
@@ -79,7 +79,7 @@ show(photo)
 > }
 > ```
 
-## Asynchronous Sequences\(非同期シーケンス\)
+## 非同期シーケンス\(Asynchronous Sequences\)
 
 前のセクションの `listPhotos(inGallery:)` は、非同期に配列全体を一度にまとめて返し、全ての配列の要素は既に取得できています。もう 1 つの方法として、非同期シーケンス\(_asynchronous sequence_\)を使用して、コレクションの要素を 1 つずつ待機することができます。下記では非同期シーケンスを使って配列の要素を 1 つ 1 つ取得しています:
 
@@ -96,7 +96,7 @@ for try await line in handle.bytes.lines {
 
 [Sequence](https://developer.apple.com/documentation/swift/sequence)プロトコルに準拠することで、`for-in` ループで独自の型を使用できるのと同じように、[AsyncSequence](https://developer.apple.com/documentation/swift/asyncsequence)プロトコルに準拠することで、`for-await-in` ループで独自の型を使用できます。
 
-## Calling Asynchronous Functions in Parallel\(非同期関数を並列に呼び出す\)
+## 非同期関数を並列に呼び出す\(Calling Asynchronous Functions in Parallel\)
 
 `await` を使用して非同期関数を呼び出すと、一度に 1 つのコードしか実行されません。非同期コードが実行されている間、呼び出し側は、次のコード行を実行する前にそのコードが終了するのを待ちます。例えば、ギャラリから最初の 3 つの写真を取得するには、次のように `downloadPhoto(named:)` 関数を 3 回呼び出して、結果を待つことができます:
 
@@ -133,7 +133,7 @@ show(photos)
 
 これらのアプローチの両方を混在させることもできます。
 
-## Tasks and Task Groups\(タスクとタスクグループ\)
+## タスクとタスクグループ\(Tasks and Task Groups\)
 
 タスク\(_task_\)は、プログラムの一部として非同期に実行できる作業単位です。全ての非同期コードはいくつかのタスクの一部として実行されます。前のセクションで説明されている `async-let` 構文は子タスク\(_child task_\)を作成します。タスクグループ\(_task group_\)を作成し、そのグループに子タスクを追加することもできます。こうすることで、グループでの優先順位とキャンセルをより制御しやすくし、動的な数のタスクを作成することもできます。
 
@@ -150,7 +150,7 @@ await withTaskGroup(of: Data.self) { taskGroup in
 
 タスクグループの詳細については、[TaskGroup](https://developer.apple.com/documentation/swift/taskgroup)を参照ください。
 
-### [Unstructured Concurrency\(非構造同時並行処理\)](concurrency.md) <a id="unstructured-concurrency"></a>
+### <a id="unstructured-concurrency">非構造同時並行処理\(Unstructured Concurrency\)</a>
 
 前のセクションで説明されている構造同時並行処理のアプローチに加えて、Swift は非構造同時並行処理\(_unstructured concurrency_\)もサポートしています。タスクグループの一部のタスクとは異なり、非構造タスクには親タスクがありません。どんな方法で使われたとしても、非構造タスクを完全に柔軟に管理することができます。しかし、それらの正しい動作を保証することは完全に開発者の責任です。現在のアクター\(_actor_\)上で実行される非構造タスクを作成するには、[async\(priority:operation:\)](https://developer.apple.com/documentation/swift/3816404-async) 関数を呼びます。現在のアクター上で実行されないタスク\(デタッチタスク\(_detached task_\)\)を作成するには、[asyncDetached\(priority:operation:\)](https://developer.apple.com/documentation/swift/3816406-asyncdetached) 関数を呼び出します。これらの関数は両方ともタスクハンドル\(_task handle_\)を返し、例えば、その結果を待つかキャンセルすることができます。
 
@@ -164,7 +164,7 @@ let result = await handle.get()
 
 デタッチタスクの管理の詳細については、[Task.Handle](https://developer.apple.com/documentation/swift/task/handle)を参照ください。
 
-### Task Cancellation\(タスクのキャンセル\)
+### タスクのキャンセル\(Task Cancellation\)
 
 Swift の同時並行処理は協調キャンセルモデル\(_cooperative cancellation model_\)を使用しています。各タスクは、実行中の適切な時点でキャンセルされたかどうかを確認し、適切ないかなる方法でもキャンセルに応答します。実行しているタスクに応じて、通常次のいずれかを意味します:
 
@@ -176,7 +176,7 @@ Swift の同時並行処理は協調キャンセルモデル\(_cooperative cance
 
 キャンセルを手動で伝播するには、[Task.handle.cancel\(\)](https://developer.apple.com/documentation/swift/task/handle/3814781-cancel) を呼び出します。
 
-## Actors\(アクター\)
+## アクター\(Actors\)
 
 クラスのように、アクター\(_actors_\)は参照型なので、[Classes Are Reference Types\(クラスは参照型\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#classes-are-reference-types)の中の値型と参照型の比較はアクターにも当てはまります。しかし、クラスとは異なり、アクターの可変状態\(_mutable state_\)にアクセスできるのは一度に 1 つのタスクだけです。これにより、複数のタスクが、同じアクターのインスタンスとやり取りする必要があるコードでも、安全にアクセスできるようになります。例えば、下記は気温を記録するアクターです:
 

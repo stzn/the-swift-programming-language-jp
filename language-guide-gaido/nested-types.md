@@ -6,7 +6,7 @@
 
 型を別の型内にネストするには、サポートする型の外側の中括弧\(`{}`\)内にその定義を記述します。型は必要なだけネストすることができます。
 
-## Nested Types in Action\(ネスト型の挙動\)
+## ネスト型の挙動\(Nested Types in Action\)
 
 下記の例では、`BlackjackCard` という構造体を定義しています。これは、ブラックジャックゲームで使用されるトランプをモデル化しています。`BlackjackCard` 構造体には、`Suit` と `Rank` と呼ばれる 2 つのネスト列挙型が含まれています。
 
@@ -75,7 +75,7 @@ print("theAceOfSpades: \(theAceOfSpades.description)")
 
 `Rank` と `Suit` は `BlackjackCard` 内にネストされていますが、それらの型は推論できるため、このインスタンスの初期化では、ケース名\(`.ace` および `.spades`\) のみで列挙ケースを参照できます。上記の例では、`description` プロパティは、スペードのエースが `1` または `11` だと正しく示しています。
 
-## Referring to Nested Types\(ネスト型への参照\)
+## ネスト型への参照\(Referring to Nested Types\)
 
 定義の外部でネスト型を使用するには、その名前の前にネストされている型の名前を付けます:
 

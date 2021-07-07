@@ -8,7 +8,7 @@ _初期化_は、使用するクラス、構造体、または列挙型のイン
 
 クラス型のインスタンスは、そのクラスのインスタンスが解放される直前にカスタムのクリーンアップを実行する_デイニシャライザ_を実装することもできます。デイニシャライザの詳細については、[Deinitialization\(デイニシャライザ\)](deinitialization.md)を参照ください。
 
-## Setting Initial Values for Stored Properties\(格納プロパティの初期値の設定\)
+## 格納プロパティの初期値の設定\(Setting Initial Values for Stored Properties\)
 
 クラスと構造体は、そのクラスまたは構造体のインスタンスが作成されるまでに、全ての格納プロパティに適切な初期値を設定する必要があります。格納プロパティは、不確定な状態のままにすることはできません。
 
@@ -17,7 +17,7 @@ _初期化_は、使用するクラス、構造体、または列挙型のイン
 > NOTE  
 > 格納プロパティにデフォルト値を割り当てるか、イニシャライザ内でその初期値を設定すると、プロパティオブザーバを呼び出さずに、そのプロパティに値が直接設定されます。
 
-### [Initializers\(イニシャライザ\)](initialization.md) <a id="initialization-initializers"></a>
+### <a id="initialization-initializers">イニシャライザ\(Initializers\)</a>
 
 _イニシャライザ_は、特定の型の新しいインスタンスを作成するために呼び出されます。最もシンプルな形式では、イニシャライザはパラメータのないインスタンスメソッドのようなもので、`init` キーワードを使用して記述されます:
 
@@ -43,7 +43,7 @@ print("The default temperature is \(f.temperature)° Fahrenheit")
 
 この構造体はパラメータのない単一のイニシャライザ `init` を定義します。これは、格納された温度を `32.0`\(華氏での水の凝固点\)の値で初期化します。
 
-### [Default Property Values\(プロパティのデフォルト値\)](initialization.md) <a id="default-property-values"></a>
+### <a id="default-property-values">プロパティのデフォルト値\(Default Property Values\)</a>
 
 上記のように、イニシャライザ内から格納プロパティの初期値を設定できます。または、プロパティの宣言の一部として、定義時に初期値を割り当てることで_デフォルトプロパティ値_を指定します。
 
@@ -58,11 +58,11 @@ struct Fahrenheit {
 }
 ```
 
-## Customizing Initialization\(初期化のカスタマイズ\)
+## 初期化のカスタマイズ\(Customizing Initialization\)
 
 次のセクションで説明するように、入力パラメータやオプショナル型のプロパティを使用したり、初期化中に定数プロパティを割り当てることにより、初期化プロセスをカスタマイズできます。
 
-### [Initialization Parameters\(イニシャライザのパラメータ\)](initialization.md) <a id="initialization-parameters"></a>
+### <a id="initialization-parameters">イニシャライザのパラメータ\(Initialization Parameters\)</a>
 
 初期化パラメータをイニシャライザの定義の一部として提供することで、初期化プロセスをカスタマイズするための値の型と名前を定義できます。初期化パラメータには、関数およびメソッドパラメータと同じ機能と構文があります。
 
@@ -86,7 +86,7 @@ let freezingPointOfWater = Celsius(fromKelvin: 273.15)
 
 最初のイニシャライザには、`fromFahrenheit` という引数ラベルと `fahrenheit` というパラメータ名を持つ単一のパラメータがあります。2 番目のイニシャライザには、`fromKelvin` という引数ラベルと `kelvin` というパラメータ名を持つ単一のパラメータがあります。どちらのイニシャライザも、単一のパラメータを対応する摂氏の値に変換し、この値を `temperatureInCelsius` というプロパティに格納しています。
 
-### Parameter Names and Argument Labels\(パラメータ名と引数ラベル\)
+### パラメータ名と引数ラベル\(Parameter Names and Argument Labels\)
 
 関数やメソッドのパラメータと同様に、初期化パラメータには、イニシャライザの本文内で使用するパラメータ名と、イニシャライザを呼び出すときに使用する引数ラベルの両方を含めることができます。
 
@@ -126,7 +126,7 @@ let veryGreen = Color(0.0, 1.0, 0.0)
 // 引数ラベルが必要になるため、コンパイルエラーになります
 ```
 
-### [Initializer Parameters Without Argument Labels\(引数ラベルのないイニシャライザパラメータ\)](initialization.md) <a id="initializer-parameters-without-argument-labels"></a>
+### <a id="initializer-parameters-without-argument-labels">引数ラベルのないイニシャライザパラメータ\(Initializer Parameters Without Argument Labels\)</a>
 
 初期化パラメータに引数ラベルを使用したくない場合は、そのパラメータの明示的な引数ラベルの代わりにアンダースコア \(`_`\) を記述して、デフォルトの挙動をオーバーライドします。
 
@@ -151,7 +151,7 @@ let bodyTemperature = Celsius(37.0)
 
 イニシャライザの呼び出し `Celsius(37.0)` は、意図が明確なので引数ラベルを必要としません。したがって、このイニシャライザを `init(_ celsius: Double)` と記述して、名前のない `Double` 値を指定して呼び出すことができるのは妥当です。
 
-### Optional Property Types\(オプショナルのプロパティ型\)
+### オプショナルのプロパティ型\(Optional Property Types\)
 
 独自に定義した型に、論理的に「値なし」が許される格納プロパティがある場合\(おそらく、初期化中にその値を設定できないか、後で「値なし」になる可能性があるため\)、プロパティをオプショナル型を使って宣言できます。オプショナル型のプロパティは、値 `nil` で自動的に初期化されます。こうすることで、プロパティが初期化中に意図的に「まだ値がない」ことを示すことができます。
 
@@ -176,7 +176,7 @@ cheeseQuestion.response = "Yes, I do like cheese."
 
 アンケートの質問への回答は質問されるまでわからないため、回答プロパティは `String?` または `Optional<String>` で宣言されています。`SurveyQuestion` の新しいインスタンスが初期化されると、デフォルト値の `nil`、つまり「文字列はまだありません」が自動的に割り当てられます。
 
-### [Assigning Constant Properties During Initialization\(初期化中の定数プロパティの割り当て\)](initialization.md) <a id="assigning-constant-properties-during-initialization"></a>
+### <a id="assigning-constant-properties-during-initialization">初期化中の定数プロパティの割り当て\(Assigning Constant Properties During Initialization\)</a>
 
 初期化が完了するまでに明確な値が設定されている限り、初期化中の任意の時点で定数プロパティに値を割り当てることができます。定数プロパティに値が割り当てられると、それ以上変更することはできません。
 
@@ -202,7 +202,7 @@ beetsQuestion.ask()
 beetsQuestion.response = "I also like beets. (But not with cheese.)"
 ```
 
-## [Default Initializers\(デフォルトイニシャライザ\)](initialization.md) <a id="default-initializers"></a>
+## <a id="default-initializers">デフォルトイニシャライザ\(Default Initializers\)</a>
 
 Swift は、全てのプロパティにデフォルト値を設定し、1 つもイニシャライザを提供しない構造体またはクラスに対して、デフォルトのイニシャライザを提供します。デフォルトのイニシャライザは、全てのプロパティがデフォルト値に設定された新しいインスタンスを作成するだけです。
 
@@ -219,9 +219,9 @@ var item = ShoppingListItem()
 
 `ShoppingListItem` クラスの全てのプロパティにはデフォルト値があり、スーパークラスを持たない基本クラスのため、`ShoppingListItem` は、全てのプロパティにデフォルト値が設定された新しいインスタンスを作成するイニシャライザの実装を自動で獲得します\(`name` プロパティはオプショナルの `String` プロパティのため、この値がコードに記述されていなくても、デフォルト値の `nil` が自動的に設定されます\)。上記の例では、`ShoppingListItem` クラスのデフォルトイニシャライザを使用して `ShoppingListItem()` と記述し、新しいインスタンスを作成して `item` という変数に割り当てています。
 
-### Memberwise Initializers for Structure Types\(構造体のメンバワイズイニシャライザ\)
-
-&lt;/a&gt; 構造体は、独自のカスタムイニシャライザを定義していない場合、_メンバワイズイニシャライザ_を自動的に定義されます。デフォルトイニシャライザとは異なり、構造体は、デフォルト値を持たないプロパティが格納されている場合でも、メンバワイズイニシャライザが定義されます。
+### <a id="initialization-memberwise-initializers-for-structure-types">構造体のメンバワイズイニシャライザ\(Memberwise Initializers for Structure Types\)
+</a>
+構造体は、独自のカスタムイニシャライザを定義していない場合、*メンバワイズイニシャライザ*を自動的に定義されます。デフォルトイニシャライザとは異なり、構造体は、デフォルト値を持たないプロパティが格納されている場合でも、メンバワイズイニシャライザが定義されます。
 
 メンバワイズイニシャライザは、新しい構造体インスタンスのプロパティを初期化する簡単な方法です。新しいインスタンスのプロパティの初期値は、プロパティ名によってメンバワイズイニシャライザに渡すことができます。
 
@@ -248,7 +248,7 @@ print(zeroByZero.width, zeroByZero.height)
 // "0.0 0.0"
 ```
 
-## [Initializer Delegation for Value Types\(値型のイニシャライザの委譲\)](initialization.md) <a id="initializer-delegation-for-value-types"></a>
+## <a id="initializer-delegation-for-value-types">値型のイニシャライザの委譲\(Initializer Delegation for Value Types\)</a>
 
 イニシャライザは、他のイニシャライザを呼び出して、インスタンスの初期化の一部を実行できます。_イニシャライザの委譲_と呼ばれるこのプロセスは、複数のイニシャライザ間でコードが重複するのを防ぎます。
 
@@ -319,13 +319,13 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0),
 > NOTE  
 > `init()` および `init(origin:size:)` イニシャライザを、定義の外で記述する別の方法については、[Extension\(拡張\)](extensions.md)を参照ください。
 
-## [Class Inheritance and Initialization\(クラスの継承と初期化\)](initialization.md) <a id="class-inheritance-and-initialization"></a>
+## <a id="class-inheritance-and-initialization">クラスの継承と初期化\(Class Inheritance and Initialization\)</a>
 
 サブクラスがスーパークラスから継承する全てのプロパティを含む、クラスの全ての格納プロパティには、初期化中に初期値を割り当てる必要があります。
 
 Swift は、クラス型に対して 2 種類のイニシャライザを定義して、全ての格納プロパティが確実に初期値を受け取るようにします。これらは、_指定イニシャライザ_および _covenience イニシャライザ_と呼ばれます。
 
-### Designated Initializers and Convenience Initializers\(指定イニシャライザとcovenience イニシャライザ\)
+### 指定イニシャライザとcovenience イニシャライザ\(Designated Initializers and Convenience Initializers\)
 
 _指定イニシャライザ_は、クラスの主要なイニシャライザです。指定イニシャライザは、そのクラスで導入された全てのプロパティを完全に初期化し、適切なスーパークラスのイニシャライザを呼び出して、スーパークラスへチェーンして初期化プロセスを続行します。
 
@@ -337,7 +337,7 @@ convenience イニシャライザは二次的なもので、クラスのイニ�
 
 クラスで必要ない場合は、convenience イニシャライザを提供する必要はありません。共通の初期化パターンへのショートカットとして時間の節約になったり、初期化の意図をより明確にできる場合は、常に convenience イニシャライザを作成してください。
 
-### Syntax for Designated and Convenience Initializers\(指定イニシャライザとcovenience イニシャライザの構文\)
+### 指定イニシャライザとcovenience イニシャライザの構文\(Syntax for Designated and Convenience Initializers\)
 
 クラスの指定イニシャライザは、値型のシンプルなイニシャライザと同じ方法で記述します:
 
@@ -347,7 +347,7 @@ covenience イニシャライザは同じスタイルで記述できますが、
 
 ![covenience &#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;](../.gitbook/assets/14_convenienceInitializer.png)
 
-### [Initializer Delegation for Class Types\(クラス型のイニシャライザの委譲\)](initialization.md) <a id="initializer-delegation-for-class-types"></a>
+### <a id="initializer-delegation-for-class-types">クラス型のイニシャライザの委譲\(Initializer Delegation for Class Types\)</a>
 
 指定イニシャライザと convenience イニシャライザ間の関係を簡潔にするために、Swift はイニシャライザ間の呼び出しの委譲に次の 3 つのルールを適用します:
 
@@ -375,7 +375,7 @@ covenience イニシャライザは同じスタイルで記述できますが、
 
 ![&#x3088;&#x308A;&#x8907;&#x96D1;&#x306A;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x306E;&#x59D4;&#x8B72;](../.gitbook/assets/initializerDelegation02_2x.png)
 
-### [Two-Phase Initialization\(2段階の初期化\)](initialization.md) <a id="two-phase-initialization"></a>
+### <a id="two-phase-initialization">2段階の初期化\(Two-Phase Initialization\)</a>
 
 Swift でのクラスの初期化は 2 段階のプロセスです。最初の段階では、各格納プロパティに、それを導入したクラスが初期値を割り当てます。全ての格納プロパティの初期状態が決定されると、第 2 段階が開始され、新しいインスタンスを使用する準備が整ったと見なされる前に、各クラスの格納プロパティをさらにカスタマイズする機会が与えられます。
 
@@ -444,7 +444,7 @@ convenience イニシャライザは、値をプロパティ\(同じクラスで
 
 最後に、サブクラスの指定イニシャライザが終了すると、最初に呼び出された convenience イニシャライザは追加のカスタマイズを実行できます。
 
-### [Initializer Inheritance and Overriding\(イニシャライザの継承とオーバーライド\)](initialization.md) <a id="initializer-inheritance-and-overriding"></a>
+### <a id="initializer-inheritance-and-overriding">イニシャライザの継承とオーバーライド\(Initializer Inheritance and Overriding\)</a>
 
 Objective-C のサブクラスとは異なり、Swift のサブクラスはデフォルトでスーパークラスのイニシャライザを継承しません。Swift のアプローチは、スーパークラスからのシンプルなイニシャライザが、より具体的なサブクラスによって継承され、完全または正しく初期化されていないサブクラスの新しいインスタンスを作成すること防ぎます。
 
@@ -532,7 +532,7 @@ print("Hoverboard: \(hoverboard.description)")
 > NOTE  
 > サブクラスは、初期化中に継承した変数プロパティを変更できますが、継承した定数プロパティを変更することはできません。
 
-### [Automatic Initializer Inheritance\(自動イニシャライザの継承\)](initialization.md) <a id="automatic-initializer-inheritance"></a>
+### <a id="automatic-initializer-inheritance">自動イニシャライザの継承\(Automatic Initializer Inheritance\)</a>
 
 上記のように、サブクラスはデフォルトでスーパークラスのイニシャライザを継承しません。ただし、特定の条件が満たされた場合、スーパークラスのイニシャライザは自動的に継承されます。つまり、実際には、多くの場合でイニシャライザのオーバーライドを記述する必要がなく、安全にオーバーライドできる場合はいつでも最小限の手間で、スーパークラスのイニシャライザを継承できます。
 
@@ -551,7 +551,7 @@ print("Hoverboard: \(hoverboard.description)")
 > NOTE  
 > サブクラスは、ルール 2 を満たす方法の 1 つとして、スーパークラスの指定イニシャライザをサブクラスの convenience イニシャライザとして実装できます。
 
-### Designated and Convenience Initializers in Action\(指定とcovenience イニシャライザの挙動\)
+### 指定とcovenience イニシャライザの挙動\(Designated and Convenience Initializers in Action\)
 
 次の例は、指定イニシャライザ、convenience イニシャライザ、および自動イニシャライザの継承の挙動を示しています。この例では、`Food`、`RecipeIngredient`、および `ShoppingListItem` という 3 つのクラスの階層を定義し、それらのイニシャライザがどのように相互作用するかを示しています。
 
@@ -670,7 +670,7 @@ for item in breakfastList {
 
 ここでは、3 つの新しい `ShoppingListItem` インスタンスを含む配列リテラルから、`breakfastList` という新しい配列が作成されます。配列の型は `[ShoppingListItem]` だと推論されます。配列が作成された後、配列の先頭にある `ShoppingListItem` の名前が `"[Unnamed]"` から `"Orange juice"` に変更され、購入済みとしてマークされます。配列内の各アイテムの説明を出力すると、デフォルトの状態が期待どおりに設定されていることがわかります。
 
-## [Failable Initializers\(失敗可能イニシャライザ\)](initialization.md) <a id="initialization-failable-initializers"></a>
+## <a id="initialization-failable-initializers">失敗可能イニシャライザ\(Failable Initializers\)</a>
 
 初期化が失敗する可能性があるクラス、構造体、または列挙型を定義すると便利な場合があります。この失敗は、無効な初期化パラメータ値、必要な外部リソースの欠如、または初期化の成功を妨げるその他の条件によって引き起こされる可能性があります。
 
@@ -743,7 +743,7 @@ if anonymousCreature == nil {
 > NOTE  
 > 空の文字列 \("Giraffe" ではなく "" など\) のチェックは、オプショナルの String 値がないことを示す `nil` のチェックとは異なります。上記の例では、空の文字列 \(""\) は妥当な非 オプショナルの文字列です。ただし、`Animal` がその `species` プロパティの値として空の文字列を持つことは適切ではありません。この制限をモデル化するために、空の文字列が見つかった場合、失敗可能イニシャライザは初期化に失敗します。
 
-### Failable Initializers for Enumerations\(列挙型の失敗可能イニシャライザ\)
+### 列挙型の失敗可能イニシャライザ\(Failable Initializers for Enumerations\)
 
 失敗可能イニシャライザを使用して、1 つ以上のパラメータに基づいて適切な列挙ケースを選択できます。提供されたパラメータが適切な列挙ケースと一致しない場合、イニシャライザは失敗する可能性があります。
 
@@ -783,7 +783,7 @@ if unknownUnit == nil {
 // "This isn't a defined temperature unit, so initialization failed."
 ```
 
-### Failable Initializers for Enumerations with Raw Values\(Raw Valueを持つ列挙型の失敗可能イニシャライザ\)
+### Raw Value を持つ列挙型の失敗可能イニシャライザ\(Failable Initializers for Enumerations with Raw Values\)
 
 Raw Value を持つ列挙型は、適切な Raw Value 型の `rawValue` と呼ばれるパラメータを受け取り、一致する列挙ケースが見つかった場合はそれを選択するか、一致する値がない場合は初期化に失敗する失敗可能イニシャライザ `init?(rawValue:)` を自動的に生成します。
 
@@ -807,7 +807,7 @@ if unknownUnit == nil {
 // "This isn't a defined temperature unit, so initialization failed."
 ```
 
-### Propagation of Initialization Failure\(初期化の失敗の伝播\)
+### 初期化の失敗の伝播\(Propagation of Initialization Failure\)
 
 クラス、構造体、または列挙型の失敗可能イニシャライザは、同じクラス、構造体、または列挙型から別の失敗可能イニシャライザに委譲できます。同様に、サブクラスの失敗可能イニシャライザは、スーパークラスの失敗可能イニシャライザに委譲できます。
 
@@ -870,7 +870,7 @@ if let oneUnnamed = CartItem(name: "", quantity: 1) {
 // "Unable to initialize one unnamed product"
 ```
 
-### [Overriding a Failable Initializer\(失敗可能イニシャライザのオーバーライド\)](initialization.md) <a id="overriding-a-failable-initializer"></a>
+### <a id="overriding-a-failable-initializer">失敗可能イニシャライザのオーバーライド\(Overriding a Failable Initializer\)</a>
 
 他のイニシャライザと同様に、サブクラスでスーパークラスの失敗可能イニシャライザをオーバーライドできます。または、スーパークラスの失敗可能イニシャライザをサブクラスの失敗しないイニシャライザでオーバーライドできます。これにより、スーパークラスの初期化が失敗しても、初期化が失敗しないサブクラスを定義できます。
 
@@ -927,13 +927,13 @@ class UntitledDocument: Document {
 
 この場合、スーパークラスの `init(name:)` イニシャライザが名前に空の文字列を指定して呼び出された場合、強制アンラップにより実行時エラーが発生しますが、文字列定数で呼び出されているため、イニシャライザが失敗しないことがわかり、この場合は実行時エラーは発生しません。
 
-### The init! Failable Initializer\(init!を使った失敗可能イニシャライザ\)
+### init!を使った失敗可能イニシャライザ\(The init! Failable Initializer\)
 
 通常、`init` キーワードの後に疑問符\(`?`\)を配置して\(`init?`\)、適切な型のオプショナルのインスタンスを作成する失敗可能イニシャライザを定義します。または、適切な型へ暗黙的にアンラップしてオプショナルのインスタンスを作成する失敗可能イニシャライザを定義することもできます。これを行うには、疑問符の代わりに `init` キーワードの後に感嘆符\(`!`\)を置きます\(`init!`\)。
 
 `init?` から `init!` へ委譲でき、その逆も可能です。また、`init!` で `init?` をオーバーライドでき、その逆も可能です。`init` から `init!` に委譲することもできますが、`init!` の初期化が失敗した場合は、アサーションを引き起こします。
 
-## [Required Initializers\(必須イニシャライザ\)](initialization.md) <a id="required-initializers"></a>
+## <a id="required-initializers">必須イニシャライザ\(Required Initializers\)</a>
 
 クラスの全てのサブクラスがそのイニシャライザを実装する必要があることを示すために、クラスのイニシャライザの定義の前に `required` 修飾子を記述します。
 
@@ -958,7 +958,7 @@ class SomeSubclass: SomeClass {
 > NOTE  
 > 継承したイニシャライザで要件を満たすことができる場合、必須イニシャライザの明示的な実装を提供する必要はありません。
 
-## Setting a Default Property Value with a Closure or Function\(クロージャまたは関数を使用したプロパティのデフォルト値の設定\)
+## クロージャまたは関数を使用したプロパティのデフォルト値の設定\(Setting a Default Property Value with a Closure or Function\)
 
 格納プロパティのデフォルト値にカスタマイズまたは設定が必要な場合は、クロージャまたはグローバル関数を使用して、そのプロパティにカスタマイズされたデフォルト値を提供できます。プロパティが属する型の新しいインスタンスが初期化されるたびに、クロージャまたは関数が呼び出され、その戻り値がプロパティのデフォルト値として割り当てられます。
 

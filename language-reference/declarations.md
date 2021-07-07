@@ -24,7 +24,7 @@ Swift では、ほとんどの宣言は、宣言されているのと同時に�
 > declaration → [precedence-group-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-declaration)  
 > declarations → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) [declarations](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declarations)_opt_
 
-## [Top-Level Code\(トップレベルコード\)](declarations.md) <a id="top-level-code"></a>
+## <a id="top-level-code">トップレベルコード\(Top-Level Code\)</a>
 
 Swift ソースファイルのトップレベルコードは、0 個以上の文、宣言、式で構成されています。デフォルトでは、ソースファイルのトップレベルで宣言されている変数、定数、およびその他の名前付き宣言は、同じモジュールの全てのソースファイル内のコードからアクセスできます。[Access Control Levels\(アクセス制御レベル\)](declarations.md#access-control-levels)で説明されているように、宣言をアクセスレベル修飾子でマークすることで、このデフォルトの動作をオーバーライドできます。
 
@@ -35,7 +35,7 @@ Swift ソースファイルのトップレベルコードは、0 個以上の文
 > GRAMMAR OF A TOP-LEVEL DECLARATION  
 > top-level-declaration → [statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements)_opt_
 
-## Code Blocks\(コードブロック\)
+## コードブロック\(Code Blocks\)
 
 _コードブロック_は、文をグループ化するための様々な宣言および制御構造によって使用されます。形式は次のとおりです:
 
@@ -46,7 +46,7 @@ _コードブロック_は、文をグループ化するための様々な宣言
 > GRAMMAR OF A CODE BLOCK  
 > code-block → `{` [statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements)_opt_ `}`
 
-## Import Declaration\(インポート宣言\)
+## インポート宣言\(Import Declaration\)
 
 _インポート宣言_を使用すると、現在のファイルの外部で宣言されているシンボルにアクセスできます。基本形式はモジュール全体をインポートします。`import` キーワードとそれに続くモジュール名で構成されます:
 
@@ -62,7 +62,7 @@ _インポート宣言_を使用すると、現在のファイルの外部で宣
 > import-path → [import-path-identifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path-identifier) \| [import-path-identifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path-identifier) `.` [import-path](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path)  
 > import-path-identifier → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) \| [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator)
 
-## [Constant Declaration\(定数宣言\)](declarations.md) <a id="constant-declaration"></a>
+## <a id="constant-declaration">定数宣言\(Constant Declaration\)</a>
 
 _定数宣言_では、プログラムに名前付きの定数値を導入します。定数宣言は `let` キーワードを使用して宣言され、形式は次のとおりです。
 
@@ -99,7 +99,7 @@ print("The second number is \(secondNumber).")
 > pattern-initializer → [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern) [initializer](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer)_opt_  
 > initializer → `=` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
 
-## [Variable Declaration\(変数宣言\)](declarations.md) <a id="variable-declaration"></a>
+## <a id="variable-declaration">変数宣言\(Variable Declaration\)</a>
 
 _変数宣言_では、プログラムに名前付きの変数値を導入し、`var` キーワードを使用して宣言されます。
 
@@ -110,7 +110,7 @@ _変数宣言_では、プログラムに名前付きの変数値を導入し、
 
 [Overriding\(オーバーライド\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/inheritance#overriding)で説明されているように、サブクラスのプロパティ宣言に `override` 修飾子をマークすることで、サブクラス内でプロパティをオーバーライドできます。
 
-### Stored Variables and Stored Variable Properties\(格納変数、格納可変プロパティ\)
+### 格納変数、格納可変プロパティ\(Stored Variables and Stored Variable Properties\)
 
 次の形式は、格納変数や格納可変プロパティを宣言します。
 
@@ -124,7 +124,7 @@ _変数宣言_では、プログラムに名前付きの変数値を導入し、
 
 それらの名前が示唆するように、格納変数または格納可変プロパティの値がメモリに格納されます。
 
-### Computed Variables and Computed Properties\(計算変数、計算変数プロパティ\)
+### 計算変数、計算変数プロパティ\(Computed Variables and Computed Properties\)
 
 次の形式は、計算変数または計算プロパティを宣言します。
 
@@ -140,7 +140,7 @@ _setter name_ とそれを囲む括弧は省略可能です。setter name を指
 
 詳細や計算プロパティの例は、[Computed Properties\(計算プロパティ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#properties-computed-properties)を参照ください。
 
-### [Stored Variable Observers and Property Observers\(格納変数オブザーバとプロパティオブザーバ\)](declarations.md) <a id="stored-variable-observers-and-property-observers"></a>
+### <a id="stored-variable-observers-and-property-observers">格納変数オブザーバとプロパティオブザーバ\(Stored Variable Observers and Property Observers\)</a>
 
 格納変数またはプロパティを `willSet` や `didSet` オブザーバと一緒に宣言することもできます。オブザーバで宣言された格納変数またはプロパティの形式は次のとおりです:
 
@@ -201,7 +201,7 @@ newAndOld.x = 200
 
 より詳細な情報やプロパティオブザーバの使用方法の例は、[Property Observers\(プロパティオブザーバ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#property-observers)を参照ください。
 
-### [Type Variable Properties\(型変数プロパティ\)](declarations.md) <a id="type-variable-properties"></a>
+### <a id="type-variable-properties">型変数プロパティ\(Type Variable Properties\)</a>
 
 型変数プロパティを宣言するには、宣言を `static` 修飾子でマークします。サブクラスがスーパークラスの実装をオーバーライドできるようにするには、代わりに `class` 修飾子を使用して型計算プロパティを宣言することができます。型プロパティは、[Type Properties\(型プロパティ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#type-properties)で説明されています。
 
@@ -229,7 +229,7 @@ newAndOld.x = 200
 > willSet-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)_opt_ `willSet` [setter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-name)_opt_ [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  
 > didSet-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)_opt_ `didSet` [setter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-name)_opt_ [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
 
-## [Type Alias Declaration\(タイプエイリアス宣言\)](declarations.md) <a id="type-alias-declaration"></a>
+## <a id="type-alias-declaration">タイプエイリアス宣言\(Type Alias Declaration\)</a>
 
 _タイプエイリアス宣言_では、既存の型に別名を導入します。タイプエイリアス宣言は、`typealias` キーワードを使用して宣言され、形式は次のとおりです:
 
@@ -283,7 +283,7 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 > typealias-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
 > typealias-assignment → `=` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
 
-## [Function Declaration\(関数宣言\)](declarations.md) <a id="function-declaration"></a>
+## <a id="function-declaration">関数宣言\(Function Declaration\)</a>
 
 _関数宣言_では、プログラムに関数またはメソッドを導入します。クラス、構造体、列挙型、またはプロトコルのコンテキストで宣言されている関数は_メソッド_と呼ばれます。関数宣言は `func` キーワードを使用して宣言され、形式は次のとおりです:
 
@@ -331,7 +331,7 @@ func repeatGreeting(_ greeting: String, count n: Int) { /* n 回あいさつ */ 
 repeatGreeting("Hello, world!", count: 2) //  count は ラベルあち, greeting は ラベルなし
 ```
 
-### [In-Out Parameters\(In-Outパラメータ\)](declarations.md) <a id="declarations-in-out-parameters"></a>
+### <a id="declarations-in-out-parameters">In-Out パラメータ\(In-Out Parameters\)</a>
 
 in-out パラメータは次のように渡されます:
 
@@ -371,7 +371,7 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 
 より多くの議論と in-out パラメータの例については、[In-Out Parameters\(In-Out パラメータ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/functions#functions-in-out-parameters)を参照ください。
 
-### [Special Kinds of Parameters\(特殊な種類のパラメータ\)](declarations.md) <a id="special-kinds-of-parameters"></a>
+### <a id="special-kinds-of-parameters">特殊な種類のパラメータ\(Special Kinds of Parameters\)</a>
 
 パラメータを無視したり、1 つのパラメータに複数の値を受け取ったり、デフォルト値を提供できます。形式は次のとおりです:
 
@@ -390,7 +390,7 @@ f(x: 7)   // 有効。提供された値を使用します
 f(7)      // 無効。引数ラベルがありません
 ```
 
-### Special Kinds of Methods\(特殊な種類のメソッド\)
+### 特殊な種類のメソッド\(Special Kinds of Methods\)
 
 `self` を変更する列挙型または構造体のメソッドは、`mutating` 修飾子でマークされていなければなりません。
 
@@ -398,7 +398,7 @@ f(7)      // 無効。引数ラベルがありません
 
 型のインスタンスではなく型自体に紐づくメソッドは、列挙型および構造体の `static` 修飾子、またはクラスの `static` または `class` 修飾子のいずれかでマークされている必要があります。`class` 修飾子でマークされたクラス型メソッドは、サブクラスでオーバーライドできます。`class final` または `static` でマークされたクラス型メソッドはオーバーライドできません。
 
-### [Methods with Special Names\(特別な名前のメソッド\)](declarations.md) <a id="methods-with-special-names"></a>
+### <a id="methods-with-special-names">特別な名前のメソッド\(Methods with Special Names\)</a>
 
 いくつかの特別な名前のメソッドは、関数呼び出しの糖衣構文\(シンタックスシュガー\)を使用できます。ある型がこれらのメソッドの内の 1 つを定義している場合、そのインスタンスを関数呼び出し構文で使用できます。それは、そのインスタンス上の特別な名前のメソッドの呼び出しだと解釈されます。
 
@@ -432,7 +432,7 @@ let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 
 `subscript(dynamicMember:)` は、[dynamicMemberLookup](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/attributes#dynamicmemberlookup)で説明されているように、メンバを検索するための糖衣構文\(シンタックスシュガー\)です。
 
-### [Throwing Functions and Methods\(スロー関数とスローメソッド\)](declarations.md) <a id="throwing-functions-and-methods"></a>
+### <a id="throwing-functions-and-methods">スロー関数とスローメソッド\(Throwing Functions and Methods\)</a>
 
 スロー関数とスローメソッドは、`throws` キーワードでマークされている必要があります。これらの関数およびメソッドは、_スロー関数_および_スローメソッド_と呼ばれます。形式は次のとおりです:
 
@@ -446,7 +446,7 @@ let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 
 スローメソッドは、非スローメソッドをオーバーライドすることができず、非スローメソッドのプロトコル要件を満たすことができません。逆に、非スローメソッドはスローメソッドをオーバーライドすることができ、スローメソッドのプロトコル要件を満たすことができます。
 
-### [Rethrowing Functions and Methods\(再スロー関数と再スローメソッド\)](declarations.md) <a id="rethrowing-functions-and-methods"></a>
+### <a id="rethrowing-functions-and-methods">再スロー関数と再スローメソッド\(Rethrowing Functions and Methods\)</a>
 
 関数またはメソッドが、そのパラメータの 1 つがエラーをスローした場合にのみエラーをスローすることを示すために `rethrows` キーワードを使うことができます。これらの関数およびメソッドは、_再スロー関数_および_再スローメソッド_と呼ばれます。再スロー関数と再スローメソッドには、少なくとも 1 つのエラーをスローする関数のパラメータが必要です。
 
@@ -474,7 +474,7 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 スローメソッドは再スローメソッドをオーバーライドできず、再スローメソッドのプロトコル要件を満たすことができません。逆に、再スローメソッドはスローメソッドをオーバーライドでき、再スローメソッドはスローメソッドのプロトコル要件を満たすことができます。
 
-### [Asynchronous Functions and Methods\(非同期関数と非同期メソッド\)](declarations.md) <a id="asynchronous-functions-and-asynchronous-methods"></a>
+### <a id="asynchronous-functions-and-asynchronous-methods">非同期関数と非同期メソッド\(Asynchronous Functions and Methods\)</a>
 
 非同期に実行される関数とメソッドは、`async` キーワードでマークされている必要があります。これらの関数とメソッドは、_非同期関数_と_非同期メソッド_と呼ばれています。形式は次のとおりです:
 
@@ -484,7 +484,7 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 `async` キーワードは関数の型の一部で、同期関数は非同期関数のサブタイプのため、非同期関数が期待されるコンテキストで同期関数を使用できます。例えば、同期メソッドを使用して非同期メソッドをオーバーライドでき、同期メソッドは非同期メソッドのプロトコル要件を満たすことができます。
 
-### [Functions that Never Return\(ノーリターン関数\)](declarations.md) <a id="functions-that-never-return"></a>
+### <a id="functions-that-never-return">ノーリターン関数\(Functions that Never Return\)</a>
 
 Swift は、関数またはメソッドがその呼び出し元に戻り値を返さないことを示す `Never` を定義しています。戻り値のない型を持つ関数とメソッドは、_ノーリターン_と呼ばれます。ノーリターン関数とノーリターンメソッドは、回復不能なエラーを引き起こすか、または無期限に続く一連のタスクを始めます。つまり、呼び出すとそれ以降のコードが決して実行されないことを意味します。スロー関数や再スロー関数では、ノーリターンでも、適切な `catch` 句を使ってプログラムの制御を転送できます。
 
@@ -509,7 +509,7 @@ Swift は、関数またはメソッドがその呼び出し元に戻り値を�
 > local-parameter-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
 > default-argument-clause → `=` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
 
-## Enumeration Declaration\(列挙型宣言\)
+## 列挙型宣言\(Enumeration Declaration\)
 
 _列挙型宣言_は、名前付きの列挙型をプログラムに導入します。
 
@@ -523,7 +523,7 @@ _列挙型宣言_は、名前付きの列挙型をプログラムに導入しま
 
 [Extension Declaration\(拡張宣言\)](declarations.md#extension-declaration)で説明されているように、extension を使用して列挙型の動作を拡張できます。
 
-### [Enumerations with Cases of Any Type\(任意の型のケースを持つ列挙型\)](declarations.md) <a id="enumerations-with-cases-of-any-type"></a>
+### <a id="enumerations-with-cases-of-any-type">任意の型のケースを持つ列挙型\(Enumerations with Cases of Any Type\)</a>
 
 次の形式は、任意の型のケースを含む列挙型を宣言しています。
 
@@ -549,7 +549,7 @@ let evenInts: [Number] = [0, 2, 4, 6].map(f)
 
 詳細および関連値型を持つケースの例については、[Associated Values\(関連値\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#associated-values)を参照ください。
 
-#### Enumerations with Indirection\(再帰列挙型\)
+#### 再帰列挙型\(Enumerations with Indirection\)
 
 列挙型は再帰的な構造を持つことができます。つまり、列挙型自体のインスタンスの値をケースの関連値として持つことができます。ただし、列挙型のインスタンスは値型のセマンティクスです。つまり、不変のメモリレイアウトを持っています。再帰をサポートするには、コンパイラが間接層を挿入する必要があります。
 
@@ -566,7 +566,7 @@ enum Tree<T> {
 
 `indirect` 修飾子でマークされた列挙型には、関連値を持つケースと関連値を持たないケースが混在している可能性があります。しかし、ケースに `indirect` 修飾子を付けることはできません。
 
-### [Enumerations with Cases of a Raw-Value Type\(Raw Value 型のケースを持つ列挙型\)](declarations.md) <a id="enumerations-with-cases-of-a-raw-value-type"></a>
+### <a id="enumerations-with-cases-of-a-raw-value-type">Raw Value 型のケースを持つ列挙型\(Enumerations with Cases of a Raw-Value Type\)</a>
 
 次の形式は、同じ基となる型のケースを持つ列挙型を宣言しています。
 
@@ -596,7 +596,7 @@ enum GamePlayMode: String {
 
 Raw Value 型のケースを持つ列挙型は、Swift 標準ライブラリで定義されている `RawRepresentable` プロトコルに暗黙的に準拠しています。その結果、`rawValue` プロパティと、失敗可能イニシャライザ `init?(rawValue: RawValue)` を持ちます。`ExampleEnum.b.rawValue` のように、`rawValue` プロパティを使用して、列挙型の Raw Value にアクセスできます。また、`ExampleEnum(rawValue: 5)` のように、失敗可能イニシャライザを呼び出すことにより、Raw Value を使用して対応するケースを探すことができます。オプショナルの列挙ケースを返します。詳細および Raw Value 型のケースの例については、[Raw Values](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#raw-values)を参照ください。
 
-### Accessing Enumeration Cases\(列挙ケースへのアクセス\)
+### 列挙ケースへのアクセス\(Accessing Enumeration Cases\)
 
 列挙ケースを参照するには、`EnumerationType.enumerationCase` と同様に、ドット\(`.`\)構文を使用します。列挙の型を推論できる場合は、[Enumeration Syntax\(列挙型構文\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#enumeration-syntax)と[Implicit Member Expression\(暗黙メンバ式\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/expressions#implicit-member-expression)で説明されているように、型名を省略することができます\(ドットは必要です\)。
 
@@ -622,7 +622,7 @@ Raw Value 型のケースを持つ列挙型は、Swift 標準ライブラリで�
 > raw-value-assignment → `=` [raw-value-literal](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_raw-value-literal)  
 > raw-value-literal → [numeric-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_numeric-literal) \| [static-string-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_static-string-literal) \| [boolean-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_boolean-literal)
 
-## Structure Declaration\(構造体宣言\)
+## 構造体宣言\(Structure Declaration\)
 
 _構造体宣言_は、名前付きの構造体型をプログラムに導入します。構造体宣言は `struct` キーワードを使用して宣言され、形式は次のとおりです。
 
@@ -653,7 +653,7 @@ _構造体宣言_は、名前付きの構造体型をプログラムに導入し
 > struct-members → [struct-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_struct-member) [struct-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_struct-members)_opt_  
 > struct-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \| [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
 
-## Class Declaration\(クラス宣言\)
+## クラス宣言\(Class Declaration\)
 
 _クラス宣言_は、名前付きクラス型をプログラムに導入します。クラス宣言は、`class` キーワードを使用して宣言され、形式は次のとおりです。
 
@@ -689,7 +689,7 @@ _superclass_ で宣言されたプロパティとメソッドは現在のクラ�
 > class-members → [class-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-member) [class-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-members)_opt_  
 > class-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \| [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
 
-## [Actor Declaration\(アクター宣言\)](declarations.md) <a id="actor-declaration"></a>
+## <a id="actor-declaration">アクター宣言\(Actor Declaration\)</a>
 
 アクター宣言は、名前付きのアクター型をプログラムに導入します。アクター宣言は、`actor` キーワードを使用して宣言され、形式は次のとおりです。
 
@@ -725,7 +725,7 @@ _superclass_ で宣言されたプロパティとメソッドは現在のクラ�
 > actor-members → [actor-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-member) [actor-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-members)_opt_  
 > actor-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \| [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
 
-## [Protocol Declaration\(プロトコル宣言\)](declarations.md) <a id="protocol-declaration"></a>
+## <a id="protocol-declaration">プロトコル宣言\(Protocol Declaration\)</a>
 
 _プロトコル宣言_は、名前付きのプロトコル型をプログラムに導入します。プロトコル宣言は、`protocol` キーワードを使用してグローバルスコープで宣言され、形式は次のとおりです。
 
@@ -785,7 +785,7 @@ protocol SomeProtocol: AnyObject {
 > protocol-member-declaration → [protocol-associated-type-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-associated-type-declaration)  
 > protocol-member-declaration → [typealias-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-declaration)
 
-### [Protocol Property Declaration\(プロトコルプロパティ宣言\)](declarations.md) <a id="protocol-property-declaration"></a>
+### <a id="protocol-property-declaration">プロトコルプロパティ宣言\(Protocol Property Declaration\)</a>
 
 プロトコルは、プロトコル宣言の本文に_プロトコルプロパティ宣言_を含めることによって準拠する型がプロパティを実装する必要があることを宣言します。プロトコルプロパティ宣言には、変数宣言の特別な形式があります。
 
@@ -802,7 +802,7 @@ protocol SomeProtocol: AnyObject {
 > GRAMMAR OF A PROTOCOL PROPERTY DECLARATION  
 > protocol-property-declaration → [variable-declaration-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-declaration-head) [variable-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-name) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation) [getter-setter-keyword-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-setter-keyword-block)
 
-### Protocol Method Declaration\(プロトコルメソッド宣言\)
+### プロトコルメソッド宣言\(Protocol Method Declaration\)
 
 プロトコルは、プロトコル宣言の本文にプロトコルメソッド宣言を含めることによって、準拠する型がそのメソッドを実装する必要があることを宣言します。プロトコルメソッド宣言は、関数宣言と同じ形式ですが、2 つの例外があります。関数本文が含まれていないことと、関数宣言の一部としてデフォルトパラメータを指定できないことです。プロトコルのメソッド要件を実装した例については、[Method Requirements\(メソッド要件\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#method-requirements)を参照ください。
 
@@ -813,7 +813,7 @@ protocol SomeProtocol: AnyObject {
 > GRAMMAR OF A PROTOCOL METHOD DECLARATION  
 > protocol-method-declaration → [function-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-head) [function-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-name) [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)_opt_ [function-signature](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-signature) [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)_opt_
 
-### Protocol Initializer Declaration\(プロトコルイニシャライザ宣言\)
+### プロトコルイニシャライザ宣言\(Protocol Initializer Declaration\)
 
 プロトコルは、プロトコル宣言の本文にプロトコルイニシャライザ宣言を含めることにより、準拠する型がイニシャライザを実装する必要があることを宣言します。プロトコルイニシャライザ宣言は、イニシャライザの本文が含まれていないことを除いて、イニシャライザ宣言と同じ形式です。
 
@@ -827,7 +827,7 @@ protocol SomeProtocol: AnyObject {
 > protocol-initializer-declaration → [initializer-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-head) [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)_opt_ [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)`throws`_opt_ [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)_opt_  
 > protocol-initializer-declaration → [initializer-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-head) [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)_opt_ [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)`rethrows` [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)_opt_
 
-### [Protocol Subscript Declaration\(プロトコル subscript 宣言\)](declarations.md) <a id="protocol-subscript-declaration"></a>
+### <a id="protocol-subscript-declaration">プロトコル subscript 宣言\(Protocol Subscript Declaration\)</a>
 
 プロトコルは、プロトコル宣言の本文にプロトコル subscript 宣言を含めることによって準拠する型が subscript を実装する必要があることを宣言します。プロトコル subscript 宣言には、特殊な形式の subscript 宣言があります:
 
@@ -840,7 +840,7 @@ subscript 宣言は、プロトコルに準拠するために最低限必要な 
 > GRAMMAR OF A PROTOCOL SUBSCRIPT DECLARATION  
 > protocol-subscript-declaration → [subscript-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-head) [subscript-result](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-result) [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)_opt_ [getter-setter-keyword-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-setter-keyword-block)
 
-### [Protocol Associated Type Declaration\(プロトコル関連型宣言\)](declarations.md) <a id="protocol-associated-type-declaration"></a>
+### <a id="protocol-associated-type-declaration">プロトコル関連型宣言\(Protocol Associated Type Declaration\)</a>
 
 プロトコルは、`associatedtype` キーワードを使用して関連型を宣言します。関連型は、プロトコルの宣言の一部として使用される型の別名を提供します。関連型は、ジェネリックパラメータ句の型パラメータに似ていますが、宣言されているプロトコルでは `Self` に関連付けられています。このコンテキストでは、`Self` はプロトコルに準拠する最終的な型を指します。詳細と例については、[Associated Types\(関連型\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/generics#associated-types)を参照ください。
 
@@ -865,7 +865,7 @@ protocol SubProtocolB: SomeProtocol where SomeType: Equatable { }
 > GRAMMAR OF A PROTOCOL ASSOCIATED TYPE DECLARATION  
 > protocol-associated-type-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)_opt_ [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)_opt_ `associatedtype`[typealias-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-name) [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)_opt_ [typealias-assignment](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-assignment)_opt_ [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)_opt_
 
-## [Initializer Declaration\(イニシャライザ宣言\)](declarations.md) <a id="initializer-declaration"></a>
+## <a id="initializer-declaration">イニシャライザ宣言\(Initializer Declaration\)</a>
 
 _イニシャライザ宣言_は、クラス、構造体、または列挙型のイニシャライザをプログラムに導入します。イニシャライザ宣言は、`init` キーワードを使用して宣言され、2 つの基本的な形式があります。
 
@@ -900,7 +900,7 @@ convenience イニシャライザは、初期化プロセスを別の convenienc
 
 様々な種類の宣言のイニシャライザの例を確認するには、[Initialization\(イニシャライザ\)](../language-guide-gaido/initialization.md)を参照ください。
 
-### [Failable Initializers\(失敗可能イニシャライザ\)](declarations.md) <a id="declarations-failable-initializers"></a>
+### <a id="declarations-failable-initializers">失敗可能イニシャライザ\(Failable Initializers\)</a>
 
 _失敗可能イニシャライザ_は、イニシャライザが宣言されている型のオプショナルのインスタンスまたは暗黙的にアンラップされたオプショナルのインスタンスを生成するイニシャライザです。その結果、失敗可能イニシャライザは、初期化が失敗したことを示すために `nil` を返すことができます。
 
@@ -946,7 +946,7 @@ if let actualInstance = SomeStruct(input: "Hello") {
 > initializer-head → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)_opt_ [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)_opt_ `init` `!`  
 > initializer-body → [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
 
-## Deinitializer Declaration\(デイニシャライザ宣言\)
+## デイニシャライザ宣言\(Deinitializer Declaration\)
 
 _デイニシャライザ宣言_は、クラス型のデイニシャライザを宣言します。デイニシャライザはパラメータを受け取らず、形式は次のとおりです:
 
@@ -963,7 +963,7 @@ _デイニシャライザ宣言_は、クラス型のデイニシャライザを
 > GRAMMAR OF A DEINITIALIZER DECLARATION  
 > deinitializer-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)_opt_ `deinit` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
 
-## [Extension Declaration\(拡張宣言\)](declarations.md) <a id="extension-declaration"></a>
+## <a id="extension-declaration">拡張宣言\(Extension Declaration\)</a>
 
 _拡張宣言_を使用すると、既存の型の動作を拡張できます。拡張宣言は、`extension` キーワードを使用して宣言され、形式は次のとおりです:
 
@@ -985,9 +985,11 @@ extension は、既存のクラス、構造体、または列挙型に _adopted 
 
 extension は既存のクラスへの継承を追加できないため、_type name_ とコロン\(`:`\)の後にはプロトコルのリストのみを指定できます。
 
-### Conditional Conformance\(条件付き準拠\)
+### 条件付き準拠\(Conditional Conformance\)
 
-ジェネリック型を拡張して条件付きでプロトコルに準拠させることができるため、特定の要件が満たされた場合にのみ、型のインスタンスがプロトコルに準拠します。extension に _requirements_ を含めることで、プロトコルに条件付き準拠を追加します。
+ジェネリック型を拡張して条件付きでプロトコルに準拠させることができるため、特定の要件が満たされた場合にのみ、型のインスタンスがプロトコルに準拠します。extension に *requirements* を含めることで、プロトコルに条件付き準拠を追加します。
+
+#### 一部のジェネリックなコンテキストではオーバーライドされた要件が使用されない\(Overridden Requirements Aren’t Used in Some Generic Contexts\)
 
 #### Overridden Requirements Aren’t Used in Some Generic Contexts\(一部のジェネリックなコンテキストではオーバーライドされた要件が使用されない\)
 
@@ -1054,11 +1056,11 @@ doSomething(with: oneAndTwo)
 
 `doSomething(_ :)` に渡されたインスタンスで `log()` が呼び出されると、ログに記録された文字列にカスタマイズされたタイトルは出力されません。
 
-### Protocol Conformance Must Not Be Redundant\(プロトコル準拠は冗長であってはならない\)
+### プロトコル準拠は冗長であってはならない\(Protocol Conformance Must Not Be Redundant\)
 
 具象型は、特定のプロトコルに 1 回だけ準拠できます。Swift は、冗長なプロトコルへの準拠をエラーにします。この種のエラーは、2 種類の状況で発生する可能性があります。最初の状況は、プロトコルの異なった要件に準拠するために同じプロトコルに明示的に複数回準拠している場合です。2 番目の状況は、同じプロトコルから暗黙的に複数回継承する場合です。これらの状況については、以下のセクションで説明します。
 
-#### Resolving Explicit Redundancy\(明示的な冗長の解決\)
+#### 明示的な冗長の解決\(Resolving Explicit Redundancy\)
 
 具象型の extension は、extension の中の要件が排他的でも、複数の extension で同じプロトコルに準拠することはできません。この制限は、下記の例に示されています。2 つの extension が `Serializable` プロトコルに条件付き準拠を追加しようとします。1 つは `Int` の配列で、もう 1 つは `String` の配列です。
 
@@ -1094,7 +1096,7 @@ extension Array: Serializable where Element: SerializableInArray {
 }
 ```
 
-#### Resolving Implicit Redundancy\(暗黙的な冗長の解決\)
+#### 暗黙的な冗長の解決\(Resolving Implicit Redundancy\)
 
 具象型が条件付きでプロトコルに準拠している場合、その型は同じ要件を持つ親プロトコルにも暗黙的に準拠します。
 
@@ -1137,7 +1139,7 @@ extension Array: Loggable where Element: MarkedLoggable { }
 > extension-members → [extension-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_extension-member) [extension-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_extension-members)_opt_  
 > extension-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \| [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
 
-## Subscript Declaration\(subscript宣言\)
+## subscript 宣言\(Subscript Declaration\)
 
 _subscript 宣言_を使用すると、特定の型のオブジェクトに subscript のサポートを追加できます。通常、コレクション、リスト、またはシーケンス内の要素にアクセスするための便利な構文を提供するために使用されます。subscript 宣言は、`subscript` キーワードを使用して宣言され、形式は次のとおりです:
 
@@ -1159,7 +1161,7 @@ subscript のパラメータは、2 つの例外を除いて、関数パラメ�
 
 subscript の詳細と subscript 宣言の例については、[Subscripts](../language-guide-gaido/subscripts.md)を参照ください。
 
-### Type Subscript Declarations\(型subscript宣言\)
+### 型 subscript 宣言\(Type Subscript Declarations\)
 
 型のインスタンスではなく、型自体の subscript を宣言するには、`static` 修飾子を subscript 宣言にマークします。クラスは、サブクラスがスーパークラスの実装をオーバーライドできるようにする代わりに、`class` 修飾子を型計算プロパティにマークできます。クラス宣言では、`static` キーワードは、`class` と `final` 修飾子の両方で宣言をマークするのと同じ効果があります。
 
@@ -1170,7 +1172,7 @@ subscript の詳細と subscript 宣言の例については、[Subscripts](../l
 > subscript-head → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)_opt_ [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)_opt_ `subscript` [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)_opt_ [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)  
 > subscript-result → `->` [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)_opt_ [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
 
-## [Operator Declaration\(演算子宣言\)](declarations.md) <a id="operator-declaration"></a>
+## <a id="operator-declaration">演算子宣言\(Operator Declaration\)</a>
 
 _演算子宣言_は、新しい中置、前置、または後置演算子をプログラムに導入し、`operator` キーワードを使用して宣言されます。
 
@@ -1211,7 +1213,7 @@ _後置演算子_は、式 `a!` のような後置強制アンラップ演算子
 > infix-operator-declaration → `infix` `operator` [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator) [infix-operator-group](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_infix-operator-group)_opt_  
 > infix-operator-group → `:` [precedence-group-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-name)
 
-## [Precedence Group Declaration\(優先順位グループ宣言\)](declarations.md) <a id="precedence-group-declaration"></a>
+## <a id="precedence-group-declaration">優先順位グループ宣言\(Precedence Group Declaration\)</a>
 
 _優先順位グループ宣言_は、プログラムに中置演算子の優先順位に新しいグループ化の方法を導入します。演算子の優先順位は、グループ化する括弧\(`()`\)がない場合に、演算子がオペランドとどのようにバインドするかを指定します。
 
@@ -1245,7 +1247,7 @@ Swift は、標準ライブラリが提供する演算子に多数の優先順�
 > precedence-group-names → [precedence-group-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-name) \| [precedence-group-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-name) `,` [precedence-group-names](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-names)  
 > precedence-group-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
-## [Declaration Modifiers\(宣言修飾子\)](declarations.md) <a id="declaration-modifiers"></a>
+## <a id="declaration-modifiers">宣言修飾子\(Declaration Modifiers\)</a>
 
 _宣言修飾子_は、宣言の動作または意味を変更するキーワードまたはコンテキスト依存キーワードです。\(存在する場合は\)宣言の属性と宣言を導入するキーワードの間に適切なキーワードまたはコンテキスト依存キーワードを記述することにより、宣言修飾子を指定します。
 
@@ -1297,7 +1299,7 @@ weak
 
 Swift は、open、public、internal、file private、private の 5 つのレベルのアクセス制御を提供します。下記のアクセスレベル修飾子のいずれかで宣言をマークして、宣言のアクセスレベルを指定できます。アクセス制御については、[Access Control\(アクセスコントロール\)](../language-guide-gaido/access-control.md)で詳しく説明しています。
 
-open
+## <a id="access-control-levels">アクセス制御レベル\(Access Control Levels\)</a>
 
  この修飾子を宣言に適用すると、同じモジュール内のコードから宣言にアクセスしたり、サブクラス化できることを示します。\`open\` 修飾子でマークされた宣言は、その宣言を含むモジュールをインポートしたモジュール内のコードからアクセスおよびサブクラス化することもできます。
 

@@ -6,7 +6,7 @@
 
 Swift のジェネリックスの概要については、[Generics\(ジェネリクス\)](../language-guide-gaido/generics.md)を参照ください。
 
-## Generic Parameter Clause\(ジェネリックパラメータ句\)
+## ジェネリックパラメータ句\(Generic Parameter Clause\)
 
 ジェネリックパラメータ句は、ジェネリック型または関数の型パラメータを指定し、それらのパラメータに関連する制約や要件とともに指定します。ジェネリックパラメータ句は、山括弧\(`<>`\)で囲まれており、形式は次のとおりです。
 
@@ -36,7 +36,7 @@ simpleMax(17, 42) // T は Int に推論されます
 simpleMax(3.14159, 2.71828) // T は Double に推論されます
 ```
 
-### Generic Where Clauses\(ジェネリック where 句\)
+### ジェネリック where 句\(Generic Where Clauses\)
 
 型または関数の本文の開始中括弧\(`{`\)の直前にジェネリック `where` 句を含むことによって、型パラメータとその関連型に追加要件を指定できます。ジェネリック `where` 句は、`where` キーワードで構成され、その後に 1 つ以上の要件のカンマ区切りのリストが続きます。
 
@@ -77,7 +77,7 @@ extension Collection where Element: SomeProtocol {
 > conformance-requirement → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier) `:` [protocol-composition-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_protocol-composition-type)  
 > same-type-requirement → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier) `==` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
 
-## Generic Argument Clause\(ジェネリック引数句\)
+## ジェネリック引数句\(Generic Argument Clause\)
 
 _ジェネリック引数句_は、ジェネリック型の型引数を指定します。ジェネリック引数句は山括弧\(`<>`\)で囲まれており、形式は次のとおりです。
 

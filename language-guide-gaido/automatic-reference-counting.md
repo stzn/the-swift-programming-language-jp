@@ -8,7 +8,7 @@ Swift は自動参照カウント\(以下 _ARC_ \)を使用して、アプリの
 
 参照カウントは、クラスインスタンスにのみ適用されます。構造体と列挙型は、参照型ではなく値型なので、参照が格納および渡されることはありません。
 
-## How ARC Works\(ARCはどう機能するのか\)
+## ARCはどう機能するのか\(How ARC Works\)
 
 クラスの新しいインスタンスを作成するたびに、ARC はそのインスタンスに関する情報を格納するためにメモリの一部を割り当てます。このメモリには、インスタンスの型に関する情報と、そのインスタンスに関連付けられた格納プロパティの値が保持されます。
 
@@ -20,7 +20,7 @@ Swift は自動参照カウント\(以下 _ARC_ \)を使用して、アプリの
 
 割り当ての解除を防ぐために、クラスインスタンスをプロパティ、定数、または変数に割り当てると、そのプロパティ、定数、または変数はインスタンスへの強参照を作成します。参照は、強参照が残っている限り割り当てを解除できないため、「強い」参照と呼ばれています。
 
-## ARC in Action\(ARCの挙動\)
+## ARCの挙動\(ARC in Action\)
 
 ARC がどのように動くのかの例を次に示します。この例は、`name` という名前の定数格納プロパティを定義する `Person` というシンプルなクラスから始まります。
 
@@ -81,7 +81,7 @@ reference3 = nil
 // "John Appleseed is being deinitialized"
 ```
 
-## [Strong Reference Cycles Between Class Instances\(クラスインスタンス間の強参照循環\)](automatic-reference-counting.md) <a id="strong-reference-cycles-between-class-instances"></a>
+## <a id="strong-reference-cycles-between-class-instances">クラスインスタンス間の強参照循環\(Strong Reference Cycles Between Class Instances\)</a>
 
 上記の例では、ARC は、作成した新しい `Person` インスタンスへの参照の数を追跡し、不要になったらその `Person` インスタンスの割り当てを解除できます。
 
@@ -157,7 +157,7 @@ unit4A = nil
 
 `Person` インスタンスと `Apartment` インスタンス間の強参照は残り、なくなることはありません。
 
-## [Resolving Strong Reference Cycles Between Class Instances\(クラスインスタンス間の強参照循環の解消\)](automatic-reference-counting.md) <a id="resolving-strong-reference-cycles-between-class-instances"></a>
+## <a id="resolving-strong-reference-cycles-between-class-instances">クラスインスタンス間の強参照循環の解消\(Resolving Strong Reference Cycles Between Class Instances\)</a>
 
 Swift は、クラス型のプロパティを操作するときに強参照循環を解決する 2 つの方法を提供します。_弱参照_\(_weak reference_\)と_非所有参照_\(_unowned reference_\)です。
 
@@ -165,7 +165,7 @@ Swift は、クラス型のプロパティを操作するときに強参照循�
 
 他のインスタンスの有効期間が短い場合、つまり、他のインスタンスの割り当てを最初に解除できる場合は、弱参照を使用します。上記の `Apartment` の例では、アパートがその存続期間のある時点でテナントが存在しないこともあるため、この場合、弱参照が参照循環を断ち切る適切な方法です。対照的に、他のインスタンスの存続期間が同じか、それよりも長い場合は、非所有参照を使用します。
 
-### [Weak References\(弱参照\)](automatic-reference-counting.md) <a id="weak-references"></a>
+### <a id="weak-references">弱参照\(Weak References\)</a>
 
 _弱参照_は、参照するインスタンスを強く保持せず、 ARC がインスタンスを破棄することを防ぎません。この動作により、参照が強参照循環の一部になるのを防ぎます。プロパティまたは変数宣言の前に `weak` キーワードを配置することにより、弱参照を示します。
 
@@ -236,7 +236,7 @@ unit4A = nil
 > NOTE  
 > ガベージコレクションを使用するシステムでは、メモリプレッシャによってガベージコレクションがトリガされた場合にのみ、 強参照を持たないオブジェクトの割り当てが解除されるため、シンプルなキャッシュメカニズムを実装するために弱いポインタが使用されることがあります。ただし、ARC では、最後の強参照が削除されるとすぐに値の割り当てが解除されるため、弱参照はそのような目的には適していません。
 
-### [Unowned References\(非所有参照\)](automatic-reference-counting.md) <a id="unowned-references"></a>
+### <a id="unowned-references">非所有参照\(Unowned References\)</a>
 
 弱参照と同様に、_非所有参照_は、インスタンスを強参照しません。ただし、弱参照とは異なり、非所有参照は、他のインスタンスの存続期間が同じか、存続期間がより長い場合に使用します。プロパティまたは変数の宣言の前に `unowned` キーワードを配置することにより、非所有参照を示します。弱参照とは異なり、非所有参照は常に値を持つことが期待されます。その結果、値を `unowned` としてマークしてもオプショナルにはなりません。また、ARC は非所有参照の値を `nil` に設定することはありません。
 
@@ -313,7 +313,7 @@ john = nil
 >
 > `unowned(unsafe)` と書くことで、安全でない非所有参照を示します。参照しているインスタンスの割り当てが解除された後で、所有されていない安全でない参照にアクセスしようとすると、プログラムはインスタンスがかつて存在していたメモリアドレスにアクセスしようとしますが、これは安全ではありません。
 
-### [Unowned Optional References\(オプショナル値への非所有参照\)](automatic-reference-counting.md) <a id="unowned-optional-references"></a>
+### <a id="unowned-optional-references">オプショナル値への非所有参照\(Unowned Optional References\)</a>
 
 クラスへのオプショナルの参照を `unowned` とマークできます。ARC 所有権モデルに関しては、オプショナルの非所有参照と弱参照の両方を同じコンテキストで使用できます。違いは、オプショナルの非所有参照を使用する場合、それが常に有効なオブジェクトを参照しているのか、`nil` が設定されているのかを確認する責任があることです。
 
@@ -370,7 +370,7 @@ department.courses = [intro, intermediate, advanced]
 >
 > クラスをラップするオプショナルは ARC を使用しないため、オプショナルへの強参照を維持する必要はありません。
 
-### Unowned References and Implicitly Unwrapped Optional Properties\(非所有参照と暗黙アンラップしたオプショナルプロパティ\)
+### 非所有参照と暗黙アンラップしたオプショナルプロパティ\(Unowned References and Implicitly Unwrapped Optional Properties\)
 
 上記の弱参照と非所有参照の例は、強参照循環を断ち切る必要がある、より一般的な 2 つのシナリオをカバーしています。
 
@@ -422,7 +422,7 @@ print("\(country.name)'s capital city is called \(country.capitalCity.name)")
 
 上記の例では、暗黙アンラップオプショナルを使用することは、2 段階のクラスイニシャライザの要件が全て満たされることを意味します。`capitalCity` プロパティは、初期化が完了すると、強参照循環を回避しつつ、オプショナルではない値のように使用およびアクセスできます。
 
-## [Strong Reference Cycles for Closures\(クロージャの強参照循環\)](automatic-reference-counting.md) <a id="strong-reference-cycles-for-closures"></a>
+## <a id="strong-reference-cycles-for-closures">クロージャの強参照循環\(Strong Reference Cycles for Closures\)</a>
 
 2 つのクラスのインスタンスプロパティが互いに強参照を保持している場合に、強参照循環がどのように作成されるかを上で説明しました。また、弱参照と非所有参照を使用して、これらの強参照循環を破る方法についても説明しました。
 
@@ -513,14 +513,14 @@ paragraph = nil
 
 `HTMLElement` のデイニシャライザのメッセージは出力されないことに注目してください。`HTMLElement` インスタンスが割り当て解除されていないことを示しています。
 
-## [Resolving Strong Reference Cycles for Closures\(クロージャの強参照循環の解消\)](automatic-reference-counting.md) <a id="resolving-strong-reference-cycles-for-closures"></a>
+## <a id="resolving-strong-reference-cycles-for-closures">クロージャの強参照循環の解消\(Resolving Strong Reference Cycles for Closures\)</a>
 
 クロージャの定義の一部にキャプチャリストを使用することで、クロージャとクラスインスタンス間の強参照循環を解決します。キャプチャリストは、クロージャの本文内で 1 つ以上の参照型をキャプチャするときに使用するルールを定義します。2 つのクラスインスタンス間の強参照循環と同様に、キャプチャされた各参照は、強参照ではなく、弱参照または非所有参照と宣言します。弱いか非所有かの適切な選択は、コード間の様々な関係によって異なります。
 
 > NOTE  
 > Swift では、クロージャ内で `self` のメンバを参照するときは常に、\(`someProperty` または `someMethod()` だけでなく\) `self.someProperty` または `self.someMethod()` と記述する必要があります。これは、気づかずに `self` をキャプチャする可能性があることを防ぐのに役立ちます。
 
-## [Defining a Capture List\(キャプチャリストの定義\)](automatic-reference-counting.md) <a id="defining-a-capture-list"></a>
+## <a id="defining-a-capture-list">キャプチャリストの定義\(Defining a Capture List\)</a>
 
 キャプチャリストの各アイテムは、`weak` または `unowned` キーワードと、クラスインスタンス\(`self` など\)への参照、または何らかの値で初期化された変数\(`delegate = self.delegate` など\)とのペアです。これらのペアは、カンマで区切られた 1 組の角括弧内\(`[]`\)に記述されます。
 
@@ -543,7 +543,7 @@ lazy var someClosure = {
 }
 ```
 
-## Weak and Unowned References\(弱参照と非所有参照\)
+## 弱参照と非所有参照\(Weak and Unowned References\)
 
 クロージャとキャプチャするインスタンスが常に相互に参照し、常に同時に割り当てが解除される場合は、クロージャ内のキャプチャを非所有参照として定義します。
 

@@ -9,7 +9,7 @@ _構造体_と_クラス_は、プログラムのコードの構成要素を構�
 > NOTE  
 > 昔から_オブジェクト_はクラスのインスタンスはとして知られています。ただし、 Swift の 構造体とクラスは、他の言語以上に機能がかなり似ていて、この章でも、構造体またはクラス型のインスタンスのどちらにも当てはまる機能について説明しています。このため、より一般的な意味合いでインスタンスという用語を使用します。
 
-## Comparing Structures and Classes\(構造体とクラスの比較\)
+## 構造体とクラスの比較\(Comparing Structures and Classes\)
 
 Swift の構造体とクラスには多くの共通点があります。いずれも下記のようなことができます:
 
@@ -33,7 +33,7 @@ Swift の構造体とクラスには多くの共通点があります。いず�
 
 クラスは追加の機能をサポートしている分、複雑さが増します。一般的なガイドラインとして、構造体の方が扱いやすく推奨されます。クラスは適切または必要な場合にのみ使用してください。つまり、実際は、独自に定義するデータ型のほとんどが構造体と列挙型になることを意味します。より詳細な比較は[Choosing Between Structures and Classes](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes)を参照ください。
 
-### Definition Syntax\(定義構文\)
+### 定義構文\(Definition Syntax\)
 
 構造体とクラスの定義構文は似ています。`struct` キーワードを使用して構造体を作成し、`class` キーワードを使用してクラスを作成します。どちらも、定義全体を中括弧のペア\(`{}`\)内に配置します:
 
@@ -68,7 +68,7 @@ class VideoMode {
 
 上記の例では、ビデオ表示用の特定のビデオモードを記述するために、`VideoMode` と呼ばれる新しいクラスも定義しています。このクラスには、4 つの格納プロパティの変数があります。最初の `resolution` は、新しい `Resolution` 構造体インスタンスで初期化されており `Resolution` 型だと推論されます。他の 3 つのプロパティに関しては、`interlaced` に \(「非インターレースビデオ」を意味する\)`false` を、再生フレームレートに `0.0`、および `name` と呼ばれるオプショナルの `String` 値で初期化されます。`name` プロパティはオプショナル型のため、デフォルトで `nil` が自動的に設定されます。
 
-### Structure and Class Instances\(structとclassのインスタンス\)
+### struct と class のインスタンス\(Structure and Class Instances\)
 
 `Resolution` 構造体の定義と `VideoMode` クラスの定義は、`Resolution` または `VideoMode` がどのようなものかを説明しているだけです。それら自体は、特定の解像度やビデオモードについては説明していません。そうするためには、構造体またはクラスのインスタンスを作成する必要があります。
 
@@ -81,7 +81,7 @@ let someVideoMode = VideoMode()
 
 構造体とクラスはどちらも、新しいインスタンスに初期化構文\(`init`\)を使用します。初期化構文の最もシンプルな形式では、クラスまたは構造体の型名の後に、`Resolution()` や `VideoMode()` などの空の括弧\(`()`\)が続きます。これにより、クラスまたは構造の新しいインスタンスが作成され、プロパティはデフォルト値で初期化されます。クラスと構造体の初期化については、[Initialization\(初期化\)](initialization.md)で詳しく説明しています。
 
-### [Accessing Properties\(プロパティへのアクセス\)](structures-and-classes.md) <a id="accessing-properties"></a>
+### <a id="accessing-properties">プロパティへのアクセス\(Accessing Properties\)</a>
 
 ドット構文を使用して、インスタンスのプロパティにアクセスできます。ドット構文では、インスタンス名の直後に、スペースを入れずにピリオド\(`.`\)で区切ってプロパティ名を記述します。
 
@@ -107,7 +107,7 @@ print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
 // "The width of someVideoMode is now 1280"
 ```
 
-### [Memberwise Initializers for Structure Types\(構造体のメンバワイズイニシャライザ\)](structures-and-classes.md) <a id="structures-and-classes-memberwise-initializers-for-structure-types"></a>
+### <a id="structures-and-classes-memberwise-initializers-for-structure-types">構造体のメンバワイズイニシャライザ\(Memberwise Initializers for Structure Types\)</a>
 
 全ての構造体には、メンバ全てに値を設定して初期化するイニシャライザ\(_メンバワイズイニシャライザ_\)が自動的に生成されます。新しいインスタンスのプロパティの初期値は、プロパティ名でイニシャライザに渡すことができます。
 
@@ -117,7 +117,7 @@ let vga = Resolution(width: 640, height: 480)
 
 構造体とは異なり、クラスはデフォルトのイニシャライザを自動で生成しません。イニシャライザについては、[Initialization\(初期化\)](initialization.md)で詳しく説明しています。
 
-## [Structures and Enumerations Are Value Types\(構造体と列挙型は値型\)](structures-and-classes.md) <a id="structures-and-enumerations-are-value-type"></a>
+## <a id="structures-and-enumerations-are-value-type">構造体と列挙型は値型\(Structures and Enumerations Are Value Types\)</a>
 
 値型は、変数または定数に値が割り当てられたとき、または関数に渡されたときに値がコピーされる型\(_値型_\)です。
 
@@ -184,7 +184,7 @@ print("The remembered direction is \(rememberedDirection)")
 
 `RememberedDirection` に `currentDirection` の値が割り当てられると、実際にはその値のコピーが設定されます。その後、`currentDirection` の値を変更しても、`rememberedDirection` に保存されていた元の値には影響しません。
 
-## [Classes Are Reference Types\(クラスは参照型\)](structures-and-classes.md) <a id="classes-are-reference-types"></a>
+## <a id="classes-are-reference-types">クラスは参照型\(Classes Are Reference Types\)</a>
 
 値型とは異なり、_参照型_は、変数または定数に割り当てられたとき、または関数に渡されたときにコピーされません。コピーではなく、同じ既存のインスタンスへの参照が使用されます。
 
@@ -222,7 +222,7 @@ print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 
 `tenEighty` と `alsoTenEighty` は、変数ではなく定数として宣言されていることに注目してください。それでも、`tenEighty` および `alsoTenEighty` 定数自体の値は実際には変更されないため、`tenEighty.frameRate` および `alsoTenEighty.frameRate` を変更することはできます。`tenEighty` と `alsoTenEighty` 自体は、`VideoMode` インスタンスを「格納」しません。代わりに、どちらも内部で同じ `VideoMode` インスタンスを参照します。変更されるのは、基になる `VideoMode` の `frameRate` プロパティで、その `VideoMode` への参照を持つ定数ではありません。
 
-### [Identity Operators\(恒等作用素\)](structures-and-classes.md) <a id="identity-operators"></a>
+### <a id="identity-operators">恒等作用素\(Identity Operators\)</a>
 
 クラスは参照型のため、複数の定数と変数が内部でクラスの同じインスタンスを参照する可能性があります。\(構造体や列挙型は、定数や変数に割り当てられたとき、または関数に渡されたときに常にコピーされるため異なります\)
 
@@ -244,7 +244,7 @@ if tenEighty === alsoTenEighty {
 
 独自の構造体とクラスを定義するときは、2 つのインスタンスがどうすれば等しいと見なされるのかを決定するのはあなた次第です。`==` および `!=` 演算子の独自の実装を定義するプロセスは、[Equivalence Operators\(等価演算子\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#equivalence-operators)で説明されています。
 
-### Pointers\(ポインタ\)
+### ポインタ\(Pointers\)
 
 C 言語、C++、または Objective-C の経験がある場合は、これらの言語が_ポインタ_を使用してメモリ内のアドレスを参照することを知っているかもしれません。ある参照型のインスタンスを参照する Swift の定数または変数は、C 言語のポインタに似ていますが、メモリ内のアドレスへのポインタを直接示しているではなく、参照を示すためにアスタリスク\(`*`\)を記述する必要はありません。代わりに、これらの参照は、Swift の他の定数または変数と同様に定義されます。標準ライブラリには、ポインタを直接操作する必要がある場合に使用できるポインタとバッファ型が用意されています。[Manual Memory Management](https://developer.apple.com/documentation/swift/swift_standard_library/manual_memory_management)を参照ください。
 

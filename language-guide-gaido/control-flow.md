@@ -8,7 +8,7 @@ Swift は、様々な制御フロー文を提供しています。1 つのタス
 
 Swift の `switch` 文は、C のような他の言語と比べてもかなり強力です。ケースは、範囲やタプル、特定の型へのキャストなど、様々なパターンに合致させることができます。また、`switch` のケースに合致した値は、ケースの本文内で使用するために変数や定数に紐づけることができます。各ケースに `where` を使用してより複雑な条件を作成することもできます。
 
-## [For-In Loops\(For-Inループ\)](control-flow.md) <a id="for-in-loops"></a>
+## <a id="for-in-loops">For-Inループ\(For-In Loops\)</a>
 
 配列のアイテムや数値の範囲、文字列の文字などのシーケンスに対してループ処理を行うために `for-in` ループを使います。
 
@@ -101,7 +101,7 @@ for tickMark in stride(from: 3, through: hours, by: hourInterval) {
 }
 ```
 
-## While Loops\(Whileループ\)
+## Whileループ\(While Loops\)
 
 `while` ループは条件が `false` になるまで内部の文を実行します。最初のループが始まるまで、何回繰り返すのかがわからないようなときに最も使われます。
 
@@ -215,7 +215,7 @@ print("Game over!")
 
 ループの条件は前と同様\(`while square < finalSquare`\)ですが、今回はループを一度実行するまでは評価されません。今回の例では、`repeat-while` の構造は `while` 適よりしています。`repeat-while` では、`square += board[square]` は常に `while` 条件で `square` がまだボード上にいることを確かめた後にすぐ実行されます。この挙動で、`while` の例では必要だった配列の範囲チェックは必要なくなります。
 
-## Conditional Statements\(条件文\)
+## 条件文\(Conditional Statements\)
 
 特定の条件に基づいてコードの異なる部分を実行すると役に立つことが多くあります。エラーが起きたときに追加でコードを実行したいこともあるでしょう。値が大きすぎたり、小さすぎたりしたらメッセージを表示したいかもしれません。この場合、コードを_条件付き_にすることで実現できます。
 
@@ -309,7 +309,7 @@ default:
 
 `switch` 文の最初のケースは、英語アルファベットの最初の文字 `a` に合致し、2 番目のケースは最後の文字 `z` に合致します。全ての可能性がある文字をカバーしなければならないため、`a` と `z` 以外の全ての文字に対して `default` ケースを使用しています。こうすることで全てのケースを網羅できています。
 
-#### No Implicit Fallthrough\(暗黙的にfallthroughしない\)
+#### 暗黙的にfallthroughしない\(No Implicit Fallthrough\)
 
 C 言語や Objective-C と異なり、Swift の `switch` 文は、デフォルトでは、それぞれのケースの下から次のケースに行くことはありません。その代わりに、最初に合致した `switch` ケースの実行が完了すると、明示的に `break` しなくても、全体の `switch` 文も完了します。こうすることで、C 言語の `switch` 文よりも、より安全に簡単に使えるようにしています。間違って 1 つ以上のケースを実行してしまうリスクを防ぎます。
 
@@ -350,7 +350,7 @@ default:
 > NOTE  
 > 特定のケースから次のケースの 本文 を実行したい場合は、`fallthrough` キーワードを使います。[Fallthrough](control-flow.md#fallthrough)に記載しています。
 
-#### Interval Matching\(範囲マッチング\)
+#### 範囲マッチング\(Interval Matching\)
 
 `switch` ケースの値には、範囲内に含まれるかどうかのチェックもできます。下記の例では、数値の範囲を使用して、任意のサイズの数値の自然言語カウントを提供します。
 
@@ -378,7 +378,7 @@ print("There are \(naturalCount) \(countedThings).")
 
 上記の例では、`approximateCount` が `switch` 文で評価されています。それぞれのケースでは、1 つの数値または範囲で比較しています。`approximateCount` の値は、12 から 100 の間にあるので、`naturalCount` は `"dozens of"` に値が代入されます。実行後は `switch` 文から抜け出します。
 
-#### Tuples\(タプル\)
+#### タプル\(Tuples\)
 
 タプルを使用して同じ `switch` 文の中で、複数の値を検証することができます。タプルの個々の要素は、異なる値や範囲に対して検証できます。逆に、アンダースコア\(`_`\)を使用すると、ワイルドカードとしてどんな値にも合致させることができます。
 
@@ -407,7 +407,7 @@ default:
 
 C 言語と異なり、Swift では複数のケースで同じ値を検証することができます。実際、この例では `(0、0)` は全ての 4 つのケースに当てはまります。複数に合致する場合は、常に最初に合致したケースが使われます。`(0、0)` は最初に `case (0, 0)` に合致するので、他のケースは無視します。
 
-#### Value Bindings\(値バインディング\)
+#### 値バインディング\(Value Bindings\)
 
 `switch` ケースは、合致した値を、ケースの本文で使用するために、一時的な定数または変数に一致する 1 つまたは複数の値に名前を付けることができます。この挙動は、値を変数や定数にバインドするので、_値バインディング_と呼ばれています。
 
@@ -463,7 +463,7 @@ case let (x, y):
 
 最後のケースは、先の 2 つのケース以外の全ての値に合致するため、`switch` 文で全ての値を網羅するための `default` ケースは不要です。
 
-#### [Compound Cases\(複合ケース\)](control-flow.md) <a id="compound-cases"></a>
+#### <a id="compound-cases">複合ケース\(Compound Cases\)</a>
 
 各ケースをカンマ\(`,`\)で区切ってケースの後に書くことで、同じ本文を共有する複数のケースを書くことができます。その中の 1 つのケースに合致した場合に、合致したと見なされます。ケースのリストが長くなるような場合は、複数行にまたがって書くことができます。例えば:
 
@@ -498,7 +498,7 @@ default:
 
 上記のケースでは 2 つのパターンを含んでいます: `(let distance, 0)` は x 軸上にある点に合致し、`(0, let distance)` は y 軸上にある点に合致します。どちらのパターンでも、`distance` へのバインディングが含まれており、どちらも数値です。つまり、ケース内では常に `distance` にアクセスできます。
 
-## [Control Transfer Statements\(制御転送文\)](control-flow.md) <a id="control-flow-control-transfer-statements"></a>
+## <a id="control-flow-control-transfer-statements">制御転送文\(Control Transfer Statements\)</a>
 
 _制御転送文_は、コードの一部の制御を他の部分へ転送させることで、コードの実行順序を変更します。Swift には 5 つの制御転送文があります:
 
@@ -536,11 +536,11 @@ print(puzzleOutput)
 
 `break` 文は、即座に全体の制御フローの実行を終了させます。`break` は、`switch` 文かループ文の内部で、他のケースよりも早期に処理の実行を終了させたいときに使います。
 
-#### Break in a Loop Statement\(ループ内でBreak\)
+#### ループ内でBreak\(Break in a Loop Statement\)
 
 ループ文の内部で使用するとき、`break` はループの実行を即座に終了し、ループの末尾の閉じ括弧\(`}`\)の後に制御フローを移します。ループ内の続きの処理は実行されず、次のループも開始されません。
 
-#### [Break in a Switch Statement\(Switch内でBreak\)](control-flow.md) <a id="break-in-a-switch-statement"></a>
+#### <a id="break-in-a-switch-statement">Switch内でBreak\(Break in a Switch Statement\)</a>
 
 `switch` 文の内部で使用するとき、`break` は `switch` の実行を即座に終了し、`switch` の末尾の閉じ括弧\(`}`\)の後に制御フローを移します。`switch` 文は網羅的で空のケースが許されないため、明示的に何もしないことを伝えるために、わざと合致させて無視するときに必要になります。無視したいケースの本文に `break` のみを書きます。そのケースに合致した場合、ケース内の `break` が `switch` 文全体の実行を即時に終了させます。
 
@@ -603,7 +603,7 @@ print(description)
 > NOTE  
 > `fallthrough` キーワードは、前のケースから通り抜けて実行されたケースの条件をチェックしません。`fallthrough` キーワードは次のケース\(または `default` ケース\)のブロック内の文に直接移動し、コードを実行します。これは C 言語と同じ挙動です。
 
-### [Labeled Statements\(ラベル付き文\)](control-flow.md) <a id="labeled-statements"></a>
+### <a id="labeled-statements">ラベル付き文\(Labeled Statements\)</a>
 
 Swift では、より複雑な制御フローを作成するために、ループや条件文の中にさらにループや条件文をネストできます。しかし、`break` を使用して早期に実行を終了させることもできます。そのため、どの文を `break` するのかを明示すると役に立つことがあります。同様に、複数のネストしたループで、どのループに `continue` が影響するかを明示することも役に立ちます。
 
@@ -668,7 +668,7 @@ print("Game over!")
 > もし `break` が `gameLoop` ラベルを付けなかった場合、`while` ではなく `switch` から抜けます。`gameLoop` ラベルを使用することで、どの制御文から抜けるのかを明確にできます  
 > 次のループに移動するのに `continue gameLoop` と `gameLoop` ラベルを使用する必要は厳密にはありません。ゲーム内にループは 1 つしかなく、どのループに `continue` が影響を与えるかが明確です。しかし、`gameLoop` ラベルを使用しても害はなく、そうすることで `break` のラベルと一貫性ができ、ロジックを読みやすく理解しやすくすることができます。
 
-## [Early Exit\(早期リターン\)](control-flow.md) <a id="early-exit"></a>
+## <a id="early-exit">早期リターン\(Early Exit\)</a>
 
 `guard` 文は `if` 文と同様に、式のブール値に応じて文を実行します。`guard` 文は、`guard` の後のコードを実行するために、`guard` の条件が `true` でなければならない場合に使います。`if` 文と異なり、`guard` 文は常に `else` 句が必要で、条件が `false` の場合に `else` 内が実行されます。
 
@@ -702,7 +702,7 @@ greet(person: ["name": "Jane", "location": "Cupertino"])
 
 `guard` 文を必須条件に使用することで、`if` 文で同じことを行うよりも可読性を改善させることができます。概ね `else` ブロックで包むことなくコードを書くことができたり、必須条件のすぐ下で条件を満たさないケースを処理することができます。
 
-## [Checking API Availability\(APIアベイラビリティチェック\)](control-flow.md) <a id="checking-api-availability"></a>
+## <a id="checking-api-availability">APIアベイラビリティチェック\(Checking API Availability\)</a>
 
 Swift は API のアベイラビリティチェックをビルトインでサポートしています。つまり、あるデプロイターゲットでは利用できない API を間違って使わないことが保証できます。
 

@@ -8,7 +8,7 @@ Swift での型キャストは、`is` および `as` 演算子で実装されま
 
 [Checking for Protocol Conformance\(プロトコル準拠チェック\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#checking-for-protocol-conformance)で説明されているように、型キャストを使用して、型がプロトコルに準拠しているかどうかを確認することもできます。
 
-## Defining a Class Hierarchy for Type Casting\(型キャストのためのクラス階層の定義\)
+## 型キャストのためのクラス階層の定義\(Defining a Class Hierarchy for Type Casting\)
 
 クラスとサブクラスの階層で型キャストを使用して、特定のクラスインスタンスの型を確認し、そのインスタンスを同じ階層内の別のクラスにキャストできます。下記の 3 つのコードスニペットは、今後の型キャストの例で使用するために、クラスの階層とそれらのクラスのインスタンスを含む配列を定義しています。
 
@@ -58,7 +58,7 @@ let library = [
 
 `library` に保存されているアイテムは、依然として裏側では `Movie` および `Song` インスタンスです。ただし、この配列の内容を反復処理すると、返されるアイテムは `Movie` や `Song` ではなく `MediaItem` になります。それらを本来の型として使用するには、型を確認するか、下記で説明するように別の型に_ダウンキャスト_する必要があります。
 
-## Checking Type\(型チェック\)
+## 型チェック\(Checking Type\)
 
 インスタンスが特定のサブクラス型かどうかを確認するには、型チェック演算子\(`is`\)を使用します。型チェック演算子は、インスタンスがそのサブクラス型の場合は `true` を返し、そうでない場合は `false` を返します。
 
@@ -84,7 +84,7 @@ print("Media library contains \(movieCount) movies and \(songCount) songs")
 
 `item is Movie` は、現在の `MediaItem` が `Movie` インスタンスの場合は `true` を返し、そうでない場合は `false` を返します。同様に、`item is Song` は、アイテムが `Song` インスタンスかどうかをチェックします。`for-in` ループの最後で、`movieCount` と `songCount` の値には、各型の `MediaItem` インスタンスがいくつ見つかったかをカウントしています。
 
-## [Downcasting\(ダウンキャスト\)](type-casting.md) <a id="downcasting"></a>
+## <a id="downcasting">ダウンキャスト\(Downcasting\)</a>
 
 特定のクラス型の定数または変数は、実際には裏側でサブクラスのインスタンスを参照している場合があります。そのような場合は、型キャスト演算子 \(`as?` または `as!`\) を使用してサブクラス型への_ダウンキャスト_を試みることができます。
 
@@ -125,7 +125,7 @@ for item in library {
 > NOTE  
 > キャストは実際にインスタンスを変更したり、その内部の値を変更したりしません。基になるインスタンスは同じままです。キャストした型のインスタンスとして扱われ、アクセスされるだけです。
 
-## [Type Casting for Any and AnyObject\(AnyおよびAnyObject の型キャスト\)](type-casting.md) <a id="type-casting-for-any-and-anyobject"></a>
+## <a id="type-casting-for-any-and-anyobject">Any および AnyObject の型キャスト\(Type Casting for Any and AnyObject\)</a>
 
 Swift は、型を特定できない型を操作するための 2 つの特別な型を提供しています。
 

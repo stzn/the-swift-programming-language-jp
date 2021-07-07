@@ -8,7 +8,7 @@ Swift のクラスは、スーパークラスに属するメソッド、プロ�
 
 クラスは、プロパティの値が変更されたときに通知を受けるために、継承したプロパティに_プロパティオブザーバ_を追加することもできます。プロパティオブザーバは、元々格納プロパティとして定義されているか計算プロパティとして定義されているかに関係なく、任意のプロパティに追加できます。
 
-## Defining a Base Class\(基本クラスの定義\)
+## 基本クラスの定義\(Defining a Base Class\)
 
 別のクラスから継承しないクラスは、_基本クラス_と呼ばれます。
 
@@ -46,7 +46,7 @@ print("Vehicle: \(someVehicle.description)")
 
 `Vehicle` クラスは、任意の乗り物に共通の特性を定義しますが、そのまま使用されることはあまりありません。より有用にするには、より具体的な種類の乗り物を記述する必要があります。
 
-## Subclassing\(サブクラス化\)
+## サブクラス化\(Subclassing\)
 
 サブクラス化は、既存のクラスに基づいて新しいクラスを作成することを指します。サブクラスは既存のクラスの特性を継承し、それを変更することができます。サブクラスに新しい特性を追加することもできます。
 
@@ -106,7 +106,7 @@ print("Tandem: \(tandem.description)")
 // Tandem: traveling at 22.0 miles per hour
 ```
 
-## [Overriding\(オーバーライド\)](inheritance.md) <a id="overriding"></a>
+## <a id="overriding">オーバーライド\(Overriding\)</a>
 
 サブクラスは、インスタンスメソッド、型メソッド、インスタンスプロパティ、型プロパティ、またはスーパークラスから継承する subscript の独自のカスタム実装を提供できます。これは_オーバーライド_と呼ばれます。
 
@@ -114,7 +114,7 @@ print("Tandem: \(tandem.description)")
 
 また、Swift コンパイラは、`override` キーワードを見て、オーバーライドするクラスのスーパークラス\(またはその親の 1 つ\)に、指定した宣言と一致する宣言があることを確認します。このチェックにより、オーバーライドする定義が正しいことが確認されます。
 
-### Accessing Superclass Methods, Properties, and Subscripts\(親クラスのメソッド、プロパティ、subscriptへのアクセス\)
+### 親クラスのメソッド、プロパティ、subscriptへのアクセス\(Accessing Superclass Methods, Properties, and Subscripts\)
 
 サブクラスにメソッド、プロパティ、または subscript のオーバーライドを指定する場合、オーバーライドの一部として既存のスーパークラスの実装を使用すると便利な場合があります。例えば、その既存の実装の挙動を変更したり、変更された値を既存の継承した変数に格納したりできます。
 
@@ -124,7 +124,7 @@ print("Tandem: \(tandem.description)")
 * `someProperty` と呼ばれるオーバーライドされたプロパティは、オーバーライドした get または set 実装内で `super.someProperty` として `someProperty` のスーパークラスのバージョンにアクセスできます
 * オーバーライドされた `someIndex` に対する subscript は、オーバーライドした subscript 実装内から、`super[someIndex]` で同じ `someIndex` に対する subscript のスーパークラスのバージョンにアクセスできます
 
-### Overriding Methods\(メソッドのオーバーライド\)
+### メソッドのオーバーライド\(Overriding Methods\)
 
 継承したインスタンスまたは型メソッドをオーバーライドして、サブクラス内のメソッドの特定の目的に適合した、または代わりとなる実装を提供できます。
 
@@ -146,11 +146,11 @@ train.makeNoise()
 // "Choo Choo"
 ```
 
-### Overriding Properties\(プロパティのオーバーライド\)
+### プロパティのオーバーライド\(Overriding Properties\)
 
 継承したインスタンスまたは型プロパティをオーバーライドして、そのプロパティに独自の get/set を提供したり、プロパティオブザーバを追加して、基になるプロパティ値が変更されたときにオーバーライドしたプロパティを通してその値を監視できます。
 
-#### [Overriding Property Getters and Setters\(get/setのオーバーライド\)](inheritance.md) <a id="overriding-property-getters-and-setters"></a>
+#### <a id="overriding-property-getters-and-setters">get と set のオーバーライド\(Overriding Property Getters and Setters\)</a>
 
 継承したプロパティが格納プロパティか計算プロパティかに関係なく、継承したプロパティをオーバーライドする独自の get \(および必要ならば set \)を提供できます。継承したプロパティの格納または計算プロパティの実装は、サブクラスには認識されません。継承したプロパティは、特定の名前と型を持っていることだけを認識します。オーバーライドしたプロパティの名前と型の両方を常に指定して、そのオーバーライドが同じ名前と型のスーパークラスのプロパティと一致することをコンパイラがチェックできるようにする必要があります。
 
@@ -182,7 +182,7 @@ print("Car: \(car.description)")
 // Car: traveling at 25.0 miles per hour in gear 3
 ```
 
-#### [Overriding Property Observers\(プロパティオブザーバのオーバーライド\)](inheritance.md) <a id="overriding-property-observers"></a>
+#### <a id="overriding-property-observers">プロパティオブザーバのオーバーライド\(Overriding Property Observers\)</a>
 
 プロパティのオーバーライドを使用して、継承したプロパティのプロパティオブザーバを追加できます。これにより、継承したプロパティの値が変更されたときに、そのプロパティが最初にどのように実装されたかに関係なく通知を受け取ることができます。プロパティオブザーバの詳細については、[Property Observers\(プロパティオブザーバ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#property-observers)を参照ください。
 
@@ -210,7 +210,7 @@ print("AutomaticCar: \(automatic.description)")
 // AutomaticCar: traveling at 35.0 miles per hour in gear 4
 ```
 
-## [Preventing Overrides\(オーバーライドを防ぐ\)](inheritance.md) <a id="preventing-overrides"></a>
+## <a id="preventing-overrides">オーバーライドを防ぐ\(Preventing Overrides\)</a>
 
 メソッド、プロパティ、または subscript をオーバーライドされないようにすることができます。これを行うには、メソッド、プロパティ、または subscript のキーワードの前に `final` 修飾子を記述します\(`final var`、`final func`、`final class func` や `final subscript` など\)。
 
