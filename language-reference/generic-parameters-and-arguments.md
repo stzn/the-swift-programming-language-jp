@@ -1,24 +1,24 @@
-# Generic Parameters and Arguments
+# ジェネリックパラメータと引数\(Generic Parameters and Arguments\)
 
 最終更新日: 2021/7/3
 
 この章では、ジェネリック型、関数、およびイニシャライザのパラメータと引数について説明します。ジェネリック型、関数、subscript、またはイニシャライザを宣言すると、ジェネリック型、関数、またはイニシャライザで使用できる型パラメータを指定します。これらの型パラメータは、ジェネリック型のインスタンスが作成されたとき、またはジェネリック関数またはイニシャライザが呼び出されたときに、実際の具象型の引数に置き換えられるプレースホルダとして機能します。
 
-Swift のジェネリックスの概要については、[Generics(ジェネリクス)](./../language-guide/generics.md)を参照ください。
+Swift のジェネリックスの概要については、[Generics\(ジェネリクス\)](../language-guide-gaido/generics.md)を参照ください。
 
 ## Generic Parameter Clause\(ジェネリックパラメータ句\)
 
-ジェネリックパラメータ句は、ジェネリック型または関数の型パラメータを指定し、それらのパラメータに関連する制約や要件とともに指定します。ジェネリックパラメータ句は、山括弧(`<>`)で囲まれており、形式は次のとおりです。
+ジェネリックパラメータ句は、ジェネリック型または関数の型パラメータを指定し、それらのパラメータに関連する制約や要件とともに指定します。ジェネリックパラメータ句は、山括弧\(`<>`\)で囲まれており、形式は次のとおりです。
 
-![ジェネリックパラメータリスト](./../.gitbook/assets/generic-parameter-list.png)
+![&#x30B8;&#x30A7;&#x30CD;&#x30EA;&#x30C3;&#x30AF;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30EA;&#x30B9;&#x30C8;](../.gitbook/assets/generic-parameter-list.png)
 
-*generic parameter list* は、ジェネリックパラメータのカンマ区切りのリストで、その各形式は次のとおりです。
+_generic parameter list_ は、ジェネリックパラメータのカンマ区切りのリストで、その各形式は次のとおりです。
 
-![型パラメータ制約](./../.gitbook/assets/type-parameter-constraint.png)
+![&#x578B;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x5236;&#x7D04;](../.gitbook/assets/type-parameter-constraint.png)
 
-*type parameter* の後に任意の *constraint* を付けて構成します。*type parameter* は、単にプレースホルダ型の名前です(例えば、`T`、`U`、`V`、`Key`、`Value` など)。関数またはイニシャライザのシグネチャを含む型や関数の残りの部分から型パラメータ(およびその関連型の全ての型)にアクセスできます。
+_type parameter_ の後に任意の _constraint_ を付けて構成します。_type parameter_ は、単にプレースホルダ型の名前です\(例えば、`T`、`U`、`V`、`Key`、`Value` など\)。関数またはイニシャライザのシグネチャを含む型や関数の残りの部分から型パラメータ\(およびその関連型の全ての型\)にアクセスできます。
 
-*constraint* は、型パラメータが特定のクラスを継承するか、プロトコルまたはプロトコル合成に準拠することを指定します。例えば、下記のジェネリック関数では、ジェネリックパラメータ `T: Comparable` は、型パラメータ `T` に代入された任意の型パラメータが `Comparable` プロトコルに準拠しなければならないことを示しています。
+_constraint_ は、型パラメータが特定のクラスを継承するか、プロトコルまたはプロトコル合成に準拠することを指定します。例えば、下記のジェネリック関数では、ジェネリックパラメータ `T: Comparable` は、型パラメータ `T` に代入された任意の型パラメータが `Comparable` プロトコルに準拠しなければならないことを示しています。
 
 ```swift
 func simpleMax<T: Comparable>(_ x: T, _ y: T) -> T {
@@ -38,11 +38,11 @@ simpleMax(3.14159, 2.71828) // T は Double に推論されます
 
 ### Generic Where Clauses\(ジェネリック where 句\)
 
-型または関数の本文の開始中括弧(`{`)の直前にジェネリック `where` 句を含むことによって、型パラメータとその関連型に追加要件を指定できます。ジェネリック `where` 句は、`where` キーワードで構成され、その後に 1 つ以上の要件のカンマ区切りのリストが続きます。
+型または関数の本文の開始中括弧\(`{`\)の直前にジェネリック `where` 句を含むことによって、型パラメータとその関連型に追加要件を指定できます。ジェネリック `where` 句は、`where` キーワードで構成され、その後に 1 つ以上の要件のカンマ区切りのリストが続きます。
 
-![ジェネリック where 句](./../.gitbook/assets/generic-where-clauses.png)
+![&#x30B8;&#x30A7;&#x30CD;&#x30EA;&#x30C3;&#x30AF; where &#x53E5;](../.gitbook/assets/generic-where-clauses.png)
 
-ジェネリック `where` 句の *requirements* は、型パラメータがクラスを継承するか、プロトコルまたはプロトコル合成に準拠することを指定します。ジェネリック `where` 句は型パラメータのシンプルな制約を表現するための糖衣構文(シンタックスシュガー)を提供しますが(例えば、`<T: Comparable>` は `<T> where T: Comparable` などと同等)、それを使用して複雑な制約を型パラメータや関連型に提供することもできます。例えば、プロトコルに準拠するために、関連型の型パラメータを制限することができます。`<S: Sequence> where S.Iterator.Element: Equatable` は、`S` が `Sequence` プロトコルに準拠し、関連型 `S.Iterator.Element` が `Equatable` プロトコルに準拠することを指定します。この制約は、シーケンスの各要素が `Equatable` だということを保証します。
+ジェネリック `where` 句の _requirements_ は、型パラメータがクラスを継承するか、プロトコルまたはプロトコル合成に準拠することを指定します。ジェネリック `where` 句は型パラメータのシンプルな制約を表現するための糖衣構文\(シンタックスシュガー\)を提供しますが\(例えば、`<T: Comparable>` は `<T> where T: Comparable` などと同等\)、それを使用して複雑な制約を型パラメータや関連型に提供することもできます。例えば、プロトコルに準拠するために、関連型の型パラメータを制限することができます。`<S: Sequence> where S.Iterator.Element: Equatable` は、`S` が `Sequence` プロトコルに準拠し、関連型 `S.Iterator.Element` が `Equatable` プロトコルに準拠することを指定します。この制約は、シーケンスの各要素が `Equatable` だということを保証します。
 
 `==` 演算子を使用して、2 つの型が同じという要件を指定することもできます。例えば、`<S1: Sequence, S2: Sequence> where S1.Iterator.Element == S2.Iterator.Element` は `S1` と `S2` が `Sequence` プロトコルに準拠し、両方のシーケンスの要素が同じ型でなければならない制約を表現します。
 
@@ -62,28 +62,28 @@ extension Collection where Element: SomeProtocol {
 
 異なる制約、要件、またはその両方を提供することによって、ジェネリック関数またはイニシャライザをオーバーロードすることができます。オーバーロードされたジェネリック関数またはイニシャライザを呼び出すと、コンパイラはこれらの制約を使用して、どのオーバーロードされた関数またはイニシャライザを呼び出すかを決めます。
 
-ジェネリック `where` 句の詳しい情報とジェネリック関数宣言の例は、[Generic Where Clauses(ジェネリック where 句)](./../language-guide/generics.md#generic-where-clausesジェネリックwhere句)を参照ください。
+ジェネリック `where` 句の詳しい情報とジェネリック関数宣言の例は、[Generic Where Clauses\(ジェネリック where 句\)](../language-guide-gaido/generics.md#generic-where-clausesジェネリックwhere句)を参照ください。
 
 > GRAMMAR OF A GENERIC PARAMETER CLAUSE  
-> generic-parameter-clause → `<` [generic-parameter-list](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-list)  `>`  
-> generic-parameter-list → [generic-parameter](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter) \|  [generic-parameter](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter)  `,` [generic-parameter-list](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-list)  
+> generic-parameter-clause → `<` [generic-parameter-list](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-list) `>`  
+> generic-parameter-list → [generic-parameter](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter) \| [generic-parameter](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter) `,` [generic-parameter-list](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-list)  
 > generic-parameter → [type-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-name)  
-> generic-parameter → [type-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-name)  `:` [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  
-> generic-parameter → [type-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-name)  `:` [protocol-composition-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_protocol-composition-type)  
+> generic-parameter → [type-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-name) `:` [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  
+> generic-parameter → [type-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-name) `:` [protocol-composition-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_protocol-composition-type)  
 > generic-where-clause → `where` [requirement-list](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_requirement-list)  
-> requirement-list → [requirement](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_requirement) \|  [requirement](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_requirement)  `,` [requirement-list](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_requirement-list)  
-> requirement → [conformance-requirement](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_conformance-requirement) \|  [same-type-requirement](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_same-type-requirement)  
-> conformance-requirement → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  `:` [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  
-> conformance-requirement → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  `:` [protocol-composition-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_protocol-composition-type)  
-> same-type-requirement → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  `==` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
+> requirement-list → [requirement](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_requirement) \| [requirement](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_requirement) `,` [requirement-list](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_requirement-list)  
+> requirement → [conformance-requirement](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_conformance-requirement) \| [same-type-requirement](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_same-type-requirement)  
+> conformance-requirement → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier) `:` [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  
+> conformance-requirement → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier) `:` [protocol-composition-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_protocol-composition-type)  
+> same-type-requirement → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier) `==` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
 
 ## Generic Argument Clause\(ジェネリック引数句\)
 
-*ジェネリック引数句*は、ジェネリック型の型引数を指定します。ジェネリック引数句は山括弧(`<>`)で囲まれており、形式は次のとおりです。
+_ジェネリック引数句_は、ジェネリック型の型引数を指定します。ジェネリック引数句は山括弧\(`<>`\)で囲まれており、形式は次のとおりです。
 
-![ジェネリック引数句](./../.gitbook/assets/generic-argument-list.png)
+![&#x30B8;&#x30A7;&#x30CD;&#x30EA;&#x30C3;&#x30AF;&#x5F15;&#x6570;&#x53E5;](../.gitbook/assets/generic-argument-list.png)
 
-*generic argument list* は、型パラメータのカンマ区切りのリストです。*型引数*は、ジェネリック型のジェネリックパラメータ句に対応する型パラメータを置き換えた実際の具象型の名前です。つまり、そのジェネリック型の具象型バージョンです。下記の例は、Swift 標準ライブラリのジェネリックな辞書型のシンプルなバージョンを示しています。
+_generic argument list_ は、型パラメータのカンマ区切りのリストです。_型引数_は、ジェネリック型のジェネリックパラメータ句に対応する型パラメータを置き換えた実際の具象型の名前です。つまり、そのジェネリック型の具象型バージョンです。下記の例は、Swift 標準ライブラリのジェネリックな辞書型のシンプルなバージョンを示しています。
 
 ```swift
 struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLiteral {
@@ -93,15 +93,16 @@ struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLite
 
 ジェネリック `Dictionary` 型の具象型バージョン、`Dictionary<String, Int>` は、ジェネリックパラメータ `Key: Hashable` と `Value` を具象型の `String` と `Int` に置き換えることで形成されます。各型引数は、それが置き換えるジェネリックパラメータの全ての制約を満たす必要があります。上記の例では、`Key` 型パラメータは `Hashable` プロトコルに準拠するように制約され、したがって `String` も `Hashable` プロトコルに準拠していなければなりません。
 
-(適切な制約と要件を満たす場合)ジェネリック型の具象型バージョンで、型パラメータを型引数で置き換えることもできます。例えば、`Array<Element>` の型パラメータ `Element` を配列 `Array<Int>` に置き換えることができ、要素が整数の配列を形成することができます。
+\(適切な制約と要件を満たす場合\)ジェネリック型の具象型バージョンで、型パラメータを型引数で置き換えることもできます。例えば、`Array<Element>` の型パラメータ `Element` を配列 `Array<Int>` に置き換えることができ、要素が整数の配列を形成することができます。
 
 ```swift
 let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 ```
 
-[Generic Parameter Clause(ジェネリックパラメータ句)](#generic-parameter-clauseジェネリックパラメータ句)で述べたように、ジェネリック関数またはイニシャライザの型引数を指定する場合には、ジェネリック引数句を使用しません。
+[Generic Parameter Clause\(ジェネリックパラメータ句\)](generic-parameters-and-arguments.md#generic-parameter-clauseジェネリックパラメータ句)で述べたように、ジェネリック関数またはイニシャライザの型引数を指定する場合には、ジェネリック引数句を使用しません。
 
 > GRAMMAR OF A GENERIC ARGUMENT CLAUSE  
-> generic-argument-clause → `<` [generic-argument-list](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-list)  `>`  
-> generic-argument-list → [generic-argument](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument) \|  [generic-argument](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument)  `,` [generic-argument-list](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-list)  
+> generic-argument-clause → `<` [generic-argument-list](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-list) `>`  
+> generic-argument-list → [generic-argument](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument) \| [generic-argument](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument) `,` [generic-argument-list](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-list)  
 > generic-argument → [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
+

@@ -1,4 +1,4 @@
-# Expressions \(式\)
+# 式\(Expressions\)
 
 最終更新日: 2021/7/1
 
@@ -7,55 +7,55 @@ Swift では、前置式、バイナリ式、基本式、後置式の 4 種類�
 前置式とバイナリ式を使用すると、演算子をより小さな式に適用できます。基本式は概念的には最もシンプルな種類の式で、値にアクセスする方法を提供します。後置式は、前置式やバイナリ式と同様に、関数呼び出しやメンバアクセスなど、後置式を使用してより複雑な式を構築できます。各式は、下記のセクションで詳しく説明されています。
 
 > GRAMMAR OF AN EXPRESSION  
-> expression → [try-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_try-operator)<sub>*opt*</sub> [prefix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression)  [binary-expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_binary-expressions)<sub>*opt*</sub>  
-> expression-list → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) \|  [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `,` [expression-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression-list)
+> expression → [try-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_try-operator)_opt_ [prefix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression) [binary-expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_binary-expressions)_opt_  
+> expression-list → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) \| [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `,` [expression-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression-list)
 
-## Prefix Expressions(前置式)
+## Prefix Expressions\(前置式\)
 
 前置式は、式と任意の前置演算子を組み合わせます。前置演算子は 1 つの引数を受け取り、その後に式が続きます。
 
-これらの演算子の動作については、[Basic Operators(基本演算子)](./../language-guide/basic-operators.md)と[Advanced Operators(高度な演算子)](./../language-guide/advanced-operators.md)を参照ください。
+これらの演算子の動作については、[Basic Operators\(基本演算子\)](../language-guide-gaido/basic-operators.md)と[Advanced Operators\(高度な演算子\)](../language-guide-gaido/advanced-operators.md)を参照ください。
 
-Swift 標準ライブラリによって提供されている演算子については、[Operator Declarations(演算子宣言)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
+Swift 標準ライブラリによって提供されている演算子については、[Operator Declarations\(演算子宣言\)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
 
 > GRAMMAR OF A PREFIX EXPRESSION  
-> prefix-expression → [prefix-operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_prefix-operator)<sub>*opt*</sub> [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  
+> prefix-expression → [prefix-operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_prefix-operator)_opt_ [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  
 > prefix-expression → [in-out-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_in-out-expression)
 
-### In-Out Expression(In-Out 式)
+### In-Out Expression\(In-Out 式\)
 
 in-out 式は、関数呼び出し式に in-out パラメータとして渡された変数にマークをします。
 
-![in-out式](./../.gitbook/assets/inout_expression.png)
+![in-out&#x5F0F;](../.gitbook/assets/inout_expression.png)
 
-in-out パラメータの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#declarations-in-out-parameters" target="_self">In-Out Parameters(In-Out パラメータ)</a>を参照ください。
+in-out パラメータの詳細については、[In-Out Parameters\(In-Out パラメータ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#declarations-in-out-parameters)を参照ください。
 
-in-out 式は、<a href="#implicit-conversion-to-a-pointer-type" target="_self">Implicit Conversion to a Pointer Type(ポインタ型への暗黙変換)</a>で説明されているように、ポインタが必要なコンテキストに非ポインタ引数を指定するときにも使用されます。
+in-out 式は、[Implicit Conversion to a Pointer Type\(ポインタ型への暗黙変換\)](expressions.md#implicit-conversion-to-a-pointer-type)で説明されているように、ポインタが必要なコンテキストに非ポインタ引数を指定するときにも使用されます。
 
 > GRAMMAR OF AN IN-OUT EXPRESSION  
 > in-out-expression → `&` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
-### <a id="try-operator">Try Operator\(Try 演算子\)</a>
+### [Try Operator\(Try 演算子\)](expressions.md) <a id="try-operator"></a>
 
-*Try 演算子*は、`try` 演算子の後にエラーをスローできる式が続く形で構成されます。形式は次のとおりです:
+_Try 演算子_は、`try` 演算子の後にエラーをスローできる式が続く形で構成されます。形式は次のとおりです:
 
-![try演算子](./../.gitbook/assets/try_operator.png)
+![try&#x6F14;&#x7B97;&#x5B50;](../.gitbook/assets/try_operator.png)
 
-`try` 式の値は *expression* の値です。
+`try` 式の値は _expression_ の値です。
 
-*オプショナル try 式*は `try?` 演算子の後にエラーをスローできる式が続く形で構成されます。形式は次のとおりです:
+_オプショナル try 式_は `try?` 演算子の後にエラーをスローできる式が続く形で構成されます。形式は次のとおりです:
 
-![try?演算子](./../.gitbook/assets/try?_operator.png)
+![try?&#x6F14;&#x7B97;&#x5B50;](../.gitbook/assets/try?_operator.png)
 
 式がエラーをスローしない場合、`try?` の値は式の値を含むオプショナルです。それ以外の場合、`try?` の値は `nil` です。
 
-*強制 try 式*は `try!` 演算子の後にエラーをスローできる式が続く形で構成されます。形式は次のとおりです:
+_強制 try 式_は `try!` 演算子の後にエラーをスローできる式が続く形で構成されます。形式は次のとおりです:
 
-![try!演算子](./../.gitbook/assets/try!_operator.png)
+![try!&#x6F14;&#x7B97;&#x5B50;](../.gitbook/assets/try!_operator.png)
 
-`try!` の値は *experssion* の値です。式がエラーをスローすると、実行時エラーが発生します。
+`try!` の値は _experssion_ の値です。式がエラーをスローすると、実行時エラーが発生します。
 
-バイナリ演算子の左側の式に `try`、`try?` または `try!`、がマークされている場合、その演算子はバイナリ式全体に適用されます。一方で、括弧(`()`)を使用して、演算子の適用範囲を明示することもできます。
+バイナリ演算子の左側の式に `try`、`try?` または `try!`、がマークされている場合、その演算子はバイナリ式全体に適用されます。一方で、括弧\(`()`\)を使用して、演算子の適用範囲を明示することもできます。
 
 ```swift
 //両方の関数呼び出しに適用されます
@@ -72,20 +72,20 @@ sum = (try someThrowingFunction()) + anotherThrowingFunction()
 
 `try` と `await` 演算子の両方を含む場合は、最初に `try` が来なければなりません。
 
-`try`、`try?` と `try!` の使用方法についての詳細は[Error Handling(エラーハンドリング)](./../language-guide/error-handling.md)を参照ください。
+`try`、`try?` と `try!` の使用方法についての詳細は[Error Handling\(エラーハンドリング\)](../language-guide-gaido/error-handling.md)を参照ください。
 
 > GRAMMAR OF A TRY EXPRESSION  
-> try-operator → `try` \|  `try` `?` \|  `try` `!`
+> try-operator → `try` \| `try` `?` \| `try` `!`
 
-### <a id="await-operator">Await Operator\(Await 演算子\)</a>
+### [Await Operator\(Await 演算子\)](expressions.md) <a id="await-operator"></a>
 
-*await 式*は、`await` 演算子の後に非同期関数の結果を返す式が続けて構成されます。形式は次のとおりです:
+_await 式_は、`await` 演算子の後に非同期関数の結果を返す式が続けて構成されます。形式は次のとおりです:
 
-![await 演算子](./../.gitbook/assets/await_operator.png)
+![await &#x6F14;&#x7B97;&#x5B50;](../.gitbook/assets/await_operator.png)
 
-`await` 式の値は *experssion* の値です。
+`await` 式の値は _experssion_ の値です。
 
-`await` でマークされた式を*潜在的中断ポイント*と呼びます。非同期関数の実行は、`await` でマークされている箇所で中断することができます。また、同時並行コードの実行は他の点で中断されることはありません。つまり、潜在的中断ポイント間で、次の潜在的中断ポイントに行く前に状態の更新が完了する条件で、一時的に破壊された不変式を必要とする状態を、安全に更新することができます。
+`await` でマークされた式を_潜在的中断ポイント_と呼びます。非同期関数の実行は、`await` でマークされている箇所で中断することができます。また、同時並行コードの実行は他の点で中断されることはありません。つまり、潜在的中断ポイント間で、次の潜在的中断ポイントに行く前に状態の更新が完了する条件で、一時的に破壊された不変式を必要とする状態を、安全に更新することができます。
 
 `await` 式は、`async(priority:operation:)` 関数に渡される末尾クロージャのように、非同期コンテキスト内でのみ使用することができます。`defer` 文、または同期関数型の自動クロージャでは使用できません。
 
@@ -107,35 +107,35 @@ sum = (await someAsyncFunction()) + anotherAsyncFunction()
 式が `await` と `try` 演算子の両方を含む場合、最初に `try` 演算子が来なければなりません。
 
 > GRAMMAR OF AN AWAIT EXPRESSION  
-> *await-operator* → `await`
+> _await-operator_ → `await`
 
-## Binary Expressions(バイナリ式)
+## Binary Expressions\(バイナリ式\)
 
-*バイナリ式*は、左右の引数を受け取る式と中置バイナリ演算子を組み合わせます。形式は次のとおりです:
+_バイナリ式_は、左右の引数を受け取る式と中置バイナリ演算子を組み合わせます。形式は次のとおりです:
 
-![バイナリ式](./../.gitbook/assets/binary_expression.png)
+![&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x5F0F;](../.gitbook/assets/binary_expression.png)
 
-これらの演算子の動作については、[Basic Operators(基本演算子)](./../language-guide/basic-operators.md) と [Advanced Operators(高度な演算子)](./../language-guide/advanced-operators.md)を参照ください。
+これらの演算子の動作については、[Basic Operators\(基本演算子\)](../language-guide-gaido/basic-operators.md) と [Advanced Operators\(高度な演算子\)](../language-guide-gaido/advanced-operators.md)を参照ください。
 
-標準ライブラリによって提供されている演算子については、[Operator Declarations(演算子宣言)](https://developer.apple.com/documentation/swift/operator_declarations)を参照ください。
+標準ライブラリによって提供されている演算子については、[Operator Declarations\(演算子宣言\)](https://developer.apple.com/documentation/swift/operator_declarations)を参照ください。
 
 > NOTE  
-> 構文解析時には、式はバイナリ演算子のフラットなリストを構成します。このリストは、演算子の優先順位を適用することによってツリーに変換されます。例えば、式 `2 + 3 * 5` は、最初は5つの項目、`2`、`+`、`3`、`*`、および `5` として解釈され、その後 `(2 + (3 * 5))` のツリーに変換します  
-
+> 構文解析時には、式はバイナリ演算子のフラットなリストを構成します。このリストは、演算子の優先順位を適用することによってツリーに変換されます。例えば、式 `2 + 3 * 5` は、最初は5つの項目、`2`、`+`、`3`、`*`、および `5` として解釈され、その後 `(2 + (3 * 5))` のツリーに変換します
+>
 > GRAMMAR OF A BINARY EXPRESSION  
-> binary-expression → [binary-operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_binary-operator)  [prefix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression)  
-> binary-expression → [assignment-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_assignment-operator)  [try-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_try-operator)<sub>*opt*</sub> [prefix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression)  
-> binary-expression → [conditional-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_conditional-operator)  [try-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_try-operator)<sub>*opt*</sub> [prefix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression)  
+> binary-expression → [binary-operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_binary-operator) [prefix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression)  
+> binary-expression → [assignment-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_assignment-operator) [try-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_try-operator)_opt_ [prefix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression)  
+> binary-expression → [conditional-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_conditional-operator) [try-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_try-operator)_opt_ [prefix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression)  
 > binary-expression → [type-casting-operator](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_type-casting-operator)  
-> binary-expressions → [binary-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_binary-expression)  [binary-expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_binary-expressions)<sub>*opt*</sub>
+> binary-expressions → [binary-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_binary-expression) [binary-expressions](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_binary-expressions)_opt_
 
-### Assignment Operator(代入演算子)
+### Assignment Operator\(代入演算子\)
 
 代入演算子は特定の式に新しい値を設定します。形式は次のとおりです:
 
-![代入演算子](./../.gitbook/assets/assignment_operator.png)
+![&#x4EE3;&#x5165;&#x6F14;&#x7B97;&#x5B50;](../.gitbook/assets/assignment_operator.png)
 
-value を評価した結果得られた値が expression に設定されます。式がタプルの場合、値は同じ数の要素を持つタプルでなければなりません。(タプルはネストすることもできます)。代入は、値の各部分から expression の中の対応する部分に対して行われます。例えば:
+value を評価した結果得られた値が expression に設定されます。式がタプルの場合、値は同じ数の要素を持つタプルでなければなりません。\(タプルはネストすることもできます\)。代入は、値の各部分から expression の中の対応する部分に対して行われます。例えば:
 
 ```swift
 (a, _, (b, c)) = ("test", 9.45, (12, 3))
@@ -147,26 +147,26 @@ value を評価した結果得られた値が expression に設定されます�
 > GRAMMAR OF AN asSIGNMENT OPERATOR  
 > assignment-operator → `=`
 
-### Ternary Conditional Operator(三項条件演算子)
+### Ternary Conditional Operator\(三項条件演算子\)
 
 三項条件演算子は、条件の値に基づいて、2 つの値のうちの 1 つに評価されます。形式は次のとおりです:
 
-![三項条件演算子](./../.gitbook/assets/ternary_conditional_operator.png)
+![&#x4E09;&#x9805;&#x6761;&#x4EF6;&#x6F14;&#x7B97;&#x5B50;](../.gitbook/assets/ternary_conditional_operator.png)
 
 条件が `true` と評価された場合、条件演算子は最初の式を評価し、その値を返します。それ以外の場合は、2 番目の式を評価してその値を返します。未使用の式は評価されません。
 
-三項条件演算子を使用する例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/basic-operators#basic-operator-ternary-conditional-operator" target="_self">Ternary Conditional Operator(三項条件演算子)</a>を参照ください。
+三項条件演算子を使用する例については、[Ternary Conditional Operator\(三項条件演算子\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/basic-operators#basic-operator-ternary-conditional-operator)を参照ください。
 
 > GRAMMAR OF A CONDITIONAL OPERATOR  
-> conditional-operator → `?` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `:`
+> conditional-operator → `?` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `:`
 
-### <a id="type-casting-operators">Type-Casting Operators\(型キャスト演算子\)</a>
+### [Type-Casting Operators\(型キャスト演算子\)](expressions.md) <a id="type-casting-operators"></a>
 
 4 つの型キャスト演算子があります: `is` 演算子、`as` 演算子、`as?` 演算子、そして `as!` 演算子。
 
 それらは次の形式を持っています:
 
-![型キャスト演算子](./../.gitbook/assets/type_casting_operator.png)
+![&#x578B;&#x30AD;&#x30E3;&#x30B9;&#x30C8;&#x6F14;&#x7B97;&#x5B50;](../.gitbook/assets/type_casting_operator.png)
 
 `is` 演算子は実行時に式が指定された型にキャストできるかどうかを確認します。キャストできる場合は `true` を返します。それ以外の場合は、`false` を返します。
 
@@ -189,11 +189,11 @@ f(x as Any)
 
 ブリッジングを使用して、新しいインスタンスを作成せずに、`String` などの Swift 標準ライブラリ型の式を、それに相応する `NSString` などの Foudation 型で使用できるようにしています。ブリッジングの詳細については、[Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective_c_apis/working_with_foundation_types)を参照ください。
 
-`as?` 演算子は、式の指定された*型*への条件付きキャストを実行します。`as?` 演算子は指定された*型*のオプショナルを返します。実行時に、キャストが成功した場合、*式*の値がオプショナルで返されます。それ以外の場合、返される値は `nil` です。指定された*型*へのキャストが失敗するか、成功することが明らかな場合は、コンパイルエラーが発生します。
+`as?` 演算子は、式の指定された_型_への条件付きキャストを実行します。`as?` 演算子は指定された_型_のオプショナルを返します。実行時に、キャストが成功した場合、_式_の値がオプショナルで返されます。それ以外の場合、返される値は `nil` です。指定された_型_へのキャストが失敗するか、成功することが明らかな場合は、コンパイルエラーが発生します。
 
 `as!` 演算子は、指定された型に強制キャストを実行します。`as!` 演算子は、オプショナル型ではなく、指定された型の値を返します。キャストが失敗した場合は、実行時エラーが発生します。`x as! T` は `(x as? T)!` の挙動と同じです。
 
-型キャストの詳細や型キャスト演算子を使用する例については、[Type Casting(型キャスト)](./../language-guide/type-casting.md)を参照ください。
+型キャストの詳細や型キャスト演算子を使用する例については、[Type Casting\(型キャスト\)](../language-guide-gaido/type-casting.md)を参照ください。
 
 > GRAMMAR OF A TYPE-CASTING OPERATOR  
 > type-casting-operator → `is` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
@@ -201,12 +201,12 @@ f(x as Any)
 > type-casting-operator → `as` `?` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
 > type-casting-operator → `as` `!` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
 
-## Primary Expressions(基本式)
+## Primary Expressions\(基本式\)
 
 基本式は最も基本的な種類の式です。それらは自身を式として使用したり、他のトークンと組み合わせたり、前置式、バイナリ式、および後置式を作成することができます。
 
 > GRAMMAR OF A PRIMARY EXPRESSION  
-> primary-expression → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause)<sub>*opt*</sub>  
+> primary-expression → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause)_opt_  
 > primary-expression → [literal-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_literal-expression)  
 > primary-expression → [self-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-expression)  
 > primary-expression → [superclass-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_superclass-expression)  
@@ -219,9 +219,9 @@ f(x as Any)
 > primary-expression → [selector-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_selector-expression)  
 > primary-expression → [key-path-string-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-string-expression)
 
-### <a id="literal-expression">Literal Expression\(リテラル式\)</a>
+### [Literal Expression\(リテラル式\)](expressions.md) <a id="literal-expression"></a>
 
-リテラル式は、通常のリテラル(文字列や数など)、配列または辞書リテラル、playground リテラル、または下記の特別なリテラルのいずれかで構成されます。
+リテラル式は、通常のリテラル\(文字列や数など\)、配列または辞書リテラル、playground リテラル、または下記の特別なリテラルのいずれかで構成されます。
 
 | Literal | Type | Value |
 | :---: | :---: | :---: |
@@ -231,14 +231,14 @@ f(x as Any)
 | `#line` | `Int` | 使用されている行番号 |
 | `#column` | `Int` | 開始列番号 |
 | `#function` | `String` | 使用されている宣言の名前 |
-| `#dsohandle` | `UnsafeRawPointer` | 使用中の動的共有オブジェクト(DSO)ハンドル |
+| `#dsohandle` | `UnsafeRawPointer` | 使用中の動的共有オブジェクト\(DSO\)ハンドル |
 
 `#file` の文字列値は、古い `#filePath` から新しい `#fileID` への移行を有効にするために、言語のバージョンによって異なります。現在、`#file` は `#filePath` と同じ値を持ちます。将来の Swift のバージョンでは、`#file` は代わりに `#fileID` と同じ値を持ちます。将来のバージョンの挙動を適用するには、`#file` を `#fileID` または `#filePath` に置き換える必要があります。
 
-`#fileID` 式の文字列値はモジュール/ファイル形式です。ここで言う、「ファイル」は式が使用されているファイルの名前で、「モジュール」は、がこのファイルが属しているモジュールの名前です。`#filePath` 式の文字列値は、式が使用されているファイルへのフルパスです。<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#line-control-statement" target="_self">Line Control Statement(行制御文)</a>で説明されているように、これらの値はどちらも `#sourceLocation` に変わる可能性があります。`#fileID` は `#filePath` とは異なり、ソースファイルへのフルパスをソースファイルに埋め込むことはできないため、より良いプライバシーを提供し、コンパイルされたバイナリのサイズを減させることができます。テスト、ビルドスクリプト、また配布されるプログラムの一部にはならないその他のコードの外側で `#filePath` を使用しないでください。
+`#fileID` 式の文字列値はモジュール/ファイル形式です。ここで言う、「ファイル」は式が使用されているファイルの名前で、「モジュール」は、がこのファイルが属しているモジュールの名前です。`#filePath` 式の文字列値は、式が使用されているファイルへのフルパスです。[Line Control Statement\(行制御文\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#line-control-statement)で説明されているように、これらの値はどちらも `#sourceLocation` に変わる可能性があります。`#fileID` は `#filePath` とは異なり、ソースファイルへのフルパスをソースファイルに埋め込むことはできないため、より良いプライバシーを提供し、コンパイルされたバイナリのサイズを減させることができます。テスト、ビルドスクリプト、また配布されるプログラムの一部にはならないその他のコードの外側で `#filePath` を使用しないでください。
 
 > NOTE  
-> `#fileID` 式は、最初のスラッシュ(`/`)の前のテキストをモジュール名、最後のスラッシュ(`/`)の後のテキストをファイル名と読んでください。将来的には、`MyModule/some/disambigation/myfile.swift` などのように、複数のスラッシュが含まれている可能性があります。
+> `#fileID` 式は、最初のスラッシュ\(`/`\)の前のテキストをモジュール名、最後のスラッシュ\(`/`\)の後のテキストをファイル名と読んでください。将来的には、`MyModule/some/disambigation/myfile.swift` などのように、複数のスラッシュが含まれている可能性があります。
 
 `#function` の値は、関数内ではその関数の名前です。メソッド内では、そのメソッドの名前、プロパティ get または set 内ではプロパティ名、`init` や `subscript` のような特別なメンバ内では、そのキーワード名、およびファイルのトップレベルでは、現在のモジュール名です。
 
@@ -253,50 +253,50 @@ func myFunction() {
 }
 ```
 
-*配列リテラル*は、順序付けられた値の集合です。形式は次のとおりです:
+_配列リテラル_は、順序付けられた値の集合です。形式は次のとおりです:
 
-![配列リテラル](./../.gitbook/assets/array_expression.png)
+![&#x914D;&#x5217;&#x30EA;&#x30C6;&#x30E9;&#x30EB;](../.gitbook/assets/array_expression.png)
 
-配列内の最後の式の後にカンマ(`,`)を続けることもできます。配列リテラルの値は `[T]` 型で、`T` はその内部の式の型です。複数の型の式がある場合、`T` はそれらに最も近い共通のスーパー型になります。空の配列リテラルは、空の角括弧(`[]`)を使用し、指定された型の空の配列を作成するためにも使用できます。
+配列内の最後の式の後にカンマ\(`,`\)を続けることもできます。配列リテラルの値は `[T]` 型で、`T` はその内部の式の型です。複数の型の式がある場合、`T` はそれらに最も近い共通のスーパー型になります。空の配列リテラルは、空の角括弧\(`[]`\)を使用し、指定された型の空の配列を作成するためにも使用できます。
 
 ```swift
 var emptyArray: [Double] = []
 ```
 
-*辞書リテラル*は、順序のないキーバリューペアのコレクションです。形式は次のとおりです:
+_辞書リテラル_は、順序のないキーバリューペアのコレクションです。形式は次のとおりです:
 
-![辞書リテラル](./../.gitbook/assets/dictionary_expression.png)
+![&#x8F9E;&#x66F8;&#x30EA;&#x30C6;&#x30E9;&#x30EB;](../.gitbook/assets/dictionary_expression.png)
 
-辞書内の最後の式の後にカンマ(`,`)を続けることができます。辞書リテラルの値は `[Key：Value]` 型で、`Key` はそのキー式の型、`Value` はその値式の型です。複数の型の式がある場合、キーとバリューはそれぞれの値に最も近い共通のスーパー型になります。空の辞書リテラルは、空の配列リテラルと区別するために、一対の括弧内にコロンを書きます(`[:]`)。空の辞書リテラルを使用して、指定されたキーとバリュー型の空の辞書リテラルを作成できます。
+辞書内の最後の式の後にカンマ\(`,`\)を続けることができます。辞書リテラルの値は `[Key：Value]` 型で、`Key` はそのキー式の型、`Value` はその値式の型です。複数の型の式がある場合、キーとバリューはそれぞれの値に最も近い共通のスーパー型になります。空の辞書リテラルは、空の配列リテラルと区別するために、一対の括弧内にコロンを書きます\(`[:]`\)。空の辞書リテラルを使用して、指定されたキーとバリュー型の空の辞書リテラルを作成できます。
 
 ```swift
 var emptyDictionary: [String: Double] = [:]
 ```
 
-*playground リテラル*は、プログラムエディタ内の色、ファイル、または画像の対話型な表現を作成するために Xcode によって使用されます。Xcode の外側のプレーンテキストの `playground` リテラルには、特別なリテラル構文を使用します。
+_playground リテラル_は、プログラムエディタ内の色、ファイル、または画像の対話型な表現を作成するために Xcode によって使用されます。Xcode の外側のプレーンテキストの `playground` リテラルには、特別なリテラル構文を使用します。
 
 Xcode の playground リテラルの使用方法については、Xcode ヘルプ内の[Add a color, file, or image literal](https://help.apple.com/xcode/mac/current/#/dev4c60242fc)を参照ください。
 
 > GRAMMAR OF A LITERAL EXPRESSION  
 > literal-expression → [literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_literal)  
-> literal-expression → [array-literal](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal) \|  [dictionary-literal](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal) \|  [playground-literal](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_playground-literal)  
-> literal-expression → `#file` \|  `#fileID` \|  `#filePath`  
-> literal-expression → `#line` \|  `#column` \|  `#function` \|  `#dsohandle`  
-> array-literal → `[` [array-literal-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal-items)<sub>*opt*</sub> `]`  
-> array-literal-items → [array-literal-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal-item)  `,`<sub>*opt*</sub> \|  [array-literal-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal-item)  `,` [array-literal-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal-items)  
+> literal-expression → [array-literal](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal) \| [dictionary-literal](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal) \| [playground-literal](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_playground-literal)  
+> literal-expression → `#file` \| `#fileID` \| `#filePath`  
+> literal-expression → `#line` \| `#column` \| `#function` \| `#dsohandle`  
+> array-literal → `[` [array-literal-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal-items)_opt_ `]`  
+> array-literal-items → [array-literal-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal-item) `,`_opt_ \| [array-literal-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal-item) `,` [array-literal-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal-items)  
 > array-literal-item → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  
-> dictionary-literal → `[` [dictionary-literal-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal-items)  `]` \|  `[` `:` `]`  
-> dictionary-literal-items → [dictionary-literal-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal-item)  `,`<sub>*opt*</sub> \|  [dictionary-literal-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal-item)  `,` [dictionary-literal-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal-items)  
-> dictionary-literal-item → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  
-> playground-literal → `#colorLiteral` `(` `red` `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `,` `green` `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `,` `blue` `:`[expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `,` `alpha` `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `)`  
-> playground-literal → `#fileLiteral` `(` `resourceName` `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `)`  
-> playground-literal → `#imageLiteral` `(` `resourceName` `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `)`
+> dictionary-literal → `[` [dictionary-literal-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal-items) `]` \| `[` `:` `]`  
+> dictionary-literal-items → [dictionary-literal-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal-item) `,`_opt_ \| [dictionary-literal-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal-item) `,` [dictionary-literal-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal-items)  
+> dictionary-literal-item → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  
+> playground-literal → `#colorLiteral` `(` `red` `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `,` `green` `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `,` `blue` `:`[expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `,` `alpha` `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `)`  
+> playground-literal → `#fileLiteral` `(` `resourceName` `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `)`  
+> playground-literal → `#imageLiteral` `(` `resourceName` `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `)`
 
-### Self Expression(self式)
+### Self Expression\(self式\)
 
 `self` 式は、それが使用さえている現在の型またはインスタンスへの明示的な参照です。形式は次のとおりです:
 
-![Self式](./../.gitbook/assets/self_expression.png)
+![Self&#x5F0F;](../.gitbook/assets/self_expression.png)
 
 イニシャライザ、subscript、またはインスタンスメソッドでは、`self` は、それが出現する現在の型のインスタンスを表します。型メソッドでは、`self` はそれが登場する現在の型を表します。
 
@@ -323,34 +323,34 @@ struct Point {
 ```
 
 > GRAMMAR OF A SELF EXPRESSION  
-> self-expression → `self` \|  [self-method-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-method-expression) \|  [self-subscript-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-subscript-expression) \|  [self-initializer-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-initializer-expression)  
+> self-expression → `self` \| [self-method-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-method-expression) \| [self-subscript-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-subscript-expression) \| [self-initializer-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-initializer-expression)  
 > self-method-expression → `self` `.` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
-> self-subscript-expression → `self` `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  `]`  
+> self-subscript-expression → `self` `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list) `]`  
 > self-initializer-expression → `self` `.` `init`
 
-### Superclass Expression(スーパークラス式)
+### Superclass Expression\(スーパークラス式\)
 
-*スーパークラス式*は、クラスがスーパークラスとやり取りすることを可能にします。次のいずれかの形式があります:
+_スーパークラス式_は、クラスがスーパークラスとやり取りすることを可能にします。次のいずれかの形式があります:
 
-![スーパークラス式](./../.gitbook/assets/superclass_expression.png)
+![&#x30B9;&#x30FC;&#x30D1;&#x30FC;&#x30AF;&#x30E9;&#x30B9;&#x5F0F;](../.gitbook/assets/superclass_expression.png)
 
 最初の形式はスーパークラスのメンバにアクセスするために使用されます。2 番目の形式は、スーパークラスの subscript の実装にアクセスするために使用されます。3 番目の形式は、スーパークラスのイニシャライザにアクセスするために使用されます。
 
 サブクラスは、スーパークラスの実装を利用するために、メンバ、subscript、およびイニシャライザの実装でスーパークラス式を使用できます。
 
 > GRAMMAR OF A SUPERCLASS EXPRESSION  
-> superclass-expression → [superclass-method-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_superclass-method-expression) \|  [superclass-subscript-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_superclass-subscript-expression) \|  [superclass-initializer-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_superclass-initializer-expression)  
+> superclass-expression → [superclass-method-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_superclass-method-expression) \| [superclass-subscript-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_superclass-subscript-expression) \| [superclass-initializer-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_superclass-initializer-expression)  
 > superclass-method-expression → `super` `.` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
-> superclass-subscript-expression → `super` `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  `]`  
+> superclass-subscript-expression → `super` `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list) `]`  
 > superclass-initializer-expression → `super` `.` `init`
 
-### Closure Expression(クロージャ式)
+### Closure Expression\(クロージャ式\)
 
-*クロージャ式*は、他のプログラミング言語では、*ラムダ*または*匿名関数*とも呼ばれているクロージャを作成します。関数宣言のように、クロージャには文が含まれており、その囲まれている範囲から定数と変数をキャプチャします。形式は次のとおりです:
+_クロージャ式_は、他のプログラミング言語では、_ラムダ_または_匿名関数_とも呼ばれているクロージャを作成します。関数宣言のように、クロージャには文が含まれており、その囲まれている範囲から定数と変数をキャプチャします。形式は次のとおりです:
 
-![クロージャ式](./../.gitbook/assets/closure_expression.png)
+![&#x30AF;&#x30ED;&#x30FC;&#x30B8;&#x30E3;&#x5F0F;](../.gitbook/assets/closure_expression.png)
 
-<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#function-declaration" target="_self">Function Declaration(関数宣言)</a>で説明されているように、*parameters*は関数宣言内のパラメータと同じ形式です。
+[Function Declaration\(関数宣言\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#function-declaration)で説明されているように、_parameters_は関数宣言内のパラメータと同じ形式です。
 
 クロージャをより簡潔に書くことができるいくつかの特別な形式があります:
 
@@ -374,19 +374,17 @@ myFunction { return $0 + $1 }
 myFunction { $0 + $1 }
 ```
 
-関数の引数としてクロージャを渡す方法については、<a href="#function-call-expression" target="_self">Function Call Expression(関数呼び出し式)</a>を参照ください。
+関数の引数としてクロージャを渡す方法については、[Function Call Expression\(関数呼び出し式\)](expressions.md#function-call-expression)を参照ください。
 
 クロージャ式は、関数呼び出しの一部としてすぐにクロージャを使用するときなど、可変または定数に格納されることなく使用できます。上記のコードの `myFunction` に渡されたクロージャ式は、即時に使用される例です。その結果、クロージャ式がエスケープか非エスケープかは、式の周囲のコンテキストによって異なります。クロージャ式は、即時に呼ばれるか、非エスケープ関数の引数として渡されると、非エスケープです。それ以外の場合、クロージャ式はエスケープです。
 
-クロージャのエスケープの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#escaping-closures" target="_self">Escaping Closures(エスケープクロージャ)</a>を参照ください。
+クロージャのエスケープの詳細については、[Escaping Closures\(エスケープクロージャ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#escaping-closures)を参照ください。
 
-#### <a id="capture-lists">Capture Lists\(キャプチャリスト\)</a>
+#### [Capture Lists\(キャプチャリスト\)](expressions.md) <a id="capture-lists"></a>
 
----
+デフォルトでは、クロージャ式は、、周囲のスコープの定数と変数を強い参照を持ってキャプチャします。_キャプチャリスト_を使用して、クロージャ内で値をキャプチャする方法を明示的に制御できます。
 
-デフォルトでは、クロージャ式は、、周囲のスコープの定数と変数を強い参照を持ってキャプチャします。*キャプチャリスト*を使用して、クロージャ内で値をキャプチャする方法を明示的に制御できます。
-
-キャプチャリストは、パラメータのリストの前に、角括弧(`[]`)で囲まれた式のカンマ(`,`)区切りのリストとして書かれます。キャプチャリストを使用する場合は、パラメータ名、パラメータ型、および戻り値の型を省略しても、`in` キーワードを使用する必要があります。
+キャプチャリストは、パラメータのリストの前に、角括弧\(`[]`\)で囲まれた式のカンマ\(`,`\)区切りのリストとして書かれます。キャプチャリストを使用する場合は、パラメータ名、パラメータ型、および戻り値の型を省略しても、`in` キーワードを使用する必要があります。
 
 キャプチャリストへの各エントリは、クロージャが作成されたときに初期化されます。キャプチャリスト内の各エントリに対して、定数は周囲のスコープの同じ名前を持つ定数または変数の値で初期化できます。例えば、下記のコードでは、`a` はキャプチャリストに含まれていますが、`b` は含まれていません。
 
@@ -440,29 +438,29 @@ myFunction { [unowned self] in print(self.title) }  // 非所有参照
 myFunction { [weak parent = self.parent] in print(parent!.title) }
 ```
 
-クロージャ式の詳細と例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#closure-expressions" target="_self">Closure Expressions(クロージャ式)</a>を参照ください。キャプチャリストの詳細および例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/automatic-reference-counting#resolving-strong-reference-cycles-for-closures" target="_self">Resolving Strong Reference Cycles for Closures(クロージャの強参照循環の解消)</a>を参照ください。
+クロージャ式の詳細と例については、[Closure Expressions\(クロージャ式\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#closure-expressions)を参照ください。キャプチャリストの詳細および例については、[Resolving Strong Reference Cycles for Closures\(クロージャの強参照循環の解消\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/automatic-reference-counting#resolving-strong-reference-cycles-for-closures)を参照ください。
 
 > GRAMMAR OF A CLOSURE EXPRESSION  
-> closure-expression → `{` [closure-signature](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-signature)<sub>*opt*</sub> [statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements)<sub>*opt*</sub> `}`  
-> closure-signature → [capture-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list)<sub>*opt*</sub> [closure-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-clause)  `throws`<sub>*opt*</sub> [function-result](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-result)<sub>*opt*</sub> `in`  
-> closure-signature → [capture-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list)  `in`  
-> closure-parameter-clause → `(` `)` \|  `(` [closure-parameter-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-list)  `)` \|  [identifier-list](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier-list)  
-> closure-parameter-list → [closure-parameter](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter) \|  [closure-parameter](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter)  `,` [closure-parameter-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-list)  
-> closure-parameter → [closure-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-name)  [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)<sub>*opt*</sub>  
-> closure-parameter → [closure-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-name)  [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)  `...`  
+> closure-expression → `{` [closure-signature](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-signature)_opt_ [statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements)_opt_ `}`  
+> closure-signature → [capture-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list)_opt_ [closure-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-clause) `throws`_opt_ [function-result](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-result)_opt_ `in`  
+> closure-signature → [capture-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list) `in`  
+> closure-parameter-clause → `(` `)` \| `(` [closure-parameter-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-list) `)` \| [identifier-list](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier-list)  
+> closure-parameter-list → [closure-parameter](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter) \| [closure-parameter](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter) `,` [closure-parameter-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-list)  
+> closure-parameter → [closure-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-name) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)_opt_  
+> closure-parameter → [closure-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-name) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation) `...`  
 > closure-parameter-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
-> capture-list → `[` [capture-list-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list-items)  `]`  
-> capture-list-items → [capture-list-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list-item) \|  [capture-list-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list-item)  `,` [capture-list-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list-items)  
-> capture-list-item → [capture-specifier](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-specifier)<sub>*opt*</sub> [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
-> capture-list-item → [capture-specifier](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-specifier)<sub>*opt*</sub> [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `=` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  
-> capture-list-item → [capture-specifier](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-specifier)<sub>*opt*</sub> [self-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-expression)  
-> capture-specifier → `weak` \|  `unowned` \|  `unowned(safe)` \|  `unowned(unsafe)`
+> capture-list → `[` [capture-list-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list-items) `]`  
+> capture-list-items → [capture-list-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list-item) \| [capture-list-item](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list-item) `,` [capture-list-items](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list-items)  
+> capture-list-item → [capture-specifier](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-specifier)_opt_ [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
+> capture-list-item → [capture-specifier](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-specifier)_opt_ [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) `=` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  
+> capture-list-item → [capture-specifier](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-specifier)_opt_ [self-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-expression)  
+> capture-specifier → `weak` \| `unowned` \| `unowned(safe)` \| `unowned(unsafe)`
 
-### <a id="implicit-member-expression">Implicit Member Expression\(暗黙メンバ式\)</a>
+### [Implicit Member Expression\(暗黙メンバ式\)](expressions.md) <a id="implicit-member-expression"></a>
 
-*暗黙メンバ式*は、型推論によって暗黙的に型を決定できるコンテキストにおいて、列挙ケースや型メソッドなどの型のメンバにアクセスするための省略記法です。形式は次のとおりです:
+_暗黙メンバ式_は、型推論によって暗黙的に型を決定できるコンテキストにおいて、列挙ケースや型メソッドなどの型のメンバにアクセスするための省略記法です。形式は次のとおりです:
 
-![暗黙メンバ式](./../.gitbook/assets/implicit_member_expression.png)
+![&#x6697;&#x9ED9;&#x30E1;&#x30F3;&#x30D0;&#x5F0F;](../.gitbook/assets/implicit_member_expression.png)
 
 例えば:
 
@@ -477,7 +475,7 @@ x = .anotherValue
 var someOptional: MyEnumeration? = .someValue
 ```
 
-暗黙メンバ式の後に<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/expressions#postfix-expressions" target="_self">Postfix Expressions(後置式)</a>でリストされている後置演算子またはその他の後置構文を続けることができます。これは*暗黙メンバ式チェーン*と呼ばれます。全ての後置式チェーンで同じ型を持つことが一般的ですが、最低限の要件として、暗黙メンバ式チェーン全体がそのコンテキストで暗黙的に推論される型と互換性がある必要があります。具体的には、暗黙的に推論される型がオプショナルの場合は、オプショナル以外の型の値を使用でき、クラス型の場合、そのサブクラスを使用できます。例えば:
+暗黙メンバ式の後に[Postfix Expressions\(後置式\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/expressions#postfix-expressions)でリストされている後置演算子またはその他の後置構文を続けることができます。これは_暗黙メンバ式チェーン_と呼ばれます。全ての後置式チェーンで同じ型を持つことが一般的ですが、最低限の要件として、暗黙メンバ式チェーン全体がそのコンテキストで暗黙的に推論される型と互換性がある必要があります。具体的には、暗黙的に推論される型がオプショナルの場合は、オプショナル以外の型の値を使用でき、クラス型の場合、そのサブクラスを使用できます。例えば:
 
 ```swift
 class SomeClass {
@@ -500,32 +498,32 @@ let z: SomeClass = .sharedSubclass
 > GRAMMAR OF A IMPLICIT MEMBER EXPRESSION  
 > implicit-member-expression → `.` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
-### Parenthesized Expression(括弧で囲まれた式)
+### Parenthesized Expression\(括弧で囲まれた式\)
 
-*括弧で囲まれた式*は、括弧で囲まれた式で構成されます。式を明示的にグループ化することで、括弧を使用して操作の優先順位を指定できます。括弧のグループ化は式の型を変更しません(例：`(1)` はただの `Int` です。
+_括弧で囲まれた式_は、括弧で囲まれた式で構成されます。式を明示的にグループ化することで、括弧を使用して操作の優先順位を指定できます。括弧のグループ化は式の型を変更しません\(例：`(1)` はただの `Int` です。
 
 > GRAMMAR OF A PARENTHESIZED EXPRESSION  
-> parenthesized-expression → `(` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `)`
+> parenthesized-expression → `(` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `)`
 
-### Tuple Expression(タプル式)
+### Tuple Expression\(タプル式\)
 
-タプル式は、括弧で囲まれた式のカンマ区切りのリストで構成されています。各式は、コロン(`:`)で区切られ、その前に識別子を指定することもできます。形式は次のとおりです:
+タプル式は、括弧で囲まれた式のカンマ区切りのリストで構成されています。各式は、コロン\(`:`\)で区切られ、その前に識別子を指定することもできます。形式は次のとおりです:
 
-![タプル式](./../.gitbook/assets/tuple_expression.png)
+![&#x30BF;&#x30D7;&#x30EB;&#x5F0F;](../.gitbook/assets/tuple_expression.png)
 
-*タプル式*の各識別子は、タプル式の範囲内で一意な必要があります。ネストしたタプル式では、同じレベルでネスト識別子を一意にする必要があります。例えば、`(a: 10, a: 20)` はラベル `a` が同じレベルで 2 回使用されているため無効です。ただし、`(a: 10, b: (a: 1, x: 2))` は有効です。`a` は 2 回使用されていますが、外側のタプルに 1 回、内側のタプルに 1 回使用されています。
+_タプル式_の各識別子は、タプル式の範囲内で一意な必要があります。ネストしたタプル式では、同じレベルでネスト識別子を一意にする必要があります。例えば、`(a: 10, a: 20)` はラベル `a` が同じレベルで 2 回使用されているため無効です。ただし、`(a: 10, b: (a: 1, x: 2))` は有効です。`a` は 2 回使用されていますが、外側のタプルに 1 回、内側のタプルに 1 回使用されています。
 
 タプル式には、式を全く含めなくても、2 つ以上の式を含めることもできます。括弧内の単一式は括弧で囲まれた式です。
 
 > NOTE  
 > 空のタプル式と空のタプル型はいずれもSwiftでは `()` で書きます。`Void` は `()` のタイプエイリアスのため、空のタプル型を書くために使用できます。ただし、全てのタイプエイリアスと同様に、`Void` は常に型で、空のタプル式を書くためには使用できません。
-
+>
 > GRAMMAR OF A TUPLE EXPRESSION  
-> tuple-expression → `(` `)` \|  `(` [tuple-element](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element)  `,` [tuple-element-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element-list)  `)`  
-> tuple-element-list → [tuple-element](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element) \|  [tuple-element](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element)  `,` [tuple-element-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element-list)  
-> tuple-element → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) \|  [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
+> tuple-expression → `(` `)` \| `(` [tuple-element](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element) `,` [tuple-element-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element-list) `)`  
+> tuple-element-list → [tuple-element](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element) \| [tuple-element](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element) `,` [tuple-element-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element-list)  
+> tuple-element → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) \| [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
 
-### Wildcard Expression(ワイルドカード式)
+### Wildcard Expression\(ワイルドカード式\)
 
 ワイルドカード式は、代入中に値を明示的に無視するために使用されます。例えば、次の代入式 `10` は `x` に代入されますが、`20` は無視されています:
 
@@ -537,15 +535,15 @@ let z: SomeClass = .sharedSubclass
 > GRAMMAR OF A WILDCARD EXPRESSION  
 > wildcard-expression → `_`
 
-### <a id="keypath-expression">Key-Path Expression\(Key-Path 式\)</a>
+### [Key-Path Expression\(Key-Path 式\)](expressions.md) <a id="keypath-expression"></a>
 
-*key-path 式*は、型のプロパティまたは subscript を参照します。key-value observing などのような、動的プログラミングのタスクで key-path 式を使用します。次の形式があります:
+_key-path 式_は、型のプロパティまたは subscript を参照します。key-value observing などのような、動的プログラミングのタスクで key-path 式を使用します。次の形式があります:
 
-![Key-Path 式](./../.gitbook/assets/key-path_expression.png)
+![Key-Path &#x5F0F;](../.gitbook/assets/key-path_expression.png)
 
-*type name* は、`String`、`[Int]`、や `Set<Int>` などのジェネリックなパラメータを含めた、具体的な型の名前です。
+_type name_ は、`String`、`[Int]`、や `Set<Int>` などのジェネリックなパラメータを含めた、具体的な型の名前です。
 
-*path* は、プロパティ名、subscript、オプショナルチェーン式、および強制アンラップ式で構成されます。これらの key-path コンポーネントのそれぞれは、必要に応じて任意の順序で繰り返すことができます。
+_path_ は、プロパティ名、subscript、オプショナルチェーン式、および強制アンラップ式で構成されます。これらの key-path コンポーネントのそれぞれは、必要に応じて任意の順序で繰り返すことができます。
 
 コンパイル時には、key-path 式は [KeyPath](https://developer.apple.com/documentation/swift/keypath)クラスのインスタンスに置き換えられます。
 
@@ -563,7 +561,7 @@ let value = s[keyPath: pathToProperty]
 // value は 12
 ```
 
-*type name* は、型推論で暗黙的に型を決定できるコンテキストでは省略できます。次のコードは、`\ someClass.someProperty` の代わりに `\.someProperty` を使用しています:
+_type name_ は、型推論で暗黙的に型を決定できるコンテキストでは省略できます。次のコードは、`\ someClass.someProperty` の代わりに `\.someProperty` を使用しています:
 
 ```swift
 class SomeClass: NSObject {
@@ -579,7 +577,7 @@ c.observe(\.someProperty) { object, change in
 }
 ```
 
-*path* は、識別キーパス `(\.self)` を作成するために `self` を参照できます。識別キーパスは、インスタンス全体を参照しているので、それを使用して、変数に格納されている全てのデータを単一のステップでアクセスして変更できます。例えば:
+_path_ は、識別キーパス `(\.self)` を作成するために `self` を参照できます。識別キーパスは、インスタンス全体を参照しているので、それを使用して、変数に格納されている全てのデータを単一のステップでアクセスして変更できます。例えば:
 
 ```swift
 var compoundValue = (a: 1, b: 2)
@@ -587,7 +585,7 @@ var compoundValue = (a: 1, b: 2)
 compoundValue[keyPath: \.self] = (a: 10, b: 20)
 ```
 
-*path* には、プロパティのプロパティを参照するために、ピリオドで区切って複数のプロパティ名を含めることができます。このコードは、key-path 式 `\OuterStructure.outer.someValue` を使用して、`OuterStructure` 型の `outer` プロパティの `someValue` プロパティにアクセスしています:
+_path_ には、プロパティのプロパティを参照するために、ピリオドで区切って複数のプロパティ名を含めることができます。このコードは、key-path 式 `\OuterStructure.outer.someValue` を使用して、`OuterStructure` 型の `outer` プロパティの `someValue` プロパティにアクセスしています:
 
 ```swift
 struct OuterStructure {
@@ -604,7 +602,7 @@ let nestedValue = nested[keyPath: nestedKeyPath]
 // nestedValue は 24
 ```
 
-*path* は、subscript のパラメータ型が `Hashable` プロトコルに準拠している限り角括弧(`[]`)を使用して subscript を含めることができます。この例では、key-path の subscript を使用して、配列の 2 番目の要素にアクセスしています。
+_path_ は、subscript のパラメータ型が `Hashable` プロトコルに準拠している限り角括弧\(`[]`\)を使用して subscript を含めることができます。この例では、key-path の subscript を使用して、配列の 2 番目の要素にアクセスしています。
 
 ```swift
 let greetings = ["hello", "hola", "bonjour", "안녕"]
@@ -634,7 +632,7 @@ print(fn(greetings))
 // "안녕"
 ```
 
-*path* はオプショナルチェーンと強制アンラップを使用できます。このコードは、オプショナルの文字列のプロパティにアクセスするためのキーパスでオプショナルチェーンを使用しています。
+_path_ はオプショナルチェーンと強制アンラップを使用できます。このコードは、オプショナルの文字列のプロパティにアクセスするためのキーパスでオプショナルチェーンを使用しています。
 
 ```swift
 let firstGreeting: String? = greetings.first
@@ -699,17 +697,17 @@ let someTask = toDoList[keyPath: taskKeyPath]
 Objective-C API とやり取りするコード内のキーパスの使用方法の詳細については、[Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift)を参照ください。Key-Value Coding や Key-Value Observing については、[Key-Value Coding Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i)と[Key-Value Observing Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i)を参照ください。
 
 > GRAMMAR OF A KEY-PATH EXPRESSION  
-> key-path-expression → `\` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)<sub>*opt*</sub> `.` [key-path-components](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-components)  
-> key-path-components → [key-path-component](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-component) \|  [key-path-component](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-component)  `.` [key-path-components](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-components)  
-> key-path-component → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  [key-path-postfixes](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes)<sub>*opt*</sub> \|  [key-path-postfixes](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes)  
-> key-path-postfixes → [key-path-postfix](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfix)  [key-path-postfixes](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes)<sub>*opt*</sub>  
-> key-path-postfix → `?` \|  `!` \|  `self` \|  `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  `]`
+> key-path-expression → `\` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)_opt_ `.` [key-path-components](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-components)  
+> key-path-components → [key-path-component](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-component) \| [key-path-component](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-component) `.` [key-path-components](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-components)  
+> key-path-component → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) [key-path-postfixes](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes)_opt_ \| [key-path-postfixes](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes)  
+> key-path-postfixes → [key-path-postfix](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfix) [key-path-postfixes](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes)_opt_  
+> key-path-postfix → `?` \| `!` \| `self` \| `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list) `]`
 
-### <a id="selector-expression">Selector Expression\(Selector 式\)</a>
+### [Selector Expression\(Selector 式\)](expressions.md) <a id="selector-expression"></a>
 
 セレクタ式を使用すると、Objective-C のメソッドまたはプロパティの get や set を参照するために使用されるセレクタにアクセスできます。形式は次のとおりです:
 
-![Selector 式](./../.gitbook/assets/selector_expression.png)
+![Selector &#x5F0F;](../.gitbook/assets/selector_expression.png)
 
 メソッド名とプロパティ名は、Objective-C ランタイムで使用可能なメソッドまたはプロパティを参照する必要があります。セレクタ式の値は `Selector` 型のインスタンスです。例えば:
 
@@ -730,7 +728,7 @@ let selectorForPropertyGetter = #selector(getter: SomeClass.property)
 
 プロパティの get のセレクタを作成すると、プロパティ名は変数または定数プロパティを参照できます。対照的に、set のセレクタを作成すると、プロパティ名は変数プロパティのみ参照しなければなりません。
 
-*method name* は、同じ名前でシグネチャが異なるメソッド間の曖昧さを軽減するために `as` 演算子と一緒にグループ化するための括弧を含めることができます。例えば:
+_method name_ は、同じ名前でシグネチャが異なるメソッド間の曖昧さを軽減するために `as` 演算子と一緒にグループ化するための括弧を含めることができます。例えば:
 
 ```swift
 extension SomeClass {
@@ -748,17 +746,17 @@ let anotherSelector = #selector(SomeClass.doSomething(_:) as (SomeClass) -> (Str
 Objective-C API とやり取りする Swift コードでセレクタを使用する方法の詳細については、[Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift)を参照ください。
 
 > GRAMMAR OF A SELECTOR EXPRESSION  
-> selector-expression → `#selector` `(` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `)`  
-> selector-expression → `#selector` `(` `getter:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `)`  
-> selector-expression → `#selector` `(` `setter:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `)`
+> selector-expression → `#selector` `(` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `)`  
+> selector-expression → `#selector` `(` `getter:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `)`  
+> selector-expression → `#selector` `(` `setter:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `)`
 
-### Key-Path String Expression(Key-Path文字列式)
+### Key-Path String Expression\(Key-Path文字列式\)
 
 key-path 文字列式を使用すると、Key-Value Coding や Key-Value Observing API で使用するために、Objective-C のプロパティを参照するための文字列にアクセスできます。形式は次のとおりです:
 
-![Key-Path文字列式](./../.gitbook/assets/key-path_string_expression.png)
+![Key-Path&#x6587;&#x5B57;&#x5217;&#x5F0F;](../.gitbook/assets/key-path_string_expression.png)
 
-*property name* は、Objective-C ランタイムで使用可能なプロパティを参照する必要があります。コンパイル時には、key-path 文字列式は文字列リテラルに置き換えられます。例えば:
+_property name_ は、Objective-C ランタイムで使用可能なプロパティを参照する必要があります。コンパイル時には、key-path 文字列式は文字列リテラルに置き換えられます。例えば:
 
 ```swift
 class SomeClass: NSObject {
@@ -795,21 +793,21 @@ Objective-C API とやり取りする Swift コードで key-path を使用す�
 
 > NOTE  
 > プロパティ名は式ですが、それらは決して評価されません。
-
+>
 > GRAMMAR OF A KEY-PATH STRING EXPRESSION  
-> key-path-string-expression → `#keyPath` `(` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  `)`
+> key-path-string-expression → `#keyPath` `(` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `)`
 
-## <a id="postfix-expressions">Postfix Expressions\(後置式\)</a>
+## [Postfix Expressions\(後置式\)](expressions.md) <a id="postfix-expressions"></a>
 
-*後置式*は、後置演算子またはその他の後置構文を式に適用することによって形成されます。構文的には、全ての基本式も後置式です。
+_後置式_は、後置演算子またはその他の後置構文を式に適用することによって形成されます。構文的には、全ての基本式も後置式です。
 
-これらの演算子の動作については、[Basic Operators(基本演算子)](./../language-guide/basic-operators.md)と[Advanced Operators(高度な演算子)](./../language-guide/advanced-operators.md)を参照ください。
+これらの演算子の動作については、[Basic Operators\(基本演算子\)](../language-guide-gaido/basic-operators.md)と[Advanced Operators\(高度な演算子\)](../language-guide-gaido/advanced-operators.md)を参照ください。
 
-Swift 標準ライブラリによって提供されている演算子については、[Operator Declarations(演算子宣言)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
+Swift 標準ライブラリによって提供されている演算子については、[Operator Declarations\(演算子宣言\)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
 
 > GRAMMAR OF A POSTFIX EXPRESSION  
 > postfix-expression → [primary-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_primary-expression)  
-> postfix-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  [postfix-operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_postfix-operator)  
+> postfix-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) [postfix-operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_postfix-operator)  
 > postfix-expression → [function-call-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-expression)  
 > postfix-expression → [initializer-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_initializer-expression)  
 > postfix-expression → [explicit-member-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_explicit-member-expression)  
@@ -818,19 +816,19 @@ Swift 標準ライブラリによって提供されている演算子につい�
 > postfix-expression → [forced-value-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_forced-value-expression)  
 > postfix-expression → [optional-chaining-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_optional-chaining-expression)
 
-### <a id="function-call-expression">Function Call Expression\(関数呼び出し式\)</a>
+### [Function Call Expression\(関数呼び出し式\)](expressions.md) <a id="function-call-expression"></a>
 
-*関数呼び出し式*は、関数名とそれに続く関数の引数のカンマ区切りのリストからなる関数名で構成されています。関数呼び出し式は形式は次のとおりです:
+_関数呼び出し式_は、関数名とそれに続く関数の引数のカンマ区切りのリストからなる関数名で構成されています。関数呼び出し式は形式は次のとおりです:
 
-![関数呼び出し式1](./../.gitbook/assets/function_call_expression1.png)
+![&#x95A2;&#x6570;&#x547C;&#x3073;&#x51FA;&#x3057;&#x5F0F;1](../.gitbook/assets/function_call_expression1.png)
 
-*function name* は、関数型の任意の式です。
+_function name_ は、関数型の任意の式です。
 
-関数定義にパラメータ名が含まれている場合、関数呼び出しは、コロン(`:`)で区切られた引数値の前に名前を含める必要があります。この種の関数呼び出し式は形式は次のとおりです:
+関数定義にパラメータ名が含まれている場合、関数呼び出しは、コロン\(`:`\)で区切られた引数値の前に名前を含める必要があります。この種の関数呼び出し式は形式は次のとおりです:
 
-![パラメータ名を含んだ関数呼び出し式](./../.gitbook/assets/function_call_expression2.png)
+![&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x540D;&#x3092;&#x542B;&#x3093;&#x3060;&#x95A2;&#x6570;&#x547C;&#x3073;&#x51FA;&#x3057;&#x5F0F;](../.gitbook/assets/function_call_expression2.png)
 
-関数呼び出し式は、閉じ括弧(`}`)の直後にクロージャ式の形で末尾クロージャを含めることができます。末尾クロージャは、最後の括弧内の引数の後の関数型の引数と解釈されます。最初のクロージャ式に引数ラベルは付けません。次のクロージャ式の前には引数ラベルを付けます。下記の例は、末尾クロージャの構文を使用して、 末尾クロージャを使用しない関数呼び出しバージョンと同等だということを示しています:
+関数呼び出し式は、閉じ括弧\(`}`\)の直後にクロージャ式の形で末尾クロージャを含めることができます。末尾クロージャは、最後の括弧内の引数の後の関数型の引数と解釈されます。最初のクロージャ式に引数ラベルは付けません。次のクロージャ式の前には引数ラベルを付けます。下記の例は、末尾クロージャの構文を使用して、 末尾クロージャを使用しない関数呼び出しバージョンと同等だということを示しています:
 
 ```swift
 // someFunction 関数は引数として整数とクロージャを受け取ります
@@ -856,11 +854,11 @@ myData.someMethod { $0 == 13 }
 | :---: | :---: | :---: |
 | ラベルあり | ラベルあり | ラベルが同じ場合、クロージャはパラメータと一致します。それ以外の場合は、スキップされます |
 | ラベルあり | ラベルなし | パラメータはスキップされます |
-| ラベルなし | ラベルあり/なし | 下記に定義されているように、パラメータが関数型と見なされる場合、クロージャはパラメータと一致します。それ以外の場合は、スキップされます。|
+| ラベルなし | ラベルあり/なし | 下記に定義されているように、パラメータが関数型と見なされる場合、クロージャはパラメータと一致します。それ以外の場合は、スキップされます。 |
 
 末尾クロージャは、それが一致する関数のパラメータに渡されます。スキャンプロセス中にスキップされたパラメータには、値が渡されません。例えば、デフォルトのパラメータを使用できます。一致するパラメータを見つけた後、スキャンは次の末尾クロージャと次のパラメータに続きます。マッチングプロセスの最後に、全ての末尾クロージャが一致している必要があります。
 
-*構造上*、パラメータが in-out パラメータではなく、次のいずれかの場合、パラメータは関数型と見なされます:
+_構造上_、パラメータが in-out パラメータではなく、次のいずれかの場合、パラメータは関数型と見なされます:
 
 * `(Bool) -> Int` のようにパラメータの型が関数型
 * `@autoclosure () -> ((Bool) -> Int)` のように、ラップされた式の型が関数型の自動クロージャパラメータ
@@ -888,11 +886,9 @@ someFunction { return $0 } secondClosure: { return $0 }  // "10 20"
 
 上記の例では、"Ambiguous"とマークされている関数の呼び出しは"- 120"が出力され、Swift 5.3 ではコンパイラが警告を生成します。それ以降の Swift のバージョンでは "110 -"が出力されます。
 
-クラス、構造体、または列挙型は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#methods-with-special-names" target="_self">Methods with Special Names(特別な名前のメソッド)</a>で説明されているような、いくつかのメソッドの 1 つを宣言することで、関数呼び出しの糖衣構文(シンタックスシュガー)を使うことができます。
+クラス、構造体、または列挙型は、[Methods with Special Names\(特別な名前のメソッド\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#methods-with-special-names)で説明されているような、いくつかのメソッドの 1 つを宣言することで、関数呼び出しの糖衣構文\(シンタックスシュガー\)を使うことができます。
 
-#### <a id="implicit-conversion-to-a-pointer-type">Implicit Conversion to a Pointer Type\(ポインタ型への暗黙変換\)</a>
-
----
+#### [Implicit Conversion to a Pointer Type\(ポインタ型への暗黙変換\)](expressions.md) <a id="implicit-conversion-to-a-pointer-type"></a>
 
 関数呼び出し式で、引数とパラメータが異なる場合、コンパイラは次のリストの暗黙的な変換の 1 つを適用することによって、その型が一致するようにします。
 
@@ -916,26 +912,26 @@ withUnsafePointer(to: myNumber) { unsafeFunction(pointer: $0) }
 これらの暗黙の変換によって作成されたポインタは、関数呼び出しの間だけ有効です。未定義の動作を避けるために、関数呼び出しが終了した後までポインタを保持しないようにしてください。
 
 > NOTE  
-> 配列を暗黙的に安全でないポインタに変換すると、Swift は、配列のストレージが必要に応じて配列を変換またはコピーすることによって連続していることを保証します。例えば、この構文は、そのストレージに関する API の契約がない(動作が定義されているか定かではない) `NSArray` のサブクラスから `Array` にブリッジされた配列でこの構文を使用できます。配列のストレージがすでに連続していることを保証する必要がある場合、暗黙の変換を行わないようにするために、`Array` の代わりに `ContigureArray` を使用します
+> 配列を暗黙的に安全でないポインタに変換すると、Swift は、配列のストレージが必要に応じて配列を変換またはコピーすることによって連続していることを保証します。例えば、この構文は、そのストレージに関する API の契約がない\(動作が定義されているか定かではない\) `NSArray` のサブクラスから `Array` にブリッジされた配列でこの構文を使用できます。配列のストレージがすでに連続していることを保証する必要がある場合、暗黙の変換を行わないようにするために、`Array` の代わりに `ContigureArray` を使用します
 
 `withUnsafePointer(to:)` のような明示的な機能の代わりに、`&` を使うことで、低レベルの C 言語の関数を呼び出しやすくするのに役立ちます。ただし、他の Swift コードから関数を呼び出すときは、安全でない API を明示的に使用する代わりとして `&` を使用しないでください。
 
 > GRAMMAR OF A FUNCTION CALL EXPRESSION  
-> function-call-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  [function-call-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-clause)  
-> function-call-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  [function-call-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-clause)<sub>*opt*</sub> [trailing-closures](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_trailing-closures)  
-> function-call-argument-clause → `(` `)` \|  `(` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  `)`  
-> function-call-argument-list → [function-call-argument](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument) \|  [function-call-argument](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument)  `,` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  
-> function-call-argument → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) \|  [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  
-> function-call-argument → [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator) \|  [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `:` [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator)  
-> trailing-closures → [closure-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-expression)  [labeled-trailing-closures](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_labeled-trailing-closures)<sub>*opt*</sub>  
-> labeled-trailing-closures → [labeled-trailing-closure](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_labeled-trailing-closure)  [labeled-trailing-closures](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_labeled-trailing-closures)<sub>*opt*</sub>  
-> labeled-trailing-closure → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `:` [closure-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-expression)
+> function-call-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) [function-call-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-clause)  
+> function-call-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) [function-call-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-clause)_opt_ [trailing-closures](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_trailing-closures)  
+> function-call-argument-clause → `(` `)` \| `(` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list) `)`  
+> function-call-argument-list → [function-call-argument](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument) \| [function-call-argument](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument) `,` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  
+> function-call-argument → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) \| [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) `:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)  
+> function-call-argument → [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator) \| [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) `:` [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator)  
+> trailing-closures → [closure-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-expression) [labeled-trailing-closures](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_labeled-trailing-closures)_opt_  
+> labeled-trailing-closures → [labeled-trailing-closure](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_labeled-trailing-closure) [labeled-trailing-closures](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_labeled-trailing-closures)_opt_  
+> labeled-trailing-closure → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) `:` [closure-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-expression)
 
-### <a id="initializer-expression">Initializer Expression\(イニシャライザ式\)</a>
+### [Initializer Expression\(イニシャライザ式\)](expressions.md) <a id="initializer-expression"></a>
 
-*イニシャライザ式*は型のイニシャライザへアクセスします。形式は次のとおりです:
+_イニシャライザ式_は型のイニシャライザへアクセスします。形式は次のとおりです:
 
-![イニシャライザ式](./../.gitbook/assets/initializer_expression.png)
+![&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x5F0F;](../.gitbook/assets/initializer_expression.png)
 
 イニシャライザ式を使用して、型の新しいインスタンスを初期化します。スーパークラスのイニシャライザに委譲するイニシャライザ式を使用することもできます。
 
@@ -969,14 +965,14 @@ let s4 = type(of: someValue)(data: 5)       // エラー
 ```
 
 > GRAMMAR OF AN INITIALIZER EXPRESSION  
-> initializer-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `.` `init`  
-> initializer-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `.` `init` `(` [argument-names](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names)  `)`
+> initializer-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) `.` `init`  
+> initializer-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) `.` `init` `(` [argument-names](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names) `)`
 
-### <a id="explicit-member-expression">Explicit Member Expression\(明示的メンバ式\)</a>
+### [Explicit Member Expression\(明示的メンバ式\)](expressions.md) <a id="explicit-member-expression"></a>
 
-*明示的メンバ式*では、名前付き型、タプル、またはモジュールのメンバへアクセスできます。アイテムとそのメンバの識別子の間のピリオド(`.`)で構成されています。
+_明示的メンバ式_では、名前付き型、タプル、またはモジュールのメンバへアクセスできます。アイテムとそのメンバの識別子の間のピリオド\(`.`\)で構成されています。
 
-![明示的メンバ式](./../.gitbook/assets/explicit_member_expression.png)
+![&#x660E;&#x793A;&#x7684;&#x30E1;&#x30F3;&#x30D0;&#x5F0F;](../.gitbook/assets/explicit_member_expression.png)
 
 名前付き型のメンバは、型の宣言または extension の一部で指定されます。例えば:
 
@@ -998,9 +994,9 @@ t.0 = t.1
 
 モジュールのメンバはそのモジュールの最上位の宣言にアクセスします。
 
-`dynamicMemberLookup` 属性で宣言された型には、[Attributes(属性)](./attributes.md)で説明されているように、実行時に検索できるメンバが含まれています。
+`dynamicMemberLookup` 属性で宣言された型には、[Attributes\(属性\)](attributes.md)で説明されているように、実行時に検索できるメンバが含まれています。
 
-パラメータ名だけが異なるメソッドまたはイニシャライザを区別するには、パラメータ名を括弧内に入れ、パラメータ名の後にコロン(`:`)を書きます。名前のない引数にはアンダースコア(`_`)を書きます。オーバーロードされたメソッドを区別するには、型注釈を使用してください。例えば:
+パラメータ名だけが異なるメソッドまたはイニシャライザを区別するには、パラメータ名を括弧内に入れ、パラメータ名の後にコロン\(`:`\)を書きます。名前のない引数にはアンダースコア\(`_`\)を書きます。オーバーロードされたメソッドを区別するには、型注釈を使用してください。例えば:
 
 ```swift
 class SomeClass {
@@ -1029,45 +1025,45 @@ let x = [10, 3, 20, 15, 4]
 ```
 
 > GRAMMAR OF AN EXPLICIT MEMBER EXPRESSION  
-> explicit-member-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `.` [decimal-digits](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits)  
-> explicit-member-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `.` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause)<sub>*opt*</sub>  
-> explicit-member-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `.` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `(` [argument-names](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names)  `)`  
-> argument-names → [argument-name](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-name)  [argument-names](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names)<sub>*opt*</sub>  
-> argument-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  `:`
+> explicit-member-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) `.` [decimal-digits](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits)  
+> explicit-member-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) `.` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause)_opt_  
+> explicit-member-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) `.` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) `(` [argument-names](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names) `)`  
+> argument-names → [argument-name](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-name) [argument-names](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names)_opt_  
+> argument-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) `:`
 
-### Postfix Self Expression(後置 self 式)
+### Postfix Self Expression\(後置 self 式\)
 
 後置 `self` 式は、型や式の直後に `.self` を付けて構成します。次の形式があります:
 
-![後置 self 式](./../.gitbook/assets/postfix_self_expression.png)
+![&#x5F8C;&#x7F6E; self &#x5F0F;](../.gitbook/assets/postfix_self_expression.png)
 
-最初の形式は *expression* の値に評価されます。例えば、`x.self` は `x` と評価されます。
+最初の形式は _expression_ の値に評価されます。例えば、`x.self` は `x` と評価されます。
 
-2 番目の形式は *type* の値に評価されます。この形式を使用して、型に値としてアクセスできます。例えば、`SomeClass.self` は `SomeClass` 型自体に評価されるため、型レベルの引数を受け取る関数またはメソッドに渡すことができます。
+2 番目の形式は _type_ の値に評価されます。この形式を使用して、型に値としてアクセスできます。例えば、`SomeClass.self` は `SomeClass` 型自体に評価されるため、型レベルの引数を受け取る関数またはメソッドに渡すことができます。
 
 > GRAMMAR OF A POSTFIX SELF EXPRESSION  
-> postfix-self-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `.` `self`
+> postfix-self-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) `.` `self`
 
-### Subscript Expression(subscript 式)
+### Subscript Expression\(subscript 式\)
 
-*subscript 式*は、対応する subscript 宣言の get と set を使用して subscript へのアクセスすることができます。形式は次のとおりです:
+_subscript 式_は、対応する subscript 宣言の get と set を使用して subscript へのアクセスすることができます。形式は次のとおりです:
 
-![subscript式](./../.gitbook/assets/subscript_expression.png)
+![subscript&#x5F0F;](../.gitbook/assets/subscript_expression.png)
 
-subscript 式の値を評価するには、*expression* 型の subscript の get を subscript のパラメータとして*インデックス式*を渡して呼び出します。値を設定するために、subscript の set を同じ方法で呼び出します。
+subscript 式の値を評価するには、_expression_ 型の subscript の get を subscript のパラメータとして_インデックス式_を渡して呼び出します。値を設定するために、subscript の set を同じ方法で呼び出します。
 
-subscript 宣言については、[Protocol Subscript Declaration(プロトコル subscript 宣言)](./declarations.md#protocol-subscript-declarationプロトコルのsubscript宣言)を参照ください。
+subscript 宣言については、[Protocol Subscript Declaration\(プロトコル subscript 宣言\)](declarations.md#protocol-subscript-declarationプロトコルのsubscript宣言)を参照ください。
 
 > GRAMMAR OF A SUBSCRIPT EXPRESSION  
-> subscript-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list)  `]`
+> subscript-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list) `]`
 
-### Forced-Value Expression(強制アンラップ式)
+### Forced-Value Expression\(強制アンラップ式\)
 
-*強制アンラップ式*は、特定の値が `nil` ではないオプショナルの値を表します。形式は次のとおりです:
+_強制アンラップ式_は、特定の値が `nil` ではないオプショナルの値を表します。形式は次のとおりです:
 
-![強制アンラップ式](./../.gitbook/assets/forced-Value_expression.png)
+![&#x5F37;&#x5236;&#x30A2;&#x30F3;&#x30E9;&#x30C3;&#x30D7;&#x5F0F;](../.gitbook/assets/forced-Value_expression.png)
 
-*expression* の値が `nil` でない場合、オプショナルの値はアンラップされ、対応するオプショナルの非オプショナルの型で返されます。それ以外の場合は、実行時エラーが発生します。
+_expression_ の値が `nil` でない場合、オプショナルの値はアンラップされ、対応するオプショナルの非オプショナルの型で返されます。それ以外の場合は、実行時エラーが発生します。
 
 強制アンラップされた値は、値自体を変化させる、またはその値のメンバの 1 つに割り当てることによって、変更できます。例えば:
 
@@ -1082,13 +1078,13 @@ someDictionary["a"]![0] = 100
 ```
 
 > GRAMMAR OF A FORCED-VALUE EXPRESSION  
-> forced-value-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `!`
+> forced-value-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) `!`
 
-### <a id="optional-chaining-expression">Optional-Chaining Expression\(オプショナルチェーン式\)</a>
+### [Optional-Chaining Expression\(オプショナルチェーン式\)](expressions.md) <a id="optional-chaining-expression"></a>
 
-*オプショナルチェーン式*は後置式で、オプショナルの値を使用するための簡単な構文を提供します。形式は次のとおりです:
+_オプショナルチェーン式_は後置式で、オプショナルの値を使用するための簡単な構文を提供します。形式は次のとおりです:
 
-![オプショナルチェーン式](./../.gitbook/assets/optional-chaining_expression.png)
+![&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30CA;&#x30EB;&#x30C1;&#x30A7;&#x30FC;&#x30F3;&#x5F0F;](../.gitbook/assets/optional-chaining_expression.png)
 
 後置 `?` 演算子は式の値を変更せずに式からオプショナルチェーン式を作成します。
 
@@ -1128,4 +1124,5 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 ```
 
 > GRAMMAR OF AN OPTIONAL-CHAINING EXPRESSION  
-> optional-chaining-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression)  `?`
+> optional-chaining-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) `?`
+

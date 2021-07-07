@@ -1,4 +1,4 @@
-# Attributes
+# 属性\(Attributes\)
 
 最終更新日: 2021/7/2
 
@@ -6,11 +6,11 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 
 `@` 記号に続けて属性の名前と、属性が受け入れる引数を書き込むことにより、属性を指定します。
 
-![属性](./../.gitbook/assets/attributes.png)
+![&#x5C5E;&#x6027;](../.gitbook/assets/attributes.png)
 
-一部の宣言属性は、属性とそれが特定の宣言にどのように適用されるかについての詳細情報を指定する引数を受け入れます。これらの *attribute arguments* は括弧(`()`)で囲まれ、その形式は属する属性によって定義されています。
+一部の宣言属性は、属性とそれが特定の宣言にどのように適用されるかについての詳細情報を指定する引数を受け入れます。これらの _attribute arguments_ は括弧\(`()`\)で囲まれ、その形式は属する属性によって定義されています。
 
-## <a id="declaration-attributes">Declaration Attributes\(宣言属性\)</a>
+## [Declaration Attributes\(宣言属性\)](attributes.md) <a id="declaration-attributes"></a>
 
 宣言属性は宣言にのみ適用できます。
 
@@ -18,7 +18,7 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 
 この属性を適用すると、特定の Swift 言語バージョンまたは特定のプラットフォームとオペレーティングシステムのバージョンに関連する宣言のライフサイクルを示します。
 
-`available` 属性は、常に 2 つ以上のカンマ区切り(`,`)の属性引数のリストを伴います。これらの引数は、次のプラットフォーム名または言語名のいずれかで始まります:
+`available` 属性は、常に 2 つ以上のカンマ区切り\(`,`\)の属性引数のリストを伴います。これらの引数は、次のプラットフォーム名または言語名のいずれかで始まります:
 
 * `iOS`
 * `iOSApplicationExtension`
@@ -32,41 +32,40 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 * `tvOSApplicationExtension`
 * `swift`
 
-アスタリスク(`*`)を使用して、上記の全てのプラットフォーム名で宣言が使用可能だと示すこともできます。Swift のバージョン番号を使用してアベイラビリティを指定する `available` 属性では、アスタリスクを使用できません。
+アスタリスク\(`*`\)を使用して、上記の全てのプラットフォーム名で宣言が使用可能だと示すこともできます。Swift のバージョン番号を使用してアベイラビリティを指定する `available` 属性では、アスタリスクを使用できません。
 
 残りの引数は任意の順序で記述でき、重要なマイルストーンなど、宣言のライフサイクルに関する追加情報を指定できます。
 
 * `unavailable` 引数は、指定されたプラットフォームで宣言が使用できないことを示します。この引数は、Swift のアベイラビリティバージョンを指定している場合は使用できません
-
 * `introduced` 引数は、宣言が導入された特定のプラットフォームまたは言語の最初のバージョンを示します。形式は次のとおりです:
 
-![introduced 引数](./../.gitbook/assets/introduced.png)
+![introduced &#x5F15;&#x6570;](../.gitbook/assets/introduced.png)
 
-*version number* は、ピリオド(`.`)で区切られた 1〜3 個の正の整数で構成されます。
+_version number_ は、ピリオド\(`.`\)で区切られた 1〜3 個の正の整数で構成されます。
 
 * `deprecated` 引数は、宣言が非推奨になった特定のプラットフォームまたは言語の最初のバージョンを示します。形式は次のとおりです:
 
-![deprecated 引数](./../.gitbook/assets/deprecated.png)
+![deprecated &#x5F15;&#x6570;](../.gitbook/assets/deprecated.png)
 
-任意の *version number* は、ピリオド(`.`)で区切られた 1〜3 個の正の整数で構成されます。バージョン番号を省略すると、deprecated がいつ発生したかについての情報を提供せずに、宣言が現在 deprecated になっていることのみを示します。バージョン番号を省略する場合は、コロン(`:`)も省略してください。
+任意の _version number_ は、ピリオド\(`.`\)で区切られた 1〜3 個の正の整数で構成されます。バージョン番号を省略すると、deprecated がいつ発生したかについての情報を提供せずに、宣言が現在 deprecated になっていることのみを示します。バージョン番号を省略する場合は、コロン\(`:`\)も省略してください。
 
 * `obsoleted` 引数は、宣言が廃止された特定のプラットフォームまたは言語の最初のバージョンを示します。宣言が廃止されると、指定されたプラットフォームまたは言語から削除され、使用できなくなります。形式は次のとおりです:
 
-![obsoleted 引数](./../.gitbook/assets/obsoleted.png)
+![obsoleted &#x5F15;&#x6570;](../.gitbook/assets/obsoleted.png)
 
-*version number* は、ピリオド(`.`)で区切られた 1〜3 個の正の整数で構成されます。
+_version number_ は、ピリオド\(`.`\)で区切られた 1〜3 個の正の整数で構成されます。
 
 * `message` 引数は、deprecated または obsoleted された宣言に使用した際に、コンパイラが表示する警告またはエラーのテキストメッセージを提供します。形式は次のとおりです:
 
-![message 引数](./../.gitbook/assets/message.png)
+![message &#x5F15;&#x6570;](../.gitbook/assets/message.png)
 
-*message* は文字列リテラルで構成されます。
+_message_ は文字列リテラルで構成されます。
 
 * `renamed` 引数は、名前が変更された宣言の新しい名前を示すテキストメッセージを提供します。コンパイラは、名前が変更された宣言が使用された際にエラーを発行し、新しい名前を表示します。形式は次のとおりです:
 
-![renamed 引数](./../.gitbook/assets/renamed.png)
+![renamed &#x5F15;&#x6570;](../.gitbook/assets/renamed.png)
 
-*new name* は文字列リテラルで構成されます。
+_new name_ は文字列リテラルで構成されます。
 
 下記に示すように、フレームワークまたはライブラリのリリース間で宣言の名前が変更されたことを示すために、タイプエイリアス宣言に `renamed` 引数と `unavailable` 引数を持つ `available` 属性を適用することができます。この組み合わせにより、宣言の名前が変更されたというコンパイルエラーが発生します。
 
@@ -75,7 +74,6 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 protocol MyProtocol {
     // プロトコル定義
 }
-
 ```
 
 ```swift
@@ -92,7 +90,7 @@ typealias MyProtocol = MyRenamedProtocol
 
 `available` 属性がプラットフォームまたは言語名の引数に加えて `introduced` 引数を指定するだけの場合は、代わりに次の省略構文を使用できます:
 
-![available属性](./../.gitbook/assets/available.png)
+![available&#x5C5E;&#x6027;](../.gitbook/assets/available.png)
 
 `available` 属性の省略構文は、複数のプラットフォームのアベイラビリティを簡潔に表しています。2 つの形式は機能的に同等ですが、可能な限り省略形が推奨されます。
 
@@ -189,7 +187,7 @@ repeatLabels(a: "four") // エラー
 
 明示的なメンバ式では、指定されたメンバに対応する宣言がない場合、式は型の `subscript(dynamicMember:)` の呼び出しとして解釈され、メンバに関する情報を引数として渡します。subscript は、KeyPath またはメンバ名のいずれかでパラメータを受け取ることができます。両方の subscript を実装する場合、KeyPath 引数を取る subscript が使用されます。
 
-`subscript(dynamicMember:)` の実装は、[KeyPath](https://developer.apple.com/documentation/swift/keypath)、[WritableKeyPath](https://developer.apple.com/documentation/swift/writablekeypath)、または [ReferenceWritableKeyPath](https://developer.apple.com/documentation/swift/referencewritablekeypath)の引数を使用して KeyPath を受け取ることができます。[ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral)プロトコル(ほとんどの場合、`String`)に準拠する型の引数を使用して、メンバ名を受け入れることができます。subscript の戻り値の型は任意の型にすることができます。
+`subscript(dynamicMember:)` の実装は、[KeyPath](https://developer.apple.com/documentation/swift/keypath)、[WritableKeyPath](https://developer.apple.com/documentation/swift/writablekeypath)、または [ReferenceWritableKeyPath](https://developer.apple.com/documentation/swift/referencewritablekeypath)の引数を使用して KeyPath を受け取ることができます。[ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral)プロトコル\(ほとんどの場合、`String`\)に準拠する型の引数を使用して、メンバ名を受け入れることができます。subscript の戻り値の型は任意の型にすることができます。
 
 メンバ名による動的なメンバ検索を使用して、他の言語のデータを Swift にブリッジする場合など、コンパイル時に型チェックできないデータのラッパ型を作成できます。例えば:
 
@@ -242,11 +240,11 @@ print(wrapper.x)
 
 ライブラリエボリューションモードでは、nonfrozen の構造体や列挙型のメンバとやり取りするコードは、ライブラリの将来のバージョンでその型のメンバの一部が追加、削除、または並べ替えられた場合でも、再コンパイルせずに作業を継続できるようにコンパイルされます。コンパイラは、実行時に情報を検索したり、間接層を追加したりするなどの手法を使用して、これを可能にします。構造体または列挙型を frozen でマークすると、パフォーマンスを向上させるためにこの柔軟性が失われます。ライブラリの将来のバージョンでは、型に限定的な変更しか加えることができませんが、コンパイラは、型のメンバとやり取りするコードに追加の最適化を行うことができます。
 
-frozen 型、frozen 構造体の格納プロパティの型、および frozen 列挙ケースの関連値は、public か、`usableFromInline` 属性がマークされている必要があります。frozen 構造体のプロパティはプロパティオブザーバを持つことができず、格納インスタンスプロパティの初期値を提供する式は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/attributes#inlinable" target="_self">inlinable</a>で説明されているように inlinable 関数と同じ制限に従う必要があります。
+frozen 型、frozen 構造体の格納プロパティの型、および frozen 列挙ケースの関連値は、public か、`usableFromInline` 属性がマークされている必要があります。frozen 構造体のプロパティはプロパティオブザーバを持つことができず、格納インスタンスプロパティの初期値を提供する式は、[inlinable](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/attributes#inlinable)で説明されているように inlinable 関数と同じ制限に従う必要があります。
 
-コマンドラインでライブラリエボリューションモードを有効にするには、`-enable-library-evolution` オプションを Swift コンパイラに渡します。Xcode で有効にするには、[Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba)の説明に従って、「Build Libraries for Distribution」のビルド設定(`BUILD_LIBRARY_FOR_DISTRIBUTION`)を Yes に設定します。
+コマンドラインでライブラリエボリューションモードを有効にするには、`-enable-library-evolution` オプションを Swift コンパイラに渡します。Xcode で有効にするには、[Xcode Help](https://help.apple.com/xcode/mac/current/#/dev04b3a04ba)の説明に従って、「Build Libraries for Distribution」のビルド設定\(`BUILD_LIBRARY_FOR_DISTRIBUTION`\)を Yes に設定します。
 
-frozen 列挙型の switch 文は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#switching-over-future-enumeration-cases" target="_self">Switching Over Future Enumeration Cases(列挙型の将来のケースのスイッチング)</a>で説明されているように、デフォルトのケースを必要としません。frozen 列挙型を切り替えるときに `default` または `@unknown default` のケースを含めると、そのコードは実行されないため、警告が生成されます。
+frozen 列挙型の switch 文は、[Switching Over Future Enumeration Cases\(列挙型の将来のケースのスイッチング\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#switching-over-future-enumeration-cases)で説明されているように、デフォルトのケースを必要としません。frozen 列挙型を切り替えるときに `default` または `@unknown default` のケースを含めると、そのコードは実行されないため、警告が生成されます。
 
 ### GKInspectable
 
@@ -281,7 +279,7 @@ protocol ProvidesMain {
 }
 ```
 
-実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-code" target="_self">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。
+実行可能ファイルを作成するためにコンパイルする Swift コードには、[Top-Level Code\(トップレベルコード\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-code)で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。
 
 ### nonobjc
 
@@ -304,7 +302,7 @@ import AppKit
 NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
 ```
 
-実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-code" target="_self">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。
+実行可能ファイルを作成するためにコンパイルする Swift コードには、[Top-Level Code\(トップレベルコード\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-code)で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。
 
 ### NSCopying
 
@@ -318,7 +316,7 @@ NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
 
 ### objc
 
-この属性は Objective-C で使用することができる全ての宣言に適用します。例えば、ネストされていないクラス、プロトコル、(整数の Raw Value 型の)非ジェネリック列挙型、クラスのプロパティとメソッド(get と set を含む)、プロトコル、およびオプショナルのプロトコル、イニシャライザ、および subscript など。`objc` 属性は、Objective-C コードで宣言を使用できることをコンパイラに通知します。
+この属性は Objective-C で使用することができる全ての宣言に適用します。例えば、ネストされていないクラス、プロトコル、\(整数の Raw Value 型の\)非ジェネリック列挙型、クラスのプロパティとメソッド\(get と set を含む\)、プロトコル、およびオプショナルのプロトコル、イニシャライザ、および subscript など。`objc` 属性は、Objective-C コードで宣言を使用できることをコンパイラに通知します。
 
 この属性を extension に適用すると、`nonobjc` 属性が明示的にマークされていないその extension 内の全てのメンバに適用するのと同じ効果があります。
 
@@ -359,11 +357,11 @@ class ExampleClass: NSObject {
 
 この属性をクラス、構造体、または列挙型宣言に適用すると、その型をプロパティラッパとして使用できます。この属性を型に適用すると、型と同じ名前のカスタム属性が作成されます。その新しい属性をクラス、構造体、または列挙型のプロパティに適用して、ラッパ型のインスタンスを介してプロパティへのアクセスをラップします。属性をローカルの格納変数宣言に適用して、変数へのアクセスを同じ方法でラップすることもできます。計算変数、グローバル変数、および定数には、プロパティラッパを使用できません。
 
-ラッパは `wrappedValue` インスタンスプロパティを定義する必要があります。プロパティの*ラップされた値*は、このプロパティの get と set が公開する値です。ほとんどの場合、`wrappedValue` は計算値ですが、代わりに格納値にすることもできます。ラッパは、ラップされた値に必要なストレージを定義および管理します。コンパイラは、ラップされたプロパティの名前の前にアンダースコア(`_`)を付けることにより、ラッパ型のインスタンスのストレージを合成します。例えば、`someProperty` のラッパは `_someProperty` として格納されます。ラッパの合成ストレージのアクセス制御レベルは `private` です。
+ラッパは `wrappedValue` インスタンスプロパティを定義する必要があります。プロパティの_ラップされた値_は、このプロパティの get と set が公開する値です。ほとんどの場合、`wrappedValue` は計算値ですが、代わりに格納値にすることもできます。ラッパは、ラップされた値に必要なストレージを定義および管理します。コンパイラは、ラップされたプロパティの名前の前にアンダースコア\(`_`\)を付けることにより、ラッパ型のインスタンスのストレージを合成します。例えば、`someProperty` のラッパは `_someProperty` として格納されます。ラッパの合成ストレージのアクセス制御レベルは `private` です。
 
 プロパティラッパを持つプロパティには、`willSet` ブロックと `didSet` ブロックを含めることができますが、コンパイラで合成された `get` ブロックまたは `set` ブロックをオーバーライドすることはできません。
 
-Swift は、プロパティラッパを初期化するための 2 つの形式の糖衣構文(シンタックスシュガー)を提供します。ラップされた値の定義で代入構文を使用して、代入の右側にある式を、プロパティラッパのイニシャライザの `wrappedValue` パラメータとして渡すことができます。属性をプロパティに適用するときに属性に引数を指定することもでき、それらの引数はプロパティラッパのイニシャライザに渡されます。例えば、下記のコードでは、`SomeStruct` は `SomeWrapper` が定義する各イニシャライザを呼び出します。
+Swift は、プロパティラッパを初期化するための 2 つの形式の糖衣構文\(シンタックスシュガー\)を提供します。ラップされた値の定義で代入構文を使用して、代入の右側にある式を、プロパティラッパのイニシャライザの `wrappedValue` パラメータとして渡すことができます。属性をプロパティに適用するときに属性に引数を指定することもでき、それらの引数はプロパティラッパのイニシャライザに渡されます。例えば、下記のコードでは、`SomeStruct` は `SomeWrapper` が定義する各イニシャライザを呼び出します。
 
 ```swift
 @propertyWrapper
@@ -397,7 +395,7 @@ struct SomeStruct {
 }
 ```
 
-ラップされたプロパティの投影された値は、プロパティラッパが追加機能を公開するために使用できる 2 番目の値です。プロパティラッパ型の作成者は、その投影された値の意味を決定し、投影された値が公開するインターフェイスを定義する責任があります。プロパティラッパから値を投影された値を提供するには、ラッパ型で `projectedValue` インスタンスプロパティを定義します。コンパイラは、ラップされたプロパティの名前の前にドル記号(`$`)を付けることにより、投影された値の識別子を合成します。例えば、`someProperty` の投影された値は `$someProperty` です。投影された値は、元のラップされたプロパティと同じアクセス制御レベルを持ちます。
+ラップされたプロパティの投影された値は、プロパティラッパが追加機能を公開するために使用できる 2 番目の値です。プロパティラッパ型の作成者は、その投影された値の意味を決定し、投影された値が公開するインターフェイスを定義する責任があります。プロパティラッパから値を投影された値を提供するには、ラッパ型で `projectedValue` インスタンスプロパティを定義します。コンパイラは、ラップされたプロパティの名前の前にドル記号\(`$`\)を付けることにより、投影された値の識別子を合成します。例えば、`someProperty` の投影された値は `$someProperty` です。投影された値は、元のラップされたプロパティと同じアクセス制御レベルを持ちます。
 
 ```swift
 @propertyWrapper
@@ -422,11 +420,9 @@ s.$x.wrapper  // WrapperWithProjection 値
 
 ### resultBuilder
 
-この属性をクラス、構造体、列挙型に適用して、その型をリザルトビルダとして使用できます。*リザルトビルダ*は、ネストされたデータ構造を段階的に構築する型です。リザルトビルダを使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語(DSL)を実装します。`resultBuilder` 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#result-builders" target="_self">Result Builders(リザルトビルダ)</a>を参照ください。
+この属性をクラス、構造体、列挙型に適用して、その型をリザルトビルダとして使用できます。_リザルトビルダ_は、ネストされたデータ構造を段階的に構築する型です。リザルトビルダを使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語\(DSL\)を実装します。`resultBuilder` 属性の使用方法の例については、[Result Builders\(リザルトビルダ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#result-builders)を参照ください。
 
 #### Result-Building Methods
-
----
 
 リザルトビルダは、下記で説明する静的メソッドを実装します。リザルトビルダの全ての機能は静的メソッドを介して公開されるため、その型のインスタンスを初期化することはありません。`buildBlock(_:)` メソッドが必要です。DSL の追加機能を有効にする他の方法は省略可能です。リザルトビルダ型の宣言には、プロトコルの準拠を含める必要はありません。
 
@@ -434,53 +430,37 @@ s.$x.wrapper  // WrapperWithProjection 値
 
 リザルトビルダの作成方法は次のとおりです:
 
-<dt>static func buildBlock(_ components: Component...) -> Component</dt>
-<dd>
+static func buildBlock\(\_ components: Component...\) -&gt; Component
 
-部分的な結果の配列を単一の部分的な結果に結合します。リザルトビルダは、このメソッドを実装する必要があります。
-</dd>
+ 部分的な結果の配列を単一の部分的な結果に結合します。リザルトビルダは、このメソッドを実装する必要があります。
 
-<dt>static func buildOptional(_ component: Component?) -> Component</dt>
-<dd>
+static func buildOptional\(\_ component: Component?\) -&gt; Component
 
-`nil` になる可能性のある部分的な結果から部分的な結果を構築します。このメソッドを実装して、`else` 句を含まない `if` 文をサポートします。
-</dd>
+ \`nil\` になる可能性のある部分的な結果から部分的な結果を構築します。このメソッドを実装して、\`else\` 句を含まない \`if\` 文をサポートします。
 
-<dt>static func buildEither(first: Component) -> Component</dt>
-<dd>
+static func buildEither\(first: Component\) -&gt; Component
 
-条件によって値が変化する部分的な結果を作成します。このメソッドと `buildEither(second:)` の両方を実装して、`switch` 文と `else` 句を含む `if` 文をサポートします。
-</dd>
+ 条件によって値が変化する部分的な結果を作成します。このメソッドと \`buildEither\(second:\)\` の両方を実装して、\`switch\` 文と \`else\` 句を含む \`if\` 文をサポートします。
 
-<dt>static func buildEither(second: Component) -> Component</dt>
-<dd>
+static func buildEither\(second: Component\) -&gt; Component
 
-条件によって値が変化する部分的な結果を作成します。このメソッドと `buildEither(first:)` の両方を実装して、`switch` 文と `else` 句を含む `if` 文をサポートします。
-</dd>
+ 条件によって値が変化する部分的な結果を作成します。このメソッドと \`buildEither\(first:\)\` の両方を実装して、\`switch\` 文と \`else\` 句を含む \`if\` 文をサポートします。
 
-<dt>static func buildArray(_ components: [Component]) -> Component</dt>
-<dd>
+static func buildArray\(\_ components: \[Component\]\) -&gt; Component
 
-部分的な結果の配列から部分的な結果を構築します。このメソッドを実装して、ループをサポートします。
-</dd>
+ 部分的な結果の配列から部分的な結果を構築します。このメソッドを実装して、ループをサポートします。
 
-<dt>static func buildExpression(_ expression: Expression) -> Component</dt>
-<dd>
+static func buildExpression\(\_ expression: Expression\) -&gt; Component
 
-式から部分的な結果を作成します。このメソッドを実装して、前処理(例えば、式を内部型に変換する)を実行したり、使用側で型推論のための追加情報を提供したりできます。
-</dd>
+ 式から部分的な結果を作成します。このメソッドを実装して、前処理\(例えば、式を内部型に変換する\)を実行したり、使用側で型推論のための追加情報を提供したりできます。
 
-<dt>static func buildFinalResult(_ component: Component) -> FinalResult</dt>
-<dd>
+static func buildFinalResult\(\_ component: Component\) -&gt; FinalResult
 
-部分的な結果から最終結果を作成します。このメソッドは、部分結果と最終結果で異なる型を使用するリザルトビルダの一部として実装したり、結果を返す前に結果に対して後処理を実行したりできます。
-</dd>
+ 部分的な結果から最終結果を作成します。このメソッドは、部分結果と最終結果で異なる型を使用するリザルトビルダの一部として実装したり、結果を返す前に結果に対して後処理を実行したりできます。
 
-<dt>static func buildLimitedAvailability(_ component: Component) -> Component</dt>
-<dd>
+static func buildLimitedAvailability\(\_ component: Component\) -&gt; Component
 
-アベイラビリティチェックを実行するコンパイラ制御文の外部で型情報を伝播または消去する部分的な結果を作成します。これを使用して、条件分岐間で異なる型情報を消去できます。
-</dd>
+ アベイラビリティチェックを実行するコンパイラ制御文の外部で型情報を伝播または消去する部分的な結果を作成します。これを使用して、条件分岐間で異なる型情報を消去できます。
 
 例えば、下記のコードは、整数の配列を作成するシンプルなリザルトビルダを定義しています。このコードは、`Compontent` と `Expression` をタイプエイリアスとして定義し、下記の例を上記のメソッドのリストに簡単に一致させることができます。
 
@@ -513,8 +493,6 @@ struct ArrayBuilder {
 
 #### Result Transformations
 
----
-
 次の構文変換は、リザルトビルダ構文を使用するコードを、リザルトビルダ型の静的メソッドを呼び出すコードに変換するために再帰的に適用されます。
 
 * リザルトビルダに `buildExpression(_:)` メソッドがある場合、各式はそのメソッドの呼び出しになります。この変換は常に最初に行われます。例えば、次の宣言は同等です:
@@ -525,7 +503,6 @@ var manualNumber = ArrayBuilder.buildExpression(10)
 ```
 
 * 代入文は式のように変換されますが、`()` に評価されると解釈されます。代入を具体的に処理するために `()` 型の引数を取る `buildExpression(_:)` のオーバーロードを定義できます
-
 * アベイラビリティ条件をチェックする分岐文は、`buildLimitedAvailability(_:)` メソッドの呼び出しになります。この変換は、`buildEither(first:)`、`buildEither(second:)`、または `buildOptional(_:)` の呼び出しに変換される前に行われます。`buildLimitedAvailability(_:)` メソッドを使用して、取得する分岐に応じて変化する型情報を消去します。例えば、下記の `buildEither(first:)` メソッドと `buildEither(second:)` メソッドは、両方の分岐に関する型情報をキャプチャするジェネリック型を使用します
 
 ```swift
@@ -706,7 +683,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 
 resultBuilder 属性を適用しても、ABI の互換性には影響しません。リザルトビルダ属性をパラメータに適用すると、その属性が関数のインターフェースの一部になり、ソースの互換性に影響を与える可能性があります。
 
-### requires_stored_property_inits
+### requires\_stored\_property\_inits
 
 この属性をクラス宣言に適用すると、クラス内に格納されている全てのプロパティに、定義の一部としてデフォルト値を提供するように要求します。この属性は、`NSManagedObject` を継承する全てのクラスに対して推論されます。
 
@@ -718,9 +695,9 @@ resultBuilder 属性を適用しても、ABI の互換性には影響しませ�
 
 この属性をクラスに適用して、それがアプリケーションデリゲートだということを示します。この属性を使用することは、`UIApplicationMain` 関数を呼び出し、このクラスの名前をデリゲートクラスの名前として渡すことと同じです。
 
-この属性を使用しない場合は、[UIApplicationMain(_:_:_:_:)](https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain)関数を呼び出すトップレベルのコードを `main.swift` ファイルに指定します。例えば、アプリが `UIApplication` の独自のサブクラスをメインクラスとして使用している場合、この属性を使用する代わりに `UIApplicationMain(_:_:_:_:)` 関数を呼び出します。
+この属性を使用しない場合は、[UIApplicationMain\(_:_:_:_:\)](https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain)関数を呼び出すトップレベルのコードを `main.swift` ファイルに指定します。例えば、アプリが `UIApplication` の独自のサブクラスをメインクラスとして使用している場合、この属性を使用する代わりに `UIApplicationMain(_:_:_:_:)` 関数を呼び出します。
 
-実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-code" target="_self">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。
+実行可能ファイルを作成するためにコンパイルする Swift コードには、[Top-Level Code\(トップレベルコード\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-code)で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。
 
 ### usableFromInline
 
@@ -730,11 +707,11 @@ resultBuilder 属性を適用しても、ABI の互換性には影響しませ�
 
 `inlinable` 属性がマークされた宣言は、inlinable コードから暗黙的に使用できます。`inlinable` または `usableFromInline` のいずれかを `internal` 宣言に適用できますが、両方の属性を適用するとエラーです。
 
-### warn_unqualified_access
+### warn\_unqualified\_access
 
 この属性をトップレベルの関数、インスタンスメソッド、またはクラスまたは静的メソッドに適用すると、その関数またはメソッドがモジュール名、型名、インスタンス変数または定数などを修飾子なしで使用された場合に警告を出力します。この属性を使用して、同じスコープからアクセスできる同じ名前の関数間のあいまいさを回避できます。
 
-例えば、Swift 標準ライブラリには、トップレベルの[min(_:_:)](https://developer.apple.com/documentation/swift/1538339-min/)関数と、同等の要素を持つ `Sequence` の `min()` メソッドの両方が含まれています。`Sequence` メソッドは `warn_unqualified_access` 属性で宣言されており、`Sequence` extension 内からどちらかを使用しようとするときの混乱を減らすのに役立ちます。
+例えば、Swift 標準ライブラリには、トップレベルの[min\(_:_:\)](https://developer.apple.com/documentation/swift/1538339-min/)関数と、同等の要素を持つ `Sequence` の `min()` メソッドの両方が含まれています。`Sequence` メソッドは `warn_unqualified_access` 属性で宣言されており、`Sequence` extension 内からどちらかを使用しようとするときの混乱を減らすのに役立ちます。
 
 ### Declaration Attributes Used by Interface Builder
 
@@ -744,13 +721,13 @@ Interface Builder 属性は、Xcode と同期するために InterfaceBuilder �
 
 `IBAction`、`IBSegueAction`、`IBOutlet`、`IBDesignable`、または `IBInspectable` 属性を適用すると、`objc` 属性も暗黙的に追加されます。
 
-## Type Attributes(型属性)
+## Type Attributes\(型属性\)
 
 型属性は型にのみ適用できます。
 
 ### autoclosure
 
-この属性を適用すると、引数のないクロージャで式を自動的にラップすることにより、式の評価を遅らせます。関数またはメソッド宣言のパラメータに、引数を受け取らず式の型の値を返す関数型を適用できます。`autoclosure` 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#autoclosures" target="_self">AutoClosures(自動クロージャ)</a>と<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/types#types-function-type" target="_self">Function Type(関数型)</a>を参照ください。
+この属性を適用すると、引数のないクロージャで式を自動的にラップすることにより、式の評価を遅らせます。関数またはメソッド宣言のパラメータに、引数を受け取らず式の型の値を返す関数型を適用できます。`autoclosure` 属性の使用方法の例については、[AutoClosures\(自動クロージャ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#autoclosures)と[Function Type\(関数型\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/types#types-function-type)を参照ください。
 
 ### convention
 
@@ -766,24 +743,25 @@ Interface Builder 属性は、Xcode と同期するために InterfaceBuilder �
 
 ### escaping
 
-この属性を関数またはメソッド宣言のパラメータの型に適用すると、パラメータの値を後で実行するために保持されることがあることを示します。これは、値が呼び出し側の生存期間を超えて存続できることを意味します。`escaping` 属性を持つ関数型パラメータは、プロパティまたはメソッドに対して `self` を明示的に使用する必要があります。`escaping` 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#escaping-closures" target="_self">Escaping Closures(エスケープクロージャ)</a>を参照ください。
+この属性を関数またはメソッド宣言のパラメータの型に適用すると、パラメータの値を後で実行するために保持されることがあることを示します。これは、値が呼び出し側の生存期間を超えて存続できることを意味します。`escaping` 属性を持つ関数型パラメータは、プロパティまたはメソッドに対して `self` を明示的に使用する必要があります。`escaping` 属性の使用方法の例については、[Escaping Closures\(エスケープクロージャ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#escaping-closures)を参照ください。
 
-## Switch Case Attributes (Switch ケース属性)
+## Switch Case Attributes \(Switch ケース属性\)
 
 switch の case 属性は、switch 文のケースにのみ適用できます。
 
 ### unknown
 
-この属性を switch ケースに適用すると、コードのコンパイル時にわかっているどの列挙ケースとも一致することがない可能性を示します。`unknown` 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#switching-over-future-enumeration-cases" target="_self">Switching Over Future Enumeration Cases(列挙型の将来のケースのスイッチング)</a>を参照ください。
+この属性を switch ケースに適用すると、コードのコンパイル時にわかっているどの列挙ケースとも一致することがない可能性を示します。`unknown` 属性の使用方法の例については、[Switching Over Future Enumeration Cases\(列挙型の将来のケースのスイッチング\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#switching-over-future-enumeration-cases)を参照ください。
 
 > GRAMMAR OF AN ATTRIBUTE  
-> attribute → `@` [attribute-name](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attribute-name)  [attribute-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attribute-argument-clause)<sub>*opt*</sub>  
+> attribute → `@` [attribute-name](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attribute-name) [attribute-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attribute-argument-clause)_opt_  
 > attribute-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
-> attribute-argument-clause → `(` [balanced-tokens](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens)<sub>*opt*</sub> `)`  
-> attributes → [attribute](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attribute)  [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>*opt*</sub>   
-> balanced-tokens → [balanced-token](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-token)  [balanced-tokens](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens)<sub>*opt*</sub>  
-> balanced-token → `(` [balanced-tokens](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens)<sub>*opt*</sub> `)`  
-> balanced-token → `[` [balanced-tokens](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens)<sub>*opt*</sub> `]`  
-> balanced-token → `{` [balanced-tokens](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens)<sub>*opt*</sub> `}`  
+> attribute-argument-clause → `(` [balanced-tokens](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens)_opt_ `)`  
+> attributes → [attribute](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attribute) [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)_opt_  
+> balanced-tokens → [balanced-token](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-token) [balanced-tokens](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens)_opt_  
+> balanced-token → `(` [balanced-tokens](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens)_opt_ `)`  
+> balanced-token → `[` [balanced-tokens](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens)_opt_ `]`  
+> balanced-token → `{` [balanced-tokens](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens)_opt_ `}`  
 > balanced-token → 任意の識別子、キーワード、リテラル、または演算子  
-> balanced-token → `(`,  `)`,  `[`,  `]`,  `{`, または  `}` を除く任意の句読点  
+> balanced-token → `(`, `)`, `[`, `]`, `{`, または `}` を除く任意の句読点
+
