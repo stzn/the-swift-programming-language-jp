@@ -2,7 +2,7 @@
 
 * [The Swift Programming Language\(日本語版\)](README.md)
 
-## WELCOME TO SWIFT \(Swiftへようこそ\)
+## Swiftへようこそ\(WELCOME TO SWIFT\) <a id="welcome-to-swift-swiftheyoukoso"></a>
 
 * [Swiftについて\(About Swift\)](welcome-to-swift-swiftheyoukoso/about-swift.md)
 * [バージョン互換性\(Version Compatibility\)](welcome-to-swift-swiftheyoukoso/version-compatibility.md)
