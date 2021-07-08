@@ -18,7 +18,7 @@ print("Hello, world!")
 >
 > [Download Playground](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.playground.zip)
 
-## Simple Values\(シンプルな値\)
+## シンプルな値\(Simple Values\)
 
 定数を作成するのに `let`、変数を作成するのに `var` を使います。定数の値はコンパイル時に知る必要はありませんが、正確に一度だけ値を設定しなければなりません。つまり、値の指定をたった一度だけ行い、他のあらゆる場所からその定数を利用できます。
 
@@ -107,7 +107,7 @@ shoppingList = []
 occupations = [:]
 ```
 
-## Control Flow\(制御フロー\)
+## 制御フロー\(Control Flow\)
 
 条件を作成するには、 `if` と `switch` を使います。ループを作成するには `for-in` `while` `repeat-while` を使います。条件やオプショナルに丸括弧\(`()`\)を付けるかどうかは任意です。本文の周りの中括弧\(`{}`\)は必須です。
 
@@ -232,7 +232,7 @@ print(total)
 
 `..<` では後ろの値は除外され、`...` は両方の値を含みます。
 
-## Functions and Closures\(関数とクロージャ\)
+## 関数とクロージャ\(Functions and Closures\)
 
 関数の定義には `func` を使います。括弧\(`()`\)の中に引数のリスト、その前に関数の名前を付けることで関数を呼び出します。また、`->` の後ろに戻り値の型を指定して、パラメータ名や型と区別します。
 
@@ -345,7 +345,7 @@ print(sortedNumbers)
 // "[20, 19, 12, 7]"
 ```
 
-## Objects and Classes\(オブジェクトとクラス\)
+## オブジェクトとクラス\(Objects and Classes\)
 
 `class` をクラス名の前に付けることでクラスを作成することができます。クラス内のプロパティの宣言は、クラス内にあるということを除いて、定数や変数の宣言方法と同じです。同様に、メソッドや関数の宣言も同じように書くことができます。
 
@@ -497,7 +497,7 @@ let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
 let sideLength = optionalSquare?.sideLength
 ```
 
-## Enumerations and Structures\(列挙型と構造体\)
+## 列挙型と構造体\(Enumerations and Structures\)
 
 列挙型を作成するには `enum` を使います。クラスやその他の名前の付いた型と同様に、列挙型もメソッドを持つことができます。
 
@@ -609,7 +609,7 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 > Experiment  
 > rank と suit を持った全種類の card を含む array を返すメソッドを書いてみよう。
 
-## Protocols and Extensions\(プロトコルと拡張\)
+## プロトコルと拡張\(Protocols and Extensions\)
 
 プロトコルを宣言するために `protocol` を使います。
 
@@ -679,7 +679,7 @@ print(protocolValue.simpleDescription)
 
 変数 `protocolValue` が実行時に `SimpleClass` になることはわかるものの、コンパイラはこれを、ある `ExampleProtocol` として扱います。つまり、プロトコルで定義されたメソッドやプロパティ以外へアクセスすることはできません。
 
-## Error Handling\(エラーハンドリング\)
+## エラーハンドリング\(Error Handling\)
 
 `Error` プロトコルに準拠することでどんな型もエラーを表現することができます。
 
@@ -763,7 +763,7 @@ print(fridgeIsOpen)
 // "false"
 ```
 
-## Generics\(ジェネリクス\)
+## ジェネリクス\(Generics\)
 
 ジェネリックな関数や型を作成するには、山括弧\(`<>`\)の中に名前を書きます。
 
@@ -812,4 +812,3 @@ anyCommonElements([1, 2, 3], [3])
 > `anyCommonElements(_:_:)` を2つのシーケンスの共通の要素が含まれる配列を返すように修正してみましょう。
 
 `<T: Equatable>` は `<T> ... where T: Equatable` と同じです。
-
