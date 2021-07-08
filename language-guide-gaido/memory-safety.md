@@ -6,7 +6,7 @@ Swift は、デフォルトでコード内の安全ではない動作の発生�
 
 また、Swift はメモリアドレスを変更するコードへの排他的アクセスを要求することで、メモリの同じ領域へ複数が競合してアクセスしないようにします。Swift はメモリを自動的に管理するため、ほとんどの場合、メモリへのアクセスについて考える必要はまったくありません。ただし、潜在的な競合が発生する可能性がある位置を理解することが重要です。そうすることで、メモリへのアクセスが競合するコードを記述しないようにすることができます。コードに競合が含まれている場合、コンパイル時または実行時エラーが発生します。
 
-## Understanding Conflicting Access to Memory\(メモリへのアクセスの競合を理解する\)
+## メモリへのアクセスの競合を理解する\(Understanding Conflicting Access to Memory\)
 
 変数の値を設定したり、関数に引数を渡したりするときに、コード内でメモリへのアクセスが発生します。例えば、次のコードには読み取りアクセスと書き込みアクセスの両方が含まれています:
 
@@ -33,7 +33,7 @@ print("We're number \(one)!")
 >
 > シングルスレッド内からメモリへのアクセスが競合している場合、Swift はコンパイル時または実行時にエラーを確実にスローします。マルチスレッドコードの場合は、[Thread Sanitizer](https://developer.apple.com/documentation/xcode/diagnosing-memory-thread-and-crash-issues-early)を使用して、スレッド間で競合するアクセスを検出します。
 
-### Characteristics of Memory Access\(メモリアクセスの性質\)
+### メモリアクセスの性質\(Characteristics of Memory Access\)
 
 競合するアクセスのコンテキスト上で考慮すべきメモリアクセスの 3 つの特性があります: アクセスが読み取りか書き込みか、アクセスの期間、およびアクセスされるメモリアドレスです。具体的には、次の条件の全てを満たす 2 つのアクセスがある場合、競合が発生します。
 
@@ -62,7 +62,7 @@ print(myNumber)
 
 オーバーラップアクセスは、主に、関数とメソッド、または構造体の変更メソッドで in-out パラメータを使用するコードで発生します。長期アクセスを使用する特定の種類の Swift コードについては、次のセクションで説明します。
 
-## Conflicting Access to In-Out Parameters\(In-Outパラメータのアクセスの競合\)
+## In-Out パラメータのアクセスの競合\(Conflicting Access to In-Out Parameters\)
 
 関数は、全ての in-out パラメータへ長期書き込みアクセスできます。in-out パラメータへの書き込みアクセスは、全ての in-out 以外のパラメータが評価された後に開始され、その関数呼び出しの全期間にわたって続きます。複数の in-out パラメータがある場合、書き込みアクセスはパラメータが現れるのと同じ順序で開始されます。
 
@@ -117,7 +117,7 @@ balance(&playerOneScore, &playerOneScore)
 > NOTE  
 > 演算子は関数であるため、in-out パラメータに長期アクセスすることもできます。例えば、`balance(_:_:)` が `<^>` という演算子である場合、`playerOneScore <^> playerOneScore` と記述すると、`balance(&playerOneScore, &playerOneScore)` と同じ競合が発生します。
 
-## Conflicting Access to self in Methods\(メソッド内のselfのアクセスの競合\)
+## メソッド内の self のアクセスの競合\(Conflicting Access to self in Methods\)
 
 構造体の mutating メソッドは、メソッド呼び出しの間、`self` への書き込みアクセス権を持ちます。例えば、各プレイヤーがダメージを受けると減少する活力値と、特殊能力を使用すると減少するエネルギー量を持つゲームを考えてみましょう。
 
@@ -163,7 +163,7 @@ mutating メソッドは、メソッド実行中に `self` への書き込みア
 
 ![&#x6642;&#x9593;&#x7684;&#x306B;&#x91CD;&#x8907;&#x3057;&#x305F;&#x540C;&#x3058;&#x30E1;&#x30E2;&#x30EA;&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3078;&#x306E; 2 &#x3064;&#x306E;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x30A2;&#x30AF;&#x30BB;&#x30B9;](../.gitbook/assets/memory_share_health_oscar_2x.png)
 
-## Conflicting Access to Properties\(プロパティのアクセスの競合\)
+## プロパティのアクセスの競合\(Conflicting Access to Properties\)
 
 構造体、タプル、列挙型などの型は、構造体のプロパティやタプルの要素など、個々の構成値で構成されます。これらは値型のため、値の一部を変更すると値全体が変更されます。つまり、いずれかのプロパティへの読み取りまたは書き込みアクセスには、値全体への読み取りまたは書き込みアクセスが必要です。例えば、タプルの要素への書き込みアクセスが重複すると、競合が発生します。
 

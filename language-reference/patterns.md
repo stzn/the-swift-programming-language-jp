@@ -20,7 +20,7 @@ Swift には、2 つの基本的な種類のパターンがあります: 任意�
 > pattern → [type-casting-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_type-casting-pattern)  
 > pattern → [expression-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_expression-pattern)
 
-## Wildcard Pattern\(ワイルドカードパターン\)
+## ワイルドカードパターン\(Wildcard Pattern\)
 
 _ワイルドカードパターン_は、全ての値に一致して無視し、アンダースコア\(`_`\)で構成されます。一致する値を気にしない場合は、ワイルドカードパターンを使用します。例えば、次のコードは、ループの各反復での範囲の現在の値を無視して、閉鎖範囲 `1...3` を反復します。
 
@@ -33,7 +33,7 @@ for _ in 1...3 {
 > GRAMMAR OF A WILDCARD PATTERN  
 > wildcard-pattern → `_`
 
-## Identifier Pattern\(識別子パターン\)
+## 識別子パターン\(Identifier Pattern\)
 
 _識別子パターン_は任意の値と一致し、一致した値を変数名または定数名にバインドします。例えば、次の定数宣言では、`someValue` は `Int` 型の値 `42` に一致する識別子パターンです。
 
@@ -48,7 +48,7 @@ let someValue = 42
 > GRAMMAR OF AN IDENTIFIER PATTERN  
 > identifier-pattern → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
-## Value-Binding Pattern\(値バインディングパターン\)
+## 値バインディングパターン\(Value-Binding Pattern\)
 
 _値バインディングパターン_は、一致した値を変数名または定数名にバインドします。例えば、一致した値を定数の名前にバインドする値バインドパターンは、`let` キーワードで始まります。変数の名前にバインドするものは、`var` キーワードで始まります。
 
@@ -69,7 +69,7 @@ case let (x, y):
 > GRAMMAR OF A VALUE-BINDING PATTERN  
 > value-binding-pattern → `var` [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern) \| `let` [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)
 
-## Tuple Pattern\(タプルパターン\)
+## タプルパターン\(Tuple Pattern\)
 
 _タプルパターン_は、括弧内に囲まれた 0 個以上のパターンのカンマ区切りのリストです。タプルパターンに対応するタプル型の値を一致させます。
 
@@ -98,7 +98,7 @@ let (a): Int = 2 // a: Int = 2
 > tuple-pattern-element-list → [tuple-pattern-element](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element) \| [tuple-pattern-element](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element) `,` [tuple-pattern-element-list](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element-list)  
 > tuple-pattern-element → [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern) \| [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) `:` [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)
 
-## [Enumeration Case Pattern\(列挙型ケースパターン\)](patterns.md) <a id="enumeration-case-pattern"></a>
+## <a id="enumeration-case-pattern">列挙型ケースパターン\(Enumeration Case Pattern\)</a>
 
 列挙型ケースパターンは、既存の列挙型のケースと一致します。列挙型ケースパターンは、`switch` 文のケースラベル、および `if`、`guard`、および `for-in` 文の条件で使用できます。
 
@@ -123,7 +123,7 @@ case nil:
 > GRAMMAR OF AN ENUMERATION CASE PATTERN  
 > enum-case-pattern → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)_opt_ `.` [enum-case-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_enum-case-name) [tuple-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern)_opt_
 
-## [Optional Pattern\(オプショナルパターン\)](patterns.md) <a id="optional-pattern"></a>
+## <a id="optional-pattern">オプショナルパターン\(Optional Pattern\)</a>
 
 オプショナルパターンは、`Optional<Wrapped>` 列挙型の `some(Wrapped)` ケースにラップされた値と一致します。オプショナルパターンは識別子パターンの直後に疑問符を置くことで構成され、列挙型ケースパターンと同じ場所に使用できます。
 
@@ -158,7 +158,7 @@ for case let number? in arrayOfOptionalInts {
 > GRAMMAR OF AN OPTIONAL PATTERN  
 > optional-pattern → [identifier-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_identifier-pattern) `?`
 
-## Type-Casting Patterns\(型キャストパターン\)
+## 型キャストパターン\(Type-Casting Patterns\)
 
 2 つのタイプの_型キャストパターン_、`is` パターンと `as` パターンがあります。`is` パターンは `switch` 文のケースラベルにのみ使用できます。`is` と `as` パターンの形式は次のとおりです。
 
@@ -175,7 +175,7 @@ for case let number? in arrayOfOptionalInts {
 > is-pattern → `is` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
 > as-pattern → [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern) `as` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
 
-## Expression Pattern\(式パターン\)
+## 式パターン\(Expression Pattern\)
 
 _式パターン_は式の値を表します。式パターンは `switch` 文のケースにのみ使用できます。
 

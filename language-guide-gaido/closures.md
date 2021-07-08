@@ -22,13 +22,13 @@ Swift のクロージャは、一般的に、簡潔で、混乱のない構文�
 * 引数名を省略することができます
 * 末尾クロージャ構文を使用することができます
 
-## [Closure Expressions\(クロージャ式\)](closures.md) <a id="closure-expressions"></a>
+## <a id="closure-expressions">クロージャ式\(Closure Expressions\)</a>
 
 [Nested Functions\(ネスト関数\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#nested-functions)で紹介したネスト関数は、より大きな関数の一部として独立したコードブロックに名前を付けて定義するための便利な手段です。ただし、完全な宣言や名前を書かずに、関数のような構造のより短いバージョンを作成できれば便利な場合もあります。これは、1 つ以上の引数を受け取る関数またはメソッドで特に当てはまります。
 
 _クロージャ式_は、簡潔で明瞭にインラインのクロージャを記述する方法です。クロージャ式は、明確さや意図を失うことなく、省略された形式でクロージャを記述するためのいくつかの最適化を行うことができます。下記に出てくるクロージャ式は、複数回使用される `sorted(by:)` メソッドを、最適化してより簡潔なものに改良した例です。
 
-### The Sorted Method\(ソートメソッド\)
+### ソートメソッド\(The Sorted Method\)
 
 Swift の標準ライブラリは、`sorted(by:)` と呼ばれるメソッドを提供しています。このメソッドは、指定した並べ替えクロージャの結果に基づいて、その型の値の配列を並べ替えます。並べ替えプロセスが完了すると、`sorted(by:)` メソッドは、古い配列と同じ型とサイズの新しい配列を返し、その要素は正しい並べ替え順序になります。元の配列は、`sorted(by:)` メソッドによって変更されません。
 
@@ -56,7 +56,7 @@ var reversedNames = names.sorted(by: backward)
 
 ただし、これは本質的に単一式の関数\(`a > b`\)を記述するには冗長な方法です。この例では、クロージャ式の構文を使用して、ソートクロージャをインラインで記述する方が望ましいでしょう。
 
-### Closure Expression Syntax\(クロージャ式構文\)
+### クロージャ式構文\(Closure Expression Syntax\)
 
 クロージャ式の構文には、次の一般的な形式があります:
 
@@ -84,7 +84,7 @@ reversedNames = names.sorted(by: { (s1: String, s2: String) -> Bool in return s1
 
 これは、`sorted(by:)` メソッドへの呼び出しがいずれも同じだということを示しています。括弧のペア\(`()`\)は、メソッドの引数全体をラップしますが、引数はインラインクロージャです。
 
-### Inferring Type From Context\(コンテキストから型の推論\)
+### コンテキストから型の推論\(Inferring Type From Context\)
 
 ソートクロージャは、引数としてメソッドに渡されるため、Swift はそのパラメータの型と戻り値の型を推論できます。`sorted(by:)` メソッドは、文字列の配列から呼び出されるため、その引数は `(String, String) -> Bool` 型の関数だと推論できます。つまり、`(String, String)` 型と `Bool` 型は、クロージャ式に記述する必要はありません。全ての型を推論できるため、戻り矢印\(`->`\)とパラメータ名を囲む括弧も省略できます。
 
@@ -96,7 +96,7 @@ reversedNames = names.sorted(by: { s1, s2 in return s1 > s2 } )
 
 必要に応じて型を明示することもできます。コードのあいまいさを回避できる場合は、そうすることをお勧めします。`sorted(by:)` メソッドの場合、ソートが行われているという事実から、クロージャの目的は明らかで、文字列の配列を扱っていることから、クロージャは `String` で機能していると読み手は容易に想像できます。
 
-### Implicit Returns from Single-Expression Closures\(単一式のクロージャの暗黙的リターン\)
+### 単一式のクロージャの暗黙的リターン\(Implicit Returns from Single-Expression Closures\)
 
 上記の例のように、単一式のクロージャは、宣言から `return` キーワードを省略して結果を暗黙的に返すことができます。
 
@@ -106,7 +106,7 @@ reversedNames = names.sorted(by: { s1, s2 in s1 > s2 } )
 
 ここで、`sorted(by:)` メソッドの引数の関数型は、`Bool` 値がクロージャによって返される必要があることを明確にしています。クロージャの本文は、`Bool` 値を返す単一式\(`s1 > s2`\)のため、あいまいさはなく、`return` キーワードは省略できます。
 
-### Shorthand Argument Names\(省略引数名\)
+### 省略引数名\(Shorthand Argument Names\)
 
 Swift は、インラインクロージャに_省略引数名_を自動的に提供しています。これを使用して、クロージャの引数の値を `$0`、`$1`、`$2` などの名前で参照できます。
 
@@ -118,7 +118,7 @@ reversedNames = names.sorted(by: { $0 > $1 } )
 
 ここで、`$0` と `$1` は、クロージャの最初と 2 番目の文字列引数を指します。`$1` は最大数の省略引数のため、クロージャは 2 つの引数を取ることがわかります。ここでの `sorted(by:)` 関数は、引数が両方とも文字列のクロージャを想定しているため、省略形の引数 `$0` と `$1` は両方とも `String` 型です。
 
-### Operator Methods\(演算子メソッド\)
+### 演算子メソッド\(Operator Methods\)
 
 実際には、上記のクロージャ式を記述するさらに短い方法があります。Swift の `String` 型は、`String` 型の 2 つのパラメータを持ち、`Bool` 型の値を返す、文字列固有の大なり演算子\(`>`\)のメソッドを定義しています。これは、`sorted(by:)` メソッドに必要な型と完全に一致しています。したがって、`>` 演算子を渡すだけで、Swift は文字列固有の実装を使用していると推論できます。
 
@@ -128,7 +128,7 @@ reversedNames = names.sorted(by: >)
 
 演算子メソッドの詳細については、[Operator Methods\(演算子メソッド\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#advanced-operators-operator-methods)を参照ください。
 
-## [Trailing Closures\(末尾クロージャ\)](closures.md) <a id="trailing-closures"></a>
+## <a id="trailing-closures">末尾クロージャ\(Trailing Closures\)</a>
 
 関数の最後の引数としてクロージャ式を関数に渡す必要があり、その式が長い場合、代わりに_末尾クロージャ_として記述すると便利な場合があります。末尾クロージャは関数の引数ですが、関数呼び出しの括弧の後に記述します。末尾クロージャ構文を使用する場合、関数を呼び出すときに、最初の末尾クロージャの引数ラベルは記述しません。複数の末尾クロージャを含めることもできます。ただし、下記の最初のいくつかの例では、1 つの末尾クロージャのみを使用しています。
 
@@ -235,7 +235,7 @@ loadPicture(from: someServer) { picture in
 
 この例では、`loadPicture(from:completion:onFailure:)` 関数がネットワークタスクをバックグラウンドにディスパッチし、ネットワークタスクが終了すると 2 つのハンドラのいずれかを呼び出します。このように関数を作成すると、両方の状況を処理する 1 つのクロージャを使用する代わりに、ネットワーク障害の処理を担当するコードと、ダウンロードが成功した後にユーザーインターフェイスを更新するコードを、明確に分けることができます。
 
-## [Capturing Values\(値のキャプチャ\)](closures.md) <a id="capturing-values"></a>
+## <a id="capturing-values">値のキャプチャ\(Capturing Values\)</a>
 
 クロージャは、定義されている周囲のコンテキストから定数と変数を_キャプチャ_できます。クロージャは、定数と変数を定義した元のスコープが存在しなくなった場合でも、本文内からそれらの定数と変数の値を参照および変更できます。
 
@@ -309,7 +309,7 @@ incrementByTen()
 > NOTE  
 > クラスインスタンスのプロパティにクロージャを代入して、クロージャがインスタンスまたはそのメンバを参照して、そのインスタンスをキャプチャする場合、クロージャとインスタンスの間に循環参照\(strong reference cycle\)が作成されます。Swift は、キャプチャリストを使用して、これらの循環参照を防ぎます。詳細については、 [Strong Reference Cycles for Closures\(クロージャの強参照循環\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#function-types-as-return-types)を参照ください。
 
-## [Closures Are Reference Types\(クロージャは参照型\)](closures.md) <a id="closures-are-reference-types"></a>
+## <a id="closures-are-reference-types">クロージャは参照型\(Closures Are Reference Types\)</a>
 
 上記の例では、`incrementBySeven` と `incrementByTen` は定数ですが、これらの定数が参照するクロージャは、キャプチャした `runningTotal` 変数をインクリメントすることができます。関数とクロージャが参照型だからです。
 
@@ -328,7 +328,7 @@ incrementByTen()
 
 上記の例は、`alsoIncrementByTen` を呼び出すことは `incrementByTen` を呼び出すことと同じだということを示しています。どちらも同じクロージャを参照しているため、両方とも同じ `runningTotal` をインクリメントして結果を返します。
 
-## [Escaping Closures\(エスケープクロージャ\)](closures.md) <a id="escaping-closures"></a>
+## <a id="escaping-closures">エスケープクロージャ\(Escaping Closures\)</a>
 
 関数の引数として渡されたクロージャが、関数本文が終了した後に呼び出される場合、関数を_エスケープ_すると呼ばれています。パラメータの 1 つとしてクロージャを受け取る関数を宣言する場合、パラメータの型の前に `@escaping` を記述して、クロージャがエスケープすることを示すことができます。
 
@@ -396,7 +396,7 @@ struct SomeStruct {
 
 上記の例の `someFunctionWithEscapingClosure` 関数の呼び出しは、mutating メソッド内で `self` が変更可能なので、エラーとなります。これは、エスケープクロージャが `struct` の変更可能な `self` への参照をキャプチャできないというルールに違反します。
 
-## Autoclosures\(自動クロージャ\)
+## 自動クロージャ\(Autoclosures\)
 
 _自動クロージャ_は、関数の引数として渡された式をラップして自動的に作成されるクロージャです。引数はとらず、このクロージャが呼び出されると、ラップされている式の値を返します。この構文は便利で、明示的なクロージャの代わりに通常の式を記述することで、関数のパラメータの中括弧\(`{}`\)を省略できます。
 

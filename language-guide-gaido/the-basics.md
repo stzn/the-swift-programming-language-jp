@@ -14,11 +14,11 @@ Swift は値が存在しないかもしれない値を扱うオプショナル�
 
 Swift は_型安全_な言語です。つまり、言語として、コードで扱う値の型を明確にしてくれます。例えば、`String` が必要な場合に、この型安全な特徴が、間違って `Int` を渡してしまうことを防いでくれます。同様に、オプショナルではない `String` にオプショナルの `String` を誤って渡してしまうことも防いでくれます。型安全なことで、開発中に、素早くエラーの発見と修正をすることができます。
 
-## [Constants and Variables\(定数と変数\)](the-basics.md) <a id="constants-and-variables"></a>
+## <a id="constants-and-variables">定数と変数\(Constants and Variables\)</a>
 
 定数と変数は特定の型の値\(数字の `10` や文字列の `"Hello"` など\)と名前\(`maximumNumberOfLoginAttempts` や `welcomeMessage`\)を関連付けます。_定数_は一度値を設定すると変更することはできません。一方で、_変数_は後で異なった値を設定できます。
 
-### Declaring Constants and Variables\(定数と変数の宣言\)
+### 定数と変数の宣言\(Declaring Constants and Variables\)
 
 定数と変数は、使用する前に定義されていなければなりません。定数は `let`、変数は `var` キーワードで定義します。ここで、ユーザが何回ログインをしようとしたか試行回数を追跡する定数と変数の例を紹介します。
 
@@ -42,7 +42,7 @@ var x = 0.0, y = 0.0, z = 0.0
 > NOTE  
 > コードで保持している値がこの先変更されない場合は、 `let` を使用して定数として定義してください。変数は変更できるようにする必要がある場合にのみ使用してください。
 
-### [Type Annotations\(型注釈\)](the-basics.md) <a id="type-annotations"></a>
+### <a id="type-annotations">型注釈\(Type Annotations\)</a>
 
 定数や変数を定義するときに、保持する値の種類をより明確にするために、型注釈を使用することができます。定数や変数の名前の後にコロン\(`:`\)を置いて、型注釈を書きましょう。
 
@@ -73,7 +73,7 @@ var red, green, blue: Double
 > NOTE  
 > 実際に型注釈を書く必要はあまりありません。定義時に定数や変数に初期値を与えた場合、 Swift はたいていそれらの型を推論できます\(詳細は[Type Safety and Type Inference\(型安全と型推論\)](the-basics.md#type-safety-and-type-inferenceto)。上記の `welcomeMessage` の例では、初期値を与えていないため、推論をすることができないため、`welcomeMessage` 変数は型注釈で型を特定しています。
 
-### Naming Constants and Variables\(定数と変数の命名\)
+### 定数と変数の命名\(Naming Constants and Variables\)
 
 定数名と変数名には、Unicode 文字も含めた、ほとんどの文字を含めることができます。
 
@@ -106,7 +106,7 @@ languageName = "Swift++"
 // コンパイルエラー: languageName は変更できません
 ```
 
-### [Printing Constants and Variables\(定数と変数の出力\)](the-basics.md) <a id="printing-constants-and-variables"></a>
+### <a id="printing-constants-and-variables">定数と変数の出力\(Printing Constants and Variables\)</a>
 
 `print(_:separator:terminator:)` 関数を使用して、定数や変数の現在の値を出力することができます。
 
@@ -127,7 +127,7 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 > NOTE  
 > 文字列補間で使用できるオブションは[String Interpolation\(文字列補間\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/strings-and-characters#string-interpolation)に記載しています
 
-## Comments\(コメント\)
+## コメント\(Comments\)
 
 コード内に実行されないテキスト\(メモやリマインダーなど\)を含めるためにはコメントを使います。コメントはコンパイル時に Swift のコンパイラからは無視されます。
 
@@ -155,7 +155,7 @@ C 言語の複数行コメントとは異なり、Swift ではコメントを他
 
 ネストした複数行コメントを使用することで、長い複数行コメントの中でも簡単に素早くその部分だけコメントアウトすることができます。
 
-## Semicolons\(セミコロン\)
+## セミコロン\(Semicolons\)
 
 他の言語とは異なり、Swift ではコードの 1 つ 1 つの宣言の最後に、セミコロン\(`;`\)を付ける必要がありません\(付けることも可能ではあります\)。一方で、1 行に複数のステートメントを書きたい場合は必要になります。
 
@@ -164,13 +164,13 @@ let cat = "🐱"; print(cat)
 // "🐱"
 ```
 
-## [Integers\(整数\)](the-basics.md) <a id="integers"></a>
+## <a id="integers">整数\(Integers\)</a>
 
 _整数_は小数点のない整数値を全部含みます\(`42`、`-23` など\)。整数とは_符号付き_\(正の値、または 0、または負の値\) または_符号なし_\(正の値、または 0\) です。
 
 Swift は符号付きと符号なしの整数値を 8, 16, 32, 64 ビットの形式で提供します。これらは C 言語の名前に合わせて命名されています。8 ビットの符号なし整数は `UInt8`、32 ビットの符号付き整数は `Int32` です。Swift の全ての型と同様に、これらの整数値型の頭文字は大文字です。
 
-### Integer Bounds\(整数の境界\)
+### 整数の境界\(Integer Bounds\)
 
 `min` と `max` プロパティを使用して、各整数値型の最小値と最大値にアクセスすることができます。
 
@@ -200,7 +200,7 @@ Swift は符号なしの整数値型も提供しています。これも、プ�
 > NOTE  
 > `UInt` は特別にプラットフォームに応じて決まるサイズと同じサイズの 符号なし整数型を扱いたい場合にのみ使用してください。そうでない場合、負の値にならないとしても `Int` を使用する方が好ましいです。一貫して `Int` を整数値に使用することで、異なる整数値型間の変換を避け、合致する型をコンパイラが推論することで、互換性を保つことができます。詳細は[Type Safety and Type Inference\(型安全と型推論\)](the-basics.md#type-safety-and-type-inferenceto)。
 
-## Floating-Point Numbers\(浮動小数点数\)
+## 浮動小数点数\(Floating-Point Numbers\)
 
 浮動小数点数は、小数部分を持つ数値です\(`3.14159`, `0.1`, `-273.15` など\)。
 
@@ -212,7 +212,7 @@ Swift は符号なしの整数値型も提供しています。これも、プ�
 > NOTE  
 > `Double` は最小で15桁の精度の小数値を持ち、`Float` は6桁の精度の小数値を持ちます。適切な浮動小数点数値型は、扱いたい数値の特性と範囲によります。どちらでも良い場合は、`Double` が好まれます。
 
-## Type Safety and Type Inference\(型安全と型推論\)
+## 型安全と型推論\(Type Safety and Type Inference\)
 
 Swift は_型安全_な言語です。型安全な言語は、扱っている値の型を明確にします。`String` が必要な場合に、間違って `Int` を渡すようなことはありません。
 
@@ -249,7 +249,7 @@ let anotherPi = 3 + 0.14159
 
 `3` には明確な型がありませんが、後ろの浮動小数点数の値から `Double` と推論されます。
 
-## Numeric Literals\(数値リテラル\)
+## 数値リテラル\(Numeric Literals\)
 
 数値リテラルは、下記の方法で書くことができます。
 
@@ -295,13 +295,13 @@ let oneMillion = 1_000_000
 let justOverOneMillion = 1_000_000.000_000_1
 ```
 
-## Numeric Type Conversion\(数値型の変換\)
+## 数値型の変換\(Numeric Type Conversion\)
 
 通常整数値を扱う際は、負の値にならないことがわかっていたとしても定数や変数に `Int` 型を使いましょう。全ての状況でデフォルトに `Int` を使用することで、整数値の定数と変数を特別な手順なしに互換可能にし、数値リテラルから推論される型とも合致します。
 
 特別な理由ある場合のみ、他の整数値型を使いましょう。例えば、外部リソースから特定サイズの型が指定されている場合やパフォーマンス、メモリの使用量や他の最適化が必要な場合など、がこれに当たります。明示的にサイズを指定することで思わぬオーバーフローを起こしたり、暗黙的にそのデータの特性を表現することができます。
 
-### Integer Conversion\(整数の変換\)
+### 整数の変換\(Integer Conversion\)
 
 整数値の定数や変数に保持できる範囲は、それぞれの整数値型によって異なります。`Int8` の定数や変数は、`−128` から `127` まで保持できます。`UInt8` の定数や変数は、`0` から `255` まで保持できます。指定したサイズの整数値型の定数や変数に合わない値を設定しようとするとエラーになります。
 
@@ -327,7 +327,7 @@ let twoThousandAndOne = twoThousand + UInt16(one)
 
 `SomeType(ofInitialValue)` という形式は、初期値を渡して初期化を行う Swift のデフォルトの方法です。裏側では、`UInt16` 型が `UInt8` の値を受け取って、新しい `UInt16` 型の値を生成しています。とはいっても、あらゆる型を渡せるわけではありません。`UInt16` 型が提供するイニシャライザに合った型が必要です。新しい型を渡して初期化する方法は、[Extensions\(拡張\)](extensions.md)に記載しています。
 
-### Integer and Floating-Point Conversion\(整数と浮動小数点数の変換\)
+### 整数と浮動小数点数の変換\(Integer and Floating-Point Conversion\)
 
 整数値と浮動小数点数の変換は明示的に行わなければなりません:
 
@@ -352,7 +352,7 @@ let integerPi = Int(pi)
 > NOTE  
 > 整数値の定数と変数を組み合わせるルールは、数値リテラルのルールとは異なります。リテラル値の `3` はリテラル値の `0.14159` とそのまま加算できます。リテラル値は明示的な型を有していないため、コンパイラがその値を評価するときに型を推論します。
 
-## Type Aliases\(タイプエイリアス\)
+## タイプエイリアス\(Type Aliases\)
 
 _タイプエイリアス\(Type Aliases\)_は既存の型に別の名前を定義します。`typealias` キーワードを使います。
 
@@ -371,7 +371,7 @@ var maxAmplitudeFound = AudioSample.min
 
 ここでは、`AudioSample` が `UInt16` のタイプエイリアスとして定義されています。エイリアスなので、`AudioSample.min` の実態は `UInt16.min` で、`maxAmplitudeFound` の初期値は `0` になります。
 
-## Booleans\(ブール値\)
+## ブール値\(Booleans\)
 
 Swift は、`Bool` と呼ばれる基本的なブール値を持っています。ブール値は、真\(true\)か偽\(false\)のみを値として取ることから、_論理値\(logical\)_として参照されます。Swift では `true` と `false` の 2 つのブールの定数を提供しています。
 
@@ -417,7 +417,7 @@ if i == 1 {
 
 他の型安全性を示した例と同様に、型の違いによる予期せぬエラーの発生を防ぎ、型が明確なので、コードの意図をより明確に表すことができます。
 
-## Tuples\(タプル\)
+## タプル\(Tuples\)
 
 _タプル\(Tuples\)_は、複数の値を 1 つのまとまりにグループ化します。タプル内の値にはどんな型も入れることができ、全ての型を同じにする必要はありません。
 
@@ -476,7 +476,7 @@ print("The status message is \(http200Status.description)")
 
 タプルは、特に関数の戻り値で有効に活用できます。Web ページを取得する関数は、取得の成否の結果を `(Int, String)` で返すかもしれません。2 つの異なる型の値を持ったタプルを返すことで、1 つの型の 1 つの値を返すよりも、関数はより有益な情報を提供できます。より詳しくは、[Functions with Multiple Return Values\(複数の戻り値がある関数\)](functions.md#functions-with-multiple-return-values複数の戻り値がある関数)を参照ください。
 
-## [Optionals\(オプショナル\)](the-basics.md) <a id="optionals"></a>
+## <a id="optionals">オプショナル\(Optionals\)</a>
 
 _オプショナル_は、値が存在しないかもしれないときに使用します。オプショナルは 2 つの可能性を表します: 値が_存在して_アンラップすることで値にアクセスすることができる、もしくは、値が全く_存在しない_
 
@@ -519,7 +519,7 @@ var surveyAnswer: String?
 > NOTE  
 > Swift の `nil` は Objective-C の `nil` と同じではありません。Objective-C では、`nil` は存在しないオブジェクトのポインタです。Swift では、`nil` はポインタではありません。ある型の存在しない値です。オブジェクト型だけではなく、どんな型のオプショナルにも `nil` を設定することができます。
 
-### If Statements and Forced Unwrapping\(if文と強制アンラップ\)
+### if 文と強制アンラップ\(If Statements and Forced Unwrapping\)
 
 `if` 文を使用してオプショナル値を `nil` と比較することで、値を含んでいるかどうかのチェックができます。この比較は、等しい\(`==`\)または等しくない\(`!=`\)演算子を使用して行います。
 
@@ -546,7 +546,7 @@ if convertedNumber != nil {
 > NOTE  
 > 値が存在しないオプショナル値に `!` を付けてアクセスしようとすると、実行時エラーが発生します。`!` を使った強制アンラップを行う際は、確実に `nil` ではないことを常に確かめましょう。
 
-### [Optional Binding\(オプショナルバインディング\)](the-basics.md) <a id="optional-binding"></a>
+### <a id="optional-binding">オプショナルバインディング\(Optional Binding\)</a>
 
 オプショナル値に、_オプショナルバインディング_を使用して、値を含んでいるかどうかを判定できます。もし含んでいる場合は、一時的な定数や変数として値を使用できるようになります。オプショナルバインディングは、`if` や `while` 文の 1 つのアクションで、オプショナル値に値が存在することを証明し、定数や変数にその内部の値を設定することを、まとめて行うことができます。`if` や `while` の詳細は[Control Flow\(制御フロー\)](control-flow.md)を参照ください。
 
@@ -598,7 +598,7 @@ if let firstNumber = Int("4") {
 > NOTE  
 > `if` 文の中でオプショナルバインディングによって作られた定数や変数は、`if` 文の中でしか使えません。もし他でも使用したい場合は、`guard` 文を使用することで、`guard` 文の次から使用することができます。詳細は[Early Exit\(早期リターン\)](control-flow.md#early-exit早期リターン)に記載しています。
 
-### [Implicitly Unwrapped Optionals\(暗黙アンラップオプショナル\)](the-basics.md) <a id="implicitly-unwrapped-optionals"></a>
+### <a id="implicitly-unwrapped-optionals">暗黙アンラップオプショナル\(Implicitly Unwrapped Optionals\)</a>
 
 上記で書いているように、オプショナルは定数や変数に「値が存在しない」可能性があることを示します。オプショナルは値が存在するかどうかを `if` 文の中でチェックでき、存在している場合は、オプショナル内の値にアクセスするために、オプショナルバインディングを使用してアンラップすることができます。
 
@@ -648,7 +648,7 @@ if let definiteString = assumedString {
 > NOTE  
 > 暗黙アンラップオプショナルを、後で `nil` になる可能性のある変数に使わないでください。変数が使用されている間に `nil` チェックが必要な場合は、通常のオプショナルを常に使いましょう
 
-## Error Handling\(エラーハンドリング\)
+## エラーハンドリング\(Error Handling\)
 
 実行中のエラーに対応するためには、_エラーハンドリング_を行います。
 
@@ -700,7 +700,7 @@ do {
 
 エラーのスロー、キャッチそして伝播は、[Error Handling\(エラーハンドリング\)](error-handling.md)でより詳細に書かれています。
 
-## [Assertions and Preconditions\(アサーションと事前条件\)](the-basics.md) <a id="assertions-and-preconditions"></a>
+## <a id="assertions-and-preconditions">アサーションと事前条件\(Assertions and Preconditions\)</a>
 
 _アサーション_と_事前条件_は実行時のチェックです。他のコードが実行される前に必要不可欠な条件が満たされているかどうかを確かめることができます。アサーションや事前条件のブール値が `true` と評価される場合、コードは通常通り継続します。`false` の場合、現在のプログラムの状態は不正となり、コードの実行は中断し、アプリは終了します。
 
@@ -712,7 +712,7 @@ _アサーション_と_事前条件_は実行時のチェックです。他の�
 
 アサーションと事前条件の違いは、チェックのタイミングにあります: アサーションはデバッグビルド時にしかチェックをせず、事前条件はデバッグとプロダクションの両方のビルドでチェックされます。プロダクションビルドでは、アサーションは評価されません。つまり、開発時にはアサーションを多用してもプロダクションのパフォーマンスに影響はありません。
 
-### [Debugging with Assertions\(アサーションを使ったデバッグ\)](the-basics.md) <a id="debugging-with-assertions"></a>
+### <a id="debugging-with-assertions">アサーションを使ったデバッグ\(Debugging with Assertions\)</a>
 
 Swift の標準ライブラリの [assert\(_:_:file:line:\)](https://developer.apple.com/documentation/swift/1541112-assert)関数を呼ぶことでアサーションを書くことができます。`true` か `false` と評価される式と、`false` だった場合に出力するメッセージを式として渡すことができます。例えば:
 
@@ -742,7 +742,7 @@ if age > 10 {
 }
 ```
 
-### Enforcing Preconditions\(事前条件を強制する\)
+### 事前条件を強制する\(Enforcing Preconditions\)
 
 `false` になる可能性があるものの、コードの実行を継続するためには_必ず_ `true` にならなければならない条件に対しては、事前条件を使いましょう。例えば、subscript が範囲超えエラーを起こしていないかの確認や、適切な値を関数に渡しているかなどには、事前条件を使いましょう。
 

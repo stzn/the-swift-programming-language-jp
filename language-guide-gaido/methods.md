@@ -1,4 +1,4 @@
-# メソッド\(Methods\)
+# メソッド \(Methods\)
 
 最終更新日: 2021/6/28
 
@@ -6,7 +6,7 @@
 
 Swift で構造体と列挙型がメソッドを定義できることは、C 言語および Objective-C との大きな違いです。Objective-C では、クラスはメソッドを定義できる唯一の型です。Swift では、クラス、構造体、または列挙型の間で選択でき、作成した型のメソッドを柔軟に定義できます。
 
-## Instance Methods\(インスタンスメソッド\)
+## インスタンスメソッド\(Instance Methods\)
 
 インスタンスメソッドは、特定のクラス、構造体、または列挙型のインスタンスに属する関数です。それらは、インスタンスプロパティにアクセスしたり変更する方法を提供したり、インスタンスに関連する機能を提供することによって、そのインスタンスの機能をサポートします。[Functions\(関数\)](functions.md)で説明されているように、インスタンスメソッドの構文は関数とまったく同じです。
 
@@ -52,7 +52,7 @@ counter.reset()
 
 [Function Argument Labels and Parameter Names\(引数ラベルとパラメータ名\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#function-argument-labels-and-parameter-names)で説明されているように、関数パラメータは、\(関数の本文内で使用する\)名前と\(関数を呼び出すときに使用する\)引数ラベルの両方を持つことができます。メソッドは型に紐づいた関数にすぎないため、メソッドパラメータについても同じことが言えます。
 
-### The self Property\(selfプロパティ\)
+### self プロパティ\(The self Property\)
 
 型の全てのインスタンスには、インスタンスそれ自体を表す `self` と呼ばれる暗黙のプロパティがあります。自身のインスタンスメソッド内で現在のインスタンスを参照するには、`self` プロパティを使用します。
 
@@ -86,7 +86,7 @@ if somePoint.isToTheRightOf(x: 1.0) {
 
 `self` プレフィックスがない場合、Swift は両方の `x` をメソッドパラメータを参照していると見なします。
 
-### [Modifying Value Types from Within Instance Methods\(インスタンスメソッド内からの値型の変更\)](methods.md) <a id="modifying-value-types-from-within-instance-methods"></a>
+### <a id="modifying-value-types-from-within-instance-methods">インスタンスメソッド内からの値型の変更\(Modifying Value Types from Within Instance Methods\)</a>
 
 構造体と列挙型は値型です。デフォルトでは、値型のプロパティはそのインスタンスメソッド内から変更できません。
 
@@ -118,7 +118,7 @@ fixedPoint.moveBy(x: 2.0, y: 3.0)
 // エラーが出力されます
 ```
 
-### Assigning to self Within a Mutating Method\(mutatingメソッド内からselfへの値の割り当て\)
+### mutating メソッド内からselfへの値の割り当て\(Assigning to self Within a Mutating Method\)
 
 メソッドを変更すると、まったく新しいインスタンスを暗黙的な `self` プロパティに割り当てることができます。上記の `Point` の例は、代わりに次のように記述できます:
 
@@ -158,7 +158,7 @@ ovenLight.next()
 
 この例では、スイッチの 3 つの状態を列挙型で定義しています。スイッチは、`next()` メソッドが呼び出されるたびに、3 つの異なる電源状態\(`off`、`low` と `high`\)を切り替えます。
 
-### Type Methods\(型メソッド\)
+### 型メソッド\(Type Methods\)
 
 上で説明したように、インスタンスメソッドは、特定の型のインスタンスで呼び出すメソッドです。型自体で呼び出されるメソッドを定義することもできます。このようなメソッドは_型メソッド_と呼ばれます。メソッドの `func` キーワードの前に `static` キーワードを記述して、型メソッドを示します。クラスは代わりに `class` キーワードを使用して、サブクラスがそのメソッドのスーパークラスの実装をオーバーライドできるようにすることができます。
 

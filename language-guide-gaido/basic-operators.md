@@ -10,7 +10,7 @@ Swift は、C 言語のような他の言語でおそらく見たことがある
 
 この章では、Swift の基本的な演算子について記載します。[Advanced Operators\(高度な演算子\)](advanced-operators.md)ではより応用的な演算子をカバーしており、独自に作成できるカスタム演算子や、独自で定義した型へ Swift が用意している標準の演算子を実装する方法を記載しています。
 
-## Terminology\(用語\)
+## 用語\(Terminology\)
 
 演算子は単項\(`unary`\)、二項\(`binary`\)、三項\(`ternary`\)があります。
 
@@ -20,7 +20,7 @@ Swift は、C 言語のような他の言語でおそらく見たことがある
 
 演算子が影響を与える値は、オペランドと呼ばれます。`1 + 2` という式は、`+` が二項演算子で `1` と `2` がオペランドです。
 
-## Assignment Operator\(代入演算子\)
+## 代入演算子\(Assignment Operator\)
 
 _代入演算子_は、例えば `a = b` とすると、`a` の値を `b` の値で初期化、または更新します。
 
@@ -48,7 +48,7 @@ if x = y {
 
 この特徴から代入演算子\(`=`\)を等価演算子\(`==`\)と間違えて使用することを防げます。上記の例では、`if x = y` はコンパイルエラーになります。
 
-## Arithmetic Operators\(算術演算子\)
+## 算術演算子\(Arithmetic Operators\)
 
 Swift は全ての数値型に対して 4 つの基本的な_算術演算子_をサポートしています。
 
@@ -72,7 +72,7 @@ C 言語や Objective-C と異なり、Swift はデフォルトでオーバー�
 "hello, " + "world"  // "hello, world"
 ```
 
-### Remainder Operator\(剰余演算子\)
+### 剰余演算子\(Remainder Operator\)
 
 `a % b` のような剰余演算子は、`a` の中に `b` がどのくらい含まれているのかを計算し、その\(_剰余_と呼ばれる\)余った値を返します。
 
@@ -115,7 +115,7 @@ Swift では、下記のように書きます。
 
 `b` の位置に負数を入れても、その負の記号は無視されます。つまり、`a % b` と `a % -b` は常に同じ結果が得られます。
 
-### Unary Minus Operator\(単項減算演算子\)
+### 単項減算演算子\(Unary Minus Operator\)
 
 数値の記号は、前置の `-` を使用して切り替えることができます。これは_単項減算演算子_と呼ばれます。
 
@@ -127,7 +127,7 @@ let plusThree = -minusThree   // plusThree は 3("マイナスマイナス3")
 
 単項減算演算子\(`-`\)は、操作する値の直前にスペースなしで付けます。
 
-### Unary Plus Operator\(単項加算演算子\)
+### 単項加算演算子\(Unary Plus Operator\)
 
 _単項加算演算子_\(`+`\)は、何も変えずに操作した値を返します。
 
@@ -138,7 +138,7 @@ let alsoMinusSix = +minusSix  // alsoMinusSix は -6
 
 単項加算演算子は何もしませんが、負数に単項減算演算子を使用している場合、その対称として正数に単項加算演算子を使用することもできます。
 
-## Compound Assignment Operators\(複合代入演算子\)
+## 複合代入演算子\(Compound Assignment Operators\)
 
 C 言語と同様に、Swift の_複合代入演算子_は、代入演算子\(`=`\)と他の演算子を組み合わせることができます。1 つの例として、加算代入演算子\(`+=`\)があります:
 
@@ -155,7 +155,7 @@ a += 2
 
 Swift の標準ライブラリで提供している演算子については、[Operator Declarations\(演算子宣言\)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
 
-## [Comparison Operators\(比較演算子\)](basic-operators.md) <a id="comparison-operators"></a>
+## <a id="comparison-operators">比較演算子\(Comparison Operators\)</a>
 
 Swift は、次の比較演算子をサポートしています。
 
@@ -212,7 +212,7 @@ if name == "world" {
 > NOTE  
 > Swift の標準ライブラリは 要素数が 7 つ以下のタプルの演算子を提供しています。7 つ以上の要素数のタプルへは自身で実装しなければなりません。
 
-## [Ternary Conditional Operator\(三項条件演算子\)](basic-operators.md) <a id="basic-operator-ternary-conditional-operator"></a>
+## <a id="basic-operator-ternary-conditional-operator">三項条件演算子\(Ternary Conditional Operator\)</a>
 
 _三項条件演算子_は、`question ? answer1 : answer2` という形式の、3 つの部分を持った特別な演算子です。これは、`question` が `true` か `false` かを基に 2 つの式のどちらかを評価するショートカットです。`question` が `true` ならば、`answer1` が評価され、`false` だと `answer2` が評価されます。
 
@@ -253,7 +253,7 @@ if hasHeader {
 
 三項条件演算子は 2 つの式のどちらが使われるのかを決める効率的なショートカットです。しかし、三項条件演算子にも注意が必要です。あまり使いすぎると可読性を損なう場合もあります。複数の三項条件演算子を 1 つのステートメントに含めることは避けましょう。
 
-## [Nil-Coalescing Operator\(nil合体演算子\)](basic-operators.md) <a id="nilcoalescing-operator"></a>
+## <a id="nilcoalescing-operator">nil 合体演算子\(Nil-Coalescing Operator\)</a>
 
 `(a ?? b)` の _nil 合体演算子_は、オプショナルの `a` にもし値が存在すれば `a` をアンラップし、`a` が `nil` の場合は `b` をデフォルトとして返します。式 `a` は常にオプショナル型です。式 `b` は `a` が内包する値の型と一致していなけばなりません。
 
@@ -288,11 +288,11 @@ colorNameToUse = userDefinedColorName ?? defaultColorName
 // userDefinedColorName は nil ではないので、 colorNameToUse の "green" が設定されます
 ```
 
-## [Range Operators\(範囲演算子\)](basic-operators.md) <a id="range-operators"></a>
+## <a id="range-operators">範囲演算子\(Range Operators\)</a>
 
 Swift は、値の範囲を表すショートカットとして複数の_範囲演算子_を提供しています。
 
-### Closed Range Operator\(閉範囲演算子\)
+### 閉範囲演算子\(Closed Range Operator\)
 
 `a...b` のような は、`a` から `b` までの連続した、`a` も `b` も含んだ範囲を定義します。`a` を `b` よりも大きい値にしてはいけません。
 
@@ -311,7 +311,7 @@ for index in 1...5 {
 
 `for-in` ループについては、[Control FLow\(制御フロー\)](control-flow.md)を参照ください。
 
-### [Half-Open Range Operator\(半開範囲演算子\)](basic-operators.md) <a id="halfopen-range-operator"></a>
+### <a id="halfopen-range-operator">半開範囲演算子\(Half-Open Range Operator\)</a>
 
 `a..<b` のような_半開範囲演算子_は、`a` から `b` まで連続しているものの `b` は含まない範囲を定義します。`a` を `b` よりも大きい値にしてはいけません。`a` と `b` が等しい場合、範囲は空になります。
 
@@ -331,7 +331,7 @@ for i in 0..<count {
 
 この配列は 4 つの要素が含まれていますが、`0..<count` は半開範囲演算子なので `3`\(配列の最後のインデックス\)までしかカウントしないことに注目してください。配列については、[Arrays\(配列\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/collection-types#arrays)を参照ください。
 
-### One-Sided Ranges\(片側範囲演算子\)
+### 片側範囲演算子\(One-Sided Ranges\)
 
 閉範囲演算子は、1 つの方向へ可能な限り続く範囲に対して違った形式で書くことができます。例えば、ある配列のインデックス 2 から配列の最後までの要素を含んだ範囲などがこれに当たります。これらの場合では、範囲演算子の片方の値を省略できます。この種類の範囲は、片方しか値を持たないので、_片側範囲_と呼ばれています。例えば:
 
@@ -369,7 +369,7 @@ range.contains(4)   // true
 range.contains(-1)  // true
 ```
 
-## Logical Operators\(論理演算子\)
+## 論理演算子\(Logical Operators\)
 
 _論理演算子_は、ブール論理値の `true` と `false` を変更したり、組み合わせたりします。Swift では、C ベースの言語にもある 3 つの標準の論理演算子をサポートしています。
 
@@ -377,7 +377,7 @@ _論理演算子_は、ブール論理値の `true` と `false` を変更した�
 * 論理積 AND \(`a && b`\)
 * 論理和 OR \(`a || b`\)
 
-### Logical NOT Operator\(論理否定演算子\)
+### 論理否定演算子\(Logical NOT Operator\)
 
 `!a` のような_論理否定演算子_は、`true` を `false` に、`false` を `true` にブール値を反転させます。
 
@@ -395,7 +395,7 @@ if !allowedEntry {
 
 この例では、Bool 型の定数と変数の名前を注意深く選択していることで、コードの可読性や簡潔さを保つことができてます。\(二重否定や複合式を避けるなど\)
 
-### Logical AND Operator\(論理積演算子\)
+### 論理積演算子\(Logical AND Operator\)
 
 `a && b` のような_論理積演算子_は、両方の値が `true` の場合に、全体の式も `true` になる論理式を作ります。
 
@@ -414,7 +414,7 @@ if enteredDoorCode && passedRetinaScan {
 // "ACCESS DENIED"
 ```
 
-### Logical OR Operator\(論理和演算子\)
+### 論理和演算子\(Logical OR Operator\)
 
 `a || b` のような_論理和演算子_は、2 つの連続したバーティカルバー\(`||`\)を使った中置演算子です。片方の値が `true` の場合に、全体の式も `true` になる論理式を作ります。
 
@@ -433,7 +433,7 @@ if hasDoorKey || knowsOverridePassword {
 // "Welcome!"
 ```
 
-### Combining Logical Operators\(論理演算子の合成\)
+### 論理演算子の合成\(Combining Logical Operators\)
 
 より長く様々な条件の複合式を作成するために、複数の論理演算子を組み合わせることができます。
 
@@ -455,7 +455,7 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 > NOTE  
 > Swift の `&&` と `||` は左結合です。つまり、複数の論理演算子を持つ複合式の場合は、一番左の部分式から評価されます。
 
-### Explicit Parentheses\(明示的な括弧\)
+### 明示的な括弧\(Explicit Parentheses\)
 
 厳密には必要ありませんが、複雑な式の意図を分かりやすくするために、括弧\(`()`\)を使用すると有用なときがあります。ドアへのアクセスの例では、意図を明確にするために、複合式の最初の部分に括弧を追加すると役に立ちます。
 
