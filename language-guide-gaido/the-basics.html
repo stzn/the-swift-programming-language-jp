@@ -1,0 +1,1390 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <title>基本(The Basics) · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-api/theme-api.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="basic-operators.html" />
+    
+    
+    <link rel="prev" href="../welcome-to-swift-swiftheyoukoso/a-swift-tour.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索ワードを入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    The Swift Programming Language(日本語版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Swiftへようこそ(WELCOME TO SWIFT)</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../welcome-to-swift-swiftheyoukoso/about-swift.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/about-swift.html">
+            
+                    
+                    Swiftについて(About Swift)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../welcome-to-swift-swiftheyoukoso/version-compatibility.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/version-compatibility.html">
+            
+                    
+                    バージョン互換性(Version Compatibility)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../welcome-to-swift-swiftheyoukoso/a-swift-tour.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/a-swift-tour.html">
+            
+                    
+                    Swiftツアー(A Swift Tour)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">LANGUAGE GUIDE (言語ガイド)</li>
+        
+        
+    
+        <li class="chapter active" data-level="3.1" data-path="the-basics.html">
+            
+                <a href="the-basics.html">
+            
+                    
+                    基本(The Basics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="basic-operators.html">
+            
+                <a href="basic-operators.html">
+            
+                    
+                    基本演算子(Basic Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="strings-and-characters.html">
+            
+                <a href="strings-and-characters.html">
+            
+                    
+                    文字と文字列(Strings and Characters)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="collection-types.html">
+            
+                <a href="collection-types.html">
+            
+                    
+                    コレクション型(Collection Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="control-flow.html">
+            
+                <a href="control-flow.html">
+            
+                    
+                    制御フロー(Control Flow)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="functions.html">
+            
+                <a href="functions.html">
+            
+                    
+                    関数(Functions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="closures.html">
+            
+                <a href="closures.html">
+            
+                    
+                    クロージャ(Closures)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="enumerations.html">
+            
+                <a href="enumerations.html">
+            
+                    
+                    列挙型(Enumerations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="structures-and-classes.html">
+            
+                <a href="structures-and-classes.html">
+            
+                    
+                    構造体とクラス(Structures and Classes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="properties.html">
+            
+                <a href="properties.html">
+            
+                    
+                    プロパティ(Properties)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="methods.html">
+            
+                <a href="methods.html">
+            
+                    
+                    メソッド(Methods)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="subscripts.html">
+            
+                <a href="subscripts.html">
+            
+                    
+                    サブスクリプト(Subscripts)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="inheritance.html">
+            
+                <a href="inheritance.html">
+            
+                    
+                    継承(Inheritance)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="initialization.html">
+            
+                <a href="initialization.html">
+            
+                    
+                    初期化(Initialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="deinitialization.html">
+            
+                <a href="deinitialization.html">
+            
+                    
+                    デイニシャライゼーション(Deinitialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="optional-chaining.html">
+            
+                <a href="optional-chaining.html">
+            
+                    
+                    オプショナルチェーン(Optional Chaining)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="error-handling.html">
+            
+                <a href="error-handling.html">
+            
+                    
+                    エラー処理(Error Handling)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="concurrency.html">
+            
+                <a href="concurrency.html">
+            
+                    
+                    同時並行処理(Concurrency)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="type-casting.html">
+            
+                <a href="type-casting.html">
+            
+                    
+                    型キャスト(Type Casting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="nested-types.html">
+            
+                <a href="nested-types.html">
+            
+                    
+                    ネスト型(Nested Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.21" data-path="extensions.html">
+            
+                <a href="extensions.html">
+            
+                    
+                    拡張(Extensions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.22" data-path="protocols.html">
+            
+                <a href="protocols.html">
+            
+                    
+                    プロトコル(Protocols)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.23" data-path="generics.html">
+            
+                <a href="generics.html">
+            
+                    
+                    ジェネリクス(Generics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.24" data-path="opaque-types.html">
+            
+                <a href="opaque-types.html">
+            
+                    
+                    Opaque 型(Opaque Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.25" data-path="automatic-reference-counting.html">
+            
+                <a href="automatic-reference-counting.html">
+            
+                    
+                    自動参照カウント ARC(Automatic Reference Counting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.26" data-path="memory-safety.html">
+            
+                <a href="memory-safety.html">
+            
+                    
+                    メモリ安全性(Memory Safety)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.27" data-path="access-control.html">
+            
+                <a href="access-control.html">
+            
+                    
+                    アクセスコントロール(Access Control)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.28" data-path="advanced-operators.html">
+            
+                <a href="advanced-operators.html">
+            
+                    
+                    高度な演算子(Advanced Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">LANGUAGE REFERENCE (言語リファレンス)</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../language-reference/about-the-language-reference.html">
+            
+                <a href="../language-reference/about-the-language-reference.html">
+            
+                    
+                    言語リファレンスについて(About the Language Reference)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../language-reference/lexical-structure.html">
+            
+                <a href="../language-reference/lexical-structure.html">
+            
+                    
+                    構文の構造(Lexical Structure)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../language-reference/types.html">
+            
+                <a href="../language-reference/types.html">
+            
+                    
+                    型(Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../language-reference/expressions.html">
+            
+                <a href="../language-reference/expressions.html">
+            
+                    
+                    式(Expressions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../language-reference/statements.html">
+            
+                <a href="../language-reference/statements.html">
+            
+                    
+                    文(Statements)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../language-reference/declarations.html">
+            
+                <a href="../language-reference/declarations.html">
+            
+                    
+                    宣言(Declarations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../language-reference/attributes.html">
+            
+                <a href="../language-reference/attributes.html">
+            
+                    
+                    属性(Attributes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../language-reference/patterns.html">
+            
+                <a href="../language-reference/patterns.html">
+            
+                    
+                    パターン(Patterns)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../language-reference/generic-parameters-and-arguments.html">
+            
+                <a href="../language-reference/generic-parameters-and-arguments.html">
+            
+                    
+                    ジェネリックパラメータと引数(Generic Parameters and Arguments)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="../language-reference/summary-of-the-grammar.html">
+            
+                <a href="../language-reference/summary-of-the-grammar.html">
+            
+                    
+                    文法のまとめ(Summary of the Grammar)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">REVISION HISTORY (改訂履歴)</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../revision-history/document-revision-history.html">
+            
+                <a href="../revision-history/document-revision-history.html">
+            
+                    
+                    ドキュメント改訂履歴(Document Revision History)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKitで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >基本(The Basics)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="基本the-basics"><a name="基本the-basics" class="plugin-anchor" href="#基本the-basics"><i class="fa fa-link" aria-hidden="true"></i></a>基本(The Basics)</h1>
+<p>最終更新日: 2021/7/4</p>
+<p>Swift は iOS, macOS, watchOS, tyOS アプリ開発のための新しいプログラミング言語です。新しい言語ではあるものの、Swift の多くの部分は C 言語と Objective-C の開発経験があれば慣れ親しんだ部分もあるかと思います。</p>
+<p>Swift は C 言語と Objective-C の全ての基本的な型に対応した Swift 版の型を提供します。数値に対する <code>Int</code>、浮動小数点数に対する <code>Double</code> と <code>Float</code>、ブール値に対する <code>Bool</code>、文字データに対する <code>String</code> があります。また、3 つのより強力な collection 型(<code>Array</code>, <code>Set</code>, <code>Dictionary</code>)も提供しています。詳細は <a href="collection-types.html">Collection Types(コレクション型)</a>に記載しています。</p>
+<p>C 言語のように、Swift は、名前を特定して、値を保持したり、その値を参照するために変数を使います。また、変数の値を変更できなくすることで、より幅広い方法で変数を使用することができます。これらは、定数として知られており、C 言語の定数よりもかなり強力です。定数は、値を変更する必要がない場合に、コードを、意図的に、より安全に、よりわかりやすくするために Swift 全体で使われます。</p>
+<p>これまで見たことがあるような型に加え、Swift は Objective-C にはなかった、タプルのような、より応用的な型を導入します。タプルは値を 1 つのグループとして扱うことができます。タプルを使用すると、複数の値を 1 つの値の組み合わせとして関数から返すことができます。</p>
+<p>Swift は値が存在しないかもしれない値を扱うオプショナル型を導入しています。オプショナルは、「値が存在していて、これは x と等しい」もしくは「値は一切存在しない」ということを表します。オプショナルは Objective-C のポインタで <code>nil</code> を扱うのに似ていますが、クラスだけではなく、あらゆる型に使用することができます。Objective-C の <code>nil</code> ポインタよりも、安全で表現豊かなだけでなく、Swift の数々の強力な特徴の中心に位置します。</p>
+<p>Swift は<em>型安全</em>な言語です。つまり、言語として、コードで扱う値の型を明確にしてくれます。例えば、<code>String</code> が必要な場合に、この型安全な特徴が、間違って <code>Int</code> を渡してしまうことを防いでくれます。同様に、オプショナルではない <code>String</code> にオプショナルの <code>String</code> を誤って渡してしまうことも防いでくれます。型安全なことで、開発中に、素早くエラーの発見と修正をすることができます。</p>
+<h2 id="定数と変数constants-and-variables"><a name="定数と変数constants-and-variables" class="plugin-anchor" href="#定数と変数constants-and-variables"><i class="fa fa-link" aria-hidden="true"></i></a><a id="constants-and-variables">定数と変数(Constants and Variables)</a></h2>
+<p>定数と変数は特定の型の値(数字の <code>10</code> や文字列の <code>&quot;Hello&quot;</code> など)と名前(<code>maximumNumberOfLoginAttempts</code> や <code>welcomeMessage</code>)を関連付けます。<em>定数</em>は一度値を設定すると変更することはできません。一方で、<em>変数</em>は後で異なった値を設定できます。</p>
+<h3 id="定数と変数の宣言declaring-constants-and-variables"><a name="定数と変数の宣言declaring-constants-and-variables" class="plugin-anchor" href="#定数と変数の宣言declaring-constants-and-variables"><i class="fa fa-link" aria-hidden="true"></i></a>定数と変数の宣言(Declaring Constants and Variables)</h3>
+<p>定数と変数は、使用する前に定義されていなければなりません。定数は <code>let</code>、変数は <code>var</code> キーワードで定義します。ここで、ユーザが何回ログインをしようとしたか試行回数を追跡する定数と変数の例を紹介します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> maximumNumberOfLoginAttempts <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token keyword">var</span> currentLoginAttempt <span class="token operator">=</span> <span class="token number">0</span>
+</code></pre>
+<p>このコードは下記のように読み取れます。</p>
+<p>「<code>maximumNumberOfLoginAttempts</code> という定数を定義して、<code>10</code> という値を設定します。次に <code>currentLoginAttempt</code> という変数を定義して、<code>0</code> という初期値を設定します」</p>
+<p>この例では、最大回数は変更しないので定数で定義しています。試行回数はログインを試みる度に増やさなければならないため、変数として今の試行回数を定義しています。</p>
+<p>カンマ(<code>,</code>)区切りで 1 行の中に複数の定数や変数を定義することもできます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">,</span> z <span class="token operator">=</span> <span class="token number">0.0</span>
+</code></pre>
+<blockquote>
+<p>NOTE<br>コードで保持している値がこの先変更されない場合は、 <code>let</code> を使用して定数として定義してください。変数は変更できるようにする必要がある場合にのみ使用してください。</p>
+</blockquote>
+<h3 id="型注釈type-annotations"><a name="型注釈type-annotations" class="plugin-anchor" href="#型注釈type-annotations"><i class="fa fa-link" aria-hidden="true"></i></a><a id="type-annotations">型注釈(Type Annotations)</a></h3>
+<p>定数や変数を定義するときに、保持する値の種類をより明確にするために、型注釈を使用することができます。定数や変数の名前の後にコロン(<code>:</code>)を置いて、型注釈を書きましょう。</p>
+<p>この例では <code>welcomeMessage</code> という変数に型注釈を書いて <code>String</code> が保持されることを示しています。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> welcomeMessage<span class="token punctuation">:</span> <span class="token builtin">String</span>
+</code></pre>
+<p>定義の中のコロンは、「~型の~」を意味します。なので、このコードは下記のように読み取れます。</p>
+<p>「<code>String</code> 型の <code>welcomeMessage</code> という変数を定義します」</p>
+<p>「<code>String</code> 型の」という句は、どんな <code>String</code> 型の値も保持できることを意味します。つまり、保持することができる「物事の型(種類)」だと考えましょう。</p>
+<p><code>welcomeMessage</code> にはエラーなしに文字列を設定できます。</p>
+<pre class="language-"><code class="lang-swift">welcomeMessage <span class="token operator">=</span> <span class="token string">&quot;Hello&quot;</span>
+</code></pre>
+<p>1 行の中で、同じ型の複数の変数をカンマで区切って定義することもできます。この際、型注釈は最後の変数の後に 1 つ付けます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> red<span class="token punctuation">,</span> green<span class="token punctuation">,</span> blue<span class="token punctuation">:</span> <span class="token builtin">Double</span>
+</code></pre>
+<blockquote>
+<p>NOTE<br>実際に型注釈を書く必要はあまりありません。定義時に定数や変数に初期値を与えた場合、 Swift はたいていそれらの型を推論できます(詳細は<a href="the-basics.html#type-safety-and-type-inferenceto">Type Safety and Type Inference(型安全と型推論)</a>。上記の <code>welcomeMessage</code> の例では、初期値を与えていないため、推論をすることができないため、<code>welcomeMessage</code> 変数は型注釈で型を特定しています。</p>
+</blockquote>
+<h3 id="定数と変数の命名naming-constants-and-variables"><a name="定数と変数の命名naming-constants-and-variables" class="plugin-anchor" href="#定数と変数の命名naming-constants-and-variables"><i class="fa fa-link" aria-hidden="true"></i></a>定数と変数の命名(Naming Constants and Variables)</h3>
+<p>定数名と変数名には、Unicode 文字も含めた、ほとんどの文字を含めることができます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> π <span class="token operator">=</span> <span class="token number">3.14159</span>
+<span class="token keyword">let</span> 你好 <span class="token operator">=</span> <span class="token string">&quot;你好世界&quot;</span>
+<span class="token keyword">let</span> 🐶🐮 <span class="token operator">=</span> <span class="token string">&quot;dogcow&quot;</span>
+</code></pre>
+<p>定数名と変数名に、ホワイトスペース、数学記号、矢印、公式ではない Unicode スカラ値、罫線素片、書式文字は含められません。また、数字から始めることはできません(他の位置に数字を含めることはできます)</p>
+<p>一度ある型の定数や変数を定義すると、同じ名前で再定義することはできません。また、異なる型の値を保持することもできません。定数を変数に、変数を定数に変換することもできません。</p>
+<blockquote>
+<p>NOTE<br>Swift の予約語と同じ名前の定数や変数を使いたい場合、そのキーワードをバッククォート(<code>\</code>)で囲みます。可能ではありますが、予約語を名前に使用することは本当に他に選択肢がない以外は避けましょう。</p>
+</blockquote>
+<p>既存の変数の値を他の互換性のある型の値に変更することはできます。下記の例では、<code>friendlyWelcome</code> の値を <code>&quot;Hello!&quot;</code> から <code>&quot;Bonjour!&quot;</code> に変更しています。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> friendlyWelcome <span class="token operator">=</span> <span class="token string">&quot;Hello!&quot;</span>
+friendlyWelcome <span class="token operator">=</span> <span class="token string">&quot;Bonjour!&quot;</span>
+<span class="token comment">// friendlyWelcome は &quot;Bonjour!&quot;</span>
+</code></pre>
+<p>変数とは異なり、定数の値は最初に設定した後に変更できません。試みても、コンパイル時にエラーになります。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> languageName <span class="token operator">=</span> <span class="token string">&quot;Swift&quot;</span>
+languageName <span class="token operator">=</span> <span class="token string">&quot;Swift++&quot;</span>
+<span class="token comment">// コンパイルエラー: languageName は変更できません</span>
+</code></pre>
+<h3 id="定数と変数の出力printing-constants-and-variables"><a name="定数と変数の出力printing-constants-and-variables" class="plugin-anchor" href="#定数と変数の出力printing-constants-and-variables"><i class="fa fa-link" aria-hidden="true"></i></a><a id="printing-constants-and-variables">定数と変数の出力(Printing Constants and Variables)</a></h3>
+<p><code>print(_:separator:terminator:)</code> 関数を使用して、定数や変数の現在の値を出力することができます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span>friendlyWelcome<span class="token punctuation">)</span>
+<span class="token comment">// &quot;Bonjour!&quot;</span>
+</code></pre>
+<p><code>print(_:separator:terminator:)</code> 関数はグローバル関数で、1 つ以上の値を適切なアウトプット先に出力します。Xcode では、<code>print(_:separator:terminator:)</code> 関数を使用すると、 Xcode のコンソールパネルへ値を出力します。<code>separator</code> と <code>terminator</code> パラメータには、デフォルト値が用意されているので省略可能です。デフォルトでは最後に改行を追加します。改行を付けたくない場合は <code>terminator</code> に空文字を渡してください。例えば <code>print(someValue, terminator: &quot;&quot;)</code>。詳細は<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#default-parameter-values" target="_blank">Default Parameter Values(デフォルトパラメータ値)</a>。</p>
+<p>Swift は長い文字列の中で定数や変数をプレースホルダとして使用したい場合、<em>文字列補間</em>を使い、定数や変数の現在値に置き換えるように Swift に伝えることができます。名前を括弧(<code>()</code>)で囲み、開始括弧の前にバックスラッシュ(<code>\</code>)を付けます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The current value of friendlyWelcome is <span class="token interpolation"><span class="token delimiter variable">\(</span>friendlyWelcome<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;The current value of friendlyWelcome is Bonjour!&quot;</span>
+</code></pre>
+<blockquote>
+<p>NOTE<br>文字列補間で使用できるオブションは<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/strings-and-characters#string-interpolation" target="_blank">String Interpolation(文字列補間)</a>に記載しています</p>
+</blockquote>
+<h2 id="コメントcomments"><a name="コメントcomments" class="plugin-anchor" href="#コメントcomments"><i class="fa fa-link" aria-hidden="true"></i></a>コメント(Comments)</h2>
+<p>コード内に実行されないテキスト(メモやリマインダーなど)を含めるためにはコメントを使います。コメントはコンパイル時に Swift のコンパイラからは無視されます。</p>
+<p>Swift のコメントは C 言語のコメントにとてもよく似ています。1 行のコメントは 2 つのスラッシュ(<code>//</code>)で開始します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token comment">// これはコメントです</span>
+</code></pre>
+<p>複数行の場合は、スラッシュ+アスタリスク(<code>/*</code>)で開始し、アスタリスク+スラッシュ(<code>*/</code>)で終了します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token comment">/* これはコメントです
+複数行に渡って書くこともできます */</span>
+</code></pre>
+<p>C 言語の複数行コメントとは異なり、Swift ではコメントを他の複数行コメントにネストさせることができます。1 つ目の複数行コメントブロックの中で、2 つ目の複数行ブロックコメントを開始します。2 つ目のブロックは、1 つ目のブロックの前にコメントを閉じます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token comment">/* これは最初の複数行コメントの開始です
+ /* これはネストした2番目の複数行コメントの開始です
+これはネストした2番目の複数行コメントの終わりです */</span>
+これは最初の複数行コメントの終わりです <span class="token operator">*</span><span class="token operator">/</span>
+</code></pre>
+<p>ネストした複数行コメントを使用することで、長い複数行コメントの中でも簡単に素早くその部分だけコメントアウトすることができます。</p>
+<h2 id="セミコロンsemicolons"><a name="セミコロンsemicolons" class="plugin-anchor" href="#セミコロンsemicolons"><i class="fa fa-link" aria-hidden="true"></i></a>セミコロン(Semicolons)</h2>
+<p>他の言語とは異なり、Swift ではコードの 1 つ 1 つの宣言の最後に、セミコロン(<code>;</code>)を付ける必要がありません(付けることも可能ではあります)。一方で、1 行に複数のステートメントを書きたい場合は必要になります。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> cat <span class="token operator">=</span> <span class="token string">&quot;🐱&quot;</span><span class="token punctuation">;</span> <span class="token function">print</span><span class="token punctuation">(</span>cat<span class="token punctuation">)</span>
+<span class="token comment">// &quot;🐱&quot;</span>
+</code></pre>
+<h2 id="整数integers"><a name="整数integers" class="plugin-anchor" href="#整数integers"><i class="fa fa-link" aria-hidden="true"></i></a><a id="integers">整数(Integers)</a></h2>
+<p><em>整数</em>は小数点のない整数値を全部含みます(<code>42</code>、<code>-23</code> など)。整数とは<em>符号付き</em>(正の値、または 0、または負の値) または<em>符号なし</em>(正の値、または 0) です。</p>
+<p>Swift は符号付きと符号なしの整数値を 8, 16, 32, 64 ビットの形式で提供します。これらは C 言語の名前に合わせて命名されています。8 ビットの符号なし整数は <code>UInt8</code>、32 ビットの符号付き整数は <code>Int32</code> です。Swift の全ての型と同様に、これらの整数値型の頭文字は大文字です。</p>
+<h3 id="整数の境界integer-bounds"><a name="整数の境界integer-bounds" class="plugin-anchor" href="#整数の境界integer-bounds"><i class="fa fa-link" aria-hidden="true"></i></a>整数の境界(Integer Bounds)</h3>
+<p><code>min</code> と <code>max</code> プロパティを使用して、各整数値型の最小値と最大値にアクセスすることができます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> minValue <span class="token operator">=</span> <span class="token builtin">UInt8</span><span class="token punctuation">.</span><span class="token builtin">min</span>  <span class="token comment">// minValue は 0 で、 UInt8 型です</span>
+<span class="token keyword">let</span> maxValue <span class="token operator">=</span> <span class="token builtin">UInt8</span><span class="token punctuation">.</span><span class="token builtin">max</span>  <span class="token comment">// maxValue は 255 で UInt8 型です</span>
+</code></pre>
+<p>これらのプロパティの値は、適切なサイズの整数値型で(上記の例だと <code>UInt8</code>)で、同じ型の他の値と一緒に式の中で使用することができます。</p>
+<h3 id="int"><a name="int" class="plugin-anchor" href="#int"><i class="fa fa-link" aria-hidden="true"></i></a>Int</h3>
+<p>多くの場合、整数値のサイズを特定する必要はありません。Swift はプラットフォームに応じて決まるサイズと同じサイズをもつ <code>Int</code> という型を提供しています。</p>
+<ul>
+<li>32 ビットのプラットフォームの場合、<code>Int</code> は <code>Int32</code> と等しい</li>
+<li>64 ビットのプラットフォームの場合、<code>Int</code> は <code>Int64</code> と等しい</li>
+</ul>
+<p>特定のサイズの整数値を扱う必要がない限り常に <code>Int</code> を使用するようにしてください、これはコードの一貫性と互換性を保つ手助けとなります。32 ビットのプラットフォームでは、<code>Int</code> は <code>-2,147,483,648</code> から <code>2,147,483,647</code> まで保持することができます。これは整数値が使われる多くの場合において、十分に大きい範囲です。</p>
+<h3 id="uint"><a name="uint" class="plugin-anchor" href="#uint"><i class="fa fa-link" aria-hidden="true"></i></a>UInt</h3>
+<p>Swift は符号なしの整数値型も提供しています。これも、プラットフォームに応じて決まるサイズと同じサイズを持ちます。</p>
+<ul>
+<li>32 ビットのプラットフォームの場合、<code>UInt</code> は <code>UInt32</code> と等しい</li>
+<li>64 ビットのプラットフォームの場合、<code>UInt</code> は <code>UInt64</code> と等しい</li>
+</ul>
+<blockquote>
+<p>NOTE<br><code>UInt</code> は特別にプラットフォームに応じて決まるサイズと同じサイズの 符号なし整数型を扱いたい場合にのみ使用してください。そうでない場合、負の値にならないとしても <code>Int</code> を使用する方が好ましいです。一貫して <code>Int</code> を整数値に使用することで、異なる整数値型間の変換を避け、合致する型をコンパイラが推論することで、互換性を保つことができます。詳細は<a href="the-basics.html#type-safety-and-type-inferenceto">Type Safety and Type Inference(型安全と型推論)</a>。</p>
+</blockquote>
+<h2 id="浮動小数点数floating-point-numbers"><a name="浮動小数点数floating-point-numbers" class="plugin-anchor" href="#浮動小数点数floating-point-numbers"><i class="fa fa-link" aria-hidden="true"></i></a>浮動小数点数(Floating-Point Numbers)</h2>
+<p>浮動小数点数は、小数部分を持つ数値です(<code>3.14159</code>, <code>0.1</code>, <code>-273.15</code> など)。</p>
+<p>浮動小数点数値型は、整数値型よりもより広い範囲の値を表現でき、<code>Int</code> より大きい(またはより小さい)値を保持できます。Swift は 2 つの符号付き浮動小数点数値型を提供しています。</p>
+<ul>
+<li><code>Double</code> は 64 ビットの浮動小数点数を表します</li>
+<li><code>Float</code> は 32 ビットの浮動小数点数を表します</li>
+</ul>
+<blockquote>
+<p>NOTE<br><code>Double</code> は最小で15桁の精度の小数値を持ち、<code>Float</code> は6桁の精度の小数値を持ちます。適切な浮動小数点数値型は、扱いたい数値の特性と範囲によります。どちらでも良い場合は、<code>Double</code> が好まれます。</p>
+</blockquote>
+<h2 id="型安全と型推論type-safety-and-type-inference"><a name="型安全と型推論type-safety-and-type-inference" class="plugin-anchor" href="#型安全と型推論type-safety-and-type-inference"><i class="fa fa-link" aria-hidden="true"></i></a>型安全と型推論(Type Safety and Type Inference)</h2>
+<p>Swift は<em>型安全</em>な言語です。型安全な言語は、扱っている値の型を明確にします。<code>String</code> が必要な場合に、間違って <code>Int</code> を渡すようなことはありません。</p>
+<p>型安全なことから、コンパイル時に型チェックが行われ、間違った型に対してはエラーを示します。これによって開発時に素早くエラーに気がつき修正をすることができます。</p>
+<p>型チェックによって、異なる型の値を扱う場合に間違った型を代入してしまうエラーを回避することができます。しかし、全ての定数と変数の定義時に型を特定しなければならないということではありません。特定しない場合、Swift は適切な型への推論を行います。コンパイラがコンパイル時に与えられた値を調べることで、式の型を自動で推論してくれます。</p>
+<p>この型推論のおかげで、Swift は C 言語や Objective-C のような言語と比べて、型を宣言する必要はあまりありません。定数と変数は明示的に型を記載する場合もありますが、型を特定する多くの作業は Swift の側で行なってくれます。</p>
+<p>型推論は、特に初期値を伴って変数や定数を宣言するときに役に立ちます。特に、<em>リテラル値(または literal)</em>な値を代入する際によく機能します。(リテラルな値とは、下記の例にあるようなコードに直接出てくる <code>42, 3.14159</code> のような値のことです)</p>
+<p>例えば、<code>42</code> を新しい定数に型を記載せずに代入すると、整数値型に見える数値リテラルで初期化していることから、Swift はその型を推論して <code>Int</code> と判断します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> meaningOfLife <span class="token operator">=</span> <span class="token number">42</span>
+<span class="token comment">// meaningOfLife は Int 型と推論されます</span>
+</code></pre>
+<p>同様に、浮動小数点数を型なしで宣言した場合、Swift は <code>Double</code> を定義したと推論します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token number">3.14159</span>
+<span class="token comment">// pi は Double 型と推論されます</span>
+</code></pre>
+<p>Swift は浮動小数点数を推論する際に、常に(<code>Float</code> よりも)<code>Double</code> を選択します。</p>
+<p>式の中で整数値と浮動小数点数を組み合わせた場合は、コンテキストから多くの場合 <code>Double</code> と推論されます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> anotherPi <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token number">0.14159</span>
+<span class="token comment">// anotherPi は Double 型と推論されます</span>
+</code></pre>
+<p><code>3</code> には明確な型がありませんが、後ろの浮動小数点数の値から <code>Double</code> と推論されます。</p>
+<h2 id="数値リテラルnumeric-literals"><a name="数値リテラルnumeric-literals" class="plugin-anchor" href="#数値リテラルnumeric-literals"><i class="fa fa-link" aria-hidden="true"></i></a>数値リテラル(Numeric Literals)</h2>
+<p>数値リテラルは、下記の方法で書くことができます。</p>
+<ul>
+<li>プレフィックスなしの 10 進数</li>
+<li><code>0b</code> をプレフィックスにした 2 進数</li>
+<li><code>0o</code> をプレフィックスにした 8 進数</li>
+<li><code>0x</code> をプレフィックスにした 16 進数</li>
+</ul>
+<p>これらの数値リテラルは、<code>17</code> という 10 進数を下記のように保持します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> decimalInteger <span class="token operator">=</span> <span class="token number">17</span>
+<span class="token keyword">let</span> binaryInteger <span class="token operator">=</span> <span class="token number">0b10001</span>       <span class="token comment">// 17 は２進数表記</span>
+<span class="token keyword">let</span> octalInteger <span class="token operator">=</span> <span class="token number">0o21</span>           <span class="token comment">// 17 は8進数表記</span>
+<span class="token keyword">let</span> hexadecimalInteger <span class="token operator">=</span> <span class="token number">0x11</span>     <span class="token comment">// 17 は16進数表記</span>
+</code></pre>
+<p>浮動小数点数リテラルは、10 進数と 16 進数にできます。小数点の左と右の両方に必ず整数値が必要です。10 進数の浮動小数点数は、指数を持つ場合があります(小文字または大文字の <code>e</code>)。16 進数の浮動小数点数は必ず指数を指定しなければなりません(小文字または大文字の <code>p</code>)。</p>
+<p><code>exp</code> の指数を持つ 10 進数では、元の値に<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mrow><mi>e</mi><mi>x</mi><mi>p</mi></mrow></msup></mrow><annotation encoding="application/x-tex">10^{exp}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.664392em;"></span><span class="strut bottom" style="height:0.664392em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord"><span class="mord mathrm">0</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord scriptstyle uncramped mtight"><span class="mord mathit mtight">e</span><span class="mord mathit mtight">x</span><span class="mord mathit mtight">p</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span>を掛けます。</p>
+<ul>
+<li><code>1.25e2</code> は 1.25 x <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">10^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord"><span class="mord mathrm">0</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathrm mtight">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span> または <code>125.0</code> と等しい</li>
+<li><code>1.25e-2</code> は 1.25 x <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">10^{-2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord"><span class="mord mathrm">0</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord scriptstyle uncramped mtight"><span class="mord mtight">−</span><span class="mord mathrm mtight">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span> または <code>0.0125</code> と等しい</li>
+</ul>
+<p><code>exp</code> の指数を持つ 16 進数では、元の値に<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mrow><mi>e</mi><mi>x</mi><mi>p</mi></mrow></msup></mrow><annotation encoding="application/x-tex">2^{exp}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.664392em;"></span><span class="strut bottom" style="height:0.664392em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord scriptstyle uncramped mtight"><span class="mord mathit mtight">e</span><span class="mord mathit mtight">x</span><span class="mord mathit mtight">p</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span>を掛けます。</p>
+<ul>
+<li><code>0xFp2</code> は 15 x <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">2^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathrm mtight">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span> または <code>60.0</code> と等しい</li>
+<li><code>0xFp-2</code> は 15 x <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2^{-2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord scriptstyle uncramped mtight"><span class="mord mtight">−</span><span class="mord mathrm mtight">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span> または <code>3.75</code> と等しい</li>
+</ul>
+<p>下記の浮動小数点数は、全て <code>12.1875</code> という 10 進数を表しています。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> decimalDouble <span class="token operator">=</span> <span class="token number">12.1875</span>
+<span class="token keyword">let</span> exponentDouble <span class="token operator">=</span> <span class="token number">1.21875e1</span>
+<span class="token keyword">let</span> hexadecimalDouble <span class="token operator">=</span> <span class="token number">0xC.3p0</span>
+</code></pre>
+<p>整数値リテラルは、読みやすくするために追加でフォーマットを含めることができます。整数値や浮動小数点数へ追加の 0 を加えたり、アンダースコア(<code>_</code>)を追加することで可読性を向上させることができます。このフォーマットに整数値自体への影響はありません。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> paddedDouble <span class="token operator">=</span> <span class="token number">000123.456</span>
+<span class="token keyword">let</span> oneMillion <span class="token operator">=</span> <span class="token number">1_000_000</span>
+<span class="token keyword">let</span> justOverOneMillion <span class="token operator">=</span> <span class="token number">1_000_000.000_000_1</span>
+</code></pre>
+<h2 id="数値型の変換numeric-type-conversion"><a name="数値型の変換numeric-type-conversion" class="plugin-anchor" href="#数値型の変換numeric-type-conversion"><i class="fa fa-link" aria-hidden="true"></i></a>数値型の変換(Numeric Type Conversion)</h2>
+<p>通常整数値を扱う際は、負の値にならないことがわかっていたとしても定数や変数に <code>Int</code> 型を使いましょう。全ての状況でデフォルトに <code>Int</code> を使用することで、整数値の定数と変数を特別な手順なしに互換可能にし、数値リテラルから推論される型とも合致します。</p>
+<p>特別な理由ある場合のみ、他の整数値型を使いましょう。例えば、外部リソースから特定サイズの型が指定されている場合やパフォーマンス、メモリの使用量や他の最適化が必要な場合など、がこれに当たります。明示的にサイズを指定することで思わぬオーバーフローを起こしたり、暗黙的にそのデータの特性を表現することができます。</p>
+<h3 id="整数の変換integer-conversion"><a name="整数の変換integer-conversion" class="plugin-anchor" href="#整数の変換integer-conversion"><i class="fa fa-link" aria-hidden="true"></i></a>整数の変換(Integer Conversion)</h3>
+<p>整数値の定数や変数に保持できる範囲は、それぞれの整数値型によって異なります。<code>Int8</code> の定数や変数は、<code>−128</code> から <code>127</code> まで保持できます。<code>UInt8</code> の定数や変数は、<code>0</code> から <code>255</code> まで保持できます。指定したサイズの整数値型の定数や変数に合わない値を設定しようとするとエラーになります。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> cannotBeNegative<span class="token punctuation">:</span> <span class="token builtin">UInt8</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span>
+<span class="token comment">// UInt8 はマイナス値を保持できません。そのためエラーになります</span>
+<span class="token keyword">let</span> tooBig<span class="token punctuation">:</span> <span class="token builtin">Int8</span> <span class="token operator">=</span> <span class="token builtin">Int8</span><span class="token punctuation">.</span><span class="token builtin">max</span> <span class="token operator">+</span> <span class="token number">1</span>
+<span class="token comment">// Int8 は最大値以上のマイナス値を保持できません。</span>
+<span class="token comment">// そのためこれもエラーになります</span>
+</code></pre>
+<p>このように、整数値型によって保持できる範囲が異なるため、ケースごとに型の変換をしなければなりません。この明示的に指定する方法によって、隠れた変換ミスを防ぎ、コードで型変換が起こっていることを明確に表現することができます。</p>
+<p>ある特定の整数値型を他の型に変換するためには、既存の整数値から変換したい型の新しい値を生成する必要があります。下記の例では、定数 <code>twoThousand</code> は <code>UInt16</code> ですが、定数の <code>one</code> は <code>UInt8</code> です。この 2 つは同じ型ではないので直接足し算をすることができません。そこで、この例では、<code>one</code> を使用して <code>UInt16</code> の新しい値を作るために <code>UInt16(one)</code> を呼び、元の値に置き換えて使います:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> twoThousand<span class="token punctuation">:</span> <span class="token builtin">UInt16</span> <span class="token operator">=</span> <span class="token number">2_000</span>
+<span class="token keyword">let</span> one<span class="token punctuation">:</span> <span class="token builtin">UInt8</span> <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">let</span> twoThousandAndOne <span class="token operator">=</span> twoThousand <span class="token operator">+</span> <span class="token function">UInt16</span><span class="token punctuation">(</span>one<span class="token punctuation">)</span>
+</code></pre>
+<p>今はどちらも <code>UInt16</code> なので、足し算は可能です。そして計算結果の定数(<code>twoThousandAndOne</code>)も <code>UInt16</code> に推論されます。</p>
+<p><code>SomeType(ofInitialValue)</code> という形式は、初期値を渡して初期化を行う Swift のデフォルトの方法です。裏側では、<code>UInt16</code> 型が <code>UInt8</code> の値を受け取って、新しい <code>UInt16</code> 型の値を生成しています。とはいっても、あらゆる型を渡せるわけではありません。<code>UInt16</code> 型が提供するイニシャライザに合った型が必要です。新しい型を渡して初期化する方法は、<a href="extensions.html">Extensions(拡張)</a>に記載しています。</p>
+<h3 id="整数と浮動小数点数の変換integer-and-floating-point-conversion"><a name="整数と浮動小数点数の変換integer-and-floating-point-conversion" class="plugin-anchor" href="#整数と浮動小数点数の変換integer-and-floating-point-conversion"><i class="fa fa-link" aria-hidden="true"></i></a>整数と浮動小数点数の変換(Integer and Floating-Point Conversion)</h3>
+<p>整数値と浮動小数点数の変換は明示的に行わなければなりません:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> three <span class="token operator">=</span> <span class="token number">3</span>
+<span class="token keyword">let</span> pointOneFourOneFiveNine <span class="token operator">=</span> <span class="token number">0.14159</span>
+<span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token function">Double</span><span class="token punctuation">(</span>three<span class="token punctuation">)</span> <span class="token operator">+</span> pointOneFourOneFiveNine
+<span class="token comment">// pi は 3.14159 で Double 型と推論されます</span>
+</code></pre>
+<p>ここに、定数 <code>3</code> の値が <code>Double</code> 型の新しい値を作って使われています。そのため、両方の型が同じになり、足し算が可能です。変換をしない場合、足し算はできません。</p>
+<p>整数値から浮動小数点数への変換は明示的に行わなければなりません。整数値は <code>Double</code> や <code>Float</code> で初期化できます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> integerPi <span class="token operator">=</span> <span class="token function">Int</span><span class="token punctuation">(</span>pi<span class="token punctuation">)</span>
+<span class="token comment">// integerPi は 3 で Int 型と推論されます</span>
+</code></pre>
+<p>浮動小数点数の値は新しい整数値として初期化される場合、必ず小数点は切り捨てられます。つまり、<code>4.75</code> は <code>4</code>、<code>-3.9</code> は <code>-3</code> になります。</p>
+<blockquote>
+<p>NOTE<br>整数値の定数と変数を組み合わせるルールは、数値リテラルのルールとは異なります。リテラル値の <code>3</code> はリテラル値の <code>0.14159</code> とそのまま加算できます。リテラル値は明示的な型を有していないため、コンパイラがその値を評価するときに型を推論します。</p>
+</blockquote>
+<h2 id="タイプエイリアスtype-aliases"><a name="タイプエイリアスtype-aliases" class="plugin-anchor" href="#タイプエイリアスtype-aliases"><i class="fa fa-link" aria-hidden="true"></i></a>タイプエイリアス(Type Aliases)</h2>
+<p><em>タイプエイリアス(Type Aliases)</em>は既存の型に別の名前を定義します。<code>typealias</code> キーワードを使います。</p>
+<p>タイプエイリアスは、既存の型をコンテキストに沿ったより適切な名前で参照したい場合に有効です。例えば、外部リソースの特定のサイズのデータを扱いたい場合など:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">typealias</span> <span class="token builtin">AudioSample</span> <span class="token operator">=</span> <span class="token builtin">UInt16</span>
+</code></pre>
+<p>定義したタイプエイリアスは、元の名前で使用していた所にも使用することができます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> maxAmplitudeFound <span class="token operator">=</span> <span class="token builtin">AudioSample</span><span class="token punctuation">.</span><span class="token builtin">min</span>
+<span class="token comment">// maxAmplitudeFound は 0</span>
+</code></pre>
+<p>ここでは、<code>AudioSample</code> が <code>UInt16</code> のタイプエイリアスとして定義されています。エイリアスなので、<code>AudioSample.min</code> の実態は <code>UInt16.min</code> で、<code>maxAmplitudeFound</code> の初期値は <code>0</code> になります。</p>
+<h2 id="ブール値booleans"><a name="ブール値booleans" class="plugin-anchor" href="#ブール値booleans"><i class="fa fa-link" aria-hidden="true"></i></a>ブール値(Booleans)</h2>
+<p>Swift は、<code>Bool</code> と呼ばれる基本的なブール値を持っています。ブール値は、真(true)か偽(false)のみを値として取ることから、<em>論理値(logical)</em>として参照されます。Swift では <code>true</code> と <code>false</code> の 2 つのブールの定数を提供しています。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> orangesAreOrange <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token keyword">let</span> turnipsAreDelicious <span class="token operator">=</span> <span class="token boolean">false</span>
+</code></pre>
+<p><code>orangesAreOrange</code> と <code>turnipsAreDelicious</code> は、ブール値リテラルで初期化されていることから <code>Bool</code> と推論されます。これまで見てきた <code>Int</code> や <code>Double</code> のように、<code>true</code> や <code>false</code> を値に設定すれば、明示的に <code>Bool</code> と指定する必要はありません。既に型がわかっている他の定数や変数を使用して初期化する際に、Swift の型推論を活用することで、より簡潔で読みやすいコードを書くことができます。</p>
+<p>ブール値は、条件文を扱う際にとても有効です。例えば、<code>if</code> 文など:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> turnipsAreDelicious <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Mmm, tasty turnips!&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Eww, turnips are horrible.&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;Eww, turnips are horrible.&quot;</span>
+</code></pre>
+<p><code>if</code> のような条件文については、<a href="control-flow.html">Control Flow(制御フロー)</a>でより詳細に記載しています。</p>
+<p>Swift は型安全なので、<code>Bool</code> 以外の値を <code>Bool</code> として使うことはできません。次の例はコンパイルエラーになります:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">if</span> i <span class="token punctuation">{</span>
+    <span class="token comment">// この例はコンパイルされず、エラーになります</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>一方で、次の例は問題ありません:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token number">1</span> <span class="token punctuation">{</span>
+    <span class="token comment">// コンパイルできます</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>i == 1</code> の比較結果は <code>Bool</code> なので、型チェックを通過できます。<code>i == 1</code> のような比較については、<a href="basic-operators.html">Basic Operators(基本演算子)</a>でより詳しく記載しています。</p>
+<p>他の型安全性を示した例と同様に、型の違いによる予期せぬエラーの発生を防ぎ、型が明確なので、コードの意図をより明確に表すことができます。</p>
+<h2 id="タプルtuples"><a name="タプルtuples" class="plugin-anchor" href="#タプルtuples"><i class="fa fa-link" aria-hidden="true"></i></a>タプル(Tuples)</h2>
+<p><em>タプル(Tuples)</em>は、複数の値を 1 つのまとまりにグループ化します。タプル内の値にはどんな型も入れることができ、全ての型を同じにする必要はありません。</p>
+<p>下記の例の <code>(404, &quot;Not Found&quot;)</code> は、 HTTP ステータスコードを表したタプルです。HTTP ステータスコードは、Web ページを取得するリクエストを送ると Web サーバから返ってくる特別な値です。<code>404 Not Found</code> のステータスコードは、リクエストした Web ページが存在しなかった場合に返ってきます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> http404Error <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">404</span><span class="token punctuation">,</span> <span class="token string">&quot;Not Found&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// http404Error は (Int, String)型で (404, &quot;Not Found&quot;)と等しい</span>
+</code></pre>
+<p><code>(404, &quot;Not Found&quot;)</code> タプルは、HTTP ステータスコードを 2 つの値:(数値と人が理解できる説明文)に分けた <code>Int</code> と <code>String</code> を 1 つのグループにまとめています。これは「<code>(Int, String)</code> 型のタプル」と説明できます。</p>
+<p>タプルは、任意の順序で、異なる任意の型を組み合わせることができます。例えば、<code>(Int, Int, Int)</code> や <code>(String, Bool)</code> 型のタプルも作ることができますし、必要に応じて順番の入れ替えも可能です。</p>
+<p>タプルの個々の内容をそれぞれ定数や変数に分けて扱うこともでき、他の値と同じようにアクセスすることができます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> <span class="token punctuation">(</span>statusCode<span class="token punctuation">,</span> statusMessage<span class="token punctuation">)</span> <span class="token operator">=</span> http404Error
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The status code is <span class="token interpolation"><span class="token delimiter variable">\(</span>statusCode<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;The status code is 404&quot;</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The status message is <span class="token interpolation"><span class="token delimiter variable">\(</span>statusMessage<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;The status message is Not Found&quot;</span>
+</code></pre>
+<p>もしタプルの一部だけが必要な場合、タプルを展開するときに、アンダースコア(<code>_</code>)を使用して無視することができます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> <span class="token punctuation">(</span>justTheStatusCode<span class="token punctuation">,</span> <span class="token number">_</span><span class="token punctuation">)</span> <span class="token operator">=</span> http404Error
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The status code is <span class="token interpolation"><span class="token delimiter variable">\(</span>justTheStatusCode<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;The status code is 404&quot;</span>
+</code></pre>
+<p>各値へのアクセス方法としては、0 から始まるインデックスを使用することもできます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The status code is <span class="token interpolation"><span class="token delimiter variable">\(</span>http404Error<span class="token punctuation">.</span><span class="token number">0</span><span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;The status code is 404&quot;</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The status message is <span class="token interpolation"><span class="token delimiter variable">\(</span>http404Error<span class="token punctuation">.</span><span class="token number">1</span><span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;The status message is Not Found&quot;</span>
+</code></pre>
+<p>タプルの定義時に、名前を付けることもできます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> http200Status <span class="token operator">=</span> <span class="token punctuation">(</span>statusCode<span class="token punctuation">:</span> <span class="token number">200</span><span class="token punctuation">,</span> description<span class="token punctuation">:</span> <span class="token string">&quot;OK&quot;</span><span class="token punctuation">)</span>
+</code></pre>
+<p>名前を付けた場合、その名前を使用して各値へアクセスすることができます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The status code is <span class="token interpolation"><span class="token delimiter variable">\(</span>http200Status<span class="token punctuation">.</span>statusCode<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;The status code is 200&quot;</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The status message is <span class="token interpolation"><span class="token delimiter variable">\(</span>http200Status<span class="token punctuation">.</span>description<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;The status message is OK&quot;</span>
+</code></pre>
+<p>タプルは、特に関数の戻り値で有効に活用できます。Web ページを取得する関数は、取得の成否の結果を <code>(Int, String)</code> で返すかもしれません。2 つの異なる型の値を持ったタプルを返すことで、1 つの型の 1 つの値を返すよりも、関数はより有益な情報を提供できます。より詳しくは、<a href="functions.html#functions-with-multiple-return-values複数の戻り値がある関数">Functions with Multiple Return Values(複数の戻り値がある関数)</a>を参照ください。</p>
+<h2 id="オプショナルoptionals"><a name="オプショナルoptionals" class="plugin-anchor" href="#オプショナルoptionals"><i class="fa fa-link" aria-hidden="true"></i></a><a id="optionals">オプショナル(Optionals)</a></h2>
+<p><em>オプショナル</em>は、値が存在しないかもしれないときに使用します。オプショナルは 2 つの可能性を表します: 値が<em>存在して</em>アンラップすることで値にアクセスすることができる、もしくは、値が全く<em>存在しない</em></p>
+<blockquote>
+<p>NOTE<br>オプショナルの概念は、 C 言語や Objective-C には存在しません。Objective-C は、メソッドから <code>nil</code> かオブジェクトを返すことができますが、ここでいう <code>nil</code> は「妥当なオブジェクトが存在しない」、ということを意味します。しかし、これはオブジェクトのみで機能し、構造体や基本的な C 言語の型、列挙型には使用できません。これらの型へは、値が存在しないことを示す特別な値(<code>NSNotFound</code> など)を返すのが通例です。この方法ですと、メソッドの呼び出し元が、この特別な値が返ってくることを前提としてチェックすることを想定しています。Swift では、この特別な値を必要とせず、どんな型に対しても値が存在しないことを示すことができます。</p>
+</blockquote>
+<p>下記にオプショナルがどのように値が存在しないことを表すかの例を示します。Swift の <code>Int</code> 型には <code>String</code> を <code>Int</code> へと変換するイニシャライザがあります。しかし、全ての文字列が <code>Int</code> に変換できるわけではありません。「<code>123</code>」という文字列は数値 <code>123</code> に変換できますが、「<code>hello world</code>」は変換することができません。</p>
+<p>下記の例は <code>String</code> を <code>Int</code> へ変換するイニシャライザの例です。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> possibleNumber <span class="token operator">=</span> <span class="token string">&quot;123&quot;</span>
+<span class="token keyword">let</span> convertedNumber <span class="token operator">=</span> <span class="token function">Int</span><span class="token punctuation">(</span>possibleNumber<span class="token punctuation">)</span>
+<span class="token comment">// convertedNumber Int? 型 または Optional&lt;Int&gt; と推論されます</span>
+</code></pre>
+<p>イニシャライザは失敗するかもしれないので、<code>Int</code> ではなく、<em>オプショナル</em>の <code>Int</code> を返します。オプショナルの <code>Int</code> は、<code>Int</code> ではなく <code>Int?</code> と書きます。<code>?</code> はオプショナルを示し、<em>ある</em> <code>Int</code> 型の値を含んでいる、または値が<em>全く存在しない</em>ことを表しています。(<code>Bool</code> や <code>String</code> など他の型を含めることはできません。<code>Int</code> か <code>nil</code> です)</p>
+<h3 id="nil"><a name="nil" class="plugin-anchor" href="#nil"><i class="fa fa-link" aria-hidden="true"></i></a>nil</h3>
+<p>オプショナルな変数は、特別な値 <code>nil</code> を代入することで、値のない状態を設定することができます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> serverResponseCode<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token number">404</span>
+<span class="token comment">// serverResponseCode Int の値の 404 を含んでいます</span>
+serverResponseCode <span class="token operator">=</span> <span class="token constant">nil</span>
+<span class="token comment">// serverResponseCode は 値を含んでいません</span>
+</code></pre>
+<blockquote>
+<p>NOTE<br>オプショナルではない定数と変数には <code>nil</code> を設定することができません。もし、ある条件で値のない状態を扱う必要がある場合、適切な型のオプショナル値として定義してください</p>
+</blockquote>
+<p>もし、デフォルトで値を与えずにオプショナルな変数を定義した場合、その変数には自動で <code>nil</code> が設定されます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> surveyAnswer<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token operator">?</span>
+<span class="token comment">// surveyAnswer には自動で nil が設定されます</span>
+</code></pre>
+<blockquote>
+<p>NOTE<br>Swift の <code>nil</code> は Objective-C の <code>nil</code> と同じではありません。Objective-C では、<code>nil</code> は存在しないオブジェクトのポインタです。Swift では、<code>nil</code> はポインタではありません。ある型の存在しない値です。オブジェクト型だけではなく、どんな型のオプショナルにも <code>nil</code> を設定することができます。</p>
+</blockquote>
+<h3 id="if-文と強制アンラップif-statements-and-forced-unwrapping"><a name="if-文と強制アンラップif-statements-and-forced-unwrapping" class="plugin-anchor" href="#if-文と強制アンラップif-statements-and-forced-unwrapping"><i class="fa fa-link" aria-hidden="true"></i></a>if 文と強制アンラップ(If Statements and Forced Unwrapping)</h3>
+<p><code>if</code> 文を使用してオプショナル値を <code>nil</code> と比較することで、値を含んでいるかどうかのチェックができます。この比較は、等しい(<code>==</code>)または等しくない(<code>!=</code>)演算子を使用して行います。</p>
+<p>オプショナルが値を含んでいる場合、<code>nil</code> と「等しくない」と見なされます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> convertedNumber <span class="token operator">!=</span> <span class="token constant">nil</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;convertedNumber contains some integer value.&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;convertedNumber contains some integer value.&quot;</span>
+</code></pre>
+<p>オプショナルが値を含んでいることが一度分かると、オプショナル値の名前の後ろに <code>!</code> を付けることで、中の値に直接アクセスすることができます。<code>!</code> は「私はこのオプショナルが値を含んでいることが 100%わかっています。だから使わせてください」ということを実質的に宣言していることになります。これはオプショナルの<em>強制アンラップ</em>と呼ばれています。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> convertedNumber <span class="token operator">!=</span> <span class="token constant">nil</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;convertedNumber has an integer value of <span class="token interpolation"><span class="token delimiter variable">\(</span>convertedNumber<span class="token operator">!</span><span class="token delimiter variable">)</span></span>.&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;convertedNumber has an integer value of 123.&quot;</span>
+</code></pre>
+<p><code>if</code> 文についての詳細は、<a href="control-flow.html">Control Flow(制御フロー)</a>を参照ください。</p>
+<blockquote>
+<p>NOTE<br>値が存在しないオプショナル値に <code>!</code> を付けてアクセスしようとすると、実行時エラーが発生します。<code>!</code> を使った強制アンラップを行う際は、確実に <code>nil</code> ではないことを常に確かめましょう。</p>
+</blockquote>
+<h3 id="オプショナルバインディングoptional-binding"><a name="オプショナルバインディングoptional-binding" class="plugin-anchor" href="#オプショナルバインディングoptional-binding"><i class="fa fa-link" aria-hidden="true"></i></a><a id="optional-binding">オプショナルバインディング(Optional Binding)</a></h3>
+<p>オプショナル値に、<em>オプショナルバインディング</em>を使用して、値を含んでいるかどうかを判定できます。もし含んでいる場合は、一時的な定数や変数として値を使用できるようになります。オプショナルバインディングは、<code>if</code> や <code>while</code> 文の 1 つのアクションで、オプショナル値に値が存在することを証明し、定数や変数にその内部の値を設定することを、まとめて行うことができます。<code>if</code> や <code>while</code> の詳細は<a href="control-flow.html">Control Flow(制御フロー)</a>を参照ください。</p>
+<p><code>if</code> 文でオプショナルバインディングを行う場合、次のように書きます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> <span class="token keyword">let</span> constantName <span class="token operator">=</span> someOptional <span class="token punctuation">{</span>
+    statements
+<span class="token punctuation">}</span>
+</code></pre>
+<p><a href="the-basics.html#optionals">Optionals(オプショナル)</a>の中の例で出てきた <code>possibleNumber</code> は、強制アンラップの代わりに、オプショナルバインディングを使用して書き換えることができます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> <span class="token keyword">let</span> actualNumber <span class="token operator">=</span> <span class="token function">Int</span><span class="token punctuation">(</span>possibleNumber<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The string <span class="token interpolation"><span class="token delimiter variable">\(</span>possibleNumber<span class="token delimiter variable">)</span></span> has an integer value of <span class="token interpolation"><span class="token delimiter variable">\(</span>actualNumber<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The string <span class="token interpolation"><span class="token delimiter variable">\(</span>possibleNumber<span class="token delimiter variable">)</span></span> couldn&apos;t be converted to an integer&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;The string &quot;123&quot; has an integer value of 123&quot;</span>
+</code></pre>
+<p>このコードはこのような意味に読み取れます。</p>
+<p>「<code>Int(possibleNumber)</code> が返すオプショナルの <code>Int</code> が値を含んでいた場合、<code>actualNumber</code> にその値を設定します」</p>
+<p>この変換が成功した場合、<code>actualNumber</code> 定数は <code>if</code> 文の最初の分岐内で使用することができます。オプショナル<em>内に</em>ラップされている値で既に初期化は完了しているので、<code>!</code> を後ろに付ける必要はありません。この例では、<code>actualNumber</code> は変換した結果を出力します。</p>
+<p>オプショナルバインディングは定数と変数の両方に使用することができます。<code>if</code> 文の最初の分岐内で <code>actualNumber</code> を変更したい場合は、<code>if var actualNumber</code> と書くことで、定数の代わりに変数としてこのオプショナル値を使用できます。</p>
+<p>1 つの <code>if</code> 文の中に、複数のオプショナルバインディングとブール値をカンマ(<code>,</code>)区切りで含めることができます。そのうちのいずれかが <code>nil</code> または <code>false</code> の場合、<code>if</code> 文全体が <code>false</code> と判断されます。次の <code>if</code> 文はこれに該当します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> <span class="token keyword">let</span> firstNumber <span class="token operator">=</span> <span class="token function">Int</span><span class="token punctuation">(</span><span class="token string">&quot;4&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">let</span> secondNumber <span class="token operator">=</span> <span class="token function">Int</span><span class="token punctuation">(</span><span class="token string">&quot;42&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span> firstNumber <span class="token operator">&lt;</span> secondNumber <span class="token operator">&amp;&amp;</span> secondNumber <span class="token operator">&lt;</span> <span class="token number">100</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>firstNumber<span class="token delimiter variable">)</span></span> &lt; <span class="token interpolation"><span class="token delimiter variable">\(</span>secondNumber<span class="token delimiter variable">)</span></span> &lt; 100&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;4 &lt; 42 &lt; 100&quot;</span>
+
+<span class="token keyword">if</span> <span class="token keyword">let</span> firstNumber <span class="token operator">=</span> <span class="token function">Int</span><span class="token punctuation">(</span><span class="token string">&quot;4&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token keyword">let</span> secondNumber <span class="token operator">=</span> <span class="token function">Int</span><span class="token punctuation">(</span><span class="token string">&quot;42&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> firstNumber <span class="token operator">&lt;</span> secondNumber <span class="token operator">&amp;&amp;</span> secondNumber <span class="token operator">&lt;</span> <span class="token number">100</span> <span class="token punctuation">{</span>
+            <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>firstNumber<span class="token delimiter variable">)</span></span> &lt; <span class="token interpolation"><span class="token delimiter variable">\(</span>secondNumber<span class="token delimiter variable">)</span></span> &lt; 100&quot;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;4 &lt; 42 &lt; 100&quot;</span>
+</code></pre>
+<blockquote>
+<p>NOTE<br><code>if</code> 文の中でオプショナルバインディングによって作られた定数や変数は、<code>if</code> 文の中でしか使えません。もし他でも使用したい場合は、<code>guard</code> 文を使用することで、<code>guard</code> 文の次から使用することができます。詳細は<a href="control-flow.html#early-exit早期リターン">Early Exit(早期リターン)</a>に記載しています。</p>
+</blockquote>
+<h3 id="暗黙アンラップオプショナルimplicitly-unwrapped-optionals"><a name="暗黙アンラップオプショナルimplicitly-unwrapped-optionals" class="plugin-anchor" href="#暗黙アンラップオプショナルimplicitly-unwrapped-optionals"><i class="fa fa-link" aria-hidden="true"></i></a><a id="implicitly-unwrapped-optionals">暗黙アンラップオプショナル(Implicitly Unwrapped Optionals)</a></h3>
+<p>上記で書いているように、オプショナルは定数や変数に「値が存在しない」可能性があることを示します。オプショナルは値が存在するかどうかを <code>if</code> 文の中でチェックでき、存在している場合は、オプショナル内の値にアクセスするために、オプショナルバインディングを使用してアンラップすることができます。</p>
+<p>時々、オプショナルに一度値が設定された後は必ず値が存在するということが明らかなこともあります。このような場合、常に値があることはわかっているので、アクセスする度にオプショナル値のチェックとアンラップすることを省略できれば便利です。</p>
+<p>このようなオプショナルは、<em>暗黙アンラップオプショナル</em>として定義されています。<code>?</code> の代わりに <code>!</code> を型の後に付けることで、暗黙アンラップオプショナルを書くことができます(<code>String?</code> の代わりに <code>String!</code> と書くなど)。コード内で使用するオプショナル値の後に <code>!</code> 付けるよりも、定義した型の後に <code>!</code> を付けます。</p>
+<p>暗黙アンラップオプショナルは、オプショナル値の定義後すぐに値が設定され、それ以降はずっと値が存在していることが確実な場合に、役に立ちます。Swift での暗黙アンラップオプショナルの主な使われ方としては、クラスの初期化時があります。<a href="automatic-reference-counting.html#unowned-references-and-implicitly-unwrapped-optional-properties非所有参照と暗黙アンラップしたオプショナルプロパティ">Unowned References and Implicitly Unwrapped Optional Properties(非所有参照と暗黙アンラップしたオプショナルプロパティ)</a>に記載しています。</p>
+<p>暗黙アンラップオプショナルは、内部的には通常のオプショナルですが、オプショナルではない値のように使用することもできます。次の例は、オプショナルと暗黙アンラップオプショナルで、明示的に <code>String</code> を型として記載している値へアクセスするときの動きの違いを表しています。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> possibleString<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token string">&quot;An optional string.&quot;</span>
+<span class="token keyword">let</span> forcedString<span class="token punctuation">:</span> <span class="token builtin">String</span> <span class="token operator">=</span> possibleString<span class="token operator">!</span> <span class="token comment">// ! が必要</span>
+
+<span class="token keyword">let</span> assumedString<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token operator">!</span> <span class="token operator">=</span> <span class="token string">&quot;An implicitly unwrapped optional string.&quot;</span>
+<span class="token keyword">let</span> implicitString<span class="token punctuation">:</span> <span class="token builtin">String</span> <span class="token operator">=</span> assumedString <span class="token comment">// ! は不要</span>
+</code></pre>
+<p>暗黙アンラップオプショナルを必要なときにオプショナル値へ強制アンラップできるようにしていると見なすことができます。暗黙アンラップオプショナル値を使用するとき、Swift は強制アンラップします。上記のコードでは、オプショナル値の <code>assumedString</code> は、<code>implicitString</code> が明示的にオプショナルではない <code>String</code> を宣言しているため、代入される前に強制アンラップされています。下記のコードでは、<code>optionalString</code> は明示的に型を宣言していないため、通常はオプショナルになります。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> optionalString <span class="token operator">=</span> assumedString
+<span class="token comment">// optionalString は String? 型で assumedString は 強制アンラップする必要はありません</span>
+</code></pre>
+<p>暗黙アンラップオプショナルが <code>nil</code> の場合に内部の値にアクセスしようとすると、実行時エラーが発生します。これは <code>!</code> を付けた通常のオプショナルで値が存在しない場合にアクセスしたときの動きと同じです。</p>
+<p>暗黙アンラップオプショナルが <code>nil</code> かどうかのチェックは通常のオプショナルと同じ方法でできます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> assumedString <span class="token operator">!=</span> <span class="token constant">nil</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>assumedString<span class="token operator">!</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;An implicitly unwrapped optional string.&quot;</span>
+</code></pre>
+<p>暗黙アンラップオプショナルはオプショナルバインディングもできます。1 つの文の中で、チェックとアンラップができます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> <span class="token keyword">let</span> definiteString <span class="token operator">=</span> assumedString <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>definiteString<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;An implicitly unwrapped optional string.&quot;</span>
+</code></pre>
+<blockquote>
+<p>NOTE<br>暗黙アンラップオプショナルを、後で <code>nil</code> になる可能性のある変数に使わないでください。変数が使用されている間に <code>nil</code> チェックが必要な場合は、通常のオプショナルを常に使いましょう</p>
+</blockquote>
+<h2 id="エラーハンドリングerror-handling"><a name="エラーハンドリングerror-handling" class="plugin-anchor" href="#エラーハンドリングerror-handling"><i class="fa fa-link" aria-hidden="true"></i></a>エラーハンドリング(Error Handling)</h2>
+<p>実行中のエラーに対応するためには、<em>エラーハンドリング</em>を行います。</p>
+<p>関数の成功や失敗を伝えるために、値の有無を利用するオプショナルと異なり、エラーハンドリングは裏側の失敗の原因を特定でき、必要ならばエラーをプログラムの他の箇所へ伝播させることができます。</p>
+<p>関数がエラーに遭遇すると、エラーを<em>スロー</em>します。そして、この関数の呼び出し元でエラーを<em>キャッチ</em>して、適切に応答することができます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">canThrowAnError</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token punctuation">{</span>
+    <span class="token comment">// この関数はエラーをスローするかもしれません</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>エラーは、定義に <code>throws</code> キーワードを含めることで、エラーをスローすることを示せます。エラーをスローする関数を呼ぶ場合、式の前に <code>try</code> キーワードを付けます。</p>
+<p>Swift は <code>catch</code> でエラーがキャッチされるまで、現在のスコープを抜けてエラーを自動で伝播します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">do</span> <span class="token punctuation">{</span>
+    <span class="token keyword">try</span> <span class="token function">canThrowAnError</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">// エラーはスローされませんでした</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">{</span>
+    <span class="token comment">// エラーがスローされました</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>do</code> は新しいスコープを生成して、エラーを 1 つ以上の <code>catch</code> 句でキャッチすることができます。</p>
+<p>これは複数のエラーに応答するためにエラーハンドリングを使った例です:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">makeASandwich</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">do</span> <span class="token punctuation">{</span>
+    <span class="token keyword">try</span> <span class="token function">makeASandwich</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token function">eatASandwich</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token builtin">SandwichError</span><span class="token punctuation">.</span>outOfCleanDishes <span class="token punctuation">{</span>
+    <span class="token function">washDishes</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token builtin">SandwichError</span><span class="token punctuation">.</span><span class="token function">missingIngredients</span><span class="token punctuation">(</span><span class="token keyword">let</span> ingredients<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">buyGroceries</span><span class="token punctuation">(</span>ingredients<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>この例では、<code>makeASandwich()</code> 関数は、綺麗な皿を使えない場合や材料が足りない場合、エラーをスローします。<code>makeASandwich()</code> はエラーをスローする可能性があるため、この関数の呼び出しは <code>try</code> 式で包まれています。<code>do</code> 文で関数の呼び出しを包み、スローされたエラーは <code>catch</code> 句でキャッチされます。</p>
+<p>エラーがスローされない場合、<code>eatASandwich()</code> 関数が呼ばれます。エラーがスローされ、それが <code>SandwichError.outOfCleanDishes</code>case と合致する場合、<code>washDishes()</code> 関数が呼ばれます。<code>SandwichError.missingIngredients</code> ケースに合致する場合、<code>buyGroceries(_:)</code> 関数が <code>catch</code> でキャッチされた <code>[String]</code> 値をパラメータに呼び出されます。</p>
+<p>エラーのスロー、キャッチそして伝播は、<a href="error-handling.html">Error Handling(エラーハンドリング)</a>でより詳細に書かれています。</p>
+<h2 id="アサーションと事前条件assertions-and-preconditions"><a name="アサーションと事前条件assertions-and-preconditions" class="plugin-anchor" href="#アサーションと事前条件assertions-and-preconditions"><i class="fa fa-link" aria-hidden="true"></i></a><a id="assertions-and-preconditions">アサーションと事前条件(Assertions and Preconditions)</a></h2>
+<p><em>アサーション</em>と<em>事前条件</em>は実行時のチェックです。他のコードが実行される前に必要不可欠な条件が満たされているかどうかを確かめることができます。アサーションや事前条件のブール値が <code>true</code> と評価される場合、コードは通常通り継続します。<code>false</code> の場合、現在のプログラムの状態は不正となり、コードの実行は中断し、アプリは終了します。</p>
+<p>アサーションと事前条件はコード上での前提となる条件や期待値を表すために使います。アサーションは開発中の間違いや間違った想定を見つけやすくし、事前条件は開発中の問題を検知しやすくします。</p>
+<p>実行時の期待値を確認することに加えて、アサーションと事前条件はコード内のドキュメントとしても有用です。<a href="the-basics.html#error-handlingエラーハンドリング">Error Handling(エラーハンドリング)</a>で記載したエラー条件とは異なり、アサーションと事前条件は復帰可能ではなく、期待されたエラーをキャッチする手段として使用することはできません。アサーションや事前条件の失敗は、不正なプログラムの状態を表し、失敗したアサーションをキャッチする方法はありません。</p>
+<p>アサーションと事前条件を使用することは、不正な条件を起こさないためのツールとしてコードをデザインするための代用品にはなりません。妥当なデータや状態を強制することで、不正な状態が起きた場合に、予測しやすい状態でアプリ終了させたり、プログラムをデバッグしやすくします。不正な状態が起きた際にすぐに実行を止めることで、不正な状態が与えるダメージを抑えることができます。</p>
+<p>アサーションと事前条件の違いは、チェックのタイミングにあります: アサーションはデバッグビルド時にしかチェックをせず、事前条件はデバッグとプロダクションの両方のビルドでチェックされます。プロダクションビルドでは、アサーションは評価されません。つまり、開発時にはアサーションを多用してもプロダクションのパフォーマンスに影響はありません。</p>
+<h3 id="アサーションを使ったデバッグdebugging-with-assertions"><a name="アサーションを使ったデバッグdebugging-with-assertions" class="plugin-anchor" href="#アサーションを使ったデバッグdebugging-with-assertions"><i class="fa fa-link" aria-hidden="true"></i></a><a id="debugging-with-assertions">アサーションを使ったデバッグ(Debugging with Assertions)</a></h3>
+<p>Swift の標準ライブラリの <a href="https://developer.apple.com/documentation/swift/1541112-assert" target="_blank">assert(<em>:</em>:file:line:)</a>関数を呼ぶことでアサーションを書くことができます。<code>true</code> か <code>false</code> と評価される式と、<code>false</code> だった場合に出力するメッセージを式として渡すことができます。例えば:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> age <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">3</span>
+<span class="token function">assert</span><span class="token punctuation">(</span>age <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">&quot;A person&apos;s age can&apos;t be less than zero.&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// Thisアサーションfails because -3 isn&apos;t &gt;= 0.</span>
+</code></pre>
+<p>この例では、<code>age &gt;= 0</code>、つまり負の値ではない場合、が <code>true</code> でコードは継続して実行されます。負の値の場合、<code>age &gt;= 0</code> は <code>false</code> となり、アサーションは失敗しアプリは終了します。</p>
+<p>アサーションのメッセージは省略することができます。例えば、ただ条件を繰り返している場合などです。</p>
+<pre class="language-"><code class="lang-swift"><span class="token function">assert</span><span class="token punctuation">(</span>age <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+</code></pre>
+<p>既にチェック済みの条件に対してアサーションを呼び出したい場合、<a href="https://developer.apple.com/documentation/swift/1539616-assertionfailure" target="_blank">assertionFailure(_:file:line:)</a>関数を使用して、アサーションが失敗したことを示すことができます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> age <span class="token operator">&gt;</span> <span class="token number">10</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;You can ride the roller-coaster or the ferris wheel.&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> age <span class="token operator">&gt;=</span> <span class="token number">0</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;You can ride the ferris wheel.&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">assertionFailure</span><span class="token punctuation">(</span><span class="token string">&quot;A person&apos;s age can&apos;t be less than zero.&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="事前条件を強制するenforcing-preconditions"><a name="事前条件を強制するenforcing-preconditions" class="plugin-anchor" href="#事前条件を強制するenforcing-preconditions"><i class="fa fa-link" aria-hidden="true"></i></a>事前条件を強制する(Enforcing Preconditions)</h3>
+<p><code>false</code> になる可能性があるものの、コードの実行を継続するためには<em>必ず</em> <code>true</code> にならなければならない条件に対しては、事前条件を使いましょう。例えば、subscript が範囲超えエラーを起こしていないかの確認や、適切な値を関数に渡しているかなどには、事前条件を使いましょう。</p>
+<p>事前条件は<a href="https://developer.apple.com/documentation/swift/1540960-precondition" target="_blank">precondition(<em>:</em>:file:line:)</a>関数を呼ぶことで、事前条件を書けます。<code>true</code> か <code>false</code> と評価される式と、<code>false</code> だった場合に出力するメッセージを式として渡すことができます。例えば:</p>
+<pre class="language-"><code class="lang-swift"><span class="token comment">// subscript の実装内で</span>
+<span class="token function">precondition</span><span class="token punctuation">(</span>index <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">&quot;Index must be greater than zero.&quot;</span><span class="token punctuation">)</span>
+</code></pre>
+<p>事前条件が失敗したことを示すために、<a href="https://developer.apple.com/documentation/swift/1539374-preconditionfailure" target="_blank">preconditionFailure(_:file:line:)</a>関数を使用することもできます。例えば、switch 文の中で、本来ならば他のケースで全ての妥当な入力値をカバーできるはずなのに、default のケースに入ってしまうケースなどがあります。</p>
+<blockquote>
+<p>NOTE もし(<code>-Ounchecked</code>)モードでコンパイルした場合、事前条件はチェックされません。コンパイラは事前条件を常に <code>true</code> とみなしてコードの最適化を行います。一方で、<code>fatalError(_:file:line:)</code> 関数は最適化の設定をしても、常に実行を中断します。<code>fatalError(_:file:line:)</code> 関数は、試作段階や開発の初期段階で、まだ未実装であることを示すためのスタブとして使用することができます(<code>fatalError(&quot;Unimplemented&quot;)</code> と書くなど)。fatal error はコードの最適化がされないため、アサーションと事前条件とは異なり、もしこのスタブメソッドに遭遇した場合は、確実に実行を中断させることができます</p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"基本(The Basics)","level":"3.1","depth":1,"next":{"title":"基本演算子(Basic Operators)","level":"3.2","depth":1,"path":"language-guide-gaido/basic-operators.md","ref":"language-guide-gaido/basic-operators.md","articles":[]},"previous":{"title":"Swiftツアー(A Swift Tour)","level":"2.3","depth":1,"path":"welcome-to-swift-swiftheyoukoso/a-swift-tour.md","ref":"welcome-to-swift-swiftheyoukoso/a-swift-tour.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"livereload":{},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/the-basics.md","mtime":"2021-07-08T00:03:37.316Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-10T23:53:49.546Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-api/theme-api.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,1047 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <title>構文の構造(Lexical Structure) · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-api/theme-api.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="types.html" />
+    
+    
+    <link rel="prev" href="about-the-language-reference.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索ワードを入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    The Swift Programming Language(日本語版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Swiftへようこそ(WELCOME TO SWIFT)</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../welcome-to-swift-swiftheyoukoso/about-swift.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/about-swift.html">
+            
+                    
+                    Swiftについて(About Swift)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../welcome-to-swift-swiftheyoukoso/version-compatibility.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/version-compatibility.html">
+            
+                    
+                    バージョン互換性(Version Compatibility)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../welcome-to-swift-swiftheyoukoso/a-swift-tour.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/a-swift-tour.html">
+            
+                    
+                    Swiftツアー(A Swift Tour)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">LANGUAGE GUIDE (言語ガイド)</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../language-guide-gaido/the-basics.html">
+            
+                <a href="../language-guide-gaido/the-basics.html">
+            
+                    
+                    基本(The Basics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../language-guide-gaido/basic-operators.html">
+            
+                <a href="../language-guide-gaido/basic-operators.html">
+            
+                    
+                    基本演算子(Basic Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../language-guide-gaido/strings-and-characters.html">
+            
+                <a href="../language-guide-gaido/strings-and-characters.html">
+            
+                    
+                    文字と文字列(Strings and Characters)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../language-guide-gaido/collection-types.html">
+            
+                <a href="../language-guide-gaido/collection-types.html">
+            
+                    
+                    コレクション型(Collection Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../language-guide-gaido/control-flow.html">
+            
+                <a href="../language-guide-gaido/control-flow.html">
+            
+                    
+                    制御フロー(Control Flow)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../language-guide-gaido/functions.html">
+            
+                <a href="../language-guide-gaido/functions.html">
+            
+                    
+                    関数(Functions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="../language-guide-gaido/closures.html">
+            
+                <a href="../language-guide-gaido/closures.html">
+            
+                    
+                    クロージャ(Closures)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="../language-guide-gaido/enumerations.html">
+            
+                <a href="../language-guide-gaido/enumerations.html">
+            
+                    
+                    列挙型(Enumerations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="../language-guide-gaido/structures-and-classes.html">
+            
+                <a href="../language-guide-gaido/structures-and-classes.html">
+            
+                    
+                    構造体とクラス(Structures and Classes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="../language-guide-gaido/properties.html">
+            
+                <a href="../language-guide-gaido/properties.html">
+            
+                    
+                    プロパティ(Properties)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="../language-guide-gaido/methods.html">
+            
+                <a href="../language-guide-gaido/methods.html">
+            
+                    
+                    メソッド(Methods)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="../language-guide-gaido/subscripts.html">
+            
+                <a href="../language-guide-gaido/subscripts.html">
+            
+                    
+                    サブスクリプト(Subscripts)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="../language-guide-gaido/inheritance.html">
+            
+                <a href="../language-guide-gaido/inheritance.html">
+            
+                    
+                    継承(Inheritance)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="../language-guide-gaido/initialization.html">
+            
+                <a href="../language-guide-gaido/initialization.html">
+            
+                    
+                    初期化(Initialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="../language-guide-gaido/deinitialization.html">
+            
+                <a href="../language-guide-gaido/deinitialization.html">
+            
+                    
+                    デイニシャライゼーション(Deinitialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="../language-guide-gaido/optional-chaining.html">
+            
+                <a href="../language-guide-gaido/optional-chaining.html">
+            
+                    
+                    オプショナルチェーン(Optional Chaining)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="../language-guide-gaido/error-handling.html">
+            
+                <a href="../language-guide-gaido/error-handling.html">
+            
+                    
+                    エラー処理(Error Handling)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="../language-guide-gaido/concurrency.html">
+            
+                <a href="../language-guide-gaido/concurrency.html">
+            
+                    
+                    同時並行処理(Concurrency)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="../language-guide-gaido/type-casting.html">
+            
+                <a href="../language-guide-gaido/type-casting.html">
+            
+                    
+                    型キャスト(Type Casting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="../language-guide-gaido/nested-types.html">
+            
+                <a href="../language-guide-gaido/nested-types.html">
+            
+                    
+                    ネスト型(Nested Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.21" data-path="../language-guide-gaido/extensions.html">
+            
+                <a href="../language-guide-gaido/extensions.html">
+            
+                    
+                    拡張(Extensions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.22" data-path="../language-guide-gaido/protocols.html">
+            
+                <a href="../language-guide-gaido/protocols.html">
+            
+                    
+                    プロトコル(Protocols)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.23" data-path="../language-guide-gaido/generics.html">
+            
+                <a href="../language-guide-gaido/generics.html">
+            
+                    
+                    ジェネリクス(Generics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.24" data-path="../language-guide-gaido/opaque-types.html">
+            
+                <a href="../language-guide-gaido/opaque-types.html">
+            
+                    
+                    Opaque 型(Opaque Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.25" data-path="../language-guide-gaido/automatic-reference-counting.html">
+            
+                <a href="../language-guide-gaido/automatic-reference-counting.html">
+            
+                    
+                    自動参照カウント ARC(Automatic Reference Counting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.26" data-path="../language-guide-gaido/memory-safety.html">
+            
+                <a href="../language-guide-gaido/memory-safety.html">
+            
+                    
+                    メモリ安全性(Memory Safety)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.27" data-path="../language-guide-gaido/access-control.html">
+            
+                <a href="../language-guide-gaido/access-control.html">
+            
+                    
+                    アクセスコントロール(Access Control)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.28" data-path="../language-guide-gaido/advanced-operators.html">
+            
+                <a href="../language-guide-gaido/advanced-operators.html">
+            
+                    
+                    高度な演算子(Advanced Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">LANGUAGE REFERENCE (言語リファレンス)</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="about-the-language-reference.html">
+            
+                <a href="about-the-language-reference.html">
+            
+                    
+                    言語リファレンスについて(About the Language Reference)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.2" data-path="lexical-structure.html">
+            
+                <a href="lexical-structure.html">
+            
+                    
+                    構文の構造(Lexical Structure)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="types.html">
+            
+                <a href="types.html">
+            
+                    
+                    型(Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="expressions.html">
+            
+                <a href="expressions.html">
+            
+                    
+                    式(Expressions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="statements.html">
+            
+                <a href="statements.html">
+            
+                    
+                    文(Statements)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="declarations.html">
+            
+                <a href="declarations.html">
+            
+                    
+                    宣言(Declarations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="attributes.html">
+            
+                <a href="attributes.html">
+            
+                    
+                    属性(Attributes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="patterns.html">
+            
+                <a href="patterns.html">
+            
+                    
+                    パターン(Patterns)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="generic-parameters-and-arguments.html">
+            
+                <a href="generic-parameters-and-arguments.html">
+            
+                    
+                    ジェネリックパラメータと引数(Generic Parameters and Arguments)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="summary-of-the-grammar.html">
+            
+                <a href="summary-of-the-grammar.html">
+            
+                    
+                    文法のまとめ(Summary of the Grammar)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">REVISION HISTORY (改訂履歴)</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../revision-history/document-revision-history.html">
+            
+                <a href="../revision-history/document-revision-history.html">
+            
+                    
+                    ドキュメント改訂履歴(Document Revision History)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKitで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >構文の構造(Lexical Structure)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="構文の構造lexical-structure"><a name="構文の構造lexical-structure" class="plugin-anchor" href="#構文の構造lexical-structure"><i class="fa fa-link" aria-hidden="true"></i></a>構文の構造(Lexical Structure)</h1>
+<p>最終更新日: 2021/7/1</p>
+<p>Swift の<em>字句構造</em>は、文字のシーケンスの中で Swift 言語で有効なトークンを形成する方法を示します。これらの有効なトークンは、言語の最小レベルの構成要素を形成し、後の章で言語の残りの部分を説明することに使用されます。トークンは、識別子、キーワード、句読点、リテラル、または演算子で構成されます。</p>
+<p>ほとんどの場合、トークンは、下記に指定されている文法の制約内で、入力テキストから可能な限り最長の部分文字列を検討して、Swift ソースファイルの文字から形成されます。この動作は、<em>最長一致</em>または<em>最大ムンク</em>と呼ばれます。</p>
+<h2 id="空白とコメントwhitespace-and-comments"><a name="空白とコメントwhitespace-and-comments" class="plugin-anchor" href="#空白とコメントwhitespace-and-comments"><i class="fa fa-link" aria-hidden="true"></i></a>空白とコメント(Whitespace and Comments)</h2>
+<p>空白には 2 つの用途があります: 1 つは、ソースファイル内のトークンを分離する、もう 1 つは、<em>前置</em>、<em>後置</em>、およびバイナリ演算子を区別する(<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/lexical-structure#operators" target="_blank">Operators(演算子)</a>を参照)、それ以外の場合は無視されます。次の文字は空白と見なされます: スペース(U+0020)、ラインフィード(U+000A)、キャリッジリターン (U+000D)、水平タブ(U+0009)、垂直タブ(U+000B)、フォームフィード(U +000C) および null(U+0000)。</p>
+<p>コメントは、コンパイラによって空白として扱われます。単一行のコメントは <code>//</code> で始まり、ラインフィード(U+000A) またはキャリッジリターン(U+000D) まで続きます。複数行のコメントは <code>/*</code> で始まり、<code>*/</code> で終わります。複数行のコメントをネストすることはできますが、コメントマーカで始まりと終わりを囲む必要があります。</p>
+<p>コメントには、<a href="https://developer.apple.com/library/content/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html" target="_blank">Markup Formatting Reference</a>で説明されているように、追加のフォーマットとマークアップを含めることができます。</p>
+<blockquote>
+<p>GRAMMAR OF WHITESPACE<br>whitespace → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_whitespace-item" target="_blank">whitespace-item</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_whitespace" target="_blank">whitespace</a><sub>opt</sub><br>whitespace-item → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_line-break" target="_blank">line-break</a><br>whitespace-item → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_inline-space" target="_blank">inline-space</a><br>whitespace-item → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_comment" target="_blank">comment</a><br>whitespace-item → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-comment" target="_blank">multiline-comment</a><br>whitespace-item → U+0000, U+000B, または U+000C<br>line-break → U+000A<br>line-break → U+000D<br>line-break → U+000D に続く U+000A<br>inline-spaces → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_inline-space" target="_blank">inline-space</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_inline-spaces" target="_blank">inline-spaces</a><sub>opt</sub><br>inline-space → U+0009 または U+0020<br>comment → <code>//</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_comment-text" target="_blank">comment-text</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_line-break" target="_blank">line-break</a><br>multiline-comment → <code>/*</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-comment-text" target="_blank">multiline-comment-text</a> <code>*/</code><br>comment-text → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_comment-text-item" target="_blank">comment-text-item</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_comment-text" target="_blank">comment-text</a><sub>opt</sub><br>comment-text-item → U+000A または U+000D を除く任意のUnicodeスカラ値<br>multiline-comment-text → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-comment-text-item" target="_blank">multiline-comment-text-item</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-comment-text" target="_blank">multiline-comment-text</a><sub>opt</sub><br>multiline-comment-text-item → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-comment" target="_blank">multiline-comment</a><br>multiline-comment-text-item → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_comment-text-item" target="_blank">comment-text-item</a><br>multiline-comment-text-item → <code>/*</code> または <code>*/</code> を除く任意のUnicodeスカラ値</p>
+</blockquote>
+<h2 id="識別子identifiers"><a name="識別子identifiers" class="plugin-anchor" href="#識別子identifiers"><i class="fa fa-link" aria-hidden="true"></i></a>識別子(Identifiers)</h2>
+<p><em>識別子</em>は、大文字または小文字の <code>A</code> から <code>Z</code>、アンダースコア(<code>_</code>)、基本多言語平面内の非結合英数 <code>Unicode</code> 文字、または私用面にない基本多言語平面外の文字で始まります。最初の文字の後に、数字と <code>Unicode</code> 文字を組み合わせることもできます。</p>
+<p>予約語を識別子として使用するには、その前後にバッククォート(`)を置きます。例えば、<code>class</code> は有効な識別子ではありませんが、`class` は有効です。バッククォートは識別子の一部とは見なされません。`x`と <code>x</code> は同じ意味です。</p>
+<p>明示的な引数名のないクロージャ内では、引数には暗黙的に <code>$0</code>、<code>$1</code>、<code>$2</code> などの名前が付けられます。これらの名前は、クロージャのスコープ内で有効な識別子です。</p>
+<p>コンパイラは、プロパティラッパプロジェクション値を持つプロパティにドル記号(<code>$</code>)で始まる識別子を合成します。コード上でこれらの識別子とやり取りできますが、ドル記号(<code>$</code>)から始まる識別子を宣言することはできません。詳細については、<a href="attributes.html">Attributes(属性)</a>の章の<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/attributes#propertywrapper" target="_blank">propertyWrapper</a>セクションを参照ください。</p>
+<blockquote>
+<p>GRAMMAR OF AN IDENTIFIER<br>identifier → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier-head" target="_blank">identifier-head</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier-characters" target="_blank">identifier-characters</a><sub>opt</sub><br>identifier → <strong>`</strong> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier-head" target="_blank">identifier-head</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier-characters" target="_blank">identifier-characters</a><sub>opt</sub> <strong>`</strong><br>identifier → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_implicit-parameter-name" target="_blank">implicit-parameter-name</a><br>identifier → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_property-wrapper-projection" target="_blank">property-wrapper-projection</a><br>identifier-list → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a> <code>,</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier-list" target="_blank">identifier-list</a><br>identifier-head → 大文字または小文字の A ~ Z<br>identifier-head → <code>_</code><br>identifier-head → U+00A8, U+00AA, U+00AD, U+00AF, U+00B2–U+00B5, または U+00B7–U+00BA<br>identifier-head → U+00BC–U+00BE, U+00C0–U+00D6, U+00D8–U+00F6, または U+00F8–U+00FF<br>identifier-head → U+0100–U+02FF, U+0370–U+167F, U+1681–U+180D, または U+180F–U+1DBF<br>identifier-head → U+1E00–U+1FFF<br>identifier-head → U+200B–U+200D, U+202A–U+202E, U+203F–U+2040, U+2054, または U+2060–U+206F<br>identifier-head → U+2070–U+20CF, U+2100–U+218F, U+2460–U+24FF, または U+2776–U+2793<br>identifier-head → U+2C00–U+2DFF または U+2E80–U+2FFF<br>identifier-head → U+3004–U+3007, U+3021–U+302F, U+3031–U+303F, または U+3040–U+D7FF<br>identifier-head → U+F900–U+FD3D, U+FD40–U+FDCF, U+FDF0–U+FE1F, または U+FE30–U+FE44<br>identifier-head → U+FE47–U+FFFD<br>identifier-head → U+10000–U+1FFFD, U+20000–U+2FFFD, U+30000–U+3FFFD, または U+40000–U+4FFFD<br>identifier-head → U+50000–U+5FFFD, U+60000–U+6FFFD, U+70000–U+7FFFD, または U+80000–U+8FFFD<br>identifier-head → U+90000–U+9FFFD, U+A0000–U+AFFFD, U+B0000–U+BFFFD, または U+C0000–U+CFFFD<br>identifier-head → U+D0000–U+DFFFD または U+E0000–U+EFFFD<br>identifier-character → 数値 0 ~ 9<br>identifier-character → U+0300–U+036F, U+1DC0–U+1DFF, U+20D0–U+20FF, または U+FE20–U+FE2F<br>identifier-character → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier-head" target="_blank">identifier-head</a><br>identifier-characters → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier-character" target="_blank">identifier-character</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier-characters" target="_blank">identifier-characters</a><sub>opt</sub><br>implicit-parameter-name → <code>$</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits" target="_blank">decimal-digits</a><br>property-wrapper-projection → <code>$</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier-characters" target="_blank">identifier-characters</a></p>
+</blockquote>
+<h2 id="単語と句読点keywords-and-punctuation"><a name="単語と句読点keywords-and-punctuation" class="plugin-anchor" href="#単語と句読点keywords-and-punctuation"><i class="fa fa-link" aria-hidden="true"></i></a><a id="keywords-and-punctuation">単語と句読点(Keywords and Punctuation)</a></h2>
+<p>次のキーワードは予約されており、識別子として前述のようにバッククォート(`)でエスケープしない限り使用できません。<code>inout</code>、<code>var</code>、<code>let</code> 以外のキーワードは、バッククォートでエスケープすることなく、関数宣言または関数の引数名として使用できます。メンバの名前がキーワードと同じ場合、メンバの参照とキーワードの使用の間にあいまいさがある場合を除いて、そのメンバへの参照をバッククォートでエスケープする必要はありません。例えば、<code>self</code>、<code>Type</code>、および <code>Protocol</code> には明示的なメンバ式の中で特別な意味があるため、そのコンテキストではバッククォートでエスケープする必要があります。</p>
+<ul>
+<li>宣言で使用されるキーワード: <code>associatedtype</code>、<code>class</code>、<code>deinit</code>、<code>enum</code>、<code>extension</code>、<code>fileprivate</code>、<code>func</code>、<code>import</code>、<code>init</code>、<code>inout</code>、<code>internal</code>、<code>let</code>、<code>open</code>、<code>operator</code>、<code>private</code>、<code>protocol</code>、<code>public</code>、<code>rethrows</code>、<code>static</code>、<code>struct</code>、<code>subscript</code>、<code>typealias</code>、および <code>var</code></li>
+<li>ステートメントで使用されるキーワード: <code>break</code>、<code>case</code>、<code>continue</code>、<code>default</code>、<code>defer</code>、<code>do</code>、<code>else</code>、<code>fallthrough</code>、<code>for</code>、<code>guard</code>、<code>if</code>、<code>in</code>、<code>repeat</code>、<code>return</code>、<code>switch</code>、<code>where</code>、<code>while</code></li>
+<li>式と型で使用されるキーワード: <code>as</code>、<code>Any</code>、<code>catch</code>、<code>false</code>、<code>is</code>、<code>nil</code>、<code>super</code>、<code>self</code>、<code>Self</code>、<code>throw</code>、<code>throws</code>、<code>true</code>、および <code>try</code></li>
+<li>パターンで使用されるキーワード: <code>_</code></li>
+<li>シャープ記号(<code>#</code>)で始まるキーワード: <code>#available</code>、<code>#colorLiteral</code>、<code>#column</code>、<code>#else</code>、<code>#elseif</code>、<code>#endif</code>、<code>#error</code>、<code>#file</code>、<code>#fileID</code>、<code>#fileLiteral</code>、<code>#filePath</code>、<code>#function</code>、<code>#if</code>、<code>#imageLiteral</code>、<code>#line</code>、<code>#selector</code>、<code>#sourceLocation</code>、および <code>#warning</code></li>
+<li>特定のコンテキストで予約されているキーワード: <code>associativity</code>、<code>convenient</code>、<code>dynamic</code>、<code>didSet</code>、<code>final</code>、<code>get</code>、<code>infix</code>、<code>indirect</code>、<code>lazy</code>、<code>left</code>、<code>mutating</code>、<code>none</code>、<code>nonmutating</code>、<code>optional</code>、<code>override</code>、<code>postfix</code>、<code>precedence</code>、<code>prefix</code>、プロトコル、<code>Protocol</code>、 <code>required</code>、<code>right</code>、<code>set</code>、<code>Type</code>、 <code>unowned</code>、 <code>weak</code>、 および <code>willSet</code>。該当するコンテキスト外では、識別子として使用することができます</li>
+</ul>
+<p>次のトークンは句読点として予約されており、カスタム演算子としては使用できません: <code>(</code>、 <code>)</code>、 <code>{</code>、 <code>}</code>、 <code>[</code>、 <code>]</code>、 <code>.</code>、 <code>,</code>、 <code>:</code>、 <code>;</code>、 <code>=</code>、 <code>@</code>、 <code>#</code>、 <code>&amp;</code>(前置演算子として)、<code>-&gt;</code>、`、<code>?</code>、および <code>!</code>(後置演算子として)</p>
+<h2 id="リテラルliterals"><a name="リテラルliterals" class="plugin-anchor" href="#リテラルliterals"><i class="fa fa-link" aria-hidden="true"></i></a><a id="literals">リテラル(Literals)</a></h2>
+<p><em>リテラル</em>は、数値や文字列といった型の値をソースコード上で表現するものです。</p>
+<p>下記はリテラルの例です。</p>
+<pre class="language-"><code class="lang-swift"><span class="token number">42</span>  <span class="token comment">// 整数リテラル</span>
+<span class="token number">3.14159</span>  <span class="token comment">// 浮動小数点リテラル</span>
+<span class="token string">&quot;Hello, world!&quot;</span>  <span class="token comment">// 文字列リテラル</span>
+<span class="token boolean">true</span>  <span class="token comment">// ブールリテラル</span>
+</code></pre>
+<p>リテラルにはそれ自体に型はありません。代わりに、リテラルは無限の精度を持つものとして解析され、Swift の型推論はリテラルの型を推論しようとします。例えば、宣言 <code>let x: Int8 = 42</code> では、Swift は明示的な型注釈(<code>: Int8</code>)を使用すると、整数リテラル <code>42</code> の型が <code>Int8</code> だと推論します。適切な型情報が利用できない場合、Swift はリテラルの型が Swift 標準ライブラリで定義されているデフォルトのリテラル型の 1 つだと推論します。デフォルトの型は、整数リテラルの場合は <code>Int</code>、浮動小数点リテラルの場合は <code>Double</code>、文字列リテラルの場合は <code>String</code>、ブールリテラルの場合は <code>Bool</code> です。例えば、<code>let str = &quot;Hello, world&quot;</code> という宣言では、文字列リテラル <code>&quot;Hello, world&quot;</code> のデフォルトの推論型は <code>String</code> です。</p>
+<p>リテラル値の型注釈を指定する場合、型注釈は、そのリテラル値からインスタンス化できる型にする必要があります。つまり、型は次の Swift 標準ライブラリのプロトコルのいずれかに準拠する必要があります: 整数リテラルは <code>ExpressibleByIntegerLiteral</code>、浮動小数点リテラルは <code>ExpressibleByFloatLiteral</code>、文字列リテラルは <code>ExpressibleByStringLiteral</code>、ブールリテラルは <code>ExpressibleByBooleanLiteral</code>、単一の Unicode スカラのみを含む文字列リテラルは <code>ExpressibleByUnicodeScalarLiteral</code>、および単一の拡張書記素クラスタのみを含む文字列リテラルは <code>ExpressibleByExtendedGraphemeClusterLiteral</code>。例えば、<code>Int8</code> は <code>ExpressibleByIntegerLiteral</code> プロトコルに準拠しているため、宣言 <code>let x: Int8 = 42</code> の整数リテラル <code>42</code> の型注釈で使用できます。</p>
+<blockquote>
+<p>GRAMMAR OF A LITERAL<br>literal → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_numeric-literal" target="_blank">numeric-literal</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_string-literal" target="_blank">string-literal</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_boolean-literal" target="_blank">boolean-literal</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_nil-literal" target="_blank">nil-literal</a><br>numeric-literal → <code>-</code><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_integer-literal" target="_blank">integer-literal</a> | <code>-</code><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_floating-point-literal" target="_blank">floating-point-literal</a><br>boolean-literal → <code>true</code> | <code>false</code><br>nil-literal → <code>nil</code></p>
+</blockquote>
+<h3 id="整数リテラルinteger-literals"><a name="整数リテラルinteger-literals" class="plugin-anchor" href="#整数リテラルinteger-literals"><i class="fa fa-link" aria-hidden="true"></i></a>整数リテラル(Integer Literals)</h3>
+<p><em>整数リテラル</em>は、不特定の精度の整数値を表します。デフォルトでは、整数リテラルは 10 進数で表されます。プレフィックスを使用して他の基数を指定できます。2 進数リテラルは <code>0b</code> で始まり、8 進数リテラルは <code>0o</code> で始まり、16 進数リテラルは <code>0x</code> で始まります。</p>
+<p>10 進数リテラルには <code>0</code> ～ <code>9</code> の数字が含まれます。2 進数リテラルには <code>0</code> と <code>1</code> が含まれ、8 進数リテラルには <code>0</code> ～ <code>7</code> が含まれ、16 進数リテラルには <code>0</code> ～ <code>9</code> および大文字または小文字の <code>A</code> ～ <code>F</code> が含まれます。</p>
+<p>負の整数リテラルは、<code>-42</code> のように、整数リテラルの前にマイナス記号(<code>-</code>)を付けることで表現されます。</p>
+<p>アンダースコア(<code>_</code>)を読みやすくするために数字の間に使用できますが、それ自体は無視されるため、リテラルの値には影響しません。整数リテラルは先行ゼロ(<code>0</code>)で始めることができますが、同様に無視され、リテラルの基数または値には影響しません。</p>
+<p>特に指定がない限り、整数リテラルのデフォルトの推論型は Swift 標準ライブラリの <code>Int</code> 型です。Swift 標準ライブラリは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#integers" target="_blank">Integers(整数)</a>で説明されているように、様々なサイズの符号付き整数および符号なし整数の型も定義します。</p>
+<blockquote>
+<p>GRAMMAR OF AN INTEGER LITERAL<br>integer-literal → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_binary-literal" target="_blank">binary-literal</a><br>integer-literal → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_octal-literal" target="_blank">octal-literal</a><br>integer-literal → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-literal" target="_blank">decimal-literal</a><br>integer-literal → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_hexadecimal-literal" target="_blank">hexadecimal-literal</a><br>binary-literal → <code>0b</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_binary-digit" target="_blank">binary-digit</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_binary-literal-characters" target="_blank">binary-literal-characters</a><sub>opt</sub><br>binary-digit → 数値 0 または 1<br>binary-literal-character → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_binary-digit" target="_blank">binary-digit</a> | <code>_</code><br>binary-literal-characters → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_binary-literal-character" target="_blank">binary-literal-character</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_binary-literal-characters" target="_blank">binary-literal-characters</a><sub>opt</sub><br>octal-literal → <code>0o</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_octal-digit" target="_blank">octal-digit</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_octal-literal-characters" target="_blank">octal-literal-characters</a><sub>opt</sub><br>octal-digit → 数値 0 ~ 7 octal-literal-character → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_octal-digit" target="_blank">octal-digit</a> | <code>_</code><br>octal-literal-characters → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_octal-literal-character" target="_blank">octal-literal-character</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_octal-literal-characters" target="_blank">octal-literal-characters</a><sub>opt</sub><br>decimal-literal → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digit" target="_blank">decimal-digit</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-literal-characters" target="_blank">decimal-literal-characters</a><sub>opt</sub><br>decimal-digit → 数値 0 ~ 9<br>decimal-digits → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digit" target="_blank">decimal-digit</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits" target="_blank">decimal-digits</a><sub>opt</sub><br>decimal-literal-character → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digit" target="_blank">decimal-digit</a> | <code>_</code><br>decimal-literal-characters → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-literal-character" target="_blank">decimal-literal-character</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-literal-characters" target="_blank">decimal-literal-characters</a><sub>opt</sub><br>hexadecimal-literal → <code>0x</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_hexadecimal-digit" target="_blank">hexadecimal-digit</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_hexadecimal-literal-characters" target="_blank">hexadecimal-literal-characters</a><sub>opt</sub><br>hexadecimal-digit → 数値 0 ~ 9、 a ~ f、または A ~ F<br>hexadecimal-literal-character → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_hexadecimal-digit" target="_blank">hexadecimal-digit</a> | <code>_</code><br>hexadecimal-literal-characters → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_hexadecimal-literal-character" target="_blank">hexadecimal-literal-character</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_hexadecimal-literal-characters" target="_blank">hexadecimal-literal-characters</a><sub>opt</sub></p>
+</blockquote>
+<h3 id="浮動小数点リテラルfloating-point-literals"><a name="浮動小数点リテラルfloating-point-literals" class="plugin-anchor" href="#浮動小数点リテラルfloating-point-literals"><i class="fa fa-link" aria-hidden="true"></i></a>浮動小数点リテラル(Floating-Point Literals)</h3>
+<p><em>浮動小数点リテラル</em>は、不特定の精度の浮動小数点値を表します。</p>
+<p>デフォルトでは、浮動小数点リテラルは 10 進数(前置なし)で表されますが、16 進数(<code>0x</code> 前置付き)で表すこともできます。</p>
+<p>10 進数の浮動小数点リテラルは、10 進数の数字のシーケンスと、その後に続く 10 進数の小数、10 進数の指数、またはその両方で構成されます。小数部は、小数点(<code>.</code>)とそれに続く一連の 10 進数で構成されます。指数は、大文字または小文字の前置の <code>e</code> と、その後に続く 10 進数の数字のシーケンスで構成され、<code>e</code> の前の値に 10 の累乗が掛けられます。例えば、<code>1.25e2</code> は 1.25 x <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">10^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord"><span class="mord mathrm">0</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathrm mtight">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span> を表し、<code>125.0</code> に評価されます。同様に、<code>1.25e-2</code> は 1.25 x <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">10^{-2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord"><span class="mord mathrm">0</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord scriptstyle uncramped mtight"><span class="mord mtight">−</span><span class="mord mathrm mtight">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span> を表し、<code>0.0125</code> に評価されます。</p>
+<p>16 進数の浮動小数点リテラルは、<code>0x</code> 前置、オプションの 16 進数の小数、16 進数の指数で構成されます。16 進数は、小数点とそれに続く 16 進数の数字で構成されます。指数は、大文字または小文字の前置の <code>p</code> と、その後に続く 10 進数の数字のシーケンスで構成されます。これは、<code>p</code> の前の値に乗算される 2 のべき乗を示します。例えば、<code>0xFp2</code> は 15 x <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">2^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathrm mtight">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span> を表し、<code>60</code> に評価されます。同様に、<code>0xFp-2</code> は 15 x <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2^{-2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord scriptstyle uncramped mtight"><span class="mord mtight">−</span><span class="mord mathrm mtight">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span> を表し、<code>3.75</code> に評価されます。</p>
+<p>負の浮動小数点リテラルは、<code>-42.5</code> のように、浮動小数点リテラルの前にマイナス記号(<code>-</code>)を付けることで表現されます。</p>
+<p>アンダースコア(<code>_</code>)を読みやすくするために数字の間に使用できますが、無視されるため、リテラルの値には影響しません。浮動小数点リテラルは先行ゼロ(<code>0</code>)で始めることができますが、同様に無視され、リテラルの基数または値には影響しません。</p>
+<p>特に指定されていない限り、浮動小数点リテラルのデフォルトの推論型は、64 ビット浮動小数点数を表す Swift の標準ライブラリ <code>Double</code> 型です。Swift 標準ライブラリでは、32 ビットの浮動小数点数を表す <code>Float</code> 型も定義されています。</p>
+<blockquote>
+<p>GRAMMAR OF A FLOATING-POINT LITERAL<br>floating-point-literal → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-literal" target="_blank">decimal-literal</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-fraction" target="_blank">decimal-fraction</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-exponent" target="_blank">decimal-exponent</a><sub>opt</sub><br>floating-point-literal → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_hexadecimal-literal" target="_blank">hexadecimal-literal</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_hexadecimal-fraction" target="_blank">hexadecimal-fraction</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_hexadecimal-exponent" target="_blank">hexadecimal-exponent</a><br>decimal-fraction → <code>.</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-literal" target="_blank">decimal-literal</a><br>decimal-exponent → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_floating-point-e" target="_blank">floating-point-e</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_sign" target="_blank">sign</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-literal" target="_blank">decimal-literal</a><br>hexadecimal-fraction → <code>.</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_hexadecimal-digit" target="_blank">hexadecimal-digit</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_hexadecimal-literal-characters" target="_blank">hexadecimal-literal-characters</a><sub>opt</sub><br>hexadecimal-exponent → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_floating-point-p" target="_blank">floating-point-p</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_sign" target="_blank">sign</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-literal" target="_blank">decimal-literal</a><br>floating-point-e → <code>e</code> | <code>E</code><br>floating-point-p → <code>p</code> | <code>P</code><br>sign → <code>+</code> | <code>-</code></p>
+</blockquote>
+<h3 id="文字列リテラルstring-literals"><a name="文字列リテラルstring-literals" class="plugin-anchor" href="#文字列リテラルstring-literals"><i class="fa fa-link" aria-hidden="true"></i></a><a id="lexical-structure-string-literals">文字列リテラル(String Literals)</a></h3>
+<p><em>文字列リテラル</em>は、引用符で囲まれた一連の文字です。単一行の文字列リテラルは二重引用符で囲まれ、次の形式になります:</p>
+<p><img src="../.gitbook/assets/singleline_strings.png" alt="単一行の文字列リテラル"></p>
+<p>文字列リテラルには、エスケープされていない二重引用符(<code>&quot;</code>)、エスケープされていないバックスラッシュ (<code>\</code>)、キャリッジリターン、またはラインフィードを含めることはできません。</p>
+<p>複数行の文字列リテラルは、3 つの二重引用符で囲まれ、次の形式になります。</p>
+<p><img src="../.gitbook/assets/multipleline_strings.png" alt="複数行の文字列リテラル"></p>
+<p>単一行の文字列リテラルとは異なり、複数行の文字列リテラルには、エスケープされていない二重引用符 (<code>&quot;</code>)、キャリッジリターン、およびラインフィードを含めることができます。3 つのエスケープされていない二重引用符を隣り合わせに含めることはできません。</p>
+<p>複数行の文字列リテラルを開始する <code>&quot;&quot;&quot;</code> の後の改行は文字列の一部ではありません。リテラルを終了する <code>&quot;&quot;&quot;</code> の前の改行も文字列の一部ではありません。改行で開始または終了する複数行の文字列リテラルを作成するには、最初または最後の行として空白行を記述します。</p>
+<p>複数行の文字列リテラルは、スペースとタブの任意の組み合わせを使用してインデントできます。このインデントは文字列に含まれていません。リテラルを終了する <code>&quot;&quot;&quot;</code> がインデントを決定します。リテラル内のすべての非空白行は、終わりの <code>&quot;&quot;&quot;</code> の前に表示されるものと同じインデントで開始する必要があります。タブとスペース間の変換はありません。インデントの後に追加のスペースとタブを含めることができます。これらのスペースとタブは文字列に表示されます。</p>
+<p>複数行の文字列リテラルの改行は、改行文字を使用するように正規化されます。ソースファイルにキャリッジリターンとラインフィードが混在している場合でも、文字列内のすべての改行は同じになります。</p>
+<p>複数行の文字列リテラルでは、行末にバックスラッシュ(<code>\</code>)を記述すると、文字列からその改行が省略されます。バックスラッシュと改行の間の空白もすべて省略されます。この構文を使用すると、結果の文字列の値を変更せずに、ソースコードで複数行の文字列リテラルをハードラップできます。</p>
+<p>次のエスケープシーケンスを使用して、単一行形式と複数行形式の両方の文字列リテラルに特殊文字を含めることができます:</p>
+<ul>
+<li>ヌル文字(<code>\0</code>)</li>
+<li>バックスラッシュ(<code>\</code>)</li>
+<li>水平タブ(<code>\t</code>)</li>
+<li>改行(<code>\n</code>)</li>
+<li>キャリッジリターン(<code>\r</code>)</li>
+<li>二重引用符(<code>\&quot;</code>)</li>
+<li>単一引用符(<code>\&apos;</code>)</li>
+<li>Unicode スカラー(<code>\u{n}</code>)、<code>n</code> は 1 ～ 8 桁の 16 進数</li>
+</ul>
+<p>式の値を文字列リテラルに挿入するには、式をバックスラッシュ(<code>\</code>)の後に括弧で囲みます。補間された式には文字列リテラルを含めることができますが、エスケープされていないバックスラッシュ、キャリッジリターン、またはラインフィードを含めることはできません。</p>
+<p>例えば、次の文字列リテラルはすべて同じ値です:</p>
+<pre class="language-"><code class="lang-swift"><span class="token string">&quot;1 2 3&quot;</span>
+<span class="token string">&quot;1 2 <span class="token interpolation"><span class="token delimiter variable">\(</span><span class="token string">&quot;3&quot;</span><span class="token delimiter variable">)</span></span>&quot;</span>
+<span class="token string">&quot;1 2 <span class="token interpolation"><span class="token delimiter variable">\(</span><span class="token number">3</span><span class="token delimiter variable">)</span></span>&quot;</span>
+<span class="token string">&quot;1 2 <span class="token interpolation"><span class="token delimiter variable">\(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token delimiter variable">)</span></span>&quot;</span>
+<span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token string">&quot;1 2 <span class="token interpolation"><span class="token delimiter variable">\(</span>x<span class="token delimiter variable">)</span></span>&quot;</span>
+</code></pre>
+<p>拡張区切り文字で区切られた文字列は、引用符で囲まれた一連の文字と、1 つ以上の文字列の両側に同じ数のシャープ記号(<code>#</code>) のセットです。拡張区切り文字で区切られた文字列には、次の形式があります:</p>
+<p><img src="../.gitbook/assets/string_delimited_by_extended_delimiters.png" alt="拡張区切り文字で区切られた文字列"></p>
+<p>拡張区切り文字で区切られた文字列内の特殊文字は、通常の文字として表示されます。拡張区切り文字を使用して、通常は文字列補間の生成、エスケープシーケンスの開始、文字列の終了などの特殊な効果を持つ文字を使って通常の文字列を作成できます。</p>
+<p>次の例は、同等の文字列値を作成する拡張区切り文字で区切られた文字列リテラルと文字列を示しています:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> string <span class="token operator">=</span> #<span class="token string">&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>x<span class="token delimiter variable">)</span></span> \ &quot;</span> \u<span class="token punctuation">{</span><span class="token number">2603</span><span class="token punctuation">}</span>&quot;#
+<span class="token keyword">let</span> escaped <span class="token operator">=</span> <span class="token string">&quot;\<span class="token interpolation"><span class="token delimiter variable">\(</span>x<span class="token delimiter variable">)</span></span> \\ \&quot; \\u{2603}&quot;</span>
+<span class="token function">print</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span>
+<span class="token comment">// &quot;\(x) \ &quot; \u{2603}&quot;</span>
+<span class="token function">print</span><span class="token punctuation">(</span>string <span class="token operator">==</span> escaped<span class="token punctuation">)</span>
+<span class="token comment">// &quot;true&quot;</span>
+</code></pre>
+<p>複数の番号記号を使用して、拡張区切り文字で区切られた文字列を形成する場合は、番号記号の間に空白を入れないでください。</p>
+<pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span>###<span class="token string">&quot;Line 1\###nLine 2&quot;</span>###<span class="token punctuation">)</span> <span class="token comment">// OK</span>
+<span class="token function">print</span><span class="token punctuation">(</span># # #<span class="token string">&quot;Line 1\# # #nLine 2&quot;</span># # #<span class="token punctuation">)</span> <span class="token comment">// Error</span>
+</code></pre>
+<p>拡張区切り文字を使用して作成する複数行の文字列リテラルには、通常の複数行の文字列リテラルと同じインデントの要件が適用されます。</p>
+<p>文字列リテラルのデフォルトで推論される型は <code>String</code> です。<code>String</code> 型の詳細については、<a href="../language-guide-gaido/strings-and-characters.html">Strings and Characters(文字列と文字)</a>、<a href="https://developer.apple.com/documentation/swift/string" target="_blank">String</a>を参照ください。</p>
+<p><code>+</code> 演算子によって連結された文字列リテラルは、コンパイル時に連結されます。例えば、下記の例の <code>textA</code> と <code>textB</code> の値は同じで、実行時に連結は実行されません。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> textA <span class="token operator">=</span> <span class="token string">&quot;Hello &quot;</span> <span class="token operator">+</span> <span class="token string">&quot;world&quot;</span>
+<span class="token keyword">let</span> textB <span class="token operator">=</span> <span class="token string">&quot;Hello world&quot;</span>
+</code></pre>
+<blockquote>
+<p>GRAMMAR OF A STRING LITERAL<br>string-literal → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_static-string-literal" target="_blank">static-string-literal</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_interpolated-string-literal" target="_blank">interpolated-string-literal</a><br>string-literal-opening-delimiter → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_extended-string-literal-delimiter" target="_blank">extended-string-literal-delimiter</a><sub>opt</sub> <code>&quot;</code><br>string-literal-closing-delimiter → <code>&quot;</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_extended-string-literal-delimiter" target="_blank">extended-string-literal-delimiter</a><sub>opt</sub><br>static-string-literal → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_string-literal-opening-delimiter" target="_blank">string-literal-opening-delimiter</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_quoted-text" target="_blank">quoted-text</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_string-literal-closing-delimiter" target="_blank">string-literal-closing-delimiter</a><br>static-string-literal → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-string-literal-opening-delimiter" target="_blank">multiline-string-literal-opening-delimiter</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-quoted-text" target="_blank">multiline-quoted-text</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-string-literal-closing-delimiter" target="_blank">multiline-string-literal-closing-delimiter</a><br>multiline-string-literal-opening-delimiter → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_extended-string-literal-delimiter" target="_blank">extended-string-literal-delimiter</a> <code>&quot;&quot;&quot;</code><br>multiline-string-literal-closing-delimiter → <code>&quot;&quot;&quot;</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_extended-string-literal-delimiter" target="_blank">extended-string-literal-delimiter</a><br>extended-string-literal-delimiter → <code>#</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_extended-string-literal-delimiter" target="_blank">extended-string-literal-delimiter</a><sub>opt</sub><br>quoted-text → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_quoted-text-item" target="_blank">quoted-text-item</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_quoted-text" target="_blank">quoted-text</a><sub>opt</sub><br>quoted-text-item → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escaped-character" target="_blank">escaped-character</a><br>quoted-text-item → <strong>&quot;</strong>、<strong>\</strong>、 U+000A、または U+000D を除く任意のUnicodeスカラ値<br>multiline-quoted-text → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-quoted-text-item" target="_blank">multiline-quoted-text-item</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-quoted-text" target="_blank">multiline-quoted-text</a><sub>opt</sub><br>multiline-quoted-text-item → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escaped-character" target="_blank">escaped-character</a><br>multiline-quoted-text-item → <strong>\</strong> を除く任意のUnicodeスカラ値<br>multiline-quoted-text-item → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escaped-newline" target="_blank">escaped-newline</a><br>interpolated-string-literal → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_string-literal-opening-delimiter" target="_blank">string-literal-opening-delimiter</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_interpolated-text" target="_blank">interpolated-text</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_string-literal-closing-delimiter" target="_blank">string-literal-closing-delimiter</a><br>interpolated-string-literal → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-string-literal-opening-delimiter" target="_blank">multiline-string-literal-opening-delimiter</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-interpolated-text" target="_blank">multiline-interpolated-text</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-string-literal-closing-delimiter" target="_blank">multiline-string-literal-closing-delimiter</a><br>interpolated-text → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_interpolated-text-item" target="_blank">interpolated-text-item</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_interpolated-text" target="_blank">interpolated-text</a><sub>opt</sub><br>interpolated-text-item → <code>\(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> <code>)</code> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_quoted-text-item" target="_blank">quoted-text-item</a><br>multiline-interpolated-text → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-interpolated-text-item" target="_blank">multiline-interpolated-text-item</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-interpolated-text" target="_blank">multiline-interpolated-text</a><sub>opt</sub><br>multiline-interpolated-text-item → <code>\(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> <code>)</code> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_multiline-quoted-text-item" target="_blank">multiline-quoted-text-item</a><br>escape-sequence → <code>\</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_extended-string-literal-delimiter" target="_blank">extended-string-literal-delimiter</a><br>escaped-character → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escape-sequence" target="_blank">escape-sequence</a> <code>0</code> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escape-sequence" target="_blank">escape-sequence</a> <code>\</code> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escape-sequence" target="_blank">escape-sequence</a> <code>t</code> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escape-sequence" target="_blank">escape-sequence</a> <code>n</code> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escape-sequence" target="_blank">escape-sequence</a> <code>r</code> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escape-sequence" target="_blank">escape-sequence</a> <code>&quot;</code> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escape-sequence" target="_blank">escape-sequence</a> <code>&apos;</code><br>escaped-character → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escape-sequence" target="_blank">escape-sequence</a> <code>u</code> <code>{</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_unicode-scalar-digits" target="_blank">unicode-scalar-digits</a> <code>}</code><br>unicode-scalar-digits → 0 から 8 までの16進数<br>escaped-newline → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escape-sequence" target="_blank">escape-sequence</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_inline-spaces" target="_blank">inline-spaces</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_line-break" target="_blank">line-break</a></p>
+</blockquote>
+<h2 id="演算子operators"><a name="演算子operators" class="plugin-anchor" href="#演算子operators"><i class="fa fa-link" aria-hidden="true"></i></a><a id="operators">演算子(Operators)</a></h2>
+<p>Swift 標準ライブラリは、数多くの<em>演算子</em>を定義します。その多くは、<a href="../language-guide-gaido/basic-operators.html">Basic Operators(基本演算子)</a>と<a href="../language-guide-gaido/advanced-operators.html">Advanced Operators(高度な演算子)</a>で説明しています。このセクションでは、カスタム演算子を定義するために使用できる文字を説明します。</p>
+<p>カスタム演算子は、ASCII 文字 <code>/</code>、 <code>=</code>、 <code>-</code> 、<code>+</code>、<code>！</code>、<code>*</code>、<code>％</code>、<code>&lt;</code>、<code>&gt;</code>、<code>＆</code>、<code>|</code>、<code>^</code>、<code>？</code>、または <code>〜</code> または下記の文法で定義されている Unicode 文字の 1 つ(これは、数学演算子、その他のシンボル、および装飾記号 Unicode ブロックからの文字を含む)で始めることができます。最初の文字の後に、Unicode 文字を組み合わせることもできます。</p>
+<p>ドット(<code>.</code>)で始まるカスタム演算子を定義することもできます。これらの演算子は追加のドットを含めることができます。例えば、<code>.+.</code> は単一の演算子として扱われます。演算子がドットで始まらない場合は、他の場所にドットを含めることはできません。例えば、<code>+.+</code> は <code>+</code> 演算子の後に <code>.+</code> 演算子が続くと扱われます。</p>
+<p>疑問符(<code>？</code>)を含むカスタム演算子を定義することはできますが、単一の疑問符文字のみで構成することはできません。さらに、感嘆符(<code>！</code>)を含めることができますが、後置演算子は疑問符または感嘆符で始めることはできません。</p>
+<blockquote>
+<p>NOTE<br>トークン <code>=</code>、 <code>-</code> <code>&gt;</code>、<code>//</code>、<code>/ *</code>、<code>* /</code>、<code>.</code>、前置演算子 <code>&lt;</code>、<code>＆</code>、および <code>？</code>、中置演算子 <code>？</code>、および 後置演算子 <code>&gt;</code>、<code>！</code> は既に予約されています。これらのトークンはオーバーロードすることも、カスタム演算子として使用することもできません。</p>
+</blockquote>
+<p>演算子の周囲のホワイトスペースは、演算子が前置演算子、後置演算子、またはバイナリ演算子として使用されるかどうかを判断するために使用されます。この動作は次の規則にまとめられています:</p>
+<ul>
+<li>演算子が両側またはどちらの側面の周囲に空白を持つ場合は、バイナリ演算子として扱われます。例として、<code>a+++b</code> と <code>a +++ b</code> の <code>+++</code> 演算子はバイナリ演算子として扱われます</li>
+<li>演算子が左側のみの空白を持つ場合は、前置単項演算子として扱われます。例として、<code>a +++b</code> の <code>+++</code> 演算子は、前置単項演算子として扱われます</li>
+<li>演算子に右側の空白がある場合は、後置単項演算子として扱われます。例として、<code>a+++ b</code> の <code>+++</code> 演算子は後置単項演算子として扱われます</li>
+<li>演算子に左側に空白がないが、ドット(<code>.</code>)が続いている場合は、後置単項演算子として扱われます。例として、<code>a+++.b</code> の <code>+++</code> 演算子は後置単項演算子(<code>a +++ .b</code> ではなく <code>a+++ .b</code>)と扱われます</li>
+</ul>
+<p>これらの規則によって、演算子の前の <code>(</code>、<code>[</code>、<code>{</code>、<code>)</code>、演算子の後の <code>)</code>、<code>]</code>、<code>}</code>、および <code>,</code>、<code>;</code>、<code>:</code> も、空白と見なされます。</p>
+<p>上記の規則で注意が必要な部分があります。<code>！</code> または <code>？</code> のような定義済み演算子には左側に空白があったとしても。右側に空白があるかどうかにかかわらず、後置演算子として扱われます。<code>？</code> オプショナルチェーン演算子として使用する場合には、左側に空白を入れないでください。三項演算子(<code>?:</code>)として使用する場合には、両側に空白を入れなければなりません。</p>
+<p>特定の構成要素では、先頭に <code>&lt;</code> または <code>&gt;</code> を持つ演算子は 2 つ以上のトークンに分割されることもあります。残りの部分は同じ方法で扱われ、再び分割される可能性があります。その結果、<code>Dictionary&lt;String、Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Int</span><span class="token punctuation">&gt;</span></span>&gt;</code> のようなコンストラクト内の閉じ <code>&gt;</code> の間の文字は曖昧さを解消するために空白を追加する必要はありません。この例では、閉じ <code>&gt;</code> を誤って単一のトークンのビットシフト(<code>&gt;&gt;</code>)としては解釈されません。</p>
+<p>新しいカスタム演算子を定義する方法については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#custom-operators" target="_blank">Custom Operators(カスタム演算子)</a>と<a href="declarations.html#operator-declaration演算子宣言">Operator Declaration</a>を参照ください。既存の演算子をオーバーロードについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#operator-declaration" target="_blank">Operator Methods(演算子メソッド)</a>を参照ください</p>
+<blockquote>
+<p>GRAMMAR OF OPERATORS<br>operator → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator-head" target="_blank">operator-head</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator-characters" target="_blank">operator-characters</a><sub>opt</sub><br>operator → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_dot-operator-head" target="_blank">dot-operator-head</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_dot-operator-characters" target="_blank">dot-operator-characters</a><br>operator-head → <code>/</code> | <code>=</code> | <code>-</code> | <code>+</code> | <code>!</code> | <code>*</code> | <code>%</code> | <code>&lt;</code> | <code>&gt;</code> | <code>&amp;</code> | <code>|</code> | <code>^</code> | <code>~</code> | <code>?</code><br>operator-head → U+00A1–U+00A7<br>operator-head → U+00A9 または U+00AB<br>operator-head → U+00AC または U+00AE<br>operator-head → U+00B0–U+00B1<br>operator-head → U+00B6, U+00BB, U+00BF, U+00D7, または U+00F7<br>operator-head → U+2016–U+2017<br>operator-head → U+2020–U+2027<br>operator-head → U+2030–U+203E<br>operator-head → U+2041–U+2053<br>operator-head → U+2055–U+205E<br>operator-head → U+2190–U+23FF<br>operator-head → U+2500–U+2775<br>operator-head → U+2794–U+2BFF<br>operator-head → U+2E00–U+2E7F<br>operator-head → U+3001–U+3003<br>operator-head → U+3008–U+3020<br>operator-head → U+3030<br>operator-character → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator-head" target="_blank">operator-head</a><br>operator-character → U+0300–U+036F<br>operator-character → U+1DC0–U+1DFF<br>operator-character → U+20D0–U+20FF<br>operator-character → U+FE00–U+FE0F<br>operator-character → U+FE20–U+FE2F<br>operator-character → U+E0100–U+E01EF<br>operator-characters → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator-character" target="_blank">operator-character</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator-characters" target="_blank">operator-characters</a><sub>opt</sub><br>dot-operator-head → <code>.</code><br>dot-operator-character → <code>.</code> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator-character" target="_blank">operator-character</a><br>dot-operator-characters → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_dot-operator-character" target="_blank">dot-operator-character</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_dot-operator-characters" target="_blank">dot-operator-characters</a><sub>opt</sub><br>binary-operator → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator" target="_blank">operator</a><br>prefix-operator → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator" target="_blank">operator</a><br>postfix-operator → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator" target="_blank">operator</a></p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"構文の構造(Lexical Structure)","level":"4.2","depth":1,"next":{"title":"型(Types)","level":"4.3","depth":1,"path":"language-reference/types.md","ref":"language-reference/types.md","articles":[]},"previous":{"title":"言語リファレンスについて(About the Language Reference)","level":"4.1","depth":1,"path":"language-reference/about-the-language-reference.md","ref":"language-reference/about-the-language-reference.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"livereload":{},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-reference/lexical-structure.md","mtime":"2021-07-10T23:55:24.258Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-10T23:53:49.546Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-api/theme-api.js"></script>
+        
+    
+
+    </body>
+</html>
+

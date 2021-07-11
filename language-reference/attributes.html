@@ -1,0 +1,1471 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <title>属性(Attributes) · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-api/theme-api.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="patterns.html" />
+    
+    
+    <link rel="prev" href="declarations.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索ワードを入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    The Swift Programming Language(日本語版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Swiftへようこそ(WELCOME TO SWIFT)</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../welcome-to-swift-swiftheyoukoso/about-swift.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/about-swift.html">
+            
+                    
+                    Swiftについて(About Swift)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../welcome-to-swift-swiftheyoukoso/version-compatibility.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/version-compatibility.html">
+            
+                    
+                    バージョン互換性(Version Compatibility)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../welcome-to-swift-swiftheyoukoso/a-swift-tour.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/a-swift-tour.html">
+            
+                    
+                    Swiftツアー(A Swift Tour)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">LANGUAGE GUIDE (言語ガイド)</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../language-guide-gaido/the-basics.html">
+            
+                <a href="../language-guide-gaido/the-basics.html">
+            
+                    
+                    基本(The Basics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../language-guide-gaido/basic-operators.html">
+            
+                <a href="../language-guide-gaido/basic-operators.html">
+            
+                    
+                    基本演算子(Basic Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../language-guide-gaido/strings-and-characters.html">
+            
+                <a href="../language-guide-gaido/strings-and-characters.html">
+            
+                    
+                    文字と文字列(Strings and Characters)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../language-guide-gaido/collection-types.html">
+            
+                <a href="../language-guide-gaido/collection-types.html">
+            
+                    
+                    コレクション型(Collection Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../language-guide-gaido/control-flow.html">
+            
+                <a href="../language-guide-gaido/control-flow.html">
+            
+                    
+                    制御フロー(Control Flow)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../language-guide-gaido/functions.html">
+            
+                <a href="../language-guide-gaido/functions.html">
+            
+                    
+                    関数(Functions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="../language-guide-gaido/closures.html">
+            
+                <a href="../language-guide-gaido/closures.html">
+            
+                    
+                    クロージャ(Closures)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="../language-guide-gaido/enumerations.html">
+            
+                <a href="../language-guide-gaido/enumerations.html">
+            
+                    
+                    列挙型(Enumerations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="../language-guide-gaido/structures-and-classes.html">
+            
+                <a href="../language-guide-gaido/structures-and-classes.html">
+            
+                    
+                    構造体とクラス(Structures and Classes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="../language-guide-gaido/properties.html">
+            
+                <a href="../language-guide-gaido/properties.html">
+            
+                    
+                    プロパティ(Properties)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="../language-guide-gaido/methods.html">
+            
+                <a href="../language-guide-gaido/methods.html">
+            
+                    
+                    メソッド(Methods)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="../language-guide-gaido/subscripts.html">
+            
+                <a href="../language-guide-gaido/subscripts.html">
+            
+                    
+                    サブスクリプト(Subscripts)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="../language-guide-gaido/inheritance.html">
+            
+                <a href="../language-guide-gaido/inheritance.html">
+            
+                    
+                    継承(Inheritance)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="../language-guide-gaido/initialization.html">
+            
+                <a href="../language-guide-gaido/initialization.html">
+            
+                    
+                    初期化(Initialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="../language-guide-gaido/deinitialization.html">
+            
+                <a href="../language-guide-gaido/deinitialization.html">
+            
+                    
+                    デイニシャライゼーション(Deinitialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="../language-guide-gaido/optional-chaining.html">
+            
+                <a href="../language-guide-gaido/optional-chaining.html">
+            
+                    
+                    オプショナルチェーン(Optional Chaining)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="../language-guide-gaido/error-handling.html">
+            
+                <a href="../language-guide-gaido/error-handling.html">
+            
+                    
+                    エラー処理(Error Handling)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="../language-guide-gaido/concurrency.html">
+            
+                <a href="../language-guide-gaido/concurrency.html">
+            
+                    
+                    同時並行処理(Concurrency)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="../language-guide-gaido/type-casting.html">
+            
+                <a href="../language-guide-gaido/type-casting.html">
+            
+                    
+                    型キャスト(Type Casting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="../language-guide-gaido/nested-types.html">
+            
+                <a href="../language-guide-gaido/nested-types.html">
+            
+                    
+                    ネスト型(Nested Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.21" data-path="../language-guide-gaido/extensions.html">
+            
+                <a href="../language-guide-gaido/extensions.html">
+            
+                    
+                    拡張(Extensions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.22" data-path="../language-guide-gaido/protocols.html">
+            
+                <a href="../language-guide-gaido/protocols.html">
+            
+                    
+                    プロトコル(Protocols)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.23" data-path="../language-guide-gaido/generics.html">
+            
+                <a href="../language-guide-gaido/generics.html">
+            
+                    
+                    ジェネリクス(Generics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.24" data-path="../language-guide-gaido/opaque-types.html">
+            
+                <a href="../language-guide-gaido/opaque-types.html">
+            
+                    
+                    Opaque 型(Opaque Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.25" data-path="../language-guide-gaido/automatic-reference-counting.html">
+            
+                <a href="../language-guide-gaido/automatic-reference-counting.html">
+            
+                    
+                    自動参照カウント ARC(Automatic Reference Counting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.26" data-path="../language-guide-gaido/memory-safety.html">
+            
+                <a href="../language-guide-gaido/memory-safety.html">
+            
+                    
+                    メモリ安全性(Memory Safety)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.27" data-path="../language-guide-gaido/access-control.html">
+            
+                <a href="../language-guide-gaido/access-control.html">
+            
+                    
+                    アクセスコントロール(Access Control)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.28" data-path="../language-guide-gaido/advanced-operators.html">
+            
+                <a href="../language-guide-gaido/advanced-operators.html">
+            
+                    
+                    高度な演算子(Advanced Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">LANGUAGE REFERENCE (言語リファレンス)</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="about-the-language-reference.html">
+            
+                <a href="about-the-language-reference.html">
+            
+                    
+                    言語リファレンスについて(About the Language Reference)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="lexical-structure.html">
+            
+                <a href="lexical-structure.html">
+            
+                    
+                    構文の構造(Lexical Structure)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="types.html">
+            
+                <a href="types.html">
+            
+                    
+                    型(Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="expressions.html">
+            
+                <a href="expressions.html">
+            
+                    
+                    式(Expressions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="statements.html">
+            
+                <a href="statements.html">
+            
+                    
+                    文(Statements)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="declarations.html">
+            
+                <a href="declarations.html">
+            
+                    
+                    宣言(Declarations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.7" data-path="attributes.html">
+            
+                <a href="attributes.html">
+            
+                    
+                    属性(Attributes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="patterns.html">
+            
+                <a href="patterns.html">
+            
+                    
+                    パターン(Patterns)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="generic-parameters-and-arguments.html">
+            
+                <a href="generic-parameters-and-arguments.html">
+            
+                    
+                    ジェネリックパラメータと引数(Generic Parameters and Arguments)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="summary-of-the-grammar.html">
+            
+                <a href="summary-of-the-grammar.html">
+            
+                    
+                    文法のまとめ(Summary of the Grammar)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">REVISION HISTORY (改訂履歴)</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../revision-history/document-revision-history.html">
+            
+                <a href="../revision-history/document-revision-history.html">
+            
+                    
+                    ドキュメント改訂履歴(Document Revision History)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKitで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >属性(Attributes)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="属性attributes"><a name="属性attributes" class="plugin-anchor" href="#属性attributes"><i class="fa fa-link" aria-hidden="true"></i></a>属性(Attributes)</h1>
+<p>最終更新日: 2021/7/2</p>
+<p>Swift には、宣言に適用される属性と型に適用される属性の 2 種類があります。属性は、宣言または型に関する追加情報を提供します。例えば、関数宣言の <code>discardableResult</code> 属性は、関数は値を返しますが、戻り値が使用されていない場合に、コンパイラが警告を生成しないことを示します。</p>
+<p><code>@</code> 記号に続けて属性の名前と、属性が受け入れる引数を書き込むことにより、属性を指定します。</p>
+<p><img src="../.gitbook/assets/attributes.png" alt="属性"></p>
+<p>一部の宣言属性は、属性とそれが特定の宣言にどのように適用されるかについての詳細情報を指定する引数を受け入れます。これらの <em>attribute arguments</em> は括弧(<code>()</code>)で囲まれ、その形式は属する属性によって定義されています。</p>
+<h2 id="宣言属性declaration-attributes"><a name="宣言属性declaration-attributes" class="plugin-anchor" href="#宣言属性declaration-attributes"><i class="fa fa-link" aria-hidden="true"></i></a><a id="declaration-attributes">宣言属性(Declaration Attributes)</a></h2>
+<p>宣言属性は宣言にのみ適用できます。</p>
+<h3 id="available"><a name="available" class="plugin-anchor" href="#available"><i class="fa fa-link" aria-hidden="true"></i></a>available</h3>
+<p>この属性を適用すると、特定の Swift 言語バージョンまたは特定のプラットフォームとオペレーティングシステムのバージョンに関連する宣言のライフサイクルを示します。</p>
+<p><code>available</code> 属性は、常に 2 つ以上のカンマ区切り(<code>,</code>)の属性引数のリストを伴います。これらの引数は、次のプラットフォーム名または言語名のいずれかで始まります:</p>
+<ul>
+<li><code>iOS</code></li>
+<li><code>iOSApplicationExtension</code></li>
+<li><code>macOS</code></li>
+<li><code>macOSApplicationExtension</code></li>
+<li><code>macCatalyst</code></li>
+<li><code>macCatalystApplicationExtension</code></li>
+<li><code>watchOS</code></li>
+<li><code>watchOSApplicationExtension</code></li>
+<li><code>tvOS</code></li>
+<li><code>tvOSApplicationExtension</code></li>
+<li><code>swift</code></li>
+</ul>
+<p>アスタリスク(<code>*</code>)を使用して、上記の全てのプラットフォーム名で宣言が使用可能だと示すこともできます。Swift のバージョン番号を使用してアベイラビリティを指定する <code>available</code> 属性では、アスタリスクを使用できません。</p>
+<p>残りの引数は任意の順序で記述でき、重要なマイルストーンなど、宣言のライフサイクルに関する追加情報を指定できます。</p>
+<ul>
+<li><code>unavailable</code> 引数は、指定されたプラットフォームで宣言が使用できないことを示します。この引数は、Swift のアベイラビリティバージョンを指定している場合は使用できません</li>
+<li><code>introduced</code> 引数は、宣言が導入された特定のプラットフォームまたは言語の最初のバージョンを示します。形式は次のとおりです:</li>
+</ul>
+<p><img src="../.gitbook/assets/introduced.png" alt="introduced 引数"></p>
+<p><em>version number</em> は、ピリオド(<code>.</code>)で区切られた 1〜3 個の正の整数で構成されます。</p>
+<ul>
+<li><code>deprecated</code> 引数は、宣言が非推奨になった特定のプラットフォームまたは言語の最初のバージョンを示します。形式は次のとおりです:</li>
+</ul>
+<p><img src="../.gitbook/assets/deprecated.png" alt="deprecated 引数"></p>
+<p>任意の <em>version number</em> は、ピリオド(<code>.</code>)で区切られた 1〜3 個の正の整数で構成されます。バージョン番号を省略すると、deprecated がいつ発生したかについての情報を提供せずに、宣言が現在 deprecated になっていることのみを示します。バージョン番号を省略する場合は、コロン(<code>:</code>)も省略してください。</p>
+<ul>
+<li><code>obsoleted</code> 引数は、宣言が廃止された特定のプラットフォームまたは言語の最初のバージョンを示します。宣言が廃止されると、指定されたプラットフォームまたは言語から削除され、使用できなくなります。形式は次のとおりです:</li>
+</ul>
+<p><img src="../.gitbook/assets/obsoleted.png" alt="obsoleted 引数"></p>
+<p><em>version number</em> は、ピリオド(<code>.</code>)で区切られた 1〜3 個の正の整数で構成されます。</p>
+<ul>
+<li><code>message</code> 引数は、deprecated または obsoleted された宣言に使用した際に、コンパイラが表示する警告またはエラーのテキストメッセージを提供します。形式は次のとおりです:</li>
+</ul>
+<p><img src="../.gitbook/assets/message.png" alt="message 引数"></p>
+<p><em>message</em> は文字列リテラルで構成されます。</p>
+<ul>
+<li><code>renamed</code> 引数は、名前が変更された宣言の新しい名前を示すテキストメッセージを提供します。コンパイラは、名前が変更された宣言が使用された際にエラーを発行し、新しい名前を表示します。形式は次のとおりです:</li>
+</ul>
+<p><img src="../.gitbook/assets/renamed.png" alt="renamed 引数"></p>
+<p><em>new name</em> は文字列リテラルで構成されます。</p>
+<p>下記に示すように、フレームワークまたはライブラリのリリース間で宣言の名前が変更されたことを示すために、タイプエイリアス宣言に <code>renamed</code> 引数と <code>unavailable</code> 引数を持つ <code>available</code> 属性を適用することができます。この組み合わせにより、宣言の名前が変更されたというコンパイルエラーが発生します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token comment">// 初回リリース</span>
+<span class="token keyword">protocol</span> <span class="token builtin">MyProtocol</span> <span class="token punctuation">{</span>
+    <span class="token comment">// プロトコル定義</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code class="lang-swift"><span class="token comment">// MyProtocolの名前変更後のリリース</span>
+<span class="token keyword">protocol</span> <span class="token builtin">MyRenamedProtocol</span> <span class="token punctuation">{</span>
+    <span class="token comment">// プロトコル定義</span>
+<span class="token punctuation">}</span>
+
+@<span class="token function">available</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">,</span> unavailable<span class="token punctuation">,</span> renamed<span class="token punctuation">:</span> <span class="token string">&quot;MyRenamedProtocol&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">typealias</span> <span class="token builtin">MyProtocol</span> <span class="token operator">=</span> <span class="token builtin">MyRenamedProtocol</span>
+</code></pre>
+<p>1 つの宣言に複数の <code>available</code> 属性を適用して、様々なプラットフォームおよび様々なバージョンの Swift のアベイラビリティを指定できます。属性が現在のターゲットと一致しないプラットフォームまたは言語バージョンを指定している場合、<code>available</code> 属性が適用される宣言は無視されます。複数の <code>available</code> 属性を使用する場合、有効なアベイラビリティは、プラットフォームと Swift のアベイラビリティの組み合わせです。</p>
+<p><code>available</code> 属性がプラットフォームまたは言語名の引数に加えて <code>introduced</code> 引数を指定するだけの場合は、代わりに次の省略構文を使用できます:</p>
+<p><img src="../.gitbook/assets/available.png" alt="available属性"></p>
+<p><code>available</code> 属性の省略構文は、複数のプラットフォームのアベイラビリティを簡潔に表しています。2 つの形式は機能的に同等ですが、可能な限り省略形が推奨されます。</p>
+<pre class="language-"><code class="lang-swift">@<span class="token function">available</span><span class="token punctuation">(</span>iOS <span class="token number">10.0</span><span class="token punctuation">,</span> macOS <span class="token number">10.12</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">)</span>
+<span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span>
+    <span class="token comment">// クラス定義</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Swift バージョン番号を使用してアベイラビリティを指定する <code>available</code> 属性は、宣言のプラットフォームのアベイラビリティを追加で指定することはできません。代わりに、個別の <code>available</code> 属性を使用して、Swift バージョンのアベイラビリティと 1 つ以上のプラットフォームのアベイラビリティを指定します。</p>
+<pre class="language-"><code class="lang-swift">@<span class="token function">available</span><span class="token punctuation">(</span>swift <span class="token number">3.0</span><span class="token punctuation">.</span><span class="token number">2</span><span class="token punctuation">)</span>
+@<span class="token function">available</span><span class="token punctuation">(</span>macOS <span class="token number">10.12</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">)</span>
+<span class="token keyword">struct</span> <span class="token builtin">MyStruct</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 構造体定義</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="discardableresult"><a name="discardableresult" class="plugin-anchor" href="#discardableresult"><i class="fa fa-link" aria-hidden="true"></i></a>discardableResult</h3>
+<p>この属性を関数またはメソッドの宣言に適用すると、値を返す関数またはメソッドがその結果を使用せずに呼び出されたときのコンパイラの警告を抑制します。</p>
+<h3 id="dynamiccallable"><a name="dynamiccallable" class="plugin-anchor" href="#dynamiccallable"><i class="fa fa-link" aria-hidden="true"></i></a>dynamicCallable</h3>
+<p>この属性をクラス、構造体、列挙型、またはプロトコルに適用すると、型のインスタンスを呼び出し可能な関数として扱います。この型は、<code>dynamicallyCall(withArguments:)</code> メソッド、<code>dynamicallyCall(withKeywordArguments:)</code> メソッド、またはその両方を実装する必要があります。</p>
+<p>動的に呼び出し可能な型のインスタンスは、任意の数の引数を取る関数のように呼び出すことができます。</p>
+<pre class="language-"><code class="lang-swift">@dynamicCallable
+<span class="token keyword">struct</span> <span class="token builtin">TelephoneExchange</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">dynamicallyCall</span><span class="token punctuation">(</span>withArguments phoneNumber<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> phoneNumber <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+            <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Get Swift help on forums.swift.org&quot;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Unrecognized number&quot;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> dial <span class="token operator">=</span> <span class="token function">TelephoneExchange</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 動的メソッド呼び出しを使用します</span>
+<span class="token function">dial</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;Get Swift help on forums.swift.org&quot;</span>
+
+<span class="token function">dial</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;Unrecognized number&quot;</span>
+
+<span class="token comment">// 基になるメソッドを直接呼び出します</span>
+dial<span class="token punctuation">.</span><span class="token function">dynamicallyCall</span><span class="token punctuation">(</span>withArguments<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<p><code>dynamicallyCall(withArguments:)</code> メソッドの宣言には、上記の例の <code>[Int]</code> のように、<a href="https://developer.apple.com/documentation/swift/expressiblebyarrayliteral" target="_blank">ExpressibleByArrayLiteral</a>プロトコルに準拠する単一のパラメータが必要です。戻り値の型は任意の型にすることができます。</p>
+<p><code>dynamicallyCall(withKeywordArguments:)</code> メソッドを実装する場合は、動的メソッド呼び出しにラベルを含めることができます。</p>
+<pre class="language-"><code class="lang-swift">@dynamicCallable
+<span class="token keyword">struct</span> <span class="token builtin">Repeater</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">dynamicallyCall</span><span class="token punctuation">(</span>withKeywordArguments pairs<span class="token punctuation">:</span> <span class="token builtin">KeyValuePairs</span><span class="token operator">&lt;</span><span class="token builtin">String</span><span class="token punctuation">,</span> <span class="token builtin">Int</span><span class="token operator">&gt;</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> pairs
+            <span class="token punctuation">.</span><span class="token builtin">map</span> <span class="token punctuation">{</span> label<span class="token punctuation">,</span> <span class="token builtin">count</span> <span class="token keyword">in</span>
+                <span class="token function">repeatElement</span><span class="token punctuation">(</span>label<span class="token punctuation">,</span> <span class="token builtin">count</span><span class="token punctuation">:</span> <span class="token builtin">count</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">joined</span><span class="token punctuation">(</span>separator<span class="token punctuation">:</span> <span class="token string">&quot; &quot;</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+            <span class="token punctuation">.</span><span class="token function">joined</span><span class="token punctuation">(</span>separator<span class="token punctuation">:</span> <span class="token string">&quot;\n&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> repeatLabels <span class="token operator">=</span> <span class="token function">Repeater</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">repeatLabels</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> c<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> a<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// a</span>
+<span class="token comment">// b b</span>
+<span class="token comment">// c c c</span>
+<span class="token comment">// b b</span>
+<span class="token comment">// a</span>
+</code></pre>
+<p><code>dynamicallyCall(withKeywordArguments:)</code> メソッドの宣言には、<a href="https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral" target="_blank">ExpressibleByDictionaryLiteral</a>プロトコルに準拠する単一のパラメータが必要で、戻り値の型は任意の型にすることができます。パラメータの<a href="https://developer.apple.com/documentation/swift/expressiblebydictionaryliteral/2294108-key" target="_blank">Key</a>は<a href="https://developer.apple.com/documentation/swift/expressiblebystringliteral" target="_blank">ExpressibleByStringLiteral</a>に準拠する必要があります。前の例では、パラメータの型として<a href="https://developer.apple.com/documentation/swift/keyvaluepairs" target="_blank">KeyValuePairs</a>を使用しているため、呼び出し元は重複するパラメータラベルを含めることができます。つまり、<code>a</code> と <code>b</code> は、<code>repeatLabels</code> の呼び出し時に複数回使用されています。</p>
+<p>両方の <code>dynamiclyCall</code> メソッドを実装する場合、メソッド呼び出しにキーワード引数が含まれていると、<code>dynamicallyCall(withKeywordArguments:)</code> が呼び出されます。他の全ての場合、<code>dynamicallyCall(withArguments:)</code> が呼び出されます。</p>
+<p>動的に呼び出すことができるインスタンスは、<code>dynamicCall</code> メソッドの実装の 1 つで指定した型と一致する引数と戻り値を使用した場合にのみ呼び出すことができます。次の例の呼び出しは、<code>KeyValuePairs<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>String,</span> <span class="token attr-name">String</span><span class="token punctuation">&gt;</span></span></code> を受け取る <code>dynamicallyCall(withArguments:)</code> の実装がないため、コンパイルできません。</p>
+<pre class="language-"><code class="lang-swift"><span class="token function">repeatLabels</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token string">&quot;four&quot;</span><span class="token punctuation">)</span> <span class="token comment">// エラー</span>
+</code></pre>
+<h3 id="dynamicmemberlookup"><a name="dynamicmemberlookup" class="plugin-anchor" href="#dynamicmemberlookup"><i class="fa fa-link" aria-hidden="true"></i></a>dynamicMemberLookup</h3>
+<p>この属性をクラス、構造体、列挙型、またはプロトコルに適用すると、実行時にメンバを名前で検索できるようになります。型は <code>subscript(dynamicMember:)</code> を実装する必要があります。</p>
+<p>明示的なメンバ式では、指定されたメンバに対応する宣言がない場合、式は型の <code>subscript(dynamicMember:)</code> の呼び出しとして解釈され、メンバに関する情報を引数として渡します。subscript は、KeyPath またはメンバ名のいずれかでパラメータを受け取ることができます。両方の subscript を実装する場合、KeyPath 引数を取る subscript が使用されます。</p>
+<p><code>subscript(dynamicMember:)</code> の実装は、<a href="https://developer.apple.com/documentation/swift/keypath" target="_blank">KeyPath</a>、<a href="https://developer.apple.com/documentation/swift/writablekeypath" target="_blank">WritableKeyPath</a>、または <a href="https://developer.apple.com/documentation/swift/referencewritablekeypath" target="_blank">ReferenceWritableKeyPath</a>の引数を使用して KeyPath を受け取ることができます。<a href="https://developer.apple.com/documentation/swift/expressiblebystringliteral" target="_blank">ExpressibleByStringLiteral</a>プロトコル(ほとんどの場合、<code>String</code>)に準拠する型の引数を使用して、メンバ名を受け入れることができます。subscript の戻り値の型は任意の型にすることができます。</p>
+<p>メンバ名による動的なメンバ検索を使用して、他の言語のデータを Swift にブリッジする場合など、コンパイル時に型チェックできないデータのラッパ型を作成できます。例えば:</p>
+<pre class="language-"><code class="lang-swift">@dynamicMemberLookup
+<span class="token keyword">struct</span> <span class="token builtin">DynamicStruct</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> dictionary <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;someDynamicMember&quot;</span><span class="token punctuation">:</span> <span class="token number">325</span><span class="token punctuation">,</span>
+                      <span class="token string">&quot;someOtherMember&quot;</span><span class="token punctuation">:</span> <span class="token number">787</span><span class="token punctuation">]</span>
+    <span class="token keyword">subscript</span><span class="token punctuation">(</span>dynamicMember member<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> dictionary<span class="token punctuation">[</span>member<span class="token punctuation">]</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token number">1054</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> s <span class="token operator">=</span> <span class="token function">DynamicStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">//動的メンバ検索を使用します。</span>
+<span class="token keyword">let</span> <span class="token keyword">dynamic</span> <span class="token operator">=</span> s<span class="token punctuation">.</span>someDynamicMember
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token keyword">dynamic</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;325&quot;</span>
+
+<span class="token comment">// 基になる subscript を直接呼び出します</span>
+<span class="token keyword">let</span> equivalent <span class="token operator">=</span> s<span class="token punctuation">[</span>dynamicMember<span class="token punctuation">:</span> <span class="token string">&quot;someDynamicMember&quot;</span><span class="token punctuation">]</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token keyword">dynamic</span> <span class="token operator">==</span> equivalent<span class="token punctuation">)</span>
+<span class="token comment">// &quot;true&quot;</span>
+</code></pre>
+<p>KeyPath による動的メンバ検索を使用して、コンパイル時の型チェックをサポートする方法でラッパ型を実装できます。例えば:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">Point</span> <span class="token punctuation">{</span> <span class="token keyword">var</span> x<span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token builtin">Int</span> <span class="token punctuation">}</span>
+
+@dynamicMemberLookup
+<span class="token keyword">struct</span> <span class="token builtin">PassthroughWrapper</span><span class="token operator">&lt;</span><span class="token builtin">Value</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> value<span class="token punctuation">:</span> <span class="token builtin">Value</span>
+    <span class="token keyword">subscript</span><span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">(</span>dynamicMember member<span class="token punctuation">:</span> <span class="token builtin">KeyPath</span><span class="token operator">&lt;</span><span class="token builtin">Value</span><span class="token punctuation">,</span> T<span class="token operator">&gt;</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> T <span class="token punctuation">{</span>
+        <span class="token keyword">get</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> value<span class="token punctuation">[</span>keyPath<span class="token punctuation">:</span> member<span class="token punctuation">]</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> point <span class="token operator">=</span> <span class="token function">Point</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token number">381</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">431</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> wrapper <span class="token operator">=</span> <span class="token function">PassthroughWrapper</span><span class="token punctuation">(</span>value<span class="token punctuation">:</span> point<span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>wrapper<span class="token punctuation">.</span>x<span class="token punctuation">)</span>
+</code></pre>
+<h3 id="frozen"><a name="frozen" class="plugin-anchor" href="#frozen"><i class="fa fa-link" aria-hidden="true"></i></a>frozen</h3>
+<p>この属性を構造体または列挙型宣言に適用すると、型に加えることができる変更の種類を制限します。この属性は、ライブラリエボリューションモードでコンパイルする場合にのみ許可されます。ライブラリの将来のバージョンでは、列挙型のケースまたは構造体の格納インスタンスプロパティを追加、削除、または並べ替えて宣言を変更することはできません。これらの変更は nonfrozen 型で許可されますが、frozen 型の ABI 互換性が損なわれます。</p>
+<blockquote>
+<p>NOTE<br>コンパイラが ライブラリエボリューションモードでない場合、全ての構造体と列挙型は暗黙的に frozen にされ、この属性は無視されます。</p>
+</blockquote>
+<p>ライブラリエボリューションモードでは、nonfrozen の構造体や列挙型のメンバとやり取りするコードは、ライブラリの将来のバージョンでその型のメンバの一部が追加、削除、または並べ替えられた場合でも、再コンパイルせずに作業を継続できるようにコンパイルされます。コンパイラは、実行時に情報を検索したり、間接層を追加したりするなどの手法を使用して、これを可能にします。構造体または列挙型を frozen でマークすると、パフォーマンスを向上させるためにこの柔軟性が失われます。ライブラリの将来のバージョンでは、型に限定的な変更しか加えることができませんが、コンパイラは、型のメンバとやり取りするコードに追加の最適化を行うことができます。</p>
+<p>frozen 型、frozen 構造体の格納プロパティの型、および frozen 列挙ケースの関連値は、public か、<code>usableFromInline</code> 属性がマークされている必要があります。frozen 構造体のプロパティはプロパティオブザーバを持つことができず、格納インスタンスプロパティの初期値を提供する式は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/attributes#inlinable" target="_blank">inlinable</a>で説明されているように inlinable 関数と同じ制限に従う必要があります。</p>
+<p>コマンドラインでライブラリエボリューションモードを有効にするには、<code>-enable-library-evolution</code> オプションを Swift コンパイラに渡します。Xcode で有効にするには、<a href="https://help.apple.com/xcode/mac/current/#/dev04b3a04ba" target="_blank">Xcode Help</a>の説明に従って、「Build Libraries for Distribution」のビルド設定(<code>BUILD_LIBRARY_FOR_DISTRIBUTION</code>)を Yes に設定します。</p>
+<p>frozen 列挙型の switch 文は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#switching-over-future-enumeration-cases" target="_blank">Switching Over Future Enumeration Cases(列挙型の将来のケースのスイッチング)</a>で説明されているように、デフォルトのケースを必要としません。frozen 列挙型を切り替えるときに <code>default</code> または <code>@unknown default</code> のケースを含めると、そのコードは実行されないため、警告が生成されます。</p>
+<h3 id="gkinspectable"><a name="gkinspectable" class="plugin-anchor" href="#gkinspectable"><i class="fa fa-link" aria-hidden="true"></i></a>GKInspectable</h3>
+<p>この属性を適用して、独自の GameplayKit コンポーネントプロパティを SpriteKit エディタ UI に公開します。この属性を適用すると、<code>objc</code> 属性も暗黙的に追加されます。</p>
+<h3 id="inlinable"><a name="inlinable" class="plugin-anchor" href="#inlinable"><i class="fa fa-link" aria-hidden="true"></i></a>inlinable</h3>
+<p>この属性を関数、メソッド、計算プロパティ、subscript、convenience イニシャライザ、またはデイニシャライザ宣言に適用すると、モジュールのパブリックインターフェイスの一部としてその宣言の実装を公開します。コンパイラは、inlinable シンボルへの呼び出しを、呼び出し側でシンボルの実装のコピーに置き換えることができます。</p>
+<p>inlinable コードは、任意のモジュールで宣言された <code>public</code> シンボルとやり取りし、<code>usableFromInline</code> 属性がマークされた同じモジュールで宣言された <code>internal</code> シンボルとやり取りできます。inline 化したコードは、<code>private</code> シンボルまたは fileprivate シンボルとやり取りできません。</p>
+<p>この属性は、関数内にネストされている宣言や、<code>fileprivate</code> または <code>private</code> 宣言には適用できません。inlinable 関数内で定義された関数とクロージャは、この属性をマークすることはできませんが、暗黙的に inlinable です。</p>
+<h3 id="main"><a name="main" class="plugin-anchor" href="#main"><i class="fa fa-link" aria-hidden="true"></i></a>main</h3>
+<p>この属性を構造体、クラス、または列挙型の宣言に適用すると、プログラムフローのトップレベルのエントリポイントが含まれていることを示します。型は、引数をとらずに <code>Void</code> を返す <code>main</code> 型関数を提供する必要があります。例えば:</p>
+<pre class="language-"><code class="lang-swift">@main
+<span class="token keyword">struct</span> <span class="token builtin">MyTopLevel</span> <span class="token punctuation">{</span>
+    <span class="token keyword">static</span> <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         <span class="token comment">// トップレベルのコードをここに</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>main</code> 属性の要件を記述する別の方法は、この属性を追加する型が、次の架空のプロトコルに準拠する型と同じ要件を満たさなければならないということです。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">ProvidesMain</span> <span class="token punctuation">{</span>
+    <span class="token keyword">static</span> <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-code" target="_blank">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。</p>
+<h3 id="nonobjc"><a name="nonobjc" class="plugin-anchor" href="#nonobjc"><i class="fa fa-link" aria-hidden="true"></i></a>nonobjc</h3>
+<p>この属性をメソッド、プロパティ、subscript、またはイニシャライザ宣言に適用すると、暗黙の <code>objc</code> 属性を抑制します。<code>nonobjc</code> 属性は、Objective-C で宣言を使用することができる場合でも、使用できないようにするようコンパイラに指示します。</p>
+<p>この属性を extension に適用すると、<code>objc</code> 属性が明示的にマークされていないその extension の全てのメンバに適用するのと同じ効果があります。</p>
+<p><code>nonobjc</code> 属性を使用して、<code>objc</code> 属性がマークされたクラスのブリッジメソッドの循環性を解決し、<code>objc</code> 属性がマークされたクラスのメソッドとイニシャライザのオーバーロードを許可します。</p>
+<p><code>nonobjc</code> 属性がマークされたメソッドは、<code>objc</code> 属性がマークされたメソッドをオーバーライドできません。ただし、<code>objc</code> 属性がマークされたメソッドは、<code>nonobjc</code> 属性がマークされたメソッドをオーバーライドできます。同様に、<code>nonobjc</code> 属性がマークされたメソッドは、<code>objc</code> 属性がマークされたメソッドのプロトコル要件を満たすことができません。</p>
+<h3 id="nsapplicationmain"><a name="nsapplicationmain" class="plugin-anchor" href="#nsapplicationmain"><i class="fa fa-link" aria-hidden="true"></i></a>NSApplicationMain</h3>
+<p>この属性をクラスに適用すると、それがアプリケーションデリゲートだということを示します。この属性を使用することは、<code>NSApplicationMain(_:_:)</code> 関数を呼び出すことと同じです。</p>
+<p>この属性を使用しない場合は、次のように <code>NSApplicationMain(_:_:)</code> 関数を呼び出すトップレベルのコードを <code>main.swift</code> ファイルに指定します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">import</span> <span class="token builtin">AppKit</span>
+<span class="token function">NSApplicationMain</span><span class="token punctuation">(</span><span class="token builtin">CommandLine</span><span class="token punctuation">.</span>argc<span class="token punctuation">,</span> <span class="token builtin">CommandLine</span><span class="token punctuation">.</span>unsafeArgv<span class="token punctuation">)</span>
+</code></pre>
+<p>実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-code" target="_blank">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。</p>
+<h3 id="nscopying"><a name="nscopying" class="plugin-anchor" href="#nscopying"><i class="fa fa-link" aria-hidden="true"></i></a>NSCopying</h3>
+<p>この属性をクラスの格納変数プロパティに適用します。この属性により、set は、プロパティ自体の値ではなく、<code>copyWithZone(_:)</code> メソッドによって返されるプロパティの値のコピーと同期されます。プロパティの型は、<code>NSCopying</code> プロトコルに準拠している必要があります。</p>
+<p><code>NSCopying</code> 属性は、Objective-C のコピープロパティ属性と同じように動作します。</p>
+<h3 id="nsmanaged"><a name="nsmanaged" class="plugin-anchor" href="#nsmanaged"><i class="fa fa-link" aria-hidden="true"></i></a>NSManaged</h3>
+<p>この属性を <code>NSManagedObject</code> を継承するクラスのインスタンスメソッドまたは格納変数プロパティに適用すると、関連付けられたエンティティの記述に基づいて、CoreData が実行時にその実装を動的に提供することを示します。<code>NSManaged</code> 属性がマークされたプロパティの場合、CoreData は実行時にストレージも提供します。この属性を適用すると、<code>objc</code> 属性も暗黙的に追加されます。</p>
+<h3 id="objc"><a name="objc" class="plugin-anchor" href="#objc"><i class="fa fa-link" aria-hidden="true"></i></a>objc</h3>
+<p>この属性は Objective-C で使用することができる全ての宣言に適用します。例えば、ネストされていないクラス、プロトコル、(整数の Raw Value 型の)非ジェネリック列挙型、クラスのプロパティとメソッド(get と set を含む)、プロトコル、およびオプショナルのプロトコル、イニシャライザ、および subscript など。<code>objc</code> 属性は、Objective-C コードで宣言を使用できることをコンパイラに通知します。</p>
+<p>この属性を extension に適用すると、<code>nonobjc</code> 属性が明示的にマークされていないその extension 内の全てのメンバに適用するのと同じ効果があります。</p>
+<p>コンパイラは、Objective-C で定義されたクラスのサブクラスに <code>objc</code> 属性を暗黙的に追加します。ただし、サブクラスはジェネリックにはできず、ジェネリッククラスから継承してはなりません。これらの条件を満たすサブクラスに <code>objc</code> 属性を明示的に追加して、下記で説明するように、その Objective-C 名を指定できます。<code>objc</code> 属性がマークされているプロトコルは、<code>objc</code> 属性がマークされていないプロトコルから継承できません。</p>
+<p>objc 属性は、次の場合にも暗黙的に追加されます:</p>
+<ul>
+<li>宣言がサブクラスのオーバーライドで、スーパークラスの宣言に <code>objc</code> 属性がある場合</li>
+<li>宣言が <code>objc</code> 属性を持つプロトコルの要件を満たす場合</li>
+<li>宣言に、<code>IBAction</code>、<code>IBSegueAction</code>、<code>IBOutlet</code>、<code>IBDesignable</code>、<code>IBInspectable</code>、<code>NSManaged</code>、または <code>GKInspectable</code> 属性がある場合</li>
+</ul>
+<p><code>objc</code> 属性を列挙型に適用すると、各列挙ケースは、列挙型名とケース名を連結して Objective-C コードに公開されます。ケース名の最初の文字は大文字です。例えば、Swift では <code>Planet</code> 列挙型内の <code>venus</code> という名前のケースは、<code>PlanetVenus</code> という名前のケースとして Objective-C コードに公開されます。</p>
+<p><code>objc</code> 属性は、任意で、識別子に単一の属性引数を受け取ります。識別子は、<code>objc</code> 属性が適用されるエンティティの Objective-C に公開される名前を指定します。この引数を使用して、クラス、列挙型、列挙ケース、プロトコル、メソッド、get、set、およびイニシャライザに名前を付けることができます。クラス、プロトコル、または列挙型に Objective-C 名を指定する場合は、<a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011210" target="_blank">Programming with Objective-C</a>の<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Conventions/Conventions.html#//apple_ref/doc/uid/TP40011210-CH10-SW1" target="_blank">Conventions</a>で説明されているように、名前に 3 文字のプレフィックスを含めます。下記の例では、<code>ExampleClass</code> の <code>enabled</code> プロパティの get を、プロパティ自体の名前としてではなく、<code>isEnabled</code> として Objective-C コードに公開しています。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">ExampleClass</span><span class="token punctuation">:</span> <span class="token builtin">NSObject</span> <span class="token punctuation">{</span>
+    <span class="token atrule">@objc</span> <span class="token keyword">var</span> enabled<span class="token punctuation">:</span> <span class="token builtin">Bool</span> <span class="token punctuation">{</span>
+        @<span class="token function">objc</span><span class="token punctuation">(</span>isEnabled<span class="token punctuation">)</span> <span class="token keyword">get</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 適切な値を返します</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>詳細については、Swift の <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_swift_into_objective-c" target="_blank">Importing Swift into Objective-C</a>を参照ください。</p>
+<blockquote>
+<p>NOTE<br><code>objc</code> 属性の引数は、その宣言の実行時名を変更することもできます。<code>NSClassFromString</code> などの Objective-C ランタイムとやり取りする関数を呼び出すとき、およびアプリの <code>Info.plist</code> ファイルでクラス名を指定するときに、実行時名を使用します。引数を渡して名前を指定すると、その名前が Objective-C コードの名前および実行時名として使用されます。引数を省略すると、Objective-C コードで使用される名前は Swift コードの名前と一致し、実行時名は通常の Swift コンパイラの名前修飾規則に従います。</p>
+</blockquote>
+<h3 id="objcmembers"><a name="objcmembers" class="plugin-anchor" href="#objcmembers"><i class="fa fa-link" aria-hidden="true"></i></a>objcMembers</h3>
+<p>この属性をクラス宣言に適用すると、クラスの全ての Objective-C に互換性のあるメンバ、その extension、そのサブクラス、およびそのサブクラスの全ての extension に <code>objc</code> 属性を暗黙的に追加します。</p>
+<p>ほとんどのコードでは、代わりに <code>objc</code> 属性を使用して、必要な宣言のみを公開する必要があります。多くの宣言を公開する必要がある場合は、<code>objc</code> 属性を持つ extension でグループ化できます。<code>objcMembers</code> 属性は、Objective-C ランタイムのリフレクション機能を多用するライブラリにとって便利です。必要のないときに <code>objc</code> 属性を適用すると、バイナリサイズが大きくなり、パフォーマンスに悪影響を与える可能性があります。</p>
+<h3 id="propertywrapper"><a name="propertywrapper" class="plugin-anchor" href="#propertywrapper"><i class="fa fa-link" aria-hidden="true"></i></a>propertyWrapper</h3>
+<p>この属性をクラス、構造体、または列挙型宣言に適用すると、その型をプロパティラッパとして使用できます。この属性を型に適用すると、型と同じ名前のカスタム属性が作成されます。その新しい属性をクラス、構造体、または列挙型のプロパティに適用して、ラッパ型のインスタンスを介してプロパティへのアクセスをラップします。属性をローカルの格納変数宣言に適用して、変数へのアクセスを同じ方法でラップすることもできます。計算変数、グローバル変数、および定数には、プロパティラッパを使用できません。</p>
+<p>ラッパは <code>wrappedValue</code> インスタンスプロパティを定義する必要があります。プロパティの<em>ラップされた値</em>は、このプロパティの get と set が公開する値です。ほとんどの場合、<code>wrappedValue</code> は計算値ですが、代わりに格納値にすることもできます。ラッパは、ラップされた値に必要なストレージを定義および管理します。コンパイラは、ラップされたプロパティの名前の前にアンダースコア(<code>_</code>)を付けることにより、ラッパ型のインスタンスのストレージを合成します。例えば、<code>someProperty</code> のラッパは <code>_someProperty</code> として格納されます。ラッパの合成ストレージのアクセス制御レベルは <code>private</code> です。</p>
+<p>プロパティラッパを持つプロパティには、<code>willSet</code> ブロックと <code>didSet</code> ブロックを含めることができますが、コンパイラで合成された <code>get</code> ブロックまたは <code>set</code> ブロックをオーバーライドすることはできません。</p>
+<p>Swift は、プロパティラッパを初期化するための 2 つの形式の糖衣構文(シンタックスシュガー)を提供します。ラップされた値の定義で代入構文を使用して、代入の右側にある式を、プロパティラッパのイニシャライザの <code>wrappedValue</code> パラメータとして渡すことができます。属性をプロパティに適用するときに属性に引数を指定することもでき、それらの引数はプロパティラッパのイニシャライザに渡されます。例えば、下記のコードでは、<code>SomeStruct</code> は <code>SomeWrapper</code> が定義する各イニシャライザを呼び出します。</p>
+<pre class="language-"><code class="lang-swift">@propertyWrapper
+<span class="token keyword">struct</span> <span class="token builtin">SomeWrapper</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> wrappedValue<span class="token punctuation">:</span> <span class="token builtin">Int</span>
+    <span class="token keyword">var</span> someValue<span class="token punctuation">:</span> <span class="token builtin">Double</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>wrappedValue <span class="token operator">=</span> <span class="token number">100</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>someValue <span class="token operator">=</span> <span class="token number">12.3</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>wrappedValue<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>wrappedValue <span class="token operator">=</span> wrappedValue
+        <span class="token keyword">self</span><span class="token punctuation">.</span>someValue <span class="token operator">=</span> <span class="token number">45.6</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>wrappedValue value<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> custom<span class="token punctuation">:</span> <span class="token builtin">Double</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>wrappedValue <span class="token operator">=</span> value
+        <span class="token keyword">self</span><span class="token punctuation">.</span>someValue <span class="token operator">=</span> custom
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">struct</span> <span class="token builtin">SomeStruct</span> <span class="token punctuation">{</span>
+    <span class="token comment">// init() を使用します</span>
+    @<span class="token builtin">SomeWrapper</span> <span class="token keyword">var</span> a<span class="token punctuation">:</span> <span class="token builtin">Int</span>
+
+    <span class="token comment">// init(wrappedValue:) を使用します</span>
+    @<span class="token builtin">SomeWrapper</span> <span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token number">10</span>
+
+    <span class="token comment">// どちらも init(wrappedValue:custom:) を使用します</span>
+    @<span class="token function">SomeWrapper</span><span class="token punctuation">(</span>custom<span class="token punctuation">:</span> <span class="token number">98.7</span><span class="token punctuation">)</span> <span class="token keyword">var</span> c <span class="token operator">=</span> <span class="token number">30</span>
+    @<span class="token function">SomeWrapper</span><span class="token punctuation">(</span>wrappedValue<span class="token punctuation">:</span> <span class="token number">30</span><span class="token punctuation">,</span> custom<span class="token punctuation">:</span> <span class="token number">98.7</span><span class="token punctuation">)</span> <span class="token keyword">var</span> d
+<span class="token punctuation">}</span>
+</code></pre>
+<p>ラップされたプロパティの投影された値は、プロパティラッパが追加機能を公開するために使用できる 2 番目の値です。プロパティラッパ型の作成者は、その投影された値の意味を決定し、投影された値が公開するインターフェイスを定義する責任があります。プロパティラッパから値を投影された値を提供するには、ラッパ型で <code>projectedValue</code> インスタンスプロパティを定義します。コンパイラは、ラップされたプロパティの名前の前にドル記号(<code>$</code>)を付けることにより、投影された値の識別子を合成します。例えば、<code>someProperty</code> の投影された値は <code>$someProperty</code> です。投影された値は、元のラップされたプロパティと同じアクセス制御レベルを持ちます。</p>
+<pre class="language-"><code class="lang-swift">@propertyWrapper
+<span class="token keyword">struct</span> <span class="token builtin">WrapperWithProjection</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> wrappedValue<span class="token punctuation">:</span> <span class="token builtin">Int</span>
+    <span class="token keyword">var</span> projectedValue<span class="token punctuation">:</span> <span class="token builtin">SomeProjection</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">SomeProjection</span><span class="token punctuation">(</span>wrapper<span class="token punctuation">:</span> <span class="token keyword">self</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">struct</span> <span class="token builtin">SomeProjection</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> wrapper<span class="token punctuation">:</span> <span class="token builtin">WrapperWithProjection</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">struct</span> <span class="token builtin">SomeStruct</span> <span class="token punctuation">{</span>
+    @<span class="token builtin">WrapperWithProjection</span> <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">123</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> s <span class="token operator">=</span> <span class="token function">SomeStruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+s<span class="token punctuation">.</span>x           <span class="token comment">// Int 値</span>
+s<span class="token punctuation">.</span>$x          <span class="token comment">// SomeProjection 値</span>
+s<span class="token punctuation">.</span>$x<span class="token punctuation">.</span>wrapper  <span class="token comment">// WrapperWithProjection 値</span>
+</code></pre>
+<h3 id="resultbuilder"><a name="resultbuilder" class="plugin-anchor" href="#resultbuilder"><i class="fa fa-link" aria-hidden="true"></i></a>resultBuilder</h3>
+<p>この属性をクラス、構造体、列挙型に適用して、その型をリザルトビルダとして使用できます。<em>リザルトビルダ</em>は、ネストされたデータ構造を段階的に構築する型です。リザルトビルダを使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語(DSL)を実装します。<code>resultBuilder</code> 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#result-builders" target="_blank">Result Builders(リザルトビルダ)</a>を参照ください。</p>
+<h4 id="result-building-methods"><a name="result-building-methods" class="plugin-anchor" href="#result-building-methods"><i class="fa fa-link" aria-hidden="true"></i></a>Result-Building Methods</h4>
+<p>リザルトビルダは、下記で説明する静的メソッドを実装します。リザルトビルダの全ての機能は静的メソッドを介して公開されるため、その型のインスタンスを初期化することはありません。<code>buildBlock(_:)</code> メソッドが必要です。DSL の追加機能を有効にする他の方法は省略可能です。リザルトビルダ型の宣言には、プロトコルの準拠を含める必要はありません。</p>
+<p>静的メソッドの記述では、プレースホルダとして 3 つの型を使用しています。<code>Expression</code> 型は、リザルトビルダの入力の型のプレースホルダで、<code>Component</code> は、部分的な結果の型のプレースホルダで、<code>FinalResult</code> は、リザルトビルダが生成する最終的な結果の型のプレースホルダです。これらの型を、リザルトビルダが使用する実際の型に置き換えます。リザルトビルダメソッドで <code>Expression</code> または <code>FinalResult</code> の型が指定されていない場合、デフォルトで <code>Component</code> と同じになります。</p>
+<p>リザルトビルダの作成方法は次のとおりです:</p>
+<p>static func buildBlock(_ components: Component...) -&gt; Component</p>
+<p> 部分的な結果の配列を単一の部分的な結果に結合します。リザルトビルダは、このメソッドを実装する必要があります。</p>
+<p>static func buildOptional(_ component: Component?) -&gt; Component</p>
+<p> `nil` になる可能性のある部分的な結果から部分的な結果を構築します。このメソッドを実装して、`else` 句を含まない `if` 文をサポートします。</p>
+<p>static func buildEither(first: Component) -&gt; Component</p>
+<p> 条件によって値が変化する部分的な結果を作成します。このメソッドと `buildEither(second:)` の両方を実装して、`switch` 文と `else` 句を含む `if` 文をサポートします。</p>
+<p>static func buildEither(second: Component) -&gt; Component</p>
+<p> 条件によって値が変化する部分的な結果を作成します。このメソッドと `buildEither(first:)` の両方を実装して、`switch` 文と `else` 句を含む `if` 文をサポートします。</p>
+<p>static func buildArray(_ components: [Component]) -&gt; Component</p>
+<p> 部分的な結果の配列から部分的な結果を構築します。このメソッドを実装して、ループをサポートします。</p>
+<p>static func buildExpression(_ expression: Expression) -&gt; Component</p>
+<p> 式から部分的な結果を作成します。このメソッドを実装して、前処理(例えば、式を内部型に変換する)を実行したり、使用側で型推論のための追加情報を提供したりできます。</p>
+<p>static func buildFinalResult(_ component: Component) -&gt; FinalResult</p>
+<p> 部分的な結果から最終結果を作成します。このメソッドは、部分結果と最終結果で異なる型を使用するリザルトビルダの一部として実装したり、結果を返す前に結果に対して後処理を実行したりできます。</p>
+<p>static func buildLimitedAvailability(_ component: Component) -&gt; Component</p>
+<p> アベイラビリティチェックを実行するコンパイラ制御文の外部で型情報を伝播または消去する部分的な結果を作成します。これを使用して、条件分岐間で異なる型情報を消去できます。</p>
+<p>例えば、下記のコードは、整数の配列を作成するシンプルなリザルトビルダを定義しています。このコードは、<code>Compontent</code> と <code>Expression</code> をタイプエイリアスとして定義し、下記の例を上記のメソッドのリストに簡単に一致させることができます。</p>
+<pre class="language-"><code class="lang-swift">@resultBuilder
+<span class="token keyword">struct</span> <span class="token builtin">ArrayBuilder</span> <span class="token punctuation">{</span>
+    <span class="token keyword">typealias</span> <span class="token builtin">Component</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span>
+    <span class="token keyword">typealias</span> <span class="token builtin">Expression</span> <span class="token operator">=</span> <span class="token builtin">Int</span>
+    <span class="token keyword">static</span> <span class="token keyword">func</span> <span class="token function">buildExpression</span><span class="token punctuation">(</span><span class="token number">_</span> element<span class="token punctuation">:</span> <span class="token builtin">Expression</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Component</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>element<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">static</span> <span class="token keyword">func</span> <span class="token function">buildOptional</span><span class="token punctuation">(</span><span class="token number">_</span> component<span class="token punctuation">:</span> <span class="token builtin">Component</span><span class="token operator">?</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Component</span> <span class="token punctuation">{</span>
+        <span class="token keyword">guard</span> <span class="token keyword">let</span> component <span class="token operator">=</span> component <span class="token keyword">else</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> component
+    <span class="token punctuation">}</span>
+    <span class="token keyword">static</span> <span class="token keyword">func</span> <span class="token function">buildEither</span><span class="token punctuation">(</span><span class="token builtin">first</span> component<span class="token punctuation">:</span> <span class="token builtin">Component</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Component</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> component
+    <span class="token punctuation">}</span>
+    <span class="token keyword">static</span> <span class="token keyword">func</span> <span class="token function">buildEither</span><span class="token punctuation">(</span>second component<span class="token punctuation">:</span> <span class="token builtin">Component</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Component</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> component
+    <span class="token punctuation">}</span>
+    <span class="token keyword">static</span> <span class="token keyword">func</span> <span class="token function">buildArray</span><span class="token punctuation">(</span><span class="token number">_</span> components<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Component</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Component</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">Array</span><span class="token punctuation">(</span>components<span class="token punctuation">.</span><span class="token function">joined</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">static</span> <span class="token keyword">func</span> <span class="token function">buildBlock</span><span class="token punctuation">(</span><span class="token number">_</span> components<span class="token punctuation">:</span> <span class="token builtin">Component</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Component</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">Array</span><span class="token punctuation">(</span>components<span class="token punctuation">.</span><span class="token function">joined</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="result-transformations"><a name="result-transformations" class="plugin-anchor" href="#result-transformations"><i class="fa fa-link" aria-hidden="true"></i></a>Result Transformations</h4>
+<p>次の構文変換は、リザルトビルダ構文を使用するコードを、リザルトビルダ型の静的メソッドを呼び出すコードに変換するために再帰的に適用されます。</p>
+<ul>
+<li>リザルトビルダに <code>buildExpression(_:)</code> メソッドがある場合、各式はそのメソッドの呼び出しになります。この変換は常に最初に行われます。例えば、次の宣言は同等です:</li>
+</ul>
+<pre class="language-"><code class="lang-swift">@<span class="token builtin">ArrayBuilder</span> <span class="token keyword">var</span> builderNumber<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span> <span class="token punctuation">{</span> <span class="token number">10</span> <span class="token punctuation">}</span>
+<span class="token keyword">var</span> manualNumber <span class="token operator">=</span> <span class="token builtin">ArrayBuilder</span><span class="token punctuation">.</span><span class="token function">buildExpression</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+</code></pre>
+<ul>
+<li>代入文は式のように変換されますが、<code>()</code> に評価されると解釈されます。代入を具体的に処理するために <code>()</code> 型の引数を取る <code>buildExpression(_:)</code> のオーバーロードを定義できます</li>
+<li>アベイラビリティ条件をチェックする分岐文は、<code>buildLimitedAvailability(_:)</code> メソッドの呼び出しになります。この変換は、<code>buildEither(first:)</code>、<code>buildEither(second:)</code>、または <code>buildOptional(_:)</code> の呼び出しに変換される前に行われます。<code>buildLimitedAvailability(_:)</code> メソッドを使用して、取得する分岐に応じて変化する型情報を消去します。例えば、下記の <code>buildEither(first:)</code> メソッドと <code>buildEither(second:)</code> メソッドは、両方の分岐に関する型情報をキャプチャするジェネリック型を使用します</li>
+</ul>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">Drawable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">struct</span> <span class="token builtin">Text</span><span class="token punctuation">:</span> <span class="token builtin">Drawable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> content<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span><span class="token number">_</span> content<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">self</span><span class="token punctuation">.</span>content <span class="token operator">=</span> content <span class="token punctuation">}</span>
+    <span class="token keyword">func</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> content <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">struct</span> <span class="token builtin">Line</span><span class="token operator">&lt;</span>D<span class="token punctuation">:</span> <span class="token builtin">Drawable</span><span class="token operator">&gt;</span><span class="token punctuation">:</span> <span class="token builtin">Drawable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> elements<span class="token punctuation">:</span> <span class="token punctuation">[</span>D<span class="token punctuation">]</span>
+    <span class="token keyword">func</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> elements<span class="token punctuation">.</span><span class="token builtin">map</span> <span class="token punctuation">{</span> $<span class="token number">0</span><span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">.</span><span class="token function">joined</span><span class="token punctuation">(</span>separator<span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">struct</span> <span class="token builtin">DrawEither</span><span class="token operator">&lt;</span><span class="token builtin">First</span><span class="token punctuation">:</span> <span class="token builtin">Drawable</span><span class="token punctuation">,</span> <span class="token builtin">Second</span><span class="token punctuation">:</span> <span class="token builtin">Drawable</span><span class="token operator">&gt;</span><span class="token punctuation">:</span> <span class="token builtin">Drawable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> content<span class="token punctuation">:</span> <span class="token builtin">Drawable</span>
+    <span class="token keyword">func</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> content<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+@resultBuilder
+<span class="token keyword">struct</span> <span class="token builtin">DrawingBuilder</span> <span class="token punctuation">{</span>
+    <span class="token keyword">static</span> <span class="token keyword">func</span> buildBlock<span class="token operator">&lt;</span>D<span class="token punctuation">:</span> <span class="token builtin">Drawable</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token number">_</span> components<span class="token punctuation">:</span> D<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Line</span><span class="token operator">&lt;</span>D<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">Line</span><span class="token punctuation">(</span>elements<span class="token punctuation">:</span> components<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">static</span> <span class="token keyword">func</span> buildEither<span class="token operator">&lt;</span><span class="token builtin">First</span><span class="token punctuation">,</span> <span class="token builtin">Second</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token builtin">first</span><span class="token punctuation">:</span> <span class="token builtin">First</span><span class="token punctuation">)</span>
+        <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">DrawEither</span><span class="token operator">&lt;</span><span class="token builtin">First</span><span class="token punctuation">,</span> <span class="token builtin">Second</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">DrawEither</span><span class="token punctuation">(</span>content<span class="token punctuation">:</span> <span class="token builtin">first</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">static</span> <span class="token keyword">func</span> buildEither<span class="token operator">&lt;</span><span class="token builtin">First</span><span class="token punctuation">,</span> <span class="token builtin">Second</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>second<span class="token punctuation">:</span> <span class="token builtin">Second</span><span class="token punctuation">)</span>
+        <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">DrawEither</span><span class="token operator">&lt;</span><span class="token builtin">First</span><span class="token punctuation">,</span> <span class="token builtin">Second</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">DrawEither</span><span class="token punctuation">(</span>content<span class="token punctuation">:</span> second<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>ただし、このアプローチでは、アベイラビリティチェックがあるコードで問題が発生します:</p>
+<pre class="language-"><code class="lang-swift">@<span class="token function">available</span><span class="token punctuation">(</span>macOS <span class="token number">99</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">)</span>
+<span class="token keyword">struct</span> <span class="token builtin">FutureText</span><span class="token punctuation">:</span> <span class="token builtin">Drawable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> content<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span><span class="token number">_</span> content<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">self</span><span class="token punctuation">.</span>content <span class="token operator">=</span> content <span class="token punctuation">}</span>
+    <span class="token keyword">func</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> content <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+@<span class="token builtin">DrawingBuilder</span> <span class="token keyword">var</span> brokenDrawing<span class="token punctuation">:</span> <span class="token builtin">Drawable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> #<span class="token function">available</span><span class="token punctuation">(</span>macOS <span class="token number">99</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">FutureText</span><span class="token punctuation">(</span><span class="token string">&quot;Inside.future&quot;</span><span class="token punctuation">)</span>  <span class="token comment">// Problem</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token function">Text</span><span class="token punctuation">(</span><span class="token string">&quot;Inside.present&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// brokenDrawing の型は Line&lt;DrawEither&lt;Line&lt;FutureText&gt;, Line&lt;Text&gt;&gt;&gt;</span>
+</code></pre>
+<p>上記のコードでは、<code>FutureText</code> は <code>DrawEither</code> ジェネリック型の 1 つのため、<code>brokenDrawing</code> の型の一部として使用されています。これにより、<code>FutureText</code> が実行時に使用できない場合、その型が明示的に使用されていない場合でも、プログラムがクラッシュする可能性があります。</p>
+<p>この問題を解決するには、<code>buildLimitedAvailability(_:)</code> メソッドを実装して型情報を消去します。例えば、下記のコードは、アベイラビリティチェックから <code>AnyDrawable</code> 値を作成します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">AnyDrawable</span><span class="token punctuation">:</span> <span class="token builtin">Drawable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> content<span class="token punctuation">:</span> <span class="token builtin">Drawable</span>
+    <span class="token keyword">func</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> content<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">extension</span> <span class="token builtin">DrawingBuilder</span> <span class="token punctuation">{</span>
+    <span class="token keyword">static</span> <span class="token keyword">func</span> <span class="token function">buildLimitedAvailability</span><span class="token punctuation">(</span><span class="token number">_</span> content<span class="token punctuation">:</span> <span class="token builtin">Drawable</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">AnyDrawable</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">AnyDrawable</span><span class="token punctuation">(</span>content<span class="token punctuation">:</span> content<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+@<span class="token builtin">DrawingBuilder</span> <span class="token keyword">var</span> typeErasedDrawing<span class="token punctuation">:</span> <span class="token builtin">Drawable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> #<span class="token function">available</span><span class="token punctuation">(</span>macOS <span class="token number">99</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">FutureText</span><span class="token punctuation">(</span><span class="token string">&quot;Inside.future&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token function">Text</span><span class="token punctuation">(</span><span class="token string">&quot;Inside.present&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// typeErasedDrawing の型は Line&lt;DrawEither&lt;AnyDrawable, Line&lt;Text&gt;&gt;&gt;</span>
+</code></pre>
+<ul>
+<li>分岐文は、<code>buildEither(first:)</code> メソッドと <code>buildEither(second:)</code> メソッドへの一連のネストされた呼び出しになります。文の条件とケースはバイナリツリーのリーフノードにマッピングされ、文はルートノードからそのリーフノードへのパスをたどる <code>buildEither</code> メソッドへのネストされた呼び出しになります</li>
+</ul>
+<p>例えば、3 つのケースを持つ <code>switch</code> 文を作成する場合、コンパイラは 3 つのリーフノードを持つバイナリツリーを使用します。同様に、ルートノードから 2 番目のケースへのパスは「2 番目の子」の「最初の子」のため、そのケースは <code>buildEither(first: buildEither(second: ... ))</code> のようなネストされた呼び出しになります。次の宣言は同等です:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> someNumber <span class="token operator">=</span> <span class="token number">19</span>
+@<span class="token builtin">ArrayBuilder</span> <span class="token keyword">var</span> builderConditional<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> someNumber <span class="token operator">&lt;</span> <span class="token number">12</span> <span class="token punctuation">{</span>
+        <span class="token number">31</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> someNumber <span class="token operator">==</span> <span class="token number">19</span> <span class="token punctuation">{</span>
+        <span class="token number">32</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token number">33</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> manualConditional<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span>
+<span class="token keyword">if</span> someNumber <span class="token operator">&lt;</span> <span class="token number">12</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> partialResult <span class="token operator">=</span> <span class="token builtin">ArrayBuilder</span><span class="token punctuation">.</span><span class="token function">buildExpression</span><span class="token punctuation">(</span><span class="token number">31</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> outerPartialResult <span class="token operator">=</span> <span class="token builtin">ArrayBuilder</span><span class="token punctuation">.</span><span class="token function">buildEither</span><span class="token punctuation">(</span><span class="token builtin">first</span><span class="token punctuation">:</span> partialResult<span class="token punctuation">)</span>
+    manualConditional <span class="token operator">=</span> <span class="token builtin">ArrayBuilder</span><span class="token punctuation">.</span><span class="token function">buildEither</span><span class="token punctuation">(</span><span class="token builtin">first</span><span class="token punctuation">:</span> outerPartialResult<span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> someNumber <span class="token operator">==</span> <span class="token number">19</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> partialResult <span class="token operator">=</span> <span class="token builtin">ArrayBuilder</span><span class="token punctuation">.</span><span class="token function">buildExpression</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> outerPartialResult <span class="token operator">=</span> <span class="token builtin">ArrayBuilder</span><span class="token punctuation">.</span><span class="token function">buildEither</span><span class="token punctuation">(</span>second<span class="token punctuation">:</span> partialResult<span class="token punctuation">)</span>
+    manualConditional <span class="token operator">=</span> <span class="token builtin">ArrayBuilder</span><span class="token punctuation">.</span><span class="token function">buildEither</span><span class="token punctuation">(</span><span class="token builtin">first</span><span class="token punctuation">:</span> outerPartialResult<span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> partialResult <span class="token operator">=</span> <span class="token builtin">ArrayBuilder</span><span class="token punctuation">.</span><span class="token function">buildExpression</span><span class="token punctuation">(</span><span class="token number">33</span><span class="token punctuation">)</span>
+    manualConditional <span class="token operator">=</span> <span class="token builtin">ArrayBuilder</span><span class="token punctuation">.</span><span class="token function">buildEither</span><span class="token punctuation">(</span>second<span class="token punctuation">:</span> partialResult<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li><code>else</code> 句のない <code>if</code> 文のように、値を生成しない可能性のある分岐文は、<code>buildOptional(_:)</code> の呼び出しになります。<code>if</code> 文の条件が満たされると、そのコードブロックが変換され、引数として渡されます。それ以外の場合、<code>buildOptional(_:)</code> は引数として <code>nil</code> を使用して呼び出されます。例えば、次の宣言は同等です:</li>
+</ul>
+<pre class="language-"><code class="lang-swift">@<span class="token builtin">ArrayBuilder</span> <span class="token keyword">var</span> builderOptional<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>someNumber <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token punctuation">{</span> <span class="token number">20</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> partialResult<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token constant">nil</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>someNumber <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token punctuation">{</span>
+    partialResult <span class="token operator">=</span> <span class="token builtin">ArrayBuilder</span><span class="token punctuation">.</span><span class="token function">buildExpression</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> manualOptional <span class="token operator">=</span> <span class="token builtin">ArrayBuilder</span><span class="token punctuation">.</span><span class="token function">buildOptional</span><span class="token punctuation">(</span>partialResult<span class="token punctuation">)</span>
+</code></pre>
+<p>コードブロックまたは <code>do</code> 文は、<code>buildBlock(_:)</code> メソッドの呼び出しになります。ブロック内の各文は一度に 1 つずつ変換され、<code>buildBlock(_:)</code> メソッドの引数になります。例えば、次の宣言は同等です:</p>
+<pre class="language-"><code class="lang-swift">@<span class="token builtin">ArrayBuilder</span> <span class="token keyword">var</span> builderBlock<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+    <span class="token number">100</span>
+    <span class="token number">200</span>
+    <span class="token number">300</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> manualBlock <span class="token operator">=</span> <span class="token builtin">ArrayBuilder</span><span class="token punctuation">.</span><span class="token function">buildBlock</span><span class="token punctuation">(</span>
+    <span class="token builtin">ArrayBuilder</span><span class="token punctuation">.</span><span class="token function">buildExpression</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token builtin">ArrayBuilder</span><span class="token punctuation">.</span><span class="token function">buildExpression</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token builtin">ArrayBuilder</span><span class="token punctuation">.</span><span class="token function">buildExpression</span><span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+</code></pre>
+<ul>
+<li><code>for</code> ループは一時変数、<code>for</code> ループ、<code>buildArray(_:)</code> メソッドの呼び出し、に分かれます。新しい <code>for</code> ループはシーケンスを繰り返し処理し、それぞれの部分的な結果をその配列に追加します。一時配列は、<code>buildArray(_:)</code> メソッドの引数として渡されます。例えば、次の宣言は同等です:</li>
+</ul>
+<pre class="language-"><code class="lang-swift">@<span class="token builtin">ArrayBuilder</span> <span class="token keyword">var</span> builderArray<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token number">5</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">7</span> <span class="token punctuation">{</span>
+        <span class="token number">100</span> <span class="token operator">+</span> i
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> temporary<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token number">5</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">7</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> partialResult <span class="token operator">=</span> <span class="token builtin">ArrayBuilder</span><span class="token punctuation">.</span><span class="token function">buildExpression</span><span class="token punctuation">(</span><span class="token number">100</span> <span class="token operator">+</span> i<span class="token punctuation">)</span>
+    temporary<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>partialResult<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> manualArray <span class="token operator">=</span> <span class="token builtin">ArrayBuilder</span><span class="token punctuation">.</span><span class="token function">buildArray</span><span class="token punctuation">(</span>temporary<span class="token punctuation">)</span>
+</code></pre>
+<ul>
+<li>リザルトビルダに <code>buildFinalResult(_:)</code> メソッドがある場合、最終結果はそのメソッドの呼び出しになります。この変換は常に最後に行われます</li>
+</ul>
+<p>変換の動作は一時変数の観点から説明されていますが、リザルトビルダを使用しても、コードの残りの部分から見える新しい宣言は実際には作成されません。</p>
+<p>リザルトビルダが変換するコードで、<code>break</code>、<code>continue</code>、<code>defer</code>、<code>guard</code>、<code>return</code>、<code>while</code>、または <code>do-catch</code> を使用することはできません。</p>
+<p>変換プロセスでは、コード内の宣言は変更されません。これにより、一時的な定数と変数を使用して、1 つずつ式を構築します。また、<code>throw</code> 文、コンパイル時の診断文、または <code>return</code> 文を含むクロージャも変更しません。</p>
+<p>可能な限り、変換は合体します。例えば、式 <code>4 + 5 * 6</code> は、その関数への複数の呼び出しではなく、<code>buildExpression(4 + 5 * 6)</code> になります。同様に、ネストされた分岐文は、<code>buildEither</code> メソッドへの呼び出しの単一のバイナリツリーになります。</p>
+<h4 id="custom-result-builder-attributes"><a name="custom-result-builder-attributes" class="plugin-anchor" href="#custom-result-builder-attributes"><i class="fa fa-link" aria-hidden="true"></i></a>Custom Result-Builder Attributes</h4>
+<p>リザルトビルダ型を作成すると、同じ名前のカスタム属性が作成されます。その属性は、次の場所に適用できます:</p>
+<ul>
+<li>関数宣言では、リザルトビルダは関数の本文を作成します</li>
+<li>get を含む変数または subscript の宣言で、リザルトビルダは get の本文を作成します</li>
+<li>関数宣言のパラメータでは、リザルトビルダは対応する引数として渡されるクロージャの本文を作成します</li>
+</ul>
+<p>resultBuilder 属性を適用しても、ABI の互換性には影響しません。リザルトビルダ属性をパラメータに適用すると、その属性が関数のインターフェースの一部になり、ソースの互換性に影響を与える可能性があります。</p>
+<h3 id="requiresstoredpropertyinits"><a name="requiresstoredpropertyinits" class="plugin-anchor" href="#requiresstoredpropertyinits"><i class="fa fa-link" aria-hidden="true"></i></a>requires_stored_property_inits</h3>
+<p>この属性をクラス宣言に適用すると、クラス内に格納されている全てのプロパティに、定義の一部としてデフォルト値を提供するように要求します。この属性は、<code>NSManagedObject</code> を継承する全てのクラスに対して推論されます。</p>
+<h3 id="testable"><a name="testable" class="plugin-anchor" href="#testable"><i class="fa fa-link" aria-hidden="true"></i></a>testable</h3>
+<p>モジュールのコードのテストを簡単にするために、この属性をインポート宣言に適用すると、アクセス制御へ変更を加えて、そのモジュールをインポートします。インポートされたモジュール内の <code>internal</code> 修飾子がマークされているエンティティは、<code>public</code> 修飾子で宣言されているかのようにインポートされます。<code>internal</code> または <code>public</code> 修飾子がマークされたクラスおよびクラスメンバは、<code>open</code> 修飾子で宣言されたかのようにインポートされます。インポートされたモジュールは、テストを有効にしてコンパイルする必要があります。</p>
+<h3 id="uiapplicationmain"><a name="uiapplicationmain" class="plugin-anchor" href="#uiapplicationmain"><i class="fa fa-link" aria-hidden="true"></i></a>UIApplicationMain</h3>
+<p>この属性をクラスに適用して、それがアプリケーションデリゲートだということを示します。この属性を使用することは、<code>UIApplicationMain</code> 関数を呼び出し、このクラスの名前をデリゲートクラスの名前として渡すことと同じです。</p>
+<p>この属性を使用しない場合は、<a href="https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain" target="_blank">UIApplicationMain(<em>:</em>:<em>:</em>:)</a>関数を呼び出すトップレベルのコードを <code>main.swift</code> ファイルに指定します。例えば、アプリが <code>UIApplication</code> の独自のサブクラスをメインクラスとして使用している場合、この属性を使用する代わりに <code>UIApplicationMain(_:_:_:_:)</code> 関数を呼び出します。</p>
+<p>実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-code" target="_blank">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。</p>
+<h3 id="usablefrominline"><a name="usablefrominline" class="plugin-anchor" href="#usablefrominline"><i class="fa fa-link" aria-hidden="true"></i></a>usableFromInline</h3>
+<p>この属性を関数、メソッド、計算プロパティ、subscript、イニシャライザ、またはデイニシャライザの宣言に適用すると、宣言と同じモジュールで定義されているインライン化されたコードでそのシンボルを使用できるようにします。宣言には、<code>internal</code> 修飾子が必要です。<code>usedFromInline</code> がマークされた構造体またはクラスは、そのプロパティに <code>public</code> または <code>usableFromInline</code> の型のみを使用できます。<code>usedFromInline</code> がマークされた列挙型は、そのケースの Raw Value と関連値に対して、<code>public</code> または <code>usableFromInline</code> の型のみを使用できます。</p>
+<p><code>public</code> 修飾子と同様に、この属性はモジュールの公開インターフェイスの一部として宣言が公開されます。<code>public</code> とは異なり、コンパイラは、宣言のシンボルがエクスポートされている場合でも、<code>usableFromInline</code> がマークされた宣言をモジュール外のコードで参照することを許可しません。ただし、モジュール外のコードは、ランタイム時の動作を使用して宣言のシンボルとやり取りできることもあります。</p>
+<p><code>inlinable</code> 属性がマークされた宣言は、inlinable コードから暗黙的に使用できます。<code>inlinable</code> または <code>usableFromInline</code> のいずれかを <code>internal</code> 宣言に適用できますが、両方の属性を適用するとエラーです。</p>
+<h3 id="warnunqualifiedaccess"><a name="warnunqualifiedaccess" class="plugin-anchor" href="#warnunqualifiedaccess"><i class="fa fa-link" aria-hidden="true"></i></a>warn_unqualified_access</h3>
+<p>この属性をトップレベルの関数、インスタンスメソッド、またはクラスまたは静的メソッドに適用すると、その関数またはメソッドがモジュール名、型名、インスタンス変数または定数などを修飾子なしで使用された場合に警告を出力します。この属性を使用して、同じスコープからアクセスできる同じ名前の関数間のあいまいさを回避できます。</p>
+<p>例えば、Swift 標準ライブラリには、トップレベルの<a href="https://developer.apple.com/documentation/swift/1538339-min/" target="_blank">min(<em>:</em>:)</a>関数と、同等の要素を持つ <code>Sequence</code> の <code>min()</code> メソッドの両方が含まれています。<code>Sequence</code> メソッドは <code>warn_unqualified_access</code> 属性で宣言されており、<code>Sequence</code> extension 内からどちらかを使用しようとするときの混乱を減らすのに役立ちます。</p>
+<h3 id="declaration-attributes-used-by-interface-builder"><a name="declaration-attributes-used-by-interface-builder" class="plugin-anchor" href="#declaration-attributes-used-by-interface-builder"><i class="fa fa-link" aria-hidden="true"></i></a>Declaration Attributes Used by Interface Builder</h3>
+<p>Interface Builder 属性は、Xcode と同期するために InterfaceBuilder によって使用される宣言属性です。Swift は、次の Interface Builder 属性を提供します: <code>IBAction</code>、<code>IBSegueAction</code>、<code>IBOutlet</code>、<code>IBDesignable</code>、および <code>IBInspectable</code>。これらの属性は、Objective-C の対応する属性と概念的に同じです。</p>
+<p><code>IBOutlet</code> 属性と <code>IBInspectable</code> 属性はクラスのプロパティ宣言に適用できます。<code>IBAction</code> 属性と <code>IBSegueAction</code> 属性はクラスのメソッド宣言に適用でき、<code>IBDesignable</code> 属性はクラス宣言に適用できます。</p>
+<p><code>IBAction</code>、<code>IBSegueAction</code>、<code>IBOutlet</code>、<code>IBDesignable</code>、または <code>IBInspectable</code> 属性を適用すると、<code>objc</code> 属性も暗黙的に追加されます。</p>
+<h2 id="型属性type-attributes"><a name="型属性type-attributes" class="plugin-anchor" href="#型属性type-attributes"><i class="fa fa-link" aria-hidden="true"></i></a>型属性(Type Attributes)</h2>
+<p>型属性は型にのみ適用できます。</p>
+<h3 id="autoclosure"><a name="autoclosure" class="plugin-anchor" href="#autoclosure"><i class="fa fa-link" aria-hidden="true"></i></a>autoclosure</h3>
+<p>この属性を適用すると、引数のないクロージャで式を自動的にラップすることにより、式の評価を遅らせます。関数またはメソッド宣言のパラメータに、引数を受け取らず式の型の値を返す関数型を適用できます。<code>autoclosure</code> 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#autoclosures" target="_blank">AutoClosures(自動クロージャ)</a>と<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/types#types-function-type" target="_blank">Function Type(関数型)</a>を参照ください。</p>
+<h3 id="convention"><a name="convention" class="plugin-anchor" href="#convention"><i class="fa fa-link" aria-hidden="true"></i></a>convention</h3>
+<p>呼び出し規約を示すために、この属性を関数の型に適用します。</p>
+<p><code>convention</code> 属性は、常に次のいずれかの引数で表示されます:</p>
+<ul>
+<li><code>swift</code> 引数は、Swift 関数の参照を示します。これは、Swift の関数値の標準的な呼び出し規約です</li>
+<li><code>block</code> 引数は、Objective-C 互換のブロック参照を示します。関数値は、ブロックオブジェクトへの参照として表されます。ブロックオブジェクトは、その呼び出し関数をオブジェクト内に埋め込む <code>id</code> 互換の Objective-C オブジェクトへの参照です。呼び出し関数は C 言語の呼び出し規約を使用します</li>
+<li><code>c</code> 引数は、C 言語関数の参照を示します。関数値はコンテキストを持たず、C 言語の呼び出し規約を使用します</li>
+</ul>
+<p>いくつかの例外を除いて、他の呼び出し規約の関数が必要な場合は、任意の呼び出し規約の関数を使用できます。非ジェネリックグローバル関数、ローカル変数をキャプチャしないローカル関数、またはローカル変数をキャプチャしないクロージャは、C 言語の呼び出し規約に変換できます。他の Swift 関数は C 言語の呼び出し規約に変換できません。Objective-C の block 呼び出し規約を持つ関数は、C 言語の呼び出し規約に変換できません。</p>
+<h3 id="escaping"><a name="escaping" class="plugin-anchor" href="#escaping"><i class="fa fa-link" aria-hidden="true"></i></a>escaping</h3>
+<p>この属性を関数またはメソッド宣言のパラメータの型に適用すると、パラメータの値を後で実行するために保持されることがあることを示します。これは、値が呼び出し側の生存期間を超えて存続できることを意味します。<code>escaping</code> 属性を持つ関数型パラメータは、プロパティまたはメソッドに対して <code>self</code> を明示的に使用する必要があります。<code>escaping</code> 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#escaping-closures" target="_blank">Escaping Closures(エスケープクロージャ)</a>を参照ください。</p>
+<h2 id="switch-case-attributes-switch-ケース属性"><a name="switch-case-attributes-switch-ケース属性" class="plugin-anchor" href="#switch-case-attributes-switch-ケース属性"><i class="fa fa-link" aria-hidden="true"></i></a>Switch Case Attributes (Switch ケース属性)</h2>
+<p>switch の case 属性は、switch 文のケースにのみ適用できます。</p>
+<h3 id="unknown"><a name="unknown" class="plugin-anchor" href="#unknown"><i class="fa fa-link" aria-hidden="true"></i></a>unknown</h3>
+<p>この属性を switch ケースに適用すると、コードのコンパイル時にわかっているどの列挙ケースとも一致することがない可能性を示します。<code>unknown</code> 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#switching-over-future-enumeration-cases" target="_blank">Switching Over Future Enumeration Cases(列挙型の将来のケースのスイッチング)</a>を参照ください。</p>
+<blockquote>
+<p>GRAMMAR OF AN ATTRIBUTE<br>attribute → <code>@</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attribute-name" target="_blank">attribute-name</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attribute-argument-clause" target="_blank">attribute-argument-clause</a><sub>opt</sub><br>attribute-name → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a><br>attribute-argument-clause → <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens" target="_blank">balanced-tokens</a><sub>opt</sub> <code>)</code><br>attributes → <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attribute" target="_blank">attribute</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes" target="_blank">attributes</a><sub>opt</sub><br>balanced-tokens → <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-token" target="_blank">balanced-token</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens" target="_blank">balanced-tokens</a><sub>opt</sub><br>balanced-token → <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens" target="_blank">balanced-tokens</a><sub>opt</sub> <code>)</code><br>balanced-token → <code>[</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens" target="_blank">balanced-tokens</a><sub>opt</sub> <code>]</code><br>balanced-token → <code>{</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens" target="_blank">balanced-tokens</a><sub>opt</sub> <code>}</code><br>balanced-token → 任意の識別子、キーワード、リテラル、または演算子<br>balanced-token → <code>(</code>, <code>)</code>, <code>[</code>, <code>]</code>, <code>{</code>, または <code>}</code> を除く任意の句読点</p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"属性(Attributes)","level":"4.7","depth":1,"next":{"title":"パターン(Patterns)","level":"4.8","depth":1,"path":"language-reference/patterns.md","ref":"language-reference/patterns.md","articles":[]},"previous":{"title":"宣言(Declarations)","level":"4.6","depth":1,"path":"language-reference/declarations.md","ref":"language-reference/declarations.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"livereload":{},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-reference/attributes.md","mtime":"2021-07-10T23:55:24.261Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-10T23:53:49.546Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-api/theme-api.js"></script>
+        
+    
+
+    </body>
+</html>
+

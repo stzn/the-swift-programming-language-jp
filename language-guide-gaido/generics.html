@@ -1,0 +1,1442 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <title>ジェネリクス(Generics) · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-api/theme-api.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="opaque-types.html" />
+    
+    
+    <link rel="prev" href="protocols.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索ワードを入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    The Swift Programming Language(日本語版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Swiftへようこそ(WELCOME TO SWIFT)</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../welcome-to-swift-swiftheyoukoso/about-swift.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/about-swift.html">
+            
+                    
+                    Swiftについて(About Swift)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../welcome-to-swift-swiftheyoukoso/version-compatibility.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/version-compatibility.html">
+            
+                    
+                    バージョン互換性(Version Compatibility)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../welcome-to-swift-swiftheyoukoso/a-swift-tour.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/a-swift-tour.html">
+            
+                    
+                    Swiftツアー(A Swift Tour)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">LANGUAGE GUIDE (言語ガイド)</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="the-basics.html">
+            
+                <a href="the-basics.html">
+            
+                    
+                    基本(The Basics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="basic-operators.html">
+            
+                <a href="basic-operators.html">
+            
+                    
+                    基本演算子(Basic Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="strings-and-characters.html">
+            
+                <a href="strings-and-characters.html">
+            
+                    
+                    文字と文字列(Strings and Characters)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="collection-types.html">
+            
+                <a href="collection-types.html">
+            
+                    
+                    コレクション型(Collection Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="control-flow.html">
+            
+                <a href="control-flow.html">
+            
+                    
+                    制御フロー(Control Flow)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="functions.html">
+            
+                <a href="functions.html">
+            
+                    
+                    関数(Functions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="closures.html">
+            
+                <a href="closures.html">
+            
+                    
+                    クロージャ(Closures)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="enumerations.html">
+            
+                <a href="enumerations.html">
+            
+                    
+                    列挙型(Enumerations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="structures-and-classes.html">
+            
+                <a href="structures-and-classes.html">
+            
+                    
+                    構造体とクラス(Structures and Classes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="properties.html">
+            
+                <a href="properties.html">
+            
+                    
+                    プロパティ(Properties)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="methods.html">
+            
+                <a href="methods.html">
+            
+                    
+                    メソッド(Methods)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="subscripts.html">
+            
+                <a href="subscripts.html">
+            
+                    
+                    サブスクリプト(Subscripts)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="inheritance.html">
+            
+                <a href="inheritance.html">
+            
+                    
+                    継承(Inheritance)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="initialization.html">
+            
+                <a href="initialization.html">
+            
+                    
+                    初期化(Initialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="deinitialization.html">
+            
+                <a href="deinitialization.html">
+            
+                    
+                    デイニシャライゼーション(Deinitialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="optional-chaining.html">
+            
+                <a href="optional-chaining.html">
+            
+                    
+                    オプショナルチェーン(Optional Chaining)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="error-handling.html">
+            
+                <a href="error-handling.html">
+            
+                    
+                    エラー処理(Error Handling)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="concurrency.html">
+            
+                <a href="concurrency.html">
+            
+                    
+                    同時並行処理(Concurrency)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="type-casting.html">
+            
+                <a href="type-casting.html">
+            
+                    
+                    型キャスト(Type Casting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="nested-types.html">
+            
+                <a href="nested-types.html">
+            
+                    
+                    ネスト型(Nested Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.21" data-path="extensions.html">
+            
+                <a href="extensions.html">
+            
+                    
+                    拡張(Extensions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.22" data-path="protocols.html">
+            
+                <a href="protocols.html">
+            
+                    
+                    プロトコル(Protocols)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.23" data-path="generics.html">
+            
+                <a href="generics.html">
+            
+                    
+                    ジェネリクス(Generics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.24" data-path="opaque-types.html">
+            
+                <a href="opaque-types.html">
+            
+                    
+                    Opaque 型(Opaque Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.25" data-path="automatic-reference-counting.html">
+            
+                <a href="automatic-reference-counting.html">
+            
+                    
+                    自動参照カウント ARC(Automatic Reference Counting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.26" data-path="memory-safety.html">
+            
+                <a href="memory-safety.html">
+            
+                    
+                    メモリ安全性(Memory Safety)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.27" data-path="access-control.html">
+            
+                <a href="access-control.html">
+            
+                    
+                    アクセスコントロール(Access Control)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.28" data-path="advanced-operators.html">
+            
+                <a href="advanced-operators.html">
+            
+                    
+                    高度な演算子(Advanced Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">LANGUAGE REFERENCE (言語リファレンス)</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../language-reference/about-the-language-reference.html">
+            
+                <a href="../language-reference/about-the-language-reference.html">
+            
+                    
+                    言語リファレンスについて(About the Language Reference)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../language-reference/lexical-structure.html">
+            
+                <a href="../language-reference/lexical-structure.html">
+            
+                    
+                    構文の構造(Lexical Structure)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../language-reference/types.html">
+            
+                <a href="../language-reference/types.html">
+            
+                    
+                    型(Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../language-reference/expressions.html">
+            
+                <a href="../language-reference/expressions.html">
+            
+                    
+                    式(Expressions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../language-reference/statements.html">
+            
+                <a href="../language-reference/statements.html">
+            
+                    
+                    文(Statements)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../language-reference/declarations.html">
+            
+                <a href="../language-reference/declarations.html">
+            
+                    
+                    宣言(Declarations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../language-reference/attributes.html">
+            
+                <a href="../language-reference/attributes.html">
+            
+                    
+                    属性(Attributes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../language-reference/patterns.html">
+            
+                <a href="../language-reference/patterns.html">
+            
+                    
+                    パターン(Patterns)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../language-reference/generic-parameters-and-arguments.html">
+            
+                <a href="../language-reference/generic-parameters-and-arguments.html">
+            
+                    
+                    ジェネリックパラメータと引数(Generic Parameters and Arguments)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="../language-reference/summary-of-the-grammar.html">
+            
+                <a href="../language-reference/summary-of-the-grammar.html">
+            
+                    
+                    文法のまとめ(Summary of the Grammar)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">REVISION HISTORY (改訂履歴)</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../revision-history/document-revision-history.html">
+            
+                <a href="../revision-history/document-revision-history.html">
+            
+                    
+                    ドキュメント改訂履歴(Document Revision History)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKitで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >ジェネリクス(Generics)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="ジェネリクスgenerics"><a name="ジェネリクスgenerics" class="plugin-anchor" href="#ジェネリクスgenerics"><i class="fa fa-link" aria-hidden="true"></i></a>ジェネリクス(Generics)</h1>
+<p>最終更新日: 2021/6/30</p>
+<p>ジェネリックなコードを使用すると、定義した要件に従って、任意の型で機能する柔軟で再利用可能な関数と型を作成できます。重複を避け、その意図を明確で抽象的な方法で表現するコードを書くことができます。</p>
+<p><em>ジェネリクス</em>は Swift の最も強力な機能の 1 つで、Swift 標準ライブラリの多くはジェネリックなコードで構築されています。気づかないかもしれませんが、この<em>言語ガイド</em>全体でもジェネリクスを使用しています。例えば、Swift の <code>Array</code> 型と <code>Dictionary</code> 型はどちらもジェネリックなコレクションです。<code>Int</code> 値を保持する配列、<code>String</code> 値を保持する配列、または Swift で作成できる他のどんな型の配列も作成できます。同様に、指定された型の値を格納する辞書を作成でき、その型に制限はありません。</p>
+<h2 id="ジェネリクスが解決する問題the-problem-that-generics-solve"><a name="ジェネリクスが解決する問題the-problem-that-generics-solve" class="plugin-anchor" href="#ジェネリクスが解決する問題the-problem-that-generics-solve"><i class="fa fa-link" aria-hidden="true"></i></a>ジェネリクスが解決する問題(The Problem That Generics Solve)</h2>
+<p>これは <code>swapTwoInts(_:_:)</code> と呼ばれる標準の非ジェネリック関数で、2 つの <code>Int</code> 値を交換します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">swapTwoInts</span><span class="token punctuation">(</span><span class="token number">_</span> a<span class="token punctuation">:</span> <span class="token keyword">inout</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token number">_</span> b<span class="token punctuation">:</span> <span class="token keyword">inout</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> temporaryA <span class="token operator">=</span> a
+    a <span class="token operator">=</span> b
+    b <span class="token operator">=</span> temporaryA
+<span class="token punctuation">}</span>
+</code></pre>
+<p>この関数は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#declarations-in-out-parameters" target="_blank">In-Out Parameters(In-Out パラメータ)</a>で説明されているように、in-out パラメータを使用して <code>a</code> と <code>b</code> の値を交換します。</p>
+<p><code>swapTwoInts(_:_:)</code> 関数は、<code>b</code> の値を <code>a</code> に、<code>a</code> の値を <code>b</code> に入れ替えます。この関数を呼び出して、2 つの <code>Int</code> 値の変数を交換できます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> someInt <span class="token operator">=</span> <span class="token number">3</span>
+<span class="token keyword">var</span> anotherInt <span class="token operator">=</span> <span class="token number">107</span>
+<span class="token function">swapTwoInts</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>someInt<span class="token punctuation">,</span> <span class="token operator">&amp;</span>anotherInt<span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;someInt is now <span class="token interpolation"><span class="token delimiter variable">\(</span>someInt<span class="token delimiter variable">)</span></span>, and anotherInt is now <span class="token interpolation"><span class="token delimiter variable">\(</span>anotherInt<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;someInt is now 107, and anotherInt is now 3&quot;</span>
+</code></pre>
+<p><code>swapTwoInts(_:_:)</code> 関数は便利ですが、<code>Int</code> 値でのみ使用できます。2 つの <code>String</code> 値または 2 つの <code>Double</code> 値を交換する場合は、下記に示す <code>swapTwoStrings(_:_:)</code> および <code>swapTwoDoubles(_:_:)</code> 関数などの関数をさらに作成する必要があります:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">swapTwoStrings</span><span class="token punctuation">(</span><span class="token number">_</span> a<span class="token punctuation">:</span> <span class="token keyword">inout</span> <span class="token builtin">String</span><span class="token punctuation">,</span> <span class="token number">_</span> b<span class="token punctuation">:</span> <span class="token keyword">inout</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> temporaryA <span class="token operator">=</span> a
+    a <span class="token operator">=</span> b
+    b <span class="token operator">=</span> temporaryA
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">swapTwoDoubles</span><span class="token punctuation">(</span><span class="token number">_</span> a<span class="token punctuation">:</span> <span class="token keyword">inout</span> <span class="token builtin">Double</span><span class="token punctuation">,</span> <span class="token number">_</span> b<span class="token punctuation">:</span> <span class="token keyword">inout</span> <span class="token builtin">Double</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> temporaryA <span class="token operator">=</span> a
+    a <span class="token operator">=</span> b
+    b <span class="token operator">=</span> temporaryA
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>swapTwoInts(_:_:)</code>、<code>swapTwoStrings(_:_:)</code>、および <code>swapTwoDoubles(_:_:)</code> 関数の本文が同一なことに気付いたかもしれません。唯一の違いは、受け入れられる値の型(<code>Int</code>、<code>String</code>、および <code>Double</code>)です。</p>
+<p>任意の型の 2 つの値を交換する 1 つの関数を作成する方が、より便利で、はるかに柔軟です。ジェネリックなコードを使用すると、そのような関数を作成できます。(これらの関数のジェネリックなバージョンは、下記で定義されています)</p>
+<blockquote>
+<p>NOTE<br>3 つの関数全てで、<code>a</code> と <code>b</code> の型は同じでなければなりません。<code>a</code> と <code>b</code> が同じ型でない場合、それらの値を交換することはできません。Swift は型安全な言語であり、(例えば)<code>String</code> 型の変数と <code>Double</code> 型の変数が互いに値を交換することを許可しません。そうしようとすると、コンパイルエラーが発生します。</p>
+</blockquote>
+<h2 id="ジェネリック関数generic-functions"><a name="ジェネリック関数generic-functions" class="plugin-anchor" href="#ジェネリック関数generic-functions"><i class="fa fa-link" aria-hidden="true"></i></a>ジェネリック関数(Generic Functions)</h2>
+<p>ジェネリック関数は、どの型でも機能します。これは、上記の <code>swapTwoInts(_:_:)</code> 関数のジェネリックなバージョンで、<code>swapTwoValues(_:_:)</code> と呼ばれます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> swapTwoValues<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token number">_</span> a<span class="token punctuation">:</span> <span class="token keyword">inout</span> T<span class="token punctuation">,</span> <span class="token number">_</span> b<span class="token punctuation">:</span> <span class="token keyword">inout</span> T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> temporaryA <span class="token operator">=</span> a
+    a <span class="token operator">=</span> b
+    b <span class="token operator">=</span> temporaryA
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>swapTwoValues(_:_:)</code> 関数の本文は、<code>swapTwoInts(_:_:)</code> 関数の本文と同じです。ただし、<code>swapTwoValues(_:_:)</code> の最初の行は <code>swapTwoInts(_:_:)</code> とは少し異なります。最初の行を比較すると次のようになります:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">swapTwoInts</span><span class="token punctuation">(</span><span class="token number">_</span> a<span class="token punctuation">:</span> <span class="token keyword">inout</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token number">_</span> b<span class="token punctuation">:</span> <span class="token keyword">inout</span> <span class="token builtin">Int</span><span class="token punctuation">)</span>
+<span class="token keyword">func</span> swapTwoValues<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token number">_</span> a<span class="token punctuation">:</span> <span class="token keyword">inout</span> T<span class="token punctuation">,</span> <span class="token number">_</span> b<span class="token punctuation">:</span> <span class="token keyword">inout</span> T<span class="token punctuation">)</span>
+</code></pre>
+<p>ジェネリックバージョンの関数は、実際の型名(<code>Int</code>、<code>String</code>、<code>Double</code> など)の代わりにプレースホルダの型名 (この場合は <code>T</code>) を使用します。プレースホルダの型名は、<code>T</code> に何が必要かについては指定しませんが、<code>T</code> が表すものにかかわらず、<code>a</code> と <code>b</code> の両方が、同じ型 <code>T</code> でなければならないことを示しています。<code>T</code> の代わりに使用する実際の型は、<code>swapTwoValues(_:_:)</code> 関数が呼び出される度に決定されます。</p>
+<p>ジェネリック関数と非ジェネリック関数のもう 1 つの違いは、ジェネリック関数の名前(<code>swapTwoValues(_:_:)</code>)の後に山括弧内にプレースホルダの型名(<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>T</span><span class="token punctuation">&gt;</span></span></code>)を記述することです。山括弧は、<code>T</code> が <code>swapTwoValues(_:_:)</code> 関数定義内のプレースホルダの型名だと Swift に伝えます。<code>T</code> はプレースホルダのため、Swift は <code>T</code> という実際の型を探しません。</p>
+<p><code>swapTwoValues(_:_:)</code> 関数は <code>swapTwoInts</code> と同じ方法で呼び出すことができますが、2 つの値が互いに同じ型の限り、任意の型の 2 つの値を渡すことができます。<code>swapTwoValues(_:_:)</code> が呼び出される度に、<code>T</code> に使用する型は、関数に渡される値の型から推論されます。</p>
+<p>下記の 2 つの例では、<code>T</code> はそれぞれ <code>Int</code> と <code>String</code> と推論されます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> someInt <span class="token operator">=</span> <span class="token number">3</span>
+<span class="token keyword">var</span> anotherInt <span class="token operator">=</span> <span class="token number">107</span>
+<span class="token function">swapTwoValues</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>someInt<span class="token punctuation">,</span> <span class="token operator">&amp;</span>anotherInt<span class="token punctuation">)</span>
+<span class="token comment">// someInt は 107 で anotherInt は 3</span>
+
+<span class="token keyword">var</span> someString <span class="token operator">=</span> <span class="token string">&quot;hello&quot;</span>
+<span class="token keyword">var</span> anotherString <span class="token operator">=</span> <span class="token string">&quot;world&quot;</span>
+<span class="token function">swapTwoValues</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>someString<span class="token punctuation">,</span> <span class="token operator">&amp;</span>anotherString<span class="token punctuation">)</span>
+<span class="token comment">// someString は &quot;world&quot; で anotherString は &quot;hello&quot;</span>
+</code></pre>
+<blockquote>
+<p>NOTE<br>上記で定義された <code>swapTwoValues(_:_:)</code> 関数は、Swift 標準ライブラリの <code>swap</code> と呼ばれる自動で利用可能なジェネリック関数に由来します。独自のコードで <code>swapTwoValues(_:_:)</code> 関数の動作が必要な場合は、独自の実装を提供するのではなく、Swift の既存の <code>swap(_:_:)</code> 関数を使用できます。</p>
+</blockquote>
+<h2 id="型パラメータtype-parameters"><a name="型パラメータtype-parameters" class="plugin-anchor" href="#型パラメータtype-parameters"><i class="fa fa-link" aria-hidden="true"></i></a>型パラメータ(Type Parameters)</h2>
+<p>上記の <code>swapTwoValues(_:_:)</code> の例では、プレースホルダ型 <code>T</code> は型パラメータの例です。型パラメータは、(<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>T</span><span class="token punctuation">&gt;</span></span></code> のように)プレースホルダ型を指定して名前を付け、関数名の直後に山括弧のペアの間に記述されます。</p>
+<p>型パラメータを指定すると、それを使用して関数のパラメータの型(<code>swapTwoValues(_:_:)</code> 関数の <code>a</code> および <code>b</code> パラメータなど)を定義したり、関数の戻り値の型として、または関数の本文内の型注釈として定義できます。いずれの場合も、関数が呼び出される度に、型パラメータが実際の型に置き換えられます。(上記の <code>swapTwoValues(_:_:)</code> の例では、関数が最初に呼び出されたときに <code>T</code> が <code>Int</code> に置き換えられ、2 回目に呼び出されたときは <code>String</code> に置き換えられました)</p>
+<p>山括弧内に複数の型パラメータ名をカンマ(<code>,</code>)で区切って記述することにより、複数の型パラメータも指定できます。</p>
+<h2 id="型パラメータの命名naming-type-parameters"><a name="型パラメータの命名naming-type-parameters" class="plugin-anchor" href="#型パラメータの命名naming-type-parameters"><i class="fa fa-link" aria-hidden="true"></i></a>型パラメータの命名(Naming Type Parameters)</h2>
+<p>ほとんどの場合、型パラメータには、<code>Dictionary<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Key,</span> <span class="token attr-name">Value</span><span class="token punctuation">&gt;</span></span></code> の <code>Key</code> と <code>Value</code>、<code>Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Element</span><span class="token punctuation">&gt;</span></span></code> の <code>Element</code> などのその型パラメータの意味を表す名前が付いています。ただし、型パラメータに意味がない場合、上記の <code>swapTwoValues(_:_:)</code> 関数の <code>T</code> など、<code>T</code>、<code>U</code>、<code>V</code> などの 1 文字の名前を付けるのが伝統的です。</p>
+<blockquote>
+<p>NOTE<br>型パラメータには常に大文字のキャメルケース名(<code>T</code> や <code>MyTypeParameter</code> など)を指定して、それらが値ではなく型のプレースホルダであることを示します。</p>
+</blockquote>
+<h2 id="ジェネリック型generic-types"><a name="ジェネリック型generic-types" class="plugin-anchor" href="#ジェネリック型generic-types"><i class="fa fa-link" aria-hidden="true"></i></a><a id="generic-types">ジェネリック型(Generic Types)</a></h2>
+<p>ジェネリック関数に加えて、Swift では独自のジェネリック型を定義できます。これらは、<code>Array</code> や <code>Dictionary</code> と同様の方法で、独自のクラス、構造体、および列挙型の任意の型で機能します。</p>
+<p>このセクションでは、<code>Stack</code> と呼ばれるジェネリックなコレクション型を作成する方法を示します。スタックは、配列に似た順序付けられた値のセットですが、<code>Array</code> 型よりも操作が制限されています。配列を使用すると、配列内の任意の場所で新しいアイテムを挿入および削除できます。ただし、スタックでは、コレクションの最後にのみ新しいアイテムを追加できます(スタックに新しい値をプッシュする(<em>pushing</em>)と呼ばれています)。同様に、スタックでは、コレクションの最後からのみアイテムを削除できます(スタックから値をポップする(<em>popping</em>)と呼ばれています)。</p>
+<blockquote>
+<p>NOTE<br><code>UINavigationController</code> クラスは、スタックの概念を使用して、ナビゲーション階層内の view controller をモデル化します。<code>UINavigationController</code> クラスの <code>pushViewController(_:animated:)</code> メソッドを呼び出して view controller をナビゲーションスタックに追加(プッシュ)し、popViewControllerAnimated(_:) メソッドを呼び出してナビゲーションスタックから view controller を削除(ポップ)します。スタックは、コレクションの管理に厳密な「後入れ先出し(LIFO)」アプローチが必要な場合に役立つコレクションモデルです。</p>
+</blockquote>
+<p>下記の図は、スタックのプッシュとポップの動作を示しています:</p>
+<p><img src="../.gitbook/assets/stackPushPop_2x.png" alt="スタックのプッシュとポップ"></p>
+<ol>
+<li>現在、スタックには 3 つの値があります</li>
+<li>4 番目の値はスタックの一番上にプッシュされます</li>
+<li>スタックには 4 つの値が保持され、最新の値が一番上になります</li>
+<li>スタックの一番上のアイテムがポップされます</li>
+<li>値をポップした後、スタックは再び 3 つの値を保持します</li>
+</ol>
+<p>スタックの非ジェネリックバージョンの <code>Int</code> のスタックを作成する方法は次のとおりです。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">IntStack</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> items <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">mutating</span> <span class="token keyword">func</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token number">_</span> item<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        items<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">mutating</span> <span class="token keyword">func</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> items<span class="token punctuation">.</span><span class="token function">removeLast</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>この構造体は、<code>items</code> と呼ばれる <code>Array</code> プロパティを使用して、値をスタックに格納します。<code>Stack</code> には、値をスタックにプッシュおよびポップするための 2 つのメソッド、<code>push</code> と <code>pop</code> が用意されています。これらのメソッドは、構造体の <code>items</code> 配列を変更する必要があるため、<code>mutating</code> とマークされています。</p>
+<p>ただし、上記の <code>IntStack</code> 型は <code>Int</code> 値でのみ使用できます。任意の型の値のスタックを管理できるジェネリックな <code>Stack</code> クラスを定義する方がはるかに便利です。</p>
+<p>同じコードのジェネリックなバージョンを次に示します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">Stack</span><span class="token operator">&lt;</span><span class="token builtin">Element</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> items <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">Element</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">mutating</span> <span class="token keyword">func</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token number">_</span> item<span class="token punctuation">:</span> <span class="token builtin">Element</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        items<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">mutating</span> <span class="token keyword">func</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Element</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> items<span class="token punctuation">.</span><span class="token function">removeLast</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Stack のジェネリックバージョンは、本質的に非ジェネリックバージョンと同じですが、実際の型 <code>Int</code> の代わりに <code>Element</code> という型パラメータを使用していることに注意してください。この型パラメータは、構造体の名前の直後に、一対の山括弧 (<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Element</span><span class="token punctuation">&gt;</span></span></code>) 内に記述されます。</p>
+<p><code>Element</code> は、後で提供される型のプレースホルダ名を定義します。この未来の型は、構造体の定義内のどこでも <code>Element</code> として参照できます。この場合、<code>Element</code> は 3 つの場所でプレースホルダとして使用されてます:</p>
+<ul>
+<li><code>Element</code> 型の値の空の配列で初期化される、<code>items</code> というプロパティを作成します</li>
+<li><code>push(_:)</code> メソッドに <code>item</code> と呼ばれる <code>Element</code> 型の単一パラメータを指定しなければなりません</li>
+<li><code>pop()</code> メソッドの戻り値が <code>Element</code> 型を指定しなければなりません</li>
+</ul>
+<p>ジェネリック型のため、<code>Stack</code> を使用して、<code>Array</code> および <code>Dictionary</code> と同様の方法で、Swift で有効な型のスタックを作成できます。</p>
+<p>スタックに格納する型を山括弧(<code>&lt;&gt;</code>)で囲んで、新しいスタック インスタンスを作成します。例えば、文字列の新しいスタックを作成するには、<code>Stack<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>String</span><span class="token punctuation">&gt;</span></span>()</code> を記述します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> stackOfStrings <span class="token operator">=</span> <span class="token builtin">Stack</span><span class="token operator">&lt;</span><span class="token builtin">String</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+stackOfStrings<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">&quot;uno&quot;</span><span class="token punctuation">)</span>
+stackOfStrings<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">&quot;dos&quot;</span><span class="token punctuation">)</span>
+stackOfStrings<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">&quot;tres&quot;</span><span class="token punctuation">)</span>
+stackOfStrings<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">&quot;cuatro&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// スタックは 4 つの文字列を格納しています</span>
+</code></pre>
+<p>これらの 4 つの値をスタックにプッシュした後、<code>stackOfStrings</code> がどのように見えるかを次に示します:</p>
+<p><img src="../.gitbook/assets/stackPushedFourStrings_2x.png" alt="4 つの値をスタックにプッシュ"></p>
+<p>スタックから値をポップすると、最上位の値 <code>&quot;cuatro&quot;</code> が削除されて返されます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> fromTheTop <span class="token operator">=</span> stackOfStrings<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// fromTheTop は &quot;cuatro&quot; に等しく、スタックは 3 つの文字列を含んでいます</span>
+</code></pre>
+<p>最上位の値をポップした後のスタックは次のとおりです:</p>
+<p><img src="../.gitbook/assets/stackPoppedOneString_2x.png" alt="最上位の値をポップ"></p>
+<h2 id="ジェネリック型の拡張extending-a-generic-type"><a name="ジェネリック型の拡張extending-a-generic-type" class="plugin-anchor" href="#ジェネリック型の拡張extending-a-generic-type"><i class="fa fa-link" aria-hidden="true"></i></a><a id="extending-a-generic-type">ジェネリック型の拡張(Extending a Generic Type)</a></h2>
+<p>ジェネリック型を拡張する場合、extension の定義で型パラメータリストを提供しません。代わりに、元の型定義の型パラメータリストは extension の本文内でも使用でき、元の型パラメータ名は元の定義の型パラメータを参照するために使用します。</p>
+<p>次の例では、ジェネリックな <code>Stack</code> 型を拡張して、<code>topItem</code> と呼ばれる読み取り専用の計算プロパティを追加します。これは、スタックからポップせずにスタックの一番上のアイテムを返します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Stack</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> topItem<span class="token punctuation">:</span> <span class="token builtin">Element</span><span class="token operator">?</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> items<span class="token punctuation">.</span><span class="token builtin">isEmpty</span> <span class="token operator">?</span> <span class="token constant">nil</span> <span class="token punctuation">:</span> items<span class="token punctuation">[</span>items<span class="token punctuation">.</span><span class="token builtin">count</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>topItem</code> プロパティは、<code>Element</code> 型のオプショナルの値を返します。スタックが空の場合、<code>topItem</code> は <code>nil</code> を返します。スタックが空でない場合、<code>topItem</code> は <code>items</code> 配列の最後のアイテムを返します。</p>
+<p>この extension は型パラメータリストを定義していないことに注目してください。代わりに、<code>Stack</code> 型の既存の型パラメータ名の <code>Element</code> が extension 内で使用され、<code>topItem</code> 計算プロパティのオプショナルの型を示しています。</p>
+<p>任意の <code>Stack</code> インスタンスで <code>topItem</code> 計算プロパティを使用して最後のアイテムへ削除せずにアクセスできるようになりました。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> <span class="token keyword">let</span> topItem <span class="token operator">=</span> stackOfStrings<span class="token punctuation">.</span>topItem <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The top item on the stack is <span class="token interpolation"><span class="token delimiter variable">\(</span>topItem<span class="token delimiter variable">)</span></span>.&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;The top item on the stack is tres.&quot;</span>
+</code></pre>
+<p>ジェネリック型の extension には、下記の<a href="generics.html#extensions-with-a-generic-where-clause">Extensions with a Generic Where Clause(ジェネリック where 句を使った拡張)</a>で説明されているように、新しい機能を取得するために拡張した型のインスタンスが満たさなければならない要件を含めることもできます。</p>
+<h2 id="型制約type-constraints"><a name="型制約type-constraints" class="plugin-anchor" href="#型制約type-constraints"><i class="fa fa-link" aria-hidden="true"></i></a><a id="type-constraints">型制約(Type Constraints)</a></h2>
+<p><code>swapTwoValues(_:_:)</code> 関数と <code>Stack</code> 型は、どの型でも使用できます。ただし、ジェネリック関数およびジェネリック型で使用できる型に特定の型制約を適用すると便利な場合があります。型制約は、型パラメータが特定のクラスを継承する必要があるか、特定のプロトコルまたはプロトコル合成に準拠する必要があるかなどを指定できます。</p>
+<p>例えば、Swift の <code>Dictionary</code> 型では、辞書のキーとして使用できる型に制限があります。<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/collection-types#dictionaries" target="_blank">Dictionaries(辞書)</a>で説明されているように、辞書のキーの型はハッシュ可能でなければなりません。つまり、個々のキーがユニークだということを表明する方法を提供する必要があります。<code>Dictionary</code> は、特定のキーの値がすでに含まれているかどうかを確認できるように、そのキーがハッシュ可能なことが必要な場合があります。この要件がなければ、<code>Dictionary</code> は特定のキーの値を挿入または置換するべきかどうかを判断できず、すでに存在する特定のキーの値を見つけることもできません。</p>
+<p>この要件は、<code>Dictionary</code> のキーの型制約によって強制されています。これは、キーの型が Swift 標準ライブラリで定義された <code>Hashable</code> プロトコルに準拠する必要があることを指定します。Swift の全ての基本型(<code>String</code>、<code>Int</code>、<code>Double</code>、<code>Bool</code> など)は、デフォルトでハッシュ可能です。独自の型を <code>Hashable</code> プロトコルに準拠させる方法については、<a href="https://developer.apple.com/documentation/swift/hashable#2849490" target="_blank">Conforming to the Hashable Protocol</a>を参照ください。</p>
+<p>独自のジェネリック型を作成するときに、独自の型制約を定義できます。これらの制約は、多くのジェネリックプログラミングに強力な機能を提供します。<code>Hashable</code> のような抽象的な概念は、具体的な型ではなく、概念的な特性の観点から型を特徴付けます。</p>
+<h3 id="型制約構文type-constraint-syntax"><a name="型制約構文type-constraint-syntax" class="plugin-anchor" href="#型制約構文type-constraint-syntax"><i class="fa fa-link" aria-hidden="true"></i></a>型制約構文(Type Constraint Syntax)</h3>
+<p>型パラメータリストの一部として、型パラメータの名前の後にコロン(<code>:</code>)で区切って単一のクラスまたはプロトコルを配置することで、型制約を記述します。ジェネリック関数の型制約の基本的な構文を以下に示します(構文はジェネリック型でも同じです)。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> someFunction<span class="token operator">&lt;</span>T<span class="token punctuation">:</span> <span class="token builtin">SomeClass</span><span class="token punctuation">,</span> U<span class="token punctuation">:</span> <span class="token builtin">SomeProtocol</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>someT<span class="token punctuation">:</span> T<span class="token punctuation">,</span> someU<span class="token punctuation">:</span> U<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token comment">// ここに関数本文が入ります</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>上記の関数には、2 つの型パラメータがあります。最初の型パラメータ <code>T</code> には、<code>T</code> が <code>SomeClass</code> を継承する必要がある型制約です。2 番目の型パラメータ <code>U</code> には、<code>U</code> が <code>SomeProtocol</code> プロトコルに準拠する必要がある型制約です。</p>
+<h3 id="型制約の挙動type-constraints-in-action"><a name="型制約の挙動type-constraints-in-action" class="plugin-anchor" href="#型制約の挙動type-constraints-in-action"><i class="fa fa-link" aria-hidden="true"></i></a>型制約の挙動(Type Constraints in Action)</h3>
+<p>下記は、<code>findIndex(ofString:in:)</code> という名前の非ジェネリック関数です。これには、検索する <code>String</code> 値と、その <code>String</code> が含まれているかを検索する <code>String</code> の配列が与えられています。<code>findIndex(ofString:in:)</code> 関数は、オプショナルの <code>Int</code> 値を返します。これは、配列内で最初に一致する文字列が見つかった場合はそのインデックス、文字列が見つからない場合は <code>nil</code> になります。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">findIndex</span><span class="token punctuation">(</span>ofString valueToFind<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> <span class="token keyword">in</span> array<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span><span class="token operator">?</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>index<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token keyword">in</span> array<span class="token punctuation">.</span><span class="token function">enumerated</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> value <span class="token operator">==</span> valueToFind <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> index
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token constant">nil</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>findIndex(ofString:in:)</code> 関数を使用して、文字列が配列内に存在するかどうかを検索できます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> strings <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;cat&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;dog&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;llama&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;parakeet&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;terrapin&quot;</span><span class="token punctuation">]</span>
+<span class="token keyword">if</span> <span class="token keyword">let</span> foundIndex <span class="token operator">=</span> <span class="token function">findIndex</span><span class="token punctuation">(</span>ofString<span class="token punctuation">:</span> <span class="token string">&quot;llama&quot;</span><span class="token punctuation">,</span> <span class="token keyword">in</span><span class="token punctuation">:</span> strings<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The index of llama is <span class="token interpolation"><span class="token delimiter variable">\(</span>foundIndex<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;The index of llama is 2&quot;</span>
+</code></pre>
+<p>ただし、配列内の値のインデックスを見つけるという動作は、文字列だけで有用というわけではありません。文字列を何らかの <code>T</code> 型の値に置き換えることで、ジェネリック関数と同じ機能を作成できます。</p>
+<p>次は、<code>findIndex(of:in:)</code> と呼ばれる、<code>findIndex(ofString:in:)</code> のジェネリックバージョンを示しています。この関数は配列のオプショナルの値ではなく、オプショナルのインデックスの番号を返すため、この関数の戻り値の型は引き続き <code>Int?</code> なことに注目してください。ただし、次の例の後に説明する理由により、この関数はコンパイルできないことに注意してください:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> findIndex<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">(</span>of valueToFind<span class="token punctuation">:</span> T<span class="token punctuation">,</span> <span class="token keyword">in</span> array<span class="token punctuation">:</span><span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span><span class="token operator">?</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>index<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token keyword">in</span> array<span class="token punctuation">.</span><span class="token function">enumerated</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> value <span class="token operator">==</span> valueToFind <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> index
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token constant">nil</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>この関数はコンパイルできません。問題は、等価チェック <code>&quot;if value == valueToFind&quot;</code> にあります。Swift の全ての型を等価演算子(<code>==</code>)で比較できるわけではありません。例えば、複雑なデータモデルを表す独自のクラスまたは構造体を作成する場合、そのクラスまたは構造体の「等しい」の意味は Swift が推論できるものではありません。このため、このコードが全ての型 <code>T</code> で機能することを保証することはできず、コードをコンパイルしようとすると、適切なエラーが報告されます。</p>
+<p>ただし、全てが失われるわけではありません。Swift 標準ライブラリは、<code>Equatable</code> と呼ばれるプロトコルを定義しています。このプロトコルでは、準拠する型で、その型の 2 つの値を比較するために、等価演算子(<code>==</code>)および不等価演算子(<code>!=</code>)を実装する必要があります。Swift の全ての標準型は、<code>Equatable</code> プロトコルを自動的にサポートしています。</p>
+<p><code>Equatable</code> に準拠する全ての型は、等価演算子をサポートすることが保証されているため、<code>findIndex(of:in:)</code> 関数で安全に使用できます。この事実を表現するには、関数を定義するときに、型パラメータの定義に <code>Equatable</code> の型制約を記述します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> findIndex<span class="token operator">&lt;</span>T<span class="token punctuation">:</span> <span class="token builtin">Equatable</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>of valueToFind<span class="token punctuation">:</span> T<span class="token punctuation">,</span> <span class="token keyword">in</span> array<span class="token punctuation">:</span><span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span><span class="token operator">?</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>index<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token keyword">in</span> array<span class="token punctuation">.</span><span class="token function">enumerated</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> value <span class="token operator">==</span> valueToFind <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> index
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token constant">nil</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>findIndex(of:in:)</code> の単一の型パラメータは <code>T: Equatable</code> と記述されます。これは、「<code>Equatable</code> プロトコルに準拠する任意の型 <code>T</code>」を意味します。</p>
+<p><code>findIndex(of:in:)</code> 関数は正常にコンパイルされ、<code>Double</code> や <code>String</code> などの <code>Equatable</code> に準拠する任意の型で使用できるようになりました:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> doubleIndex <span class="token operator">=</span> <span class="token function">findIndex</span><span class="token punctuation">(</span>of<span class="token punctuation">:</span> <span class="token number">9.3</span><span class="token punctuation">,</span> <span class="token keyword">in</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">3.14159</span><span class="token punctuation">,</span> <span class="token number">0.1</span><span class="token punctuation">,</span> <span class="token number">0.25</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment">// doubleIndex は、9.3 が配列にないため、オプショナルの Int です。</span>
+<span class="token keyword">let</span> stringIndex <span class="token operator">=</span> <span class="token function">findIndex</span><span class="token punctuation">(</span>of<span class="token punctuation">:</span> <span class="token string">&quot;Andrea&quot;</span><span class="token punctuation">,</span> <span class="token keyword">in</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;Mike&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Malcolm&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Andrea&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment">// stringIndex は、2 を含むオプショナルの Int です</span>
+</code></pre>
+<h2 id="関連型associated-types"><a name="関連型associated-types" class="plugin-anchor" href="#関連型associated-types"><i class="fa fa-link" aria-hidden="true"></i></a><a id="associated-types">関連型(Associated Types)</a></h2>
+<p>プロトコルを定義するとき、1 つ以上の<em>関連型</em>を宣言すると便利な場合があります。関連型は、プロトコル内で使用される型にプレースホルダ名を与えます。その関連型に使用する実際の型は、プロトコルが準拠されるまで特定されません。関連型は、<code>associatedtype</code> キーワードで指定します。</p>
+<h3 id="関連型の挙動associated-types-in-action"><a name="関連型の挙動associated-types-in-action" class="plugin-anchor" href="#関連型の挙動associated-types-in-action"><i class="fa fa-link" aria-hidden="true"></i></a>関連型の挙動(Associated Types in Action)</h3>
+<p>下記は、<code>Item</code> と呼ばれる関連型を持つ <code>Container</code> と呼ばれるプロトコルの例です:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">Container</span> <span class="token punctuation">{</span>
+    associatedtype <span class="token builtin">Item</span>
+    <span class="token keyword">mutating</span> <span class="token keyword">func</span> <span class="token function">append</span><span class="token punctuation">(</span><span class="token number">_</span> item<span class="token punctuation">:</span> <span class="token builtin">Item</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> <span class="token builtin">count</span><span class="token punctuation">:</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token punctuation">}</span>
+    <span class="token keyword">subscript</span><span class="token punctuation">(</span>i<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Item</span> <span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>Container</code> プロトコルは、コンテナが提供しなければならない 3 つの必須機能を定義しています:</p>
+<ul>
+<li><code>append(_:)</code> メソッドを使用して、コンテナに新しいアイテムを追加できる必要があります</li>
+<li><code>Int</code> 値を返す <code>count</code> プロパティを介して、コンテナ内のアイテムの数にアクセスできる必要があります</li>
+<li><code>Int</code> のインデックスを受け取る subscript を使用して、コンテナ内の各アイテムを取得できる必要があります</li>
+</ul>
+<p>このプロトコルは、コンテナ内のアイテムの保存方法や、許可される型を指定していません。プロトコルは、<code>Container</code> と見なされるために型が提供しなければならない 3 つ小さな機能のみを指定します。準拠する型は、これら 3 つの要件を満たす限り、追加の機能を提供できます。</p>
+<p><code>Container</code> プロトコルに準拠する全ての型は、格納する値の型を指定する必要があります。具体的には、正しい型のアイテムのみがコンテナに追加されるようにする必要があり、subscript で返されるアイテムの型を明確にする必要があります。</p>
+<p>これらの要件を定義するために、<code>Container</code> プロトコルは、コンテナが保持する要素の型を参照する必要がありますが、特定のコンテナの型が何かを知る必要はありません。<code>Container</code> プロトコルは、<code>append(_:)</code> メソッドに渡される値をコンテナの要素の型と同じにする必要があり、コンテナの subscript によって返される値をコンテナの要素の型と同じ型を指定する必要があります。</p>
+<p>これを実現するために、<code>Container</code> プロトコルは <code>Item</code> と呼ばれる関連型を <code>associatedtype Item</code> として記述することで宣言しています。プロトコルは <code>Item</code> が何かを定義しません。その情報は、準拠する型が提供します。それにもかかわらず、<code>Item</code> エイリアスを通して、<code>Container</code> 内のアイテムの型への参照、<code>append(_:)</code> メソッドと <code>subscript</code> で使用する型の定義は、どんな <code>Container</code> でも期待通りに動くことを保証しています。</p>
+<p>下記は、<code>Container</code> プロトコルに準拠した、上記の<a href="generics.html#generic-types">Generic Types(ジェネリック型)</a>の非ジェネリック型 <code>IntStack</code> のジェネリックバージョンです:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">IntStack</span><span class="token punctuation">:</span> <span class="token builtin">Container</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 元の IntStack 実装</span>
+    <span class="token keyword">var</span> items <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">mutating</span> <span class="token keyword">func</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token number">_</span> item<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        items<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">mutating</span> <span class="token keyword">func</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> items<span class="token punctuation">.</span><span class="token function">removeLast</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// Container プロトコルへの準拠</span>
+    <span class="token keyword">typealias</span> <span class="token builtin">Item</span> <span class="token operator">=</span> <span class="token builtin">Int</span>
+    <span class="token keyword">mutating</span> <span class="token keyword">func</span> <span class="token function">append</span><span class="token punctuation">(</span><span class="token number">_</span> item<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> <span class="token builtin">count</span><span class="token punctuation">:</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> items<span class="token punctuation">.</span><span class="token builtin">count</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">subscript</span><span class="token punctuation">(</span>i<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> items<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>IntStack</code> 型は、<code>Container</code> プロトコルの 3 つの要件全てを実装し、それぞれの要件を満たすために <code>IntStack</code> 型の既存の機能を一部使用してます。</p>
+<p>さらに、<code>IntStack</code> は、<code>Container</code> の実装の中で使用する <code>Item</code> に <code>Int</code> 型を指定しています。<code>typealias Item = Int</code> の定義により、抽象的な <code>Item</code> が、具象的な <code>Int</code> に変わります。</p>
+<p>Swift の型推論のおかげで、<code>IntStack</code> の定義の中で <code>Item</code> が <code>Int</code> なこと宣言する必要は実際はありません。<code>IntStack</code> は <code>Container</code> プロトコルの全ての要件に準拠しているため、<code>append(_:)</code> メソッドの <code>item</code> パラメータの型と subscript の戻り値の型から、使用する適切な <code>Item</code> を推論できます。実際、上記のコードから <code>typealias Item = Int</code> 行を削除しても、<code>Item</code> に使用する型が明確になっているため、全てが引き続き機能します。</p>
+<p>ジェネリックな <code>Stack</code> 型を <code>Container</code> プロトコルに準拠させることもできます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">Stack</span><span class="token operator">&lt;</span><span class="token builtin">Element</span><span class="token operator">&gt;</span><span class="token punctuation">:</span> <span class="token builtin">Container</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 元の Stack&lt;Element&gt; 実装</span>
+    <span class="token keyword">var</span> items <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">Element</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">mutating</span> <span class="token keyword">func</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token number">_</span> item<span class="token punctuation">:</span> <span class="token builtin">Element</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        items<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">mutating</span> <span class="token keyword">func</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Element</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> items<span class="token punctuation">.</span><span class="token function">removeLast</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// Container プロトコルへの準拠</span>
+    <span class="token keyword">mutating</span> <span class="token keyword">func</span> <span class="token function">append</span><span class="token punctuation">(</span><span class="token number">_</span> item<span class="token punctuation">:</span> <span class="token builtin">Element</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> <span class="token builtin">count</span><span class="token punctuation">:</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> items<span class="token punctuation">.</span><span class="token builtin">count</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">subscript</span><span class="token punctuation">(</span>i<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Element</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> items<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>今回は、<code>append(_:)</code> メソッドの <code>item</code> パラメータの型と subscript の戻り値の型として型パラメータ <code>Element</code> を使用しています。したがって、Swift は、<code>Element</code> がこの特定のコンテナの <code>Item</code> として使用する型を適切に推論できます。</p>
+<h3 id="関連型を特定するための既存の型の拡張extending-an-existing-type-to-specify-an-associated-type"><a name="関連型を特定するための既存の型の拡張extending-an-existing-type-to-specify-an-associated-type" class="plugin-anchor" href="#関連型を特定するための既存の型の拡張extending-an-existing-type-to-specify-an-associated-type"><i class="fa fa-link" aria-hidden="true"></i></a>関連型を特定するための既存の型の拡張(Extending an Existing Type to Specify an Associated Type)</h3>
+<p><a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#adding-protocol-conformance-with-an-extension" target="_blank">Adding Protocol Conformance with an Extension(拡張機能を使ったプロトコル準拠の追加)</a>で説明されているように、既存の型を拡張してプロトコルへの準拠を追加できます。これには、関連型を持つプロトコルが含まれます。</p>
+<p>Swift の <code>Array</code> 型は、要素を取得するために、<code>append(_:)</code> メソッド、<code>count</code> プロパティ、および <code>Int</code> インデックスの subscript を既存で提供しています。これら 3 つの機能は、<code>Container</code> プロトコルの要件に準拠します。これは、<code>Array</code> がプロトコルに準拠することを宣言するだけで、<code>Container</code> プロトコルに準拠するように <code>Array</code> を拡張できることを意味します。<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#declaring-protocol-adoption-with-an-extension" target="_blank">Declaring Protocol Adoption with an Extension(拡張機能を使ったプロトコル準拠の宣言)</a>で説明されているように、これは空の extension で行います:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Array</span><span class="token punctuation">:</span> <span class="token builtin">Container</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+<p><code>Array</code> の既存の <code>append(_:)</code> メソッドと subscript により、Swift は、上記のジェネリックな <code>Stack</code> 型と同様に、<code>Item</code> に使用する適切な型を推論できます。この extension を定義した後、任意の配列を <code>Container</code> として使用できます。</p>
+<h3 id="関連型への制約の追加adding-constraints-to-an-associated-type"><a name="関連型への制約の追加adding-constraints-to-an-associated-type" class="plugin-anchor" href="#関連型への制約の追加adding-constraints-to-an-associated-type"><i class="fa fa-link" aria-hidden="true"></i></a>関連型への制約の追加(Adding Constraints to an Associated Type)</h3>
+<p>プロトコルの関連型に型制約を追加して、準拠する型がそれらの制約を満たすことを要求できます。例えば、次のコードは、<code>Container</code> 内のアイテムが<em>等価比較可能</em>なバージョンを定義しています。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">Container</span> <span class="token punctuation">{</span>
+    associatedtype <span class="token builtin">Item</span><span class="token punctuation">:</span> <span class="token builtin">Equatable</span>
+    <span class="token keyword">mutating</span> <span class="token keyword">func</span> <span class="token function">append</span><span class="token punctuation">(</span><span class="token number">_</span> item<span class="token punctuation">:</span> <span class="token builtin">Item</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> <span class="token builtin">count</span><span class="token punctuation">:</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token punctuation">}</span>
+    <span class="token keyword">subscript</span><span class="token punctuation">(</span>i<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Item</span> <span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>このバージョンのコンテナに準拠するには、コンテナのアイテム型が <code>Equatable</code> プロトコルに準拠している必要があります。</p>
+<h3 id="関連型の制約へのプロトコルの使用using-a-protocol-in-its-associated-types-constraints"><a name="関連型の制約へのプロトコルの使用using-a-protocol-in-its-associated-types-constraints" class="plugin-anchor" href="#関連型の制約へのプロトコルの使用using-a-protocol-in-its-associated-types-constraints"><i class="fa fa-link" aria-hidden="true"></i></a>関連型の制約へのプロトコルの使用(Using a Protocol in Its Associated Type’s Constraints)</h3>
+<p>プロトコルは、独自の要件を表現できます。例えば、下記は <code>Container</code> プロトコルを改良し、<code>suffix(_:)</code> メソッドの要件を追加するプロトコルです。<code>suffix(_:)</code> メソッドは、コンテナの最後から指定された数の要素を返し、それらを <code>Suffix</code> 型のインスタンスに格納します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">SuffixableContainer</span><span class="token punctuation">:</span> <span class="token builtin">Container</span> <span class="token punctuation">{</span>
+    associatedtype <span class="token builtin">Suffix</span><span class="token punctuation">:</span> <span class="token builtin">SuffixableContainer</span> <span class="token keyword">where</span> <span class="token builtin">Suffix</span><span class="token punctuation">.</span><span class="token builtin">Item</span> <span class="token operator">==</span> <span class="token builtin">Item</span>
+    <span class="token keyword">func</span> <span class="token function">suffix</span><span class="token punctuation">(</span><span class="token number">_</span> size<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Suffix</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>このプロトコルでは、<code>Suffix</code> は、上記の <code>Container</code> の例の <code>Item</code> 型のように、関連型です。<code>Suffix</code> には 2 つの制約があります。<code>SuffixableContainer</code> プロトコル(現在定義されているプロトコル)に準拠している必要があり、その <code>Item</code> 型は <code>Container</code> の <code>Item</code> 型と同じだということが必要です。<code>Item</code> の制約はジェネリック <code>where</code> 句です。これについては、下記の<a href="generics.html#associated-types-with-a-generic-where-clause">Associated Types with a Generic Where Clause(ジェネリック where 句を使用した関連型)</a>で説明します。</p>
+<p>上記の<a href="generics.html#generic-types">Generic Types(ジェネリック型)</a>の <code>Stack</code> 型に <code>SuffixableContainer</code> プロトコルへの準拠を追加した拡張を次に示します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Stack</span><span class="token punctuation">:</span> <span class="token builtin">SuffixableContainer</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">suffix</span><span class="token punctuation">(</span><span class="token number">_</span> size<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Stack</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token function">Stack</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> index <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token builtin">count</span><span class="token operator">-</span>size<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token builtin">count</span> <span class="token punctuation">{</span>
+            result<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> result
+    <span class="token punctuation">}</span>
+    <span class="token comment">// Suffix が Stack であると推論されます</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> stackOfInts <span class="token operator">=</span> <span class="token builtin">Stack</span><span class="token operator">&lt;</span><span class="token builtin">Int</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+stackOfInts<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+stackOfInts<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>
+stackOfInts<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> <span class="token builtin">suffix</span> <span class="token operator">=</span> stackOfInts<span class="token punctuation">.</span><span class="token function">suffix</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token comment">// Suffix には 20 と 30 が含まれます</span>
+</code></pre>
+<p>上記の例では、<code>Suffix</code> の関連型も <code>Stack</code> のため、<code>Stack</code> の suffix 操作は別の <code>Stack</code> を返します。他にも、<code>SuffixableContainer</code> に準拠する型は、それ自体とは異なる <code>Suffix</code> 型を持つことができます。つまり、suffix 操作は異なる型を返すことができます。例えば、<code>IntStack</code> の代わりに <code>Stack<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Int</span><span class="token punctuation">&gt;</span></span></code> を <code>Suffix</code> 型として使用して、非ジェネリック型 <code>IntStack</code> が <code>SuffixableContainer</code> への準拠を追加する extension を次に示します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">IntStack</span><span class="token punctuation">:</span> <span class="token builtin">SuffixableContainer</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">suffix</span><span class="token punctuation">(</span><span class="token number">_</span> size<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Stack</span><span class="token operator">&lt;</span><span class="token builtin">Int</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token builtin">Stack</span><span class="token operator">&lt;</span><span class="token builtin">Int</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> index <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token builtin">count</span><span class="token operator">-</span>size<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token builtin">count</span> <span class="token punctuation">{</span>
+            result<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> result
+    <span class="token punctuation">}</span>
+    <span class="token comment">// Suffix が Stack&lt;Int&gt; だと推論されます</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="ジェネリック-where-句generic-where-clauses"><a name="ジェネリック-where-句generic-where-clauses" class="plugin-anchor" href="#ジェネリック-where-句generic-where-clauses"><i class="fa fa-link" aria-hidden="true"></i></a><a id="generic-where-clauses">ジェネリック where 句(Generic Where Clauses)</a></h2>
+<p><a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/generics#type-constraints" target="_blank">Type Constraints(型制約)</a>で説明されているように、型制約を使用すると、ジェネリック関数、subscript、または型に関連した型パラメータの要件を定義できます。</p>
+<p>関連型の要件を定義するのにも役立ちます。これを行うには、<em>ジェネリック where 句</em>を定義します。ジェネリック <code>where</code> 句を使用すると、関連型が特定のプロトコルに準拠する必要があること、または特定の型パラメータと関連型を同じにする必要があることを要求できます。ジェネリック <code>where</code> 句は <code>where</code> キーワードで始まり、その後に関連型の制約、または型と関連型の間の等価関係が続きます。型または関数の本文の開始中括弧(<code>{</code>)の直前に、ジェネリック <code>where</code> 句を記述します。</p>
+<p>下記の例では、2 つの <code>Container</code> インスタンスに同じアイテムが同じ順序で含まれているかどうかを確認する <code>allItemsMatch</code> というジェネリック関数を定義しています。この関数は、全てのアイテムが一致する場合はブール値 <code>true</code> を返し、一致しない場合は <code>false</code> の値を返します。</p>
+<p>チェックする 2 つのコンテナは、必ずしも同じ型の必要はありませんが(同じ型のコンテナでもかまいません)、同じ型のアイテムを保持している必要があります。この要件は、型制約とジェネリック <code>where</code> 句の組み合わせによって表現されます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> allItemsMatch<span class="token operator">&lt;</span><span class="token builtin">C1</span><span class="token punctuation">:</span> <span class="token builtin">Container</span><span class="token punctuation">,</span> <span class="token builtin">C2</span><span class="token punctuation">:</span> <span class="token builtin">Container</span><span class="token operator">&gt;</span>
+    <span class="token punctuation">(</span><span class="token number">_</span> someContainer<span class="token punctuation">:</span> <span class="token builtin">C1</span><span class="token punctuation">,</span> <span class="token number">_</span> anotherContainer<span class="token punctuation">:</span> <span class="token builtin">C2</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Bool</span>
+    <span class="token keyword">where</span> <span class="token builtin">C1</span><span class="token punctuation">.</span><span class="token builtin">Item</span> <span class="token operator">==</span> <span class="token builtin">C2</span><span class="token punctuation">.</span><span class="token builtin">Item</span><span class="token punctuation">,</span> <span class="token builtin">C1</span><span class="token punctuation">.</span><span class="token builtin">Item</span><span class="token punctuation">:</span> <span class="token builtin">Equatable</span> <span class="token punctuation">{</span>
+
+        <span class="token comment">// 両方のコンテナに同じ数のアイテムが含まれていることを確認します</span>
+        <span class="token keyword">if</span> someContainer<span class="token punctuation">.</span><span class="token builtin">count</span> <span class="token operator">!=</span> anotherContainer<span class="token punctuation">.</span><span class="token builtin">count</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// アイテムの各ペアをチェックして、同等かどうかを確認します</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token number">0</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">&lt;</span>someContainer<span class="token punctuation">.</span><span class="token builtin">count</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> someContainer<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> anotherContainer<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// 全てのアイテムが一致するため、true を返します</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>この関数は、<code>someContainer</code> と <code>anotherContainer</code> という 2 つの引数を取ります。<code>someContainer</code> 引数は <code>C1</code> 型で、<code>otherContainer</code> 引数は <code>C2</code> 型です。<code>C1</code> と <code>C2</code> はどちらも、関数が呼び出されたときに決定される 2 つの <code>Container</code> 型の型パラメータです。</p>
+<p>関数の 2 つの型パラメータには、次の要件が適用されます。</p>
+<ul>
+<li><code>C1</code> は、<code>Container</code> プロトコル(<code>C1: Container</code> と表記)に準拠する必要があります</li>
+<li><code>C2</code> も、<code>Container</code> プロトコル(<code>C2: Container</code> と表記)に準拠する必要があります</li>
+<li><code>C1</code> の <code>Item</code> は、<code>C2</code> の <code>Item</code> と同じにする必要があります(<code>C1.Item == C2.Item</code> と記述)</li>
+<li><code>C1</code> の <code>Item</code> は、<code>Equatable</code> プロトコル(<code>C1.Item: Equatable</code> と表記)に準拠する必要があります</li>
+</ul>
+<p>1 番目と 2 番目の要件は関数の型パラメータリストで定義され、3 番目と 4 番目の要件は関数のジェネリック <code>where</code> 句で定義されます。</p>
+<p>これらの要件は次のことを意味します。</p>
+<ul>
+<li><code>someContainer</code> は <code>C1</code> 型のコンテナです</li>
+<li><code>anotherContainer</code> は、<code>C2</code> 型のコンテナです</li>
+<li><code>someContainer</code> と <code>anotherContainer</code> には、同じ型のアイテムが含まれています</li>
+<li><code>someContainer</code> 内の <code>Item</code> は、不等演算子 (<code>!=</code>) を使用して、互いに異なるかどうかを確認できます</li>
+</ul>
+<p>3 番目と 4 番目の要件を組み合わせると、<code>otherContainer</code> のアイテムは <code>someContainer</code> のアイテムとまったく同じ型のため、<code>!=</code> 演算子を使用してチェックすることもできます。</p>
+<p>これらの要件により、<code>allItemsMatch(_:_:)</code> 関数は、2 つのコンテナが異なるコンテナ型でも、それらを比較できます。</p>
+<p><code>allItemsMatch(_:_:)</code> 関数は、両方のコンテナに同じ数のアイテムが含まれていることを確認することから始まります。それらに含まれるアイテムの数が異なる場合、一致する可能性はなく、関数は <code>false</code> を返します。</p>
+<p>このチェックを行った後、関数は <code>for-in</code> ループと半開範囲演算子(<code>..&lt;</code>)を使用して <code>someContainer</code> 内の全てのアイテムを反復します。各アイテムについて、関数は <code>someContainer</code> のアイテムが <code>anotherContainer</code> の対応するアイテムと等しくないかどうかをチェックします。2 つのアイテムが等しくない場合、2 つのコンテナは一致せず、関数は <code>false</code> を返します。</p>
+<p>不一致が見つからずにループが終了した場合、2 つのコンテナは一致し、関数は <code>true</code> を返します。</p>
+<p><code>allItemsMatch(_:_:)</code> 関数の実際の動作は次のとおりです:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> stackOfStrings <span class="token operator">=</span> <span class="token builtin">Stack</span><span class="token operator">&lt;</span><span class="token builtin">String</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+stackOfStrings<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">&quot;uno&quot;</span><span class="token punctuation">)</span>
+stackOfStrings<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">&quot;dos&quot;</span><span class="token punctuation">)</span>
+stackOfStrings<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">&quot;tres&quot;</span><span class="token punctuation">)</span>
+
+<span class="token keyword">var</span> arrayOfStrings <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;uno&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;dos&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;tres&quot;</span><span class="token punctuation">]</span>
+
+<span class="token keyword">if</span> <span class="token function">allItemsMatch</span><span class="token punctuation">(</span>stackOfStrings<span class="token punctuation">,</span> arrayOfStrings<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;All items match.&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Not all items match.&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;All items match.&quot;</span>
+</code></pre>
+<p>上記の例では、<code>String</code> 値を格納する <code>Stack</code> インスタンスを作成し、3 つの文字列をスタックにプッシュします。この例では、スタックと同じ 3 つの文字列を含む配列リテラルで初期化された <code>Array</code> インスタンスも作成します。スタックと配列は型が異なりますが、どちらも <code>Container</code> プロトコルに準拠しており、両方に同じ型の値が含まれています。したがって、これら 2 つのコンテナを引数として <code>allItemsMatch(_:_:)</code> 関数を呼び出すことができます。上記の例では、<code>allItemsMatch(_:_:)</code> 関数は、2 つのアイテムの全てが合致していることを出力します。</p>
+<h2 id="ジェネリック-where-句を使った拡張extensions-with-a-generic-where-clause"><a name="ジェネリック-where-句を使った拡張extensions-with-a-generic-where-clause" class="plugin-anchor" href="#ジェネリック-where-句を使った拡張extensions-with-a-generic-where-clause"><i class="fa fa-link" aria-hidden="true"></i></a><a id="extensions-with-a-generic-where-clause">ジェネリック where 句を使った拡張(Extensions with a Generic Where Clause)</a></h2>
+<p>extension にジェネリック <code>where</code> 句を使用することもできます。下記の例では、前の例のジェネリックな <code>Stack</code> 構造体を拡張して、<code>isTop(_:)</code> メソッドを追加しています:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Stack</span> <span class="token keyword">where</span> <span class="token builtin">Element</span><span class="token punctuation">:</span> <span class="token builtin">Equatable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">isTop</span><span class="token punctuation">(</span><span class="token number">_</span> item<span class="token punctuation">:</span> <span class="token builtin">Element</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Bool</span> <span class="token punctuation">{</span>
+        <span class="token keyword">guard</span> <span class="token keyword">let</span> topItem <span class="token operator">=</span> items<span class="token punctuation">.</span><span class="token builtin">last</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> topItem <span class="token operator">==</span> item
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>この新しい <code>isTop(_:)</code> メソッドは、最初にスタックが空でないことを確認してから、指定されたアイテムをスタックの最上位のアイテムと比較します。<code>isTop(_:)</code> の実装では <code>==</code> 演算子を使用していますが、<code>Stack</code> の定義ではそのアイテムが <code>Equatable</code> の要件を設定していないため、<code>==</code> 演算子はコンパイルエラーになります。ジェネリック <code>where</code> 句を使用すると、 extension に新しい要件を追加できるため、extension はスタック内のアイテムが <code>Equatable</code> の場合にのみ <code>isTop(_:)</code> メソッドを追加します。</p>
+<p><code>isTop(_:)</code> メソッドの実際の動作は次のとおりです:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> stackOfStrings<span class="token punctuation">.</span><span class="token function">isTop</span><span class="token punctuation">(</span><span class="token string">&quot;tres&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Top element is tres.&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Top element is something else.&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;Top element is tres.&quot;</span>
+</code></pre>
+<p>要素が <code>Equatable</code> でないスタックで <code>isTop(_:)</code> メソッドを呼び出そうとすると、コンパイルエラーが発生します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">NotEquatable</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+<span class="token keyword">var</span> notEquatableStack <span class="token operator">=</span> <span class="token builtin">Stack</span><span class="token operator">&lt;</span><span class="token builtin">NotEquatable</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> notEquatableValue <span class="token operator">=</span> <span class="token function">NotEquatable</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+notEquatableStack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>notEquatableValue<span class="token punctuation">)</span>
+notEquatableStack<span class="token punctuation">.</span><span class="token function">isTop</span><span class="token punctuation">(</span>notEquatableValue<span class="token punctuation">)</span>  <span class="token comment">// エラー</span>
+</code></pre>
+<p>プロトコルの extension にもジェネリック <code>where</code> 句を使用できます。下記の例では、前の例の <code>Container</code> プロトコルを拡張して、<code>startsWith(_:)</code> メソッドを追加しています。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Container</span> <span class="token keyword">where</span> <span class="token builtin">Item</span><span class="token punctuation">:</span> <span class="token builtin">Equatable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token number">_</span> item<span class="token punctuation">:</span> <span class="token builtin">Item</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Bool</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token builtin">count</span> <span class="token operator">&gt;=</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">self</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> item
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>startsWith(_:)</code> メソッドは、まずコンテナに少なくとも 1 つのアイテムがあることを確認し、次にコンテナ内の最初のアイテムが指定されたアイテムと一致するかどうかを確認します。この新しい <code>startsWith(_:)</code> メソッドは、コンテナのアイテムが同等な限り、<code>Container</code> プロトコルに準拠する任意の型で使用できます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Starts with 42.&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Starts with something else.&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;Starts with something else.&quot;</span>
+</code></pre>
+<p>上記の例のジェネリック <code>where</code> 句では、<code>Item</code> がプロトコルに準拠する必要がありますが、<code>Item</code> の型を特定する必要があるジェネリック <code>where</code> 句を記述することもできます。例えば:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Container</span> <span class="token keyword">where</span> <span class="token builtin">Item</span> <span class="token operator">==</span> <span class="token builtin">Double</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">average</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Double</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> sum <span class="token operator">=</span> <span class="token number">0.0</span>
+        <span class="token keyword">for</span> index <span class="token keyword">in</span> <span class="token number">0</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token builtin">count</span> <span class="token punctuation">{</span>
+            sum <span class="token operator">+</span><span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> sum <span class="token operator">/</span> <span class="token function">Double</span><span class="token punctuation">(</span><span class="token builtin">count</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1260.0</span><span class="token punctuation">,</span> <span class="token number">1200.0</span><span class="token punctuation">,</span> <span class="token number">98.6</span><span class="token punctuation">,</span> <span class="token number">37.0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">average</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;648.9&quot;</span>
+</code></pre>
+<p>この例では、<code>Item</code> 型が <code>Double</code> のコンテナに <code>average()</code> メソッドを追加します。コンテナ内のアイテムを繰り返して合計し、コンテナの数で除算して平均を計算します。浮動小数点除算ができるように、<code>count</code> を <code>Int</code> から <code>Double</code> に明示的に変換します。</p>
+<p>他の場所で記述したジェネリック <code>where</code> 句の場合と同様に、extension にあるジェネリック <code>where</code> 句に複数の要件を含めることができます。各要件はカンマ(<code>,</code>)で区切ります。</p>
+<h2 id="コンテキスト上の-where-句contextual-where-clauses"><a name="コンテキスト上の-where-句contextual-where-clauses" class="plugin-anchor" href="#コンテキスト上の-where-句contextual-where-clauses"><i class="fa fa-link" aria-hidden="true"></i></a><a id="contextual-where-clauses">コンテキスト上の where 句(Contextual Where Clauses)</a></h2>
+<p>既にジェネリック型を使っているコンテキスト上で、型制約を持たない宣言にジェネリック <code>where</code> 句を記述できます。例えば、ジェネリック型の subscript、またはジェネリック型の extension のメソッドにジェネリック <code>where</code> 句を記述できます。<code>Container</code> 構造体はジェネリックで、下記の例の <code>where</code> 句は、新しいメソッドを <code>Container</code> で使用できるようにするために満たす必要のある型制約を指定しています。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Container</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">average</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Double</span> <span class="token keyword">where</span> <span class="token builtin">Item</span> <span class="token operator">==</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> sum <span class="token operator">=</span> <span class="token number">0.0</span>
+        <span class="token keyword">for</span> index <span class="token keyword">in</span> <span class="token number">0</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token builtin">count</span> <span class="token punctuation">{</span>
+            sum <span class="token operator">+</span><span class="token operator">=</span> <span class="token function">Double</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> sum <span class="token operator">/</span> <span class="token function">Double</span><span class="token punctuation">(</span><span class="token builtin">count</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">func</span> <span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token number">_</span> item<span class="token punctuation">:</span> <span class="token builtin">Item</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Bool</span> <span class="token keyword">where</span> <span class="token builtin">Item</span><span class="token punctuation">:</span> <span class="token builtin">Equatable</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token builtin">count</span> <span class="token operator">&gt;=</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">self</span><span class="token punctuation">[</span><span class="token builtin">count</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> item
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> numbers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1260</span><span class="token punctuation">,</span> <span class="token number">1200</span><span class="token punctuation">,</span> <span class="token number">98</span><span class="token punctuation">,</span> <span class="token number">37</span><span class="token punctuation">]</span>
+<span class="token function">print</span><span class="token punctuation">(</span>numbers<span class="token punctuation">.</span><span class="token function">average</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;648.75&quot;</span>
+<span class="token function">print</span><span class="token punctuation">(</span>numbers<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token number">37</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;true&quot;</span>
+</code></pre>
+<p>この例では、アイテムが整数の場合は <code>average()</code> メソッドを <code>Container</code> に追加し、アイテムが <code>Equatable</code> の場合は <code>endsWith(_:)</code> メソッドを追加します。どちらの関数にも、<code>Container</code> で宣言したジェネリックな <code>Item</code> 型パラメータに型制約を追加するジェネリック <code>where</code> 句が含まれています。</p>
+<p>コンテキスト上の <code>where</code> 句を使用せずにこのコードを記述したい場合は、ジェネリック <code>where</code> 句ごとに 1 つずつ、2 つの extension を記述します。上記の例と下記の例は同じ動きをします。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Container</span> <span class="token keyword">where</span> <span class="token builtin">Item</span> <span class="token operator">==</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">average</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Double</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> sum <span class="token operator">=</span> <span class="token number">0.0</span>
+        <span class="token keyword">for</span> index <span class="token keyword">in</span> <span class="token number">0</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token builtin">count</span> <span class="token punctuation">{</span>
+            sum <span class="token operator">+</span><span class="token operator">=</span> <span class="token function">Double</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> sum <span class="token operator">/</span> <span class="token function">Double</span><span class="token punctuation">(</span><span class="token builtin">count</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">extension</span> <span class="token builtin">Container</span> <span class="token keyword">where</span> <span class="token builtin">Item</span><span class="token punctuation">:</span> <span class="token builtin">Equatable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token number">_</span> item<span class="token punctuation">:</span> <span class="token builtin">Item</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Bool</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token builtin">count</span> <span class="token operator">&gt;=</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">self</span><span class="token punctuation">[</span><span class="token builtin">count</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> item
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>コンテキスト上の <code>where</code> 句を使用する例のバージョンでは、各メソッドのジェネリック <code>where</code> 句が、そのメソッドを使用可能にするために満たす必要がある要件を示しているため、<code>average()</code> と <code>endsWith(_:)</code> の実装は両方とも同じ extension 内にありました。これらの要件を extension のジェネリック <code>where</code> 句に移動すると、同じ状況でメソッドを使用できるようになりますが、要件ごとに 1 つの extension が必要になります。</p>
+<h2 id="ジェネリック-where-句を使用した関連型associated-types-with-a-generic-where-clause"><a name="ジェネリック-where-句を使用した関連型associated-types-with-a-generic-where-clause" class="plugin-anchor" href="#ジェネリック-where-句を使用した関連型associated-types-with-a-generic-where-clause"><i class="fa fa-link" aria-hidden="true"></i></a><a id="associated-types-with-a-generic-where-clause">ジェネリック where 句を使用した関連型(Associated Types with a Generic Where Clause)</a></h2>
+<p>関連型にジェネリック <code>where</code> 句を含めることができます。例えば、標準ライブラリの <code>Sequence</code> プロトコルで使用するようなイテレータを含む <code>Container</code> のバージョンを作成するとします。書き方は次のとおりです:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">Container</span> <span class="token punctuation">{</span>
+    associatedtype <span class="token builtin">Item</span>
+    <span class="token keyword">mutating</span> <span class="token keyword">func</span> <span class="token function">append</span><span class="token punctuation">(</span><span class="token number">_</span> item<span class="token punctuation">:</span> <span class="token builtin">Item</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> <span class="token builtin">count</span><span class="token punctuation">:</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token punctuation">}</span>
+    <span class="token keyword">subscript</span><span class="token punctuation">(</span>i<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Item</span> <span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token punctuation">}</span>
+
+    associatedtype <span class="token builtin">Iterator</span><span class="token punctuation">:</span> <span class="token builtin">IteratorProtocol</span> <span class="token keyword">where</span> <span class="token builtin">Iterator</span><span class="token punctuation">.</span><span class="token builtin">Element</span> <span class="token operator">==</span> <span class="token builtin">Item</span>
+    <span class="token keyword">func</span> <span class="token function">makeIterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Iterator</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>Iterator</code> のジェネリック <code>where</code> 句では、<code>Iterator</code> の型に関係なく、コンテナのアイテムと同じアイテム型の要素をイテレータが反復する必要があります。<code>makeIterator()</code> 関数は、コンテナのイテレータへのアクセスを提供します。</p>
+<p>別のプロトコルを継承したプロトコルの場合、プロトコル宣言にジェネリック <code>where</code> 句を含めることにより、継承した関連型に制約を追加できます。例えば、次のコードは、<code>Item</code> が <code>Comparable</code> に準拠することを要求する <code>ComparableContainer</code> プロトコルを宣言しています:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">ComparableContainer</span><span class="token punctuation">:</span> <span class="token builtin">Container</span> <span class="token keyword">where</span> <span class="token builtin">Item</span><span class="token punctuation">:</span> <span class="token builtin">Comparable</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+</code></pre>
+<h2 id="ジェネリック-subscriptgeneric-subscripts"><a name="ジェネリック-subscriptgeneric-subscripts" class="plugin-anchor" href="#ジェネリック-subscriptgeneric-subscripts"><i class="fa fa-link" aria-hidden="true"></i></a><a id="generic-subscripts">ジェネリック subscript(Generic Subscripts)</a></h2>
+<p>subscript はジェネリックにすることができ、ジェネリック <code>where</code> 句を含めることができます。subscript の後の山括弧内(<code>&lt;&gt;</code>)にプレースホルダの型名を記述し、subscript の本文の開始の中括弧(<code>{</code>)の直前にジェネリック <code>where</code> 句を記述します。例えば:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Container</span> <span class="token punctuation">{</span>
+    <span class="token keyword">subscript</span><span class="token operator">&lt;</span><span class="token builtin">Indices</span><span class="token punctuation">:</span> <span class="token builtin">Sequence</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token builtin">indices</span><span class="token punctuation">:</span> <span class="token builtin">Indices</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token builtin">Item</span><span class="token punctuation">]</span>
+        <span class="token keyword">where</span> <span class="token builtin">Indices</span><span class="token punctuation">.</span><span class="token builtin">Iterator</span><span class="token punctuation">.</span><span class="token builtin">Element</span> <span class="token operator">==</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">Item</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">for</span> index <span class="token keyword">in</span> <span class="token builtin">indices</span> <span class="token punctuation">{</span>
+                result<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> result
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>Container</code> プロトコルへのこの extension は、インデックスのシーケンスを受け取り、指定された各インデックスのアイテムを含む配列を返す subscript を追加します。このジェネリックな subscript は、次のように制約されます:</p>
+<ul>
+<li>山括弧(<code>&lt;&gt;</code>)内のジェネリックパラメータのインデックスは、標準ライブラリの <code>Sequence</code> プロトコルに準拠した型にする必要があります</li>
+<li>subscript は、単一の <code>Indices</code> 型のインスタンスのパラメータ <code>indices</code> を受け取ります</li>
+<li>ジェネリック <code>where</code> 句では、シーケンスのイテレータが <code>Int</code> 型の要素を繰り返し処理することを要求します。これにより、シーケンス内のインデックスは、コンテナに使用されるインデックスと同じ型だということが保証されます</li>
+</ul>
+<p>まとめると、これらの制約は、<code>indices</code> パラメータに渡される値が整数のシーケンスだということを意味します。</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ジェネリクス(Generics)","level":"3.23","depth":1,"next":{"title":"Opaque 型(Opaque Types)","level":"3.24","depth":1,"path":"language-guide-gaido/opaque-types.md","ref":"language-guide-gaido/opaque-types.md","articles":[]},"previous":{"title":"プロトコル(Protocols)","level":"3.22","depth":1,"path":"language-guide-gaido/protocols.md","ref":"language-guide-gaido/protocols.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"livereload":{},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/generics.md","mtime":"2021-07-08T00:00:10.832Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-10T23:53:49.546Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-api/theme-api.js"></script>
+        
+    
+
+    </body>
+</html>
+

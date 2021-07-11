@@ -1,0 +1,1060 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <title>型キャスト(Type Casting) · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-api/theme-api.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="nested-types.html" />
+    
+    
+    <link rel="prev" href="concurrency.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索ワードを入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    The Swift Programming Language(日本語版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Swiftへようこそ(WELCOME TO SWIFT)</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../welcome-to-swift-swiftheyoukoso/about-swift.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/about-swift.html">
+            
+                    
+                    Swiftについて(About Swift)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../welcome-to-swift-swiftheyoukoso/version-compatibility.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/version-compatibility.html">
+            
+                    
+                    バージョン互換性(Version Compatibility)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../welcome-to-swift-swiftheyoukoso/a-swift-tour.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/a-swift-tour.html">
+            
+                    
+                    Swiftツアー(A Swift Tour)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">LANGUAGE GUIDE (言語ガイド)</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="the-basics.html">
+            
+                <a href="the-basics.html">
+            
+                    
+                    基本(The Basics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="basic-operators.html">
+            
+                <a href="basic-operators.html">
+            
+                    
+                    基本演算子(Basic Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="strings-and-characters.html">
+            
+                <a href="strings-and-characters.html">
+            
+                    
+                    文字と文字列(Strings and Characters)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="collection-types.html">
+            
+                <a href="collection-types.html">
+            
+                    
+                    コレクション型(Collection Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="control-flow.html">
+            
+                <a href="control-flow.html">
+            
+                    
+                    制御フロー(Control Flow)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="functions.html">
+            
+                <a href="functions.html">
+            
+                    
+                    関数(Functions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="closures.html">
+            
+                <a href="closures.html">
+            
+                    
+                    クロージャ(Closures)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="enumerations.html">
+            
+                <a href="enumerations.html">
+            
+                    
+                    列挙型(Enumerations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="structures-and-classes.html">
+            
+                <a href="structures-and-classes.html">
+            
+                    
+                    構造体とクラス(Structures and Classes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="properties.html">
+            
+                <a href="properties.html">
+            
+                    
+                    プロパティ(Properties)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="methods.html">
+            
+                <a href="methods.html">
+            
+                    
+                    メソッド(Methods)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="subscripts.html">
+            
+                <a href="subscripts.html">
+            
+                    
+                    サブスクリプト(Subscripts)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="inheritance.html">
+            
+                <a href="inheritance.html">
+            
+                    
+                    継承(Inheritance)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="initialization.html">
+            
+                <a href="initialization.html">
+            
+                    
+                    初期化(Initialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="deinitialization.html">
+            
+                <a href="deinitialization.html">
+            
+                    
+                    デイニシャライゼーション(Deinitialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="optional-chaining.html">
+            
+                <a href="optional-chaining.html">
+            
+                    
+                    オプショナルチェーン(Optional Chaining)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="error-handling.html">
+            
+                <a href="error-handling.html">
+            
+                    
+                    エラー処理(Error Handling)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="concurrency.html">
+            
+                <a href="concurrency.html">
+            
+                    
+                    同時並行処理(Concurrency)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.19" data-path="type-casting.html">
+            
+                <a href="type-casting.html">
+            
+                    
+                    型キャスト(Type Casting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="nested-types.html">
+            
+                <a href="nested-types.html">
+            
+                    
+                    ネスト型(Nested Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.21" data-path="extensions.html">
+            
+                <a href="extensions.html">
+            
+                    
+                    拡張(Extensions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.22" data-path="protocols.html">
+            
+                <a href="protocols.html">
+            
+                    
+                    プロトコル(Protocols)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.23" data-path="generics.html">
+            
+                <a href="generics.html">
+            
+                    
+                    ジェネリクス(Generics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.24" data-path="opaque-types.html">
+            
+                <a href="opaque-types.html">
+            
+                    
+                    Opaque 型(Opaque Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.25" data-path="automatic-reference-counting.html">
+            
+                <a href="automatic-reference-counting.html">
+            
+                    
+                    自動参照カウント ARC(Automatic Reference Counting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.26" data-path="memory-safety.html">
+            
+                <a href="memory-safety.html">
+            
+                    
+                    メモリ安全性(Memory Safety)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.27" data-path="access-control.html">
+            
+                <a href="access-control.html">
+            
+                    
+                    アクセスコントロール(Access Control)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.28" data-path="advanced-operators.html">
+            
+                <a href="advanced-operators.html">
+            
+                    
+                    高度な演算子(Advanced Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">LANGUAGE REFERENCE (言語リファレンス)</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../language-reference/about-the-language-reference.html">
+            
+                <a href="../language-reference/about-the-language-reference.html">
+            
+                    
+                    言語リファレンスについて(About the Language Reference)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../language-reference/lexical-structure.html">
+            
+                <a href="../language-reference/lexical-structure.html">
+            
+                    
+                    構文の構造(Lexical Structure)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../language-reference/types.html">
+            
+                <a href="../language-reference/types.html">
+            
+                    
+                    型(Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../language-reference/expressions.html">
+            
+                <a href="../language-reference/expressions.html">
+            
+                    
+                    式(Expressions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../language-reference/statements.html">
+            
+                <a href="../language-reference/statements.html">
+            
+                    
+                    文(Statements)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../language-reference/declarations.html">
+            
+                <a href="../language-reference/declarations.html">
+            
+                    
+                    宣言(Declarations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../language-reference/attributes.html">
+            
+                <a href="../language-reference/attributes.html">
+            
+                    
+                    属性(Attributes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../language-reference/patterns.html">
+            
+                <a href="../language-reference/patterns.html">
+            
+                    
+                    パターン(Patterns)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../language-reference/generic-parameters-and-arguments.html">
+            
+                <a href="../language-reference/generic-parameters-and-arguments.html">
+            
+                    
+                    ジェネリックパラメータと引数(Generic Parameters and Arguments)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="../language-reference/summary-of-the-grammar.html">
+            
+                <a href="../language-reference/summary-of-the-grammar.html">
+            
+                    
+                    文法のまとめ(Summary of the Grammar)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">REVISION HISTORY (改訂履歴)</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../revision-history/document-revision-history.html">
+            
+                <a href="../revision-history/document-revision-history.html">
+            
+                    
+                    ドキュメント改訂履歴(Document Revision History)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKitで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >型キャスト(Type Casting)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="型キャストtype-casting"><a name="型キャストtype-casting" class="plugin-anchor" href="#型キャストtype-casting"><i class="fa fa-link" aria-hidden="true"></i></a>型キャスト(Type Casting)</h1>
+<p>最終更新日: 2021/6/29</p>
+<p><em>型キャスト</em>は、インスタンスの型をチェックする、またはそのインスタンスを独自のクラス階層のスーパークラスまたはサブクラスとして扱う方法です。</p>
+<p>Swift での型キャストは、<code>is</code> および <code>as</code> 演算子で実装されます。これらの 2 つの演算子は、値の型をチェックしたり、値を別の型にキャストしたりするためのシンプルで表現力豊かな方法を提供します。</p>
+<p><a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#checking-for-protocol-conformance" target="_blank">Checking for Protocol Conformance(プロトコル準拠チェック)</a>で説明されているように、型キャストを使用して、型がプロトコルに準拠しているかどうかを確認することもできます。</p>
+<h2 id="型キャストのためのクラス階層の定義defining-a-class-hierarchy-for-type-casting"><a name="型キャストのためのクラス階層の定義defining-a-class-hierarchy-for-type-casting" class="plugin-anchor" href="#型キャストのためのクラス階層の定義defining-a-class-hierarchy-for-type-casting"><i class="fa fa-link" aria-hidden="true"></i></a>型キャストのためのクラス階層の定義(Defining a Class Hierarchy for Type Casting)</h2>
+<p>クラスとサブクラスの階層で型キャストを使用して、特定のクラスインスタンスの型を確認し、そのインスタンスを同じ階層内の別のクラスにキャストできます。下記の 3 つのコードスニペットは、今後の型キャストの例で使用するために、クラスの階層とそれらのクラスのインスタンスを含む配列を定義しています。</p>
+<p>最初のスニペットは、<code>MediaItem</code> という新しい基本クラスを定義します。このクラスは、デジタルメディアライブラリに表示されるあらゆる種類のアイテムの基本的な機能を提供します。具体的には、<code>String</code> 型の <code>name</code> プロパティと <code>init(name:)</code> イニシャライザを宣言しています。(全ての映画と曲を含む全てのメディアアイテムに名前があると想定しています)</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">MediaItem</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>次のスニペットは、<code>MediaItem</code> の 2 つのサブクラスを定義します。最初のサブクラスの <code>Movie</code> は、映画または映画に関する追加情報をカプセル化します。これは、対応するイニシャライザを使用して、基本クラスの <code>MediaItem</code> の上に <code>director</code> プロパティを追加します。2 番目のサブクラスの <code>Song</code> は、基本クラスの上に <code>artist</code> プロパティとイニシャライザを追加します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">Movie</span><span class="token punctuation">:</span> <span class="token builtin">MediaItem</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> director<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> director<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>director <span class="token operator">=</span> director
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token keyword">init</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> name<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Song</span><span class="token punctuation">:</span> <span class="token builtin">MediaItem</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> artist<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> artist<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>artist <span class="token operator">=</span> artist
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token keyword">init</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> name<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>最後のスニペットは、2 つの <code>Movie</code> インスタンスと 3 つの <code>Song</code> インスタンスを含む <code>library</code> という定数配列を作成します。<code>library</code> の配列の型は、初期化時に使用する配列リテラルの内容から推論できます。Swift の型チェックは、<code>Movie</code> と <code>Song</code> が <code>MediaItem</code> という共通のスーパークラスを持っていることを推論できるため、<code>library</code> 配列が <code>[MediaItem]</code> 型だと推論できます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> library <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token function">Movie</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Casablanca&quot;</span><span class="token punctuation">,</span> director<span class="token punctuation">:</span> <span class="token string">&quot;Michael Curtiz&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">Song</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Blue Suede Shoes&quot;</span><span class="token punctuation">,</span> artist<span class="token punctuation">:</span> <span class="token string">&quot;Elvis Presley&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">Movie</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Citizen Kane&quot;</span><span class="token punctuation">,</span> director<span class="token punctuation">:</span> <span class="token string">&quot;Orson Welles&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">Song</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;The One And Only&quot;</span><span class="token punctuation">,</span> artist<span class="token punctuation">:</span> <span class="token string">&quot;Chesney Hawkes&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">Song</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Never Gonna Give You Up&quot;</span><span class="token punctuation">,</span> artist<span class="token punctuation">:</span> <span class="token string">&quot;Rick Astley&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">]</span>
+<span class="token comment">// &quot;library&quot; の型は [MediaItem] と推論されます</span>
+</code></pre>
+<p><code>library</code> に保存されているアイテムは、依然として裏側では <code>Movie</code> および <code>Song</code> インスタンスです。ただし、この配列の内容を反復処理すると、返されるアイテムは <code>Movie</code> や <code>Song</code> ではなく <code>MediaItem</code> になります。それらを本来の型として使用するには、型を確認するか、下記で説明するように別の型に<em>ダウンキャスト</em>する必要があります。</p>
+<h2 id="型チェックchecking-type"><a name="型チェックchecking-type" class="plugin-anchor" href="#型チェックchecking-type"><i class="fa fa-link" aria-hidden="true"></i></a>型チェック(Checking Type)</h2>
+<p>インスタンスが特定のサブクラス型かどうかを確認するには、型チェック演算子(<code>is</code>)を使用します。型チェック演算子は、インスタンスがそのサブクラス型の場合は <code>true</code> を返し、そうでない場合は <code>false</code> を返します。</p>
+<p>下記の例では、<code>library</code> 配列内の <code>Movie</code> および <code>Song</code> インスタンスの数をカウントする 2 つの変数 <code>movieCount</code> と <code>songCount</code> を定義しています:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> movieCount <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">var</span> songCount <span class="token operator">=</span> <span class="token number">0</span>
+
+<span class="token keyword">for</span> item <span class="token keyword">in</span> library <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> item <span class="token keyword">is</span> <span class="token builtin">Movie</span> <span class="token punctuation">{</span>
+        movieCount <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> item <span class="token keyword">is</span> <span class="token builtin">Song</span> <span class="token punctuation">{</span>
+        songCount <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Media library contains <span class="token interpolation"><span class="token delimiter variable">\(</span>movieCount<span class="token delimiter variable">)</span></span> movies and <span class="token interpolation"><span class="token delimiter variable">\(</span>songCount<span class="token delimiter variable">)</span></span> songs&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;Media library contains 2 movies and 3 songs&quot;</span>
+</code></pre>
+<p>この例では、<code>library</code> 配列内の全てのアイテムを繰り返します。<code>for-in</code> ループの各ループでは、<code>item</code> 定数に配列内の次の <code>MediaItem</code> を設定します。</p>
+<p><code>item is Movie</code> は、現在の <code>MediaItem</code> が <code>Movie</code> インスタンスの場合は <code>true</code> を返し、そうでない場合は <code>false</code> を返します。同様に、<code>item is Song</code> は、アイテムが <code>Song</code> インスタンスかどうかをチェックします。<code>for-in</code> ループの最後で、<code>movieCount</code> と <code>songCount</code> の値には、各型の <code>MediaItem</code> インスタンスがいくつ見つかったかをカウントしています。</p>
+<h2 id="ダウンキャストdowncasting"><a name="ダウンキャストdowncasting" class="plugin-anchor" href="#ダウンキャストdowncasting"><i class="fa fa-link" aria-hidden="true"></i></a><a id="downcasting">ダウンキャスト(Downcasting)</a></h2>
+<p>特定のクラス型の定数または変数は、実際には裏側でサブクラスのインスタンスを参照している場合があります。そのような場合は、型キャスト演算子 (<code>as?</code> または <code>as!</code>) を使用してサブクラス型への<em>ダウンキャスト</em>を試みることができます。</p>
+<p>ダウンキャストは失敗する可能性があるため、型キャスト演算子には 2 つの異なる形式があります。条件付き形式の <code>as?</code> は、ダウンキャストしようとしている型のオプショナルの値を返します。強制形式の <code>as!</code> は、ダウンキャストと強制アンラップを同時に試みます。</p>
+<p>ダウンキャストが成功するかどうかわからない場合は、条件付き形式の型キャスト演算子 (<code>as?</code>) を使用してください。この形式の演算子は常にオプショナルの値を返し、ダウンキャストが不可能な場合、値は <code>nil</code> になります。これにより、ダウンキャストが成功したかどうかを確認できます。</p>
+<p>強制形式の型キャスト演算子 (<code>as!</code>) は、ダウンキャストが常に成功することが確実な場合にのみ使用してください。不適切なクラス型にダウンキャストしようとすると、実行時エラーを引き起こしします。</p>
+<p>下記の例では、<code>library</code> 内の各 <code>MediaItem</code> を繰り返し処理し、各アイテムの適切な説明を出力します。これを行うには、<code>MediaItem</code> としてだけでなく、実際の <code>Movie</code> または <code>Song</code> として各アイテムにアクセスする必要があります。これは、説明で使用する <code>Movie</code> または <code>Song</code> の <code>director</code> または <code>artist</code> のプロパティにアクセスできるようにするために必要です。</p>
+<p>この例では、配列内の各アイテムが <code>Movie</code> または <code>Song</code> のいずれかの可能性があります。各項目に使用する実際のクラスは事前にわからないため、条件付き形式の型キャスト演算子(<code>as?</code>)を使用して、ループの中で毎回ダウンキャストしてチェックすることが適切です:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> item <span class="token keyword">in</span> library <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token keyword">let</span> movie <span class="token operator">=</span> item <span class="token keyword">as</span><span class="token operator">?</span> <span class="token builtin">Movie</span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Movie: <span class="token interpolation"><span class="token delimiter variable">\(</span>movie<span class="token punctuation">.</span>name<span class="token delimiter variable">)</span></span>, dir. <span class="token interpolation"><span class="token delimiter variable">\(</span>movie<span class="token punctuation">.</span>director<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token keyword">let</span> song <span class="token operator">=</span> item <span class="token keyword">as</span><span class="token operator">?</span> <span class="token builtin">Song</span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Song: <span class="token interpolation"><span class="token delimiter variable">\(</span>song<span class="token punctuation">.</span>name<span class="token delimiter variable">)</span></span>, by <span class="token interpolation"><span class="token delimiter variable">\(</span>song<span class="token punctuation">.</span>artist<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Movie: Casablanca, dir. Michael Curtiz</span>
+<span class="token comment">// Song: Blue Suede Shoes, by Elvis Presley</span>
+<span class="token comment">// Movie: Citizen Kane, dir. Orson Welles</span>
+<span class="token comment">// Song: The One And Only, by Chesney Hawkes</span>
+<span class="token comment">// Song: Never Gonna Give You Up, by Rick Astley</span>
+</code></pre>
+<p>この例では、まず現在のアイテムを <code>Movie</code> としてダウンキャストしようとしています。<code>item</code> は <code>MediaItem</code> インスタンスなので、それが実際は <code>Movie</code> インスタンスの可能性があります。同様に、それが <code>Song</code> インスタンスの可能性もあれば、単に基本クラスの <code>MediaItem</code> インスタンスの可能性もあります。このように不確かなため、<code>as?</code> 型キャスト演算子の形式でサブクラス型にダウンキャストしようとしたときに、オプショナルの値を返します。<code>item as? Movie</code> の結果は <code>Movie?</code> または&quot;オプショナルの <code>Movie</code>&quot;です。</p>
+<p>ライブラリ配列内の <code>Song</code> インスタンスに適用すると、<code>Movie</code> へのダウンキャストが失敗します。これに対処するために、上記の例では、オプショナルバインディングを使用して、オプショナルの <code>Movie</code> に実際に値が含まれているかどうか(つまり、ダウンキャストが成功したかどうか)を確認します。このオプショナルバインディング、&quot;<code>if let movie = item as? Movie</code>&quot;は、次のように読むことができます:</p>
+<p>「Movie として item アイテムにアクセスしてみてください。成功した場合は、返されたオプショナルの <code>Movie</code> を <code>movie</code> という新しい一時定数に設定します」</p>
+<p>ダウンキャストが成功すると、<code>Movie</code> のプロパティを使用して、その <code>Movie</code> インスタンスの <code>director</code> の名前を含む説明が出力されます。同様に、<code>Song</code> インスタンスをチェックし、ライブラリで <code>Song</code> が見つかる度に <code>artist</code> 名を含む適切な説明を出力します。</p>
+<blockquote>
+<p>NOTE<br>キャストは実際にインスタンスを変更したり、その内部の値を変更したりしません。基になるインスタンスは同じままです。キャストした型のインスタンスとして扱われ、アクセスされるだけです。</p>
+</blockquote>
+<h2 id="any-および-anyobject-の型キャストtype-casting-for-any-and-anyobject"><a name="any-および-anyobject-の型キャストtype-casting-for-any-and-anyobject" class="plugin-anchor" href="#any-および-anyobject-の型キャストtype-casting-for-any-and-anyobject"><i class="fa fa-link" aria-hidden="true"></i></a><a id="type-casting-for-any-and-anyobject">Any および AnyObject の型キャスト(Type Casting for Any and AnyObject)</a></h2>
+<p>Swift は、型を特定できない型を操作するための 2 つの特別な型を提供しています。</p>
+<ul>
+<li><code>Any</code> は、関数型を含むあらゆる型のインスタンスを表すことができます</li>
+<li><code>AnyObject</code> は、任意のクラス型のインスタンスを表すことができます</li>
+</ul>
+<p><code>Any</code> および <code>AnyObject</code> は、それらが提供する動作と機能が明らかに必要な場合にのみ使用してください。常にコードで使用しようとしている型を特定することをお勧めします。</p>
+<p><code>Any</code> を使用して、関数型と非クラス型を含む様々な型の組み合わせを処理する例を次に示します。この例では、<code>Any</code> 型の値を格納できる <code>things</code> という配列を作成します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> things <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">Any</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+things<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+things<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">)</span>
+things<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span>
+things<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">3.14159</span><span class="token punctuation">)</span>
+things<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">&quot;hello&quot;</span><span class="token punctuation">)</span>
+things<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">3.0</span><span class="token punctuation">,</span> <span class="token number">5.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+things<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token function">Movie</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Ghostbusters&quot;</span><span class="token punctuation">,</span> director<span class="token punctuation">:</span> <span class="token string">&quot;Ivan Reitman&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+things<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token keyword">in</span> <span class="token string">&quot;Hello, <span class="token interpolation"><span class="token delimiter variable">\(</span>name<span class="token delimiter variable">)</span></span>&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p><code>things</code> 配列には、2 つの <code>Int</code>、2 つの <code>Double</code>、1 つの <code>String</code>、<code>(Double、Double)</code> 型のタプル、映画&quot;Ghostbusters&quot;、および <code>String</code> 値を受け取り、別の <code>String</code> 値を返すクロージャ式、が含まれます。</p>
+<p><code>Any</code> 型または <code>AnyObject</code> 型なことがわかっている定数または変数の特定の型を検出するには、<code>switch</code> 文のケースで <code>is</code> または <code>as</code> パターンを使用できます。下記の例では、<code>things</code> 配列内の項目を繰り返し処理し、<code>switch</code> 文を使用して各項目の型を照会します。<code>switch</code> 文のいくつかのケースは、一致した値を指定された型の定数にバインドして、その値を出力できるようにしています:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> thing <span class="token keyword">in</span> things <span class="token punctuation">{</span>
+    <span class="token keyword">switch</span> thing <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token number">0</span> <span class="token keyword">as</span> <span class="token builtin">Int</span><span class="token punctuation">:</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;zero as an Int&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">case</span> <span class="token number">0</span> <span class="token keyword">as</span> <span class="token builtin">Double</span><span class="token punctuation">:</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;zero as a Double&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">case</span> <span class="token keyword">let</span> someInt <span class="token keyword">as</span> <span class="token builtin">Int</span><span class="token punctuation">:</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;an integer value of <span class="token interpolation"><span class="token delimiter variable">\(</span>someInt<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">case</span> <span class="token keyword">let</span> someDouble <span class="token keyword">as</span> <span class="token builtin">Double</span> <span class="token keyword">where</span> someDouble <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;a positive double value of <span class="token interpolation"><span class="token delimiter variable">\(</span>someDouble<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">case</span> <span class="token keyword">is</span> <span class="token builtin">Double</span><span class="token punctuation">:</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;some other double value that I don&apos;t want to print&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">case</span> <span class="token keyword">let</span> someString <span class="token keyword">as</span> <span class="token builtin">String</span><span class="token punctuation">:</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;a string value of \&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>someString<span class="token delimiter variable">)</span></span>\&quot;&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">case</span> <span class="token keyword">let</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token punctuation">(</span><span class="token builtin">Double</span><span class="token punctuation">,</span> <span class="token builtin">Double</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;an (x, y) point at <span class="token interpolation"><span class="token delimiter variable">\(</span>x<span class="token delimiter variable">)</span></span>, <span class="token interpolation"><span class="token delimiter variable">\(</span>y<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">case</span> <span class="token keyword">let</span> movie <span class="token keyword">as</span> <span class="token builtin">Movie</span><span class="token punctuation">:</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;a movie called <span class="token interpolation"><span class="token delimiter variable">\(</span>movie<span class="token punctuation">.</span>name<span class="token delimiter variable">)</span></span>, dir. <span class="token interpolation"><span class="token delimiter variable">\(</span>movie<span class="token punctuation">.</span>director<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">case</span> <span class="token keyword">let</span> stringConverter <span class="token keyword">as</span> <span class="token punctuation">(</span><span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span><span class="token punctuation">:</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token function">stringConverter</span><span class="token punctuation">(</span><span class="token string">&quot;Michael&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">default</span><span class="token punctuation">:</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;something else&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// zero as an Int</span>
+<span class="token comment">// zero as a Double</span>
+<span class="token comment">// an integer value of 42</span>
+<span class="token comment">// a positive double value of 3.14159</span>
+<span class="token comment">// a string value of &quot;hello&quot;</span>
+<span class="token comment">// an (x, y) point at 3.0, 5.0</span>
+<span class="token comment">// a movie called Ghostbusters, dir. Ivan Reitman</span>
+<span class="token comment">// Hello, Michael</span>
+</code></pre>
+<blockquote>
+<p>NOTE<br>Any 型は、オプショナルの型を含む任意の型の値を表します。<code>Any</code> 型の値が期待されているところにオプショナル値を使用すると、Swift は警告を出します。本当にオプショナルの値を <code>Any</code> 値として使用する必要がある場合は、下記に示すように、<code>as</code> 演算子を使用して、オプショナルを <code>Any</code> に明示的にキャストします。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> optionalNumber<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token number">3</span>
+things<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>optionalNumber<span class="token punctuation">)</span>        <span class="token comment">// Warning</span>
+things<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>optionalNumber <span class="token keyword">as</span> <span class="token builtin">Any</span><span class="token punctuation">)</span> <span class="token comment">// No warning</span>
+</code></pre>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"型キャスト(Type Casting)","level":"3.19","depth":1,"next":{"title":"ネスト型(Nested Types)","level":"3.20","depth":1,"path":"language-guide-gaido/nested-types.md","ref":"language-guide-gaido/nested-types.md","articles":[]},"previous":{"title":"同時並行処理(Concurrency)","level":"3.18","depth":1,"path":"language-guide-gaido/concurrency.md","ref":"language-guide-gaido/concurrency.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"livereload":{},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/type-casting.md","mtime":"2021-07-08T00:03:41.544Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-10T23:53:49.546Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-api/theme-api.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,1047 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <title>メモリ安全性(Memory Safety) · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-theme-api/theme-api.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="access-control.html" />
+    
+    
+    <link rel="prev" href="automatic-reference-counting.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索ワードを入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    The Swift Programming Language(日本語版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Swiftへようこそ(WELCOME TO SWIFT)</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../welcome-to-swift-swiftheyoukoso/about-swift.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/about-swift.html">
+            
+                    
+                    Swiftについて(About Swift)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../welcome-to-swift-swiftheyoukoso/version-compatibility.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/version-compatibility.html">
+            
+                    
+                    バージョン互換性(Version Compatibility)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../welcome-to-swift-swiftheyoukoso/a-swift-tour.html">
+            
+                <a href="../welcome-to-swift-swiftheyoukoso/a-swift-tour.html">
+            
+                    
+                    Swiftツアー(A Swift Tour)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">LANGUAGE GUIDE (言語ガイド)</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="the-basics.html">
+            
+                <a href="the-basics.html">
+            
+                    
+                    基本(The Basics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="basic-operators.html">
+            
+                <a href="basic-operators.html">
+            
+                    
+                    基本演算子(Basic Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="strings-and-characters.html">
+            
+                <a href="strings-and-characters.html">
+            
+                    
+                    文字と文字列(Strings and Characters)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="collection-types.html">
+            
+                <a href="collection-types.html">
+            
+                    
+                    コレクション型(Collection Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="control-flow.html">
+            
+                <a href="control-flow.html">
+            
+                    
+                    制御フロー(Control Flow)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="functions.html">
+            
+                <a href="functions.html">
+            
+                    
+                    関数(Functions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="closures.html">
+            
+                <a href="closures.html">
+            
+                    
+                    クロージャ(Closures)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="enumerations.html">
+            
+                <a href="enumerations.html">
+            
+                    
+                    列挙型(Enumerations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="structures-and-classes.html">
+            
+                <a href="structures-and-classes.html">
+            
+                    
+                    構造体とクラス(Structures and Classes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="properties.html">
+            
+                <a href="properties.html">
+            
+                    
+                    プロパティ(Properties)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="methods.html">
+            
+                <a href="methods.html">
+            
+                    
+                    メソッド(Methods)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="subscripts.html">
+            
+                <a href="subscripts.html">
+            
+                    
+                    サブスクリプト(Subscripts)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="inheritance.html">
+            
+                <a href="inheritance.html">
+            
+                    
+                    継承(Inheritance)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="initialization.html">
+            
+                <a href="initialization.html">
+            
+                    
+                    初期化(Initialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="deinitialization.html">
+            
+                <a href="deinitialization.html">
+            
+                    
+                    デイニシャライゼーション(Deinitialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="optional-chaining.html">
+            
+                <a href="optional-chaining.html">
+            
+                    
+                    オプショナルチェーン(Optional Chaining)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="error-handling.html">
+            
+                <a href="error-handling.html">
+            
+                    
+                    エラー処理(Error Handling)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="concurrency.html">
+            
+                <a href="concurrency.html">
+            
+                    
+                    同時並行処理(Concurrency)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="type-casting.html">
+            
+                <a href="type-casting.html">
+            
+                    
+                    型キャスト(Type Casting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="nested-types.html">
+            
+                <a href="nested-types.html">
+            
+                    
+                    ネスト型(Nested Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.21" data-path="extensions.html">
+            
+                <a href="extensions.html">
+            
+                    
+                    拡張(Extensions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.22" data-path="protocols.html">
+            
+                <a href="protocols.html">
+            
+                    
+                    プロトコル(Protocols)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.23" data-path="generics.html">
+            
+                <a href="generics.html">
+            
+                    
+                    ジェネリクス(Generics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.24" data-path="opaque-types.html">
+            
+                <a href="opaque-types.html">
+            
+                    
+                    Opaque 型(Opaque Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.25" data-path="automatic-reference-counting.html">
+            
+                <a href="automatic-reference-counting.html">
+            
+                    
+                    自動参照カウント ARC(Automatic Reference Counting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.26" data-path="memory-safety.html">
+            
+                <a href="memory-safety.html">
+            
+                    
+                    メモリ安全性(Memory Safety)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.27" data-path="access-control.html">
+            
+                <a href="access-control.html">
+            
+                    
+                    アクセスコントロール(Access Control)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.28" data-path="advanced-operators.html">
+            
+                <a href="advanced-operators.html">
+            
+                    
+                    高度な演算子(Advanced Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">LANGUAGE REFERENCE (言語リファレンス)</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../language-reference/about-the-language-reference.html">
+            
+                <a href="../language-reference/about-the-language-reference.html">
+            
+                    
+                    言語リファレンスについて(About the Language Reference)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../language-reference/lexical-structure.html">
+            
+                <a href="../language-reference/lexical-structure.html">
+            
+                    
+                    構文の構造(Lexical Structure)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../language-reference/types.html">
+            
+                <a href="../language-reference/types.html">
+            
+                    
+                    型(Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../language-reference/expressions.html">
+            
+                <a href="../language-reference/expressions.html">
+            
+                    
+                    式(Expressions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../language-reference/statements.html">
+            
+                <a href="../language-reference/statements.html">
+            
+                    
+                    文(Statements)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../language-reference/declarations.html">
+            
+                <a href="../language-reference/declarations.html">
+            
+                    
+                    宣言(Declarations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../language-reference/attributes.html">
+            
+                <a href="../language-reference/attributes.html">
+            
+                    
+                    属性(Attributes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../language-reference/patterns.html">
+            
+                <a href="../language-reference/patterns.html">
+            
+                    
+                    パターン(Patterns)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../language-reference/generic-parameters-and-arguments.html">
+            
+                <a href="../language-reference/generic-parameters-and-arguments.html">
+            
+                    
+                    ジェネリックパラメータと引数(Generic Parameters and Arguments)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="../language-reference/summary-of-the-grammar.html">
+            
+                <a href="../language-reference/summary-of-the-grammar.html">
+            
+                    
+                    文法のまとめ(Summary of the Grammar)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">REVISION HISTORY (改訂履歴)</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../revision-history/document-revision-history.html">
+            
+                <a href="../revision-history/document-revision-history.html">
+            
+                    
+                    ドキュメント改訂履歴(Document Revision History)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKitで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >メモリ安全性(Memory Safety)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="メモリ安全性memory-safety"><a name="メモリ安全性memory-safety" class="plugin-anchor" href="#メモリ安全性memory-safety"><i class="fa fa-link" aria-hidden="true"></i></a>メモリ安全性(Memory Safety)</h1>
+<p>最終更新日: 2021/6/30</p>
+<p>Swift は、デフォルトでコード内の安全ではない動作の発生を防ぎます。例えば、Swift では、変数が初期化される前に使用されていないこと、メモリの割り当てが解除された後にメモリにアクセスされていないこと、配列インデックスの範囲外エラーがチェックされること、などを保証しています。</p>
+<p>また、Swift はメモリアドレスを変更するコードへの排他的アクセスを要求することで、メモリの同じ領域へ複数が競合してアクセスしないようにします。Swift はメモリを自動的に管理するため、ほとんどの場合、メモリへのアクセスについて考える必要はまったくありません。ただし、潜在的な競合が発生する可能性がある位置を理解することが重要です。そうすることで、メモリへのアクセスが競合するコードを記述しないようにすることができます。コードに競合が含まれている場合、コンパイル時または実行時エラーが発生します。</p>
+<h2 id="メモリへのアクセスの競合を理解するunderstanding-conflicting-access-to-memory"><a name="メモリへのアクセスの競合を理解するunderstanding-conflicting-access-to-memory" class="plugin-anchor" href="#メモリへのアクセスの競合を理解するunderstanding-conflicting-access-to-memory"><i class="fa fa-link" aria-hidden="true"></i></a>メモリへのアクセスの競合を理解する(Understanding Conflicting Access to Memory)</h2>
+<p>変数の値を設定したり、関数に引数を渡したりするときに、コード内でメモリへのアクセスが発生します。例えば、次のコードには読み取りアクセスと書き込みアクセスの両方が含まれています:</p>
+<pre class="language-"><code class="lang-swift"><span class="token comment">// 1 が格納されているメモリへの書き込みアクセス</span>
+<span class="token keyword">var</span> one <span class="token operator">=</span> <span class="token number">1</span>
+
+<span class="token comment">// 1 が格納されているメモリからの読み取りアクセス</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;We&apos;re number <span class="token interpolation"><span class="token delimiter variable">\(</span>one<span class="token delimiter variable">)</span></span>!&quot;</span><span class="token punctuation">)</span>
+</code></pre>
+<p>コードの異なる部分で同じメモリアドレスに同時にアクセスしようとすると、メモリへのアクセスの競合が発生する可能性があります。同じメモリアドレスに同時に複数のアクセスを行うと、予測できない動作や一貫性のない動作が発生する可能性があります。Swift には、数行のコードにまたがってを変更する方法があり、値自体の変更の途中で値へのアクセスを試みることができます。</p>
+<p>紙に書かれた予算をどのように更新するかを考えて、同様の問題を見てみます。予算は 2 段階のプロセスの更新されます。最初にアイテムの名前と価格を追加し、次に合計金額を変更して、現在リストにあるアイテムを反映します。更新の前後に、下の図に示すように、予算から任意の情報を読み取り、正しい答えを得ることができます。</p>
+<p><img src="../.gitbook/assets/memory_shopping_2x.png" alt="予算の更新の遷移"></p>
+<p>予算にアイテムを追加している間は、新しく追加されたアイテムを反映するまで合計金額が更新されていないため、一時的に不整合な状態になります。アイテムを追加するプロセス中に合計金額を読むと、間違った情報が表示されます。</p>
+<p>この例は、メモリへのアクセスの競合を修正するときに発生する可能性のある問題も同時に示しています。競合を修正するには複数の方法と異なる回答があり、どの回答が正しいかは必ずしも明らかではありません。この例では、元の合計金額または更新された合計金額のどちらが必要かに応じて、5 ドルまたは 320 ドルが正しい答えになる可能性があります。競合するアクセスを修正する前に、それが何を意図していたかを判断する必要があります。</p>
+<blockquote>
+<p>NOTE<br>同時実行またはマルチスレッドコードを作成したことがある場合、メモリへのアクセスの競合はよくある問題かもしれません。ただし、ここで説明するアクセスの競合はシングルスレッドでも発生する可能性があり、同時実行またはマルチスレッド化されたコードは関係しません。</p>
+<p>シングルスレッド内からメモリへのアクセスが競合している場合、Swift はコンパイル時または実行時にエラーを確実にスローします。マルチスレッドコードの場合は、<a href="https://developer.apple.com/documentation/xcode/diagnosing-memory-thread-and-crash-issues-early" target="_blank">Thread Sanitizer</a>を使用して、スレッド間で競合するアクセスを検出します。</p>
+</blockquote>
+<h3 id="メモリアクセスの性質characteristics-of-memory-access"><a name="メモリアクセスの性質characteristics-of-memory-access" class="plugin-anchor" href="#メモリアクセスの性質characteristics-of-memory-access"><i class="fa fa-link" aria-hidden="true"></i></a>メモリアクセスの性質(Characteristics of Memory Access)</h3>
+<p>競合するアクセスのコンテキスト上で考慮すべきメモリアクセスの 3 つの特性があります: アクセスが読み取りか書き込みか、アクセスの期間、およびアクセスされるメモリアドレスです。具体的には、次の条件の全てを満たす 2 つのアクセスがある場合、競合が発生します。</p>
+<ul>
+<li>少なくとも 1 つは、書き込みアクセスまたは非アトミックなアクセス</li>
+<li>同じメモリアドレスにアクセス</li>
+<li>メモリへのアクセス期間が重複</li>
+</ul>
+<p>通常、読み取りと書き込みアクセスの違いは明らかです。書き込みアクセスはメモリアドレスを変更しますが、読み取りアクセスは変更しません。メモリアドレスは、アクセスされているもの(変数、定数、プロパティなど)を参照します。メモリアクセスの持続時間は、<em>瞬時</em>または<em>長期</em>です。</p>
+<p>C 言語のアトミック操作を使用する場合のみ、操作はアトミックです。それ以外の場合は非アトミックです。これらの関数のリストについては、<code>stdatomic(3)</code> のマニュアルページを参照してください。</p>
+<p>アクセスが開始されてから終了するまでの間に他のコードが実行できない場合、アクセスは瞬時に行われます。その性質上、2 つの瞬間的なアクセスは同時に発生することはありません。ほとんどのメモリアクセスは瞬時に行われます。例えば、下記のコードリストの全ての読み取りおよび書き込みアクセスは瞬時に行われます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">oneMore</span><span class="token punctuation">(</span>than number<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> number <span class="token operator">+</span> <span class="token number">1</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> myNumber <span class="token operator">=</span> <span class="token number">1</span>
+myNumber <span class="token operator">=</span> <span class="token function">oneMore</span><span class="token punctuation">(</span>than<span class="token punctuation">:</span> myNumber<span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>myNumber<span class="token punctuation">)</span>
+<span class="token comment">// &quot;2&quot;</span>
+</code></pre>
+<p>ただし、<em>長期アクセス</em>と呼ばれる、他のコードの実行にまたがってメモリにアクセスする方法がいくつかあります。瞬時アクセスと長期アクセスの違いは、長期アクセスは開始から終了するまでの間に、他のコードが実行される可能性があることです。これを<em>オーバーラップ</em>と呼びます。長期アクセスは、他の長期アクセスや瞬時アクセスと重複する可能性があります。</p>
+<p>オーバーラップアクセスは、主に、関数とメソッド、または構造体の変更メソッドで in-out パラメータを使用するコードで発生します。長期アクセスを使用する特定の種類の Swift コードについては、次のセクションで説明します。</p>
+<h2 id="in-out-パラメータのアクセスの競合conflicting-access-to-in-out-parameters"><a name="in-out-パラメータのアクセスの競合conflicting-access-to-in-out-parameters" class="plugin-anchor" href="#in-out-パラメータのアクセスの競合conflicting-access-to-in-out-parameters"><i class="fa fa-link" aria-hidden="true"></i></a>In-Out パラメータのアクセスの競合(Conflicting Access to In-Out Parameters)</h2>
+<p>関数は、全ての in-out パラメータへ長期書き込みアクセスできます。in-out パラメータへの書き込みアクセスは、全ての in-out 以外のパラメータが評価された後に開始され、その関数呼び出しの全期間にわたって続きます。複数の in-out パラメータがある場合、書き込みアクセスはパラメータが現れるのと同じ順序で開始されます。</p>
+<p>この長期書き込みアクセスの問題の 1 つは、スコープルールとアクセス制御で許可されていても、in-out として渡された元の変数にアクセスできないことです。元の変数にアクセスすると、競合が発生します。例えば:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> stepSize <span class="token operator">=</span> <span class="token number">1</span>
+
+<span class="token keyword">func</span> <span class="token function">increment</span><span class="token punctuation">(</span><span class="token number">_</span> number<span class="token punctuation">:</span> <span class="token keyword">inout</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    number <span class="token operator">+</span><span class="token operator">=</span> stepSize
+<span class="token punctuation">}</span>
+
+<span class="token function">increment</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>stepSize<span class="token punctuation">)</span>
+<span class="token comment">// エラー: stepSize へのアクセスが競合しています</span>
+</code></pre>
+<p>上記のコードでは、<code>stepSize</code> はグローバル変数で、通常は <code>increment(_:)</code> 内からアクセスできます。ただし、<code>stepSize</code> への読み取りアクセスは、<code>number</code> への書き込みアクセスと重複します。次の図に示すように、<code>number</code> と <code>stepSize</code> は両方メモリ内の同じ位置を参照します。読み取りと書き込みアクセスは同じメモリを参照し、それらが重複して競合が発生します。</p>
+<p><img src="../.gitbook/assets/memory_increment_2x.png" alt="読み取りと書き込みアクセスの競合"></p>
+<p>この競合を解決する 1 つの方法は、<code>stepSize</code> の明示的なコピーを作成することです。</p>
+<pre class="language-"><code class="lang-swift"><span class="token comment">// 明示的なコピーを作成します</span>
+<span class="token keyword">var</span> copyOfStepSize <span class="token operator">=</span> stepSize
+<span class="token function">increment</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>copyOfStepSize<span class="token punctuation">)</span>
+
+<span class="token comment">// オリジナルを更新します</span>
+stepSize <span class="token operator">=</span> copyOfStepSize
+<span class="token comment">// stepSize は 2 になりました</span>
+</code></pre>
+<p><code>increment(_:)</code> を呼び出す前に <code>stepSize</code> のコピーを作成すると、<code>copyOfStepSize</code> の値が現在の <code>stepSize</code> によって増分されることが明らかです。書き込みアクセスが開始される前に読み取りアクセスが終了するため、競合はありません。</p>
+<p>in-out パラメータへの長期書き込みアクセスの別の問題として、同じ関数の複数の in-out パラメータに引数として 1 つの変数を共通して渡すと、競合が発生します。例えば:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">balance</span><span class="token punctuation">(</span><span class="token number">_</span> x<span class="token punctuation">:</span> <span class="token keyword">inout</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token number">_</span> y<span class="token punctuation">:</span> <span class="token keyword">inout</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> sum <span class="token operator">=</span> x <span class="token operator">+</span> y
+    x <span class="token operator">=</span> sum <span class="token operator">/</span> <span class="token number">2</span>
+    y <span class="token operator">=</span> sum <span class="token operator">-</span> x
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> playerOneScore <span class="token operator">=</span> <span class="token number">42</span>
+<span class="token keyword">var</span> playerTwoScore <span class="token operator">=</span> <span class="token number">30</span>
+<span class="token function">balance</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>playerOneScore<span class="token punctuation">,</span> <span class="token operator">&amp;</span>playerTwoScore<span class="token punctuation">)</span>  <span class="token comment">// OK</span>
+<span class="token function">balance</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>playerOneScore<span class="token punctuation">,</span> <span class="token operator">&amp;</span>playerOneScore<span class="token punctuation">)</span>
+<span class="token comment">// エラー: playerOneScore へのアクセスが競合しています</span>
+</code></pre>
+<p>上記の <code>balance(_:_:)</code> 関数は、その 2 つのパラメータを変更して、合計値をそれらの間で均等に分割します。<code>playerOneScore</code> と <code>playerTwoScore</code> を引数として呼び出しても競合は発生しません。時間的に重複する 2 つの書き込みアクセスがありますが、メモリ内の異なる位置にアクセスします。対照的に、両方のパラメータの値として <code>playerOneScore</code> を渡すと、同じメモリアドレスへの 2 つの書き込みアクセスを同時に実行しようとするため、競合が発生します。</p>
+<blockquote>
+<p>NOTE<br>演算子は関数であるため、in-out パラメータに長期アクセスすることもできます。例えば、<code>balance(_:_:)</code> が <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>^</span><span class="token punctuation">&gt;</span></span></code> という演算子である場合、<code>playerOneScore <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>^</span><span class="token punctuation">&gt;</span></span> playerOneScore</code> と記述すると、<code>balance(&amp;playerOneScore, &amp;playerOneScore)</code> と同じ競合が発生します。</p>
+</blockquote>
+<h2 id="メソッド内の-self-のアクセスの競合conflicting-access-to-self-in-methods"><a name="メソッド内の-self-のアクセスの競合conflicting-access-to-self-in-methods" class="plugin-anchor" href="#メソッド内の-self-のアクセスの競合conflicting-access-to-self-in-methods"><i class="fa fa-link" aria-hidden="true"></i></a>メソッド内の self のアクセスの競合(Conflicting Access to self in Methods)</h2>
+<p>構造体の mutating メソッドは、メソッド呼び出しの間、<code>self</code> への書き込みアクセス権を持ちます。例えば、各プレイヤーがダメージを受けると減少する活力値と、特殊能力を使用すると減少するエネルギー量を持つゲームを考えてみましょう。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">Player</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">var</span> health<span class="token punctuation">:</span> <span class="token builtin">Int</span>
+    <span class="token keyword">var</span> energy<span class="token punctuation">:</span> <span class="token builtin">Int</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">let</span> maxHealth <span class="token operator">=</span> <span class="token number">10</span>
+    <span class="token keyword">mutating</span> <span class="token keyword">func</span> <span class="token function">restoreHealth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        health <span class="token operator">=</span> <span class="token builtin">Player</span><span class="token punctuation">.</span>maxHealth
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>上記の <code>restoreHealth()</code> メソッドでは、<code>self</code> への書き込みアクセスはメソッドの最初から戻り値を返すまで続きます。この場合、<code>restoreHealth()</code> 内には、<code>Player</code> インスタンスのプロパティへのアクセスが重複する可能性のある他のコードはありません。下記の <code>shareHealth(with:)</code> メソッドは、別の <code>Player</code> インスタンスを in-out パラメータとして受け取り、アクセスが重複する可能性があります。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Player</span> <span class="token punctuation">{</span>
+    <span class="token keyword">mutating</span> <span class="token keyword">func</span> <span class="token function">shareHealth</span><span class="token punctuation">(</span>with teammate<span class="token punctuation">:</span> <span class="token keyword">inout</span> <span class="token builtin">Player</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">balance</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>teammate<span class="token punctuation">.</span>health<span class="token punctuation">,</span> <span class="token operator">&amp;</span>health<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> oscar <span class="token operator">=</span> <span class="token function">Player</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Oscar&quot;</span><span class="token punctuation">,</span> health<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> energy<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token keyword">var</span> maria <span class="token operator">=</span> <span class="token function">Player</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Maria&quot;</span><span class="token punctuation">,</span> health<span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span> energy<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">)</span>
+oscar<span class="token punctuation">.</span><span class="token function">shareHealth</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token operator">&amp;</span>maria<span class="token punctuation">)</span>  <span class="token comment">// OK</span>
+</code></pre>
+<p>上記の例では、Oscar プレーヤーが Maria プレーヤーと活力を共有するために <code>shareHealth(with:)</code> メソッドを呼び出しても、競合は発生しません。<code>oscar</code> は mutating メソッドの <code>self</code> の値のため、メソッド呼び出し中に <code>oscar</code> への書き込みアクセスがあり、<code>maria</code> が in-out パラメータとして渡されるため、同じ期間、<code>maria</code> への書き込みアクセスがあります。次の図に示すように、これらは異なるメモリアドレスにアクセスします。2 つの書き込みアクセスは時間的に重複していますが、競合しません。</p>
+<p><img src="../.gitbook/assets/memory_share_health_maria_2x.png" alt="時間的に重複した異なるメモリアドレスへの 2 つの書き込みアクセス"></p>
+<p>ただし、<code>oscar</code> を <code>shareHealth(with:)</code> のパラメータとして渡すと、競合が発生します。</p>
+<pre class="language-"><code class="lang-swift">oscar<span class="token punctuation">.</span><span class="token function">shareHealth</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token operator">&amp;</span>oscar<span class="token punctuation">)</span>
+<span class="token comment">// エラー: オスカーへのアクセスが競合しています</span>
+</code></pre>
+<p>mutating メソッドは、メソッド実行中に <code>self</code> への書き込みアクセスを必要とし、in-out パラメータは、同じ期間中に <code>teammate</code> への書き込みアクセスを必要とします。メソッド内では、下の図に示すように、<code>self</code> と <code>teammate</code> の両方がメモリ内の同じ位置を参照します。2 つの書き込みアクセスは同じメモリを参照し、それらが重複して競合が発生します。</p>
+<p><img src="../.gitbook/assets/memory_share_health_oscar_2x.png" alt="時間的に重複した同じメモリアドレスへの 2 つの書き込みアクセス"></p>
+<h2 id="プロパティのアクセスの競合conflicting-access-to-properties"><a name="プロパティのアクセスの競合conflicting-access-to-properties" class="plugin-anchor" href="#プロパティのアクセスの競合conflicting-access-to-properties"><i class="fa fa-link" aria-hidden="true"></i></a>プロパティのアクセスの競合(Conflicting Access to Properties)</h2>
+<p>構造体、タプル、列挙型などの型は、構造体のプロパティやタプルの要素など、個々の構成値で構成されます。これらは値型のため、値の一部を変更すると値全体が変更されます。つまり、いずれかのプロパティへの読み取りまたは書き込みアクセスには、値全体への読み取りまたは書き込みアクセスが必要です。例えば、タプルの要素への書き込みアクセスが重複すると、競合が発生します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> playerInformation <span class="token operator">=</span> <span class="token punctuation">(</span>health<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> energy<span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">)</span>
+<span class="token function">balance</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>playerInformation<span class="token punctuation">.</span>health<span class="token punctuation">,</span> <span class="token operator">&amp;</span>playerInformation<span class="token punctuation">.</span>energy<span class="token punctuation">)</span>
+<span class="token comment">// エラー: playerInformation のプロパティへのアクセスが競合しています</span>
+</code></pre>
+<p>上記の例では、タプルの要素で <code>balance(_:_:)</code> を呼び出すと、<code>playerInformation</code> への書き込みアクセスが重複しているため、競合が発生します。<code>playerInformation.health</code> と <code>playerInformation.energy</code> の両方が in-out パラメータとして渡されます。つまり、<code>balance(_:_:)</code> は、関数呼び出しの間、それらへの書き込みアクセスを必要とします。どちらの場合も、タプル要素へ書き込みアクセスするには、タプル全体への書き込みアクセスが必要です。これは、同じ期間に <code>playerInformation</code> への 2 つの書き込みアクセスがあり、競合が発生していることを意味します。</p>
+<p>下記のコードは、グローバル変数に格納されている構造体のプロパティへの書き込みアクセスが重複している場合に同じエラーが発生することを示しています。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> holly <span class="token operator">=</span> <span class="token function">Player</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Holly&quot;</span><span class="token punctuation">,</span> health<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> energy<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token function">balance</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>holly<span class="token punctuation">.</span>health<span class="token punctuation">,</span> <span class="token operator">&amp;</span>holly<span class="token punctuation">.</span>energy<span class="token punctuation">)</span>  <span class="token comment">// Error</span>
+</code></pre>
+<p>実際には、構造体のプロパティへのほとんどのアクセスは安全にオーバーラップできます。例えば、上記の例の変数 <code>holly</code> がグローバル変数ではなくローカル変数に変更された場合、コンパイラは、構造体の格納されたプロパティへの重複アクセスが安全だと証明できます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">someFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> oscar <span class="token operator">=</span> <span class="token function">Player</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Oscar&quot;</span><span class="token punctuation">,</span> health<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> energy<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">)</span>
+    <span class="token function">balance</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>oscar<span class="token punctuation">.</span>health<span class="token punctuation">,</span> <span class="token operator">&amp;</span>oscar<span class="token punctuation">.</span>energy<span class="token punctuation">)</span>  <span class="token comment">// OK</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>上記の例では、Oscar の活力とエネルギーが、<code>balance(_:_:)</code> への 2 つの in-out パラメータとして渡されます。2 つの格納プロパティは相互作用しないため、コンパイラはメモリの安全性が保たれていることを証明できます。</p>
+<p>構造体のプロパティへの重複アクセスに対する制限は、メモリの安全性を維持するために必ずしも必要ではありません。メモリ安全性は保証されていることが期待されますが、排他的アクセスはメモリ安全性よりも厳しい要件で、一部のコードは、メモリへの排他的アクセスに違反している場合でも、メモリ安全性を維持します。コンパイラがメモリへの非排他的アクセスをしていても安全だということを証明できる場合、Swift はこのメモリ安全なコードを許可します。具体的には、次の条件が当てはまる場合、構造体のプロパティへの重複アクセスが安全だということを証明できます:</p>
+<ul>
+<li>計算プロパティやクラスの型プロパティではなく、インスタンスの格納プロパティからのみアクセスされていること</li>
+<li>グローバル変数ではなくローカル変数の構造体だということ</li>
+<li>構造体がどのクロージャにもキャプチャされないか、非エスケープクロージャによってのみキャプチャされていること</li>
+</ul>
+<p>コンパイラがメモリ安全性を証明できない場合、アクセスは許可されません。</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"メモリ安全性(Memory Safety)","level":"3.26","depth":1,"next":{"title":"アクセスコントロール(Access Control)","level":"3.27","depth":1,"path":"language-guide-gaido/access-control.md","ref":"language-guide-gaido/access-control.md","articles":[]},"previous":{"title":"自動参照カウント ARC(Automatic Reference Counting)","level":"3.25","depth":1,"path":"language-guide-gaido/automatic-reference-counting.md","ref":"language-guide-gaido/automatic-reference-counting.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"livereload":{},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/memory-safety.md","mtime":"2021-07-07T23:53:03.731Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-10T23:53:49.546Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-theme-api/theme-api.js"></script>
+        
+    
+
+    </body>
+</html>
+
