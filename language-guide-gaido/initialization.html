@@ -989,9 +989,9 @@ beetsQuestion<span class="token punctuation">.</span>response <span class="token
 <p>クラスで必要ない場合は、convenience イニシャライザを提供する必要はありません。共通の初期化パターンへのショートカットとして時間の節約になったり、初期化の意図をより明確にできる場合は、常に convenience イニシャライザを作成してください。</p>
 <h3 id="指定イニシャライザとcovenience-イニシャライザの構文syntax-for-designated-and-convenience-initializers"><a name="指定イニシャライザとcovenience-イニシャライザの構文syntax-for-designated-and-convenience-initializers" class="plugin-anchor" href="#指定イニシャライザとcovenience-イニシャライザの構文syntax-for-designated-and-convenience-initializers"><i class="fa fa-link" aria-hidden="true"></i></a>指定イニシャライザとcovenience イニシャライザの構文(Syntax for Designated and Convenience Initializers)</h3>
 <p>クラスの指定イニシャライザは、値型のシンプルなイニシャライザと同じ方法で記述します:</p>
-<p><img src="../.gitbook/assets/14_designatedInitializer.png" alt="指定イニシャライザ"></p>
+<p><img src="../assets/14_designatedInitializer.png" alt="指定イニシャライザ"></p>
 <p>covenience イニシャライザは同じスタイルで記述できますが、<code>init</code> キーワードの前にスペース区切りで <code>covenience</code> 修飾子を配置します:</p>
-<p><img src="../.gitbook/assets/14_convenienceInitializer.png" alt="covenience イニシャライザ"></p>
+<p><img src="../assets/14_convenienceInitializer.png" alt="covenience イニシャライザ"></p>
 <h3 id="クラス型のイニシャライザの委譲initializer-delegation-for-class-types"><a name="クラス型のイニシャライザの委譲initializer-delegation-for-class-types" class="plugin-anchor" href="#クラス型のイニシャライザの委譲initializer-delegation-for-class-types"><i class="fa fa-link" aria-hidden="true"></i></a><a id="initializer-delegation-for-class-types">クラス型のイニシャライザの委譲(Initializer Delegation for Class Types)</a></h3>
 <p>指定イニシャライザと convenience イニシャライザ間の関係を簡潔にするために、Swift はイニシャライザ間の呼び出しの委譲に次の 3 つのルールを適用します:</p>
 <ul>
@@ -1005,14 +1005,14 @@ beetsQuestion<span class="token punctuation">.</span>response <span class="token
 <li>convenience イニシャライザは常に委譲する必要があります</li>
 </ul>
 <p>これらのルールを次の図に示します:</p>
-<p><img src="../.gitbook/assets/initializerDelegation01_2x.png" alt="イニシャライザの委譲"></p>
+<p><img src="../assets/initializerDelegation01_2x.png" alt="イニシャライザの委譲"></p>
 <p>ここでは、スーパークラスには、1 つの指定イニシャライザと 2 つの convenience イニシャライザがあります。ある convenience イニシャライザが別の convenience イニシャライザを呼び出し、それが次に単一の指定イニシャライザを呼び出します。これは、上記のルール 2 と 3 を満たします。スーパークラス自体にはそれ以上のスーパークラスがないため、ルール 1 は適用されません。</p>
 <p>この図のサブクラスには、2 つの指定イニシャライザと 1 つの convenience イニシャライザがあります。convenience イニシャライザは、同じクラスから別のイニシャライザしか呼び出せないため、2 つの指定イニシャライザのいずれかを呼び出す必要があります。これは、上記のルール 2 と 3 を満たします。上記のルール 1 を満たすには、両方の指定イニシャライザがスーパークラスの単一の指定イニシャライザを呼び出す必要があります。</p>
 <blockquote>
 <p>NOTE<br>これらのルールは、クラスのユーザが各クラスのインスタンスを作成する方法には影響しません。上の図の全てのイニシャライザを使用して、それらが属するクラスの完全に初期化されたインスタンスを作成できます。ルールは、クラスのイニシャライザの実装の記述方法にのみ影響します。</p>
 </blockquote>
 <p>次の図は、4 つのクラスのより複雑なクラス階層を示しています。これは、この階層の指定イニシャライザがクラスイニシャライザ初期化の「漏斗」のように機能し、チェーン内のクラス間の相互関係をシンプルにする方法を示しています:</p>
-<p><img src="../.gitbook/assets/initializerDelegation02_2x.png" alt="より複雑なイニシャライザの委譲"></p>
+<p><img src="../assets/initializerDelegation02_2x.png" alt="より複雑なイニシャライザの委譲"></p>
 <h3 id="2段階の初期化two-phase-initialization"><a name="2段階の初期化two-phase-initialization" class="plugin-anchor" href="#2段階の初期化two-phase-initialization"><i class="fa fa-link" aria-hidden="true"></i></a><a id="two-phase-initialization">2段階の初期化(Two-Phase Initialization)</a></h3>
 <p>Swift でのクラスの初期化は 2 段階のプロセスです。最初の段階では、各格納プロパティに、それを導入したクラスが初期値を割り当てます。全ての格納プロパティの初期状態が決定されると、第 2 段階が開始され、新しいインスタンスを使用する準備が整ったと見なされる前に、各クラスの格納プロパティをさらにカスタマイズする機会が与えられます。</p>
 <p>2 段階の初期化プロセスを使用すると、初期化が安全になり、クラス階層内の各クラスに完全な柔軟性がもたらされます。2 段階の初期化は、プロパティ値が初期化される前にアクセスされるのを防ぎ、プロパティ値が別のイニシャライザによって予期せず別の値に設定されるのを防ぎます。</p>
@@ -1046,13 +1046,13 @@ beetsQuestion<span class="token punctuation">.</span>response <span class="token
 <li>最後に、チェーン内の convenience イニシャライザは、インスタンスをカスタマイズして <code>self</code> を操作することができるようになります</li>
 </ul>
 <p>仮のサブクラスとスーパークラスを使った第 1 段階の初期化呼び出し方法は次のとおりです:</p>
-<p><img src="../.gitbook/assets/twoPhaseInitialization01_2x.png" alt="2段階の初期化 第 1 段階"></p>
+<p><img src="../assets/twoPhaseInitialization01_2x.png" alt="2段階の初期化 第 1 段階"></p>
 <p>この例では、初期化はサブクラスの convenience イニシャライザの呼び出しから始まります。この convenience イニシャライザは、まだプロパティを変更できません。まず convenience イニシャライザから同じクラスの指定イニシャライザに委譲します。</p>
 <p>指定イニシャライザは、安全チェック 1 に従って、サブクラスの全てのプロパティに値があることを確認します。次に、指定イニシャライザからそのスーパークラスを呼び出して、チェーンの上に向かって初期化を続行します。</p>
 <p>スーパークラスの指定イニシャライザは、スーパークラスの全てのプロパティに値があることを確認します。初期化するスーパークラスはこれ以上ないため、これ以上の委譲は必要ありません。</p>
 <p>スーパークラスの全てのプロパティに初期値が設定されるとすぐに、そのメモリは完全に初期化されたと見なされ、第 1 段階が完了します。</p>
 <p>第 2 段階での同じ初期化呼び出し方法は次のとおりです:</p>
-<p><img src="../.gitbook/assets/twoPhaseInitialization02_2x.png" alt="2段階の初期化 第 2 段階"></p>
+<p><img src="../assets/twoPhaseInitialization02_2x.png" alt="2段階の初期化 第 2 段階"></p>
 <p>スーパークラスの指定イニシャライザは、インスタンスをさらにカスタマイズする機会を得ます(ただし、必ず必要ではありません)。</p>
 <p>スーパークラスの指定イニシャライザが完了すると、サブクラスの指定イニシャライザで追加のカスタマイズを実行できます(ただし、これも必ずしも行う必要はありません)。</p>
 <p>最後に、サブクラスの指定イニシャライザが終了すると、最初に呼び出された convenience イニシャライザは追加のカスタマイズを実行できます。</p>
@@ -1146,7 +1146,7 @@ beetsQuestion<span class="token punctuation">.</span>response <span class="token
 <span class="token punctuation">}</span>
 </code></pre>
 <p>次の図は、<code>Food</code> クラスのイニシャライザのチェーンを示しています。</p>
-<p><img src="../.gitbook/assets/initializersExample01_2x.png" alt="Foodクラスのイニシャライザのチェーン"></p>
+<p><img src="../assets/initializersExample01_2x.png" alt="Foodクラスのイニシャライザのチェーン"></p>
 <p>クラスにはデフォルトで<em>メンバワイズイニシャライザ</em>を生成しないため、<code>Food</code> クラスは、<code>name</code> という単一の引数を受け取る指定イニシャライザを提供します。このイニシャライザを使用して、特定の名前で新しい <code>Food</code> インスタンスを作成できます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> namedMeat <span class="token operator">=</span> <span class="token function">Food</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Bacon&quot;</span><span class="token punctuation">)</span>
 <span class="token comment">// namedMeat の name は &quot;Bacon&quot;</span>
@@ -1169,7 +1169,7 @@ beetsQuestion<span class="token punctuation">.</span>response <span class="token
 <span class="token punctuation">}</span>
 </code></pre>
 <p>次の図は、<code>RecipeIngredient</code> クラスのイニシャライザのチェーンを示しています。</p>
-<p><img src="../.gitbook/assets/initializersExample02_2x.png" alt="RecipeIngredientクラスのイニシャライザのチェーン"></p>
+<p><img src="../assets/initializersExample02_2x.png" alt="RecipeIngredientクラスのイニシャライザのチェーン"></p>
 <p><code>RecipeIngredient</code> クラスには、単一の指定イニシャライザ <code>init(name: String, amount: Int)</code> があり、これを使用して新しい <code>RecipeIngredient</code> インスタンスの全てのプロパティを設定できます。このイニシャライザは、渡された <code>quantity</code> 引数を <code>quantity</code> プロパティに割り当てることから開始します。これは、<code>RecipeIngredient</code> で定義された唯一の新しいプロパティです。その後、イニシャライザは <code>Food</code> クラスの <code>init(name: String)</code> イニシャライザに委譲します。このプロセスは、上記の<a href="initialization.html#two-phase-initialization">Two-Phase Initialization(2 段階の初期化)</a>の初期化の安全チェック 1 を満たしています。</p>
 <p><code>RecipeIngredient</code> は、名前だけで <code>RecipeIngredient</code> インスタンスを作成する convenience イニシャライザ <code>init(name: String)</code> も定義します。この convenience イニシャライザは、数量を <code>1</code> と想定して、明示的に数量を指定せずに <code>RecipeIngredient</code> インスタンスを作成します。この convenience イニシャライザの定義により、<code>RecipeIngredient</code> インスタンスの作成がより迅速かつ便利になり、単一量の <code>RecipeIngredient</code> インスタンスを複数作成する際にコードの重複が回避できます。この convenience イニシャライザは、単にクラスの指定イニシャライザに委譲し、<code>quantity</code> に <code>1</code> を渡します。</p>
 <p><code>RecipeIngredient</code> によって提供される <code>init(name: String)</code> convenience イニシャライザは、<code>Food</code> の <code>init(name: String)</code> 指定イニシャライザと同じパラメータを受け取ります。つまり、この convenience イニシャライザはスーパークラスから指定イニシャライザをオーバーライドするため、<code>override</code> 修飾子を付ける必要があります(<a href="initialization.html#initializer-inheritance-and-overriding">Initializer Inheritance and Overriding(イニシャライザの継承とオーバーライド)</a>を参照)。</p>
@@ -1196,7 +1196,7 @@ beetsQuestion<span class="token punctuation">.</span>response <span class="token
 </blockquote>
 <p>導入する全てのプロパティにデフォルト値を提供し、それ自体はイニシャライザを定義しないため、<code>ShoppingListItem</code> は全ての指定イニシャライザと convenience イニシャライザをスーパークラスから自動的に継承します。</p>
 <p>次の図は、3 つのクラス全てのイニシャライザのチェーンの全体を示しています。</p>
-<p><img src="../.gitbook/assets/initializersExample03_2x.png" alt="3 つのクラスのイニシャライザのチェーン"></p>
+<p><img src="../assets/initializersExample03_2x.png" alt="3 つのクラスのイニシャライザのチェーン"></p>
 <p>継承した 3 つのイニシャライザ全てを使用して、新しい <code>ShoppingListItem</code> インスタンスを作成できます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> breakfastList <span class="token operator">=</span> <span class="token punctuation">[</span>
     <span class="token function">ShoppingListItem</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -1449,7 +1449,7 @@ breakfastList<span class="token punctuation">[</span><span class="token number">
 <p>NOTE<br>クロージャを使用してプロパティを初期化する場合、残りのインスタンスはクロージャが実行された時点ではまだ初期化されていないことに注意してください。つまり、たとえプロパティにデフォルト値があっても、クロージャ内から他のプロパティ値にアクセスできないことを意味します。また、暗黙的な <code>self</code> プロパティを使用したり、インスタンスのメソッドを呼び出すこともできません。</p>
 </blockquote>
 <p>下記の例では、チェスゲームのボードをモデル化する <code>Chessboard</code> という構造体を定義しています。チェスは <code>8 x 8</code> の盤上で、白と黒の正方形が交互に並んでいます。</p>
-<p><img src="../.gitbook/assets/chessBoard_2x.png" alt="チェスゲームのボード"></p>
+<p><img src="../assets/chessBoard_2x.png" alt="チェスゲームのボード"></p>
 <p>このゲームボードを表すために、<code>Chessboard</code> 構造体には、<code>boardColors</code> という 1 つのプロパティがあり、これは 64 の <code>Bool</code> 値の配列です。配列内の <code>true</code> の値は黒い正方形を表し、<code>false</code> の値は白い正方形を表します。配列の最初のアイテムはボードの左上の正方形を表し、配列の最後のアイテムはボードの右下の正方形を表します。</p>
 <p><code>boardColors</code> 配列は、色の値を設定するためのクロージャで初期化されています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">Chessboard</span> <span class="token punctuation">{</span>
@@ -1510,7 +1510,7 @@ breakfastList<span class="token punctuation">[</span><span class="token number">
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"初期化(Initialization)","level":"3.14","depth":1,"next":{"title":"デイニシャライゼーション(Deinitialization)","level":"3.15","depth":1,"path":"language-guide-gaido/deinitialization.md","ref":"language-guide-gaido/deinitialization.md","articles":[]},"previous":{"title":"継承(Inheritance)","level":"3.13","depth":1,"path":"language-guide-gaido/inheritance.md","ref":"language-guide-gaido/inheritance.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":".gitbook/assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":".gitbook/assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/initialization.md","mtime":"2021-07-08T00:01:04.113Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:11:28.643Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"初期化(Initialization)","level":"3.14","depth":1,"next":{"title":"デイニシャライゼーション(Deinitialization)","level":"3.15","depth":1,"path":"language-guide-gaido/deinitialization.md","ref":"language-guide-gaido/deinitialization.md","articles":[]},"previous":{"title":"継承(Inheritance)","level":"3.13","depth":1,"path":"language-guide-gaido/inheritance.md","ref":"language-guide-gaido/inheritance.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/initialization.md","mtime":"2021-07-11T00:21:09.766Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

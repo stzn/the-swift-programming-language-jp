@@ -832,20 +832,20 @@ reference2 <span class="token operator">=</span> <span class="token constant">ni
 unit4A <span class="token operator">=</span> <span class="token function">Apartment</span><span class="token punctuation">(</span>unit<span class="token punctuation">:</span> <span class="token string">&quot;4A&quot;</span><span class="token punctuation">)</span>
 </code></pre>
 <p>これら 2 つのインスタンスを作成して割り当てた後、強参照がどのように見えるかを次に示します。<code>john</code> 変数には新しい <code>Person</code> インスタンスへの強参照があり、<code>unit4A</code> 変数には新しい <code>Apartment</code> インスタンスへの強参照があります:</p>
-<p><img src="../.gitbook/assets/referenceCycle01_2x.png" alt="循環参照 インスタンスへの強参照"></p>
+<p><img src="../assets/referenceCycle01_2x.png" alt="循環参照 インスタンスへの強参照"></p>
 <p>2 つのインスタンスをリンクして、その人にアパートを持たせ、そのアパートにテナントがあるようにすることができます。感嘆符(<code>!</code>)は、オプショナルの <code>john</code> および <code>unit4A</code> 変数内に格納されているインスタンスをアンラップしてアクセスするために使用され、これらのインスタンスプロパティに値を設定できます:</p>
 <pre class="language-"><code class="lang-swift">john<span class="token operator">!</span><span class="token punctuation">.</span>apartment <span class="token operator">=</span> unit4A
 unit4A<span class="token operator">!</span><span class="token punctuation">.</span>tenant <span class="token operator">=</span> john
 </code></pre>
 <p>2 つのインスタンスをリンクした後、強参照がどのように見えるかを次に示します。</p>
-<p><img src="../.gitbook/assets/referenceCycle02_2x.png" alt="循環参照 2 つのインスタンスをリンクした後の強参照"></p>
+<p><img src="../assets/referenceCycle02_2x.png" alt="循環参照 2 つのインスタンスをリンクした後の強参照"></p>
 <p>残念ながら、これら 2 つのインスタンスをリンクすると、それらの間に強参照循環ができます。<code>Person</code> インスタンスは <code>Apartment</code> インスタンスへの強参照を持ち、<code>Apartment</code> インスタンスは <code>Person</code> インスタンスへの強参照を持つようになりました。したがって、<code>john</code> 変数と <code>unit4A</code> 変数で保持されている強参照を解除しても、参照カウントはゼロにはならず、インスタンスは ARC によって割り当て解除されません。</p>
 <pre class="language-"><code class="lang-swift">john <span class="token operator">=</span> <span class="token constant">nil</span>
 unit4A <span class="token operator">=</span> <span class="token constant">nil</span>
 </code></pre>
 <p>これら 2 つの変数を <code>nil</code> に設定したときには、どちらのデイニシャライザも呼び出されなかったことに注目してください。強参照循環により、<code>Person</code> インスタンスと <code>Apartment</code> インスタンスの割り当てが解除されることがなくなり、アプリでメモリリークが発生します。</p>
 <p><code>john</code> 変数と <code>unit4A</code> 変数を <code>nil</code> に設定した後、強参照がどのように見えるかを次に示します。</p>
-<p><img src="../.gitbook/assets/referenceCycle03_2x.png" alt="循環参照 nil 設定後の強参照"></p>
+<p><img src="../assets/referenceCycle03_2x.png" alt="循環参照 nil 設定後の強参照"></p>
 <p><code>Person</code> インスタンスと <code>Apartment</code> インスタンス間の強参照は残り、なくなることはありません。</p>
 <h2 id="クラスインスタンス間の強参照循環の解消resolving-strong-reference-cycles-between-class-instances"><a name="クラスインスタンス間の強参照循環の解消resolving-strong-reference-cycles-between-class-instances" class="plugin-anchor" href="#クラスインスタンス間の強参照循環の解消resolving-strong-reference-cycles-between-class-instances"><i class="fa fa-link" aria-hidden="true"></i></a><a id="resolving-strong-reference-cycles-between-class-instances">クラスインスタンス間の強参照循環の解消(Resolving Strong Reference Cycles Between Class Instances)</a></h2>
 <p>Swift は、クラス型のプロパティを操作するときに強参照循環を解決する 2 つの方法を提供します。<em>弱参照</em>(<em>weak reference</em>)と<em>非所有参照</em>(<em>unowned reference</em>)です。</p>
@@ -884,19 +884,19 @@ john<span class="token operator">!</span><span class="token punctuation">.</span
 unit4A<span class="token operator">!</span><span class="token punctuation">.</span>tenant <span class="token operator">=</span> john
 </code></pre>
 <p>2 つのインスタンスをリンクしたので、参照は次のようになります:</p>
-<p><img src="../.gitbook/assets/weakReference01_2x.png" alt="弱参照 2 つのインスタンスをリンク"></p>
+<p><img src="../assets/weakReference01_2x.png" alt="弱参照 2 つのインスタンスをリンク"></p>
 <p><code>Person</code> インスタンスは依然として <code>Apartment</code> インスタンスへの強参照を持っていますが、<code>Apartment</code> インスタンスは <code>Person</code> インスタンスへの弱参照を持っています。これは、<code>john</code> 変数を <code>nil</code> に設定してその強参照を解除すると、<code>Person</code> インスタンスへの強参照がなくなることを意味します。</p>
 <pre class="language-"><code class="lang-swift">john <span class="token operator">=</span> <span class="token constant">nil</span>
 <span class="token comment">// &quot;John Appleseed is being deinitialized&quot;</span>
 </code></pre>
 <p><code>Person</code> インスタンスへの強参照がなくなったため、割り当てが解除され、<code>tenant</code> プロパティが <code>nil</code> に設定されます:</p>
-<p><img src="../.gitbook/assets/weakReference02_2x.png" alt="弱参照 割り当ての解除"></p>
+<p><img src="../assets/weakReference02_2x.png" alt="弱参照 割り当ての解除"></p>
 <p><code>Apartment</code> インスタンスへの唯一の強参照は、<code>unit4A</code> 変数です。その強参照がなくなると、<code>Apartment</code> インスタンスへの強参照はなくなります。</p>
 <pre class="language-"><code class="lang-swift">unit4A <span class="token operator">=</span> <span class="token constant">nil</span>
 <span class="token comment">// &quot;Apartment 4A is being deinitialized&quot;</span>
 </code></pre>
 <p><code>Apartment</code> インスタンスへの強参照がなくなったため、この割り当ても解除されます:</p>
-<p><img src="../.gitbook/assets/weakReference03_2x.png" alt="弱参照 Apartment インスタンスの割り当て解除"></p>
+<p><img src="../assets/weakReference03_2x.png" alt="弱参照 Apartment インスタンスの割り当て解除"></p>
 <blockquote>
 <p>NOTE<br>ガベージコレクションを使用するシステムでは、メモリプレッシャによってガベージコレクションがトリガされた場合にのみ、 強参照を持たないオブジェクトの割り当てが解除されるため、シンプルなキャッシュメカニズムを実装するために弱いポインタが使用されることがあります。ただし、ARC では、最後の強参照が削除されるとすぐに値の割り当てが解除されるため、弱参照はそのような目的には適していません。</p>
 </blockquote>
@@ -939,10 +939,10 @@ unit4A<span class="token operator">!</span><span class="token punctuation">.</sp
 john<span class="token operator">!</span><span class="token punctuation">.</span>card <span class="token operator">=</span> <span class="token function">CreditCard</span><span class="token punctuation">(</span>number<span class="token punctuation">:</span> <span class="token number">1234_5678_9012_3456</span><span class="token punctuation">,</span> customer<span class="token punctuation">:</span> john<span class="token operator">!</span><span class="token punctuation">)</span>
 </code></pre>
 <p>2 つのインスタンスをリンクしたので、参照は次のようになります:</p>
-<p><img src="../.gitbook/assets/unownedReference01_2x.png" alt="非所有参照 2 つのインスタンスをリンク"></p>
+<p><img src="../assets/unownedReference01_2x.png" alt="非所有参照 2 つのインスタンスをリンク"></p>
 <p><code>Customer</code> インスタンスには、<code>CreditCard</code> インスタンスへの強参照があり、<code>CreditCard</code> インスタンスには、<code>Customer</code> インスタンスへの非所有参照があります。</p>
 <p><code>customer</code> は非所有参照のため、<code>john</code> 変数によって保持されている強参照を解除すると、<code>Customer</code> インスタンスへの強参照はなくなります:</p>
-<p><img src="../.gitbook/assets/unownedReference02_2x.png" alt="非所有参照 \`Customer\` インスタンスへの強参照の解除"></p>
+<p><img src="../assets/unownedReference02_2x.png" alt="非所有参照 \`Customer\` インスタンスへの強参照の解除"></p>
 <p><code>Customer</code> インスタンスへの強参照がなくなったため、割り当てが解除されます。これが発生すると、<code>CreditCard</code> インスタンスへの強参照もなくなり、割り当ても解除されます。</p>
 <pre class="language-"><code class="lang-swift">john <span class="token operator">=</span> <span class="token constant">nil</span>
 <span class="token comment">// &quot;John Appleseed is being deinitialized&quot;</span>
@@ -989,7 +989,7 @@ intermediate<span class="token punctuation">.</span>nextCourse <span class="toke
 department<span class="token punctuation">.</span>courses <span class="token operator">=</span> <span class="token punctuation">[</span>intro<span class="token punctuation">,</span> intermediate<span class="token punctuation">,</span> advanced<span class="token punctuation">]</span>
 </code></pre>
 <p>上記のコードは、学科とその 3 つのコースを作成します。入門コースと中級コースの両方には、<code>nextCourse</code> プロパティに次のコースの提案があり、このコースを完了した後に学生が受講する必要があるコースへのオプショナルの非所有参照が保持されます。</p>
-<p><img src="../.gitbook/assets/unownedOptionalReference_2x.png" alt="オプショナル値への非所有参照 参照の保持"></p>
+<p><img src="../assets/unownedOptionalReference_2x.png" alt="オプショナル値への非所有参照 参照の保持"></p>
 <p>オプショナル値への非所有参照は、ラップするクラスのインスタンスを強く保持しないため、ARC によるインスタンスの割り当て解除を妨げません。これは、オプショナル値への非所有参照が <code>nil</code> にできることを除いて、ARC での非所有参照と同じように動作します。</p>
 <p>オプショナル値への非所有参照と同様に、<code>nextCourse</code> が常に割り当てが解除されていないコースを参照するようにする必要があります。この場合、例えば、<code>department.courses</code> からコースを削除するときに、他のコースが持つ可能性のあるそのコースへの参照も全て削除する必要があります。</p>
 <blockquote>
@@ -1087,7 +1087,7 @@ heading<span class="token punctuation">.</span>asHTML <span class="token operato
 <p>NOTE<br>上記の <code>paragraph</code> 変数はオプショナルの <code>HTMLElement</code> として定義されているため、下記では <code>nil</code> に設定して、強参照循環の存在を示すことができます。</p>
 </blockquote>
 <p>残念ながら、上記の <code>HTMLElement</code> クラスは、<code>HTMLElement</code> インスタンスと、デフォルトの <code>asHTML</code> 値に使用されるクロージャとの間に強参照循環を作成します。循環は次のようになります:</p>
-<p><img src="../.gitbook/assets/closureReferenceCycle01_2x.png" alt="クロージャの循環参照 強参照循環"></p>
+<p><img src="../assets/closureReferenceCycle01_2x.png" alt="クロージャの循環参照 強参照循環"></p>
 <p>インスタンスの <code>asHTML</code> プロパティは、そのクロージャへの強参照を保持します。ただし、クロージャは(<code>self.name</code> および <code>self.text</code> を参照する方法として)本文内の <code>self</code> を参照するため、クロージャは <code>self</code> をキャプチャします。つまり、クロージャは <code>HTMLElement</code> インスタンスへの強参照を保持します。2 つの間に強参照循環が作成されます。(クロージャでの値のキャプチャの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#capturing-values" target="_blank">Capturing Values(値のキャプチャ)</a>を参照してください)</p>
 <blockquote>
 <p>NOTE<br>クロージャは <code>self</code> を複数回参照していますが、<code>HTMLElement</code> インスタンスへの強参照は 1 つだけです。</p>
@@ -1154,7 +1154,7 @@ heading<span class="token punctuation">.</span>asHTML <span class="token operato
 <span class="token comment">// &quot;&lt;p&gt;hello, world&lt;/p&gt;&quot;</span>
 </code></pre>
 <p>キャプチャリストを配置した場合の参照は次のようになります：</p>
-<p><img src="../.gitbook/assets/closureReferenceCycle02_2x.png" alt="クロージャの循環参照 キャプチャリスト"></p>
+<p><img src="../assets/closureReferenceCycle02_2x.png" alt="クロージャの循環参照 キャプチャリスト"></p>
 <p>今回は、クロージャによる <code>self</code> のキャプチャは非所有参照で、キャプチャした <code>HTMLElement</code> インスタンスを強く保持しません。<code>paragraph</code> 変数からの強参照を <code>nil</code> に設定すると、<code>HTMLElement</code> インスタンスの割り当てが解除されます。これは、下記の例のデイニシャライザメッセージの出力からもわかります:</p>
 <pre class="language-"><code class="lang-swift">paragraph <span class="token operator">=</span> <span class="token constant">nil</span>
 <span class="token comment">// &quot;p is being deinitialized&quot;</span>
@@ -1193,7 +1193,7 @@ heading<span class="token punctuation">.</span>asHTML <span class="token operato
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"自動参照カウント ARC(Automatic Reference Counting)","level":"3.25","depth":1,"next":{"title":"メモリ安全性(Memory Safety)","level":"3.26","depth":1,"path":"language-guide-gaido/memory-safety.md","ref":"language-guide-gaido/memory-safety.md","articles":[]},"previous":{"title":"Opaque 型(Opaque Types)","level":"3.24","depth":1,"path":"language-guide-gaido/opaque-types.md","ref":"language-guide-gaido/opaque-types.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":".gitbook/assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":".gitbook/assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/automatic-reference-counting.md","mtime":"2021-07-07T23:56:51.231Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:11:28.643Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"自動参照カウント ARC(Automatic Reference Counting)","level":"3.25","depth":1,"next":{"title":"メモリ安全性(Memory Safety)","level":"3.26","depth":1,"path":"language-guide-gaido/memory-safety.md","ref":"language-guide-gaido/memory-safety.md","articles":[]},"previous":{"title":"Opaque 型(Opaque Types)","level":"3.24","depth":1,"path":"language-guide-gaido/opaque-types.md","ref":"language-guide-gaido/opaque-types.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/automatic-reference-counting.md","mtime":"2021-07-11T00:21:09.599Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

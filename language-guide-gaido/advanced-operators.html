@@ -763,7 +763,7 @@
 <p>Swift は、下記で説明するように、C 言語の全てのビット演算子をサポートしています。</p>
 <h3 id="ビット論理否定演算子bitwise-not-operator"><a name="ビット論理否定演算子bitwise-not-operator" class="plugin-anchor" href="#ビット論理否定演算子bitwise-not-operator"><i class="fa fa-link" aria-hidden="true"></i></a>ビット論理否定演算子(Bitwise NOT Operator)</h3>
 <p>ビット論理否定演算子(<code>~</code>)は、数値の全てのビットを反転します。</p>
-<p><img src="../.gitbook/assets/bitwiseNOT_2x.png" alt="ビット論理否定演算子"></p>
+<p><img src="../assets/bitwiseNOT_2x.png" alt="ビット論理否定演算子"></p>
 <p>ビット論理否定演算子は前置演算子で、空白を含めずに演算対象の値の直前に置きます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> initialBits<span class="token punctuation">:</span> <span class="token builtin">UInt8</span> <span class="token operator">=</span> <span class="token number">0b00001111</span>
 <span class="token keyword">let</span> invertedBits <span class="token operator">=</span> <span class="token operator">~</span>initialBits  <span class="token comment">// 11110000 と等しい</span>
@@ -772,7 +772,7 @@
 <p>次に、ビット論理否定演算子を使用して、<code>invertedBits</code> と呼ばれる新しい定数を作成します。これは <code>initialBits</code> と同じですが、全てのビットが反転されます。<code>0</code> は <code>1</code> になり、<code>1</code> は <code>0</code> になります。<code>invertedBits</code> の値は <code>11110000</code> で、符号なし 10 進数の <code>240</code> に相当します。</p>
 <h3 id="ビット論理積演算子bitwise-and-operator"><a name="ビット論理積演算子bitwise-and-operator" class="plugin-anchor" href="#ビット論理積演算子bitwise-and-operator"><i class="fa fa-link" aria-hidden="true"></i></a>ビット論理積演算子(Bitwise AND Operator)</h3>
 <p>ビット論理積演算子(<code>&amp;</code>)は、2 つの数値のビットを合成します。両方の入力数値のビットが <code>1</code> の場合にのみ、ビットが <code>1</code> になり、新しい数値を返します:</p>
-<p><img src="../.gitbook/assets/bitwiseAND_2x.png" alt="ビット論理積演算子"></p>
+<p><img src="../assets/bitwiseAND_2x.png" alt="ビット論理積演算子"></p>
 <p>下記の例では、<code>firstSixBits</code> と <code>lastSixBits</code> の値は両方とも、4 つの中間ビットに <code>1</code> が設定されています。ビット論理積演算子はそれらを組み合わせて、符号なし 10 進数の <code>60</code> に相当する数値 <code>00111100</code> を作成します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> firstSixBits<span class="token punctuation">:</span> <span class="token builtin">UInt8</span> <span class="token operator">=</span> <span class="token number">0b11111100</span>
 <span class="token keyword">let</span> lastSixBits<span class="token punctuation">:</span> <span class="token builtin">UInt8</span>  <span class="token operator">=</span> <span class="token number">0b00111111</span>
@@ -780,7 +780,7 @@
 </code></pre>
 <h3 id="ビット論理和演算子bitwise-or-operator"><a name="ビット論理和演算子bitwise-or-operator" class="plugin-anchor" href="#ビット論理和演算子bitwise-or-operator"><i class="fa fa-link" aria-hidden="true"></i></a>ビット論理和演算子(Bitwise OR Operator)</h3>
 <p>ビット論理和演算子(<code>|</code>)は、2 つの数値のビットを比較します。演算子は、いずれかの入力数値のビットが <code>1</code> に等しい場合、ビットは <code>1</code> になり、新しい数値を返します:</p>
-<p><img src="../.gitbook/assets/bitwiseOR_2x.png" alt="ビット論理和演算子"></p>
+<p><img src="../assets/bitwiseOR_2x.png" alt="ビット論理和演算子"></p>
 <p>下記の例では、<code>someBits</code> と <code>moreBits</code> の値の異なるビットに <code>1</code> が設定されています。ビット論理和演算子はそれらを組み合わせて、符号なし 10 進数の <code>254</code> に相当する <code>11111110</code> という数値を作成します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> someBits<span class="token punctuation">:</span> <span class="token builtin">UInt8</span> <span class="token operator">=</span> <span class="token number">0b10110010</span>
 <span class="token keyword">let</span> moreBits<span class="token punctuation">:</span> <span class="token builtin">UInt8</span> <span class="token operator">=</span> <span class="token number">0b01011110</span>
@@ -788,7 +788,7 @@
 </code></pre>
 <h3 id="ビット排他的論理和演算子bitwise-xor-operator"><a name="ビット排他的論理和演算子bitwise-xor-operator" class="plugin-anchor" href="#ビット排他的論理和演算子bitwise-xor-operator"><i class="fa fa-link" aria-hidden="true"></i></a>ビット排他的論理和演算子(Bitwise XOR Operator)</h3>
 <p>ビット排他的論理和演算子(<code>^</code>)は、2 つの数値のビットを比較します。演算子は、入力ビットが異なる場合はビットに <code>1</code> が設定され、入力ビットが同じ場合は <code>0</code> が設定される新しい数値を返します:</p>
-<p><img src="../.gitbook/assets/bitwiseXOR_2x.png" alt="ビット排他的論理和演算子"></p>
+<p><img src="../assets/bitwiseXOR_2x.png" alt="ビット排他的論理和演算子"></p>
 <p>下記の例では、<code>firstBits</code> と <code>otherBits</code> の値はそれぞれ、他の場所にはないビットに <code>1</code> が設定されています。ビット排他的論理和演算子は、これらのビット両方に <code>1</code> を設定します。<code>firstBits</code> および <code>otherBits</code> の他の全てのビットは値が一致しているので、<code>0</code> が設定されます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> firstBits<span class="token punctuation">:</span> <span class="token builtin">UInt8</span> <span class="token operator">=</span> <span class="token number">0b00010100</span>
 <span class="token keyword">let</span> otherBits<span class="token punctuation">:</span> <span class="token builtin">UInt8</span> <span class="token operator">=</span> <span class="token number">0b00000101</span>
@@ -806,7 +806,7 @@
 </ol>
 <p>このアプローチは、<em>論理シフト</em>として知られています。</p>
 <p>下の図は、<code>11111111 &lt;&lt; 1</code>(<code>11111111</code> を 1 桁左にずらしたもの)と <code>11111111 &gt;&gt; 1</code>(<code>11111111</code> を右に 1 桁ずらしたもの)の結果を示しています。青色の数字はシフトされ、灰色の数字は破棄され、オレンジ色のには 0 が挿入されます。</p>
-<p><img src="../.gitbook/assets/bitshiftUnsigned_2x.png" alt="符号なし整数の論理シフト"></p>
+<p><img src="../assets/bitshiftUnsigned_2x.png" alt="符号なし整数の論理シフト"></p>
 <p>Swift コードでのビットシフトの様子は次のとおりです:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> shiftBits<span class="token punctuation">:</span> <span class="token builtin">UInt8</span> <span class="token operator">=</span> <span class="token number">4</span>   <span class="token comment">// 2進数内の 00000100</span>
 shiftBits <span class="token operator">&lt;</span><span class="token operator">&lt;</span> <span class="token number">1</span>             <span class="token comment">// 00001000</span>
@@ -830,18 +830,18 @@ shiftBits <span class="token operator">&gt;</span><span class="token operator">&
 <p>符号付き整数のシフト演算は、符号なし整数よりも符号付き整数の方が複雑です。これは、符号付き整数が 2 進数で表現される方法に依ります。(下記の例は、簡単にするために 8 ビットの符号付き整数に基づいていますが、同じ原則が任意のサイズの符号付き整数にも適用されます)</p>
 <p>符号付き整数は、最初のビット(<em>符号ビット</em>と呼ばれます)を使用して、整数が正か負かを示します。符号ビット <code>0</code> は正を意味し、符号ビット <code>1</code> は負を意味します。</p>
 <p>残りのビット(<em>値ビット</em>と呼ばれます)には、実際の値が格納されています。正の数は、符号なし整数の場合とまったく同じ方法で、<code>0</code> から数えて格納されます。<code>Int8</code> 内からビットで数値 <code>4</code> を表す方法は次のとおりです:</p>
-<p><img src="../.gitbook/assets/bitshiftSignedFour_2x.png" alt="符号付き整数 4"></p>
+<p><img src="../assets/bitshiftSignedFour_2x.png" alt="符号付き整数 4"></p>
 <p>符号ビットは <code>0</code>(「正」を意味します)で、7 つの値ビットは 2 進数表記で書かれた数字の <code>4</code> です。</p>
 <p>ただし、負の数は別の方法で格納されます。それらは、<code>2</code> から <code>n</code> のべき乗の絶対値を引くことによって保持されます。ここで、<code>n</code> は値のビット数です。8 ビットの数値には 7 つの値ビットがあるため、これは 2 の 7 乗、つまり <code>128</code> を意味します。</p>
 <p><code>Int8</code> 内からビットで数値 <code>-4</code> を表す方法は次のとおりです:</p>
-<p><img src="../.gitbook/assets/bitshiftSignedMinusFour_2x.png" alt="符号付き整数 -4"></p>
+<p><img src="../assets/bitshiftSignedMinusFour_2x.png" alt="符号付き整数 -4"></p>
 <p>今回は、符号ビットは <code>1</code>(「負」を意味する)で、7 つの値ビットは <code>124</code> の 2 進数値(<code>128 - 4</code>)です:</p>
-<p><img src="../.gitbook/assets/bitshiftSignedMinusFourValue_2x.png" alt="符号付き整数 -4 の値ビット"></p>
+<p><img src="../assets/bitshiftSignedMinusFourValue_2x.png" alt="符号付き整数 -4 の値ビット"></p>
 <p>負の数のこのエンコーディングは、2 の<em>補数表現</em>と呼ばれています。負の数を表すのに珍しい方法に見えるかもしれませんが、いくつかの利点があります。</p>
 <p>まず、(符号ビットを含む)8 ビット全てに標準の 2 進数加算を実行し、完了したら 8 ビットに収まらないものは全て破棄するだけで、<code>-1</code> を <code>-4</code> に加算できます:</p>
-<p><img src="../.gitbook/assets/bitshiftSignedAddition_2x.png" alt="符号付き整数の加算"></p>
+<p><img src="../assets/bitshiftSignedAddition_2x.png" alt="符号付き整数の加算"></p>
 <p>次に、2 の補数表現で、負の数のビットを正の数のように左右にシフトし、左にシフトするたびにビットを 2 倍し、右にシフトするたびにビットを半分にします。これを実現するために、符号付き整数を右にシフトするときに追加の規則が使用されます。符号付き整数を右にシフトするときは、符号なし整数と同じ規則を適用しますが、左側の空のビットを 0 で埋めるのではなく、符号ビットで埋めます。</p>
-<p><img src="../.gitbook/assets/bitshiftSigned_2x.png" alt="符号付き整数のシフト"></p>
+<p><img src="../assets/bitshiftSigned_2x.png" alt="符号付き整数のシフト"></p>
 <p>このアクションにより、符号付き整数が右にシフトされた後も同じ符号を持つようになります。これは<em>算術シフト</em>と呼ばれています。</p>
 <p>正の数と負の数は特殊な方法で保持されるため、どちらかを右にシフトすると <code>0</code> に近づきます。このシフト中でも符号ビットを保つということは、値が <code>0</code> に近づいても負の整数は負の値のままになることを意味します。</p>
 <h2 id="オーバーフロー演算子overflow-operators"><a name="オーバーフロー演算子overflow-operators" class="plugin-anchor" href="#オーバーフロー演算子overflow-operators"><i class="fa fa-link" aria-hidden="true"></i></a><a id="overflow-operators">オーバーフロー演算子(Overflow Operators)</a></h2>
@@ -868,7 +868,7 @@ unsignedOverflow <span class="token operator">=</span> unsignedOverflow <span cl
 <span class="token comment">// unsignedOverflow は現在 0 に等しい</span>
 </code></pre>
 <p>変数 <code>unsignedOverflow</code> は、<code>UInt8</code> が保持できる最大値(<code>255</code>、または 2 進数で <code>11111111</code>)で初期化されます。次に、オーバーフロー加算演算子(<code>&amp;+</code>)を使用して 1 ずつインクリメントします。これにより、<code>UInt8</code> が保持できるサイズを超えてその 2 進数表現がプッシュされ、下の図に示すように、境界を超えてオーバーフローします。オーバーフロー加算後に <code>UInt8</code> の境界内に残っている値は <code>00000000</code>、つまり <code>0</code> です:</p>
-<p><img src="../.gitbook/assets/overflowAddition_2x.png" alt="オーバーフロー加算演算子 11111111 に 1 を加算"></p>
+<p><img src="../assets/overflowAddition_2x.png" alt="オーバーフロー加算演算子 11111111 に 1 を加算"></p>
 <p>符号なし整数が負の方向にオーバーフローできる場合にも、同様のことが起こります。オーバーフロー減算演算子(<code>&amp;-</code>)を使用した例を次に示します:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> unsignedOverflow <span class="token operator">=</span> <span class="token builtin">UInt8</span><span class="token punctuation">.</span><span class="token builtin">min</span>
 <span class="token comment">// unsignedOverflow は 0 に等しく、UInt8 が保持できる最小値です</span>
@@ -876,7 +876,7 @@ unsignedOverflow <span class="token operator">=</span> unsignedOverflow <span cl
 <span class="token comment">// unsignedOverflow は 255 になりました</span>
 </code></pre>
 <p><code>UInt8</code> が保持できる最小値は <code>0</code>、つまり 2 進数で <code>00000000</code> です。オーバーフロー減算演算子(<code>&amp;-</code>)を使用して <code>00000000</code> から <code>1</code> を減算すると、数値はオーバーフローして <code>11111111</code>、つまり 10 進数で <code>255</code> に巻き戻ります。</p>
-<p><img src="../.gitbook/assets/overflowUnsignedSubtraction_2x.png" alt="オーバーフロー減算演算子 00000000 から 1 を減算"></p>
+<p><img src="../assets/overflowUnsignedSubtraction_2x.png" alt="オーバーフロー減算演算子 00000000 から 1 を減算"></p>
 <p>オーバーフローは、符号付き整数でも発生します。符号付き整数の加算と減算は全てビット単位で実行され、<a href="advanced-operators.html#bitwise-left-and-right-shift-operators">Bitwise Left and Right Shift Operators(ビット左右シフト演算子)</a>で説明されているように、加算または減算される数値の一部として符号ビットが含まれます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> signedOverflow <span class="token operator">=</span> <span class="token builtin">Int8</span><span class="token punctuation">.</span><span class="token builtin">min</span>
 <span class="token comment">// signedOverflow は -128 に等しく、これは Int8 が保持できる最小値です</span>
@@ -884,7 +884,7 @@ signedOverflow <span class="token operator">=</span> signedOverflow <span class=
 <span class="token comment">// signedOverflow は 127 になりました</span>
 </code></pre>
 <p><code>Int8</code> が保持できる最小値は <code>-128</code>、つまり 2 進数で <code>10000000</code> です。オーバーフロー演算子を使用してこの 2 進数から <code>1</code> を減算すると、<code>01111111</code> の 2 進数値が得られます。これは、符号ビットを切り替えて、<code>Int8</code> が保持できる正の最大値 <code>127</code> を返します。</p>
-<p><img src="../.gitbook/assets/overflowSignedSubtraction_2x.png" alt="符号付き整数のオーバーフロー減算演算子 10000000 から 1 を減算\`"></p>
+<p><img src="../assets/overflowSignedSubtraction_2x.png" alt="符号付き整数のオーバーフロー減算演算子 10000000 から 1 を減算\`"></p>
 <p>符号付き整数と符号なし整数の両方で、正の方向のオーバーフローは有効な整数値の最大値から最小値に巻き戻り、負の方向のオーバーフローは最小値から最大値に巻き戻ります。</p>
 <h2 id="precedence-and-associativity優先順位と結合規則-"><a name="precedence-and-associativity優先順位と結合規則-" class="plugin-anchor" href="#precedence-and-associativity優先順位と結合規則-"><i class="fa fa-link" aria-hidden="true"></i></a><a href="advanced-operators.html">Precedence and Associativity(優先順位と結合規則)</a> <a id="#precedence-and-associativity"></a></h2>
 <p>演算子の<em>優先順位</em>により、一部の演算子は他の演算子よりも優先されます。これらの演算子は最初に適用されます。</p>
@@ -937,7 +937,7 @@ signedOverflow <span class="token operator">=</span> signedOverflow <span class=
 <span class="token comment">// combinedVector は、値が (5.0, 5.0) の Vector2D インスタンスです。</span>
 </code></pre>
 <p>この例では、下記に示すように、ベクトル <code>(3.0, 1.0)</code> と <code>(2.0, 4.0)</code> を加算してベクトル <code>(5.0, 5.0)</code> を作成します:</p>
-<p><img src="../.gitbook/assets/vectorAddition_2x.png" alt="Vector2Dの加算"></p>
+<p><img src="../assets/vectorAddition_2x.png" alt="Vector2Dの加算"></p>
 <h3 id="前置、後置演算子prefix-and-postfix-operators"><a name="前置、後置演算子prefix-and-postfix-operators" class="plugin-anchor" href="#前置、後置演算子prefix-and-postfix-operators"><i class="fa fa-link" aria-hidden="true"></i></a><a id="prefix-and-postfix-operators">前置、後置演算子(Prefix and Postfix Operators)</a></h3>
 <p>上記の例は、2 進数の中置演算子の独自実装を示しています。クラスと構造体は、単項演算子の実装を提供することもできます。単項演算子は、単一のターゲットで動作します。ターゲットの前にある場合はプレフィックス(<code>-a</code> など)で、ターゲットの後にある場合は後置演算子(<code>b!</code> など)です。</p>
 <p>演算子メソッドを宣言するときに、<code>func</code> キーワードの前に <code>prefix</code> または <code>postfix</code> 修飾子を記述して、<em>前置</em>または<em>後置</em>単項演算子を実装します。</p>
@@ -1182,7 +1182,7 @@ original <span class="token operator">+</span><span class="token operator">=</sp
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"高度な演算子(Advanced Operators)","level":"3.28","depth":1,"next":{"title":"言語リファレンスについて(About the Language Reference)","level":"4.1","depth":1,"path":"language-reference/about-the-language-reference.md","ref":"language-reference/about-the-language-reference.md","articles":[]},"previous":{"title":"アクセスコントロール(Access Control)","level":"3.27","depth":1,"path":"language-guide-gaido/access-control.md","ref":"language-guide-gaido/access-control.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":".gitbook/assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":".gitbook/assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/advanced-operators.md","mtime":"2021-07-07T23:56:19.393Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:11:28.643Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"高度な演算子(Advanced Operators)","level":"3.28","depth":1,"next":{"title":"言語リファレンスについて(About the Language Reference)","level":"4.1","depth":1,"path":"language-reference/about-the-language-reference.md","ref":"language-reference/about-the-language-reference.md","articles":[]},"previous":{"title":"アクセスコントロール(Access Control)","level":"3.27","depth":1,"path":"language-guide-gaido/access-control.md","ref":"language-guide-gaido/access-control.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/advanced-operators.md","mtime":"2021-07-11T00:21:09.745Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

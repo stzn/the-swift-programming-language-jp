@@ -768,22 +768,22 @@
 </blockquote>
 <h2 id="コードブロックcode-blocks"><a name="コードブロックcode-blocks" class="plugin-anchor" href="#コードブロックcode-blocks"><i class="fa fa-link" aria-hidden="true"></i></a>コードブロック(Code Blocks)</h2>
 <p><em>コードブロック</em>は、文をグループ化するための様々な宣言および制御構造によって使用されます。形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/code_blocks.png" alt="コードブロック"></p>
+<p><img src="../assets/code_blocks.png" alt="コードブロック"></p>
 <p>コードブロック内の <em>statements</em> には、宣言、式、およびその他の文が含まれており、ソースコード内の出現順に実行されます。</p>
 <blockquote>
 <p>GRAMMAR OF A CODE BLOCK<br>code-block → <code>{</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements" target="_blank">statements</a><sub>opt</sub> <code>}</code></p>
 </blockquote>
 <h2 id="インポート宣言import-declaration"><a name="インポート宣言import-declaration" class="plugin-anchor" href="#インポート宣言import-declaration"><i class="fa fa-link" aria-hidden="true"></i></a>インポート宣言(Import Declaration)</h2>
 <p><em>インポート宣言</em>を使用すると、現在のファイルの外部で宣言されているシンボルにアクセスできます。基本形式はモジュール全体をインポートします。<code>import</code> キーワードとそれに続くモジュール名で構成されます:</p>
-<p><img src="../.gitbook/assets/import_declaration.png" alt="インポート宣言"></p>
+<p><img src="../assets/import_declaration.png" alt="インポート宣言"></p>
 <p>シンボルのインポートをより細かく制限するために、インポート宣言には、モジュールまたはサブモジュール内で特定のサブモジュールまたは宣言を指定できます。この詳細な形式を使用する場合は、(それを宣言するモジュールではなく)インポートされたシンボルだけが現在のスコープで利用可能になります。</p>
-<p><img src="../.gitbook/assets/import_declaration2.png" alt="シンボルのインポート宣言"></p>
+<p><img src="../assets/import_declaration2.png" alt="シンボルのインポート宣言"></p>
 <blockquote>
 <p>GRAMMAR OF AN IMPORT DECLARATION<br>import-declaration → <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes" target="_blank">attributes</a><sub>opt</sub> <code>import</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-kind" target="_blank">import-kind</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path" target="_blank">import-path</a><br>import-kind → <code>typealias</code> | <code>struct</code> | <code>class</code> | <code>enum</code> | <code>protocol</code> | <code>let</code> | <code>var</code> | <code>func</code><br>import-path → <a href="https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path-identifier" target="_blank">import-path-identifier</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path-identifier" target="_blank">import-path-identifier</a> <code>.</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path" target="_blank">import-path</a><br>import-path-identifier → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator" target="_blank">operator</a></p>
 </blockquote>
 <h2 id="定数宣言constant-declaration"><a name="定数宣言constant-declaration" class="plugin-anchor" href="#定数宣言constant-declaration"><i class="fa fa-link" aria-hidden="true"></i></a><a id="constant-declaration">定数宣言(Constant Declaration)</a></h2>
 <p><em>定数宣言</em>では、プログラムに名前付きの定数値を導入します。定数宣言は <code>let</code> キーワードを使用して宣言され、形式は次のとおりです。</p>
-<p><img src="../.gitbook/assets/constant_declaration.png" alt="Constant Declaration\(定数宣言\)"></p>
+<p><img src="../assets/constant_declaration.png" alt="Constant Declaration\(定数宣言\)"></p>
 <p>定数宣言は、<em>constant name</em> と値を初期化する <em>expression</em> の間の不変の繋がりを定義します。定数の値は設定されたら変更できません。つまり、定数がクラスオブジェクトで初期化されている場合、オブジェクト自体を変更できますが、定数名とそれが参照するオブジェクトの間の繋がりは変更できません。</p>
 <p>定数がグローバルスコープで宣言されている場合は、値を使って初期化する必要があります。関数またはメソッドのコンテキストに定数宣言があると、その値が初めて読み込まれる前に値が設定されることが確実な限り、後で初期化できます。コンパイラが定数の値が読み取られないことをわかっている場合、定数に値を絶対に設定する必要はありません。クラスまたは構造体宣言のコンテキストでの定数宣言は、<em>定数プロパティ</em>と見なされます。定数宣言は計算プロパティではないため、get または set を持ちません。</p>
 <p>定数宣言の <em>constant name</em> がタプルの場合、タプル内の各項目の名前は、値を初期化する <em>expression</em> を通して対応する値にバインドされます。</p>
@@ -810,14 +810,14 @@
 <p><a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/inheritance#overriding" target="_blank">Overriding(オーバーライド)</a>で説明されているように、サブクラスのプロパティ宣言に <code>override</code> 修飾子をマークすることで、サブクラス内でプロパティをオーバーライドできます。</p>
 <h3 id="格納変数、格納可変プロパティstored-variables-and-stored-variable-properties"><a name="格納変数、格納可変プロパティstored-variables-and-stored-variable-properties" class="plugin-anchor" href="#格納変数、格納可変プロパティstored-variables-and-stored-variable-properties"><i class="fa fa-link" aria-hidden="true"></i></a>格納変数、格納可変プロパティ(Stored Variables and Stored Variable Properties)</h3>
 <p>次の形式は、格納変数や格納可変プロパティを宣言します。</p>
-<p><img src="../.gitbook/assets/variable_declaration.png" alt="格納変数、格納可変プロパティ"></p>
+<p><img src="../assets/variable_declaration.png" alt="格納変数、格納可変プロパティ"></p>
 <p>この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラスまたは構造体宣言のコンテキストで定義できます。この形式の変数宣言が、グローバルスコープまたは関数のローカルスコープで宣言されている場合は、<em>格納変数</em>と呼ばれます。クラスまたは構造体宣言のコンテキストで宣言されている場合は、<em>格納可変プロパティ</em>と呼ばれます。</p>
 <p>値を初期化する <em>expression</em> はプロトコル宣言に定義できませんが、他の全てのコンテキストで、値を初期化する <em>expression</em> は任意で可能す。つまり、値を初期化する <em>expression</em> が存在しない場合、変数宣言に明示的な型注釈(<code>: type</code>)を含める必要があります。</p>
 <p>定数宣言と同様に、<em>variable name</em> がタプルの場合、タプル内の各項目の名前は、値を初期化する <em>expression</em> の対応する値にバインドされます。</p>
 <p>それらの名前が示唆するように、格納変数または格納可変プロパティの値がメモリに格納されます。</p>
 <h3 id="計算変数、計算変数プロパティcomputed-variables-and-computed-properties"><a name="計算変数、計算変数プロパティcomputed-variables-and-computed-properties" class="plugin-anchor" href="#計算変数、計算変数プロパティcomputed-variables-and-computed-properties"><i class="fa fa-link" aria-hidden="true"></i></a>計算変数、計算変数プロパティ(Computed Variables and Computed Properties)</h3>
 <p>次の形式は、計算変数または計算プロパティを宣言します。</p>
-<p><img src="../.gitbook/assets/computed_variables_and_computed_properties.png" alt="計算変数、計算変数プロパティ"></p>
+<p><img src="../assets/computed_variables_and_computed_properties.png" alt="計算変数、計算変数プロパティ"></p>
 <p>この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラス、構造体、列挙型、または extension のコンテキストで定義できます。この形式の変数宣言がグローバルスコープまたは関数のローカルスコープで宣言されている場合は、<em>計算変数</em>と呼ばれます。クラス、構造体、または extension のコンテキストで宣言されている場合は、それは<em>計算プロパティ</em>と呼ばれます。</p>
 <p>get は値を読み取るために使用され、set は値を書き込むために使用されます。set 句は省略可能で、get のみが必要な場合は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#read-only-computed-properties" target="_blank">Read-Only Computed Properties(読み取り専用計算プロパティ)</a>で説明されているように、両方の句を省略し、シンプルに要求された値を直接返すことができます。しかし、set 句を指定した場合は、get 句も提供する必要があります。</p>
 <p><em>setter name</em> とそれを囲む括弧は省略可能です。setter name を指定した場合は、set のパラメータ名として使用されます。setter name を指定しない場合は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#shorthand-setter-declaration" target="_blank">Shorthand Setter Declaration(省略 set プロパティ宣言)</a>で説明されているように、set へのデフォルトのパラメータ名は <code>newValue</code> です。</p>
@@ -825,7 +825,7 @@
 <p>詳細や計算プロパティの例は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#properties-computed-properties" target="_blank">Computed Properties(計算プロパティ)</a>を参照ください。</p>
 <h3 id="格納変数オブザーバとプロパティオブザーバstored-variable-observers-and-property-observers"><a name="格納変数オブザーバとプロパティオブザーバstored-variable-observers-and-property-observers" class="plugin-anchor" href="#格納変数オブザーバとプロパティオブザーバstored-variable-observers-and-property-observers"><i class="fa fa-link" aria-hidden="true"></i></a><a id="stored-variable-observers-and-property-observers">格納変数オブザーバとプロパティオブザーバ(Stored Variable Observers and Property Observers)</a></h3>
 <p>格納変数またはプロパティを <code>willSet</code> や <code>didSet</code> オブザーバと一緒に宣言することもできます。オブザーバで宣言された格納変数またはプロパティの形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/stored_variable_observers_and_property_observers.png" alt="格納変数オブザーバとプロパティオブザーバ"></p>
+<p><img src="../assets/stored_variable_observers_and_property_observers.png" alt="格納変数オブザーバとプロパティオブザーバ"></p>
 <p>この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラスまたは構造体宣言のコンテキストで定義できます。この形式の変数宣言がグローバルスコープまたは関数のローカルスコープで宣言されている場合、オブザーバは<em>格納変数オブザーバ</em>と呼ばれます。クラスまたは構造体宣言のコンテキストで宣言されている場合、オブザーバは<em>プロパティオブザーバ</em>と呼ばれます。</p>
 <p>任意の格納プロパティにプロパティオブザーバを追加できます。<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/inheritance#overriding-property-observers" target="_blank">Overriding Property Observers(プロパティオブザーバのオーバーライド)</a>で説明されているように、サブクラス内でプロパティをオーバーライドすることで、継承したプロパティ(格納または計算プロパティ)にプロパティオブサーバを追加することもできます。</p>
 <p>値を初期化する <em>expression</em> は、クラスまたは構造体宣言のコンテキストでは省略可能ですが、他の場所では必須です。<em>型注釈</em>は、型が値を初期化する <em>expression</em> から推論できる場合は省略可能です。この式は、プロパティの値が初めて読まれるときに評価されます。プロパティの値を読み込む前にプロパティの初期値を上書きする場合、この式はプロパティに初めて書き込まれる前に評価されます。</p>
@@ -877,7 +877,7 @@ newAndOld<span class="token punctuation">.</span>x <span class="token operator">
 </blockquote>
 <h2 id="タイプエイリアス宣言type-alias-declaration"><a name="タイプエイリアス宣言type-alias-declaration" class="plugin-anchor" href="#タイプエイリアス宣言type-alias-declaration"><i class="fa fa-link" aria-hidden="true"></i></a><a id="type-alias-declaration">タイプエイリアス宣言(Type Alias Declaration)</a></h2>
 <p><em>タイプエイリアス宣言</em>では、既存の型に別名を導入します。タイプエイリアス宣言は、<code>typealias</code> キーワードを使用して宣言され、形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/type_alias_declaration.png" alt="タイプエイリアス宣言"></p>
+<p><img src="../assets/type_alias_declaration.png" alt="タイプエイリアス宣言"></p>
 <p>タイプエイリアスが宣言された後、プログラム内の既存の型の代わりに注釈された <em>name</em> を使用できます。<em>existing type</em> は、名前付き型または複合型にすることができます。タイプエイリアスは新しい型を作成しません。それらは単に名前が既存の型を参照することを可能にします。</p>
 <p>タイプエイリアス宣言は、ジェネリックパラメータを使用して既存のジェネリック型に名前を付けることができます。そのタイプエイリアスは、既存の型のジェネリックパラメータの一部または全部を使って具象型を提供できます。例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">typealias</span> <span class="token builtin">StringDictionary</span><span class="token operator">&lt;</span><span class="token builtin">Value</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token builtin">Dictionary</span><span class="token operator">&lt;</span><span class="token builtin">String</span><span class="token punctuation">,</span> <span class="token builtin">Value</span><span class="token operator">&gt;</span>
@@ -910,9 +910,9 @@ newAndOld<span class="token punctuation">.</span>x <span class="token operator">
 </blockquote>
 <h2 id="関数宣言function-declaration"><a name="関数宣言function-declaration" class="plugin-anchor" href="#関数宣言function-declaration"><i class="fa fa-link" aria-hidden="true"></i></a><a id="function-declaration">関数宣言(Function Declaration)</a></h2>
 <p><em>関数宣言</em>では、プログラムに関数またはメソッドを導入します。クラス、構造体、列挙型、またはプロトコルのコンテキストで宣言されている関数は<em>メソッド</em>と呼ばれます。関数宣言は <code>func</code> キーワードを使用して宣言され、形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/function_declaration.png" alt="関数宣言"></p>
+<p><img src="../assets/function_declaration.png" alt="関数宣言"></p>
 <p>関数の戻り値の型が <code>Void</code> の場合は、次のように戻り値の型を省略できます:</p>
-<p><img src="../.gitbook/assets/function_declaration2.png" alt="関数宣言戻り値の型Void"></p>
+<p><img src="../assets/function_declaration2.png" alt="関数宣言戻り値の型Void"></p>
 <p>各パラメータには型を含める必要があります。推論することはできません。パラメータ型の前に <code>inout</code> を書くと、その関数の範囲内でパラメータを変更できます。in-out パラメータについては、下記の<a href="declarations.html#declarations-in-out-parameters">In-Out Parameters(In-Out パラメータ)</a>で詳細に説明されています。</p>
 <p><em>statements</em> が単一式のみを含む関数宣言は、その式の値を返すことが明らかです。この暗黙的なリターン構文は、式の型と関数の戻り値の型が <code>Void</code> やケースを持たない <code>Never</code> のような列挙型ではない場合にのみ使用できます。</p>
 <p>関数は、戻り値の型としてタプル型を使用して複数の値を返すことができます。</p>
@@ -921,13 +921,13 @@ newAndOld<span class="token punctuation">.</span>x <span class="token operator">
 <p>ネスト関数については、を参照ください。</p>
 <h3 id="parameter-namesパラメータ名"><a name="parameter-namesパラメータ名" class="plugin-anchor" href="#parameter-namesパラメータ名"><i class="fa fa-link" aria-hidden="true"></i></a>Parameter Names(パラメータ名)</h3>
 <p>関数パラメータは、各パラメータが複数の形式のうちの 1 つを持つカンマ区切りのリストです。関数呼び出し内の引数の順序は、関数の宣言内のパラメータの順序と一致する必要があります。パラメータリスト内の最もシンプルなエントリの形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/parameter_names.png" alt="パラメータリスト内の最もシンプルなエントリ"></p>
+<p><img src="../assets/parameter_names.png" alt="パラメータリスト内の最もシンプルなエントリ"></p>
 <p>パラメータには、関数本文内で使用されている名前、および関数またはメソッドを呼び出すときに使用される引数ラベルがあります。デフォルトでは、パラメータ名は引数ラベルとしても使用されます。例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> x <span class="token operator">+</span> y <span class="token punctuation">}</span>
 <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment">// x と y の両方にラベルがあります</span>
 </code></pre>
 <p>次のいずれかの形式で、引数ラベルのデフォルトの動作を上書きできます。</p>
-<p><img src="../.gitbook/assets/parameter_names2.png" alt="引数ラベルのデフォルトの動作を上書き"></p>
+<p><img src="../assets/parameter_names2.png" alt="引数ラベルのデフォルトの動作を上書き"></p>
 <p>パラメータ名の前の名前は、パラメータの明示的な引数ラベルで、パラメータ名とは異なる可能性があります。関数呼び出しまたはメソッド呼び出し時は、対応する引数に指定された引数ラベルを使用する必要があります。</p>
 <p>パラメータ名の前にアンダースコア(<code>_</code>)を付けると、引数ラベルが省略されます。関数呼び出しまたはメソッド呼び出し時は、対応する引数に、ラベルを付けてはなりません。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">repeatGreeting</span><span class="token punctuation">(</span><span class="token number">_</span> greeting<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> <span class="token builtin">count</span> n<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">/* n 回あいさつ */</span> <span class="token punctuation">}</span>
@@ -963,7 +963,7 @@ newAndOld<span class="token punctuation">.</span>x <span class="token operator">
 <p>より多くの議論と in-out パラメータの例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/functions#functions-in-out-parameters" target="_blank">In-Out Parameters(In-Out パラメータ)</a>を参照ください。</p>
 <h3 id="特殊な種類のパラメータspecial-kinds-of-parameters"><a name="特殊な種類のパラメータspecial-kinds-of-parameters" class="plugin-anchor" href="#特殊な種類のパラメータspecial-kinds-of-parameters"><i class="fa fa-link" aria-hidden="true"></i></a><a id="special-kinds-of-parameters">特殊な種類のパラメータ(Special Kinds of Parameters)</a></h3>
 <p>パラメータを無視したり、1 つのパラメータに複数の値を受け取ったり、デフォルト値を提供できます。形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/special_kinds-of_parameters.png" alt="特殊な種類のパラメータ"></p>
+<p><img src="../assets/special_kinds-of_parameters.png" alt="特殊な種類のパラメータ"></p>
 <p>アンダースコア(<code>_</code>)パラメータは明示的に無視され、関数の本文内でアクセスすることはできません。</p>
 <p>型名の直後に 3 つのドット(<code>...</code>)を続くパラメータは、可変長パラメータとして解釈されます。可変長パラメータのすぐ後に続くパラメータには、引数ラベルが必要です。関数は複数の可変長パラメータを持つことができます。可変長パラメータは、型名の要素の配列として扱われます。例えば、可変長パラメータ <code>Int...</code> は <code>[Int]</code> として扱われます。可変長パラメータを使用する例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#variadic-parameters" target="_blank">Variadic Parameters(可変長パラメータ)</a>を参照ください。</p>
 <p>等式(<code>=</code>)パラメータと型の後に式を伴うパラメータは、指定された式をデフォルト値として解釈します。指定された式は、関数が呼び出された時に評価されます。関数呼び出し時にパラメータを省略すると、デフォルト値が代わりに使用されます。</p>
@@ -1000,7 +1000,7 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 <p><code>subscript(dynamicMember:)</code> は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/attributes#dynamicmemberlookup" target="_blank">dynamicMemberLookup</a>で説明されているように、メンバを検索するための糖衣構文(シンタックスシュガー)です。</p>
 <h3 id="スロー関数とスローメソッドthrowing-functions-and-methods"><a name="スロー関数とスローメソッドthrowing-functions-and-methods" class="plugin-anchor" href="#スロー関数とスローメソッドthrowing-functions-and-methods"><i class="fa fa-link" aria-hidden="true"></i></a><a id="throwing-functions-and-methods">スロー関数とスローメソッド(Throwing Functions and Methods)</a></h3>
 <p>スロー関数とスローメソッドは、<code>throws</code> キーワードでマークされている必要があります。これらの関数およびメソッドは、<em>スロー関数</em>および<em>スローメソッド</em>と呼ばれます。形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/throwing_functions_and_methods.png" alt="スロー関数とスローメソッド"></p>
+<p><img src="../assets/throwing_functions_and_methods.png" alt="スロー関数とスローメソッド"></p>
 <p>スロー関数またはスローメソッドの呼び出しは、<code>try</code> または <code>try!</code> 式で囲まれていなければなりません(つまり、<code>try</code> または <code>try!</code> 演算子のスコープ内)。</p>
 <p><code>throws</code> キーワードは関数の型の一部で、非スロー関数はスロー関数のサブタイプです。その結果、スロー関数が期待されているコンテキストで非スロー関数を使用することができます。</p>
 <p>関数がエラーをスローできるかどうかだけを基に、関数をオーバーロードすることはできません。一方で、関数の <em>parameter</em> がエラーをスローできるかどうかに基づいて関数をオーバーロードすることができます。</p>
@@ -1027,7 +1027,7 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 <p>スローメソッドは再スローメソッドをオーバーライドできず、再スローメソッドのプロトコル要件を満たすことができません。逆に、再スローメソッドはスローメソッドをオーバーライドでき、再スローメソッドはスローメソッドのプロトコル要件を満たすことができます。</p>
 <h3 id="非同期関数と非同期メソッドasynchronous-functions-and-methods"><a name="非同期関数と非同期メソッドasynchronous-functions-and-methods" class="plugin-anchor" href="#非同期関数と非同期メソッドasynchronous-functions-and-methods"><i class="fa fa-link" aria-hidden="true"></i></a><a id="asynchronous-functions-and-asynchronous-methods">非同期関数と非同期メソッド(Asynchronous Functions and Methods)</a></h3>
 <p>非同期に実行される関数とメソッドは、<code>async</code> キーワードでマークされている必要があります。これらの関数とメソッドは、<em>非同期関数</em>と<em>非同期メソッド</em>と呼ばれています。形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/asynchronous_functions_and_methods.png" alt="非同期関数と非同期メソッド"></p>
+<p><img src="../assets/asynchronous_functions_and_methods.png" alt="非同期関数と非同期メソッド"></p>
 <p>非同期関数または非同期メソッドの呼び出しは、<code>await</code> でラップされていなければなりません。</p>
 <p><code>async</code> キーワードは関数の型の一部で、同期関数は非同期関数のサブタイプのため、非同期関数が期待されるコンテキストで同期関数を使用できます。例えば、同期メソッドを使用して非同期メソッドをオーバーライドでき、同期メソッドは非同期メソッドのプロトコル要件を満たすことができます。</p>
 <h3 id="ノーリターン関数functions-that-never-return"><a name="ノーリターン関数functions-that-never-return" class="plugin-anchor" href="#ノーリターン関数functions-that-never-return"><i class="fa fa-link" aria-hidden="true"></i></a><a id="functions-that-never-return">ノーリターン関数(Functions that Never Return)</a></h3>
@@ -1046,7 +1046,7 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 <p><a href="declarations.html#extension-declaration">Extension Declaration(拡張宣言)</a>で説明されているように、extension を使用して列挙型の動作を拡張できます。</p>
 <h3 id="任意の型のケースを持つ列挙型enumerations-with-cases-of-any-type"><a name="任意の型のケースを持つ列挙型enumerations-with-cases-of-any-type" class="plugin-anchor" href="#任意の型のケースを持つ列挙型enumerations-with-cases-of-any-type"><i class="fa fa-link" aria-hidden="true"></i></a><a id="enumerations-with-cases-of-any-type">任意の型のケースを持つ列挙型(Enumerations with Cases of Any Type)</a></h3>
 <p>次の形式は、任意の型のケースを含む列挙型を宣言しています。</p>
-<p><img src="../.gitbook/assets/enumerations_with_cases_of_any_type.png" alt="任意の型のケースを持つ列挙型"></p>
+<p><img src="../assets/enumerations_with_cases_of_any_type.png" alt="任意の型のケースを持つ列挙型"></p>
 <p>この形式で宣言された列挙型は、他のプログラミング言語では判別共用体(<em>discriminated union</em>)と呼ばれることもあります。</p>
 <p>この形式では、各ケースブロックは、<code>case</code> キーワードと、それに続く 1 つ以上の列挙ケースで構成され、カンマ(<code>,</code>)で区切られます。各ケースの名前は一意にする必要があります。各ケースでは、特定の型の値を格納するように指定することもできます。これらの型は、ケースの名前の直後にある、<em>関連値</em> のタプルで指定できます。</p>
 <p>関連値を持つ列挙ケースは、指定された関連値を使用して列挙型のインスタンスを作成する関数として使用できます。また、関数と同様に、列挙ケースへの参照を取得して、後のコードで使用できます。</p>
@@ -1073,7 +1073,7 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 <p><code>indirect</code> 修飾子でマークされた列挙型には、関連値を持つケースと関連値を持たないケースが混在している可能性があります。しかし、ケースに <code>indirect</code> 修飾子を付けることはできません。</p>
 <h3 id="raw-value-型のケースを持つ列挙型enumerations-with-cases-of-a-raw-value-type"><a name="raw-value-型のケースを持つ列挙型enumerations-with-cases-of-a-raw-value-type" class="plugin-anchor" href="#raw-value-型のケースを持つ列挙型enumerations-with-cases-of-a-raw-value-type"><i class="fa fa-link" aria-hidden="true"></i></a><a id="enumerations-with-cases-of-a-raw-value-type">Raw Value 型のケースを持つ列挙型(Enumerations with Cases of a Raw-Value Type)</a></h3>
 <p>次の形式は、同じ基となる型のケースを持つ列挙型を宣言しています。</p>
-<p><img src="../.gitbook/assets/enumerations_with_cases_of_a_raw-value_type.png" alt="Raw Value型のケースを持つ列挙型"></p>
+<p><img src="../assets/enumerations_with_cases_of_a_raw-value_type.png" alt="Raw Value型のケースを持つ列挙型"></p>
 <p>この形式では、各ケースブロックは、<code>case</code> キーワードと、それに続く 1 つ以上の列挙ケースで構成され、カンマ(<code>,</code>)で区切られます。最初の形式のケースとは異なり、各ケースには、同じ基本型の <em>Raw Value</em> と呼ばれる基になる値があります。これらの値の型は <em>Raw Value 型</em> で指定され、整数、浮動小数点数、文字列、または単一文字の必要があります。特に、Raw Value 型は、<code>Equatable</code> プロトコルおよび次のいずれかのプロトコルに準拠する必要があります: 整数リテラルの場合は <code>ExpressibleByIntegerLiteral</code>、浮動小数点リテラルの場合は <code>ExpressibleByFloatLiteral</code>、任意の数の文字を含む文字列リテラルの場合は <code>ExpressibleByStringLiteral</code>、文字列の場合は <code>ExpressibleByUnicodeScalarLiteral</code>、1 文字のみを含むリテラルの場合は <code>ExpressibleByExtendedGraphemeClusterLiteral</code> です。各ケースには一意の名前と一意の Raw Value が割り当てられている必要があります。</p>
 <p>Raw Value 型に <code>Int</code> が指定されているものの、ケースに値が割り当てられていない場合、<code>0</code>、<code>1</code>、<code>2</code> などの値が暗黙的に割り当てられます。値が割り当てられていない各ケースには、前のケースの Raw Value から自動的にインクリメントされた Raw Value が暗黙的に割り当てられます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">enum</span> <span class="token builtin">ExampleEnum</span><span class="token punctuation">:</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
@@ -1096,7 +1096,7 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 </blockquote>
 <h2 id="構造体宣言structure-declaration"><a name="構造体宣言structure-declaration" class="plugin-anchor" href="#構造体宣言structure-declaration"><i class="fa fa-link" aria-hidden="true"></i></a>構造体宣言(Structure Declaration)</h2>
 <p><em>構造体宣言</em>は、名前付きの構造体型をプログラムに導入します。構造体宣言は <code>struct</code> キーワードを使用して宣言され、形式は次のとおりです。</p>
-<p><img src="../.gitbook/assets/structure_declaration.png" alt="構造体宣言"></p>
+<p><img src="../assets/structure_declaration.png" alt="構造体宣言"></p>
 <p>構造体の本文には、0 個以上の <em>declarations</em> が含まれています。これらの <em>declarations</em> には、格納プロパティと計算プロパティ、型プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、subscript、タイプエイリアス、さらにはその他の構造体、クラス、アクター、列挙型の宣言を含めることができます。構造体宣言にデイニシャライザまたはプロトコル宣言を含めることはできません。様々な種類の宣言を含む構造体の説明といくつかの例については、<a href="../language-guide-gaido/structures-and-classes.html">Structures and Classes(構造体とクラス)</a>を参照ください。</p>
 <p>構造体型は任意の数のプロトコルに準拠できますが、クラス、列挙型、またはその他の構造体を継承することはできません。</p>
 <p>宣言された構造体のインスタンスを作成するには、次の 3 つの方法があります。</p>
@@ -1114,7 +1114,7 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 </blockquote>
 <h2 id="クラス宣言class-declaration"><a name="クラス宣言class-declaration" class="plugin-anchor" href="#クラス宣言class-declaration"><i class="fa fa-link" aria-hidden="true"></i></a>クラス宣言(Class Declaration)</h2>
 <p><em>クラス宣言</em>は、名前付きクラス型をプログラムに導入します。クラス宣言は、<code>class</code> キーワードを使用して宣言され、形式は次のとおりです。</p>
-<p><img src="../.gitbook/assets/class_declaration.png" alt="クラス宣言"></p>
+<p><img src="../assets/class_declaration.png" alt="クラス宣言"></p>
 <p>クラスの本文には、0 個以上の <em>declarations</em> が含まれています。これらの <em>declarations</em> には、格納プロパティと計算プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、単一のデイニシャライザ、subscript、タイプエイリアス、さらには他のクラス、構造体、アクター、列挙型の宣言を含めることができます。クラス宣言にプロトコル宣言を含めることはできません。様々な種類の宣言を含むクラスの説明といくつかの例については、<a href="../language-guide-gaido/structures-and-classes.html">Structures and Classes</a>を参照ください。</p>
 <p>クラス型は、1 つの <em>superclass</em> のみ継承できますが、任意の数のプロトコルに準拠できます。<em>superclass</em> は、<em>class name</em> とコロン(<code>:</code>)の後の最初に表示され、その後に <em>adopted protocols</em> が続きます。ジェネリッククラスは他のジェネリッククラスと非ジェネリッククラスを継承できますが、非ジェネリッククラスは他の非ジェネリッククラスのみ継承できます。コロンの後にジェネリックなスーパークラスの名前を書くときは、ジェネリックパラメータを含めたそのジェネリッククラスの全てを含める必要があります。</p>
 <p><a href="declarations.html#initializer-declaration">Initializer Declaration(イニシャライザ宣言)</a>で説明されているように、クラスには指定イニシャライザと convenience イニシャライザを含めることができます。クラスの指定イニシャライザは、クラスで宣言された全てのプロパティを初期化する必要があり、スーパークラスの指定イニシャライザを呼び出す前に初期化する必要があります。</p>
@@ -1134,7 +1134,7 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 </blockquote>
 <h2 id="アクター宣言actor-declaration"><a name="アクター宣言actor-declaration" class="plugin-anchor" href="#アクター宣言actor-declaration"><i class="fa fa-link" aria-hidden="true"></i></a><a id="actor-declaration">アクター宣言(Actor Declaration)</a></h2>
 <p>アクター宣言は、名前付きのアクター型をプログラムに導入します。アクター宣言は、<code>actor</code> キーワードを使用して宣言され、形式は次のとおりです。</p>
-<p><img src="../.gitbook/assets/actor_declaration.png" alt="アクター宣言"></p>
+<p><img src="../assets/actor_declaration.png" alt="アクター宣言"></p>
 <p>アクターの本文には、0 個以上の <em>declarations</em> が含まれています。これらの <em>declarations</em> には、格納プロパティと計算プロパテ、インスタンスメソッド、型メソッド、イニシャライザ、単一のデイニシャライザ、subscript、タイプエイリアス、さらには他のクラス、構造体、列挙型の宣言を含めることができます。様々な種類の宣言を含むアクターの説明といくつかの例については、<a href="../language-guide-gaido/concurrency.html#Actorsアクター">Actors(アクター)</a>を参照ください。</p>
 <p>アクター型は任意の数のプロトコルに準拠できますが、クラス、列挙型、構造体、または他のアクターを継承することはできません。ただし、<code>@objc</code> 属性でマークされたアクターは、暗黙的に <code>NSObjectProtocol</code> プロトコルに準拠し、<code>NSObject</code> のサブタイプとして Objective-C ランタイムに公開されます。</p>
 <p>宣言されたアクターのインスタンスを作成するには、次の 2 つの方法があります:</p>
@@ -1154,7 +1154,7 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 </blockquote>
 <h2 id="プロトコル宣言protocol-declaration"><a name="プロトコル宣言protocol-declaration" class="plugin-anchor" href="#プロトコル宣言protocol-declaration"><i class="fa fa-link" aria-hidden="true"></i></a><a id="protocol-declaration">プロトコル宣言(Protocol Declaration)</a></h2>
 <p><em>プロトコル宣言</em>は、名前付きのプロトコル型をプログラムに導入します。プロトコル宣言は、<code>protocol</code> キーワードを使用してグローバルスコープで宣言され、形式は次のとおりです。</p>
-<p><img src="../.gitbook/assets/protocol_declaration.png" alt="プロトコル宣言"></p>
+<p><img src="../assets/protocol_declaration.png" alt="プロトコル宣言"></p>
 <p>プロトコルの本文には、プロトコルに準拠する全ての型が満たさなければならない 0 個以上の <em>protocol member declarations</em> が含まれています。特に、プロトコルは、準拠する型が特定のプロパティ、メソッド、イニシャライザ、および subscript を実装する必要があることを宣言できます。プロトコルは、<em>関連型</em>と呼ばれる特別な種類のタイプエイリアスを宣言することもできます。これにより、プロトコルの様々な宣言間の関係を指定できます。プロトコル宣言には、クラス、構造体、列挙型、またはその他のプロトコル宣言を含めることはできません。<em>protocol member declarations</em>の宣言については、下記で詳しく説明します。</p>
 <p>プロトコル型は、他の任意の数のプロトコルを継承できます。プロトコル型が他のプロトコルを継承する場合、それら他のプロトコルからの一連の要件が集約され、現在のプロトコルを継承する型は全て、それらの要件全てに準拠する必要があります。プロトコル継承の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#protocols-protocol-inheritance" target="_blank">Protocol Inheritance(プロトコル継承)</a>を参照ください。</p>
 <blockquote>
@@ -1188,7 +1188,7 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 </blockquote>
 <h3 id="プロトコルプロパティ宣言protocol-property-declaration"><a name="プロトコルプロパティ宣言protocol-property-declaration" class="plugin-anchor" href="#プロトコルプロパティ宣言protocol-property-declaration"><i class="fa fa-link" aria-hidden="true"></i></a><a id="protocol-property-declaration">プロトコルプロパティ宣言(Protocol Property Declaration)</a></h3>
 <p>プロトコルは、プロトコル宣言の本文に<em>プロトコルプロパティ宣言</em>を含めることによって準拠する型がプロパティを実装する必要があることを宣言します。プロトコルプロパティ宣言には、変数宣言の特別な形式があります。</p>
-<p><img src="../.gitbook/assets/protocol_property_declaration.png" alt="Protocol Property Declaration"></p>
+<p><img src="../assets/protocol_property_declaration.png" alt="Protocol Property Declaration"></p>
 <p>他のプロトコルメンバ宣言と同様に、これらのプロパティ宣言は、プロトコルに準拠する型の get と set の要件のみを宣言します。その結果、get または set を、プロトコルの宣言で直接実装することはありません。</p>
 <p>準拠する型は get と set の要件を様々な方法で満たすことができます。プロパティ宣言に <code>get</code> キーワードと <code>set</code> キーワードの両方が含まれている場合、準拠する型は、格納変数プロパティ、または読み取りと書き込みの両方が可能な計算プロパティ(つまり、get と set の両方を実装するプロパティ)を使用して実装できます。ただし、そのプロパティ宣言は、定数プロパティまたは読み取り専用の計算プロパティとして実装することはできません。プロパティ宣言に <code>get</code> キーワードのみが含まれている場合は、任意の種類のプロパティを実装できます。プロトコルのプロパティ要件を実装した例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#property-requirements" target="_blank">Property Requirements(プロパティ要件)</a>を参照ください。</p>
 <p>プロトコル宣言で型プロパティ要件を宣言するには、<code>static</code> キーワードでプロパティ宣言をマークします。プロトコルに準拠する構造体と列挙型は、<code>static</code> キーワードを使用してプロパティを宣言し、プロトコルに準拠するクラスは、<code>static</code> または <code>class</code> キーワードを使用してプロパティを宣言します。構造体、列挙型、またはクラスにプロトコルの準拠を追加する extension は、拡張する型と同じキーワードを使用します。型プロパティ要件のデフォルト実装を提供する extension は、<code>static</code> キーワードを使用します。</p>
@@ -1213,7 +1213,7 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 </blockquote>
 <h3 id="プロトコル-subscript-宣言protocol-subscript-declaration"><a name="プロトコル-subscript-宣言protocol-subscript-declaration" class="plugin-anchor" href="#プロトコル-subscript-宣言protocol-subscript-declaration"><i class="fa fa-link" aria-hidden="true"></i></a><a id="protocol-subscript-declaration">プロトコル subscript 宣言(Protocol Subscript Declaration)</a></h3>
 <p>プロトコルは、プロトコル宣言の本文にプロトコル subscript 宣言を含めることによって準拠する型が subscript を実装する必要があることを宣言します。プロトコル subscript 宣言には、特殊な形式の subscript 宣言があります:</p>
-<p><img src="../.gitbook/assets/protocol_subscript_declaration.png" alt="プロトコルsubscript宣言"></p>
+<p><img src="../assets/protocol_subscript_declaration.png" alt="プロトコルsubscript宣言"></p>
 <p>subscript 宣言は、プロトコルに準拠するために最低限必要な get および set の要件のみを宣言します。subscript 宣言に <code>get</code> キーワードと <code>set</code> キーワードの両方が含まれている場合、準拠する型は get 句と set 句の両方を実装する必要があります。subscript 宣言に <code>get</code> キーワードのみが含まれている場合、準拠する型は<em>少なくとも</em> get 句を実装する必要があり、任意で set 句を実装できます。</p>
 <p>プロトコル宣言で静的 subscript 要件を宣言するには、<code>static</code> 修飾子を使用して subscript 宣言をマークします。プロトコルに準拠する構造体と列挙型は、<code>static</code> キーワードを使用して subscript を宣言し、プロトコルに準拠するクラスは、<code>static</code> または <code>class</code> キーワードを使用して subscript を宣言します。構造体、列挙型、またはクラスにプロトコルの準拠を追加する extension は、拡張する型と同じキーワードを使用します。静的 subscript 要件のデフォルト実装を提供する extension は、<code>static</code> キーワードを使用します。</p>
 <blockquote>
@@ -1242,12 +1242,12 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 <p><em>イニシャライザ宣言</em>は、クラス、構造体、または列挙型のイニシャライザをプログラムに導入します。イニシャライザ宣言は、<code>init</code> キーワードを使用して宣言され、2 つの基本的な形式があります。</p>
 <p>構造体、列挙型、およびクラス型には任意の数のイニシャライザを含めることができますが、クラスイニシャライザのルールと関連する動作は異なります。構造体や列挙型とは異なり、クラスには、<a href="../language-guide-gaido/initialization.html">Initialization(イニシャライザ)</a>で説明されているように、指定イニシャライザと convenience イニシャライザの 2 種類のイニシャライザがあります。</p>
 <p>次の形式は、構造体、列挙型、およびクラスの指定イニシャライザを宣言しています:</p>
-<p><img src="../.gitbook/assets/initializer_declaration.png" alt="イニシャライザ宣言"></p>
+<p><img src="../assets/initializer_declaration.png" alt="イニシャライザ宣言"></p>
 <p>クラスの指定イニシャライザは、クラスの全てのプロパティを直接初期化します。同じクラスの他のイニシャライザを呼び出すことはできません。クラスにスーパークラスがある場合は、スーパークラスの指定イニシャライザの 1 つを呼び出す必要があります。クラスがそのスーパークラスからプロパティを継承する場合、これらのプロパティのいずれかを現在のクラスで設定または変更する前に、スーパークラスの指定イニシャライザの 1 つを呼び出す必要があります。</p>
 <p>指定イニシャライザは、クラス宣言のコンテキストでのみ宣言できるため、extension に追加することはできません。</p>
 <p>構造体および列挙型のイニシャライザは、他の宣言されたイニシャライザを呼び出して、初期化プロセスの一部または全てを委譲できます。</p>
 <p>クラスの convenience イニシャライザを宣言するには、<code>convenience</code> 修飾子を使用してイニシャライザ宣言をマークします。</p>
-<p><img src="../.gitbook/assets/initializer_declaration2.png" alt="convenience イニシャライザ宣言"></p>
+<p><img src="../assets/initializer_declaration2.png" alt="convenience イニシャライザ宣言"></p>
 <p>convenience イニシャライザは、初期化プロセスを別の convenience イニシャライザまたはクラスの指定イニシャライザの 1 つに委譲できます。つまり、初期化プロセスは、最終的にクラスのプロパティを初期化するために、指定イニシャライザを呼び出して終える必要があります。convenience イニシャライザは、スーパークラスのイニシャライザを呼び出すことはできません。</p>
 <p>全てのサブクラスがあるイニシャライザを実装することを必須とするために、指定および convenience イニシャライザに <code>required</code> 修飾子をマークすることができます。その場合、サブクラスのイニシャライザの実装にも、<code>required</code> 修飾子をマークする必要があります。</p>
 <p>デフォルトでは、スーパークラスで宣言されたイニシャライザはサブクラスに継承されません。ただし、サブクラスが格納されている全てのプロパティをデフォルト値で初期化し、独自のイニシャライザを定義しない場合、サブクラスはスーパークラスの全てのイニシャライザを継承します。サブクラスがスーパークラスの全ての指定イニシャライザをオーバーライドする場合、サブクラスはスーパークラスの convenience イニシャライザを継承します。</p>
@@ -1288,7 +1288,7 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 </blockquote>
 <h2 id="デイニシャライザ宣言deinitializer-declaration"><a name="デイニシャライザ宣言deinitializer-declaration" class="plugin-anchor" href="#デイニシャライザ宣言deinitializer-declaration"><i class="fa fa-link" aria-hidden="true"></i></a>デイニシャライザ宣言(Deinitializer Declaration)</h2>
 <p><em>デイニシャライザ宣言</em>は、クラス型のデイニシャライザを宣言します。デイニシャライザはパラメータを受け取らず、形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/deinitializer_declaration.png" alt="デイニシャライザ宣言"></p>
+<p><img src="../assets/deinitializer_declaration.png" alt="デイニシャライザ宣言"></p>
 <p>デイニシャライザは、クラスオブジェクトへの参照がなくなると、クラスオブジェクトの割り当てが解除される直前に、自動的に呼び出されます。デイニシャライザは、クラス宣言の本文でのみ宣言でき、extension では宣言できません。各クラスは最大で 1 つのデイニシャライザを持つことができます。</p>
 <p>サブクラスは、スーパークラスのデイニシャライザを継承します。デイニシャライザは、サブクラスオブジェクトの割り当てが解除される直前に暗黙的に呼び出されます。サブクラスオブジェクトは、継承チェーン内の全てのデイニシャライザの実行が完了するまで、割り当てが解除されません。</p>
 <p>デイニシャライザは直接呼び出せません。</p>
@@ -1298,14 +1298,14 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 </blockquote>
 <h2 id="拡張宣言extension-declaration"><a name="拡張宣言extension-declaration" class="plugin-anchor" href="#拡張宣言extension-declaration"><i class="fa fa-link" aria-hidden="true"></i></a><a id="extension-declaration">拡張宣言(Extension Declaration)</a></h2>
 <p><em>拡張宣言</em>を使用すると、既存の型の動作を拡張できます。拡張宣言は、<code>extension</code> キーワードを使用して宣言され、形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/extension_declaration.png" alt="拡張宣言"></p>
+<p><img src="../assets/extension_declaration.png" alt="拡張宣言"></p>
 <p>拡張宣言の本文には、0 個以上の <em>declarations</em> が含まれています。これらの <em>declarations</em> には、計算プロパティ、計算型プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、subscript、さらにはクラス、構造体、列挙型の宣言を含めることができます。拡張宣言には、デイニシャライザ、プロトコル宣言、格納プロパティ、プロパティオブザーバ、またはその他の拡張宣言を含めることはできません。プロトコルの extension は <code>final</code> をマークすることはできません。様々な種類の宣言を含む extension の説明といくつかの例については、<a href="expressions.html">Extensions(拡張)</a>を参照ください。</p>
 <p><em>type name</em> がクラス、構造体、または列挙型の場合、extension はその型を拡張します。<em>type name</em> がプロトコルの場合、extension はそのプロトコルに準拠する全ての型を拡張します。</p>
 <p>ジェネリック型または関連型を持つプロトコルを拡張する extension には、<em>requirements</em> を含めることができます。拡張した型または拡張したプロトコルに準拠する型のインスタンスが <em>requirements</em> を満たしている場合、そのインスタンスは宣言で指定された動作を取得できます。</p>
 <p>extension には、イニシャライザ宣言を含めることができます。ただし、拡張する型が別のモジュールで定義されている場合、その型のメンバが適切に初期化されるように、イニシャライザ宣言はそのモジュールで既に定義されているイニシャライザに委譲する必要があります。</p>
 <p>既存の型のプロパティ、メソッド、およびイニシャライザは、その型の extension でオーバーライドできません。</p>
 <p>extension は、既存のクラス、構造体、または列挙型に <em>adopted protocols</em> を指定することで、プロトコルへの準拠を追加できます。</p>
-<p><img src="../.gitbook/assets/extension_declaration2.png" alt="extension でのプロトコルへの準拠"></p>
+<p><img src="../assets/extension_declaration2.png" alt="extension でのプロトコルへの準拠"></p>
 <p>extension は既存のクラスへの継承を追加できないため、<em>type name</em> とコロン(<code>:</code>)の後にはプロトコルのリストのみを指定できます。</p>
 <h3 id="条件付き準拠conditional-conformance"><a name="条件付き準拠conditional-conformance" class="plugin-anchor" href="#条件付き準拠conditional-conformance"><i class="fa fa-link" aria-hidden="true"></i></a>条件付き準拠(Conditional Conformance)</h3>
 <p>ジェネリック型を拡張して条件付きでプロトコルに準拠させることができるため、特定の要件が満たされた場合にのみ、型のインスタンスがプロトコルに準拠します。extension に <em>requirements</em> を含めることで、プロトコルに条件付き準拠を追加します。</p>
@@ -1428,7 +1428,7 @@ oneAndTwo<span class="token punctuation">.</span><span class="token function">lo
 </blockquote>
 <h2 id="subscript-宣言subscript-declaration"><a name="subscript-宣言subscript-declaration" class="plugin-anchor" href="#subscript-宣言subscript-declaration"><i class="fa fa-link" aria-hidden="true"></i></a>subscript 宣言(Subscript Declaration)</h2>
 <p><em>subscript 宣言</em>を使用すると、特定の型のオブジェクトに subscript のサポートを追加できます。通常、コレクション、リスト、またはシーケンス内の要素にアクセスするための便利な構文を提供するために使用されます。subscript 宣言は、<code>subscript</code> キーワードを使用して宣言され、形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/subscript_declaration.png" alt="subscript宣言"></p>
+<p><img src="../assets/subscript_declaration.png" alt="subscript宣言"></p>
 <p>subscript 宣言は、クラス、構造体、列挙型、 extension、またはプロトコル宣言のコンテキストでのみ使用できます。</p>
 <p><em>parameters</em> には、subscript 式に対応する型の要素にアクセスするために 1 つ以上のインデックスを指定します(例えば、式 <code>object[i]</code> の <code>i</code>)。要素へのアクセスに使用されるインデックスは任意の型にできますが、各パラメータには、各インデックスの型を指定するためのタイプエイリアスを含める必要があります。<em>return type</em> は、アクセスされる要素の型を指定します。</p>
 <p>計算プロパティと同様に、subscript 宣言は、アクセスされた要素の値の読み取りと書き込みをサポートします。get は値の読み取りに使用され、set は値の書き込みに使用されます。set 句は省略可能で、get のみが必要な場合は、両方の句を省略して、要求された値を直接返すことができます。一方で、set 句を指定する場合は、get 句も指定する必要があります。</p>
@@ -1447,15 +1447,15 @@ oneAndTwo<span class="token punctuation">.</span><span class="token function">lo
 <p>中置、前置、後置の 3 つの異なるフィクシティ( fixity )を宣言できます。演算子の<em>フィクシティ</em>は、オペランドに対する演算子の相対位置を指定します。</p>
 <p>演算子宣言には 3 つの基本的な形式があり、各フィクシティに対して 1 つずつあります。演算子のフィクシティは、<code>operator</code> キーワードの前に、<code>infix</code>、<code>prefix</code> または <code>postfix</code> 修飾子をマークすることによって指定できます。各形式の演算子の名前には、<a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#ID418" target="_blank">Operators(演算子)</a>で定義された演算子文字のみを含めることができます。</p>
 <p>次の形式で新しい中置演算子を宣言します:</p>
-<p><img src="../.gitbook/assets/infix_operator_declaration.png" alt="中置演算子"></p>
+<p><img src="../assets/infix_operator_declaration.png" alt="中置演算子"></p>
 <p><em>中置演算子</em>は、式 <code>1 + 2</code> でおなじみの加算演算子(<code>+</code>)など、2 つのオペランドの間に記述される二項演算子です。</p>
 <p>中置演算子は、任意で<em>優先順位グループ</em>を指定できます。演算子の優先順位グループを省略すると、Swift はデフォルトの優先順位グループの <code>DefaultPrecedence</code> を使用します。これは、<code>TernaryPrecedence</code> よりも少し高い優先順位を指定します。詳細については、<a href="declarations.html#precedence-group-declaration">Precedence Group Declaration(優先順位グループ宣言)</a>を参照ください。</p>
 <p>次の形式で新しい前置演算子を宣言します:</p>
-<p><img src="../.gitbook/assets/prefix_operator_declaration.png" alt="前置演算子"></p>
+<p><img src="../assets/prefix_operator_declaration.png" alt="前置演算子"></p>
 <p><em>前置演算子</em>は、式 <code>!a</code> のような前置論理 <code>NOT</code> 演算子(<code>!</code>)など、オペランドの直前に記述される単項演算子です。</p>
 <p>前置演算子の宣言は、優先順位レベルを指定しません。前置演算子は非結合です。</p>
 <p>次の形式で新しい後置演算子を宣言します:</p>
-<p><img src="../.gitbook/assets/postfix_operator_declaration.png" alt="後置演算子"></p>
+<p><img src="../assets/postfix_operator_declaration.png" alt="後置演算子"></p>
 <p><em>後置演算子</em>は、式 <code>a!</code> のような後置強制アンラップ演算子(<code>!</code>)など、オペランドの直後に記述される単項演算子です。</p>
 <p>前置演算子と同様に、後置演算子の宣言では優先順位レベルを指定しません。後置演算子は非結合です。</p>
 <p>新しい演算子を宣言した後、演算子と同じ名前の静的メソッドを宣言して実装します。静的メソッドは、演算子が引数として受け取る値の型のメンバの 1 つです。例えば、<code>Double</code> に <code>Int</code> を乗算する演算子は、<code>Double</code> または <code>Int</code> 構造体のいずれかに静的メソッドとして実装されます。前置または後置演算子を実装している場合は、そのメソッド宣言に対応する <code>prefix</code> または <code>postfix</code> 修飾子もマークする必要があります。新しい演算子を作成して実装する方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#custom-operators" target="_blank">Custom Operators(カスタム演算子)</a>を参照ください。</p>
@@ -1465,7 +1465,7 @@ oneAndTwo<span class="token punctuation">.</span><span class="token function">lo
 <h2 id="優先順位グループ宣言precedence-group-declaration"><a name="優先順位グループ宣言precedence-group-declaration" class="plugin-anchor" href="#優先順位グループ宣言precedence-group-declaration"><i class="fa fa-link" aria-hidden="true"></i></a><a id="precedence-group-declaration">優先順位グループ宣言(Precedence Group Declaration)</a></h2>
 <p><em>優先順位グループ宣言</em>は、プログラムに中置演算子の優先順位に新しいグループ化の方法を導入します。演算子の優先順位は、グループ化する括弧(<code>()</code>)がない場合に、演算子がオペランドとどのようにバインドするかを指定します。</p>
 <p>優先順位グループ宣言の形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/precedence_group_declaration.png" alt="優先順位グループ宣言"></p>
+<p><img src="../assets/precedence_group_declaration.png" alt="優先順位グループ宣言"></p>
 <p><em>lower group names</em> と <em>higher group names</em> のリストは、既存の優先順位グループに対する新しい優先順位グループの関係を指定します。<code>lowerThan</code> 優先順位グループ属性は、現在のモジュールの外部で宣言された優先順位グループを参照するためにのみ使用できます。式 <code>2 + 3 * 5</code> のように、2 つの演算子のオペランドが競合する場合、相対的に優先順位の高い演算子がオペランドにバインドされます。</p>
 <blockquote>
 <p>NOTE<br><em>lower group names</em> と <em>higher group names</em> を使用して相互に関連付けられた優先順位グループは、単一の関係階層に収める必要がありますが、直線的な階層を形成する必要はありません。これは、相対的な優先順位が定義されていない優先順位グループを持つことができることを意味します。これらの優先順位グループの演算子は、グループ化するための括弧なしで隣に並べて使用することはできません。</p>
@@ -1550,7 +1550,7 @@ oneAndTwo<span class="token punctuation">.</span><span class="token function">lo
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"宣言(Declarations)","level":"4.6","depth":1,"next":{"title":"属性(Attributes)","level":"4.7","depth":1,"path":"language-reference/attributes.md","ref":"language-reference/attributes.md","articles":[]},"previous":{"title":"文(Statements)","level":"4.5","depth":1,"path":"language-reference/statements.md","ref":"language-reference/statements.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":".gitbook/assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":".gitbook/assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-reference/declarations.md","mtime":"2021-07-10T23:55:24.258Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:11:28.643Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"宣言(Declarations)","level":"4.6","depth":1,"next":{"title":"属性(Attributes)","level":"4.7","depth":1,"path":"language-reference/attributes.md","ref":"language-reference/attributes.md","articles":[]},"previous":{"title":"文(Statements)","level":"4.5","depth":1,"path":"language-reference/statements.md","ref":"language-reference/statements.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-reference/declarations.md","mtime":"2021-07-11T00:21:09.766Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

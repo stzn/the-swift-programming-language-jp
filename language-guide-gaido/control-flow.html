@@ -831,9 +831,9 @@
 <h3 id="while"><a name="while" class="plugin-anchor" href="#while"><i class="fa fa-link" aria-hidden="true"></i></a>while</h3>
 <p><code>while</code> ループは、条件を評価してからループを開始します。<code>true</code> ならば条件が <code>false</code> になるまでループ内の処理を繰り返します。</p>
 <p><code>while</code> ループの基本的な書き方は下記の通りです:</p>
-<p><img src="../.gitbook/assets/05_whileform.png" alt="Whileループ"></p>
+<p><img src="../assets/05_whileform.png" alt="Whileループ"></p>
 <p>下記の例は、<em>蛇とはしご</em>と呼ばれるシンプルなゲームの例です。</p>
-<p><img src="../.gitbook/assets/snakesandladders_2x.png" alt="蛇とはしご"></p>
+<p><img src="../assets/snakesandladders_2x.png" alt="蛇とはしご"></p>
 <p>ゲームのルールは下記のようです:</p>
 <ul>
 <li>ボードには 25 の枠があり、目的は枠 25 以上に到達することです</li>
@@ -879,7 +879,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <p>NOTE<br>Swiftの <code>repeat-while</code> は、他の言語でいうところの <code>do-while</code> に当たります</p>
 </blockquote>
 <p>下記が <code>repeat-while</code> ループの一般的な形式です。</p>
-<p><img src="../.gitbook/assets/05_repeatwhile.png" alt="repeat-while"></p>
+<p><img src="../assets/05_repeatwhile.png" alt="repeat-while"></p>
 <p>ここで蛇とはしごの例を <code>while</code> の代わりに <code>repeat-while</code> を使用して書き換えてみます。<code>finalSquare</code>、<code>board</code>、<code>square</code> と <code>diceRoll</code> は <code>while</code> と全く同じ方法で初期化します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> finalSquare <span class="token operator">=</span> <span class="token number">25</span>
 <span class="token keyword">var</span> board <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span><span class="token punctuation">(</span>repeating<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">count</span><span class="token punctuation">:</span> finalSquare <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
@@ -949,7 +949,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <h3 id="switch"><a name="switch" class="plugin-anchor" href="#switch"><i class="fa fa-link" aria-hidden="true"></i></a>Switch</h3>
 <p><code>switch</code> 文は、複数の可能性に対してパターンマッチを使用して比較を行い、値を検討します。そして、一致した最初のパターンのコードのブロックを実行します。<code>switch</code> 文は、複数の可能性がある状態に対して <code>if</code> 文の代わりに使用することができます。</p>
 <p>最もシンプルな形式として、<code>switch</code> 文は同じ型の 1 つ以上の値を比較します。</p>
-<p><img src="../.gitbook/assets/05_switchform.png" alt="switch"></p>
+<p><img src="../assets/05_switchform.png" alt="switch"></p>
 <p>全ての <code>switch</code> 文は、<code>case</code> キーワードで始まる複数の可能性があるケースで構成されます。特定の値の比較に加えて、さらに複雑なパターンマッチをケースに指定するための様々な方法を提供しています。この章で後ほど記載しています。</p>
 <p><code>if</code> 文の本文と同じく、各ケースはコードを実行する分岐です。<code>switch</code> 文はどの分岐を選択するべきかどうかを決めます。このプロセスは、検証される値に基づいた切り替え(<em>switching</em>)と呼ばれます。</p>
 <p>全ての <code>switch</code> 文は<em>網羅的</em>です。つまり、全ての検証される型の値は、<code>switch</code> ケースのどれか 1 つにマッチしなければなりません。特定のケースに当てはまらない可能性がある値を扱う場合、明示的にパターンに合致しないあらゆる値をカバーするデフォルトを定義することができます。このデフォルトケースは、<code>default</code> キーワードで示され、必ず最後に書かなければなりません。</p>
@@ -1038,7 +1038,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <span class="token punctuation">}</span>
 <span class="token comment">// &quot;(1, 1) is inside the box&quot;</span>
 </code></pre>
-<p><img src="../.gitbook/assets/coordinategraphsimple_2x.png" alt="switch文 座標分布図"></p>
+<p><img src="../assets/coordinategraphsimple_2x.png" alt="switch文 座標分布図"></p>
 <p><code>switch</code> 文は、座標が原点 <code>(0、0)</code> にあるか、赤い x 軸上にあるか、オレンジ色の y 軸上にあるか、原点を中心とする青い 4x4 列のボックスの内側にあるか、ボックスの外側にあるかを判別します。</p>
 <p>C 言語と異なり、Swift では複数のケースで同じ値を検証することができます。実際、この例では <code>(0、0)</code> は全ての 4 つのケースに当てはまります。複数に合致する場合は、常に最初に合致したケースが使われます。<code>(0、0)</code> は最初に <code>case (0, 0)</code> に合致するので、他のケースは無視します。</p>
 <h4 id="値バインディングvalue-bindings"><a name="値バインディングvalue-bindings" class="plugin-anchor" href="#値バインディングvalue-bindings"><i class="fa fa-link" aria-hidden="true"></i></a>値バインディング(Value Bindings)</h4>
@@ -1055,7 +1055,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <span class="token punctuation">}</span>
 <span class="token comment">// &quot;on the x-axis with an x value of 2&quot;</span>
 </code></pre>
-<p><img src="../.gitbook/assets/coordinategraphmedium_2x.png" alt="switch文 座標分布図"></p>
+<p><img src="../assets/coordinategraphmedium_2x.png" alt="switch文 座標分布図"></p>
 <p><code>switch</code> 文は、座標が赤い x 軸上にあるか、オレンジ色の y 軸上にあるか、または他の場所にあるか(どちらの軸上にもないか)を判別します。</p>
 <p>この 3 つの <code>switch</code> ケースは、<code>anotherPoint</code> から 1 つまたは両方のタプルの値を、プレースホルダ定数 <code>x</code> と <code>y</code> として宣言しています。最初の <code>case (let x, 0)</code> は、<code>y</code> は 0 で、座標 <code>x</code> の値を定数 <code>x</code> に代入した任意の値に合致します。同様に、2 番目の <code>case (0, let y)</code> は、<code>x</code> は 0 で、座標 <code>y</code> の値を定数 <code>y</code> に代入した任意の値に合致します。</p>
 <p>定数は、そのケースのブロック内で使用することができます。ここでは、座標の分布を出力するために使われています。</p>
@@ -1074,7 +1074,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <span class="token punctuation">}</span>
 <span class="token comment">// &quot;(1, -1) is on the line x == -y&quot;</span>
 </code></pre>
-<p><img src="../.gitbook/assets/coordinategraphcomplex_2x.png" alt="switch文 where句 座標分布図"></p>
+<p><img src="../assets/coordinategraphcomplex_2x.png" alt="switch文 where句 座標分布図"></p>
 <p><code>switch</code> 文は、座標が <code>x == y</code> の場合は緑色の対角線上にあるか、<code>x == -y</code> の場合は紫色の対角線上にあるか、またはどちらでもないかを判別します。</p>
 <p>この 3 つの <code>switch</code> ケースは、<code>yetAnotherPoint</code> から 1 つまたは両方のタプルの値を、プレースホルダ定数 <code>x</code> と <code>y</code> として宣言しています。これらの定数は <code>where</code> 句の一部で使われており、動的なフィルターを作成しています。<code>switch</code> ケースには、<code>point</code> の現在値が <code>where</code> の条件で <code>true</code> になった場合のみ合致します。</p>
 <p>最後のケースは、先の 2 つのケース以外の全ての値に合致するため、<code>switch</code> 文で全ての値を網羅するための <code>default</code> ケースは不要です。</p>
@@ -1187,14 +1187,14 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <p>Swift では、より複雑な制御フローを作成するために、ループや条件文の中にさらにループや条件文をネストできます。しかし、<code>break</code> を使用して早期に実行を終了させることもできます。そのため、どの文を <code>break</code> するのかを明示すると役に立つことがあります。同様に、複数のネストしたループで、どのループに <code>continue</code> が影響するかを明示することも役に立ちます。</p>
 <p>これを実現するために、ループや条件文にラベルを付けることができます。条件文では、<code>break</code> と<em>文ラベル</em>を使用して実行を終了できます。ループでは、<code>break</code> か <code>continue</code> と<em>文ラベル</em>を使用してラベル付き文の実行を終了または継続することができます。</p>
 <p>ラベル付き文は、文の導入キーワードの前にコロン(<code>:</code>)を付けて同じ行にラベルを配置することで示せます。下記は、<code>while</code> ループの構文の例ですが、他の全てのループや <code>switch</code> にも同じ原則が当てはまります。</p>
-<p><img src="../.gitbook/assets/05_lebeledstatements.png" alt="ラベル付き文"></p>
+<p><img src="../assets/05_lebeledstatements.png" alt="ラベル付き文"></p>
 <p>次の例は、この章の前で見てきた「蛇とはしご」にラベル付き <code>while</code> ループと <code>break</code> と <code>continue</code> 文を適用したバージョンです。今回は、追加のルールがあります。</p>
 <ul>
 <li>勝つためには、ちょうど枠 25 に到達しなければなりません</li>
 </ul>
 <p>サイコロの結果で枠 25 を超えた場合、ちょうど枠 25 に到達するまでサイコロを振らなければなりません。</p>
 <p>ゲーム盤は、前と同じです。</p>
-<p><img src="../.gitbook/assets/snakesandladders_2x.png" alt="蛇とはしご"></p>
+<p><img src="../assets/snakesandladders_2x.png" alt="蛇とはしご"></p>
 <p><code>finalSquare</code>、<code>board</code>、<code>square</code> と <code>diceRoll</code> は前と同じように初期化されています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> finalSquare <span class="token operator">=</span> <span class="token number">25</span>
 <span class="token keyword">var</span> board <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span><span class="token punctuation">(</span>repeating<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">count</span><span class="token punctuation">:</span> finalSquare <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
@@ -1271,7 +1271,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 </code></pre>
 <p>上記のアベイラビリティ条件は、iOS では、<code>if</code> 文が <code>iOS10</code> 以降でのみ実行されることを指定しています。<code>macOS</code> では、<code>macOS10.12</code> 以降のみになります。最後の引数 <code>*</code> は必須で、他のプラットフォームでは、<code>if</code> の本文がターゲットで指定された最小のデプロイメントターゲットで実行されることを示します。</p>
 <p>基本的な形式として、アベイラビリティ条件はプラットフォームの名前とバージョンのリストを受け取ります。<code>iOS</code>、<code>macOS</code>、<code>watchOS</code>、<code>tvOS</code> などをプラットフォームの名前として使います。全リストは<a href="../language-reference/attributes.html">Declaration Attributes(宣言属性)</a>を参照ください。<code>iOS 8</code> や <code>macOS 10.10</code> のようなメジャーバージョンに加え、<code>iOS 11.2.6</code> や <code>macOS 10.13.3</code> のようにマイナーバージョンも指定できます。</p>
-<p><img src="../.gitbook/assets/05_availabilitycondition.png" alt="APIアベイラビリティ条件"></p>
+<p><img src="../assets/05_availabilitycondition.png" alt="APIアベイラビリティ条件"></p>
 
                                 
                                 </section>
@@ -1305,7 +1305,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"制御フロー(Control Flow)","level":"3.5","depth":1,"next":{"title":"関数(Functions)","level":"3.6","depth":1,"path":"language-guide-gaido/functions.md","ref":"language-guide-gaido/functions.md","articles":[]},"previous":{"title":"コレクション型(Collection Types)","level":"3.4","depth":1,"path":"language-guide-gaido/collection-types.md","ref":"language-guide-gaido/collection-types.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":".gitbook/assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":".gitbook/assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/control-flow.md","mtime":"2021-07-07T23:59:05.889Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:11:28.643Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"制御フロー(Control Flow)","level":"3.5","depth":1,"next":{"title":"関数(Functions)","level":"3.6","depth":1,"path":"language-guide-gaido/functions.md","ref":"language-guide-gaido/functions.md","articles":[]},"previous":{"title":"コレクション型(Collection Types)","level":"3.4","depth":1,"path":"language-guide-gaido/collection-types.md","ref":"language-guide-gaido/collection-types.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/control-flow.md","mtime":"2021-07-11T00:21:09.599Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

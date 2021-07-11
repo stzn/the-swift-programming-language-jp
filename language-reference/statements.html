@@ -769,7 +769,7 @@
 <h3 id="for-in-文for-in-statement"><a name="for-in-文for-in-statement" class="plugin-anchor" href="#for-in-文for-in-statement"><i class="fa fa-link" aria-hidden="true"></i></a>For-In 文(For-In Statement)</h3>
 <p><code>for-in</code> 文は、<a href="https://developer.apple.com/documentation/swift/sequence" target="_blank">Sequence</a>に準拠したコレクション(または任意の型)内の各項目ごとに 1 回、コードブロックを実行できます。</p>
 <p><code>for-in</code> 文の形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/for-in_statement.png" alt="For-In 文"></p>
+<p><img src="../assets/for-in_statement.png" alt="For-In 文"></p>
 <p><code>makeIterator()</code> メソッドは、<a href="https://developer.apple.com/documentation/swift/iteratorprotocol" target="_blank">IteratorProtocol</a>プロトコルに準拠した型のイテレータ型の値を取得するために、<em>collection</em> 式で呼び出されます。プログラムは、イテレータ上で <code>next()</code> メソッドを呼び出すことによってループの実行を開始します。返された値が <code>nil</code> ではない場合、<em>item</em> に代入され、プログラムは <em>statements</em> を実行し、再びループの先頭から実行を続行します。それ以外の場合、プログラムは値の代入や、<em>statements</em> を実行せず、<code>for-in</code> 文の実行は終了します。</p>
 <blockquote>
 <p>GRAMMAR OF A FOR-IN STATEMENT<br>for-in-statement → <code>for</code> <code>case</code><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern" target="_blank">pattern</a> <code>in</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_where-clause" target="_blank">where-clause</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block" target="_blank">code-block</a></p>
@@ -777,7 +777,7 @@
 <h3 id="while-文while-statement"><a name="while-文while-statement" class="plugin-anchor" href="#while-文while-statement"><i class="fa fa-link" aria-hidden="true"></i></a><a id="while-statement">While 文(While Statement)</a></h3>
 <p><code>while</code> 文は、条件が true な限り、コードブロックを繰り返し実行できます。</p>
 <p><code>while</code> 文の形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/while_statement.png" alt="While 文"></p>
+<p><img src="../assets/while_statement.png" alt="While 文"></p>
 <p><code>while</code> 文は次のように実行されます。</p>
 <ol>
 <li><em>condition</em> が評価されます <code>true</code> の場合、実行はステップ 2 に続きます。<code>false</code> の場合、プログラムは <code>while</code> 文の実行を終了します</li>
@@ -791,7 +791,7 @@
 <h3 id="repeat-while-文repeat-while-statement"><a name="repeat-while-文repeat-while-statement" class="plugin-anchor" href="#repeat-while-文repeat-while-statement"><i class="fa fa-link" aria-hidden="true"></i></a>Repeat-While 文(Repeat-While Statement)</h3>
 <p><code>repeat-while</code> 文は、条件が true な限り、コードブロックを 1 回以上実行できます。</p>
 <p><code>repeat-while</code> 文の形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/repeat-while_statement.png" alt="Repeat-While文"></p>
+<p><img src="../assets/repeat-while_statement.png" alt="Repeat-While文"></p>
 <p><code>repeat-while</code> 文は次のように実行されます。</p>
 <ol>
 <li>プログラムは <em>statements</em> を実行し、実行はステップ 2 に進みます</li>
@@ -812,11 +812,11 @@
 <p><code>if</code> 文は、1 つ以上の条件の評価に基づいてコードを実行するために使用されます。</p>
 <p><code>if</code> 文には 2 つの基本的な形式があります。それぞれの形式で、開閉中括弧(<code>{}</code>)が必要です。</p>
 <p>最初の形式では、条件が true の場合にのみコードを実行でき、形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/if_statement.png" alt="If 文"></p>
+<p><img src="../assets/if_statement.png" alt="If 文"></p>
 <p><code>if</code> 文の 2 番目の形式は、追加の(<code>else</code> キーワードによって導入される)<em>else 句を</em>提供し、条件が true の場合にコードの一部を実行し、false の場合にコードの別の部分を実行するために使用されます。else 句が 1 つ存在する場合、<code>if</code> 文の形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/if_else_statement.png" alt="If-Else文"></p>
+<p><img src="../assets/if_else_statement.png" alt="If-Else文"></p>
 <p><code>if</code> 文の else 句には、複数の条件を検証するための別の <code>if</code> 文を含めることができます。このようにチェーンした <code>if</code> 文の形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/if_elseif_statement.png" alt="If-ElseId文"></p>
+<p><img src="../assets/if_elseif_statement.png" alt="If-ElseId文"></p>
 <p><code>if</code> 文の条件の値は、<code>Bool</code> 型または <code>Bool</code> にブリッジされた型にする必要があります。<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#optional-binding" target="_blank">Optional Binding(オプショナルバインディング)</a>で説明したように、条件はオプショナルバインディング宣言にすることもできます。</p>
 <blockquote>
 <p>GRAMMAR OF AN IF STATEMENT<br>if-statement → <code>if</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_condition-list" target="_blank">condition-list</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block" target="_blank">code-block</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_else-clause" target="_blank">else-clause</a><sub>opt</sub><br>else-clause → <code>else</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block" target="_blank">code-block</a> | <code>else</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_if-statement" target="_blank">if-statement</a></p>
@@ -824,7 +824,7 @@
 <h3 id="guard-文guard-statement"><a name="guard-文guard-statement" class="plugin-anchor" href="#guard-文guard-statement"><i class="fa fa-link" aria-hidden="true"></i></a><a id="guard-statement">Guard 文(Guard Statement)</a></h3>
 <p><code>guard</code> 文は、1 つ以上の条件が満たされない場合に、プログラム制御をスコープ外に転送するために使用されます。</p>
 <p><code>guard</code> 文の形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/guard_statement.png" alt="Guard 文"></p>
+<p><img src="../assets/guard_statement.png" alt="Guard 文"></p>
 <p><code>guard</code> 文の条件の値は、<code>Bool</code> 型または <code>Bool</code> にブリッジされた型にする必要があります。<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#optional-binding" target="_blank">Optional Binding(オプショナルバインディング)</a>で説明したように、条件はオプショナルバインディング宣言にすることもできます。</p>
 <p><code>guard</code> 文条件のオプショナルバインディング宣言から定数または変数へ値を代入することができ、<code>guard</code> 文を囲んでいるスコープの後の部分で使用できます。</p>
 <p><code>guard</code> 文の <code>else</code> 句は必須で、次の文のいずれかを使用して、<code>Never</code> 型の戻り値を持つ関数を呼び出すか、<code>guard</code> 文を呼び出したスコープ外にプログラム制御を転送する必要があります。</p>
@@ -841,7 +841,7 @@
 <h3 id="switch-文switch-statement"><a name="switch-文switch-statement" class="plugin-anchor" href="#switch-文switch-statement"><i class="fa fa-link" aria-hidden="true"></i></a><a id="switch-statement">Switch 文(Switch Statement)</a></h3>
 <p><code>switch</code> 文を使用すると、制御式の値に応じて特定のコードブロックを実行できます。</p>
 <p><code>switch</code> 文の形式は次のとおりです。</p>
-<p><img src="../.gitbook/assets/switch_statement.png" alt="Switch 文"></p>
+<p><img src="../assets/switch_statement.png" alt="Switch 文"></p>
 <p><code>switch</code> 文の <em>control expression</em> が評価され、それぞれの場合に指定されたパターンと比較されます。一致するものが見つかった場合、プログラムはそのケースの範囲内の <em>statements</em> を実行します。各ケースのスコープを空にすることはできません。そのため、各ケースラベルのコロン(<code>:</code>)の後に少なくとも 1 つの文を含める必要があります。コードを実行する予定がない場合は、単一の <code>break</code> 文を使用します。</p>
 <p>コードが分岐できる式の値は非常に柔軟です。例えば、整数や文字などのスカラ型の値に加えて、浮動小数点数、文字列、タプル、独自で作成したクラスのインスタンス、オプショナルなど、任意の型の値で分岐できます。<em>control expression</em> の値は、列挙型内のケースと一致しているか、または指定された値の範囲に含まれているかどうかを確認することもできます。<code>switch</code> 文でこれらの様々な種類の値を使用する方法の例については、<a href="../language-guide-gaido/control-flow.html">Control Flow(制御フロー)</a>の<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#switch" target="_blank">Switch</a>を参照ください。</p>
 <p><code>switch</code> のケースには、各パターンの後に <code>where</code> 句を含めることができます。<em>where 句</em>は、<code>where</code> キーワードの後に​​式が続くことで導入され、ケースのパターンが <em>control expression</em> に一致すると見なされる前に追加の条件を提供するために使用されます。<code>where</code> 句が存在する場合、関連するケース内の <em>statements</em> は、<em>control expression</em> の値がケースのパターンの 1 つと一致し、<code>where</code> 句の式が <code>true</code> と評価された場合にのみ実行されます。例えば、<em>control expression</em> は、<code>(1、1)</code> など、同じ値の 2 つの要素を含むタプルの場合にのみ、下記の例のケースに一致します。</p>
@@ -890,7 +890,7 @@
 </blockquote>
 <h3 id="break-文break-statement"><a name="break-文break-statement" class="plugin-anchor" href="#break-文break-statement"><i class="fa fa-link" aria-hidden="true"></i></a><a id="break-statement">Break 文(Break Statement)</a></h3>
 <p><code>break</code> 文は、ループ、<code>if</code> 文、または <code>switch</code> 文のプログラムの実行を終了します。下記に示すように、<code>break</code> 文は、<code>break</code> キーワードのみで構成することも、<code>break</code> キーワードの後に文ラベルを続けることもできます。</p>
-<p><img src="../.gitbook/assets/break_statement.png" alt="Break文"></p>
+<p><img src="../assets/break_statement.png" alt="Break文"></p>
 <p><code>break</code> 文の後に文ラベルが続く場合、そのラベルで指定されたループ、<code>if</code> 文、または <code>switch</code> 文のプログラム実行を終了します。</p>
 <p><code>break</code> 文の後に文ラベルが続かない場合は、<code>switch</code> 文またはそれが登場する最も内側のループ文のプログラムの実行を終了します。ラベルのない <code>break</code> 文を使用して <code>if</code> 文から抜け出すことはできません。</p>
 <p>どちらの場合も、プログラム制御は、ループまたは <code>switch</code> 文(存在する場合)で囲まれているコードの次の行に移ります。</p>
@@ -900,7 +900,7 @@
 </blockquote>
 <h3 id="continue-文continue-statement"><a name="continue-文continue-statement" class="plugin-anchor" href="#continue-文continue-statement"><i class="fa fa-link" aria-hidden="true"></i></a><a id="continue-statement">Continue 文(Continue Statement)</a></h3>
 <p><code>continue</code> 文は、ループ文の現在のイテレーションを終了しますが、ループ文の実行を停止しません。次に示すように、<code>continue</code> 文は <code>continue</code> キーワードのみで構成することも、<code>continue</code> キーワードとそれに続く文ラベルで構成することもできます。</p>
-<p><img src="../.gitbook/assets/continue_statement.png" alt="Continue 文"></p>
+<p><img src="../assets/continue_statement.png" alt="Continue 文"></p>
 <p><code>continue</code> 文の後に文ラベルが続く場合、そのラベルで指定されたループの現在のイテレーションを終了します。</p>
 <p><code>continue</code> 文の後に文ラベルが続かない場合、それが登場する最も内側のループの現在のイテレーションを終了します。</p>
 <p>どちらの場合も、プログラム制御は、それを囲むループ文の条件に移されます。</p>
@@ -919,7 +919,7 @@
 <h3 id="return-文return-statement"><a name="return-文return-statement" class="plugin-anchor" href="#return-文return-statement"><i class="fa fa-link" aria-hidden="true"></i></a>Return 文(Return Statement)</h3>
 <p><code>return</code> 文は、関数またはメソッド定義の本文で登場し、プログラムの実行を呼び出し元の関数またはメソッドに戻します。プログラムの実行は、関数またはメソッドの呼び出しの直後から続行されます。</p>
 <p>下記に示すように、<code>return</code> 文は <code>return</code> キーワードのみで構成することも、<code>return</code> キーワードとそれに続く式で構成することもできます。</p>
-<p><img src="../.gitbook/assets/return_statement.png" alt="Return 文"></p>
+<p><img src="../assets/return_statement.png" alt="Return 文"></p>
 <p><code>return</code> 文の後に式が続く場合、式の値は呼び出し元の関数またはメソッドに返されます。式の値が関数またはメソッドで宣言された戻り値の型と一致しない場合、式の値は、呼び出し元の関数またはメソッドに返される前に戻り値の型に変換されます。</p>
 <blockquote>
 <p>NOTE<br><a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#initialization-failable-initializers" target="_blank">Failable Initializers(失敗可能イニシャライザ)</a>で説明されているように、失敗可能なニシャライザで特別な形式の <code>return</code> 文(<code>return nil</code>)を使用して、イニシャライザの失敗を示すことができます。</p>
@@ -932,7 +932,7 @@
 <p><code>throw</code> 文は、エラーをスローする関数またはメソッドの本文、または型が <code>throws</code> キーワードでマークされているクロージャ式の本文で使用できます。</p>
 <p><code>throw</code> 文により、プログラムは現在のスコープの実行を終了し、それを囲むスコープへエラーを伝播します。スローされたエラーは、<code>do</code> 文の <code>catch</code> 句によって処理されるまで伝播し続けます。</p>
 <p>下記に示すように、<code>throw</code> 文は、<code>throw</code> キーワードとそれに続く式で構成されます。</p>
-<p><img src="../.gitbook/assets/throw_statement.png" alt="Throw 文"></p>
+<p><img src="../assets/throw_statement.png" alt="Throw 文"></p>
 <p><em>expression</em> の値は、<code>Error</code> プロトコルに準拠する型でなければなりません。</p>
 <p><code>throw</code> 文の使用方法の例については、<a href="../language-guide-gaido/error-handling.html">Error Handling(エラーハンドリング)</a>の<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/error-handling#propagating-errors-using-throwing-functions" target="_blank">Propagating Errors Using Throwing Functions(スロー関数を使用したエラーの伝播)</a>を参照ください。</p>
 <blockquote>
@@ -941,7 +941,7 @@
 <h2 id="defer-文defer-statement"><a name="defer-文defer-statement" class="plugin-anchor" href="#defer-文defer-statement"><i class="fa fa-link" aria-hidden="true"></i></a><a id="defer-statement">Defer 文(Defer Statement)</a></h2>
 <p><code>defer</code> 文は、<code>defer</code> 文が使用されるスコープ外にプログラム制御を転送する直前にコードを実行するために使用されます。</p>
 <p><code>defer</code> 文の形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/defer_statement.png" alt="Defer 文"></p>
+<p><img src="../assets/defer_statement.png" alt="Defer 文"></p>
 <p><code>defer</code> 文内の文は、プログラム制御がどのように転送されても実行されます。つまり、<code>defer</code> 文を使用して、例えば、ファイル記述子を閉じるなどの手動のリソース管理や、エラーがスローされた場合でも実行する必要のあるアクションを実行できます。</p>
 <p>複数の <code>defer</code> 文が同じスコープに表示される場合、それらが登場する順序は、実行される順序の逆になります。特定のスコープで最後の <code>defer</code> 文を最初に実行するということは、その最後の <code>defer</code> 文内の文が、他の <code>defer</code> 文によってクリーンアップされるリソースを参照できることを意味します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -962,7 +962,7 @@
 <p><code>do</code> 文は、新しいスコープを導入するために使用され、1 つ以上の <code>catch</code> 句を含めることができます。これには、定義されたエラー条件に一致するパターンが含まれます。<code>do</code> 文のスコープで宣言された変数と定数は、そのスコープ内でのみアクセスできます。</p>
 <p>Swift の <code>do</code> 文は、コードブロックを区切るために使用される C 言語の大括弧(<code>{}</code>)に似ており、実行時にパフォーマンスコストが発生しません。</p>
 <p><code>do</code> 文の形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/do_catch_statement.png" alt="Do 文"></p>
+<p><img src="../assets/do_catch_statement.png" alt="Do 文"></p>
 <p><code>do</code> ブロック内のいずれかの文がエラーをスローした場合、プログラム制御は、パターンがエラーに一致する最初の <code>catch</code> 句に移ります。どの句も一致しない場合、エラーは周囲のスコープに伝播します。エラーがトップレベルでも処理されない場合、プログラムの実行は実行時エラーで停止します。</p>
 <p><code>switch</code> 文と同様に、コンパイラは <code>catch</code> 句が全てのエラーを網羅しているかどうかを調べます。網羅されている場合、エラーは処理されたと見なされます。そうしないと、エラーがスコープ外に伝播する可能性があります。つまり、エラーは <code>catch</code> 句内で処理するか、関数を <code>throws</code> で宣言する必要があります。</p>
 <p>複数のパターンを持つ <code>catch</code> 句は、そのパターンのいずれかにエラーが一致する場合、エラーに一致すると見なされます。<code>catch</code> 句に複数のパターンが含まれている場合、全てのパターンで同じ定数または変数にバインドされる必要があり、バインドされた各変数または定数は、<code>catch</code> 句の全てのパターンで同じ型でなければなりません。</p>
@@ -979,7 +979,7 @@
 <h3 id="条件付きコンパイルブロックconditional-compilation-block"><a name="条件付きコンパイルブロックconditional-compilation-block" class="plugin-anchor" href="#条件付きコンパイルブロックconditional-compilation-block"><i class="fa fa-link" aria-hidden="true"></i></a><a id="conditional-compilation-block">条件付きコンパイルブロック(Conditional Compilation Block)</a></h3>
 <p>条件付きコンパイルブロックを使用すると、1 つ以上のコンパイル条件の値に応じてコードを条件付きでコンパイルできます。</p>
 <p>全ての条件付きコンパイルブロックは、<code>＃if</code> コンパイルディレクティブで始まり、<code>＃endif</code> コンパイルディレクティブで終わります。単純な条件付きコンパイルブロックの形式は次のとおりです。</p>
-<p><img src="../.gitbook/assets/if_compiler_statement.png" alt="if条件付きコンパイルブロック"></p>
+<p><img src="../assets/if_compiler_statement.png" alt="if条件付きコンパイルブロック"></p>
 <p><code>if</code> 文の条件とは異なり、<em>コンパイル条件</em>はコンパイル時に評価されます。その結果、<em>statements</em> は、コンパイル時にコンパイル条件が <code>true</code> と評価された場合にのみ、コンパイルおよび実行されます。</p>
 <p><em>コンパイル条件</em>には、<code>true</code> および <code>false</code> のブールリテラル、<code>-D</code> コマンドラインフラグで使用される識別子、または下記の表にリストされているプラットフォーム条件のいずれかを含めることができます。</p>
 <table>
@@ -1037,7 +1037,7 @@
 </blockquote>
 <p>論理演算子 <code>&amp;&amp;</code>、<code>||</code>、および <code>！</code> を使用して、コンパイル条件を組み合わせたり、無効にしたり、グループ化に括弧を使用できます。これらの演算子は、通常のブール式を組み合わせるために使用される論理演算子と同じ結合規則と優先順位を持っています。</p>
 <p><code>if</code> 文と同様に、複数の条件分岐を追加して、様々なコンパイル条件を検証できます。<code>#elseif</code> 句を使用して、分岐をいくつでも追加できます。<code>#else</code> 句を使用して、最後の分岐を追加することもできます。複数のブランチを含む条件付きコンパイルブロックの形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/if_elseif_compiler_statement.png" alt="ifelse条件付きコンパイルブロック"></p>
+<p><img src="../assets/if_elseif_compiler_statement.png" alt="ifelse条件付きコンパイルブロック"></p>
 <blockquote>
 <p>NOTE<br>条件付きコンパイルブロックの本文にある各文は、コンパイルされない場合でも解析されます。ただし、コンパイル条件に <code>swift()</code> または <code>compiler()</code> プラットフォーム条件が含まれている場合は例外です。言語またはコンパイラのバージョンがプラットフォーム条件で指定されているものと一致する場合にのみ解析されます。この例外により、古いコンパイラが新しいバージョンの Swift で導入された構文を解析しないことが保証されます。</p>
 <p>GRAMMAR OF A CONDITIONAL COMPILATION BLOCK<br>conditional-compilation-block → <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_if-directive-clause" target="_blank">if-directive-clause</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_elseif-directive-clauses" target="_blank">elseif-directive-clauses</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_else-directive-clause" target="_blank">else-directive-clause</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_endif-directive" target="_blank">endif-directive</a><br>if-directive-clause → <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_if-directive" target="_blank">if-directive</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compilation-condition" target="_blank">compilation-condition</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements" target="_blank">statements</a><sub>opt</sub><br>elseif-directive-clauses → <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_elseif-directive-clause" target="_blank">elseif-directive-clause</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_elseif-directive-clauses" target="_blank">elseif-directive-clauses</a><sub>opt</sub><br>elseif-directive-clause → <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_elseif-directive" target="_blank">elseif-directive</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compilation-condition" target="_blank">compilation-condition</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements" target="_blank">statements</a><sub>opt</sub><br>else-directive-clause → <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_else-directive" target="_blank">else-directive</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements" target="_blank">statements</a><sub>opt</sub><br>if-directive → <code>#if</code><br>elseif-directive → <code>#elseif</code><br>else-directive → <code>#else</code><br>endif-directive → <code>#endif</code><br>compilation-condition → <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_platform-condition" target="_blank">platform-condition</a><br>compilation-condition → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a><br>compilation-condition → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_boolean-literal" target="_blank">boolean-literal</a><br>compilation-condition → <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compilation-condition" target="_blank">compilation-condition</a> <code>)</code><br>compilation-condition → <code>!</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compilation-condition" target="_blank">compilation-condition</a><br>compilation-condition → <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compilation-condition" target="_blank">compilation-condition</a> <code>&amp;&amp;</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compilation-condition" target="_blank">compilation-condition</a><br>compilation-condition → <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compilation-condition" target="_blank">compilation-condition</a> <code>||</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compilation-condition" target="_blank">compilation-condition</a><br>platform-condition → <code>os</code> <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_operating-system" target="_blank">operating-system</a> <code>)</code><br>platform-condition → <code>arch</code> <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_architecture" target="_blank">architecture</a> <code>)</code><br>platform-condition → <code>swift</code> <code>(</code> <code>&gt;=</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_swift-version" target="_blank">swift-version</a> <code>)</code> | <code>swift</code> <code>(</code> <code>&lt;</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_swift-version" target="_blank">swift-version</a> <code>)</code><br>platform-condition → <code>compiler</code> <code>(</code> <code>&gt;=</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_swift-version" target="_blank">swift-version</a> <code>)</code> | <code>compiler</code> <code>(</code> <code>&lt;</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_swift-version" target="_blank">swift-version</a> <code>)</code><br>platform-condition → <code>canImport</code> <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_module-name" target="_blank">module-name</a> <code>)</code><br>platform-condition → <code>targetEnvironment</code> <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_environment" target="_blank">environment</a> <code>)</code><br>operating-system → <code>macOS</code> | <code>iOS</code> | <code>watchOS</code> | <code>tvOS</code> | <code>Linux</code> | <code>Windows</code><br>architecture → <code>i386</code> | <code>x86_64</code> | <code>arm</code> | <code>arm64</code><br>swift-version → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits" target="_blank">decimal-digits</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_swift-version-continuation" target="_blank">swift-version-continuation</a><sub>opt</sub><br>swift-version-continuation → <code>.</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits" target="_blank">decimal-digits</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_swift-version-continuation" target="_blank">swift-version-continuation</a><sub>opt</sub><br>module-name → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a><br>environment → <code>simulator</code> | <code>macCatalyst</code></p>
@@ -1045,7 +1045,7 @@
 <h3 id="行制御文line-control-statement"><a name="行制御文line-control-statement" class="plugin-anchor" href="#行制御文line-control-statement"><i class="fa fa-link" aria-hidden="true"></i></a><a id="line-control-statement">行制御文(Line Control Statement)</a></h3>
 <p>行制御文は、コンパイルされるソースコードの行番号およびファイル名とは異なる可能性のある行番号およびファイル名を指定するために使用されます。行制御文を使用して、診断およびデバッグの目的で Swift が使用するソースコードの場所を変更します。</p>
 <p>行制御文の形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/sourceLocation_compiler_statement.png" alt="sourceLocation制御文"></p>
+<p><img src="../assets/sourceLocation_compiler_statement.png" alt="sourceLocation制御文"></p>
 <p>最初の形式は、行制御文に続くコード行から、<code>＃line</code>、<code>＃file</code>、<code>＃fileID</code>、および <code>#filePath</code> リテラル式の値を変更します。<em>line number</em> は <code>#line</code> の値を変更し、0 より大きい任意の整数リテラルです。<em>file path</em> は、<code>＃file</code>、<code>＃fileID</code>、および <code>#filePath</code> の値を変更する文字列リテラルです。指定された文字列が <code>#filePath</code> の値になり、文字列の最後のパスコンポーネントが <code>#fileID</code> の値として使用されます。<code>＃file</code>、<code>＃fileID</code>、および <code>#filePath</code> については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/expressions#literal-expression" target="_blank">Literal Expression(リテラル式)</a>を参照ください。</p>
 <p>2 番目の形式の <code>#sourceLocation()</code> は、ソースコードの場所をデフォルトの行番号とファイルパスにリセットします。</p>
 <blockquote>
@@ -1053,7 +1053,7 @@
 </blockquote>
 <h3 id="コンパイル時診断文compile-time-diagnostic-statement"><a name="コンパイル時診断文compile-time-diagnostic-statement" class="plugin-anchor" href="#コンパイル時診断文compile-time-diagnostic-statement"><i class="fa fa-link" aria-hidden="true"></i></a><a id="compile-time-diagnostic-statement">コンパイル時診断文(Compile-Time Diagnostic Statement)</a></h3>
 <p>コンパイル時診断文により、コンパイラはコンパイル中にエラーまたは警告を発行します。コンパイル時診断文の形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/error_warning_compiler_statement.png" alt="コンパイル時診断文"></p>
+<p><img src="../assets/error_warning_compiler_statement.png" alt="コンパイル時診断文"></p>
 <p>最初の形式は、致命的なエラーとして <em>error message</em> を出力し、コンパイルプロセスを終了します。2 番目の形式は、致命的ではない警告として <em>warning message</em> を出力し、コンパイルを続行できるようにします。診断メッセージは静的文字列リテラルとして記述します。静的文字列リテラルは、文字列補間や文字列連結などの機能を使用できませんが、複数行の文字列リテラル構文を使用できます。</p>
 <blockquote>
 <p>GRAMMAR OF A COMPILE-TIME DIAGNOSTIC STATEMENT<br>diagnostic-statement → <code>#error</code> <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_diagnostic-message" target="_blank">diagnostic-message</a> <code>)</code><br>diagnostic-statement → <code>#warning</code> <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_diagnostic-message" target="_blank">diagnostic-message</a> <code>)</code><br>diagnostic-message → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_static-string-literal" target="_blank">static-string-literal</a></p>
@@ -1061,7 +1061,7 @@
 <h2 id="アベイラビリティ条件availability-condition"><a name="アベイラビリティ条件availability-condition" class="plugin-anchor" href="#アベイラビリティ条件availability-condition"><i class="fa fa-link" aria-hidden="true"></i></a><a id="availability-condition">アベイラビリティ条件(Availability Condition)</a></h2>
 <p><em>availability 条件</em>は、<code>if</code>、<code>while</code>、および <code>guard</code> 文の条件として使用され、指定されたプラットフォームの引数に基づいて、実行時に API が使用可能かどうかを検証します。</p>
 <p>availability 条件の形式は次のとおりです:</p>
-<p><img src="../.gitbook/assets/05_availabilitycondition.png" alt="availability 条件"></p>
+<p><img src="../assets/05_availabilitycondition.png" alt="availability 条件"></p>
 <p>使用する API が実行時に使用可能かどうかに応じて、Availability 条件を使用してコードのブロックを実行します。コンパイラは、そのコード・ブロック内の API が使用可能かどうかを確認するときに、Availability 条件からの情報を使用します。</p>
 <p>availability 条件は、プラットフォーム名とバージョンのカンマ区切りのリストを受け取ります。プラットフォーム名には <code>iOS</code>、<code>macOS</code>、<code>watchOS</code>、<code>tvOS</code> を使用し、対応するバージョン番号を含めます。<code>*</code> 引数は必須で、他のプラットフォームでは、availability 条件によって保護されたコードブロックの本文が、ターゲットで指定された最小のデプロイターゲットで実行されることを指定します。</p>
 <p>ブール条件とは異なり、<code>&amp;&amp;</code> や <code>||</code> などの論理演算子を使用して availability 条件を組み合わせることはできません。</p>
@@ -1101,7 +1101,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"文(Statements)","level":"4.5","depth":1,"next":{"title":"宣言(Declarations)","level":"4.6","depth":1,"path":"language-reference/declarations.md","ref":"language-reference/declarations.md","articles":[]},"previous":{"title":"式(Expressions)","level":"4.4","depth":1,"path":"language-reference/expressions.md","ref":"language-reference/expressions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":".gitbook/assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":".gitbook/assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-reference/statements.md","mtime":"2021-07-10T23:55:24.258Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:11:28.643Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"文(Statements)","level":"4.5","depth":1,"next":{"title":"宣言(Declarations)","level":"4.6","depth":1,"path":"language-reference/declarations.md","ref":"language-reference/declarations.md","articles":[]},"previous":{"title":"式(Expressions)","level":"4.4","depth":1,"path":"language-reference/expressions.md","ref":"language-reference/expressions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-reference/statements.md","mtime":"2021-07-11T00:21:09.745Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
