@@ -73,7 +73,7 @@ print("\(base) to the power of \(power) is \(answer)")
 
 最初と最後の両方を含める閉範囲を使用する必要がない場合もあるかもしれません。時計の分針を思い浮かべてください。`0` から始まる `60` 個の目盛が必要です。最初の値を含める半開範囲演算子\(`..<`\)を使いましょう。
 
-範囲についての詳細は、[Range Operators\(範囲演算子\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/basic-operators#range-operators)を参照ください。
+範囲についての詳細は、[Range Operators\(範囲演算子\)](../language-guide-gaido/basic-operators#range-operators)を参照ください。
 
 ```swift
 let minutes = 60
@@ -114,11 +114,11 @@ for tickMark in stride(from: 3, through: hours, by: hourInterval) {
 
 `while` ループの基本的な書き方は下記の通りです:
 
-![While&#x30EB;&#x30FC;&#x30D7;](../.gitbook/assets/05_whileform.png)
+![While&#x30EB;&#x30FC;&#x30D7;](../assets/05_whileform.png)
 
 下記の例は、_蛇とはしご_と呼ばれるシンプルなゲームの例です。
 
-![&#x86C7;&#x3068;&#x306F;&#x3057;&#x3054;](../.gitbook/assets/snakesandladders_2x.png)
+![&#x86C7;&#x3068;&#x306F;&#x3057;&#x3054;](../assets/snakesandladders_2x.png)
 
 ゲームのルールは下記のようです:
 
@@ -181,7 +181,7 @@ print("Game over!")
 
 下記が `repeat-while` ループの一般的な形式です。
 
-![repeat-while](../.gitbook/assets/05_repeatwhile.png)
+![repeat-while](../assets/05_repeatwhile.png)
 
 ここで蛇とはしごの例を `while` の代わりに `repeat-while` を使用して書き換えてみます。`finalSquare`、`board`、`square` と `diceRoll` は `while` と全く同じ方法で初期化します。
 
@@ -284,7 +284,7 @@ if temperatureInFahrenheit <= 32 {
 
 最もシンプルな形式として、`switch` 文は同じ型の 1 つ以上の値を比較します。
 
-![switch](../.gitbook/assets/05_switchform.png)
+![switch](../assets/05_switchform.png)
 
 全ての `switch` 文は、`case` キーワードで始まる複数の可能性があるケースで構成されます。特定の値の比較に加えて、さらに複雑なパターンマッチをケースに指定するための様々な方法を提供しています。この章で後ほど記載しています。
 
@@ -401,7 +401,7 @@ default:
 // "(1, 1) is inside the box"
 ```
 
-![switch&#x6587; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../.gitbook/assets/coordinategraphsimple_2x.png)
+![switch&#x6587; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../assets/coordinategraphsimple_2x.png)
 
 `switch` 文は、座標が原点 `(0、0)` にあるか、赤い x 軸上にあるか、オレンジ色の y 軸上にあるか、原点を中心とする青い 4x4 列のボックスの内側にあるか、ボックスの外側にあるかを判別します。
 
@@ -426,7 +426,7 @@ case let (x, y):
 // "on the x-axis with an x value of 2"
 ```
 
-![switch&#x6587; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../.gitbook/assets/coordinategraphmedium_2x.png)
+![switch&#x6587; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../assets/coordinategraphmedium_2x.png)
 
 `switch` 文は、座標が赤い x 軸上にあるか、オレンジ色の y 軸上にあるか、または他の場所にあるか\(どちらの軸上にもないか\)を判別します。
 
@@ -455,7 +455,7 @@ case let (x, y):
 // "(1, -1) is on the line x == -y"
 ```
 
-![switch&#x6587; where&#x53E5; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../.gitbook/assets/coordinategraphcomplex_2x.png)
+![switch&#x6587; where&#x53E5; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../assets/coordinategraphcomplex_2x.png)
 
 `switch` 文は、座標が `x == y` の場合は緑色の対角線上にあるか、`x == -y` の場合は紫色の対角線上にあるか、またはどちらでもないかを判別します。
 
@@ -508,7 +508,7 @@ _制御転送文_は、コードの一部の制御を他の部分へ転送させ
 * `return`
 * `throw`
 
-`continue`、`break` と `fallthrough` は下記に記載しています。`return` は[Functions\(関数\)](functions.md)、`throw` は[Propagating Errors Using Throwing Functions](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/error-handling#propagating-errors-using-throwing-functions)に記載しています。
+`continue`、`break` と `fallthrough` は下記に記載しています。`return` は[Functions\(関数\)](functions.md)、`throw` は[Propagating Errors Using Throwing Functions](../language-guide-gaido/error-handling#propagating-errors-using-throwing-functions)に記載しています。
 
 ### Continue
 
@@ -611,7 +611,7 @@ Swift では、より複雑な制御フローを作成するために、ルー�
 
 ラベル付き文は、文の導入キーワードの前にコロン\(`:`\)を付けて同じ行にラベルを配置することで示せます。下記は、`while` ループの構文の例ですが、他の全てのループや `switch` にも同じ原則が当てはまります。
 
-![&#x30E9;&#x30D9;&#x30EB;&#x4ED8;&#x304D;&#x6587;](../.gitbook/assets/05_lebeledstatements.png)
+![&#x30E9;&#x30D9;&#x30EB;&#x4ED8;&#x304D;&#x6587;](../assets/05_lebeledstatements.png)
 
 次の例は、この章の前で見てきた「蛇とはしご」にラベル付き `while` ループと `break` と `continue` 文を適用したバージョンです。今回は、追加のルールがあります。
 
@@ -621,7 +621,7 @@ Swift では、より複雑な制御フローを作成するために、ルー�
 
 ゲーム盤は、前と同じです。
 
-![&#x86C7;&#x3068;&#x306F;&#x3057;&#x3054;](../.gitbook/assets/snakesandladders_2x.png)
+![&#x86C7;&#x3068;&#x306F;&#x3057;&#x3054;](../assets/snakesandladders_2x.png)
 
 `finalSquare`、`board`、`square` と `diceRoll` は前と同じように初期化されています。
 
@@ -722,5 +722,5 @@ if #available(iOS 10, macOS 10.12, *) {
 
 基本的な形式として、アベイラビリティ条件はプラットフォームの名前とバージョンのリストを受け取ります。`iOS`、`macOS`、`watchOS`、`tvOS` などをプラットフォームの名前として使います。全リストは[Declaration Attributes\(宣言属性\)](../language-reference/attributes.md)を参照ください。`iOS 8` や `macOS 10.10` のようなメジャーバージョンに加え、`iOS 11.2.6` や `macOS 10.13.3` のようにマイナーバージョンも指定できます。
 
-![API&#x30A2;&#x30D9;&#x30A4;&#x30E9;&#x30D3;&#x30EA;&#x30C6;&#x30A3;&#x6761;&#x4EF6;](../.gitbook/assets/05_availabilitycondition.png)
+![API&#x30A2;&#x30D9;&#x30A4;&#x30E9;&#x30D3;&#x30EA;&#x30C6;&#x30A3;&#x6761;&#x4EF6;](../assets/05_availabilitycondition.png)
 

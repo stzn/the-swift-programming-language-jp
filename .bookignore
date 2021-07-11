@@ -1,0 +1,5 @@
+# ignore self
+.bookignore
+
+# ignore npm files
+package.json

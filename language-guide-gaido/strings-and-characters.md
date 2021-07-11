@@ -69,7 +69,7 @@ It also ends with a line break.
 
 複数行文字列は、周りのコードに合わせてインデントさせることができます。終了クォーテーションマーク\(`"""`\)の前に空白を加えると、他の行に存在する同じ位置の空白も無視するようになります。一方で、終了クォーテーションマーク\(`"""`\)の空白のさらに後に空白を追加すると、その行の空白_は_含まれるようになります。
 
-![&#x8907;&#x6570;&#x884C;&#x6587;&#x5B57;&#x5217;&#x306E;&#x30B9;&#x30DA;&#x30FC;&#x30B9;](../.gitbook/assets/multilinestringwhitespace_2x.png)
+![&#x8907;&#x6570;&#x884C;&#x6587;&#x5B57;&#x5217;&#x306E;&#x30B9;&#x30DA;&#x30FC;&#x30B9;](../assets/multilinestringwhitespace_2x.png)
 
 上記の例では、全ての複数行文字列にインデントが加えられていますが、最初と最後の行は冒頭に空白はありません。真ん中の行は終了クォーテーションマーク\(`"""`\)よりもさらにインデントを追加しているため、4 つの空白から開始します。
 
@@ -151,7 +151,7 @@ constantString += " and another Highlander"
 
 ## 文字列は値型\(Strings Are Value Types\)
 
-`String` 型は_値型_です。新しい `String` を生成すると、関数やメソッドのパラメータで渡されるときや、他の定数、変数に代入されるときに、値のコピーが発生します。いずれの場合でも、既存の `String` のコピーが生成され、元の値ではなく新しいコピーが渡され\(または代入され\)ます。値型は[Structures and Enumerations Are Value Types\(構造体と列挙型は値型\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#structures-and-enumerations-are-value-type)で記載されています。
+`String` 型は_値型_です。新しい `String` を生成すると、関数やメソッドのパラメータで渡されるときや、他の定数、変数に代入されるときに、値のコピーが発生します。いずれの場合でも、既存の `String` のコピーが生成され、元の値ではなく新しいコピーが渡され\(または代入され\)ます。値型は[Structures and Enumerations Are Value Types\(構造体と列挙型は値型\)](../language-guide-gaido/structures-and-classes#structures-and-enumerations-are-value-type)で記載されています。
 
 Swift の、デフォルトでコピーをする `String` の挙動は、`String` が関数やメソッドのパラメータで渡されるときに、どこからその値が来たとしても、正しい `String` を所有していることが保証されます。つまり、渡された文字列は、自身で変更しない限り決して変更されることがありません。
 
@@ -172,7 +172,7 @@ for character in "Dog!🐶" {
 // 🐶
 ```
 
-`for-in` ループについては[For-In Loops\(For-In ループ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#for-in-loops)に記載されています。
+`for-in` ループについては[For-In Loops\(For-In ループ\)](../language-guide-gaido/control-flow#for-in-loops)に記載されています。
 
 もしくは、`Character` の型注釈を与えて 1 文字のリテラルから `Character` 型の定数や変数を作ることもできます:
 
@@ -285,7 +285,7 @@ _Unicode_は、様々な書記体系で、テキストをエンコード、抽�
 
 ### <a id="unicode-scalar-values">Unicode スカラ値\(Unicode Scalar Values\)</a>
 
-内部では、Swift 固有の `String` 型は _Unicodeスカラ_から構築されています。Unicode スカラは 21 ビットの文字と修飾子で構成されています。例えば、`U+0061` は `LATIN SMALL LETTER A ("a")`、`U+1F425` は `FRONT-FACING BABY CHICK ("🐥")` です。
+内部では、Swift 固有の `String` 型は *Unicode スカラ*から構築されています。Unicode スカラは 21 ビットの文字と修飾子で構成されています。例えば、`U+0061` は `LATIN SMALL LETTER A ("a")`、`U+1F425` は `FRONT-FACING BABY CHICK ("🐥")` です。
 
 全ての 21 ビットのスカラが 1 つの文字に当てはまるわけではありません。いくつかは将来的に必要になるために確保されていたり、UTF-16 で使われています。文字に割り当てられているスカラには、上記の `LATIN SMALL LETTER A` や `FRONT-FACING BABY CHICK` のように一般的には名前が付いています。
 
@@ -446,7 +446,7 @@ let newString = String(beginning)
 
 上記の例では、`greeting` は文字列です。つまり、文字列を構築する文字を保持したメモリ領域を持っています。`beginning` は `greeting` の部分文字列です。`greeting` が使用しているメモリを再利用しています。反対に、`newString` は文字列で、部分文字列から生成されたときに独自のメモリ領域を持ちます。下記の図はこの関係を示しています。
 
-![&#x6587;&#x5B57;&#x5217;&#x3068;&#x90E8;&#x5206;&#x6587;&#x5B57;&#x5217;](../.gitbook/assets/stringsubstring_2x.png)
+![&#x6587;&#x5B57;&#x5217;&#x3068;&#x90E8;&#x5206;&#x6587;&#x5B57;&#x5217;](../assets/stringsubstring_2x.png)
 
 > NOTE  
 > 文字列と部分文字列は、[StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol)に準拠しています。つまり、文字列操作を行う関数は、`StringProtocol` の値を受け取るとしばしば便利なことがあります。文字列、部分文字列のどちらを使用しても、その関数を使用することができます。
@@ -457,7 +457,7 @@ Swift では、3 つの方法で文字列同士を比較する方法を提供し
 
 ### 文字と文字列の等価性\(String and Character Equality\)
 
-`String` または `Character` の完全一致は、は等価演算子\(`==`\)と不等価演算子\(`!=`\)を使用してチェックします。[Comparison Operators\(比較演算子\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/basic-operators#comparison-operators)
+`String` または `Character` の完全一致は、は等価演算子\(`==`\)と不等価演算子\(`!=`\)を使用してチェックします。[Comparison Operators\(比較演算子\)](../language-guide-gaido/basic-operators#comparison-operators)
 
 ```swift
 let quotation = "We're a lot alike, you and I."
@@ -577,7 +577,7 @@ let dogString = "Dog‼🐶"
 
 UTF-8 表現には `String` の `utf8` プロパティを使います。このプロパティの型は、`String.UTF8View` で、符号なし 8 ビット\(`UInt8`\)のコレクションで、文字列の UTF-8 表現のそれぞれのバイトを表しています:
 
-![UTF-8](../.gitbook/assets/utf8_2x.png)
+![UTF-8](../assets/utf8_2x.png)
 
 ```swift
 for codeUnit in dogString.utf8 {
@@ -593,7 +593,7 @@ print("")
 
 UTF-16 表現には `String` の `utf16` プロパティを使います。このプロパティの型は、`String.UTF16View` で、符号なし 16 ビット\(`UInt16`\)のコレクションで、文字列の UTF-16 表現のそれぞれのバイトを表しています:
 
-![UTF-16](../.gitbook/assets/utf16_2x.png)
+![UTF-16](../assets/utf16_2x.png)
 
 ```swift
 for codeUnit in dogString.utf16 {
@@ -614,7 +614,7 @@ Unicode スカラ表現には `String` の `unicodeScalars` プロパティを�
 
 それぞれの `UnicodeScalar` には `UInt32` で表される 21 ビットのスカラを返す `value` プロパティを持っています。
 
-![Unicode Scalar](../.gitbook/assets/unicodescalar_2x.png)
+![Unicode Scalar](../assets/unicodescalar_2x.png)
 
 ```swift
 for scalar in dogString.unicodeScalars {

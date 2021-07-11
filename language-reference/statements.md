@@ -24,7 +24,7 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 
 ループ文では、ループで指定された条件に応じて、コードブロックを繰り返し実行できます。Swift には 3 つのループ文があります。`for-in` 文、`while` 文、および `repeat-while` 文です。
 
-ループ文内の制御フローは、`break` 文と `continue` 文によって変更でき、下記の[Break Statement\(Break 文\)](statements.md#break-statement)と[Continue Statement\(Continue 文\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#continue-statement)で説明します。
+ループ文内の制御フローは、`break` 文と `continue` 文によって変更でき、下記の[Break Statement\(Break 文\)](statements.md#break-statement)と[Continue Statement\(Continue 文\)](../language-reference/statements#continue-statement)で説明します。
 
 > GRAMMAR OF A LOOP STATEMENT  
 > loop-statement → [for-in-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_for-in-statement)  
@@ -37,7 +37,7 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 
 `for-in` 文の形式は次のとおりです:
 
-![For-In &#x6587;](../.gitbook/assets/for-in_statement.png)
+![For-In &#x6587;](../assets/for-in_statement.png)
 
 `makeIterator()` メソッドは、[IteratorProtocol](https://developer.apple.com/documentation/swift/iteratorprotocol)プロトコルに準拠した型のイテレータ型の値を取得するために、_collection_ 式で呼び出されます。プログラムは、イテレータ上で `next()` メソッドを呼び出すことによってループの実行を開始します。返された値が `nil` ではない場合、_item_ に代入され、プログラムは _statements_ を実行し、再びループの先頭から実行を続行します。それ以外の場合、プログラムは値の代入や、_statements_ を実行せず、`for-in` 文の実行は終了します。
 
@@ -50,7 +50,7 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 
 `while` 文の形式は次のとおりです:
 
-![While &#x6587;](../.gitbook/assets/while_statement.png)
+![While &#x6587;](../assets/while_statement.png)
 
 `while` 文は次のように実行されます。
 
@@ -59,7 +59,7 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 
 _condition_ の値は、_statements_ が実行される前に評価されるため、`while` 文内の _statements_ は 0 回以上実行されます。
 
-_condition_ の値は、`Bool` 型または `Bool` にブリッジされた型でなければなりません。[Optional Binding\(オプショナルバインディング\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
+_condition_ の値は、`Bool` 型または `Bool` にブリッジされた型でなければなりません。[Optional Binding\(オプショナルバインディング\)](../language-guide-gaido/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
 
 > GRAMMAR OF A WHILE STATEMENT  
 > while-statement → `while` [condition-list](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_condition-list) [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  
@@ -74,7 +74,7 @@ _condition_ の値は、`Bool` 型または `Bool` にブリッジされた型�
 
 `repeat-while` 文の形式は次のとおりです:
 
-![Repeat-While&#x6587;](../.gitbook/assets/repeat-while_statement.png)
+![Repeat-While&#x6587;](../assets/repeat-while_statement.png)
 
 `repeat-while` 文は次のように実行されます。
 
@@ -83,7 +83,7 @@ _condition_ の値は、`Bool` 型または `Bool` にブリッジされた型�
 
 _condition_ の値は _statements_ の実行後に評価されるため、`repeat-while` 文内の文は少なくとも 1 回実行されます。
 
-_condition_ の値は、`Bool` 型または `Bool` にブリッジされた型にする必要があります。[Optional Binding\(オプショナルバインディング\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
+_condition_ の値は、`Bool` 型または `Bool` にブリッジされた型にする必要があります。[Optional Binding\(オプショナルバインディング\)](../language-guide-gaido/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
 
 > GRAMMAR OF A REPEAT-WHILE STATEMENT  
 > repeat-while-statement → `repeat` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block) `while` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
@@ -107,17 +107,17 @@ _condition_ の値は、`Bool` 型または `Bool` にブリッジされた型�
 
 最初の形式では、条件が true の場合にのみコードを実行でき、形式は次のとおりです:
 
-![If &#x6587;](../.gitbook/assets/if_statement.png)
+![If &#x6587;](../assets/if_statement.png)
 
 `if` 文の 2 番目の形式は、追加の\(`else` キーワードによって導入される\)_else 句を_提供し、条件が true の場合にコードの一部を実行し、false の場合にコードの別の部分を実行するために使用されます。else 句が 1 つ存在する場合、`if` 文の形式は次のとおりです:
 
-![If-Else&#x6587;](../.gitbook/assets/if_else_statement.png)
+![If-Else&#x6587;](../assets/if_else_statement.png)
 
 `if` 文の else 句には、複数の条件を検証するための別の `if` 文を含めることができます。このようにチェーンした `if` 文の形式は次のとおりです:
 
-![If-ElseId&#x6587;](../.gitbook/assets/if_elseif_statement.png)
+![If-ElseId&#x6587;](../assets/if_elseif_statement.png)
 
-`if` 文の条件の値は、`Bool` 型または `Bool` にブリッジされた型にする必要があります。[Optional Binding\(オプショナルバインディング\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
+`if` 文の条件の値は、`Bool` 型または `Bool` にブリッジされた型にする必要があります。[Optional Binding\(オプショナルバインディング\)](../language-guide-gaido/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
 
 > GRAMMAR OF AN IF STATEMENT  
 > if-statement → `if` [condition-list](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_condition-list) [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block) [else-clause](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_else-clause)<sub>opt</sub>  
@@ -129,9 +129,9 @@ _condition_ の値は、`Bool` 型または `Bool` にブリッジされた型�
 
 `guard` 文の形式は次のとおりです:
 
-![Guard &#x6587;](../.gitbook/assets/guard_statement.png)
+![Guard &#x6587;](../assets/guard_statement.png)
 
-`guard` 文の条件の値は、`Bool` 型または `Bool` にブリッジされた型にする必要があります。[Optional Binding\(オプショナルバインディング\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
+`guard` 文の条件の値は、`Bool` 型または `Bool` にブリッジされた型にする必要があります。[Optional Binding\(オプショナルバインディング\)](../language-guide-gaido/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
 
 `guard` 文条件のオプショナルバインディング宣言から定数または変数へ値を代入することができ、`guard` 文を囲んでいるスコープの後の部分で使用できます。
 
@@ -142,7 +142,7 @@ _condition_ の値は、`Bool` 型または `Bool` にブリッジされた型�
 * `continue`
 * `throw`
 
-制御転送文については、下記の[Control Transfer Statements\(制御転送文\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#control-flow-control-transfer-statements)で説明します。`Never` 型の戻り値を持つ関数の詳細については、[Functions that Never Return\(ノーリターン関数\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#functions-that-never-return)を参照ください。
+制御転送文については、下記の[Control Transfer Statements\(制御転送文\)](../language-reference/statements#control-flow-control-transfer-statements)で説明します。`Never` 型の戻り値を持つ関数の詳細については、[Functions that Never Return\(ノーリターン関数\)](../language-reference/declarations#functions-that-never-return)を参照ください。
 
 > GRAMMAR OF A GUARD STATEMENT  
 > guard-statement → `guard` [condition-list](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_condition-list) `else` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
@@ -153,11 +153,11 @@ _condition_ の値は、`Bool` 型または `Bool` にブリッジされた型�
 
 `switch` 文の形式は次のとおりです。
 
-![Switch &#x6587;](../.gitbook/assets/switch_statement.png)
+![Switch &#x6587;](../assets/switch_statement.png)
 
 `switch` 文の _control expression_ が評価され、それぞれの場合に指定されたパターンと比較されます。一致するものが見つかった場合、プログラムはそのケースの範囲内の _statements_ を実行します。各ケースのスコープを空にすることはできません。そのため、各ケースラベルのコロン\(`:`\)の後に少なくとも 1 つの文を含める必要があります。コードを実行する予定がない場合は、単一の `break` 文を使用します。
 
-コードが分岐できる式の値は非常に柔軟です。例えば、整数や文字などのスカラ型の値に加えて、浮動小数点数、文字列、タプル、独自で作成したクラスのインスタンス、オプショナルなど、任意の型の値で分岐できます。_control expression_ の値は、列挙型内のケースと一致しているか、または指定された値の範囲に含まれているかどうかを確認することもできます。`switch` 文でこれらの様々な種類の値を使用する方法の例については、[Control Flow\(制御フロー\)](../language-guide-gaido/control-flow.md)の[Switch](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#switch)を参照ください。
+コードが分岐できる式の値は非常に柔軟です。例えば、整数や文字などのスカラ型の値に加えて、浮動小数点数、文字列、タプル、独自で作成したクラスのインスタンス、オプショナルなど、任意の型の値で分岐できます。_control expression_ の値は、列挙型内のケースと一致しているか、または指定された値の範囲に含まれているかどうかを確認することもできます。`switch` 文でこれらの様々な種類の値を使用する方法の例については、[Control Flow\(制御フロー\)](../language-guide-gaido/control-flow.md)の[Switch](../language-guide-gaido/control-flow#switch)を参照ください。
 
 `switch` のケースには、各パターンの後に `where` 句を含めることができます。_where 句_は、`where` キーワードの後に​​式が続くことで導入され、ケースのパターンが _control expression_ に一致すると見なされる前に追加の条件を提供するために使用されます。`where` 句が存在する場合、関連するケース内の _statements_ は、_control expression_ の値がケースのパターンの 1 つと一致し、`where` 句の式が `true` と評価された場合にのみ実行されます。例えば、_control expression_ は、`(1、1)` など、同じ値の 2 つの要素を含むタプルの場合にのみ、下記の例のケースに一致します。
 
@@ -181,7 +181,7 @@ Swift では、制御式の型が取り得る全ての値は、ケースの内�
 
 #### [Switching Over Future Enumeration Cases\(列挙型の将来のケースのスイッチング\)](statements.md) <a id="switching-over-future-enumeration-cases"></a>
 
-_nonfrozen 列挙型_は、アプリをコンパイルして出荷した後でも、将来的に新しい列挙ケースを追加する可能性のある特別な種類の列挙型です。nonfrozen 列挙型をスイッチングするには、特別な考慮が必要です。ライブラリの作成者が列挙型を nonfrozen としてマークすると、新しい列挙ケースを追加する権利が確保され、その列挙型を利用するコードは、再コンパイルせずにその将来のケースを処理できるように_しなければなりません_。ライブラリエボリューションモードでコンパイルされたコード、標準ライブラリのコード、Apple フレームワーク用の Swift オーバーレイ、C 言語および Objective-C のコードは、nonfrozen 列挙型を宣言できます。frozen および nonfrozen の列挙型については、[frozen](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/attributes#frozen)を参照ください。
+_nonfrozen 列挙型_は、アプリをコンパイルして出荷した後でも、将来的に新しい列挙ケースを追加する可能性のある特別な種類の列挙型です。nonfrozen 列挙型をスイッチングするには、特別な考慮が必要です。ライブラリの作成者が列挙型を nonfrozen としてマークすると、新しい列挙ケースを追加する権利が確保され、その列挙型を利用するコードは、再コンパイルせずにその将来のケースを処理できるように_しなければなりません_。ライブラリエボリューションモードでコンパイルされたコード、標準ライブラリのコード、Apple フレームワーク用の Swift オーバーレイ、C 言語および Objective-C のコードは、nonfrozen 列挙型を宣言できます。frozen および nonfrozen の列挙型については、[frozen](../language-reference/attributes#frozen)を参照ください。
 
 nonfrozen 列挙型の値をスイッチングするときは、列挙型の全てのケースに対応する `switch` ケースがすでにある場合でも、常にデフォルトのケースを含める必要があります。`@unknown` 属性をデフォルトのケースに適用できます。これは、デフォルトのケースが、将来追加される列挙ケースでのみ一致するべきだということを示します。デフォルトのケースがコンパイラ時に既知の列挙ケースと一致する場合、Swift は警告を生成します。この将来のケースへの警告は、ライブラリの作成者が、新しいケースを列挙型に追加したことを知らせてくれます。
 
@@ -229,7 +229,7 @@ case .suppressed:
 
 ラベル付き文のスコープは、文ラベルに続く文全体です。ラベル付き文はネストできますが、各文ラベルの名前を一意にする必要があります。
 
-文ラベルの詳細および使用例については、[Control Flow\(制御フロー\)](../language-guide-gaido/control-flow.md)の[Labeled Statements\(ラベル付き文\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#labeled-statements)を参照ください。
+文ラベルの詳細および使用例については、[Control Flow\(制御フロー\)](../language-guide-gaido/control-flow.md)の[Labeled Statements\(ラベル付き文\)](../language-guide-gaido/control-flow#labeled-statements)を参照ください。
 
 > GRAMMAR OF A LABELED STATEMENT  
 > labeled-statement → [statement-label](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statement-label) [loop-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_loop-statement)  
@@ -254,7 +254,7 @@ case .suppressed:
 
 `break` 文は、ループ、`if` 文、または `switch` 文のプログラムの実行を終了します。下記に示すように、`break` 文は、`break` キーワードのみで構成することも、`break` キーワードの後に文ラベルを続けることもできます。
 
-![Break&#x6587;](../.gitbook/assets/break_statement.png)
+![Break&#x6587;](../assets/break_statement.png)
 
 `break` 文の後に文ラベルが続く場合、そのラベルで指定されたループ、`if` 文、または `switch` 文のプログラム実行を終了します。
 
@@ -262,7 +262,7 @@ case .suppressed:
 
 どちらの場合も、プログラム制御は、ループまたは `switch` 文\(存在する場合\)で囲まれているコードの次の行に移ります。
 
-`break` 文の使用方法の例については、[Break](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#break)と[Control Flow\(制御フロー\)](../language-guide-gaido/control-flow.md)の[Labeled Statements\(ラベル付き文\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#labeled-statements)を参照ください。
+`break` 文の使用方法の例については、[Break](../language-guide-gaido/control-flow#break)と[Control Flow\(制御フロー\)](../language-guide-gaido/control-flow.md)の[Labeled Statements\(ラベル付き文\)](../language-guide-gaido/control-flow#labeled-statements)を参照ください。
 
 > GRAMMAR OF A BREAK STATEMENT  
 > break-statement → `break` [label-name](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_label-name)<sub>opt</sub>
@@ -271,7 +271,7 @@ case .suppressed:
 
 `continue` 文は、ループ文の現在のイテレーションを終了しますが、ループ文の実行を停止しません。次に示すように、`continue` 文は `continue` キーワードのみで構成することも、`continue` キーワードとそれに続く文ラベルで構成することもできます。
 
-![Continue &#x6587;](../.gitbook/assets/continue_statement.png)
+![Continue &#x6587;](../assets/continue_statement.png)
 
 `continue` 文の後に文ラベルが続く場合、そのラベルで指定されたループの現在のイテレーションを終了します。
 
@@ -281,7 +281,7 @@ case .suppressed:
 
 `for` 文では、increment 式はループの本文の実行後に評価されるため、`continue` 文の実行後も increment 式は評価されます。
 
-`continue` 文の使用方法の例については、[Continue](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#continue)と[Control Flow\(制御フロー\)](../language-guide-gaido/control-flow.md)の[Labeled Statements\(ラベル付き文\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#labeled-statements)を参照ください。
+`continue` 文の使用方法の例については、[Continue](../language-guide-gaido/control-flow#continue)と[Control Flow\(制御フロー\)](../language-guide-gaido/control-flow.md)の[Labeled Statements\(ラベル付き文\)](../language-guide-gaido/control-flow#labeled-statements)を参照ください。
 
 > GRAMMAR OF A CONTINUE STATEMENT  
 > continue-statement → `continue` [label-name](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_label-name)<sub>opt</sub>
@@ -292,7 +292,7 @@ case .suppressed:
 
 `fallthrough` 文は、ケースブロックの最後の文としてだけでなく、`switch` 文内のどこにでも表示できますが、最後のケースブロックでは使用できません。また、パターンに値バインディングのパターンが含まれているケースのブロックに制御を移すこともできません。
 
-`switch` 文で `fallthrough` 文を使用する方法の例については、[Control Flow\(制御フロー\)](../language-guide-gaido/control-flow.md)の[Control Transfer Statements\(制御転送文\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#control-flow-control-transfer-statements)を参照ください。
+`switch` 文で `fallthrough` 文を使用する方法の例については、[Control Flow\(制御フロー\)](../language-guide-gaido/control-flow.md)の[Control Transfer Statements\(制御転送文\)](../language-guide-gaido/control-flow#control-flow-control-transfer-statements)を参照ください。
 
 > GRAMMAR OF A FALLTHROUGH STATEMENT  
 > fallthrough-statement → `fallthrough`
@@ -303,12 +303,12 @@ case .suppressed:
 
 下記に示すように、`return` 文は `return` キーワードのみで構成することも、`return` キーワードとそれに続く式で構成することもできます。
 
-![Return &#x6587;](../.gitbook/assets/return_statement.png)
+![Return &#x6587;](../assets/return_statement.png)
 
 `return` 文の後に式が続く場合、式の値は呼び出し元の関数またはメソッドに返されます。式の値が関数またはメソッドで宣言された戻り値の型と一致しない場合、式の値は、呼び出し元の関数またはメソッドに返される前に戻り値の型に変換されます。
 
 > NOTE  
-> [Failable Initializers\(失敗可能イニシャライザ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#initialization-failable-initializers)で説明されているように、失敗可能なニシャライザで特別な形式の `return` 文\(`return nil`\)を使用して、イニシャライザの失敗を示すことができます。
+> [Failable Initializers\(失敗可能イニシャライザ\)](../language-guide-gaido/initialization#initialization-failable-initializers)で説明されているように、失敗可能なニシャライザで特別な形式の `return` 文\(`return nil`\)を使用して、イニシャライザの失敗を示すことができます。
 
 `return` 文の後に式がない場合は、値を返さない関数またはメソッド\(つまり、関数またはメソッドの戻り値の型が `Void` または `()` の場合\)のみで使用できます
 
@@ -323,11 +323,11 @@ case .suppressed:
 
 下記に示すように、`throw` 文は、`throw` キーワードとそれに続く式で構成されます。
 
-![Throw &#x6587;](../.gitbook/assets/throw_statement.png)
+![Throw &#x6587;](../assets/throw_statement.png)
 
 _expression_ の値は、`Error` プロトコルに準拠する型でなければなりません。
 
-`throw` 文の使用方法の例については、[Error Handling\(エラーハンドリング\)](../language-guide-gaido/error-handling.md)の[Propagating Errors Using Throwing Functions\(スロー関数を使用したエラーの伝播\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/error-handling#propagating-errors-using-throwing-functions)を参照ください。
+`throw` 文の使用方法の例については、[Error Handling\(エラーハンドリング\)](../language-guide-gaido/error-handling.md)の[Propagating Errors Using Throwing Functions\(スロー関数を使用したエラーの伝播\)](../language-guide-gaido/error-handling#propagating-errors-using-throwing-functions)を参照ください。
 
 > GRAMMAR OF A THROW STATEMENT  
 > throw-statement → `throw` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
@@ -338,7 +338,7 @@ _expression_ の値は、`Error` プロトコルに準拠する型でなけれ�
 
 `defer` 文の形式は次のとおりです:
 
-![Defer &#x6587;](../.gitbook/assets/defer_statement.png)
+![Defer &#x6587;](../assets/defer_statement.png)
 
 `defer` 文内の文は、プログラム制御がどのように転送されても実行されます。つまり、`defer` 文を使用して、例えば、ファイル記述子を閉じるなどの手動のリソース管理や、エラーがスローされた場合でも実行する必要のあるアクションを実行できます。
 
@@ -369,7 +369,7 @@ Swift の `do` 文は、コードブロックを区切るために使用され�
 
 `do` 文の形式は次のとおりです:
 
-![Do &#x6587;](../.gitbook/assets/do_catch_statement.png)
+![Do &#x6587;](../assets/do_catch_statement.png)
 
 `do` ブロック内のいずれかの文がエラーをスローした場合、プログラム制御は、パターンがエラーに一致する最初の `catch` 句に移ります。どの句も一致しない場合、エラーは周囲のスコープに伝播します。エラーがトップレベルでも処理されない場合、プログラムの実行は実行時エラーで停止します。
 
@@ -403,7 +403,7 @@ Swift の `do` 文は、コードブロックを区切るために使用され�
 
 全ての条件付きコンパイルブロックは、`＃if` コンパイルディレクティブで始まり、`＃endif` コンパイルディレクティブで終わります。単純な条件付きコンパイルブロックの形式は次のとおりです。
 
-![if&#x6761;&#x4EF6;&#x4ED8;&#x304D;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x30D6;&#x30ED;&#x30C3;&#x30AF;](../.gitbook/assets/if_compiler_statement.png)
+![if&#x6761;&#x4EF6;&#x4ED8;&#x304D;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x30D6;&#x30ED;&#x30C3;&#x30AF;](../assets/if_compiler_statement.png)
 
 `if` 文の条件とは異なり、_コンパイル条件_はコンパイル時に評価されます。その結果、_statements_ は、コンパイル時にコンパイル条件が `true` と評価された場合にのみ、コンパイルおよび実行されます。
 
@@ -446,7 +446,7 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 `if` 文と同様に、複数の条件分岐を追加して、様々なコンパイル条件を検証できます。`#elseif` 句を使用して、分岐をいくつでも追加できます。`#else` 句を使用して、最後の分岐を追加することもできます。複数のブランチを含む条件付きコンパイルブロックの形式は次のとおりです:
 
-![ifelse&#x6761;&#x4EF6;&#x4ED8;&#x304D;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x30D6;&#x30ED;&#x30C3;&#x30AF;](../.gitbook/assets/if_elseif_compiler_statement.png)
+![ifelse&#x6761;&#x4EF6;&#x4ED8;&#x304D;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x30D6;&#x30ED;&#x30C3;&#x30AF;](../assets/if_elseif_compiler_statement.png)
 
 > NOTE  
 > 条件付きコンパイルブロックの本文にある各文は、コンパイルされない場合でも解析されます。ただし、コンパイル条件に `swift()` または `compiler()` プラットフォーム条件が含まれている場合は例外です。言語またはコンパイラのバージョンがプラットフォーム条件で指定されているものと一致する場合にのみ解析されます。この例外により、古いコンパイラが新しいバージョンの Swift で導入された構文を解析しないことが保証されます。
@@ -487,9 +487,9 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 行制御文の形式は次のとおりです:
 
-![sourceLocation&#x5236;&#x5FA1;&#x6587;](../.gitbook/assets/sourceLocation_compiler_statement.png)
+![sourceLocation&#x5236;&#x5FA1;&#x6587;](../assets/sourceLocation_compiler_statement.png)
 
-最初の形式は、行制御文に続くコード行から、`＃line`、`＃file`、`＃fileID`、および `#filePath` リテラル式の値を変更します。_line number_ は `#line` の値を変更し、0 より大きい任意の整数リテラルです。_file path_ は、`＃file`、`＃fileID`、および `#filePath` の値を変更する文字列リテラルです。指定された文字列が `#filePath` の値になり、文字列の最後のパスコンポーネントが `#fileID` の値として使用されます。`＃file`、`＃fileID`、および `#filePath` については、[Literal Expression\(リテラル式\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/expressions#literal-expression)を参照ください。
+最初の形式は、行制御文に続くコード行から、`＃line`、`＃file`、`＃fileID`、および `#filePath` リテラル式の値を変更します。_line number_ は `#line` の値を変更し、0 より大きい任意の整数リテラルです。_file path_ は、`＃file`、`＃fileID`、および `#filePath` の値を変更する文字列リテラルです。指定された文字列が `#filePath` の値になり、文字列の最後のパスコンポーネントが `#fileID` の値として使用されます。`＃file`、`＃fileID`、および `#filePath` については、[Literal Expression\(リテラル式\)](../language-reference/expressions#literal-expression)を参照ください。
 
 2 番目の形式の `#sourceLocation()` は、ソースコードの場所をデフォルトの行番号とファイルパスにリセットします。
 
@@ -503,7 +503,7 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 コンパイル時診断文により、コンパイラはコンパイル中にエラーまたは警告を発行します。コンパイル時診断文の形式は次のとおりです:
 
-![&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x6642;&#x8A3A;&#x65AD;&#x6587;](../.gitbook/assets/error_warning_compiler_statement.png)
+![&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x6642;&#x8A3A;&#x65AD;&#x6587;](../assets/error_warning_compiler_statement.png)
 
 最初の形式は、致命的なエラーとして _error message_ を出力し、コンパイルプロセスを終了します。2 番目の形式は、致命的ではない警告として _warning message_ を出力し、コンパイルを続行できるようにします。診断メッセージは静的文字列リテラルとして記述します。静的文字列リテラルは、文字列補間や文字列連結などの機能を使用できませんが、複数行の文字列リテラル構文を使用できます。
 
@@ -518,7 +518,7 @@ _availability 条件_は、`if`、`while`、および `guard` 文の条件とし
 
 availability 条件の形式は次のとおりです:
 
-![availability &#x6761;&#x4EF6;](../.gitbook/assets/05_availabilitycondition.png)
+![availability &#x6761;&#x4EF6;](../assets/05_availabilitycondition.png)
 
 使用する API が実行時に使用可能かどうかに応じて、Availability 条件を使用してコードのブロックを実行します。コンパイラは、そのコード・ブロック内の API が使用可能かどうかを確認するときに、Availability 条件からの情報を使用します。
 

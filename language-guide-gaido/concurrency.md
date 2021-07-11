@@ -178,7 +178,7 @@ Swift の同時並行処理は協調キャンセルモデル\(_cooperative cance
 
 ## アクター\(Actors\)
 
-クラスのように、アクター\(_actors_\)は参照型なので、[Classes Are Reference Types\(クラスは参照型\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#classes-are-reference-types)の中の値型と参照型の比較はアクターにも当てはまります。しかし、クラスとは異なり、アクターの可変状態\(_mutable state_\)にアクセスできるのは一度に 1 つのタスクだけです。これにより、複数のタスクが、同じアクターのインスタンスとやり取りする必要があるコードでも、安全にアクセスできるようになります。例えば、下記は気温を記録するアクターです:
+クラスのように、アクター\(_actors_\)は参照型なので、[Classes Are Reference Types\(クラスは参照型\)](../language-guide-gaido/structures-and-classes#classes-are-reference-types)の中の値型と参照型の比較はアクターにも当てはまります。しかし、クラスとは異なり、アクターの可変状態\(_mutable state_\)にアクセスできるのは一度に 1 つのタスクだけです。これにより、複数のタスクが、同じアクターのインスタンスとやり取りする必要があるコードでも、安全にアクセスできるようになります。例えば、下記は気温を記録するアクターです:
 
 ```swift
 actor TemperatureLogger {

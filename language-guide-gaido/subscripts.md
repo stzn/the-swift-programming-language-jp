@@ -65,7 +65,7 @@ numberOfLegs["bird"] = 2
 
 上記の例では、`numberOfLegs` という変数を定義し、3 つのキーとバリューのペアを含む辞書リテラルで初期化します。`numberOfLegs` 辞書の型は `[String: Int]` だと推論されます。この例では、辞書を作成した後、subscript の割り当てを使用して、`"bird"` という `String` キーと 2 という `Int` のバリューを辞書に追加します。
 
-`Dictionary` の subscript の詳細については、[Accessing and Modifying a Dictionary\(辞書へのアクセスと変更\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/collection-types#accessing-and-modifying-a-dictionary)を参照ください。
+`Dictionary` の subscript の詳細については、[Accessing and Modifying a Dictionary\(辞書へのアクセスと変更\)](../language-guide-gaido/collection-types#accessing-and-modifying-a-dictionary)を参照ください。
 
 > NOTE  
 > Swift の `Dictionary` 型は、オプショナルの型を受け取って返す subscript としてキーバリューの subscript を実装します。上記の `numberOfLegs` 辞書の場合、キーとバリューの subscript は `Int?` または オプショナル Int 型の値を受け取って返します。`Dictionary` 型は、 オプショナルの subscript の型を使用して、全てのキーにバリューがあるわけではないということをモデル化し、そのキーに `nil` 値を割り当てることによってキーに対応したバリューを削除する方法を提供します。
@@ -74,7 +74,7 @@ numberOfLegs["bird"] = 2
 
 subscript は、任意の数の入力パラメータを受け取ることができ、これらの入力パラメータは任意の型にすることができます。subscript は、任意の型の値を返すこともできます。
 
-関数と同様に、subscript は様々な数のパラメータを受け取り、パラメータのデフォルト値を提供できます。これについては、[Variadic Parameters\(可変長パラメータ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#variadic-parameters)と[Default Parameter Values\(デフォルトパラメータ値\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#default-parameter-values)で説明しています。ただし、関数とは異なり、subscript は `inout` パラメータを使用できません。
+関数と同様に、subscript は様々な数のパラメータを受け取り、パラメータのデフォルト値を提供できます。これについては、[Variadic Parameters\(可変長パラメータ\)](../language-guide-gaido/functions#variadic-parameters)と[Default Parameter Values\(デフォルトパラメータ値\)](../language-guide-gaido/functions#default-parameter-values)で説明しています。ただし、関数とは異なり、subscript は `inout` パラメータを使用できません。
 
 クラスまたは構造体は、必要なだけ subscript の実装を提供でき、使用される適切な subscript は、subscript が使用される時点で subscript のブラケット\(`[]`\)内に含まれる値の型に基づいて推論されます。この複数の subscript の定義は、subscript のオーバーロードとして知られています。
 
@@ -105,7 +105,7 @@ struct Matrix {
 }
 ```
 
-`Matrix` は、`rows` と `columns` と呼ばれる 2 つのパラメータを受け取るイニシャライザを提供し、`Double` 型の `rows` \* `columns` の値を格納するのに十分な大きさの配列を作成します。マトリックス内の各位置には、`0.0` の初期値が与えられます。これを実現するために、配列のサイズと初期セル値 `0.0` が、正しいサイズの新しい配列を作成して初期化するイニシャライザに渡されます。このイニシャライザについては、[Creating an Array with a Default Value\(デフォルト値を使った配列の作成\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/collection-types#creating-an-array-with-a-default-value)で詳しく説明しています。
+`Matrix` は、`rows` と `columns` と呼ばれる 2 つのパラメータを受け取るイニシャライザを提供し、`Double` 型の `rows` \* `columns` の値を格納するのに十分な大きさの配列を作成します。マトリックス内の各位置には、`0.0` の初期値が与えられます。これを実現するために、配列のサイズと初期セル値 `0.0` が、正しいサイズの新しい配列を作成して初期化するイニシャライザに渡されます。このイニシャライザについては、[Creating an Array with a Default Value\(デフォルト値を使った配列の作成\)](../language-guide-gaido/collection-types#creating-an-array-with-a-default-value)で詳しく説明しています。
 
 適切な `rows` 数と `columns` 数をイニシャライザに渡すことで、新しい `Matrix` インスタンスを構築できます:
 
@@ -115,7 +115,7 @@ var matrix = Matrix(rows: 2, columns: 2)
 
 上記の例では、2 行 2 列の新しい `Matrix` インスタンスを作成します。この `Matrix` インスタンスの `grid` 配列は、左上から右下に読み取られるように、事実上、フラット化されたバージョンのマトリックスです:
 
-![&#x30D5;&#x30E9;&#x30C3;&#x30C8;&#x5316;&#x3055;&#x308C;&#x305F;&#x30DE;&#x30C8;&#x30EA;&#x30C3;&#x30AF;&#x30B9;](../.gitbook/assets/subscriptMatrix01_2x.png)
+![&#x30D5;&#x30E9;&#x30C3;&#x30C8;&#x5316;&#x3055;&#x308C;&#x305F;&#x30DE;&#x30C8;&#x30EA;&#x30C3;&#x30AF;&#x30B9;](../assets/subscriptMatrix01_2x.png)
 
 行列の値は、行と列の値をカンマで区切って subscript に渡すことで設定できます。
 
@@ -126,7 +126,7 @@ matrix[1, 0] = 3.2
 
 これらの 2 つの文は、subscript の set を呼び出して、行列の右上の位置\(`row` は 0、`column` は 1\) に 1.5 の値を設定し、左下の位置 \(`row` は `1`、`column` は `0`\) に `3.2` の値を設定します。
 
-![&#x884C;&#x5217;&#x306E;&#x53F3;&#x4E0A;&#x3068;&#x5DE6;&#x4E0B;&#x306E;&#x4F4D;&#x7F6E;&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;](../.gitbook/assets/subscriptMatrix02_2x.png)
+![&#x884C;&#x5217;&#x306E;&#x53F3;&#x4E0A;&#x3068;&#x5DE6;&#x4E0B;&#x306E;&#x4F4D;&#x7F6E;&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;](../assets/subscriptMatrix02_2x.png)
 
 `Matrix` subscript の get/set には、subscript の `row` と `column` の値が有効だということを確認するためのアサーションが含まれています。これらのアサーションを支援するために、`Matrix` には `indexIsValid(row:column:)` という便利なメソッドが含まれています。これは、要求された `row` と `column` が行列の境界内にあるかどうかをチェックします:
 

@@ -134,11 +134,11 @@ Swift の列挙型を定義して、任意の型を関連値に格納できま�
 
 例えば、在庫追跡システムが 2 つの異なる型のバーコードで製品を追跡する必要があるとします。一部の製品には、`0〜9` の数字を使用する UPC 形式の 1D バーコードでラベルが付けられています。各バーコードには番号システムの数字があり、その後に 5 つのメーカーコード数字と 5 つの製品コード数字が続きます。これらの後にチェックディジットが続き、コードが正しくスキャンされたことを確認します。
 
-![UPC&#x5F62;&#x5F0F;&#x306E;1D&#x30D0;&#x30FC;&#x30B3;&#x30FC;&#x30C9;](../.gitbook/assets/barcode_UPC_2x.png)
+![UPC&#x5F62;&#x5F0F;&#x306E;1D&#x30D0;&#x30FC;&#x30B3;&#x30FC;&#x30C9;](../assets/barcode_UPC_2x.png)
 
 その他の製品は、QR コード形式の 2D バーコードでラベル付けされています。これは、ISO 8859-1 文字を使用でき、最大 2,953 文字の文字列をエンコードできます。
 
-![QR&#x5F62;&#x5F0F;&#x306E;2D&#x30D0;&#x30FC;&#x30B3;&#x30FC;&#x30C9;](../.gitbook/assets/barcode_QR_2x.png)
+![QR&#x5F62;&#x5F0F;&#x306E;2D&#x30D0;&#x30FC;&#x30B3;&#x30FC;&#x30C9;](../assets/barcode_QR_2x.png)
 
 在庫追跡システムでは、UPC バーコードを 4 つの整数のタプルとして保存し、QR コードバーコードを任意の長さの文字列として保存すると便利です。
 
@@ -173,7 +173,7 @@ productBarcode = .qrCode("ABCDEFGHIJKLMNOP")
 
 この時点で、元の `Barcode.upc` とその整数値は、新しい `Barcode.qrCode` とその文字列値に置き換えられます。`Barcode` の定数と変数は、`.upc` または `.qrCode` のいずれかを\(関連値とともに\)格納できますが、一度に格納できるのはそのうちの 1 つだけです。
 
-[Matching Enumeration Values with a Switch Statement\(switch 文を使った列挙値のパターンマッチング\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#matching-enumeration-values-with-a-switch-statement)の例と同様に、`switch` 文を使用して様々なバーコード型を確認できます。ただし、今回は、関連値が `switch` 文の一部として抽出されます。`switch` のケースの本文内で使用するために、関連値を定数\(`let` プレフィックス\)または変数\(`var` プレフィックス\)として抽出します。
+[Matching Enumeration Values with a Switch Statement\(switch 文を使った列挙値のパターンマッチング\)](../language-guide-gaido/enumerations#matching-enumeration-values-with-a-switch-statement)の例と同様に、`switch` 文を使用して様々なバーコード型を確認できます。ただし、今回は、関連値が `switch` 文の一部として抽出されます。`switch` のケースの本文内で使用するために、関連値を定数\(`let` プレフィックス\)または変数\(`var` プレフィックス\)として抽出します。
 
 ```swift
 switch productBarcode {
@@ -270,7 +270,7 @@ let possiblePlanet = Planet(rawValue: 7)
 ただし、全ての `Int` 値が惑星に一致するわけではありません。このため、Raw Value のイニシャライザは常にオプショナルの列挙型を返します。上記の例では、`possiblePlanet` は Planet?`または オプショナルの`Planet\`型です。
 
 > NOTE  
-> 全ての Raw Value が列挙型を返すわけではないため、Raw Valueイニシャライザは `nil` を返す可能性があります。詳細については、[Failable Initializers\(失敗可能イニシャライザ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#declarations-failable-initializers)を参照ください。
+> 全ての Raw Value が列挙型を返すわけではないため、Raw Valueイニシャライザは `nil` を返す可能性があります。詳細については、[Failable Initializers\(失敗可能イニシャライザ\)](../language-reference/declarations#declarations-failable-initializers)を参照ください。
 
 位置が `11` の惑星を見つけようとすると、Raw Value のイニシャライザによって返されるオプショナルの `Planet` は `nil` になります。
 

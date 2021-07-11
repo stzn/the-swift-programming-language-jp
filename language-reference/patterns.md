@@ -102,7 +102,7 @@ let (a): Int = 2 // a: Int = 2
 
 列挙型ケースパターンは、既存の列挙型のケースと一致します。列挙型ケースパターンは、`switch` 文のケースラベル、および `if`、`guard`、および `for-in` 文の条件で使用できます。
 
-一致させようとしている列挙ケースに関連値がある場合、対応する列挙型ケースパターンは、関連値に対して 1 つの要素を含むタプルパターンを指定する必要があります。関連値を含む列挙ケースを一致させるために `switch` 文を使用する例については、[Associated Values\(関連値\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#associated-values)を参照ください。
+一致させようとしている列挙ケースに関連値がある場合、対応する列挙型ケースパターンは、関連値に対して 1 つの要素を含むタプルパターンを指定する必要があります。関連値を含む列挙ケースを一致させるために `switch` 文を使用する例については、[Associated Values\(関連値\)](../language-guide-gaido/enumerations#associated-values)を参照ください。
 
 列挙型ケースパターンは、オプショナルでラップされたケースの値にも一致します。この単純化された構文を使用すると、オプショナルのパターンを省略できます。なお、`Optional` は列挙型として実装されているため、`.none`、`.some` は、列挙型のケースと同じ switch の中で使用できます。
 
@@ -162,13 +162,13 @@ for case let number? in arrayOfOptionalInts {
 
 2 つのタイプの_型キャストパターン_、`is` パターンと `as` パターンがあります。`is` パターンは `switch` 文のケースラベルにのみ使用できます。`is` と `as` パターンの形式は次のとおりです。
 
-![&#x578B;&#x30AD;&#x30E3;&#x30B9;&#x30C8;&#x30D1;&#x30BF;&#x30FC;&#x30F3;](../.gitbook/assets/type-casting_patterns.png)
+![&#x578B;&#x30AD;&#x30E3;&#x30B9;&#x30C8;&#x30D1;&#x30BF;&#x30FC;&#x30F3;](../assets/type-casting_patterns.png)
 
 `is` パターンは、実行時の値の型が、`is` パターンの右側で指定された型、またはその型のサブクラスと同じ型の場合に、値と一致します。`is` パターンは、両方とも型キャストを実行しますが、返された型を破棄するという点で、`is` 演算子のように動作します。
 
 `as` パターンは、実行時の値の種類が、`as` パターンの右側に指定された型、またはその型のサブクラスと同じ型の場合に、値と一致します。一致した場合、値の種類は、`as` パターンの右側に指定された _pattern_ にキャストされます。
 
-`switch` 文を使用して `is` パターンを一致させる例については、[Type Casting for Any and AnyObject\(Any および AnyObject の型キャスト\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/type-casting#type-casting-for-any-and-anyobject)を参照ください。
+`switch` 文を使用して `is` パターンを一致させる例については、[Type Casting for Any and AnyObject\(Any および AnyObject の型キャスト\)](../language-guide-gaido/type-casting#type-casting-for-any-and-anyobject)を参照ください。
 
 > GRAMMAR OF A TYPE CASTING PATTERN  
 > type-casting-pattern → [is-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_is-pattern) \| [as-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_as-pattern)  

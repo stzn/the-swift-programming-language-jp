@@ -4,7 +4,7 @@
 
 ## オンラインドキュメント
 
-[The Swift Programming Language\(日本語版\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/)
+[The Swift Programming Language\(日本語版\)](../)
 
 [Gitbook](https://www.gitbook.com)を使用しています。
 

@@ -87,7 +87,7 @@ reference3 = nil
 
 ただし、クラスインスタンスの強参照がゼロにならないコードを書いてしまう可能性があります。これは、2 つのクラスインスタンスが互いに強参照を保持している場合に発生する可能性があります。これは、_強参照循環_と呼ばれています。
 
-クラス間の関係の一部を強参照ではなく、弱参照または非所有参照として定義することにより、強参照循環を解決できます。このプロセスは、[Resolving Strong Reference Cycles Between Class Instances\(クラスインスタンス間の強参照循環の解消\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/automatic-reference-counting#resolving-strong-reference-cycles-between-class-instances)で説明されています。ただし、強参照循環を解決する方法を学ぶ前に、そのような循環がどのように発生するかを理解しておくと役に立ちます。
+クラス間の関係の一部を強参照ではなく、弱参照または非所有参照として定義することにより、強参照循環を解決できます。このプロセスは、[Resolving Strong Reference Cycles Between Class Instances\(クラスインスタンス間の強参照循環の解消\)](../language-guide-gaido/automatic-reference-counting#resolving-strong-reference-cycles-between-class-instances)で説明されています。ただし、強参照循環を解決する方法を学ぶ前に、そのような循環がどのように発生するかを理解しておくと役に立ちます。
 
 強参照循環が偶発的に発生する例を次に示します。この例では、`Person` と `Apartment` という 2 つのクラスを定義しており、アパートのブロックとその住人をモデル化しています。
 
@@ -129,7 +129,7 @@ unit4A = Apartment(unit: "4A")
 
 これら 2 つのインスタンスを作成して割り当てた後、強参照がどのように見えるかを次に示します。`john` 変数には新しい `Person` インスタンスへの強参照があり、`unit4A` 変数には新しい `Apartment` インスタンスへの強参照があります:
 
-![&#x5FAA;&#x74B0;&#x53C2;&#x7167; &#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3078;&#x306E;&#x5F37;&#x53C2;&#x7167;](../.gitbook/assets/referenceCycle01_2x.png)
+![&#x5FAA;&#x74B0;&#x53C2;&#x7167; &#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3078;&#x306E;&#x5F37;&#x53C2;&#x7167;](../assets/referenceCycle01_2x.png)
 
 2 つのインスタンスをリンクして、その人にアパートを持たせ、そのアパートにテナントがあるようにすることができます。感嘆符\(`!`\)は、オプショナルの `john` および `unit4A` 変数内に格納されているインスタンスをアンラップしてアクセスするために使用され、これらのインスタンスプロパティに値を設定できます:
 
@@ -140,7 +140,7 @@ unit4A!.tenant = john
 
 2 つのインスタンスをリンクした後、強参照がどのように見えるかを次に示します。
 
-![&#x5FAA;&#x74B0;&#x53C2;&#x7167; 2 &#x3064;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x30EA;&#x30F3;&#x30AF;&#x3057;&#x305F;&#x5F8C;&#x306E;&#x5F37;&#x53C2;&#x7167;](../.gitbook/assets/referenceCycle02_2x.png)
+![&#x5FAA;&#x74B0;&#x53C2;&#x7167; 2 &#x3064;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x30EA;&#x30F3;&#x30AF;&#x3057;&#x305F;&#x5F8C;&#x306E;&#x5F37;&#x53C2;&#x7167;](../assets/referenceCycle02_2x.png)
 
 残念ながら、これら 2 つのインスタンスをリンクすると、それらの間に強参照循環ができます。`Person` インスタンスは `Apartment` インスタンスへの強参照を持ち、`Apartment` インスタンスは `Person` インスタンスへの強参照を持つようになりました。したがって、`john` 変数と `unit4A` 変数で保持されている強参照を解除しても、参照カウントはゼロにはならず、インスタンスは ARC によって割り当て解除されません。
 
@@ -153,7 +153,7 @@ unit4A = nil
 
 `john` 変数と `unit4A` 変数を `nil` に設定した後、強参照がどのように見えるかを次に示します。
 
-![&#x5FAA;&#x74B0;&#x53C2;&#x7167; nil &#x8A2D;&#x5B9A;&#x5F8C;&#x306E;&#x5F37;&#x53C2;&#x7167;](../.gitbook/assets/referenceCycle03_2x.png)
+![&#x5FAA;&#x74B0;&#x53C2;&#x7167; nil &#x8A2D;&#x5B9A;&#x5F8C;&#x306E;&#x5F37;&#x53C2;&#x7167;](../assets/referenceCycle03_2x.png)
 
 `Person` インスタンスと `Apartment` インスタンス間の強参照は残り、なくなることはありません。
 
@@ -209,7 +209,7 @@ unit4A!.tenant = john
 
 2 つのインスタンスをリンクしたので、参照は次のようになります:
 
-![&#x5F31;&#x53C2;&#x7167; 2 &#x3064;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x30EA;&#x30F3;&#x30AF;](../.gitbook/assets/weakReference01_2x.png)
+![&#x5F31;&#x53C2;&#x7167; 2 &#x3064;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x30EA;&#x30F3;&#x30AF;](../assets/weakReference01_2x.png)
 
 `Person` インスタンスは依然として `Apartment` インスタンスへの強参照を持っていますが、`Apartment` インスタンスは `Person` インスタンスへの弱参照を持っています。これは、`john` 変数を `nil` に設定してその強参照を解除すると、`Person` インスタンスへの強参照がなくなることを意味します。
 
@@ -220,7 +220,7 @@ john = nil
 
 `Person` インスタンスへの強参照がなくなったため、割り当てが解除され、`tenant` プロパティが `nil` に設定されます:
 
-![&#x5F31;&#x53C2;&#x7167; &#x5272;&#x308A;&#x5F53;&#x3066;&#x306E;&#x89E3;&#x9664;](../.gitbook/assets/weakReference02_2x.png)
+![&#x5F31;&#x53C2;&#x7167; &#x5272;&#x308A;&#x5F53;&#x3066;&#x306E;&#x89E3;&#x9664;](../assets/weakReference02_2x.png)
 
 `Apartment` インスタンスへの唯一の強参照は、`unit4A` 変数です。その強参照がなくなると、`Apartment` インスタンスへの強参照はなくなります。
 
@@ -231,7 +231,7 @@ unit4A = nil
 
 `Apartment` インスタンスへの強参照がなくなったため、この割り当ても解除されます:
 
-![&#x5F31;&#x53C2;&#x7167; Apartment &#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x5272;&#x308A;&#x5F53;&#x3066;&#x89E3;&#x9664;](../.gitbook/assets/weakReference03_2x.png)
+![&#x5F31;&#x53C2;&#x7167; Apartment &#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x306E;&#x5272;&#x308A;&#x5F53;&#x3066;&#x89E3;&#x9664;](../assets/weakReference03_2x.png)
 
 > NOTE  
 > ガベージコレクションを使用するシステムでは、メモリプレッシャによってガベージコレクションがトリガされた場合にのみ、 強参照を持たないオブジェクトの割り当てが解除されるため、シンプルなキャッシュメカニズムを実装するために弱いポインタが使用されることがあります。ただし、ARC では、最後の強参照が削除されるとすぐに値の割り当てが解除されるため、弱参照はそのような目的には適していません。
@@ -290,13 +290,13 @@ john!.card = CreditCard(number: 1234_5678_9012_3456, customer: john!)
 
 2 つのインスタンスをリンクしたので、参照は次のようになります:
 
-![&#x975E;&#x6240;&#x6709;&#x53C2;&#x7167; 2 &#x3064;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x30EA;&#x30F3;&#x30AF;](../.gitbook/assets/unownedReference01_2x.png)
+![&#x975E;&#x6240;&#x6709;&#x53C2;&#x7167; 2 &#x3064;&#x306E;&#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3092;&#x30EA;&#x30F3;&#x30AF;](../assets/unownedReference01_2x.png)
 
 `Customer` インスタンスには、`CreditCard` インスタンスへの強参照があり、`CreditCard` インスタンスには、`Customer` インスタンスへの非所有参照があります。
 
 `customer` は非所有参照のため、`john` 変数によって保持されている強参照を解除すると、`Customer` インスタンスへの強参照はなくなります:
 
-![&#x975E;&#x6240;&#x6709;&#x53C2;&#x7167; \`Customer\` &#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3078;&#x306E;&#x5F37;&#x53C2;&#x7167;&#x306E;&#x89E3;&#x9664;](../.gitbook/assets/unownedReference02_2x.png)
+![&#x975E;&#x6240;&#x6709;&#x53C2;&#x7167; \`Customer\` &#x30A4;&#x30F3;&#x30B9;&#x30BF;&#x30F3;&#x30B9;&#x3078;&#x306E;&#x5F37;&#x53C2;&#x7167;&#x306E;&#x89E3;&#x9664;](../assets/unownedReference02_2x.png)
 
 `Customer` インスタンスへの強参照がなくなったため、割り当てが解除されます。これが発生すると、`CreditCard` インスタンスへの強参照もなくなり、割り当ても解除されます。
 
@@ -359,7 +359,7 @@ department.courses = [intro, intermediate, advanced]
 
 上記のコードは、学科とその 3 つのコースを作成します。入門コースと中級コースの両方には、`nextCourse` プロパティに次のコースの提案があり、このコースを完了した後に学生が受講する必要があるコースへのオプショナルの非所有参照が保持されます。
 
-![&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30CA;&#x30EB;&#x5024;&#x3078;&#x306E;&#x975E;&#x6240;&#x6709;&#x53C2;&#x7167; &#x53C2;&#x7167;&#x306E;&#x4FDD;&#x6301;](../.gitbook/assets/unownedOptionalReference_2x.png)
+![&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30CA;&#x30EB;&#x5024;&#x3078;&#x306E;&#x975E;&#x6240;&#x6709;&#x53C2;&#x7167; &#x53C2;&#x7167;&#x306E;&#x4FDD;&#x6301;](../assets/unownedOptionalReference_2x.png)
 
 オプショナル値への非所有参照は、ラップするクラスのインスタンスを強く保持しないため、ARC によるインスタンスの割り当て解除を妨げません。これは、オプショナル値への非所有参照が `nil` にできることを除いて、ARC での非所有参照と同じように動作します。
 
@@ -406,9 +406,9 @@ class City {
 
 2 つのクラス間の相互依存関係を設定するために、`City` のイニシャライザは `Country` インスタンスを取得し、このインスタンスを `country` プロパティに格納します。
 
-`City` のイニシャライザは、`Country` のイニシャライザ内から呼び出されます。ただし、[Two-Phase Initialization\(2 段階の初期化\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#two-phase-initialization)で説明されているように、新しい `Country` インスタンスが完全に初期化されるまで、`Country` のイニシャライザは `self` を `City` イニシャライザに渡すことはできません。
+`City` のイニシャライザは、`Country` のイニシャライザ内から呼び出されます。ただし、[Two-Phase Initialization\(2 段階の初期化\)](../language-guide-gaido/initialization#two-phase-initialization)で説明されているように、新しい `Country` インスタンスが完全に初期化されるまで、`Country` のイニシャライザは `self` を `City` イニシャライザに渡すことはできません。
 
-この要件に対処するには、`Country` の `capitalCity` プロパティを、型注釈の最後に感嘆符で示される、暗黙アンラップオプショナルプロパティ\(`City!`\)として宣言しています。これは、他のオプショナルと同様に、`capitalCity` プロパティのデフォルト値は `nil` ですが、[Implicitly Unwrapped Optionals\(暗黙アンラップオプショナル\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#implicitly-unwrapped-optionals)で説明されているように、その値をアンラップする必要なくアクセスできることを意味します。
+この要件に対処するには、`Country` の `capitalCity` プロパティを、型注釈の最後に感嘆符で示される、暗黙アンラップオプショナルプロパティ\(`City!`\)として宣言しています。これは、他のオプショナルと同様に、`capitalCity` プロパティのデフォルト値は `nil` ですが、[Implicitly Unwrapped Optionals\(暗黙アンラップオプショナル\)](../language-guide-gaido/the-basics#implicitly-unwrapped-optionals)で説明されているように、その値をアンラップする必要なくアクセスできることを意味します。
 
 `capitalCity` にはデフォルトの `nil` 値があるため、新しい `Country` インスタンスは、イニシャライザ内で `name` プロパティを設定するとすぐに完全に初期化されたと見なされます。これは、`name` プロパティが設定されるとすぐに、`Country` イニシャライザが暗黙の `self` プロパティの参照の受け渡しを開始できることを意味します。そして、`Country` イニシャライザが自身の `capitalCity` プロパティを設定するときに、`self` を `City` イニシャライザのパラメータの 1 つとして渡すことができます。
 
@@ -498,9 +498,9 @@ print(paragraph!.asHTML())
 
 残念ながら、上記の `HTMLElement` クラスは、`HTMLElement` インスタンスと、デフォルトの `asHTML` 値に使用されるクロージャとの間に強参照循環を作成します。循環は次のようになります:
 
-![&#x30AF;&#x30ED;&#x30FC;&#x30B8;&#x30E3;&#x306E;&#x5FAA;&#x74B0;&#x53C2;&#x7167; &#x5F37;&#x53C2;&#x7167;&#x5FAA;&#x74B0;](../.gitbook/assets/closureReferenceCycle01_2x.png)
+![&#x30AF;&#x30ED;&#x30FC;&#x30B8;&#x30E3;&#x306E;&#x5FAA;&#x74B0;&#x53C2;&#x7167; &#x5F37;&#x53C2;&#x7167;&#x5FAA;&#x74B0;](../assets/closureReferenceCycle01_2x.png)
 
-インスタンスの `asHTML` プロパティは、そのクロージャへの強参照を保持します。ただし、クロージャは\(`self.name` および `self.text` を参照する方法として\)本文内の `self` を参照するため、クロージャは `self` をキャプチャします。つまり、クロージャは `HTMLElement` インスタンスへの強参照を保持します。2 つの間に強参照循環が作成されます。\(クロージャでの値のキャプチャの詳細については、[Capturing Values\(値のキャプチャ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#capturing-values)を参照してください\)
+インスタンスの `asHTML` プロパティは、そのクロージャへの強参照を保持します。ただし、クロージャは\(`self.name` および `self.text` を参照する方法として\)本文内の `self` を参照するため、クロージャは `self` をキャプチャします。つまり、クロージャは `HTMLElement` インスタンスへの強参照を保持します。2 つの間に強参照循環が作成されます。\(クロージャでの値のキャプチャの詳細については、[Capturing Values\(値のキャプチャ\)](../language-guide-gaido/closures#capturing-values)を参照してください\)
 
 > NOTE  
 > クロージャは `self` を複数回参照していますが、`HTMLElement` インスタンスへの強参照は 1 つだけです。
@@ -552,7 +552,7 @@ lazy var someClosure = {
 > NOTE  
 > キャプチャされた参照が `nil` にならない場合は、弱参照ではなく、常に非所有参照としてキャプチャする必要があります。
 
-非所有参照は、[Strong Reference Cycles for Closures\(クロージャの強参照循環\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/automatic-reference-counting#strong-reference-cycles-for-closures)の `HTMLElement` の例を解決するために適切なキャプチャ方法です。循環を回避するための `HTMLElement` クラスの作成方法は次のとおりです:
+非所有参照は、[Strong Reference Cycles for Closures\(クロージャの強参照循環\)](../language-guide-gaido/automatic-reference-counting#strong-reference-cycles-for-closures)の `HTMLElement` の例を解決するために適切なキャプチャ方法です。循環を回避するための `HTMLElement` クラスの作成方法は次のとおりです:
 
 ```swift
 class HTMLElement {
@@ -592,7 +592,7 @@ print(paragraph!.asHTML())
 
 キャプチャリストを配置した場合の参照は次のようになります：
 
-![&#x30AF;&#x30ED;&#x30FC;&#x30B8;&#x30E3;&#x306E;&#x5FAA;&#x74B0;&#x53C2;&#x7167; &#x30AD;&#x30E3;&#x30D7;&#x30C1;&#x30E3;&#x30EA;&#x30B9;&#x30C8;](../.gitbook/assets/closureReferenceCycle02_2x.png)
+![&#x30AF;&#x30ED;&#x30FC;&#x30B8;&#x30E3;&#x306E;&#x5FAA;&#x74B0;&#x53C2;&#x7167; &#x30AD;&#x30E3;&#x30D7;&#x30C1;&#x30E3;&#x30EA;&#x30B9;&#x30C8;](../assets/closureReferenceCycle02_2x.png)
 
 今回は、クロージャによる `self` のキャプチャは非所有参照で、キャプチャした `HTMLElement` インスタンスを強く保持しません。`paragraph` 変数からの強参照を `nil` に設定すると、`HTMLElement` インスタンスの割り当てが解除されます。これは、下記の例のデイニシャライザメッセージの出力からもわかります:
 
@@ -601,5 +601,5 @@ paragraph = nil
 // "p is being deinitialized"
 ```
 
-キャプチャリストの詳細については、[Capture Lists\(キャプチャリスト\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/expressions#capture-lists)を参照ください。
+キャプチャリストの詳細については、[Capture Lists\(キャプチャリスト\)](../language-reference/expressions#capture-lists)を参照ください。
 
