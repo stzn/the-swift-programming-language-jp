@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,7 +748,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="パターンpatterns"><a name="パターンpatterns" class="plugin-anchor" href="#パターンpatterns"><i class="fa fa-link" aria-hidden="true"></i></a>パターン(Patterns)</h1>
+                                <h1 id="パターンpatterns">パターン(Patterns)</h1>
 <p>最終更新日: 2021/7/3</p>
 <p>パターンは、単一の値または複合値の構造を表します。例えば、タプル <code>(1, 2)</code> の構造は、2 つの要素のカンマ区切りのリストです。パターンは特定の値ではなく値の構造を表すため、様々な値と一致させることができます。例えば、パターン <code>(x, y)</code> は、タプル <code>(1, 2)</code> およびその他の 2 つの要素のタプルと一致します。パターンを値と照合することに加えて、複合値の一部または全てを抽出し、各部分を定数または変数名にバインドできます。</p>
 <p>Swift には、2 つの基本的な種類のパターンがあります: 任意の種類の値に正常に一致するパターンと、実行時に指定された値に一致しない可能性のあるパターンです。</p>
@@ -761,7 +757,7 @@
 <blockquote>
 <p>GRAMMAR OF A PATTERN<br>pattern → <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_wildcard-pattern" target="_blank">wildcard-pattern</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation" target="_blank">type-annotation</a><sub>opt</sub><br>pattern → <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_identifier-pattern" target="_blank">identifier-pattern</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation" target="_blank">type-annotation</a><sub>opt</sub><br>pattern → <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_value-binding-pattern" target="_blank">value-binding-pattern</a><br>pattern → <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern" target="_blank">tuple-pattern</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation" target="_blank">type-annotation</a><sub>opt</sub><br>pattern → <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_enum-case-pattern" target="_blank">enum-case-pattern</a><br>pattern → <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_optional-pattern" target="_blank">optional-pattern</a><br>pattern → <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_type-casting-pattern" target="_blank">type-casting-pattern</a><br>pattern → <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_expression-pattern" target="_blank">expression-pattern</a></p>
 </blockquote>
-<h2 id="ワイルドカードパターンwildcard-pattern"><a name="ワイルドカードパターンwildcard-pattern" class="plugin-anchor" href="#ワイルドカードパターンwildcard-pattern"><i class="fa fa-link" aria-hidden="true"></i></a>ワイルドカードパターン(Wildcard Pattern)</h2>
+<h2 id="ワイルドカードパターンwildcard-pattern">ワイルドカードパターン(Wildcard Pattern)</h2>
 <p><em>ワイルドカードパターン</em>は、全ての値に一致して無視し、アンダースコア(<code>_</code>)で構成されます。一致する値を気にしない場合は、ワイルドカードパターンを使用します。例えば、次のコードは、ループの各反復での範囲の現在の値を無視して、閉鎖範囲 <code>1...3</code> を反復します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> <span class="token number">_</span> <span class="token keyword">in</span> <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">3</span> <span class="token punctuation">{</span>
      <span class="token comment">// 何かを 3 回行います。</span>
@@ -770,7 +766,7 @@
 <blockquote>
 <p>GRAMMAR OF A WILDCARD PATTERN<br>wildcard-pattern → <code>_</code></p>
 </blockquote>
-<h2 id="識別子パターンidentifier-pattern"><a name="識別子パターンidentifier-pattern" class="plugin-anchor" href="#識別子パターンidentifier-pattern"><i class="fa fa-link" aria-hidden="true"></i></a>識別子パターン(Identifier Pattern)</h2>
+<h2 id="識別子パターンidentifier-pattern">識別子パターン(Identifier Pattern)</h2>
 <p><em>識別子パターン</em>は任意の値と一致し、一致した値を変数名または定数名にバインドします。例えば、次の定数宣言では、<code>someValue</code> は <code>Int</code> 型の値 <code>42</code> に一致する識別子パターンです。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> someValue <span class="token operator">=</span> <span class="token number">42</span>
 </code></pre>
@@ -779,7 +775,7 @@
 <blockquote>
 <p>GRAMMAR OF AN IDENTIFIER PATTERN<br>identifier-pattern → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a></p>
 </blockquote>
-<h2 id="値バインディングパターンvalue-binding-pattern"><a name="値バインディングパターンvalue-binding-pattern" class="plugin-anchor" href="#値バインディングパターンvalue-binding-pattern"><i class="fa fa-link" aria-hidden="true"></i></a>値バインディングパターン(Value-Binding Pattern)</h2>
+<h2 id="値バインディングパターンvalue-binding-pattern">値バインディングパターン(Value-Binding Pattern)</h2>
 <p><em>値バインディングパターン</em>は、一致した値を変数名または定数名にバインドします。例えば、一致した値を定数の名前にバインドする値バインドパターンは、<code>let</code> キーワードで始まります。変数の名前にバインドするものは、<code>var</code> キーワードで始まります。</p>
 <p>値バインドパターン内の識別子パターンは、一致する値を新しい名前付き変数または定数ににバインドします。例えば、タプルの要素を分解し、各要素の値を対応する識別子パターンにバインドできます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> point <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
@@ -794,7 +790,7 @@
 <blockquote>
 <p>GRAMMAR OF A VALUE-BINDING PATTERN<br>value-binding-pattern → <code>var</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern" target="_blank">pattern</a> | <code>let</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern" target="_blank">pattern</a></p>
 </blockquote>
-<h2 id="タプルパターンtuple-pattern"><a name="タプルパターンtuple-pattern" class="plugin-anchor" href="#タプルパターンtuple-pattern"><i class="fa fa-link" aria-hidden="true"></i></a>タプルパターン(Tuple Pattern)</h2>
+<h2 id="タプルパターンtuple-pattern">タプルパターン(Tuple Pattern)</h2>
 <p><em>タプルパターン</em>は、括弧内に囲まれた 0 個以上のパターンのカンマ区切りのリストです。タプルパターンに対応するタプル型の値を一致させます。</p>
 <p>型注釈を使用して、特定の種類のタプル型を一致させるために、タプルパターンを制約することができます。例えば、タプルパターン <code>(x, y): (Int, Int)</code> は、定数宣言 <code>let (x, y): (Int, Int) = (1, 2)</code> の両方の要素が <code>Int</code> 型のタプルにのみ一致します。</p>
 <p>タプルパターンが <code>for-in</code> 文のパターンとして、変数または定数宣言のパターンとして使用される場合は、ワイルドカードパターン、識別子パターン、オプショナルパターン、またはそれらを含む他のタプルパターンのみを含めることができます。例えば、タプルパターン <code>(x, 0)</code> の要素 <code>0</code> が式パターンのため、次のコードは有効ではありません。</p>
@@ -812,9 +808,9 @@
 <blockquote>
 <p>GRAMMAR OF A TUPLE PATTERN<br>tuple-pattern → <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element-list" target="_blank">tuple-pattern-element-list</a><sub>opt</sub> <code>)</code><br>tuple-pattern-element-list → <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element" target="_blank">tuple-pattern-element</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element" target="_blank">tuple-pattern-element</a> <code>,</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element-list" target="_blank">tuple-pattern-element-list</a><br>tuple-pattern-element → <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern" target="_blank">pattern</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a> <code>:</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern" target="_blank">pattern</a></p>
 </blockquote>
-<h2 id="列挙型ケースパターンenumeration-case-pattern"><a name="列挙型ケースパターンenumeration-case-pattern" class="plugin-anchor" href="#列挙型ケースパターンenumeration-case-pattern"><i class="fa fa-link" aria-hidden="true"></i></a><a id="enumeration-case-pattern">列挙型ケースパターン(Enumeration Case Pattern)</a></h2>
+<h2 id="列挙型ケースパターンenumeration-case-pattern"><a id="enumeration-case-pattern">列挙型ケースパターン(Enumeration Case Pattern)</a></h2>
 <p>列挙型ケースパターンは、既存の列挙型のケースと一致します。列挙型ケースパターンは、<code>switch</code> 文のケースラベル、および <code>if</code>、<code>guard</code>、および <code>for-in</code> 文の条件で使用できます。</p>
-<p>一致させようとしている列挙ケースに関連値がある場合、対応する列挙型ケースパターンは、関連値に対して 1 つの要素を含むタプルパターンを指定する必要があります。関連値を含む列挙ケースを一致させるために <code>switch</code> 文を使用する例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#associated-values" target="_blank">Associated Values(関連値)</a>を参照ください。</p>
+<p>一致させようとしている列挙ケースに関連値がある場合、対応する列挙型ケースパターンは、関連値に対して 1 つの要素を含むタプルパターンを指定する必要があります。関連値を含む列挙ケースを一致させるために <code>switch</code> 文を使用する例については、<a href="../language-guide-gaido/enumerations#associated-values">Associated Values(関連値)</a>を参照ください。</p>
 <p>列挙型ケースパターンは、オプショナルでラップされたケースの値にも一致します。この単純化された構文を使用すると、オプショナルのパターンを省略できます。なお、<code>Optional</code> は列挙型として実装されているため、<code>.none</code>、<code>.some</code> は、列挙型のケースと同じ switch の中で使用できます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">enum</span> <span class="token builtin">SomeEnum</span> <span class="token punctuation">{</span> <span class="token keyword">case</span> <span class="token keyword">left</span><span class="token punctuation">,</span> <span class="token keyword">right</span> <span class="token punctuation">}</span>
 <span class="token keyword">let</span> x<span class="token punctuation">:</span> <span class="token builtin">SomeEnum</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token keyword">left</span>
@@ -831,7 +827,7 @@
 <blockquote>
 <p>GRAMMAR OF AN ENUMERATION CASE PATTERN<br>enum-case-pattern → <a href="https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier" target="_blank">type-identifier</a><sub>opt</sub> <code>.</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_enum-case-name" target="_blank">enum-case-name</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern" target="_blank">tuple-pattern</a><sub>opt</sub></p>
 </blockquote>
-<h2 id="オプショナルパターンoptional-pattern"><a name="オプショナルパターンoptional-pattern" class="plugin-anchor" href="#オプショナルパターンoptional-pattern"><i class="fa fa-link" aria-hidden="true"></i></a><a id="optional-pattern">オプショナルパターン(Optional Pattern)</a></h2>
+<h2 id="オプショナルパターンoptional-pattern"><a id="optional-pattern">オプショナルパターン(Optional Pattern)</a></h2>
 <p>オプショナルパターンは、<code>Optional<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Wrapped</span><span class="token punctuation">&gt;</span></span></code> 列挙型の <code>some(Wrapped)</code> ケースにラップされた値と一致します。オプショナルパターンは識別子パターンの直後に疑問符を置くことで構成され、列挙型ケースパターンと同じ場所に使用できます。</p>
 <p>オプショナルパターンはオプショナルの列挙型ケースパターンの糖衣構文(シンタックスシュガー)のため、次のものは同等です:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> someOptional<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token number">42</span>
@@ -858,16 +854,16 @@
 <blockquote>
 <p>GRAMMAR OF AN OPTIONAL PATTERN<br>optional-pattern → <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_identifier-pattern" target="_blank">identifier-pattern</a> <code>?</code></p>
 </blockquote>
-<h2 id="型キャストパターンtype-casting-patterns"><a name="型キャストパターンtype-casting-patterns" class="plugin-anchor" href="#型キャストパターンtype-casting-patterns"><i class="fa fa-link" aria-hidden="true"></i></a>型キャストパターン(Type-Casting Patterns)</h2>
+<h2 id="型キャストパターンtype-casting-patterns">型キャストパターン(Type-Casting Patterns)</h2>
 <p>2 つのタイプの<em>型キャストパターン</em>、<code>is</code> パターンと <code>as</code> パターンがあります。<code>is</code> パターンは <code>switch</code> 文のケースラベルにのみ使用できます。<code>is</code> と <code>as</code> パターンの形式は次のとおりです。</p>
 <p><img src="../assets/type-casting_patterns.png" alt="型キャストパターン"></p>
 <p><code>is</code> パターンは、実行時の値の型が、<code>is</code> パターンの右側で指定された型、またはその型のサブクラスと同じ型の場合に、値と一致します。<code>is</code> パターンは、両方とも型キャストを実行しますが、返された型を破棄するという点で、<code>is</code> 演算子のように動作します。</p>
 <p><code>as</code> パターンは、実行時の値の種類が、<code>as</code> パターンの右側に指定された型、またはその型のサブクラスと同じ型の場合に、値と一致します。一致した場合、値の種類は、<code>as</code> パターンの右側に指定された <em>pattern</em> にキャストされます。</p>
-<p><code>switch</code> 文を使用して <code>is</code> パターンを一致させる例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/type-casting#type-casting-for-any-and-anyobject" target="_blank">Type Casting for Any and AnyObject(Any および AnyObject の型キャスト)</a>を参照ください。</p>
+<p><code>switch</code> 文を使用して <code>is</code> パターンを一致させる例については、<a href="../language-guide-gaido/type-casting#type-casting-for-any-and-anyobject">Type Casting for Any and AnyObject(Any および AnyObject の型キャスト)</a>を参照ください。</p>
 <blockquote>
 <p>GRAMMAR OF A TYPE CASTING PATTERN<br>type-casting-pattern → <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_is-pattern" target="_blank">is-pattern</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_as-pattern" target="_blank">as-pattern</a><br>is-pattern → <code>is</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type" target="_blank">type</a><br>as-pattern → <a href="https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern" target="_blank">pattern</a> <code>as</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type" target="_blank">type</a></p>
 </blockquote>
-<h2 id="式パターンexpression-pattern"><a name="式パターンexpression-pattern" class="plugin-anchor" href="#式パターンexpression-pattern"><i class="fa fa-link" aria-hidden="true"></i></a>式パターン(Expression Pattern)</h2>
+<h2 id="式パターンexpression-pattern">式パターン(Expression Pattern)</h2>
 <p><em>式パターン</em>は式の値を表します。式パターンは <code>switch</code> 文のケースにのみ使用できます。</p>
 <p>式パターンで表される式は、Swift 標準ライブラリ <code>~=</code> 演算子を使用して入力式の値と比較されます。<code>~=</code> 演算子が <code>true</code> を返すと、一致します。デフォルトでは、<code>~=</code> 演算子は <code>==</code> 演算子を使用して同じ型の 2 つの値を比較します。次の例に示すように、値が範囲内に含まれているかどうかを確認することによって、範囲内の値と一致させることもできます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> point <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
@@ -930,7 +926,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"パターン(Patterns)","level":"4.8","depth":1,"next":{"title":"ジェネリックパラメータと引数(Generic Parameters and Arguments)","level":"4.9","depth":1,"path":"language-reference/generic-parameters-and-arguments.md","ref":"language-reference/generic-parameters-and-arguments.md","articles":[]},"previous":{"title":"属性(Attributes)","level":"4.7","depth":1,"path":"language-reference/attributes.md","ref":"language-reference/attributes.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-reference/patterns.md","mtime":"2021-07-11T00:21:09.724Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"パターン(Patterns)","level":"4.8","depth":1,"next":{"title":"ジェネリックパラメータと引数(Generic Parameters and Arguments)","level":"4.9","depth":1,"path":"language-reference/generic-parameters-and-arguments.md","ref":"language-reference/generic-parameters-and-arguments.md","articles":[]},"previous":{"title":"属性(Attributes)","level":"4.7","depth":1,"path":"language-reference/attributes.md","ref":"language-reference/attributes.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-reference/patterns.md","mtime":"2021-07-11T00:36:29.984Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,12 +748,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="型キャストtype-casting"><a name="型キャストtype-casting" class="plugin-anchor" href="#型キャストtype-casting"><i class="fa fa-link" aria-hidden="true"></i></a>型キャスト(Type Casting)</h1>
+                                <h1 id="型キャストtype-casting">型キャスト(Type Casting)</h1>
 <p>最終更新日: 2021/6/29</p>
 <p><em>型キャスト</em>は、インスタンスの型をチェックする、またはそのインスタンスを独自のクラス階層のスーパークラスまたはサブクラスとして扱う方法です。</p>
 <p>Swift での型キャストは、<code>is</code> および <code>as</code> 演算子で実装されます。これらの 2 つの演算子は、値の型をチェックしたり、値を別の型にキャストしたりするためのシンプルで表現力豊かな方法を提供します。</p>
-<p><a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#checking-for-protocol-conformance" target="_blank">Checking for Protocol Conformance(プロトコル準拠チェック)</a>で説明されているように、型キャストを使用して、型がプロトコルに準拠しているかどうかを確認することもできます。</p>
-<h2 id="型キャストのためのクラス階層の定義defining-a-class-hierarchy-for-type-casting"><a name="型キャストのためのクラス階層の定義defining-a-class-hierarchy-for-type-casting" class="plugin-anchor" href="#型キャストのためのクラス階層の定義defining-a-class-hierarchy-for-type-casting"><i class="fa fa-link" aria-hidden="true"></i></a>型キャストのためのクラス階層の定義(Defining a Class Hierarchy for Type Casting)</h2>
+<p><a href="protocols#checking-for-protocol-conformance">Checking for Protocol Conformance(プロトコル準拠チェック)</a>で説明されているように、型キャストを使用して、型がプロトコルに準拠しているかどうかを確認することもできます。</p>
+<h2 id="型キャストのためのクラス階層の定義defining-a-class-hierarchy-for-type-casting">型キャストのためのクラス階層の定義(Defining a Class Hierarchy for Type Casting)</h2>
 <p>クラスとサブクラスの階層で型キャストを使用して、特定のクラスインスタンスの型を確認し、そのインスタンスを同じ階層内の別のクラスにキャストできます。下記の 3 つのコードスニペットは、今後の型キャストの例で使用するために、クラスの階層とそれらのクラスのインスタンスを含む配列を定義しています。</p>
 <p>最初のスニペットは、<code>MediaItem</code> という新しい基本クラスを定義します。このクラスは、デジタルメディアライブラリに表示されるあらゆる種類のアイテムの基本的な機能を提供します。具体的には、<code>String</code> 型の <code>name</code> プロパティと <code>init(name:)</code> イニシャライザを宣言しています。(全ての映画と曲を含む全てのメディアアイテムに名前があると想定しています)</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">MediaItem</span> <span class="token punctuation">{</span>
@@ -795,7 +791,7 @@
 <span class="token comment">// &quot;library&quot; の型は [MediaItem] と推論されます</span>
 </code></pre>
 <p><code>library</code> に保存されているアイテムは、依然として裏側では <code>Movie</code> および <code>Song</code> インスタンスです。ただし、この配列の内容を反復処理すると、返されるアイテムは <code>Movie</code> や <code>Song</code> ではなく <code>MediaItem</code> になります。それらを本来の型として使用するには、型を確認するか、下記で説明するように別の型に<em>ダウンキャスト</em>する必要があります。</p>
-<h2 id="型チェックchecking-type"><a name="型チェックchecking-type" class="plugin-anchor" href="#型チェックchecking-type"><i class="fa fa-link" aria-hidden="true"></i></a>型チェック(Checking Type)</h2>
+<h2 id="型チェックchecking-type">型チェック(Checking Type)</h2>
 <p>インスタンスが特定のサブクラス型かどうかを確認するには、型チェック演算子(<code>is</code>)を使用します。型チェック演算子は、インスタンスがそのサブクラス型の場合は <code>true</code> を返し、そうでない場合は <code>false</code> を返します。</p>
 <p>下記の例では、<code>library</code> 配列内の <code>Movie</code> および <code>Song</code> インスタンスの数をカウントする 2 つの変数 <code>movieCount</code> と <code>songCount</code> を定義しています:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> movieCount <span class="token operator">=</span> <span class="token number">0</span>
@@ -814,7 +810,7 @@
 </code></pre>
 <p>この例では、<code>library</code> 配列内の全てのアイテムを繰り返します。<code>for-in</code> ループの各ループでは、<code>item</code> 定数に配列内の次の <code>MediaItem</code> を設定します。</p>
 <p><code>item is Movie</code> は、現在の <code>MediaItem</code> が <code>Movie</code> インスタンスの場合は <code>true</code> を返し、そうでない場合は <code>false</code> を返します。同様に、<code>item is Song</code> は、アイテムが <code>Song</code> インスタンスかどうかをチェックします。<code>for-in</code> ループの最後で、<code>movieCount</code> と <code>songCount</code> の値には、各型の <code>MediaItem</code> インスタンスがいくつ見つかったかをカウントしています。</p>
-<h2 id="ダウンキャストdowncasting"><a name="ダウンキャストdowncasting" class="plugin-anchor" href="#ダウンキャストdowncasting"><i class="fa fa-link" aria-hidden="true"></i></a><a id="downcasting">ダウンキャスト(Downcasting)</a></h2>
+<h2 id="ダウンキャストdowncasting"><a id="downcasting">ダウンキャスト(Downcasting)</a></h2>
 <p>特定のクラス型の定数または変数は、実際には裏側でサブクラスのインスタンスを参照している場合があります。そのような場合は、型キャスト演算子 (<code>as?</code> または <code>as!</code>) を使用してサブクラス型への<em>ダウンキャスト</em>を試みることができます。</p>
 <p>ダウンキャストは失敗する可能性があるため、型キャスト演算子には 2 つの異なる形式があります。条件付き形式の <code>as?</code> は、ダウンキャストしようとしている型のオプショナルの値を返します。強制形式の <code>as!</code> は、ダウンキャストと強制アンラップを同時に試みます。</p>
 <p>ダウンキャストが成功するかどうかわからない場合は、条件付き形式の型キャスト演算子 (<code>as?</code>) を使用してください。この形式の演算子は常にオプショナルの値を返し、ダウンキャストが不可能な場合、値は <code>nil</code> になります。これにより、ダウンキャストが成功したかどうかを確認できます。</p>
@@ -842,7 +838,7 @@
 <blockquote>
 <p>NOTE<br>キャストは実際にインスタンスを変更したり、その内部の値を変更したりしません。基になるインスタンスは同じままです。キャストした型のインスタンスとして扱われ、アクセスされるだけです。</p>
 </blockquote>
-<h2 id="any-および-anyobject-の型キャストtype-casting-for-any-and-anyobject"><a name="any-および-anyobject-の型キャストtype-casting-for-any-and-anyobject" class="plugin-anchor" href="#any-および-anyobject-の型キャストtype-casting-for-any-and-anyobject"><i class="fa fa-link" aria-hidden="true"></i></a><a id="type-casting-for-any-and-anyobject">Any および AnyObject の型キャスト(Type Casting for Any and AnyObject)</a></h2>
+<h2 id="any-および-anyobject-の型キャストtype-casting-for-any-and-anyobject"><a id="type-casting-for-any-and-anyobject">Any および AnyObject の型キャスト(Type Casting for Any and AnyObject)</a></h2>
 <p>Swift は、型を特定できない型を操作するための 2 つの特別な型を提供しています。</p>
 <ul>
 <li><code>Any</code> は、関数型を含むあらゆる型のインスタンスを表すことができます</li>
@@ -937,7 +933,7 @@ things<span class="token punctuation">.</span><span class="token function">appen
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"型キャスト(Type Casting)","level":"3.19","depth":1,"next":{"title":"ネスト型(Nested Types)","level":"3.20","depth":1,"path":"language-guide-gaido/nested-types.md","ref":"language-guide-gaido/nested-types.md","articles":[]},"previous":{"title":"同時並行処理(Concurrency)","level":"3.18","depth":1,"path":"language-guide-gaido/concurrency.md","ref":"language-guide-gaido/concurrency.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/type-casting.md","mtime":"2021-07-08T00:03:41.544Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"型キャスト(Type Casting)","level":"3.19","depth":1,"next":{"title":"ネスト型(Nested Types)","level":"3.20","depth":1,"path":"language-guide-gaido/nested-types.md","ref":"language-guide-gaido/nested-types.md","articles":[]},"previous":{"title":"同時並行処理(Concurrency)","level":"3.18","depth":1,"path":"language-guide-gaido/concurrency.md","ref":"language-guide-gaido/concurrency.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/type-casting.md","mtime":"2021-07-11T00:35:31.418Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

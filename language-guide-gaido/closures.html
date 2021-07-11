@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,12 +748,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="クロージャclosures"><a name="クロージャclosures" class="plugin-anchor" href="#クロージャclosures"><i class="fa fa-link" aria-hidden="true"></i></a>クロージャ(Closures)</h1>
+                                <h1 id="クロージャclosures">クロージャ(Closures)</h1>
 <p>最終更新日: 2021/5/23</p>
 <p><em>クロージャ</em>は、コード内で受け渡して使用できる、ある機能の独立したブロックです。Swift のクロージャは、C 言語や Objective-C のブロック、他のプログラミング言語のラムダに似ています。</p>
 <p>クロージャは、定数と変数への参照を、それらを定義したコンテキストから<em>キャプチャ</em>して保持できます。これは、これらの定数と変数をスコープに<em>閉じ込める</em>と呼ばれます。Swift は、キャプチャに関連した全てのメモリ管理を行います。</p>
 <blockquote>
-<p>NOTE<br>キャプチャの概念に慣れていなくても心配しないでください。これについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#capturing-values" target="_blank">Capturing Values(値のキャプチャ)</a>で詳しく説明します。</p>
+<p>NOTE<br>キャプチャの概念に慣れていなくても心配しないでください。これについては、<a href="closures#capturing-values">Capturing Values(値のキャプチャ)</a>で詳しく説明します。</p>
 </blockquote>
 <p><a href="functions.html">Functions(関数)</a>で紹介したグローバル関数やネスト関数は、実際にはクロージャの特殊なケースです。クロージャは、次の 3 つの形式のいずれかを取ります:</p>
 <ul>
@@ -772,10 +768,10 @@
 <li>引数名を省略することができます</li>
 <li>末尾クロージャ構文を使用することができます</li>
 </ul>
-<h2 id="クロージャ式closure-expressions"><a name="クロージャ式closure-expressions" class="plugin-anchor" href="#クロージャ式closure-expressions"><i class="fa fa-link" aria-hidden="true"></i></a><a id="closure-expressions">クロージャ式(Closure Expressions)</a></h2>
-<p><a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#nested-functions" target="_blank">Nested Functions(ネスト関数)</a>で紹介したネスト関数は、より大きな関数の一部として独立したコードブロックに名前を付けて定義するための便利な手段です。ただし、完全な宣言や名前を書かずに、関数のような構造のより短いバージョンを作成できれば便利な場合もあります。これは、1 つ以上の引数を受け取る関数またはメソッドで特に当てはまります。</p>
+<h2 id="クロージャ式closure-expressions"><a id="closure-expressions">クロージャ式(Closure Expressions)</a></h2>
+<p><a href="functions#nested-functions">Nested Functions(ネスト関数)</a>で紹介したネスト関数は、より大きな関数の一部として独立したコードブロックに名前を付けて定義するための便利な手段です。ただし、完全な宣言や名前を書かずに、関数のような構造のより短いバージョンを作成できれば便利な場合もあります。これは、1 つ以上の引数を受け取る関数またはメソッドで特に当てはまります。</p>
 <p><em>クロージャ式</em>は、簡潔で明瞭にインラインのクロージャを記述する方法です。クロージャ式は、明確さや意図を失うことなく、省略された形式でクロージャを記述するためのいくつかの最適化を行うことができます。下記に出てくるクロージャ式は、複数回使用される <code>sorted(by:)</code> メソッドを、最適化してより簡潔なものに改良した例です。</p>
-<h3 id="ソートメソッドthe-sorted-method"><a name="ソートメソッドthe-sorted-method" class="plugin-anchor" href="#ソートメソッドthe-sorted-method"><i class="fa fa-link" aria-hidden="true"></i></a>ソートメソッド(The Sorted Method)</h3>
+<h3 id="ソートメソッドthe-sorted-method">ソートメソッド(The Sorted Method)</h3>
 <p>Swift の標準ライブラリは、<code>sorted(by:)</code> と呼ばれるメソッドを提供しています。このメソッドは、指定した並べ替えクロージャの結果に基づいて、その型の値の配列を並べ替えます。並べ替えプロセスが完了すると、<code>sorted(by:)</code> メソッドは、古い配列と同じ型とサイズの新しい配列を返し、その要素は正しい並べ替え順序になります。元の配列は、<code>sorted(by:)</code> メソッドによって変更されません。</p>
 <p>下記のクロージャ式の例では、<code>sorted(by:)</code> メソッドを使用して、<code>String</code> の配列をアルファベットの逆順で並べ替えています。並べ替える初期配列は次のとおりです:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Chris&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Alex&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Ewa&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Barry&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Daniella&quot;</span><span class="token punctuation">]</span>
@@ -791,7 +787,7 @@
 </code></pre>
 <p>最初の文字列(<code>s1</code>)が 2 番目の文字列(<code>s2</code>)より大きい場合、<code>backward(_:_:)</code> 関数は <code>true</code> を返し、ソートされた配列で <code>s1</code> が <code>s2</code> の前に表示されることを示します。文字列内の文字の場合、「より大きい」は「アルファベットの後半に現れる」を意味します。これは、文字 <code>&quot;B&quot;</code> が文字 <code>&quot;A&quot;</code> より「大きい」ことを意味し、文字列 <code>&quot;Tom&quot;</code> が文字列 <code>&quot;Tim&quot;</code> よりも大きいことを意味します。これにより、アルファベットの逆順にソートが行われ、<code>&quot;Barry&quot;</code> が <code>&quot;Alex&quot;</code> の前に配置されます。</p>
 <p>ただし、これは本質的に単一式の関数(<code>a &gt; b</code>)を記述するには冗長な方法です。この例では、クロージャ式の構文を使用して、ソートクロージャをインラインで記述する方が望ましいでしょう。</p>
-<h3 id="クロージャ式構文closure-expression-syntax"><a name="クロージャ式構文closure-expression-syntax" class="plugin-anchor" href="#クロージャ式構文closure-expression-syntax"><i class="fa fa-link" aria-hidden="true"></i></a>クロージャ式構文(Closure Expression Syntax)</h3>
+<h3 id="クロージャ式構文closure-expression-syntax">クロージャ式構文(Closure Expression Syntax)</h3>
 <p>クロージャ式の構文には、次の一般的な形式があります:</p>
 <p><img src="../assets/07_closureexpressionsyntax.png" alt="クロージャ式構文"></p>
 <p>クロージャ式構文のパラメータは、in-out パラメータをとることもできますが、デフォルト値を設定することはできません。可変長パラメータに名前を付けると、可変長パラメータを使用できます。タプルも、パラメータの型および戻り値の型として使用できます。</p>
@@ -806,29 +802,29 @@
 <pre class="language-"><code class="lang-swift">reversedNames <span class="token operator">=</span> names<span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span>by<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token punctuation">(</span>s1<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> s2<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Bool</span> <span class="token keyword">in</span> <span class="token keyword">return</span> s1 <span class="token operator">&gt;</span> s2 <span class="token punctuation">}</span> <span class="token punctuation">)</span>
 </code></pre>
 <p>これは、<code>sorted(by:)</code> メソッドへの呼び出しがいずれも同じだということを示しています。括弧のペア(<code>()</code>)は、メソッドの引数全体をラップしますが、引数はインラインクロージャです。</p>
-<h3 id="コンテキストから型の推論inferring-type-from-context"><a name="コンテキストから型の推論inferring-type-from-context" class="plugin-anchor" href="#コンテキストから型の推論inferring-type-from-context"><i class="fa fa-link" aria-hidden="true"></i></a>コンテキストから型の推論(Inferring Type From Context)</h3>
+<h3 id="コンテキストから型の推論inferring-type-from-context">コンテキストから型の推論(Inferring Type From Context)</h3>
 <p>ソートクロージャは、引数としてメソッドに渡されるため、Swift はそのパラメータの型と戻り値の型を推論できます。<code>sorted(by:)</code> メソッドは、文字列の配列から呼び出されるため、その引数は <code>(String, String) -&gt; Bool</code> 型の関数だと推論できます。つまり、<code>(String, String)</code> 型と <code>Bool</code> 型は、クロージャ式に記述する必要はありません。全ての型を推論できるため、戻り矢印(<code>-&gt;</code>)とパラメータ名を囲む括弧も省略できます。</p>
 <pre class="language-"><code class="lang-swift">reversedNames <span class="token operator">=</span> names<span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span>by<span class="token punctuation">:</span> <span class="token punctuation">{</span> s1<span class="token punctuation">,</span> s2 <span class="token keyword">in</span> <span class="token keyword">return</span> s1 <span class="token operator">&gt;</span> s2 <span class="token punctuation">}</span> <span class="token punctuation">)</span>
 </code></pre>
 <p>インラインクロージャ式としてクロージャを関数またはメソッドに渡す場合、パラメータの型と戻り値の型を推論することは常に可能です。その結果、クロージャが関数またはメソッドの引数として使用される場合、完全な形式でインラインクロージャを記述する必要はありません。</p>
 <p>必要に応じて型を明示することもできます。コードのあいまいさを回避できる場合は、そうすることをお勧めします。<code>sorted(by:)</code> メソッドの場合、ソートが行われているという事実から、クロージャの目的は明らかで、文字列の配列を扱っていることから、クロージャは <code>String</code> で機能していると読み手は容易に想像できます。</p>
-<h3 id="単一式のクロージャの暗黙的リターンimplicit-returns-from-single-expression-closures"><a name="単一式のクロージャの暗黙的リターンimplicit-returns-from-single-expression-closures" class="plugin-anchor" href="#単一式のクロージャの暗黙的リターンimplicit-returns-from-single-expression-closures"><i class="fa fa-link" aria-hidden="true"></i></a>単一式のクロージャの暗黙的リターン(Implicit Returns from Single-Expression Closures)</h3>
+<h3 id="単一式のクロージャの暗黙的リターンimplicit-returns-from-single-expression-closures">単一式のクロージャの暗黙的リターン(Implicit Returns from Single-Expression Closures)</h3>
 <p>上記の例のように、単一式のクロージャは、宣言から <code>return</code> キーワードを省略して結果を暗黙的に返すことができます。</p>
 <pre class="language-"><code class="lang-swift">reversedNames <span class="token operator">=</span> names<span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span>by<span class="token punctuation">:</span> <span class="token punctuation">{</span> s1<span class="token punctuation">,</span> s2 <span class="token keyword">in</span> s1 <span class="token operator">&gt;</span> s2 <span class="token punctuation">}</span> <span class="token punctuation">)</span>
 </code></pre>
 <p>ここで、<code>sorted(by:)</code> メソッドの引数の関数型は、<code>Bool</code> 値がクロージャによって返される必要があることを明確にしています。クロージャの本文は、<code>Bool</code> 値を返す単一式(<code>s1 &gt; s2</code>)のため、あいまいさはなく、<code>return</code> キーワードは省略できます。</p>
-<h3 id="省略引数名shorthand-argument-names"><a name="省略引数名shorthand-argument-names" class="plugin-anchor" href="#省略引数名shorthand-argument-names"><i class="fa fa-link" aria-hidden="true"></i></a>省略引数名(Shorthand Argument Names)</h3>
+<h3 id="省略引数名shorthand-argument-names">省略引数名(Shorthand Argument Names)</h3>
 <p>Swift は、インラインクロージャに<em>省略引数名</em>を自動的に提供しています。これを使用して、クロージャの引数の値を <code>$0</code>、<code>$1</code>、<code>$2</code> などの名前で参照できます。</p>
 <p>クロージャ式内でこれらの省略引数名を使用する場合は、クロージャの引数リストをその定義から省略できます。省略引数名の型は、期待されている関数型から推論され、最も大きい番号の省略引数で、クロージャが受け取る引数の数が決まります。クロージャ式は本文だけで完全に構築(推論)できているため、<code>in</code> キーワードは省略できます。</p>
 <pre class="language-"><code class="lang-swift">reversedNames <span class="token operator">=</span> names<span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span>by<span class="token punctuation">:</span> <span class="token punctuation">{</span> $<span class="token number">0</span> <span class="token operator">&gt;</span> $<span class="token number">1</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span>
 </code></pre>
 <p>ここで、<code>$0</code> と <code>$1</code> は、クロージャの最初と 2 番目の文字列引数を指します。<code>$1</code> は最大数の省略引数のため、クロージャは 2 つの引数を取ることがわかります。ここでの <code>sorted(by:)</code> 関数は、引数が両方とも文字列のクロージャを想定しているため、省略形の引数 <code>$0</code> と <code>$1</code> は両方とも <code>String</code> 型です。</p>
-<h3 id="演算子メソッドoperator-methods"><a name="演算子メソッドoperator-methods" class="plugin-anchor" href="#演算子メソッドoperator-methods"><i class="fa fa-link" aria-hidden="true"></i></a>演算子メソッド(Operator Methods)</h3>
+<h3 id="演算子メソッドoperator-methods">演算子メソッド(Operator Methods)</h3>
 <p>実際には、上記のクロージャ式を記述するさらに短い方法があります。Swift の <code>String</code> 型は、<code>String</code> 型の 2 つのパラメータを持ち、<code>Bool</code> 型の値を返す、文字列固有の大なり演算子(<code>&gt;</code>)のメソッドを定義しています。これは、<code>sorted(by:)</code> メソッドに必要な型と完全に一致しています。したがって、<code>&gt;</code> 演算子を渡すだけで、Swift は文字列固有の実装を使用していると推論できます。</p>
 <pre class="language-"><code class="lang-swift">reversedNames <span class="token operator">=</span> names<span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span>by<span class="token punctuation">:</span> <span class="token operator">&gt;</span><span class="token punctuation">)</span>
 </code></pre>
-<p>演算子メソッドの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#advanced-operators-operator-methods" target="_blank">Operator Methods(演算子メソッド)</a>を参照ください。</p>
-<h2 id="末尾クロージャtrailing-closures"><a name="末尾クロージャtrailing-closures" class="plugin-anchor" href="#末尾クロージャtrailing-closures"><i class="fa fa-link" aria-hidden="true"></i></a><a id="trailing-closures">末尾クロージャ(Trailing Closures)</a></h2>
+<p>演算子メソッドの詳細については、<a href="advanced-operators#advanced-operators-operator-methods">Operator Methods(演算子メソッド)</a>を参照ください。</p>
+<h2 id="末尾クロージャtrailing-closures"><a id="trailing-closures">末尾クロージャ(Trailing Closures)</a></h2>
 <p>関数の最後の引数としてクロージャ式を関数に渡す必要があり、その式が長い場合、代わりに<em>末尾クロージャ</em>として記述すると便利な場合があります。末尾クロージャは関数の引数ですが、関数呼び出しの括弧の後に記述します。末尾クロージャ構文を使用する場合、関数を呼び出すときに、最初の末尾クロージャの引数ラベルは記述しません。複数の末尾クロージャを含めることもできます。ただし、下記の最初のいくつかの例では、1 つの末尾クロージャのみを使用しています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">someFunctionThatTakesAClosure</span><span class="token punctuation">(</span>closure<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// 関数本文</span>
@@ -902,7 +898,7 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <p>この例では、<code>loadPicture(from:completion:onFailure:)</code> 関数がネットワークタスクをバックグラウンドにディスパッチし、ネットワークタスクが終了すると 2 つのハンドラのいずれかを呼び出します。このように関数を作成すると、両方の状況を処理する 1 つのクロージャを使用する代わりに、ネットワーク障害の処理を担当するコードと、ダウンロードが成功した後にユーザーインターフェイスを更新するコードを、明確に分けることができます。</p>
-<h2 id="値のキャプチャcapturing-values"><a name="値のキャプチャcapturing-values" class="plugin-anchor" href="#値のキャプチャcapturing-values"><i class="fa fa-link" aria-hidden="true"></i></a><a id="capturing-values">値のキャプチャ(Capturing Values)</a></h2>
+<h2 id="値のキャプチャcapturing-values"><a id="capturing-values">値のキャプチャ(Capturing Values)</a></h2>
 <p>クロージャは、定義されている周囲のコンテキストから定数と変数を<em>キャプチャ</em>できます。クロージャは、定数と変数を定義した元のスコープが存在しなくなった場合でも、本文内からそれらの定数と変数の値を参照および変更できます。</p>
 <p>Swift では、値をキャプチャできるクロージャの最もシンプルな形式は、別の関数の本文内に記述されたネスト関数です。ネスト関数は、その外部関数の引数や、外部関数内で定義された定数や変数をキャプチャできます。</p>
 <p>これは、<code>makeIncrementer</code> と呼ばれる関数の例です。これには、<code>incrementer</code> と呼ばれるネスト関数が含まれています。<code>incrementer()</code> 関数は、周囲のコンテキストから、<code>runningTotal</code> と <code>amount</code> の 2 つの値をキャプチャします。これらの値をキャプチャした後、<code>incrementer</code> は、呼び出されるたびに <code>runningTotal</code> を <code>amount</code> 分だけ増加するクロージャとして <code>makeIncrementer</code> によって返されます。</p>
@@ -915,7 +911,7 @@
     <span class="token keyword">return</span> incrementer
 <span class="token punctuation">}</span>
 </code></pre>
-<p><code>makeIncrementer</code> の戻り値の型は <code>() -&gt; Int</code> です。これは、シンプルな値ではなく、関数を返すことを意味します。返される関数にはパラメータがなく、呼び出されるたびに <code>Int</code> 値を返します。関数が他の関数を返す方法については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#function-types-as-return-types" target="_blank">Function Types as Return Types(戻り値の型としての関数型)</a>を参照ください。</p>
+<p><code>makeIncrementer</code> の戻り値の型は <code>() -&gt; Int</code> です。これは、シンプルな値ではなく、関数を返すことを意味します。返される関数にはパラメータがなく、呼び出されるたびに <code>Int</code> 値を返します。関数が他の関数を返す方法については、<a href="functions#function-types-as-return-types">Function Types as Return Types(戻り値の型としての関数型)</a>を参照ください。</p>
 <p><code>makeIncrementer(forIncrement:)</code> 関数は、<code>runningTotal</code> と呼ばれる整数の変数を定義して、戻り値として返される <code>incrementer</code> の現在の合計を格納します。この変数は値 <code>0</code> で初期化されます。</p>
 <p><code>makeIncrementer(forIncrement:)</code> 関数には、<code>forIncrement</code> 引数ラベルと <code>amount</code> パラメータ名を持つ 1 つの <code>Int</code> 型のパラメータを持ちます。このパラメータに渡される引数値は、戻り値の <code>incrementer</code> が呼び出されるたびに、<code>runningTotal</code> を増加する量を指定します。<code>makeIncrementer</code> 関数は、実際に値を増加させる <code>incrementer</code> と呼ばれるネスト関数を定義します。この関数は単に <code>runningTotal</code> に <code>amount</code> を加算して、結果を返します。</p>
 <p>独立して検討すると、ネストされた <code>incrementer()</code> 関数は少し変に見えるかもしれません。</p>
@@ -949,9 +945,9 @@
 <span class="token comment">// 40 を返します</span>
 </code></pre>
 <blockquote>
-<p>NOTE<br>クラスインスタンスのプロパティにクロージャを代入して、クロージャがインスタンスまたはそのメンバを参照して、そのインスタンスをキャプチャする場合、クロージャとインスタンスの間に循環参照(strong reference cycle)が作成されます。Swift は、キャプチャリストを使用して、これらの循環参照を防ぎます。詳細については、 <a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#function-types-as-return-types" target="_blank">Strong Reference Cycles for Closures(クロージャの強参照循環)</a>を参照ください。</p>
+<p>NOTE<br>クラスインスタンスのプロパティにクロージャを代入して、クロージャがインスタンスまたはそのメンバを参照して、そのインスタンスをキャプチャする場合、クロージャとインスタンスの間に循環参照(strong reference cycle)が作成されます。Swift は、キャプチャリストを使用して、これらの循環参照を防ぎます。詳細については、 <a href="functions#function-types-as-return-types">Strong Reference Cycles for Closures(クロージャの強参照循環)</a>を参照ください。</p>
 </blockquote>
-<h2 id="クロージャは参照型closures-are-reference-types"><a name="クロージャは参照型closures-are-reference-types" class="plugin-anchor" href="#クロージャは参照型closures-are-reference-types"><i class="fa fa-link" aria-hidden="true"></i></a><a id="closures-are-reference-types">クロージャは参照型(Closures Are Reference Types)</a></h2>
+<h2 id="クロージャは参照型closures-are-reference-types"><a id="closures-are-reference-types">クロージャは参照型(Closures Are Reference Types)</a></h2>
 <p>上記の例では、<code>incrementBySeven</code> と <code>incrementByTen</code> は定数ですが、これらの定数が参照するクロージャは、キャプチャした <code>runningTotal</code> 変数をインクリメントすることができます。関数とクロージャが参照型だからです。</p>
 <p>関数またはクロージャを定数または変数に代入するときはいつでも、実際にはその定数または変数を、関数またはクロージャへの参照として設定しています。上記の例では、クロージャ自体の内容ではなく、<code>incrementByTen</code> が定数を参照するのは、クロージャの選択です。</p>
 <p>つまり、2 つの異なる定数または変数にクロージャを代入する場合、それらは同じクロージャを参照することを意味します。</p>
@@ -963,7 +959,7 @@
 <span class="token comment">// 60 を返します</span>
 </code></pre>
 <p>上記の例は、<code>alsoIncrementByTen</code> を呼び出すことは <code>incrementByTen</code> を呼び出すことと同じだということを示しています。どちらも同じクロージャを参照しているため、両方とも同じ <code>runningTotal</code> をインクリメントして結果を返します。</p>
-<h2 id="エスケープクロージャescaping-closures"><a name="エスケープクロージャescaping-closures" class="plugin-anchor" href="#エスケープクロージャescaping-closures"><i class="fa fa-link" aria-hidden="true"></i></a><a id="escaping-closures">エスケープクロージャ(Escaping Closures)</a></h2>
+<h2 id="エスケープクロージャescaping-closures"><a id="escaping-closures">エスケープクロージャ(Escaping Closures)</a></h2>
 <p>関数の引数として渡されたクロージャが、関数本文が終了した後に呼び出される場合、関数を<em>エスケープ</em>すると呼ばれています。パラメータの 1 つとしてクロージャを受け取る関数を宣言する場合、パラメータの型の前に <code>@escaping</code> を記述して、クロージャがエスケープすることを示すことができます。</p>
 <p>クロージャをエスケープする 1 つの方法は、関数の外部で定義された変数に格納することです。例として、非同期操作を開始する多くの関数は、完了ハンドラとしてクロージャ引数を取ります。関数は操作の開始後に戻り値を返しますが、操作が完了するまでクロージャは呼び出されません。そのため、クロージャはエスケープする必要があり、後で呼び出す必要があります。例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> completionHandlers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Void</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -1004,7 +1000,7 @@ completionHandlers<span class="token punctuation">.</span><span class="token bui
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p><code>self</code> が <code>struct</code> または <code>enum</code> のインスタンスの場合は、いつでも暗黙的に <code>self</code> を参照できます。ただし、<code>self</code> が <code>struct</code> または <code>enum</code> のインスタンスの場合、エスケープクロージャは <code>self</code> が変更できてしまうような場合、参照はキャプチャできません。<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#structures-and-enumerations-are-value-type" target="_blank">Structures and Enumerations Are Value Types(構造体と列挙型は値型)</a>でも説明されているように、<code>struct</code> または <code>enum</code> は変更可能な値の共有はできません。</p>
+<p><code>self</code> が <code>struct</code> または <code>enum</code> のインスタンスの場合は、いつでも暗黙的に <code>self</code> を参照できます。ただし、<code>self</code> が <code>struct</code> または <code>enum</code> のインスタンスの場合、エスケープクロージャは <code>self</code> が変更できてしまうような場合、参照はキャプチャできません。<a href="structures-and-classes#structures-and-enumerations-are-value-type">Structures and Enumerations Are Value Types(構造体と列挙型は値型)</a>でも説明されているように、<code>struct</code> または <code>enum</code> は変更可能な値の共有はできません。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">SomeStruct</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">10</span>
     <span class="token keyword">mutating</span> <span class="token keyword">func</span> <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1014,7 +1010,7 @@ completionHandlers<span class="token punctuation">.</span><span class="token bui
 <span class="token punctuation">}</span>
 </code></pre>
 <p>上記の例の <code>someFunctionWithEscapingClosure</code> 関数の呼び出しは、mutating メソッド内で <code>self</code> が変更可能なので、エラーとなります。これは、エスケープクロージャが <code>struct</code> の変更可能な <code>self</code> への参照をキャプチャできないというルールに違反します。</p>
-<h2 id="自動クロージャautoclosures"><a name="自動クロージャautoclosures" class="plugin-anchor" href="#自動クロージャautoclosures"><i class="fa fa-link" aria-hidden="true"></i></a>自動クロージャ(Autoclosures)</h2>
+<h2 id="自動クロージャautoclosures">自動クロージャ(Autoclosures)</h2>
 <p><em>自動クロージャ</em>は、関数の引数として渡された式をラップして自動的に作成されるクロージャです。引数はとらず、このクロージャが呼び出されると、ラップされている式の値を返します。この構文は便利で、明示的なクロージャの代わりに通常の式を記述することで、関数のパラメータの中括弧(<code>{}</code>)を省略できます。</p>
 <p>自動クロージャを引数に取る関数を<em>呼び出す</em>ことは一般的ですが、そのような関数を<em>実装する</em>ことは一般的ではありません。例えば、<code>assert(condition:message:file:line:)</code> 関数は、<code>condition</code> と <code>message</code> パラメータを自動クロージャで受け取ります。<code>condition</code> パラメータはデバッグビルドでのみ評価され、<code>message</code> パラメータは <code>condition</code> が <code>false</code> の場合にのみ評価されます。</p>
 <p>自動クロージャを使用すると、クロージャを呼び出すまで内部のコードが実行されないため、評価を遅らせることができます。遅延評価は、コードがいつ評価されるかを制御できるため、副作用があるコードや計算コストが高いコードを書くときに役に立ちます。下記のコードは、クロージャが評価をどのように遅らせるかを示しています。</p>
@@ -1051,7 +1047,7 @@ completionHandlers<span class="token punctuation">.</span><span class="token bui
 <blockquote>
 <p>NOTE<br>自動クロージャを使いすぎると、コードが理解しにくくなる可能性があります。コンテキストと関数名で、遅延評価されていることを明確にする必要があります。</p>
 </blockquote>
-<p>エスケープする自動クロージャが必要な場合は、<code>@autoclosure</code> 属性と <code>@escaping</code> 属性の両方を使用します。<code>@escaping</code> 属性については、上記の<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#escaping-closures" target="_blank">Escaping Closures(エスケープクロージャ)</a>で説明しています。</p>
+<p>エスケープする自動クロージャが必要な場合は、<code>@autoclosure</code> 属性と <code>@escaping</code> 属性の両方を使用します。<code>@escaping</code> 属性については、上記の<a href="closures#escaping-closures">Escaping Closures(エスケープクロージャ)</a>で説明しています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token comment">// customersInLine は [&quot;Barry&quot;, &quot;Daniella&quot;]</span>
 <span class="token keyword">var</span> customerProviders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 <span class="token keyword">func</span> <span class="token function">collectCustomerProviders</span><span class="token punctuation">(</span><span class="token number">_</span> customerProvider<span class="token punctuation">:</span> @autoclosure @escaping <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1102,7 +1098,7 @@ completionHandlers<span class="token punctuation">.</span><span class="token bui
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"クロージャ(Closures)","level":"3.7","depth":1,"next":{"title":"列挙型(Enumerations)","level":"3.8","depth":1,"path":"language-guide-gaido/enumerations.md","ref":"language-guide-gaido/enumerations.md","articles":[]},"previous":{"title":"関数(Functions)","level":"3.6","depth":1,"path":"language-guide-gaido/functions.md","ref":"language-guide-gaido/functions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/closures.md","mtime":"2021-07-11T00:21:09.766Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"クロージャ(Closures)","level":"3.7","depth":1,"next":{"title":"列挙型(Enumerations)","level":"3.8","depth":1,"path":"language-guide-gaido/enumerations.md","ref":"language-guide-gaido/enumerations.md","articles":[]},"previous":{"title":"関数(Functions)","level":"3.6","depth":1,"path":"language-guide-gaido/functions.md","ref":"language-guide-gaido/functions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/closures.md","mtime":"2021-07-11T00:35:31.545Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

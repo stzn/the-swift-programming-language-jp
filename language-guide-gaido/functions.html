@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,12 +748,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="関数functions"><a name="関数functions" class="plugin-anchor" href="#関数functions"><i class="fa fa-link" aria-hidden="true"></i></a>関数(Functions)</h1>
+                                <h1 id="関数functions">関数(Functions)</h1>
 <p>最終更新日: 2020/5/23</p>
 <p><em>関数</em>は、特定のタスクを実行する独立したコードの塊です。何をするものなのかを特定するために名前を与え、必要なときにタスクを実行するためにこの関数が「呼び出す」ときに名前は使われます。</p>
 <p>Swift の統一された関数構文は、シンプルな C 言語スタイルのパラメータ名のない関数から、Objective-C スタイルの個々のパラメータに名前とラベルを付けた関数までを表現できる、十分な柔軟性を持っています。パラメータには、関数の呼び出しをシンプルにするためにデフォルト値を設定できたり、関数の実行が完了すると渡した変数を変更する <code>in-out</code> パラメータも渡すことができます。</p>
 <p>全ての関数は、パラメータや戻り値の型で構成された自身の型を持っています。他の Swift の型と同じようにこの型を使用することができます。他の関数のパラメータに関数を渡したり、関数から関数を戻すことも簡単にできます。また、関数の中で関数を作成することで、独自のスコープを作成して機能をカプセル化することもできます。</p>
-<h2 id="関数の定義と呼び出しdefining-and-calling-functions"><a name="関数の定義と呼び出しdefining-and-calling-functions" class="plugin-anchor" href="#関数の定義と呼び出しdefining-and-calling-functions"><i class="fa fa-link" aria-hidden="true"></i></a>関数の定義と呼び出し(Defining and Calling Functions)</h2>
+<h2 id="関数の定義と呼び出しdefining-and-calling-functions">関数の定義と呼び出し(Defining and Calling Functions)</h2>
 <p>関数を定義するとき、必要な場合に名前と型を持つ<em>パラメータ</em>と呼ばれる 1 つ以上のインプットを定義することができます。また、関数の完了後に呼び出し元に結果を戻す、<em>戻り値</em>と呼ばれるアウトプットの型も必要な場合に定義できます。</p>
 <p>全ての関数は、実行するタスクを説明する、<em>関数名</em>を持っています。関数を使用するには、その関数をその名前で<em>呼び出し</em>、関数のパラメータの型に一致する(<em>引数</em>と呼ばれる)入力値を渡します。引数は、関数のパラメータのリストと常に同じ順序で与えなければなりません。</p>
 <p>下記の例の関数は、<code>greet(person:)</code> という関数で、名前が示す通り、人の名前を入力値として受け取り、その人への挨拶を返します。この関数では、<code>person</code> という <code>String</code> 型のパラメータと、その人に対する挨拶を含めた <code>String</code> 型の戻り値を返します:</p>
@@ -785,9 +781,9 @@
 <span class="token function">print</span><span class="token punctuation">(</span><span class="token function">greetAgain</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> <span class="token string">&quot;Anna&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token comment">// &quot;Hello again, Anna!&quot;</span>
 </code></pre>
-<h2 id="関数のパラメータと戻り値function-parameters-and-return-values"><a name="関数のパラメータと戻り値function-parameters-and-return-values" class="plugin-anchor" href="#関数のパラメータと戻り値function-parameters-and-return-values"><i class="fa fa-link" aria-hidden="true"></i></a>関数のパラメータと戻り値(Function Parameters and Return Values)</h2>
+<h2 id="関数のパラメータと戻り値function-parameters-and-return-values">関数のパラメータと戻り値(Function Parameters and Return Values)</h2>
 <p>Swift では、関数のパラメータと戻り値は非常に柔軟です。名前のない単一のパラメータを持つシンプルなユーティリティ関数から、読みやすいように表現できるパラメータ名と様々なパラメータオプションを持つ複雑な関数まで、あらゆるものを定義できます。</p>
-<h3 id="パラメータなし関数functions-without-parameters"><a name="パラメータなし関数functions-without-parameters" class="plugin-anchor" href="#パラメータなし関数functions-without-parameters"><i class="fa fa-link" aria-hidden="true"></i></a>パラメータなし関数(Functions Without Parameters)</h3>
+<h3 id="パラメータなし関数functions-without-parameters">パラメータなし関数(Functions Without Parameters)</h3>
 <p>入力パラメータは関数に必須ではありません。入力パラメータのない関数は次のとおりです。この関数は、呼び出される度に、常に同じ <code>String</code> 型のメッセージを返します:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">sayHelloWorld</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token string">&quot;hello, world&quot;</span>
@@ -796,7 +792,7 @@
 <span class="token comment">// &quot;hello, world&quot;</span>
 </code></pre>
 <p>関数は、パラメータを受け取りませんが、関数名の後に括弧が必要です。関数が呼び出されると、関数名の後に空の括弧のペア(<code>()</code>)も書きます。</p>
-<h3 id="複数のパラメータがある関数functions-with-multiple-parameters"><a name="複数のパラメータがある関数functions-with-multiple-parameters" class="plugin-anchor" href="#複数のパラメータがある関数functions-with-multiple-parameters"><i class="fa fa-link" aria-hidden="true"></i></a>複数のパラメータがある関数(Functions With Multiple Parameters)</h3>
+<h3 id="複数のパラメータがある関数functions-with-multiple-parameters">複数のパラメータがある関数(Functions With Multiple Parameters)</h3>
 <p>関数は、カンマ(<code>,</code>)区切りで複数のパラメータを持つことができます。</p>
 <p>この関数は、人の名前と、その人がすでに挨拶されているかどうかを入力値として受け取り、その人に適切な挨拶を返します:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">greet</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> alreadyGreeted<span class="token punctuation">:</span> <span class="token builtin">Bool</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
@@ -810,7 +806,7 @@
 <span class="token comment">// &quot;Hello again, Tim!&quot;</span>
 </code></pre>
 <p><code>person</code> というラベルの付いた <code>String</code> 型の値と、括弧(<code>()</code>) 内にカンマ(<code>,</code>)で区切られた <code>alreadyGreeted</code> というラベルの付いた <code>Bool</code> 型の値の両方を渡して <code>great(person:alreadyGreeted:)</code> 関数を呼び出しています。この関数は、 前のセクションで示した <code>greet(person:)</code> 関数とは異なることに注意してください。どちらも <code>greet</code> という関数名ですが、<code>greet(person:alreadyGreeted:)</code> は 2 つの引数を取り、<code>greet(person:)</code> 関数は 1 つしか取りません。</p>
-<h3 id="戻り値なし関数functions-without-return-values"><a name="戻り値なし関数functions-without-return-values" class="plugin-anchor" href="#戻り値なし関数functions-without-return-values"><i class="fa fa-link" aria-hidden="true"></i></a><a id="functions-without-return-values">戻り値なし関数(Functions Without Return Values)</a></h3>
+<h3 id="戻り値なし関数functions-without-return-values"><a id="functions-without-return-values">戻り値なし関数(Functions Without Return Values)</a></h3>
 <p>戻り値の型を定義することも必須ではありません。<code>greet(person:)</code> バージョンは <code>String</code> 型の値を返すのではなく、その値を出力します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">greet</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Hello, <span class="token interpolation"><span class="token delimiter variable">\(</span>person<span class="token delimiter variable">)</span></span>!&quot;</span><span class="token punctuation">)</span>
@@ -839,7 +835,7 @@
 <blockquote>
 <p>NOTE<br>戻り値は無視できますが、常に関数が値を返すことは示さなければなりません。戻り値の型が定義されている関数では、値を返さずに関数を使用することはできません。そうしようとすると、コンパイルエラーが発生します。</p>
 </blockquote>
-<h3 id="複数の戻り値がある関数functions-with-multiple-return-values"><a name="複数の戻り値がある関数functions-with-multiple-return-values" class="plugin-anchor" href="#複数の戻り値がある関数functions-with-multiple-return-values"><i class="fa fa-link" aria-hidden="true"></i></a><a id="functions-with-multiple-return-values">複数の戻り値がある関数(Functions with Multiple Return Values)</a></h3>
+<h3 id="複数の戻り値がある関数functions-with-multiple-return-values"><a id="functions-with-multiple-return-values">複数の戻り値がある関数(Functions with Multiple Return Values)</a></h3>
 <p>タプル型を関数の戻り値の型として使用して、1 つの複合戻り値として複数の値を返すことができます。</p>
 <p>以下の例では、<code>minMax(array:)</code> という関数を定義しています。この関数は、<code>Int</code> 値の配列内の最小値と最大値を検索します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">minMax</span><span class="token punctuation">(</span>array<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token builtin">min</span><span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token builtin">max</span><span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -863,7 +859,7 @@
 <span class="token comment">// &quot;min is -6 and max is 109&quot;</span>
 </code></pre>
 <p>タプルの各値は、関数の戻り値の型で名前がすでに指定されているため、関数からタプルが返されるときに名前を付ける必要がないことに注目してください。</p>
-<h4 id="オプショナルのタプルの戻り値の型optional-tuple-return-types"><a name="オプショナルのタプルの戻り値の型optional-tuple-return-types" class="plugin-anchor" href="#オプショナルのタプルの戻り値の型optional-tuple-return-types"><i class="fa fa-link" aria-hidden="true"></i></a><a id="optional-tuple-return-types">オプショナルのタプルの戻り値の型(Optional Tuple Return Types)</a></h4>
+<h4 id="オプショナルのタプルの戻り値の型optional-tuple-return-types"><a id="optional-tuple-return-types">オプショナルのタプルの戻り値の型(Optional Tuple Return Types)</a></h4>
 <p>関数から返されるタプル型が、「値が存在しない」可能性がある場合は、オプショナルのタプル型を使用して、タプル全体が <code>nil</code> になる可能性があることを示すことができます。<code>(Int, Int)?</code> や <code>(String, Int, Bool)?</code> のように、タプル型の閉じ括弧(<code>)</code>)の後に疑問符(<code>?</code>)を配置して、オプショナルのタプル型を書きます。</p>
 <blockquote>
 <p>NOTE<br><code>(Int, Int)?</code> などの オプショナルのタプル型は <code>(Int?, Int?)</code> などの オプショナルの型を含むタプルとは異なります。オプショナルの型を使用すると、タプル内の個々の値だけでなく、タプル全体が オプショナルになります。</p>
@@ -890,7 +886,7 @@
 <span class="token punctuation">}</span>
 <span class="token comment">// &quot;min is -6 and max is 109&quot;</span>
 </code></pre>
-<h3 id="暗黙的な戻り値がある関数functions-with-an-implicit-return"><a name="暗黙的な戻り値がある関数functions-with-an-implicit-return" class="plugin-anchor" href="#暗黙的な戻り値がある関数functions-with-an-implicit-return"><i class="fa fa-link" aria-hidden="true"></i></a><a id="functions-with-an-implicit-return">暗黙的な戻り値がある関数(Functions With an Implicit Return)</a></h3>
+<h3 id="暗黙的な戻り値がある関数functions-with-an-implicit-return"><a id="functions-with-an-implicit-return">暗黙的な戻り値がある関数(Functions With an Implicit Return)</a></h3>
 <p>関数の本文全体が、単一式の場合は、関数は暗黙的にその式の結果を返します。例えば、下記の両方の関数の動作は同じです:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">greeting</span><span class="token punctuation">(</span><span class="token keyword">for</span> person<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
     <span class="token string">&quot;Hello, &quot;</span> <span class="token operator">+</span> person <span class="token operator">+</span> <span class="token string">&quot;!&quot;</span>
@@ -905,11 +901,11 @@
 <span class="token comment">// &quot;Hello, Dave!&quot;</span>
 </code></pre>
 <p><code>greeting(for:)</code> 関数の全体の定義は、戻り値の挨拶文です。つまり、この短い形式を使用できます。<code>anotherGreeting(for:)</code> 関数は、複数の式を持つ関数と同様に <code>return</code> キーワードを使用して、同じ挨拶文を返しています。1 つの戻り行として記述した関数は、<code>return</code> を省略できます。</p>
-<p><a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#shorthand-getter-declaration" target="_blank">Shorthand Getter Declaration(省略 get プロパティ宣言)</a>でも説明されていますが、プロパティの get でも暗黙的な戻り値を使用することができます。</p>
+<p><a href="properties#shorthand-getter-declaration">Shorthand Getter Declaration(省略 get プロパティ宣言)</a>でも説明されていますが、プロパティの get でも暗黙的な戻り値を使用することができます。</p>
 <blockquote>
 <p>NOTE<br>暗黙の戻り値を使ったコードは、何かしらの値を返す必要があります。例えば、<code>fatalError(&quot;Oh no!&quot;)</code> または <code>print(13)</code> を暗黙の戻り値として使用することはできません。</p>
 </blockquote>
-<h2 id="引数ラベルとパラメータ名function-argument-labels-and-parameter-names"><a name="引数ラベルとパラメータ名function-argument-labels-and-parameter-names" class="plugin-anchor" href="#引数ラベルとパラメータ名function-argument-labels-and-parameter-names"><i class="fa fa-link" aria-hidden="true"></i></a><a id="function-argument-labels-and-parameter-names">引数ラベルとパラメータ名(Function Argument Labels and Parameter Names)</a></h2>
+<h2 id="引数ラベルとパラメータ名function-argument-labels-and-parameter-names"><a id="function-argument-labels-and-parameter-names">引数ラベルとパラメータ名(Function Argument Labels and Parameter Names)</a></h2>
 <p>各関数のパラメータには、引数ラベルとパラメータ名の両方持つことができます。引数ラベルは、関数を呼び出すときに使用されます。各引数は、その前に書かれた引数ラベルを使用して関数が呼び出されます。引数名は関数の内部で使用されます。デフォルトでは、パラメータ名を引数ラベルとして使用します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">someFunction</span><span class="token punctuation">(</span>firstParameterName<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> secondParameterName<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// 関数の本文では、`firstParameterName`と`secondParameterName`は</span>
@@ -918,7 +914,7 @@
 <span class="token function">someFunction</span><span class="token punctuation">(</span>firstParameterName<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> secondParameterName<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">)</span>
 </code></pre>
 <p>全てのパラメータには一意の名前を付ける必要があります。複数のパラメータに同じ引数ラベルを付けることはできますが、一意の引数ラベルを使用すると、コードが読みやすくなります。</p>
-<h3 id="引数ラベルの特定specifying-argument-labels"><a name="引数ラベルの特定specifying-argument-labels" class="plugin-anchor" href="#引数ラベルの特定specifying-argument-labels"><i class="fa fa-link" aria-hidden="true"></i></a>引数ラベルの特定(Specifying Argument Labels)</h3>
+<h3 id="引数ラベルの特定specifying-argument-labels">引数ラベルの特定(Specifying Argument Labels)</h3>
 <p>引数名の前に、スペースで区切って引数ラベルを記述します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">someFunction</span><span class="token punctuation">(</span>argumentLabel parameterName<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// 関数の本文では、`parameterName` でパラメータの値を参照します</span>
@@ -932,7 +928,7 @@
 <span class="token comment">// &quot;Hello Bill!  Glad you could visit from Cupertino.&quot;</span>
 </code></pre>
 <p>引数ラベルを使用すると、関数の本文に読みやすく明確な意図を持たせつつ、表現豊かな文章のように関数を呼び出すことができます。</p>
-<h3 id="引数ラベルの省略omitting-argument-labels"><a name="引数ラベルの省略omitting-argument-labels" class="plugin-anchor" href="#引数ラベルの省略omitting-argument-labels"><i class="fa fa-link" aria-hidden="true"></i></a>引数ラベルの省略(Omitting Argument Labels)</h3>
+<h3 id="引数ラベルの省略omitting-argument-labels">引数ラベルの省略(Omitting Argument Labels)</h3>
 <p>引数ラベルが必要ない場合は、その引数ラベルの代わりにアンダースコア(<code>_</code>)を記述します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">someFunction</span><span class="token punctuation">(</span><span class="token number">_</span> firstParameterName<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> secondParameterName<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// 関数の本文では、`firstParameterName`と`secondParameterName`は</span>
@@ -941,7 +937,7 @@
 <span class="token function">someFunction</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> secondParameterName<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">)</span>
 </code></pre>
 <p>パラメータに引数ラベルがある場合、関数を呼び出すときに引数にラベルを付ける必要があります。</p>
-<h3 id="デフォルトパラメータ値default-parameter-values"><a name="デフォルトパラメータ値default-parameter-values" class="plugin-anchor" href="#デフォルトパラメータ値default-parameter-values"><i class="fa fa-link" aria-hidden="true"></i></a><a id="default-parameter-values">デフォルトパラメータ値(Default Parameter Values)</a></h3>
+<h3 id="デフォルトパラメータ値default-parameter-values"><a id="default-parameter-values">デフォルトパラメータ値(Default Parameter Values)</a></h3>
 <p>パラメータの型の後に値を代入することで、関数内の任意のパラメータの<em>デフォルト値</em>を定義できます。デフォルト値が定義されている場合は、関数を呼び出すときにそのパラメータを省略できます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">someFunction</span><span class="token punctuation">(</span>parameterWithoutDefault<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> parameterWithDefault<span class="token punctuation">:</span> <span class="token builtin">Int</span> <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// 関数を呼び出すときに 2 番目のパラメータを省略した場合、</span>
@@ -951,7 +947,7 @@
 <span class="token function">someFunction</span><span class="token punctuation">(</span>parameterWithoutDefault<span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token comment">// `parameterWithDefault` は 12</span>
 </code></pre>
 <p>デフォルト値のないパラメータは、関数のパラメータリストでデフォルト値のあるパラメータよりも前に置きましょう。通常、デフォルト値を持たないパラメータの方が重要です。最初にデフォルト値を持たないパラメータを置くと、デフォルトパラメータが省略されているかどうかに関係なく、同じ関数が呼び出されていることを認識しやすくなります。</p>
-<h3 id="可変長パラメータvariadic-parameters"><a name="可変長パラメータvariadic-parameters" class="plugin-anchor" href="#可変長パラメータvariadic-parameters"><i class="fa fa-link" aria-hidden="true"></i></a><a id="variadic-parameters">可変長パラメータ(Variadic Parameters)</a></h3>
+<h3 id="可変長パラメータvariadic-parameters"><a id="variadic-parameters">可変長パラメータ(Variadic Parameters)</a></h3>
 <p><em>可変長パラメータ</em>は、指定された型の 0 個以上の値を受け入れます。可変長パラメータを使用すると、関数が呼び出されたときに、パラメータに様々な数の入力値を渡すことができます。パラメータの型名の後に 3 つのピリオド文字(<code>...</code>)を挿入して、可変長パラメータを記述します。</p>
 <p>可変長パラメータに渡された値は、適切な型の配列として関数の本文内で使用できるようになります。例えば、<code>numbers</code> という <code>Double...</code> 型を持つ可変長パラメータは、<code>numbers</code> という <code>[Double]</code> 型の定数配列として関数の本文内で使用できます。</p>
 <p>下記の例では、任意の長さの数値のリストの算術平均(いわゆる平均)を計算しています。</p>
@@ -968,9 +964,9 @@
 <span class="token comment">// 3 つの数値の平均の 10.0 を返します</span>
 </code></pre>
 <p>関数は複数の可変長パラメータを持つことができます。可変長パラメータの後に続く最初のパラメータには、引数ラベルが必要です。引数ラベルにより、どの引数が可変長パラメータに渡され、どの引数が可変長パラメータの後に続くパラメータに渡されているかが明確になります。</p>
-<h3 id="in-out-パラメータin-out-parameters"><a name="in-out-パラメータin-out-parameters" class="plugin-anchor" href="#in-out-パラメータin-out-parameters"><i class="fa fa-link" aria-hidden="true"></i></a><a id="functions-in-out-parameters">In-Out パラメータ(In-Out Parameters)</a></h3>
+<h3 id="in-out-パラメータin-out-parameters"><a id="functions-in-out-parameters">In-Out パラメータ(In-Out Parameters)</a></h3>
 <p>関数のパラメータはデフォルトで定数です。関数の本文からパラメータの値を変更しようとすると、コンパイルエラーが発生します。つまり、誤ってパラメータの値を変更することはできません。関数でパラメータの値を変更する必要があり、関数呼び出しが終了した後もそれらの変更を保持したい場合は、代わりに <em>in-out パラメータ</em>として定義します。</p>
-<p>パラメータの型の直前に <code>inout</code> キーワードを配置することにより、in-out パラメータを書きます。in-out パラメータに渡された値は、関数に渡され、変更され、元の値を置き換えて、関数から戻ってきます。in-out パラメータの動作および関連するコンパイラの最適化の詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#declarations-in-out-parameters" target="_blank">In-Out Parameters(In-Out パラメータ)</a>を参照ください。</p>
+<p>パラメータの型の直前に <code>inout</code> キーワードを配置することにより、in-out パラメータを書きます。in-out パラメータに渡された値は、関数に渡され、変更され、元の値を置き換えて、関数から戻ってきます。in-out パラメータの動作および関連するコンパイラの最適化の詳細については、<a href="../language-reference/declarations#declarations-in-out-parameters">In-Out Parameters(In-Out パラメータ)</a>を参照ください。</p>
 <p>in-out パラメータには、変数のみ渡すことができます。定数とリテラルは変更できないため、渡すことはできません。変数を in-out パラメータとして渡すときは、変数名の直前にアンパサンド(<code>&amp;</code>)を付けて、関数で値が変更される可能性があることを示します。</p>
 <blockquote>
 <p>NOTE<br>in-out パラメータにデフォルト値を設定したり、可変長パラメータを <code>inout</code> としてマークすることはできません。</p>
@@ -994,7 +990,7 @@
 <blockquote>
 <p>NOTE<br>in-out パラメータは、関数から値を返すことと同じではありません。上記の <code>swapTwoInts</code> の例では、戻り値の型を定義して値を返していませんが、<code>someInt</code> と <code>anotherInt</code> の値を変更しています。in-out パラメータは、関数が本文の範囲外に影響を与える代替方法です。</p>
 </blockquote>
-<h2 id="関数型function-types"><a name="関数型function-types" class="plugin-anchor" href="#関数型function-types"><i class="fa fa-link" aria-hidden="true"></i></a>関数型(Function Types)</h2>
+<h2 id="関数型function-types">関数型(Function Types)</h2>
 <p>全ての関数には特定の<em>関数型</em>があり、パラメータの型と戻り値の型で構成されています。</p>
 <p>例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">addTwoInts</span><span class="token punctuation">(</span><span class="token number">_</span> a<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token number">_</span> b<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
@@ -1013,7 +1009,7 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <p>この関数の型は、<code>() -&gt; Void</code> で「パラメータを持たず、<code>Void</code> を返す関数」です。</p>
-<h3 id="関数型の使用using-function-types"><a name="関数型の使用using-function-types" class="plugin-anchor" href="#関数型の使用using-function-types"><i class="fa fa-link" aria-hidden="true"></i></a>関数型の使用(Using Function Types)</h3>
+<h3 id="関数型の使用using-function-types">関数型の使用(Using Function Types)</h3>
 <p>Swift の他の型と同じように関数型を使用します。例えば、定数または変数を関数型として定義し、その変数に適切な関数を代入することができます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> mathFunction<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token operator">=</span> addTwoInts
 </code></pre>
@@ -1029,7 +1025,7 @@
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> anotherMathFunction <span class="token operator">=</span> addTwoInts
 <span class="token comment">// anotherMathFunction は (Int, Int) -&gt; Int と推論されます</span>
 </code></pre>
-<h3 id="パラメータの型としての関数型function-types-as-parameter-types"><a name="パラメータの型としての関数型function-types-as-parameter-types" class="plugin-anchor" href="#パラメータの型としての関数型function-types-as-parameter-types"><i class="fa fa-link" aria-hidden="true"></i></a>パラメータの型としての関数型(Function Types as Parameter Types)</h3>
+<h3 id="パラメータの型としての関数型function-types-as-parameter-types">パラメータの型としての関数型(Function Types as Parameter Types)</h3>
 <p><code>(Int, Int) -&gt; Int</code> などの関数型を別の関数のパラメータの型として使用できます。これにより、関数の呼び出し元で関数の一部の機能を決めることができます。</p>
 <p>下記は、上記の数学関数の結果を出力する例です:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">printMathResult</span><span class="token punctuation">(</span><span class="token number">_</span> mathFunction<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token number">_</span> a<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token number">_</span> b<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1041,7 +1037,7 @@
 <p>この例では、3 つのパラメータを持つ <code>printMathResult(_:_:_:)</code> という関数を定義します。最初のパラメータは <code>mathFunction</code> と呼ばれ、<code>(Int, Int) -&gt; Int</code> 型です。この最初のパラメータとして、その型の任意の関数を渡すことができます。2 番目と 3 番目のパラメータは <code>a</code> と <code>b</code> と呼ばれ、どちらも <code>Int</code> 型です。これらは、提供されている数学関数の 2 つの入力値として使用されています。</p>
 <p><code>printMathResult(_:_:_:)</code> が呼び出されると、<code>addTwoInts(_:_:)</code> 関数、および整数値 <code>3</code> と <code>5</code> が渡されます。与えられた関数を値 <code>3</code> と <code>5</code> で呼び出し、次の結果 <code>8</code> を出力します。</p>
 <p><code>printMathResult(_:_:_:)</code> の役割は、適切な型の数学関数の結果を出力することです。その関数が実際に何をするかは重要ではありません。関数が正しい型なことが重要です。これにより、<code>printMathResult(_:_:_:)</code> は、その機能の一部を関数の呼び出し元に型安全な方法で渡すことができます。</p>
-<h3 id="戻り値の型としての関数型function-types-as-return-types"><a name="戻り値の型としての関数型function-types-as-return-types" class="plugin-anchor" href="#戻り値の型としての関数型function-types-as-return-types"><i class="fa fa-link" aria-hidden="true"></i></a><a id="function-types-as-return-types">戻り値の型としての関数型(Function Types as Return Types)</a></h3>
+<h3 id="戻り値の型としての関数型function-types-as-return-types"><a id="function-types-as-return-types">戻り値の型としての関数型(Function Types as Return Types)</a></h3>
 <p>関数型を別の関数の戻り値の型として使用できます。これを行うには、関数の戻り矢印(<code>-&gt;</code>)の直後に完全な関数型を書きます。</p>
 <p>次の例では、<code>stepForward(_:)</code> と <code>stepBackward(_:)</code> という 2 つのシンプルな関数を定義します。<code>stepForward(_:)</code> 関数は、入力値より 1 つ大きい値を返し、<code>stepBackward(_:)</code> 関数は、入力値より 1 つ小さい値を返します。両方の関数の型は <code>(Int) -&gt; Int</code> です:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">stepForward</span><span class="token punctuation">(</span><span class="token number">_</span> input<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
@@ -1070,7 +1066,7 @@
 <span class="token comment">// 1...</span>
 <span class="token comment">// zero!</span>
 </code></pre>
-<h2 id="ネスト関数nested-functions"><a name="ネスト関数nested-functions" class="plugin-anchor" href="#ネスト関数nested-functions"><i class="fa fa-link" aria-hidden="true"></i></a><a id="nested-functions">ネスト関数(Nested Functions)</a></h2>
+<h2 id="ネスト関数nested-functions"><a id="nested-functions">ネスト関数(Nested Functions)</a></h2>
 <p>この章でこれまでに見てきた全ての関数は、グローバルスコープで定義されたグローバル関数の例でしたが、<em>ネスト関数</em>と呼ばれる、他の関数の本文内に関数を定義することもできます。</p>
 <p>ネスト関数は、デフォルトでは外から見えませんが、それを囲む関数から呼び出して使用することができます。囲んでいる関数が、ネスト関数内の 1 つを戻り値として、ネスト関数を別のスコープで使用することもできます。</p>
 <p>上記の <code>chooseStepFunction(backward:)</code> の例を書き直して、ネスト関数を使用することができます。</p>
@@ -1126,7 +1122,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"関数(Functions)","level":"3.6","depth":1,"next":{"title":"クロージャ(Closures)","level":"3.7","depth":1,"path":"language-guide-gaido/closures.md","ref":"language-guide-gaido/closures.md","articles":[]},"previous":{"title":"制御フロー(Control Flow)","level":"3.5","depth":1,"path":"language-guide-gaido/control-flow.md","ref":"language-guide-gaido/control-flow.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/functions.md","mtime":"2021-07-07T23:59:48.852Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"関数(Functions)","level":"3.6","depth":1,"next":{"title":"クロージャ(Closures)","level":"3.7","depth":1,"path":"language-guide-gaido/closures.md","ref":"language-guide-gaido/closures.md","articles":[]},"previous":{"title":"制御フロー(Control Flow)","level":"3.5","depth":1,"path":"language-guide-gaido/control-flow.md","ref":"language-guide-gaido/control-flow.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/functions.md","mtime":"2021-07-11T00:35:31.545Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

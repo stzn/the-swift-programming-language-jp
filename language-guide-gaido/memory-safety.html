@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,11 +748,11 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="メモリ安全性memory-safety"><a name="メモリ安全性memory-safety" class="plugin-anchor" href="#メモリ安全性memory-safety"><i class="fa fa-link" aria-hidden="true"></i></a>メモリ安全性(Memory Safety)</h1>
+                                <h1 id="メモリ安全性memory-safety">メモリ安全性(Memory Safety)</h1>
 <p>最終更新日: 2021/6/30</p>
 <p>Swift は、デフォルトでコード内の安全ではない動作の発生を防ぎます。例えば、Swift では、変数が初期化される前に使用されていないこと、メモリの割り当てが解除された後にメモリにアクセスされていないこと、配列インデックスの範囲外エラーがチェックされること、などを保証しています。</p>
 <p>また、Swift はメモリアドレスを変更するコードへの排他的アクセスを要求することで、メモリの同じ領域へ複数が競合してアクセスしないようにします。Swift はメモリを自動的に管理するため、ほとんどの場合、メモリへのアクセスについて考える必要はまったくありません。ただし、潜在的な競合が発生する可能性がある位置を理解することが重要です。そうすることで、メモリへのアクセスが競合するコードを記述しないようにすることができます。コードに競合が含まれている場合、コンパイル時または実行時エラーが発生します。</p>
-<h2 id="メモリへのアクセスの競合を理解するunderstanding-conflicting-access-to-memory"><a name="メモリへのアクセスの競合を理解するunderstanding-conflicting-access-to-memory" class="plugin-anchor" href="#メモリへのアクセスの競合を理解するunderstanding-conflicting-access-to-memory"><i class="fa fa-link" aria-hidden="true"></i></a>メモリへのアクセスの競合を理解する(Understanding Conflicting Access to Memory)</h2>
+<h2 id="メモリへのアクセスの競合を理解するunderstanding-conflicting-access-to-memory">メモリへのアクセスの競合を理解する(Understanding Conflicting Access to Memory)</h2>
 <p>変数の値を設定したり、関数に引数を渡したりするときに、コード内でメモリへのアクセスが発生します。例えば、次のコードには読み取りアクセスと書き込みアクセスの両方が含まれています:</p>
 <pre class="language-"><code class="lang-swift"><span class="token comment">// 1 が格納されているメモリへの書き込みアクセス</span>
 <span class="token keyword">var</span> one <span class="token operator">=</span> <span class="token number">1</span>
@@ -773,7 +769,7 @@
 <p>NOTE<br>同時実行またはマルチスレッドコードを作成したことがある場合、メモリへのアクセスの競合はよくある問題かもしれません。ただし、ここで説明するアクセスの競合はシングルスレッドでも発生する可能性があり、同時実行またはマルチスレッド化されたコードは関係しません。</p>
 <p>シングルスレッド内からメモリへのアクセスが競合している場合、Swift はコンパイル時または実行時にエラーを確実にスローします。マルチスレッドコードの場合は、<a href="https://developer.apple.com/documentation/xcode/diagnosing-memory-thread-and-crash-issues-early" target="_blank">Thread Sanitizer</a>を使用して、スレッド間で競合するアクセスを検出します。</p>
 </blockquote>
-<h3 id="メモリアクセスの性質characteristics-of-memory-access"><a name="メモリアクセスの性質characteristics-of-memory-access" class="plugin-anchor" href="#メモリアクセスの性質characteristics-of-memory-access"><i class="fa fa-link" aria-hidden="true"></i></a>メモリアクセスの性質(Characteristics of Memory Access)</h3>
+<h3 id="メモリアクセスの性質characteristics-of-memory-access">メモリアクセスの性質(Characteristics of Memory Access)</h3>
 <p>競合するアクセスのコンテキスト上で考慮すべきメモリアクセスの 3 つの特性があります: アクセスが読み取りか書き込みか、アクセスの期間、およびアクセスされるメモリアドレスです。具体的には、次の条件の全てを満たす 2 つのアクセスがある場合、競合が発生します。</p>
 <ul>
 <li>少なくとも 1 つは、書き込みアクセスまたは非アトミックなアクセス</li>
@@ -794,7 +790,7 @@ myNumber <span class="token operator">=</span> <span class="token function">oneM
 </code></pre>
 <p>ただし、<em>長期アクセス</em>と呼ばれる、他のコードの実行にまたがってメモリにアクセスする方法がいくつかあります。瞬時アクセスと長期アクセスの違いは、長期アクセスは開始から終了するまでの間に、他のコードが実行される可能性があることです。これを<em>オーバーラップ</em>と呼びます。長期アクセスは、他の長期アクセスや瞬時アクセスと重複する可能性があります。</p>
 <p>オーバーラップアクセスは、主に、関数とメソッド、または構造体の変更メソッドで in-out パラメータを使用するコードで発生します。長期アクセスを使用する特定の種類の Swift コードについては、次のセクションで説明します。</p>
-<h2 id="in-out-パラメータのアクセスの競合conflicting-access-to-in-out-parameters"><a name="in-out-パラメータのアクセスの競合conflicting-access-to-in-out-parameters" class="plugin-anchor" href="#in-out-パラメータのアクセスの競合conflicting-access-to-in-out-parameters"><i class="fa fa-link" aria-hidden="true"></i></a>In-Out パラメータのアクセスの競合(Conflicting Access to In-Out Parameters)</h2>
+<h2 id="in-out-パラメータのアクセスの競合conflicting-access-to-in-out-parameters">In-Out パラメータのアクセスの競合(Conflicting Access to In-Out Parameters)</h2>
 <p>関数は、全ての in-out パラメータへ長期書き込みアクセスできます。in-out パラメータへの書き込みアクセスは、全ての in-out 以外のパラメータが評価された後に開始され、その関数呼び出しの全期間にわたって続きます。複数の in-out パラメータがある場合、書き込みアクセスはパラメータが現れるのと同じ順序で開始されます。</p>
 <p>この長期書き込みアクセスの問題の 1 つは、スコープルールとアクセス制御で許可されていても、in-out として渡された元の変数にアクセスできないことです。元の変数にアクセスすると、競合が発生します。例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> stepSize <span class="token operator">=</span> <span class="token number">1</span>
@@ -834,7 +830,7 @@ stepSize <span class="token operator">=</span> copyOfStepSize
 <blockquote>
 <p>NOTE<br>演算子は関数であるため、in-out パラメータに長期アクセスすることもできます。例えば、<code>balance(_:_:)</code> が <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>^</span><span class="token punctuation">&gt;</span></span></code> という演算子である場合、<code>playerOneScore <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>^</span><span class="token punctuation">&gt;</span></span> playerOneScore</code> と記述すると、<code>balance(&amp;playerOneScore, &amp;playerOneScore)</code> と同じ競合が発生します。</p>
 </blockquote>
-<h2 id="メソッド内の-self-のアクセスの競合conflicting-access-to-self-in-methods"><a name="メソッド内の-self-のアクセスの競合conflicting-access-to-self-in-methods" class="plugin-anchor" href="#メソッド内の-self-のアクセスの競合conflicting-access-to-self-in-methods"><i class="fa fa-link" aria-hidden="true"></i></a>メソッド内の self のアクセスの競合(Conflicting Access to self in Methods)</h2>
+<h2 id="メソッド内の-self-のアクセスの競合conflicting-access-to-self-in-methods">メソッド内の self のアクセスの競合(Conflicting Access to self in Methods)</h2>
 <p>構造体の mutating メソッドは、メソッド呼び出しの間、<code>self</code> への書き込みアクセス権を持ちます。例えば、各プレイヤーがダメージを受けると減少する活力値と、特殊能力を使用すると減少するエネルギー量を持つゲームを考えてみましょう。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">Player</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span>
@@ -866,7 +862,7 @@ oscar<span class="token punctuation">.</span><span class="token function">shareH
 </code></pre>
 <p>mutating メソッドは、メソッド実行中に <code>self</code> への書き込みアクセスを必要とし、in-out パラメータは、同じ期間中に <code>teammate</code> への書き込みアクセスを必要とします。メソッド内では、下の図に示すように、<code>self</code> と <code>teammate</code> の両方がメモリ内の同じ位置を参照します。2 つの書き込みアクセスは同じメモリを参照し、それらが重複して競合が発生します。</p>
 <p><img src="../assets/memory_share_health_oscar_2x.png" alt="時間的に重複した同じメモリアドレスへの 2 つの書き込みアクセス"></p>
-<h2 id="プロパティのアクセスの競合conflicting-access-to-properties"><a name="プロパティのアクセスの競合conflicting-access-to-properties" class="plugin-anchor" href="#プロパティのアクセスの競合conflicting-access-to-properties"><i class="fa fa-link" aria-hidden="true"></i></a>プロパティのアクセスの競合(Conflicting Access to Properties)</h2>
+<h2 id="プロパティのアクセスの競合conflicting-access-to-properties">プロパティのアクセスの競合(Conflicting Access to Properties)</h2>
 <p>構造体、タプル、列挙型などの型は、構造体のプロパティやタプルの要素など、個々の構成値で構成されます。これらは値型のため、値の一部を変更すると値全体が変更されます。つまり、いずれかのプロパティへの読み取りまたは書き込みアクセスには、値全体への読み取りまたは書き込みアクセスが必要です。例えば、タプルの要素への書き込みアクセスが重複すると、競合が発生します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> playerInformation <span class="token operator">=</span> <span class="token punctuation">(</span>health<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> energy<span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">)</span>
 <span class="token function">balance</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>playerInformation<span class="token punctuation">.</span>health<span class="token punctuation">,</span> <span class="token operator">&amp;</span>playerInformation<span class="token punctuation">.</span>energy<span class="token punctuation">)</span>
@@ -924,7 +920,7 @@ oscar<span class="token punctuation">.</span><span class="token function">shareH
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"メモリ安全性(Memory Safety)","level":"3.26","depth":1,"next":{"title":"アクセスコントロール(Access Control)","level":"3.27","depth":1,"path":"language-guide-gaido/access-control.md","ref":"language-guide-gaido/access-control.md","articles":[]},"previous":{"title":"自動参照カウント ARC(Automatic Reference Counting)","level":"3.25","depth":1,"path":"language-guide-gaido/automatic-reference-counting.md","ref":"language-guide-gaido/automatic-reference-counting.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/memory-safety.md","mtime":"2021-07-11T00:21:09.599Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"メモリ安全性(Memory Safety)","level":"3.26","depth":1,"next":{"title":"アクセスコントロール(Access Control)","level":"3.27","depth":1,"path":"language-guide-gaido/access-control.md","ref":"language-guide-gaido/access-control.md","articles":[]},"previous":{"title":"自動参照カウント ARC(Automatic Reference Counting)","level":"3.25","depth":1,"path":"language-guide-gaido/automatic-reference-counting.md","ref":"language-guide-gaido/automatic-reference-counting.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/memory-safety.md","mtime":"2021-07-11T00:21:09.599Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

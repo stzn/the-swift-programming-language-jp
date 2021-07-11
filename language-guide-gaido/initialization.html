@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,18 +748,18 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="初期化initialization"><a name="初期化initialization" class="plugin-anchor" href="#初期化initialization"><i class="fa fa-link" aria-hidden="true"></i></a>初期化(Initialization)</h1>
+                                <h1 id="初期化initialization">初期化(Initialization)</h1>
 <p>最終更新日: 2021/6/29</p>
 <p><em>初期化</em>は、使用するクラス、構造体、または列挙型のインスタンスを準備するプロセスです。このプロセスには、そのインスタンスに保存されている各プロパティの初期値の設定と、新しいインスタンスの使用準備が整う前に必要なその他の要素のセットアップや初期化の実行が含まれます。</p>
 <p>この初期化プロセスを実装するには、<em>イニシャライザ</em>を定義します。イニシャライザは、特定の型の新しいインスタンスを作成するために呼び出すことができる特別なメソッドのようなものです。Objective-C のイニシャライザとは異なり、Swift のイニシャライザは値を返しません。主な役割は、型の新しいインスタンスが初めて使用される前に正しく初期化されていることを保証することです。</p>
 <p>クラス型のインスタンスは、そのクラスのインスタンスが解放される直前にカスタムのクリーンアップを実行する<em>デイニシャライザ</em>を実装することもできます。デイニシャライザの詳細については、<a href="deinitialization.html">Deinitialization(デイニシャライザ)</a>を参照ください。</p>
-<h2 id="格納プロパティの初期値の設定setting-initial-values-for-stored-properties"><a name="格納プロパティの初期値の設定setting-initial-values-for-stored-properties" class="plugin-anchor" href="#格納プロパティの初期値の設定setting-initial-values-for-stored-properties"><i class="fa fa-link" aria-hidden="true"></i></a>格納プロパティの初期値の設定(Setting Initial Values for Stored Properties)</h2>
+<h2 id="格納プロパティの初期値の設定setting-initial-values-for-stored-properties">格納プロパティの初期値の設定(Setting Initial Values for Stored Properties)</h2>
 <p>クラスと構造体は、そのクラスまたは構造体のインスタンスが作成されるまでに、全ての格納プロパティに適切な初期値を設定する必要があります。格納プロパティは、不確定な状態のままにすることはできません。</p>
 <p>イニシャライザ内、またはプロパティの定義の一部としてプロパティのデフォルト値を割り当てることにより、格納プロパティの初期値を設定できます。これらのアクションについては、次のセクションで説明します。</p>
 <blockquote>
 <p>NOTE<br>格納プロパティにデフォルト値を割り当てるか、イニシャライザ内でその初期値を設定すると、プロパティオブザーバを呼び出さずに、そのプロパティに値が直接設定されます。</p>
 </blockquote>
-<h3 id="イニシャライザinitializers"><a name="イニシャライザinitializers" class="plugin-anchor" href="#イニシャライザinitializers"><i class="fa fa-link" aria-hidden="true"></i></a><a id="initialization-initializers">イニシャライザ(Initializers)</a></h3>
+<h3 id="イニシャライザinitializers"><a id="initialization-initializers">イニシャライザ(Initializers)</a></h3>
 <p><em>イニシャライザ</em>は、特定の型の新しいインスタンスを作成するために呼び出されます。最もシンプルな形式では、イニシャライザはパラメータのないインスタンスメソッドのようなもので、<code>init</code> キーワードを使用して記述されます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// ここで初期化を実行します</span>
@@ -781,7 +777,7 @@
 <span class="token comment">// &quot;The default temperature is 32.0° Fahrenheit&quot;</span>
 </code></pre>
 <p>この構造体はパラメータのない単一のイニシャライザ <code>init</code> を定義します。これは、格納された温度を <code>32.0</code>(華氏での水の凝固点)の値で初期化します。</p>
-<h3 id="プロパティのデフォルト値default-property-values"><a name="プロパティのデフォルト値default-property-values" class="plugin-anchor" href="#プロパティのデフォルト値default-property-values"><i class="fa fa-link" aria-hidden="true"></i></a><a id="default-property-values">プロパティのデフォルト値(Default Property Values)</a></h3>
+<h3 id="プロパティのデフォルト値default-property-values"><a id="default-property-values">プロパティのデフォルト値(Default Property Values)</a></h3>
 <p>上記のように、イニシャライザ内から格納プロパティの初期値を設定できます。または、プロパティの宣言の一部として、定義時に初期値を割り当てることで<em>デフォルトプロパティ値</em>を指定します。</p>
 <blockquote>
 <p>NOTE<br>プロパティが常に同じ初期値を取る場合は、イニシャライザ内で値を設定するのではなく、デフォルト値を指定します。最終結果は同じですが、デフォルト値の方がプロパティの初期化と宣言をより密接に結び付けています。これにより、イニシャライザが短く明確になり、デフォルト値からプロパティの型を推論できるようになります。また、デフォルト値を使用すると、この章で後述するように、デフォルトのイニシャライザとイニシャライザの継承を利用しやすくなります。</p>
@@ -791,9 +787,9 @@
     <span class="token keyword">var</span> temperature <span class="token operator">=</span> <span class="token number">32.0</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h2 id="初期化のカスタマイズcustomizing-initialization"><a name="初期化のカスタマイズcustomizing-initialization" class="plugin-anchor" href="#初期化のカスタマイズcustomizing-initialization"><i class="fa fa-link" aria-hidden="true"></i></a>初期化のカスタマイズ(Customizing Initialization)</h2>
+<h2 id="初期化のカスタマイズcustomizing-initialization">初期化のカスタマイズ(Customizing Initialization)</h2>
 <p>次のセクションで説明するように、入力パラメータやオプショナル型のプロパティを使用したり、初期化中に定数プロパティを割り当てることにより、初期化プロセスをカスタマイズできます。</p>
-<h3 id="イニシャライザのパラメータinitialization-parameters"><a name="イニシャライザのパラメータinitialization-parameters" class="plugin-anchor" href="#イニシャライザのパラメータinitialization-parameters"><i class="fa fa-link" aria-hidden="true"></i></a><a id="initialization-parameters">イニシャライザのパラメータ(Initialization Parameters)</a></h3>
+<h3 id="イニシャライザのパラメータinitialization-parameters"><a id="initialization-parameters">イニシャライザのパラメータ(Initialization Parameters)</a></h3>
 <p>初期化パラメータをイニシャライザの定義の一部として提供することで、初期化プロセスをカスタマイズするための値の型と名前を定義できます。初期化パラメータには、関数およびメソッドパラメータと同じ機能と構文があります。</p>
 <p>次の例では、摂氏で表された温度を格納する <code>Celsius</code> という構造体を定義しています。<code>Celsius</code> 構造体は、<code>init(fromFahrenheit:)</code> および <code>init(fromKelvin:)</code> という 2 つのカスタムイニシャライザを実装しています。これらは、構造体の新しいインスタンスを異なる温度スケールの値で初期化しています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">Celsius</span> <span class="token punctuation">{</span>
@@ -811,7 +807,7 @@
 <span class="token comment">// freezingPointOfWater.temperatureInCelsius は 0.0</span>
 </code></pre>
 <p>最初のイニシャライザには、<code>fromFahrenheit</code> という引数ラベルと <code>fahrenheit</code> というパラメータ名を持つ単一のパラメータがあります。2 番目のイニシャライザには、<code>fromKelvin</code> という引数ラベルと <code>kelvin</code> というパラメータ名を持つ単一のパラメータがあります。どちらのイニシャライザも、単一のパラメータを対応する摂氏の値に変換し、この値を <code>temperatureInCelsius</code> というプロパティに格納しています。</p>
-<h3 id="パラメータ名と引数ラベルparameter-names-and-argument-labels"><a name="パラメータ名と引数ラベルparameter-names-and-argument-labels" class="plugin-anchor" href="#パラメータ名と引数ラベルparameter-names-and-argument-labels"><i class="fa fa-link" aria-hidden="true"></i></a>パラメータ名と引数ラベル(Parameter Names and Argument Labels)</h3>
+<h3 id="パラメータ名と引数ラベルparameter-names-and-argument-labels">パラメータ名と引数ラベル(Parameter Names and Argument Labels)</h3>
 <p>関数やメソッドのパラメータと同様に、初期化パラメータには、イニシャライザの本文内で使用するパラメータ名と、イニシャライザを呼び出すときに使用する引数ラベルの両方を含めることができます。</p>
 <p>ただし、イニシャライザには、関数やメソッドのように括弧の前に識別関数名がありません。したがって、イニシャライザのパラメータの名前と型は、どのイニシャライザを呼び出す必要があるかを識別する上で特に重要な役割を果たします。このため、Swift は、イニシャライザが提供されていない場合、イニシャライザの全てのパラメータに自動で引数ラベルを提供します。</p>
 <p>次の例では、<code>red</code>、<code>green</code>、<code>blue</code> という 3 つの定数プロパティを持つ <code>Color</code> という構造体を定義しています。これらのプロパティには、色の赤、緑、青の量を示す <code>0.0</code> ～ <code>1.0</code> の値が格納されます。</p>
@@ -838,7 +834,7 @@
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> veryGreen <span class="token operator">=</span> <span class="token function">Color</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span>
 <span class="token comment">// 引数ラベルが必要になるため、コンパイルエラーになります</span>
 </code></pre>
-<h3 id="引数ラベルのないイニシャライザパラメータinitializer-parameters-without-argument-labels"><a name="引数ラベルのないイニシャライザパラメータinitializer-parameters-without-argument-labels" class="plugin-anchor" href="#引数ラベルのないイニシャライザパラメータinitializer-parameters-without-argument-labels"><i class="fa fa-link" aria-hidden="true"></i></a><a id="initializer-parameters-without-argument-labels">引数ラベルのないイニシャライザパラメータ(Initializer Parameters Without Argument Labels)</a></h3>
+<h3 id="引数ラベルのないイニシャライザパラメータinitializer-parameters-without-argument-labels"><a id="initializer-parameters-without-argument-labels">引数ラベルのないイニシャライザパラメータ(Initializer Parameters Without Argument Labels)</a></h3>
 <p>初期化パラメータに引数ラベルを使用したくない場合は、そのパラメータの明示的な引数ラベルの代わりにアンダースコア (<code>_</code>) を記述して、デフォルトの挙動をオーバーライドします。</p>
 <p>これは、上記の<a href="initialization.html#initialization-parameters">Initialization Parameters(イニシャライザのパラメータ)</a>の <code>Celsius</code> の例の拡張バージョンで、すでに摂氏スケールにある <code>Double</code> 値から新しい <code>Celsius</code> インスタンスを作成する追加のイニシャライザを備えています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">Celsius</span> <span class="token punctuation">{</span>
@@ -857,7 +853,7 @@
 <span class="token comment">// bodyTemperature.temperatureInCelsius は 37.0</span>
 </code></pre>
 <p>イニシャライザの呼び出し <code>Celsius(37.0)</code> は、意図が明確なので引数ラベルを必要としません。したがって、このイニシャライザを <code>init(_ celsius: Double)</code> と記述して、名前のない <code>Double</code> 値を指定して呼び出すことができるのは妥当です。</p>
-<h3 id="オプショナルのプロパティ型optional-property-types"><a name="オプショナルのプロパティ型optional-property-types" class="plugin-anchor" href="#オプショナルのプロパティ型optional-property-types"><i class="fa fa-link" aria-hidden="true"></i></a>オプショナルのプロパティ型(Optional Property Types)</h3>
+<h3 id="オプショナルのプロパティ型optional-property-types">オプショナルのプロパティ型(Optional Property Types)</h3>
 <p>独自に定義した型に、論理的に「値なし」が許される格納プロパティがある場合(おそらく、初期化中にその値を設定できないか、後で「値なし」になる可能性があるため)、プロパティをオプショナル型を使って宣言できます。オプショナル型のプロパティは、値 <code>nil</code> で自動的に初期化されます。こうすることで、プロパティが初期化中に意図的に「まだ値がない」ことを示すことができます。</p>
 <p>次の例では、<code>SurveyQuestion</code> というクラスを定義し、オプショナルの <code>String</code> プロパティとして <code>response</code> を定義しています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">SurveyQuestion</span> <span class="token punctuation">{</span>
@@ -876,7 +872,7 @@ cheeseQuestion<span class="token punctuation">.</span><span class="token functio
 cheeseQuestion<span class="token punctuation">.</span>response <span class="token operator">=</span> <span class="token string">&quot;Yes, I do like cheese.&quot;</span>
 </code></pre>
 <p>アンケートの質問への回答は質問されるまでわからないため、回答プロパティは <code>String?</code> または <code>Optional<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>String</span><span class="token punctuation">&gt;</span></span></code> で宣言されています。<code>SurveyQuestion</code> の新しいインスタンスが初期化されると、デフォルト値の <code>nil</code>、つまり「文字列はまだありません」が自動的に割り当てられます。</p>
-<h3 id="初期化中の定数プロパティの割り当てassigning-constant-properties-during-initialization"><a name="初期化中の定数プロパティの割り当てassigning-constant-properties-during-initialization" class="plugin-anchor" href="#初期化中の定数プロパティの割り当てassigning-constant-properties-during-initialization"><i class="fa fa-link" aria-hidden="true"></i></a><a id="assigning-constant-properties-during-initialization">初期化中の定数プロパティの割り当て(Assigning Constant Properties During Initialization)</a></h3>
+<h3 id="初期化中の定数プロパティの割り当てassigning-constant-properties-during-initialization"><a id="assigning-constant-properties-during-initialization">初期化中の定数プロパティの割り当て(Assigning Constant Properties During Initialization)</a></h3>
 <p>初期化が完了するまでに明確な値が設定されている限り、初期化中の任意の時点で定数プロパティに値を割り当てることができます。定数プロパティに値が割り当てられると、それ以上変更することはできません。</p>
 <blockquote>
 <p>NOTE<br>クラスインスタンスの場合、初期化中に定数プロパティを変更できるのは、それを導入したクラスだけです。サブクラスでは変更できません。</p>
@@ -897,7 +893,7 @@ beetsQuestion<span class="token punctuation">.</span><span class="token function
 <span class="token comment">// &quot;How about beets?&quot;</span>
 beetsQuestion<span class="token punctuation">.</span>response <span class="token operator">=</span> <span class="token string">&quot;I also like beets. (But not with cheese.)&quot;</span>
 </code></pre>
-<h2 id="デフォルトイニシャライザdefault-initializers"><a name="デフォルトイニシャライザdefault-initializers" class="plugin-anchor" href="#デフォルトイニシャライザdefault-initializers"><i class="fa fa-link" aria-hidden="true"></i></a><a id="default-initializers">デフォルトイニシャライザ(Default Initializers)</a></h2>
+<h2 id="デフォルトイニシャライザdefault-initializers"><a id="default-initializers">デフォルトイニシャライザ(Default Initializers)</a></h2>
 <p>Swift は、全てのプロパティにデフォルト値を設定し、1 つもイニシャライザを提供しない構造体またはクラスに対して、デフォルトのイニシャライザを提供します。デフォルトのイニシャライザは、全てのプロパティがデフォルト値に設定された新しいインスタンスを作成するだけです。</p>
 <p>この例では、ショッピングリスト内のアイテムの名前、数量、購入状態をカプセル化する <code>ShoppingListItem</code> というクラスを定義しています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">ShoppingListItem</span> <span class="token punctuation">{</span>
@@ -908,7 +904,7 @@ beetsQuestion<span class="token punctuation">.</span>response <span class="token
 <span class="token keyword">var</span> item <span class="token operator">=</span> <span class="token function">ShoppingListItem</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <p><code>ShoppingListItem</code> クラスの全てのプロパティにはデフォルト値があり、スーパークラスを持たない基本クラスのため、<code>ShoppingListItem</code> は、全てのプロパティにデフォルト値が設定された新しいインスタンスを作成するイニシャライザの実装を自動で獲得します(<code>name</code> プロパティはオプショナルの <code>String</code> プロパティのため、この値がコードに記述されていなくても、デフォルト値の <code>nil</code> が自動的に設定されます)。上記の例では、<code>ShoppingListItem</code> クラスのデフォルトイニシャライザを使用して <code>ShoppingListItem()</code> と記述し、新しいインスタンスを作成して <code>item</code> という変数に割り当てています。</p>
-<h3 id="構造体のメンバワイズイニシャライザmemberwise-initializers-for-structure-types"><a name="構造体のメンバワイズイニシャライザmemberwise-initializers-for-structure-types" class="plugin-anchor" href="#構造体のメンバワイズイニシャライザmemberwise-initializers-for-structure-types"><i class="fa fa-link" aria-hidden="true"></i></a><a id="initialization-memberwise-initializers-for-structure-types">構造体のメンバワイズイニシャライザ(Memberwise Initializers for Structure Types)</a></h3>
+<h3 id="構造体のメンバワイズイニシャライザmemberwise-initializers-for-structure-types"><a id="initialization-memberwise-initializers-for-structure-types">構造体のメンバワイズイニシャライザ(Memberwise Initializers for Structure Types)</a></h3>
 <p>&lt;/a&gt;
 構造体は、独自のカスタムイニシャライザを定義していない場合、<em>メンバワイズイニシャライザ</em>を自動的に定義されます。デフォルトイニシャライザとは異なり、構造体は、デフォルト値を持たないプロパティが格納されている場合でも、メンバワイズイニシャライザが定義されます。</p>
 <p>メンバワイズイニシャライザは、新しい構造体インスタンスのプロパティを初期化する簡単な方法です。新しいインスタンスのプロパティの初期値は、プロパティ名によってメンバワイズイニシャライザに渡すことができます。</p>
@@ -928,7 +924,7 @@ beetsQuestion<span class="token punctuation">.</span>response <span class="token
 <span class="token function">print</span><span class="token punctuation">(</span>zeroByZero<span class="token punctuation">.</span>width<span class="token punctuation">,</span> zeroByZero<span class="token punctuation">.</span>height<span class="token punctuation">)</span>
 <span class="token comment">// &quot;0.0 0.0&quot;</span>
 </code></pre>
-<h2 id="値型のイニシャライザの委譲initializer-delegation-for-value-types"><a name="値型のイニシャライザの委譲initializer-delegation-for-value-types" class="plugin-anchor" href="#値型のイニシャライザの委譲initializer-delegation-for-value-types"><i class="fa fa-link" aria-hidden="true"></i></a><a id="initializer-delegation-for-value-types">値型のイニシャライザの委譲(Initializer Delegation for Value Types)</a></h2>
+<h2 id="値型のイニシャライザの委譲initializer-delegation-for-value-types"><a id="initializer-delegation-for-value-types">値型のイニシャライザの委譲(Initializer Delegation for Value Types)</a></h2>
 <p>イニシャライザは、他のイニシャライザを呼び出して、インスタンスの初期化の一部を実行できます。<em>イニシャライザの委譲</em>と呼ばれるこのプロセスは、複数のイニシャライザ間でコードが重複するのを防ぎます。</p>
 <p>イニシャライザの委譲がどのように機能するか、および許可される委譲の形式に関する規則は、値型とクラス型で異なります。値型(構造体と列挙型)は継承をサポートしていないため、イニシャライザの委譲プロセスは比較的簡単です。ただし、<a href="inheritance.html">Inheritance(継承)</a>で説明されているように、クラスは他のクラスを継承できます。これは、クラスが継承した全ての格納プロパティに、初期化中に適切な値が割り当てられることを保証する追加の責任があることを意味します。これらの責任は、下記の<a href="initialization.html#class-inheritance-and-initialization">Class Inheritance and Initialization(クラスの継承と初期化)</a>で説明されています。</p>
 <p>値型の場合、独自のカスタムイニシャライザを作成するときに、<code>self.init</code> を使用して同じ値型から他のイニシャライザを参照します。<code>self.init</code> は、イニシャライザ内からのみ呼び出すことができます。</p>
@@ -978,21 +974,21 @@ beetsQuestion<span class="token punctuation">.</span>response <span class="token
 <blockquote>
 <p>NOTE<br><code>init()</code> および <code>init(origin:size:)</code> イニシャライザを、定義の外で記述する別の方法については、<a href="extensions.html">Extension(拡張)</a>を参照ください。</p>
 </blockquote>
-<h2 id="クラスの継承と初期化class-inheritance-and-initialization"><a name="クラスの継承と初期化class-inheritance-and-initialization" class="plugin-anchor" href="#クラスの継承と初期化class-inheritance-and-initialization"><i class="fa fa-link" aria-hidden="true"></i></a><a id="class-inheritance-and-initialization">クラスの継承と初期化(Class Inheritance and Initialization)</a></h2>
+<h2 id="クラスの継承と初期化class-inheritance-and-initialization"><a id="class-inheritance-and-initialization">クラスの継承と初期化(Class Inheritance and Initialization)</a></h2>
 <p>サブクラスがスーパークラスから継承する全てのプロパティを含む、クラスの全ての格納プロパティには、初期化中に初期値を割り当てる必要があります。</p>
 <p>Swift は、クラス型に対して 2 種類のイニシャライザを定義して、全ての格納プロパティが確実に初期値を受け取るようにします。これらは、<em>指定イニシャライザ</em>および <em>covenience イニシャライザ</em>と呼ばれます。</p>
-<h3 id="指定イニシャライザとcovenience-イニシャライザdesignated-initializers-and-convenience-initializers"><a name="指定イニシャライザとcovenience-イニシャライザdesignated-initializers-and-convenience-initializers" class="plugin-anchor" href="#指定イニシャライザとcovenience-イニシャライザdesignated-initializers-and-convenience-initializers"><i class="fa fa-link" aria-hidden="true"></i></a>指定イニシャライザとcovenience イニシャライザ(Designated Initializers and Convenience Initializers)</h3>
+<h3 id="指定イニシャライザとcovenience-イニシャライザdesignated-initializers-and-convenience-initializers">指定イニシャライザとcovenience イニシャライザ(Designated Initializers and Convenience Initializers)</h3>
 <p><em>指定イニシャライザ</em>は、クラスの主要なイニシャライザです。指定イニシャライザは、そのクラスで導入された全てのプロパティを完全に初期化し、適切なスーパークラスのイニシャライザを呼び出して、スーパークラスへチェーンして初期化プロセスを続行します。</p>
 <p>複数の指定イニシャライザを持つクラスはあまりなく、1 つだけ持つのが一般的です。指定イニシャライザは、初期化が行われる「漏斗」のような地点で、初期化プロセスはスーパークラスへチェーンして上に向かって続行します。</p>
 <p>全てのクラスには、少なくとも 1 つの指定イニシャライザが必要です。場合によっては、この要件は、以下の<a href="initialization.html#automatic-initializer-inheritance">Automatic Initializer Inheritance(自動イニシャライザの継承)</a>で説明されているように、スーパークラスから 1 つ以上の指定イニシャライザを継承することで満たされます。</p>
 <p>convenience イニシャライザは二次的なもので、クラスのイニシャライザをサポートします。convenience イニシャライザを定義して、指定イニシャライザのパラメータの一部をデフォルト値に設定し、convenience イニシャライザから指定イニシャライザを呼び出すことができます。また、特定のユースケースまたは入力値の型用にそのクラスのインスタンスを作成するために、convenience イニシャライザを定義することもできます。</p>
 <p>クラスで必要ない場合は、convenience イニシャライザを提供する必要はありません。共通の初期化パターンへのショートカットとして時間の節約になったり、初期化の意図をより明確にできる場合は、常に convenience イニシャライザを作成してください。</p>
-<h3 id="指定イニシャライザとcovenience-イニシャライザの構文syntax-for-designated-and-convenience-initializers"><a name="指定イニシャライザとcovenience-イニシャライザの構文syntax-for-designated-and-convenience-initializers" class="plugin-anchor" href="#指定イニシャライザとcovenience-イニシャライザの構文syntax-for-designated-and-convenience-initializers"><i class="fa fa-link" aria-hidden="true"></i></a>指定イニシャライザとcovenience イニシャライザの構文(Syntax for Designated and Convenience Initializers)</h3>
+<h3 id="指定イニシャライザとcovenience-イニシャライザの構文syntax-for-designated-and-convenience-initializers">指定イニシャライザとcovenience イニシャライザの構文(Syntax for Designated and Convenience Initializers)</h3>
 <p>クラスの指定イニシャライザは、値型のシンプルなイニシャライザと同じ方法で記述します:</p>
 <p><img src="../assets/14_designatedInitializer.png" alt="指定イニシャライザ"></p>
 <p>covenience イニシャライザは同じスタイルで記述できますが、<code>init</code> キーワードの前にスペース区切りで <code>covenience</code> 修飾子を配置します:</p>
 <p><img src="../assets/14_convenienceInitializer.png" alt="covenience イニシャライザ"></p>
-<h3 id="クラス型のイニシャライザの委譲initializer-delegation-for-class-types"><a name="クラス型のイニシャライザの委譲initializer-delegation-for-class-types" class="plugin-anchor" href="#クラス型のイニシャライザの委譲initializer-delegation-for-class-types"><i class="fa fa-link" aria-hidden="true"></i></a><a id="initializer-delegation-for-class-types">クラス型のイニシャライザの委譲(Initializer Delegation for Class Types)</a></h3>
+<h3 id="クラス型のイニシャライザの委譲initializer-delegation-for-class-types"><a id="initializer-delegation-for-class-types">クラス型のイニシャライザの委譲(Initializer Delegation for Class Types)</a></h3>
 <p>指定イニシャライザと convenience イニシャライザ間の関係を簡潔にするために、Swift はイニシャライザ間の呼び出しの委譲に次の 3 つのルールを適用します:</p>
 <ul>
 <li><strong>ルール 1</strong> 指定イニシャライザは、直接スーパークラスの指定イニシャライザを呼び出す必要があります</li>
@@ -1013,25 +1009,25 @@ beetsQuestion<span class="token punctuation">.</span>response <span class="token
 </blockquote>
 <p>次の図は、4 つのクラスのより複雑なクラス階層を示しています。これは、この階層の指定イニシャライザがクラスイニシャライザ初期化の「漏斗」のように機能し、チェーン内のクラス間の相互関係をシンプルにする方法を示しています:</p>
 <p><img src="../assets/initializerDelegation02_2x.png" alt="より複雑なイニシャライザの委譲"></p>
-<h3 id="2段階の初期化two-phase-initialization"><a name="2段階の初期化two-phase-initialization" class="plugin-anchor" href="#2段階の初期化two-phase-initialization"><i class="fa fa-link" aria-hidden="true"></i></a><a id="two-phase-initialization">2段階の初期化(Two-Phase Initialization)</a></h3>
+<h3 id="2段階の初期化two-phase-initialization"><a id="two-phase-initialization">2段階の初期化(Two-Phase Initialization)</a></h3>
 <p>Swift でのクラスの初期化は 2 段階のプロセスです。最初の段階では、各格納プロパティに、それを導入したクラスが初期値を割り当てます。全ての格納プロパティの初期状態が決定されると、第 2 段階が開始され、新しいインスタンスを使用する準備が整ったと見なされる前に、各クラスの格納プロパティをさらにカスタマイズする機会が与えられます。</p>
 <p>2 段階の初期化プロセスを使用すると、初期化が安全になり、クラス階層内の各クラスに完全な柔軟性がもたらされます。2 段階の初期化は、プロパティ値が初期化される前にアクセスされるのを防ぎ、プロパティ値が別のイニシャライザによって予期せず別の値に設定されるのを防ぎます。</p>
 <blockquote>
 <p>NOTE<br>Swift の 2 段階の初期化プロセスは、Objective-C の初期化に似ています。主な違いは、第 1 段階では、Objective-C がゼロまたはヌル値 (<code>0</code> や <code>nil</code> など) を全てのプロパティに割り当てることです。Swift の初期化フローは、カスタムの初期値を設定できるという点でより柔軟であり、<code>0</code> または <code>nil</code> が有効なデフォルト値ではない型に対処できます。</p>
 </blockquote>
 <p>Swift のコンパイラは、2 段階の初期化がエラーなしで完了したことを確認するために、4 つの有用な安全チェックを実行します。</p>
-<h4 id="安全チェック-1"><a name="安全チェック-1" class="plugin-anchor" href="#安全チェック-1"><i class="fa fa-link" aria-hidden="true"></i></a><strong>安全チェック 1</strong></h4>
+<h4 id="安全チェック-1"><strong>安全チェック 1</strong></h4>
 <p>指定イニシャライザは、スーパークラスのイニシャライザに委譲する前に、そのクラスによって導入された全てのプロパティが初期化されていることを確認する必要があります</p>
 <p>前述のように、オブジェクトのメモリは、全ての格納プロパティの初期状態が判明すると、完全に初期化されたと見なされます。このルールが満たされるためには、指定イニシャライザは、チェーンを引き継ぐ前に、それ自体の全てのプロパティが初期化されていることを確認する必要があります。</p>
-<h4 id="安全チェック-2"><a name="安全チェック-2" class="plugin-anchor" href="#安全チェック-2"><i class="fa fa-link" aria-hidden="true"></i></a><strong>安全チェック 2</strong></h4>
+<h4 id="安全チェック-2"><strong>安全チェック 2</strong></h4>
 <p>指定イニシャライザは、継承したプロパティに値を割り当てる前に、スーパークラスのイニシャライザに委譲する必要があります。そうしないと、指定イニシャライザが割り当てる新しい値は、スーパークラスの初期化によって上書きされてしまいます</p>
-<h4 id="安全チェック-3"><a name="安全チェック-3" class="plugin-anchor" href="#安全チェック-3"><i class="fa fa-link" aria-hidden="true"></i></a><strong>安全チェック 3</strong></h4>
+<h4 id="安全チェック-3"><strong>安全チェック 3</strong></h4>
 <p>convenience イニシャライザは、値をプロパティ(同じクラスで定義されたプロパティを含む)に割り当てる前に、別のイニシャライザに委譲する必要があります。そうしないと、convenience イニシャライザが割り当てる新しい値は、独自クラスの指定イニシャライザによって上書きされます</p>
-<h4 id="安全チェック-4"><a name="安全チェック-4" class="plugin-anchor" href="#安全チェック-4"><i class="fa fa-link" aria-hidden="true"></i></a><strong>安全チェック 4</strong></h4>
+<h4 id="安全チェック-4"><strong>安全チェック 4</strong></h4>
 <p>イニシャライザは、初期化の最初の段階が完了するまで、インスタンスメソッドを呼び出したり、インスタンスプロパティの値を読み取ったり、値として自分自身を参照したりすることはできません</p>
 <p>クラスインスタンスは、最初の段階が終了するまで完全には有効ではありません。プロパティへのアクセスとメソッドの呼び出しは、最初の段階の終了時にクラスインスタンスが有効なことがわかった場合にのみ可能です。</p>
 <p>上記の 4 つの安全チェックに基づいて、2 段階の初期化がどのように実行されるかを次に示します:</p>
-<h4 id="第-1-段階"><a name="第-1-段階" class="plugin-anchor" href="#第-1-段階"><i class="fa fa-link" aria-hidden="true"></i></a><strong>第 1 段階</strong></h4>
+<h4 id="第-1-段階"><strong>第 1 段階</strong></h4>
 <ul>
 <li>指定イニシャライザまたは convenience イニシャライザがクラスで呼び出されます</li>
 <li>そのクラスの新しいインスタンスがメモリに割り当てられます。メモリはまだ初期化されていません</li>
@@ -1040,7 +1036,7 @@ beetsQuestion<span class="token punctuation">.</span>response <span class="token
 <li>これは、初期化チェーンの最上位に到達するまで、クラスの継承チェーンが継続します</li>
 <li>チェーンのトップに到達し、チェーン内の最後のクラスが、全ての格納プロパティに値があることを確認すると、インスタンスのメモリは完全に初期化されたと見なされ、第 1 段階が完了します</li>
 </ul>
-<h4 id="第-2-段階"><a name="第-2-段階" class="plugin-anchor" href="#第-2-段階"><i class="fa fa-link" aria-hidden="true"></i></a><strong>第 2 段階</strong></h4>
+<h4 id="第-2-段階"><strong>第 2 段階</strong></h4>
 <ul>
 <li>チェーンの最上位から下に戻ると、チェーン内の指定された各イニシャライザは、インスタンスをさらにカスタマイズすることができます。イニシャライザは、<code>self</code> にアクセスして、そのプロパティを変更したり、インスタンスメソッドを呼び出したりできるようになりました</li>
 <li>最後に、チェーン内の convenience イニシャライザは、インスタンスをカスタマイズして <code>self</code> を操作することができるようになります</li>
@@ -1056,7 +1052,7 @@ beetsQuestion<span class="token punctuation">.</span>response <span class="token
 <p>スーパークラスの指定イニシャライザは、インスタンスをさらにカスタマイズする機会を得ます(ただし、必ず必要ではありません)。</p>
 <p>スーパークラスの指定イニシャライザが完了すると、サブクラスの指定イニシャライザで追加のカスタマイズを実行できます(ただし、これも必ずしも行う必要はありません)。</p>
 <p>最後に、サブクラスの指定イニシャライザが終了すると、最初に呼び出された convenience イニシャライザは追加のカスタマイズを実行できます。</p>
-<h3 id="イニシャライザの継承とオーバーライドinitializer-inheritance-and-overriding"><a name="イニシャライザの継承とオーバーライドinitializer-inheritance-and-overriding" class="plugin-anchor" href="#イニシャライザの継承とオーバーライドinitializer-inheritance-and-overriding"><i class="fa fa-link" aria-hidden="true"></i></a><a id="initializer-inheritance-and-overriding">イニシャライザの継承とオーバーライド(Initializer Inheritance and Overriding)</a></h3>
+<h3 id="イニシャライザの継承とオーバーライドinitializer-inheritance-and-overriding"><a id="initializer-inheritance-and-overriding">イニシャライザの継承とオーバーライド(Initializer Inheritance and Overriding)</a></h3>
 <p>Objective-C のサブクラスとは異なり、Swift のサブクラスはデフォルトでスーパークラスのイニシャライザを継承しません。Swift のアプローチは、スーパークラスからのシンプルなイニシャライザが、より具体的なサブクラスによって継承され、完全または正しく初期化されていないサブクラスの新しいインスタンスを作成すること防ぎます。</p>
 <blockquote>
 <p>NOTE<br>スーパークラスのイニシャライザは特定の状況で継承できますが、安全で適切な場合に限ります。詳細については、以下の<a href="initialization.html#automatic-initializer-inheritance">Automatic Initializer Inheritance(自動イニシャライザの継承)</a>を参照してください。</p>
@@ -1117,14 +1113,14 @@ beetsQuestion<span class="token punctuation">.</span>response <span class="token
 <blockquote>
 <p>NOTE<br>サブクラスは、初期化中に継承した変数プロパティを変更できますが、継承した定数プロパティを変更することはできません。</p>
 </blockquote>
-<h3 id="自動イニシャライザの継承automatic-initializer-inheritance"><a name="自動イニシャライザの継承automatic-initializer-inheritance" class="plugin-anchor" href="#自動イニシャライザの継承automatic-initializer-inheritance"><i class="fa fa-link" aria-hidden="true"></i></a><a id="automatic-initializer-inheritance">自動イニシャライザの継承(Automatic Initializer Inheritance)</a></h3>
+<h3 id="自動イニシャライザの継承automatic-initializer-inheritance"><a id="automatic-initializer-inheritance">自動イニシャライザの継承(Automatic Initializer Inheritance)</a></h3>
 <p>上記のように、サブクラスはデフォルトでスーパークラスのイニシャライザを継承しません。ただし、特定の条件が満たされた場合、スーパークラスのイニシャライザは自動的に継承されます。つまり、実際には、多くの場合でイニシャライザのオーバーライドを記述する必要がなく、安全にオーバーライドできる場合はいつでも最小限の手間で、スーパークラスのイニシャライザを継承できます。</p>
 <p>サブクラスに導入する新しいプロパティにデフォルト値を提供する場合、次の 2 つのルールが適用されます:</p>
-<h4 id="ルール-1"><a name="ルール-1" class="plugin-anchor" href="#ルール-1"><i class="fa fa-link" aria-hidden="true"></i></a><strong>ルール 1</strong></h4>
+<h4 id="ルール-1"><strong>ルール 1</strong></h4>
 <ul>
 <li>サブクラスが指定イニシャライザを定義していない場合、サブクラスはそのスーパークラスの指定イニシャライザを全て自動的に継承します</li>
 </ul>
-<h4 id="ルール-2"><a name="ルール-2" class="plugin-anchor" href="#ルール-2"><i class="fa fa-link" aria-hidden="true"></i></a><strong>ルール 2</strong></h4>
+<h4 id="ルール-2"><strong>ルール 2</strong></h4>
 <ul>
 <li>サブクラスが、ルール 1 に従ってスーパークラスの指定イニシャライザを自動で継承するか、またはカスタムのイニシャライザを実装することによってスーパークラスの全ての指定イニシャライザを実装する場合、全てのスーパークラスの convenience イニシャライザを自動的に継承します</li>
 </ul>
@@ -1132,7 +1128,7 @@ beetsQuestion<span class="token punctuation">.</span>response <span class="token
 <blockquote>
 <p>NOTE<br>サブクラスは、ルール 2 を満たす方法の 1 つとして、スーパークラスの指定イニシャライザをサブクラスの convenience イニシャライザとして実装できます。</p>
 </blockquote>
-<h3 id="指定とcovenience-イニシャライザの挙動designated-and-convenience-initializers-in-action"><a name="指定とcovenience-イニシャライザの挙動designated-and-convenience-initializers-in-action" class="plugin-anchor" href="#指定とcovenience-イニシャライザの挙動designated-and-convenience-initializers-in-action"><i class="fa fa-link" aria-hidden="true"></i></a>指定とcovenience イニシャライザの挙動(Designated and Convenience Initializers in Action)</h3>
+<h3 id="指定とcovenience-イニシャライザの挙動designated-and-convenience-initializers-in-action">指定とcovenience イニシャライザの挙動(Designated and Convenience Initializers in Action)</h3>
 <p>次の例は、指定イニシャライザ、convenience イニシャライザ、および自動イニシャライザの継承の挙動を示しています。この例では、<code>Food</code>、<code>RecipeIngredient</code>、および <code>ShoppingListItem</code> という 3 つのクラスの階層を定義し、それらのイニシャライザがどのように相互作用するかを示しています。</p>
 <p>階層の基本クラスは <code>Food</code> と呼ばれ、食品の名前をカプセル化するシンプルなクラスです。<code>Food</code> クラスは、<code>name</code> という単一の <code>String</code> プロパティを宣言し、<code>Food</code> インスタンスを作成するために 2 つのイニシャライザを提供します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">Food</span> <span class="token punctuation">{</span>
@@ -1213,7 +1209,7 @@ breakfastList<span class="token punctuation">[</span><span class="token number">
 <span class="token comment">// 6 x Eggs ✘</span>
 </code></pre>
 <p>ここでは、3 つの新しい <code>ShoppingListItem</code> インスタンスを含む配列リテラルから、<code>breakfastList</code> という新しい配列が作成されます。配列の型は <code>[ShoppingListItem]</code> だと推論されます。配列が作成された後、配列の先頭にある <code>ShoppingListItem</code> の名前が <code>&quot;[Unnamed]&quot;</code> から <code>&quot;Orange juice&quot;</code> に変更され、購入済みとしてマークされます。配列内の各アイテムの説明を出力すると、デフォルトの状態が期待どおりに設定されていることがわかります。</p>
-<h2 id="失敗可能イニシャライザfailable-initializers"><a name="失敗可能イニシャライザfailable-initializers" class="plugin-anchor" href="#失敗可能イニシャライザfailable-initializers"><i class="fa fa-link" aria-hidden="true"></i></a><a id="initialization-failable-initializers">失敗可能イニシャライザ(Failable Initializers)</a></h2>
+<h2 id="失敗可能イニシャライザfailable-initializers"><a id="initialization-failable-initializers">失敗可能イニシャライザ(Failable Initializers)</a></h2>
 <p>初期化が失敗する可能性があるクラス、構造体、または列挙型を定義すると便利な場合があります。この失敗は、無効な初期化パラメータ値、必要な外部リソースの欠如、または初期化の成功を妨げるその他の条件によって引き起こされる可能性があります。</p>
 <p>失敗する可能性のある初期化条件に対処するには、クラス、構造体、または列挙型定義の一部として、1 つ以上の<em>失敗可能イニシャライザ</em>を定義します。<code>init</code> キーワードの後に疑問符を置いて、失敗するイニシャライザを記述します(<code>init?</code>)。</p>
 <blockquote>
@@ -1270,7 +1266,7 @@ breakfastList<span class="token punctuation">[</span><span class="token number">
 <blockquote>
 <p>NOTE<br>空の文字列 (&quot;Giraffe&quot; ではなく &quot;&quot; など) のチェックは、オプショナルの String 値がないことを示す <code>nil</code> のチェックとは異なります。上記の例では、空の文字列 (&quot;&quot;) は妥当な非 オプショナルの文字列です。ただし、<code>Animal</code> がその <code>species</code> プロパティの値として空の文字列を持つことは適切ではありません。この制限をモデル化するために、空の文字列が見つかった場合、失敗可能イニシャライザは初期化に失敗します。</p>
 </blockquote>
-<h3 id="列挙型の失敗可能イニシャライザfailable-initializers-for-enumerations"><a name="列挙型の失敗可能イニシャライザfailable-initializers-for-enumerations" class="plugin-anchor" href="#列挙型の失敗可能イニシャライザfailable-initializers-for-enumerations"><i class="fa fa-link" aria-hidden="true"></i></a>列挙型の失敗可能イニシャライザ(Failable Initializers for Enumerations)</h3>
+<h3 id="列挙型の失敗可能イニシャライザfailable-initializers-for-enumerations">列挙型の失敗可能イニシャライザ(Failable Initializers for Enumerations)</h3>
 <p>失敗可能イニシャライザを使用して、1 つ以上のパラメータに基づいて適切な列挙ケースを選択できます。提供されたパラメータが適切な列挙ケースと一致しない場合、イニシャライザは失敗する可能性があります。</p>
 <p>以下の例では、3 つの可能な状態(<code>kelvin</code>、<code>celsius</code>、<code>fahrenheit</code>)を使用して、<code>TemperatureUnit</code> という列挙型を定義しています。温度記号を表す <code>Character</code> 値の適切な列挙ケースを見つけるために、失敗可能イニシャライザが使用されます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">enum</span> <span class="token builtin">TemperatureUnit</span> <span class="token punctuation">{</span>
@@ -1302,7 +1298,7 @@ breakfastList<span class="token punctuation">[</span><span class="token number">
 <span class="token punctuation">}</span>
 <span class="token comment">// &quot;This isn&apos;t a defined temperature unit, so initialization failed.&quot;</span>
 </code></pre>
-<h3 id="raw-value-を持つ列挙型の失敗可能イニシャライザfailable-initializers-for-enumerations-with-raw-values"><a name="raw-value-を持つ列挙型の失敗可能イニシャライザfailable-initializers-for-enumerations-with-raw-values" class="plugin-anchor" href="#raw-value-を持つ列挙型の失敗可能イニシャライザfailable-initializers-for-enumerations-with-raw-values"><i class="fa fa-link" aria-hidden="true"></i></a>Raw Value を持つ列挙型の失敗可能イニシャライザ(Failable Initializers for Enumerations with Raw Values)</h3>
+<h3 id="raw-value-を持つ列挙型の失敗可能イニシャライザfailable-initializers-for-enumerations-with-raw-values">Raw Value を持つ列挙型の失敗可能イニシャライザ(Failable Initializers for Enumerations with Raw Values)</h3>
 <p>Raw Value を持つ列挙型は、適切な Raw Value 型の <code>rawValue</code> と呼ばれるパラメータを受け取り、一致する列挙ケースが見つかった場合はそれを選択するか、一致する値がない場合は初期化に失敗する失敗可能イニシャライザ <code>init?(rawValue:)</code> を自動的に生成します。</p>
 <p>上記の <code>TemperatureUnit</code> の例を書き直して、<code>Character</code> 型の Raw Value を使用し、<code>init?(rawValue:)</code> イニシャライザを利用できます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">enum</span> <span class="token builtin">TemperatureUnit</span><span class="token punctuation">:</span> <span class="token builtin">Character</span> <span class="token punctuation">{</span>
@@ -1321,7 +1317,7 @@ breakfastList<span class="token punctuation">[</span><span class="token number">
 <span class="token punctuation">}</span>
 <span class="token comment">// &quot;This isn&apos;t a defined temperature unit, so initialization failed.&quot;</span>
 </code></pre>
-<h3 id="初期化の失敗の伝播propagation-of-initialization-failure"><a name="初期化の失敗の伝播propagation-of-initialization-failure" class="plugin-anchor" href="#初期化の失敗の伝播propagation-of-initialization-failure"><i class="fa fa-link" aria-hidden="true"></i></a>初期化の失敗の伝播(Propagation of Initialization Failure)</h3>
+<h3 id="初期化の失敗の伝播propagation-of-initialization-failure">初期化の失敗の伝播(Propagation of Initialization Failure)</h3>
 <p>クラス、構造体、または列挙型の失敗可能イニシャライザは、同じクラス、構造体、または列挙型から別の失敗可能イニシャライザに委譲できます。同様に、サブクラスの失敗可能イニシャライザは、スーパークラスの失敗可能イニシャライザに委譲できます。</p>
 <p>いずれの場合も、委譲した別のイニシャライザで初期化に失敗すると、初期化プロセス全体がすぐに失敗し、それ以上の初期化コードは実行されません。</p>
 <blockquote>
@@ -1368,7 +1364,7 @@ breakfastList<span class="token punctuation">[</span><span class="token number">
 <span class="token punctuation">}</span>
 <span class="token comment">// &quot;Unable to initialize one unnamed product&quot;</span>
 </code></pre>
-<h3 id="失敗可能イニシャライザのオーバーライドoverriding-a-failable-initializer"><a name="失敗可能イニシャライザのオーバーライドoverriding-a-failable-initializer" class="plugin-anchor" href="#失敗可能イニシャライザのオーバーライドoverriding-a-failable-initializer"><i class="fa fa-link" aria-hidden="true"></i></a><a id="overriding-a-failable-initializer">失敗可能イニシャライザのオーバーライド(Overriding a Failable Initializer)</a></h3>
+<h3 id="失敗可能イニシャライザのオーバーライドoverriding-a-failable-initializer"><a id="overriding-a-failable-initializer">失敗可能イニシャライザのオーバーライド(Overriding a Failable Initializer)</a></h3>
 <p>他のイニシャライザと同様に、サブクラスでスーパークラスの失敗可能イニシャライザをオーバーライドできます。または、スーパークラスの失敗可能イニシャライザをサブクラスの失敗しないイニシャライザでオーバーライドできます。これにより、スーパークラスの初期化が失敗しても、初期化が失敗しないサブクラスを定義できます。</p>
 <p>スーパークラスの失敗可能イニシャライザをサブクラスの失敗しないイニシャライザでオーバーライドする場合、スーパークラスのイニシャライザに委譲する唯一の方法は、スーパークラスの失敗可能イニシャライザの結果を強制アンラップすることです。</p>
 <blockquote>
@@ -1411,10 +1407,10 @@ breakfastList<span class="token punctuation">[</span><span class="token number">
 <span class="token punctuation">}</span>
 </code></pre>
 <p>この場合、スーパークラスの <code>init(name:)</code> イニシャライザが名前に空の文字列を指定して呼び出された場合、強制アンラップにより実行時エラーが発生しますが、文字列定数で呼び出されているため、イニシャライザが失敗しないことがわかり、この場合は実行時エラーは発生しません。</p>
-<h3 id="initを使った失敗可能イニシャライザthe-init-failable-initializer"><a name="initを使った失敗可能イニシャライザthe-init-failable-initializer" class="plugin-anchor" href="#initを使った失敗可能イニシャライザthe-init-failable-initializer"><i class="fa fa-link" aria-hidden="true"></i></a>init!を使った失敗可能イニシャライザ(The init! Failable Initializer)</h3>
+<h3 id="initを使った失敗可能イニシャライザthe-init-failable-initializer">init!を使った失敗可能イニシャライザ(The init! Failable Initializer)</h3>
 <p>通常、<code>init</code> キーワードの後に疑問符(<code>?</code>)を配置して(<code>init?</code>)、適切な型のオプショナルのインスタンスを作成する失敗可能イニシャライザを定義します。または、適切な型へ暗黙的にアンラップしてオプショナルのインスタンスを作成する失敗可能イニシャライザを定義することもできます。これを行うには、疑問符の代わりに <code>init</code> キーワードの後に感嘆符(<code>!</code>)を置きます(<code>init!</code>)。</p>
 <p><code>init?</code> から <code>init!</code> へ委譲でき、その逆も可能です。また、<code>init!</code> で <code>init?</code> をオーバーライドでき、その逆も可能です。<code>init</code> から <code>init!</code> に委譲することもできますが、<code>init!</code> の初期化が失敗した場合は、アサーションを引き起こします。</p>
-<h2 id="必須イニシャライザrequired-initializers"><a name="必須イニシャライザrequired-initializers" class="plugin-anchor" href="#必須イニシャライザrequired-initializers"><i class="fa fa-link" aria-hidden="true"></i></a><a id="required-initializers">必須イニシャライザ(Required Initializers)</a></h2>
+<h2 id="必須イニシャライザrequired-initializers"><a id="required-initializers">必須イニシャライザ(Required Initializers)</a></h2>
 <p>クラスの全てのサブクラスがそのイニシャライザを実装する必要があることを示すために、クラスのイニシャライザの定義の前に <code>required</code> 修飾子を記述します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">SomeClass</span> <span class="token punctuation">{</span>
     <span class="token keyword">required</span> <span class="token keyword">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1432,7 +1428,7 @@ breakfastList<span class="token punctuation">[</span><span class="token number">
 <blockquote>
 <p>NOTE<br>継承したイニシャライザで要件を満たすことができる場合、必須イニシャライザの明示的な実装を提供する必要はありません。</p>
 </blockquote>
-<h2 id="クロージャまたは関数を使用したプロパティのデフォルト値の設定setting-a-default-property-value-with-a-closure-or-function"><a name="クロージャまたは関数を使用したプロパティのデフォルト値の設定setting-a-default-property-value-with-a-closure-or-function" class="plugin-anchor" href="#クロージャまたは関数を使用したプロパティのデフォルト値の設定setting-a-default-property-value-with-a-closure-or-function"><i class="fa fa-link" aria-hidden="true"></i></a>クロージャまたは関数を使用したプロパティのデフォルト値の設定(Setting a Default Property Value with a Closure or Function)</h2>
+<h2 id="クロージャまたは関数を使用したプロパティのデフォルト値の設定setting-a-default-property-value-with-a-closure-or-function">クロージャまたは関数を使用したプロパティのデフォルト値の設定(Setting a Default Property Value with a Closure or Function)</h2>
 <p>格納プロパティのデフォルト値にカスタマイズまたは設定が必要な場合は、クロージャまたはグローバル関数を使用して、そのプロパティにカスタマイズされたデフォルト値を提供できます。プロパティが属する型の新しいインスタンスが初期化されるたびに、クロージャまたは関数が呼び出され、その戻り値がプロパティのデフォルト値として割り当てられます。</p>
 <p>これらの種類のクロージャまたは関数は、通常、プロパティと同じ型の一時的な値を作成し、その値を調整して目的の初期状態にしてからその値を返し、プロパティのデフォルト値として使用します。</p>
 <p>クロージャを使用してプロパティのデフォルト値を提供する方法の概要を次に示します:</p>
@@ -1510,7 +1506,7 @@ breakfastList<span class="token punctuation">[</span><span class="token number">
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"初期化(Initialization)","level":"3.14","depth":1,"next":{"title":"デイニシャライゼーション(Deinitialization)","level":"3.15","depth":1,"path":"language-guide-gaido/deinitialization.md","ref":"language-guide-gaido/deinitialization.md","articles":[]},"previous":{"title":"継承(Inheritance)","level":"3.13","depth":1,"path":"language-guide-gaido/inheritance.md","ref":"language-guide-gaido/inheritance.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/initialization.md","mtime":"2021-07-11T00:21:09.766Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"初期化(Initialization)","level":"3.14","depth":1,"next":{"title":"デイニシャライゼーション(Deinitialization)","level":"3.15","depth":1,"path":"language-guide-gaido/deinitialization.md","ref":"language-guide-gaido/deinitialization.md","articles":[]},"previous":{"title":"継承(Inheritance)","level":"3.13","depth":1,"path":"language-guide-gaido/inheritance.md","ref":"language-guide-gaido/inheritance.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/initialization.md","mtime":"2021-07-11T00:21:09.766Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

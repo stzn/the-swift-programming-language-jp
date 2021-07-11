@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,14 +748,14 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="列挙型enumerations"><a name="列挙型enumerations" class="plugin-anchor" href="#列挙型enumerations"><i class="fa fa-link" aria-hidden="true"></i></a>列挙型(Enumerations)</h1>
+                                <h1 id="列挙型enumerations">列挙型(Enumerations)</h1>
 <p>最終更新日: 2021/6/27</p>
 <p><em>列挙型</em>は、関連する値のグループに共通の型を定義し、コード内で型安全にそれらの値を操作できるようにします。</p>
 <p>C 言語に馴染みがあれば、C 言語の列挙型が、関連する名前のグループを整数値のセットに割り当てることを知っていると思います。Swift の列挙型は、それよりもはるかに柔軟性があり、列挙型の各ケースに値を割り当てる必要はありません。列挙ケースごとに(<em>Raw Value</em> と呼ばれる)値が与えられている場合、値は文字列、文字、または任意の整数型または浮動小数点型にすることができます。</p>
 <p>あるいは、他の言語の <code>unions</code> や <code>variants</code> のように、それぞれのケースで任意の型の関連値を格納できます。それぞれで適切な型の異なる値のセットで関連付けられたケースを列挙型の一部として定義できます。</p>
 <p>Swift の列挙型は、それ自体が第一級の型です。これらは、列挙型の現在値の追加情報を提供する計算プロパティや、列挙型が表す値に関わる機能を提供するインスタンスメソッドなど、従来はクラスでのみサポートされていた多くの機能を使うことができます。列挙型は、初期のケース値を指定するイニシャライザも定義しています。<code>extension</code> で機能を拡張することもできます。また、プロトコルに準拠して標準機能を提供することもできます。</p>
 <p>これらの機能の詳細については、<a href="properties.html">Properties</a>、<a href="methods.html">Methods</a>、<a href="initialization.html">Initialization(イニシャライザ)</a>、<a href="extensions.html">Extensions(拡張)</a>および<a href="protocols.html">Protocols(プロトコル)</a>を参照ください。</p>
-<h2 id="列挙型構文enumeration-syntax"><a name="列挙型構文enumeration-syntax" class="plugin-anchor" href="#列挙型構文enumeration-syntax"><i class="fa fa-link" aria-hidden="true"></i></a><a id="enumeration-syntax">列挙型構文(Enumeration Syntax)</a></h2>
+<h2 id="列挙型構文enumeration-syntax"><a id="enumeration-syntax">列挙型構文(Enumeration Syntax)</a></h2>
 <p><code>enum</code> キーワードを使用して列挙型を導入し、それらの定義全体を中括弧のペア(<code>{}</code>)内に配置します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">enum</span> <span class="token builtin">SomeEnumeration</span> <span class="token punctuation">{</span>
     <span class="token comment">// 列挙型の定義をここに記載します</span>
@@ -789,7 +785,7 @@
 <pre class="language-"><code class="lang-swift">directionToHead <span class="token operator">=</span> <span class="token punctuation">.</span>east
 </code></pre>
 <p><code>directionToHead</code> の型はすでにわかっているため、値を設定するときに型を省略できます。これにより、明示的に型指定された列挙型の値を操作するときに、非常に読みやすいコードが作成できます。</p>
-<h2 id="switch-文を使った列挙値のパターンマッチングmatching-enumeration-values-with-a-switch-statement"><a name="switch-文を使った列挙値のパターンマッチングmatching-enumeration-values-with-a-switch-statement" class="plugin-anchor" href="#switch-文を使った列挙値のパターンマッチングmatching-enumeration-values-with-a-switch-statement"><i class="fa fa-link" aria-hidden="true"></i></a><a id="matching-enumeration-values-with-a-switch-statement">switch 文を使った列挙値のパターンマッチング(Matching Enumeration Values with a Switch Statement)</a></h2>
+<h2 id="switch-文を使った列挙値のパターンマッチングmatching-enumeration-values-with-a-switch-statement"><a id="matching-enumeration-values-with-a-switch-statement">switch 文を使った列挙値のパターンマッチング(Matching Enumeration Values with a Switch Statement)</a></h2>
 <p><code>switch</code> 文を使って、個々の列挙値をパターンマッチングできます。</p>
 <pre class="language-"><code class="lang-swift">directionToHead <span class="token operator">=</span> <span class="token punctuation">.</span>south
 <span class="token keyword">switch</span> directionToHead <span class="token punctuation">{</span>
@@ -818,7 +814,7 @@
 <span class="token punctuation">}</span>
 <span class="token comment">// &quot;Mostly harmless&quot;</span>
 </code></pre>
-<h2 id="列挙ケースの繰り返し処理iterating-over-enumeration-cases"><a name="列挙ケースの繰り返し処理iterating-over-enumeration-cases" class="plugin-anchor" href="#列挙ケースの繰り返し処理iterating-over-enumeration-cases"><i class="fa fa-link" aria-hidden="true"></i></a><a id="iterating-over-enumeration-cases">列挙ケースの繰り返し処理(Iterating over Enumeration Cases)</a></h2>
+<h2 id="列挙ケースの繰り返し処理iterating-over-enumeration-cases"><a id="iterating-over-enumeration-cases">列挙ケースの繰り返し処理(Iterating over Enumeration Cases)</a></h2>
 <p>一部の列挙型では、その列挙型の全てのケースのコレクションがあると便利です。これを有効にするには、列挙型の名前の後に <code>:CaseIterable</code> を記述します。Swift は、全てのケースのコレクションを列挙型の <code>allCases</code> プロパティとして提供しています。次に例を示します:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">enum</span> <span class="token builtin">Beverage</span><span class="token punctuation">:</span> <span class="token builtin">CaseIterable</span> <span class="token punctuation">{</span>
     <span class="token keyword">case</span> coffee<span class="token punctuation">,</span> tea<span class="token punctuation">,</span> juice
@@ -836,7 +832,7 @@
 <span class="token comment">// juice</span>
 </code></pre>
 <p>上記の例で使用されている構文では、<a href="https://developer.apple.com/documentation/swift/caseiterable" target="_blank"><code>CaseIterable</code></a> プロトコルに準拠しています。プロトコルの詳細については、<a href="protocols.html">Protocols(プロトコル)</a>を参照ください。</p>
-<h2 id="関連値associated-values"><a name="関連値associated-values" class="plugin-anchor" href="#関連値associated-values"><i class="fa fa-link" aria-hidden="true"></i></a><a id="associated-values">関連値(Associated Values)</a></h2>
+<h2 id="関連値associated-values"><a id="associated-values">関連値(Associated Values)</a></h2>
 <p>前のセクションの例は、列挙ケースがそれ自体を定義された(および型指定された)値にする方法を示しています。定数または変数を <code>Planet.earth</code> に設定し、後でこの値を確認できます。ただし、これらのケース値と一緒に他の型の値を保持できると便利な場合があります。この追加情報は<em>関連値</em>と呼ばれ、コードでそのケースの値を使用する度に異なります。</p>
 <p>Swift の列挙型を定義して、任意の型を関連値に格納できます。また、必要に応じて、列挙ケースごとに値の型を変えることができます。これらに類似した列挙型は、他のプログラミング言語では、<code>discriminated unions</code>、<code>tagged unions</code>、または <code>variants</code> として知られています。</p>
 <p>例えば、在庫追跡システムが 2 つの異なる型のバーコードで製品を追跡する必要があるとします。一部の製品には、<code>0〜9</code> の数字を使用する UPC 形式の 1D バーコードでラベルが付けられています。各バーコードには番号システムの数字があり、その後に 5 つのメーカーコード数字と 5 つの製品コード数字が続きます。これらの後にチェックディジットが続き、コードが正しくスキャンされたことを確認します。</p>
@@ -861,7 +857,7 @@
 <pre class="language-"><code class="lang-swift">productBarcode <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token function">qrCode</span><span class="token punctuation">(</span><span class="token string">&quot;ABCDEFGHIJKLMNOP&quot;</span><span class="token punctuation">)</span>
 </code></pre>
 <p>この時点で、元の <code>Barcode.upc</code> とその整数値は、新しい <code>Barcode.qrCode</code> とその文字列値に置き換えられます。<code>Barcode</code> の定数と変数は、<code>.upc</code> または <code>.qrCode</code> のいずれかを(関連値とともに)格納できますが、一度に格納できるのはそのうちの 1 つだけです。</p>
-<p><a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/enumerations#matching-enumeration-values-with-a-switch-statement" target="_blank">Matching Enumeration Values with a Switch Statement(switch 文を使った列挙値のパターンマッチング)</a>の例と同様に、<code>switch</code> 文を使用して様々なバーコード型を確認できます。ただし、今回は、関連値が <code>switch</code> 文の一部として抽出されます。<code>switch</code> のケースの本文内で使用するために、関連値を定数(<code>let</code> プレフィックス)または変数(<code>var</code> プレフィックス)として抽出します。</p>
+<p><a href="enumerations#matching-enumeration-values-with-a-switch-statement">Matching Enumeration Values with a Switch Statement(switch 文を使った列挙値のパターンマッチング)</a>の例と同様に、<code>switch</code> 文を使用して様々なバーコード型を確認できます。ただし、今回は、関連値が <code>switch</code> 文の一部として抽出されます。<code>switch</code> のケースの本文内で使用するために、関連値を定数(<code>let</code> プレフィックス)または変数(<code>var</code> プレフィックス)として抽出します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">switch</span> productBarcode <span class="token punctuation">{</span>
 <span class="token keyword">case</span> <span class="token punctuation">.</span><span class="token function">upc</span><span class="token punctuation">(</span><span class="token keyword">let</span> numberSystem<span class="token punctuation">,</span> <span class="token keyword">let</span> manufacturer<span class="token punctuation">,</span> <span class="token keyword">let</span> product<span class="token punctuation">,</span> <span class="token keyword">let</span> check<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;UPC: <span class="token interpolation"><span class="token delimiter variable">\(</span>numberSystem<span class="token delimiter variable">)</span></span>, <span class="token interpolation"><span class="token delimiter variable">\(</span>manufacturer<span class="token delimiter variable">)</span></span>, <span class="token interpolation"><span class="token delimiter variable">\(</span>product<span class="token delimiter variable">)</span></span>, <span class="token interpolation"><span class="token delimiter variable">\(</span>check<span class="token delimiter variable">)</span></span>.&quot;</span><span class="token punctuation">)</span>
@@ -879,7 +875,7 @@
 <span class="token punctuation">}</span>
 <span class="token comment">// &quot;QR code: ABCDEFGHIJKLMNOP.&quot;</span>
 </code></pre>
-<h2 id="raw-values"><a name="raw-values" class="plugin-anchor" href="#raw-values"><i class="fa fa-link" aria-hidden="true"></i></a>Raw Values</h2>
+<h2 id="raw-values">Raw Values</h2>
 <p><a href="enumerations.html#associated-values">Associated Values(関連値)</a>のバーコードの例は、列挙ケースが、様々な型に関連値を格納して宣言する方法を示しています。関連値の代わりに、列挙型には、全て同じ型のデフォルト値(<em>Raw Values</em>と呼ばれる)を事前に定義することもできます。</p>
 <p>名前付きの列挙ケースと一緒に ASCII 値を格納する例を次に示します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">enum</span> <span class="token builtin">ASCIIControlCharacter</span><span class="token punctuation">:</span> <span class="token builtin">Character</span> <span class="token punctuation">{</span>
@@ -893,7 +889,7 @@
 <blockquote>
 <p>NOTE<br>Raw Valueは、関連値と同じではありません。上記の3つの ASCII コードのように、コードで列挙型を最初に定義するときに、Raw Value は事前入力された値に設定されます。特定の列挙ケースの Raw Value は常に同じです。関連値は、列挙ケースに基づいて新しい定数または変数を作成するときに設定され、作成する度に異なる可能性があります。</p>
 </blockquote>
-<h3 id="暗黙的に割り当てられたraw-valueimplicitly-assigned-raw-values"><a name="暗黙的に割り当てられたraw-valueimplicitly-assigned-raw-values" class="plugin-anchor" href="#暗黙的に割り当てられたraw-valueimplicitly-assigned-raw-values"><i class="fa fa-link" aria-hidden="true"></i></a><a id="implicitly-assigned-raw-values">暗黙的に割り当てられたRaw Value(Implicitly Assigned Raw Values)</a></h3>
+<h3 id="暗黙的に割り当てられたraw-valueimplicitly-assigned-raw-values"><a id="implicitly-assigned-raw-values">暗黙的に割り当てられたRaw Value(Implicitly Assigned Raw Values)</a></h3>
 <p>整数または文字列の Raw Value を格納する列挙型を操作する場合、それぞれのケースに Raw Value を明示的に割り当てる必要はありません。代わりに Swift が自動的に値を割り当てます。</p>
 <p>例えば、Raw Value に整数が使用されている場合、各ケースの暗黙の値は前のケースより 1 つ増えた値になります。最初のケースに値が設定されていない場合、その値は <code>0</code> です。</p>
 <p>以下の列挙型は、以前の <code>Planet</code> の列挙型を改良したもので、太陽からの各惑星の順序を表す整数の Raw Value が含まれています。</p>
@@ -916,7 +912,7 @@
 <span class="token keyword">let</span> sunsetDirection <span class="token operator">=</span> <span class="token builtin">CompassPoint</span><span class="token punctuation">.</span>west<span class="token punctuation">.</span>rawValue
 <span class="token comment">// sunsetDirection は &quot;west&quot;</span>
 </code></pre>
-<h3 id="raw-valueからの初期化initializing-from-a-raw-value"><a name="raw-valueからの初期化initializing-from-a-raw-value" class="plugin-anchor" href="#raw-valueからの初期化initializing-from-a-raw-value"><i class="fa fa-link" aria-hidden="true"></i></a>Raw Valueからの初期化(Initializing from a Raw Value)</h3>
+<h3 id="raw-valueからの初期化initializing-from-a-raw-value">Raw Valueからの初期化(Initializing from a Raw Value)</h3>
 <p>Raw Value 型で列挙型を定義すると、列挙型は、Raw Value の型の値を(<code>rawValue</code> と呼ばれるパラメータとして)受け取り、列挙型または <code>nil</code> のいずれかを返すイニシャライザを自動的に提供します。このイニシャライザを使用して、列挙型の新しいインスタンスを作成することができます。</p>
 <p>この例では、Raw Value<code>7</code> から天王星を識別します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> possiblePlanet <span class="token operator">=</span> <span class="token function">Planet</span><span class="token punctuation">(</span>rawValue<span class="token punctuation">:</span> <span class="token number">7</span><span class="token punctuation">)</span>
@@ -924,7 +920,7 @@
 </code></pre>
 <p>ただし、全ての <code>Int</code> 値が惑星に一致するわけではありません。このため、Raw Value のイニシャライザは常にオプショナルの列挙型を返します。上記の例では、<code>possiblePlanet</code> は Planet?<code>または オプショナルの</code>Planet`型です。</p>
 <blockquote>
-<p>NOTE<br>全ての Raw Value が列挙型を返すわけではないため、Raw Valueイニシャライザは <code>nil</code> を返す可能性があります。詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#declarations-failable-initializers" target="_blank">Failable Initializers(失敗可能イニシャライザ)</a>を参照ください。</p>
+<p>NOTE<br>全ての Raw Value が列挙型を返すわけではないため、Raw Valueイニシャライザは <code>nil</code> を返す可能性があります。詳細については、<a href="../language-reference/declarations#declarations-failable-initializers">Failable Initializers(失敗可能イニシャライザ)</a>を参照ください。</p>
 </blockquote>
 <p>位置が <code>11</code> の惑星を見つけようとすると、Raw Value のイニシャライザによって返されるオプショナルの <code>Planet</code> は <code>nil</code> になります。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> positionToFind <span class="token operator">=</span> <span class="token number">11</span>
@@ -941,7 +937,7 @@
 <span class="token comment">// &quot;There isn&apos;t a planet at position 11&quot;</span>
 </code></pre>
 <p>この例では、オプションバインディングを使用して、Raw Value が <code>11</code> の惑星にアクセスしようとします。<code>if let somePlanet = Planet(rawValue: 11)</code> は、オプショナルの <code>Planet</code> を作成し、取得できる場合は、<code>somePlanet</code> をそのオプショナルの <code>Planet</code> の値に設定します。この場合、位置が <code>11</code> の惑星を取得することはできないため、代わりに <code>else</code> の分岐が実行されます。</p>
-<h2 id="再帰的列挙型recursive-enumerations"><a name="再帰的列挙型recursive-enumerations" class="plugin-anchor" href="#再帰的列挙型recursive-enumerations"><i class="fa fa-link" aria-hidden="true"></i></a><a id="recursive-enumerations">再帰的列挙型(Recursive Enumerations)</a></h2>
+<h2 id="再帰的列挙型recursive-enumerations"><a id="recursive-enumerations">再帰的列挙型(Recursive Enumerations)</a></h2>
 <p><em>再帰的列挙型</em>は、1 つ以上の列挙ケースの関連値としてその列挙型の別のインスタンスを持つ列挙型です。列挙型が再帰的だということを示すには、その前に <code>indirect</code> を記述します。これにより、コンパイラに <code>indirect</code> のネストがあることを伝えることができます。</p>
 <p>例えば、シンプルな算術式を格納する列挙型は次のとおりです。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">enum</span> <span class="token builtin">ArithmeticExpression</span> <span class="token punctuation">{</span>
@@ -1012,7 +1008,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"列挙型(Enumerations)","level":"3.8","depth":1,"next":{"title":"構造体とクラス(Structures and Classes)","level":"3.9","depth":1,"path":"language-guide-gaido/structures-and-classes.md","ref":"language-guide-gaido/structures-and-classes.md","articles":[]},"previous":{"title":"クロージャ(Closures)","level":"3.7","depth":1,"path":"language-guide-gaido/closures.md","ref":"language-guide-gaido/closures.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/enumerations.md","mtime":"2021-07-11T00:21:09.599Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"列挙型(Enumerations)","level":"3.8","depth":1,"next":{"title":"構造体とクラス(Structures and Classes)","level":"3.9","depth":1,"path":"language-guide-gaido/structures-and-classes.md","ref":"language-guide-gaido/structures-and-classes.md","articles":[]},"previous":{"title":"クロージャ(Closures)","level":"3.7","depth":1,"path":"language-guide-gaido/closures.md","ref":"language-guide-gaido/closures.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/enumerations.md","mtime":"2021-07-11T00:35:31.546Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

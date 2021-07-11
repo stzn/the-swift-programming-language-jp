@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,11 +748,11 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="ジェネリクスgenerics"><a name="ジェネリクスgenerics" class="plugin-anchor" href="#ジェネリクスgenerics"><i class="fa fa-link" aria-hidden="true"></i></a>ジェネリクス(Generics)</h1>
+                                <h1 id="ジェネリクスgenerics">ジェネリクス(Generics)</h1>
 <p>最終更新日: 2021/6/30</p>
 <p>ジェネリックなコードを使用すると、定義した要件に従って、任意の型で機能する柔軟で再利用可能な関数と型を作成できます。重複を避け、その意図を明確で抽象的な方法で表現するコードを書くことができます。</p>
 <p><em>ジェネリクス</em>は Swift の最も強力な機能の 1 つで、Swift 標準ライブラリの多くはジェネリックなコードで構築されています。気づかないかもしれませんが、この<em>言語ガイド</em>全体でもジェネリクスを使用しています。例えば、Swift の <code>Array</code> 型と <code>Dictionary</code> 型はどちらもジェネリックなコレクションです。<code>Int</code> 値を保持する配列、<code>String</code> 値を保持する配列、または Swift で作成できる他のどんな型の配列も作成できます。同様に、指定された型の値を格納する辞書を作成でき、その型に制限はありません。</p>
-<h2 id="ジェネリクスが解決する問題the-problem-that-generics-solve"><a name="ジェネリクスが解決する問題the-problem-that-generics-solve" class="plugin-anchor" href="#ジェネリクスが解決する問題the-problem-that-generics-solve"><i class="fa fa-link" aria-hidden="true"></i></a>ジェネリクスが解決する問題(The Problem That Generics Solve)</h2>
+<h2 id="ジェネリクスが解決する問題the-problem-that-generics-solve">ジェネリクスが解決する問題(The Problem That Generics Solve)</h2>
 <p>これは <code>swapTwoInts(_:_:)</code> と呼ばれる標準の非ジェネリック関数で、2 つの <code>Int</code> 値を交換します:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">swapTwoInts</span><span class="token punctuation">(</span><span class="token number">_</span> a<span class="token punctuation">:</span> <span class="token keyword">inout</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token number">_</span> b<span class="token punctuation">:</span> <span class="token keyword">inout</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> temporaryA <span class="token operator">=</span> a
@@ -764,7 +760,7 @@
     b <span class="token operator">=</span> temporaryA
 <span class="token punctuation">}</span>
 </code></pre>
-<p>この関数は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#declarations-in-out-parameters" target="_blank">In-Out Parameters(In-Out パラメータ)</a>で説明されているように、in-out パラメータを使用して <code>a</code> と <code>b</code> の値を交換します。</p>
+<p>この関数は、<a href="../language-reference/declarations#declarations-in-out-parameters">In-Out Parameters(In-Out パラメータ)</a>で説明されているように、in-out パラメータを使用して <code>a</code> と <code>b</code> の値を交換します。</p>
 <p><code>swapTwoInts(_:_:)</code> 関数は、<code>b</code> の値を <code>a</code> に、<code>a</code> の値を <code>b</code> に入れ替えます。この関数を呼び出して、2 つの <code>Int</code> 値の変数を交換できます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> someInt <span class="token operator">=</span> <span class="token number">3</span>
 <span class="token keyword">var</span> anotherInt <span class="token operator">=</span> <span class="token number">107</span>
@@ -790,7 +786,7 @@
 <blockquote>
 <p>NOTE<br>3 つの関数全てで、<code>a</code> と <code>b</code> の型は同じでなければなりません。<code>a</code> と <code>b</code> が同じ型でない場合、それらの値を交換することはできません。Swift は型安全な言語であり、(例えば)<code>String</code> 型の変数と <code>Double</code> 型の変数が互いに値を交換することを許可しません。そうしようとすると、コンパイルエラーが発生します。</p>
 </blockquote>
-<h2 id="ジェネリック関数generic-functions"><a name="ジェネリック関数generic-functions" class="plugin-anchor" href="#ジェネリック関数generic-functions"><i class="fa fa-link" aria-hidden="true"></i></a>ジェネリック関数(Generic Functions)</h2>
+<h2 id="ジェネリック関数generic-functions">ジェネリック関数(Generic Functions)</h2>
 <p>ジェネリック関数は、どの型でも機能します。これは、上記の <code>swapTwoInts(_:_:)</code> 関数のジェネリックなバージョンで、<code>swapTwoValues(_:_:)</code> と呼ばれます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> swapTwoValues<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token number">_</span> a<span class="token punctuation">:</span> <span class="token keyword">inout</span> T<span class="token punctuation">,</span> <span class="token number">_</span> b<span class="token punctuation">:</span> <span class="token keyword">inout</span> T<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> temporaryA <span class="token operator">=</span> a
@@ -819,16 +815,16 @@
 <blockquote>
 <p>NOTE<br>上記で定義された <code>swapTwoValues(_:_:)</code> 関数は、Swift 標準ライブラリの <code>swap</code> と呼ばれる自動で利用可能なジェネリック関数に由来します。独自のコードで <code>swapTwoValues(_:_:)</code> 関数の動作が必要な場合は、独自の実装を提供するのではなく、Swift の既存の <code>swap(_:_:)</code> 関数を使用できます。</p>
 </blockquote>
-<h2 id="型パラメータtype-parameters"><a name="型パラメータtype-parameters" class="plugin-anchor" href="#型パラメータtype-parameters"><i class="fa fa-link" aria-hidden="true"></i></a>型パラメータ(Type Parameters)</h2>
+<h2 id="型パラメータtype-parameters">型パラメータ(Type Parameters)</h2>
 <p>上記の <code>swapTwoValues(_:_:)</code> の例では、プレースホルダ型 <code>T</code> は型パラメータの例です。型パラメータは、(<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>T</span><span class="token punctuation">&gt;</span></span></code> のように)プレースホルダ型を指定して名前を付け、関数名の直後に山括弧のペアの間に記述されます。</p>
 <p>型パラメータを指定すると、それを使用して関数のパラメータの型(<code>swapTwoValues(_:_:)</code> 関数の <code>a</code> および <code>b</code> パラメータなど)を定義したり、関数の戻り値の型として、または関数の本文内の型注釈として定義できます。いずれの場合も、関数が呼び出される度に、型パラメータが実際の型に置き換えられます。(上記の <code>swapTwoValues(_:_:)</code> の例では、関数が最初に呼び出されたときに <code>T</code> が <code>Int</code> に置き換えられ、2 回目に呼び出されたときは <code>String</code> に置き換えられました)</p>
 <p>山括弧内に複数の型パラメータ名をカンマ(<code>,</code>)で区切って記述することにより、複数の型パラメータも指定できます。</p>
-<h2 id="型パラメータの命名naming-type-parameters"><a name="型パラメータの命名naming-type-parameters" class="plugin-anchor" href="#型パラメータの命名naming-type-parameters"><i class="fa fa-link" aria-hidden="true"></i></a>型パラメータの命名(Naming Type Parameters)</h2>
+<h2 id="型パラメータの命名naming-type-parameters">型パラメータの命名(Naming Type Parameters)</h2>
 <p>ほとんどの場合、型パラメータには、<code>Dictionary<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Key,</span> <span class="token attr-name">Value</span><span class="token punctuation">&gt;</span></span></code> の <code>Key</code> と <code>Value</code>、<code>Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Element</span><span class="token punctuation">&gt;</span></span></code> の <code>Element</code> などのその型パラメータの意味を表す名前が付いています。ただし、型パラメータに意味がない場合、上記の <code>swapTwoValues(_:_:)</code> 関数の <code>T</code> など、<code>T</code>、<code>U</code>、<code>V</code> などの 1 文字の名前を付けるのが伝統的です。</p>
 <blockquote>
 <p>NOTE<br>型パラメータには常に大文字のキャメルケース名(<code>T</code> や <code>MyTypeParameter</code> など)を指定して、それらが値ではなく型のプレースホルダであることを示します。</p>
 </blockquote>
-<h2 id="ジェネリック型generic-types"><a name="ジェネリック型generic-types" class="plugin-anchor" href="#ジェネリック型generic-types"><i class="fa fa-link" aria-hidden="true"></i></a><a id="generic-types">ジェネリック型(Generic Types)</a></h2>
+<h2 id="ジェネリック型generic-types"><a id="generic-types">ジェネリック型(Generic Types)</a></h2>
 <p>ジェネリック関数に加えて、Swift では独自のジェネリック型を定義できます。これらは、<code>Array</code> や <code>Dictionary</code> と同様の方法で、独自のクラス、構造体、および列挙型の任意の型で機能します。</p>
 <p>このセクションでは、<code>Stack</code> と呼ばれるジェネリックなコレクション型を作成する方法を示します。スタックは、配列に似た順序付けられた値のセットですが、<code>Array</code> 型よりも操作が制限されています。配列を使用すると、配列内の任意の場所で新しいアイテムを挿入および削除できます。ただし、スタックでは、コレクションの最後にのみ新しいアイテムを追加できます(スタックに新しい値をプッシュする(<em>pushing</em>)と呼ばれています)。同様に、スタックでは、コレクションの最後からのみアイテムを削除できます(スタックから値をポップする(<em>popping</em>)と呼ばれています)。</p>
 <blockquote>
@@ -891,7 +887,7 @@ stackOfStrings<span class="token punctuation">.</span><span class="token functio
 </code></pre>
 <p>最上位の値をポップした後のスタックは次のとおりです:</p>
 <p><img src="../assets/stackPoppedOneString_2x.png" alt="最上位の値をポップ"></p>
-<h2 id="ジェネリック型の拡張extending-a-generic-type"><a name="ジェネリック型の拡張extending-a-generic-type" class="plugin-anchor" href="#ジェネリック型の拡張extending-a-generic-type"><i class="fa fa-link" aria-hidden="true"></i></a><a id="extending-a-generic-type">ジェネリック型の拡張(Extending a Generic Type)</a></h2>
+<h2 id="ジェネリック型の拡張extending-a-generic-type"><a id="extending-a-generic-type">ジェネリック型の拡張(Extending a Generic Type)</a></h2>
 <p>ジェネリック型を拡張する場合、extension の定義で型パラメータリストを提供しません。代わりに、元の型定義の型パラメータリストは extension の本文内でも使用でき、元の型パラメータ名は元の定義の型パラメータを参照するために使用します。</p>
 <p>次の例では、ジェネリックな <code>Stack</code> 型を拡張して、<code>topItem</code> と呼ばれる読み取り専用の計算プロパティを追加します。これは、スタックからポップせずにスタックの一番上のアイテムを返します:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Stack</span> <span class="token punctuation">{</span>
@@ -909,19 +905,19 @@ stackOfStrings<span class="token punctuation">.</span><span class="token functio
 <span class="token comment">// &quot;The top item on the stack is tres.&quot;</span>
 </code></pre>
 <p>ジェネリック型の extension には、下記の<a href="generics.html#extensions-with-a-generic-where-clause">Extensions with a Generic Where Clause(ジェネリック where 句を使った拡張)</a>で説明されているように、新しい機能を取得するために拡張した型のインスタンスが満たさなければならない要件を含めることもできます。</p>
-<h2 id="型制約type-constraints"><a name="型制約type-constraints" class="plugin-anchor" href="#型制約type-constraints"><i class="fa fa-link" aria-hidden="true"></i></a><a id="type-constraints">型制約(Type Constraints)</a></h2>
+<h2 id="型制約type-constraints"><a id="type-constraints">型制約(Type Constraints)</a></h2>
 <p><code>swapTwoValues(_:_:)</code> 関数と <code>Stack</code> 型は、どの型でも使用できます。ただし、ジェネリック関数およびジェネリック型で使用できる型に特定の型制約を適用すると便利な場合があります。型制約は、型パラメータが特定のクラスを継承する必要があるか、特定のプロトコルまたはプロトコル合成に準拠する必要があるかなどを指定できます。</p>
-<p>例えば、Swift の <code>Dictionary</code> 型では、辞書のキーとして使用できる型に制限があります。<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/collection-types#dictionaries" target="_blank">Dictionaries(辞書)</a>で説明されているように、辞書のキーの型はハッシュ可能でなければなりません。つまり、個々のキーがユニークだということを表明する方法を提供する必要があります。<code>Dictionary</code> は、特定のキーの値がすでに含まれているかどうかを確認できるように、そのキーがハッシュ可能なことが必要な場合があります。この要件がなければ、<code>Dictionary</code> は特定のキーの値を挿入または置換するべきかどうかを判断できず、すでに存在する特定のキーの値を見つけることもできません。</p>
+<p>例えば、Swift の <code>Dictionary</code> 型では、辞書のキーとして使用できる型に制限があります。<a href="collection-types#dictionaries">Dictionaries(辞書)</a>で説明されているように、辞書のキーの型はハッシュ可能でなければなりません。つまり、個々のキーがユニークだということを表明する方法を提供する必要があります。<code>Dictionary</code> は、特定のキーの値がすでに含まれているかどうかを確認できるように、そのキーがハッシュ可能なことが必要な場合があります。この要件がなければ、<code>Dictionary</code> は特定のキーの値を挿入または置換するべきかどうかを判断できず、すでに存在する特定のキーの値を見つけることもできません。</p>
 <p>この要件は、<code>Dictionary</code> のキーの型制約によって強制されています。これは、キーの型が Swift 標準ライブラリで定義された <code>Hashable</code> プロトコルに準拠する必要があることを指定します。Swift の全ての基本型(<code>String</code>、<code>Int</code>、<code>Double</code>、<code>Bool</code> など)は、デフォルトでハッシュ可能です。独自の型を <code>Hashable</code> プロトコルに準拠させる方法については、<a href="https://developer.apple.com/documentation/swift/hashable#2849490" target="_blank">Conforming to the Hashable Protocol</a>を参照ください。</p>
 <p>独自のジェネリック型を作成するときに、独自の型制約を定義できます。これらの制約は、多くのジェネリックプログラミングに強力な機能を提供します。<code>Hashable</code> のような抽象的な概念は、具体的な型ではなく、概念的な特性の観点から型を特徴付けます。</p>
-<h3 id="型制約構文type-constraint-syntax"><a name="型制約構文type-constraint-syntax" class="plugin-anchor" href="#型制約構文type-constraint-syntax"><i class="fa fa-link" aria-hidden="true"></i></a>型制約構文(Type Constraint Syntax)</h3>
+<h3 id="型制約構文type-constraint-syntax">型制約構文(Type Constraint Syntax)</h3>
 <p>型パラメータリストの一部として、型パラメータの名前の後にコロン(<code>:</code>)で区切って単一のクラスまたはプロトコルを配置することで、型制約を記述します。ジェネリック関数の型制約の基本的な構文を以下に示します(構文はジェネリック型でも同じです)。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> someFunction<span class="token operator">&lt;</span>T<span class="token punctuation">:</span> <span class="token builtin">SomeClass</span><span class="token punctuation">,</span> U<span class="token punctuation">:</span> <span class="token builtin">SomeProtocol</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>someT<span class="token punctuation">:</span> T<span class="token punctuation">,</span> someU<span class="token punctuation">:</span> U<span class="token punctuation">)</span> <span class="token punctuation">{</span>
      <span class="token comment">// ここに関数本文が入ります</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>上記の関数には、2 つの型パラメータがあります。最初の型パラメータ <code>T</code> には、<code>T</code> が <code>SomeClass</code> を継承する必要がある型制約です。2 番目の型パラメータ <code>U</code> には、<code>U</code> が <code>SomeProtocol</code> プロトコルに準拠する必要がある型制約です。</p>
-<h3 id="型制約の挙動type-constraints-in-action"><a name="型制約の挙動type-constraints-in-action" class="plugin-anchor" href="#型制約の挙動type-constraints-in-action"><i class="fa fa-link" aria-hidden="true"></i></a>型制約の挙動(Type Constraints in Action)</h3>
+<h3 id="型制約の挙動type-constraints-in-action">型制約の挙動(Type Constraints in Action)</h3>
 <p>下記は、<code>findIndex(ofString:in:)</code> という名前の非ジェネリック関数です。これには、検索する <code>String</code> 値と、その <code>String</code> が含まれているかを検索する <code>String</code> の配列が与えられています。<code>findIndex(ofString:in:)</code> 関数は、オプショナルの <code>Int</code> 値を返します。これは、配列内で最初に一致する文字列が見つかった場合はそのインデックス、文字列が見つからない場合は <code>nil</code> になります。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">findIndex</span><span class="token punctuation">(</span>ofString valueToFind<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> <span class="token keyword">in</span> array<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span><span class="token operator">?</span> <span class="token punctuation">{</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span>index<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token keyword">in</span> array<span class="token punctuation">.</span><span class="token function">enumerated</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -969,9 +965,9 @@ stackOfStrings<span class="token punctuation">.</span><span class="token functio
 <span class="token keyword">let</span> stringIndex <span class="token operator">=</span> <span class="token function">findIndex</span><span class="token punctuation">(</span>of<span class="token punctuation">:</span> <span class="token string">&quot;Andrea&quot;</span><span class="token punctuation">,</span> <span class="token keyword">in</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;Mike&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Malcolm&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Andrea&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token comment">// stringIndex は、2 を含むオプショナルの Int です</span>
 </code></pre>
-<h2 id="関連型associated-types"><a name="関連型associated-types" class="plugin-anchor" href="#関連型associated-types"><i class="fa fa-link" aria-hidden="true"></i></a><a id="associated-types">関連型(Associated Types)</a></h2>
+<h2 id="関連型associated-types"><a id="associated-types">関連型(Associated Types)</a></h2>
 <p>プロトコルを定義するとき、1 つ以上の<em>関連型</em>を宣言すると便利な場合があります。関連型は、プロトコル内で使用される型にプレースホルダ名を与えます。その関連型に使用する実際の型は、プロトコルが準拠されるまで特定されません。関連型は、<code>associatedtype</code> キーワードで指定します。</p>
-<h3 id="関連型の挙動associated-types-in-action"><a name="関連型の挙動associated-types-in-action" class="plugin-anchor" href="#関連型の挙動associated-types-in-action"><i class="fa fa-link" aria-hidden="true"></i></a>関連型の挙動(Associated Types in Action)</h3>
+<h3 id="関連型の挙動associated-types-in-action">関連型の挙動(Associated Types in Action)</h3>
 <p>下記は、<code>Item</code> と呼ばれる関連型を持つ <code>Container</code> と呼ばれるプロトコルの例です:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">Container</span> <span class="token punctuation">{</span>
     associatedtype <span class="token builtin">Item</span>
@@ -1039,13 +1035,13 @@ stackOfStrings<span class="token punctuation">.</span><span class="token functio
 <span class="token punctuation">}</span>
 </code></pre>
 <p>今回は、<code>append(_:)</code> メソッドの <code>item</code> パラメータの型と subscript の戻り値の型として型パラメータ <code>Element</code> を使用しています。したがって、Swift は、<code>Element</code> がこの特定のコンテナの <code>Item</code> として使用する型を適切に推論できます。</p>
-<h3 id="関連型を特定するための既存の型の拡張extending-an-existing-type-to-specify-an-associated-type"><a name="関連型を特定するための既存の型の拡張extending-an-existing-type-to-specify-an-associated-type" class="plugin-anchor" href="#関連型を特定するための既存の型の拡張extending-an-existing-type-to-specify-an-associated-type"><i class="fa fa-link" aria-hidden="true"></i></a>関連型を特定するための既存の型の拡張(Extending an Existing Type to Specify an Associated Type)</h3>
-<p><a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#adding-protocol-conformance-with-an-extension" target="_blank">Adding Protocol Conformance with an Extension(拡張機能を使ったプロトコル準拠の追加)</a>で説明されているように、既存の型を拡張してプロトコルへの準拠を追加できます。これには、関連型を持つプロトコルが含まれます。</p>
-<p>Swift の <code>Array</code> 型は、要素を取得するために、<code>append(_:)</code> メソッド、<code>count</code> プロパティ、および <code>Int</code> インデックスの subscript を既存で提供しています。これら 3 つの機能は、<code>Container</code> プロトコルの要件に準拠します。これは、<code>Array</code> がプロトコルに準拠することを宣言するだけで、<code>Container</code> プロトコルに準拠するように <code>Array</code> を拡張できることを意味します。<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#declaring-protocol-adoption-with-an-extension" target="_blank">Declaring Protocol Adoption with an Extension(拡張機能を使ったプロトコル準拠の宣言)</a>で説明されているように、これは空の extension で行います:</p>
+<h3 id="関連型を特定するための既存の型の拡張extending-an-existing-type-to-specify-an-associated-type">関連型を特定するための既存の型の拡張(Extending an Existing Type to Specify an Associated Type)</h3>
+<p><a href="protocols#adding-protocol-conformance-with-an-extension">Adding Protocol Conformance with an Extension(拡張機能を使ったプロトコル準拠の追加)</a>で説明されているように、既存の型を拡張してプロトコルへの準拠を追加できます。これには、関連型を持つプロトコルが含まれます。</p>
+<p>Swift の <code>Array</code> 型は、要素を取得するために、<code>append(_:)</code> メソッド、<code>count</code> プロパティ、および <code>Int</code> インデックスの subscript を既存で提供しています。これら 3 つの機能は、<code>Container</code> プロトコルの要件に準拠します。これは、<code>Array</code> がプロトコルに準拠することを宣言するだけで、<code>Container</code> プロトコルに準拠するように <code>Array</code> を拡張できることを意味します。<a href="protocols#declaring-protocol-adoption-with-an-extension">Declaring Protocol Adoption with an Extension(拡張機能を使ったプロトコル準拠の宣言)</a>で説明されているように、これは空の extension で行います:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Array</span><span class="token punctuation">:</span> <span class="token builtin">Container</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 </code></pre>
 <p><code>Array</code> の既存の <code>append(_:)</code> メソッドと subscript により、Swift は、上記のジェネリックな <code>Stack</code> 型と同様に、<code>Item</code> に使用する適切な型を推論できます。この extension を定義した後、任意の配列を <code>Container</code> として使用できます。</p>
-<h3 id="関連型への制約の追加adding-constraints-to-an-associated-type"><a name="関連型への制約の追加adding-constraints-to-an-associated-type" class="plugin-anchor" href="#関連型への制約の追加adding-constraints-to-an-associated-type"><i class="fa fa-link" aria-hidden="true"></i></a>関連型への制約の追加(Adding Constraints to an Associated Type)</h3>
+<h3 id="関連型への制約の追加adding-constraints-to-an-associated-type">関連型への制約の追加(Adding Constraints to an Associated Type)</h3>
 <p>プロトコルの関連型に型制約を追加して、準拠する型がそれらの制約を満たすことを要求できます。例えば、次のコードは、<code>Container</code> 内のアイテムが<em>等価比較可能</em>なバージョンを定義しています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">Container</span> <span class="token punctuation">{</span>
     associatedtype <span class="token builtin">Item</span><span class="token punctuation">:</span> <span class="token builtin">Equatable</span>
@@ -1055,7 +1051,7 @@ stackOfStrings<span class="token punctuation">.</span><span class="token functio
 <span class="token punctuation">}</span>
 </code></pre>
 <p>このバージョンのコンテナに準拠するには、コンテナのアイテム型が <code>Equatable</code> プロトコルに準拠している必要があります。</p>
-<h3 id="関連型の制約へのプロトコルの使用using-a-protocol-in-its-associated-types-constraints"><a name="関連型の制約へのプロトコルの使用using-a-protocol-in-its-associated-types-constraints" class="plugin-anchor" href="#関連型の制約へのプロトコルの使用using-a-protocol-in-its-associated-types-constraints"><i class="fa fa-link" aria-hidden="true"></i></a>関連型の制約へのプロトコルの使用(Using a Protocol in Its Associated Type’s Constraints)</h3>
+<h3 id="関連型の制約へのプロトコルの使用using-a-protocol-in-its-associated-types-constraints">関連型の制約へのプロトコルの使用(Using a Protocol in Its Associated Type’s Constraints)</h3>
 <p>プロトコルは、独自の要件を表現できます。例えば、下記は <code>Container</code> プロトコルを改良し、<code>suffix(_:)</code> メソッドの要件を追加するプロトコルです。<code>suffix(_:)</code> メソッドは、コンテナの最後から指定された数の要素を返し、それらを <code>Suffix</code> 型のインスタンスに格納します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">SuffixableContainer</span><span class="token punctuation">:</span> <span class="token builtin">Container</span> <span class="token punctuation">{</span>
     associatedtype <span class="token builtin">Suffix</span><span class="token punctuation">:</span> <span class="token builtin">SuffixableContainer</span> <span class="token keyword">where</span> <span class="token builtin">Suffix</span><span class="token punctuation">.</span><span class="token builtin">Item</span> <span class="token operator">==</span> <span class="token builtin">Item</span>
@@ -1093,8 +1089,8 @@ stackOfInts<span class="token punctuation">.</span><span class="token function">
     <span class="token comment">// Suffix が Stack&lt;Int&gt; だと推論されます</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h2 id="ジェネリック-where-句generic-where-clauses"><a name="ジェネリック-where-句generic-where-clauses" class="plugin-anchor" href="#ジェネリック-where-句generic-where-clauses"><i class="fa fa-link" aria-hidden="true"></i></a><a id="generic-where-clauses">ジェネリック where 句(Generic Where Clauses)</a></h2>
-<p><a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/generics#type-constraints" target="_blank">Type Constraints(型制約)</a>で説明されているように、型制約を使用すると、ジェネリック関数、subscript、または型に関連した型パラメータの要件を定義できます。</p>
+<h2 id="ジェネリック-where-句generic-where-clauses"><a id="generic-where-clauses">ジェネリック where 句(Generic Where Clauses)</a></h2>
+<p><a href="generics#type-constraints">Type Constraints(型制約)</a>で説明されているように、型制約を使用すると、ジェネリック関数、subscript、または型に関連した型パラメータの要件を定義できます。</p>
 <p>関連型の要件を定義するのにも役立ちます。これを行うには、<em>ジェネリック where 句</em>を定義します。ジェネリック <code>where</code> 句を使用すると、関連型が特定のプロトコルに準拠する必要があること、または特定の型パラメータと関連型を同じにする必要があることを要求できます。ジェネリック <code>where</code> 句は <code>where</code> キーワードで始まり、その後に関連型の制約、または型と関連型の間の等価関係が続きます。型または関数の本文の開始中括弧(<code>{</code>)の直前に、ジェネリック <code>where</code> 句を記述します。</p>
 <p>下記の例では、2 つの <code>Container</code> インスタンスに同じアイテムが同じ順序で含まれているかどうかを確認する <code>allItemsMatch</code> というジェネリック関数を定義しています。この関数は、全てのアイテムが一致する場合はブール値 <code>true</code> を返し、一致しない場合は <code>false</code> の値を返します。</p>
 <p>チェックする 2 つのコンテナは、必ずしも同じ型の必要はありませんが(同じ型のコンテナでもかまいません)、同じ型のアイテムを保持している必要があります。この要件は、型制約とジェネリック <code>where</code> 句の組み合わせによって表現されます:</p>
@@ -1155,7 +1151,7 @@ stackOfStrings<span class="token punctuation">.</span><span class="token functio
 <span class="token comment">// &quot;All items match.&quot;</span>
 </code></pre>
 <p>上記の例では、<code>String</code> 値を格納する <code>Stack</code> インスタンスを作成し、3 つの文字列をスタックにプッシュします。この例では、スタックと同じ 3 つの文字列を含む配列リテラルで初期化された <code>Array</code> インスタンスも作成します。スタックと配列は型が異なりますが、どちらも <code>Container</code> プロトコルに準拠しており、両方に同じ型の値が含まれています。したがって、これら 2 つのコンテナを引数として <code>allItemsMatch(_:_:)</code> 関数を呼び出すことができます。上記の例では、<code>allItemsMatch(_:_:)</code> 関数は、2 つのアイテムの全てが合致していることを出力します。</p>
-<h2 id="ジェネリック-where-句を使った拡張extensions-with-a-generic-where-clause"><a name="ジェネリック-where-句を使った拡張extensions-with-a-generic-where-clause" class="plugin-anchor" href="#ジェネリック-where-句を使った拡張extensions-with-a-generic-where-clause"><i class="fa fa-link" aria-hidden="true"></i></a><a id="extensions-with-a-generic-where-clause">ジェネリック where 句を使った拡張(Extensions with a Generic Where Clause)</a></h2>
+<h2 id="ジェネリック-where-句を使った拡張extensions-with-a-generic-where-clause"><a id="extensions-with-a-generic-where-clause">ジェネリック where 句を使った拡張(Extensions with a Generic Where Clause)</a></h2>
 <p>extension にジェネリック <code>where</code> 句を使用することもできます。下記の例では、前の例のジェネリックな <code>Stack</code> 構造体を拡張して、<code>isTop(_:)</code> メソッドを追加しています:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Stack</span> <span class="token keyword">where</span> <span class="token builtin">Element</span><span class="token punctuation">:</span> <span class="token builtin">Equatable</span> <span class="token punctuation">{</span>
     <span class="token keyword">func</span> <span class="token function">isTop</span><span class="token punctuation">(</span><span class="token number">_</span> item<span class="token punctuation">:</span> <span class="token builtin">Element</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Bool</span> <span class="token punctuation">{</span>
@@ -1212,7 +1208,7 @@ notEquatableStack<span class="token punctuation">.</span><span class="token func
 </code></pre>
 <p>この例では、<code>Item</code> 型が <code>Double</code> のコンテナに <code>average()</code> メソッドを追加します。コンテナ内のアイテムを繰り返して合計し、コンテナの数で除算して平均を計算します。浮動小数点除算ができるように、<code>count</code> を <code>Int</code> から <code>Double</code> に明示的に変換します。</p>
 <p>他の場所で記述したジェネリック <code>where</code> 句の場合と同様に、extension にあるジェネリック <code>where</code> 句に複数の要件を含めることができます。各要件はカンマ(<code>,</code>)で区切ります。</p>
-<h2 id="コンテキスト上の-where-句contextual-where-clauses"><a name="コンテキスト上の-where-句contextual-where-clauses" class="plugin-anchor" href="#コンテキスト上の-where-句contextual-where-clauses"><i class="fa fa-link" aria-hidden="true"></i></a><a id="contextual-where-clauses">コンテキスト上の where 句(Contextual Where Clauses)</a></h2>
+<h2 id="コンテキスト上の-where-句contextual-where-clauses"><a id="contextual-where-clauses">コンテキスト上の where 句(Contextual Where Clauses)</a></h2>
 <p>既にジェネリック型を使っているコンテキスト上で、型制約を持たない宣言にジェネリック <code>where</code> 句を記述できます。例えば、ジェネリック型の subscript、またはジェネリック型の extension のメソッドにジェネリック <code>where</code> 句を記述できます。<code>Container</code> 構造体はジェネリックで、下記の例の <code>where</code> 句は、新しいメソッドを <code>Container</code> で使用できるようにするために満たす必要のある型制約を指定しています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Container</span> <span class="token punctuation">{</span>
     <span class="token keyword">func</span> <span class="token function">average</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Double</span> <span class="token keyword">where</span> <span class="token builtin">Item</span> <span class="token operator">==</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
@@ -1250,7 +1246,7 @@ notEquatableStack<span class="token punctuation">.</span><span class="token func
 <span class="token punctuation">}</span>
 </code></pre>
 <p>コンテキスト上の <code>where</code> 句を使用する例のバージョンでは、各メソッドのジェネリック <code>where</code> 句が、そのメソッドを使用可能にするために満たす必要がある要件を示しているため、<code>average()</code> と <code>endsWith(_:)</code> の実装は両方とも同じ extension 内にありました。これらの要件を extension のジェネリック <code>where</code> 句に移動すると、同じ状況でメソッドを使用できるようになりますが、要件ごとに 1 つの extension が必要になります。</p>
-<h2 id="ジェネリック-where-句を使用した関連型associated-types-with-a-generic-where-clause"><a name="ジェネリック-where-句を使用した関連型associated-types-with-a-generic-where-clause" class="plugin-anchor" href="#ジェネリック-where-句を使用した関連型associated-types-with-a-generic-where-clause"><i class="fa fa-link" aria-hidden="true"></i></a><a id="associated-types-with-a-generic-where-clause">ジェネリック where 句を使用した関連型(Associated Types with a Generic Where Clause)</a></h2>
+<h2 id="ジェネリック-where-句を使用した関連型associated-types-with-a-generic-where-clause"><a id="associated-types-with-a-generic-where-clause">ジェネリック where 句を使用した関連型(Associated Types with a Generic Where Clause)</a></h2>
 <p>関連型にジェネリック <code>where</code> 句を含めることができます。例えば、標準ライブラリの <code>Sequence</code> プロトコルで使用するようなイテレータを含む <code>Container</code> のバージョンを作成するとします。書き方は次のとおりです:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">Container</span> <span class="token punctuation">{</span>
     associatedtype <span class="token builtin">Item</span>
@@ -1266,7 +1262,7 @@ notEquatableStack<span class="token punctuation">.</span><span class="token func
 <p>別のプロトコルを継承したプロトコルの場合、プロトコル宣言にジェネリック <code>where</code> 句を含めることにより、継承した関連型に制約を追加できます。例えば、次のコードは、<code>Item</code> が <code>Comparable</code> に準拠することを要求する <code>ComparableContainer</code> プロトコルを宣言しています:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">ComparableContainer</span><span class="token punctuation">:</span> <span class="token builtin">Container</span> <span class="token keyword">where</span> <span class="token builtin">Item</span><span class="token punctuation">:</span> <span class="token builtin">Comparable</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
 </code></pre>
-<h2 id="ジェネリック-subscriptgeneric-subscripts"><a name="ジェネリック-subscriptgeneric-subscripts" class="plugin-anchor" href="#ジェネリック-subscriptgeneric-subscripts"><i class="fa fa-link" aria-hidden="true"></i></a><a id="generic-subscripts">ジェネリック subscript(Generic Subscripts)</a></h2>
+<h2 id="ジェネリック-subscriptgeneric-subscripts"><a id="generic-subscripts">ジェネリック subscript(Generic Subscripts)</a></h2>
 <p>subscript はジェネリックにすることができ、ジェネリック <code>where</code> 句を含めることができます。subscript の後の山括弧内(<code>&lt;&gt;</code>)にプレースホルダの型名を記述し、subscript の本文の開始の中括弧(<code>{</code>)の直前にジェネリック <code>where</code> 句を記述します。例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Container</span> <span class="token punctuation">{</span>
     <span class="token keyword">subscript</span><span class="token operator">&lt;</span><span class="token builtin">Indices</span><span class="token punctuation">:</span> <span class="token builtin">Sequence</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token builtin">indices</span><span class="token punctuation">:</span> <span class="token builtin">Indices</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token builtin">Item</span><span class="token punctuation">]</span>
@@ -1319,7 +1315,7 @@ notEquatableStack<span class="token punctuation">.</span><span class="token func
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"ジェネリクス(Generics)","level":"3.23","depth":1,"next":{"title":"Opaque 型(Opaque Types)","level":"3.24","depth":1,"path":"language-guide-gaido/opaque-types.md","ref":"language-guide-gaido/opaque-types.md","articles":[]},"previous":{"title":"プロトコル(Protocols)","level":"3.22","depth":1,"path":"language-guide-gaido/protocols.md","ref":"language-guide-gaido/protocols.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/generics.md","mtime":"2021-07-11T00:21:09.803Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ジェネリクス(Generics)","level":"3.23","depth":1,"next":{"title":"Opaque 型(Opaque Types)","level":"3.24","depth":1,"path":"language-guide-gaido/opaque-types.md","ref":"language-guide-gaido/opaque-types.md","articles":[]},"previous":{"title":"プロトコル(Protocols)","level":"3.22","depth":1,"path":"language-guide-gaido/protocols.md","ref":"language-guide-gaido/protocols.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/generics.md","mtime":"2021-07-11T00:35:31.546Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

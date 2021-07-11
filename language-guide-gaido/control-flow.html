@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,12 +748,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="制御フローcontrol-flow"><a name="制御フローcontrol-flow" class="plugin-anchor" href="#制御フローcontrol-flow"><i class="fa fa-link" aria-hidden="true"></i></a>制御フロー(Control Flow)</h1>
+                                <h1 id="制御フローcontrol-flow">制御フロー(Control Flow)</h1>
 <p>最終更新日: 2021/6/27</p>
 <p>Swift は、様々な制御フロー文を提供しています。1 つのタスクを複数回行う <code>while</code> ループ、ある条件を基に異なる分岐のコードを実行する <code>if</code>、<code>guard</code>、<code>switch</code> 文、コードの他の地点へ実行フローを移動させる <code>break</code> や <code>continue</code> のような文があります。</p>
 <p>また、配列や辞書、範囲、文字列や他のシーケンスに対して、簡単にループ処理を行う <code>for-in</code> ループも提供しています。</p>
 <p>Swift の <code>switch</code> 文は、C のような他の言語と比べてもかなり強力です。ケースは、範囲やタプル、特定の型へのキャストなど、様々なパターンに合致させることができます。また、<code>switch</code> のケースに合致した値は、ケースの本文内で使用するために変数や定数に紐づけることができます。各ケースに <code>where</code> を使用してより複雑な条件を作成することもできます。</p>
-<h2 id="for-inループfor-in-loops"><a name="for-inループfor-in-loops" class="plugin-anchor" href="#for-inループfor-in-loops"><i class="fa fa-link" aria-hidden="true"></i></a><a id="for-in-loops">For-Inループ(For-In Loops)</a></h2>
+<h2 id="for-inループfor-in-loops"><a id="for-in-loops">For-Inループ(For-In Loops)</a></h2>
 <p>配列のアイテムや数値の範囲、文字列の文字などのシーケンスに対してループ処理を行うために <code>for-in</code> ループを使います。</p>
 <p>下記の例は、<code>for-in</code> ループを使用して配列のアイテムにループ処理を行なっています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Anna&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Alex&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Brian&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Jack&quot;</span><span class="token punctuation">]</span>
@@ -803,7 +799,7 @@
 </code></pre>
 <p>上記の例では、1 つの数字に累乗した結果を出力しています。この例では <code>1</code> に <code>3</code>(つまり <code>3</code> の <code>0</code> 乗)を掛けることから始まり、<code>1</code> から <code>10</code> までの閉範囲を使用して、10 回計算をループしています。この計算では、ループ内で範囲から取得できる値は必要ありません。シンプルに範囲の数だけ処理をループしています。ループの変数部に使われているアンダースコア(<code>_</code>)は、それぞれの値を無視し、ループ内に値を提供しません。</p>
 <p>最初と最後の両方を含める閉範囲を使用する必要がない場合もあるかもしれません。時計の分針を思い浮かべてください。<code>0</code> から始まる <code>60</code> 個の目盛が必要です。最初の値を含める半開範囲演算子(<code>..&lt;</code>)を使いましょう。</p>
-<p>範囲についての詳細は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/basic-operators#range-operators" target="_blank">Range Operators(範囲演算子)</a>を参照ください。</p>
+<p>範囲についての詳細は、<a href="basic-operators#range-operators">Range Operators(範囲演算子)</a>を参照ください。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> minutes <span class="token operator">=</span> <span class="token number">60</span>
 <span class="token keyword">for</span> tickMark <span class="token keyword">in</span> <span class="token number">0</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">&lt;</span>minutes <span class="token punctuation">{</span>
     <span class="token comment">// 毎分ごとに 60 回目盛を描きます</span>
@@ -822,13 +818,13 @@
     <span class="token comment">// 3 時間ごと (3, 6, 9, 12) に目盛を描きます</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h2 id="whileループwhile-loops"><a name="whileループwhile-loops" class="plugin-anchor" href="#whileループwhile-loops"><i class="fa fa-link" aria-hidden="true"></i></a>Whileループ(While Loops)</h2>
+<h2 id="whileループwhile-loops">Whileループ(While Loops)</h2>
 <p><code>while</code> ループは条件が <code>false</code> になるまで内部の文を実行します。最初のループが始まるまで、何回繰り返すのかがわからないようなときに最も使われます。</p>
 <ul>
 <li><code>while</code> は、ループ内の処理を実行する前に条件を評価します</li>
 <li><code>repeat-while</code> は、ループ内の処理を実行した後に条件を評価します</li>
 </ul>
-<h3 id="while"><a name="while" class="plugin-anchor" href="#while"><i class="fa fa-link" aria-hidden="true"></i></a>while</h3>
+<h3 id="while">while</h3>
 <p><code>while</code> ループは、条件を評価してからループを開始します。<code>true</code> ならば条件が <code>false</code> になるまでループ内の処理を繰り返します。</p>
 <p><code>while</code> ループの基本的な書き方は下記の通りです:</p>
 <p><img src="../assets/05_whileform.png" alt="Whileループ"></p>
@@ -873,7 +869,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 </blockquote>
 <p>現在の <code>while</code> ループが終了し、次のループを実行するかどうかを決めるために、ループの条件をチェックします。プレイヤーは枠 25 またはそれ以上に到達していた場合、ループ条件は <code>false</code> になり、ゲームは終了します。</p>
 <p>今回のケースでは、ループの開始時にどのくらいゲームが続くのかがわからないため、<code>while</code> ループが適切です。条件が満たされるまでループ処理が実行されます。</p>
-<h3 id="repeat-while"><a name="repeat-while" class="plugin-anchor" href="#repeat-while"><i class="fa fa-link" aria-hidden="true"></i></a>Repeat-While</h3>
+<h3 id="repeat-while">Repeat-While</h3>
 <p><code>while</code> ループの別の形として、<code>repeat-while</code> があり、ループ条件を検証する前に、一度ループ内の処理を実行します。その後、条件が <code>false</code> になるまで繰り返します。</p>
 <blockquote>
 <p>NOTE<br>Swiftの <code>repeat-while</code> は、他の言語でいうところの <code>do-while</code> に当たります</p>
@@ -903,10 +899,10 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 </code></pre>
 <p>蛇かはしごかのチェック後に、サイコロが振られ、プレイヤーは <code>diceRoll</code> 分枠を移動します。そして現在のループを終了します。</p>
 <p>ループの条件は前と同様(<code>while square &lt; finalSquare</code>)ですが、今回はループを一度実行するまでは評価されません。今回の例では、<code>repeat-while</code> の構造は <code>while</code> 適よりしています。<code>repeat-while</code> では、<code>square += board[square]</code> は常に <code>while</code> 条件で <code>square</code> がまだボード上にいることを確かめた後にすぐ実行されます。この挙動で、<code>while</code> の例では必要だった配列の範囲チェックは必要なくなります。</p>
-<h2 id="条件文conditional-statements"><a name="条件文conditional-statements" class="plugin-anchor" href="#条件文conditional-statements"><i class="fa fa-link" aria-hidden="true"></i></a>条件文(Conditional Statements)</h2>
+<h2 id="条件文conditional-statements">条件文(Conditional Statements)</h2>
 <p>特定の条件に基づいてコードの異なる部分を実行すると役に立つことが多くあります。エラーが起きたときに追加でコードを実行したいこともあるでしょう。値が大きすぎたり、小さすぎたりしたらメッセージを表示したいかもしれません。この場合、コードを<em>条件付き</em>にすることで実現できます。</p>
 <p>Swift は、コードに条件分岐を追加する 2 つの方法、<code>if</code> 文と <code>switch</code> 文、を提供しています。一般的に、<code>if</code> 文は、ごく少数の可能性があるシンプルな条件を評価するときに使います。<code>switch</code> 文は、様々な可能性の組み合わせを持つ、より複雑な条件に適し、パターンマッチが適切な実行コードを選択する手助けになる状況で役に立ちます。</p>
-<h3 id="if"><a name="if" class="plugin-anchor" href="#if"><i class="fa fa-link" aria-hidden="true"></i></a>If</h3>
+<h3 id="if">If</h3>
 <p>最もシンプルな形式の <code>if</code> 文は単一の 1 つの <code>if</code> 条件です。条件が <code>true</code> の場合にのみ、内部の文が実行されます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> temperatureInFahrenheit <span class="token operator">=</span> <span class="token number">30</span>
 <span class="token keyword">if</span> temperatureInFahrenheit <span class="token operator">&lt;=</span> <span class="token number">32</span> <span class="token punctuation">{</span>
@@ -946,7 +942,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <span class="token punctuation">}</span>
 </code></pre>
 <p>この温度は、暑すぎず寒すぎない温度なので、<code>if</code> も <code>else if</code> も実行されず、何も出力しません。</p>
-<h3 id="switch"><a name="switch" class="plugin-anchor" href="#switch"><i class="fa fa-link" aria-hidden="true"></i></a>Switch</h3>
+<h3 id="switch">Switch</h3>
 <p><code>switch</code> 文は、複数の可能性に対してパターンマッチを使用して比較を行い、値を検討します。そして、一致した最初のパターンのコードのブロックを実行します。<code>switch</code> 文は、複数の可能性がある状態に対して <code>if</code> 文の代わりに使用することができます。</p>
 <p>最もシンプルな形式として、<code>switch</code> 文は同じ型の 1 つ以上の値を比較します。</p>
 <p><img src="../assets/05_switchform.png" alt="switch"></p>
@@ -966,7 +962,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <span class="token comment">// &quot;The last letter of the alphabet&quot;</span>
 </code></pre>
 <p><code>switch</code> 文の最初のケースは、英語アルファベットの最初の文字 <code>a</code> に合致し、2 番目のケースは最後の文字 <code>z</code> に合致します。全ての可能性がある文字をカバーしなければならないため、<code>a</code> と <code>z</code> 以外の全ての文字に対して <code>default</code> ケースを使用しています。こうすることで全てのケースを網羅できています。</p>
-<h4 id="暗黙的にfallthroughしないno-implicit-fallthrough"><a name="暗黙的にfallthroughしないno-implicit-fallthrough" class="plugin-anchor" href="#暗黙的にfallthroughしないno-implicit-fallthrough"><i class="fa fa-link" aria-hidden="true"></i></a>暗黙的にfallthroughしない(No Implicit Fallthrough)</h4>
+<h4 id="暗黙的にfallthroughしないno-implicit-fallthrough">暗黙的にfallthroughしない(No Implicit Fallthrough)</h4>
 <p>C 言語や Objective-C と異なり、Swift の <code>switch</code> 文は、デフォルトでは、それぞれのケースの下から次のケースに行くことはありません。その代わりに、最初に合致した <code>switch</code> ケースの実行が完了すると、明示的に <code>break</code> しなくても、全体の <code>switch</code> 文も完了します。こうすることで、C 言語の <code>switch</code> 文よりも、より安全に簡単に使えるようにしています。間違って 1 つ以上のケースを実行してしまうリスクを防ぎます。</p>
 <blockquote>
 <p>NOTE<br><code>break</code> は必須ではありませんが、合致したけど何も実行しないような場合や、あるケースの中で最後まで実行される前にそのブロックを抜けたい場合に、<code>break</code> を使用することができます。詳細は、&lt; href=&quot;#break-in-a-switch-statement&quot; target=&quot;_self&quot;&gt;Break in a Switch Statement(switch 内で break)&lt;/a&gt;を参照ください。</p>
@@ -997,7 +993,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <blockquote>
 <p>NOTE<br>特定のケースから次のケースの 本文 を実行したい場合は、<code>fallthrough</code> キーワードを使います。<a href="control-flow.html#fallthrough">Fallthrough</a>に記載しています。</p>
 </blockquote>
-<h4 id="範囲マッチングinterval-matching"><a name="範囲マッチングinterval-matching" class="plugin-anchor" href="#範囲マッチングinterval-matching"><i class="fa fa-link" aria-hidden="true"></i></a>範囲マッチング(Interval Matching)</h4>
+<h4 id="範囲マッチングinterval-matching">範囲マッチング(Interval Matching)</h4>
 <p><code>switch</code> ケースの値には、範囲内に含まれるかどうかのチェックもできます。下記の例では、数値の範囲を使用して、任意のサイズの数値の自然言語カウントを提供します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> approximateCount <span class="token operator">=</span> <span class="token number">62</span>
 <span class="token keyword">let</span> countedThings <span class="token operator">=</span> <span class="token string">&quot;moons orbiting Saturn&quot;</span>
@@ -1020,7 +1016,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <span class="token comment">// &quot;There are dozens of moons orbiting Saturn.&quot;</span>
 </code></pre>
 <p>上記の例では、<code>approximateCount</code> が <code>switch</code> 文で評価されています。それぞれのケースでは、1 つの数値または範囲で比較しています。<code>approximateCount</code> の値は、12 から 100 の間にあるので、<code>naturalCount</code> は <code>&quot;dozens of&quot;</code> に値が代入されます。実行後は <code>switch</code> 文から抜け出します。</p>
-<h4 id="タプルtuples"><a name="タプルtuples" class="plugin-anchor" href="#タプルtuples"><i class="fa fa-link" aria-hidden="true"></i></a>タプル(Tuples)</h4>
+<h4 id="タプルtuples">タプル(Tuples)</h4>
 <p>タプルを使用して同じ <code>switch</code> 文の中で、複数の値を検証することができます。タプルの個々の要素は、異なる値や範囲に対して検証できます。逆に、アンダースコア(<code>_</code>)を使用すると、ワイルドカードとしてどんな値にも合致させることができます。</p>
 <p>下記の例では、<code>(Int, Int)</code> 型のタプルとして <code>(x, y)</code> 座標を受け取り、グラフに分布しています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> somePoint <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
@@ -1041,7 +1037,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <p><img src="../assets/coordinategraphsimple_2x.png" alt="switch文 座標分布図"></p>
 <p><code>switch</code> 文は、座標が原点 <code>(0、0)</code> にあるか、赤い x 軸上にあるか、オレンジ色の y 軸上にあるか、原点を中心とする青い 4x4 列のボックスの内側にあるか、ボックスの外側にあるかを判別します。</p>
 <p>C 言語と異なり、Swift では複数のケースで同じ値を検証することができます。実際、この例では <code>(0、0)</code> は全ての 4 つのケースに当てはまります。複数に合致する場合は、常に最初に合致したケースが使われます。<code>(0、0)</code> は最初に <code>case (0, 0)</code> に合致するので、他のケースは無視します。</p>
-<h4 id="値バインディングvalue-bindings"><a name="値バインディングvalue-bindings" class="plugin-anchor" href="#値バインディングvalue-bindings"><i class="fa fa-link" aria-hidden="true"></i></a>値バインディング(Value Bindings)</h4>
+<h4 id="値バインディングvalue-bindings">値バインディング(Value Bindings)</h4>
 <p><code>switch</code> ケースは、合致した値を、ケースの本文で使用するために、一時的な定数または変数に一致する 1 つまたは複数の値に名前を付けることができます。この挙動は、値を変数や定数にバインドするので、<em>値バインディング</em>と呼ばれています。</p>
 <p>下記の例では、<code>(Int, Int)</code> 型のタプルとして <code>(x, y)</code> 座標を受け取り、グラフに分布しています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> anotherPoint <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
@@ -1060,7 +1056,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <p>この 3 つの <code>switch</code> ケースは、<code>anotherPoint</code> から 1 つまたは両方のタプルの値を、プレースホルダ定数 <code>x</code> と <code>y</code> として宣言しています。最初の <code>case (let x, 0)</code> は、<code>y</code> は 0 で、座標 <code>x</code> の値を定数 <code>x</code> に代入した任意の値に合致します。同様に、2 番目の <code>case (0, let y)</code> は、<code>x</code> は 0 で、座標 <code>y</code> の値を定数 <code>y</code> に代入した任意の値に合致します。</p>
 <p>定数は、そのケースのブロック内で使用することができます。ここでは、座標の分布を出力するために使われています。</p>
 <p><code>switch</code> 文は、<code>default</code> のケースが必ず必要な訳ではありません。最後の <code>case let (x, y)</code> は、どんな値にも合致する 2 つのプレースホルダとして定数を宣言しています。<code>anotherPoint</code> は、常に 2 つの値を持つタプルなので、このケースで、先の 2 つのケース以外の全ての値に合致するため、<code>switch</code> 文で全ての値を網羅するための <code>default</code> ケースは不要です。</p>
-<h4 id="where"><a name="where" class="plugin-anchor" href="#where"><i class="fa fa-link" aria-hidden="true"></i></a>Where</h4>
+<h4 id="where">Where</h4>
 <p><code>switch</code> 文は、追加条件として <code>where</code> 句を使用することができます。</p>
 <p>下記の例では、<code>(x, y)</code> 座標を受け取り、グラフに分布しています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> yetAnotherPoint <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
@@ -1078,7 +1074,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <p><code>switch</code> 文は、座標が <code>x == y</code> の場合は緑色の対角線上にあるか、<code>x == -y</code> の場合は紫色の対角線上にあるか、またはどちらでもないかを判別します。</p>
 <p>この 3 つの <code>switch</code> ケースは、<code>yetAnotherPoint</code> から 1 つまたは両方のタプルの値を、プレースホルダ定数 <code>x</code> と <code>y</code> として宣言しています。これらの定数は <code>where</code> 句の一部で使われており、動的なフィルターを作成しています。<code>switch</code> ケースには、<code>point</code> の現在値が <code>where</code> の条件で <code>true</code> になった場合のみ合致します。</p>
 <p>最後のケースは、先の 2 つのケース以外の全ての値に合致するため、<code>switch</code> 文で全ての値を網羅するための <code>default</code> ケースは不要です。</p>
-<h4 id="複合ケースcompound-cases"><a name="複合ケースcompound-cases" class="plugin-anchor" href="#複合ケースcompound-cases"><i class="fa fa-link" aria-hidden="true"></i></a><a id="compound-cases">複合ケース(Compound Cases)</a></h4>
+<h4 id="複合ケースcompound-cases"><a id="compound-cases">複合ケース(Compound Cases)</a></h4>
 <p>各ケースをカンマ(<code>,</code>)で区切ってケースの後に書くことで、同じ本文を共有する複数のケースを書くことができます。その中の 1 つのケースに合致した場合に、合致したと見なされます。ケースのリストが長くなるような場合は、複数行にまたがって書くことができます。例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> someCharacter<span class="token punctuation">:</span> <span class="token builtin">Character</span> <span class="token operator">=</span> <span class="token string">&quot;e&quot;</span>
 <span class="token keyword">switch</span> someCharacter <span class="token punctuation">{</span>
@@ -1104,7 +1100,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <span class="token comment">// &quot;On an axis, 9 from the origin&quot;</span>
 </code></pre>
 <p>上記のケースでは 2 つのパターンを含んでいます: <code>(let distance, 0)</code> は x 軸上にある点に合致し、<code>(0, let distance)</code> は y 軸上にある点に合致します。どちらのパターンでも、<code>distance</code> へのバインディングが含まれており、どちらも数値です。つまり、ケース内では常に <code>distance</code> にアクセスできます。</p>
-<h2 id="制御転送文control-transfer-statements"><a name="制御転送文control-transfer-statements" class="plugin-anchor" href="#制御転送文control-transfer-statements"><i class="fa fa-link" aria-hidden="true"></i></a><a id="control-flow-control-transfer-statements">制御転送文(Control Transfer Statements)</a></h2>
+<h2 id="制御転送文control-transfer-statements"><a id="control-flow-control-transfer-statements">制御転送文(Control Transfer Statements)</a></h2>
 <p><em>制御転送文</em>は、コードの一部の制御を他の部分へ転送させることで、コードの実行順序を変更します。Swift には 5 つの制御転送文があります:</p>
 <ul>
 <li><code>continue</code></li>
@@ -1113,8 +1109,8 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <li><code>return</code></li>
 <li><code>throw</code></li>
 </ul>
-<p><code>continue</code>、<code>break</code> と <code>fallthrough</code> は下記に記載しています。<code>return</code> は<a href="functions.html">Functions(関数)</a>、<code>throw</code> は<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/error-handling#propagating-errors-using-throwing-functions" target="_blank">Propagating Errors Using Throwing Functions</a>に記載しています。</p>
-<h3 id="continue"><a name="continue" class="plugin-anchor" href="#continue"><i class="fa fa-link" aria-hidden="true"></i></a>Continue</h3>
+<p><code>continue</code>、<code>break</code> と <code>fallthrough</code> は下記に記載しています。<code>return</code> は<a href="functions.html">Functions(関数)</a>、<code>throw</code> は<a href="error-handling#propagating-errors-using-throwing-functions">Propagating Errors Using Throwing Functions</a>に記載しています。</p>
+<h3 id="continue">Continue</h3>
 <p><code>continue</code> 文は、各ループ内の実行を止めて、次のループの最初から処理を開始します。つまり、ループを抜けることなく「今のループ処理を完了します」と伝えます。</p>
 <p>次の例は、全ての母音とスペースを小文字の文字列から除いて、暗号パズルフレーズを作成しています:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> puzzleInput <span class="token operator">=</span> <span class="token string">&quot;great minds think alike&quot;</span>
@@ -1130,11 +1126,11 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <span class="token comment">// &quot;grtmndsthnklk&quot;</span>
 </code></pre>
 <p>上記のコードは、母音かスペースの場合に即座に現在のループ処理を終了し、次のループ処理の開始に移動するように <code>continue</code> キーワードを使用しています。</p>
-<h3 id="break"><a name="break" class="plugin-anchor" href="#break"><i class="fa fa-link" aria-hidden="true"></i></a>Break</h3>
+<h3 id="break">Break</h3>
 <p><code>break</code> 文は、即座に全体の制御フローの実行を終了させます。<code>break</code> は、<code>switch</code> 文かループ文の内部で、他のケースよりも早期に処理の実行を終了させたいときに使います。</p>
-<h4 id="ループ内でbreakbreak-in-a-loop-statement"><a name="ループ内でbreakbreak-in-a-loop-statement" class="plugin-anchor" href="#ループ内でbreakbreak-in-a-loop-statement"><i class="fa fa-link" aria-hidden="true"></i></a>ループ内でBreak(Break in a Loop Statement)</h4>
+<h4 id="ループ内でbreakbreak-in-a-loop-statement">ループ内でBreak(Break in a Loop Statement)</h4>
 <p>ループ文の内部で使用するとき、<code>break</code> はループの実行を即座に終了し、ループの末尾の閉じ括弧(<code>}</code>)の後に制御フローを移します。ループ内の続きの処理は実行されず、次のループも開始されません。</p>
-<h4 id="switch内でbreakbreak-in-a-switch-statement"><a name="switch内でbreakbreak-in-a-switch-statement" class="plugin-anchor" href="#switch内でbreakbreak-in-a-switch-statement"><i class="fa fa-link" aria-hidden="true"></i></a><a id="break-in-a-switch-statement">Switch内でBreak(Break in a Switch Statement)</a></h4>
+<h4 id="switch内でbreakbreak-in-a-switch-statement"><a id="break-in-a-switch-statement">Switch内でBreak(Break in a Switch Statement)</a></h4>
 <p><code>switch</code> 文の内部で使用するとき、<code>break</code> は <code>switch</code> の実行を即座に終了し、<code>switch</code> の末尾の閉じ括弧(<code>}</code>)の後に制御フローを移します。<code>switch</code> 文は網羅的で空のケースが許されないため、明示的に何もしないことを伝えるために、わざと合致させて無視するときに必要になります。無視したいケースの本文に <code>break</code> のみを書きます。そのケースに合致した場合、ケース内の <code>break</code> が <code>switch</code> 文全体の実行を即時に終了させます。</p>
 <blockquote>
 <p>NOTE<br>コメントだけを含めた <code>switch</code> ケースは、コンパイルエラーになります。コメントは文ではなく、<code>switch</code> ケースを無視することができません。<code>switch</code> ケースを無視するには <code>break</code> を常に使います。</p>
@@ -1164,7 +1160,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <p>この例では、<code>numberSymbol</code> が <code>1</code>〜<code>4</code> のラテン語、アラビア語、中国語、タイ語に合致するかどうかをチェックしています。合致した場合、各ケースは、<code>Int?</code> の <code>possibleIntegerValue</code> 変数に適切な数字を設定しています。</p>
 <p><code>switch</code> 文の実行完了後、この例では値が見つかったかどうかを判定するのに、オプショナルバインディングを使用しています。<code>possibleIntegerValue</code> 変数は、オプショナル型の性質上、<code>nil</code> が暗黙的に初期値になります。<code>switch</code> の最初の 4 つのケースで <code>possibleIntegerValue</code> に値が設定された場合のみ、オプショナルバインディングは成功します。</p>
 <p>上記の例で <code>Character</code> 型の値を全部羅列することは現実的ではないので、<code>default</code> ケースで合致しない全ての値を処理します。<code>default</code> ケースでは何もする必要がないので、本文には <code>break</code> のみを記載しています。<code>default</code> ケースが合致すると、<code>break</code> 文は <code>switch</code> 文を終了させ、次の <code>if let</code> からコードを継続します。</p>
-<h3 id="fallthrough"><a name="fallthrough" class="plugin-anchor" href="#fallthrough"><i class="fa fa-link" aria-hidden="true"></i></a>Fallthrough</h3>
+<h3 id="fallthrough">Fallthrough</h3>
 <p>Swift の <code>switch</code> 文は、各ケースの底から次のケースに通り抜けることはしません。つまり、最初に合致したケースが完了したらすぐに <code>switch</code> 文全体の実行が終了します。逆に、C 言語の <code>switch</code> 文では、各ケースへ通り抜けることを防ぐために、明示的に <code>break</code> を各ケースの末尾に書かなければなりません。Swift の <code>switch</code> 文は、デフォルトで通り抜けないことで、C 言語とは反対に、より簡潔で挙動が予測しやすくなっています。間違って複数のケースを実行することを防ぎます。</p>
 <p>もし C 言語のような通り抜けが必要な場合は、<code>fallthrough</code> キーワードを使用してケースごとに設定することができます。下記の例では、<code>fallthrough</code> を使用して数値のテキストによる説明を作成します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> integerToDescribe <span class="token operator">=</span> <span class="token number">5</span>
@@ -1183,7 +1179,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <blockquote>
 <p>NOTE<br><code>fallthrough</code> キーワードは、前のケースから通り抜けて実行されたケースの条件をチェックしません。<code>fallthrough</code> キーワードは次のケース(または <code>default</code> ケース)のブロック内の文に直接移動し、コードを実行します。これは C 言語と同じ挙動です。</p>
 </blockquote>
-<h3 id="ラベル付き文labeled-statements"><a name="ラベル付き文labeled-statements" class="plugin-anchor" href="#ラベル付き文labeled-statements"><i class="fa fa-link" aria-hidden="true"></i></a><a id="labeled-statements">ラベル付き文(Labeled Statements)</a></h3>
+<h3 id="ラベル付き文labeled-statements"><a id="labeled-statements">ラベル付き文(Labeled Statements)</a></h3>
 <p>Swift では、より複雑な制御フローを作成するために、ループや条件文の中にさらにループや条件文をネストできます。しかし、<code>break</code> を使用して早期に実行を終了させることもできます。そのため、どの文を <code>break</code> するのかを明示すると役に立つことがあります。同様に、複数のネストしたループで、どのループに <code>continue</code> が影響するかを明示することも役に立ちます。</p>
 <p>これを実現するために、ループや条件文にラベルを付けることができます。条件文では、<code>break</code> と<em>文ラベル</em>を使用して実行を終了できます。ループでは、<code>break</code> か <code>continue</code> と<em>文ラベル</em>を使用してラベル付き文の実行を終了または継続することができます。</p>
 <p>ラベル付き文は、文の導入キーワードの前にコロン(<code>:</code>)を付けて同じ行にラベルを配置することで示せます。下記は、<code>while</code> ループの構文の例ですが、他の全てのループや <code>switch</code> にも同じ原則が当てはまります。</p>
@@ -1232,7 +1228,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <blockquote>
 <p>NOTE<br>もし <code>break</code> が <code>gameLoop</code> ラベルを付けなかった場合、<code>while</code> ではなく <code>switch</code> から抜けます。<code>gameLoop</code> ラベルを使用することで、どの制御文から抜けるのかを明確にできます<br>次のループに移動するのに <code>continue gameLoop</code> と <code>gameLoop</code> ラベルを使用する必要は厳密にはありません。ゲーム内にループは 1 つしかなく、どのループに <code>continue</code> が影響を与えるかが明確です。しかし、<code>gameLoop</code> ラベルを使用しても害はなく、そうすることで <code>break</code> のラベルと一貫性ができ、ロジックを読みやすく理解しやすくすることができます。</p>
 </blockquote>
-<h2 id="早期リターンearly-exit"><a name="早期リターンearly-exit" class="plugin-anchor" href="#早期リターンearly-exit"><i class="fa fa-link" aria-hidden="true"></i></a><a id="early-exit">早期リターン(Early Exit)</a></h2>
+<h2 id="早期リターンearly-exit"><a id="early-exit">早期リターン(Early Exit)</a></h2>
 <p><code>guard</code> 文は <code>if</code> 文と同様に、式のブール値に応じて文を実行します。<code>guard</code> 文は、<code>guard</code> の後のコードを実行するために、<code>guard</code> の条件が <code>true</code> でなければならない場合に使います。<code>if</code> 文と異なり、<code>guard</code> 文は常に <code>else</code> 句が必要で、条件が <code>false</code> の場合に <code>else</code> 内が実行されます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">greet</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">guard</span> <span class="token keyword">let</span> name <span class="token operator">=</span> person<span class="token punctuation">[</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">]</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
@@ -1259,7 +1255,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
 <p><code>guard</code> 文の条件を満たした場合、<code>guard</code> の閉じ括弧(<code>}</code>)以降のコードを続けて実行します。条件の一部としてオプショナルバインディングに使われている変数や定数は、<code>guard</code> の後のコードで利用できるようになります。</p>
 <p>条件を満たさない場合、<code>else</code> 句の内部を実行します。この分岐内では、<code>guard</code> 文内のコードブロックを抜けるために、制御を他へ転送させなければなりません。これは、<code>return</code>、<code>break</code>、<code>continue</code> や <code>throw</code> といった制御転送文を使用することができます。あるいは、<code>fatalError(_:file:line:)</code> のように値を返さない関数やメソッドを呼びます。</p>
 <p><code>guard</code> 文を必須条件に使用することで、<code>if</code> 文で同じことを行うよりも可読性を改善させることができます。概ね <code>else</code> ブロックで包むことなくコードを書くことができたり、必須条件のすぐ下で条件を満たさないケースを処理することができます。</p>
-<h2 id="apiアベイラビリティチェックchecking-api-availability"><a name="apiアベイラビリティチェックchecking-api-availability" class="plugin-anchor" href="#apiアベイラビリティチェックchecking-api-availability"><i class="fa fa-link" aria-hidden="true"></i></a><a id="checking-api-availability">APIアベイラビリティチェック(Checking API Availability)</a></h2>
+<h2 id="apiアベイラビリティチェックchecking-api-availability"><a id="checking-api-availability">APIアベイラビリティチェック(Checking API Availability)</a></h2>
 <p>Swift は API のアベイラビリティチェックをビルトインでサポートしています。つまり、あるデプロイターゲットでは利用できない API を間違って使わないことが保証できます。</p>
 <p>コンパイラはコード内で使われている全ての API がプロジェクトで特定したデプロイターゲットで使用可能かどうかを検証するために、SDK 内のアベイラビリティ情報を使います。利用できない API を使おうとしていた場合、コンパイル時にエラーを報告します。</p>
 <p>使用する API が実行時に使用可能かどうかに応じて、<code>if</code> 文や <code>guard</code> 文で<em>アベイラビリティ条件</em>を使用して、コードのブロックを条件付きで実行します。コンパイラはこのコードブロックが使用可能かどうかを検証するときに、このアベイラビリティ条件からの情報を使います。</p>
@@ -1305,7 +1301,7 @@ board<span class="token punctuation">[</span><span class="token number">14</span
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"制御フロー(Control Flow)","level":"3.5","depth":1,"next":{"title":"関数(Functions)","level":"3.6","depth":1,"path":"language-guide-gaido/functions.md","ref":"language-guide-gaido/functions.md","articles":[]},"previous":{"title":"コレクション型(Collection Types)","level":"3.4","depth":1,"path":"language-guide-gaido/collection-types.md","ref":"language-guide-gaido/collection-types.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/control-flow.md","mtime":"2021-07-11T00:21:09.599Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"制御フロー(Control Flow)","level":"3.5","depth":1,"next":{"title":"関数(Functions)","level":"3.6","depth":1,"path":"language-guide-gaido/functions.md","ref":"language-guide-gaido/functions.md","articles":[]},"previous":{"title":"コレクション型(Collection Types)","level":"3.4","depth":1,"path":"language-guide-gaido/collection-types.md","ref":"language-guide-gaido/collection-types.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/control-flow.md","mtime":"2021-07-11T00:35:31.546Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,7 +748,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="swiftツアーa-swift-tour"><a name="swiftツアーa-swift-tour" class="plugin-anchor" href="#swiftツアーa-swift-tour"><i class="fa fa-link" aria-hidden="true"></i></a>Swiftツアー(A Swift Tour)</h1>
+                                <h1 id="swiftツアーa-swift-tour">Swiftツアー(A Swift Tour)</h1>
 <p>最終更新日: 2021/7/7</p>
 <p>伝統的に、新しい言語の最初のプログラミングは &quot;Hello world!&quot; を画面に表示することを勧めます。これを Swift ではたった 1 行で達成できます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Hello, world!&quot;</span><span class="token punctuation">)</span>
@@ -764,7 +760,7 @@
 <p>NOTE<br>より理解を深めるために、Xcode でこのチャプターを開いて遊んでみましょう。Playgrounds を使用すると、コードを編集して結果をすぐに確認することができます。</p>
 <p><a href="https://docs.swift.org/swift-book/GuidedTour/GuidedTour.playground.zip" target="_blank">Download Playground</a></p>
 </blockquote>
-<h2 id="シンプルな値simple-values"><a name="シンプルな値simple-values" class="plugin-anchor" href="#シンプルな値simple-values"><i class="fa fa-link" aria-hidden="true"></i></a>シンプルな値(Simple Values)</h2>
+<h2 id="シンプルな値simple-values">シンプルな値(Simple Values)</h2>
 <p>定数を作成するのに <code>let</code>、変数を作成するのに <code>var</code> を使います。定数の値はコンパイル時に知る必要はありませんが、正確に一度だけ値を設定しなければなりません。つまり、値の指定をたった一度だけ行い、他のあらゆる場所からその定数を利用できます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> myVariable <span class="token operator">=</span> <span class="token number">42</span>
 myVariable <span class="token operator">=</span> <span class="token number">50</span>
@@ -824,7 +820,7 @@ occupations<span class="token punctuation">[</span><span class="token string">&q
 <pre class="language-"><code class="lang-swift">shoppingList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 occupations <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
 </code></pre>
-<h2 id="制御フローcontrol-flow"><a name="制御フローcontrol-flow" class="plugin-anchor" href="#制御フローcontrol-flow"><i class="fa fa-link" aria-hidden="true"></i></a>制御フロー(Control Flow)</h2>
+<h2 id="制御フローcontrol-flow">制御フロー(Control Flow)</h2>
 <p>条件を作成するには、 <code>if</code> と <code>switch</code> を使います。ループを作成するには <code>for-in</code> <code>while</code> <code>repeat-while</code> を使います。条件やオプショナルに丸括弧(<code>()</code>)を付けるかどうかは任意です。本文の周りの中括弧(<code>{}</code>)は必須です。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> individualScores <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">75</span><span class="token punctuation">,</span> <span class="token number">43</span><span class="token punctuation">,</span> <span class="token number">103</span><span class="token punctuation">,</span> <span class="token number">87</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">]</span>
 <span class="token keyword">var</span> teamScore <span class="token operator">=</span> <span class="token number">0</span>
@@ -922,7 +918,7 @@ occupations <span class="token operator">=</span> <span class="token punctuation
 <span class="token comment">// &quot;6</span>
 </code></pre>
 <p><code>..&lt;</code> では後ろの値は除外され、<code>...</code> は両方の値を含みます。</p>
-<h2 id="関数とクロージャfunctions-and-closures"><a name="関数とクロージャfunctions-and-closures" class="plugin-anchor" href="#関数とクロージャfunctions-and-closures"><i class="fa fa-link" aria-hidden="true"></i></a>関数とクロージャ(Functions and Closures)</h2>
+<h2 id="関数とクロージャfunctions-and-closures">関数とクロージャ(Functions and Closures)</h2>
 <p>関数の定義には <code>func</code> を使います。括弧(<code>()</code>)の中に引数のリスト、その前に関数の名前を付けることで関数を呼び出します。また、<code>-&gt;</code> の後ろに戻り値の型を指定して、パラメータ名や型と区別します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">greet</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> day<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token string">&quot;Hello <span class="token interpolation"><span class="token delimiter variable">\(</span>person<span class="token delimiter variable">)</span></span>, today is <span class="token interpolation"><span class="token delimiter variable">\(</span>day<span class="token delimiter variable">)</span></span>.&quot;</span>
@@ -1010,7 +1006,7 @@ occupations <span class="token operator">=</span> <span class="token punctuation
 <span class="token function">print</span><span class="token punctuation">(</span>sortedNumbers<span class="token punctuation">)</span>
 <span class="token comment">// &quot;[20, 19, 12, 7]&quot;</span>
 </code></pre>
-<h2 id="オブジェクトとクラスobjects-and-classes"><a name="オブジェクトとクラスobjects-and-classes" class="plugin-anchor" href="#オブジェクトとクラスobjects-and-classes"><i class="fa fa-link" aria-hidden="true"></i></a>オブジェクトとクラス(Objects and Classes)</h2>
+<h2 id="オブジェクトとクラスobjects-and-classes">オブジェクトとクラス(Objects and Classes)</h2>
 <p><code>class</code> をクラス名の前に付けることでクラスを作成することができます。クラス内のプロパティの宣言は、クラス内にあるということを除いて、定数や変数の宣言方法と同じです。同様に、メソッドや関数の宣言も同じように書くことができます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">Shape</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> numberOfSides <span class="token operator">=</span> <span class="token number">0</span>
@@ -1136,7 +1132,7 @@ triangleAndSquare<span class="token punctuation">.</span>square <span class="tok
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> optionalSquare<span class="token punctuation">:</span> <span class="token builtin">Square</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token function">Square</span><span class="token punctuation">(</span>sideLength<span class="token punctuation">:</span> <span class="token number">2.5</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> <span class="token string">&quot;optional square&quot;</span><span class="token punctuation">)</span>
 <span class="token keyword">let</span> sideLength <span class="token operator">=</span> optionalSquare<span class="token operator">?</span><span class="token punctuation">.</span>sideLength
 </code></pre>
-<h2 id="列挙型と構造体enumerations-and-structures"><a name="列挙型と構造体enumerations-and-structures" class="plugin-anchor" href="#列挙型と構造体enumerations-and-structures"><i class="fa fa-link" aria-hidden="true"></i></a>列挙型と構造体(Enumerations and Structures)</h2>
+<h2 id="列挙型と構造体enumerations-and-structures">列挙型と構造体(Enumerations and Structures)</h2>
 <p>列挙型を作成するには <code>enum</code> を使います。クラスやその他の名前の付いた型と同様に、列挙型もメソッドを持つことができます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">enum</span> <span class="token builtin">Rank</span><span class="token punctuation">:</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
     <span class="token keyword">case</span> ace <span class="token operator">=</span> <span class="token number">1</span>
@@ -1229,7 +1225,7 @@ triangleAndSquare<span class="token punctuation">.</span>square <span class="tok
 <blockquote>
 <p>Experiment<br>rank と suit を持った全種類の card を含む array を返すメソッドを書いてみよう。</p>
 </blockquote>
-<h2 id="プロトコルと拡張protocols-and-extensions"><a name="プロトコルと拡張protocols-and-extensions" class="plugin-anchor" href="#プロトコルと拡張protocols-and-extensions"><i class="fa fa-link" aria-hidden="true"></i></a>プロトコルと拡張(Protocols and Extensions)</h2>
+<h2 id="プロトコルと拡張protocols-and-extensions">プロトコルと拡張(Protocols and Extensions)</h2>
 <p>プロトコルを宣言するために <code>protocol</code> を使います。</p>
 <pre class="language-"><code class="lang-text">protocol ExampleProtocol {
     var simpleDescription: String { get }
@@ -1284,7 +1280,7 @@ b<span class="token punctuation">.</span><span class="token function">adjust</sp
 <span class="token comment">// print(protocolValue.anotherProperty)  // Uncomment to see the error</span>
 </code></pre>
 <p>変数 <code>protocolValue</code> が実行時に <code>SimpleClass</code> になることはわかるものの、コンパイラはこれを、ある <code>ExampleProtocol</code> として扱います。つまり、プロトコルで定義されたメソッドやプロパティ以外へアクセスすることはできません。</p>
-<h2 id="エラーハンドリングerror-handling"><a name="エラーハンドリングerror-handling" class="plugin-anchor" href="#エラーハンドリングerror-handling"><i class="fa fa-link" aria-hidden="true"></i></a>エラーハンドリング(Error Handling)</h2>
+<h2 id="エラーハンドリングerror-handling">エラーハンドリング(Error Handling)</h2>
 <p><code>Error</code> プロトコルに準拠することでどんな型もエラーを表現することができます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">enum</span> <span class="token builtin">PrinterError</span><span class="token punctuation">:</span> <span class="token builtin">Error</span> <span class="token punctuation">{</span>
     <span class="token keyword">case</span> outOfPaper
@@ -1349,7 +1345,7 @@ b<span class="token punctuation">.</span><span class="token function">adjust</sp
 <span class="token function">print</span><span class="token punctuation">(</span>fridgeIsOpen<span class="token punctuation">)</span>
 <span class="token comment">// &quot;false&quot;</span>
 </code></pre>
-<h2 id="ジェネリクスgenerics"><a name="ジェネリクスgenerics" class="plugin-anchor" href="#ジェネリクスgenerics"><i class="fa fa-link" aria-hidden="true"></i></a>ジェネリクス(Generics)</h2>
+<h2 id="ジェネリクスgenerics">ジェネリクス(Generics)</h2>
 <p>ジェネリックな関数や型を作成するには、山括弧(<code>&lt;&gt;</code>)の中に名前を書きます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> makeArray<span class="token operator">&lt;</span><span class="token builtin">Item</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>repeating item<span class="token punctuation">:</span> <span class="token builtin">Item</span><span class="token punctuation">,</span> numberOfTimes<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token builtin">Item</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">Item</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -1421,7 +1417,7 @@ possibleInteger <span class="token operator">=</span> <span class="token punctua
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Swiftツアー(A Swift Tour)","level":"2.3","depth":1,"next":{"title":"基本(The Basics)","level":"3.1","depth":1,"path":"language-guide-gaido/the-basics.md","ref":"language-guide-gaido/the-basics.md","articles":[]},"previous":{"title":"バージョン互換性(Version Compatibility)","level":"2.2","depth":1,"path":"welcome-to-swift-swiftheyoukoso/version-compatibility.md","ref":"welcome-to-swift-swiftheyoukoso/version-compatibility.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"welcome-to-swift-swiftheyoukoso/a-swift-tour.md","mtime":"2021-07-08T00:16:53.825Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Swiftツアー(A Swift Tour)","level":"2.3","depth":1,"next":{"title":"基本(The Basics)","level":"3.1","depth":1,"path":"language-guide-gaido/the-basics.md","ref":"language-guide-gaido/the-basics.md","articles":[]},"previous":{"title":"バージョン互換性(Version Compatibility)","level":"2.2","depth":1,"path":"welcome-to-swift-swiftheyoukoso/version-compatibility.md","ref":"welcome-to-swift-swiftheyoukoso/version-compatibility.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"welcome-to-swift-swiftheyoukoso/a-swift-tour.md","mtime":"2021-07-08T00:16:53.825Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

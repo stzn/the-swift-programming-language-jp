@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,14 +748,14 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="構造体とクラスstructures-and-classes"><a name="構造体とクラスstructures-and-classes" class="plugin-anchor" href="#構造体とクラスstructures-and-classes"><i class="fa fa-link" aria-hidden="true"></i></a>構造体とクラス(Structures and Classes)</h1>
+                                <h1 id="構造体とクラスstructures-and-classes">構造体とクラス(Structures and Classes)</h1>
 <p>最終更新日: 2021/6/27</p>
 <p><em>構造体</em>と<em>クラス</em>は、プログラムのコードの構成要素を構築する汎用的で柔軟な構造概念です。定数、変数、関数の定義に使用するのと同じ構文を使用して、プロパティとメソッドを定義して機能を追加します。</p>
 <p>他のプログラミング言語とは異なり、Swift では、インターフェイスと実装ファイルを別々に作成する必要はありません。構造体またはクラスを 1 つのファイルで定義すると、その外部インターフェイスは自動的に他のコードで使用できるようになります。</p>
 <blockquote>
 <p>NOTE<br>昔から<em>オブジェクト</em>はクラスのインスタンスはとして知られています。ただし、 Swift の 構造体とクラスは、他の言語以上に機能がかなり似ていて、この章でも、構造体またはクラス型のインスタンスのどちらにも当てはまる機能について説明しています。このため、より一般的な意味合いでインスタンスという用語を使用します。</p>
 </blockquote>
-<h2 id="構造体とクラスの比較comparing-structures-and-classes"><a name="構造体とクラスの比較comparing-structures-and-classes" class="plugin-anchor" href="#構造体とクラスの比較comparing-structures-and-classes"><i class="fa fa-link" aria-hidden="true"></i></a>構造体とクラスの比較(Comparing Structures and Classes)</h2>
+<h2 id="構造体とクラスの比較comparing-structures-and-classes">構造体とクラスの比較(Comparing Structures and Classes)</h2>
 <p>Swift の構造体とクラスには多くの共通点があります。いずれも下記のようなことができます:</p>
 <ul>
 <li>値を格納するプロパティを定義できます</li>
@@ -779,7 +775,7 @@
 </ul>
 <p>これらの機能の詳細については、<a href="inheritance.html">Inheritance(継承)</a>、<a href="type-casting.html">Type Casting(型キャスト)</a>、<a href="deinitialization.html">Deinitialization(デイニシャライザ)</a>、<a href="automatic-reference-counting.html">Automatic Reference Counting(自動参照カウント)</a>を参照ください。</p>
 <p>クラスは追加の機能をサポートしている分、複雑さが増します。一般的なガイドラインとして、構造体の方が扱いやすく推奨されます。クラスは適切または必要な場合にのみ使用してください。つまり、実際は、独自に定義するデータ型のほとんどが構造体と列挙型になることを意味します。より詳細な比較は<a href="https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes" target="_blank">Choosing Between Structures and Classes</a>を参照ください。</p>
-<h3 id="定義構文definition-syntax"><a name="定義構文definition-syntax" class="plugin-anchor" href="#定義構文definition-syntax"><i class="fa fa-link" aria-hidden="true"></i></a>定義構文(Definition Syntax)</h3>
+<h3 id="定義構文definition-syntax">定義構文(Definition Syntax)</h3>
 <p>構造体とクラスの定義構文は似ています。<code>struct</code> キーワードを使用して構造体を作成し、<code>class</code> キーワードを使用してクラスを作成します。どちらも、定義全体を中括弧のペア(<code>{}</code>)内に配置します:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">SomeStructure</span> <span class="token punctuation">{</span>
     <span class="token comment">// 構造体の定義をここに</span>
@@ -805,14 +801,14 @@
 </code></pre>
 <p>上記の例では、<code>Resolution</code> と呼ばれる新しい構造体を定義して、ピクセルベースのディスプレイ解像度を記述しています。この構造体には、<code>width</code> と <code>height</code> という 2 つの<em>格納プロパティ</em>があります。格納プロパティは、構造体またはクラスの一部として紐付け、格納される定数または変数です。これらの 2 つのプロパティは、初期値に <code>0</code> を設定することにより、<code>Int</code> 型だと推論されます。</p>
 <p>上記の例では、ビデオ表示用の特定のビデオモードを記述するために、<code>VideoMode</code> と呼ばれる新しいクラスも定義しています。このクラスには、4 つの格納プロパティの変数があります。最初の <code>resolution</code> は、新しい <code>Resolution</code> 構造体インスタンスで初期化されており <code>Resolution</code> 型だと推論されます。他の 3 つのプロパティに関しては、<code>interlaced</code> に (「非インターレースビデオ」を意味する)<code>false</code> を、再生フレームレートに <code>0.0</code>、および <code>name</code> と呼ばれるオプショナルの <code>String</code> 値で初期化されます。<code>name</code> プロパティはオプショナル型のため、デフォルトで <code>nil</code> が自動的に設定されます。</p>
-<h3 id="struct-と-class-のインスタンスstructure-and-class-instances"><a name="struct-と-class-のインスタンスstructure-and-class-instances" class="plugin-anchor" href="#struct-と-class-のインスタンスstructure-and-class-instances"><i class="fa fa-link" aria-hidden="true"></i></a>struct と class のインスタンス(Structure and Class Instances)</h3>
+<h3 id="struct-と-class-のインスタンスstructure-and-class-instances">struct と class のインスタンス(Structure and Class Instances)</h3>
 <p><code>Resolution</code> 構造体の定義と <code>VideoMode</code> クラスの定義は、<code>Resolution</code> または <code>VideoMode</code> がどのようなものかを説明しているだけです。それら自体は、特定の解像度やビデオモードについては説明していません。そうするためには、構造体またはクラスのインスタンスを作成する必要があります。</p>
 <p>インスタンスを作成するための構文は、構造体とクラスの両方で非常に似ています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> someResolution <span class="token operator">=</span> <span class="token function">Resolution</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">let</span> someVideoMode <span class="token operator">=</span> <span class="token function">VideoMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <p>構造体とクラスはどちらも、新しいインスタンスに初期化構文(<code>init</code>)を使用します。初期化構文の最もシンプルな形式では、クラスまたは構造体の型名の後に、<code>Resolution()</code> や <code>VideoMode()</code> などの空の括弧(<code>()</code>)が続きます。これにより、クラスまたは構造の新しいインスタンスが作成され、プロパティはデフォルト値で初期化されます。クラスと構造体の初期化については、<a href="initialization.html">Initialization(初期化)</a>で詳しく説明しています。</p>
-<h3 id="プロパティへのアクセスaccessing-properties"><a name="プロパティへのアクセスaccessing-properties" class="plugin-anchor" href="#プロパティへのアクセスaccessing-properties"><i class="fa fa-link" aria-hidden="true"></i></a><a id="accessing-properties">プロパティへのアクセス(Accessing Properties)</a></h3>
+<h3 id="プロパティへのアクセスaccessing-properties"><a id="accessing-properties">プロパティへのアクセス(Accessing Properties)</a></h3>
 <p>ドット構文を使用して、インスタンスのプロパティにアクセスできます。ドット構文では、インスタンス名の直後に、スペースを入れずにピリオド(<code>.</code>)で区切ってプロパティ名を記述します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The width of someResolution is <span class="token interpolation"><span class="token delimiter variable">\(</span>someResolution<span class="token punctuation">.</span>width<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
 <span class="token comment">// &quot;The width of someResolution is 0&quot;</span>
@@ -827,12 +823,12 @@
 <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The width of someVideoMode is now <span class="token interpolation"><span class="token delimiter variable">\(</span>someVideoMode<span class="token punctuation">.</span>resolution<span class="token punctuation">.</span>width<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
 <span class="token comment">// &quot;The width of someVideoMode is now 1280&quot;</span>
 </code></pre>
-<h3 id="構造体のメンバワイズイニシャライザmemberwise-initializers-for-structure-types"><a name="構造体のメンバワイズイニシャライザmemberwise-initializers-for-structure-types" class="plugin-anchor" href="#構造体のメンバワイズイニシャライザmemberwise-initializers-for-structure-types"><i class="fa fa-link" aria-hidden="true"></i></a><a id="structures-and-classes-memberwise-initializers-for-structure-types">構造体のメンバワイズイニシャライザ(Memberwise Initializers for Structure Types)</a></h3>
+<h3 id="構造体のメンバワイズイニシャライザmemberwise-initializers-for-structure-types"><a id="structures-and-classes-memberwise-initializers-for-structure-types">構造体のメンバワイズイニシャライザ(Memberwise Initializers for Structure Types)</a></h3>
 <p>全ての構造体には、メンバ全てに値を設定して初期化するイニシャライザ(<em>メンバワイズイニシャライザ</em>)が自動的に生成されます。新しいインスタンスのプロパティの初期値は、プロパティ名でイニシャライザに渡すことができます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> vga <span class="token operator">=</span> <span class="token function">Resolution</span><span class="token punctuation">(</span>width<span class="token punctuation">:</span> <span class="token number">640</span><span class="token punctuation">,</span> height<span class="token punctuation">:</span> <span class="token number">480</span><span class="token punctuation">)</span>
 </code></pre>
 <p>構造体とは異なり、クラスはデフォルトのイニシャライザを自動で生成しません。イニシャライザについては、<a href="initialization.html">Initialization(初期化)</a>で詳しく説明しています。</p>
-<h2 id="構造体と列挙型は値型structures-and-enumerations-are-value-types"><a name="構造体と列挙型は値型structures-and-enumerations-are-value-types" class="plugin-anchor" href="#構造体と列挙型は値型structures-and-enumerations-are-value-types"><i class="fa fa-link" aria-hidden="true"></i></a><a id="structures-and-enumerations-are-value-type">構造体と列挙型は値型(Structures and Enumerations Are Value Types)</a></h2>
+<h2 id="構造体と列挙型は値型structures-and-enumerations-are-value-types"><a id="structures-and-enumerations-are-value-type">構造体と列挙型は値型(Structures and Enumerations Are Value Types)</a></h2>
 <p>値型は、変数または定数に値が割り当てられたとき、または関数に渡されたときに値がコピーされる型(<em>値型</em>)です。</p>
 <p>これまでの章では、実際に値型を多く使用してきました。実際、Swift の基本的な型(整数、浮動小数点数、ブール値、文字列、配列、辞書)はすべて値型で、内部では、構造体として実装されています。</p>
 <p>全ての構造体と列挙型は値型です。つまり、作成した構造体と列挙型のインスタンス、およびそれらがプロパティとして持つ値型は、コードで渡されるときに常にコピーされます。</p>
@@ -875,7 +871,7 @@ currentDirection<span class="token punctuation">.</span><span class="token funct
 <span class="token comment">// &quot;The remembered direction is west&quot;</span>
 </code></pre>
 <p><code>RememberedDirection</code> に <code>currentDirection</code> の値が割り当てられると、実際にはその値のコピーが設定されます。その後、<code>currentDirection</code> の値を変更しても、<code>rememberedDirection</code> に保存されていた元の値には影響しません。</p>
-<h2 id="クラスは参照型classes-are-reference-types"><a name="クラスは参照型classes-are-reference-types" class="plugin-anchor" href="#クラスは参照型classes-are-reference-types"><i class="fa fa-link" aria-hidden="true"></i></a><a id="classes-are-reference-types">クラスは参照型(Classes Are Reference Types)</a></h2>
+<h2 id="クラスは参照型classes-are-reference-types"><a id="classes-are-reference-types">クラスは参照型(Classes Are Reference Types)</a></h2>
 <p>値型とは異なり、<em>参照型</em>は、変数または定数に割り当てられたとき、または関数に渡されたときにコピーされません。コピーではなく、同じ既存のインスタンスへの参照が使用されます。</p>
 <p>上記で定義した <code>VideoMode</code> クラスを使用した例を次に示します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> tenEighty <span class="token operator">=</span> <span class="token function">VideoMode</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -897,7 +893,7 @@ alsoTenEighty<span class="token punctuation">.</span>frameRate <span class="toke
 </code></pre>
 <p>この例は、参照型の扱いがいかに難しいかを示しています。<code>tenEighty</code> と <code>alsoTenEighty</code> がコード内で大きく離れている場合、ビデオモードが変更される全ての場所を見つけるのは難しいかもしれません。<code>tenEighty</code> を使用する場合は常に <code>alsoTenEighty</code> を使用するコードも考慮する必要があります。その逆も同様です。対照的に、値型は、同じ値に作用する全てのコードは近くにあるため、考慮する点が少なく扱いが簡単です。</p>
 <p><code>tenEighty</code> と <code>alsoTenEighty</code> は、変数ではなく定数として宣言されていることに注目してください。それでも、<code>tenEighty</code> および <code>alsoTenEighty</code> 定数自体の値は実際には変更されないため、<code>tenEighty.frameRate</code> および <code>alsoTenEighty.frameRate</code> を変更することはできます。<code>tenEighty</code> と <code>alsoTenEighty</code> 自体は、<code>VideoMode</code> インスタンスを「格納」しません。代わりに、どちらも内部で同じ <code>VideoMode</code> インスタンスを参照します。変更されるのは、基になる <code>VideoMode</code> の <code>frameRate</code> プロパティで、その <code>VideoMode</code> への参照を持つ定数ではありません。</p>
-<h3 id="恒等作用素identity-operators"><a name="恒等作用素identity-operators" class="plugin-anchor" href="#恒等作用素identity-operators"><i class="fa fa-link" aria-hidden="true"></i></a><a id="identity-operators">恒等作用素(Identity Operators)</a></h3>
+<h3 id="恒等作用素identity-operators"><a id="identity-operators">恒等作用素(Identity Operators)</a></h3>
 <p>クラスは参照型のため、複数の定数と変数が内部でクラスの同じインスタンスを参照する可能性があります。(構造体や列挙型は、定数や変数に割り当てられたとき、または関数に渡されたときに常にコピーされるため異なります)</p>
 <p>2 つの定数または変数が同じインスタンスを参照しているかどうかを確認すると便利な場合があります。これを可能にするために、Swift は 2 つの<em>恒等作用素</em>を提供します:</p>
 <ul>
@@ -911,8 +907,8 @@ alsoTenEighty<span class="token punctuation">.</span>frameRate <span class="toke
 <span class="token comment">// &quot;tenEighty and alsoTenEighty refer to the same VideoMode instance.&quot;</span>
 </code></pre>
 <p>「同一」(3 つの等号または <code>===</code>)は、「等しい」(2 つの等号または <code>==</code> で表される)と同じではないことに注意してください。「同一」とは、クラスタイプの 2 つの定数または変数がまったく同じクラスインスタンスを参照することを意味します。「等しい」とは、型の設計者が定義する「等しい」という観点で、適切に 2 つのインスタンスの値が等しいまたは同等だと見なされることを意味します。</p>
-<p>独自の構造体とクラスを定義するときは、2 つのインスタンスがどうすれば等しいと見なされるのかを決定するのはあなた次第です。<code>==</code> および <code>!=</code> 演算子の独自の実装を定義するプロセスは、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#equivalence-operators" target="_blank">Equivalence Operators(等価演算子)</a>で説明されています。</p>
-<h3 id="ポインタpointers"><a name="ポインタpointers" class="plugin-anchor" href="#ポインタpointers"><i class="fa fa-link" aria-hidden="true"></i></a>ポインタ(Pointers)</h3>
+<p>独自の構造体とクラスを定義するときは、2 つのインスタンスがどうすれば等しいと見なされるのかを決定するのはあなた次第です。<code>==</code> および <code>!=</code> 演算子の独自の実装を定義するプロセスは、<a href="advanced-operators#equivalence-operators">Equivalence Operators(等価演算子)</a>で説明されています。</p>
+<h3 id="ポインタpointers">ポインタ(Pointers)</h3>
 <p>C 言語、C++、または Objective-C の経験がある場合は、これらの言語が<em>ポインタ</em>を使用してメモリ内のアドレスを参照することを知っているかもしれません。ある参照型のインスタンスを参照する Swift の定数または変数は、C 言語のポインタに似ていますが、メモリ内のアドレスへのポインタを直接示しているではなく、参照を示すためにアスタリスク(<code>*</code>)を記述する必要はありません。代わりに、これらの参照は、Swift の他の定数または変数と同様に定義されます。標準ライブラリには、ポインタを直接操作する必要がある場合に使用できるポインタとバッファ型が用意されています。<a href="https://developer.apple.com/documentation/swift/swift_standard_library/manual_memory_management" target="_blank">Manual Memory Management</a>を参照ください。</p>
 
                                 
@@ -947,7 +943,7 @@ alsoTenEighty<span class="token punctuation">.</span>frameRate <span class="toke
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"構造体とクラス(Structures and Classes)","level":"3.9","depth":1,"next":{"title":"プロパティ(Properties)","level":"3.10","depth":1,"path":"language-guide-gaido/properties.md","ref":"language-guide-gaido/properties.md","articles":[]},"previous":{"title":"列挙型(Enumerations)","level":"3.8","depth":1,"path":"language-guide-gaido/enumerations.md","ref":"language-guide-gaido/enumerations.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/structures-and-classes.md","mtime":"2021-07-11T00:21:09.766Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"構造体とクラス(Structures and Classes)","level":"3.9","depth":1,"next":{"title":"プロパティ(Properties)","level":"3.10","depth":1,"path":"language-guide-gaido/properties.md","ref":"language-guide-gaido/properties.md","articles":[]},"previous":{"title":"列挙型(Enumerations)","level":"3.8","depth":1,"path":"language-guide-gaido/enumerations.md","ref":"language-guide-gaido/enumerations.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/structures-and-classes.md","mtime":"2021-07-11T00:35:31.525Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

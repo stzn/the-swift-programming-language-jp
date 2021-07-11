@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,7 +748,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="拡張extensions"><a name="拡張extensions" class="plugin-anchor" href="#拡張extensions"><i class="fa fa-link" aria-hidden="true"></i></a>拡張(Extensions)</h1>
+                                <h1 id="拡張extensions">拡張(Extensions)</h1>
 <p>最終更新日: 2021/6/29</p>
 <p><em>拡張機能</em>は、既存のクラス、構造体、列挙型、またはプロトコル型に新しい機能を追加します。これは、(<em>遡及モデリング</em>と呼ばれる)元のソースコードにアクセスできない型を拡張することもできます。拡張機能は、Objective-C のカテゴリに似ています。(ただし、Objective-C のカテゴリとは異なり、Swift の拡張機能には名前がありません)</p>
 <p>拡張機能は次のことができます。</p>
@@ -764,11 +760,11 @@
 <li>新しくネスト型を定義する</li>
 <li>既存の型をプロトコルに準拠させる</li>
 </ul>
-<p>Swift では、プロトコルを拡張してその要件の実装を提供したり、準拠する型が利用できる機能を追加することもできます。詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#protocol-extensions" target="_blank">Protocol Extensions(プロトコル Extension)</a>を参照ください。</p>
+<p>Swift では、プロトコルを拡張してその要件の実装を提供したり、準拠する型が利用できる機能を追加することもできます。詳細については、<a href="protocols#protocol-extensions">Protocol Extensions(プロトコル Extension)</a>を参照ください。</p>
 <blockquote>
 <p>NOTE<br>拡張機能は型に新しい機能を追加できますが、既存の機能をオーバーライドすることはできません。</p>
 </blockquote>
-<h2 id="拡張機能の構文extension-syntax"><a name="拡張機能の構文extension-syntax" class="plugin-anchor" href="#拡張機能の構文extension-syntax"><i class="fa fa-link" aria-hidden="true"></i></a>拡張機能の構文(Extension Syntax)</h2>
+<h2 id="拡張機能の構文extension-syntax">拡張機能の構文(Extension Syntax)</h2>
 <p><code>extension</code> キーワードを使用して拡張機能を宣言します:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">SomeType</span> <span class="token punctuation">{</span>
     <span class="token comment">// SomeType に新しい機能を追加します</span>
@@ -779,12 +775,12 @@
     <span class="token comment">// protocol の要件をここで実装します</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>この方法でプロトコル準拠を追加する方法は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#adding-protocol-conformance-with-an-extension" target="_blank">Adding Protocol Conformance with an Extension(拡張機能を使用したプロトコル準拠の追加)</a>で説明されています。</p>
-<p>拡張機能は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/generics#extending-a-generic-type" target="_blank">Extending a Generic Type(ジェネリック型の拡張)</a>で説明されているように、既存のジェネリック型を拡張するためにも使用できます。ジェネリック型を拡張して、条件付きで機能を追加することもできます(<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/generics#extensions-with-a-generic-where-clause" target="_blank">Extensions with a Generic Where Clause(ジェネリックな Where 句を使用した拡張機能</a>を参照ください)。</p>
+<p>この方法でプロトコル準拠を追加する方法は、<a href="protocols#adding-protocol-conformance-with-an-extension">Adding Protocol Conformance with an Extension(拡張機能を使用したプロトコル準拠の追加)</a>で説明されています。</p>
+<p>拡張機能は、<a href="generics#extending-a-generic-type">Extending a Generic Type(ジェネリック型の拡張)</a>で説明されているように、既存のジェネリック型を拡張するためにも使用できます。ジェネリック型を拡張して、条件付きで機能を追加することもできます(<a href="generics#extensions-with-a-generic-where-clause">Extensions with a Generic Where Clause(ジェネリックな Where 句を使用した拡張機能</a>を参照ください)。</p>
 <blockquote>
 <p>NOTE<br>拡張機能を定義して既存の型に新しい機能を追加すると、拡張機能が定義される前に作成されたものであっても、その型の既存の全てのインスタンスで新しい機能を使用できます。</p>
 </blockquote>
-<h2 id="計算プロパティcomputed-properties"><a name="計算プロパティcomputed-properties" class="plugin-anchor" href="#計算プロパティcomputed-properties"><i class="fa fa-link" aria-hidden="true"></i></a>計算プロパティ(Computed Properties)</h2>
+<h2 id="計算プロパティcomputed-properties">計算プロパティ(Computed Properties)</h2>
 <p>拡張機能は、計算インスタンスプロパティと計算型プロパティを既存の型に追加できます。この例では、5 つの計算インスタンスプロパティを Swift の <code>Double</code> 型に追加して、距離単位を使用するための基本的な機能を提供します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Double</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> km<span class="token punctuation">:</span> <span class="token builtin">Double</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token keyword">self</span> <span class="token operator">*</span> <span class="token number">1_000.0</span> <span class="token punctuation">}</span>
@@ -811,10 +807,10 @@
 <blockquote>
 <p>NOTE<br>拡張機能は新しい計算プロパティを追加できますが、格納プロパティを追加したり、既存のプロパティにプロパティオブザーバを追加したりすることはできません。</p>
 </blockquote>
-<h2 id="イニシャライザinitializers"><a name="イニシャライザinitializers" class="plugin-anchor" href="#イニシャライザinitializers"><i class="fa fa-link" aria-hidden="true"></i></a>イニシャライザ(Initializers)</h2>
+<h2 id="イニシャライザinitializers">イニシャライザ(Initializers)</h2>
 <p>拡張機能は、既存の型に新しいイニシャライザを追加できます。他の型を拡張して、独自のカスタム型を初期化パラメータとして受け入れたり、型の元の実装の一部として含まれていなかった追加の初期化オプションを提供したりできます。</p>
 <p>拡張機能は、新しい convenience イニシャライザをクラスに追加できますが、新しい指定イニシャライザまたはデイニシャライザを追加することはできません。指定イニシャライザとデイニシャライザは、常に元のクラス実装によって提供される必要があります。</p>
-<p>拡張機能を使用して、カスタムイニシャライザを定義しない値型に全ての格納プロパティのデフォルト値を提供するイニシャライザを追加する場合は、拡張機能のイニシャライザ内からデフォルトイニシャライザとメンバワイズイニシャライザを呼び出すことができます。<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#initializer-delegation-for-value-types" target="_blank">Initializer Delegation for Value Types(値型のイニシャライザの委譲)</a>で説明されているように、値型の元の実装の一部としてイニシャライザを作成した場合は、これに当てはまりません。</p>
+<p>拡張機能を使用して、カスタムイニシャライザを定義しない値型に全ての格納プロパティのデフォルト値を提供するイニシャライザを追加する場合は、拡張機能のイニシャライザ内からデフォルトイニシャライザとメンバワイズイニシャライザを呼び出すことができます。<a href="initialization#initializer-delegation-for-value-types">Initializer Delegation for Value Types(値型のイニシャライザの委譲)</a>で説明されているように、値型の元の実装の一部としてイニシャライザを作成した場合は、これに当てはまりません。</p>
 <p>別のモジュールで宣言された構造体にイニシャライザを追加する場合、新しいイニシャライザは、定義モジュールからイニシャライザを呼び出されるまで、<code>self</code> にアクセスできません。</p>
 <p>下記の例では、幾何学的な長方形を表す独自の <code>Rect</code> 構造体を定義しています。この例では、<code>Size</code> と <code>Point</code> という 2 つの補助的な構造体も定義されており、どちらも全てのプロパティにデフォルト値 <code>0.0</code> を提供します:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">Size</span> <span class="token punctuation">{</span>
@@ -828,7 +824,7 @@
     <span class="token keyword">var</span> size <span class="token operator">=</span> <span class="token function">Size</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p><code>Rect</code> 構造体はその全てのプロパティにデフォルト値を提供しているため、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#default-initializers" target="_blank">Default Initializers(デフォルトイニシャライザ)</a>で説明されているように、デフォルトイニシャライザとメンバワイズイニシャライザを自動的に生成します。これらのイニシャライザを使用して、新しい <code>Rect</code> インスタンスを作成できます:</p>
+<p><code>Rect</code> 構造体はその全てのプロパティにデフォルト値を提供しているため、<a href="initialization#default-initializers">Default Initializers(デフォルトイニシャライザ)</a>で説明されているように、デフォルトイニシャライザとメンバワイズイニシャライザを自動的に生成します。これらのイニシャライザを使用して、新しい <code>Rect</code> インスタンスを作成できます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> defaultRect <span class="token operator">=</span> <span class="token function">Rect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">let</span> memberwiseRect <span class="token operator">=</span> <span class="token function">Rect</span><span class="token punctuation">(</span>origin<span class="token punctuation">:</span> <span class="token function">Point</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token number">2.0</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">2.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
    size<span class="token punctuation">:</span> <span class="token function">Size</span><span class="token punctuation">(</span>width<span class="token punctuation">:</span> <span class="token number">5.0</span><span class="token punctuation">,</span> height<span class="token punctuation">:</span> <span class="token number">5.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -850,7 +846,7 @@
 <blockquote>
 <p>NOTE<br>拡張機能で新しいイニシャライザを提供する場合でも、イニシャライザの完了前に完全に初期化が完了していなければなりません。</p>
 </blockquote>
-<h2 id="メソッドmethods"><a name="メソッドmethods" class="plugin-anchor" href="#メソッドmethods"><i class="fa fa-link" aria-hidden="true"></i></a>メソッド(Methods)</h2>
+<h2 id="メソッドmethods">メソッド(Methods)</h2>
 <p>拡張機能は、新しいインスタンスメソッドと型メソッドを既存の型に追加できます。次の例では、<code>repetitions</code> という新しいインスタンスメソッドを <code>Int</code> 型に追加しています:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
     <span class="token keyword">func</span> <span class="token function">repetitions</span><span class="token punctuation">(</span>task<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -869,7 +865,7 @@
 <span class="token comment">// Hello!</span>
 <span class="token comment">// Hello!</span>
 </code></pre>
-<h3 id="mutatingインスタンスメソッドmutating-instance-methods"><a name="mutatingインスタンスメソッドmutating-instance-methods" class="plugin-anchor" href="#mutatingインスタンスメソッドmutating-instance-methods"><i class="fa fa-link" aria-hidden="true"></i></a>mutatingインスタンスメソッド(Mutating Instance Methods)</h3>
+<h3 id="mutatingインスタンスメソッドmutating-instance-methods">mutatingインスタンスメソッド(Mutating Instance Methods)</h3>
 <p>拡張機能を使用して追加されたインスタンスメソッドは、インスタンス自体を変更することもできます。<code>self</code> またはそのプロパティを変更する構造体および列挙型メソッドは、元の実装のメソッドを変更するのと同じように、インスタンスメソッドを <code>mutating</code> としてマークする必要があります。</p>
 <p>下記の例では、<code>Int</code> 型に元の値を二乗する <code>square</code> と呼ばれる新しい <code>mutating</code> メソッドを追加しています:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
@@ -881,7 +877,7 @@
 someInt<span class="token punctuation">.</span><span class="token function">square</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token comment">// someInt は 9</span>
 </code></pre>
-<h2 id="subscripts"><a name="subscripts" class="plugin-anchor" href="#subscripts"><i class="fa fa-link" aria-hidden="true"></i></a>Subscripts</h2>
+<h2 id="subscripts">Subscripts</h2>
 <p>拡張機能は、既存の型に新しい subscript を追加できます。この例では、<code>Int</code> 型に整数の subscript を追加します。この <code>subscript[n]</code> は、数値の右から <code>n</code> 桁の <code>10</code> 進数を返します。</p>
 <ul>
 <li><code>123456789[0]</code> は <code>9</code> を返します</li>
@@ -911,7 +907,7 @@ someInt<span class="token punctuation">.</span><span class="token function">squa
 <span class="token comment">// 0 を返します</span>
 <span class="token number">0746381295</span><span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">]</span>
 </code></pre>
-<h2 id="ネスト型nested-types"><a name="ネスト型nested-types" class="plugin-anchor" href="#ネスト型nested-types"><i class="fa fa-link" aria-hidden="true"></i></a>ネスト型(Nested Types)</h2>
+<h2 id="ネスト型nested-types">ネスト型(Nested Types)</h2>
 <p>拡張機能は、新しいネスト型を既存のクラス、構造体、および列挙型に追加できます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
     <span class="token keyword">enum</span> <span class="token builtin">Kind</span> <span class="token punctuation">{</span>
@@ -985,7 +981,7 @@ someInt<span class="token punctuation">.</span><span class="token function">squa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"拡張(Extensions)","level":"3.21","depth":1,"next":{"title":"プロトコル(Protocols)","level":"3.22","depth":1,"path":"language-guide-gaido/protocols.md","ref":"language-guide-gaido/protocols.md","articles":[]},"previous":{"title":"ネスト型(Nested Types)","level":"3.20","depth":1,"path":"language-guide-gaido/nested-types.md","ref":"language-guide-gaido/nested-types.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/extensions.md","mtime":"2021-07-07T23:53:03.744Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"拡張(Extensions)","level":"3.21","depth":1,"next":{"title":"プロトコル(Protocols)","level":"3.22","depth":1,"path":"language-guide-gaido/protocols.md","ref":"language-guide-gaido/protocols.md","articles":[]},"previous":{"title":"ネスト型(Nested Types)","level":"3.20","depth":1,"path":"language-guide-gaido/nested-types.md","ref":"language-guide-gaido/nested-types.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/extensions.md","mtime":"2021-07-11T00:35:31.546Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

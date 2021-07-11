@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,7 +748,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="文字と文字列strings-and-characters"><a name="文字と文字列strings-and-characters" class="plugin-anchor" href="#文字と文字列strings-and-characters"><i class="fa fa-link" aria-hidden="true"></i></a>文字と文字列(Strings and Characters)</h1>
+                                <h1 id="文字と文字列strings-and-characters">文字と文字列(Strings and Characters)</h1>
 <p>最終更新日: 2021/6/27</p>
 <p><em>文字列</em>は <code>&quot;hello, world&quot;</code> や <code>&quot;albatross&quot;</code> のような一連の文字です。Swift の文字列は <code>String</code> 型で表されます。<code>String</code> の内容には、様々な方法でアクセスすることができます(<code>Character</code> 型の値のコレクションとしてなど)。</p>
 <p>Swift の <code>String</code> と <code>Character</code> 型は、高速で、Unicode に準拠した方法でテキストを扱うことができます。文字列の生成と操作の構文は、C 言語に似た文字列リテラルの構文を使い、軽量で読みやすくなっています。文字列の連結は、<code>+</code> 演算子を使用して 2 つの文字列の連結をするシンプルなものです。また、文字列が変更が可能かどうかは、他の型と同じように定数か変数かを選択することで管理できます。また、文字列補間と呼ばれるプロセスの中で、定数、変数、リテラルや式をより長い文字列の中に入れることができます。こういった特徴から、表示用、ストレージ用、出力用などにカスタム文字列も簡単に作ることができます。</p>
@@ -760,12 +756,12 @@
 <blockquote>
 <p>NOTE<br>Swift の <code>String</code> 型は、Foundation の <code>NSString</code> クラスとスムーズにやりとりできるようにしています。同様に、Foundation でも <code>NSString</code> で定義されたメソッドを使用できるようにするために、<code>String</code> を拡張しています。つまり、Foundation をインポートすると、キャストなしで <code>NSString</code> のメソッドに <code>String</code> からアクセスできます。 Foundation と Cocoa を使った <code>String</code> の使用方法に関しては、<a href="https://developer.apple.com/documentation/swift/string#2919514" target="_blank">Bridging Between String and NSString</a>を参照ください</p>
 </blockquote>
-<h2 id="文字列リテラルstring-literals"><a name="文字列リテラルstring-literals" class="plugin-anchor" href="#文字列リテラルstring-literals"><i class="fa fa-link" aria-hidden="true"></i></a><a id="strings-and-characters-string-literals">文字列リテラル(String Literals)</a></h2>
+<h2 id="文字列リテラルstring-literals"><a id="strings-and-characters-string-literals">文字列リテラル(String Literals)</a></h2>
 <p>事前に定義された <code>String</code> を<em>文字列リテラル</em>として使用することができます。文字列リテラルはダブルクォーテーション(<code>&quot;</code>)で囲まれた一連の文字です。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> someString <span class="token operator">=</span> <span class="token string">&quot;Some string literal value&quot;</span>
 </code></pre>
 <p><code>someString</code> は文字列リテラルで初期化されているので、<code>String</code> 型と推論されていることに注目してください。</p>
-<h3 id="複数行文字列リテラルmultiline-string-literals"><a name="複数行文字列リテラルmultiline-string-literals" class="plugin-anchor" href="#複数行文字列リテラルmultiline-string-literals"><i class="fa fa-link" aria-hidden="true"></i></a>複数行文字列リテラル(Multiline String Literals)</h3>
+<h3 id="複数行文字列リテラルmultiline-string-literals">複数行文字列リテラル(Multiline String Literals)</h3>
 <p>複数行に渡った文字列が必要な場合、複数行文字列リテラルを使いましょう。一連の文字を 3 つのダブルクォーテーション(<code>&quot;</code>)で囲みます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> quotation <span class="token operator">=</span> <span class="token string">&quot;&quot;</span>&quot;
 <span class="token builtin">The</span> <span class="token builtin">White</span> <span class="token builtin">Rabbit</span> put on his spectacles<span class="token punctuation">.</span>  &quot;<span class="token builtin">Where</span> shall I begin<span class="token punctuation">,</span>
@@ -801,7 +797,7 @@ till you come to the end; then stop.&quot;</span>
 <p>複数行文字列は、周りのコードに合わせてインデントさせることができます。終了クォーテーションマーク(<code>&quot;&quot;&quot;</code>)の前に空白を加えると、他の行に存在する同じ位置の空白も無視するようになります。一方で、終了クォーテーションマーク(<code>&quot;&quot;&quot;</code>)の空白のさらに後に空白を追加すると、その行の空白<em>は</em>含まれるようになります。</p>
 <p><img src="../assets/multilinestringwhitespace_2x.png" alt="複数行文字列のスペース"></p>
 <p>上記の例では、全ての複数行文字列にインデントが加えられていますが、最初と最後の行は冒頭に空白はありません。真ん中の行は終了クォーテーションマーク(<code>&quot;&quot;&quot;</code>)よりもさらにインデントを追加しているため、4 つの空白から開始します。</p>
-<h3 id="文字列内の特殊文字special-characters-in-string-literals"><a name="文字列内の特殊文字special-characters-in-string-literals" class="plugin-anchor" href="#文字列内の特殊文字special-characters-in-string-literals"><i class="fa fa-link" aria-hidden="true"></i></a><a id="special-characters-in-string-literals">文字列内の特殊文字(Special Characters in String Literals)</a></h3>
+<h3 id="文字列内の特殊文字special-characters-in-string-literals"><a id="special-characters-in-string-literals">文字列内の特殊文字(Special Characters in String Literals)</a></h3>
 <p>文字列リテラルには次の特殊文字が含まれています。</p>
 <ul>
 <li>エスケープされた特殊文字 <code>\0 (null文字)</code>、<code>\\ (バックスラッシュ)</code>、<code>\t (水平タブ)</code>、<code>\n (ラインフィード)</code>、<code>\r (キャリッジリターン)</code>、<code>\&quot; (ダブルクォーテーション)</code>、<code>\&apos; (シングルクォーテーション)</code></li>
@@ -820,7 +816,7 @@ till you come to the end; then stop.&quot;</span>
 <span class="token builtin">Escaping</span> all three quotation marks \&quot;\&quot;\&quot;
 <span class="token string">&quot;&quot;</span>&quot;
 </code></pre>
-<h3 id="拡張区切り文字extended-string-delimiters"><a name="拡張区切り文字extended-string-delimiters" class="plugin-anchor" href="#拡張区切り文字extended-string-delimiters"><i class="fa fa-link" aria-hidden="true"></i></a><a id="extended-string-delimiters">拡張区切り文字(Extended String Delimiters)</a></h3>
+<h3 id="拡張区切り文字extended-string-delimiters"><a id="extended-string-delimiters">拡張区切り文字(Extended String Delimiters)</a></h3>
 <p><em>拡張区切り文字</em>の中に文字列を置くと、特殊文字をただの文字として含めることができます。文字列をクォーテーションで囲み、さらにそれを<em>番号記号</em>で囲みます。例えば、<code>#&quot;Line 1\nLine 2&quot;#</code> は 2 行の文字列を出力するのではなく、改行コード(<code>\n</code>)を出力します。</p>
 <p>文字列内の文字に特殊効果を付けたい場合は、エスケープ文字(<code>\</code>)の後に囲んでいる番号記号と同じ番号記号を、同じ数追加してください。例えば、<code>#&quot;Line 1\nLine 2&quot;#</code> で、改行したい場合は、<code>#&quot;Line 1\#nLine 2&quot;#</code> と書くことができます。同様に、<code>###&quot;Line1\###nLine2&quot;###</code> でも改行することができます。</p>
 <p>拡張区切り文字は複数文字列リテラルにも使用できます。テキストとして <code>&quot;&quot;&quot;</code> を含めたい場合、文字列を終わらせる記号を変えましょう。例えば:</p>
@@ -828,7 +824,7 @@ till you come to the end; then stop.&quot;</span>
 <span class="token builtin">Here</span> are three more double quotes<span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span>&quot;
 <span class="token string">&quot;&quot;</span>&quot;#
 </code></pre>
-<h2 id="空の文字列の作成initializing-an-empty-string"><a name="空の文字列の作成initializing-an-empty-string" class="plugin-anchor" href="#空の文字列の作成initializing-an-empty-string"><i class="fa fa-link" aria-hidden="true"></i></a>空の文字列の作成(Initializing an Empty String)</h2>
+<h2 id="空の文字列の作成initializing-an-empty-string">空の文字列の作成(Initializing an Empty String)</h2>
 <p>長い文字列を構築するときに、初期値として空の文字列を作るとき、文字列リテラルを変数に設定するか、<code>String</code> のイニシャライザを使用して新しいインスタンスを初期化します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> emptyString <span class="token operator">=</span> <span class="token string">&quot;&quot;</span>               <span class="token comment">// 空の文字列</span>
 <span class="token keyword">var</span> anotherEmptyString <span class="token operator">=</span> <span class="token function">String</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">// イニシャライザ</span>
@@ -840,7 +836,7 @@ till you come to the end; then stop.&quot;</span>
 <span class="token punctuation">}</span>
 <span class="token comment">// &quot;Nothing to see here&quot;</span>
 </code></pre>
-<h2 id="文字列の可変性string-mutability"><a name="文字列の可変性string-mutability" class="plugin-anchor" href="#文字列の可変性string-mutability"><i class="fa fa-link" aria-hidden="true"></i></a>文字列の可変性(String Mutability)</h2>
+<h2 id="文字列の可変性string-mutability">文字列の可変性(String Mutability)</h2>
 <p><code>String</code> が変更可能かどうかは、変数(変更可能)か定数(変更不可能)のどちらに設定するかによって示すことができます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> variableString <span class="token operator">=</span> <span class="token string">&quot;Horse&quot;</span>
 variableString <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">&quot; and carriage&quot;</span>
@@ -853,11 +849,11 @@ constantString <span class="token operator">+</span><span class="token operator"
 <blockquote>
 <p>NOTE<br>これは Objective-C と Cocoa とは異なります。Objective-C と Cocoa では、変更の可不可を示すために 2 つのクラス(<code>NSString</code> と <code>NSMutableString</code>)から選択します。</p>
 </blockquote>
-<h2 id="文字列は値型strings-are-value-types"><a name="文字列は値型strings-are-value-types" class="plugin-anchor" href="#文字列は値型strings-are-value-types"><i class="fa fa-link" aria-hidden="true"></i></a>文字列は値型(Strings Are Value Types)</h2>
-<p><code>String</code> 型は<em>値型</em>です。新しい <code>String</code> を生成すると、関数やメソッドのパラメータで渡されるときや、他の定数、変数に代入されるときに、値のコピーが発生します。いずれの場合でも、既存の <code>String</code> のコピーが生成され、元の値ではなく新しいコピーが渡され(または代入され)ます。値型は<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#structures-and-enumerations-are-value-type" target="_blank">Structures and Enumerations Are Value Types(構造体と列挙型は値型)</a>で記載されています。</p>
+<h2 id="文字列は値型strings-are-value-types">文字列は値型(Strings Are Value Types)</h2>
+<p><code>String</code> 型は<em>値型</em>です。新しい <code>String</code> を生成すると、関数やメソッドのパラメータで渡されるときや、他の定数、変数に代入されるときに、値のコピーが発生します。いずれの場合でも、既存の <code>String</code> のコピーが生成され、元の値ではなく新しいコピーが渡され(または代入され)ます。値型は<a href="structures-and-classes#structures-and-enumerations-are-value-type">Structures and Enumerations Are Value Types(構造体と列挙型は値型)</a>で記載されています。</p>
 <p>Swift の、デフォルトでコピーをする <code>String</code> の挙動は、<code>String</code> が関数やメソッドのパラメータで渡されるときに、どこからその値が来たとしても、正しい <code>String</code> を所有していることが保証されます。つまり、渡された文字列は、自身で変更しない限り決して変更されることがありません。</p>
 <p>内部では、Swift のコンパイラは本当に必要なときだけ実際にコピーが発生するように最適化をしています。つまり、値型として文字列を扱う場合に常に良いパフォーマンスを得ることができます。</p>
-<h2 id="文字配列の取扱working-with-characters"><a name="文字配列の取扱working-with-characters" class="plugin-anchor" href="#文字配列の取扱working-with-characters"><i class="fa fa-link" aria-hidden="true"></i></a><a id="working-with-characters">文字配列の取扱(Working with Characters)</a></h2>
+<h2 id="文字配列の取扱working-with-characters"><a id="working-with-characters">文字配列の取扱(Working with Characters)</a></h2>
 <p><code>for-in</code> ループを使用して文字列を繰り返し処理することで、<code>String</code> の個々の <code>Character</code> にアクセスすることができます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> character <span class="token keyword">in</span> <span class="token string">&quot;Dog!🐶&quot;</span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>character<span class="token punctuation">)</span>
@@ -868,7 +864,7 @@ constantString <span class="token operator">+</span><span class="token operator"
 <span class="token comment">// !</span>
 <span class="token comment">// 🐶</span>
 </code></pre>
-<p><code>for-in</code> ループについては<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#for-in-loops" target="_blank">For-In Loops(For-In ループ)</a>に記載されています。</p>
+<p><code>for-in</code> ループについては<a href="control-flow#for-in-loops">For-In Loops(For-In ループ)</a>に記載されています。</p>
 <p>もしくは、<code>Character</code> の型注釈を与えて 1 文字のリテラルから <code>Character</code> 型の定数や変数を作ることもできます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> exclamationMark<span class="token punctuation">:</span> <span class="token builtin">Character</span> <span class="token operator">=</span> <span class="token string">&quot;!&quot;</span>
 </code></pre>
@@ -878,7 +874,7 @@ constantString <span class="token operator">+</span><span class="token operator"
 <span class="token function">print</span><span class="token punctuation">(</span>catString<span class="token punctuation">)</span>
 <span class="token comment">// &quot;Cat!🐱&quot;</span>
 </code></pre>
-<h2 id="文字と文字列の連結concatenating-strings-and-characters"><a name="文字と文字列の連結concatenating-strings-and-characters" class="plugin-anchor" href="#文字と文字列の連結concatenating-strings-and-characters"><i class="fa fa-link" aria-hidden="true"></i></a>文字と文字列の連結(Concatenating Strings and Characters)</h2>
+<h2 id="文字と文字列の連結concatenating-strings-and-characters">文字と文字列の連結(Concatenating Strings and Characters)</h2>
 <p><code>String</code> 同士は、加算演算子(<code>+</code>)使用して新しい <code>String</code> を生成できます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> string1 <span class="token operator">=</span> <span class="token string">&quot;hello&quot;</span>
 <span class="token keyword">let</span> string2 <span class="token operator">=</span> <span class="token string">&quot; there&quot;</span>
@@ -923,7 +919,7 @@ two
 <span class="token comment">// three</span>
 </code></pre>
 <p>上記のコードは、<code>badStart</code> と <code>end</code> を連結すると、2 行の文字列を生成していますが、これは期待した結果ではありません。<code>badStart</code> の最後の行に改行が入っていないため、<code>end</code> の最初の行と混ざってしまいます。一方で、<code>goodStart</code> の最初と最後の行は改行で終わっているので、<code>end</code> と連結した結果は 3 行になり、期待通りになります。</p>
-<h2 id="文字列補間string-interpolation"><a name="文字列補間string-interpolation" class="plugin-anchor" href="#文字列補間string-interpolation"><i class="fa fa-link" aria-hidden="true"></i></a><a id="string-interpolation">文字列補間(String Interpolation)</a></h2>
+<h2 id="文字列補間string-interpolation"><a id="string-interpolation">文字列補間(String Interpolation)</a></h2>
 <p><em>文字列補間</em>は、複数の定数、変数、リテラル、式を文字列リテラルの中に含めることで新しい <code>String</code> を構築する方法です。文字列補間は 1 行でも複数行でも使用することができます。文字列に入れるそれぞれの値は、両括弧で囲み、その前にバックスラッシュ(<code>\</code>)をつけます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> multiplier <span class="token operator">=</span> <span class="token number">3</span>
 <span class="token keyword">let</span> message <span class="token operator">=</span> <span class="token string">&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>multiplier<span class="token delimiter variable">)</span></span> times 2.5 is <span class="token interpolation"><span class="token delimiter variable">\(</span><span class="token function">Double</span><span class="token punctuation">(</span>multiplier<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2.5</span><span class="token delimiter variable">)</span></span>&quot;</span>
@@ -942,12 +938,12 @@ two
 <blockquote>
 <p>NOTE<br>補間された文字列内の括弧の中に書かれた式には、エスケープしていないバックスラッシュ(<code>\</code>)、キャリッジリターン、改行を含めることはできません。他の文字列リテラルは含めることができます。</p>
 </blockquote>
-<h2 id="unicode"><a name="unicode" class="plugin-anchor" href="#unicode"><i class="fa fa-link" aria-hidden="true"></i></a>Unicode</h2>
+<h2 id="unicode">Unicode</h2>
 <p><em>Unicode</em>は、様々な書記体系で、テキストをエンコード、抽象化、および処理するための国際標準です。標準化された形式で、どんな言語でもほとんど全ての文字を表わすことができ、Web ページやテキストファイルなどの外部リソースへ読み書きできます。Swift の <code>String</code> や <code>Character</code> は、このセクションでも記載していますが、完全に Unicode に準拠しています。</p>
-<h3 id="unicode-スカラ値unicode-scalar-values"><a name="unicode-スカラ値unicode-scalar-values" class="plugin-anchor" href="#unicode-スカラ値unicode-scalar-values"><i class="fa fa-link" aria-hidden="true"></i></a><a id="unicode-scalar-values">Unicode スカラ値(Unicode Scalar Values)</a></h3>
+<h3 id="unicode-スカラ値unicode-scalar-values"><a id="unicode-scalar-values">Unicode スカラ値(Unicode Scalar Values)</a></h3>
 <p>内部では、Swift 固有の <code>String</code> 型は <em>Unicodeスカラ</em>から構築されています。Unicode スカラは 21 ビットの文字と修飾子で構成されています。例えば、<code>U+0061</code> は <code>LATIN SMALL LETTER A (&quot;a&quot;)</code>、<code>U+1F425</code> は <code>FRONT-FACING BABY CHICK (&quot;🐥&quot;)</code> です。</p>
 <p>全ての 21 ビットのスカラが 1 つの文字に当てはまるわけではありません。いくつかは将来的に必要になるために確保されていたり、UTF-16 で使われています。文字に割り当てられているスカラには、上記の <code>LATIN SMALL LETTER A</code> や <code>FRONT-FACING BABY CHICK</code> のように一般的には名前が付いています。</p>
-<h3 id="拡張書記素クラスタextended-grapheme-clusters"><a name="拡張書記素クラスタextended-grapheme-clusters" class="plugin-anchor" href="#拡張書記素クラスタextended-grapheme-clusters"><i class="fa fa-link" aria-hidden="true"></i></a><a id="extended-grapheme-clusters">拡張書記素クラスタ(Extended Grapheme Clusters)</a></h3>
+<h3 id="拡張書記素クラスタextended-grapheme-clusters"><a id="extended-grapheme-clusters">拡張書記素クラスタ(Extended Grapheme Clusters)</a></h3>
 <p>Swift の <code>Character</code> の全てのインスタンスは 1 つの<em>拡張書記素クラスタ</em>を表しています。拡張書記素クラスタは、人間が読み取れる 1 文字を生成するための 1 つ以上の Unicode スカラの配列です(1 つ以上の Unicode スカラが必要な場合は合成されます)。</p>
 <p>次に例を示します。文字 <code>é</code> は、1 つの <code>é</code>(<code>LATIN SMALL LETTER E WITH ACUTE</code> または <code>U+00E9</code>)を表すことができます。一方で、同じ文字をスカラのペアで表すこともできます。<code>e</code>(<code>LATIN SMALL LETTER E</code> または <code>U+0065</code>)の後ろに <code>COMBINING ACUTE ACCENT</code> スカラ(<code>U+0301</code>)を付けます。<code>COMBINING ACUTE ACCENT</code> スカラはその前のスカラに視覚的に適用されて、Unicode を理解できるシステムがテキストをレンダリングする際に、<code>e</code> を <code>é</code> に変換します。</p>
 <p>どちらの場合も、<code>é</code> は拡張書記素クラスタの 1 つの <code>Character</code> 型の値として表されます。最初のケースでは、1 つのスカラを含んでいるクラスタで、2 番目のケースは、2 つのスカラのクラスタとなります。</p>
@@ -968,7 +964,7 @@ two
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> regionalIndicatorForUS<span class="token punctuation">:</span> <span class="token builtin">Character</span> <span class="token operator">=</span> <span class="token string">&quot;\u{1F1FA}\u{1F1F8}&quot;</span>
 <span class="token comment">// regionalIndicatorForUS は 🇺🇸</span>
 </code></pre>
-<h2 id="文字数を数えるcounting-characters"><a name="文字数を数えるcounting-characters" class="plugin-anchor" href="#文字数を数えるcounting-characters"><i class="fa fa-link" aria-hidden="true"></i></a>文字数を数える(Counting Characters)</h2>
+<h2 id="文字数を数えるcounting-characters">文字数を数える(Counting Characters)</h2>
 <p>文字列の中の <code>Character</code> の数を得るには、文字列の <code>count</code> プロパティを使いましょう。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> unusualMenagerie <span class="token operator">=</span> <span class="token string">&quot;Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪&quot;</span>
 <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;unusualMenagerie has <span class="token interpolation"><span class="token delimiter variable">\(</span>unusualMenagerie<span class="token punctuation">.</span><span class="token builtin">count</span><span class="token delimiter variable">)</span></span> characters&quot;</span><span class="token punctuation">)</span>
@@ -988,9 +984,9 @@ word <span class="token operator">+</span><span class="token operator">=</span> 
 <blockquote>
 <p>NOTE<br>拡張書記素クラスタは複数の Unicode スカラを組み合わせることができます。つまり、異なった文字や、同じ文字でも、異なったスカラで表された文字はメモリ上に保持する際に異なったメモリサイズが必要になる場合があります。これは、Swift の文字は、それぞれの文字で同じメモリ量ではない、ということです。結果として、文字列内の文字を数えるには、拡張書記素クラスタの境界を判断しなければならず、文字列全体を繰り返し処理しないと計算することができません。特に長い文字列を扱っている場合は、<code>count</code> プロパティを使用すると文字数をカウントするために文字列全体に繰り返し処理を行なっていることに気をつけてください。 <code>count</code> プロパティから返ってくる文字数は、同じ文字列であっても <code>NSString</code> の <code>length</code> と異なる場合があります。<code>NSString</code> の <code>length</code> は UTF-16 での文字数カウントで、Unicode の拡張書記素クラスタでの数ではありません。</p>
 </blockquote>
-<h2 id="文字列へのアクセスと変更accessing-and-modifying-a-string"><a name="文字列へのアクセスと変更accessing-and-modifying-a-string" class="plugin-anchor" href="#文字列へのアクセスと変更accessing-and-modifying-a-string"><i class="fa fa-link" aria-hidden="true"></i></a>文字列へのアクセスと変更(Accessing and Modifying a String)</h2>
+<h2 id="文字列へのアクセスと変更accessing-and-modifying-a-string">文字列へのアクセスと変更(Accessing and Modifying a String)</h2>
 <p>メソッドやプロパティを使ったり、subscript 構文を使用して、文字列へアクセスしたり、変更をすることができます。</p>
-<h3 id="文字列のインデックスstring-indices"><a name="文字列のインデックスstring-indices" class="plugin-anchor" href="#文字列のインデックスstring-indices"><i class="fa fa-link" aria-hidden="true"></i></a><a id="string-indices">文字列のインデックス(String Indices)</a></h3>
+<h3 id="文字列のインデックスstring-indices"><a id="string-indices">文字列のインデックス(String Indices)</a></h3>
 <p><code>String</code> は｀String.Index｀という紐づいたインデックスの型を持っており、それぞれは文字列の <code>Character</code> の位置と対応関係があります。</p>
 <p>上記で述べたように、異なる文字には異なるメモリ量が必要になります。つまり、<code>Character</code> の位置を特定するには、Unicode スカラを文字列の最初または最後から反復して探さなければなりません。こういった理由から Swift の <code>String</code> のインデックスは数値にすることはできません。</p>
 <p><code>String</code> の最初の <code>Character</code> の位置を知るためには、<code>startIndex</code> プロパティを使いましょう。<code>endIndex</code> プロパティは <code>String</code> の最後の <code>Character</code> の位置の次の位置です。つまり、<code>endIndex</code> プロパティは文字列の subscript に使用してはいけません。<code>String</code> が空ならば、<code>startIndex</code> と <code>endIndex</code> は等しくなります。</p>
@@ -1020,7 +1016,7 @@ greeting<span class="token punctuation">.</span><span class="token function">ind
 <blockquote>
 <p>NOTE<br><code>Collection</code> プロトコルに準拠したどんな型にも、<code>startIndex</code>、<code>endIndex</code> プロパティ、<code>index\(before:)</code>、<code>index(after:)</code>、<code>index(_:offsetBy:)</code> メソッドを使用することができます。これは、<code>Array</code>、<code>Dictionary</code>、<code>Set</code> といったコレクションの型と同様に、今紹介している <code>String</code> にも含まれています。</p>
 </blockquote>
-<h3 id="挿入と削除inserting-and-removing"><a name="挿入と削除inserting-and-removing" class="plugin-anchor" href="#挿入と削除inserting-and-removing"><i class="fa fa-link" aria-hidden="true"></i></a>挿入と削除(Inserting and Removing)</h3>
+<h3 id="挿入と削除inserting-and-removing">挿入と削除(Inserting and Removing)</h3>
 <p>特定の文字列のインデックスに 1 つの文字を挿入するには、<code>insert(_:at:)</code> を使い、他の文字列を挿入したい場合は、<code>insert(contentsOf:at:)</code> を使います。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> welcome <span class="token operator">=</span> <span class="token string">&quot;hello&quot;</span>
 welcome<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token string">&quot;!&quot;</span><span class="token punctuation">,</span> at<span class="token punctuation">:</span> welcome<span class="token punctuation">.</span>endIndex<span class="token punctuation">)</span>
@@ -1040,7 +1036,7 @@ welcome<span class="token punctuation">.</span><span class="token function">remo
 <blockquote>
 <p>NOTE<br><code>RangeReplaceableCollection</code> プロトコルに準拠したどんな型にも、<code>insert(_:at:)</code>、<code>insert(contentsOf:at:)</code>、<code>remove(at:)</code>、<code>removeSubrange(_:)</code> メソッドを使用することができます。これは、<code>Array</code>、<code>Dictionary</code>、<code>Set</code> といったコレクションの型と同様に、今紹介している <code>String</code> も含んでいます。</p>
 </blockquote>
-<h2 id="部分文字列substrings"><a name="部分文字列substrings" class="plugin-anchor" href="#部分文字列substrings"><i class="fa fa-link" aria-hidden="true"></i></a>部分文字列(Substrings)</h2>
+<h2 id="部分文字列substrings">部分文字列(Substrings)</h2>
 <p>文字列から部分文字列を取得した場合(例えば subscript や <code>prefix(_:)</code> などのメソッドを使用するなど)、<a href="https://developer.apple.com/documentation/swift/substring" target="_blank">Substring</a>インスタンスが結果として取得できます。部分文字列には文字列とほぼ同じメソッドを使用することができます。つまり、部分文字列を文字列と同じような方法で扱うことができます。しかし、文字列とは異なり、部分文字列は、文字列に対して何かアクションを起こしているほんの短い間だけに使います。処理の結果をより長い期間保持するときは、部分文字列を <code>String</code> のインスタンスに変換します。例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> greeting <span class="token operator">=</span> <span class="token string">&quot;Hello, world!&quot;</span>
 <span class="token keyword">let</span> index <span class="token operator">=</span> greeting<span class="token punctuation">.</span><span class="token function">firstIndex</span><span class="token punctuation">(</span>of<span class="token punctuation">:</span> <span class="token string">&quot;,&quot;</span><span class="token punctuation">)</span> <span class="token operator">?</span><span class="token operator">?</span> greeting<span class="token punctuation">.</span>endIndex
@@ -1056,10 +1052,10 @@ welcome<span class="token punctuation">.</span><span class="token function">remo
 <blockquote>
 <p>NOTE<br>文字列と部分文字列は、<a href="https://developer.apple.com/documentation/swift/stringprotocol" target="_blank">StringProtocol</a>に準拠しています。つまり、文字列操作を行う関数は、<code>StringProtocol</code> の値を受け取るとしばしば便利なことがあります。文字列、部分文字列のどちらを使用しても、その関数を使用することができます。</p>
 </blockquote>
-<h2 id="文字列の比較comparing-strings"><a name="文字列の比較comparing-strings" class="plugin-anchor" href="#文字列の比較comparing-strings"><i class="fa fa-link" aria-hidden="true"></i></a><a id="comparing-strings">文字列の比較(Comparing Strings)</a></h2>
+<h2 id="文字列の比較comparing-strings"><a id="comparing-strings">文字列の比較(Comparing Strings)</a></h2>
 <p>Swift では、3 つの方法で文字列同士を比較する方法を提供しています: <code>String</code> または <code>Character</code> の完全一致、前方一致、後方一致です。</p>
-<h3 id="文字と文字列の等価性string-and-character-equality"><a name="文字と文字列の等価性string-and-character-equality" class="plugin-anchor" href="#文字と文字列の等価性string-and-character-equality"><i class="fa fa-link" aria-hidden="true"></i></a>文字と文字列の等価性(String and Character Equality)</h3>
-<p><code>String</code> または <code>Character</code> の完全一致は、は等価演算子(<code>==</code>)と不等価演算子(<code>!=</code>)を使用してチェックします。<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/basic-operators#comparison-operators" target="_blank">Comparison Operators(比較演算子)</a></p>
+<h3 id="文字と文字列の等価性string-and-character-equality">文字と文字列の等価性(String and Character Equality)</h3>
+<p><code>String</code> または <code>Character</code> の完全一致は、は等価演算子(<code>==</code>)と不等価演算子(<code>!=</code>)を使用してチェックします。<a href="basic-operators#comparison-operators">Comparison Operators(比較演算子)</a></p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> quotation <span class="token operator">=</span> <span class="token string">&quot;We&apos;re a lot alike, you and I.&quot;</span>
 <span class="token keyword">let</span> sameQuotation <span class="token operator">=</span> <span class="token string">&quot;We&apos;re a lot alike, you and I.&quot;</span>
 <span class="token keyword">if</span> quotation <span class="token operator">==</span> sameQuotation <span class="token punctuation">{</span>
@@ -1093,7 +1089,7 @@ welcome<span class="token punctuation">.</span><span class="token function">remo
 <blockquote>
 <p>NOTE<br>Swift の文字列と文字の比較は、ロケール依存です。</p>
 </blockquote>
-<h3 id="前方一致と後方一致prefix-and-suffix-equality"><a name="前方一致と後方一致prefix-and-suffix-equality" class="plugin-anchor" href="#前方一致と後方一致prefix-and-suffix-equality"><i class="fa fa-link" aria-hidden="true"></i></a>前方一致と後方一致(Prefix and Suffix Equality)</h3>
+<h3 id="前方一致と後方一致prefix-and-suffix-equality">前方一致と後方一致(Prefix and Suffix Equality)</h3>
 <p>ある文字列が特定の前置文字や後置文字を含んでいるかどうかをチェックするために、<code>hasPrefix(_:)</code> と <code>hasSuffix(_:)</code> メソッドを使います。どちらも 1 つの <code>String</code> 型の引数を受け取り、<code>Bool</code> 値を返します。</p>
 <p>下記の例では、シェークスピアのロミオとジュリエットの最初の 2 幕のシーンの場所を表した文字列の配列です。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> romeoAndJuliet <span class="token operator">=</span> <span class="token punctuation">[</span>
@@ -1136,7 +1132,7 @@ welcome<span class="token punctuation">.</span><span class="token function">remo
 <blockquote>
 <p>NOTE<br><code>hasPrefix(_:)</code> と <code>hasSuffix(_:)</code> メソッドは、文字ごとに各文字列の拡張書記素クラスタを使用してルール上等しいかどうかを調べます(<a href="strings-and-characters.html#string-and-character-equalitytono">String and Character Equality(文字と文字列の等価性)</a>に記載)。</p>
 </blockquote>
-<h2 id="文字列の-unicode-表現unicode-representations-of-strings"><a name="文字列の-unicode-表現unicode-representations-of-strings" class="plugin-anchor" href="#文字列の-unicode-表現unicode-representations-of-strings"><i class="fa fa-link" aria-hidden="true"></i></a>文字列の Unicode 表現(Unicode Representations of Strings)</h2>
+<h2 id="文字列の-unicode-表現unicode-representations-of-strings">文字列の Unicode 表現(Unicode Representations of Strings)</h2>
 <p>Unicode 文字列は、テキストファイルや他のストレージに書かれるとき、Unicode 形式の 1 つに符号化(エンコード)されます。それぞれの形式は、文字列を<em>コードユニット</em>と呼ばれる小さな塊にエンコードします。これらには、UTF-8(8 ビットのコードユニットで文字列を符号化)、UTF-16(16 ビットのコードユニットで文字列を符号化)、UTF-32(32 ビットのコードユニットで文字列を符号化)があります。</p>
 <p>Swift では、複数の Unicode 形式で文字列にアクセスできます。<code>for-in</code> 文で文字列を繰り返し処理する場合、Unicode 拡張書記素クラスタとして個々の <code>Character</code> にアクセスできます。このプロセスは<a href="strings-and-characters.html#working-with-characters">Working with Characters(文字配列の取扱)</a>で記載しています。</p>
 <p>他にも 3 つの Unicode 準拠形式で <code>String</code> にアクセスできます:</p>
@@ -1148,7 +1144,7 @@ welcome<span class="token punctuation">.</span><span class="token function">remo
 <p>下記の例は、次の文字列を異なる形式で表示しています。<code>D</code>、 <code>o</code>、 <code>g</code>、 <code>‼</code> (<code>DOUBLE EXCLAMATION MARK</code> または Unicode スカラ <code>U+203C</code>)と 🐶 文字 (<code>DOG FACE</code>, or Unicode スカラ <code>U+1F436</code>):</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> dogString <span class="token operator">=</span> <span class="token string">&quot;Dog‼🐶&quot;</span>
 </code></pre>
-<h3 id="utf-8-表現utf-8-representation"><a name="utf-8-表現utf-8-representation" class="plugin-anchor" href="#utf-8-表現utf-8-representation"><i class="fa fa-link" aria-hidden="true"></i></a>UTF-8 表現(UTF-8 Representation)</h3>
+<h3 id="utf-8-表現utf-8-representation">UTF-8 表現(UTF-8 Representation)</h3>
 <p>UTF-8 表現には <code>String</code> の <code>utf8</code> プロパティを使います。このプロパティの型は、<code>String.UTF8View</code> で、符号なし 8 ビット(<code>UInt8</code>)のコレクションで、文字列の UTF-8 表現のそれぞれのバイトを表しています:</p>
 <p><img src="../assets/utf8_2x.png" alt="UTF-8"></p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> codeUnit <span class="token keyword">in</span> dogString<span class="token punctuation">.</span>utf8 <span class="token punctuation">{</span>
@@ -1158,7 +1154,7 @@ welcome<span class="token punctuation">.</span><span class="token function">remo
 <span class="token comment">// &quot;68 111 103 226 128 188 240 159 144 182 &quot;</span>
 </code></pre>
 <p>上記の例では、最初の 3 つの 10 進数の <code>codeUnit</code>(<code>68</code>、<code>111</code>、<code>103</code>)は、ASCII 表現の <code>D</code>、<code>o</code>、<code>g</code> を UTF-8 表現で表しています。 次の 3 つの 10 進数の <code>codeUnit</code>(<code>226</code>、<code>128</code>、<code>188</code>)は、<code>DOUBLE EXCLAMATION MARK</code> を 3 バイトの UTF-8 表現で表しています。最後の 4 つの <code>codeUnit</code>(<code>240</code>、<code>159</code>、<code>144</code>、<code>182</code>)は、<code>DOG FACE</code> 文字を 4 バイトの UTF-8 表現で表しています。</p>
-<h3 id="utf-16-表現utf-16-representation"><a name="utf-16-表現utf-16-representation" class="plugin-anchor" href="#utf-16-表現utf-16-representation"><i class="fa fa-link" aria-hidden="true"></i></a>UTF-16 表現(UTF-16 Representation)</h3>
+<h3 id="utf-16-表現utf-16-representation">UTF-16 表現(UTF-16 Representation)</h3>
 <p>UTF-16 表現には <code>String</code> の <code>utf16</code> プロパティを使います。このプロパティの型は、<code>String.UTF16View</code> で、符号なし 16 ビット(<code>UInt16</code>)のコレクションで、文字列の UTF-16 表現のそれぞれのバイトを表しています:</p>
 <p><img src="../assets/utf16_2x.png" alt="UTF-16"></p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> codeUnit <span class="token keyword">in</span> dogString<span class="token punctuation">.</span>utf16 <span class="token punctuation">{</span>
@@ -1169,7 +1165,7 @@ welcome<span class="token punctuation">.</span><span class="token function">remo
 </code></pre>
 <p>上記の例では、最初の 3 つの 10 進数の <code>codeUnit</code>(<code>68</code>、<code>111</code>、<code>103</code>)は、<code>D</code>、<code>o</code>、<code>g</code> を UTF-16 表現で表しています。これは UTF-8 と同じです。(Unicode スカラは ASCII 文字を表しているため等しくなります)<br>4 番目の <code>codeUnit</code>(<code>8252</code>)は、16 進数の <code>203C</code> と等しく、<code>DOUBLE EXCLAMATION MARK(U+203C)</code> を表しています。この文字は UTF-16 だと 1 つのコードユニットで表すことができます。</p>
 <p>5,6 番目の <code>codeUnit</code>(<code>55357</code>, <code>56374</code>)は UTF-16 のサロゲートペアで、<code>DOG FACE</code> 文字を表しています。これは上位サロゲートの <code>U+D83D</code>(10 進数だと <code>55357</code>)と下位サロゲートの <code>U+DC36</code>(10 進数だと <code>56374</code>)です。</p>
-<h3 id="unicode-スカラ表現unicode-scalar-representation"><a name="unicode-スカラ表現unicode-scalar-representation" class="plugin-anchor" href="#unicode-スカラ表現unicode-scalar-representation"><i class="fa fa-link" aria-hidden="true"></i></a>Unicode スカラ表現(Unicode Scalar Representation)</h3>
+<h3 id="unicode-スカラ表現unicode-scalar-representation">Unicode スカラ表現(Unicode Scalar Representation)</h3>
 <p>Unicode スカラ表現には <code>String</code> の <code>unicodeScalars</code> プロパティを使います。このプロパティの型は、<code>UnicodeScalarView</code> で、<code>UnicodeScalar</code> のコレクションです。</p>
 <p>それぞれの <code>UnicodeScalar</code> には <code>UInt32</code> で表される 21 ビットのスカラを返す <code>value</code> プロパティを持っています。</p>
 <p><img src="../assets/unicodescalar_2x.png" alt="Unicode Scalar"></p>
@@ -1225,7 +1221,7 @@ welcome<span class="token punctuation">.</span><span class="token function">remo
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"文字と文字列(Strings and Characters)","level":"3.3","depth":1,"next":{"title":"コレクション型(Collection Types)","level":"3.4","depth":1,"path":"language-guide-gaido/collection-types.md","ref":"language-guide-gaido/collection-types.md","articles":[]},"previous":{"title":"基本演算子(Basic Operators)","level":"3.2","depth":1,"path":"language-guide-gaido/basic-operators.md","ref":"language-guide-gaido/basic-operators.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/strings-and-characters.md","mtime":"2021-07-11T00:21:09.745Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"文字と文字列(Strings and Characters)","level":"3.3","depth":1,"next":{"title":"コレクション型(Collection Types)","level":"3.4","depth":1,"path":"language-guide-gaido/collection-types.md","ref":"language-guide-gaido/collection-types.md","articles":[]},"previous":{"title":"基本演算子(Basic Operators)","level":"3.2","depth":1,"path":"language-guide-gaido/basic-operators.md","ref":"language-guide-gaido/basic-operators.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/strings-and-characters.md","mtime":"2021-07-11T00:35:31.545Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,16 +748,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="高度な演算子advanced-operators"><a name="高度な演算子advanced-operators" class="plugin-anchor" href="#高度な演算子advanced-operators"><i class="fa fa-link" aria-hidden="true"></i></a>高度な演算子(Advanced Operators)</h1>
+                                <h1 id="高度な演算子advanced-operators">高度な演算子(Advanced Operators)</h1>
 <p>最終更新日: 2021/7/1</p>
 <p><a href="basic-operators.html">Basic Operators(基本演算子)</a>で説明されている演算子に加えて、Swift は、より複雑な値操作を実行するいくつかの高度な演算子を提供します。これらには、C 言語および Objective-C でおなじみの全てのビット演算子およびビットシフト演算子が含まれます。</p>
 <p>C 言語の算術演算子とは異なり、Swift の算術演算子はデフォルトでオーバーフローしません。オーバーフローはトラップされ、エラーとして報告されます。オーバーフローするには、オーバーフロー加算演算子(<code>&amp;+</code>)など、デフォルトでオーバーフローする Swift の第 2 の算術演算子を使用します。これらのオーバーフロー演算子は全て、アンパサンド(<code>&amp;</code>)で始まります。</p>
 <p>独自の構造体、クラス、および列挙型を定義する場合、標準の Swift 演算子の実装にこれらの独自型の実装を提供すると便利な場合があります。Swift では、簡単にこれらの演算子のカスタマイズ実装を提供し、作成した型ごとにそれらの動作を正確に決めることができます。</p>
 <p>事前定義された演算子に限定されません。Swift では、独自の優先順位と結合規則を使用して、独自の前置、中置、後置、および代入演算子を自由に定義できます。これらの演算子は、事前定義の演算子と同様にコードで使用および適用でき、定義した独自の演算子をサポートするように既存の型を拡張することもできます。</p>
-<h2 id="ビット演算子bitwise-operators"><a name="ビット演算子bitwise-operators" class="plugin-anchor" href="#ビット演算子bitwise-operators"><i class="fa fa-link" aria-hidden="true"></i></a>ビット演算子(Bitwise Operators)</h2>
+<h2 id="ビット演算子bitwise-operators">ビット演算子(Bitwise Operators)</h2>
 <p>ビット演算子を使用すると、データ構造内の個々のデータのビットを操作できます。これらは、グラフィックスプログラミングやデバイスドライバの作成など、低レベルのプログラミングでよく使用されます。ビット演算子は、独自のプロトコルを介した通信用データのエンコードおよびデコードなど、外部ソースからのデータを操作する場合にも役立ちます。</p>
 <p>Swift は、下記で説明するように、C 言語の全てのビット演算子をサポートしています。</p>
-<h3 id="ビット論理否定演算子bitwise-not-operator"><a name="ビット論理否定演算子bitwise-not-operator" class="plugin-anchor" href="#ビット論理否定演算子bitwise-not-operator"><i class="fa fa-link" aria-hidden="true"></i></a>ビット論理否定演算子(Bitwise NOT Operator)</h3>
+<h3 id="ビット論理否定演算子bitwise-not-operator">ビット論理否定演算子(Bitwise NOT Operator)</h3>
 <p>ビット論理否定演算子(<code>~</code>)は、数値の全てのビットを反転します。</p>
 <p><img src="../assets/bitwiseNOT_2x.png" alt="ビット論理否定演算子"></p>
 <p>ビット論理否定演算子は前置演算子で、空白を含めずに演算対象の値の直前に置きます。</p>
@@ -770,7 +766,7 @@
 </code></pre>
 <p><code>UInt8</code> 整数には 8 ビットの、<code>0</code> から <code>255</code> までの任意の値を格納できます。この例では、<code>UInt8</code> 整数を 2 進数値 <code>00001111</code> で初期化し、最初の 4 ビットが <code>0</code> に設定され、2 番目の 4 ビットが <code>1</code> に設定されています。これは、10 進数の <code>15</code> に相当します。</p>
 <p>次に、ビット論理否定演算子を使用して、<code>invertedBits</code> と呼ばれる新しい定数を作成します。これは <code>initialBits</code> と同じですが、全てのビットが反転されます。<code>0</code> は <code>1</code> になり、<code>1</code> は <code>0</code> になります。<code>invertedBits</code> の値は <code>11110000</code> で、符号なし 10 進数の <code>240</code> に相当します。</p>
-<h3 id="ビット論理積演算子bitwise-and-operator"><a name="ビット論理積演算子bitwise-and-operator" class="plugin-anchor" href="#ビット論理積演算子bitwise-and-operator"><i class="fa fa-link" aria-hidden="true"></i></a>ビット論理積演算子(Bitwise AND Operator)</h3>
+<h3 id="ビット論理積演算子bitwise-and-operator">ビット論理積演算子(Bitwise AND Operator)</h3>
 <p>ビット論理積演算子(<code>&amp;</code>)は、2 つの数値のビットを合成します。両方の入力数値のビットが <code>1</code> の場合にのみ、ビットが <code>1</code> になり、新しい数値を返します:</p>
 <p><img src="../assets/bitwiseAND_2x.png" alt="ビット論理積演算子"></p>
 <p>下記の例では、<code>firstSixBits</code> と <code>lastSixBits</code> の値は両方とも、4 つの中間ビットに <code>1</code> が設定されています。ビット論理積演算子はそれらを組み合わせて、符号なし 10 進数の <code>60</code> に相当する数値 <code>00111100</code> を作成します。</p>
@@ -778,7 +774,7 @@
 <span class="token keyword">let</span> lastSixBits<span class="token punctuation">:</span> <span class="token builtin">UInt8</span>  <span class="token operator">=</span> <span class="token number">0b00111111</span>
 <span class="token keyword">let</span> middleFourBits <span class="token operator">=</span> firstSixBits <span class="token operator">&amp;</span> lastSixBits  <span class="token comment">// 00111100 と等しい</span>
 </code></pre>
-<h3 id="ビット論理和演算子bitwise-or-operator"><a name="ビット論理和演算子bitwise-or-operator" class="plugin-anchor" href="#ビット論理和演算子bitwise-or-operator"><i class="fa fa-link" aria-hidden="true"></i></a>ビット論理和演算子(Bitwise OR Operator)</h3>
+<h3 id="ビット論理和演算子bitwise-or-operator">ビット論理和演算子(Bitwise OR Operator)</h3>
 <p>ビット論理和演算子(<code>|</code>)は、2 つの数値のビットを比較します。演算子は、いずれかの入力数値のビットが <code>1</code> に等しい場合、ビットは <code>1</code> になり、新しい数値を返します:</p>
 <p><img src="../assets/bitwiseOR_2x.png" alt="ビット論理和演算子"></p>
 <p>下記の例では、<code>someBits</code> と <code>moreBits</code> の値の異なるビットに <code>1</code> が設定されています。ビット論理和演算子はそれらを組み合わせて、符号なし 10 進数の <code>254</code> に相当する <code>11111110</code> という数値を作成します。</p>
@@ -786,7 +782,7 @@
 <span class="token keyword">let</span> moreBits<span class="token punctuation">:</span> <span class="token builtin">UInt8</span> <span class="token operator">=</span> <span class="token number">0b01011110</span>
 <span class="token keyword">let</span> combinedbits <span class="token operator">=</span> someBits <span class="token operator">|</span> moreBits  <span class="token comment">// 11111110 と等しい</span>
 </code></pre>
-<h3 id="ビット排他的論理和演算子bitwise-xor-operator"><a name="ビット排他的論理和演算子bitwise-xor-operator" class="plugin-anchor" href="#ビット排他的論理和演算子bitwise-xor-operator"><i class="fa fa-link" aria-hidden="true"></i></a>ビット排他的論理和演算子(Bitwise XOR Operator)</h3>
+<h3 id="ビット排他的論理和演算子bitwise-xor-operator">ビット排他的論理和演算子(Bitwise XOR Operator)</h3>
 <p>ビット排他的論理和演算子(<code>^</code>)は、2 つの数値のビットを比較します。演算子は、入力ビットが異なる場合はビットに <code>1</code> が設定され、入力ビットが同じ場合は <code>0</code> が設定される新しい数値を返します:</p>
 <p><img src="../assets/bitwiseXOR_2x.png" alt="ビット排他的論理和演算子"></p>
 <p>下記の例では、<code>firstBits</code> と <code>otherBits</code> の値はそれぞれ、他の場所にはないビットに <code>1</code> が設定されています。ビット排他的論理和演算子は、これらのビット両方に <code>1</code> を設定します。<code>firstBits</code> および <code>otherBits</code> の他の全てのビットは値が一致しているので、<code>0</code> が設定されます。</p>
@@ -794,10 +790,10 @@
 <span class="token keyword">let</span> otherBits<span class="token punctuation">:</span> <span class="token builtin">UInt8</span> <span class="token operator">=</span> <span class="token number">0b00000101</span>
 <span class="token keyword">let</span> outputBits <span class="token operator">=</span> firstBits <span class="token operator">^</span> otherBits  <span class="token comment">// 00010001 と等しい</span>
 </code></pre>
-<h3 id="ビット左右シフト演算子bitwise-left-and-right-shift-operators"><a name="ビット左右シフト演算子bitwise-left-and-right-shift-operators" class="plugin-anchor" href="#ビット左右シフト演算子bitwise-left-and-right-shift-operators"><i class="fa fa-link" aria-hidden="true"></i></a><a id="bitwise-left-and-right-shift-operators">ビット左右シフト演算子(Bitwise Left and Right Shift Operators)</a></h3>
+<h3 id="ビット左右シフト演算子bitwise-left-and-right-shift-operators"><a id="bitwise-left-and-right-shift-operators">ビット左右シフト演算子(Bitwise Left and Right Shift Operators)</a></h3>
 <p>ビット左シフト演算子(<code>&lt;&lt;</code>)およびビット右シフト演算子(<code>&gt;&gt;</code>)は、下記で定義されている規則に従って、数値内の全てのビットを特定の桁数だけ左または右に移動します。</p>
 <p>ビット左シフトと右シフトには、整数を 2 倍に乗算または除算する効果があります。整数のビットを 1 桁左にシフトするとその値は 2 倍になり、1 桁右にシフトすると値は半分になります。</p>
-<h4 id="符号なし整数のシフト演算shifting-behavior-for-unsigned-integers"><a name="符号なし整数のシフト演算shifting-behavior-for-unsigned-integers" class="plugin-anchor" href="#符号なし整数のシフト演算shifting-behavior-for-unsigned-integers"><i class="fa fa-link" aria-hidden="true"></i></a>符号なし整数のシフト演算(Shifting Behavior for Unsigned Integers)</h4>
+<h4 id="符号なし整数のシフト演算shifting-behavior-for-unsigned-integers">符号なし整数のシフト演算(Shifting Behavior for Unsigned Integers)</h4>
 <p>符号なし整数のビットシフト動作は次のとおりです:</p>
 <ol>
 <li>既存のビットは、要求された桁数だけ左または右に移動します</li>
@@ -826,7 +822,7 @@ shiftBits <span class="token operator">&gt;</span><span class="token operator">&
 <p>次に、この番号が 16 桁右にシフトされます(<code>&gt;&gt; 16</code>)。16 進数の文字の各ペアは 8 ビットを使用するため、16 桁右に移動すると、<code>0xCC0000</code> が <code>0x0000CC</code> に変換されます。これは、10 進数 <code>204</code> に相当する、 <code>0xCC</code> が得られます。</p>
 <p>同様に、緑のコンポーネントは、数値 <code>0xCC6699</code> と <code>0x00FF00</code> の間でビット論理積演算子を使用することによって取得され、<code>0x006600</code> の出力値が得られます。次に、この出力値が 8 桁右にシフトされ、10 進数 <code>102</code> に相当する、<code>0x66</code> が得られます。</p>
 <p>最後に、青のコンポーネントは、数値 <code>0xCC6699</code> と <code>0x0000FF</code> の間でビット論理積演算子を使用することによって取得され、<code>0x000099</code> の出力値が得られます。<code>0x000099</code> はすでに 10 進数 <code>153</code> に相当し、 <code>0x99</code> に等しいため、この値は右にシフトせずに使用されます。</p>
-<h4 id="符号付き整数のシフト演算shifting-behavior-for-signed-integers"><a name="符号付き整数のシフト演算shifting-behavior-for-signed-integers" class="plugin-anchor" href="#符号付き整数のシフト演算shifting-behavior-for-signed-integers"><i class="fa fa-link" aria-hidden="true"></i></a>符号付き整数のシフト演算(Shifting Behavior for Signed Integers)</h4>
+<h4 id="符号付き整数のシフト演算shifting-behavior-for-signed-integers">符号付き整数のシフト演算(Shifting Behavior for Signed Integers)</h4>
 <p>符号付き整数のシフト演算は、符号なし整数よりも符号付き整数の方が複雑です。これは、符号付き整数が 2 進数で表現される方法に依ります。(下記の例は、簡単にするために 8 ビットの符号付き整数に基づいていますが、同じ原則が任意のサイズの符号付き整数にも適用されます)</p>
 <p>符号付き整数は、最初のビット(<em>符号ビット</em>と呼ばれます)を使用して、整数が正か負かを示します。符号ビット <code>0</code> は正を意味し、符号ビット <code>1</code> は負を意味します。</p>
 <p>残りのビット(<em>値ビット</em>と呼ばれます)には、実際の値が格納されています。正の数は、符号なし整数の場合とまったく同じ方法で、<code>0</code> から数えて格納されます。<code>Int8</code> 内からビットで数値 <code>4</code> を表す方法は次のとおりです:</p>
@@ -844,7 +840,7 @@ shiftBits <span class="token operator">&gt;</span><span class="token operator">&
 <p><img src="../assets/bitshiftSigned_2x.png" alt="符号付き整数のシフト"></p>
 <p>このアクションにより、符号付き整数が右にシフトされた後も同じ符号を持つようになります。これは<em>算術シフト</em>と呼ばれています。</p>
 <p>正の数と負の数は特殊な方法で保持されるため、どちらかを右にシフトすると <code>0</code> に近づきます。このシフト中でも符号ビットを保つということは、値が <code>0</code> に近づいても負の整数は負の値のままになることを意味します。</p>
-<h2 id="オーバーフロー演算子overflow-operators"><a name="オーバーフロー演算子overflow-operators" class="plugin-anchor" href="#オーバーフロー演算子overflow-operators"><i class="fa fa-link" aria-hidden="true"></i></a><a id="overflow-operators">オーバーフロー演算子(Overflow Operators)</a></h2>
+<h2 id="オーバーフロー演算子overflow-operators"><a id="overflow-operators">オーバーフロー演算子(Overflow Operators)</a></h2>
 <p>その値を保持できない整数の定数または変数に数値を挿入しようとすると、Swift はデフォルトでは無効な値は作成せず、エラーを報告します。この動作により、大きすぎたり小さすぎたりする数値を処理するときの安全性がさらに高まります。</p>
 <p>例えば、<code>Int16</code> 整数型は、<code>-32768</code> から <code>32767</code> までの任意の符号付き整数を保持できます。<code>Int16</code> の定数または変数に範囲外の数値を設定しようとすると、エラーが発生します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> potentialOverflow <span class="token operator">=</span> <span class="token builtin">Int16</span><span class="token punctuation">.</span><span class="token builtin">max</span>
@@ -859,7 +855,7 @@ potentialOverflow <span class="token operator">+</span><span class="token operat
 <li>オーバーフロー減算(<code>&amp;-</code>)</li>
 <li>オーバーフロー乗算(<code>&amp;*</code>)</li>
 </ul>
-<h3 id="値のオーバーフローvalue-overflow"><a name="値のオーバーフローvalue-overflow" class="plugin-anchor" href="#値のオーバーフローvalue-overflow"><i class="fa fa-link" aria-hidden="true"></i></a><a id="value-overflow">値のオーバーフロー(Value Overflow)</a></h3>
+<h3 id="値のオーバーフローvalue-overflow"><a id="value-overflow">値のオーバーフロー(Value Overflow)</a></h3>
 <p>数値は、正の方向と負の方向の両方でオーバーフローする可能性があります。</p>
 <p>オーバーフロー加算演算子(<code>&amp;+</code>)を使用して、符号なし整数を正の方向にオーバーフローさせた場合の例を次に示します:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> unsignedOverflow <span class="token operator">=</span> <span class="token builtin">UInt8</span><span class="token punctuation">.</span><span class="token builtin">max</span>
@@ -886,7 +882,7 @@ signedOverflow <span class="token operator">=</span> signedOverflow <span class=
 <p><code>Int8</code> が保持できる最小値は <code>-128</code>、つまり 2 進数で <code>10000000</code> です。オーバーフロー演算子を使用してこの 2 進数から <code>1</code> を減算すると、<code>01111111</code> の 2 進数値が得られます。これは、符号ビットを切り替えて、<code>Int8</code> が保持できる正の最大値 <code>127</code> を返します。</p>
 <p><img src="../assets/overflowSignedSubtraction_2x.png" alt="符号付き整数のオーバーフロー減算演算子 10000000 から 1 を減算\`"></p>
 <p>符号付き整数と符号なし整数の両方で、正の方向のオーバーフローは有効な整数値の最大値から最小値に巻き戻り、負の方向のオーバーフローは最小値から最大値に巻き戻ります。</p>
-<h2 id="precedence-and-associativity優先順位と結合規則-"><a name="precedence-and-associativity優先順位と結合規則-" class="plugin-anchor" href="#precedence-and-associativity優先順位と結合規則-"><i class="fa fa-link" aria-hidden="true"></i></a><a href="advanced-operators.html">Precedence and Associativity(優先順位と結合規則)</a> <a id="#precedence-and-associativity"></a></h2>
+<h2 id="precedence-and-associativity優先順位と結合規則-"><a href="advanced-operators.html">Precedence and Associativity(優先順位と結合規則)</a> <a id="#precedence-and-associativity"></a></h2>
 <p>演算子の<em>優先順位</em>により、一部の演算子は他の演算子よりも優先されます。これらの演算子は最初に適用されます。</p>
 <p>演算子の<em>結合規則</em>は、同じ優先順位の演算子をグループ化する方法(左からグループ化するか、右からグループ化するか)を定義します。「それらは左側の表現のグループに所属する」または「それらは右側の表現のグループに所属する」という意味だと考えてください。</p>
 <p>複合式が計算される順序を決めるときは、各演算子の優先順位と結合規則を考慮することが重要です。例えば、演算子の優先順位は、次の式が <code>17</code> に等しい理由を説明しています。</p>
@@ -914,7 +910,7 @@ signedOverflow <span class="token operator">=</span> signedOverflow <span class=
 <blockquote>
 <p>NOTE<br>Swift の演算子の優先順位と結合規則は、C 言語や Objective-C のものよりもシンプルで結果が予測しやすくなっています。ただし、これは、C 言語ベースの言語とまったく同じではないことを意味します。既存のコードを Swift に移植するときは、演算子の作用が意図したとおりに動作するかを確認してください。</p>
 </blockquote>
-<h2 id="演算子メソッドoperator-methods"><a name="演算子メソッドoperator-methods" class="plugin-anchor" href="#演算子メソッドoperator-methods"><i class="fa fa-link" aria-hidden="true"></i></a><a id="advanced-operators-operator-methods">演算子メソッド(Operator Methods)</a></h2>
+<h2 id="演算子メソッドoperator-methods"><a id="advanced-operators-operator-methods">演算子メソッド(Operator Methods)</a></h2>
 <p>クラスと構造体は、既存の演算子に独自の実装を提供できます。これは、既存の演算子のオーバーロードとして呼ばれています。</p>
 <p>下記の例は、独自の構造体に算術加算演算子(<code>+</code>)を実装する方法を示しています。算術加算演算子は、2 つのターゲットで動作するため二項演算子で、これら 2 つのターゲットの間に現れるため、<em>中置</em>と呼ばれます。</p>
 <p>この例では、2 次元位置ベクトル <code>(x, y)</code> の <code>Vector2D</code> 構造体を定義し、その後に <code>Vector2D</code> 構造体のインスタンスを加算する演算子メソッドの定義が続きます。</p>
@@ -938,7 +934,7 @@ signedOverflow <span class="token operator">=</span> signedOverflow <span class=
 </code></pre>
 <p>この例では、下記に示すように、ベクトル <code>(3.0, 1.0)</code> と <code>(2.0, 4.0)</code> を加算してベクトル <code>(5.0, 5.0)</code> を作成します:</p>
 <p><img src="../assets/vectorAddition_2x.png" alt="Vector2Dの加算"></p>
-<h3 id="前置、後置演算子prefix-and-postfix-operators"><a name="前置、後置演算子prefix-and-postfix-operators" class="plugin-anchor" href="#前置、後置演算子prefix-and-postfix-operators"><i class="fa fa-link" aria-hidden="true"></i></a><a id="prefix-and-postfix-operators">前置、後置演算子(Prefix and Postfix Operators)</a></h3>
+<h3 id="前置、後置演算子prefix-and-postfix-operators"><a id="prefix-and-postfix-operators">前置、後置演算子(Prefix and Postfix Operators)</a></h3>
 <p>上記の例は、2 進数の中置演算子の独自実装を示しています。クラスと構造体は、単項演算子の実装を提供することもできます。単項演算子は、単一のターゲットで動作します。ターゲットの前にある場合はプレフィックス(<code>-a</code> など)で、ターゲットの後にある場合は後置演算子(<code>b!</code> など)です。</p>
 <p>演算子メソッドを宣言するときに、<code>func</code> キーワードの前に <code>prefix</code> または <code>postfix</code> 修飾子を記述して、<em>前置</em>または<em>後置</em>単項演算子を実装します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Vector2D</span> <span class="token punctuation">{</span>
@@ -955,7 +951,7 @@ signedOverflow <span class="token operator">=</span> signedOverflow <span class=
 <span class="token keyword">let</span> alsoPositive <span class="token operator">=</span> <span class="token operator">-</span>negative
 <span class="token comment">// alsoPositive は、値が (3.0, 4.0) の Vector2D インスタンスです。</span>
 </code></pre>
-<h3 id="compound-assignment-operators複合代入演算子-"><a name="compound-assignment-operators複合代入演算子-" class="plugin-anchor" href="#compound-assignment-operators複合代入演算子-"><i class="fa fa-link" aria-hidden="true"></i></a><a href="advanced-operators.html">Compound Assignment Operators(複合代入演算子)</a> <a id="advanced-operators-compound-assignment-operators"></a></h3>
+<h3 id="compound-assignment-operators複合代入演算子-"><a href="advanced-operators.html">Compound Assignment Operators(複合代入演算子)</a> <a id="advanced-operators-compound-assignment-operators"></a></h3>
 <p><em>複合代入演算子</em>は、代入(<code>=</code>)と別の演算子を組み合わせます。例えば、加算代入演算子(<code>+=</code>)は、加算と代入を 1 つの演算に結合します。パラメータの値は演算子メソッド内から直接変更されるため、複合代入演算子の左側の入力パラメータ型を <code>inout</code> としてマークします。</p>
 <p>下記の例では、Vector2D インスタンスの加算代入演算子メソッドを実装しています:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Vector2D</span> <span class="token punctuation">{</span>
@@ -973,7 +969,7 @@ original <span class="token operator">+</span><span class="token operator">=</sp
 <blockquote>
 <p>NOTE<br>デフォルトの代入演算子(<code>=</code>)をオーバーロードすることはできません。複合代入演算子のみをオーバーロードできます。同様に、三項条件演算子(<code>a ? b : c</code>)はオーバーロードできません。</p>
 </blockquote>
-<h3 id="等価演算子equivalence-operators"><a name="等価演算子equivalence-operators" class="plugin-anchor" href="#等価演算子equivalence-operators"><i class="fa fa-link" aria-hidden="true"></i></a><a id="equivalence-operators">等価演算子(Equivalence Operators)</a></h3>
+<h3 id="等価演算子equivalence-operators"><a id="equivalence-operators">等価演算子(Equivalence Operators)</a></h3>
 <p>デフォルトでは、独自のクラスと構造体には、等価演算子(<code>==</code>)および不等価演算子(<code>!=</code>)として知られる等価演算子の実装がありません。通常は <code>==</code> 演算子を実装し、標準ライブラリの <code>==</code> 演算子の結果を否定する <code>!=</code> 演算子のデフォルト実装を使用します。<code>==</code> 演算子を実装するには 2 つの方法があります。自分で実装するか、多くの型の場合、Swift に実装を合成するよう依頼することができます。どちらの場合も、標準ライブラリの <code>Equatable</code> プロトコルに準拠を追加します。</p>
 <p><code>==</code> 演算子の実装は、他の中置演算子を実装するのと同じ方法で提供します:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Vector2D</span><span class="token punctuation">:</span> <span class="token builtin">Equatable</span> <span class="token punctuation">{</span>
@@ -991,9 +987,9 @@ original <span class="token operator">+</span><span class="token operator">=</sp
 <span class="token punctuation">}</span>
 <span class="token comment">// These two vectors are equivalent.</span>
 </code></pre>
-<p>多くのシンプルなケースでは、Swift の等価演算子のデフォルト実装を使用できます(<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/protocols#adopting-a-protocol-using-a-synthesized-implementation" target="_blank">Adopting a Protocol Using a Synthesized Implementation(デフォルト実装を使用したプロトコル準拠)</a>で説明されています)。</p>
-<h2 id="カスタム演算子custom-operators"><a name="カスタム演算子custom-operators" class="plugin-anchor" href="#カスタム演算子custom-operators"><i class="fa fa-link" aria-hidden="true"></i></a><a id="custom-operators">カスタム演算子(Custom Operators)</a></h2>
-<p>Swift が提供する標準演算子に加えて、独自の演算子を宣言して実装できます。カスタム演算子の定義に使用できる文字のリストについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/lexical-structure#operators" target="_blank">Operators(演算子)</a>を参照ください。</p>
+<p>多くのシンプルなケースでは、Swift の等価演算子のデフォルト実装を使用できます(<a href="protocols#adopting-a-protocol-using-a-synthesized-implementation">Adopting a Protocol Using a Synthesized Implementation(デフォルト実装を使用したプロトコル準拠)</a>で説明されています)。</p>
+<h2 id="カスタム演算子custom-operators"><a id="custom-operators">カスタム演算子(Custom Operators)</a></h2>
+<p>Swift が提供する標準演算子に加えて、独自の演算子を宣言して実装できます。カスタム演算子の定義に使用できる文字のリストについては、<a href="../language-reference/lexical-structure#operators">Operators(演算子)</a>を参照ください。</p>
 <p>新しい演算子は、<code>operator</code> キーワードを使用してグローバルレベルで宣言され、<code>prefix</code>、<code>infix</code> または <code>postfix</code> 修飾子でマークされます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">prefix</span> <span class="token keyword">operator</span> <span class="token operator">++</span><span class="token operator">+</span>
 </code></pre>
@@ -1010,7 +1006,7 @@ original <span class="token operator">+</span><span class="token operator">=</sp
 <span class="token comment">// toBeDoubled の値は (2.0, 8.0) になりました</span>
 <span class="token comment">// afterDoubling も (2.0, 8.0) です</span>
 </code></pre>
-<h3 id="カスタム中置演算子の優先順位precedence-for-custom-infix-operators"><a name="カスタム中置演算子の優先順位precedence-for-custom-infix-operators" class="plugin-anchor" href="#カスタム中置演算子の優先順位precedence-for-custom-infix-operators"><i class="fa fa-link" aria-hidden="true"></i></a><a id="precedence-for-custom-infix-operators">カスタム中置演算子の優先順位(Precedence for Custom Infix Operators)</a></h3>
+<h3 id="カスタム中置演算子の優先順位precedence-for-custom-infix-operators"><a id="precedence-for-custom-infix-operators">カスタム中置演算子の優先順位(Precedence for Custom Infix Operators)</a></h3>
 <p>カスタム中置演算子は、それぞれある<em>優先順位グループ</em>に属します。優先順位グループは、他の中置演算子に対する演算子の優先順位および結合規則を指定します。これらの特性が、中置演算子と他の中置演算子との間でどのように影響するかについては、<a href="advanced-operators.html#precedence-and-associativity">Precedence and Associativity(優先順位と結合規則)</a>を参照ください。</p>
 <p>優先順位グループに明示的に配置されていないカスタム中置演算子には、三項条件演算子の優先順位よりも 1 つ高い優先順位を持つデフォルトの優先順位グループが与えられます。</p>
 <p>次の例では、優先順位グループ <code>AdditionPrecedence</code> に属する <code>+-</code> という新しいカスタム中置演算子を定義しています:</p>
@@ -1025,11 +1021,11 @@ original <span class="token operator">+</span><span class="token operator">=</sp
 <span class="token keyword">let</span> plusMinusVector <span class="token operator">=</span> firstVector <span class="token operator">+</span><span class="token operator">-</span> secondVector
 <span class="token comment">// plusMinusVector は、値が (4.0, -2.0) の Vector2D インスタンスです</span>
 </code></pre>
-<p>この演算子は、2 つのベクトルの <code>x</code> 値を加算し、最初のベクトルから 2 番目のベクトルの <code>y</code> 値を減算します。これは本質的に「加算」演算子のため、<code>+</code> や <code>-</code> などの加算中置演算子と同じ優先順位グループが与えられています。演算子の優先順位グループと結合規則設定の完全なリストを含む、Swift 標準ライブラリによって提供される演算子については、<a href="https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations" target="_blank">Operator Declarations(演算子宣言)</a>を参照ください。優先順位グループの詳細と、独自の演算子と優先順位グループを定義するための構文については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#operator-declaration" target="_blank">Operator Declarations(演算子の宣言)</a>を参照ください。</p>
+<p>この演算子は、2 つのベクトルの <code>x</code> 値を加算し、最初のベクトルから 2 番目のベクトルの <code>y</code> 値を減算します。これは本質的に「加算」演算子のため、<code>+</code> や <code>-</code> などの加算中置演算子と同じ優先順位グループが与えられています。演算子の優先順位グループと結合規則設定の完全なリストを含む、Swift 標準ライブラリによって提供される演算子については、<a href="https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations" target="_blank">Operator Declarations(演算子宣言)</a>を参照ください。優先順位グループの詳細と、独自の演算子と優先順位グループを定義するための構文については、<a href="../language-reference/declarations#operator-declaration">Operator Declarations(演算子の宣言)</a>を参照ください。</p>
 <blockquote>
 <p>NOTE<br>前置または後置演算子を定義するときは、優先順位を指定しません。ただし、前置と後置演算子の両方を同じオペランドに適用すると、後置演算子が最初に適用されます。</p>
 </blockquote>
-<h2 id="リザルトビルダresult-builders"><a name="リザルトビルダresult-builders" class="plugin-anchor" href="#リザルトビルダresult-builders"><i class="fa fa-link" aria-hidden="true"></i></a><a id="result-builders">リザルトビルダ(Result Builders)</a></h2>
+<h2 id="リザルトビルダresult-builders"><a id="result-builders">リザルトビルダ(Result Builders)</a></h2>
 <p><em>リザルトビルダ</em>は、リストやツリーなどのネストデータを自然な宣言的な方法で作成するための構文を追加する、ユーザ定義の型です。リザルトビルダを使用するコードには、条件または繰り返しのデータを処理するために、<code>if</code> や <code>for</code> などの通常の Swift 構文を含めることができます。</p>
 <p>下記のコードは、星とテキストを使用して 1 行に文字列を描画するためのいくつかの型を定義します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">Drawable</span> <span class="token punctuation">{</span>
@@ -1148,7 +1144,7 @@ original <span class="token operator">+</span><span class="token operator">=</sp
 <span class="token punctuation">}</span>
 </code></pre>
 <p>上記のコードでは、<code>for</code> ループが描画の配列を作成し、<code>buildArray(_:)</code> メソッドがその配列を <code>Line</code> に変換します。</p>
-<p>Swift が builder 構文を builder 型のメソッドの呼び出しに変換する方法の完全なリストについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/attributes#resultbuilder" target="_blank">resultBuilder</a>を参照ください。</p>
+<p>Swift が builder 構文を builder 型のメソッドの呼び出しに変換する方法の完全なリストについては、<a href="../language-reference/attributes#resultbuilder">resultBuilder</a>を参照ください。</p>
 
                                 
                                 </section>
@@ -1182,7 +1178,7 @@ original <span class="token operator">+</span><span class="token operator">=</sp
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"高度な演算子(Advanced Operators)","level":"3.28","depth":1,"next":{"title":"言語リファレンスについて(About the Language Reference)","level":"4.1","depth":1,"path":"language-reference/about-the-language-reference.md","ref":"language-reference/about-the-language-reference.md","articles":[]},"previous":{"title":"アクセスコントロール(Access Control)","level":"3.27","depth":1,"path":"language-guide-gaido/access-control.md","ref":"language-guide-gaido/access-control.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/advanced-operators.md","mtime":"2021-07-11T00:21:09.745Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"高度な演算子(Advanced Operators)","level":"3.28","depth":1,"next":{"title":"言語リファレンスについて(About the Language Reference)","level":"4.1","depth":1,"path":"language-reference/about-the-language-reference.md","ref":"language-reference/about-the-language-reference.md","articles":[]},"previous":{"title":"アクセスコントロール(Access Control)","level":"3.27","depth":1,"path":"language-guide-gaido/access-control.md","ref":"language-guide-gaido/access-control.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/advanced-operators.md","mtime":"2021-07-11T00:35:31.525Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

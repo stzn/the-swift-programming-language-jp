@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,7 +748,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="基本the-basics"><a name="基本the-basics" class="plugin-anchor" href="#基本the-basics"><i class="fa fa-link" aria-hidden="true"></i></a>基本(The Basics)</h1>
+                                <h1 id="基本the-basics">基本(The Basics)</h1>
 <p>最終更新日: 2021/7/4</p>
 <p>Swift は iOS, macOS, watchOS, tyOS アプリ開発のための新しいプログラミング言語です。新しい言語ではあるものの、Swift の多くの部分は C 言語と Objective-C の開発経験があれば慣れ親しんだ部分もあるかと思います。</p>
 <p>Swift は C 言語と Objective-C の全ての基本的な型に対応した Swift 版の型を提供します。数値に対する <code>Int</code>、浮動小数点数に対する <code>Double</code> と <code>Float</code>、ブール値に対する <code>Bool</code>、文字データに対する <code>String</code> があります。また、3 つのより強力な collection 型(<code>Array</code>, <code>Set</code>, <code>Dictionary</code>)も提供しています。詳細は <a href="collection-types.html">Collection Types(コレクション型)</a>に記載しています。</p>
@@ -760,9 +756,9 @@
 <p>これまで見たことがあるような型に加え、Swift は Objective-C にはなかった、タプルのような、より応用的な型を導入します。タプルは値を 1 つのグループとして扱うことができます。タプルを使用すると、複数の値を 1 つの値の組み合わせとして関数から返すことができます。</p>
 <p>Swift は値が存在しないかもしれない値を扱うオプショナル型を導入しています。オプショナルは、「値が存在していて、これは x と等しい」もしくは「値は一切存在しない」ということを表します。オプショナルは Objective-C のポインタで <code>nil</code> を扱うのに似ていますが、クラスだけではなく、あらゆる型に使用することができます。Objective-C の <code>nil</code> ポインタよりも、安全で表現豊かなだけでなく、Swift の数々の強力な特徴の中心に位置します。</p>
 <p>Swift は<em>型安全</em>な言語です。つまり、言語として、コードで扱う値の型を明確にしてくれます。例えば、<code>String</code> が必要な場合に、この型安全な特徴が、間違って <code>Int</code> を渡してしまうことを防いでくれます。同様に、オプショナルではない <code>String</code> にオプショナルの <code>String</code> を誤って渡してしまうことも防いでくれます。型安全なことで、開発中に、素早くエラーの発見と修正をすることができます。</p>
-<h2 id="定数と変数constants-and-variables"><a name="定数と変数constants-and-variables" class="plugin-anchor" href="#定数と変数constants-and-variables"><i class="fa fa-link" aria-hidden="true"></i></a><a id="constants-and-variables">定数と変数(Constants and Variables)</a></h2>
+<h2 id="定数と変数constants-and-variables"><a id="constants-and-variables">定数と変数(Constants and Variables)</a></h2>
 <p>定数と変数は特定の型の値(数字の <code>10</code> や文字列の <code>&quot;Hello&quot;</code> など)と名前(<code>maximumNumberOfLoginAttempts</code> や <code>welcomeMessage</code>)を関連付けます。<em>定数</em>は一度値を設定すると変更することはできません。一方で、<em>変数</em>は後で異なった値を設定できます。</p>
-<h3 id="定数と変数の宣言declaring-constants-and-variables"><a name="定数と変数の宣言declaring-constants-and-variables" class="plugin-anchor" href="#定数と変数の宣言declaring-constants-and-variables"><i class="fa fa-link" aria-hidden="true"></i></a>定数と変数の宣言(Declaring Constants and Variables)</h3>
+<h3 id="定数と変数の宣言declaring-constants-and-variables">定数と変数の宣言(Declaring Constants and Variables)</h3>
 <p>定数と変数は、使用する前に定義されていなければなりません。定数は <code>let</code>、変数は <code>var</code> キーワードで定義します。ここで、ユーザが何回ログインをしようとしたか試行回数を追跡する定数と変数の例を紹介します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> maximumNumberOfLoginAttempts <span class="token operator">=</span> <span class="token number">10</span>
 <span class="token keyword">var</span> currentLoginAttempt <span class="token operator">=</span> <span class="token number">0</span>
@@ -776,7 +772,7 @@
 <blockquote>
 <p>NOTE<br>コードで保持している値がこの先変更されない場合は、 <code>let</code> を使用して定数として定義してください。変数は変更できるようにする必要がある場合にのみ使用してください。</p>
 </blockquote>
-<h3 id="型注釈type-annotations"><a name="型注釈type-annotations" class="plugin-anchor" href="#型注釈type-annotations"><i class="fa fa-link" aria-hidden="true"></i></a><a id="type-annotations">型注釈(Type Annotations)</a></h3>
+<h3 id="型注釈type-annotations"><a id="type-annotations">型注釈(Type Annotations)</a></h3>
 <p>定数や変数を定義するときに、保持する値の種類をより明確にするために、型注釈を使用することができます。定数や変数の名前の後にコロン(<code>:</code>)を置いて、型注釈を書きましょう。</p>
 <p>この例では <code>welcomeMessage</code> という変数に型注釈を書いて <code>String</code> が保持されることを示しています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> welcomeMessage<span class="token punctuation">:</span> <span class="token builtin">String</span>
@@ -793,7 +789,7 @@
 <blockquote>
 <p>NOTE<br>実際に型注釈を書く必要はあまりありません。定義時に定数や変数に初期値を与えた場合、 Swift はたいていそれらの型を推論できます(詳細は<a href="the-basics.html#type-safety-and-type-inferenceto">Type Safety and Type Inference(型安全と型推論)</a>。上記の <code>welcomeMessage</code> の例では、初期値を与えていないため、推論をすることができないため、<code>welcomeMessage</code> 変数は型注釈で型を特定しています。</p>
 </blockquote>
-<h3 id="定数と変数の命名naming-constants-and-variables"><a name="定数と変数の命名naming-constants-and-variables" class="plugin-anchor" href="#定数と変数の命名naming-constants-and-variables"><i class="fa fa-link" aria-hidden="true"></i></a>定数と変数の命名(Naming Constants and Variables)</h3>
+<h3 id="定数と変数の命名naming-constants-and-variables">定数と変数の命名(Naming Constants and Variables)</h3>
 <p>定数名と変数名には、Unicode 文字も含めた、ほとんどの文字を含めることができます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> π <span class="token operator">=</span> <span class="token number">3.14159</span>
 <span class="token keyword">let</span> 你好 <span class="token operator">=</span> <span class="token string">&quot;你好世界&quot;</span>
@@ -814,20 +810,20 @@ friendlyWelcome <span class="token operator">=</span> <span class="token string"
 languageName <span class="token operator">=</span> <span class="token string">&quot;Swift++&quot;</span>
 <span class="token comment">// コンパイルエラー: languageName は変更できません</span>
 </code></pre>
-<h3 id="定数と変数の出力printing-constants-and-variables"><a name="定数と変数の出力printing-constants-and-variables" class="plugin-anchor" href="#定数と変数の出力printing-constants-and-variables"><i class="fa fa-link" aria-hidden="true"></i></a><a id="printing-constants-and-variables">定数と変数の出力(Printing Constants and Variables)</a></h3>
+<h3 id="定数と変数の出力printing-constants-and-variables"><a id="printing-constants-and-variables">定数と変数の出力(Printing Constants and Variables)</a></h3>
 <p><code>print(_:separator:terminator:)</code> 関数を使用して、定数や変数の現在の値を出力することができます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span>friendlyWelcome<span class="token punctuation">)</span>
 <span class="token comment">// &quot;Bonjour!&quot;</span>
 </code></pre>
-<p><code>print(_:separator:terminator:)</code> 関数はグローバル関数で、1 つ以上の値を適切なアウトプット先に出力します。Xcode では、<code>print(_:separator:terminator:)</code> 関数を使用すると、 Xcode のコンソールパネルへ値を出力します。<code>separator</code> と <code>terminator</code> パラメータには、デフォルト値が用意されているので省略可能です。デフォルトでは最後に改行を追加します。改行を付けたくない場合は <code>terminator</code> に空文字を渡してください。例えば <code>print(someValue, terminator: &quot;&quot;)</code>。詳細は<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#default-parameter-values" target="_blank">Default Parameter Values(デフォルトパラメータ値)</a>。</p>
+<p><code>print(_:separator:terminator:)</code> 関数はグローバル関数で、1 つ以上の値を適切なアウトプット先に出力します。Xcode では、<code>print(_:separator:terminator:)</code> 関数を使用すると、 Xcode のコンソールパネルへ値を出力します。<code>separator</code> と <code>terminator</code> パラメータには、デフォルト値が用意されているので省略可能です。デフォルトでは最後に改行を追加します。改行を付けたくない場合は <code>terminator</code> に空文字を渡してください。例えば <code>print(someValue, terminator: &quot;&quot;)</code>。詳細は<a href="functions#default-parameter-values">Default Parameter Values(デフォルトパラメータ値)</a>。</p>
 <p>Swift は長い文字列の中で定数や変数をプレースホルダとして使用したい場合、<em>文字列補間</em>を使い、定数や変数の現在値に置き換えるように Swift に伝えることができます。名前を括弧(<code>()</code>)で囲み、開始括弧の前にバックスラッシュ(<code>\</code>)を付けます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The current value of friendlyWelcome is <span class="token interpolation"><span class="token delimiter variable">\(</span>friendlyWelcome<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
 <span class="token comment">// &quot;The current value of friendlyWelcome is Bonjour!&quot;</span>
 </code></pre>
 <blockquote>
-<p>NOTE<br>文字列補間で使用できるオブションは<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/strings-and-characters#string-interpolation" target="_blank">String Interpolation(文字列補間)</a>に記載しています</p>
+<p>NOTE<br>文字列補間で使用できるオブションは<a href="strings-and-characters#string-interpolation">String Interpolation(文字列補間)</a>に記載しています</p>
 </blockquote>
-<h2 id="コメントcomments"><a name="コメントcomments" class="plugin-anchor" href="#コメントcomments"><i class="fa fa-link" aria-hidden="true"></i></a>コメント(Comments)</h2>
+<h2 id="コメントcomments">コメント(Comments)</h2>
 <p>コード内に実行されないテキスト(メモやリマインダーなど)を含めるためにはコメントを使います。コメントはコンパイル時に Swift のコンパイラからは無視されます。</p>
 <p>Swift のコメントは C 言語のコメントにとてもよく似ています。1 行のコメントは 2 つのスラッシュ(<code>//</code>)で開始します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token comment">// これはコメントです</span>
@@ -843,28 +839,28 @@ languageName <span class="token operator">=</span> <span class="token string">&q
 これは最初の複数行コメントの終わりです <span class="token operator">*</span><span class="token operator">/</span>
 </code></pre>
 <p>ネストした複数行コメントを使用することで、長い複数行コメントの中でも簡単に素早くその部分だけコメントアウトすることができます。</p>
-<h2 id="セミコロンsemicolons"><a name="セミコロンsemicolons" class="plugin-anchor" href="#セミコロンsemicolons"><i class="fa fa-link" aria-hidden="true"></i></a>セミコロン(Semicolons)</h2>
+<h2 id="セミコロンsemicolons">セミコロン(Semicolons)</h2>
 <p>他の言語とは異なり、Swift ではコードの 1 つ 1 つの宣言の最後に、セミコロン(<code>;</code>)を付ける必要がありません(付けることも可能ではあります)。一方で、1 行に複数のステートメントを書きたい場合は必要になります。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> cat <span class="token operator">=</span> <span class="token string">&quot;🐱&quot;</span><span class="token punctuation">;</span> <span class="token function">print</span><span class="token punctuation">(</span>cat<span class="token punctuation">)</span>
 <span class="token comment">// &quot;🐱&quot;</span>
 </code></pre>
-<h2 id="整数integers"><a name="整数integers" class="plugin-anchor" href="#整数integers"><i class="fa fa-link" aria-hidden="true"></i></a><a id="integers">整数(Integers)</a></h2>
+<h2 id="整数integers"><a id="integers">整数(Integers)</a></h2>
 <p><em>整数</em>は小数点のない整数値を全部含みます(<code>42</code>、<code>-23</code> など)。整数とは<em>符号付き</em>(正の値、または 0、または負の値) または<em>符号なし</em>(正の値、または 0) です。</p>
 <p>Swift は符号付きと符号なしの整数値を 8, 16, 32, 64 ビットの形式で提供します。これらは C 言語の名前に合わせて命名されています。8 ビットの符号なし整数は <code>UInt8</code>、32 ビットの符号付き整数は <code>Int32</code> です。Swift の全ての型と同様に、これらの整数値型の頭文字は大文字です。</p>
-<h3 id="整数の境界integer-bounds"><a name="整数の境界integer-bounds" class="plugin-anchor" href="#整数の境界integer-bounds"><i class="fa fa-link" aria-hidden="true"></i></a>整数の境界(Integer Bounds)</h3>
+<h3 id="整数の境界integer-bounds">整数の境界(Integer Bounds)</h3>
 <p><code>min</code> と <code>max</code> プロパティを使用して、各整数値型の最小値と最大値にアクセスすることができます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> minValue <span class="token operator">=</span> <span class="token builtin">UInt8</span><span class="token punctuation">.</span><span class="token builtin">min</span>  <span class="token comment">// minValue は 0 で、 UInt8 型です</span>
 <span class="token keyword">let</span> maxValue <span class="token operator">=</span> <span class="token builtin">UInt8</span><span class="token punctuation">.</span><span class="token builtin">max</span>  <span class="token comment">// maxValue は 255 で UInt8 型です</span>
 </code></pre>
 <p>これらのプロパティの値は、適切なサイズの整数値型で(上記の例だと <code>UInt8</code>)で、同じ型の他の値と一緒に式の中で使用することができます。</p>
-<h3 id="int"><a name="int" class="plugin-anchor" href="#int"><i class="fa fa-link" aria-hidden="true"></i></a>Int</h3>
+<h3 id="int">Int</h3>
 <p>多くの場合、整数値のサイズを特定する必要はありません。Swift はプラットフォームに応じて決まるサイズと同じサイズをもつ <code>Int</code> という型を提供しています。</p>
 <ul>
 <li>32 ビットのプラットフォームの場合、<code>Int</code> は <code>Int32</code> と等しい</li>
 <li>64 ビットのプラットフォームの場合、<code>Int</code> は <code>Int64</code> と等しい</li>
 </ul>
 <p>特定のサイズの整数値を扱う必要がない限り常に <code>Int</code> を使用するようにしてください、これはコードの一貫性と互換性を保つ手助けとなります。32 ビットのプラットフォームでは、<code>Int</code> は <code>-2,147,483,648</code> から <code>2,147,483,647</code> まで保持することができます。これは整数値が使われる多くの場合において、十分に大きい範囲です。</p>
-<h3 id="uint"><a name="uint" class="plugin-anchor" href="#uint"><i class="fa fa-link" aria-hidden="true"></i></a>UInt</h3>
+<h3 id="uint">UInt</h3>
 <p>Swift は符号なしの整数値型も提供しています。これも、プラットフォームに応じて決まるサイズと同じサイズを持ちます。</p>
 <ul>
 <li>32 ビットのプラットフォームの場合、<code>UInt</code> は <code>UInt32</code> と等しい</li>
@@ -873,7 +869,7 @@ languageName <span class="token operator">=</span> <span class="token string">&q
 <blockquote>
 <p>NOTE<br><code>UInt</code> は特別にプラットフォームに応じて決まるサイズと同じサイズの 符号なし整数型を扱いたい場合にのみ使用してください。そうでない場合、負の値にならないとしても <code>Int</code> を使用する方が好ましいです。一貫して <code>Int</code> を整数値に使用することで、異なる整数値型間の変換を避け、合致する型をコンパイラが推論することで、互換性を保つことができます。詳細は<a href="the-basics.html#type-safety-and-type-inferenceto">Type Safety and Type Inference(型安全と型推論)</a>。</p>
 </blockquote>
-<h2 id="浮動小数点数floating-point-numbers"><a name="浮動小数点数floating-point-numbers" class="plugin-anchor" href="#浮動小数点数floating-point-numbers"><i class="fa fa-link" aria-hidden="true"></i></a>浮動小数点数(Floating-Point Numbers)</h2>
+<h2 id="浮動小数点数floating-point-numbers">浮動小数点数(Floating-Point Numbers)</h2>
 <p>浮動小数点数は、小数部分を持つ数値です(<code>3.14159</code>, <code>0.1</code>, <code>-273.15</code> など)。</p>
 <p>浮動小数点数値型は、整数値型よりもより広い範囲の値を表現でき、<code>Int</code> より大きい(またはより小さい)値を保持できます。Swift は 2 つの符号付き浮動小数点数値型を提供しています。</p>
 <ul>
@@ -883,7 +879,7 @@ languageName <span class="token operator">=</span> <span class="token string">&q
 <blockquote>
 <p>NOTE<br><code>Double</code> は最小で15桁の精度の小数値を持ち、<code>Float</code> は6桁の精度の小数値を持ちます。適切な浮動小数点数値型は、扱いたい数値の特性と範囲によります。どちらでも良い場合は、<code>Double</code> が好まれます。</p>
 </blockquote>
-<h2 id="型安全と型推論type-safety-and-type-inference"><a name="型安全と型推論type-safety-and-type-inference" class="plugin-anchor" href="#型安全と型推論type-safety-and-type-inference"><i class="fa fa-link" aria-hidden="true"></i></a>型安全と型推論(Type Safety and Type Inference)</h2>
+<h2 id="型安全と型推論type-safety-and-type-inference">型安全と型推論(Type Safety and Type Inference)</h2>
 <p>Swift は<em>型安全</em>な言語です。型安全な言語は、扱っている値の型を明確にします。<code>String</code> が必要な場合に、間違って <code>Int</code> を渡すようなことはありません。</p>
 <p>型安全なことから、コンパイル時に型チェックが行われ、間違った型に対してはエラーを示します。これによって開発時に素早くエラーに気がつき修正をすることができます。</p>
 <p>型チェックによって、異なる型の値を扱う場合に間違った型を代入してしまうエラーを回避することができます。しかし、全ての定数と変数の定義時に型を特定しなければならないということではありません。特定しない場合、Swift は適切な型への推論を行います。コンパイラがコンパイル時に与えられた値を調べることで、式の型を自動で推論してくれます。</p>
@@ -903,7 +899,7 @@ languageName <span class="token operator">=</span> <span class="token string">&q
 <span class="token comment">// anotherPi は Double 型と推論されます</span>
 </code></pre>
 <p><code>3</code> には明確な型がありませんが、後ろの浮動小数点数の値から <code>Double</code> と推論されます。</p>
-<h2 id="数値リテラルnumeric-literals"><a name="数値リテラルnumeric-literals" class="plugin-anchor" href="#数値リテラルnumeric-literals"><i class="fa fa-link" aria-hidden="true"></i></a>数値リテラル(Numeric Literals)</h2>
+<h2 id="数値リテラルnumeric-literals">数値リテラル(Numeric Literals)</h2>
 <p>数値リテラルは、下記の方法で書くことができます。</p>
 <ul>
 <li>プレフィックスなしの 10 進数</li>
@@ -938,10 +934,10 @@ languageName <span class="token operator">=</span> <span class="token string">&q
 <span class="token keyword">let</span> oneMillion <span class="token operator">=</span> <span class="token number">1_000_000</span>
 <span class="token keyword">let</span> justOverOneMillion <span class="token operator">=</span> <span class="token number">1_000_000.000_000_1</span>
 </code></pre>
-<h2 id="数値型の変換numeric-type-conversion"><a name="数値型の変換numeric-type-conversion" class="plugin-anchor" href="#数値型の変換numeric-type-conversion"><i class="fa fa-link" aria-hidden="true"></i></a>数値型の変換(Numeric Type Conversion)</h2>
+<h2 id="数値型の変換numeric-type-conversion">数値型の変換(Numeric Type Conversion)</h2>
 <p>通常整数値を扱う際は、負の値にならないことがわかっていたとしても定数や変数に <code>Int</code> 型を使いましょう。全ての状況でデフォルトに <code>Int</code> を使用することで、整数値の定数と変数を特別な手順なしに互換可能にし、数値リテラルから推論される型とも合致します。</p>
 <p>特別な理由ある場合のみ、他の整数値型を使いましょう。例えば、外部リソースから特定サイズの型が指定されている場合やパフォーマンス、メモリの使用量や他の最適化が必要な場合など、がこれに当たります。明示的にサイズを指定することで思わぬオーバーフローを起こしたり、暗黙的にそのデータの特性を表現することができます。</p>
-<h3 id="整数の変換integer-conversion"><a name="整数の変換integer-conversion" class="plugin-anchor" href="#整数の変換integer-conversion"><i class="fa fa-link" aria-hidden="true"></i></a>整数の変換(Integer Conversion)</h3>
+<h3 id="整数の変換integer-conversion">整数の変換(Integer Conversion)</h3>
 <p>整数値の定数や変数に保持できる範囲は、それぞれの整数値型によって異なります。<code>Int8</code> の定数や変数は、<code>−128</code> から <code>127</code> まで保持できます。<code>UInt8</code> の定数や変数は、<code>0</code> から <code>255</code> まで保持できます。指定したサイズの整数値型の定数や変数に合わない値を設定しようとするとエラーになります。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> cannotBeNegative<span class="token punctuation">:</span> <span class="token builtin">UInt8</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span>
 <span class="token comment">// UInt8 はマイナス値を保持できません。そのためエラーになります</span>
@@ -957,7 +953,7 @@ languageName <span class="token operator">=</span> <span class="token string">&q
 </code></pre>
 <p>今はどちらも <code>UInt16</code> なので、足し算は可能です。そして計算結果の定数(<code>twoThousandAndOne</code>)も <code>UInt16</code> に推論されます。</p>
 <p><code>SomeType(ofInitialValue)</code> という形式は、初期値を渡して初期化を行う Swift のデフォルトの方法です。裏側では、<code>UInt16</code> 型が <code>UInt8</code> の値を受け取って、新しい <code>UInt16</code> 型の値を生成しています。とはいっても、あらゆる型を渡せるわけではありません。<code>UInt16</code> 型が提供するイニシャライザに合った型が必要です。新しい型を渡して初期化する方法は、<a href="extensions.html">Extensions(拡張)</a>に記載しています。</p>
-<h3 id="整数と浮動小数点数の変換integer-and-floating-point-conversion"><a name="整数と浮動小数点数の変換integer-and-floating-point-conversion" class="plugin-anchor" href="#整数と浮動小数点数の変換integer-and-floating-point-conversion"><i class="fa fa-link" aria-hidden="true"></i></a>整数と浮動小数点数の変換(Integer and Floating-Point Conversion)</h3>
+<h3 id="整数と浮動小数点数の変換integer-and-floating-point-conversion">整数と浮動小数点数の変換(Integer and Floating-Point Conversion)</h3>
 <p>整数値と浮動小数点数の変換は明示的に行わなければなりません:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> three <span class="token operator">=</span> <span class="token number">3</span>
 <span class="token keyword">let</span> pointOneFourOneFiveNine <span class="token operator">=</span> <span class="token number">0.14159</span>
@@ -973,7 +969,7 @@ languageName <span class="token operator">=</span> <span class="token string">&q
 <blockquote>
 <p>NOTE<br>整数値の定数と変数を組み合わせるルールは、数値リテラルのルールとは異なります。リテラル値の <code>3</code> はリテラル値の <code>0.14159</code> とそのまま加算できます。リテラル値は明示的な型を有していないため、コンパイラがその値を評価するときに型を推論します。</p>
 </blockquote>
-<h2 id="タイプエイリアスtype-aliases"><a name="タイプエイリアスtype-aliases" class="plugin-anchor" href="#タイプエイリアスtype-aliases"><i class="fa fa-link" aria-hidden="true"></i></a>タイプエイリアス(Type Aliases)</h2>
+<h2 id="タイプエイリアスtype-aliases">タイプエイリアス(Type Aliases)</h2>
 <p><em>タイプエイリアス(Type Aliases)</em>は既存の型に別の名前を定義します。<code>typealias</code> キーワードを使います。</p>
 <p>タイプエイリアスは、既存の型をコンテキストに沿ったより適切な名前で参照したい場合に有効です。例えば、外部リソースの特定のサイズのデータを扱いたい場合など:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">typealias</span> <span class="token builtin">AudioSample</span> <span class="token operator">=</span> <span class="token builtin">UInt16</span>
@@ -983,7 +979,7 @@ languageName <span class="token operator">=</span> <span class="token string">&q
 <span class="token comment">// maxAmplitudeFound は 0</span>
 </code></pre>
 <p>ここでは、<code>AudioSample</code> が <code>UInt16</code> のタイプエイリアスとして定義されています。エイリアスなので、<code>AudioSample.min</code> の実態は <code>UInt16.min</code> で、<code>maxAmplitudeFound</code> の初期値は <code>0</code> になります。</p>
-<h2 id="ブール値booleans"><a name="ブール値booleans" class="plugin-anchor" href="#ブール値booleans"><i class="fa fa-link" aria-hidden="true"></i></a>ブール値(Booleans)</h2>
+<h2 id="ブール値booleans">ブール値(Booleans)</h2>
 <p>Swift は、<code>Bool</code> と呼ばれる基本的なブール値を持っています。ブール値は、真(true)か偽(false)のみを値として取ることから、<em>論理値(logical)</em>として参照されます。Swift では <code>true</code> と <code>false</code> の 2 つのブールの定数を提供しています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> orangesAreOrange <span class="token operator">=</span> <span class="token boolean">true</span>
 <span class="token keyword">let</span> turnipsAreDelicious <span class="token operator">=</span> <span class="token boolean">false</span>
@@ -1012,7 +1008,7 @@ languageName <span class="token operator">=</span> <span class="token string">&q
 </code></pre>
 <p><code>i == 1</code> の比較結果は <code>Bool</code> なので、型チェックを通過できます。<code>i == 1</code> のような比較については、<a href="basic-operators.html">Basic Operators(基本演算子)</a>でより詳しく記載しています。</p>
 <p>他の型安全性を示した例と同様に、型の違いによる予期せぬエラーの発生を防ぎ、型が明確なので、コードの意図をより明確に表すことができます。</p>
-<h2 id="タプルtuples"><a name="タプルtuples" class="plugin-anchor" href="#タプルtuples"><i class="fa fa-link" aria-hidden="true"></i></a>タプル(Tuples)</h2>
+<h2 id="タプルtuples">タプル(Tuples)</h2>
 <p><em>タプル(Tuples)</em>は、複数の値を 1 つのまとまりにグループ化します。タプル内の値にはどんな型も入れることができ、全ての型を同じにする必要はありません。</p>
 <p>下記の例の <code>(404, &quot;Not Found&quot;)</code> は、 HTTP ステータスコードを表したタプルです。HTTP ステータスコードは、Web ページを取得するリクエストを送ると Web サーバから返ってくる特別な値です。<code>404 Not Found</code> のステータスコードは、リクエストした Web ページが存在しなかった場合に返ってきます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> http404Error <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">404</span><span class="token punctuation">,</span> <span class="token string">&quot;Not Found&quot;</span><span class="token punctuation">)</span>
@@ -1048,7 +1044,7 @@ languageName <span class="token operator">=</span> <span class="token string">&q
 <span class="token comment">// &quot;The status message is OK&quot;</span>
 </code></pre>
 <p>タプルは、特に関数の戻り値で有効に活用できます。Web ページを取得する関数は、取得の成否の結果を <code>(Int, String)</code> で返すかもしれません。2 つの異なる型の値を持ったタプルを返すことで、1 つの型の 1 つの値を返すよりも、関数はより有益な情報を提供できます。より詳しくは、<a href="functions.html#functions-with-multiple-return-values複数の戻り値がある関数">Functions with Multiple Return Values(複数の戻り値がある関数)</a>を参照ください。</p>
-<h2 id="オプショナルoptionals"><a name="オプショナルoptionals" class="plugin-anchor" href="#オプショナルoptionals"><i class="fa fa-link" aria-hidden="true"></i></a><a id="optionals">オプショナル(Optionals)</a></h2>
+<h2 id="オプショナルoptionals"><a id="optionals">オプショナル(Optionals)</a></h2>
 <p><em>オプショナル</em>は、値が存在しないかもしれないときに使用します。オプショナルは 2 つの可能性を表します: 値が<em>存在して</em>アンラップすることで値にアクセスすることができる、もしくは、値が全く<em>存在しない</em></p>
 <blockquote>
 <p>NOTE<br>オプショナルの概念は、 C 言語や Objective-C には存在しません。Objective-C は、メソッドから <code>nil</code> かオブジェクトを返すことができますが、ここでいう <code>nil</code> は「妥当なオブジェクトが存在しない」、ということを意味します。しかし、これはオブジェクトのみで機能し、構造体や基本的な C 言語の型、列挙型には使用できません。これらの型へは、値が存在しないことを示す特別な値(<code>NSNotFound</code> など)を返すのが通例です。この方法ですと、メソッドの呼び出し元が、この特別な値が返ってくることを前提としてチェックすることを想定しています。Swift では、この特別な値を必要とせず、どんな型に対しても値が存在しないことを示すことができます。</p>
@@ -1060,7 +1056,7 @@ languageName <span class="token operator">=</span> <span class="token string">&q
 <span class="token comment">// convertedNumber Int? 型 または Optional&lt;Int&gt; と推論されます</span>
 </code></pre>
 <p>イニシャライザは失敗するかもしれないので、<code>Int</code> ではなく、<em>オプショナル</em>の <code>Int</code> を返します。オプショナルの <code>Int</code> は、<code>Int</code> ではなく <code>Int?</code> と書きます。<code>?</code> はオプショナルを示し、<em>ある</em> <code>Int</code> 型の値を含んでいる、または値が<em>全く存在しない</em>ことを表しています。(<code>Bool</code> や <code>String</code> など他の型を含めることはできません。<code>Int</code> か <code>nil</code> です)</p>
-<h3 id="nil"><a name="nil" class="plugin-anchor" href="#nil"><i class="fa fa-link" aria-hidden="true"></i></a>nil</h3>
+<h3 id="nil">nil</h3>
 <p>オプショナルな変数は、特別な値 <code>nil</code> を代入することで、値のない状態を設定することができます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> serverResponseCode<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token number">404</span>
 <span class="token comment">// serverResponseCode Int の値の 404 を含んでいます</span>
@@ -1077,7 +1073,7 @@ serverResponseCode <span class="token operator">=</span> <span class="token cons
 <blockquote>
 <p>NOTE<br>Swift の <code>nil</code> は Objective-C の <code>nil</code> と同じではありません。Objective-C では、<code>nil</code> は存在しないオブジェクトのポインタです。Swift では、<code>nil</code> はポインタではありません。ある型の存在しない値です。オブジェクト型だけではなく、どんな型のオプショナルにも <code>nil</code> を設定することができます。</p>
 </blockquote>
-<h3 id="if-文と強制アンラップif-statements-and-forced-unwrapping"><a name="if-文と強制アンラップif-statements-and-forced-unwrapping" class="plugin-anchor" href="#if-文と強制アンラップif-statements-and-forced-unwrapping"><i class="fa fa-link" aria-hidden="true"></i></a>if 文と強制アンラップ(If Statements and Forced Unwrapping)</h3>
+<h3 id="if-文と強制アンラップif-statements-and-forced-unwrapping">if 文と強制アンラップ(If Statements and Forced Unwrapping)</h3>
 <p><code>if</code> 文を使用してオプショナル値を <code>nil</code> と比較することで、値を含んでいるかどうかのチェックができます。この比較は、等しい(<code>==</code>)または等しくない(<code>!=</code>)演算子を使用して行います。</p>
 <p>オプショナルが値を含んでいる場合、<code>nil</code> と「等しくない」と見なされます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> convertedNumber <span class="token operator">!=</span> <span class="token constant">nil</span> <span class="token punctuation">{</span>
@@ -1095,7 +1091,7 @@ serverResponseCode <span class="token operator">=</span> <span class="token cons
 <blockquote>
 <p>NOTE<br>値が存在しないオプショナル値に <code>!</code> を付けてアクセスしようとすると、実行時エラーが発生します。<code>!</code> を使った強制アンラップを行う際は、確実に <code>nil</code> ではないことを常に確かめましょう。</p>
 </blockquote>
-<h3 id="オプショナルバインディングoptional-binding"><a name="オプショナルバインディングoptional-binding" class="plugin-anchor" href="#オプショナルバインディングoptional-binding"><i class="fa fa-link" aria-hidden="true"></i></a><a id="optional-binding">オプショナルバインディング(Optional Binding)</a></h3>
+<h3 id="オプショナルバインディングoptional-binding"><a id="optional-binding">オプショナルバインディング(Optional Binding)</a></h3>
 <p>オプショナル値に、<em>オプショナルバインディング</em>を使用して、値を含んでいるかどうかを判定できます。もし含んでいる場合は、一時的な定数や変数として値を使用できるようになります。オプショナルバインディングは、<code>if</code> や <code>while</code> 文の 1 つのアクションで、オプショナル値に値が存在することを証明し、定数や変数にその内部の値を設定することを、まとめて行うことができます。<code>if</code> や <code>while</code> の詳細は<a href="control-flow.html">Control Flow(制御フロー)</a>を参照ください。</p>
 <p><code>if</code> 文でオプショナルバインディングを行う場合、次のように書きます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> <span class="token keyword">let</span> constantName <span class="token operator">=</span> someOptional <span class="token punctuation">{</span>
@@ -1132,7 +1128,7 @@ serverResponseCode <span class="token operator">=</span> <span class="token cons
 <blockquote>
 <p>NOTE<br><code>if</code> 文の中でオプショナルバインディングによって作られた定数や変数は、<code>if</code> 文の中でしか使えません。もし他でも使用したい場合は、<code>guard</code> 文を使用することで、<code>guard</code> 文の次から使用することができます。詳細は<a href="control-flow.html#early-exit早期リターン">Early Exit(早期リターン)</a>に記載しています。</p>
 </blockquote>
-<h3 id="暗黙アンラップオプショナルimplicitly-unwrapped-optionals"><a name="暗黙アンラップオプショナルimplicitly-unwrapped-optionals" class="plugin-anchor" href="#暗黙アンラップオプショナルimplicitly-unwrapped-optionals"><i class="fa fa-link" aria-hidden="true"></i></a><a id="implicitly-unwrapped-optionals">暗黙アンラップオプショナル(Implicitly Unwrapped Optionals)</a></h3>
+<h3 id="暗黙アンラップオプショナルimplicitly-unwrapped-optionals"><a id="implicitly-unwrapped-optionals">暗黙アンラップオプショナル(Implicitly Unwrapped Optionals)</a></h3>
 <p>上記で書いているように、オプショナルは定数や変数に「値が存在しない」可能性があることを示します。オプショナルは値が存在するかどうかを <code>if</code> 文の中でチェックでき、存在している場合は、オプショナル内の値にアクセスするために、オプショナルバインディングを使用してアンラップすることができます。</p>
 <p>時々、オプショナルに一度値が設定された後は必ず値が存在するということが明らかなこともあります。このような場合、常に値があることはわかっているので、アクセスする度にオプショナル値のチェックとアンラップすることを省略できれば便利です。</p>
 <p>このようなオプショナルは、<em>暗黙アンラップオプショナル</em>として定義されています。<code>?</code> の代わりに <code>!</code> を型の後に付けることで、暗黙アンラップオプショナルを書くことができます(<code>String?</code> の代わりに <code>String!</code> と書くなど)。コード内で使用するオプショナル値の後に <code>!</code> 付けるよりも、定義した型の後に <code>!</code> を付けます。</p>
@@ -1164,7 +1160,7 @@ serverResponseCode <span class="token operator">=</span> <span class="token cons
 <blockquote>
 <p>NOTE<br>暗黙アンラップオプショナルを、後で <code>nil</code> になる可能性のある変数に使わないでください。変数が使用されている間に <code>nil</code> チェックが必要な場合は、通常のオプショナルを常に使いましょう</p>
 </blockquote>
-<h2 id="エラーハンドリングerror-handling"><a name="エラーハンドリングerror-handling" class="plugin-anchor" href="#エラーハンドリングerror-handling"><i class="fa fa-link" aria-hidden="true"></i></a>エラーハンドリング(Error Handling)</h2>
+<h2 id="エラーハンドリングerror-handling">エラーハンドリング(Error Handling)</h2>
 <p>実行中のエラーに対応するためには、<em>エラーハンドリング</em>を行います。</p>
 <p>関数の成功や失敗を伝えるために、値の有無を利用するオプショナルと異なり、エラーハンドリングは裏側の失敗の原因を特定でき、必要ならばエラーをプログラムの他の箇所へ伝播させることができます。</p>
 <p>関数がエラーに遭遇すると、エラーを<em>スロー</em>します。そして、この関数の呼び出し元でエラーを<em>キャッチ</em>して、適切に応答することができます。</p>
@@ -1199,13 +1195,13 @@ serverResponseCode <span class="token operator">=</span> <span class="token cons
 <p>この例では、<code>makeASandwich()</code> 関数は、綺麗な皿を使えない場合や材料が足りない場合、エラーをスローします。<code>makeASandwich()</code> はエラーをスローする可能性があるため、この関数の呼び出しは <code>try</code> 式で包まれています。<code>do</code> 文で関数の呼び出しを包み、スローされたエラーは <code>catch</code> 句でキャッチされます。</p>
 <p>エラーがスローされない場合、<code>eatASandwich()</code> 関数が呼ばれます。エラーがスローされ、それが <code>SandwichError.outOfCleanDishes</code>case と合致する場合、<code>washDishes()</code> 関数が呼ばれます。<code>SandwichError.missingIngredients</code> ケースに合致する場合、<code>buyGroceries(_:)</code> 関数が <code>catch</code> でキャッチされた <code>[String]</code> 値をパラメータに呼び出されます。</p>
 <p>エラーのスロー、キャッチそして伝播は、<a href="error-handling.html">Error Handling(エラーハンドリング)</a>でより詳細に書かれています。</p>
-<h2 id="アサーションと事前条件assertions-and-preconditions"><a name="アサーションと事前条件assertions-and-preconditions" class="plugin-anchor" href="#アサーションと事前条件assertions-and-preconditions"><i class="fa fa-link" aria-hidden="true"></i></a><a id="assertions-and-preconditions">アサーションと事前条件(Assertions and Preconditions)</a></h2>
+<h2 id="アサーションと事前条件assertions-and-preconditions"><a id="assertions-and-preconditions">アサーションと事前条件(Assertions and Preconditions)</a></h2>
 <p><em>アサーション</em>と<em>事前条件</em>は実行時のチェックです。他のコードが実行される前に必要不可欠な条件が満たされているかどうかを確かめることができます。アサーションや事前条件のブール値が <code>true</code> と評価される場合、コードは通常通り継続します。<code>false</code> の場合、現在のプログラムの状態は不正となり、コードの実行は中断し、アプリは終了します。</p>
 <p>アサーションと事前条件はコード上での前提となる条件や期待値を表すために使います。アサーションは開発中の間違いや間違った想定を見つけやすくし、事前条件は開発中の問題を検知しやすくします。</p>
 <p>実行時の期待値を確認することに加えて、アサーションと事前条件はコード内のドキュメントとしても有用です。<a href="the-basics.html#error-handlingエラーハンドリング">Error Handling(エラーハンドリング)</a>で記載したエラー条件とは異なり、アサーションと事前条件は復帰可能ではなく、期待されたエラーをキャッチする手段として使用することはできません。アサーションや事前条件の失敗は、不正なプログラムの状態を表し、失敗したアサーションをキャッチする方法はありません。</p>
 <p>アサーションと事前条件を使用することは、不正な条件を起こさないためのツールとしてコードをデザインするための代用品にはなりません。妥当なデータや状態を強制することで、不正な状態が起きた場合に、予測しやすい状態でアプリ終了させたり、プログラムをデバッグしやすくします。不正な状態が起きた際にすぐに実行を止めることで、不正な状態が与えるダメージを抑えることができます。</p>
 <p>アサーションと事前条件の違いは、チェックのタイミングにあります: アサーションはデバッグビルド時にしかチェックをせず、事前条件はデバッグとプロダクションの両方のビルドでチェックされます。プロダクションビルドでは、アサーションは評価されません。つまり、開発時にはアサーションを多用してもプロダクションのパフォーマンスに影響はありません。</p>
-<h3 id="アサーションを使ったデバッグdebugging-with-assertions"><a name="アサーションを使ったデバッグdebugging-with-assertions" class="plugin-anchor" href="#アサーションを使ったデバッグdebugging-with-assertions"><i class="fa fa-link" aria-hidden="true"></i></a><a id="debugging-with-assertions">アサーションを使ったデバッグ(Debugging with Assertions)</a></h3>
+<h3 id="アサーションを使ったデバッグdebugging-with-assertions"><a id="debugging-with-assertions">アサーションを使ったデバッグ(Debugging with Assertions)</a></h3>
 <p>Swift の標準ライブラリの <a href="https://developer.apple.com/documentation/swift/1541112-assert" target="_blank">assert(<em>:</em>:file:line:)</a>関数を呼ぶことでアサーションを書くことができます。<code>true</code> か <code>false</code> と評価される式と、<code>false</code> だった場合に出力するメッセージを式として渡すことができます。例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> age <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">3</span>
 <span class="token function">assert</span><span class="token punctuation">(</span>age <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">&quot;A person&apos;s age can&apos;t be less than zero.&quot;</span><span class="token punctuation">)</span>
@@ -1224,7 +1220,7 @@ serverResponseCode <span class="token operator">=</span> <span class="token cons
     <span class="token function">assertionFailure</span><span class="token punctuation">(</span><span class="token string">&quot;A person&apos;s age can&apos;t be less than zero.&quot;</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="事前条件を強制するenforcing-preconditions"><a name="事前条件を強制するenforcing-preconditions" class="plugin-anchor" href="#事前条件を強制するenforcing-preconditions"><i class="fa fa-link" aria-hidden="true"></i></a>事前条件を強制する(Enforcing Preconditions)</h3>
+<h3 id="事前条件を強制するenforcing-preconditions">事前条件を強制する(Enforcing Preconditions)</h3>
 <p><code>false</code> になる可能性があるものの、コードの実行を継続するためには<em>必ず</em> <code>true</code> にならなければならない条件に対しては、事前条件を使いましょう。例えば、subscript が範囲超えエラーを起こしていないかの確認や、適切な値を関数に渡しているかなどには、事前条件を使いましょう。</p>
 <p>事前条件は<a href="https://developer.apple.com/documentation/swift/1540960-precondition" target="_blank">precondition(<em>:</em>:file:line:)</a>関数を呼ぶことで、事前条件を書けます。<code>true</code> か <code>false</code> と評価される式と、<code>false</code> だった場合に出力するメッセージを式として渡すことができます。例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token comment">// subscript の実装内で</span>
@@ -1267,7 +1263,7 @@ serverResponseCode <span class="token operator">=</span> <span class="token cons
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"基本(The Basics)","level":"3.1","depth":1,"next":{"title":"基本演算子(Basic Operators)","level":"3.2","depth":1,"path":"language-guide-gaido/basic-operators.md","ref":"language-guide-gaido/basic-operators.md","articles":[]},"previous":{"title":"Swiftツアー(A Swift Tour)","level":"2.3","depth":1,"path":"welcome-to-swift-swiftheyoukoso/a-swift-tour.md","ref":"welcome-to-swift-swiftheyoukoso/a-swift-tour.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/the-basics.md","mtime":"2021-07-08T00:03:37.316Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"基本(The Basics)","level":"3.1","depth":1,"next":{"title":"基本演算子(Basic Operators)","level":"3.2","depth":1,"path":"language-guide-gaido/basic-operators.md","ref":"language-guide-gaido/basic-operators.md","articles":[]},"previous":{"title":"Swiftツアー(A Swift Tour)","level":"2.3","depth":1,"path":"welcome-to-swift-swiftheyoukoso/a-swift-tour.md","ref":"welcome-to-swift-swiftheyoukoso/a-swift-tour.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/the-basics.md","mtime":"2021-07-11T00:35:31.546Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

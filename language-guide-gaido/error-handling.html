@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,7 +748,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="エラー処理error-handling"><a name="エラー処理error-handling" class="plugin-anchor" href="#エラー処理error-handling"><i class="fa fa-link" aria-hidden="true"></i></a>エラー処理(Error Handling)</h1>
+                                <h1 id="エラー処理error-handling">エラー処理(Error Handling)</h1>
 <p>最終更新日: 2021/6/29</p>
 <p><em>エラー処理</em>は、プログラムのエラー状態に応答し、エラー状態から回復するプロセスです。Swift は、実行時に回復可能なエラーをスロー、キャッチ、伝播、および操作するための第一級クラスのサポートを提供します。</p>
 <p>一部の操作は、常に実行を完了したり、有益な出力をするとは限りません。オプショナルは値がないことを表すために使用されますが、操作が失敗した場合、コードがそれに応じて応答できるように、失敗の原因を理解しておくと役立つことがよくあります。</p>
@@ -760,7 +756,7 @@
 <blockquote>
 <p>NOTE<br>Swift のエラー処理は、Cocoa および Objective-C の NSError クラスを使用するエラー処理パターンと相互運用します。このクラスの詳細については、<a href="https://developer.apple.com/documentation/swift/cocoa_design_patterns/handling_cocoa_errors_in_swift" target="_blank">Handling Cocoa Errors in Swift</a>を参照ください。</p>
 </blockquote>
-<h2 id="エラーの表現とスローrepresenting-and-throwing-errors"><a name="エラーの表現とスローrepresenting-and-throwing-errors" class="plugin-anchor" href="#エラーの表現とスローrepresenting-and-throwing-errors"><i class="fa fa-link" aria-hidden="true"></i></a><a id="representing-and-throwing-errors">エラーの表現とスロー(Representing and Throwing Errors)</a></h2>
+<h2 id="エラーの表現とスローrepresenting-and-throwing-errors"><a id="representing-and-throwing-errors">エラーの表現とスロー(Representing and Throwing Errors)</a></h2>
 <p>Swift では、エラーは <code>Error</code> プロトコルに準拠した型の値によって表されます。この空のプロトコルは、エラー処理に型を使用できることを示します。</p>
 <p>Swift の列挙型は、関連するエラー条件のグループをモデル化するのに特に適しています。関連値を使用すると、エラーの性質に関する追加情報を伝達できます。例えば、ゲーム内で自動販売機を操作する場合のエラー状態を表す方法は次のとおりです。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">enum</span> <span class="token builtin">VendingMachineError</span><span class="token punctuation">:</span> <span class="token builtin">Error</span> <span class="token punctuation">{</span>
@@ -772,14 +768,14 @@
 <p>エラーをスローすると、予期しないことが発生し、通常の実行フローを続行できないことを示すことができます。エラーをスローするには、<code>throw</code> 文を使用します。例えば、次のコードはエラーをスローして、自動販売機で 5 枚の追加のコインが必要だということを示します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">throw</span> <span class="token builtin">VendingMachineError</span><span class="token punctuation">.</span><span class="token function">insufficientFunds</span><span class="token punctuation">(</span>coinsNeeded<span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">)</span>
 </code></pre>
-<h2 id="エラー処理handling-errors"><a name="エラー処理handling-errors" class="plugin-anchor" href="#エラー処理handling-errors"><i class="fa fa-link" aria-hidden="true"></i></a>エラー処理(Handling Errors)</h2>
+<h2 id="エラー処理handling-errors">エラー処理(Handling Errors)</h2>
 <p>エラーがスローされた場合、周囲のコードの一部がエラーを処理する必要があります。例えば、問題を修正する、別のアプローチを試みる、またはユーザにエラーを通知するなどです。</p>
 <p>Swift でエラーを処理する方法は 4 つあります。関数からその関数を呼び出すコードにエラーを伝播したり、<code>do-catch</code> 文を使用してエラーを処理したり、オプショナルの値としてエラーを処理したり、エラーが発生しないことをアサートしたりできます。各アプローチについては、以下のセクションで説明します。</p>
 <p>関数がエラーをスローすると、プログラムのフローが変わるため、エラーをスローする可能性のあるコード内の場所をすばやく特定できることが重要です。コード内のこれらの場所を特定するには、<code>try</code> キーワード (または <code>try?</code> または <code>try!</code>) をエラーをスローする可能性のある関数、メソッド、またはイニシャライザを呼び出すコードの前に置きます。これらのキーワードについては、以下のセクションで説明します。</p>
 <blockquote>
 <p>NOTE<br>Swift でのエラー処理は、他の言語での例外処理に似ており、<code>try</code>、<code>catch</code>、<code>throw</code> キーワードを使用しています。Objective-C を含む多くの言語の例外処理とは異なり、Swift でのエラー処理には、計算コストがかかる可能性のあるプロセスであるコールスタックの巻き戻しが含まれません。したがって、<code>throw</code> 文のパフォーマンスは、<code>return</code> 文のパフォーマンスに匹敵します。</p>
 </blockquote>
-<h3 id="スロー関数を使用したエラーの伝播propagating-errors-using-throwing-functions"><a name="スロー関数を使用したエラーの伝播propagating-errors-using-throwing-functions" class="plugin-anchor" href="#スロー関数を使用したエラーの伝播propagating-errors-using-throwing-functions"><i class="fa fa-link" aria-hidden="true"></i></a><a id="propagating-errors-using-throwing-functions">スロー関数を使用したエラーの伝播(Propagating Errors Using Throwing Functions)</a></h3>
+<h3 id="スロー関数を使用したエラーの伝播propagating-errors-using-throwing-functions"><a id="propagating-errors-using-throwing-functions">スロー関数を使用したエラーの伝播(Propagating Errors Using Throwing Functions)</a></h3>
 <p>関数、メソッド、またはイニシャライザがエラーをスローできることを示すには、関数の宣言のパラメータの後に <code>throws</code> キーワードを記述します。<code>throws</code> でマークされた関数は、<em>スロー</em>関数と呼ばれます。関数が戻り値の型を指定する戻り矢印 (<code>-&gt;</code>) の前に <code>throws</code> キーワードを記述します:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">canThrowErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span>
 
@@ -848,7 +844,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="do-catchを使ったエラー処理handling-errors-using-do-catch"><a name="do-catchを使ったエラー処理handling-errors-using-do-catch" class="plugin-anchor" href="#do-catchを使ったエラー処理handling-errors-using-do-catch"><i class="fa fa-link" aria-hidden="true"></i></a><a id="handling-errors-using-do-catch">do catchを使ったエラー処理(Handling Errors Using Do-Catch)</a></h3>
+<h3 id="do-catchを使ったエラー処理handling-errors-using-do-catch"><a id="handling-errors-using-do-catch">do catchを使ったエラー処理(Handling Errors Using Do-Catch)</a></h3>
 <p><code>do-catch</code> 文を使用して、コードブロックを実行することでエラーを処理します。<code>do</code> 句のコードによってエラーがスローされた場合、<code>catch</code> 句と照合され、エラーを処理できる <code>catch</code> 句を判断します。</p>
 <p><code>do-catch</code> 文の一般的な形式は次のとおりです:</p>
 <p><img src="../assets/17_errorHandling.png" alt="do catch文"></p>
@@ -899,7 +895,7 @@ vendingMachine<span class="token punctuation">.</span>coinsDeposited <span class
 <span class="token punctuation">}</span>
 </code></pre>
 <p><code>eat(item:)</code> 関数は、キャッチする自動販売機のエラーをリストし、そのエラーテキストはそのリスト内のアイテムに対応します。リストされている 3 つのエラーのいずれかがスローされた場合、この <code>catch</code> 句はメッセージを出力してそれらを処理します。その他のエラーは、後で追加される可能性のある自動販売機のエラーを含め、周囲のスコープに伝播されます。</p>
-<h3 id="エラーからオプショナル値への変換converting-errors-to-optional-values"><a name="エラーからオプショナル値への変換converting-errors-to-optional-values" class="plugin-anchor" href="#エラーからオプショナル値への変換converting-errors-to-optional-values"><i class="fa fa-link" aria-hidden="true"></i></a><a id="converting-errors-to-optional-values">エラーからオプショナル値への変換(Converting Errors to Optional Values)</a></h3>
+<h3 id="エラーからオプショナル値への変換converting-errors-to-optional-values"><a id="converting-errors-to-optional-values">エラーからオプショナル値への変換(Converting Errors to Optional Values)</a></h3>
 <p>エラーをオプショナルの値に変換して処理するには <code>try?</code> を使います。<code>try?</code> 式を評価中にエラーがスローされた場合、式の値は <code>nil</code> です。例えば、次のコードでは、<code>x</code> と <code>y</code> の値は挙動が同じです:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">someThrowingFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
     <span class="token comment">// ...</span>
@@ -922,12 +918,12 @@ vendingMachine<span class="token punctuation">.</span>coinsDeposited <span class
     <span class="token keyword">return</span> <span class="token constant">nil</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="エラーの伝播を抑えるdisabling-error-propagation"><a name="エラーの伝播を抑えるdisabling-error-propagation" class="plugin-anchor" href="#エラーの伝播を抑えるdisabling-error-propagation"><i class="fa fa-link" aria-hidden="true"></i></a>エラーの伝播を抑える(Disabling Error Propagation)</h3>
+<h3 id="エラーの伝播を抑えるdisabling-error-propagation">エラーの伝播を抑える(Disabling Error Propagation)</h3>
 <p>実際には、スローする関数またはメソッドが実行時にエラーをスローしないことがわかっている場合があります。そのような場合は、式の前に <code>try!</code> を記述してエラーの伝播を無効にし、エラーがスローされないという実行時アサーションで呼び出しをラップできます。エラーが実際にスローされると、実行時エラーが発生します。</p>
 <p>例えば、次のコードは <code>loadImage(atPath:)</code> 関数を使用しています。この関数は、指定されたパスで画像リソースを読み込むか、画像を読み込めない場合にエラーをスローします。この場合、イメージはアプリケーションに付属していて実行時にエラーがスローされないため、エラーの伝播を無効にするのが適切です。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> photo <span class="token operator">=</span> <span class="token keyword">try</span><span class="token operator">!</span> <span class="token function">loadImage</span><span class="token punctuation">(</span>atPath<span class="token punctuation">:</span> <span class="token string">&quot;./Resources/John Appleseed.jpg&quot;</span><span class="token punctuation">)</span>
 </code></pre>
-<h2 id="クリーンアップアクションの指定specifying-cleanup-actions"><a name="クリーンアップアクションの指定specifying-cleanup-actions" class="plugin-anchor" href="#クリーンアップアクションの指定specifying-cleanup-actions"><i class="fa fa-link" aria-hidden="true"></i></a>クリーンアップアクションの指定(Specifying Cleanup Actions)</h2>
+<h2 id="クリーンアップアクションの指定specifying-cleanup-actions">クリーンアップアクションの指定(Specifying Cleanup Actions)</h2>
 <p><code>defer</code> 文を使用して、コードの実行が現在のコードブロックを離れる直前に一連の文を実行します。この文を使用すると、エラーのスローや、<code>return</code>、<code>break</code> のような文など、現在のコードブロックを離れる方法に関係なく、必要なクリーンアップを実行できます。例えば、<code>defer</code> 文を使用して、ファイル記述子を閉じ、手動で割り当てられたメモリを解放することができます。</p>
 <p><code>defer</code> 文は、終了するまで現在のスコープの実行を延期します。この文は、<code>defer</code> キーワードと後で実行される文で構成されます。<code>defer</code> 文には、<code>break</code> や <code>return</code> 文など、またはエラーをスローするなど、文から制御を他に移すコードを含めることはできません <code>defer</code> 文は、ソースコードに記述された順序とは逆の順序で実行されます。つまり、最初の <code>defer</code> 文のコードは最後に実行され、2 番目の <code>defer</code> 文のコードは最後から 2 番目に実行されます。ソースコードの順序で最後の <code>defer</code> 文が最初に実行されます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">processFile</span><span class="token punctuation">(</span>filename<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token punctuation">{</span>
@@ -980,7 +976,7 @@ vendingMachine<span class="token punctuation">.</span>coinsDeposited <span class
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"エラー処理(Error Handling)","level":"3.17","depth":1,"next":{"title":"同時並行処理(Concurrency)","level":"3.18","depth":1,"path":"language-guide-gaido/concurrency.md","ref":"language-guide-gaido/concurrency.md","articles":[]},"previous":{"title":"オプショナルチェーン(Optional Chaining)","level":"3.16","depth":1,"path":"language-guide-gaido/optional-chaining.md","ref":"language-guide-gaido/optional-chaining.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/error-handling.md","mtime":"2021-07-11T00:21:09.767Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"エラー処理(Error Handling)","level":"3.17","depth":1,"next":{"title":"同時並行処理(Concurrency)","level":"3.18","depth":1,"path":"language-guide-gaido/concurrency.md","ref":"language-guide-gaido/concurrency.md","articles":[]},"previous":{"title":"オプショナルチェーン(Optional Chaining)","level":"3.16","depth":1,"path":"language-guide-gaido/optional-chaining.md","ref":"language-guide-gaido/optional-chaining.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/error-handling.md","mtime":"2021-07-11T00:21:09.767Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,11 +748,11 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="メソッド-methods"><a name="メソッド-methods" class="plugin-anchor" href="#メソッド-methods"><i class="fa fa-link" aria-hidden="true"></i></a>メソッド (Methods)</h1>
+                                <h1 id="メソッド-methods">メソッド (Methods)</h1>
 <p>最終更新日: 2021/6/28</p>
 <p>メソッドは、特定の型に紐づいた関数です。クラス、構造体、および列挙型は全て、インスタンスメソッドを定義できます。インスタンスメソッドは、特定の型のインスタンスを操作するための特定のタスクと機能をカプセル化します。クラス、構造体、および列挙型は、型自体に関連付けられている型メソッドを定義することもできます。型メソッドは、Objective-C のクラスメソッドに似ています。</p>
 <p>Swift で構造体と列挙型がメソッドを定義できることは、C 言語および Objective-C との大きな違いです。Objective-C では、クラスはメソッドを定義できる唯一の型です。Swift では、クラス、構造体、または列挙型の間で選択でき、作成した型のメソッドを柔軟に定義できます。</p>
-<h2 id="インスタンスメソッドinstance-methods"><a name="インスタンスメソッドinstance-methods" class="plugin-anchor" href="#インスタンスメソッドinstance-methods"><i class="fa fa-link" aria-hidden="true"></i></a>インスタンスメソッド(Instance Methods)</h2>
+<h2 id="インスタンスメソッドinstance-methods">インスタンスメソッド(Instance Methods)</h2>
 <p>インスタンスメソッドは、特定のクラス、構造体、または列挙型のインスタンスに属する関数です。それらは、インスタンスプロパティにアクセスしたり変更する方法を提供したり、インスタンスに関連する機能を提供することによって、そのインスタンスの機能をサポートします。<a href="functions.html">Functions(関数)</a>で説明されているように、インスタンスメソッドの構文は関数とまったく同じです。</p>
 <p>インスタンスメソッドは、それが属する型の開き括弧(<code>{</code>)と閉じ括弧(<code>}</code>)内に記述します。インスタンスメソッドは、その型の他の全てのインスタンスメソッドおよびプロパティに暗黙的にアクセスできます。インスタンスメソッドは、それが属する型の特定のインスタンスでのみ呼び出すことができます。既存のインスタンスがなければ、単独で呼び出すことはできません。</p>
 <p>アクションが発生した回数をカウントするために使用できる、シンプルな <code>Counter</code> クラスを定義する例を次に示します:</p>
@@ -790,8 +786,8 @@ counter<span class="token punctuation">.</span><span class="token function">incr
 counter<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token comment">// counter の値は 0</span>
 </code></pre>
-<p><a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/functions#function-argument-labels-and-parameter-names" target="_blank">Function Argument Labels and Parameter Names(引数ラベルとパラメータ名)</a>で説明されているように、関数パラメータは、(関数の本文内で使用する)名前と(関数を呼び出すときに使用する)引数ラベルの両方を持つことができます。メソッドは型に紐づいた関数にすぎないため、メソッドパラメータについても同じことが言えます。</p>
-<h3 id="self-プロパティthe-self-property"><a name="self-プロパティthe-self-property" class="plugin-anchor" href="#self-プロパティthe-self-property"><i class="fa fa-link" aria-hidden="true"></i></a>self プロパティ(The self Property)</h3>
+<p><a href="functions#function-argument-labels-and-parameter-names">Function Argument Labels and Parameter Names(引数ラベルとパラメータ名)</a>で説明されているように、関数パラメータは、(関数の本文内で使用する)名前と(関数を呼び出すときに使用する)引数ラベルの両方を持つことができます。メソッドは型に紐づいた関数にすぎないため、メソッドパラメータについても同じことが言えます。</p>
+<h3 id="self-プロパティthe-self-property">self プロパティ(The self Property)</h3>
 <p>型の全てのインスタンスには、インスタンスそれ自体を表す <code>self</code> と呼ばれる暗黙のプロパティがあります。自身のインスタンスメソッド内で現在のインスタンスを参照するには、<code>self</code> プロパティを使用します。</p>
 <p>上記の例の <code>increment()</code> メソッドは、次のように記述できます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -814,7 +810,7 @@ counter<span class="token punctuation">.</span><span class="token function">rese
 <span class="token comment">// &quot;This point is to the right of the line where x == 1.0&quot;</span>
 </code></pre>
 <p><code>self</code> プレフィックスがない場合、Swift は両方の <code>x</code> をメソッドパラメータを参照していると見なします。</p>
-<h3 id="インスタンスメソッド内からの値型の変更modifying-value-types-from-within-instance-methods"><a name="インスタンスメソッド内からの値型の変更modifying-value-types-from-within-instance-methods" class="plugin-anchor" href="#インスタンスメソッド内からの値型の変更modifying-value-types-from-within-instance-methods"><i class="fa fa-link" aria-hidden="true"></i></a><a id="modifying-value-types-from-within-instance-methods">インスタンスメソッド内からの値型の変更(Modifying Value Types from Within Instance Methods)</a></h3>
+<h3 id="インスタンスメソッド内からの値型の変更modifying-value-types-from-within-instance-methods"><a id="modifying-value-types-from-within-instance-methods">インスタンスメソッド内からの値型の変更(Modifying Value Types from Within Instance Methods)</a></h3>
 <p>構造体と列挙型は値型です。デフォルトでは、値型のプロパティはそのインスタンスメソッド内から変更できません。</p>
 <p>ただし、特定のメソッド内で構造体または列挙型のプロパティを変更する必要がある場合に、そのメソッドに <em>mutating</em> な挙動を認めることができます。こうすることでメソッドはプロパティを変更できるようになり、メソッドが行った変更は、メソッドの終了時に元の構造体に書き戻されます。このメソッドは、新しいインスタンスを暗黙的な <code>self</code> プロパティに割り当てることもでき、メソッドが終了すると、既存のインスタンスはこの新しいインスタンスに置き換えられます。</p>
 <p>この挙動を可能にするには、そのメソッドの <code>func</code> キーワードの前に <code>mutating</code> キーワードを配置します:</p>
@@ -831,12 +827,12 @@ somePoint<span class="token punctuation">.</span><span class="token function">mo
 <span class="token comment">// &quot;The point is now at (3.0, 4.0)&quot;</span>
 </code></pre>
 <p>上記の <code>Point</code> 構造体は、自身に変更を加える <code>moveBy(x:y:)</code> メソッドを定義します。これは、<code>Point</code> インスタンスを一定量移動します。新しいポイントを返す代わりに、呼び出されたポイントを実際に変更します。プロパティを変更できるようにするために、<code>mutating</code> キーワードがその定義に追加されてます。</p>
-<p><a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#stored-properties-of-constant-structure-instances" target="_blank">Stored Properties of Constant Structure Instances(定数の格納インスタンスのプロパティ)</a>で説明されているように、構造体の定数内の変数プロパティを変更できないため、構造体の定数で変更メソッドを呼び出すことはできないことに注意してください。</p>
+<p><a href="properties#stored-properties-of-constant-structure-instances">Stored Properties of Constant Structure Instances(定数の格納インスタンスのプロパティ)</a>で説明されているように、構造体の定数内の変数プロパティを変更できないため、構造体の定数で変更メソッドを呼び出すことはできないことに注意してください。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> fixedPoint <span class="token operator">=</span> <span class="token function">Point</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token number">3.0</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">3.0</span><span class="token punctuation">)</span>
 fixedPoint<span class="token punctuation">.</span><span class="token function">moveBy</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token number">2.0</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">3.0</span><span class="token punctuation">)</span>
 <span class="token comment">// エラーが出力されます</span>
 </code></pre>
-<h3 id="mutating-メソッド内からselfへの値の割り当てassigning-to-self-within-a-mutating-method"><a name="mutating-メソッド内からselfへの値の割り当てassigning-to-self-within-a-mutating-method" class="plugin-anchor" href="#mutating-メソッド内からselfへの値の割り当てassigning-to-self-within-a-mutating-method"><i class="fa fa-link" aria-hidden="true"></i></a>mutating メソッド内からselfへの値の割り当て(Assigning to self Within a Mutating Method)</h3>
+<h3 id="mutating-メソッド内からselfへの値の割り当てassigning-to-self-within-a-mutating-method">mutating メソッド内からselfへの値の割り当て(Assigning to self Within a Mutating Method)</h3>
 <p>メソッドを変更すると、まったく新しいインスタンスを暗黙的な <code>self</code> プロパティに割り当てることができます。上記の <code>Point</code> の例は、代わりに次のように記述できます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">Point</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token number">0.0</span>
@@ -867,7 +863,7 @@ ovenLight<span class="token punctuation">.</span><span class="token function">ne
 <span class="token comment">// ovenLight は .off</span>
 </code></pre>
 <p>この例では、スイッチの 3 つの状態を列挙型で定義しています。スイッチは、<code>next()</code> メソッドが呼び出されるたびに、3 つの異なる電源状態(<code>off</code>、<code>low</code> と <code>high</code>)を切り替えます。</p>
-<h3 id="型メソッドtype-methods"><a name="型メソッドtype-methods" class="plugin-anchor" href="#型メソッドtype-methods"><i class="fa fa-link" aria-hidden="true"></i></a>型メソッド(Type Methods)</h3>
+<h3 id="型メソッドtype-methods">型メソッド(Type Methods)</h3>
 <p>上で説明したように、インスタンスメソッドは、特定の型のインスタンスで呼び出すメソッドです。型自体で呼び出されるメソッドを定義することもできます。このようなメソッドは<em>型メソッド</em>と呼ばれます。メソッドの <code>func</code> キーワードの前に <code>static</code> キーワードを記述して、型メソッドを示します。クラスは代わりに <code>class</code> キーワードを使用して、サブクラスがそのメソッドのスーパークラスの実装をオーバーライドできるようにすることができます。</p>
 <blockquote>
 <p>NOTE<br>Objective-C では、クラスに対してのみ型レベルのメソッドを定義できます。Swift では、全てのクラス、構造体、および列挙型に対して型レベルのメソッドを定義できます。各型メソッドは、サポートする型に明示的にスコープされます。</p>
@@ -973,7 +969,7 @@ player<span class="token punctuation">.</span><span class="token function">compl
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"メソッド(Methods)","level":"3.11","depth":1,"next":{"title":"サブスクリプト(Subscripts)","level":"3.12","depth":1,"path":"language-guide-gaido/subscripts.md","ref":"language-guide-gaido/subscripts.md","articles":[]},"previous":{"title":"プロパティ(Properties)","level":"3.10","depth":1,"path":"language-guide-gaido/properties.md","ref":"language-guide-gaido/properties.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/methods.md","mtime":"2021-07-08T00:01:10.829Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"メソッド(Methods)","level":"3.11","depth":1,"next":{"title":"サブスクリプト(Subscripts)","level":"3.12","depth":1,"path":"language-guide-gaido/subscripts.md","ref":"language-guide-gaido/subscripts.md","articles":[]},"previous":{"title":"プロパティ(Properties)","level":"3.10","depth":1,"path":"language-guide-gaido/properties.md","ref":"language-guide-gaido/properties.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/methods.md","mtime":"2021-07-11T00:35:31.416Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

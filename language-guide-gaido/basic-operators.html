@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,13 +748,13 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="基本演算子basic-operators"><a name="基本演算子basic-operators" class="plugin-anchor" href="#基本演算子basic-operators"><i class="fa fa-link" aria-hidden="true"></i></a>基本演算子(Basic Operators)</h1>
+                                <h1 id="基本演算子basic-operators">基本演算子(Basic Operators)</h1>
 <p>最終更新日: 2021/6/27</p>
 <p><em>演算子</em>は、値のチェックや変更、合成するために使われる特殊な記号や用語です。例えば、加算演算子(<code>+</code>)は <code>let i = 1 + 2</code> のように 2 つの数値を足します。論理 AND 演算子(<code>&amp;&amp;</code>)は、<code>if enteredDoorCode &amp;&amp; passedRetinaScan</code> のように 2 つのブール値を組み合わせます。</p>
-<p>Swift は、C 言語のような他の言語でおそらく見たことがある演算子をサポートするのに加え、よく起きるコーディング中のエラーを防ぐために改良を加えています。代入演算子(<code>=</code>)を、本当は等価演算子(<code>==</code>)を使おうと思っていた所へ間違って使えなくするために、値を返しません。算術演算子(<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code> など)は、保持している値の型の許容範囲を超えて予期せぬ結果が起きることを防ぐために、オーバーフローを検知して発生しないようにしています。Swift のオーバーフロー演算子を使用することで、オーバーフローに対する挙動を変えることもできます。詳細は<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#overflow-operators" target="_blank">Overflow Operators(オーバーフロー演算子)</a>に記載しています。</p>
+<p>Swift は、C 言語のような他の言語でおそらく見たことがある演算子をサポートするのに加え、よく起きるコーディング中のエラーを防ぐために改良を加えています。代入演算子(<code>=</code>)を、本当は等価演算子(<code>==</code>)を使おうと思っていた所へ間違って使えなくするために、値を返しません。算術演算子(<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code> など)は、保持している値の型の許容範囲を超えて予期せぬ結果が起きることを防ぐために、オーバーフローを検知して発生しないようにしています。Swift のオーバーフロー演算子を使用することで、オーバーフローに対する挙動を変えることもできます。詳細は<a href="advanced-operators#overflow-operators">Overflow Operators(オーバーフロー演算子)</a>に記載しています。</p>
 <p>また、C 言語にはなかった <code>a..&lt;b</code> や <code>a...b</code> のような値の範囲を簡単に表すための範囲演算子も提供しています。</p>
 <p>この章では、Swift の基本的な演算子について記載します。<a href="advanced-operators.html">Advanced Operators(高度な演算子)</a>ではより応用的な演算子をカバーしており、独自に作成できるカスタム演算子や、独自で定義した型へ Swift が用意している標準の演算子を実装する方法を記載しています。</p>
-<h2 id="用語terminology"><a name="用語terminology" class="plugin-anchor" href="#用語terminology"><i class="fa fa-link" aria-hidden="true"></i></a>用語(Terminology)</h2>
+<h2 id="用語terminology">用語(Terminology)</h2>
 <p>演算子は単項(<code>unary</code>)、二項(<code>binary</code>)、三項(<code>ternary</code>)があります。</p>
 <ul>
 <li>単項演算子は、<code>-a</code> のような単一のターゲットで動作します。前置(<code>prefix</code>)演算子は <code>!b</code> のようにターゲットの直前に置かれ、後置(<code>postfix</code>)演算子は <code>c!</code> のようにターゲットの直後に置かれます</li>
@@ -766,7 +762,7 @@
 <li>三項演算子は、3 つの値をターゲットとした演算子です。C 言語と同様に、Swift は 1 つの三項演算子、三項条件演算子しかありません(<code>a ? b : c</code>)</li>
 </ul>
 <p>演算子が影響を与える値は、オペランドと呼ばれます。<code>1 + 2</code> という式は、<code>+</code> が二項演算子で <code>1</code> と <code>2</code> がオペランドです。</p>
-<h2 id="代入演算子assignment-operator"><a name="代入演算子assignment-operator" class="plugin-anchor" href="#代入演算子assignment-operator"><i class="fa fa-link" aria-hidden="true"></i></a>代入演算子(Assignment Operator)</h2>
+<h2 id="代入演算子assignment-operator">代入演算子(Assignment Operator)</h2>
 <p><em>代入演算子</em>は、例えば <code>a = b</code> とすると、<code>a</code> の値を <code>b</code> の値で初期化、または更新します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token number">10</span>
 <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">5</span>
@@ -783,7 +779,7 @@ a <span class="token operator">=</span> b
 <span class="token punctuation">}</span>
 </code></pre>
 <p>この特徴から代入演算子(<code>=</code>)を等価演算子(<code>==</code>)と間違えて使用することを防げます。上記の例では、<code>if x = y</code> はコンパイルエラーになります。</p>
-<h2 id="算術演算子arithmetic-operators"><a name="算術演算子arithmetic-operators" class="plugin-anchor" href="#算術演算子arithmetic-operators"><i class="fa fa-link" aria-hidden="true"></i></a>算術演算子(Arithmetic Operators)</h2>
+<h2 id="算術演算子arithmetic-operators">算術演算子(Arithmetic Operators)</h2>
 <p>Swift は全ての数値型に対して 4 つの基本的な<em>算術演算子</em>をサポートしています。</p>
 <ul>
 <li>加算(<code>+</code>)</li>
@@ -796,11 +792,11 @@ a <span class="token operator">=</span> b
 <span class="token number">2</span> <span class="token operator">*</span> <span class="token number">3</span>       <span class="token comment">// 6</span>
 <span class="token number">10.0</span> <span class="token operator">/</span> <span class="token number">2.5</span>  <span class="token comment">// 4.0</span>
 </code></pre>
-<p>C 言語や Objective-C と異なり、Swift はデフォルトでオーバーフローはできません。<code>a &amp;+ b</code> のようにオーバーフロー演算子(<code>&amp;-</code>)を使用してオーバーフローさせることができます。詳細は<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#overflow-operators" target="_blank">Overflow Operators(オーバーフロー演算子)</a>を参照ください。</p>
+<p>C 言語や Objective-C と異なり、Swift はデフォルトでオーバーフローはできません。<code>a &amp;+ b</code> のようにオーバーフロー演算子(<code>&amp;-</code>)を使用してオーバーフローさせることができます。詳細は<a href="advanced-operators#overflow-operators">Overflow Operators(オーバーフロー演算子)</a>を参照ください。</p>
 <p>加算演算子は <code>String</code> の連結もすることができます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token string">&quot;hello, &quot;</span> <span class="token operator">+</span> <span class="token string">&quot;world&quot;</span>  <span class="token comment">// &quot;hello, world&quot;</span>
 </code></pre>
-<h3 id="剰余演算子remainder-operator"><a name="剰余演算子remainder-operator" class="plugin-anchor" href="#剰余演算子remainder-operator"><i class="fa fa-link" aria-hidden="true"></i></a>剰余演算子(Remainder Operator)</h3>
+<h3 id="剰余演算子remainder-operator">剰余演算子(Remainder Operator)</h3>
 <p><code>a % b</code> のような剰余演算子は、<code>a</code> の中に <code>b</code> がどのくらい含まれているのかを計算し、その(<em>剰余</em>と呼ばれる)余った値を返します。</p>
 <blockquote>
 <p>NOTE<br>剰余演算子(<code>%</code>)は、他の言語ではモジュロ演算子とも呼ばれています。しかし、厳密に言うと、負数に対するSwiftの挙動は、モジュロ演算ではなく剰余演算を行います。</p>
@@ -823,20 +819,20 @@ a <span class="token operator">=</span> b
 <p><code>-9 = (4 x -2) + -1</code></p>
 <p><code>-1</code> という剰余値を得られます。</p>
 <p><code>b</code> の位置に負数を入れても、その負の記号は無視されます。つまり、<code>a % b</code> と <code>a % -b</code> は常に同じ結果が得られます。</p>
-<h3 id="単項減算演算子unary-minus-operator"><a name="単項減算演算子unary-minus-operator" class="plugin-anchor" href="#単項減算演算子unary-minus-operator"><i class="fa fa-link" aria-hidden="true"></i></a>単項減算演算子(Unary Minus Operator)</h3>
+<h3 id="単項減算演算子unary-minus-operator">単項減算演算子(Unary Minus Operator)</h3>
 <p>数値の記号は、前置の <code>-</code> を使用して切り替えることができます。これは<em>単項減算演算子</em>と呼ばれます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> three <span class="token operator">=</span> <span class="token number">3</span>
 <span class="token keyword">let</span> minusThree <span class="token operator">=</span> <span class="token operator">-</span>three       <span class="token comment">// minusThree は -3</span>
 <span class="token keyword">let</span> plusThree <span class="token operator">=</span> <span class="token operator">-</span>minusThree   <span class="token comment">// plusThree は 3(&quot;マイナスマイナス3&quot;)</span>
 </code></pre>
 <p>単項減算演算子(<code>-</code>)は、操作する値の直前にスペースなしで付けます。</p>
-<h3 id="単項加算演算子unary-plus-operator"><a name="単項加算演算子unary-plus-operator" class="plugin-anchor" href="#単項加算演算子unary-plus-operator"><i class="fa fa-link" aria-hidden="true"></i></a>単項加算演算子(Unary Plus Operator)</h3>
+<h3 id="単項加算演算子unary-plus-operator">単項加算演算子(Unary Plus Operator)</h3>
 <p><em>単項加算演算子</em>(<code>+</code>)は、何も変えずに操作した値を返します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> minusSix <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">6</span>
 <span class="token keyword">let</span> alsoMinusSix <span class="token operator">=</span> <span class="token operator">+</span>minusSix  <span class="token comment">// alsoMinusSix は -6</span>
 </code></pre>
 <p>単項加算演算子は何もしませんが、負数に単項減算演算子を使用している場合、その対称として正数に単項加算演算子を使用することもできます。</p>
-<h2 id="複合代入演算子compound-assignment-operators"><a name="複合代入演算子compound-assignment-operators" class="plugin-anchor" href="#複合代入演算子compound-assignment-operators"><i class="fa fa-link" aria-hidden="true"></i></a>複合代入演算子(Compound Assignment Operators)</h2>
+<h2 id="複合代入演算子compound-assignment-operators">複合代入演算子(Compound Assignment Operators)</h2>
 <p>C 言語と同様に、Swift の<em>複合代入演算子</em>は、代入演算子(<code>=</code>)と他の演算子を組み合わせることができます。1 つの例として、加算代入演算子(<code>+=</code>)があります:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span>
 a <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">2</span>
@@ -847,7 +843,7 @@ a <span class="token operator">+</span><span class="token operator">=</span> <sp
 <p>NOTE<br>複合代入演算子は値を返しません。例えば、<code>let b = a += 2</code> と書くことはできません。</p>
 </blockquote>
 <p>Swift の標準ライブラリで提供している演算子については、<a href="https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations" target="_blank">Operator Declarations(演算子宣言)</a>を参照ください。</p>
-<h2 id="比較演算子comparison-operators"><a name="比較演算子comparison-operators" class="plugin-anchor" href="#比較演算子comparison-operators"><i class="fa fa-link" aria-hidden="true"></i></a><a id="comparison-operators">比較演算子(Comparison Operators)</a></h2>
+<h2 id="比較演算子comparison-operators"><a id="comparison-operators">比較演算子(Comparison Operators)</a></h2>
 <p>Swift は、次の比較演算子をサポートしています。</p>
 <ul>
 <li>等価演算子(<code>a == b</code>)</li>
@@ -858,7 +854,7 @@ a <span class="token operator">+</span><span class="token operator">=</span> <sp
 <li>等しいかそれ以下(<code>a &lt;= b</code>)</li>
 </ul>
 <blockquote>
-<p>NOTE<br>Swift では、2つの恒等作用素(<code>===</code> と <code>!==</code>)も提供しています。これは2つのオブジェクトが同じインスタンスを参照しているかどうかの確認ができます。より詳細は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#identity-operators" target="_blank">Identity Operators(恒等作用素)</a>を参照ください。</p>
+<p>NOTE<br>Swift では、2つの恒等作用素(<code>===</code> と <code>!==</code>)も提供しています。これは2つのオブジェクトが同じインスタンスを参照しているかどうかの確認ができます。より詳細は、<a href="structures-and-classes#identity-operators">Identity Operators(恒等作用素)</a>を参照ください。</p>
 </blockquote>
 <p>それぞれの比較演算子は、そのステートメントが <code>true</code> かどうかのブール値を返します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token number">1</span> <span class="token operator">==</span> <span class="token number">1</span>   <span class="token comment">// 1 は 1 と等しいなので true</span>
@@ -890,7 +886,7 @@ a <span class="token operator">+</span><span class="token operator">=</span> <sp
 <blockquote>
 <p>NOTE<br>Swift の標準ライブラリは 要素数が 7 つ以下のタプルの演算子を提供しています。7 つ以上の要素数のタプルへは自身で実装しなければなりません。</p>
 </blockquote>
-<h2 id="三項条件演算子ternary-conditional-operator"><a name="三項条件演算子ternary-conditional-operator" class="plugin-anchor" href="#三項条件演算子ternary-conditional-operator"><i class="fa fa-link" aria-hidden="true"></i></a><a id="basic-operator-ternary-conditional-operator">三項条件演算子(Ternary Conditional Operator)</a></h2>
+<h2 id="三項条件演算子ternary-conditional-operator"><a id="basic-operator-ternary-conditional-operator">三項条件演算子(Ternary Conditional Operator)</a></h2>
 <p><em>三項条件演算子</em>は、<code>question ? answer1 : answer2</code> という形式の、3 つの部分を持った特別な演算子です。これは、<code>question</code> が <code>true</code> か <code>false</code> かを基に 2 つの式のどちらかを評価するショートカットです。<code>question</code> が <code>true</code> ならば、<code>answer1</code> が評価され、<code>false</code> だと <code>answer2</code> が評価されます。</p>
 <p>三項条件演算子は下記のコードのショートカットです。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> question <span class="token punctuation">{</span>
@@ -918,7 +914,7 @@ a <span class="token operator">+</span><span class="token operator">=</span> <sp
 </code></pre>
 <p>最初の例では三項条件演算子を使用して 1 行で <code>rowHeight</code> を設定でき、2 つ目の例よりもより簡潔になっています。</p>
 <p>三項条件演算子は 2 つの式のどちらが使われるのかを決める効率的なショートカットです。しかし、三項条件演算子にも注意が必要です。あまり使いすぎると可読性を損なう場合もあります。複数の三項条件演算子を 1 つのステートメントに含めることは避けましょう。</p>
-<h2 id="nil-合体演算子nil-coalescing-operator"><a name="nil-合体演算子nil-coalescing-operator" class="plugin-anchor" href="#nil-合体演算子nil-coalescing-operator"><i class="fa fa-link" aria-hidden="true"></i></a><a id="nilcoalescing-operator">nil 合体演算子(Nil-Coalescing Operator)</a></h2>
+<h2 id="nil-合体演算子nil-coalescing-operator"><a id="nilcoalescing-operator">nil 合体演算子(Nil-Coalescing Operator)</a></h2>
 <p><code>(a ?? b)</code> の <em>nil 合体演算子</em>は、オプショナルの <code>a</code> にもし値が存在すれば <code>a</code> をアンラップし、<code>a</code> が <code>nil</code> の場合は <code>b</code> をデフォルトとして返します。式 <code>a</code> は常にオプショナル型です。式 <code>b</code> は <code>a</code> が内包する値の型と一致していなけばなりません。</p>
 <p>nil 合体演算子は下記のコードのショートカットです。</p>
 <pre class="language-"><code class="lang-swift">a <span class="token operator">!=</span> <span class="token constant">nil</span> <span class="token operator">?</span> a<span class="token operator">!</span> <span class="token punctuation">:</span> b
@@ -940,9 +936,9 @@ a <span class="token operator">+</span><span class="token operator">=</span> <sp
 colorNameToUse <span class="token operator">=</span> userDefinedColorName <span class="token operator">?</span><span class="token operator">?</span> defaultColorName
 <span class="token comment">// userDefinedColorName は nil ではないので、 colorNameToUse の &quot;green&quot; が設定されます</span>
 </code></pre>
-<h2 id="範囲演算子range-operators"><a name="範囲演算子range-operators" class="plugin-anchor" href="#範囲演算子range-operators"><i class="fa fa-link" aria-hidden="true"></i></a><a id="range-operators">範囲演算子(Range Operators)</a></h2>
+<h2 id="範囲演算子range-operators"><a id="range-operators">範囲演算子(Range Operators)</a></h2>
 <p>Swift は、値の範囲を表すショートカットとして複数の<em>範囲演算子</em>を提供しています。</p>
-<h3 id="閉範囲演算子closed-range-operator"><a name="閉範囲演算子closed-range-operator" class="plugin-anchor" href="#閉範囲演算子closed-range-operator"><i class="fa fa-link" aria-hidden="true"></i></a>閉範囲演算子(Closed Range Operator)</h3>
+<h3 id="閉範囲演算子closed-range-operator">閉範囲演算子(Closed Range Operator)</h3>
 <p><code>a...b</code> は、<code>a</code> から <code>b</code> までの連続した、<code>a</code> も <code>b</code> も含んだ範囲を定義します。<code>a</code> を <code>b</code> よりも大きい値にしてはいけません。</p>
 <p>閉範囲演算子は、必要な全ての値を範囲に含め、繰り返し処理を行うときに有用です。例えば <code>for-in</code> ループでは:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> index <span class="token keyword">in</span> <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">5</span> <span class="token punctuation">{</span>
@@ -955,7 +951,7 @@ colorNameToUse <span class="token operator">=</span> userDefinedColorName <span 
 <span class="token comment">// 5 times 5 is 25</span>
 </code></pre>
 <p><code>for-in</code> ループについては、<a href="control-flow.html">Control FLow(制御フロー)</a>を参照ください。</p>
-<h3 id="半開範囲演算子half-open-range-operator"><a name="半開範囲演算子half-open-range-operator" class="plugin-anchor" href="#半開範囲演算子half-open-range-operator"><i class="fa fa-link" aria-hidden="true"></i></a><a id="halfopen-range-operator">半開範囲演算子(Half-Open Range Operator)</a></h3>
+<h3 id="半開範囲演算子half-open-range-operator"><a id="halfopen-range-operator">半開範囲演算子(Half-Open Range Operator)</a></h3>
 <p><code>a..&lt;b</code> のような<em>半開範囲演算子</em>は、<code>a</code> から <code>b</code> まで連続しているものの <code>b</code> は含まない範囲を定義します。<code>a</code> を <code>b</code> よりも大きい値にしてはいけません。<code>a</code> と <code>b</code> が等しい場合、範囲は空になります。</p>
 <p>半開範囲演算子は、配列などの 0 ベースのリストで特に有用です。例えば、リストの要素数に順番にアクセスする場合などあります:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Anna&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Alex&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Brian&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Jack&quot;</span><span class="token punctuation">]</span>
@@ -968,8 +964,8 @@ colorNameToUse <span class="token operator">=</span> userDefinedColorName <span 
 <span class="token comment">// Person 3 is called Brian</span>
 <span class="token comment">// Person 4 is called Jack</span>
 </code></pre>
-<p>この配列は 4 つの要素が含まれていますが、<code>0..&lt;count</code> は半開範囲演算子なので <code>3</code>(配列の最後のインデックス)までしかカウントしないことに注目してください。配列については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/collection-types#arrays" target="_blank">Arrays(配列)</a>を参照ください。</p>
-<h3 id="片側範囲演算子one-sided-ranges"><a name="片側範囲演算子one-sided-ranges" class="plugin-anchor" href="#片側範囲演算子one-sided-ranges"><i class="fa fa-link" aria-hidden="true"></i></a>片側範囲演算子(One-Sided Ranges)</h3>
+<p>この配列は 4 つの要素が含まれていますが、<code>0..&lt;count</code> は半開範囲演算子なので <code>3</code>(配列の最後のインデックス)までしかカウントしないことに注目してください。配列については、<a href="collection-types#arrays">Arrays(配列)</a>を参照ください。</p>
+<h3 id="片側範囲演算子one-sided-ranges">片側範囲演算子(One-Sided Ranges)</h3>
 <p>閉範囲演算子は、1 つの方向へ可能な限り続く範囲に対して違った形式で書くことができます。例えば、ある配列のインデックス 2 から配列の最後までの要素を含んだ範囲などがこれに当たります。これらの場合では、範囲演算子の片方の値を省略できます。この種類の範囲は、片方しか値を持たないので、<em>片側範囲</em>と呼ばれています。例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> name <span class="token keyword">in</span> names<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
@@ -997,14 +993,14 @@ range<span class="token punctuation">.</span><span class="token function">contai
 range<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>   <span class="token comment">// true</span>
 range<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment">// true</span>
 </code></pre>
-<h2 id="論理演算子logical-operators"><a name="論理演算子logical-operators" class="plugin-anchor" href="#論理演算子logical-operators"><i class="fa fa-link" aria-hidden="true"></i></a>論理演算子(Logical Operators)</h2>
+<h2 id="論理演算子logical-operators">論理演算子(Logical Operators)</h2>
 <p><em>論理演算子</em>は、ブール論理値の <code>true</code> と <code>false</code> を変更したり、組み合わせたりします。Swift では、C ベースの言語にもある 3 つの標準の論理演算子をサポートしています。</p>
 <ul>
 <li>否定 NOT (<code>!a</code>)</li>
 <li>論理積 AND (<code>a &amp;&amp; b</code>)</li>
 <li>論理和 OR (<code>a || b</code>)</li>
 </ul>
-<h3 id="論理否定演算子logical-not-operator"><a name="論理否定演算子logical-not-operator" class="plugin-anchor" href="#論理否定演算子logical-not-operator"><i class="fa fa-link" aria-hidden="true"></i></a>論理否定演算子(Logical NOT Operator)</h3>
+<h3 id="論理否定演算子logical-not-operator">論理否定演算子(Logical NOT Operator)</h3>
 <p><code>!a</code> のような<em>論理否定演算子</em>は、<code>true</code> を <code>false</code> に、<code>false</code> を <code>true</code> にブール値を反転させます。</p>
 <p>論理否定演算子は、操作する値の直前にスペースなしで付けます。次の例では、「<code>a</code> ではない」と読み取れます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> allowedEntry <span class="token operator">=</span> <span class="token boolean">false</span>
@@ -1015,7 +1011,7 @@ range<span class="token punctuation">.</span><span class="token function">contai
 </code></pre>
 <p><code>if !allowedEntry</code> は「もし許可されたエントリでなければ」と読み取れます。次の行は、「もし許可されたエントリでなければ」が <code>true</code> だった場合のみ実行されます。つまり、<code>if allowedEntry</code> は <code>false</code> です。</p>
 <p>この例では、Bool 型の定数と変数の名前を注意深く選択していることで、コードの可読性や簡潔さを保つことができてます。(二重否定や複合式を避けるなど)</p>
-<h3 id="論理積演算子logical-and-operator"><a name="論理積演算子logical-and-operator" class="plugin-anchor" href="#論理積演算子logical-and-operator"><i class="fa fa-link" aria-hidden="true"></i></a>論理積演算子(Logical AND Operator)</h3>
+<h3 id="論理積演算子logical-and-operator">論理積演算子(Logical AND Operator)</h3>
 <p><code>a &amp;&amp; b</code> のような<em>論理積演算子</em>は、両方の値が <code>true</code> の場合に、全体の式も <code>true</code> になる論理式を作ります。</p>
 <p>もしどちらかが <code>false</code> ならば、全体の式は <code>false</code> になります。実際、最初の値が <code>false</code> ならば、既に全体の式が <code>false</code> だと分かっているため、次の値は評価されません。これは短絡評価と呼ばれています。</p>
 <p>この例は、2 つのブール値を検討し、両方の値が <code>true</code> の場合のみ、アクセスを許可します。</p>
@@ -1028,7 +1024,7 @@ range<span class="token punctuation">.</span><span class="token function">contai
 <span class="token punctuation">}</span>
 <span class="token comment">// &quot;ACCESS DENIED&quot;</span>
 </code></pre>
-<h3 id="論理和演算子logical-or-operator"><a name="論理和演算子logical-or-operator" class="plugin-anchor" href="#論理和演算子logical-or-operator"><i class="fa fa-link" aria-hidden="true"></i></a>論理和演算子(Logical OR Operator)</h3>
+<h3 id="論理和演算子logical-or-operator">論理和演算子(Logical OR Operator)</h3>
 <p><code>a || b</code> のような<em>論理和演算子</em>は、2 つの連続したバーティカルバー(<code>||</code>)を使った中置演算子です。片方の値が <code>true</code> の場合に、全体の式も <code>true</code> になる論理式を作ります。</p>
 <p>論理積と同様に、論理和は式を検討するときに短絡評価を使います。論理和の左側が <code>true</code> ならば、既に全体の式も <code>true</code> と分かっているので、右側は評価されません。</p>
 <p>下記の例では、最初の <code>Bool</code> 値(<code>hasDoorKey</code>)は <code>false</code> ですが、2 番目の値(<code>knowsOverridePassword</code>)は <code>true</code> です。片方が <code>true</code> なので、全体の式も <code>true</code> になり、アクセスは許可されます:</p>
@@ -1041,7 +1037,7 @@ range<span class="token punctuation">.</span><span class="token function">contai
 <span class="token punctuation">}</span>
 <span class="token comment">// &quot;Welcome!&quot;</span>
 </code></pre>
-<h3 id="論理演算子の合成combining-logical-operators"><a name="論理演算子の合成combining-logical-operators" class="plugin-anchor" href="#論理演算子の合成combining-logical-operators"><i class="fa fa-link" aria-hidden="true"></i></a>論理演算子の合成(Combining Logical Operators)</h3>
+<h3 id="論理演算子の合成combining-logical-operators">論理演算子の合成(Combining Logical Operators)</h3>
 <p>より長く様々な条件の複合式を作成するために、複数の論理演算子を組み合わせることができます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> enteredDoorCode <span class="token operator">&amp;&amp;</span> passedRetinaScan <span class="token operator">||</span> hasDoorKey <span class="token operator">||</span> knowsOverridePassword <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Welcome!&quot;</span><span class="token punctuation">)</span>
@@ -1056,7 +1052,7 @@ range<span class="token punctuation">.</span><span class="token function">contai
 <blockquote>
 <p>NOTE<br>Swift の <code>&amp;&amp;</code> と <code>||</code> は左結合です。つまり、複数の論理演算子を持つ複合式の場合は、一番左の部分式から評価されます。</p>
 </blockquote>
-<h3 id="明示的な括弧explicit-parentheses"><a name="明示的な括弧explicit-parentheses" class="plugin-anchor" href="#明示的な括弧explicit-parentheses"><i class="fa fa-link" aria-hidden="true"></i></a>明示的な括弧(Explicit Parentheses)</h3>
+<h3 id="明示的な括弧explicit-parentheses">明示的な括弧(Explicit Parentheses)</h3>
 <p>厳密には必要ありませんが、複雑な式の意図を分かりやすくするために、括弧(<code>()</code>)を使用すると有用なときがあります。ドアへのアクセスの例では、意図を明確にするために、複合式の最初の部分に括弧を追加すると役に立ちます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> <span class="token punctuation">(</span>enteredDoorCode <span class="token operator">&amp;&amp;</span> passedRetinaScan<span class="token punctuation">)</span> <span class="token operator">||</span> hasDoorKey <span class="token operator">||</span> knowsOverridePassword <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Welcome!&quot;</span><span class="token punctuation">)</span>
@@ -1099,7 +1095,7 @@ range<span class="token punctuation">.</span><span class="token function">contai
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"基本演算子(Basic Operators)","level":"3.2","depth":1,"next":{"title":"文字と文字列(Strings and Characters)","level":"3.3","depth":1,"path":"language-guide-gaido/strings-and-characters.md","ref":"language-guide-gaido/strings-and-characters.md","articles":[]},"previous":{"title":"基本(The Basics)","level":"3.1","depth":1,"path":"language-guide-gaido/the-basics.md","ref":"language-guide-gaido/the-basics.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/basic-operators.md","mtime":"2021-07-11T00:21:09.599Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"基本演算子(Basic Operators)","level":"3.2","depth":1,"next":{"title":"文字と文字列(Strings and Characters)","level":"3.3","depth":1,"path":"language-guide-gaido/strings-and-characters.md","ref":"language-guide-gaido/strings-and-characters.md","articles":[]},"previous":{"title":"基本(The Basics)","level":"3.1","depth":1,"path":"language-guide-gaido/the-basics.md","ref":"language-guide-gaido/the-basics.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/basic-operators.md","mtime":"2021-07-11T00:35:31.504Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

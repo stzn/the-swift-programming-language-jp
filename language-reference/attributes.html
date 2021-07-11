@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,15 +748,15 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="属性attributes"><a name="属性attributes" class="plugin-anchor" href="#属性attributes"><i class="fa fa-link" aria-hidden="true"></i></a>属性(Attributes)</h1>
+                                <h1 id="属性attributes">属性(Attributes)</h1>
 <p>最終更新日: 2021/7/2</p>
 <p>Swift には、宣言に適用される属性と型に適用される属性の 2 種類があります。属性は、宣言または型に関する追加情報を提供します。例えば、関数宣言の <code>discardableResult</code> 属性は、関数は値を返しますが、戻り値が使用されていない場合に、コンパイラが警告を生成しないことを示します。</p>
 <p><code>@</code> 記号に続けて属性の名前と、属性が受け入れる引数を書き込むことにより、属性を指定します。</p>
 <p><img src="../assets/attributes.png" alt="属性"></p>
 <p>一部の宣言属性は、属性とそれが特定の宣言にどのように適用されるかについての詳細情報を指定する引数を受け入れます。これらの <em>attribute arguments</em> は括弧(<code>()</code>)で囲まれ、その形式は属する属性によって定義されています。</p>
-<h2 id="宣言属性declaration-attributes"><a name="宣言属性declaration-attributes" class="plugin-anchor" href="#宣言属性declaration-attributes"><i class="fa fa-link" aria-hidden="true"></i></a><a id="declaration-attributes">宣言属性(Declaration Attributes)</a></h2>
+<h2 id="宣言属性declaration-attributes"><a id="declaration-attributes">宣言属性(Declaration Attributes)</a></h2>
 <p>宣言属性は宣言にのみ適用できます。</p>
-<h3 id="available"><a name="available" class="plugin-anchor" href="#available"><i class="fa fa-link" aria-hidden="true"></i></a>available</h3>
+<h3 id="available">available</h3>
 <p>この属性を適用すると、特定の Swift 言語バージョンまたは特定のプラットフォームとオペレーティングシステムのバージョンに関連する宣言のライフサイクルを示します。</p>
 <p><code>available</code> 属性は、常に 2 つ以上のカンマ区切り(<code>,</code>)の属性引数のリストを伴います。これらの引数は、次のプラットフォーム名または言語名のいずれかで始まります:</p>
 <ul>
@@ -834,9 +830,9 @@
     <span class="token comment">// 構造体定義</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="discardableresult"><a name="discardableresult" class="plugin-anchor" href="#discardableresult"><i class="fa fa-link" aria-hidden="true"></i></a>discardableResult</h3>
+<h3 id="discardableresult">discardableResult</h3>
 <p>この属性を関数またはメソッドの宣言に適用すると、値を返す関数またはメソッドがその結果を使用せずに呼び出されたときのコンパイラの警告を抑制します。</p>
-<h3 id="dynamiccallable"><a name="dynamiccallable" class="plugin-anchor" href="#dynamiccallable"><i class="fa fa-link" aria-hidden="true"></i></a>dynamicCallable</h3>
+<h3 id="dynamiccallable">dynamicCallable</h3>
 <p>この属性をクラス、構造体、列挙型、またはプロトコルに適用すると、型のインスタンスを呼び出し可能な関数として扱います。この型は、<code>dynamicallyCall(withArguments:)</code> メソッド、<code>dynamicallyCall(withKeywordArguments:)</code> メソッド、またはその両方を実装する必要があります。</p>
 <p>動的に呼び出し可能な型のインスタンスは、任意の数の引数を取る関数のように呼び出すことができます。</p>
 <pre class="language-"><code class="lang-swift">@dynamicCallable
@@ -888,7 +884,7 @@ dial<span class="token punctuation">.</span><span class="token function">dynamic
 <p>動的に呼び出すことができるインスタンスは、<code>dynamicCall</code> メソッドの実装の 1 つで指定した型と一致する引数と戻り値を使用した場合にのみ呼び出すことができます。次の例の呼び出しは、<code>KeyValuePairs<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>String,</span> <span class="token attr-name">String</span><span class="token punctuation">&gt;</span></span></code> を受け取る <code>dynamicallyCall(withArguments:)</code> の実装がないため、コンパイルできません。</p>
 <pre class="language-"><code class="lang-swift"><span class="token function">repeatLabels</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token string">&quot;four&quot;</span><span class="token punctuation">)</span> <span class="token comment">// エラー</span>
 </code></pre>
-<h3 id="dynamicmemberlookup"><a name="dynamicmemberlookup" class="plugin-anchor" href="#dynamicmemberlookup"><i class="fa fa-link" aria-hidden="true"></i></a>dynamicMemberLookup</h3>
+<h3 id="dynamicmemberlookup">dynamicMemberLookup</h3>
 <p>この属性をクラス、構造体、列挙型、またはプロトコルに適用すると、実行時にメンバを名前で検索できるようになります。型は <code>subscript(dynamicMember:)</code> を実装する必要があります。</p>
 <p>明示的なメンバ式では、指定されたメンバに対応する宣言がない場合、式は型の <code>subscript(dynamicMember:)</code> の呼び出しとして解釈され、メンバに関する情報を引数として渡します。subscript は、KeyPath またはメンバ名のいずれかでパラメータを受け取ることができます。両方の subscript を実装する場合、KeyPath 引数を取る subscript が使用されます。</p>
 <p><code>subscript(dynamicMember:)</code> の実装は、<a href="https://developer.apple.com/documentation/swift/keypath" target="_blank">KeyPath</a>、<a href="https://developer.apple.com/documentation/swift/writablekeypath" target="_blank">WritableKeyPath</a>、または <a href="https://developer.apple.com/documentation/swift/referencewritablekeypath" target="_blank">ReferenceWritableKeyPath</a>の引数を使用して KeyPath を受け取ることができます。<a href="https://developer.apple.com/documentation/swift/expressiblebystringliteral" target="_blank">ExpressibleByStringLiteral</a>プロトコル(ほとんどの場合、<code>String</code>)に準拠する型の引数を使用して、メンバ名を受け入れることができます。subscript の戻り値の型は任意の型にすることができます。</p>
@@ -928,22 +924,22 @@ dial<span class="token punctuation">.</span><span class="token function">dynamic
 <span class="token keyword">let</span> wrapper <span class="token operator">=</span> <span class="token function">PassthroughWrapper</span><span class="token punctuation">(</span>value<span class="token punctuation">:</span> point<span class="token punctuation">)</span>
 <span class="token function">print</span><span class="token punctuation">(</span>wrapper<span class="token punctuation">.</span>x<span class="token punctuation">)</span>
 </code></pre>
-<h3 id="frozen"><a name="frozen" class="plugin-anchor" href="#frozen"><i class="fa fa-link" aria-hidden="true"></i></a>frozen</h3>
+<h3 id="frozen">frozen</h3>
 <p>この属性を構造体または列挙型宣言に適用すると、型に加えることができる変更の種類を制限します。この属性は、ライブラリエボリューションモードでコンパイルする場合にのみ許可されます。ライブラリの将来のバージョンでは、列挙型のケースまたは構造体の格納インスタンスプロパティを追加、削除、または並べ替えて宣言を変更することはできません。これらの変更は nonfrozen 型で許可されますが、frozen 型の ABI 互換性が損なわれます。</p>
 <blockquote>
 <p>NOTE<br>コンパイラが ライブラリエボリューションモードでない場合、全ての構造体と列挙型は暗黙的に frozen にされ、この属性は無視されます。</p>
 </blockquote>
 <p>ライブラリエボリューションモードでは、nonfrozen の構造体や列挙型のメンバとやり取りするコードは、ライブラリの将来のバージョンでその型のメンバの一部が追加、削除、または並べ替えられた場合でも、再コンパイルせずに作業を継続できるようにコンパイルされます。コンパイラは、実行時に情報を検索したり、間接層を追加したりするなどの手法を使用して、これを可能にします。構造体または列挙型を frozen でマークすると、パフォーマンスを向上させるためにこの柔軟性が失われます。ライブラリの将来のバージョンでは、型に限定的な変更しか加えることができませんが、コンパイラは、型のメンバとやり取りするコードに追加の最適化を行うことができます。</p>
-<p>frozen 型、frozen 構造体の格納プロパティの型、および frozen 列挙ケースの関連値は、public か、<code>usableFromInline</code> 属性がマークされている必要があります。frozen 構造体のプロパティはプロパティオブザーバを持つことができず、格納インスタンスプロパティの初期値を提供する式は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/attributes#inlinable" target="_blank">inlinable</a>で説明されているように inlinable 関数と同じ制限に従う必要があります。</p>
+<p>frozen 型、frozen 構造体の格納プロパティの型、および frozen 列挙ケースの関連値は、public か、<code>usableFromInline</code> 属性がマークされている必要があります。frozen 構造体のプロパティはプロパティオブザーバを持つことができず、格納インスタンスプロパティの初期値を提供する式は、<a href="attributes#inlinable">inlinable</a>で説明されているように inlinable 関数と同じ制限に従う必要があります。</p>
 <p>コマンドラインでライブラリエボリューションモードを有効にするには、<code>-enable-library-evolution</code> オプションを Swift コンパイラに渡します。Xcode で有効にするには、<a href="https://help.apple.com/xcode/mac/current/#/dev04b3a04ba" target="_blank">Xcode Help</a>の説明に従って、「Build Libraries for Distribution」のビルド設定(<code>BUILD_LIBRARY_FOR_DISTRIBUTION</code>)を Yes に設定します。</p>
-<p>frozen 列挙型の switch 文は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#switching-over-future-enumeration-cases" target="_blank">Switching Over Future Enumeration Cases(列挙型の将来のケースのスイッチング)</a>で説明されているように、デフォルトのケースを必要としません。frozen 列挙型を切り替えるときに <code>default</code> または <code>@unknown default</code> のケースを含めると、そのコードは実行されないため、警告が生成されます。</p>
-<h3 id="gkinspectable"><a name="gkinspectable" class="plugin-anchor" href="#gkinspectable"><i class="fa fa-link" aria-hidden="true"></i></a>GKInspectable</h3>
+<p>frozen 列挙型の switch 文は、<a href="statements#switching-over-future-enumeration-cases">Switching Over Future Enumeration Cases(列挙型の将来のケースのスイッチング)</a>で説明されているように、デフォルトのケースを必要としません。frozen 列挙型を切り替えるときに <code>default</code> または <code>@unknown default</code> のケースを含めると、そのコードは実行されないため、警告が生成されます。</p>
+<h3 id="gkinspectable">GKInspectable</h3>
 <p>この属性を適用して、独自の GameplayKit コンポーネントプロパティを SpriteKit エディタ UI に公開します。この属性を適用すると、<code>objc</code> 属性も暗黙的に追加されます。</p>
-<h3 id="inlinable"><a name="inlinable" class="plugin-anchor" href="#inlinable"><i class="fa fa-link" aria-hidden="true"></i></a>inlinable</h3>
+<h3 id="inlinable">inlinable</h3>
 <p>この属性を関数、メソッド、計算プロパティ、subscript、convenience イニシャライザ、またはデイニシャライザ宣言に適用すると、モジュールのパブリックインターフェイスの一部としてその宣言の実装を公開します。コンパイラは、inlinable シンボルへの呼び出しを、呼び出し側でシンボルの実装のコピーに置き換えることができます。</p>
 <p>inlinable コードは、任意のモジュールで宣言された <code>public</code> シンボルとやり取りし、<code>usableFromInline</code> 属性がマークされた同じモジュールで宣言された <code>internal</code> シンボルとやり取りできます。inline 化したコードは、<code>private</code> シンボルまたは fileprivate シンボルとやり取りできません。</p>
 <p>この属性は、関数内にネストされている宣言や、<code>fileprivate</code> または <code>private</code> 宣言には適用できません。inlinable 関数内で定義された関数とクロージャは、この属性をマークすることはできませんが、暗黙的に inlinable です。</p>
-<h3 id="main"><a name="main" class="plugin-anchor" href="#main"><i class="fa fa-link" aria-hidden="true"></i></a>main</h3>
+<h3 id="main">main</h3>
 <p>この属性を構造体、クラス、または列挙型の宣言に適用すると、プログラムフローのトップレベルのエントリポイントが含まれていることを示します。型は、引数をとらずに <code>Void</code> を返す <code>main</code> 型関数を提供する必要があります。例えば:</p>
 <pre class="language-"><code class="lang-swift">@main
 <span class="token keyword">struct</span> <span class="token builtin">MyTopLevel</span> <span class="token punctuation">{</span>
@@ -957,25 +953,25 @@ dial<span class="token punctuation">.</span><span class="token function">dynamic
     <span class="token keyword">static</span> <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-code" target="_blank">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。</p>
-<h3 id="nonobjc"><a name="nonobjc" class="plugin-anchor" href="#nonobjc"><i class="fa fa-link" aria-hidden="true"></i></a>nonobjc</h3>
+<p>実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="declarations#top-level-code">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。</p>
+<h3 id="nonobjc">nonobjc</h3>
 <p>この属性をメソッド、プロパティ、subscript、またはイニシャライザ宣言に適用すると、暗黙の <code>objc</code> 属性を抑制します。<code>nonobjc</code> 属性は、Objective-C で宣言を使用することができる場合でも、使用できないようにするようコンパイラに指示します。</p>
 <p>この属性を extension に適用すると、<code>objc</code> 属性が明示的にマークされていないその extension の全てのメンバに適用するのと同じ効果があります。</p>
 <p><code>nonobjc</code> 属性を使用して、<code>objc</code> 属性がマークされたクラスのブリッジメソッドの循環性を解決し、<code>objc</code> 属性がマークされたクラスのメソッドとイニシャライザのオーバーロードを許可します。</p>
 <p><code>nonobjc</code> 属性がマークされたメソッドは、<code>objc</code> 属性がマークされたメソッドをオーバーライドできません。ただし、<code>objc</code> 属性がマークされたメソッドは、<code>nonobjc</code> 属性がマークされたメソッドをオーバーライドできます。同様に、<code>nonobjc</code> 属性がマークされたメソッドは、<code>objc</code> 属性がマークされたメソッドのプロトコル要件を満たすことができません。</p>
-<h3 id="nsapplicationmain"><a name="nsapplicationmain" class="plugin-anchor" href="#nsapplicationmain"><i class="fa fa-link" aria-hidden="true"></i></a>NSApplicationMain</h3>
+<h3 id="nsapplicationmain">NSApplicationMain</h3>
 <p>この属性をクラスに適用すると、それがアプリケーションデリゲートだということを示します。この属性を使用することは、<code>NSApplicationMain(_:_:)</code> 関数を呼び出すことと同じです。</p>
 <p>この属性を使用しない場合は、次のように <code>NSApplicationMain(_:_:)</code> 関数を呼び出すトップレベルのコードを <code>main.swift</code> ファイルに指定します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">import</span> <span class="token builtin">AppKit</span>
 <span class="token function">NSApplicationMain</span><span class="token punctuation">(</span><span class="token builtin">CommandLine</span><span class="token punctuation">.</span>argc<span class="token punctuation">,</span> <span class="token builtin">CommandLine</span><span class="token punctuation">.</span>unsafeArgv<span class="token punctuation">)</span>
 </code></pre>
-<p>実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-code" target="_blank">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。</p>
-<h3 id="nscopying"><a name="nscopying" class="plugin-anchor" href="#nscopying"><i class="fa fa-link" aria-hidden="true"></i></a>NSCopying</h3>
+<p>実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="declarations#top-level-code">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。</p>
+<h3 id="nscopying">NSCopying</h3>
 <p>この属性をクラスの格納変数プロパティに適用します。この属性により、set は、プロパティ自体の値ではなく、<code>copyWithZone(_:)</code> メソッドによって返されるプロパティの値のコピーと同期されます。プロパティの型は、<code>NSCopying</code> プロトコルに準拠している必要があります。</p>
 <p><code>NSCopying</code> 属性は、Objective-C のコピープロパティ属性と同じように動作します。</p>
-<h3 id="nsmanaged"><a name="nsmanaged" class="plugin-anchor" href="#nsmanaged"><i class="fa fa-link" aria-hidden="true"></i></a>NSManaged</h3>
+<h3 id="nsmanaged">NSManaged</h3>
 <p>この属性を <code>NSManagedObject</code> を継承するクラスのインスタンスメソッドまたは格納変数プロパティに適用すると、関連付けられたエンティティの記述に基づいて、CoreData が実行時にその実装を動的に提供することを示します。<code>NSManaged</code> 属性がマークされたプロパティの場合、CoreData は実行時にストレージも提供します。この属性を適用すると、<code>objc</code> 属性も暗黙的に追加されます。</p>
-<h3 id="objc"><a name="objc" class="plugin-anchor" href="#objc"><i class="fa fa-link" aria-hidden="true"></i></a>objc</h3>
+<h3 id="objc">objc</h3>
 <p>この属性は Objective-C で使用することができる全ての宣言に適用します。例えば、ネストされていないクラス、プロトコル、(整数の Raw Value 型の)非ジェネリック列挙型、クラスのプロパティとメソッド(get と set を含む)、プロトコル、およびオプショナルのプロトコル、イニシャライザ、および subscript など。<code>objc</code> 属性は、Objective-C コードで宣言を使用できることをコンパイラに通知します。</p>
 <p>この属性を extension に適用すると、<code>nonobjc</code> 属性が明示的にマークされていないその extension 内の全てのメンバに適用するのと同じ効果があります。</p>
 <p>コンパイラは、Objective-C で定義されたクラスのサブクラスに <code>objc</code> 属性を暗黙的に追加します。ただし、サブクラスはジェネリックにはできず、ジェネリッククラスから継承してはなりません。これらの条件を満たすサブクラスに <code>objc</code> 属性を明示的に追加して、下記で説明するように、その Objective-C 名を指定できます。<code>objc</code> 属性がマークされているプロトコルは、<code>objc</code> 属性がマークされていないプロトコルから継承できません。</p>
@@ -999,10 +995,10 @@ dial<span class="token punctuation">.</span><span class="token function">dynamic
 <blockquote>
 <p>NOTE<br><code>objc</code> 属性の引数は、その宣言の実行時名を変更することもできます。<code>NSClassFromString</code> などの Objective-C ランタイムとやり取りする関数を呼び出すとき、およびアプリの <code>Info.plist</code> ファイルでクラス名を指定するときに、実行時名を使用します。引数を渡して名前を指定すると、その名前が Objective-C コードの名前および実行時名として使用されます。引数を省略すると、Objective-C コードで使用される名前は Swift コードの名前と一致し、実行時名は通常の Swift コンパイラの名前修飾規則に従います。</p>
 </blockquote>
-<h3 id="objcmembers"><a name="objcmembers" class="plugin-anchor" href="#objcmembers"><i class="fa fa-link" aria-hidden="true"></i></a>objcMembers</h3>
+<h3 id="objcmembers">objcMembers</h3>
 <p>この属性をクラス宣言に適用すると、クラスの全ての Objective-C に互換性のあるメンバ、その extension、そのサブクラス、およびそのサブクラスの全ての extension に <code>objc</code> 属性を暗黙的に追加します。</p>
 <p>ほとんどのコードでは、代わりに <code>objc</code> 属性を使用して、必要な宣言のみを公開する必要があります。多くの宣言を公開する必要がある場合は、<code>objc</code> 属性を持つ extension でグループ化できます。<code>objcMembers</code> 属性は、Objective-C ランタイムのリフレクション機能を多用するライブラリにとって便利です。必要のないときに <code>objc</code> 属性を適用すると、バイナリサイズが大きくなり、パフォーマンスに悪影響を与える可能性があります。</p>
-<h3 id="propertywrapper"><a name="propertywrapper" class="plugin-anchor" href="#propertywrapper"><i class="fa fa-link" aria-hidden="true"></i></a>propertyWrapper</h3>
+<h3 id="propertywrapper">propertyWrapper</h3>
 <p>この属性をクラス、構造体、または列挙型宣言に適用すると、その型をプロパティラッパとして使用できます。この属性を型に適用すると、型と同じ名前のカスタム属性が作成されます。その新しい属性をクラス、構造体、または列挙型のプロパティに適用して、ラッパ型のインスタンスを介してプロパティへのアクセスをラップします。属性をローカルの格納変数宣言に適用して、変数へのアクセスを同じ方法でラップすることもできます。計算変数、グローバル変数、および定数には、プロパティラッパを使用できません。</p>
 <p>ラッパは <code>wrappedValue</code> インスタンスプロパティを定義する必要があります。プロパティの<em>ラップされた値</em>は、このプロパティの get と set が公開する値です。ほとんどの場合、<code>wrappedValue</code> は計算値ですが、代わりに格納値にすることもできます。ラッパは、ラップされた値に必要なストレージを定義および管理します。コンパイラは、ラップされたプロパティの名前の前にアンダースコア(<code>_</code>)を付けることにより、ラッパ型のインスタンスのストレージを合成します。例えば、<code>someProperty</code> のラッパは <code>_someProperty</code> として格納されます。ラッパの合成ストレージのアクセス制御レベルは <code>private</code> です。</p>
 <p>プロパティラッパを持つプロパティには、<code>willSet</code> ブロックと <code>didSet</code> ブロックを含めることができますが、コンパイラで合成された <code>get</code> ブロックまたは <code>set</code> ブロックをオーバーライドすることはできません。</p>
@@ -1057,9 +1053,9 @@ s<span class="token punctuation">.</span>x           <span class="token comment"
 s<span class="token punctuation">.</span>$x          <span class="token comment">// SomeProjection 値</span>
 s<span class="token punctuation">.</span>$x<span class="token punctuation">.</span>wrapper  <span class="token comment">// WrapperWithProjection 値</span>
 </code></pre>
-<h3 id="resultbuilder"><a name="resultbuilder" class="plugin-anchor" href="#resultbuilder"><i class="fa fa-link" aria-hidden="true"></i></a>resultBuilder</h3>
-<p>この属性をクラス、構造体、列挙型に適用して、その型をリザルトビルダとして使用できます。<em>リザルトビルダ</em>は、ネストされたデータ構造を段階的に構築する型です。リザルトビルダを使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語(DSL)を実装します。<code>resultBuilder</code> 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#result-builders" target="_blank">Result Builders(リザルトビルダ)</a>を参照ください。</p>
-<h4 id="result-building-methods"><a name="result-building-methods" class="plugin-anchor" href="#result-building-methods"><i class="fa fa-link" aria-hidden="true"></i></a>Result-Building Methods</h4>
+<h3 id="resultbuilder">resultBuilder</h3>
+<p>この属性をクラス、構造体、列挙型に適用して、その型をリザルトビルダとして使用できます。<em>リザルトビルダ</em>は、ネストされたデータ構造を段階的に構築する型です。リザルトビルダを使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語(DSL)を実装します。<code>resultBuilder</code> 属性の使用方法の例については、<a href="../language-guide-gaido/advanced-operators#result-builders">Result Builders(リザルトビルダ)</a>を参照ください。</p>
+<h4 id="result-building-methods">Result-Building Methods</h4>
 <p>リザルトビルダは、下記で説明する静的メソッドを実装します。リザルトビルダの全ての機能は静的メソッドを介して公開されるため、その型のインスタンスを初期化することはありません。<code>buildBlock(_:)</code> メソッドが必要です。DSL の追加機能を有効にする他の方法は省略可能です。リザルトビルダ型の宣言には、プロトコルの準拠を含める必要はありません。</p>
 <p>静的メソッドの記述では、プレースホルダとして 3 つの型を使用しています。<code>Expression</code> 型は、リザルトビルダの入力の型のプレースホルダで、<code>Component</code> は、部分的な結果の型のプレースホルダで、<code>FinalResult</code> は、リザルトビルダが生成する最終的な結果の型のプレースホルダです。これらの型を、リザルトビルダが使用する実際の型に置き換えます。リザルトビルダメソッドで <code>Expression</code> または <code>FinalResult</code> の型が指定されていない場合、デフォルトで <code>Component</code> と同じになります。</p>
 <p>リザルトビルダの作成方法は次のとおりです:</p>
@@ -1105,7 +1101,7 @@ s<span class="token punctuation">.</span>$x<span class="token punctuation">.</sp
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="result-transformations"><a name="result-transformations" class="plugin-anchor" href="#result-transformations"><i class="fa fa-link" aria-hidden="true"></i></a>Result Transformations</h4>
+<h4 id="result-transformations">Result Transformations</h4>
 <p>次の構文変換は、リザルトビルダ構文を使用するコードを、リザルトビルダ型の静的メソッドを呼び出すコードに変換するために再帰的に適用されます。</p>
 <ul>
 <li>リザルトビルダに <code>buildExpression(_:)</code> メソッドがある場合、各式はそのメソッドの呼び出しになります。この変換は常に最初に行われます。例えば、次の宣言は同等です:</li>
@@ -1266,7 +1262,7 @@ s<span class="token punctuation">.</span>$x<span class="token punctuation">.</sp
 <p>リザルトビルダが変換するコードで、<code>break</code>、<code>continue</code>、<code>defer</code>、<code>guard</code>、<code>return</code>、<code>while</code>、または <code>do-catch</code> を使用することはできません。</p>
 <p>変換プロセスでは、コード内の宣言は変更されません。これにより、一時的な定数と変数を使用して、1 つずつ式を構築します。また、<code>throw</code> 文、コンパイル時の診断文、または <code>return</code> 文を含むクロージャも変更しません。</p>
 <p>可能な限り、変換は合体します。例えば、式 <code>4 + 5 * 6</code> は、その関数への複数の呼び出しではなく、<code>buildExpression(4 + 5 * 6)</code> になります。同様に、ネストされた分岐文は、<code>buildEither</code> メソッドへの呼び出しの単一のバイナリツリーになります。</p>
-<h4 id="custom-result-builder-attributes"><a name="custom-result-builder-attributes" class="plugin-anchor" href="#custom-result-builder-attributes"><i class="fa fa-link" aria-hidden="true"></i></a>Custom Result-Builder Attributes</h4>
+<h4 id="custom-result-builder-attributes">Custom Result-Builder Attributes</h4>
 <p>リザルトビルダ型を作成すると、同じ名前のカスタム属性が作成されます。その属性は、次の場所に適用できます:</p>
 <ul>
 <li>関数宣言では、リザルトビルダは関数の本文を作成します</li>
@@ -1274,30 +1270,30 @@ s<span class="token punctuation">.</span>$x<span class="token punctuation">.</sp
 <li>関数宣言のパラメータでは、リザルトビルダは対応する引数として渡されるクロージャの本文を作成します</li>
 </ul>
 <p>resultBuilder 属性を適用しても、ABI の互換性には影響しません。リザルトビルダ属性をパラメータに適用すると、その属性が関数のインターフェースの一部になり、ソースの互換性に影響を与える可能性があります。</p>
-<h3 id="requiresstoredpropertyinits"><a name="requiresstoredpropertyinits" class="plugin-anchor" href="#requiresstoredpropertyinits"><i class="fa fa-link" aria-hidden="true"></i></a>requires_stored_property_inits</h3>
+<h3 id="requiresstoredpropertyinits">requires_stored_property_inits</h3>
 <p>この属性をクラス宣言に適用すると、クラス内に格納されている全てのプロパティに、定義の一部としてデフォルト値を提供するように要求します。この属性は、<code>NSManagedObject</code> を継承する全てのクラスに対して推論されます。</p>
-<h3 id="testable"><a name="testable" class="plugin-anchor" href="#testable"><i class="fa fa-link" aria-hidden="true"></i></a>testable</h3>
+<h3 id="testable">testable</h3>
 <p>モジュールのコードのテストを簡単にするために、この属性をインポート宣言に適用すると、アクセス制御へ変更を加えて、そのモジュールをインポートします。インポートされたモジュール内の <code>internal</code> 修飾子がマークされているエンティティは、<code>public</code> 修飾子で宣言されているかのようにインポートされます。<code>internal</code> または <code>public</code> 修飾子がマークされたクラスおよびクラスメンバは、<code>open</code> 修飾子で宣言されたかのようにインポートされます。インポートされたモジュールは、テストを有効にしてコンパイルする必要があります。</p>
-<h3 id="uiapplicationmain"><a name="uiapplicationmain" class="plugin-anchor" href="#uiapplicationmain"><i class="fa fa-link" aria-hidden="true"></i></a>UIApplicationMain</h3>
+<h3 id="uiapplicationmain">UIApplicationMain</h3>
 <p>この属性をクラスに適用して、それがアプリケーションデリゲートだということを示します。この属性を使用することは、<code>UIApplicationMain</code> 関数を呼び出し、このクラスの名前をデリゲートクラスの名前として渡すことと同じです。</p>
 <p>この属性を使用しない場合は、<a href="https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain" target="_blank">UIApplicationMain(<em>:</em>:<em>:</em>:)</a>関数を呼び出すトップレベルのコードを <code>main.swift</code> ファイルに指定します。例えば、アプリが <code>UIApplication</code> の独自のサブクラスをメインクラスとして使用している場合、この属性を使用する代わりに <code>UIApplicationMain(_:_:_:_:)</code> 関数を呼び出します。</p>
-<p>実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#top-level-code" target="_blank">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。</p>
-<h3 id="usablefrominline"><a name="usablefrominline" class="plugin-anchor" href="#usablefrominline"><i class="fa fa-link" aria-hidden="true"></i></a>usableFromInline</h3>
+<p>実行可能ファイルを作成するためにコンパイルする Swift コードには、<a href="declarations#top-level-code">Top-Level Code(トップレベルコード)</a>で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。</p>
+<h3 id="usablefrominline">usableFromInline</h3>
 <p>この属性を関数、メソッド、計算プロパティ、subscript、イニシャライザ、またはデイニシャライザの宣言に適用すると、宣言と同じモジュールで定義されているインライン化されたコードでそのシンボルを使用できるようにします。宣言には、<code>internal</code> 修飾子が必要です。<code>usedFromInline</code> がマークされた構造体またはクラスは、そのプロパティに <code>public</code> または <code>usableFromInline</code> の型のみを使用できます。<code>usedFromInline</code> がマークされた列挙型は、そのケースの Raw Value と関連値に対して、<code>public</code> または <code>usableFromInline</code> の型のみを使用できます。</p>
 <p><code>public</code> 修飾子と同様に、この属性はモジュールの公開インターフェイスの一部として宣言が公開されます。<code>public</code> とは異なり、コンパイラは、宣言のシンボルがエクスポートされている場合でも、<code>usableFromInline</code> がマークされた宣言をモジュール外のコードで参照することを許可しません。ただし、モジュール外のコードは、ランタイム時の動作を使用して宣言のシンボルとやり取りできることもあります。</p>
 <p><code>inlinable</code> 属性がマークされた宣言は、inlinable コードから暗黙的に使用できます。<code>inlinable</code> または <code>usableFromInline</code> のいずれかを <code>internal</code> 宣言に適用できますが、両方の属性を適用するとエラーです。</p>
-<h3 id="warnunqualifiedaccess"><a name="warnunqualifiedaccess" class="plugin-anchor" href="#warnunqualifiedaccess"><i class="fa fa-link" aria-hidden="true"></i></a>warn_unqualified_access</h3>
+<h3 id="warnunqualifiedaccess">warn_unqualified_access</h3>
 <p>この属性をトップレベルの関数、インスタンスメソッド、またはクラスまたは静的メソッドに適用すると、その関数またはメソッドがモジュール名、型名、インスタンス変数または定数などを修飾子なしで使用された場合に警告を出力します。この属性を使用して、同じスコープからアクセスできる同じ名前の関数間のあいまいさを回避できます。</p>
 <p>例えば、Swift 標準ライブラリには、トップレベルの<a href="https://developer.apple.com/documentation/swift/1538339-min/" target="_blank">min(<em>:</em>:)</a>関数と、同等の要素を持つ <code>Sequence</code> の <code>min()</code> メソッドの両方が含まれています。<code>Sequence</code> メソッドは <code>warn_unqualified_access</code> 属性で宣言されており、<code>Sequence</code> extension 内からどちらかを使用しようとするときの混乱を減らすのに役立ちます。</p>
-<h3 id="declaration-attributes-used-by-interface-builder"><a name="declaration-attributes-used-by-interface-builder" class="plugin-anchor" href="#declaration-attributes-used-by-interface-builder"><i class="fa fa-link" aria-hidden="true"></i></a>Declaration Attributes Used by Interface Builder</h3>
+<h3 id="declaration-attributes-used-by-interface-builder">Declaration Attributes Used by Interface Builder</h3>
 <p>Interface Builder 属性は、Xcode と同期するために InterfaceBuilder によって使用される宣言属性です。Swift は、次の Interface Builder 属性を提供します: <code>IBAction</code>、<code>IBSegueAction</code>、<code>IBOutlet</code>、<code>IBDesignable</code>、および <code>IBInspectable</code>。これらの属性は、Objective-C の対応する属性と概念的に同じです。</p>
 <p><code>IBOutlet</code> 属性と <code>IBInspectable</code> 属性はクラスのプロパティ宣言に適用できます。<code>IBAction</code> 属性と <code>IBSegueAction</code> 属性はクラスのメソッド宣言に適用でき、<code>IBDesignable</code> 属性はクラス宣言に適用できます。</p>
 <p><code>IBAction</code>、<code>IBSegueAction</code>、<code>IBOutlet</code>、<code>IBDesignable</code>、または <code>IBInspectable</code> 属性を適用すると、<code>objc</code> 属性も暗黙的に追加されます。</p>
-<h2 id="型属性type-attributes"><a name="型属性type-attributes" class="plugin-anchor" href="#型属性type-attributes"><i class="fa fa-link" aria-hidden="true"></i></a>型属性(Type Attributes)</h2>
+<h2 id="型属性type-attributes">型属性(Type Attributes)</h2>
 <p>型属性は型にのみ適用できます。</p>
-<h3 id="autoclosure"><a name="autoclosure" class="plugin-anchor" href="#autoclosure"><i class="fa fa-link" aria-hidden="true"></i></a>autoclosure</h3>
-<p>この属性を適用すると、引数のないクロージャで式を自動的にラップすることにより、式の評価を遅らせます。関数またはメソッド宣言のパラメータに、引数を受け取らず式の型の値を返す関数型を適用できます。<code>autoclosure</code> 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#autoclosures" target="_blank">AutoClosures(自動クロージャ)</a>と<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/types#types-function-type" target="_blank">Function Type(関数型)</a>を参照ください。</p>
-<h3 id="convention"><a name="convention" class="plugin-anchor" href="#convention"><i class="fa fa-link" aria-hidden="true"></i></a>convention</h3>
+<h3 id="autoclosure">autoclosure</h3>
+<p>この属性を適用すると、引数のないクロージャで式を自動的にラップすることにより、式の評価を遅らせます。関数またはメソッド宣言のパラメータに、引数を受け取らず式の型の値を返す関数型を適用できます。<code>autoclosure</code> 属性の使用方法の例については、<a href="../language-guide-gaido/closures#autoclosures">AutoClosures(自動クロージャ)</a>と<a href="types#types-function-type">Function Type(関数型)</a>を参照ください。</p>
+<h3 id="convention">convention</h3>
 <p>呼び出し規約を示すために、この属性を関数の型に適用します。</p>
 <p><code>convention</code> 属性は、常に次のいずれかの引数で表示されます:</p>
 <ul>
@@ -1306,12 +1302,12 @@ s<span class="token punctuation">.</span>$x<span class="token punctuation">.</sp
 <li><code>c</code> 引数は、C 言語関数の参照を示します。関数値はコンテキストを持たず、C 言語の呼び出し規約を使用します</li>
 </ul>
 <p>いくつかの例外を除いて、他の呼び出し規約の関数が必要な場合は、任意の呼び出し規約の関数を使用できます。非ジェネリックグローバル関数、ローカル変数をキャプチャしないローカル関数、またはローカル変数をキャプチャしないクロージャは、C 言語の呼び出し規約に変換できます。他の Swift 関数は C 言語の呼び出し規約に変換できません。Objective-C の block 呼び出し規約を持つ関数は、C 言語の呼び出し規約に変換できません。</p>
-<h3 id="escaping"><a name="escaping" class="plugin-anchor" href="#escaping"><i class="fa fa-link" aria-hidden="true"></i></a>escaping</h3>
-<p>この属性を関数またはメソッド宣言のパラメータの型に適用すると、パラメータの値を後で実行するために保持されることがあることを示します。これは、値が呼び出し側の生存期間を超えて存続できることを意味します。<code>escaping</code> 属性を持つ関数型パラメータは、プロパティまたはメソッドに対して <code>self</code> を明示的に使用する必要があります。<code>escaping</code> 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#escaping-closures" target="_blank">Escaping Closures(エスケープクロージャ)</a>を参照ください。</p>
-<h2 id="switch-case-attributes-switch-ケース属性"><a name="switch-case-attributes-switch-ケース属性" class="plugin-anchor" href="#switch-case-attributes-switch-ケース属性"><i class="fa fa-link" aria-hidden="true"></i></a>Switch Case Attributes (Switch ケース属性)</h2>
+<h3 id="escaping">escaping</h3>
+<p>この属性を関数またはメソッド宣言のパラメータの型に適用すると、パラメータの値を後で実行するために保持されることがあることを示します。これは、値が呼び出し側の生存期間を超えて存続できることを意味します。<code>escaping</code> 属性を持つ関数型パラメータは、プロパティまたはメソッドに対して <code>self</code> を明示的に使用する必要があります。<code>escaping</code> 属性の使用方法の例については、<a href="../language-guide-gaido/closures#escaping-closures">Escaping Closures(エスケープクロージャ)</a>を参照ください。</p>
+<h2 id="switch-case-attributes-switch-ケース属性">Switch Case Attributes (Switch ケース属性)</h2>
 <p>switch の case 属性は、switch 文のケースにのみ適用できます。</p>
-<h3 id="unknown"><a name="unknown" class="plugin-anchor" href="#unknown"><i class="fa fa-link" aria-hidden="true"></i></a>unknown</h3>
-<p>この属性を switch ケースに適用すると、コードのコンパイル時にわかっているどの列挙ケースとも一致することがない可能性を示します。<code>unknown</code> 属性の使用方法の例については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#switching-over-future-enumeration-cases" target="_blank">Switching Over Future Enumeration Cases(列挙型の将来のケースのスイッチング)</a>を参照ください。</p>
+<h3 id="unknown">unknown</h3>
+<p>この属性を switch ケースに適用すると、コードのコンパイル時にわかっているどの列挙ケースとも一致することがない可能性を示します。<code>unknown</code> 属性の使用方法の例については、<a href="statements#switching-over-future-enumeration-cases">Switching Over Future Enumeration Cases(列挙型の将来のケースのスイッチング)</a>を参照ください。</p>
 <blockquote>
 <p>GRAMMAR OF AN ATTRIBUTE<br>attribute → <code>@</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attribute-name" target="_blank">attribute-name</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attribute-argument-clause" target="_blank">attribute-argument-clause</a><sub>opt</sub><br>attribute-name → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a><br>attribute-argument-clause → <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens" target="_blank">balanced-tokens</a><sub>opt</sub> <code>)</code><br>attributes → <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attribute" target="_blank">attribute</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes" target="_blank">attributes</a><sub>opt</sub><br>balanced-tokens → <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-token" target="_blank">balanced-token</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens" target="_blank">balanced-tokens</a><sub>opt</sub><br>balanced-token → <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens" target="_blank">balanced-tokens</a><sub>opt</sub> <code>)</code><br>balanced-token → <code>[</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens" target="_blank">balanced-tokens</a><sub>opt</sub> <code>]</code><br>balanced-token → <code>{</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_balanced-tokens" target="_blank">balanced-tokens</a><sub>opt</sub> <code>}</code><br>balanced-token → 任意の識別子、キーワード、リテラル、または演算子<br>balanced-token → <code>(</code>, <code>)</code>, <code>[</code>, <code>]</code>, <code>{</code>, または <code>}</code> を除く任意の句読点</p>
 </blockquote>
@@ -1348,7 +1344,7 @@ s<span class="token punctuation">.</span>$x<span class="token punctuation">.</sp
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"属性(Attributes)","level":"4.7","depth":1,"next":{"title":"パターン(Patterns)","level":"4.8","depth":1,"path":"language-reference/patterns.md","ref":"language-reference/patterns.md","articles":[]},"previous":{"title":"宣言(Declarations)","level":"4.6","depth":1,"path":"language-reference/declarations.md","ref":"language-reference/declarations.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-reference/attributes.md","mtime":"2021-07-11T00:21:09.766Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"属性(Attributes)","level":"4.7","depth":1,"next":{"title":"パターン(Patterns)","level":"4.8","depth":1,"path":"language-reference/patterns.md","ref":"language-reference/patterns.md","articles":[]},"previous":{"title":"宣言(Declarations)","level":"4.6","depth":1,"path":"language-reference/declarations.md","ref":"language-reference/declarations.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-reference/attributes.md","mtime":"2021-07-11T00:35:31.396Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

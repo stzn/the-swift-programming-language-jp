@@ -20,10 +20,6 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
-                
-            
-                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
@@ -752,7 +748,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="コレクション型collection-types"><a name="コレクション型collection-types" class="plugin-anchor" href="#コレクション型collection-types"><i class="fa fa-link" aria-hidden="true"></i></a>コレクション型(Collection Types)</h1>
+                                <h1 id="コレクション型collection-types">コレクション型(Collection Types)</h1>
 <p>最終更新日: 2021/6/27</p>
 <p>Swift は、配列、セット、辞書と呼ばれる 3 つの基本的な<em>コレクション型</em>を提供しています。配列は順序が決まったコレクションです。セットは値の重複と順序のないコレクションです。辞書はキーとバリューに関連性を持たせた順序のないコレクションです。</p>
 <p><img src="../assets/collectiontypes_intro_2x.png" alt="Collection Types\(コレクション型\)"></p>
@@ -760,19 +756,19 @@
 <blockquote>
 <p>NOTE<br>Swift の配列、セット、辞書は、<em>ジェネリックなコレクション</em>として実装されています。ジェネリックな型やコレクションについての詳細は<a href="generics.html">Generics(ジェネリクス)</a>を参照ください。</p>
 </blockquote>
-<h2 id="コレクションの可変性mutability-of-collections"><a name="コレクションの可変性mutability-of-collections" class="plugin-anchor" href="#コレクションの可変性mutability-of-collections"><i class="fa fa-link" aria-hidden="true"></i></a><a id="mutability-of-collections">コレクションの可変性(Mutability of Collections)</a></h2>
+<h2 id="コレクションの可変性mutability-of-collections"><a id="mutability-of-collections">コレクションの可変性(Mutability of Collections)</a></h2>
 <p>もし配列、セット、辞書を変数に代入した場合、作成されたコレクションは可変です。つまり、追加、削除、要素の変更など、後々そのコレクションを取り替え(または変更)できます。もし配列、セット、辞書を定数に代入した場合、コレクションは不変で、そのサイズや内容を変更できません。</p>
 <blockquote>
 <p>NOTE<br>コレクションの変更が必要ない場合は、不変なコレクションを作成するのが良いプラクティスです。そうすることで、コードを理解しやすくし、Swift のコンパイラもコレクションのパフォーマンスを最適化することができます。</p>
 </blockquote>
-<h2 id="配列arrays"><a name="配列arrays" class="plugin-anchor" href="#配列arrays"><i class="fa fa-link" aria-hidden="true"></i></a><a id="arrays">配列(Arrays)</a></h2>
+<h2 id="配列arrays"><a id="arrays">配列(Arrays)</a></h2>
 <p>配列は同じ型の値を順序立ったリストの中に保持します。配列の中に同じ値を複数回入れることができます。</p>
 <blockquote>
 <p>NOTE<br><code>Array</code> は Foundation の <code>NSArray</code> とスムーズにやりとりできるようにしています。Foundation と Cocoa を使った <code>Array</code> の使用方法に関しては、<a href="https://developer.apple.com/documentation/swift/array#2846730" target="_blank">Bridging Between Array and NSArray</a>を参照ください</p>
 </blockquote>
-<h3 id="配列型の省略構文array-type-shorthand-syntax"><a name="配列型の省略構文array-type-shorthand-syntax" class="plugin-anchor" href="#配列型の省略構文array-type-shorthand-syntax"><i class="fa fa-link" aria-hidden="true"></i></a><a id="array-type-shorthand-syntax">配列型の省略構文(Array Type Shorthand Syntax)</a></h3>
+<h3 id="配列型の省略構文array-type-shorthand-syntax"><a id="array-type-shorthand-syntax">配列型の省略構文(Array Type Shorthand Syntax)</a></h3>
 <p>Swift の配列の型は全体で <code>Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Element</span><span class="token punctuation">&gt;</span></span></code> と書きます。<code>Element</code> はその配列が保持できる値の型です。簡略記法として <code>[Element]</code> とも書けます。この 2 つの形式は機能的に同じですが、簡略記法の方が好まれ、このガイド内でも配列の型を参照する際はこちらの形式を使います。</p>
-<h3 id="空の配列の作成creating-an-empty-array"><a name="空の配列の作成creating-an-empty-array" class="plugin-anchor" href="#空の配列の作成creating-an-empty-array"><i class="fa fa-link" aria-hidden="true"></i></a>空の配列の作成(Creating an Empty Array)</h3>
+<h3 id="空の配列の作成creating-an-empty-array">空の配列の作成(Creating an Empty Array)</h3>
 <p>イニシャライザの構文を使用して、ある型の空の配列を作成できます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> someInts <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;someInts is of type [Int] with <span class="token interpolation"><span class="token delimiter variable">\(</span>someInts<span class="token punctuation">.</span><span class="token builtin">count</span><span class="token delimiter variable">)</span></span> items.&quot;</span><span class="token punctuation">)</span>
@@ -785,12 +781,12 @@
 someInts <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 <span class="token comment">// someInts は空の配列だけど [Int] 型</span>
 </code></pre>
-<h3 id="デフォルト値を使った配列の作成creating-an-array-with-a-default-value"><a name="デフォルト値を使った配列の作成creating-an-array-with-a-default-value" class="plugin-anchor" href="#デフォルト値を使った配列の作成creating-an-array-with-a-default-value"><i class="fa fa-link" aria-hidden="true"></i></a><a id="creating-an-array-with-a-default-value">デフォルト値を使った配列の作成(Creating an Array with a Default Value)</a></h3>
+<h3 id="デフォルト値を使った配列の作成creating-an-array-with-a-default-value"><a id="creating-an-array-with-a-default-value">デフォルト値を使った配列の作成(Creating an Array with a Default Value)</a></h3>
 <p><code>Array</code> は同じデフォルト値を設定した特定にサイズの配列を作成するイニシャライザも提供しています。このイニシャライザに適切な型のデフォルト値(<code>repeating</code>)と、その値の繰り返し回数(<code>count</code>)を渡します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> threeDoubles <span class="token operator">=</span> <span class="token function">Array</span><span class="token punctuation">(</span>repeating<span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token builtin">count</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">)</span>
 <span class="token comment">// threeDoubles は [Double] 型で、 [0.0, 0.0, 0.0] と等しい</span>
 </code></pre>
-<h3 id="2つの配列の結合creating-an-array-by-adding-two-arrays-together"><a name="2つの配列の結合creating-an-array-by-adding-two-arrays-together" class="plugin-anchor" href="#2つの配列の結合creating-an-array-by-adding-two-arrays-together"><i class="fa fa-link" aria-hidden="true"></i></a>2つの配列の結合(Creating an Array by Adding Two Arrays Together)</h3>
+<h3 id="2つの配列の結合creating-an-array-by-adding-two-arrays-together">2つの配列の結合(Creating an Array by Adding Two Arrays Together)</h3>
 <p>加算演算子(<code>+</code>)を使用して、既存の型互換のある 2 つの配列を合成して、新しい配列を作成することもできます。この新しい配列の型は連結させた配列の型から推論されます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> anotherThreeDoubles <span class="token operator">=</span> <span class="token function">Array</span><span class="token punctuation">(</span>repeating<span class="token punctuation">:</span> <span class="token number">2.5</span><span class="token punctuation">,</span> <span class="token builtin">count</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">)</span>
 <span class="token comment">// anotherThreeDoubles は [Double] 型で [2.5, 2.5, 2.5] と等しい</span>
@@ -798,7 +794,7 @@ someInts <span class="token operator">=</span> <span class="token punctuation">[
 <span class="token keyword">var</span> sixDoubles <span class="token operator">=</span> threeDoubles <span class="token operator">+</span> anotherThreeDoubles
 <span class="token comment">// sixDoubles は [Double] と推論され、 [0.0, 0.0, 0.0, 2.5, 2.5, 2.5] と等しい</span>
 </code></pre>
-<h3 id="配列リテラルを使った配列の作成creating-an-array-with-an-array-literal"><a name="配列リテラルを使った配列の作成creating-an-array-with-an-array-literal" class="plugin-anchor" href="#配列リテラルを使った配列の作成creating-an-array-with-an-array-literal"><i class="fa fa-link" aria-hidden="true"></i></a>配列リテラルを使った配列の作成(Creating an Array with an Array Literal)</h3>
+<h3 id="配列リテラルを使った配列の作成creating-an-array-with-an-array-literal">配列リテラルを使った配列の作成(Creating an Array with an Array Literal)</h3>
 <p>配列リテラルからも配列を初期化できます。これは、1 つ以上の要素を持った配列コレクションの簡略記法です。配列リテラルはカンマ区切りの角括弧(<code>[]</code>)で囲んだ値のリストです:</p>
 <p><img src="../assets/arrayliteral_2x.png" alt="Array Literal"></p>
 <p>下記の例は、<code>String</code> を保持する <code>shoppingList</code> という配列を作成しています。</p>
@@ -814,7 +810,7 @@ someInts <span class="token operator">=</span> <span class="token punctuation">[
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> shoppingList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Eggs&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Milk&quot;</span><span class="token punctuation">]</span>
 </code></pre>
 <p>配列リテラルの全ての値は同じ型なので、Swift は <code>shoppingList</code> 変数で使われている型は <code>[String]</code> が適切だと推論できます。</p>
-<h3 id="配列へのアクセスと変更accessing-and-modifying-an-array"><a name="配列へのアクセスと変更accessing-and-modifying-an-array" class="plugin-anchor" href="#配列へのアクセスと変更accessing-and-modifying-an-array"><i class="fa fa-link" aria-hidden="true"></i></a><a id="accessing-and-modifying-an-array">配列へのアクセスと変更(Accessing and Modifying an Array)</a></h3>
+<h3 id="配列へのアクセスと変更accessing-and-modifying-an-array"><a id="accessing-and-modifying-an-array">配列へのアクセスと変更(Accessing and Modifying an Array)</a></h3>
 <p>メソッドやプロパティ、subscript 構文を通して配列の要素へのアクセス、変更ができます。</p>
 <p>配列のアイテムの数を調べるために、読み取り専用の <code>count</code> プロパティをチェックします。</p>
 <pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The shopping list contains <span class="token interpolation"><span class="token delimiter variable">\(</span>shoppingList<span class="token punctuation">.</span><span class="token builtin">count</span><span class="token delimiter variable">)</span></span> items.&quot;</span><span class="token punctuation">)</span>
@@ -879,7 +875,7 @@ shoppingList <span class="token operator">+</span><span class="token operator">=
 <span class="token comment">// shoppingList は 5 つのアイテムを含んでいますが、 apples はありません</span>
 <span class="token comment">// apples 定数は削除された &quot;Apples&quot; 文字列と等しい</span>
 </code></pre>
-<h3 id="配列の繰り返し処理iterating-over-an-array"><a name="配列の繰り返し処理iterating-over-an-array" class="plugin-anchor" href="#配列の繰り返し処理iterating-over-an-array"><i class="fa fa-link" aria-hidden="true"></i></a>配列の繰り返し処理(Iterating Over an Array)</h3>
+<h3 id="配列の繰り返し処理iterating-over-an-array">配列の繰り返し処理(Iterating Over an Array)</h3>
 <p><code>for-in</code> ループを使用して配列の値全部に繰り返し処理をすることができます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> item <span class="token keyword">in</span> shoppingList <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
@@ -900,21 +896,21 @@ shoppingList <span class="token operator">+</span><span class="token operator">=
 <span class="token comment">// Item 4: Baking Powder</span>
 <span class="token comment">// Item 5: Bananas</span>
 </code></pre>
-<p><code>for-in</code> ループについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#for-in-loops" target="_blank">For-In Loops(For-In ループ)</a>を参照ください。</p>
-<h2 id="setsセット-"><a name="setsセット-" class="plugin-anchor" href="#setsセット-"><i class="fa fa-link" aria-hidden="true"></i></a><a href="collection-types.html">Sets(セット)</a> <a id="sets"></a></h2>
+<p><code>for-in</code> ループについては、<a href="control-flow#for-in-loops">For-In Loops(For-In ループ)</a>を参照ください。</p>
+<h2 id="setsセット-"><a href="collection-types.html">Sets(セット)</a> <a id="sets"></a></h2>
 <p><em>セット</em>はコレクション内に、同じ型の値を、決まった順序と値の重複なしに保持します。アイテムの順序が重要でない場合や、アイテムに重複がないことを保証したい場合に、配列の変わりにセットを使用することができます。</p>
 <blockquote>
 <p><code>Set</code> は Foundation の <code>NSSet</code> とスムーズにやりとりできるようにしています。Foundation と Cocoa を使った <code>Set</code> の使用方法に関しては、<a href="https://developer.apple.com/documentation/swift/set#2845530" target="_blank">Bridging Between Set and NSSet</a>を参照ください</p>
 </blockquote>
-<h3 id="セット型のハッシュ値hash-values-for-set-types"><a name="セット型のハッシュ値hash-values-for-set-types" class="plugin-anchor" href="#セット型のハッシュ値hash-values-for-set-types"><i class="fa fa-link" aria-hidden="true"></i></a><a id="hash-values-for-set-types">セット型のハッシュ値(Hash Values for Set Types)</a></h3>
+<h3 id="セット型のハッシュ値hash-values-for-set-types"><a id="hash-values-for-set-types">セット型のハッシュ値(Hash Values for Set Types)</a></h3>
 <p>セットに保存する型はハッシュ化が可能でなければなりません。つまり、その型はハッシュ値を計算する方法をセットに知らせる必要があります。ハッシュ値は、<code>Int</code> 型で、等価比較が可能な全てのオブジェクトで、例えば <code>a == b</code> の場合、<code>a</code> のハッシュ値は <code>b</code> のハッシュ値と等しくなります。</p>
 <p>Swift の基本的な型(<code>String</code>、<code>Int</code>、<code>Double</code>、<code>Bool</code> など)は、デフォルトでハッシュ化が可能で、セットや辞書のキーに使用することができます。関連値を持たない列挙型のケース(<a href="enumerations.html">Enumerations(列挙型)</a>)もデフォルトでハッシュ化が可能です。</p>
 <blockquote>
 <p>NOTE<br>Swift 標準ライブラリの <code>Hashable</code> プロトコルに準拠することで、独自で作成した型をセットや辞書のキーに使用できます。<code>hash(into:)</code> メソッドの実装については、<a href="https://developer.apple.com/documentation/swift/hashable" target="_blank">Hashable</a>を参照ください。プロトコルの準拠については、<a href="protocols.html">Protocols(プロトコル)</a>を参照ください。</p>
 </blockquote>
-<h3 id="セット型構文set-type-syntax"><a name="セット型構文set-type-syntax" class="plugin-anchor" href="#セット型構文set-type-syntax"><i class="fa fa-link" aria-hidden="true"></i></a>セット型構文(Set Type Syntax)</h3>
+<h3 id="セット型構文set-type-syntax">セット型構文(Set Type Syntax)</h3>
 <p>セット型は <code>Set<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Element</span><span class="token punctuation">&gt;</span></span></code> と書きます。<code>Element</code> はセットが保持できる型です。セットには、配列のような簡略記法(<code>[Element]</code>)はありません。</p>
-<h3 id="空のセットの作成と初期化creating-and-initializing-an-empty-set"><a name="空のセットの作成と初期化creating-and-initializing-an-empty-set" class="plugin-anchor" href="#空のセットの作成と初期化creating-and-initializing-an-empty-set"><i class="fa fa-link" aria-hidden="true"></i></a>空のセットの作成と初期化(Creating and Initializing an Empty Set)</h3>
+<h3 id="空のセットの作成と初期化creating-and-initializing-an-empty-set">空のセットの作成と初期化(Creating and Initializing an Empty Set)</h3>
 <p>イニシャライザの構文を使用して、ある型の空のセットを作成できます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> letters <span class="token operator">=</span> <span class="token builtin">Set</span><span class="token operator">&lt;</span><span class="token builtin">Character</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;letters is of type Set&lt;Character&gt; with <span class="token interpolation"><span class="token delimiter variable">\(</span>letters<span class="token punctuation">.</span><span class="token builtin">count</span><span class="token delimiter variable">)</span></span> items.&quot;</span><span class="token punctuation">)</span>
@@ -929,7 +925,7 @@ shoppingList <span class="token operator">+</span><span class="token operator">=
 letters <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 <span class="token comment">// letters は空のセットですが、 型は Set&lt;Character&gt; のままです</span>
 </code></pre>
-<h3 id="配列リテラルを使ったセットの作成creating-a-set-with-an-array-literal"><a name="配列リテラルを使ったセットの作成creating-a-set-with-an-array-literal" class="plugin-anchor" href="#配列リテラルを使ったセットの作成creating-a-set-with-an-array-literal"><i class="fa fa-link" aria-hidden="true"></i></a>配列リテラルを使ったセットの作成(Creating a Set with an Array Literal)</h3>
+<h3 id="配列リテラルを使ったセットの作成creating-a-set-with-an-array-literal">配列リテラルを使ったセットの作成(Creating a Set with an Array Literal)</h3>
 <p>簡略記法として、1 つ以上の値を配列リテラルを使用してセットを初期化することもできます。</p>
 <p>下記の例は、<code>favoriteGenres</code> という <code>String</code> の値を保持するセットを作成しています。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> favoriteGenres<span class="token punctuation">:</span> <span class="token builtin">Set</span><span class="token operator">&lt;</span><span class="token builtin">String</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Rock&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Classical&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Hip hop&quot;</span><span class="token punctuation">]</span>
@@ -944,7 +940,7 @@ letters <span class="token operator">=</span> <span class="token punctuation">[<
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> favoriteGenres<span class="token punctuation">:</span> <span class="token builtin">Set</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Rock&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Classical&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Hip hop&quot;</span><span class="token punctuation">]</span>
 </code></pre>
 <p>配列リテラルの値は全て同じ型なので、<code>favoriteGenres</code> 変数は <code>Set<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>String</span><span class="token punctuation">&gt;</span></span></code> が正しい型だと推論できます。</p>
-<h3 id="セットへのアクセスと変更accessing-and-modifying-a-set"><a name="セットへのアクセスと変更accessing-and-modifying-a-set" class="plugin-anchor" href="#セットへのアクセスと変更accessing-and-modifying-a-set"><i class="fa fa-link" aria-hidden="true"></i></a>セットへのアクセスと変更(Accessing and Modifying a Set)</h3>
+<h3 id="セットへのアクセスと変更accessing-and-modifying-a-set">セットへのアクセスと変更(Accessing and Modifying a Set)</h3>
 <p>メソッドやプロパティを通してセットにアクセスしたり、変更できます。</p>
 <p>セットのアイテムの数を調べるために、読み取り専用の <code>count</code> プロパティをチェックします。</p>
 <pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;I have <span class="token interpolation"><span class="token delimiter variable">\(</span>favoriteGenres<span class="token punctuation">.</span><span class="token builtin">count</span><span class="token delimiter variable">)</span></span> favorite music genres.&quot;</span><span class="token punctuation">)</span>
@@ -978,7 +974,7 @@ letters <span class="token operator">=</span> <span class="token punctuation">[<
 <span class="token punctuation">}</span>
 <span class="token comment">// &quot;It&apos;s too funky in here.&quot;</span>
 </code></pre>
-<h3 id="セットの繰り返し処理iterating-over-a-set"><a name="セットの繰り返し処理iterating-over-a-set" class="plugin-anchor" href="#セットの繰り返し処理iterating-over-a-set"><i class="fa fa-link" aria-hidden="true"></i></a>セットの繰り返し処理(Iterating Over a Set)</h3>
+<h3 id="セットの繰り返し処理iterating-over-a-set">セットの繰り返し処理(Iterating Over a Set)</h3>
 <p><code>for-in</code> ループを使用してセットの要素を繰り返し処理することができます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> genre <span class="token keyword">in</span> favoriteGenres <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>genre<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
@@ -987,7 +983,7 @@ letters <span class="token operator">=</span> <span class="token punctuation">[<
 <span class="token comment">// Jazz</span>
 <span class="token comment">// Hip hop</span>
 </code></pre>
-<p><code>for-in</code> ループについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#for-in-loops" target="_blank">For-In Loops(For-In ループ)</a>を参照ください。</p>
+<p><code>for-in</code> ループについては、<a href="control-flow#for-in-loops">For-In Loops(For-In ループ)</a>を参照ください。</p>
 <p>Swift の Set 型は決まった順序がありません。特定の順番で値を繰り返し処理したい場合、<code>sorted()</code> メソッドを使用すると、<code>&lt;</code> 演算子を使用してソートされた配列として要素を返します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> genre <span class="token keyword">in</span> favoriteGenres<span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>genre<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
@@ -996,9 +992,9 @@ letters <span class="token operator">=</span> <span class="token punctuation">[<
 <span class="token comment">// Hip hop</span>
 <span class="token comment">// Jazz</span>
 </code></pre>
-<h2 id="セットの操作performing-set-operations"><a name="セットの操作performing-set-operations" class="plugin-anchor" href="#セットの操作performing-set-operations"><i class="fa fa-link" aria-hidden="true"></i></a>セットの操作(Performing Set Operations)</h2>
+<h2 id="セットの操作performing-set-operations">セットの操作(Performing Set Operations)</h2>
 <p>2 つのセットの、合成、共通の要素の発見、値が全部等しいのか、いくつか等しいのか、全く違うのかの比較など、基本的なセットの操作を効率的に行うことができます。</p>
-<h3 id="基本的なセットの操作fundamental-set-operations"><a name="基本的なセットの操作fundamental-set-operations" class="plugin-anchor" href="#基本的なセットの操作fundamental-set-operations"><i class="fa fa-link" aria-hidden="true"></i></a>基本的なセットの操作(Fundamental Set Operations)</h3>
+<h3 id="基本的なセットの操作fundamental-set-operations">基本的なセットの操作(Fundamental Set Operations)</h3>
 <p>下記のイラストでは、<code>a</code> と <code>b</code> の 2 つのセットに対して、それぞれ操作を行い、色の付いた部分が結果(戻り値)を表しています。</p>
 <p><img src="../assets/setvenndiagram_2x.png" alt="Setのベン図"></p>
 <ul>
@@ -1020,7 +1016,7 @@ oddDigits<span class="token punctuation">.</span><span class="token function">su
 oddDigits<span class="token punctuation">.</span><span class="token function">symmetricDifference</span><span class="token punctuation">(</span>singleDigitPrimeNumbers<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token comment">// [1, 2, 9]</span>
 </code></pre>
-<h3 id="セットの要素と等価性set-membership-and-equality"><a name="セットの要素と等価性set-membership-and-equality" class="plugin-anchor" href="#セットの要素と等価性set-membership-and-equality"><i class="fa fa-link" aria-hidden="true"></i></a>セットの要素と等価性(Set Membership and Equality)</h3>
+<h3 id="セットの要素と等価性set-membership-and-equality">セットの要素と等価性(Set Membership and Equality)</h3>
 <p>下記のイラストでは、<code>a</code>、<code>b</code>、<code>c</code> の 3 つのセットで共有している要素の領域を表しています。 <code>a</code> は、<code>b</code> に含まれる全ての要素を含んでいるため、<code>b</code> の<em>上位集合</em>です。反対に、<code>b</code> は <code>a</code> の<em>下位集合</em>です。<code>b</code> と <code>c</code> は、共通の要素がないため、互いに<em>素</em>です。</p>
 <p><img src="../assets/seteulerdiagram_2x.png" alt="Setのオイラー図"></p>
 <ul>
@@ -1041,18 +1037,18 @@ farmAnimals<span class="token punctuation">.</span><span class="token function">
 farmAnimals<span class="token punctuation">.</span><span class="token function">isDisjoint</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> cityAnimals<span class="token punctuation">)</span>
 <span class="token comment">// true</span>
 </code></pre>
-<h2 id="辞書dictionaries"><a name="辞書dictionaries" class="plugin-anchor" href="#辞書dictionaries"><i class="fa fa-link" aria-hidden="true"></i></a><a id="dictionaries">辞書(Dictionaries)</a></h2>
+<h2 id="辞書dictionaries"><a id="dictionaries">辞書(Dictionaries)</a></h2>
 <p><em>辞書</em>は、特定の型のキーと、特定の型のバリューをペアとして関連づけ、順序なしでコレクションに保持します。それぞれのアイテムは、辞書内で識別子の役割を果たす一意なキーに紐づいています。配列のアイテムとは異なり、辞書のアイテムに順序はありません。辞書は、現実に特定の単語を辞書で調べるのと同じように、識別子から値を探したいときに使います。</p>
 <blockquote>
 <p>NOTE<br><code>Dictionary</code> は Foundation の <code>NSDictionary</code> とスムーズにやりとりできるようにしています。Foundation と Cocoa を使った <code>Dictionary</code> の使用方法に関しては、<a href="https://developer.apple.com/documentation/swift/dictionary#2846239" target="_blank">Bridging Between Dictionary and NSDictionary</a>を参照ください</p>
 </blockquote>
-<h3 id="辞書型の省略構文dictionary-type-shorthand-syntax"><a name="辞書型の省略構文dictionary-type-shorthand-syntax" class="plugin-anchor" href="#辞書型の省略構文dictionary-type-shorthand-syntax"><i class="fa fa-link" aria-hidden="true"></i></a><a id="dictionary-type-shorthand-syntax">辞書型の省略構文(Dictionary Type Shorthand Syntax)</a></h3>
+<h3 id="辞書型の省略構文dictionary-type-shorthand-syntax"><a id="dictionary-type-shorthand-syntax">辞書型の省略構文(Dictionary Type Shorthand Syntax)</a></h3>
 <p>Swift の辞書は、全体で <code>Dictionary<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Key,</span> <span class="token attr-name">Value</span><span class="token punctuation">&gt;</span></span></code> と書きます。<code>Key</code> には辞書のキーとして使える値の型を、<code>Value</code> にはそのキーに紐づいた辞書で保持するバリューの型です。</p>
 <blockquote>
 <p>NOTE<br>辞書の <code>Key</code> はセットの値のように、<code>Hashable</code> プロトコルに準拠しなければなりません。</p>
 </blockquote>
 <p>辞書の型は、<code>[Key: Value]</code> と簡略記法で書くこともできます。機能的にはどちらの書き方も同じですが、簡略記法の方が好ましく、このガイド内では、辞書の型を参照する際はこちらの形式を使います。</p>
-<h3 id="空の辞書型の作成creating-an-empty-dictionary"><a name="空の辞書型の作成creating-an-empty-dictionary" class="plugin-anchor" href="#空の辞書型の作成creating-an-empty-dictionary"><i class="fa fa-link" aria-hidden="true"></i></a>空の辞書型の作成(Creating an Empty Dictionary)</h3>
+<h3 id="空の辞書型の作成creating-an-empty-dictionary">空の辞書型の作成(Creating an Empty Dictionary)</h3>
 <p>配列と同様に、ある型の空の <code>Dictionary</code> をイニシャライザの構文を使用して作成できます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> namesOfIntegers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token comment">// namesOfIntegers は空の [Int: String] 辞書</span>
@@ -1064,7 +1060,7 @@ farmAnimals<span class="token punctuation">.</span><span class="token function">
 namesOfIntegers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
 <span class="token comment">// namesOfIntegers は再び [Int: String] の空の辞書</span>
 </code></pre>
-<h3 id="辞書リテラルを使った辞書の作成creating-a-dictionary-with-a-dictionary-literal"><a name="辞書リテラルを使った辞書の作成creating-a-dictionary-with-a-dictionary-literal" class="plugin-anchor" href="#辞書リテラルを使った辞書の作成creating-a-dictionary-with-a-dictionary-literal"><i class="fa fa-link" aria-hidden="true"></i></a>辞書リテラルを使った辞書の作成(Creating a Dictionary with a Dictionary Literal)</h3>
+<h3 id="辞書リテラルを使った辞書の作成creating-a-dictionary-with-a-dictionary-literal">辞書リテラルを使った辞書の作成(Creating a Dictionary with a Dictionary Literal)</h3>
 <p>先ほど見た配列リテラルと似たような構文の<em>辞書リテラル</em>を使った初期化もできます。辞書リテラルは、1 つ以上のキーバリューペアから <code>Dictionary</code> のコレクションを作成する簡略記法です。</p>
 <p><em>キーバリューペア</em>は、キーとバリューの組み合わせです。辞書リテラルは、それぞれのキーバリューペアのキーとバリューをコロン(<code>:</code>)で分けます。複数のキーバリューペアは、カンマ(<code>,</code>)区切りのリストを角括弧(<code>[]</code>)で囲みます:</p>
 <p><img src="../assets/04_dictionarycreating.png" alt="辞書の作成"></p>
@@ -1081,7 +1077,7 @@ namesOfIntegers <span class="token operator">=</span> <span class="token punctua
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> airports <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;YYZ&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;Toronto Pearson&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;DUB&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;Dublin&quot;</span><span class="token punctuation">]</span>
 </code></pre>
 <p>キーの型も、バリューの型も全ての同じなので、Swift は <code>airports</code> 辞書は <code>[String: String]</code> が正しい型だと推論できます。</p>
-<h3 id="辞書へのアクセスと変更accessing-and-modifying-a-dictionary"><a name="辞書へのアクセスと変更accessing-and-modifying-a-dictionary" class="plugin-anchor" href="#辞書へのアクセスと変更accessing-and-modifying-a-dictionary"><i class="fa fa-link" aria-hidden="true"></i></a><a id="accessing-and-modifying-a-dictionary">辞書へのアクセスと変更(Accessing and Modifying a Dictionary)</a></h3>
+<h3 id="辞書へのアクセスと変更accessing-and-modifying-a-dictionary"><a id="accessing-and-modifying-a-dictionary">辞書へのアクセスと変更(Accessing and Modifying a Dictionary)</a></h3>
 <p>メソッドやプロパティ、subscript 構文を通して、辞書へのアクセス、変更ができます。</p>
 <p>配列と同様に、<code>Dictionary</code> のアイテムの数を調べるために、読み取り専用の <code>count</code> プロパティをチェックします。</p>
 <pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The airports dictionary contains <span class="token interpolation"><span class="token delimiter variable">\(</span>airports<span class="token punctuation">.</span><span class="token builtin">count</span><span class="token delimiter variable">)</span></span> items.&quot;</span><span class="token punctuation">)</span>
@@ -1138,7 +1134,7 @@ airports<span class="token punctuation">[</span><span class="token string">&quot
 <span class="token punctuation">}</span>
 <span class="token comment">// &quot;The removed airport&apos;s name is Dublin Airport.&quot;</span>
 </code></pre>
-<h3 id="辞書の繰り返し処理iterating-over-a-dictionary"><a name="辞書の繰り返し処理iterating-over-a-dictionary" class="plugin-anchor" href="#辞書の繰り返し処理iterating-over-a-dictionary"><i class="fa fa-link" aria-hidden="true"></i></a>辞書の繰り返し処理(Iterating Over a Dictionary)</h3>
+<h3 id="辞書の繰り返し処理iterating-over-a-dictionary">辞書の繰り返し処理(Iterating Over a Dictionary)</h3>
 <p><code>for-in</code> ループを使用して辞書のキーバリューペア全部に繰り返し処理することができます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> item <span class="token keyword">in</span> shoppingList <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
@@ -1156,7 +1152,7 @@ airports<span class="token punctuation">[</span><span class="token string">&quot
 <span class="token comment">// LHR: London Heathrow</span>
 <span class="token comment">// YYZ: Toronto Pearson</span>
 </code></pre>
-<p><code>for-in</code> ループについては、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#for-in-loops" target="_blank">For-In Loops(For-In ループ)</a>を参照ください。</p>
+<p><code>for-in</code> ループについては、<a href="control-flow#for-in-loops">For-In Loops(For-In ループ)</a>を参照ください。</p>
 <p><code>keys</code> と <code>values</code> プロパティを使用して、キーとバリューそれぞれのリストを取得することもできます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> airportCode <span class="token keyword">in</span> airports<span class="token punctuation">.</span>keys <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Airport code: <span class="token interpolation"><span class="token delimiter variable">\(</span>airportCode<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
@@ -1211,7 +1207,7 @@ airports<span class="token punctuation">[</span><span class="token string">&quot
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"コレクション型(Collection Types)","level":"3.4","depth":1,"next":{"title":"制御フロー(Control Flow)","level":"3.5","depth":1,"path":"language-guide-gaido/control-flow.md","ref":"language-guide-gaido/control-flow.md","articles":[]},"previous":{"title":"文字と文字列(Strings and Characters)","level":"3.3","depth":1,"path":"language-guide-gaido/strings-and-characters.md","ref":"language-guide-gaido/strings-and-characters.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","anchors","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/collection-types.md","mtime":"2021-07-11T00:21:09.615Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:30:22.901Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"コレクション型(Collection Types)","level":"3.4","depth":1,"next":{"title":"制御フロー(Control Flow)","level":"3.5","depth":1,"path":"language-guide-gaido/control-flow.md","ref":"language-guide-gaido/control-flow.md","articles":[]},"previous":{"title":"文字と文字列(Strings and Characters)","level":"3.3","depth":1,"path":"language-guide-gaido/strings-and-characters.md","ref":"language-guide-gaido/strings-and-characters.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-api","prism","-highlight","copy-code-button","hide-published-with","intopic-toc","back-to-top-button","expand-active-chapter","collapsible-chapters","katex","custom-favicon","insert-logo"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","theme-api":{"languages":[],"split":true,"theme":"light"},"back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"assets/logo.png","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ja","gitbook":"*"},"file":{"path":"language-guide-gaido/collection-types.md","mtime":"2021-07-11T00:35:31.525Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-11T00:37:12.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
