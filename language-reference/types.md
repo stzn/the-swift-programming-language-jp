@@ -41,7 +41,7 @@ func someFunction(a: Int) { /* ... */ }
 型注釈は、型の前に型属性の任意のリストを含めることができます。
 
 > GRAMMAR OF A TYPE ANNOTATION  
-> type-annotation → `:` [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)_opt_ **inout**_opt_ [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
+> type-annotation → `:` [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> **inout**<sub>opt</sub> [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
 
 ## 型識別子\(Type Identifier\)
 
@@ -63,7 +63,7 @@ var someValue: ExampleModule.MyType
 ```
 
 > GRAMMAR OF A TYPE IDENTIFIER  
-> type-identifier → [type-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-name) [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause)_opt_ \| [type-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-name) [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause)_opt_ `.`[type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  
+> type-identifier → [type-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-name) [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause)<sub>opt</sub> \| [type-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-name) [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause)<sub>opt</sub> `.`[type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  
 > type-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
 ## タプル型\(Tuple Type\)
@@ -162,11 +162,11 @@ func takesTwoFunctions(first: (() -> Void) -> Void, second: (() -> Void) -> Void
 この制限を回避する必要がある場合は、いずれかのパラメータを `@esescaping` とマークしたり、パラメータの非エスケープ関数の 1 つを `withoutActuallyEscaping(_:do:)` を使ってエスケープ関数に一時的に変換します。メモリへのアクセス競合を回避する方法については、[Memory Safety\(メモリ安全性\)](../language-guide-gaido/memory-safety.md)を参照ください。
 
 > GRAMMAR OF A FUNCTION TYPE  
-> function-type → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)_opt_ [function-type-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument-clause) `throws`_opt_ `->` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
+> function-type → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [function-type-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument-clause) `throws`<sub>opt</sub> `->` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
 > function-type-argument-clause → `(` `)`  
-> function-type-argument-clause → `(` [function-type-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument-list) `...`_opt_ `)`  
+> function-type-argument-clause → `(` [function-type-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument-list) `...`<sub>opt</sub> `)`  
 > function-type-argument-list → [function-type-argument](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument) \| [function-type-argument](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument) `,` [function-type-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument-list)  
-> function-type-argument → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)_opt_ `inout`_opt_ [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) \| [argument-label](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_argument-label) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)  
+> function-type-argument → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> `inout`<sub>opt</sub> [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) \| [argument-label](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_argument-label) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)  
 > argument-label → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
 
 ## 配列型\(Array Type\)
