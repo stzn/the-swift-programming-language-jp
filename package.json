@@ -30,7 +30,6 @@
   "devDependencies": {
     "@proofdict/textlint-rule-proofdict": "^3.1.1",
     "gh-pages": "^3.2.3",
-    "gitbook-plugin-anchors": "^0.7.1",
     "gitbook-plugin-back-to-top-button": "^0.1.4",
     "gitbook-plugin-collapsible-chapters": "^0.1.8",
     "gitbook-plugin-copy-code-button": "^0.0.2",
@@ -41,7 +40,6 @@
     "gitbook-plugin-intopic-toc": "^1.1.1",
     "gitbook-plugin-katex": "^1.1.4",
     "gitbook-plugin-prism": "^2.4.0",
-    "gitbook-plugin-theme-api": "^1.1.2",
     "honkit": "^3.7.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
