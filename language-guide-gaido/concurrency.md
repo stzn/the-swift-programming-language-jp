@@ -1,6 +1,6 @@
 # 同時並行処理\(Concurrency\)
 
-最終更新日: 2021/6/29
+最終更新日: 2021/7/16
 
 Swift には、構造化された方法で非同期および同時並行コードを書くためのサポートが組み込まれています。非同期コード\(_asynchronous code_\)は、コードは一度にプログラムの 1 箇所のみで実行されますが、後で中断\(_suspend_\)および再開\(_resume_\)できます。こうすることで、ネットワーク上のデータの取得やファイルの解析などの長く時間のかかる操作の途中で、UI の更新などの短い時間で完了できる操作を行い、その後引き続き操作を続けることができます。並列コード\(_parallel code_\)とは、複数のコードを同時に実行することを意味します。例えば、4 コアプロセッサを搭載したコンピュータは、各コアがタスクを 1 つ実行し、4 つのコードを同時に実行できます。並列および非同期コードを使用するプログラムは、一度に複数の操作を実行します。例えば、外部システムからの結果を待つ操作を中断し、メモリセーフな方法でこのコードを簡単に記述できます。
 
@@ -152,17 +152,17 @@ await withTaskGroup(of: Data.self) { taskGroup in
 
 ### <a id="unstructured-concurrency">非構造同時並行処理\(Unstructured Concurrency\)</a>
 
-前のセクションで説明されている構造同時並行処理のアプローチに加えて、Swift は非構造同時並行処理\(_unstructured concurrency_\)もサポートしています。タスクグループの一部のタスクとは異なり、非構造タスクには親タスクがありません。どんな方法で使われたとしても、非構造タスクを完全に柔軟に管理することができます。しかし、それらの正しい動作を保証することは完全に開発者の責任です。現在のアクター\(_actor_\)上で実行される非構造タスクを作成するには、[async\(priority:operation:\)](https://developer.apple.com/documentation/swift/3816404-async) 関数を呼びます。現在のアクター上で実行されないタスク\(デタッチタスク\(_detached task_\)\)を作成するには、[asyncDetached\(priority:operation:\)](https://developer.apple.com/documentation/swift/3816406-asyncdetached) 関数を呼び出します。これらの関数は両方ともタスクハンドル\(_task handle_\)を返し、例えば、その結果を待つかキャンセルすることができます。
+前のセクションで説明されている構造同時並行処理のアプローチに加えて、Swift は非構造同時並行処理\(_unstructured concurrency_\)もサポートしています。タスクグループの一部のタスクとは異なり、非構造タスクには親タスクがありません。どんな方法で使われたとしても、非構造タスクを完全に柔軟に管理することができます。しかし、それらの正しい動作を保証することは完全に開発者の責任です。現在のアクター\(_actor_\)上で実行される非構造タスクを作成するには、[Task.init\(priority:operation:\)](https://developer.apple.com/documentation/swift/task/3856790-init) 関数を呼びます。現在のアクター上で実行されないタスク\(デタッチタスク\(_detached task_\)\)を作成するには、[Task.detached\(priority:operation:\)](https://developer.apple.com/documentation/swift/task/3856786-detached) 関数を呼び出します。これらの関数は両方ともタスクハンドル\(_task handle_\)を返し、例えば、その結果を待つかキャンセルすることができます。
 
 ```swift
 let newPhoto = // ... ある写真データ ...
-let handle = async {
+let handle = Task {
     return await add(newPhoto, toGalleryNamed: "Spring Adventures")
 }
-let result = await handle.get()
+let result = await handle.value
 ```
 
-デタッチタスクの管理の詳細については、[Task.Handle](https://developer.apple.com/documentation/swift/task/handle)を参照ください。
+デタッチタスクの管理の詳細については、[Task](https://developer.apple.com/documentation/swift/task)を参照ください。
 
 ### タスクのキャンセル\(Task Cancellation\)
 
@@ -174,7 +174,7 @@ Swift の同時並行処理は協調キャンセルモデル\(_cooperative cance
 
 タスクがキャンセルされたかどうかをチェックするには、キャンセルされていた場合に `CancellationError` をスローする[Task.checkCancellation\(\)](https://developer.apple.com/documentation/swift/task/3814826-checkcancellation)を呼び出すか、[Task.isCancelled](https://developer.apple.com/documentation/swift/task/3814832-iscancelled)の値を確認し、自分でコードのキャンセルを処理します。例えば、ギャラリから写真をダウンロードしているタスクは、一部だけダウンロードされたデータを削除してネットワークを切断する必要があるかもしれません。
 
-キャンセルを手動で伝播するには、[Task.handle.cancel\(\)](https://developer.apple.com/documentation/swift/task/handle/3814781-cancel) を呼び出します。
+キャンセルを手動で伝播するには、[Task.cancel\(\)](https://developer.apple.com/documentation/swift/task/3851218-cancel) を呼び出します。
 
 ## アクター\(Actors\)
 
