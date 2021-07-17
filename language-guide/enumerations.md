@@ -173,7 +173,7 @@ productBarcode = .qrCode("ABCDEFGHIJKLMNOP")
 
 この時点で、元の `Barcode.upc` とその整数値は、新しい `Barcode.qrCode` とその文字列値に置き換えられます。`Barcode` の定数と変数は、`.upc` または `.qrCode` のいずれかを\(関連値とともに\)格納できますが、一度に格納できるのはそのうちの 1 つだけです。
 
-[Matching Enumeration Values with a Switch Statement\(switch 文を使った列挙値のパターンマッチング\)](../language-guide-gaido/enumerations#matching-enumeration-values-with-a-switch-statement)の例と同様に、`switch` 文を使用して様々なバーコード型を確認できます。ただし、今回は、関連値が `switch` 文の一部として抽出されます。`switch` のケースの本文内で使用するために、関連値を定数\(`let` プレフィックス\)または変数\(`var` プレフィックス\)として抽出します。
+[Matching Enumeration Values with a Switch Statement\(switch 文を使った列挙値のパターンマッチング\)](../language-guide/enumerations#matching-enumeration-values-with-a-switch-statement)の例と同様に、`switch` 文を使用して様々なバーコード型を確認できます。ただし、今回は、関連値が `switch` 文の一部として抽出されます。`switch` のケースの本文内で使用するために、関連値を定数\(`let` プレフィックス\)または変数\(`var` プレフィックス\)として抽出します。
 
 ```swift
 switch productBarcode {

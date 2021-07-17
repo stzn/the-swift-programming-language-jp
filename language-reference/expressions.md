@@ -14,7 +14,7 @@ Swift では、前置式、バイナリ式、基本式、後置式の 4 種類�
 
 前置式は、式と任意の前置演算子を組み合わせます。前置演算子は 1 つの引数を受け取り、その後に式が続きます。
 
-これらの演算子の動作については、[Basic Operators\(基本演算子\)](../language-guide-gaido/basic-operators.md)と[Advanced Operators\(高度な演算子\)](../language-guide-gaido/advanced-operators.md)を参照ください。
+これらの演算子の動作については、[Basic Operators\(基本演算子\)](../language-guide/basic-operators.md)と[Advanced Operators\(高度な演算子\)](../language-guide/advanced-operators.md)を参照ください。
 
 Swift 標準ライブラリによって提供されている演算子については、[Operator Declarations\(演算子宣言\)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
 
@@ -72,7 +72,7 @@ sum = (try someThrowingFunction()) + anotherThrowingFunction()
 
 `try` と `await` 演算子の両方を含む場合は、最初に `try` が来なければなりません。
 
-`try`、`try?` と `try!` の使用方法についての詳細は[Error Handling\(エラーハンドリング\)](../language-guide-gaido/error-handling.md)を参照ください。
+`try`、`try?` と `try!` の使用方法についての詳細は[Error Handling\(エラーハンドリング\)](../language-guide/error-handling.md)を参照ください。
 
 > GRAMMAR OF A TRY EXPRESSION  
 > try-operator → `try` \| `try` `?` \| `try` `!`
@@ -115,7 +115,7 @@ _バイナリ式_は、左右の引数を受け取る式と中置バイナリ演
 
 ![&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x5F0F;](../assets/binary_expression.png)
 
-これらの演算子の動作については、[Basic Operators\(基本演算子\)](../language-guide-gaido/basic-operators.md) と [Advanced Operators\(高度な演算子\)](../language-guide-gaido/advanced-operators.md)を参照ください。
+これらの演算子の動作については、[Basic Operators\(基本演算子\)](../language-guide/basic-operators.md) と [Advanced Operators\(高度な演算子\)](../language-guide/advanced-operators.md)を参照ください。
 
 標準ライブラリによって提供されている演算子については、[Operator Declarations\(演算子宣言\)](https://developer.apple.com/documentation/swift/operator_declarations)を参照ください。
 
@@ -155,7 +155,7 @@ value を評価した結果得られた値が expression に設定されます�
 
 条件が `true` と評価された場合、条件演算子は最初の式を評価し、その値を返します。それ以外の場合は、2 番目の式を評価してその値を返します。未使用の式は評価されません。
 
-三項条件演算子を使用する例については、[Ternary Conditional Operator\(三項条件演算子\)](../language-guide-gaido/basic-operators#basic-operator-ternary-conditional-operator)を参照ください。
+三項条件演算子を使用する例については、[Ternary Conditional Operator\(三項条件演算子\)](../language-guide/basic-operators#basic-operator-ternary-conditional-operator)を参照ください。
 
 > GRAMMAR OF A CONDITIONAL OPERATOR  
 > conditional-operator → `?` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `:`
@@ -193,7 +193,7 @@ f(x as Any)
 
 `as!` 演算子は、指定された型に強制キャストを実行します。`as!` 演算子は、オプショナル型ではなく、指定された型の値を返します。キャストが失敗した場合は、実行時エラーが発生します。`x as! T` は `(x as? T)!` の挙動と同じです。
 
-型キャストの詳細や型キャスト演算子を使用する例については、[Type Casting\(型キャスト\)](../language-guide-gaido/type-casting.md)を参照ください。
+型キャストの詳細や型キャスト演算子を使用する例については、[Type Casting\(型キャスト\)](../language-guide/type-casting.md)を参照ください。
 
 > GRAMMAR OF A TYPE-CASTING OPERATOR  
 > type-casting-operator → `is` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
@@ -378,7 +378,7 @@ myFunction { $0 + $1 }
 
 クロージャ式は、関数呼び出しの一部としてすぐにクロージャを使用するときなど、可変または定数に格納されることなく使用できます。上記のコードの `myFunction` に渡されたクロージャ式は、即時に使用される例です。その結果、クロージャ式がエスケープか非エスケープかは、式の周囲のコンテキストによって異なります。クロージャ式は、即時に呼ばれるか、非エスケープ関数の引数として渡されると、非エスケープです。それ以外の場合、クロージャ式はエスケープです。
 
-クロージャのエスケープの詳細については、<a href="../language-guide-gaido/closures#escaping-closures" target="_self">Escaping Closures(エスケープクロージャ)</a>を参照ください。
+クロージャのエスケープの詳細については、<a href="../language-guide/closures#escaping-closures" target="_self">Escaping Closures(エスケープクロージャ)</a>を参照ください。
 
 #### <a id="capture-lists">キャプチャリスト\(Capture Lists\)</a>
 
@@ -440,7 +440,7 @@ myFunction { [unowned self] in print(self.title) }  // 非所有参照
 myFunction { [weak parent = self.parent] in print(parent!.title) }
 ```
 
-クロージャ式の詳細と例については、[Closure Expressions\(クロージャ式\)](../language-guide-gaido/closures#closure-expressions)を参照ください。キャプチャリストの詳細および例については、[Resolving Strong Reference Cycles for Closures\(クロージャの強参照循環の解消\)](../language-guide-gaido/automatic-reference-counting#resolving-strong-reference-cycles-for-closures)を参照ください。
+クロージャ式の詳細と例については、[Closure Expressions\(クロージャ式\)](../language-guide/closures#closure-expressions)を参照ください。キャプチャリストの詳細および例については、[Resolving Strong Reference Cycles for Closures\(クロージャの強参照循環の解消\)](../language-guide/automatic-reference-counting#resolving-strong-reference-cycles-for-closures)を参照ください。
 
 > GRAMMAR OF A CLOSURE EXPRESSION  
 > closure-expression → `{` [closure-signature](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-signature)<sub>opt</sub> [statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements)<sub>opt</sub> `}`  
@@ -803,7 +803,7 @@ Objective-C API とやり取りする Swift コードで key-path を使用す�
 
 _後置式_は、後置演算子またはその他の後置構文を式に適用することによって形成されます。構文的には、全ての基本式も後置式です。
 
-これらの演算子の動作については、[Basic Operators\(基本演算子\)](../language-guide-gaido/basic-operators.md)と[Advanced Operators\(高度な演算子\)](../language-guide-gaido/advanced-operators.md)を参照ください。
+これらの演算子の動作については、[Basic Operators\(基本演算子\)](../language-guide/basic-operators.md)と[Advanced Operators\(高度な演算子\)](../language-guide/advanced-operators.md)を参照ください。
 
 Swift 標準ライブラリによって提供されている演算子については、[Operator Declarations\(演算子宣言\)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
 

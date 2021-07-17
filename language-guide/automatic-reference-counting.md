@@ -87,7 +87,7 @@ reference3 = nil
 
 ただし、クラスインスタンスの強参照がゼロにならないコードを書いてしまう可能性があります。これは、2 つのクラスインスタンスが互いに強参照を保持している場合に発生する可能性があります。これは、_強参照循環_と呼ばれています。
 
-クラス間の関係の一部を強参照ではなく、弱参照または非所有参照として定義することにより、強参照循環を解決できます。このプロセスは、[Resolving Strong Reference Cycles Between Class Instances\(クラスインスタンス間の強参照循環の解消\)](../language-guide-gaido/automatic-reference-counting#resolving-strong-reference-cycles-between-class-instances)で説明されています。ただし、強参照循環を解決する方法を学ぶ前に、そのような循環がどのように発生するかを理解しておくと役に立ちます。
+クラス間の関係の一部を強参照ではなく、弱参照または非所有参照として定義することにより、強参照循環を解決できます。このプロセスは、[Resolving Strong Reference Cycles Between Class Instances\(クラスインスタンス間の強参照循環の解消\)](../language-guide/automatic-reference-counting#resolving-strong-reference-cycles-between-class-instances)で説明されています。ただし、強参照循環を解決する方法を学ぶ前に、そのような循環がどのように発生するかを理解しておくと役に立ちます。
 
 強参照循環が偶発的に発生する例を次に示します。この例では、`Person` と `Apartment` という 2 つのクラスを定義しており、アパートのブロックとその住人をモデル化しています。
 
@@ -406,9 +406,9 @@ class City {
 
 2 つのクラス間の相互依存関係を設定するために、`City` のイニシャライザは `Country` インスタンスを取得し、このインスタンスを `country` プロパティに格納します。
 
-`City` のイニシャライザは、`Country` のイニシャライザ内から呼び出されます。ただし、[Two-Phase Initialization\(2 段階の初期化\)](../language-guide-gaido/initialization#two-phase-initialization)で説明されているように、新しい `Country` インスタンスが完全に初期化されるまで、`Country` のイニシャライザは `self` を `City` イニシャライザに渡すことはできません。
+`City` のイニシャライザは、`Country` のイニシャライザ内から呼び出されます。ただし、[Two-Phase Initialization\(2 段階の初期化\)](../language-guide/initialization#two-phase-initialization)で説明されているように、新しい `Country` インスタンスが完全に初期化されるまで、`Country` のイニシャライザは `self` を `City` イニシャライザに渡すことはできません。
 
-この要件に対処するには、`Country` の `capitalCity` プロパティを、型注釈の最後に感嘆符で示される、暗黙アンラップオプショナルプロパティ\(`City!`\)として宣言しています。これは、他のオプショナルと同様に、`capitalCity` プロパティのデフォルト値は `nil` ですが、[Implicitly Unwrapped Optionals\(暗黙アンラップオプショナル\)](../language-guide-gaido/the-basics#implicitly-unwrapped-optionals)で説明されているように、その値をアンラップする必要なくアクセスできることを意味します。
+この要件に対処するには、`Country` の `capitalCity` プロパティを、型注釈の最後に感嘆符で示される、暗黙アンラップオプショナルプロパティ\(`City!`\)として宣言しています。これは、他のオプショナルと同様に、`capitalCity` プロパティのデフォルト値は `nil` ですが、[Implicitly Unwrapped Optionals\(暗黙アンラップオプショナル\)](../language-guide/the-basics#implicitly-unwrapped-optionals)で説明されているように、その値をアンラップする必要なくアクセスできることを意味します。
 
 `capitalCity` にはデフォルトの `nil` 値があるため、新しい `Country` インスタンスは、イニシャライザ内で `name` プロパティを設定するとすぐに完全に初期化されたと見なされます。これは、`name` プロパティが設定されるとすぐに、`Country` イニシャライザが暗黙の `self` プロパティの参照の受け渡しを開始できることを意味します。そして、`Country` イニシャライザが自身の `capitalCity` プロパティを設定するときに、`self` を `City` イニシャライザのパラメータの 1 つとして渡すことができます。
 
@@ -500,7 +500,7 @@ print(paragraph!.asHTML())
 
 ![&#x30AF;&#x30ED;&#x30FC;&#x30B8;&#x30E3;&#x306E;&#x5FAA;&#x74B0;&#x53C2;&#x7167; &#x5F37;&#x53C2;&#x7167;&#x5FAA;&#x74B0;](../assets/closureReferenceCycle01_2x.png)
 
-インスタンスの `asHTML` プロパティは、そのクロージャへの強参照を保持します。ただし、クロージャは\(`self.name` および `self.text` を参照する方法として\)本文内の `self` を参照するため、クロージャは `self` をキャプチャします。つまり、クロージャは `HTMLElement` インスタンスへの強参照を保持します。2 つの間に強参照循環が作成されます。\(クロージャでの値のキャプチャの詳細については、[Capturing Values\(値のキャプチャ\)](../language-guide-gaido/closures#capturing-values)を参照してください\)
+インスタンスの `asHTML` プロパティは、そのクロージャへの強参照を保持します。ただし、クロージャは\(`self.name` および `self.text` を参照する方法として\)本文内の `self` を参照するため、クロージャは `self` をキャプチャします。つまり、クロージャは `HTMLElement` インスタンスへの強参照を保持します。2 つの間に強参照循環が作成されます。\(クロージャでの値のキャプチャの詳細については、[Capturing Values\(値のキャプチャ\)](../language-guide/closures#capturing-values)を参照してください\)
 
 > NOTE  
 > クロージャは `self` を複数回参照していますが、`HTMLElement` インスタンスへの強参照は 1 つだけです。
@@ -552,7 +552,7 @@ lazy var someClosure = {
 > NOTE  
 > キャプチャされた参照が `nil` にならない場合は、弱参照ではなく、常に非所有参照としてキャプチャする必要があります。
 
-非所有参照は、[Strong Reference Cycles for Closures\(クロージャの強参照循環\)](../language-guide-gaido/automatic-reference-counting#strong-reference-cycles-for-closures)の `HTMLElement` の例を解決するために適切なキャプチャ方法です。循環を回避するための `HTMLElement` クラスの作成方法は次のとおりです:
+非所有参照は、[Strong Reference Cycles for Closures\(クロージャの強参照循環\)](../language-guide/automatic-reference-counting#strong-reference-cycles-for-closures)の `HTMLElement` の例を解決するために適切なキャプチャ方法です。循環を回避するための `HTMLElement` クラスの作成方法は次のとおりです:
 
 ```swift
 class HTMLElement {
