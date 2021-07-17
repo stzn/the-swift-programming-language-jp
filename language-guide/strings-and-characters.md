@@ -151,7 +151,7 @@ constantString += " and another Highlander"
 
 ## 文字列は値型\(Strings Are Value Types\)
 
-`String` 型は_値型_です。新しい `String` を生成すると、関数やメソッドのパラメータで渡されるときや、他の定数、変数に代入されるときに、値のコピーが発生します。いずれの場合でも、既存の `String` のコピーが生成され、元の値ではなく新しいコピーが渡され\(または代入され\)ます。値型は[Structures and Enumerations Are Value Types\(構造体と列挙型は値型\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/structures-and-classes#structures-and-enumerations-are-value-type)で記載されています。
+`String` 型は_値型_です。新しい `String` を生成すると、関数やメソッドのパラメータで渡されるときや、他の定数、変数に代入されるときに、値のコピーが発生します。いずれの場合でも、既存の `String` のコピーが生成され、元の値ではなく新しいコピーが渡され\(または代入され\)ます。値型は[Structures and Enumerations Are Value Types\(構造体と列挙型は値型\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/structures-and-classes#structures-and-enumerations-are-value-type)で記載されています。
 
 Swift の、デフォルトでコピーをする `String` の挙動は、`String` が関数やメソッドのパラメータで渡されるときに、どこからその値が来たとしても、正しい `String` を所有していることが保証されます。つまり、渡された文字列は、自身で変更しない限り決して変更されることがありません。
 
@@ -172,7 +172,7 @@ for character in "Dog!🐶" {
 // 🐶
 ```
 
-`for-in` ループについては[For-In Loops\(For-In ループ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#for-in-loops)に記載されています。
+`for-in` ループについては[For-In Loops\(For-In ループ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/control-flow#for-in-loops)に記載されています。
 
 もしくは、`Character` の型注釈を与えて 1 文字のリテラルから `Character` 型の定数や変数を作ることもできます:
 
@@ -285,7 +285,7 @@ _Unicode_は、様々な書記体系で、テキストをエンコード、抽�
 
 ### <a id="unicode-scalar-values">Unicode スカラ値\(Unicode Scalar Values\)</a>
 
-内部では、Swift 固有の `String` 型は _Unicodeスカラ_から構築されています。Unicode スカラは 21 ビットの文字と修飾子で構成されています。例えば、`U+0061` は `LATIN SMALL LETTER A ("a")`、`U+1F425` は `FRONT-FACING BABY CHICK ("🐥")` です。
+内部では、Swift 固有の `String` 型は  *Unicodeスカラ* から構築されています。Unicode スカラは 21 ビットの文字と修飾子で構成されています。例えば、`U+0061` は `LATIN SMALL LETTER A ("a")`、`U+1F425` は `FRONT-FACING BABY CHICK ("🐥")` です。
 
 全ての 21 ビットのスカラが 1 つの文字に当てはまるわけではありません。いくつかは将来的に必要になるために確保されていたり、UTF-16 で使われています。文字に割り当てられているスカラには、上記の `LATIN SMALL LETTER A` や `FRONT-FACING BABY CHICK` のように一般的には名前が付いています。
 
@@ -457,7 +457,7 @@ Swift では、3 つの方法で文字列同士を比較する方法を提供し
 
 ### 文字と文字列の等価性\(String and Character Equality\)
 
-`String` または `Character` の完全一致は、は等価演算子\(`==`\)と不等価演算子\(`!=`\)を使用してチェックします。[Comparison Operators\(比較演算子\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/basic-operators#comparison-operators)
+`String` または `Character` の完全一致は、は等価演算子\(`==`\)と不等価演算子\(`!=`\)を使用してチェックします。[Comparison Operators\(比較演算子\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/basic-operators#comparison-operators)
 
 ```swift
 let quotation = "We're a lot alike, you and I."

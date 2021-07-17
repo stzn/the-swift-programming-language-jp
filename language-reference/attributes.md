@@ -420,7 +420,7 @@ s.$x.wrapper  // WrapperWithProjection 値
 
 ### resultBuilder
 
-この属性をクラス、構造体、列挙型に適用して、その型をリザルトビルダとして使用できます。_リザルトビルダ_は、ネストされたデータ構造を段階的に構築する型です。リザルトビルダを使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語\(DSL\)を実装します。`resultBuilder` 属性の使用方法の例については、[Result Builders\(リザルトビルダ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#result-builders)を参照ください。
+この属性をクラス、構造体、列挙型に適用して、その型をリザルトビルダとして使用できます。_リザルトビルダ_は、ネストされたデータ構造を段階的に構築する型です。リザルトビルダを使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語\(DSL\)を実装します。`resultBuilder` 属性の使用方法の例については、[Result Builders\(リザルトビルダ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/advanced-operators#result-builders)を参照ください。
 
 #### Result-Building Methods
 
@@ -727,7 +727,7 @@ Interface Builder 属性は、Xcode と同期するために InterfaceBuilder �
 
 ### autoclosure
 
-この属性を適用すると、引数のないクロージャで式を自動的にラップすることにより、式の評価を遅らせます。関数またはメソッド宣言のパラメータに、引数を受け取らず式の型の値を返す関数型を適用できます。`autoclosure` 属性の使用方法の例については、[AutoClosures\(自動クロージャ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#autoclosures)と[Function Type\(関数型\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/types#types-function-type)を参照ください。
+この属性を適用すると、引数のないクロージャで式を自動的にラップすることにより、式の評価を遅らせます。関数またはメソッド宣言のパラメータに、引数を受け取らず式の型の値を返す関数型を適用できます。`autoclosure` 属性の使用方法の例については、[AutoClosures\(自動クロージャ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/closures#autoclosures)と[Function Type\(関数型\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/types#types-function-type)を参照ください。
 
 ### convention
 
@@ -743,7 +743,7 @@ Interface Builder 属性は、Xcode と同期するために InterfaceBuilder �
 
 ### escaping
 
-この属性を関数またはメソッド宣言のパラメータの型に適用すると、パラメータの値を後で実行するために保持されることがあることを示します。これは、値が呼び出し側の生存期間を超えて存続できることを意味します。`escaping` 属性を持つ関数型パラメータは、プロパティまたはメソッドに対して `self` を明示的に使用する必要があります。`escaping` 属性の使用方法の例については、[Escaping Closures\(エスケープクロージャ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/closures#escaping-closures)を参照ください。
+この属性を関数またはメソッド宣言のパラメータの型に適用すると、パラメータの値を後で実行するために保持されることがあることを示します。これは、値が呼び出し側の生存期間を超えて存続できることを意味します。`escaping` 属性を持つ関数型パラメータは、プロパティまたはメソッドに対して `self` を明示的に使用する必要があります。`escaping` 属性の使用方法の例については、[Escaping Closures\(エスケープクロージャ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/closures#escaping-closures)を参照ください。
 
 ## Switch Case Attributes \(Switch ケース属性\)
 

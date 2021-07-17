@@ -218,7 +218,7 @@ print(anotherGreeting(for: "Dave"))
 
 `greeting(for:)` 関数の全体の定義は、戻り値の挨拶文です。つまり、この短い形式を使用できます。`anotherGreeting(for:)` 関数は、複数の式を持つ関数と同様に `return` キーワードを使用して、同じ挨拶文を返しています。1 つの戻り行として記述した関数は、`return` を省略できます。
 
-[Shorthand Getter Declaration\(省略 get プロパティ宣言\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/properties#shorthand-getter-declaration)でも説明されていますが、プロパティの get でも暗黙的な戻り値を使用することができます。
+[Shorthand Getter Declaration\(省略 get プロパティ宣言\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/properties#shorthand-getter-declaration)でも説明されていますが、プロパティの get でも暗黙的な戻り値を使用することができます。
 
 > NOTE  
 > 暗黙の戻り値を使ったコードは、何かしらの値を返す必要があります。例えば、`fatalError("Oh no!")` または `print(13)` を暗黙の戻り値として使用することはできません。

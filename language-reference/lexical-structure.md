@@ -120,7 +120,7 @@ _整数リテラル_は、不特定の精度の整数値を表します。デフ
 
 アンダースコア\(`_`\)を読みやすくするために数字の間に使用できますが、それ自体は無視されるため、リテラルの値には影響しません。整数リテラルは先行ゼロ\(`0`\)で始めることができますが、同様に無視され、リテラルの基数または値には影響しません。
 
-特に指定がない限り、整数リテラルのデフォルトの推論型は Swift 標準ライブラリの `Int` 型です。Swift 標準ライブラリは、[Integers\(整数\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#integers)で説明されているように、様々なサイズの符号付き整数および符号なし整数の型も定義します。
+特に指定がない限り、整数リテラルのデフォルトの推論型は Swift 標準ライブラリの `Int` 型です。Swift 標準ライブラリは、[Integers\(整数\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/the-basics#integers)で説明されているように、様々なサイズの符号付き整数および符号なし整数の型も定義します。
 
 > GRAMMAR OF AN INTEGER LITERAL  
 > integer-literal → [binary-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_binary-literal)  
@@ -242,7 +242,7 @@ print(# # #"Line 1\# # #nLine 2"# # #) // Error
 
 拡張区切り文字を使用して作成する複数行の文字列リテラルには、通常の複数行の文字列リテラルと同じインデントの要件が適用されます。
 
-文字列リテラルのデフォルトで推論される型は `String` です。`String` 型の詳細については、[Strings and Characters\(文字列と文字\)](../language-guide-gaido/strings-and-characters.md)、[String](https://developer.apple.com/documentation/swift/string)を参照ください。
+文字列リテラルのデフォルトで推論される型は `String` です。`String` 型の詳細については、[Strings and Characters\(文字列と文字\)](../language-guide/strings-and-characters.md)、[String](https://developer.apple.com/documentation/swift/string)を参照ください。
 
 `+` 演算子によって連結された文字列リテラルは、コンパイル時に連結されます。例えば、下記の例の `textA` と `textB` の値は同じで、実行時に連結は実行されません。
 
@@ -281,7 +281,7 @@ let textB = "Hello world"
 
 ## <a id="operators">演算子\(Operators\)</a>
 
-Swift 標準ライブラリは、数多くの_演算子_を定義します。その多くは、[Basic Operators\(基本演算子\)](../language-guide-gaido/basic-operators.md)と[Advanced Operators\(高度な演算子\)](../language-guide-gaido/advanced-operators.md)で説明しています。このセクションでは、カスタム演算子を定義するために使用できる文字を説明します。
+Swift 標準ライブラリは、数多くの_演算子_を定義します。その多くは、[Basic Operators\(基本演算子\)](../language-guide/basic-operators.md)と[Advanced Operators\(高度な演算子\)](../language-guide/advanced-operators.md)で説明しています。このセクションでは、カスタム演算子を定義するために使用できる文字を説明します。
 
 カスタム演算子は、ASCII 文字 `/`、 `=`、 `-` 、`+`、`！`、`*`、`％`、`<`、`>`、`＆`、`|`、`^`、`？`、または `〜` または下記の文法で定義されている Unicode 文字の 1 つ\(これは、数学演算子、その他のシンボル、および装飾記号 Unicode ブロックからの文字を含む\)で始めることができます。最初の文字の後に、Unicode 文字を組み合わせることもできます。
 
@@ -305,7 +305,7 @@ Swift 標準ライブラリは、数多くの_演算子_を定義します。そ
 
 特定の構成要素では、先頭に `<` または `>` を持つ演算子は 2 つ以上のトークンに分割されることもあります。残りの部分は同じ方法で扱われ、再び分割される可能性があります。その結果、`Dictionary<String、Array<Int>>` のようなコンストラクト内の閉じ `>` の間の文字は曖昧さを解消するために空白を追加する必要はありません。この例では、閉じ `>` を誤って単一のトークンのビットシフト\(`>>`\)としては解釈されません。
 
-新しいカスタム演算子を定義する方法については、[Custom Operators\(カスタム演算子\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/advanced-operators#custom-operators)と[Operator Declaration](declarations.md#operator-declaration演算子宣言)を参照ください。既存の演算子をオーバーロードについては、[Operator Methods\(演算子メソッド\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#operator-declaration)を参照ください
+新しいカスタム演算子を定義する方法については、[Custom Operators\(カスタム演算子\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/advanced-operators#custom-operators)と[Operator Declaration](declarations.md#operator-declaration演算子宣言)を参照ください。既存の演算子をオーバーロードについては、[Operator Methods\(演算子メソッド\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#operator-declaration)を参照ください
 
 > GRAMMAR OF OPERATORS  
 > operator → [operator-head](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator-head) [operator-characters](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator-characters)<sub>opt</sub>  

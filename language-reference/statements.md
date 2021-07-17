@@ -59,7 +59,7 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 
 _condition_ の値は、_statements_ が実行される前に評価されるため、`while` 文内の _statements_ は 0 回以上実行されます。
 
-_condition_ の値は、`Bool` 型または `Bool` にブリッジされた型でなければなりません。[Optional Binding\(オプショナルバインディング\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
+_condition_ の値は、`Bool` 型または `Bool` にブリッジされた型でなければなりません。[Optional Binding\(オプショナルバインディング\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
 
 > GRAMMAR OF A WHILE STATEMENT  
 > while-statement → `while` [condition-list](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_condition-list) [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  
@@ -83,7 +83,7 @@ _condition_ の値は、`Bool` 型または `Bool` にブリッジされた型�
 
 _condition_ の値は _statements_ の実行後に評価されるため、`repeat-while` 文内の文は少なくとも 1 回実行されます。
 
-_condition_ の値は、`Bool` 型または `Bool` にブリッジされた型にする必要があります。[Optional Binding\(オプショナルバインディング\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
+_condition_ の値は、`Bool` 型または `Bool` にブリッジされた型にする必要があります。[Optional Binding\(オプショナルバインディング\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
 
 > GRAMMAR OF A REPEAT-WHILE STATEMENT  
 > repeat-while-statement → `repeat` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block) `while` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
@@ -117,7 +117,7 @@ _condition_ の値は、`Bool` 型または `Bool` にブリッジされた型�
 
 ![If-ElseId&#x6587;](../.gitbook/assets/if_elseif_statement.png)
 
-`if` 文の条件の値は、`Bool` 型または `Bool` にブリッジされた型にする必要があります。[Optional Binding\(オプショナルバインディング\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
+`if` 文の条件の値は、`Bool` 型または `Bool` にブリッジされた型にする必要があります。[Optional Binding\(オプショナルバインディング\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
 
 > GRAMMAR OF AN IF STATEMENT  
 > if-statement → `if` [condition-list](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_condition-list) [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block) [else-clause](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_else-clause)<sub>opt</sub>  
@@ -131,7 +131,7 @@ _condition_ の値は、`Bool` 型または `Bool` にブリッジされた型�
 
 ![Guard &#x6587;](../.gitbook/assets/guard_statement.png)
 
-`guard` 文の条件の値は、`Bool` 型または `Bool` にブリッジされた型にする必要があります。[Optional Binding\(オプショナルバインディング\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
+`guard` 文の条件の値は、`Bool` 型または `Bool` にブリッジされた型にする必要があります。[Optional Binding\(オプショナルバインディング\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
 
 `guard` 文条件のオプショナルバインディング宣言から定数または変数へ値を代入することができ、`guard` 文を囲んでいるスコープの後の部分で使用できます。
 
@@ -157,7 +157,7 @@ _condition_ の値は、`Bool` 型または `Bool` にブリッジされた型�
 
 `switch` 文の _control expression_ が評価され、それぞれの場合に指定されたパターンと比較されます。一致するものが見つかった場合、プログラムはそのケースの範囲内の _statements_ を実行します。各ケースのスコープを空にすることはできません。そのため、各ケースラベルのコロン\(`:`\)の後に少なくとも 1 つの文を含める必要があります。コードを実行する予定がない場合は、単一の `break` 文を使用します。
 
-コードが分岐できる式の値は非常に柔軟です。例えば、整数や文字などのスカラ型の値に加えて、浮動小数点数、文字列、タプル、独自で作成したクラスのインスタンス、オプショナルなど、任意の型の値で分岐できます。_control expression_ の値は、列挙型内のケースと一致しているか、または指定された値の範囲に含まれているかどうかを確認することもできます。`switch` 文でこれらの様々な種類の値を使用する方法の例については、[Control Flow\(制御フロー\)](../language-guide-gaido/control-flow.md)の[Switch](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#switch)を参照ください。
+コードが分岐できる式の値は非常に柔軟です。例えば、整数や文字などのスカラ型の値に加えて、浮動小数点数、文字列、タプル、独自で作成したクラスのインスタンス、オプショナルなど、任意の型の値で分岐できます。_control expression_ の値は、列挙型内のケースと一致しているか、または指定された値の範囲に含まれているかどうかを確認することもできます。`switch` 文でこれらの様々な種類の値を使用する方法の例については、[Control Flow\(制御フロー\)](../language-guide/control-flow.md)の[Switch](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/control-flow#switch)を参照ください。
 
 `switch` のケースには、各パターンの後に `where` 句を含めることができます。_where 句_は、`where` キーワードの後に​​式が続くことで導入され、ケースのパターンが _control expression_ に一致すると見なされる前に追加の条件を提供するために使用されます。`where` 句が存在する場合、関連するケース内の _statements_ は、_control expression_ の値がケースのパターンの 1 つと一致し、`where` 句の式が `true` と評価された場合にのみ実行されます。例えば、_control expression_ は、`(1、1)` など、同じ値の 2 つの要素を含むタプルの場合にのみ、下記の例のケースに一致します。
 
@@ -229,7 +229,7 @@ case .suppressed:
 
 ラベル付き文のスコープは、文ラベルに続く文全体です。ラベル付き文はネストできますが、各文ラベルの名前を一意にする必要があります。
 
-文ラベルの詳細および使用例については、[Control Flow\(制御フロー\)](../language-guide-gaido/control-flow.md)の[Labeled Statements\(ラベル付き文\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#labeled-statements)を参照ください。
+文ラベルの詳細および使用例については、[Control Flow\(制御フロー\)](../language-guide/control-flow.md)の[Labeled Statements\(ラベル付き文\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/control-flow#labeled-statements)を参照ください。
 
 > GRAMMAR OF A LABELED STATEMENT  
 > labeled-statement → [statement-label](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statement-label) [loop-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_loop-statement)  
@@ -262,7 +262,7 @@ case .suppressed:
 
 どちらの場合も、プログラム制御は、ループまたは `switch` 文\(存在する場合\)で囲まれているコードの次の行に移ります。
 
-`break` 文の使用方法の例については、[Break](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#break)と[Control Flow\(制御フロー\)](../language-guide-gaido/control-flow.md)の[Labeled Statements\(ラベル付き文\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#labeled-statements)を参照ください。
+`break` 文の使用方法の例については、[Break](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/control-flow#break)と[Control Flow\(制御フロー\)](../language-guide/control-flow.md)の[Labeled Statements\(ラベル付き文\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/control-flow#labeled-statements)を参照ください。
 
 > GRAMMAR OF A BREAK STATEMENT  
 > break-statement → `break` [label-name](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_label-name)<sub>opt</sub>
@@ -281,7 +281,7 @@ case .suppressed:
 
 `for` 文では、increment 式はループの本文の実行後に評価されるため、`continue` 文の実行後も increment 式は評価されます。
 
-`continue` 文の使用方法の例については、[Continue](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#continue)と[Control Flow\(制御フロー\)](../language-guide-gaido/control-flow.md)の[Labeled Statements\(ラベル付き文\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#labeled-statements)を参照ください。
+`continue` 文の使用方法の例については、[Continue](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/control-flow#continue)と[Control Flow\(制御フロー\)](../language-guide/control-flow.md)の[Labeled Statements\(ラベル付き文\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/control-flow#labeled-statements)を参照ください。
 
 > GRAMMAR OF A CONTINUE STATEMENT  
 > continue-statement → `continue` [label-name](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_label-name)<sub>opt</sub>
@@ -292,7 +292,7 @@ case .suppressed:
 
 `fallthrough` 文は、ケースブロックの最後の文としてだけでなく、`switch` 文内のどこにでも表示できますが、最後のケースブロックでは使用できません。また、パターンに値バインディングのパターンが含まれているケースのブロックに制御を移すこともできません。
 
-`switch` 文で `fallthrough` 文を使用する方法の例については、[Control Flow\(制御フロー\)](../language-guide-gaido/control-flow.md)の[Control Transfer Statements\(制御転送文\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/control-flow#control-flow-control-transfer-statements)を参照ください。
+`switch` 文で `fallthrough` 文を使用する方法の例については、[Control Flow\(制御フロー\)](../language-guide/control-flow.md)の[Control Transfer Statements\(制御転送文\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/control-flow#control-flow-control-transfer-statements)を参照ください。
 
 > GRAMMAR OF A FALLTHROUGH STATEMENT  
 > fallthrough-statement → `fallthrough`
@@ -308,7 +308,7 @@ case .suppressed:
 `return` 文の後に式が続く場合、式の値は呼び出し元の関数またはメソッドに返されます。式の値が関数またはメソッドで宣言された戻り値の型と一致しない場合、式の値は、呼び出し元の関数またはメソッドに返される前に戻り値の型に変換されます。
 
 > NOTE  
-> [Failable Initializers\(失敗可能イニシャライザ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#initialization-failable-initializers)で説明されているように、失敗可能なニシャライザで特別な形式の `return` 文\(`return nil`\)を使用して、イニシャライザの失敗を示すことができます。
+> [Failable Initializers\(失敗可能イニシャライザ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/initialization#initialization-failable-initializers)で説明されているように、失敗可能なニシャライザで特別な形式の `return` 文\(`return nil`\)を使用して、イニシャライザの失敗を示すことができます。
 
 `return` 文の後に式がない場合は、値を返さない関数またはメソッド\(つまり、関数またはメソッドの戻り値の型が `Void` または `()` の場合\)のみで使用できます
 
@@ -327,7 +327,7 @@ case .suppressed:
 
 _expression_ の値は、`Error` プロトコルに準拠する型でなければなりません。
 
-`throw` 文の使用方法の例については、[Error Handling\(エラーハンドリング\)](../language-guide-gaido/error-handling.md)の[Propagating Errors Using Throwing Functions\(スロー関数を使用したエラーの伝播\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/error-handling#propagating-errors-using-throwing-functions)を参照ください。
+`throw` 文の使用方法の例については、[Error Handling\(エラーハンドリング\)](../language-guide/error-handling.md)の[Propagating Errors Using Throwing Functions\(スロー関数を使用したエラーの伝播\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/error-handling#propagating-errors-using-throwing-functions)を参照ください。
 
 > GRAMMAR OF A THROW STATEMENT  
 > throw-statement → `throw` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
@@ -379,7 +379,7 @@ Swift の `do` 文は、コードブロックを区切るために使用され�
 
 エラーが確実に処理されるようにするには、ワイルドカードパターン\(`_`\)など、全てのエラーに一致するパターンで `catch` 句を使用します。`catch` 句でパターンが指定されていない場合、`catch` 句は全てのエラーと一致し、`error` という名前のローカル定数にバインドします。`catch` 句で使用できるパターンの詳細については、[Patterns\(パターン\)](patterns.md)を参照ください。
 
-複数の `catch` 句を指定して `do` 文を使用する方法の例については、[Handling Errors\(エラー処理\)](../language-guide-gaido/error-handling.md#handling-errorsエラー処理)を参照ください。
+複数の `catch` 句を指定して `do` 文を使用する方法の例については、[Handling Errors\(エラー処理\)](../language-guide/error-handling.md#handling-errorsエラー処理)を参照ください。
 
 > GRAMMAR OF A DO STATEMENT  
 > do-statement → `do` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block) [catch-clauses](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_catch-clauses)<sub>opt</sub>  
