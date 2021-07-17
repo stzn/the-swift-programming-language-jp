@@ -37,7 +37,7 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 
 `for-in` 文の形式は次のとおりです:
 
-![For-In &#x6587;](../.gitbook/assets/for-in_statement.png)
+![For-In &#x6587;](../assets/for-in_statement.png)
 
 `makeIterator()` メソッドは、[IteratorProtocol](https://developer.apple.com/documentation/swift/iteratorprotocol)プロトコルに準拠した型のイテレータ型の値を取得するために、_collection_ 式で呼び出されます。プログラムは、イテレータ上で `next()` メソッドを呼び出すことによってループの実行を開始します。返された値が `nil` ではない場合、_item_ に代入され、プログラムは _statements_ を実行し、再びループの先頭から実行を続行します。それ以外の場合、プログラムは値の代入や、_statements_ を実行せず、`for-in` 文の実行は終了します。
 
@@ -50,7 +50,7 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 
 `while` 文の形式は次のとおりです:
 
-![While &#x6587;](../.gitbook/assets/while_statement.png)
+![While &#x6587;](../assets/while_statement.png)
 
 `while` 文は次のように実行されます。
 
@@ -74,7 +74,7 @@ _condition_ の値は、`Bool` 型または `Bool` にブリッジされた型�
 
 `repeat-while` 文の形式は次のとおりです:
 
-![Repeat-While&#x6587;](../.gitbook/assets/repeat-while_statement.png)
+![Repeat-While&#x6587;](../assets/repeat-while_statement.png)
 
 `repeat-while` 文は次のように実行されます。
 
@@ -107,15 +107,15 @@ _condition_ の値は、`Bool` 型または `Bool` にブリッジされた型�
 
 最初の形式では、条件が true の場合にのみコードを実行でき、形式は次のとおりです:
 
-![If &#x6587;](../.gitbook/assets/if_statement.png)
+![If &#x6587;](../assets/if_statement.png)
 
 `if` 文の 2 番目の形式は、追加の\(`else` キーワードによって導入される\)_else 句を_提供し、条件が true の場合にコードの一部を実行し、false の場合にコードの別の部分を実行するために使用されます。else 句が 1 つ存在する場合、`if` 文の形式は次のとおりです:
 
-![If-Else&#x6587;](../.gitbook/assets/if_else_statement.png)
+![If-Else&#x6587;](../assets/if_else_statement.png)
 
 `if` 文の else 句には、複数の条件を検証するための別の `if` 文を含めることができます。このようにチェーンした `if` 文の形式は次のとおりです:
 
-![If-ElseId&#x6587;](../.gitbook/assets/if_elseif_statement.png)
+![If-ElseId&#x6587;](../assets/if_elseif_statement.png)
 
 `if` 文の条件の値は、`Bool` 型または `Bool` にブリッジされた型にする必要があります。[Optional Binding\(オプショナルバインディング\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
 
@@ -129,7 +129,7 @@ _condition_ の値は、`Bool` 型または `Bool` にブリッジされた型�
 
 `guard` 文の形式は次のとおりです:
 
-![Guard &#x6587;](../.gitbook/assets/guard_statement.png)
+![Guard &#x6587;](../assets/guard_statement.png)
 
 `guard` 文の条件の値は、`Bool` 型または `Bool` にブリッジされた型にする必要があります。[Optional Binding\(オプショナルバインディング\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/the-basics#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
 
@@ -153,7 +153,7 @@ _condition_ の値は、`Bool` 型または `Bool` にブリッジされた型�
 
 `switch` 文の形式は次のとおりです。
 
-![Switch &#x6587;](../.gitbook/assets/switch_statement.png)
+![Switch &#x6587;](../assets/switch_statement.png)
 
 `switch` 文の _control expression_ が評価され、それぞれの場合に指定されたパターンと比較されます。一致するものが見つかった場合、プログラムはそのケースの範囲内の _statements_ を実行します。各ケースのスコープを空にすることはできません。そのため、各ケースラベルのコロン\(`:`\)の後に少なくとも 1 つの文を含める必要があります。コードを実行する予定がない場合は、単一の `break` 文を使用します。
 
@@ -254,7 +254,7 @@ case .suppressed:
 
 `break` 文は、ループ、`if` 文、または `switch` 文のプログラムの実行を終了します。下記に示すように、`break` 文は、`break` キーワードのみで構成することも、`break` キーワードの後に文ラベルを続けることもできます。
 
-![Break&#x6587;](../.gitbook/assets/break_statement.png)
+![Break&#x6587;](../assets/break_statement.png)
 
 `break` 文の後に文ラベルが続く場合、そのラベルで指定されたループ、`if` 文、または `switch` 文のプログラム実行を終了します。
 
@@ -271,7 +271,7 @@ case .suppressed:
 
 `continue` 文は、ループ文の現在のイテレーションを終了しますが、ループ文の実行を停止しません。次に示すように、`continue` 文は `continue` キーワードのみで構成することも、`continue` キーワードとそれに続く文ラベルで構成することもできます。
 
-![Continue &#x6587;](../.gitbook/assets/continue_statement.png)
+![Continue &#x6587;](../assets/continue_statement.png)
 
 `continue` 文の後に文ラベルが続く場合、そのラベルで指定されたループの現在のイテレーションを終了します。
 
@@ -303,7 +303,7 @@ case .suppressed:
 
 下記に示すように、`return` 文は `return` キーワードのみで構成することも、`return` キーワードとそれに続く式で構成することもできます。
 
-![Return &#x6587;](../.gitbook/assets/return_statement.png)
+![Return &#x6587;](../assets/return_statement.png)
 
 `return` 文の後に式が続く場合、式の値は呼び出し元の関数またはメソッドに返されます。式の値が関数またはメソッドで宣言された戻り値の型と一致しない場合、式の値は、呼び出し元の関数またはメソッドに返される前に戻り値の型に変換されます。
 
@@ -323,7 +323,7 @@ case .suppressed:
 
 下記に示すように、`throw` 文は、`throw` キーワードとそれに続く式で構成されます。
 
-![Throw &#x6587;](../.gitbook/assets/throw_statement.png)
+![Throw &#x6587;](../assets/throw_statement.png)
 
 _expression_ の値は、`Error` プロトコルに準拠する型でなければなりません。
 
@@ -338,7 +338,7 @@ _expression_ の値は、`Error` プロトコルに準拠する型でなけれ�
 
 `defer` 文の形式は次のとおりです:
 
-![Defer &#x6587;](../.gitbook/assets/defer_statement.png)
+![Defer &#x6587;](../assets/defer_statement.png)
 
 `defer` 文内の文は、プログラム制御がどのように転送されても実行されます。つまり、`defer` 文を使用して、例えば、ファイル記述子を閉じるなどの手動のリソース管理や、エラーがスローされた場合でも実行する必要のあるアクションを実行できます。
 
@@ -369,7 +369,7 @@ Swift の `do` 文は、コードブロックを区切るために使用され�
 
 `do` 文の形式は次のとおりです:
 
-![Do &#x6587;](../.gitbook/assets/do_catch_statement.png)
+![Do &#x6587;](../assets/do_catch_statement.png)
 
 `do` ブロック内のいずれかの文がエラーをスローした場合、プログラム制御は、パターンがエラーに一致する最初の `catch` 句に移ります。どの句も一致しない場合、エラーは周囲のスコープに伝播します。エラーがトップレベルでも処理されない場合、プログラムの実行は実行時エラーで停止します。
 
@@ -403,7 +403,7 @@ Swift の `do` 文は、コードブロックを区切るために使用され�
 
 全ての条件付きコンパイルブロックは、`＃if` コンパイルディレクティブで始まり、`＃endif` コンパイルディレクティブで終わります。単純な条件付きコンパイルブロックの形式は次のとおりです。
 
-![if&#x6761;&#x4EF6;&#x4ED8;&#x304D;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x30D6;&#x30ED;&#x30C3;&#x30AF;](../.gitbook/assets/if_compiler_statement.png)
+![if&#x6761;&#x4EF6;&#x4ED8;&#x304D;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x30D6;&#x30ED;&#x30C3;&#x30AF;](../assets/if_compiler_statement.png)
 
 `if` 文の条件とは異なり、_コンパイル条件_はコンパイル時に評価されます。その結果、_statements_ は、コンパイル時にコンパイル条件が `true` と評価された場合にのみ、コンパイルおよび実行されます。
 
@@ -446,7 +446,7 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 `if` 文と同様に、複数の条件分岐を追加して、様々なコンパイル条件を検証できます。`#elseif` 句を使用して、分岐をいくつでも追加できます。`#else` 句を使用して、最後の分岐を追加することもできます。複数のブランチを含む条件付きコンパイルブロックの形式は次のとおりです:
 
-![ifelse&#x6761;&#x4EF6;&#x4ED8;&#x304D;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x30D6;&#x30ED;&#x30C3;&#x30AF;](../.gitbook/assets/if_elseif_compiler_statement.png)
+![ifelse&#x6761;&#x4EF6;&#x4ED8;&#x304D;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x30D6;&#x30ED;&#x30C3;&#x30AF;](../assets/if_elseif_compiler_statement.png)
 
 > NOTE  
 > 条件付きコンパイルブロックの本文にある各文は、コンパイルされない場合でも解析されます。ただし、コンパイル条件に `swift()` または `compiler()` プラットフォーム条件が含まれている場合は例外です。言語またはコンパイラのバージョンがプラットフォーム条件で指定されているものと一致する場合にのみ解析されます。この例外により、古いコンパイラが新しいバージョンの Swift で導入された構文を解析しないことが保証されます。
@@ -487,7 +487,7 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 行制御文の形式は次のとおりです:
 
-![sourceLocation&#x5236;&#x5FA1;&#x6587;](../.gitbook/assets/sourceLocation_compiler_statement.png)
+![sourceLocation&#x5236;&#x5FA1;&#x6587;](../assets/sourceLocation_compiler_statement.png)
 
 最初の形式は、行制御文に続くコード行から、`＃line`、`＃file`、`＃fileID`、および `#filePath` リテラル式の値を変更します。_line number_ は `#line` の値を変更し、0 より大きい任意の整数リテラルです。_file path_ は、`＃file`、`＃fileID`、および `#filePath` の値を変更する文字列リテラルです。指定された文字列が `#filePath` の値になり、文字列の最後のパスコンポーネントが `#fileID` の値として使用されます。`＃file`、`＃fileID`、および `#filePath` については、[Literal Expression\(リテラル式\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/expressions#literal-expression)を参照ください。
 
@@ -503,7 +503,7 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 コンパイル時診断文により、コンパイラはコンパイル中にエラーまたは警告を発行します。コンパイル時診断文の形式は次のとおりです:
 
-![&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x6642;&#x8A3A;&#x65AD;&#x6587;](../.gitbook/assets/error_warning_compiler_statement.png)
+![&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x6642;&#x8A3A;&#x65AD;&#x6587;](../assets/error_warning_compiler_statement.png)
 
 最初の形式は、致命的なエラーとして _error message_ を出力し、コンパイルプロセスを終了します。2 番目の形式は、致命的ではない警告として _warning message_ を出力し、コンパイルを続行できるようにします。診断メッセージは静的文字列リテラルとして記述します。静的文字列リテラルは、文字列補間や文字列連結などの機能を使用できませんが、複数行の文字列リテラル構文を使用できます。
 
@@ -518,7 +518,7 @@ _availability 条件_は、`if`、`while`、および `guard` 文の条件とし
 
 availability 条件の形式は次のとおりです:
 
-![availability &#x6761;&#x4EF6;](../.gitbook/assets/05_availabilitycondition.png)
+![availability &#x6761;&#x4EF6;](../assets/05_availabilitycondition.png)
 
 使用する API が実行時に使用可能かどうかに応じて、Availability 条件を使用してコードのブロックを実行します。コンパイラは、そのコード・ブロック内の API が使用可能かどうかを確認するときに、Availability 条件からの情報を使用します。
 

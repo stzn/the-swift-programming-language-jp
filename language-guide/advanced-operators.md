@@ -20,7 +20,7 @@ Swift は、下記で説明するように、C 言語の全てのビット演算
 
 ビット論理否定演算子\(`~`\)は、数値の全てのビットを反転します。
 
-![&#x30D3;&#x30C3;&#x30C8;&#x8AD6;&#x7406;&#x5426;&#x5B9A;&#x6F14;&#x7B97;&#x5B50;](../.gitbook/assets/bitwiseNOT_2x.png)
+![&#x30D3;&#x30C3;&#x30C8;&#x8AD6;&#x7406;&#x5426;&#x5B9A;&#x6F14;&#x7B97;&#x5B50;](../assets/bitwiseNOT_2x.png)
 
 ビット論理否定演算子は前置演算子で、空白を含めずに演算対象の値の直前に置きます。
 
@@ -37,7 +37,7 @@ let invertedBits = ~initialBits  // 11110000 と等しい
 
 ビット論理積演算子\(`&`\)は、2 つの数値のビットを合成します。両方の入力数値のビットが `1` の場合にのみ、ビットが `1` になり、新しい数値を返します:
 
-![&#x30D3;&#x30C3;&#x30C8;&#x8AD6;&#x7406;&#x7A4D;&#x6F14;&#x7B97;&#x5B50;](../.gitbook/assets/bitwiseAND_2x.png)
+![&#x30D3;&#x30C3;&#x30C8;&#x8AD6;&#x7406;&#x7A4D;&#x6F14;&#x7B97;&#x5B50;](../assets/bitwiseAND_2x.png)
 
 下記の例では、`firstSixBits` と `lastSixBits` の値は両方とも、4 つの中間ビットに `1` が設定されています。ビット論理積演算子はそれらを組み合わせて、符号なし 10 進数の `60` に相当する数値 `00111100` を作成します。
 
@@ -51,7 +51,7 @@ let middleFourBits = firstSixBits & lastSixBits  // 00111100 と等しい
 
 ビット論理和演算子\(`|`\)は、2 つの数値のビットを比較します。演算子は、いずれかの入力数値のビットが `1` に等しい場合、ビットは `1` になり、新しい数値を返します:
 
-![&#x30D3;&#x30C3;&#x30C8;&#x8AD6;&#x7406;&#x548C;&#x6F14;&#x7B97;&#x5B50;](../.gitbook/assets/bitwiseOR_2x.png)
+![&#x30D3;&#x30C3;&#x30C8;&#x8AD6;&#x7406;&#x548C;&#x6F14;&#x7B97;&#x5B50;](../assets/bitwiseOR_2x.png)
 
 下記の例では、`someBits` と `moreBits` の値の異なるビットに `1` が設定されています。ビット論理和演算子はそれらを組み合わせて、符号なし 10 進数の `254` に相当する `11111110` という数値を作成します。
 
@@ -65,7 +65,7 @@ let combinedbits = someBits | moreBits  // 11111110 と等しい
 
 ビット排他的論理和演算子\(`^`\)は、2 つの数値のビットを比較します。演算子は、入力ビットが異なる場合はビットに `1` が設定され、入力ビットが同じ場合は `0` が設定される新しい数値を返します:
 
-![&#x30D3;&#x30C3;&#x30C8;&#x6392;&#x4ED6;&#x7684;&#x8AD6;&#x7406;&#x548C;&#x6F14;&#x7B97;&#x5B50;](../.gitbook/assets/bitwiseXOR_2x.png)
+![&#x30D3;&#x30C3;&#x30C8;&#x6392;&#x4ED6;&#x7684;&#x8AD6;&#x7406;&#x548C;&#x6F14;&#x7B97;&#x5B50;](../assets/bitwiseXOR_2x.png)
 
 下記の例では、`firstBits` と `otherBits` の値はそれぞれ、他の場所にはないビットに `1` が設定されています。ビット排他的論理和演算子は、これらのビット両方に `1` を設定します。`firstBits` および `otherBits` の他の全てのビットは値が一致しているので、`0` が設定されます。
 
@@ -93,7 +93,7 @@ let outputBits = firstBits ^ otherBits  // 00010001 と等しい
 
 下の図は、`11111111 << 1`\(`11111111` を 1 桁左にずらしたもの\)と `11111111 >> 1`\(`11111111` を右に 1 桁ずらしたもの\)の結果を示しています。青色の数字はシフトされ、灰色の数字は破棄され、オレンジ色のには 0 が挿入されます。
 
-![&#x7B26;&#x53F7;&#x306A;&#x3057;&#x6574;&#x6570;&#x306E;&#x8AD6;&#x7406;&#x30B7;&#x30D5;&#x30C8;](../.gitbook/assets/bitshiftUnsigned_2x.png)
+![&#x7B26;&#x53F7;&#x306A;&#x3057;&#x6574;&#x6570;&#x306E;&#x8AD6;&#x7406;&#x30B7;&#x30D5;&#x30C8;](../assets/bitshiftUnsigned_2x.png)
 
 Swift コードでのビットシフトの様子は次のとおりです:
 
@@ -133,7 +133,7 @@ let blueComponent = pink & 0x0000FF           // blueComponent は 0x99 また�
 
 残りのビット\(_値ビット_と呼ばれます\)には、実際の値が格納されています。正の数は、符号なし整数の場合とまったく同じ方法で、`0` から数えて格納されます。`Int8` 内からビットで数値 `4` を表す方法は次のとおりです:
 
-![&#x7B26;&#x53F7;&#x4ED8;&#x304D;&#x6574;&#x6570; 4](../.gitbook/assets/bitshiftSignedFour_2x.png)
+![&#x7B26;&#x53F7;&#x4ED8;&#x304D;&#x6574;&#x6570; 4](../assets/bitshiftSignedFour_2x.png)
 
 符号ビットは `0`\(「正」を意味します\)で、7 つの値ビットは 2 進数表記で書かれた数字の `4` です。
 
@@ -141,21 +141,21 @@ let blueComponent = pink & 0x0000FF           // blueComponent は 0x99 また�
 
 `Int8` 内からビットで数値 `-4` を表す方法は次のとおりです:
 
-![&#x7B26;&#x53F7;&#x4ED8;&#x304D;&#x6574;&#x6570; -4](../.gitbook/assets/bitshiftSignedMinusFour_2x.png)
+![&#x7B26;&#x53F7;&#x4ED8;&#x304D;&#x6574;&#x6570; -4](../assets/bitshiftSignedMinusFour_2x.png)
 
 今回は、符号ビットは `1`\(「負」を意味する\)で、7 つの値ビットは `124` の 2 進数値\(`128 - 4`\)です:
 
-![&#x7B26;&#x53F7;&#x4ED8;&#x304D;&#x6574;&#x6570; -4 &#x306E;&#x5024;&#x30D3;&#x30C3;&#x30C8;](../.gitbook/assets/bitshiftSignedMinusFourValue_2x.png)
+![&#x7B26;&#x53F7;&#x4ED8;&#x304D;&#x6574;&#x6570; -4 &#x306E;&#x5024;&#x30D3;&#x30C3;&#x30C8;](../assets/bitshiftSignedMinusFourValue_2x.png)
 
 負の数のこのエンコーディングは、2 の_補数表現_と呼ばれています。負の数を表すのに珍しい方法に見えるかもしれませんが、いくつかの利点があります。
 
 まず、\(符号ビットを含む\)8 ビット全てに標準の 2 進数加算を実行し、完了したら 8 ビットに収まらないものは全て破棄するだけで、`-1` を `-4` に加算できます:
 
-![&#x7B26;&#x53F7;&#x4ED8;&#x304D;&#x6574;&#x6570;&#x306E;&#x52A0;&#x7B97;](../.gitbook/assets/bitshiftSignedAddition_2x.png)
+![&#x7B26;&#x53F7;&#x4ED8;&#x304D;&#x6574;&#x6570;&#x306E;&#x52A0;&#x7B97;](../assets/bitshiftSignedAddition_2x.png)
 
 次に、2 の補数表現で、負の数のビットを正の数のように左右にシフトし、左にシフトするたびにビットを 2 倍し、右にシフトするたびにビットを半分にします。これを実現するために、符号付き整数を右にシフトするときに追加の規則が使用されます。符号付き整数を右にシフトするときは、符号なし整数と同じ規則を適用しますが、左側の空のビットを 0 で埋めるのではなく、符号ビットで埋めます。
 
-![&#x7B26;&#x53F7;&#x4ED8;&#x304D;&#x6574;&#x6570;&#x306E;&#x30B7;&#x30D5;&#x30C8;](../.gitbook/assets/bitshiftSigned_2x.png)
+![&#x7B26;&#x53F7;&#x4ED8;&#x304D;&#x6574;&#x6570;&#x306E;&#x30B7;&#x30D5;&#x30C8;](../assets/bitshiftSigned_2x.png)
 
 このアクションにより、符号付き整数が右にシフトされた後も同じ符号を持つようになります。これは_算術シフト_と呼ばれています。
 
@@ -197,7 +197,7 @@ unsignedOverflow = unsignedOverflow &+ 1
 
 変数 `unsignedOverflow` は、`UInt8` が保持できる最大値\(`255`、または 2 進数で `11111111`\)で初期化されます。次に、オーバーフロー加算演算子\(`&+`\)を使用して 1 ずつインクリメントします。これにより、`UInt8` が保持できるサイズを超えてその 2 進数表現がプッシュされ、下の図に示すように、境界を超えてオーバーフローします。オーバーフロー加算後に `UInt8` の境界内に残っている値は `00000000`、つまり `0` です:
 
-![&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30D5;&#x30ED;&#x30FC;&#x52A0;&#x7B97;&#x6F14;&#x7B97;&#x5B50; 11111111 &#x306B; 1 &#x3092;&#x52A0;&#x7B97;](../.gitbook/assets/overflowAddition_2x.png)
+![&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30D5;&#x30ED;&#x30FC;&#x52A0;&#x7B97;&#x6F14;&#x7B97;&#x5B50; 11111111 &#x306B; 1 &#x3092;&#x52A0;&#x7B97;](../assets/overflowAddition_2x.png)
 
 符号なし整数が負の方向にオーバーフローできる場合にも、同様のことが起こります。オーバーフロー減算演算子\(`&-`\)を使用した例を次に示します:
 
@@ -210,7 +210,7 @@ unsignedOverflow = unsignedOverflow &- 1
 
 `UInt8` が保持できる最小値は `0`、つまり 2 進数で `00000000` です。オーバーフロー減算演算子\(`&-`\)を使用して `00000000` から `1` を減算すると、数値はオーバーフローして `11111111`、つまり 10 進数で `255` に巻き戻ります。
 
-![&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30D5;&#x30ED;&#x30FC;&#x6E1B;&#x7B97;&#x6F14;&#x7B97;&#x5B50; 00000000 &#x304B;&#x3089; 1 &#x3092;&#x6E1B;&#x7B97;](../.gitbook/assets/overflowUnsignedSubtraction_2x.png)
+![&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30D5;&#x30ED;&#x30FC;&#x6E1B;&#x7B97;&#x6F14;&#x7B97;&#x5B50; 00000000 &#x304B;&#x3089; 1 &#x3092;&#x6E1B;&#x7B97;](../assets/overflowUnsignedSubtraction_2x.png)
 
 オーバーフローは、符号付き整数でも発生します。符号付き整数の加算と減算は全てビット単位で実行され、[Bitwise Left and Right Shift Operators\(ビット左右シフト演算子\)](advanced-operators.md#bitwise-left-and-right-shift-operators)で説明されているように、加算または減算される数値の一部として符号ビットが含まれます。
 
@@ -223,7 +223,7 @@ signedOverflow = signedOverflow &- 1
 
 `Int8` が保持できる最小値は `-128`、つまり 2 進数で `10000000` です。オーバーフロー演算子を使用してこの 2 進数から `1` を減算すると、`01111111` の 2 進数値が得られます。これは、符号ビットを切り替えて、`Int8` が保持できる正の最大値 `127` を返します。
 
-![&#x7B26;&#x53F7;&#x4ED8;&#x304D;&#x6574;&#x6570;&#x306E;&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30D5;&#x30ED;&#x30FC;&#x6E1B;&#x7B97;&#x6F14;&#x7B97;&#x5B50; 10000000 &#x304B;&#x3089; 1 &#x3092;&#x6E1B;&#x7B97;\`](../.gitbook/assets/overflowSignedSubtraction_2x.png)
+![&#x7B26;&#x53F7;&#x4ED8;&#x304D;&#x6574;&#x6570;&#x306E;&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30D5;&#x30ED;&#x30FC;&#x6E1B;&#x7B97;&#x6F14;&#x7B97;&#x5B50; 10000000 &#x304B;&#x3089; 1 &#x3092;&#x6E1B;&#x7B97;\`](../assets/overflowSignedSubtraction_2x.png)
 
 符号付き整数と符号なし整数の両方で、正の方向のオーバーフローは有効な整数値の最大値から最小値に巻き戻り、負の方向のオーバーフローは最小値から最大値に巻き戻ります。
 
@@ -308,7 +308,7 @@ let combinedVector = vector + anotherVector
 
 この例では、下記に示すように、ベクトル `(3.0, 1.0)` と `(2.0, 4.0)` を加算してベクトル `(5.0, 5.0)` を作成します:
 
-![Vector2D&#x306E;&#x52A0;&#x7B97;](../.gitbook/assets/vectorAddition_2x.png)
+![Vector2D&#x306E;&#x52A0;&#x7B97;](../assets/vectorAddition_2x.png)
 
 ### <a id="prefix-and-postfix-operators">前置、後置演算子\(Prefix and Postfix Operators\)</a>
 
