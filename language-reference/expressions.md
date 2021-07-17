@@ -28,7 +28,7 @@ in-out 式は、関数呼び出し式に in-out パラメータとして渡さ�
 
 ![in-out&#x5F0F;](../assets/inout_expression.png)
 
-in-out パラメータの詳細については、[In-Out Parameters\(In-Out パラメータ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#declarations-in-out-parameters)を参照ください。
+in-out パラメータの詳細については、[In-Out Parameters\(In-Out パラメータ\)](../language-reference/declarations.md#declarations-in-out-parameters)を参照ください。
 
 in-out 式は、[Implicit Conversion to a Pointer Type\(ポインタ型への暗黙変換\)](expressions.md#implicit-conversion-to-a-pointer-type)で説明されているように、ポインタが必要なコンテキストに非ポインタ引数を指定するときにも使用されます。
 
@@ -155,7 +155,7 @@ value を評価した結果得られた値が expression に設定されます�
 
 条件が `true` と評価された場合、条件演算子は最初の式を評価し、その値を返します。それ以外の場合は、2 番目の式を評価してその値を返します。未使用の式は評価されません。
 
-三項条件演算子を使用する例については、[Ternary Conditional Operator\(三項条件演算子\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/basic-operators#basic-operator-ternary-conditional-operator)を参照ください。
+三項条件演算子を使用する例については、[Ternary Conditional Operator\(三項条件演算子\)](../language-guide/basic-operators.md#basic-operator-ternary-conditional-operator)を参照ください。
 
 > GRAMMAR OF A CONDITIONAL OPERATOR  
 > conditional-operator → `?` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `:`
@@ -235,7 +235,7 @@ f(x as Any)
 
 `#file` の文字列値は、古い `#filePath` から新しい `#fileID` への移行を有効にするために、言語のバージョンによって異なります。現在、`#file` は `#filePath` と同じ値を持ちます。将来の Swift のバージョンでは、`#file` は代わりに `#fileID` と同じ値を持ちます。将来のバージョンの挙動を適用するには、`#file` を `#fileID` または `#filePath` に置き換える必要があります。
 
-`#fileID` 式の文字列値はモジュール/ファイル形式です。ここで言う、「ファイル」は式が使用されているファイルの名前で、「モジュール」は、がこのファイルが属しているモジュールの名前です。`#filePath` 式の文字列値は、式が使用されているファイルへのフルパスです。[Line Control Statement\(行制御文\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/statements#line-control-statement)で説明されているように、これらの値はどちらも `#sourceLocation` に変わる可能性があります。`#fileID` は `#filePath` とは異なり、ソースファイルへのフルパスをソースファイルに埋め込むことはできないため、より良いプライバシーを提供し、コンパイルされたバイナリのサイズを減させることができます。テスト、ビルドスクリプト、また配布されるプログラムの一部にはならないその他のコードの外側で `#filePath` を使用しないでください。
+`#fileID` 式の文字列値はモジュール/ファイル形式です。ここで言う、「ファイル」は式が使用されているファイルの名前で、「モジュール」は、がこのファイルが属しているモジュールの名前です。`#filePath` 式の文字列値は、式が使用されているファイルへのフルパスです。[Line Control Statement\(行制御文\)](../language-reference/statements.md#line-control-statement)で説明されているように、これらの値はどちらも `#sourceLocation` に変わる可能性があります。`#fileID` は `#filePath` とは異なり、ソースファイルへのフルパスをソースファイルに埋め込むことはできないため、より良いプライバシーを提供し、コンパイルされたバイナリのサイズを減させることができます。テスト、ビルドスクリプト、また配布されるプログラムの一部にはならないその他のコードの外側で `#filePath` を使用しないでください。
 
 > NOTE  
 > `#fileID` 式は、最初のスラッシュ\(`/`\)の前のテキストをモジュール名、最後のスラッシュ\(`/`\)の後のテキストをファイル名と読んでください。将来的には、`MyModule/some/disambigation/myfile.swift` などのように、複数のスラッシュが含まれている可能性があります。
@@ -350,7 +350,7 @@ _クロージャ式_は、他のプログラミング言語では、_ラムダ_�
 
 ![&#x30AF;&#x30ED;&#x30FC;&#x30B8;&#x30E3;&#x5F0F;](../assets/closure_expression.png)
 
-[Function Declaration\(関数宣言\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#function-declaration)で説明されているように、_parameters_は関数宣言内のパラメータと同じ形式です。
+[Function Declaration\(関数宣言\)](../language-reference/declarations.md#function-declaration)で説明されているように、_parameters_は関数宣言内のパラメータと同じ形式です。
 
 クロージャをより簡潔に書くことができるいくつかの特別な形式があります:
 
@@ -378,7 +378,7 @@ myFunction { $0 + $1 }
 
 クロージャ式は、関数呼び出しの一部としてすぐにクロージャを使用するときなど、可変または定数に格納されることなく使用できます。上記のコードの `myFunction` に渡されたクロージャ式は、即時に使用される例です。その結果、クロージャ式がエスケープか非エスケープかは、式の周囲のコンテキストによって異なります。クロージャ式は、即時に呼ばれるか、非エスケープ関数の引数として渡されると、非エスケープです。それ以外の場合、クロージャ式はエスケープです。
 
-クロージャのエスケープの詳細については、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/closures#escaping-closures" target="_self">Escaping Closures(エスケープクロージャ)</a>を参照ください。
+クロージャのエスケープの詳細については、<a href="../language-guide/closures.md#escaping-closures" target="_self">Escaping Closures(エスケープクロージャ)</a>を参照ください。
 
 #### <a id="capture-lists">キャプチャリスト\(Capture Lists\)</a>
 
@@ -440,7 +440,7 @@ myFunction { [unowned self] in print(self.title) }  // 非所有参照
 myFunction { [weak parent = self.parent] in print(parent!.title) }
 ```
 
-クロージャ式の詳細と例については、[Closure Expressions\(クロージャ式\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/closures#closure-expressions)を参照ください。キャプチャリストの詳細および例については、[Resolving Strong Reference Cycles for Closures\(クロージャの強参照循環の解消\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/automatic-reference-counting#resolving-strong-reference-cycles-for-closures)を参照ください。
+クロージャ式の詳細と例については、[Closure Expressions\(クロージャ式\)](../language-guide/closures.md#closure-expressions)を参照ください。キャプチャリストの詳細および例については、[Resolving Strong Reference Cycles for Closures\(クロージャの強参照循環の解消\)](../language-guide/automatic-reference-counting.md#resolving-strong-reference-cycles-for-closures)を参照ください。
 
 > GRAMMAR OF A CLOSURE EXPRESSION  
 > closure-expression → `{` [closure-signature](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-signature)<sub>opt</sub> [statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements)<sub>opt</sub> `}`  
@@ -477,7 +477,7 @@ x = .anotherValue
 var someOptional: MyEnumeration? = .someValue
 ```
 
-暗黙メンバ式の後に[Postfix Expressions\(後置式\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/expressions#postfix-expressions)でリストされている後置演算子またはその他の後置構文を続けることができます。これは_暗黙メンバ式チェーン_と呼ばれます。全ての後置式チェーンで同じ型を持つことが一般的ですが、最低限の要件として、暗黙メンバ式チェーン全体がそのコンテキストで暗黙的に推論される型と互換性がある必要があります。具体的には、暗黙的に推論される型がオプショナルの場合は、オプショナル以外の型の値を使用でき、クラス型の場合、そのサブクラスを使用できます。例えば:
+暗黙メンバ式の後に[Postfix Expressions\(後置式\)](../language-reference/expressions.md#postfix-expressions)でリストされている後置演算子またはその他の後置構文を続けることができます。これは_暗黙メンバ式チェーン_と呼ばれます。全ての後置式チェーンで同じ型を持つことが一般的ですが、最低限の要件として、暗黙メンバ式チェーン全体がそのコンテキストで暗黙的に推論される型と互換性がある必要があります。具体的には、暗黙的に推論される型がオプショナルの場合は、オプショナル以外の型の値を使用でき、クラス型の場合、そのサブクラスを使用できます。例えば:
 
 ```swift
 class SomeClass {
@@ -888,7 +888,7 @@ someFunction { return $0 } secondClosure: { return $0 }  // "10 20"
 
 上記の例では、"Ambiguous"とマークされている関数の呼び出しは"- 120"が出力され、Swift 5.3 ではコンパイラが警告を生成します。それ以降の Swift のバージョンでは "110 -"が出力されます。
 
-クラス、構造体、または列挙型は、<a href="https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#methods-with-special-names" target="_self">Methods with Special Names(特別な名前のメソッド)</a>で説明されているような、いくつかのメソッドの 1 つを宣言することで、関数呼び出しの糖衣構文(シンタックスシュガー)を使うことができます。
+クラス、構造体、または列挙型は、<a href="../language-reference/declarations.md#methods-with-special-names" target="_self">Methods with Special Names(特別な名前のメソッド)</a>で説明されているような、いくつかのメソッドの 1 つを宣言することで、関数呼び出しの糖衣構文(シンタックスシュガー)を使うことができます。
 
 #### <a id="implicit-conversion-to-a-pointer-type">ポインタ型への暗黙変換\(Implicit Conversion to a Pointer Type\)</a>
 

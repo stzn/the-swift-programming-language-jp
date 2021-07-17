@@ -6,7 +6,7 @@ _型キャスト_は、インスタンスの型をチェックする、または
 
 Swift での型キャストは、`is` および `as` 演算子で実装されます。これらの 2 つの演算子は、値の型をチェックしたり、値を別の型にキャストしたりするためのシンプルで表現力豊かな方法を提供します。
 
-[Checking for Protocol Conformance\(プロトコル準拠チェック\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/protocols#checking-for-protocol-conformance)で説明されているように、型キャストを使用して、型がプロトコルに準拠しているかどうかを確認することもできます。
+[Checking for Protocol Conformance\(プロトコル準拠チェック\)](../language-guide/protocols.md#checking-for-protocol-conformance)で説明されているように、型キャストを使用して、型がプロトコルに準拠しているかどうかを確認することもできます。
 
 ## 型キャストのためのクラス階層の定義\(Defining a Class Hierarchy for Type Casting\)
 

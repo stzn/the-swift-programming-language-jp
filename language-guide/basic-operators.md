@@ -4,7 +4,7 @@
 
 _演算子_は、値のチェックや変更、合成するために使われる特殊な記号や用語です。例えば、加算演算子\(`+`\)は `let i = 1 + 2` のように 2 つの数値を足します。論理 AND 演算子\(`&&`\)は、`if enteredDoorCode && passedRetinaScan` のように 2 つのブール値を組み合わせます。
 
-Swift は、C 言語のような他の言語でおそらく見たことがある演算子をサポートするのに加え、よく起きるコーディング中のエラーを防ぐために改良を加えています。代入演算子\(`=`\)を、本当は等価演算子\(`==`\)を使おうと思っていた所へ間違って使えなくするために、値を返しません。算術演算子\(`+`, `-`, `*`, `/`, `%` など\)は、保持している値の型の許容範囲を超えて予期せぬ結果が起きることを防ぐために、オーバーフローを検知して発生しないようにしています。Swift のオーバーフロー演算子を使用することで、オーバーフローに対する挙動を変えることもできます。詳細は[Overflow Operators\(オーバーフロー演算子\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/advanced-operators#overflow-operators)に記載しています。
+Swift は、C 言語のような他の言語でおそらく見たことがある演算子をサポートするのに加え、よく起きるコーディング中のエラーを防ぐために改良を加えています。代入演算子\(`=`\)を、本当は等価演算子\(`==`\)を使おうと思っていた所へ間違って使えなくするために、値を返しません。算術演算子\(`+`, `-`, `*`, `/`, `%` など\)は、保持している値の型の許容範囲を超えて予期せぬ結果が起きることを防ぐために、オーバーフローを検知して発生しないようにしています。Swift のオーバーフロー演算子を使用することで、オーバーフローに対する挙動を変えることもできます。詳細は[Overflow Operators\(オーバーフロー演算子\)](../language-guide/advanced-operators.md#overflow-operators)に記載しています。
 
 また、C 言語にはなかった `a..<b` や `a...b` のような値の範囲を簡単に表すための範囲演算子も提供しています。
 
@@ -64,7 +64,7 @@ Swift は全ての数値型に対して 4 つの基本的な_算術演算子_を
 10.0 / 2.5  // 4.0
 ```
 
-C 言語や Objective-C と異なり、Swift はデフォルトでオーバーフローはできません。`a &+ b` のようにオーバーフロー演算子\(`&-`\)を使用してオーバーフローさせることができます。詳細は[Overflow Operators\(オーバーフロー演算子\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/advanced-operators#overflow-operators)を参照ください。
+C 言語や Objective-C と異なり、Swift はデフォルトでオーバーフローはできません。`a &+ b` のようにオーバーフロー演算子\(`&-`\)を使用してオーバーフローさせることができます。詳細は[Overflow Operators\(オーバーフロー演算子\)](../language-guide/advanced-operators.md#overflow-operators)を参照ください。
 
 加算演算子は `String` の連結もすることができます。
 
@@ -167,7 +167,7 @@ Swift は、次の比較演算子をサポートしています。
 * 等しいかそれ以下\(`a <= b`\)
 
 > NOTE  
-> Swift では、2つの恒等作用素\(`===` と `!==`\)も提供しています。これは2つのオブジェクトが同じインスタンスを参照しているかどうかの確認ができます。より詳細は、[Identity Operators\(恒等作用素\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/structures-and-classes#identity-operators)を参照ください。
+> Swift では、2つの恒等作用素\(`===` と `!==`\)も提供しています。これは2つのオブジェクトが同じインスタンスを参照しているかどうかの確認ができます。より詳細は、[Identity Operators\(恒等作用素\)](../language-guide/structures-and-classes.md#identity-operators)を参照ください。
 
 それぞれの比較演算子は、そのステートメントが `true` かどうかのブール値を返します。
 
@@ -329,7 +329,7 @@ for i in 0..<count {
 // Person 4 is called Jack
 ```
 
-この配列は 4 つの要素が含まれていますが、`0..<count` は半開範囲演算子なので `3`\(配列の最後のインデックス\)までしかカウントしないことに注目してください。配列については、[Arrays\(配列\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/collection-types#arrays)を参照ください。
+この配列は 4 つの要素が含まれていますが、`0..<count` は半開範囲演算子なので `3`\(配列の最後のインデックス\)までしかカウントしないことに注目してください。配列については、[Arrays\(配列\)](../language-guide/collection-types.md#arrays)を参照ください。
 
 ### 片側範囲演算子\(One-Sided Ranges\)
 
