@@ -73,7 +73,7 @@ print("\(base) to the power of \(power) is \(answer)")
 
 最初と最後の両方を含める閉範囲を使用する必要がない場合もあるかもしれません。時計の分針を思い浮かべてください。`0` から始まる `60` 個の目盛が必要です。最初の値を含める半開範囲演算子\(`..<`\)を使いましょう。
 
-範囲についての詳細は、[Range Operators\(範囲演算子\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/basic-operators#range-operators)を参照ください。
+範囲についての詳細は、[Range Operators\(範囲演算子\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/basic-operators#range-operators)を参照ください。
 
 ```swift
 let minutes = 60
@@ -508,7 +508,7 @@ _制御転送文_は、コードの一部の制御を他の部分へ転送させ
 * `return`
 * `throw`
 
-`continue`、`break` と `fallthrough` は下記に記載しています。`return` は[Functions\(関数\)](functions.md)、`throw` は[Propagating Errors Using Throwing Functions](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/error-handling#propagating-errors-using-throwing-functions)に記載しています。
+`continue`、`break` と `fallthrough` は下記に記載しています。`return` は[Functions\(関数\)](functions.md)、`throw` は[Propagating Errors Using Throwing Functions](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/error-handling#propagating-errors-using-throwing-functions)に記載しています。
 
 ### Continue
 

@@ -273,13 +273,13 @@ public struct TrackedString {
 
 ## 初期化\(Initializers\)
 
-独自イニシャライザには、初期化する型よりも制限の厳しいのアクセスレベルを割り当てることができます。唯一の例外は、必須イニシャライザ\([Required Initializers\(必須イニシャライザ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#required-initializers)で定義\) です。必須イニシャライザは、それが属するクラスと同じアクセスレベルを持っている必要があります。
+独自イニシャライザには、初期化する型よりも制限の厳しいのアクセスレベルを割り当てることができます。唯一の例外は、必須イニシャライザ\([Required Initializers\(必須イニシャライザ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/initialization#required-initializers)で定義\) です。必須イニシャライザは、それが属するクラスと同じアクセスレベルを持っている必要があります。
 
 関数とメソッドのパラメータと同様に、イニシャライザのパラメータの型は、イニシャライザのアクセスレベルよりも制限の厳しいレベルにすることはできません。
 
 ### デフォルトイニシャライザ\(Default Initializers\)
 
-[Default Initializers\(デフォルトイニシャライザ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide-gaido/initialization#default-initializers)で説明されているように、Swift は、全てのプロパティにデフォルト値を提供している構造体または基本クラスに 1 つもイニシャライザを提供しない引数なしの_デフォルトイニシャライザ_を自動的に提供します。
+[Default Initializers\(デフォルトイニシャライザ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/initialization#default-initializers)で説明されているように、Swift は、全てのプロパティにデフォルト値を提供している構造体または基本クラスに 1 つもイニシャライザを提供しない引数なしの_デフォルトイニシャライザ_を自動的に提供します。
 
 デフォルトイニシャライザは、その型が public として定義されていない限り、初期化する型と同じアクセスレベルを持ちます。public として定義されている型の場合、デフォルトのイニシャライザは internal と見なされます。public 型を別のモジュールで使用するときに引数なしのイニシャライザで初期化できるようにする場合は、型の定義で public 型の引数なしのイニシャライザを明示的に提供する必要があります。
 
