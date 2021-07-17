@@ -115,7 +115,7 @@ var matrix = Matrix(rows: 2, columns: 2)
 
 上記の例では、2 行 2 列の新しい `Matrix` インスタンスを作成します。この `Matrix` インスタンスの `grid` 配列は、左上から右下に読み取られるように、事実上、フラット化されたバージョンのマトリックスです:
 
-![&#x30D5;&#x30E9;&#x30C3;&#x30C8;&#x5316;&#x3055;&#x308C;&#x305F;&#x30DE;&#x30C8;&#x30EA;&#x30C3;&#x30AF;&#x30B9;](../.gitbook/assets/subscriptMatrix01_2x.png)
+![&#x30D5;&#x30E9;&#x30C3;&#x30C8;&#x5316;&#x3055;&#x308C;&#x305F;&#x30DE;&#x30C8;&#x30EA;&#x30C3;&#x30AF;&#x30B9;](../assets/subscriptMatrix01_2x.png)
 
 行列の値は、行と列の値をカンマで区切って subscript に渡すことで設定できます。
 
@@ -126,7 +126,7 @@ matrix[1, 0] = 3.2
 
 これらの 2 つの文は、subscript の set を呼び出して、行列の右上の位置\(`row` は 0、`column` は 1\) に 1.5 の値を設定し、左下の位置 \(`row` は `1`、`column` は `0`\) に `3.2` の値を設定します。
 
-![&#x884C;&#x5217;&#x306E;&#x53F3;&#x4E0A;&#x3068;&#x5DE6;&#x4E0B;&#x306E;&#x4F4D;&#x7F6E;&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;](../.gitbook/assets/subscriptMatrix02_2x.png)
+![&#x884C;&#x5217;&#x306E;&#x53F3;&#x4E0A;&#x3068;&#x5DE6;&#x4E0B;&#x306E;&#x4F4D;&#x7F6E;&#x306B;&#x5024;&#x3092;&#x8A2D;&#x5B9A;](../assets/subscriptMatrix02_2x.png)
 
 `Matrix` subscript の get/set には、subscript の `row` と `column` の値が有効だということを確認するためのアサーションが含まれています。これらのアサーションを支援するために、`Matrix` には `indexIsValid(row:column:)` という便利なメソッドが含まれています。これは、要求された `row` と `column` が行列の境界内にあるかどうかをチェックします:
 

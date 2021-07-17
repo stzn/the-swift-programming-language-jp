@@ -133,7 +133,7 @@ struct PurchasedSnack {
 
 `do-catch` 文の一般的な形式は次のとおりです:
 
-![do catch&#x6587;](../.gitbook/assets/17_errorHandling.png)
+![do catch&#x6587;](../assets/17_errorHandling.png)
 
 その句が処理できるエラーを示すには、`catch` の後にパターンを記述します。`catch` 句にパターンがない場合、句は全てのエラーに一致し、エラーを `error` という名前のローカル定数にバインドします。パターンマッチングの詳細については、[Patterns\(パターン\)](../language-reference/patterns.md)を参照ください。
 

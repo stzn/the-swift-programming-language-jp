@@ -10,11 +10,11 @@ Swift のジェネリックスの概要については、[Generics\(ジェネリ
 
 ジェネリックパラメータ句は、ジェネリック型または関数の型パラメータを指定し、それらのパラメータに関連する制約や要件とともに指定します。ジェネリックパラメータ句は、山括弧\(`<>`\)で囲まれており、形式は次のとおりです。
 
-![&#x30B8;&#x30A7;&#x30CD;&#x30EA;&#x30C3;&#x30AF;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30EA;&#x30B9;&#x30C8;](../.gitbook/assets/generic-parameter-list.png)
+![&#x30B8;&#x30A7;&#x30CD;&#x30EA;&#x30C3;&#x30AF;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30EA;&#x30B9;&#x30C8;](../assets/generic-parameter-list.png)
 
 _generic parameter list_ は、ジェネリックパラメータのカンマ区切りのリストで、その各形式は次のとおりです。
 
-![&#x578B;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x5236;&#x7D04;](../.gitbook/assets/type-parameter-constraint.png)
+![&#x578B;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x5236;&#x7D04;](../assets/type-parameter-constraint.png)
 
 _type parameter_ の後に任意の _constraint_ を付けて構成します。_type parameter_ は、単にプレースホルダ型の名前です\(例えば、`T`、`U`、`V`、`Key`、`Value` など\)。関数またはイニシャライザのシグネチャを含む型や関数の残りの部分から型パラメータ\(およびその関連型の全ての型\)にアクセスできます。
 
@@ -40,7 +40,7 @@ simpleMax(3.14159, 2.71828) // T は Double に推論されます
 
 型または関数の本文の開始中括弧\(`{`\)の直前にジェネリック `where` 句を含むことによって、型パラメータとその関連型に追加要件を指定できます。ジェネリック `where` 句は、`where` キーワードで構成され、その後に 1 つ以上の要件のカンマ区切りのリストが続きます。
 
-![&#x30B8;&#x30A7;&#x30CD;&#x30EA;&#x30C3;&#x30AF; where &#x53E5;](../.gitbook/assets/generic-where-clauses.png)
+![&#x30B8;&#x30A7;&#x30CD;&#x30EA;&#x30C3;&#x30AF; where &#x53E5;](../assets/generic-where-clauses.png)
 
 ジェネリック `where` 句の _requirements_ は、型パラメータがクラスを継承するか、プロトコルまたはプロトコル合成に準拠することを指定します。ジェネリック `where` 句は型パラメータのシンプルな制約を表現するための糖衣構文\(シンタックスシュガー\)を提供しますが\(例えば、`<T: Comparable>` は `<T> where T: Comparable` などと同等\)、それを使用して複雑な制約を型パラメータや関連型に提供することもできます。例えば、プロトコルに準拠するために、関連型の型パラメータを制限することができます。`<S: Sequence> where S.Iterator.Element: Equatable` は、`S` が `Sequence` プロトコルに準拠し、関連型 `S.Iterator.Element` が `Equatable` プロトコルに準拠することを指定します。この制約は、シーケンスの各要素が `Equatable` だということを保証します。
 
@@ -81,7 +81,7 @@ extension Collection where Element: SomeProtocol {
 
 _ジェネリック引数句_は、ジェネリック型の型引数を指定します。ジェネリック引数句は山括弧\(`<>`\)で囲まれており、形式は次のとおりです。
 
-![&#x30B8;&#x30A7;&#x30CD;&#x30EA;&#x30C3;&#x30AF;&#x5F15;&#x6570;&#x53E5;](../.gitbook/assets/generic-argument-list.png)
+![&#x30B8;&#x30A7;&#x30CD;&#x30EA;&#x30C3;&#x30AF;&#x5F15;&#x6570;&#x53E5;](../assets/generic-argument-list.png)
 
 _generic argument list_ は、型パラメータのカンマ区切りのリストです。_型引数_は、ジェネリック型のジェネリックパラメータ句に対応する型パラメータを置き換えた実際の具象型の名前です。つまり、そのジェネリック型の具象型バージョンです。下記の例は、Swift 標準ライブラリのジェネリックな辞書型のシンプルなバージョンを示しています。
 

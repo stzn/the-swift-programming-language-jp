@@ -39,7 +39,7 @@ Swift ソースファイルのトップレベルコードは、0 個以上の文
 
 _コードブロック_は、文をグループ化するための様々な宣言および制御構造によって使用されます。形式は次のとおりです:
 
-![&#x30B3;&#x30FC;&#x30C9;&#x30D6;&#x30ED;&#x30C3;&#x30AF;](../.gitbook/assets/code_blocks.png)
+![&#x30B3;&#x30FC;&#x30C9;&#x30D6;&#x30ED;&#x30C3;&#x30AF;](../assets/code_blocks.png)
 
 コードブロック内の _statements_ には、宣言、式、およびその他の文が含まれており、ソースコード内の出現順に実行されます。
 
@@ -50,11 +50,11 @@ _コードブロック_は、文をグループ化するための様々な宣言
 
 _インポート宣言_を使用すると、現在のファイルの外部で宣言されているシンボルにアクセスできます。基本形式はモジュール全体をインポートします。`import` キーワードとそれに続くモジュール名で構成されます:
 
-![&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x5BA3;&#x8A00;](../.gitbook/assets/import_declaration.png)
+![&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x5BA3;&#x8A00;](../assets/import_declaration.png)
 
 シンボルのインポートをより細かく制限するために、インポート宣言には、モジュールまたはサブモジュール内で特定のサブモジュールまたは宣言を指定できます。この詳細な形式を使用する場合は、\(それを宣言するモジュールではなく\)インポートされたシンボルだけが現在のスコープで利用可能になります。
 
-![&#x30B7;&#x30F3;&#x30DC;&#x30EB;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x5BA3;&#x8A00;](../.gitbook/assets/import_declaration2.png)
+![&#x30B7;&#x30F3;&#x30DC;&#x30EB;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x5BA3;&#x8A00;](../assets/import_declaration2.png)
 
 > GRAMMAR OF AN IMPORT DECLARATION  
 > import-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> `import` [import-kind](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-kind)<sub>opt</sub> [import-path](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path)  
@@ -66,7 +66,7 @@ _インポート宣言_を使用すると、現在のファイルの外部で宣
 
 _定数宣言_では、プログラムに名前付きの定数値を導入します。定数宣言は `let` キーワードを使用して宣言され、形式は次のとおりです。
 
-![Constant Declaration\(&#x5B9A;&#x6570;&#x5BA3;&#x8A00;\)](../.gitbook/assets/constant_declaration.png)
+![Constant Declaration\(&#x5B9A;&#x6570;&#x5BA3;&#x8A00;\)](../assets/constant_declaration.png)
 
 定数宣言は、_constant name_ と値を初期化する _expression_ の間の不変の繋がりを定義します。定数の値は設定されたら変更できません。つまり、定数がクラスオブジェクトで初期化されている場合、オブジェクト自体を変更できますが、定数名とそれが参照するオブジェクトの間の繋がりは変更できません。
 
@@ -114,7 +114,7 @@ _変数宣言_では、プログラムに名前付きの変数値を導入し、
 
 次の形式は、格納変数や格納可変プロパティを宣言します。
 
-![&#x683C;&#x7D0D;&#x5909;&#x6570;&#x3001;&#x683C;&#x7D0D;&#x53EF;&#x5909;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;](../.gitbook/assets/variable_declaration.png)
+![&#x683C;&#x7D0D;&#x5909;&#x6570;&#x3001;&#x683C;&#x7D0D;&#x53EF;&#x5909;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;](../assets/variable_declaration.png)
 
 この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラスまたは構造体宣言のコンテキストで定義できます。この形式の変数宣言が、グローバルスコープまたは関数のローカルスコープで宣言されている場合は、_格納変数_と呼ばれます。クラスまたは構造体宣言のコンテキストで宣言されている場合は、_格納可変プロパティ_と呼ばれます。
 
@@ -128,7 +128,7 @@ _変数宣言_では、プログラムに名前付きの変数値を導入し、
 
 次の形式は、計算変数または計算プロパティを宣言します。
 
-![&#x8A08;&#x7B97;&#x5909;&#x6570;&#x3001;&#x8A08;&#x7B97;&#x5909;&#x6570;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;](../.gitbook/assets/computed_variables_and_computed_properties.png)
+![&#x8A08;&#x7B97;&#x5909;&#x6570;&#x3001;&#x8A08;&#x7B97;&#x5909;&#x6570;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;](../assets/computed_variables_and_computed_properties.png)
 
 この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラス、構造体、列挙型、または extension のコンテキストで定義できます。この形式の変数宣言がグローバルスコープまたは関数のローカルスコープで宣言されている場合は、_計算変数_と呼ばれます。クラス、構造体、または extension のコンテキストで宣言されている場合は、それは_計算プロパティ_と呼ばれます。
 
@@ -144,7 +144,7 @@ _setter name_ とそれを囲む括弧は省略可能です。setter name を指
 
 格納変数またはプロパティを `willSet` や `didSet` オブザーバと一緒に宣言することもできます。オブザーバで宣言された格納変数またはプロパティの形式は次のとおりです:
 
-![&#x683C;&#x7D0D;&#x5909;&#x6570;&#x30AA;&#x30D6;&#x30B6;&#x30FC;&#x30D0;&#x3068;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x30AA;&#x30D6;&#x30B6;&#x30FC;&#x30D0;](../.gitbook/assets/stored_variable_observers_and_property_observers.png)
+![&#x683C;&#x7D0D;&#x5909;&#x6570;&#x30AA;&#x30D6;&#x30B6;&#x30FC;&#x30D0;&#x3068;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x30AA;&#x30D6;&#x30B6;&#x30FC;&#x30D0;](../assets/stored_variable_observers_and_property_observers.png)
 
 この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラスまたは構造体宣言のコンテキストで定義できます。この形式の変数宣言がグローバルスコープまたは関数のローカルスコープで宣言されている場合、オブザーバは_格納変数オブザーバ_と呼ばれます。クラスまたは構造体宣言のコンテキストで宣言されている場合、オブザーバは_プロパティオブザーバ_と呼ばれます。
 
@@ -233,7 +233,7 @@ newAndOld.x = 200
 
 _タイプエイリアス宣言_では、既存の型に別名を導入します。タイプエイリアス宣言は、`typealias` キーワードを使用して宣言され、形式は次のとおりです:
 
-![&#x30BF;&#x30A4;&#x30D7;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x5BA3;&#x8A00;](../.gitbook/assets/type_alias_declaration.png)
+![&#x30BF;&#x30A4;&#x30D7;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x5BA3;&#x8A00;](../assets/type_alias_declaration.png)
 
 タイプエイリアスが宣言された後、プログラム内の既存の型の代わりに注釈された _name_ を使用できます。_existing type_ は、名前付き型または複合型にすることができます。タイプエイリアスは新しい型を作成しません。それらは単に名前が既存の型を参照することを可能にします。
 
@@ -287,11 +287,11 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 
 _関数宣言_では、プログラムに関数またはメソッドを導入します。クラス、構造体、列挙型、またはプロトコルのコンテキストで宣言されている関数は_メソッド_と呼ばれます。関数宣言は `func` キーワードを使用して宣言され、形式は次のとおりです:
 
-![&#x95A2;&#x6570;&#x5BA3;&#x8A00;](../.gitbook/assets/function_declaration.png)
+![&#x95A2;&#x6570;&#x5BA3;&#x8A00;](../assets/function_declaration.png)
 
 関数の戻り値の型が `Void` の場合は、次のように戻り値の型を省略できます:
 
-![&#x95A2;&#x6570;&#x5BA3;&#x8A00;&#x623B;&#x308A;&#x5024;&#x306E;&#x578B;Void](../.gitbook/assets/function_declaration2.png)
+![&#x95A2;&#x6570;&#x5BA3;&#x8A00;&#x623B;&#x308A;&#x5024;&#x306E;&#x578B;Void](../assets/function_declaration2.png)
 
 各パラメータには型を含める必要があります。推論することはできません。パラメータ型の前に `inout` を書くと、その関数の範囲内でパラメータを変更できます。in-out パラメータについては、下記の[In-Out Parameters\(In-Out パラメータ\)](declarations.md#declarations-in-out-parameters)で詳細に説明されています。
 
@@ -309,7 +309,7 @@ _statements_ が単一式のみを含む関数宣言は、その式の値を返�
 
 関数パラメータは、各パラメータが複数の形式のうちの 1 つを持つカンマ区切りのリストです。関数呼び出し内の引数の順序は、関数の宣言内のパラメータの順序と一致する必要があります。パラメータリスト内の最もシンプルなエントリの形式は次のとおりです:
 
-![&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30EA;&#x30B9;&#x30C8;&#x5185;&#x306E;&#x6700;&#x3082;&#x30B7;&#x30F3;&#x30D7;&#x30EB;&#x306A;&#x30A8;&#x30F3;&#x30C8;&#x30EA;](../.gitbook/assets/parameter_names.png)
+![&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30EA;&#x30B9;&#x30C8;&#x5185;&#x306E;&#x6700;&#x3082;&#x30B7;&#x30F3;&#x30D7;&#x30EB;&#x306A;&#x30A8;&#x30F3;&#x30C8;&#x30EA;](../assets/parameter_names.png)
 
 パラメータには、関数本文内で使用されている名前、および関数またはメソッドを呼び出すときに使用される引数ラベルがあります。デフォルトでは、パラメータ名は引数ラベルとしても使用されます。例えば:
 
@@ -320,7 +320,7 @@ f(x: 1, y: 2) // x と y の両方にラベルがあります
 
 次のいずれかの形式で、引数ラベルのデフォルトの動作を上書きできます。
 
-![&#x5F15;&#x6570;&#x30E9;&#x30D9;&#x30EB;&#x306E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x306E;&#x52D5;&#x4F5C;&#x3092;&#x4E0A;&#x66F8;&#x304D;](../.gitbook/assets/parameter_names2.png)
+![&#x5F15;&#x6570;&#x30E9;&#x30D9;&#x30EB;&#x306E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x306E;&#x52D5;&#x4F5C;&#x3092;&#x4E0A;&#x66F8;&#x304D;](../assets/parameter_names2.png)
 
 パラメータ名の前の名前は、パラメータの明示的な引数ラベルで、パラメータ名とは異なる可能性があります。関数呼び出しまたはメソッド呼び出し時は、対応する引数に指定された引数ラベルを使用する必要があります。
 
@@ -375,7 +375,7 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 
 パラメータを無視したり、1 つのパラメータに複数の値を受け取ったり、デフォルト値を提供できます。形式は次のとおりです:
 
-![&#x7279;&#x6B8A;&#x306A;&#x7A2E;&#x985E;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;](../.gitbook/assets/special_kinds-of_parameters.png)
+![&#x7279;&#x6B8A;&#x306A;&#x7A2E;&#x985E;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;](../assets/special_kinds-of_parameters.png)
 
 アンダースコア\(`_`\)パラメータは明示的に無視され、関数の本文内でアクセスすることはできません。
 
@@ -436,7 +436,7 @@ let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 
 スロー関数とスローメソッドは、`throws` キーワードでマークされている必要があります。これらの関数およびメソッドは、_スロー関数_および_スローメソッド_と呼ばれます。形式は次のとおりです:
 
-![&#x30B9;&#x30ED;&#x30FC;&#x95A2;&#x6570;&#x3068;&#x30B9;&#x30ED;&#x30FC;&#x30E1;&#x30BD;&#x30C3;&#x30C9;](../.gitbook/assets/throwing_functions_and_methods.png)
+![&#x30B9;&#x30ED;&#x30FC;&#x95A2;&#x6570;&#x3068;&#x30B9;&#x30ED;&#x30FC;&#x30E1;&#x30BD;&#x30C3;&#x30C9;](../assets/throwing_functions_and_methods.png)
 
 スロー関数またはスローメソッドの呼び出しは、`try` または `try!` 式で囲まれていなければなりません\(つまり、`try` または `try!` 演算子のスコープ内\)。
 
@@ -478,7 +478,7 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 非同期に実行される関数とメソッドは、`async` キーワードでマークされている必要があります。これらの関数とメソッドは、_非同期関数_と_非同期メソッド_と呼ばれています。形式は次のとおりです:
 
-![&#x975E;&#x540C;&#x671F;&#x95A2;&#x6570;&#x3068;&#x975E;&#x540C;&#x671F;&#x30E1;&#x30BD;&#x30C3;&#x30C9;](../.gitbook/assets/asynchronous_functions_and_methods.png)
+![&#x975E;&#x540C;&#x671F;&#x95A2;&#x6570;&#x3068;&#x975E;&#x540C;&#x671F;&#x30E1;&#x30BD;&#x30C3;&#x30C9;](../assets/asynchronous_functions_and_methods.png)
 
 非同期関数または非同期メソッドの呼び出しは、`await` でラップされていなければなりません。
 
@@ -527,7 +527,7 @@ _列挙型宣言_は、名前付きの列挙型をプログラムに導入しま
 
 次の形式は、任意の型のケースを含む列挙型を宣言しています。
 
-![&#x4EFB;&#x610F;&#x306E;&#x578B;&#x306E;&#x30B1;&#x30FC;&#x30B9;&#x3092;&#x6301;&#x3064;&#x5217;&#x6319;&#x578B;](../.gitbook/assets/enumerations_with_cases_of_any_type.png)
+![&#x4EFB;&#x610F;&#x306E;&#x578B;&#x306E;&#x30B1;&#x30FC;&#x30B9;&#x3092;&#x6301;&#x3064;&#x5217;&#x6319;&#x578B;](../assets/enumerations_with_cases_of_any_type.png)
 
 この形式で宣言された列挙型は、他のプログラミング言語では判別共用体\(_discriminated union_\)と呼ばれることもあります。
 
@@ -570,7 +570,7 @@ enum Tree<T> {
 
 次の形式は、同じ基となる型のケースを持つ列挙型を宣言しています。
 
-![Raw Value&#x578B;&#x306E;&#x30B1;&#x30FC;&#x30B9;&#x3092;&#x6301;&#x3064;&#x5217;&#x6319;&#x578B;](../.gitbook/assets/enumerations_with_cases_of_a_raw-value_type.png)
+![Raw Value&#x578B;&#x306E;&#x30B1;&#x30FC;&#x30B9;&#x3092;&#x6301;&#x3064;&#x5217;&#x6319;&#x578B;](../assets/enumerations_with_cases_of_a_raw-value_type.png)
 
 この形式では、各ケースブロックは、`case` キーワードと、それに続く 1 つ以上の列挙ケースで構成され、カンマ\(`,`\)で区切られます。最初の形式のケースとは異なり、各ケースには、同じ基本型の _Raw Value_ と呼ばれる基になる値があります。これらの値の型は _Raw Value 型_ で指定され、整数、浮動小数点数、文字列、または単一文字の必要があります。特に、Raw Value 型は、`Equatable` プロトコルおよび次のいずれかのプロトコルに準拠する必要があります: 整数リテラルの場合は `ExpressibleByIntegerLiteral`、浮動小数点リテラルの場合は `ExpressibleByFloatLiteral`、任意の数の文字を含む文字列リテラルの場合は `ExpressibleByStringLiteral`、文字列の場合は `ExpressibleByUnicodeScalarLiteral`、1 文字のみを含むリテラルの場合は `ExpressibleByExtendedGraphemeClusterLiteral` です。各ケースには一意の名前と一意の Raw Value が割り当てられている必要があります。
 
@@ -626,7 +626,7 @@ Raw Value 型のケースを持つ列挙型は、Swift 標準ライブラリで�
 
 _構造体宣言_は、名前付きの構造体型をプログラムに導入します。構造体宣言は `struct` キーワードを使用して宣言され、形式は次のとおりです。
 
-![&#x69CB;&#x9020;&#x4F53;&#x5BA3;&#x8A00;](../.gitbook/assets/structure_declaration.png)
+![&#x69CB;&#x9020;&#x4F53;&#x5BA3;&#x8A00;](../assets/structure_declaration.png)
 
 構造体の本文には、0 個以上の _declarations_ が含まれています。これらの _declarations_ には、格納プロパティと計算プロパティ、型プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、subscript、タイプエイリアス、さらにはその他の構造体、クラス、アクター、列挙型の宣言を含めることができます。構造体宣言にデイニシャライザまたはプロトコル宣言を含めることはできません。様々な種類の宣言を含む構造体の説明といくつかの例については、[Structures and Classes\(構造体とクラス\)](../language-guide/structures-and-classes.md)を参照ください。
 
@@ -657,7 +657,7 @@ _構造体宣言_は、名前付きの構造体型をプログラムに導入し
 
 _クラス宣言_は、名前付きクラス型をプログラムに導入します。クラス宣言は、`class` キーワードを使用して宣言され、形式は次のとおりです。
 
-![&#x30AF;&#x30E9;&#x30B9;&#x5BA3;&#x8A00;](../.gitbook/assets/class_declaration.png)
+![&#x30AF;&#x30E9;&#x30B9;&#x5BA3;&#x8A00;](../assets/class_declaration.png)
 
 クラスの本文には、0 個以上の _declarations_ が含まれています。これらの _declarations_ には、格納プロパティと計算プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、単一のデイニシャライザ、subscript、タイプエイリアス、さらには他のクラス、構造体、アクター、列挙型の宣言を含めることができます。クラス宣言にプロトコル宣言を含めることはできません。様々な種類の宣言を含むクラスの説明といくつかの例については、[Structures and Classes](../language-guide/structures-and-classes.md)を参照ください。
 
@@ -693,7 +693,7 @@ _superclass_ で宣言されたプロパティとメソッドは現在のクラ�
 
 アクター宣言は、名前付きのアクター型をプログラムに導入します。アクター宣言は、`actor` キーワードを使用して宣言され、形式は次のとおりです。
 
-![&#x30A2;&#x30AF;&#x30BF;&#x30FC;&#x5BA3;&#x8A00;](../.gitbook/assets/actor_declaration.png)
+![&#x30A2;&#x30AF;&#x30BF;&#x30FC;&#x5BA3;&#x8A00;](../assets/actor_declaration.png)
 
 アクターの本文には、0 個以上の _declarations_ が含まれています。これらの _declarations_ には、格納プロパティと計算プロパテ、インスタンスメソッド、型メソッド、イニシャライザ、単一のデイニシャライザ、subscript、タイプエイリアス、さらには他のクラス、構造体、列挙型の宣言を含めることができます。様々な種類の宣言を含むアクターの説明といくつかの例については、[Actors\(アクター\)](../language-guide/concurrency.md#Actorsアクター)を参照ください。
 
@@ -729,7 +729,7 @@ _superclass_ で宣言されたプロパティとメソッドは現在のクラ�
 
 _プロトコル宣言_は、名前付きのプロトコル型をプログラムに導入します。プロトコル宣言は、`protocol` キーワードを使用してグローバルスコープで宣言され、形式は次のとおりです。
 
-![&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x5BA3;&#x8A00;](../.gitbook/assets/protocol_declaration.png)
+![&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x5BA3;&#x8A00;](../assets/protocol_declaration.png)
 
 プロトコルの本文には、プロトコルに準拠する全ての型が満たさなければならない 0 個以上の _protocol member declarations_ が含まれています。特に、プロトコルは、準拠する型が特定のプロパティ、メソッド、イニシャライザ、および subscript を実装する必要があることを宣言できます。プロトコルは、_関連型_と呼ばれる特別な種類のタイプエイリアスを宣言することもできます。これにより、プロトコルの様々な宣言間の関係を指定できます。プロトコル宣言には、クラス、構造体、列挙型、またはその他のプロトコル宣言を含めることはできません。_protocol member declarations_の宣言については、下記で詳しく説明します。
 
@@ -789,7 +789,7 @@ protocol SomeProtocol: AnyObject {
 
 プロトコルは、プロトコル宣言の本文に_プロトコルプロパティ宣言_を含めることによって準拠する型がプロパティを実装する必要があることを宣言します。プロトコルプロパティ宣言には、変数宣言の特別な形式があります。
 
-![Protocol Property Declaration](../.gitbook/assets/protocol_property_declaration.png)
+![Protocol Property Declaration](../assets/protocol_property_declaration.png)
 
 他のプロトコルメンバ宣言と同様に、これらのプロパティ宣言は、プロトコルに準拠する型の get と set の要件のみを宣言します。その結果、get または set を、プロトコルの宣言で直接実装することはありません。
 
@@ -831,7 +831,7 @@ protocol SomeProtocol: AnyObject {
 
 プロトコルは、プロトコル宣言の本文にプロトコル subscript 宣言を含めることによって準拠する型が subscript を実装する必要があることを宣言します。プロトコル subscript 宣言には、特殊な形式の subscript 宣言があります:
 
-![&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;subscript&#x5BA3;&#x8A00;](../.gitbook/assets/protocol_subscript_declaration.png)
+![&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;subscript&#x5BA3;&#x8A00;](../assets/protocol_subscript_declaration.png)
 
 subscript 宣言は、プロトコルに準拠するために最低限必要な get および set の要件のみを宣言します。subscript 宣言に `get` キーワードと `set` キーワードの両方が含まれている場合、準拠する型は get 句と set 句の両方を実装する必要があります。subscript 宣言に `get` キーワードのみが含まれている場合、準拠する型は_少なくとも_ get 句を実装する必要があり、任意で set 句を実装できます。
 
@@ -873,7 +873,7 @@ _イニシャライザ宣言_は、クラス、構造体、または列挙型の
 
 次の形式は、構造体、列挙型、およびクラスの指定イニシャライザを宣言しています:
 
-![&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x5BA3;&#x8A00;](../.gitbook/assets/initializer_declaration.png)
+![&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x5BA3;&#x8A00;](../assets/initializer_declaration.png)
 
 クラスの指定イニシャライザは、クラスの全てのプロパティを直接初期化します。同じクラスの他のイニシャライザを呼び出すことはできません。クラスにスーパークラスがある場合は、スーパークラスの指定イニシャライザの 1 つを呼び出す必要があります。クラスがそのスーパークラスからプロパティを継承する場合、これらのプロパティのいずれかを現在のクラスで設定または変更する前に、スーパークラスの指定イニシャライザの 1 つを呼び出す必要があります。
 
@@ -883,7 +883,7 @@ _イニシャライザ宣言_は、クラス、構造体、または列挙型の
 
 クラスの convenience イニシャライザを宣言するには、`convenience` 修飾子を使用してイニシャライザ宣言をマークします。
 
-![convenience &#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x5BA3;&#x8A00;](../.gitbook/assets/initializer_declaration2.png)
+![convenience &#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x5BA3;&#x8A00;](../assets/initializer_declaration2.png)
 
 convenience イニシャライザは、初期化プロセスを別の convenience イニシャライザまたはクラスの指定イニシャライザの 1 つに委譲できます。つまり、初期化プロセスは、最終的にクラスのプロパティを初期化するために、指定イニシャライザを呼び出して終える必要があります。convenience イニシャライザは、スーパークラスのイニシャライザを呼び出すことはできません。
 
@@ -950,7 +950,7 @@ if let actualInstance = SomeStruct(input: "Hello") {
 
 _デイニシャライザ宣言_は、クラス型のデイニシャライザを宣言します。デイニシャライザはパラメータを受け取らず、形式は次のとおりです:
 
-![&#x30C7;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x5BA3;&#x8A00;](../.gitbook/assets/deinitializer_declaration.png)
+![&#x30C7;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x5BA3;&#x8A00;](../assets/deinitializer_declaration.png)
 
 デイニシャライザは、クラスオブジェクトへの参照がなくなると、クラスオブジェクトの割り当てが解除される直前に、自動的に呼び出されます。デイニシャライザは、クラス宣言の本文でのみ宣言でき、extension では宣言できません。各クラスは最大で 1 つのデイニシャライザを持つことができます。
 
@@ -967,7 +967,7 @@ _デイニシャライザ宣言_は、クラス型のデイニシャライザを
 
 _拡張宣言_を使用すると、既存の型の動作を拡張できます。拡張宣言は、`extension` キーワードを使用して宣言され、形式は次のとおりです:
 
-![&#x62E1;&#x5F35;&#x5BA3;&#x8A00;](../.gitbook/assets/extension_declaration.png)
+![&#x62E1;&#x5F35;&#x5BA3;&#x8A00;](../assets/extension_declaration.png)
 
 拡張宣言の本文には、0 個以上の _declarations_ が含まれています。これらの _declarations_ には、計算プロパティ、計算型プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、subscript、さらにはクラス、構造体、列挙型の宣言を含めることができます。拡張宣言には、デイニシャライザ、プロトコル宣言、格納プロパティ、プロパティオブザーバ、またはその他の拡張宣言を含めることはできません。プロトコルの extension は `final` をマークすることはできません。様々な種類の宣言を含む extension の説明といくつかの例については、[Extensions\(拡張\)](expressions.md)を参照ください。
 
@@ -981,7 +981,7 @@ extension には、イニシャライザ宣言を含めることができます�
 
 extension は、既存のクラス、構造体、または列挙型に _adopted protocols_ を指定することで、プロトコルへの準拠を追加できます。
 
-![extension &#x3067;&#x306E;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3078;&#x306E;&#x6E96;&#x62E0;](../.gitbook/assets/extension_declaration2.png)
+![extension &#x3067;&#x306E;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3078;&#x306E;&#x6E96;&#x62E0;](../assets/extension_declaration2.png)
 
 extension は既存のクラスへの継承を追加できないため、_type name_ とコロン\(`:`\)の後にはプロトコルのリストのみを指定できます。
 
@@ -1143,7 +1143,7 @@ extension Array: Loggable where Element: MarkedLoggable { }
 
 _subscript 宣言_を使用すると、特定の型のオブジェクトに subscript のサポートを追加できます。通常、コレクション、リスト、またはシーケンス内の要素にアクセスするための便利な構文を提供するために使用されます。subscript 宣言は、`subscript` キーワードを使用して宣言され、形式は次のとおりです:
 
-![subscript&#x5BA3;&#x8A00;](../.gitbook/assets/subscript_declaration.png)
+![subscript&#x5BA3;&#x8A00;](../assets/subscript_declaration.png)
 
 subscript 宣言は、クラス、構造体、列挙型、 extension、またはプロトコル宣言のコンテキストでのみ使用できます。
 
@@ -1182,7 +1182,7 @@ _演算子宣言_は、新しい中置、前置、または後置演算子をプ
 
 次の形式で新しい中置演算子を宣言します:
 
-![&#x4E2D;&#x7F6E;&#x6F14;&#x7B97;&#x5B50;](../.gitbook/assets/infix_operator_declaration.png)
+![&#x4E2D;&#x7F6E;&#x6F14;&#x7B97;&#x5B50;](../assets/infix_operator_declaration.png)
 
 _中置演算子_は、式 `1 + 2` でおなじみの加算演算子\(`+`\)など、2 つのオペランドの間に記述される二項演算子です。
 
@@ -1190,7 +1190,7 @@ _中置演算子_は、式 `1 + 2` でおなじみの加算演算子\(`+`\)な�
 
 次の形式で新しい前置演算子を宣言します:
 
-![&#x524D;&#x7F6E;&#x6F14;&#x7B97;&#x5B50;](../.gitbook/assets/prefix_operator_declaration.png)
+![&#x524D;&#x7F6E;&#x6F14;&#x7B97;&#x5B50;](../assets/prefix_operator_declaration.png)
 
 _前置演算子_は、式 `!a` のような前置論理 `NOT` 演算子\(`!`\)など、オペランドの直前に記述される単項演算子です。
 
@@ -1198,7 +1198,7 @@ _前置演算子_は、式 `!a` のような前置論理 `NOT` 演算子\(`!`\)�
 
 次の形式で新しい後置演算子を宣言します:
 
-![&#x5F8C;&#x7F6E;&#x6F14;&#x7B97;&#x5B50;](../.gitbook/assets/postfix_operator_declaration.png)
+![&#x5F8C;&#x7F6E;&#x6F14;&#x7B97;&#x5B50;](../assets/postfix_operator_declaration.png)
 
 _後置演算子_は、式 `a!` のような後置強制アンラップ演算子\(`!`\)など、オペランドの直後に記述される単項演算子です。
 
@@ -1219,7 +1219,7 @@ _優先順位グループ宣言_は、プログラムに中置演算子の優先
 
 優先順位グループ宣言の形式は次のとおりです:
 
-![&#x512A;&#x5148;&#x9806;&#x4F4D;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5BA3;&#x8A00;](../.gitbook/assets/precedence_group_declaration.png)
+![&#x512A;&#x5148;&#x9806;&#x4F4D;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5BA3;&#x8A00;](../assets/precedence_group_declaration.png)
 
 _lower group names_ と _higher group names_ のリストは、既存の優先順位グループに対する新しい優先順位グループの関係を指定します。`lowerThan` 優先順位グループ属性は、現在のモジュールの外部で宣言された優先順位グループを参照するためにのみ使用できます。式 `2 + 3 * 5` のように、2 つの演算子のオペランドが競合する場合、相対的に優先順位の高い演算子がオペランドにバインドされます。
 
