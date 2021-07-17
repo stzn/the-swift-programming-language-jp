@@ -218,7 +218,7 @@ print(anotherGreeting(for: "Dave"))
 
 `greeting(for:)` 関数の全体の定義は、戻り値の挨拶文です。つまり、この短い形式を使用できます。`anotherGreeting(for:)` 関数は、複数の式を持つ関数と同様に `return` キーワードを使用して、同じ挨拶文を返しています。1 つの戻り行として記述した関数は、`return` を省略できます。
 
-[Shorthand Getter Declaration\(省略 get プロパティ宣言\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/properties#shorthand-getter-declaration)でも説明されていますが、プロパティの get でも暗黙的な戻り値を使用することができます。
+[Shorthand Getter Declaration\(省略 get プロパティ宣言\)](../language-guide/properties#shorthand-getter-declaration)でも説明されていますが、プロパティの get でも暗黙的な戻り値を使用することができます。
 
 > NOTE  
 > 暗黙の戻り値を使ったコードは、何かしらの値を返す必要があります。例えば、`fatalError("Oh no!")` または `print(13)` を暗黙の戻り値として使用することはできません。
@@ -316,7 +316,7 @@ arithmeticMean(3, 8.25, 18.75)
 
 関数のパラメータはデフォルトで定数です。関数の本文からパラメータの値を変更しようとすると、コンパイルエラーが発生します。つまり、誤ってパラメータの値を変更することはできません。関数でパラメータの値を変更する必要があり、関数呼び出しが終了した後もそれらの変更を保持したい場合は、代わりに _in-out パラメータ_として定義します。
 
-パラメータの型の直前に `inout` キーワードを配置することにより、in-out パラメータを書きます。in-out パラメータに渡された値は、関数に渡され、変更され、元の値を置き換えて、関数から戻ってきます。in-out パラメータの動作および関連するコンパイラの最適化の詳細については、[In-Out Parameters\(In-Out パラメータ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#declarations-in-out-parameters)を参照ください。
+パラメータの型の直前に `inout` キーワードを配置することにより、in-out パラメータを書きます。in-out パラメータに渡された値は、関数に渡され、変更され、元の値を置き換えて、関数から戻ってきます。in-out パラメータの動作および関連するコンパイラの最適化の詳細については、[In-Out Parameters\(In-Out パラメータ\)](../language-reference/declarations#declarations-in-out-parameters)を参照ください。
 
 in-out パラメータには、変数のみ渡すことができます。定数とリテラルは変更できないため、渡すことはできません。変数を in-out パラメータとして渡すときは、変数名の直前にアンパサンド\(`&`\)を付けて、関数で値が変更される可能性があることを示します。
 

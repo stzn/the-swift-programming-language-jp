@@ -151,7 +151,7 @@ constantString += " and another Highlander"
 
 ## 文字列は値型\(Strings Are Value Types\)
 
-`String` 型は_値型_です。新しい `String` を生成すると、関数やメソッドのパラメータで渡されるときや、他の定数、変数に代入されるときに、値のコピーが発生します。いずれの場合でも、既存の `String` のコピーが生成され、元の値ではなく新しいコピーが渡され\(または代入され\)ます。値型は[Structures and Enumerations Are Value Types\(構造体と列挙型は値型\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/structures-and-classes#structures-and-enumerations-are-value-type)で記載されています。
+`String` 型は_値型_です。新しい `String` を生成すると、関数やメソッドのパラメータで渡されるときや、他の定数、変数に代入されるときに、値のコピーが発生します。いずれの場合でも、既存の `String` のコピーが生成され、元の値ではなく新しいコピーが渡され\(または代入され\)ます。値型は[Structures and Enumerations Are Value Types\(構造体と列挙型は値型\)](../language-guide/structures-and-classes#structures-and-enumerations-are-value-type)で記載されています。
 
 Swift の、デフォルトでコピーをする `String` の挙動は、`String` が関数やメソッドのパラメータで渡されるときに、どこからその値が来たとしても、正しい `String` を所有していることが保証されます。つまり、渡された文字列は、自身で変更しない限り決して変更されることがありません。
 
@@ -172,7 +172,7 @@ for character in "Dog!🐶" {
 // 🐶
 ```
 
-`for-in` ループについては[For-In Loops\(For-In ループ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/control-flow#for-in-loops)に記載されています。
+`for-in` ループについては[For-In Loops\(For-In ループ\)](../language-guide/control-flow#for-in-loops)に記載されています。
 
 もしくは、`Character` の型注釈を与えて 1 文字のリテラルから `Character` 型の定数や変数を作ることもできます:
 
@@ -457,7 +457,7 @@ Swift では、3 つの方法で文字列同士を比較する方法を提供し
 
 ### 文字と文字列の等価性\(String and Character Equality\)
 
-`String` または `Character` の完全一致は、は等価演算子\(`==`\)と不等価演算子\(`!=`\)を使用してチェックします。[Comparison Operators\(比較演算子\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/basic-operators#comparison-operators)
+`String` または `Character` の完全一致は、は等価演算子\(`==`\)と不等価演算子\(`!=`\)を使用してチェックします。[Comparison Operators\(比較演算子\)](../language-guide/basic-operators#comparison-operators)
 
 ```swift
 let quotation = "We're a lot alike, you and I."
