@@ -1,0 +1,1216 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <title>基本演算子(Basic Operators) · The Swift Programming Language日本語版</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="strings-and-characters.html" />
+    
+    
+    <link rel="prev" href="the-basics.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索ワードを入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    The Swift Programming Language(日本語版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Swiftへようこそ(WELCOME TO SWIFT)</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../welcome-to-swift/about-swift.html">
+            
+                <a href="../welcome-to-swift/about-swift.html">
+            
+                    
+                    Swiftについて(About Swift)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../welcome-to-swift/version-compatibility.html">
+            
+                <a href="../welcome-to-swift/version-compatibility.html">
+            
+                    
+                    バージョン互換性(Version Compatibility)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../welcome-to-swift/a-swift-tour.html">
+            
+                <a href="../welcome-to-swift/a-swift-tour.html">
+            
+                    
+                    Swiftツアー(A Swift Tour)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">言語ガイド(LANGUAGE GUIDE)</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="the-basics.html">
+            
+                <a href="the-basics.html">
+            
+                    
+                    基本(The Basics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.2" data-path="basic-operators.html">
+            
+                <a href="basic-operators.html">
+            
+                    
+                    基本演算子(Basic Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="strings-and-characters.html">
+            
+                <a href="strings-and-characters.html">
+            
+                    
+                    文字と文字列(Strings and Characters)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="collection-types.html">
+            
+                <a href="collection-types.html">
+            
+                    
+                    コレクション型(Collection Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="control-flow.html">
+            
+                <a href="control-flow.html">
+            
+                    
+                    制御フロー(Control Flow)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="functions.html">
+            
+                <a href="functions.html">
+            
+                    
+                    関数(Functions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="closures.html">
+            
+                <a href="closures.html">
+            
+                    
+                    クロージャ(Closures)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="enumerations.html">
+            
+                <a href="enumerations.html">
+            
+                    
+                    列挙型(Enumerations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="structures-and-classes.html">
+            
+                <a href="structures-and-classes.html">
+            
+                    
+                    構造体とクラス(Structures and Classes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="properties.html">
+            
+                <a href="properties.html">
+            
+                    
+                    プロパティ(Properties)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="methods.html">
+            
+                <a href="methods.html">
+            
+                    
+                    メソッド(Methods)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="subscripts.html">
+            
+                <a href="subscripts.html">
+            
+                    
+                    サブスクリプト(Subscripts)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="inheritance.html">
+            
+                <a href="inheritance.html">
+            
+                    
+                    継承(Inheritance)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="initialization.html">
+            
+                <a href="initialization.html">
+            
+                    
+                    初期化(Initialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="deinitialization.html">
+            
+                <a href="deinitialization.html">
+            
+                    
+                    デイニシャライゼーション(Deinitialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="optional-chaining.html">
+            
+                <a href="optional-chaining.html">
+            
+                    
+                    オプショナルチェーン(Optional Chaining)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="error-handling.html">
+            
+                <a href="error-handling.html">
+            
+                    
+                    エラー処理(Error Handling)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="concurrency.html">
+            
+                <a href="concurrency.html">
+            
+                    
+                    同時並行処理(Concurrency)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="type-casting.html">
+            
+                <a href="type-casting.html">
+            
+                    
+                    型キャスト(Type Casting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="nested-types.html">
+            
+                <a href="nested-types.html">
+            
+                    
+                    ネスト型(Nested Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.21" data-path="extensions.html">
+            
+                <a href="extensions.html">
+            
+                    
+                    拡張(Extensions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.22" data-path="protocols.html">
+            
+                <a href="protocols.html">
+            
+                    
+                    プロトコル(Protocols)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.23" data-path="generics.html">
+            
+                <a href="generics.html">
+            
+                    
+                    ジェネリクス(Generics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.24" data-path="opaque-types.html">
+            
+                <a href="opaque-types.html">
+            
+                    
+                    Opaque 型(Opaque Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.25" data-path="automatic-reference-counting.html">
+            
+                <a href="automatic-reference-counting.html">
+            
+                    
+                    自動参照カウント ARC(Automatic Reference Counting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.26" data-path="memory-safety.html">
+            
+                <a href="memory-safety.html">
+            
+                    
+                    メモリ安全性(Memory Safety)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.27" data-path="access-control.html">
+            
+                <a href="access-control.html">
+            
+                    
+                    アクセスコントロール(Access Control)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.28" data-path="advanced-operators.html">
+            
+                <a href="advanced-operators.html">
+            
+                    
+                    高度な演算子(Advanced Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">言語リファレンス(LANGUAGE REFERENCE)</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../language-reference/about-the-language-reference.html">
+            
+                <a href="../language-reference/about-the-language-reference.html">
+            
+                    
+                    言語リファレンスについて(About the Language Reference)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../language-reference/lexical-structure.html">
+            
+                <a href="../language-reference/lexical-structure.html">
+            
+                    
+                    構文の構造(Lexical Structure)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../language-reference/types.html">
+            
+                <a href="../language-reference/types.html">
+            
+                    
+                    型(Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../language-reference/expressions.html">
+            
+                <a href="../language-reference/expressions.html">
+            
+                    
+                    式(Expressions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../language-reference/statements.html">
+            
+                <a href="../language-reference/statements.html">
+            
+                    
+                    文(Statements)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../language-reference/declarations.html">
+            
+                <a href="../language-reference/declarations.html">
+            
+                    
+                    宣言(Declarations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../language-reference/attributes.html">
+            
+                <a href="../language-reference/attributes.html">
+            
+                    
+                    属性(Attributes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../language-reference/patterns.html">
+            
+                <a href="../language-reference/patterns.html">
+            
+                    
+                    パターン(Patterns)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../language-reference/generic-parameters-and-arguments.html">
+            
+                <a href="../language-reference/generic-parameters-and-arguments.html">
+            
+                    
+                    ジェネリックパラメータと引数(Generic Parameters and Arguments)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="../language-reference/summary-of-the-grammar.html">
+            
+                <a href="../language-reference/summary-of-the-grammar.html">
+            
+                    
+                    文法のまとめ(Summary of the Grammar)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">REVISION HISTORY (改訂履歴)</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../revision-history/document-revision-history.html">
+            
+                <a href="../revision-history/document-revision-history.html">
+            
+                    
+                    ドキュメント改訂履歴(Document Revision History)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKitで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >基本演算子(Basic Operators)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="基本演算子basic-operators">基本演算子(Basic Operators)</h1>
+<p>最終更新日: 2021/6/27</p>
+<p><em>演算子</em>は、値のチェックや変更、合成するために使われる特殊な記号や用語です。例えば、加算演算子(<code>+</code>)は <code>let i = 1 + 2</code> のように 2 つの数値を足します。論理 AND 演算子(<code>&amp;&amp;</code>)は、<code>if enteredDoorCode &amp;&amp; passedRetinaScan</code> のように 2 つのブール値を組み合わせます。</p>
+<p>Swift は、C 言語のような他の言語でおそらく見たことがある演算子をサポートするのに加え、よく起きるコーディング中のエラーを防ぐために改良を加えています。代入演算子(<code>=</code>)を、本当は等価演算子(<code>==</code>)を使おうと思っていた所へ間違って使えなくするために、値を返しません。算術演算子(<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code> など)は、保持している値の型の許容範囲を超えて予期せぬ結果が起きることを防ぐために、オーバーフローを検知して発生しないようにしています。Swift のオーバーフロー演算子を使用することで、オーバーフローに対する挙動を変えることもできます。詳細は<a href="advanced-operators#overflow-operators">Overflow Operators(オーバーフロー演算子)</a>に記載しています。</p>
+<p>また、C 言語にはなかった <code>a..&lt;b</code> や <code>a...b</code> のような値の範囲を簡単に表すための範囲演算子も提供しています。</p>
+<p>この章では、Swift の基本的な演算子について記載します。<a href="advanced-operators.html">Advanced Operators(高度な演算子)</a>ではより応用的な演算子をカバーしており、独自に作成できるカスタム演算子や、独自で定義した型へ Swift が用意している標準の演算子を実装する方法を記載しています。</p>
+<h2 id="用語terminology">用語(Terminology)</h2>
+<p>演算子は単項(<code>unary</code>)、二項(<code>binary</code>)、三項(<code>ternary</code>)があります。</p>
+<ul>
+<li>単項演算子は、<code>-a</code> のような単一のターゲットで動作します。前置(<code>prefix</code>)演算子は <code>!b</code> のようにターゲットの直前に置かれ、後置(<code>postfix</code>)演算子は <code>c!</code> のようにターゲットの直後に置かれます</li>
+<li>二項演算子は、<code>2 + 3</code> のように 2 つの値をターゲットで動作します。これは 2 つのターゲットの間に置かれるので中置(<code>infix</code>)演算子です</li>
+<li>三項演算子は、3 つの値をターゲットとした演算子です。C 言語と同様に、Swift は 1 つの三項演算子、三項条件演算子しかありません(<code>a ? b : c</code>)</li>
+</ul>
+<p>演算子が影響を与える値は、オペランドと呼ばれます。<code>1 + 2</code> という式は、<code>+</code> が二項演算子で <code>1</code> と <code>2</code> がオペランドです。</p>
+<h2 id="代入演算子assignment-operator">代入演算子(Assignment Operator)</h2>
+<p><em>代入演算子</em>は、例えば <code>a = b</code> とすると、<code>a</code> の値を <code>b</code> の値で初期化、または更新します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">5</span>
+a <span class="token operator">=</span> b
+<span class="token comment">// a は 10 と等しい</span>
+</code></pre>
+<p>代入の右側が複数の値を持つタプルの場合、一度に複数の定数や変数に代入することができます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token comment">// x は 1、 y は 2 と等しい</span>
+</code></pre>
+<p>C 言語や Objective-C の代入演算子と異なり、Swift の代入演算子は値を返しません。そのため次のようなことはできません。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> x <span class="token operator">=</span> y <span class="token punctuation">{</span>
+    <span class="token comment">// x = yは値を返さないのでエラーになる。</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>この特徴から代入演算子(<code>=</code>)を等価演算子(<code>==</code>)と間違えて使用することを防げます。上記の例では、<code>if x = y</code> はコンパイルエラーになります。</p>
+<h2 id="算術演算子arithmetic-operators">算術演算子(Arithmetic Operators)</h2>
+<p>Swift は全ての数値型に対して 4 つの基本的な<em>算術演算子</em>をサポートしています。</p>
+<ul>
+<li>加算(<code>+</code>)</li>
+<li>減算(<code>-</code>)</li>
+<li>乗算(<code>*</code>)</li>
+<li>割算(<code>/</code>)</li>
+</ul>
+<pre class="language-"><code class="lang-swift"><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span>       <span class="token comment">// 3</span>
+<span class="token number">5</span> <span class="token operator">-</span> <span class="token number">3</span>       <span class="token comment">// 2</span>
+<span class="token number">2</span> <span class="token operator">*</span> <span class="token number">3</span>       <span class="token comment">// 6</span>
+<span class="token number">10.0</span> <span class="token operator">/</span> <span class="token number">2.5</span>  <span class="token comment">// 4.0</span>
+</code></pre>
+<p>C 言語や Objective-C と異なり、Swift はデフォルトでオーバーフローはできません。<code>a &amp;+ b</code> のようにオーバーフロー演算子(<code>&amp;-</code>)を使用してオーバーフローさせることができます。詳細は<a href="advanced-operators#overflow-operators">Overflow Operators(オーバーフロー演算子)</a>を参照ください。</p>
+<p>加算演算子は <code>String</code> の連結もすることができます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token string">&quot;hello, &quot;</span> <span class="token operator">+</span> <span class="token string">&quot;world&quot;</span>  <span class="token comment">// &quot;hello, world&quot;</span>
+</code></pre>
+<h3 id="剰余演算子remainder-operator">剰余演算子(Remainder Operator)</h3>
+<p><code>a % b</code> のような剰余演算子は、<code>a</code> の中に <code>b</code> がどのくらい含まれているのかを計算し、その(<em>剰余</em>と呼ばれる)余った値を返します。</p>
+<blockquote>
+<p>NOTE<br>剰余演算子(<code>%</code>)は、他の言語ではモジュロ演算子とも呼ばれています。しかし、厳密に言うと、負数に対するSwiftの挙動は、モジュロ演算ではなく剰余演算を行います。</p>
+</blockquote>
+<p>剰余演算子がどのように機能するかの例を見てみましょう。<code>9 % 4</code> を計算すると、まず <code>9</code> の中にいくつ <code>4</code> が含まれているかの結果を出します。</p>
+<p><img src="../assets/remainderinteger_2x.png" alt="remainderinteger"></p>
+<p><code>9</code> の中には 2 つの <code>4</code> があり、剰余は <code>1</code> です(オレンジ色の部分)。</p>
+<p>Swift では、下記のように書きます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token number">9</span> <span class="token operator">%</span> <span class="token number">4</span>    <span class="token comment">// 1</span>
+</code></pre>
+<p><code>a % b</code> へ解答するために、<code>%</code> 演算子は次の方程式を計算して <code>reminder</code> を返します。</p>
+<p><code>a = (b x some multiplier) + remainder</code></p>
+<p><code>some multiplier</code> には <code>a</code> に収まる <code>b</code> の倍数の最大数が入ります。</p>
+<p><code>9</code> と <code>4</code> をこの方程式に当てはめるとこうなります:</p>
+<p><code>9 = (4 x 2) + 1</code></p>
+<p><code>a</code> を負数にした場合も見てみましょう。</p>
+<pre class="language-"><code class="lang-swift"><span class="token operator">-</span><span class="token number">9</span> <span class="token operator">%</span> <span class="token number">4</span>   <span class="token comment">// -1</span>
+</code></pre>
+<p><code>-9</code> と <code>4</code> をこの方程式に当てはめるとこうなります:</p>
+<p><code>-9 = (4 x -2) + -1</code></p>
+<p><code>-1</code> という剰余値を得られます。</p>
+<p><code>b</code> の位置に負数を入れても、その負の記号は無視されます。つまり、<code>a % b</code> と <code>a % -b</code> は常に同じ結果が得られます。</p>
+<h3 id="単項減算演算子unary-minus-operator">単項減算演算子(Unary Minus Operator)</h3>
+<p>数値の記号は、前置の <code>-</code> を使用して切り替えることができます。これは<em>単項減算演算子</em>と呼ばれます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> three <span class="token operator">=</span> <span class="token number">3</span>
+<span class="token keyword">let</span> minusThree <span class="token operator">=</span> <span class="token operator">-</span>three       <span class="token comment">// minusThree は -3</span>
+<span class="token keyword">let</span> plusThree <span class="token operator">=</span> <span class="token operator">-</span>minusThree   <span class="token comment">// plusThree は 3(&quot;マイナスマイナス3&quot;)</span>
+</code></pre>
+<p>単項減算演算子(<code>-</code>)は、操作する値の直前にスペースなしで付けます。</p>
+<h3 id="単項加算演算子unary-plus-operator">単項加算演算子(Unary Plus Operator)</h3>
+<p><em>単項加算演算子</em>(<code>+</code>)は、何も変えずに操作した値を返します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> minusSix <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">6</span>
+<span class="token keyword">let</span> alsoMinusSix <span class="token operator">=</span> <span class="token operator">+</span>minusSix  <span class="token comment">// alsoMinusSix は -6</span>
+</code></pre>
+<p>単項加算演算子は何もしませんが、負数に単項減算演算子を使用している場合、その対称として正数に単項加算演算子を使用することもできます。</p>
+<h2 id="複合代入演算子compound-assignment-operators">複合代入演算子(Compound Assignment Operators)</h2>
+<p>C 言語と同様に、Swift の<em>複合代入演算子</em>は、代入演算子(<code>=</code>)と他の演算子を組み合わせることができます。1 つの例として、加算代入演算子(<code>+=</code>)があります:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span>
+a <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">2</span>
+<span class="token comment">// a は 3 と等しい</span>
+</code></pre>
+<p><code>a += 2</code> は <code>a = a + 2</code> のショートカットです。効率的に、加算と代入が 1 つの操作に合成されて、同時に行われます。</p>
+<blockquote>
+<p>NOTE<br>複合代入演算子は値を返しません。例えば、<code>let b = a += 2</code> と書くことはできません。</p>
+</blockquote>
+<p>Swift の標準ライブラリで提供している演算子については、<a href="https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations" target="_blank">Operator Declarations(演算子宣言)</a>を参照ください。</p>
+<h2 id="比較演算子comparison-operators"><a id="comparison-operators">比較演算子(Comparison Operators)</a></h2>
+<p>Swift は、次の比較演算子をサポートしています。</p>
+<ul>
+<li>等価演算子(<code>a == b</code>)</li>
+<li>不等価演算子(<code>a != b</code>)</li>
+<li>より大きい(<code>a &gt; b</code>)</li>
+<li>より小さい(<code>a &lt; b</code>)</li>
+<li>等しいかそれ以上(<code>a &gt;= b</code>)</li>
+<li>等しいかそれ以下(<code>a &lt;= b</code>)</li>
+</ul>
+<blockquote>
+<p>NOTE<br>Swift では、2つの恒等作用素(<code>===</code> と <code>!==</code>)も提供しています。これは2つのオブジェクトが同じインスタンスを参照しているかどうかの確認ができます。より詳細は、<a href="structures-and-classes#identity-operators">Identity Operators(恒等作用素)</a>を参照ください。</p>
+</blockquote>
+<p>それぞれの比較演算子は、そのステートメントが <code>true</code> かどうかのブール値を返します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token number">1</span> <span class="token operator">==</span> <span class="token number">1</span>   <span class="token comment">// 1 は 1 と等しいなので true</span>
+<span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">1</span>   <span class="token comment">// 2 は 1 と等しくないので true</span>
+<span class="token number">2</span> <span class="token operator">&gt;</span> <span class="token number">1</span>    <span class="token comment">// 2 は 1 とより大きいので true</span>
+<span class="token number">1</span> <span class="token operator">&lt;</span> <span class="token number">2</span>    <span class="token comment">// 1 は 2 とより小さいので true</span>
+<span class="token number">1</span> <span class="token operator">&gt;=</span> <span class="token number">1</span>   <span class="token comment">// 1 は 1 とより大きいまたは等しいので true</span>
+<span class="token number">2</span> <span class="token operator">&lt;=</span> <span class="token number">1</span>   <span class="token comment">// 1 は 1 とより小さくないかつ等しくないので false</span>
+</code></pre>
+<p>比較演算子は、<code>if</code> などの条件文でよく使われます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token string">&quot;world&quot;</span>
+<span class="token keyword">if</span> name <span class="token operator">==</span> <span class="token string">&quot;world&quot;</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;hello, world&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;I&apos;m sorry <span class="token interpolation"><span class="token delimiter variable">\(</span>name<span class="token delimiter variable">)</span></span>, but I don&apos;t recognize you&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// name は &quot;world&quot; と等しいので、&quot;hello, world&quot; が出力される。</span>
+</code></pre>
+<p><code>if</code> については、<a href="control-flow.html">Control FLow(制御フロー)</a>を参照ください。同じ型、同じ数の値を持ったタプル同士の比較もできます。タプルは左から右へと順番に値を比較します。それぞれの値の比較結果が全体の結果に反映されます。全て等しい場合、タプル同士は等しいと見なされます。例えば:</p>
+<pre class="language-"><code class="lang-swift"><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">&quot;zebra&quot;</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">&quot;apple&quot;</span><span class="token punctuation">)</span>   <span class="token comment">// 1 は 2 より小さいので true。&quot;zebra&quot; と &quot;apple&quot; は比較しない</span>
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">&quot;apple&quot;</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">&quot;bird&quot;</span><span class="token punctuation">)</span>    <span class="token comment">// 3 と 3 は同じで、&quot;apple&quot; は &quot;bird&quot; はより小さいので true</span>
+<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">&quot;dog&quot;</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">&quot;dog&quot;</span><span class="token punctuation">)</span>      <span class="token comment">// 3 と 3、&quot;dog&quot; と &quot;dog&quot; は等しいので true</span>
+</code></pre>
+<p>上記の例では、最初の行では左から右へと比較をしています。<code>1</code> は <code>2</code> より小さいので、<code>(1, &quot;zebra&quot;)</code> はタプルの他の値がどんな値でも <code>(2, &quot;apple&quot;)</code> よりも小さいと判定されます。既に最初の値同士でこのタプルの比較は完了しているので、<code>&quot;zebra&quot;</code> と <code>&quot;apple&quot;</code> の比較は関係ありません。しかし、最初の値が同じ場合、2 番目の値同士で比較されます。上記の 2, 3 行目がこれに当たります。</p>
+<p>タプルは、個々の要素の値にその演算子が適応できる場合に比較をすることができます。例えば、下記のコードでは、2 つの <code>(String, Int)</code> のタプルを比較していますが、<code>String</code> も <code>Int</code> も <code>&lt;</code> で比較できるので、タプル自身も比較ができます。反対に、<code>(String, Bool)</code> は、<code>Bool</code> が <code>&lt;</code> に使えないため、タプルの比較ができません。</p>
+<pre class="language-"><code class="lang-swift"><span class="token punctuation">(</span><span class="token string">&quot;blue&quot;</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token punctuation">(</span><span class="token string">&quot;purple&quot;</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>        <span class="token comment">// OK true と評価されます</span>
+<span class="token punctuation">(</span><span class="token string">&quot;blue&quot;</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token punctuation">(</span><span class="token string">&quot;purple&quot;</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>  <span class="token comment">// Error &lt; はブール値の比較をできません</span>
+</code></pre>
+<blockquote>
+<p>NOTE<br>Swift の標準ライブラリは 要素数が 7 つ以下のタプルの演算子を提供しています。7 つ以上の要素数のタプルへは自身で実装しなければなりません。</p>
+</blockquote>
+<h2 id="三項条件演算子ternary-conditional-operator"><a id="basic-operator-ternary-conditional-operator">三項条件演算子(Ternary Conditional Operator)</a></h2>
+<p><em>三項条件演算子</em>は、<code>question ? answer1 : answer2</code> という形式の、3 つの部分を持った特別な演算子です。これは、<code>question</code> が <code>true</code> か <code>false</code> かを基に 2 つの式のどちらかを評価するショートカットです。<code>question</code> が <code>true</code> ならば、<code>answer1</code> が評価され、<code>false</code> だと <code>answer2</code> が評価されます。</p>
+<p>三項条件演算子は下記のコードのショートカットです。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> question <span class="token punctuation">{</span>
+    answer1
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    answer2
+<span class="token punctuation">}</span>
+</code></pre>
+<p>下記の例は、table の行の高さを計算しています。ヘッダーがある場合、行の高さは内容の高さよりも 50 ポイント高く、ない場合は、20 ポイント高くします。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> contentHeight <span class="token operator">=</span> <span class="token number">40</span>
+<span class="token keyword">let</span> hasHeader <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token keyword">let</span> rowHeight <span class="token operator">=</span> contentHeight <span class="token operator">+</span> <span class="token punctuation">(</span>hasHeader <span class="token operator">?</span> <span class="token number">50</span> <span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">)</span>
+<span class="token comment">// rowHeight は 90</span>
+</code></pre>
+<p>上記のコードは下記のショートカットです。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> contentHeight <span class="token operator">=</span> <span class="token number">40</span>
+<span class="token keyword">let</span> hasHeader <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token keyword">let</span> rowHeight<span class="token punctuation">:</span> <span class="token builtin">Int</span>
+<span class="token keyword">if</span> hasHeader <span class="token punctuation">{</span>
+    rowHeight <span class="token operator">=</span> contentHeight <span class="token operator">+</span> <span class="token number">50</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    rowHeight <span class="token operator">=</span> contentHeight <span class="token operator">+</span> <span class="token number">20</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// rowHeight は 90</span>
+</code></pre>
+<p>最初の例では三項条件演算子を使用して 1 行で <code>rowHeight</code> を設定でき、2 つ目の例よりもより簡潔になっています。</p>
+<p>三項条件演算子は 2 つの式のどちらが使われるのかを決める効率的なショートカットです。しかし、三項条件演算子にも注意が必要です。あまり使いすぎると可読性を損なう場合もあります。複数の三項条件演算子を 1 つのステートメントに含めることは避けましょう。</p>
+<h2 id="nil-合体演算子nil-coalescing-operator"><a id="nilcoalescing-operator">nil 合体演算子(Nil-Coalescing Operator)</a></h2>
+<p><code>(a ?? b)</code> の <em>nil 合体演算子</em>は、オプショナルの <code>a</code> にもし値が存在すれば <code>a</code> をアンラップし、<code>a</code> が <code>nil</code> の場合は <code>b</code> をデフォルトとして返します。式 <code>a</code> は常にオプショナル型です。式 <code>b</code> は <code>a</code> が内包する値の型と一致していなけばなりません。</p>
+<p>nil 合体演算子は下記のコードのショートカットです。</p>
+<pre class="language-"><code class="lang-swift">a <span class="token operator">!=</span> <span class="token constant">nil</span> <span class="token operator">?</span> a<span class="token operator">!</span> <span class="token punctuation">:</span> b
+</code></pre>
+<p>上記のコードは、三項条件演算子を使用して、<code>a</code> が <code>nil</code> ではない場合は、<code>a</code> が内包する値へアクセスするために強制アンラップ(<code>a!</code>)し、それ以外は <code>b</code> を返します。nil 合体演算子は条件チェックとアンラップを 1 つにした、簡潔で読みやすく、より洗練された方法です。</p>
+<blockquote>
+<p>NOTE<br><code>a</code> が <code>nil</code> ではない場合、<code>b</code> は評価されません。これは<em>短絡評価</em>と呼ばれます。</p>
+</blockquote>
+<p>下記の例では、デフォルトのカラー名かユーザ定義のオプショナルなカラー名を選択するために、nil 合体演算子を使用しています。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> defaultColorName <span class="token operator">=</span> <span class="token string">&quot;red&quot;</span>
+<span class="token keyword">var</span> userDefinedColorName<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token operator">?</span>   <span class="token comment">// defaults は nil</span>
+
+<span class="token keyword">var</span> colorNameToUse <span class="token operator">=</span> userDefinedColorName <span class="token operator">?</span><span class="token operator">?</span> defaultColorName
+<span class="token comment">// userDefinedColorName が nil なので、 colorNameToUse にデフォルトの&quot;red&quot;が設定されます</span>
+</code></pre>
+<p><code>userDefinedColorName</code> は、オプショナルの <code>String</code> として定義され、デフォルトは <code>nil</code> です。<code>userDefinedColorName</code> はオプショナル型なので、その値を検討するために、nil 合体演算子を使用することができます。上記の例では、<code>colorNameToUse</code> という <code>String</code> 型の変数の初期値を決めるために nil 合体演算子を使用しています。<code>userDefinedColorName</code> は <code>nil</code> なので、式 <code>userDefinedColorName ?? defaultColorName</code> は、<code>defaultColorName</code>、つまり <code>&quot;red&quot;</code> を返します。</p>
+<p>もし <code>userDefinedColorName</code> に <code>nil</code> 以外が代入されていて nil 合体演算子でチェックを行った場合、<code>userDefinedColorName</code> が内包する値がデフォルトの代わりに使われます:</p>
+<pre class="language-"><code class="lang-swift">userDefinedColorName <span class="token operator">=</span> <span class="token string">&quot;green&quot;</span>
+colorNameToUse <span class="token operator">=</span> userDefinedColorName <span class="token operator">?</span><span class="token operator">?</span> defaultColorName
+<span class="token comment">// userDefinedColorName は nil ではないので、 colorNameToUse の &quot;green&quot; が設定されます</span>
+</code></pre>
+<h2 id="範囲演算子range-operators"><a id="range-operators">範囲演算子(Range Operators)</a></h2>
+<p>Swift は、値の範囲を表すショートカットとして複数の<em>範囲演算子</em>を提供しています。</p>
+<h3 id="閉範囲演算子closed-range-operator">閉範囲演算子(Closed Range Operator)</h3>
+<p><code>a...b</code> は、<code>a</code> から <code>b</code> までの連続した、<code>a</code> も <code>b</code> も含んだ範囲を定義します。<code>a</code> を <code>b</code> よりも大きい値にしてはいけません。</p>
+<p>閉範囲演算子は、必要な全ての値を範囲に含め、繰り返し処理を行うときに有用です。例えば <code>for-in</code> ループでは:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> index <span class="token keyword">in</span> <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">5</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>index<span class="token delimiter variable">)</span></span> times 5 is <span class="token interpolation"><span class="token delimiter variable">\(</span>index <span class="token operator">*</span> <span class="token number">5</span><span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 1 times 5 is 5</span>
+<span class="token comment">// 2 times 5 is 10</span>
+<span class="token comment">// 3 times 5 is 15</span>
+<span class="token comment">// 4 times 5 is 20</span>
+<span class="token comment">// 5 times 5 is 25</span>
+</code></pre>
+<p><code>for-in</code> ループについては、<a href="control-flow.html">Control FLow(制御フロー)</a>を参照ください。</p>
+<h3 id="半開範囲演算子half-open-range-operator"><a id="halfopen-range-operator">半開範囲演算子(Half-Open Range Operator)</a></h3>
+<p><code>a..&lt;b</code> のような<em>半開範囲演算子</em>は、<code>a</code> から <code>b</code> まで連続しているものの <code>b</code> は含まない範囲を定義します。<code>a</code> を <code>b</code> よりも大きい値にしてはいけません。<code>a</code> と <code>b</code> が等しい場合、範囲は空になります。</p>
+<p>半開範囲演算子は、配列などの 0 ベースのリストで特に有用です。例えば、リストの要素数に順番にアクセスする場合などあります:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;Anna&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Alex&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Brian&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;Jack&quot;</span><span class="token punctuation">]</span>
+<span class="token keyword">let</span> <span class="token builtin">count</span> <span class="token operator">=</span> names<span class="token punctuation">.</span><span class="token builtin">count</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token number">0</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token builtin">count</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Person <span class="token interpolation"><span class="token delimiter variable">\(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token delimiter variable">)</span></span> is called <span class="token interpolation"><span class="token delimiter variable">\(</span>names<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// Person 1 is called Anna</span>
+<span class="token comment">// Person 2 is called Alex</span>
+<span class="token comment">// Person 3 is called Brian</span>
+<span class="token comment">// Person 4 is called Jack</span>
+</code></pre>
+<p>この配列は 4 つの要素が含まれていますが、<code>0..&lt;count</code> は半開範囲演算子なので <code>3</code>(配列の最後のインデックス)までしかカウントしないことに注目してください。配列については、<a href="collection-types#arrays">Arrays(配列)</a>を参照ください。</p>
+<h3 id="片側範囲演算子one-sided-ranges">片側範囲演算子(One-Sided Ranges)</h3>
+<p>閉範囲演算子は、1 つの方向へ可能な限り続く範囲に対して違った形式で書くことができます。例えば、ある配列のインデックス 2 から配列の最後までの要素を含んだ範囲などがこれに当たります。これらの場合では、範囲演算子の片方の値を省略できます。この種類の範囲は、片方しか値を持たないので、<em>片側範囲</em>と呼ばれています。例えば:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> name <span class="token keyword">in</span> names<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// Brian</span>
+<span class="token comment">// Jack</span>
+
+<span class="token keyword">for</span> name <span class="token keyword">in</span> names<span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// Anna</span>
+<span class="token comment">// Alex</span>
+<span class="token comment">// Brian</span>
+</code></pre>
+<p>最後の値のみを書くことで、片側範囲の形式で半開範囲演算子を書くことができます。両側の値を書いたときと同様に、記載した最後の値は範囲に含まれません。例えば:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> name <span class="token keyword">in</span> names<span class="token punctuation">[</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// Anna</span>
+<span class="token comment">// Alex</span>
+</code></pre>
+<p>片側範囲は、subscript 以外の他のコンテキストでも使用することができます。最初の値を省略した片側範囲を繰り返し処理に利用することはできません。どこから繰り返しを始めて良いかがわからないからです。一方で、最後の値を省略した片側範囲を繰り返し処理に利用することは<em>できます</em>。しかし、範囲は無限に続くので、ループの中で終了条件を明示的に設定していることを確かめましょう。片側範囲にある値が含まれているかどうかのチェックもできます。下記に例を示します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> range <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">5</span>
+range<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span>   <span class="token comment">// false</span>
+range<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>   <span class="token comment">// true</span>
+range<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment">// true</span>
+</code></pre>
+<h2 id="論理演算子logical-operators">論理演算子(Logical Operators)</h2>
+<p><em>論理演算子</em>は、ブール論理値の <code>true</code> と <code>false</code> を変更したり、組み合わせたりします。Swift では、C ベースの言語にもある 3 つの標準の論理演算子をサポートしています。</p>
+<ul>
+<li>否定 NOT (<code>!a</code>)</li>
+<li>論理積 AND (<code>a &amp;&amp; b</code>)</li>
+<li>論理和 OR (<code>a || b</code>)</li>
+</ul>
+<h3 id="論理否定演算子logical-not-operator">論理否定演算子(Logical NOT Operator)</h3>
+<p><code>!a</code> のような<em>論理否定演算子</em>は、<code>true</code> を <code>false</code> に、<code>false</code> を <code>true</code> にブール値を反転させます。</p>
+<p>論理否定演算子は、操作する値の直前にスペースなしで付けます。次の例では、「<code>a</code> ではない」と読み取れます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> allowedEntry <span class="token operator">=</span> <span class="token boolean">false</span>
+<span class="token keyword">if</span> <span class="token operator">!</span>allowedEntry <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;ACCESS DENIED&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;ACCESS DENIED&quot;</span>
+</code></pre>
+<p><code>if !allowedEntry</code> は「もし許可されたエントリでなければ」と読み取れます。次の行は、「もし許可されたエントリでなければ」が <code>true</code> だった場合のみ実行されます。つまり、<code>if allowedEntry</code> は <code>false</code> です。</p>
+<p>この例では、Bool 型の定数と変数の名前を注意深く選択していることで、コードの可読性や簡潔さを保つことができてます。(二重否定や複合式を避けるなど)</p>
+<h3 id="論理積演算子logical-and-operator">論理積演算子(Logical AND Operator)</h3>
+<p><code>a &amp;&amp; b</code> のような<em>論理積演算子</em>は、両方の値が <code>true</code> の場合に、全体の式も <code>true</code> になる論理式を作ります。</p>
+<p>もしどちらかが <code>false</code> ならば、全体の式は <code>false</code> になります。実際、最初の値が <code>false</code> ならば、既に全体の式が <code>false</code> だと分かっているため、次の値は評価されません。これは短絡評価と呼ばれています。</p>
+<p>この例は、2 つのブール値を検討し、両方の値が <code>true</code> の場合のみ、アクセスを許可します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> enteredDoorCode <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token keyword">let</span> passedRetinaScan <span class="token operator">=</span> <span class="token boolean">false</span>
+<span class="token keyword">if</span> enteredDoorCode <span class="token operator">&amp;&amp;</span> passedRetinaScan <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Welcome!&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;ACCESS DENIED&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;ACCESS DENIED&quot;</span>
+</code></pre>
+<h3 id="論理和演算子logical-or-operator">論理和演算子(Logical OR Operator)</h3>
+<p><code>a || b</code> のような<em>論理和演算子</em>は、2 つの連続したバーティカルバー(<code>||</code>)を使った中置演算子です。片方の値が <code>true</code> の場合に、全体の式も <code>true</code> になる論理式を作ります。</p>
+<p>論理積と同様に、論理和は式を検討するときに短絡評価を使います。論理和の左側が <code>true</code> ならば、既に全体の式も <code>true</code> と分かっているので、右側は評価されません。</p>
+<p>下記の例では、最初の <code>Bool</code> 値(<code>hasDoorKey</code>)は <code>false</code> ですが、2 番目の値(<code>knowsOverridePassword</code>)は <code>true</code> です。片方が <code>true</code> なので、全体の式も <code>true</code> になり、アクセスは許可されます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> hasDoorKey <span class="token operator">=</span> <span class="token boolean">false</span>
+<span class="token keyword">let</span> knowsOverridePassword <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token keyword">if</span> hasDoorKey <span class="token operator">||</span> knowsOverridePassword <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Welcome!&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;ACCESS DENIED&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;Welcome!&quot;</span>
+</code></pre>
+<h3 id="論理演算子の合成combining-logical-operators">論理演算子の合成(Combining Logical Operators)</h3>
+<p>より長く様々な条件の複合式を作成するために、複数の論理演算子を組み合わせることができます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> enteredDoorCode <span class="token operator">&amp;&amp;</span> passedRetinaScan <span class="token operator">||</span> hasDoorKey <span class="token operator">||</span> knowsOverridePassword <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Welcome!&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;ACCESS DENIED&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;Welcome!&quot;</span>
+</code></pre>
+<p>この例では、複数の <code>&amp;&amp;</code> と <code>||</code> を使用して複合式を作っています。<code>&amp;&amp;</code> と <code>||</code> は 2 つの値しか操作することができないため、実際には 3 つの小さい式を繋げています。この例は下記のように読み取れます:</p>
+<p>「もし正しいドア番号に入って、網膜スキャンを通過し、正しいドアキーを持っているまたは緊急の上書きパスワードを知っている場合に、アクセスすることができます」</p>
+<p><code>enteredDoorCode</code> と <code>passedRetinaScan</code> と <code>hasDoorKey</code> の値を基に、最初の 2 つの部分式は <code>false</code> です。しかし、緊急の上書きパスワードを知っているため、全体の式としては <code>true</code> と評価されます。</p>
+<blockquote>
+<p>NOTE<br>Swift の <code>&amp;&amp;</code> と <code>||</code> は左結合です。つまり、複数の論理演算子を持つ複合式の場合は、一番左の部分式から評価されます。</p>
+</blockquote>
+<h3 id="明示的な括弧explicit-parentheses">明示的な括弧(Explicit Parentheses)</h3>
+<p>厳密には必要ありませんが、複雑な式の意図を分かりやすくするために、括弧(<code>()</code>)を使用すると有用なときがあります。ドアへのアクセスの例では、意図を明確にするために、複合式の最初の部分に括弧を追加すると役に立ちます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> <span class="token punctuation">(</span>enteredDoorCode <span class="token operator">&amp;&amp;</span> passedRetinaScan<span class="token punctuation">)</span> <span class="token operator">||</span> hasDoorKey <span class="token operator">||</span> knowsOverridePassword <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Welcome!&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;ACCESS DENIED&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;Welcome!&quot;</span>
+</code></pre>
+<p>この括弧は、最初の 2 つの値が、全体の論理の中で別の状態を持つことを明確にしています。複合式の出力結果は変わりませんが、全体の意図は読み手により明確になります。可読性は簡潔さよりも常に優先されます。意図を明確にすることができるならば、括弧を使いましょう。</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="the-basics.html" class="navigation navigation-prev " aria-label="Previous page: 基本(The Basics)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="strings-and-characters.html" class="navigation navigation-next " aria-label="Next page: 文字と文字列(Strings and Characters)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"基本演算子(Basic Operators)","level":"3.2","depth":1,"next":{"title":"文字と文字列(Strings and Characters)","level":"3.3","depth":1,"path":"language-guide/strings-and-characters.md","ref":"language-guide/strings-and-characters.md","articles":[]},"previous":{"title":"基本(The Basics)","level":"3.1","depth":1,"path":"language-guide/the-basics.md","ref":"language-guide/the-basics.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-guide/basic-operators.md","mtime":"2021-07-17T06:39:57.069Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-17T06:40:39.672Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

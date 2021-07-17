@@ -1,0 +1,1146 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <title>アクセスコントロール(Access Control) · The Swift Programming Language日本語版</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="advanced-operators.html" />
+    
+    
+    <link rel="prev" href="memory-safety.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索ワードを入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    The Swift Programming Language(日本語版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Swiftへようこそ(WELCOME TO SWIFT)</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../welcome-to-swift/about-swift.html">
+            
+                <a href="../welcome-to-swift/about-swift.html">
+            
+                    
+                    Swiftについて(About Swift)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../welcome-to-swift/version-compatibility.html">
+            
+                <a href="../welcome-to-swift/version-compatibility.html">
+            
+                    
+                    バージョン互換性(Version Compatibility)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../welcome-to-swift/a-swift-tour.html">
+            
+                <a href="../welcome-to-swift/a-swift-tour.html">
+            
+                    
+                    Swiftツアー(A Swift Tour)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">言語ガイド(LANGUAGE GUIDE)</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="the-basics.html">
+            
+                <a href="the-basics.html">
+            
+                    
+                    基本(The Basics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="basic-operators.html">
+            
+                <a href="basic-operators.html">
+            
+                    
+                    基本演算子(Basic Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="strings-and-characters.html">
+            
+                <a href="strings-and-characters.html">
+            
+                    
+                    文字と文字列(Strings and Characters)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="collection-types.html">
+            
+                <a href="collection-types.html">
+            
+                    
+                    コレクション型(Collection Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="control-flow.html">
+            
+                <a href="control-flow.html">
+            
+                    
+                    制御フロー(Control Flow)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="functions.html">
+            
+                <a href="functions.html">
+            
+                    
+                    関数(Functions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="closures.html">
+            
+                <a href="closures.html">
+            
+                    
+                    クロージャ(Closures)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="enumerations.html">
+            
+                <a href="enumerations.html">
+            
+                    
+                    列挙型(Enumerations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="structures-and-classes.html">
+            
+                <a href="structures-and-classes.html">
+            
+                    
+                    構造体とクラス(Structures and Classes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="properties.html">
+            
+                <a href="properties.html">
+            
+                    
+                    プロパティ(Properties)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="methods.html">
+            
+                <a href="methods.html">
+            
+                    
+                    メソッド(Methods)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="subscripts.html">
+            
+                <a href="subscripts.html">
+            
+                    
+                    サブスクリプト(Subscripts)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="inheritance.html">
+            
+                <a href="inheritance.html">
+            
+                    
+                    継承(Inheritance)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="initialization.html">
+            
+                <a href="initialization.html">
+            
+                    
+                    初期化(Initialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="deinitialization.html">
+            
+                <a href="deinitialization.html">
+            
+                    
+                    デイニシャライゼーション(Deinitialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="optional-chaining.html">
+            
+                <a href="optional-chaining.html">
+            
+                    
+                    オプショナルチェーン(Optional Chaining)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="error-handling.html">
+            
+                <a href="error-handling.html">
+            
+                    
+                    エラー処理(Error Handling)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="concurrency.html">
+            
+                <a href="concurrency.html">
+            
+                    
+                    同時並行処理(Concurrency)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="type-casting.html">
+            
+                <a href="type-casting.html">
+            
+                    
+                    型キャスト(Type Casting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="nested-types.html">
+            
+                <a href="nested-types.html">
+            
+                    
+                    ネスト型(Nested Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.21" data-path="extensions.html">
+            
+                <a href="extensions.html">
+            
+                    
+                    拡張(Extensions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.22" data-path="protocols.html">
+            
+                <a href="protocols.html">
+            
+                    
+                    プロトコル(Protocols)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.23" data-path="generics.html">
+            
+                <a href="generics.html">
+            
+                    
+                    ジェネリクス(Generics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.24" data-path="opaque-types.html">
+            
+                <a href="opaque-types.html">
+            
+                    
+                    Opaque 型(Opaque Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.25" data-path="automatic-reference-counting.html">
+            
+                <a href="automatic-reference-counting.html">
+            
+                    
+                    自動参照カウント ARC(Automatic Reference Counting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.26" data-path="memory-safety.html">
+            
+                <a href="memory-safety.html">
+            
+                    
+                    メモリ安全性(Memory Safety)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.27" data-path="access-control.html">
+            
+                <a href="access-control.html">
+            
+                    
+                    アクセスコントロール(Access Control)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.28" data-path="advanced-operators.html">
+            
+                <a href="advanced-operators.html">
+            
+                    
+                    高度な演算子(Advanced Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">言語リファレンス(LANGUAGE REFERENCE)</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../language-reference/about-the-language-reference.html">
+            
+                <a href="../language-reference/about-the-language-reference.html">
+            
+                    
+                    言語リファレンスについて(About the Language Reference)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../language-reference/lexical-structure.html">
+            
+                <a href="../language-reference/lexical-structure.html">
+            
+                    
+                    構文の構造(Lexical Structure)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../language-reference/types.html">
+            
+                <a href="../language-reference/types.html">
+            
+                    
+                    型(Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../language-reference/expressions.html">
+            
+                <a href="../language-reference/expressions.html">
+            
+                    
+                    式(Expressions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../language-reference/statements.html">
+            
+                <a href="../language-reference/statements.html">
+            
+                    
+                    文(Statements)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../language-reference/declarations.html">
+            
+                <a href="../language-reference/declarations.html">
+            
+                    
+                    宣言(Declarations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../language-reference/attributes.html">
+            
+                <a href="../language-reference/attributes.html">
+            
+                    
+                    属性(Attributes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../language-reference/patterns.html">
+            
+                <a href="../language-reference/patterns.html">
+            
+                    
+                    パターン(Patterns)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../language-reference/generic-parameters-and-arguments.html">
+            
+                <a href="../language-reference/generic-parameters-and-arguments.html">
+            
+                    
+                    ジェネリックパラメータと引数(Generic Parameters and Arguments)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="../language-reference/summary-of-the-grammar.html">
+            
+                <a href="../language-reference/summary-of-the-grammar.html">
+            
+                    
+                    文法のまとめ(Summary of the Grammar)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">REVISION HISTORY (改訂履歴)</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../revision-history/document-revision-history.html">
+            
+                <a href="../revision-history/document-revision-history.html">
+            
+                    
+                    ドキュメント改訂履歴(Document Revision History)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKitで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >アクセスコントロール(Access Control)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="アクセスコントロールaccess-control">アクセスコントロール(Access Control)</h1>
+<p>最終更新日: 2021/6/30</p>
+<p>アクセス制御は、他のソースファイルやモジュールのコードから一部のコードへのアクセスを制限します。この機能を使用すると、コードの実装の詳細を隠し、そのコードにアクセスして使用するために望ましいインターフェイスを指定できます。</p>
+<p>個々の型(クラス、構造体、および列挙型)、およびそれらの型に属するプロパティ、メソッド、イニシャライザ、および subscript に特定のアクセスレベルを割り当てることができます。グローバル定数、変数、および関数と同様に、プロトコルも特定のコンテキストに制限できます。</p>
+<p>様々なレベルのアクセス制御を提供することに加えて、Swift は、一般的なシナリオのデフォルトのアクセスレベルを提供することにより、明示的にアクセスレベルを指定する手間を減らします。実際、単一ターゲットのアプリを作成している場合は、明示的なアクセスレベルを全く指定する必要がない場合もあります。</p>
+<blockquote>
+<p>NOTE<br>アクセス制御を適用できるコードの様々な側面(プロパティ、型、関数など)は、簡潔に記述するために、以下のセクションでは「エンティティ」と呼びます。</p>
+</blockquote>
+<h2 id="モジュールとソースファイルmodules-and-source-files">モジュールとソースファイル(Modules and Source Files)</h2>
+<p>Swift のアクセス制御モデルは、モジュールとソースファイルの概念に基づいています。</p>
+<p>モジュールは、コード配布の単位で、単体で構築および配布され、<code>import</code> キーワードを使用して別のモジュールによってインポートできるフレームワークまたはアプリケーションです。</p>
+<p>Xcode の各ビルドターゲット(アプリバンドルやフレームワークなど) は、Swift では個別のモジュールとして扱われます。アプリのコードの様々な側面を独立したフレームワークとしてグループ化する場合(おそらく、そのコードを複数のアプリケーションでカプセル化して再利用する場合)、そのフレームワーク内で定義するものは全て、アプリ内でインポートされて使用されたり、別のフレームワーク内で使用されているときに、別のモジュールの一部になります。</p>
+<p>ソースファイルは、モジュール内の Swift のソースコードファイルです(実際には、アプリまたはフレームワーク内の単一のファイル)。個別のソースファイルで個々の型を定義するのが一般的ですが、1 つのソースファイルに複数の型や関数などの定義を含めることができます。</p>
+<h2 id="アクセスレベルaccess-levels-"><a href="access-control.html">アクセスレベル(Access Levels)</a> <a id="access-levels"></a></h2>
+<p>Swift は、コード内のエンティティに 5 つの異なるアクセスレベルを提供します。これらのアクセスレベルは、エンティティが定義されているソースファイルに関連しており、ソースファイルが属するモジュールにも関連しています。</p>
+<ul>
+<li><em>open</em> アクセスと <em>public</em> アクセスにより、エンティティを定義モジュールの任意のソースファイル内で使用できるほか、定義モジュールをインポートする別のモジュールのソースファイルでもエンティティを使用できます。フレームワークの公開インターフェイスを指定するときは、通常、open アクセスまたは public アクセスを使用します。open アクセスと public アクセスの違いについては、以下で説明します</li>
+<li><em>internal</em> アクセスにより、エンティティを定義するモジュールの任意のソースファイル内で使用できますが、そのモジュールの外部のソースファイルでは使用できません。通常、アプリまたはフレームワークの内部構造を定義するときは、internal アクセスを使用します</li>
+<li><em>fileprivate</em> アクセスは、エンティティの使用をそれ自体を定義するソースファイルに制限します。特定の機能の実装の詳細がファイル全体で使用されている場合、それらの詳細を隠すには、fileprivate アクセスを使用します</li>
+<li><em>private</em> アクセスは、エンティティの使用を、それを囲む宣言と、同じファイル内にあるその宣言の extension に制限します。private アクセスを使用して、特定の機能の実装の詳細が単一の宣言内でのみ使用される場合、それらの詳細を隠します</li>
+</ul>
+<p>open アクセスは最も高い(制限の緩い)アクセスレベルで、private アクセスは最も低い(制限の厳しい)アクセスレベルです</p>
+<p><a href="access-control.html#subclassing">Subclassing(サブクラス)</a>でも説明されているように、open アクセスはクラスとクラスメンバにのみ適用され、モジュール外のコードがサブクラス化およびオーバーライドできる点で public アクセスとは異なります。クラスを <code>open</code> として明示的にマークすることは、そのクラスをスーパークラスとして使用している他のモジュールからのコードの影響を考慮し、それに応じてクラスのコードを設計していることを示します。</p>
+<h3 id="アクセスレベルの指針guiding-principle-of-access-levels">アクセスレベルの指針(Guiding Principle of Access Levels)</h3>
+<p>Swift のアクセスレベルは、全体の指針に従います: より低いアクセスレベルを持つ別のエンティティを定義することはできません。</p>
+<p>例えば:</p>
+<ul>
+<li>public 変数が使用されている全ての場所で型を使用できるとは限らないため、internal、fileprivate、または private 型を public 変数として定義することはできません</li>
+<li>関数は、その構成要素の型が周囲のコードで使用できない状況で使用される可能性があるため、関数はそのパラメータの型と戻り値の型よりも高いアクセスレベルを持つことはできません</li>
+</ul>
+<p>言語の様々な側面に対するこの指針の具体的な意味については、下記で詳しく説明します。</p>
+<h3 id="デフォルトのアクセスレベルdefault-access-levels-"><a href="access-control.html">デフォルトのアクセスレベル(Default Access Levels)</a> <a id="default-access-levels"></a></h3>
+<p>自身で明示的なアクセスレベルを指定しない場合、コード内の全てのエンティティ(この章の後半で説明するいくつかの特定の例外を除く)には、デフォルトのアクセスレベル internal が設定されています。その結果、多くの場合、コードで明示的なアクセスレベルを指定する必要はありません。</p>
+<h3 id="単一ターゲットアプリのアクセスレベルaccess-levels-for-single-target-apps">単一ターゲットアプリのアクセスレベル(Access Levels for Single-Target Apps)</h3>
+<p>シンプルな単一ターゲットのアプリを作成する場合、アプリのコードは一般的にアプリ内で自己完結でき、アプリのモジュールの外部で使用できるようにする必要はありません。internal のデフォルトのアクセスレベルは、既にこの要件を満たしています。したがって、独自のアクセスレベルを指定する必要はありません。ただし、アプリのモジュール内の他のコードから実装の詳細を隠すために、コードの一部を fileprivate または private としてマークしたい場合もあるかもしれません。</p>
+<h3 id="フレームワークのアクセスレベルaccess-levels-for-frameworks">フレームワークのアクセスレベル(Access Levels for Frameworks)</h3>
+<p>フレームワークを開発するときは、公開インターフェイスを open または public としてマークして、フレームワークをインポートするアプリなどの他のモジュールからアクセスできるようにします。この公開インターフェースは、フレームワークのアプリケーションプログラミングインターフェース(または API) です。</p>
+<blockquote>
+<p>NOTE<br>フレームワークの内部実装の詳細は、引き続きデフォルトの internal アクセスレベルを使用するか、フレームワークの内部コードを他の部分から隠したい場合は private または fileprivate としてマークすることができます。エンティティをフレームワークの API の一部にする場合にのみ、エンティティを open または public としてマークする必要があります。</p>
+</blockquote>
+<h3 id="単体テストターゲットのアクセスレベルaccess-levels-for-unit-test-targets-"><a href="access-control.html">単体テストターゲットのアクセスレベル(Access Levels for Unit Test Targets)</a> <a id="access-levels-for-unit-test-targets"></a></h3>
+<p>単体テストターゲットを使用してアプリを作成する場合、アプリのコードをテストするには、そのモジュールで使用できるようにする必要があります。デフォルトでは、open または public としてマークされたエンティティのみが他のモジュールにアクセスできます。ただし、プロダクションモジュールのインポート宣言を <code>@testable</code> 属性でマークし、テストを有効にしてそのプロダクションモジュールをコンパイルすると、単体テストターゲットは任意の internal エンティティにアクセスできます。</p>
+<h2 id="アクセス制御構文access-control-syntax">アクセス制御構文(Access Control Syntax)</h2>
+<p>エンティティの宣言の先頭に <code>open</code>、<code>public</code>、<code>internal</code>、<code>fileprivate</code>、または <code>private</code> 修飾子を配置して、エンティティのアクセスレベルを定義します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SomePublicClass</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">internal</span> <span class="token keyword">class</span> <span class="token class-name">SomeInternalClass</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+fileprivate <span class="token keyword">class</span> <span class="token class-name">SomeFilePrivateClass</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">SomePrivateClass</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">var</span> somePublicVariable <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">internal</span> <span class="token keyword">let</span> someInternalConstant <span class="token operator">=</span> <span class="token number">0</span>
+fileprivate <span class="token keyword">func</span> <span class="token function">someFilePrivateFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">private</span> <span class="token keyword">func</span> <span class="token function">somePrivateFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+<p>特に指定がない限り、デフォルトのアクセスレベルは、<a href="access-control.html#default-access-levels">Default Access Levels(デフォルトのアクセスレベル)</a>で説明されているように、internal です。これは、<code>SomeInternalClass</code> と <code>someInternalConstant</code> が明示的なアクセスレベル修飾子なしで記述でき、internal アクセスレベルを持つことを意味します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">SomeInternalClass</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment">// 暗黙的に internal</span>
+<span class="token keyword">let</span> someInternalConstant <span class="token operator">=</span> <span class="token number">0</span>  <span class="token comment">// 暗黙的に internal</span>
+</code></pre>
+<h2 id="独自型custom-types-"><a href="access-control.html">独自型(Custom Types)</a> <a id="custom-types"></a></h2>
+<p>独自型に明示的なアクセスレベルを指定する場合は、型を定義する時点で指定します。新しい型は、アクセスレベルが許可する場所ではどこでも使用できます。例えば、fileprivate クラスを定義する場合、そのクラスは、fileprivate クラスが定義されているソースファイル内で、プロパティの型、または関数パラメータまたは戻り値の型としてのみ使用できます。</p>
+<p>型のアクセス制御レベルは、その型のメンバ(そのプロパティ、メソッド、イニシャライザ、および subscript)のデフォルトのアクセスレベルにも影響します。型のアクセスレベルを private または fileprivate として定義すると、そのメンバのデフォルトのアクセスレベルも private または fileprivate になります。型のアクセスレベルを internal または public として定義する場合(またはアクセスレベルを明示的に指定せずに内部のデフォルトのアクセスレベルを使用する場合)、型のメンバのデフォルトのアクセスレベルは internal になります。</p>
+<blockquote>
+<p>IMPORTANT<br>public 型のメンバは、デフォルトで public ではなく、internal のアクセスレベルが設定されます。メンバを public にする場合は、明示的にそのようにマークする必要があります。これにより、型の API を選択的に公開することができ、型の内部動作を誤って API として公開することを回避できます。</p>
+</blockquote>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SomePublicClass</span> <span class="token punctuation">{</span>                  <span class="token comment">// 明示的な public クラス</span>
+    <span class="token keyword">public</span> <span class="token keyword">var</span> somePublicProperty <span class="token operator">=</span> <span class="token number">0</span>            <span class="token comment">// 明示的な public クラス メンバ</span>
+    <span class="token keyword">var</span> someInternalProperty <span class="token operator">=</span> <span class="token number">0</span>                 <span class="token comment">// 暗黙的な internal クラス メンバ</span>
+    fileprivate <span class="token keyword">func</span> <span class="token function">someFilePrivateMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment">// 明示的な file-private クラス メンバ</span>
+    <span class="token keyword">private</span> <span class="token keyword">func</span> <span class="token function">somePrivateMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>          <span class="token comment">// 明示的な private クラス メンバ</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">SomeInternalClass</span> <span class="token punctuation">{</span>                       <span class="token comment">// 暗黙的な internal クラス</span>
+    <span class="token keyword">var</span> someInternalProperty <span class="token operator">=</span> <span class="token number">0</span>                 <span class="token comment">// 暗黙的な internal クラスメンバ</span>
+    fileprivate <span class="token keyword">func</span> <span class="token function">someFilePrivateMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment">// 明示的な file-private クラスメンバ</span>
+    <span class="token keyword">private</span> <span class="token keyword">func</span> <span class="token function">somePrivateMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>          <span class="token comment">// 明示的な private クラスメンバ</span>
+<span class="token punctuation">}</span>
+
+fileprivate <span class="token keyword">class</span> <span class="token class-name">SomeFilePrivateClass</span> <span class="token punctuation">{</span>        <span class="token comment">// 明示的な file-privateクラス</span>
+    <span class="token keyword">func</span> <span class="token function">someFilePrivateMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>              <span class="token comment">// 暗黙的な file-private クラスメンバ</span>
+    <span class="token keyword">private</span> <span class="token keyword">func</span> <span class="token function">somePrivateMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>          <span class="token comment">// 明示的な private クラスメンバ</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">SomePrivateClass</span> <span class="token punctuation">{</span>                <span class="token comment">// 明示的な private クラス</span>
+    <span class="token keyword">func</span> <span class="token function">somePrivateMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>                  <span class="token comment">// 暗黙的な private クラスメンバ</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="タプル型tuple-types">タプル型(Tuple Types)</h3>
+<p>タプル型のアクセスレベルは、そのタプルで使用される全ての型の中で最も制限の厳しいアクセスレベルになります。例えば、1 つは internal、もう 1 つは private の 2 つの異なる型からタプルを構成する場合、その複合タプル型のアクセスレベルは private になります。</p>
+<blockquote>
+<p>NOTE<br>タプル型には、クラス、構造体、列挙型、および関数のような独立した定義がありません。タプル型のアクセスレベルは、タプル型を構成する型から自動的に決定され、明示的に指定することはできません。</p>
+</blockquote>
+<h3 id="関数型function-types">関数型(Function Types)</h3>
+<p>関数型のアクセスレベルは、関数のパラメータ型と戻り値の型の最も制限の厳しいアクセスレベルになります。関数のアクセスレベルがコンテキストのデフォルト値と一致しない場合は、関数の定義にアクセスレベルを明示的に指定する必要があります。</p>
+<p>下記の例では、関数自体に特定のアクセスレベル修飾子を指定せずに、<code>someFunction()</code> というグローバル関数を定義しています。この関数のデフォルトのアクセスレベルは「internal」だと思われるかもしれませんが、そうではありません。実際、 <code>someFunction()</code> は下記の場合コンパイルできません。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">someFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token builtin">SomeInternalClass</span><span class="token punctuation">,</span> <span class="token builtin">SomePrivateClass</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ここに関数の実装が入ります</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>関数の戻り値の型は、上記の<a href="access-control.html#custom-types">Custom Types(独自型)</a>で定義された 2 つの独自クラスで構成されるタプル型です。これらのクラスの 1 つは internal として定義され、もう 1 つは private として定義されます。したがって、複合タプル型の全体的なアクセスレベルは private です(タプルの構成型の最も厳しいアクセスレベル)。</p>
+<p>関数の戻り値の型は private なため、関数宣言が有効になるように、関数の全体的なアクセスレベルを <code>private</code> 修飾子でマークする必要があります。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">private</span> <span class="token keyword">func</span> <span class="token function">someFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token builtin">SomeInternalClass</span><span class="token punctuation">,</span> <span class="token builtin">SomePrivateClass</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ここに関数の実装が入ります</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>public</code> または <code>internal</code> 修飾子で <code>someFunction()</code> の定義をマークしたり、関数の public または internal ユーザが関数の戻り値の型で使用する private クラスへアクセスできない可能性があるため、internal のデフォルト設定を使用できません。</p>
+<h3 id="列挙型enumeration-types">列挙型(Enumeration Types)</h3>
+<p>列挙型の個々のケースは、それらが属する列挙型と同じアクセスレベルを自動的に受け取ります。個々の列挙ケースに異なるアクセスレベルを指定することはできません。</p>
+<p>下記の例では、<code>CompassPoint</code> 列挙型に public が明示的なアクセスレベルとして設定されています。したがって、列挙ケースの <code>north</code>、 <code>south</code>、 <code>east</code>、 および <code>west</code> にも public が設定されています。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">public</span> <span class="token keyword">enum</span> <span class="token builtin">CompassPoint</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> north
+    <span class="token keyword">case</span> south
+    <span class="token keyword">case</span> east
+    <span class="token keyword">case</span> west
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="raw-valueと関連値raw-values-and-associated-values">Raw Valueと関連値(Raw Values and Associated Values)</h4>
+<p>列挙型定義の Raw Value または関連値に使用される型には、少なくとも列挙型のアクセスレベルと同じレベルのアクセスレベルが必要です。例えば、private 型を internal アクセスレベルの列挙型の Raw Value 型として使用することはできません。</p>
+<h3 id="ネスト型nested-types">ネスト型(Nested Types)</h3>
+<p>ネスト型のアクセスレベルは、ラップされている型が public でない限り、ラップされている型と同じです。public 型内のネスト型には、internal が自動で設定されています。public 型内のネスト型を public で使用できるようにする場合は、ネスト型を public として明示的に宣言する必要があります。</p>
+<h2 id="サブクラスsubclassing-"><a href="access-control.html">サブクラス(Subclassing)</a> <a id="subclassing"></a></h2>
+<p>現在のアクセスレベルのコンテキストで使用でき、同じモジュールで定義されている任意のクラスをサブクラス化できます。また、別のモジュールで定義されている open クラスをサブクラス化することもできます。サブクラスは、そのスーパークラスよりも制限の緩いアクセスレベルを設定することはできません。例えば、internal スーパークラスから public サブクラスを作成することはできません。</p>
+<p>さらに、同じモジュールで定義されているクラスの場合、特定のアクセスレベルコンテキストでアクセス可能な任意のクラスのメンバ(メソッド、プロパティ、イニシャライザ、または subscript)をオーバーライドできます。別のモジュールで定義されているクラスの場合、open クラスのメンバをオーバーライドできます。</p>
+<p>オーバーライドにより、継承されたクラスメンバは、そのスーパークラスのバージョンよりもアクセスしやすくなります。下記の例では、クラス <code>A</code> は <code>someMethod()</code> と呼ばれる fileprivate メソッドを持つ public クラスです。クラス <code>B</code> は <code>A</code> のサブクラスで、アクセスレベルが「internal」に制限されています。それにもかかわらず、クラス <code>B</code> は、<code>someMethod()</code> の元の実装よりも制限の緩い「internal」のアクセスレベルで <code>someMethod()</code> のオーバーライドを提供しています。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token punctuation">{</span>
+    fileprivate <span class="token keyword">func</span> <span class="token function">someMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">internal</span> <span class="token keyword">class</span> <span class="token class-name">B</span><span class="token punctuation">:</span> A <span class="token punctuation">{</span>
+    <span class="token keyword">override</span> <span class="token keyword">internal</span> <span class="token keyword">func</span> <span class="token function">someMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>スーパークラスのメンバへの呼び出しが許可されたアクセスレベルコンテキスト内で行われる限り、サブクラスのメンバがそれよりも制限の厳しいアクセスレベルを持つスーパークラスのメンバを呼び出すことも可能です(つまり、スーパークラスと同じソースファイル内で fileprivate メンバ呼び出しや、スーパークラスと同じモジュール内の internal メンバの呼び出しなど):</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token punctuation">{</span>
+    fileprivate <span class="token keyword">func</span> <span class="token function">someMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">internal</span> <span class="token keyword">class</span> <span class="token class-name">B</span><span class="token punctuation">:</span> A <span class="token punctuation">{</span>
+    <span class="token keyword">override</span> <span class="token keyword">internal</span> <span class="token keyword">func</span> <span class="token function">someMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">someMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>スーパークラス <code>A</code> とサブクラス <code>B</code> は同じソースファイルで定義されているため、<code>someMethod()</code> の B 実装で <code>super.someMethod()</code> を呼び出すことは妥当です。</p>
+<h2 id="定数、変数、プロパティ、subscriptconstants-variables-properties-and-subscripts">定数、変数、プロパティ、subscript(Constants, Variables, Properties, and Subscripts)</h2>
+<p>定数、変数、またはプロパティは、その型よりも制限の厳しいアクセスレベルにすることはできません。例えば、public プロパティに private 型を使用することはできません。同様に、subscript を、そのインデックスの型または戻り値の型よりも制限の緩いアクセスレベルにすることはできません。</p>
+<p>定数、変数、プロパティ、または subscript が private 型を使用する場合、定数、変数、プロパティ、または subscript も private としてマークする必要があります。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">private</span> <span class="token keyword">var</span> privateInstance <span class="token operator">=</span> <span class="token function">SomePrivateClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="get-と-setgetters-and-setters-"><a href="access-control.html">get と set(Getters and Setters)</a> <a id="getters-and-setters"></a></h3>
+<p>定数、変数、プロパティ、および subscript の get と set は、それらが属する定数、変数、プロパティ、または subscript と同じアクセスレベルを自動的に受け取ります。</p>
+<p>その変数、プロパティ、または subscript の読み取り/書き込みスコープを制限するために、対応する get よりも制限の厳しいアクセスレベルを set に与えることができます。<code>var</code> または <code>subscript</code> の前に <code>fileprivate(set)</code>、<code>private(set)</code>、または <code>internal(set)</code> を記述して、より制限の厳しいアクセスレベルを割り当てます。</p>
+<blockquote>
+<p>NOTE<br>このルールは、格納プロパティと計算プロパティにも適用されます。格納プロパティに明示的な get と set を作成しなくても、Swift は暗黙的な get と set を合成して、格納プロパティのバッキングストレージへのアクセスを提供します。<code>fileprivate(set)</code>、<code>private(set)</code>、および <code>internal(set)</code> を使用して、格納プロパティの明示的な set の場合とまったく同じ方法で、合成された set のアクセスレベルを変更します。</p>
+</blockquote>
+<p>下記の例では、文字列プロパティが変更された回数を追跡する <code>TrackedString</code> という構造体を定義しています:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">TrackedString</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span><span class="token punctuation">(</span><span class="token keyword">set</span><span class="token punctuation">)</span> <span class="token keyword">var</span> numberOfEdits <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">var</span> value<span class="token punctuation">:</span> <span class="token builtin">String</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">didSet</span> <span class="token punctuation">{</span>
+            numberOfEdits <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>TrackedString</code> 構造体は、<code>value</code> と呼ばれる文字列の格納プロパティを定義し、初期値は &quot;&quot; (空の文字列) です。この構造体は、<code>numberOfEdits</code> という整数格納プロパティも定義しています。これは、値が変更された回数を追跡するために使用されています。この変更追跡は、<code>value</code> プロパティに <code>didSet</code> プロパティオブザーバを使用して実装され、<code>value</code> プロパティに新しい値に設定される度に <code>numberOfEdits</code> を増加します。</p>
+<p><code>TrackedString</code> 構造体と <code>value</code> プロパティは明示的なアクセスレベル修飾子を提供していないため、両方ともデフォルトの internal アクセスレベルを受け取ります。ただし、<code>numberOfEdits</code> プロパティのアクセスレベルは <code>private(set)</code> 修飾子でマークされており、get には引き続きデフォルトのアクセスレベル internal が設定され、プロパティは <code>TrackedString</code> 構造体の一部のコード内からのみ設定可能だということを示しています。これにより、<code>TrackedString</code> は <code>numberOfEdits</code> プロパティを内部的に変更できますが、構造体の定義の外部で使用される場合は、プロパティを読み取り専用プロパティとして表示できます。</p>
+<p><code>TrackedString</code> インスタンスを作成し、その文字列値を数回変更すると、<code>numberOfEdits</code> プロパティの値が変更の数に一致するように更新されていることがわかります。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> stringToEdit <span class="token operator">=</span> <span class="token function">TrackedString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+stringToEdit<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">&quot;This string will be tracked.&quot;</span>
+stringToEdit<span class="token punctuation">.</span>value <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">&quot; This edit will increment numberOfEdits.&quot;</span>
+stringToEdit<span class="token punctuation">.</span>value <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">&quot; So will this one.&quot;</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The number of edits is <span class="token interpolation"><span class="token delimiter variable">\(</span>stringToEdit<span class="token punctuation">.</span>numberOfEdits<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;The number of edits is 3&quot;</span>
+</code></pre>
+<p><code>numberOfEdits</code> プロパティの現在の値へ別のソースファイルからアクセスすることはできますが、別のソースファイルからプロパティを変更することはできません。この制限により、<code>TrackedString</code> 編集追跡機能の実装の詳細が保護されつつ、その機能の便利な一側面へのアクセスは提供することができています。</p>
+<p>必要に応じて、get と set の両方に明示的なアクセスレベルを割り当てることができることに注目してください。下記の例は、構造体が public の明示的なアクセスレベルで定義されている <code>TrackedString</code> 構造体のバージョンを示しています。したがって、構造体のメンバ(<code>numberOfEdits</code> プロパティを含む) には、デフォルトで internal アクセスレベルが設定されています。<code>public</code> と <code>private(set)</code> のアクセスレベル修飾子を組み合わせることで、構造体の <code>numberOfEdits</code> プロパティの get を public にし、その set を private にすることができます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">public</span> <span class="token keyword">struct</span> <span class="token builtin">TrackedString</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">private</span><span class="token punctuation">(</span><span class="token keyword">set</span><span class="token punctuation">)</span> <span class="token keyword">var</span> numberOfEdits <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">public</span> <span class="token keyword">var</span> value<span class="token punctuation">:</span> <span class="token builtin">String</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">didSet</span> <span class="token punctuation">{</span>
+            numberOfEdits <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="初期化initializers">初期化(Initializers)</h2>
+<p>独自イニシャライザには、初期化する型よりも制限の厳しいのアクセスレベルを割り当てることができます。唯一の例外は、必須イニシャライザ(<a href="initialization#required-initializers">Required Initializers(必須イニシャライザ)</a>で定義) です。必須イニシャライザは、それが属するクラスと同じアクセスレベルを持っている必要があります。</p>
+<p>関数とメソッドのパラメータと同様に、イニシャライザのパラメータの型は、イニシャライザのアクセスレベルよりも制限の厳しいレベルにすることはできません。</p>
+<h3 id="デフォルトイニシャライザdefault-initializers">デフォルトイニシャライザ(Default Initializers)</h3>
+<p><a href="initialization#default-initializers">Default Initializers(デフォルトイニシャライザ)</a>で説明されているように、Swift は、全てのプロパティにデフォルト値を提供している構造体または基本クラスに 1 つもイニシャライザを提供しない引数なしの<em>デフォルトイニシャライザ</em>を自動的に提供します。</p>
+<p>デフォルトイニシャライザは、その型が public として定義されていない限り、初期化する型と同じアクセスレベルを持ちます。public として定義されている型の場合、デフォルトのイニシャライザは internal と見なされます。public 型を別のモジュールで使用するときに引数なしのイニシャライザで初期化できるようにする場合は、型の定義で public 型の引数なしのイニシャライザを明示的に提供する必要があります。</p>
+<h3 id="構造体のデフォルトのメンバワイズイニシャライザdefault-memberwise-initializers-for-structure-types">構造体のデフォルトのメンバワイズイニシャライザ(Default Memberwise Initializers for Structure Types)</h3>
+<p>構造体の格納プロパティのいずれかが private の場合、構造体のデフォルトのメンバワイズイニシャライザは private と見なされます。同様に、構造体の格納プロパティのいずれかが fileprivate の場合、イニシャライザは fileprivate です。それ以外の場合、イニシャライザのアクセスレベルは internal です。</p>
+<p>上記のデフォルトイニシャライザと同様に、public 構造体を別のモジュールで使用するときにメンバワイズイニシャライザで初期化できるようにする場合は、型の定義に public のメンバワイズイニシャライザを自分で提供する必要があります。</p>
+<h2 id="プロトコルprotocols">プロトコル(Protocols)</h2>
+<p>プロトコル型に明示的なアクセスレベルを割り当てる場合は、プロトコルを定義する時点で割り当てます。これにより、特定のアクセスコンテキスト内でのみ準拠できるプロトコルを作成できます。</p>
+<p>プロトコル定義内の各要件のアクセスレベルは、プロトコルと同じアクセスレベルに自動的に設定されます。プロトコルの要件をプロトコルとは異なるアクセスレベルに設定することはできません。これにより、プロトコルに準拠する全ての型で、プロトコルの全ての要件に確実にアクセスできます。</p>
+<blockquote>
+<p>NOTE<br>public プロトコルを定義する場合、プロトコルの要件は、実装時にそれらの要件に対する public アクセスレベルを必要とします。この動作は、他の型のように、型の定義が public のメンバのアクセスレベルが internal に暗黙的になる動作とは異なります。</p>
+</blockquote>
+<h3 id="プロトコル継承protocol-inheritance">プロトコル継承(Protocol Inheritance)</h3>
+<p>既存のプロトコルから継承する新しいプロトコルを定義する場合、新しいプロトコルは、継承元のプロトコルと同じアクセスレベルにしか設定できません。例えば、internal プロトコルから継承する public プロトコルを作成することはできません。</p>
+<h3 id="プロトコル準拠protocol-conformance">プロトコル準拠(Protocol Conformance)</h3>
+<p>型は、型自体よりもアクセスレベルの厳しいプロトコルに準拠できます。例えば、他のモジュールで使用できる public 型を定義できますが、internal プロトコルへ準拠した実装は internal プロトコルの定義モジュール内でのみ使用できます。</p>
+<p>型が特定のプロトコルに準拠するコンテキストは、型のアクセスレベルとプロトコルのアクセスレベルの内、最も厳しい制限になります。例えば、型が public で、準拠するプロトコルが internal の場合、そのプロトコルに準拠した型の実装は internal です。</p>
+<p>プロトコルに準拠するように型を作成または拡張する場合、各プロトコル要件の型の実装は、そのプロトコル要件と少なくとも同じアクセスレベルだということを確認する必要があります。例えば、public 型が internal プロトコルに準拠する場合、各プロトコル要件の実装は少なくとも internal にする必要があります。</p>
+<blockquote>
+<p>NOTE<br>Swift では、Objective-C と同様に、プロトコル準拠はグローバルです。同じプログラム内で 2 つの異なる方法で同じ型が 1 つのプロトコルに準拠することはできません。</p>
+</blockquote>
+<h2 id="拡張extensions">拡張(Extensions)</h2>
+<p>クラス、構造体、または列挙型が使用可能な任意のコンテキストで、クラス、構造体、または列挙型を拡張できます。extension に追加された全ての型のメンバは、拡張される元の型で宣言された型のメンバと同じデフォルトのアクセスレベルを持ちます。public 型または internal 型を拡張する場合、追加する新しい型のメンバのデフォルトのアクセスレベルは internal です。fileprivate 型を拡張する場合、追加する新しい型のメンバには、デフォルトで fileprivate のアクセスレベルが設定されます。private 型を拡張する場合、追加する新しい型のメンバのデフォルトのアクセスレベルは private です。</p>
+<p>または、明示的なアクセスレベル修飾子 (たとえば、<code>private</code>) で extension をマークして、extension 内で定義されている全てのメンバに新しいデフォルトのアクセスレベルを設定することもできます。この新しいデフォルトは、extension 内で引き続き個々の型のメンバでオーバーライドできます。</p>
+<p>extension を使用してプロトコル準拠を追加している場合、その extension に明示的なアクセスレベル修飾子を提供することはできません。代わりに、プロトコル独自のアクセスレベルが、extension 内の各プロトコル要件の実装にデフォルトのアクセスレベルとして提供されます。</p>
+<h3 id="extension-の-private-メンバprivate-members-in-extensions">extension の private メンバ(Private Members in Extensions)</h3>
+<p>拡張するクラス、構造体、または列挙型と同じファイルにある extension は、コードが元の型の宣言の一部として記述されているかのように動作します。その結果、次のことができます。</p>
+<ul>
+<li>元の宣言で private メンバを宣言している場合、同じファイル内の extension からそのメンバにアクセスできます</li>
+<li>1 つの extension で private メンバを宣言している場合、同じファイル内の別の extension からそのメンバにアクセスできます</li>
+<li>extension で private メンバを宣言している場合、同じファイル内の元の宣言からそのメンバにアクセスできます</li>
+</ul>
+<p>この動作は、型に private エンティティがあるかどうかに関係なく、同じ方法で extension を使用してコードを整理できることを意味します。例えば、次のシンプルなプロトコルがあるとします:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">SomeProtocol</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>extension を使用して、次のようにプロトコル準拠も追加できます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">SomeStruct</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">var</span> privateVariable <span class="token operator">=</span> <span class="token number">12</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">extension</span> <span class="token builtin">SomeStruct</span><span class="token punctuation">:</span> <span class="token builtin">SomeProtocol</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span>privateVariable<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="ジェネリクスgenerics">ジェネリクス(Generics)</h2>
+<p>ジェネリック型またはジェネリック関数のアクセスレベルは、ジェネリック型またはジェネリック関数自体のアクセスレベルと、その型パラメータの型制約のアクセスレベルの内で最も厳しいレベルになります。</p>
+<h2 id="タイプエイリアスtype-aliases">タイプエイリアス(Type Aliases)</h2>
+<p>定義する全てのタイプエイリアスは、アクセス制御の目的で別個の型として扱われます。タイプエイリアスは、エイリアスする型のアクセスレベルより制限の緩いアクセスレベルを設定することができます。例えば、private タイプエイリアスは private、fileprivate、internal、public、または open 型のエイリアスを作成できますが、public タイプエイリアスは internal、fileprivate 、または private 型のエイリアスを作成できません。</p>
+<blockquote>
+<p>NOTE<br>この規則は、プロトコル準拠を満たすために使用される関連型のタイプエイリアスにも適用されます。</p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="memory-safety.html" class="navigation navigation-prev " aria-label="Previous page: メモリ安全性(Memory Safety)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="advanced-operators.html" class="navigation navigation-next " aria-label="Next page: 高度な演算子(Advanced Operators)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"アクセスコントロール(Access Control)","level":"3.27","depth":1,"next":{"title":"高度な演算子(Advanced Operators)","level":"3.28","depth":1,"path":"language-guide/advanced-operators.md","ref":"language-guide/advanced-operators.md","articles":[]},"previous":{"title":"メモリ安全性(Memory Safety)","level":"3.26","depth":1,"path":"language-guide/memory-safety.md","ref":"language-guide/memory-safety.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-guide/access-control.md","mtime":"2021-07-17T06:39:57.069Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-17T06:40:39.672Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

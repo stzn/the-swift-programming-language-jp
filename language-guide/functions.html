@@ -1,0 +1,1243 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <title>関数(Functions) · The Swift Programming Language日本語版</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="closures.html" />
+    
+    
+    <link rel="prev" href="control-flow.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索ワードを入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    The Swift Programming Language(日本語版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Swiftへようこそ(WELCOME TO SWIFT)</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../welcome-to-swift/about-swift.html">
+            
+                <a href="../welcome-to-swift/about-swift.html">
+            
+                    
+                    Swiftについて(About Swift)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../welcome-to-swift/version-compatibility.html">
+            
+                <a href="../welcome-to-swift/version-compatibility.html">
+            
+                    
+                    バージョン互換性(Version Compatibility)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../welcome-to-swift/a-swift-tour.html">
+            
+                <a href="../welcome-to-swift/a-swift-tour.html">
+            
+                    
+                    Swiftツアー(A Swift Tour)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">言語ガイド(LANGUAGE GUIDE)</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="the-basics.html">
+            
+                <a href="the-basics.html">
+            
+                    
+                    基本(The Basics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="basic-operators.html">
+            
+                <a href="basic-operators.html">
+            
+                    
+                    基本演算子(Basic Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="strings-and-characters.html">
+            
+                <a href="strings-and-characters.html">
+            
+                    
+                    文字と文字列(Strings and Characters)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="collection-types.html">
+            
+                <a href="collection-types.html">
+            
+                    
+                    コレクション型(Collection Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="control-flow.html">
+            
+                <a href="control-flow.html">
+            
+                    
+                    制御フロー(Control Flow)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.6" data-path="functions.html">
+            
+                <a href="functions.html">
+            
+                    
+                    関数(Functions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="closures.html">
+            
+                <a href="closures.html">
+            
+                    
+                    クロージャ(Closures)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="enumerations.html">
+            
+                <a href="enumerations.html">
+            
+                    
+                    列挙型(Enumerations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="structures-and-classes.html">
+            
+                <a href="structures-and-classes.html">
+            
+                    
+                    構造体とクラス(Structures and Classes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="properties.html">
+            
+                <a href="properties.html">
+            
+                    
+                    プロパティ(Properties)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="methods.html">
+            
+                <a href="methods.html">
+            
+                    
+                    メソッド(Methods)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="subscripts.html">
+            
+                <a href="subscripts.html">
+            
+                    
+                    サブスクリプト(Subscripts)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="inheritance.html">
+            
+                <a href="inheritance.html">
+            
+                    
+                    継承(Inheritance)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="initialization.html">
+            
+                <a href="initialization.html">
+            
+                    
+                    初期化(Initialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="deinitialization.html">
+            
+                <a href="deinitialization.html">
+            
+                    
+                    デイニシャライゼーション(Deinitialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="optional-chaining.html">
+            
+                <a href="optional-chaining.html">
+            
+                    
+                    オプショナルチェーン(Optional Chaining)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="error-handling.html">
+            
+                <a href="error-handling.html">
+            
+                    
+                    エラー処理(Error Handling)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="concurrency.html">
+            
+                <a href="concurrency.html">
+            
+                    
+                    同時並行処理(Concurrency)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="type-casting.html">
+            
+                <a href="type-casting.html">
+            
+                    
+                    型キャスト(Type Casting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="nested-types.html">
+            
+                <a href="nested-types.html">
+            
+                    
+                    ネスト型(Nested Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.21" data-path="extensions.html">
+            
+                <a href="extensions.html">
+            
+                    
+                    拡張(Extensions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.22" data-path="protocols.html">
+            
+                <a href="protocols.html">
+            
+                    
+                    プロトコル(Protocols)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.23" data-path="generics.html">
+            
+                <a href="generics.html">
+            
+                    
+                    ジェネリクス(Generics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.24" data-path="opaque-types.html">
+            
+                <a href="opaque-types.html">
+            
+                    
+                    Opaque 型(Opaque Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.25" data-path="automatic-reference-counting.html">
+            
+                <a href="automatic-reference-counting.html">
+            
+                    
+                    自動参照カウント ARC(Automatic Reference Counting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.26" data-path="memory-safety.html">
+            
+                <a href="memory-safety.html">
+            
+                    
+                    メモリ安全性(Memory Safety)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.27" data-path="access-control.html">
+            
+                <a href="access-control.html">
+            
+                    
+                    アクセスコントロール(Access Control)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.28" data-path="advanced-operators.html">
+            
+                <a href="advanced-operators.html">
+            
+                    
+                    高度な演算子(Advanced Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">言語リファレンス(LANGUAGE REFERENCE)</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../language-reference/about-the-language-reference.html">
+            
+                <a href="../language-reference/about-the-language-reference.html">
+            
+                    
+                    言語リファレンスについて(About the Language Reference)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../language-reference/lexical-structure.html">
+            
+                <a href="../language-reference/lexical-structure.html">
+            
+                    
+                    構文の構造(Lexical Structure)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../language-reference/types.html">
+            
+                <a href="../language-reference/types.html">
+            
+                    
+                    型(Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../language-reference/expressions.html">
+            
+                <a href="../language-reference/expressions.html">
+            
+                    
+                    式(Expressions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../language-reference/statements.html">
+            
+                <a href="../language-reference/statements.html">
+            
+                    
+                    文(Statements)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../language-reference/declarations.html">
+            
+                <a href="../language-reference/declarations.html">
+            
+                    
+                    宣言(Declarations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../language-reference/attributes.html">
+            
+                <a href="../language-reference/attributes.html">
+            
+                    
+                    属性(Attributes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../language-reference/patterns.html">
+            
+                <a href="../language-reference/patterns.html">
+            
+                    
+                    パターン(Patterns)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../language-reference/generic-parameters-and-arguments.html">
+            
+                <a href="../language-reference/generic-parameters-and-arguments.html">
+            
+                    
+                    ジェネリックパラメータと引数(Generic Parameters and Arguments)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="../language-reference/summary-of-the-grammar.html">
+            
+                <a href="../language-reference/summary-of-the-grammar.html">
+            
+                    
+                    文法のまとめ(Summary of the Grammar)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">REVISION HISTORY (改訂履歴)</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../revision-history/document-revision-history.html">
+            
+                <a href="../revision-history/document-revision-history.html">
+            
+                    
+                    ドキュメント改訂履歴(Document Revision History)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKitで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >関数(Functions)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="関数functions">関数(Functions)</h1>
+<p>最終更新日: 2020/5/23</p>
+<p><em>関数</em>は、特定のタスクを実行する独立したコードの塊です。何をするものなのかを特定するために名前を与え、必要なときにタスクを実行するためにこの関数が「呼び出す」ときに名前は使われます。</p>
+<p>Swift の統一された関数構文は、シンプルな C 言語スタイルのパラメータ名のない関数から、Objective-C スタイルの個々のパラメータに名前とラベルを付けた関数までを表現できる、十分な柔軟性を持っています。パラメータには、関数の呼び出しをシンプルにするためにデフォルト値を設定できたり、関数の実行が完了すると渡した変数を変更する <code>in-out</code> パラメータも渡すことができます。</p>
+<p>全ての関数は、パラメータや戻り値の型で構成された自身の型を持っています。他の Swift の型と同じようにこの型を使用することができます。他の関数のパラメータに関数を渡したり、関数から関数を戻すことも簡単にできます。また、関数の中で関数を作成することで、独自のスコープを作成して機能をカプセル化することもできます。</p>
+<h2 id="関数の定義と呼び出しdefining-and-calling-functions">関数の定義と呼び出し(Defining and Calling Functions)</h2>
+<p>関数を定義するとき、必要な場合に名前と型を持つ<em>パラメータ</em>と呼ばれる 1 つ以上のインプットを定義することができます。また、関数の完了後に呼び出し元に結果を戻す、<em>戻り値</em>と呼ばれるアウトプットの型も必要な場合に定義できます。</p>
+<p>全ての関数は、実行するタスクを説明する、<em>関数名</em>を持っています。関数を使用するには、その関数をその名前で<em>呼び出し</em>、関数のパラメータの型に一致する(<em>引数</em>と呼ばれる)入力値を渡します。引数は、関数のパラメータのリストと常に同じ順序で与えなければなりません。</p>
+<p>下記の例の関数は、<code>greet(person:)</code> という関数で、名前が示す通り、人の名前を入力値として受け取り、その人への挨拶を返します。この関数では、<code>person</code> という <code>String</code> 型のパラメータと、その人に対する挨拶を含めた <code>String</code> 型の戻り値を返します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">greet</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> greeting <span class="token operator">=</span> <span class="token string">&quot;Hello, &quot;</span> <span class="token operator">+</span> person <span class="token operator">+</span> <span class="token string">&quot;!&quot;</span>
+    <span class="token keyword">return</span> greeting
+<span class="token punctuation">}</span>
+</code></pre>
+<p>この情報は全て、関数の<em>定義</em>にまとめられ、定義の前に <code>func</code> キーワードを付けます。関数の戻り値の型は、戻り矢印 <code>-&gt;(ハイフンの後に山括弧が続く)</code> で示し、その後に返す型名が続きます。</p>
+<p>定義は、関数が何をするか、何を受け取ることを期待するか、そしてそれが行われたときに何を返すかを説明します。こうすることで、コード内の他の場所から誤解を生むことなく関数を呼び出すことができます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span><span class="token function">greet</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> <span class="token string">&quot;Anna&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;Hello, Anna!&quot;</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">greet</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> <span class="token string">&quot;Brian&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;Hello, Brian!&quot;</span>
+</code></pre>
+<p><code>greet(person:)</code> 関数を呼び出すには、<code>greet(person: &quot;Anna&quot;)</code> のように、<code>person</code> 引数ラベルの後に <code>String</code> 型の値を渡します。この関数は <code>String</code> 型の値を返すため、上記のように、<code>greet(person:)</code> を <code>print(_:separator:terminator:)</code> 関数の呼び出しでラップして、その文字列を出力して戻り値を確認できます。</p>
+<blockquote>
+<p>NOTE<br><code>print(_:separator:terminator:)</code> 関数には最初の引数にラベルがなく、他の引数にはデフォルト値があるため、引数を渡しても渡さなくても呼び出し可能です。関数の構文の種類に関しては<a href="functions.html#function-argument-labels-and-parameter-names">Function Argument Labels and Parameter Names(引数ラベルとパラメータ名)</a>と<a href="functions.html#default-parameter-values">Default Parameter Values(デフォルトパラメータ値)</a>に記載しています。</p>
+</blockquote>
+<p><code>greet(person:)</code> 関数の本文は、<code>greeting</code> と呼ばれる新しい <code>String</code> 型の定数を定義し、それにシンプルな挨拶文に設定することから始まります。このメッセージは、<code>return</code> キーワードを使用して関数から戻り値を返します。<code>return greeting</code> という行で、関数は実行を終了し、<code>greeting</code> の現在の値を返します。</p>
+<p>本文を短くするために、挨拶の作成と <code>return</code> 文を 1 行にまとめることができます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">greetAgain</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;Hello again, &quot;</span> <span class="token operator">+</span> person <span class="token operator">+</span> <span class="token string">&quot;!&quot;</span>
+<span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">greetAgain</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> <span class="token string">&quot;Anna&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;Hello again, Anna!&quot;</span>
+</code></pre>
+<h2 id="関数のパラメータと戻り値function-parameters-and-return-values">関数のパラメータと戻り値(Function Parameters and Return Values)</h2>
+<p>Swift では、関数のパラメータと戻り値は非常に柔軟です。名前のない単一のパラメータを持つシンプルなユーティリティ関数から、読みやすいように表現できるパラメータ名と様々なパラメータオプションを持つ複雑な関数まで、あらゆるものを定義できます。</p>
+<h3 id="パラメータなし関数functions-without-parameters">パラメータなし関数(Functions Without Parameters)</h3>
+<p>入力パラメータは関数に必須ではありません。入力パラメータのない関数は次のとおりです。この関数は、呼び出される度に、常に同じ <code>String</code> 型のメッセージを返します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">sayHelloWorld</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;hello, world&quot;</span>
+<span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">sayHelloWorld</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;hello, world&quot;</span>
+</code></pre>
+<p>関数は、パラメータを受け取りませんが、関数名の後に括弧が必要です。関数が呼び出されると、関数名の後に空の括弧のペア(<code>()</code>)も書きます。</p>
+<h3 id="複数のパラメータがある関数functions-with-multiple-parameters">複数のパラメータがある関数(Functions With Multiple Parameters)</h3>
+<p>関数は、カンマ(<code>,</code>)区切りで複数のパラメータを持つことができます。</p>
+<p>この関数は、人の名前と、その人がすでに挨拶されているかどうかを入力値として受け取り、その人に適切な挨拶を返します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">greet</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> alreadyGreeted<span class="token punctuation">:</span> <span class="token builtin">Bool</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> alreadyGreeted <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">greetAgain</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> person<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">greet</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> person<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">greet</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> <span class="token string">&quot;Tim&quot;</span><span class="token punctuation">,</span> alreadyGreeted<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;Hello again, Tim!&quot;</span>
+</code></pre>
+<p><code>person</code> というラベルの付いた <code>String</code> 型の値と、括弧(<code>()</code>) 内にカンマ(<code>,</code>)で区切られた <code>alreadyGreeted</code> というラベルの付いた <code>Bool</code> 型の値の両方を渡して <code>great(person:alreadyGreeted:)</code> 関数を呼び出しています。この関数は、 前のセクションで示した <code>greet(person:)</code> 関数とは異なることに注意してください。どちらも <code>greet</code> という関数名ですが、<code>greet(person:alreadyGreeted:)</code> は 2 つの引数を取り、<code>greet(person:)</code> 関数は 1 つしか取りません。</p>
+<h3 id="戻り値なし関数functions-without-return-values"><a id="functions-without-return-values">戻り値なし関数(Functions Without Return Values)</a></h3>
+<p>戻り値の型を定義することも必須ではありません。<code>greet(person:)</code> バージョンは <code>String</code> 型の値を返すのではなく、その値を出力します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">greet</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Hello, <span class="token interpolation"><span class="token delimiter variable">\(</span>person<span class="token delimiter variable">)</span></span>!&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token function">greet</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> <span class="token string">&quot;Dave&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;Hello, Dave!&quot;</span>
+</code></pre>
+<p>値を返す必要がないため、関数の定義には戻り矢印(<code>-&gt;</code>)や戻り値の型は含まれていません。</p>
+<blockquote>
+<p>NOTE<br>厳密に言えば、<code>greet(person:)</code> は、戻り値が定義されていなくても値を返してます。戻り値の型が定義されていない関数は、<code>Void</code> 型の特別な値を返します。これは単に <code>()</code> と書く空のタプルです。</p>
+</blockquote>
+<p>関数の戻り値は、呼び出し元で無視できます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">printAndCount</span><span class="token punctuation">(</span>string<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> string<span class="token punctuation">.</span><span class="token builtin">count</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">printWithoutCounting</span><span class="token punctuation">(</span>string<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> <span class="token number">_</span> <span class="token operator">=</span> <span class="token function">printAndCount</span><span class="token punctuation">(</span>string<span class="token punctuation">:</span> string<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token function">printAndCount</span><span class="token punctuation">(</span>string<span class="token punctuation">:</span> <span class="token string">&quot;hello, world&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;hello, world&quot; and returns a value of 12</span>
+<span class="token function">printWithoutCounting</span><span class="token punctuation">(</span>string<span class="token punctuation">:</span> <span class="token string">&quot;hello, world&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;hello, world&quot; but doesn&apos;t return a value</span>
+</code></pre>
+<p>最初の関数 <code>printAndCount(string:)</code> は文字列を出力し、その文字数を <code>Int</code> として返します。2 番目の関数 <code>printWithoutCounting(string:)</code> は、最初の関数を呼び出しますが、その戻り値を無視します。2 番目の関数が呼び出されても、メッセージは最初の関数によって出力されますが、戻り値は使われていません。</p>
+<blockquote>
+<p>NOTE<br>戻り値は無視できますが、常に関数が値を返すことは示さなければなりません。戻り値の型が定義されている関数では、値を返さずに関数を使用することはできません。そうしようとすると、コンパイルエラーが発生します。</p>
+</blockquote>
+<h3 id="複数の戻り値がある関数functions-with-multiple-return-values"><a id="functions-with-multiple-return-values">複数の戻り値がある関数(Functions with Multiple Return Values)</a></h3>
+<p>タプル型を関数の戻り値の型として使用して、1 つの複合戻り値として複数の値を返すことができます。</p>
+<p>以下の例では、<code>minMax(array:)</code> という関数を定義しています。この関数は、<code>Int</code> 値の配列内の最小値と最大値を検索します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">minMax</span><span class="token punctuation">(</span>array<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token builtin">min</span><span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token builtin">max</span><span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> currentMin <span class="token operator">=</span> array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token keyword">var</span> currentMax <span class="token operator">=</span> array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> value <span class="token keyword">in</span> array<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">&lt;</span>array<span class="token punctuation">.</span><span class="token builtin">count</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> value <span class="token operator">&lt;</span> currentMin <span class="token punctuation">{</span>
+            currentMin <span class="token operator">=</span> value
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> value <span class="token operator">&gt;</span> currentMax <span class="token punctuation">{</span>
+            currentMax <span class="token operator">=</span> value
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>currentMin<span class="token punctuation">,</span> currentMax<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>minMax(array:)</code> 関数は、2 つの <code>Int</code> 値を含むタプルを返します。これらの値には <code>min</code> と <code>max</code> のラベルが付いているため、関数の戻り値を使用するときにその名前でアクセスできます。</p>
+<p><code>minMax(array:)</code> 関数の本文は、<code>currentMin</code> および <code>currentMax</code> と呼ばれる 2 つの変数に、配列の最初の整数値を設定することから始まります。次に、この関数は配列内の残りの値を繰り返し処理し、各値をチェックして、それぞれ <code>currentMin</code> と <code>currentMax</code> の値よりも小さいか大きいかを確認します。最後に、全体の最小値と最大値が 2 つの <code>Int</code> 値のタプルとして返されます。</p>
+<p>タプルのそれぞれの値は、関数の戻り値の型の一部として名前が付けられているため、ドット(<code>.</code>)構文でアクセスして、見つかった最小値と最大値を取得できます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> bounds <span class="token operator">=</span> <span class="token function">minMax</span><span class="token punctuation">(</span>array<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">109</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">71</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;min is <span class="token interpolation"><span class="token delimiter variable">\(</span>bounds<span class="token punctuation">.</span><span class="token builtin">min</span><span class="token delimiter variable">)</span></span> and max is <span class="token interpolation"><span class="token delimiter variable">\(</span>bounds<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;min is -6 and max is 109&quot;</span>
+</code></pre>
+<p>タプルの各値は、関数の戻り値の型で名前がすでに指定されているため、関数からタプルが返されるときに名前を付ける必要がないことに注目してください。</p>
+<h4 id="オプショナルのタプルの戻り値の型optional-tuple-return-types"><a id="optional-tuple-return-types">オプショナルのタプルの戻り値の型(Optional Tuple Return Types)</a></h4>
+<p>関数から返されるタプル型が、「値が存在しない」可能性がある場合は、オプショナルのタプル型を使用して、タプル全体が <code>nil</code> になる可能性があることを示すことができます。<code>(Int, Int)?</code> や <code>(String, Int, Bool)?</code> のように、タプル型の閉じ括弧(<code>)</code>)の後に疑問符(<code>?</code>)を配置して、オプショナルのタプル型を書きます。</p>
+<blockquote>
+<p>NOTE<br><code>(Int, Int)?</code> などの オプショナルのタプル型は <code>(Int?, Int?)</code> などの オプショナルの型を含むタプルとは異なります。オプショナルの型を使用すると、タプル内の個々の値だけでなく、タプル全体が オプショナルになります。</p>
+</blockquote>
+<p>上記の <code>minMax(array:)</code> 関数は、2 つの <code>Int</code> 値を含むタプルを返します。ただし、この関数は、渡された配列に対して安全性チェックを行なっていません。<code>array</code> 引数に空の配列が含まれている場合、上記で定義した <code>minMax(array:)</code> 関数は、<code>array[0]</code> にアクセスしようとしたときに実行時エラーが発生します。</p>
+<p>空の配列を安全に処理するには、オプショナルのタプルの戻り値の型を指定して、配列が空の場合は <code>nil</code> を返します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">minMax</span><span class="token punctuation">(</span>array<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token builtin">min</span><span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token builtin">max</span><span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span><span class="token operator">?</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> array<span class="token punctuation">.</span><span class="token builtin">isEmpty</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token constant">nil</span> <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> currentMin <span class="token operator">=</span> array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token keyword">var</span> currentMax <span class="token operator">=</span> array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> value <span class="token keyword">in</span> array<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">&lt;</span>array<span class="token punctuation">.</span><span class="token builtin">count</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> value <span class="token operator">&lt;</span> currentMin <span class="token punctuation">{</span>
+            currentMin <span class="token operator">=</span> value
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> value <span class="token operator">&gt;</span> currentMax <span class="token punctuation">{</span>
+            currentMax <span class="token operator">=</span> value
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>currentMin<span class="token punctuation">,</span> currentMax<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>オプショナルバインディングを使用して、このバージョンの <code>minMax(array:)</code> 関数が、実際のタプル値を返すか <code>nil</code> を返すかを確認できます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> <span class="token keyword">let</span> bounds <span class="token operator">=</span> <span class="token function">minMax</span><span class="token punctuation">(</span>array<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">109</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">71</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;min is <span class="token interpolation"><span class="token delimiter variable">\(</span>bounds<span class="token punctuation">.</span><span class="token builtin">min</span><span class="token delimiter variable">)</span></span> and max is <span class="token interpolation"><span class="token delimiter variable">\(</span>bounds<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;min is -6 and max is 109&quot;</span>
+</code></pre>
+<h3 id="暗黙的な戻り値がある関数functions-with-an-implicit-return"><a id="functions-with-an-implicit-return">暗黙的な戻り値がある関数(Functions With an Implicit Return)</a></h3>
+<p>関数の本文全体が、単一式の場合は、関数は暗黙的にその式の結果を返します。例えば、下記の両方の関数の動作は同じです:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">greeting</span><span class="token punctuation">(</span><span class="token keyword">for</span> person<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;Hello, &quot;</span> <span class="token operator">+</span> person <span class="token operator">+</span> <span class="token string">&quot;!&quot;</span>
+<span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">greeting</span><span class="token punctuation">(</span><span class="token keyword">for</span><span class="token punctuation">:</span> <span class="token string">&quot;Dave&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;Hello, Dave!&quot;</span>
+
+<span class="token keyword">func</span> <span class="token function">anotherGreeting</span><span class="token punctuation">(</span><span class="token keyword">for</span> person<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;Hello, &quot;</span> <span class="token operator">+</span> person <span class="token operator">+</span> <span class="token string">&quot;!&quot;</span>
+<span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">anotherGreeting</span><span class="token punctuation">(</span><span class="token keyword">for</span><span class="token punctuation">:</span> <span class="token string">&quot;Dave&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;Hello, Dave!&quot;</span>
+</code></pre>
+<p><code>greeting(for:)</code> 関数の全体の定義は、戻り値の挨拶文です。つまり、この短い形式を使用できます。<code>anotherGreeting(for:)</code> 関数は、複数の式を持つ関数と同様に <code>return</code> キーワードを使用して、同じ挨拶文を返しています。1 つの戻り行として記述した関数は、<code>return</code> を省略できます。</p>
+<p><a href="properties#shorthand-getter-declaration">Shorthand Getter Declaration(省略 get プロパティ宣言)</a>でも説明されていますが、プロパティの get でも暗黙的な戻り値を使用することができます。</p>
+<blockquote>
+<p>NOTE<br>暗黙の戻り値を使ったコードは、何かしらの値を返す必要があります。例えば、<code>fatalError(&quot;Oh no!&quot;)</code> または <code>print(13)</code> を暗黙の戻り値として使用することはできません。</p>
+</blockquote>
+<h2 id="引数ラベルとパラメータ名function-argument-labels-and-parameter-names"><a id="function-argument-labels-and-parameter-names">引数ラベルとパラメータ名(Function Argument Labels and Parameter Names)</a></h2>
+<p>各関数のパラメータには、引数ラベルとパラメータ名の両方持つことができます。引数ラベルは、関数を呼び出すときに使用されます。各引数は、その前に書かれた引数ラベルを使用して関数が呼び出されます。引数名は関数の内部で使用されます。デフォルトでは、パラメータ名を引数ラベルとして使用します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">someFunction</span><span class="token punctuation">(</span>firstParameterName<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> secondParameterName<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 関数の本文では、`firstParameterName`と`secondParameterName`は</span>
+    <span class="token comment">// 最初と 2 番目のパラメータの値を参照します。</span>
+<span class="token punctuation">}</span>
+<span class="token function">someFunction</span><span class="token punctuation">(</span>firstParameterName<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> secondParameterName<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">)</span>
+</code></pre>
+<p>全てのパラメータには一意の名前を付ける必要があります。複数のパラメータに同じ引数ラベルを付けることはできますが、一意の引数ラベルを使用すると、コードが読みやすくなります。</p>
+<h3 id="引数ラベルの特定specifying-argument-labels">引数ラベルの特定(Specifying Argument Labels)</h3>
+<p>引数名の前に、スペースで区切って引数ラベルを記述します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">someFunction</span><span class="token punctuation">(</span>argumentLabel parameterName<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 関数の本文では、`parameterName` でパラメータの値を参照します</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>これは、人の名前と出身地を受け取って挨拶を返す <code>greet(person:)</code> 関数の一種です:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">greet</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> from hometown<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;Hello <span class="token interpolation"><span class="token delimiter variable">\(</span>person<span class="token delimiter variable">)</span></span>!  Glad you could visit from <span class="token interpolation"><span class="token delimiter variable">\(</span>hometown<span class="token delimiter variable">)</span></span>.&quot;</span>
+<span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token function">greet</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> <span class="token string">&quot;Bill&quot;</span><span class="token punctuation">,</span> from<span class="token punctuation">:</span> <span class="token string">&quot;Cupertino&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;Hello Bill!  Glad you could visit from Cupertino.&quot;</span>
+</code></pre>
+<p>引数ラベルを使用すると、関数の本文に読みやすく明確な意図を持たせつつ、表現豊かな文章のように関数を呼び出すことができます。</p>
+<h3 id="引数ラベルの省略omitting-argument-labels">引数ラベルの省略(Omitting Argument Labels)</h3>
+<p>引数ラベルが必要ない場合は、その引数ラベルの代わりにアンダースコア(<code>_</code>)を記述します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">someFunction</span><span class="token punctuation">(</span><span class="token number">_</span> firstParameterName<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> secondParameterName<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 関数の本文では、`firstParameterName`と`secondParameterName`は</span>
+    <span class="token comment">// 最初と 2 番目のパラメータの値を参照します。</span>
+<span class="token punctuation">}</span>
+<span class="token function">someFunction</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> secondParameterName<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">)</span>
+</code></pre>
+<p>パラメータに引数ラベルがある場合、関数を呼び出すときに引数にラベルを付ける必要があります。</p>
+<h3 id="デフォルトパラメータ値default-parameter-values"><a id="default-parameter-values">デフォルトパラメータ値(Default Parameter Values)</a></h3>
+<p>パラメータの型の後に値を代入することで、関数内の任意のパラメータの<em>デフォルト値</em>を定義できます。デフォルト値が定義されている場合は、関数を呼び出すときにそのパラメータを省略できます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">someFunction</span><span class="token punctuation">(</span>parameterWithoutDefault<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> parameterWithDefault<span class="token punctuation">:</span> <span class="token builtin">Int</span> <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 関数を呼び出すときに 2 番目のパラメータを省略した場合、</span>
+    <span class="token comment">// `parameterWithDefault` の値は 12 になります。</span>
+<span class="token punctuation">}</span>
+<span class="token function">someFunction</span><span class="token punctuation">(</span>parameterWithoutDefault<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> parameterWithDefault<span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token comment">// `parameterWithDefault` は 6</span>
+<span class="token function">someFunction</span><span class="token punctuation">(</span>parameterWithoutDefault<span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token comment">// `parameterWithDefault` は 12</span>
+</code></pre>
+<p>デフォルト値のないパラメータは、関数のパラメータリストでデフォルト値のあるパラメータよりも前に置きましょう。通常、デフォルト値を持たないパラメータの方が重要です。最初にデフォルト値を持たないパラメータを置くと、デフォルトパラメータが省略されているかどうかに関係なく、同じ関数が呼び出されていることを認識しやすくなります。</p>
+<h3 id="可変長パラメータvariadic-parameters"><a id="variadic-parameters">可変長パラメータ(Variadic Parameters)</a></h3>
+<p><em>可変長パラメータ</em>は、指定された型の 0 個以上の値を受け入れます。可変長パラメータを使用すると、関数が呼び出されたときに、パラメータに様々な数の入力値を渡すことができます。パラメータの型名の後に 3 つのピリオド文字(<code>...</code>)を挿入して、可変長パラメータを記述します。</p>
+<p>可変長パラメータに渡された値は、適切な型の配列として関数の本文内で使用できるようになります。例えば、<code>numbers</code> という <code>Double...</code> 型を持つ可変長パラメータは、<code>numbers</code> という <code>[Double]</code> 型の定数配列として関数の本文内で使用できます。</p>
+<p>下記の例では、任意の長さの数値のリストの算術平均(いわゆる平均)を計算しています。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">arithmeticMean</span><span class="token punctuation">(</span><span class="token number">_</span> numbers<span class="token punctuation">:</span> <span class="token builtin">Double</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Double</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> total<span class="token punctuation">:</span> <span class="token builtin">Double</span> <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> number <span class="token keyword">in</span> numbers <span class="token punctuation">{</span>
+        total <span class="token operator">+</span><span class="token operator">=</span> number
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> total <span class="token operator">/</span> <span class="token function">Double</span><span class="token punctuation">(</span>numbers<span class="token punctuation">.</span><span class="token builtin">count</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token function">arithmeticMean</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+<span class="token comment">// 5 つの数値の平均の 3.0 を返します</span>
+<span class="token function">arithmeticMean</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">8.25</span><span class="token punctuation">,</span> <span class="token number">18.75</span><span class="token punctuation">)</span>
+<span class="token comment">// 3 つの数値の平均の 10.0 を返します</span>
+</code></pre>
+<p>関数は複数の可変長パラメータを持つことができます。可変長パラメータの後に続く最初のパラメータには、引数ラベルが必要です。引数ラベルにより、どの引数が可変長パラメータに渡され、どの引数が可変長パラメータの後に続くパラメータに渡されているかが明確になります。</p>
+<h3 id="in-out-パラメータin-out-parameters"><a id="functions-in-out-parameters">In-Out パラメータ(In-Out Parameters)</a></h3>
+<p>関数のパラメータはデフォルトで定数です。関数の本文からパラメータの値を変更しようとすると、コンパイルエラーが発生します。つまり、誤ってパラメータの値を変更することはできません。関数でパラメータの値を変更する必要があり、関数呼び出しが終了した後もそれらの変更を保持したい場合は、代わりに <em>in-out パラメータ</em>として定義します。</p>
+<p>パラメータの型の直前に <code>inout</code> キーワードを配置することにより、in-out パラメータを書きます。in-out パラメータに渡された値は、関数に渡され、変更され、元の値を置き換えて、関数から戻ってきます。in-out パラメータの動作および関連するコンパイラの最適化の詳細については、<a href="../language-reference/declarations#declarations-in-out-parameters">In-Out Parameters(In-Out パラメータ)</a>を参照ください。</p>
+<p>in-out パラメータには、変数のみ渡すことができます。定数とリテラルは変更できないため、渡すことはできません。変数を in-out パラメータとして渡すときは、変数名の直前にアンパサンド(<code>&amp;</code>)を付けて、関数で値が変更される可能性があることを示します。</p>
+<blockquote>
+<p>NOTE<br>in-out パラメータにデフォルト値を設定したり、可変長パラメータを <code>inout</code> としてマークすることはできません。</p>
+</blockquote>
+<p>これは、<code>swapTwoInts(_:_:)</code> という関数の例です。この関数には、<code>a</code> と <code>b</code> という 2 つのパラメータがあります。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">swapTwoInts</span><span class="token punctuation">(</span><span class="token number">_</span> a<span class="token punctuation">:</span> <span class="token keyword">inout</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token number">_</span> b<span class="token punctuation">:</span> <span class="token keyword">inout</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> temporaryA <span class="token operator">=</span> a
+    a <span class="token operator">=</span> b
+    b <span class="token operator">=</span> temporaryA
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>swapTwoInts(_:_:)</code> 関数は、<code>b</code> の値を <code>a</code> にスワップし、<code>a</code> の値を <code>b</code> にスワップします。この関数は、<code>a</code> の値を <code>temporaryA</code> と呼ばれる一時定数に格納し、<code>b</code> の値を <code>a</code> に代入してから、<code>temporaryA</code> を <code>b</code> に代入することによってこのスワップを実行します。</p>
+<p><code>Int</code> 型の 2 つの変数を指定して <code>swapTwoInts(_:_:)</code> 関数を呼び出し、それらの値を交換できます。<code>someInt</code> と <code>anotherInt</code> には、<code>swapTwoInts(_:_:)</code> 関数に渡されるときに、アンパサンド(<code>&amp;</code>)が前に付いていることに注目してください。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> someInt <span class="token operator">=</span> <span class="token number">3</span>
+<span class="token keyword">var</span> anotherInt <span class="token operator">=</span> <span class="token number">107</span>
+<span class="token function">swapTwoInts</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>someInt<span class="token punctuation">,</span> <span class="token operator">&amp;</span>anotherInt<span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;someInt is now <span class="token interpolation"><span class="token delimiter variable">\(</span>someInt<span class="token delimiter variable">)</span></span>, and anotherInt is now <span class="token interpolation"><span class="token delimiter variable">\(</span>anotherInt<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;someInt is now 107, and anotherInt is now 3&quot;</span>
+</code></pre>
+<p>上記の例は、<code>someInt</code> と <code>anotherInt</code> の元の値が、関数の外部で定義されていたとしても、<code>swapTwoInts(_:_:)</code> 関数によって変更されることを示しています。</p>
+<blockquote>
+<p>NOTE<br>in-out パラメータは、関数から値を返すことと同じではありません。上記の <code>swapTwoInts</code> の例では、戻り値の型を定義して値を返していませんが、<code>someInt</code> と <code>anotherInt</code> の値を変更しています。in-out パラメータは、関数が本文の範囲外に影響を与える代替方法です。</p>
+</blockquote>
+<h2 id="関数型function-types">関数型(Function Types)</h2>
+<p>全ての関数には特定の<em>関数型</em>があり、パラメータの型と戻り値の型で構成されています。</p>
+<p>例えば:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">addTwoInts</span><span class="token punctuation">(</span><span class="token number">_</span> a<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token number">_</span> b<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">multiplyTwoInts</span><span class="token punctuation">(</span><span class="token number">_</span> a<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token number">_</span> b<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">*</span> b
+<span class="token punctuation">}</span>
+</code></pre>
+<p>この例では、<code>addTwoInts</code> および <code>multiplyTwoInts</code> と呼ばれる 2 つのシンプルな数学関数を定義します。これらの関数はそれぞれ 2 つの <code>Int</code> 値を取り、適切な数学演算を実行した結果の <code>Int</code> 値を返します。</p>
+<p>これらの関数の両方の型は、<code>(Int, Int) -&gt; Int</code> です。これは次のように読むことができます:</p>
+<p>「両方とも <code>Int</code> 型の 2 つの値を受け取り、<code>Int</code> 型の値を返す関数です」</p>
+<p>パラメータや戻り値のない関数の例を次に示します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">printHelloWorld</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;hello, world&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>この関数の型は、<code>() -&gt; Void</code> で「パラメータを持たず、<code>Void</code> を返す関数」です。</p>
+<h3 id="関数型の使用using-function-types">関数型の使用(Using Function Types)</h3>
+<p>Swift の他の型と同じように関数型を使用します。例えば、定数または変数を関数型として定義し、その変数に適切な関数を代入することができます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> mathFunction<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token operator">=</span> addTwoInts
+</code></pre>
+<p>これは次のように読むことができます:</p>
+<p>「2 つの <code>Int</code> 値を取り、<code>Int</code> 値を返す関数の型を持つ <code>mathFunction</code> という変数を定義します。この新しい変数が、<code>addTwoInts</code> という関数を参照するように設定します」</p>
+<p><code>addTwoInts(_:_:)</code> 関数は <code>mathFunction</code> 変数と同じ型のため、この代入は Swift の型チェックを通ります。</p>
+<p>代入した関数を <code>mathFunction</code> という名前で呼び出すことができます。</p>
+<pre class="language-"><code class="lang-swift">mathFunction <span class="token operator">=</span> multiplyTwoInts
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Result: <span class="token interpolation"><span class="token delimiter variable">\(</span><span class="token function">mathFunction</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;Result: 6&quot;</span>
+</code></pre>
+<p>他の型と同様に、定数または変数に関数を代入するときに、関数型を推論することができます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> anotherMathFunction <span class="token operator">=</span> addTwoInts
+<span class="token comment">// anotherMathFunction は (Int, Int) -&gt; Int と推論されます</span>
+</code></pre>
+<h3 id="パラメータの型としての関数型function-types-as-parameter-types">パラメータの型としての関数型(Function Types as Parameter Types)</h3>
+<p><code>(Int, Int) -&gt; Int</code> などの関数型を別の関数のパラメータの型として使用できます。これにより、関数の呼び出し元で関数の一部の機能を決めることができます。</p>
+<p>下記は、上記の数学関数の結果を出力する例です:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">printMathResult</span><span class="token punctuation">(</span><span class="token number">_</span> mathFunction<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token number">_</span> a<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token number">_</span> b<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Result: <span class="token interpolation"><span class="token delimiter variable">\(</span><span class="token function">mathFunction</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token function">printMathResult</span><span class="token punctuation">(</span>addTwoInts<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;Result: 8&quot;</span>
+</code></pre>
+<p>この例では、3 つのパラメータを持つ <code>printMathResult(_:_:_:)</code> という関数を定義します。最初のパラメータは <code>mathFunction</code> と呼ばれ、<code>(Int, Int) -&gt; Int</code> 型です。この最初のパラメータとして、その型の任意の関数を渡すことができます。2 番目と 3 番目のパラメータは <code>a</code> と <code>b</code> と呼ばれ、どちらも <code>Int</code> 型です。これらは、提供されている数学関数の 2 つの入力値として使用されています。</p>
+<p><code>printMathResult(_:_:_:)</code> が呼び出されると、<code>addTwoInts(_:_:)</code> 関数、および整数値 <code>3</code> と <code>5</code> が渡されます。与えられた関数を値 <code>3</code> と <code>5</code> で呼び出し、次の結果 <code>8</code> を出力します。</p>
+<p><code>printMathResult(_:_:_:)</code> の役割は、適切な型の数学関数の結果を出力することです。その関数が実際に何をするかは重要ではありません。関数が正しい型なことが重要です。これにより、<code>printMathResult(_:_:_:)</code> は、その機能の一部を関数の呼び出し元に型安全な方法で渡すことができます。</p>
+<h3 id="戻り値の型としての関数型function-types-as-return-types"><a id="function-types-as-return-types">戻り値の型としての関数型(Function Types as Return Types)</a></h3>
+<p>関数型を別の関数の戻り値の型として使用できます。これを行うには、関数の戻り矢印(<code>-&gt;</code>)の直後に完全な関数型を書きます。</p>
+<p>次の例では、<code>stepForward(_:)</code> と <code>stepBackward(_:)</code> という 2 つのシンプルな関数を定義します。<code>stepForward(_:)</code> 関数は、入力値より 1 つ大きい値を返し、<code>stepBackward(_:)</code> 関数は、入力値より 1 つ小さい値を返します。両方の関数の型は <code>(Int) -&gt; Int</code> です:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">stepForward</span><span class="token punctuation">(</span><span class="token number">_</span> input<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> input <span class="token operator">+</span> <span class="token number">1</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">stepBackward</span><span class="token punctuation">(</span><span class="token number">_</span> input<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> input <span class="token operator">-</span> <span class="token number">1</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>これが <code>chooseStepFunction(backward:)</code> という関数で、その戻り値の型は <code>(Int) -&gt; Int</code> です。<code>chooseStepFunction(backward:)</code> 関数は、<code>backward</code> と呼ばれるブール値に基づいて <code>stepForward(_:)</code> または <code>stepBackward(_:)</code> を返します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> currentValue <span class="token operator">=</span> <span class="token number">3</span>
+<span class="token keyword">let</span> moveNearerToZero <span class="token operator">=</span> <span class="token function">chooseStepFunction</span><span class="token punctuation">(</span>backward<span class="token punctuation">:</span> currentValue <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token comment">// moveNearerToZero は stepBackward() 関数を参照しています</span>
+</code></pre>
+<p>上記の例では、<code>currentValue</code> という変数を徐々にゼロに近づけるために正または負のステップが必要かどうかを判断します。<code>currentValue</code> の初期値は <code>3</code> です。これは、<code>currentValue &gt; 0</code> が <code>true</code> を返し、<code>chooseStepFunction(backward:)</code> が <code>stepBackward(_:)</code> 関数を返すことを意味します。返された関数への参照は、<code>moveNearerToZero</code> という定数に格納されます。</p>
+<p><code>moveNearerToZero</code> が適切な関数を参照しているので、ゼロまでカウントできます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Counting to zero:&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// 0 までカウントします:</span>
+<span class="token keyword">while</span> currentValue <span class="token operator">!=</span> <span class="token number">0</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>currentValue<span class="token delimiter variable">)</span></span>... &quot;</span><span class="token punctuation">)</span>
+    currentValue <span class="token operator">=</span> <span class="token function">moveNearerToZero</span><span class="token punctuation">(</span>currentValue<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;zero!&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// 3...</span>
+<span class="token comment">// 2...</span>
+<span class="token comment">// 1...</span>
+<span class="token comment">// zero!</span>
+</code></pre>
+<h2 id="ネスト関数nested-functions"><a id="nested-functions">ネスト関数(Nested Functions)</a></h2>
+<p>この章でこれまでに見てきた全ての関数は、グローバルスコープで定義されたグローバル関数の例でしたが、<em>ネスト関数</em>と呼ばれる、他の関数の本文内に関数を定義することもできます。</p>
+<p>ネスト関数は、デフォルトでは外から見えませんが、それを囲む関数から呼び出して使用することができます。囲んでいる関数が、ネスト関数内の 1 つを戻り値として、ネスト関数を別のスコープで使用することもできます。</p>
+<p>上記の <code>chooseStepFunction(backward:)</code> の例を書き直して、ネスト関数を使用することができます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function">chooseStepFunction</span><span class="token punctuation">(</span>backward<span class="token punctuation">:</span> <span class="token builtin">Bool</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">stepForward</span><span class="token punctuation">(</span>input<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> input <span class="token operator">+</span> <span class="token number">1</span> <span class="token punctuation">}</span>
+    <span class="token keyword">func</span> <span class="token function">stepBackward</span><span class="token punctuation">(</span>input<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> input <span class="token operator">-</span> <span class="token number">1</span> <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> backward <span class="token operator">?</span> stepBackward <span class="token punctuation">:</span> stepForward
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> currentValue <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">4</span>
+<span class="token keyword">let</span> moveNearerToZero <span class="token operator">=</span> <span class="token function">chooseStepFunction</span><span class="token punctuation">(</span>backward<span class="token punctuation">:</span> currentValue <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token comment">// moveNearerToZero は ネスト関数の stepForward() を参照しています</span>
+<span class="token keyword">while</span> currentValue <span class="token operator">!=</span> <span class="token number">0</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>currentValue<span class="token delimiter variable">)</span></span>... &quot;</span><span class="token punctuation">)</span>
+    currentValue <span class="token operator">=</span> <span class="token function">moveNearerToZero</span><span class="token punctuation">(</span>currentValue<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;zero!&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// -4...</span>
+<span class="token comment">// -3...</span>
+<span class="token comment">// -2...</span>
+<span class="token comment">// -1...</span>
+<span class="token comment">// zero!</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="control-flow.html" class="navigation navigation-prev " aria-label="Previous page: 制御フロー(Control Flow)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="closures.html" class="navigation navigation-next " aria-label="Next page: クロージャ(Closures)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"関数(Functions)","level":"3.6","depth":1,"next":{"title":"クロージャ(Closures)","level":"3.7","depth":1,"path":"language-guide/closures.md","ref":"language-guide/closures.md","articles":[]},"previous":{"title":"制御フロー(Control Flow)","level":"3.5","depth":1,"path":"language-guide/control-flow.md","ref":"language-guide/control-flow.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-guide/functions.md","mtime":"2021-07-17T06:39:57.073Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-17T06:40:39.672Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

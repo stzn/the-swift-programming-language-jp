@@ -1,0 +1,1608 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <title>プロトコル(Protocols) · The Swift Programming Language日本語版</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="generics.html" />
+    
+    
+    <link rel="prev" href="extensions.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索ワードを入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    The Swift Programming Language(日本語版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Swiftへようこそ(WELCOME TO SWIFT)</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../welcome-to-swift/about-swift.html">
+            
+                <a href="../welcome-to-swift/about-swift.html">
+            
+                    
+                    Swiftについて(About Swift)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../welcome-to-swift/version-compatibility.html">
+            
+                <a href="../welcome-to-swift/version-compatibility.html">
+            
+                    
+                    バージョン互換性(Version Compatibility)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../welcome-to-swift/a-swift-tour.html">
+            
+                <a href="../welcome-to-swift/a-swift-tour.html">
+            
+                    
+                    Swiftツアー(A Swift Tour)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">言語ガイド(LANGUAGE GUIDE)</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="the-basics.html">
+            
+                <a href="the-basics.html">
+            
+                    
+                    基本(The Basics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="basic-operators.html">
+            
+                <a href="basic-operators.html">
+            
+                    
+                    基本演算子(Basic Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="strings-and-characters.html">
+            
+                <a href="strings-and-characters.html">
+            
+                    
+                    文字と文字列(Strings and Characters)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="collection-types.html">
+            
+                <a href="collection-types.html">
+            
+                    
+                    コレクション型(Collection Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="control-flow.html">
+            
+                <a href="control-flow.html">
+            
+                    
+                    制御フロー(Control Flow)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="functions.html">
+            
+                <a href="functions.html">
+            
+                    
+                    関数(Functions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="closures.html">
+            
+                <a href="closures.html">
+            
+                    
+                    クロージャ(Closures)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="enumerations.html">
+            
+                <a href="enumerations.html">
+            
+                    
+                    列挙型(Enumerations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="structures-and-classes.html">
+            
+                <a href="structures-and-classes.html">
+            
+                    
+                    構造体とクラス(Structures and Classes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="properties.html">
+            
+                <a href="properties.html">
+            
+                    
+                    プロパティ(Properties)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="methods.html">
+            
+                <a href="methods.html">
+            
+                    
+                    メソッド(Methods)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="subscripts.html">
+            
+                <a href="subscripts.html">
+            
+                    
+                    サブスクリプト(Subscripts)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="inheritance.html">
+            
+                <a href="inheritance.html">
+            
+                    
+                    継承(Inheritance)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="initialization.html">
+            
+                <a href="initialization.html">
+            
+                    
+                    初期化(Initialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="deinitialization.html">
+            
+                <a href="deinitialization.html">
+            
+                    
+                    デイニシャライゼーション(Deinitialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="optional-chaining.html">
+            
+                <a href="optional-chaining.html">
+            
+                    
+                    オプショナルチェーン(Optional Chaining)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="error-handling.html">
+            
+                <a href="error-handling.html">
+            
+                    
+                    エラー処理(Error Handling)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="concurrency.html">
+            
+                <a href="concurrency.html">
+            
+                    
+                    同時並行処理(Concurrency)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="type-casting.html">
+            
+                <a href="type-casting.html">
+            
+                    
+                    型キャスト(Type Casting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="nested-types.html">
+            
+                <a href="nested-types.html">
+            
+                    
+                    ネスト型(Nested Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.21" data-path="extensions.html">
+            
+                <a href="extensions.html">
+            
+                    
+                    拡張(Extensions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.22" data-path="protocols.html">
+            
+                <a href="protocols.html">
+            
+                    
+                    プロトコル(Protocols)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.23" data-path="generics.html">
+            
+                <a href="generics.html">
+            
+                    
+                    ジェネリクス(Generics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.24" data-path="opaque-types.html">
+            
+                <a href="opaque-types.html">
+            
+                    
+                    Opaque 型(Opaque Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.25" data-path="automatic-reference-counting.html">
+            
+                <a href="automatic-reference-counting.html">
+            
+                    
+                    自動参照カウント ARC(Automatic Reference Counting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.26" data-path="memory-safety.html">
+            
+                <a href="memory-safety.html">
+            
+                    
+                    メモリ安全性(Memory Safety)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.27" data-path="access-control.html">
+            
+                <a href="access-control.html">
+            
+                    
+                    アクセスコントロール(Access Control)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.28" data-path="advanced-operators.html">
+            
+                <a href="advanced-operators.html">
+            
+                    
+                    高度な演算子(Advanced Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">言語リファレンス(LANGUAGE REFERENCE)</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../language-reference/about-the-language-reference.html">
+            
+                <a href="../language-reference/about-the-language-reference.html">
+            
+                    
+                    言語リファレンスについて(About the Language Reference)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../language-reference/lexical-structure.html">
+            
+                <a href="../language-reference/lexical-structure.html">
+            
+                    
+                    構文の構造(Lexical Structure)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../language-reference/types.html">
+            
+                <a href="../language-reference/types.html">
+            
+                    
+                    型(Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../language-reference/expressions.html">
+            
+                <a href="../language-reference/expressions.html">
+            
+                    
+                    式(Expressions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../language-reference/statements.html">
+            
+                <a href="../language-reference/statements.html">
+            
+                    
+                    文(Statements)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../language-reference/declarations.html">
+            
+                <a href="../language-reference/declarations.html">
+            
+                    
+                    宣言(Declarations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../language-reference/attributes.html">
+            
+                <a href="../language-reference/attributes.html">
+            
+                    
+                    属性(Attributes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../language-reference/patterns.html">
+            
+                <a href="../language-reference/patterns.html">
+            
+                    
+                    パターン(Patterns)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../language-reference/generic-parameters-and-arguments.html">
+            
+                <a href="../language-reference/generic-parameters-and-arguments.html">
+            
+                    
+                    ジェネリックパラメータと引数(Generic Parameters and Arguments)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="../language-reference/summary-of-the-grammar.html">
+            
+                <a href="../language-reference/summary-of-the-grammar.html">
+            
+                    
+                    文法のまとめ(Summary of the Grammar)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">REVISION HISTORY (改訂履歴)</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../revision-history/document-revision-history.html">
+            
+                <a href="../revision-history/document-revision-history.html">
+            
+                    
+                    ドキュメント改訂履歴(Document Revision History)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKitで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >プロトコル(Protocols)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="プロトコルprotocols">プロトコル(Protocols)</h1>
+<p>最終更新日: 2021/6/29</p>
+<p><em>プロトコル</em>は、特定のタスクまたは機能に準拠するメソッド、プロパティ、およびその他の要件の設計図を定義します。クラス、構造体、または列挙型がプロトコルに準拠でき、それらの要件の実装を提供します。プロトコルの要件を満たす全ての型は、そのプロトコルに<em>準拠している</em>といいます。</p>
+<p>プロトコルは、準拠する型が実装する必要がある要件を指定することに加えて、プロトコルを拡張して、これらの要件の一部を実装したり、準拠する型が利用できる追加機能を実装できます。</p>
+<h2 id="プロトコル構文protocol-syntax">プロトコル構文(Protocol Syntax)</h2>
+<p>クラス、構造体、および列挙型と非常によく似た方法でプロトコルを定義します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">SomeProtocol</span> <span class="token punctuation">{</span>
+    <span class="token comment">// プロトコルの定義をここに</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>カスタム型は、定義の一部として、型名の後にプロトコル名をコロン(<code>:</code>)で区切って配置することにより、特定のプロトコルに準拠することを示します。複数のプロトコルにも準拠でき、カンマ(<code>,</code>)区切りで並べます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">SomeStructure</span><span class="token punctuation">:</span> <span class="token builtin">FirstProtocol</span><span class="token punctuation">,</span> <span class="token builtin">AnotherProtocol</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 構造体の定義をここに</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>クラスにスーパークラスがある場合は、準拠するプロトコルの前にスーパークラス名を記述し、その後にカンマを続けます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">SomeClass</span><span class="token punctuation">:</span> <span class="token builtin">SomeSuperclass</span><span class="token punctuation">,</span> <span class="token builtin">FirstProtocol</span><span class="token punctuation">,</span> <span class="token builtin">AnotherProtocol</span> <span class="token punctuation">{</span>
+    <span class="token comment">// クラスの定義をここに</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="プロパティ要件property-requirements"><a id="property-requirements">プロパティ要件(Property Requirements)</a></h2>
+<p>プロトコルは、特定の名前と型のインスタンスプロパティまたは型プロパティを要件にできます。プロトコルでは、格納プロパティか計算プロパティかを指定しません。必要なプロパティの名前と型を指定するだけです。また、プロトコルは、各プロパティが get のみか、get/set どちらも必要かどうかも指定します。</p>
+<p>プロトコルが get/set を要求する場合、そのプロパティ要件は、定数格納プロパティまたは読み取り専用の計算プロパティでは満たされません。プロトコルが get のみを要求する場合でも、その要件はあらゆる種類のプロパティによって満たされ、必要ならば実装の方でプロパティの set を追加することもできます。</p>
+<p>プロパティ要件は常に変数プロパティとして宣言され、前に <code>var</code> キーワードが付きます。get/set は型宣言の後に <code>{ get set }</code> を記述することで示し、get は <code>{ get }</code> で示します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">SomeProtocol</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> mustBeSettable<span class="token punctuation">:</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token keyword">set</span> <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> doesNotNeedToBeSettable<span class="token punctuation">:</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>プロトコルで、型プロパティの要件の前には、必ず <code>static</code> キーワードを付けてください。クラスによって実装されるときは、<code>class</code> または <code>static</code> キーワードをプレフィックスを付けても要件を満たします:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">AnotherProtocol</span> <span class="token punctuation">{</span>
+    <span class="token keyword">static</span> <span class="token keyword">var</span> someTypeProperty<span class="token punctuation">:</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token keyword">set</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>単一のインスタンスプロパティを要件に持つプロトコルの例を次に示します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">FullyNamed</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> fullName<span class="token punctuation">:</span> <span class="token builtin">String</span> <span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>完全修飾名を提供するために、<code>FullyNamed</code> プロトコルに準拠する型が必要です。プロトコルは、準拠する型の性質について他に何も指定していません。型が完全修飾名を提供する必要があることを指定するだけです。プロトコルでは、<code>FullyNamed</code> 型には、<code>String</code> 型の <code>fullName</code> という get インスタンスプロパティが宣言されています。</p>
+<p><code>FullyNamed</code> プロトコルに準拠するシンプルな構造体の例を次に示します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">Person</span><span class="token punctuation">:</span> <span class="token builtin">FullyNamed</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> fullName<span class="token punctuation">:</span> <span class="token builtin">String</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> john <span class="token operator">=</span> <span class="token function">Person</span><span class="token punctuation">(</span>fullName<span class="token punctuation">:</span> <span class="token string">&quot;John Appleseed&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// john.fullName は &quot;John Appleseed&quot;</span>
+</code></pre>
+<p>この例では、特定の名前を持つ人物を表す <code>Person</code> という構造体を定義しています。その定義の最初の行の一部として <code>FullyNamed</code> プロトコルに準拠することが記述されています。</p>
+<p><code>Person</code> の各インスタンスには、<code>String</code> 型の <code>fullName</code> という 1 つの格納プロパティがあります。これは、<code>FullyNamed</code> プロトコルの単一の要件と一致し、<code>Person</code> がプロトコルに正しく準拠していることを意味します。(プロトコル要件が満たされていない場合、コンパイルエラーが発生します)</p>
+<p>下記も <code>FullyNamed</code> プロトコルに準拠する、より複雑なクラスです:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">Starship</span><span class="token punctuation">:</span> <span class="token builtin">FullyNamed</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> <span class="token keyword">prefix</span><span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token operator">?</span>
+    <span class="token keyword">var</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> <span class="token keyword">prefix</span><span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token constant">nil</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        <span class="token keyword">self</span><span class="token punctuation">.</span><span class="token keyword">prefix</span> <span class="token operator">=</span> <span class="token keyword">prefix</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> fullName<span class="token punctuation">:</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">prefix</span> <span class="token operator">!=</span> <span class="token constant">nil</span> <span class="token operator">?</span> <span class="token keyword">prefix</span><span class="token operator">!</span> <span class="token operator">+</span> <span class="token string">&quot; &quot;</span> <span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token operator">+</span> name
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> ncc1701 <span class="token operator">=</span> <span class="token function">Starship</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Enterprise&quot;</span><span class="token punctuation">,</span> <span class="token keyword">prefix</span><span class="token punctuation">:</span> <span class="token string">&quot;USS&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// ncc1701.fullName は &quot;USS Enterprise&quot;</span>
+</code></pre>
+<p>このクラスは、宇宙船の読み取り専用計算プロパティとして <code>fullName</code> プロパティを実装します。各 <code>Starship</code> クラスのインスタンスは、必須の <code>name</code> とオプショナルの <code>prefix</code> を格納します。<code>fullName</code> プロパティは、プレフィックス値が存在する場合はそれを使用し、名前の先頭に追加して宇宙船のフルネームを作成します。</p>
+<h2 id="メソッド要件method-requirements"><a id="method-requirements">メソッド要件(Method Requirements)</a></h2>
+<p>プロトコルはインスタンスメソッドと型メソッドを要件にすることもできます。これらのメソッドは、通常のインスタンスおよび型メソッドとまったく同じ方法でプロトコルの定義の一部として記述されますが、中括弧(<code>{}</code>)やメソッド本文はありません。通常のメソッドと同じ規則に従って、可変長パラメータを使用できます。ただし、プロトコルの定義内のメソッドのパラメータにデフォルト値を指定することはできません。</p>
+<p>型プロパティの要件と同様に、型メソッドをプロトコルで定義するときは、常に要件の前に <code>static</code> キーワードを付けます。これは、クラスによって実装されるときに、型メソッドの要件に <code>class</code> または <code>static</code> キーワードが付いている場合にも当てはまります:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">SomeProtocol</span> <span class="token punctuation">{</span>
+    <span class="token keyword">static</span> <span class="token keyword">func</span> <span class="token function">someTypeMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>次の例では、単一のインスタンスメソッド要件を持つプロトコルを定義しています:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">RandomNumberGenerator</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Double</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>このプロトコル <code>RandomNumberGenerator</code> に準拠するには <code>random</code> と呼ばれるインスタンスメソッドが必要です。このインスタンスメソッドは、呼び出される度に <code>Double</code> 値を返します。プロトコルでは指定されていませんが、この値は <code>0.0</code> から <code>1.0</code>(ただし、<code>1.0</code> を含まない) までの数値が想定されています。</p>
+<p><code>RandomNumberGenerator</code> プロトコルは、各乱数がどのように生成されるかについて何も指定していません。単に、ジェネレータが新しい乱数を生成する標準的な方法を要求するだけです。</p>
+<p>下記は、<code>RandomNumberGenerator</code> プロトコルに準拠するクラスの実装です。このクラスは、線形合同法発生器として知られる疑似乱数発生器アルゴリズムを実装しています:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">LinearCongruentialGenerator</span><span class="token punctuation">:</span> <span class="token builtin">RandomNumberGenerator</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> lastRandom <span class="token operator">=</span> <span class="token number">42.0</span>
+    <span class="token keyword">let</span> m <span class="token operator">=</span> <span class="token number">139968.0</span>
+    <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token number">3877.0</span>
+    <span class="token keyword">let</span> c <span class="token operator">=</span> <span class="token number">29573.0</span>
+    <span class="token keyword">func</span> <span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Double</span> <span class="token punctuation">{</span>
+        lastRandom <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>lastRandom <span class="token operator">*</span> a <span class="token operator">+</span> c<span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">truncatingRemainder</span><span class="token punctuation">(</span>dividingBy<span class="token punctuation">:</span>m<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> lastRandom <span class="token operator">/</span> m
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> generator <span class="token operator">=</span> <span class="token function">LinearCongruentialGenerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>&quot;<span class="token builtin">Here&apos;s</span> a random number<span class="token punctuation">:</span> \<span class="token punctuation">(</span>generator<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>&quot;<span class="token punctuation">)</span>
+<span class="token comment">// &quot;Here&apos;s a random number: 0.3746499199817101&quot;</span>
+<span class="token function">print</span><span class="token punctuation">(</span>&quot;<span class="token builtin">And</span> another one<span class="token punctuation">:</span> \<span class="token punctuation">(</span>generator<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>&quot;<span class="token punctuation">)</span>
+<span class="token comment">// &quot;And another one: 0.729023776863283&quot;</span>
+</code></pre>
+<h2 id="mutating-メソッド要件mutating-method-requirements">mutating メソッド要件(Mutating Method Requirements)</h2>
+<p>メソッドが属するインスタンスを変更する必要がある場合があります。値型(つまり、構造体と列挙型)のインスタンスメソッドの場合、メソッドの <code>func</code> キーワードの前に <code>mutating</code> キーワードを配置して、メソッドが属するインスタンスとそのインスタンスの全てのプロパティを変更できることを示します。このプロセスについては、<a href="methods#modifying-value-types-from-within-instance-methods">Modifying Value Types from Within Instance Methods(インスタンスメソッド内からの値型の変更)</a>で説明されています。</p>
+<p>任意の型のインスタンスを変更することを目的としたプロトコルのインスタンスメソッドの要件を定義する場合は、<code>mutating</code> キーワードをメソッドにマークします。これにより、構造体と列挙型がそのメソッド要件を満たしてプロトコルに準拠することができます。</p>
+<blockquote>
+<p>NOTE<br>プロトコルのインスタンスメソッドの要件を <code>mutating</code> としてマークする場合、クラスがそのメソッドを実装するときに、<code>mutating</code> キーワードを記述する必要はありません。<code>mutating</code> キーワードは、構造体と列挙型のみ使用できます。</p>
+</blockquote>
+<p>下記の例では、<code>Togglable</code> というプロトコルが定義されています。これは、<code>toggle</code> という単一のインスタンスメソッドの要件を定義しています。その名前が示すように、<code>toggle()</code> メソッドは、通常、その型のプロパティを変更することによって、準拠する型の状態をトグル(反転)することを目的としています。</p>
+<p><code>toggle()</code> メソッドは、<code>Togglable</code> プロトコル定義の一部として <code>mutating</code> キーワードがマークされており、メソッドが呼び出されたときに準拠するインスタンスの状態を変更する可能性を示しています。</p>
+<p>構造体または列挙型に対して <code>Togglable</code> プロトコルを実装する場合、その構造体または列挙型は、<code>mutating</code> がマークされている <code>toggle()</code> メソッドの実装を提供することにより、プロトコルに準拠できます。</p>
+<p>下記の例では、<code>OnOffSwitch</code> という列挙型を定義しています。この列挙型は、<code>on</code> と <code>off</code> の 2 つのケースによって示される 2 つの状態を切り替えます。列挙型の <code>toggle</code> 実装は、<code>Togglable</code> プロトコルの要件を満たすように、<code>mutating</code> としてマークされています:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">enum</span> <span class="token builtin">OnOffSwitch</span><span class="token punctuation">:</span> <span class="token builtin">Togglable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> off<span class="token punctuation">,</span> on
+    <span class="token keyword">mutating</span> <span class="token keyword">func</span> <span class="token function">toggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">switch</span> <span class="token keyword">self</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> <span class="token punctuation">.</span>off<span class="token punctuation">:</span>
+            <span class="token keyword">self</span> <span class="token operator">=</span> <span class="token punctuation">.</span>on
+        <span class="token keyword">case</span> <span class="token punctuation">.</span>on<span class="token punctuation">:</span>
+            <span class="token keyword">self</span> <span class="token operator">=</span> <span class="token punctuation">.</span>off
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> lightSwitch <span class="token operator">=</span> <span class="token builtin">OnOffSwitch</span><span class="token punctuation">.</span>off
+lightSwitch<span class="token punctuation">.</span><span class="token function">toggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// lightSwitch は .on</span>
+</code></pre>
+<h2 id="イニシャライザ要件initializer-requirements"><a id="initializer-requirements">イニシャライザ要件(Initializer Requirements)</a></h2>
+<p>プロトコルでは、型に準拠するために特定のイニシャライザが必要な場合があります。このイニシャライザは、通常のイニシャライザとまったく同じ方法でプロトコルの定義の一部として記述できますが、中括弧(<code>{}</code>)やイニシャライザ本文はありません:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">SomeProtocol</span> <span class="token punctuation">{</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>someParameter<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="プロトコルイニシャライザ要件のクラス実装class-implementations-of-protocol-initializer-requirements">プロトコルイニシャライザ要件のクラス実装(Class Implementations of Protocol Initializer Requirements)</h3>
+<p>プロトコルのイニシャライザの要件は、準拠するクラスで指定イニシャライザまたは convenience イニシャライザとして実装できます。どちらの場合も、<code>required</code> 修飾子でイニシャライザの実装をマークする必要があります:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">SomeClass</span><span class="token punctuation">:</span> <span class="token builtin">SomeProtocol</span> <span class="token punctuation">{</span>
+    <span class="token keyword">required</span> <span class="token keyword">init</span><span class="token punctuation">(</span>someParameter<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// イニシャライザの実装をここに</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>required</code> 修飾子を使用すると、準拠するクラスの全てのサブクラスで、イニシャライザ要件を明示的に実装または継承して、プロトコルに準拠する必要があります。</p>
+<p><code>required</code> イニシャライザの詳細については、<a href="initialization#required-initializers">Required Initializers(必須イニシャライザ)</a>を参照ください。</p>
+<blockquote>
+<p>NOTE<br><code>final</code> クラスはサブクラス化できないため、 <code>final</code> 修飾子でマークされているクラスでは、プロトコルのイニシャライザの実装を <code>required</code> 修飾子でマークする必要はありません。<code>final</code> 修飾子の詳細については、<a href="inheritance#preventing-overrides">Preventing Overrides(オーバーライドを防ぐ)</a>を参照ください。</p>
+</blockquote>
+<p>サブクラスがスーパークラスからの指定イニシャライザをオーバーライドし、そのイニシャライザがプロトコル要件も満たす場合、<code>required</code> 修飾子と <code>override</code> 修飾子の両方でイニシャライザの実装をマークします:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">SomeProtocol</span> <span class="token punctuation">{</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">SomeSuperClass</span> <span class="token punctuation">{</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// イニシャライザの実装をここに</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">SomeSubClass</span><span class="token punctuation">:</span> <span class="token builtin">SomeSuperClass</span><span class="token punctuation">,</span> <span class="token builtin">SomeProtocol</span> <span class="token punctuation">{</span>
+    <span class="token comment">// &quot;required&quot; は SomeProtocol から、 &quot;override&quot; は SomeSuperClass から</span>
+    <span class="token keyword">required</span> <span class="token keyword">override</span> <span class="token keyword">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// イニシャライザの実装をここに</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="失敗可能イニシャライザ要件failable-initializer-requirements"><a id="failable-initializer-requirements">失敗可能イニシャライザ要件(Failable Initializer Requirements)</a></h3>
+<p>プロトコルは、<a href="../language-reference/declarations#declarations-failable-initializers">Failable Initializers(失敗可能イニシャライザ)</a>で定義されているように、失敗可能イニシャライザ要件を定義できます。</p>
+<p>失敗可能イニシャライザ要件は、準拠する型の失敗可能または失敗しないイニシャライザによって満たされます。失敗しないイニシャライザ要件は、失敗しないイニシャライザまたは暗黙的にアンラップされた失敗可能イニシャライザによって満たされます。</p>
+<h2 id="型としてのプロトコルprotocols-as-types"><a id="protocols-as-types">型としてのプロトコル(Protocols as Types)</a></h2>
+<p>プロトコルは、実際には機能を実装しません。それにもかかわらず、コード内で完全な型としてプロトコルを使用できます。プロトコルを型として使用することは、<em>存在型</em>と呼ばれることもあります。これは、「T がプロトコルに準拠するような型 T が存在する」というフレーズから来ています。</p>
+<p>次のような他の型が許可されている多くの場所でプロトコルを使用できます。</p>
+<ul>
+<li>関数、メソッド、またはイニシャライザのパラメータの型または戻り値の型として</li>
+<li>定数、変数、またはプロパティの型として</li>
+<li>配列、辞書、またはその他のコンテナ内のアイテムの型として</li>
+</ul>
+<blockquote>
+<p>NOTE<br>プロトコルは型であるため、他の型 (<code>Int</code>、<code>String</code>、<code>Double</code> など) と同じように名前を大文字で始めます。(<code>FullyNamed</code> や <code>RandomNumberGenerator</code> など)</p>
+</blockquote>
+<p>型として使用されるプロトコルの例を次に示します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">Dice</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> sides<span class="token punctuation">:</span> <span class="token builtin">Int</span>
+    <span class="token keyword">let</span> generator<span class="token punctuation">:</span> <span class="token builtin">RandomNumberGenerator</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>sides<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> generator<span class="token punctuation">:</span> <span class="token builtin">RandomNumberGenerator</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>sides <span class="token operator">=</span> sides
+        <span class="token keyword">self</span><span class="token punctuation">.</span>generator <span class="token operator">=</span> generator
+    <span class="token punctuation">}</span>
+    <span class="token keyword">func</span> <span class="token function">roll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">Int</span><span class="token punctuation">(</span>generator<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">Double</span><span class="token punctuation">(</span>sides<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>この例では、ボードゲームで使用する n 面のサイコロを表す <code>Dice</code> という新しいクラスを定義しています。<code>Dice</code> のインスタンスには、側面の数を表す <code>sides</code> と呼ばれる整数のプロパティと、ダイスの出目を作成するための乱数ジェネレータを提供する <code>generator</code> と呼ばれるプロパティがあります。</p>
+<p><code>generator</code> プロパティの型は <code>RandomNumberGenerator</code> です。したがって、<code>RandomNumberGenerator</code> プロトコルに準拠する任意の型のインスタンスを設定できます。このプロパティに割り当てるインスタンスには、インスタンスが <code>RandomNumberGenerator</code> プロトコルに準拠する必要があることを除いて、他に何も必要ありません。型は <code>RandomNumberGenerator</code> なので、<code>Dice</code> クラス内のコードは、このプロトコルに準拠する <code>generator</code> のみを使用できます。つまり、その具体的なジェネレータの型で定義されているメソッドやプロパティを使用することはできません。ただし、<a href="type-casting#downcasting">Downcasting(ダウンキャスト)</a>で説明されているように、スーパークラスからサブクラスにダウンキャストできるのと同じ方法で、プロトコル型から準拠した具体的な型にダウンキャストできます。</p>
+<p><code>Dice</code> には、初期状態を設定するためのイニシャライザもあります。このイニシャライザには、<code>RandomNumberGenerator</code> 型の <code>generator</code> と呼ばれるパラメータがあります。新しい <code>Dice</code> インスタンスを初期化するときに、このパラメータに <code>RandomNumberGenerator</code> に準拠する型の値を渡すことができます。</p>
+<p><code>Dice</code> は、1 からサイコロの面の数までの整数値を返す 1 つのインスタンスメソッド、<code>roll</code> を提供しています。このメソッドは、ジェネレータの <code>random()</code> メソッドを呼び出して <code>0.0</code> から <code>1.0</code> の間の新しい乱数を作成し、この乱数を使用して正しい範囲内でサイコロの目を作成します。<code>generator</code> は <code>RandomNumberGenerator</code> に準拠することがわかっているため、呼び出すべき <code>random()</code> メソッドが存在していることは保証されています。</p>
+<p><code>Dice</code> クラスを使用して、<code>LinearCongruentialGenerator</code> インスタンスを乱数ジェネレータとして使用して、6 面体のサイコロを作成する方法を次に示します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> d6 <span class="token operator">=</span> <span class="token function">Dice</span><span class="token punctuation">(</span>sides<span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">,</span> generator<span class="token punctuation">:</span> <span class="token function">LinearCongruentialGenerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> <span class="token number">_</span> <span class="token keyword">in</span> <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">5</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>&quot;<span class="token builtin">Random</span> dice roll <span class="token keyword">is</span> \<span class="token punctuation">(</span>d6<span class="token punctuation">.</span><span class="token function">roll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>&quot;<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// Random dice roll is 3</span>
+<span class="token comment">// Random dice roll is 5</span>
+<span class="token comment">// Random dice roll is 4</span>
+<span class="token comment">// Random dice roll is 5</span>
+<span class="token comment">// Random dice roll is 4</span>
+</code></pre>
+<h2 id="委譲delegation"><a id="delegation">委譲(Delegation)</a></h2>
+<p><em>委譲</em>は、クラスまたは構造体がその責任の一部を別の型のインスタンスに引き渡す(または委譲する)ことを可能にするデザインパターンです。このデザインパターンは、委譲される責任をカプセル化するプロトコルを定義することによって実装され、準拠する型 (<em>デリゲート</em>と呼ばれる)が委譲された機能を提供することを保証します。委譲を使用して、特定のアクションに応答したり、その準拠した具体的な型を知らなくても外部ソースからデータを取得したりできます。</p>
+<p>下記の例では、サイコロベースのボードゲームで使用する 2 つのプロトコルを定義しています:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">DiceGame</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> dice<span class="token punctuation">:</span> <span class="token builtin">Dice</span> <span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token punctuation">}</span>
+    <span class="token keyword">func</span> <span class="token function">play</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">protocol</span> <span class="token builtin">DiceGameDelegate</span><span class="token punctuation">:</span> <span class="token builtin">AnyObject</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">gameDidStart</span><span class="token punctuation">(</span><span class="token number">_</span> game<span class="token punctuation">:</span> <span class="token builtin">DiceGame</span><span class="token punctuation">)</span>
+    <span class="token keyword">func</span> <span class="token function">game</span><span class="token punctuation">(</span><span class="token number">_</span> game<span class="token punctuation">:</span> <span class="token builtin">DiceGame</span><span class="token punctuation">,</span> didStartNewTurnWithDiceRoll diceRoll<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span>
+    <span class="token keyword">func</span> <span class="token function">gameDidEnd</span><span class="token punctuation">(</span><span class="token number">_</span> game<span class="token punctuation">:</span> <span class="token builtin">DiceGame</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>DiceGame</code> プロトコルは、サイコロを使用する全てのゲームに準拠できるプロトコルです。</p>
+<p><code>DiceGameDelegate</code> プロトコルは、<code>DiceGame</code> の進行状況を追跡するために準拠できます。<em>強参照</em>循環を防ぐために、デリゲートは<em>弱参照</em>として宣言されます。弱参照については、<a href="automatic-reference-counting#strong-reference-cycles-between-class-instances">Strong Reference Cycles Between Class Instances(クラスインスタンス間の強参照循環)</a>を参照ください。プロトコルをクラス専用としてマークすると、この章の後半で登場する <code>SnakesAndLadders</code> クラスがそのデリゲートを弱参照で使用しなければならないことを宣言できるようになります。クラス専用プロトコルは、<a href="protocols#class-only-protocols">Class-Only Protocols(クラス専用プロトコル)</a>で説明されているように、<code>AnyObject</code> を継承します。</p>
+<p>これは、最初に <a href="control-flow.html">Control Flow(制御フロー)</a> で紹介した「蛇とはしごゲーム」の別バージョンです。このバージョンは、ダイスロールに <code>Dice</code> インスタンスを使用しています。<code>SnakesAndLadders</code> は <code>DiceGame</code> プロトコルに準拠し、その進行状況を <code>DiceGameDelegate</code> に通知します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">SnakesAndLadders</span><span class="token punctuation">:</span> <span class="token builtin">DiceGame</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> finalSquare <span class="token operator">=</span> <span class="token number">25</span>
+    <span class="token keyword">let</span> dice <span class="token operator">=</span> <span class="token function">Dice</span><span class="token punctuation">(</span>sides<span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">,</span> generator<span class="token punctuation">:</span> <span class="token function">LinearCongruentialGenerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> square <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">var</span> board<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        board <span class="token operator">=</span> <span class="token function">Array</span><span class="token punctuation">(</span>repeating<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">count</span><span class="token punctuation">:</span> finalSquare <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        board<span class="token punctuation">[</span><span class="token number">03</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">+</span><span class="token number">08</span><span class="token punctuation">;</span> board<span class="token punctuation">[</span><span class="token number">06</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">+</span><span class="token number">11</span><span class="token punctuation">;</span> board<span class="token punctuation">[</span><span class="token number">09</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">+</span><span class="token number">09</span><span class="token punctuation">;</span> board<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">+</span><span class="token number">02</span>
+        board<span class="token punctuation">[</span><span class="token number">14</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">;</span> board<span class="token punctuation">[</span><span class="token number">19</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">11</span><span class="token punctuation">;</span> board<span class="token punctuation">[</span><span class="token number">22</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">02</span><span class="token punctuation">;</span> board<span class="token punctuation">[</span><span class="token number">24</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">08</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">weak</span> <span class="token keyword">var</span> delegate<span class="token punctuation">:</span> <span class="token builtin">DiceGameDelegate</span><span class="token operator">?</span>
+    <span class="token keyword">func</span> <span class="token function">play</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        square <span class="token operator">=</span> <span class="token number">0</span>
+        delegate<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">gameDidStart</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">)</span>
+        gameLoop<span class="token punctuation">:</span> <span class="token keyword">while</span> square <span class="token operator">!=</span> finalSquare <span class="token punctuation">{</span>
+            <span class="token keyword">let</span> diceRoll <span class="token operator">=</span> dice<span class="token punctuation">.</span><span class="token function">roll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            delegate<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">game</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">,</span> didStartNewTurnWithDiceRoll<span class="token punctuation">:</span> diceRoll<span class="token punctuation">)</span>
+            <span class="token keyword">switch</span> square <span class="token operator">+</span> diceRoll <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> finalSquare<span class="token punctuation">:</span>
+                <span class="token keyword">break</span> gameLoop
+            <span class="token keyword">case</span> <span class="token keyword">let</span> newSquare <span class="token keyword">where</span> newSquare <span class="token operator">&gt;</span> finalSquare<span class="token punctuation">:</span>
+                <span class="token keyword">continue</span> gameLoop
+            <span class="token keyword">default</span><span class="token punctuation">:</span>
+                square <span class="token operator">+</span><span class="token operator">=</span> diceRoll
+                square <span class="token operator">+</span><span class="token operator">=</span> board<span class="token punctuation">[</span>square<span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        delegate<span class="token operator">?</span><span class="token punctuation">.</span><span class="token function">gameDidEnd</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>蛇とはしごについては、<a href="control-flow#break">Break</a>を参照してください。</p>
+<p>このバージョンでは、<code>DiceGame</code> プロトコルに準拠する <code>SnakesAndLadders</code> というクラスでラップされています。プロトコルに準拠するために、<code>dice</code> と呼ばれるプロパティの get と <code>play()</code> メソッドを提供しています。(<code>dice</code> プロパティは、初期化後に変更する必要がないため、定数プロパティとして宣言されており、プロトコルでは get のみを要件にしています)</p>
+<p>蛇とはしごのゲームボードのセットアップは、クラスの <code>init()</code> イニシャライザ内で行われています。全てのゲームロジックは、プロトコルの <code>play</code> メソッドの中で行われています。このメソッドは、プロトコルで必須の <code>dice</code> プロパティを使用して、ダイスの出目を提供しています。</p>
+<p>ゲームをプレイするためにデリゲートは必要ないため、<code>delegate</code> プロパティはオプショナルの <code>DiceGameDelegate</code> として定義されていることに注目してください。これはオプショナル型なので、<code>delegate</code> プロパティは自動的に <code>nil</code> で初期化されます。その後、ゲームのイニシャライザには、プロパティに適切なデリゲートを設定することができます。<code>DiceGameDelegate</code> プロトコルはクラス専用のため、デリゲートを <code>weak</code> として宣言し、循環参照を防ぐことができます。</p>
+<p><code>DiceGameDelegate</code> は、ゲームの進行状況を追跡するための 3 つのメソッドを提供しています。これらの 3 つのメソッドは、上記の <code>play()</code> メソッド内のゲームロジックに組み込まれており、新しいゲームの開始、新しいターンの開始、またはゲームの終了時に呼び出されます。</p>
+<p><code>delegate</code> プロパティはオプショナルの <code>DiceGameDelegate</code> のため、<code>play()</code> メソッドはデリゲートメソッドを呼び出す度にオプショナルチェーンを使用します。<code>delegate</code> プロパティが <code>nil</code> の場合、これらのデリゲートの呼び出しはエラーを出力せずに失敗します。<code>delegate</code> プロパティが <code>nil</code> ではない場合、デリゲートメソッドが呼び出され、パラメータとして <code>SnakesAndLadders</code> インスタンスが渡されます。</p>
+<p>次の例は、<code>DiceGameDelegate</code> プロトコルに準拠する <code>DiceGameTracker</code> というクラスを示しています:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">DiceGameTracker</span><span class="token punctuation">:</span> <span class="token builtin">DiceGameDelegate</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> numberOfTurns <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">func</span> <span class="token function">gameDidStart</span><span class="token punctuation">(</span><span class="token number">_</span> game<span class="token punctuation">:</span> <span class="token builtin">DiceGame</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        numberOfTurns <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword">if</span> game <span class="token keyword">is</span> <span class="token builtin">SnakesAndLadders</span> <span class="token punctuation">{</span>
+            <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Started a new game of Snakes and Ladders&quot;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The game is using a <span class="token interpolation"><span class="token delimiter variable">\(</span>game<span class="token punctuation">.</span>dice<span class="token punctuation">.</span>sides<span class="token delimiter variable">)</span></span>-sided dice&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">func</span> <span class="token function">game</span><span class="token punctuation">(</span><span class="token number">_</span> game<span class="token punctuation">:</span> <span class="token builtin">DiceGame</span><span class="token punctuation">,</span> didStartNewTurnWithDiceRoll diceRoll<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        numberOfTurns <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Rolled a <span class="token interpolation"><span class="token delimiter variable">\(</span>diceRoll<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">func</span> <span class="token function">gameDidEnd</span><span class="token punctuation">(</span><span class="token number">_</span> game<span class="token punctuation">:</span> <span class="token builtin">DiceGame</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;The game lasted for <span class="token interpolation"><span class="token delimiter variable">\(</span>numberOfTurns<span class="token delimiter variable">)</span></span> turns&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>DiceGameTracker</code> は、<code>DiceGameDelegate</code> に必要な 3 つのメソッド全てを実装します。これらのメソッドを使用して、ゲームが経過したターン数を追跡します。これは、ゲームの開始時に <code>numberOfTurns</code> プロパティをゼロにリセットし、新しいターンが開始される度にそれを増加し、ゲームが終了すると合計ターン数を出力します。</p>
+<p>上記の <code>gameDidStart(_:)</code> の実装では、<code>game</code> パラメータを使用して、これからプレイするゲームに関するいくつかのイントロダクションを出力します。<code>game</code> パラメータの型は <code>SnakesAndLadders</code> ではなく <code>DiceGame</code> のため、<code>gameDidStart(_:)</code> は、<code>DiceGame</code> プロトコルの一部として実装されているメソッドとプロパティのみを使用できます。ただし、メソッドは引き続き型キャストを使用して、準拠したインスタンスの型を照会できます。この例では、<code>game</code> が実際に内部で <code>SnakesAndLadders</code> のインスタンスかどうかを確認し、その場合は適切なメッセージを出力します。</p>
+<p><code>gameDidStart(_:)</code> メソッドは、渡された <code>game</code> パラメータの <code>dice</code> プロパティにもアクセスしています。<code>game</code> は <code>DiceGame</code> プロトコルに準拠しているため、<code>dice</code> プロパティを持つことが保証されているため、<code>gameDidStart(_:)</code> メソッドは、プレイされているゲームの種類に関係なく、<code>dice</code> の <code>sides</code> プロパティにアクセスして出力できます。</p>
+<p><code>DiceGameTracker</code> の実際の挙動は次のとおりです:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> tracker <span class="token operator">=</span> <span class="token function">DiceGameTracker</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> game <span class="token operator">=</span> <span class="token function">SnakesAndLadders</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+game<span class="token punctuation">.</span>delegate <span class="token operator">=</span> tracker
+game<span class="token punctuation">.</span><span class="token function">play</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// 蛇とはしごの新しいゲームを開始します</span>
+<span class="token comment">// ゲームでは ６ 面体のサイコロを使います</span>
+<span class="token comment">// 3 が出ました</span>
+<span class="token comment">// 5 が出ました</span>
+<span class="token comment">// 4 が出ました</span>
+<span class="token comment">// 5 が出ました</span>
+</code></pre>
+<h2 id="拡張機能を使ったプロトコル準拠の追加adding-protocol-conformance-with-an-extension"><a id="adding-protocol-conformance-with-an-extension">拡張機能を使ったプロトコル準拠の追加(Adding Protocol Conformance with an Extension)</a></h2>
+<p>既存の型のソースコードにアクセスできない場合でも、既存の型を拡張して新しいプロトコルに準拠させることができます。extension は、新しいプロパティ、メソッド、および subscript を既存の型に追加できるため、プロトコルの要件を追加できます。拡張機能の詳細については、<a href="extensions.html">Extensions(拡張)</a>を参照ください。</p>
+<blockquote>
+<p>NOTE<br>型の既存のインスタンスは、extension でそのインスタンスの型がプロトコルに準拠すると、自動的にプロトコルに準拠します。</p>
+</blockquote>
+<p>例えば、<code>TextRepresentable</code> と呼ばれるプロトコルは、テキストとして表現できる任意の型で実装できます。これは、それ自体の説明や、現在の状態の説明などの可能性があります:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">TextRepresentable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> textualDescription<span class="token punctuation">:</span> <span class="token builtin">String</span> <span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>上記の <code>Dice</code> クラスを拡張して、<code>TextRepresentable</code> に準拠させることができます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Dice</span><span class="token punctuation">:</span> <span class="token builtin">TextRepresentable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> textualDescription<span class="token punctuation">:</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;A <span class="token interpolation"><span class="token delimiter variable">\(</span>sides<span class="token delimiter variable">)</span></span>-sided dice&quot;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>この extension は、<code>Dice</code> の元の実装とまったく同じ方法で新しいプロトコルに準拠しています。プロトコル名を型名の後にコロン(<code>:</code>)で区切って指定し、プロトコルの全ての要件の実装は extension の中括弧内(<code>{}</code>)に指定します。</p>
+<p>これで、どの <code>Dice</code> インスタンスも <code>TextRepresentable</code> として扱えるようになりました:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> d12 <span class="token operator">=</span> <span class="token function">Dice</span><span class="token punctuation">(</span>sides<span class="token punctuation">:</span> <span class="token number">12</span><span class="token punctuation">,</span> generator<span class="token punctuation">:</span> <span class="token function">LinearCongruentialGenerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>d12<span class="token punctuation">.</span>textualDescription<span class="token punctuation">)</span>
+<span class="token comment">// &quot;A 12-sided dice&quot;</span>
+</code></pre>
+<p>同様に、<code>SnakesAndLadders</code> クラスを拡張して、<code>TextRepresentable</code> プロトコルに準拠させることができます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">SnakesAndLadders</span><span class="token punctuation">:</span> <span class="token builtin">TextRepresentable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> textualDescription<span class="token punctuation">:</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;A game of Snakes and Ladders with <span class="token interpolation"><span class="token delimiter variable">\(</span>finalSquare<span class="token delimiter variable">)</span></span> squares&quot;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span>game<span class="token punctuation">.</span>textualDescription<span class="token punctuation">)</span>
+<span class="token comment">// &quot;A game of Snakes and Ladders with 25 squares&quot;</span>
+</code></pre>
+<h3 id="条件付きでのプロトコルへの準拠conditionally-conforming-to-a-protocol"><a id="conditionally-conforming-to-a-protocol">条件付きでのプロトコルへの準拠(Conditionally Conforming to a Protocol)</a></h3>
+<p>ジェネリック型は、型のジェネリックパラメータがプロトコルに準拠している場合など、特定の条件下でのみプロトコルの要件を満たすことができるようにします。型を拡張するときに制約を並べることで、ジェネリック型を条件付きでプロトコルに準拠させることができます。<code>where</code> 句を記述して、準拠するプロトコルの名前の後にこれらの制約を記述します。ジェネリック <code>where</code> 句の詳細については、<a href="generics#generic-where-clauses">Generic Where Clauses(ジェネリック where 句)</a>を参照ください。</p>
+<p>次の拡張により、<code>Array</code> インスタンスが <code>TextRepresentable</code> に準拠する型の要素を格納する場合は、常に <code>TextRepresentable</code> プロトコルに準拠するようになります:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Array</span><span class="token punctuation">:</span> <span class="token builtin">TextRepresentable</span> <span class="token keyword">where</span> <span class="token builtin">Element</span><span class="token punctuation">:</span> <span class="token builtin">TextRepresentable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> textualDescription<span class="token punctuation">:</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> itemsAsText <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span><span class="token builtin">map</span> <span class="token punctuation">{</span> $<span class="token number">0</span><span class="token punctuation">.</span>textualDescription <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;[&quot;</span> <span class="token operator">+</span> itemsAsText<span class="token punctuation">.</span><span class="token function">joined</span><span class="token punctuation">(</span>separator<span class="token punctuation">:</span> <span class="token string">&quot;, &quot;</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;]&quot;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> myDice <span class="token operator">=</span> <span class="token punctuation">[</span>d6<span class="token punctuation">,</span> d12<span class="token punctuation">]</span>
+<span class="token function">print</span><span class="token punctuation">(</span>myDice<span class="token punctuation">.</span>textualDescription<span class="token punctuation">)</span>
+<span class="token comment">// &quot;[A 6-sided dice, A 12-sided dice]&quot;</span>
+</code></pre>
+<h3 id="拡張機能を使ったプロトコル準拠の宣言declaring-protocol-adoption-with-an-extension"><a id="declaring-protocol-adoption-with-an-extension">拡張機能を使ったプロトコル準拠の宣言(Declaring Protocol Adoption with an Extension)</a></h3>
+<p>型がすでにプロトコルの全ての要件を満たしているものの、そのプロトコルに準拠することを表明していない場合は、空の extension でプロトコルに準拠することができます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">Hamster</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">var</span> textualDescription<span class="token punctuation">:</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">&quot;A hamster named <span class="token interpolation"><span class="token delimiter variable">\(</span>name<span class="token delimiter variable">)</span></span>&quot;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">extension</span> <span class="token builtin">Hamster</span><span class="token punctuation">:</span> <span class="token builtin">TextRepresentable</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+<p>これで <code>TextRepresentable</code> が必要な型へ、<code>Hamster</code> のインスタンスを使用できるようになりました:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> simonTheHamster <span class="token operator">=</span> <span class="token function">Hamster</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Simon&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> somethingTextRepresentable<span class="token punctuation">:</span> <span class="token builtin">TextRepresentable</span> <span class="token operator">=</span> simonTheHamster
+<span class="token function">print</span><span class="token punctuation">(</span>somethingTextRepresentable<span class="token punctuation">.</span>textualDescription<span class="token punctuation">)</span>
+<span class="token comment">// &quot;A hamster named Simon&quot;</span>
+</code></pre>
+<blockquote>
+<p>NOTE<br>要件を満たすだけで、型が自動的にプロトコルに準拠するわけではありません。プロトコルへの準拠を常に明示的に宣言する必要があります。</p>
+</blockquote>
+<h2 id="デフォルト実装を使用したプロトコル準拠adopting-a-protocol-using-a-synthesized-implementation"><a id="adopting-a-protocol-using-a-synthesized-implementation">デフォルト実装を使用したプロトコル準拠(Adopting a Protocol Using a Synthesized Implementation)</a></h2>
+<p>Swift は、多くのシンプルなケースで、<code>Equatable</code>、<code>Hashable</code>、および <code>Comparable</code> のプロトコルへの準拠を自動的に提供できます。このデフォルト実装を使用すると、プロトコル要件を自分で実装するために、繰り返しコードを記述する必要がなくなります。</p>
+<p>Swift は、次の種類の独自の型に対して <code>Equatable</code> のデフォルト実装を提供します。</p>
+<ul>
+<li><code>Equatable</code> プロトコルに準拠した型の格納プロパティのみで構成される構造体</li>
+<li>関連値が <code>Equatable</code> プロトコルに準拠する型のみの列挙型</li>
+<li>関連値のない列挙型</li>
+</ul>
+<p><code>==</code> のデフォルト実装を受け取るには、自分で <code>==</code> 演算子を実装せずに、元の宣言を含むファイルで <code>Equatable</code> への準拠を宣言します。<code>Equatable</code> プロトコルは、<code>!=</code> のデフォルトの実装を提供しています。</p>
+<p>下記の例では、<code>Vector2D</code> 構造体と同様に、3 次元位置ベクトル <code>(x、y、z)</code> の <code>Vector3D</code> 構造体を定義しています。<code>x</code>、<code>y</code>、<code>z</code> プロパティは全て <code>Equatable</code> に準拠した型なので、<code>Vector3D</code> は等価演算子のデフォルト実装を受け取ります。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token builtin">Vector3D</span><span class="token punctuation">:</span> <span class="token builtin">Equatable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">,</span> y <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">,</span> z <span class="token operator">=</span> <span class="token number">0.0</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> twoThreeFour <span class="token operator">=</span> <span class="token function">Vector3D</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token number">2.0</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">3.0</span><span class="token punctuation">,</span> z<span class="token punctuation">:</span> <span class="token number">4.0</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> anotherTwoThreeFour <span class="token operator">=</span> <span class="token function">Vector3D</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token number">2.0</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">3.0</span><span class="token punctuation">,</span> z<span class="token punctuation">:</span> <span class="token number">4.0</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> twoThreeFour <span class="token operator">==</span> anotherTwoThreeFour <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;These two vectors are also equivalent.&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;These two vectors are also equivalent.&quot;</span>
+</code></pre>
+<p>Swift は、次の種類の独自の型に対して <code>Hashable</code> のデフォルト実装を提供します。</p>
+<ul>
+<li><code>Hashable</code> プロトコルに準拠した型の格納プロパティのみで構成される構造体</li>
+<li>関連値が <code>Hashable</code> プロトコルに準拠する型のみの列挙型</li>
+<li>関連値のない列挙型</li>
+</ul>
+<p><code>hash(into:)</code> のデフォルト実装を受け取るには、<code>hash(into:)</code> メソッドを自分で実装せずに、元の宣言を含むファイルで <code>Hashable</code> への準拠を宣言します。</p>
+<p>Swift は、Raw Value を持たない列挙型に <code>Comparable</code> のデフォルト実装を提供します。列挙型に関連値がある場合、それらは全て <code>Comparable</code> プロトコルに準拠している必要があります。<code>&lt;</code> のデフォルト実装を受け取るには、自分で <code>&lt;</code> 演算子を実装せずに、元の列挙宣言を含むファイルで <code>Comparable</code> への準拠を宣言します。残りの比較演算子(<code>&lt;=</code>、<code>&gt;</code>、および <code>&gt;=</code>)は <code>Comparable</code> プロトコルがデフォルトで実装を提供してます。</p>
+<p>下記の例では、初心者、中級者、および専門家向けのケースを含む <code>SkillLevel</code> 列挙型を定義しています。エキスパートは、持っている星の数によってさらにランク付けされます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">enum</span> <span class="token builtin">SkillLevel</span><span class="token punctuation">:</span> <span class="token builtin">Comparable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> beginner
+    <span class="token keyword">case</span> intermediate
+    <span class="token keyword">case</span> <span class="token function">expert</span><span class="token punctuation">(</span>stars<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> levels <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">SkillLevel</span><span class="token punctuation">.</span>intermediate<span class="token punctuation">,</span> <span class="token builtin">SkillLevel</span><span class="token punctuation">.</span>beginner<span class="token punctuation">,</span>
+              <span class="token builtin">SkillLevel</span><span class="token punctuation">.</span><span class="token function">expert</span><span class="token punctuation">(</span>stars<span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">SkillLevel</span><span class="token punctuation">.</span><span class="token function">expert</span><span class="token punctuation">(</span>stars<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> level <span class="token keyword">in</span> levels<span class="token punctuation">.</span><span class="token function">sorted</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>level<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &quot;beginner&quot;</span>
+<span class="token comment">// &quot;intermediate&quot;</span>
+<span class="token comment">// &quot;expert(stars: 3)&quot;</span>
+<span class="token comment">// &quot;expert(stars: 5)&quot;</span>
+</code></pre>
+<h2 id="プロトコル型のコレクションcollections-of-protocol-types">プロトコル型のコレクション(Collections of Protocol Types)</h2>
+<p>プロトコルは、<a href="protocols.html#protocols-as-types">Protocols as Types(型としてのプロトコル)</a>で説明されているように、配列や辞書などのコレクションに格納される型として使用できます。この例では、<code>TextRepresentable</code> の配列を作成します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> things<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">TextRepresentable</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>game<span class="token punctuation">,</span> d12<span class="token punctuation">,</span> simonTheHamster<span class="token punctuation">]</span>
+</code></pre>
+<p>配列内のアイテムを繰り返し処理し、各アイテムの説明をテキストで出力できるようになりました:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> thing <span class="token keyword">in</span> things <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>thing<span class="token punctuation">.</span>textualDescription<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// A game of Snakes and Ladders with 25 squares</span>
+<span class="token comment">// A 12-sided dice</span>
+<span class="token comment">// A hamster named Simon</span>
+</code></pre>
+<p><code>Thing</code> 定数は <code>TextRepresentable</code> 型なことに注目してください。内部の実際のインスタンスがそれらの型の 1 つの場合でも、型は <code>Dice</code>、<code>DiceGame</code>、または <code>Hamster</code> ではありません。これは <code>TextRepresentable</code> 型で、<code>TextRepresentable</code> は全て <code>textualDescription</code> プロパティを持つことがわかっているため、ループ処理の中で安全に <code>thing.textualDescription</code> にアクセスできます。</p>
+<h2 id="プロトコル継承protocol-inheritance"><a id="protocols-protocol-inheritance">プロトコル継承(Protocol Inheritance)</a></h2>
+<p>プロトコルは 1 つ以上の他のプロトコルを継承でき、継承する要件の上にさらに要件を追加できます。プロトコル継承の構文はクラス継承の構文に似ていますが、継承された複数のプロトコルをカンマ(<code>,</code>)で区切って並べます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">InheritingProtocol</span><span class="token punctuation">:</span> <span class="token builtin">SomeProtocol</span><span class="token punctuation">,</span> <span class="token builtin">AnotherProtocol</span> <span class="token punctuation">{</span>
+    <span class="token comment">// プロトコルの実装をここに</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>上の <code>TextRepresentable</code> プロトコルを継承するプロトコルの例を次に示します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">PrettyTextRepresentable</span><span class="token punctuation">:</span> <span class="token builtin">TextRepresentable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> prettyTextualDescription<span class="token punctuation">:</span> <span class="token builtin">String</span> <span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>この例では、<code>TextRepresentable</code> から継承する新しいプロトコル <code>PrettyTextRepresentable</code> を定義しています。<code>PrettyTextRepresentable</code> に準拠するものは全て、<code>TextRepresentable</code> の全ての要件に加えて、<code>PrettyTextRepresentable</code> の追加の要件を満たす必要があります。この例では、<code>PrettyTextRepresentable</code> は、<code>String</code> を返す <code>prettyTextualDescription</code> というプロパティの get を提供するための 1 つの要件を追加します。</p>
+<p><code>SnakesAndLadders</code> クラスを拡張して、<code>PrettyTextRepresentable</code> に準拠させることができます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">SnakesAndLadders</span><span class="token punctuation">:</span> <span class="token builtin">PrettyTextRepresentable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> prettyTextualDescription<span class="token punctuation">:</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> output <span class="token operator">=</span> textualDescription <span class="token operator">+</span> <span class="token string">&quot;:\n&quot;</span>
+        <span class="token keyword">for</span> index <span class="token keyword">in</span> <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>finalSquare <span class="token punctuation">{</span>
+            <span class="token keyword">switch</span> board<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> <span class="token keyword">let</span> ladder <span class="token keyword">where</span> ladder <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+                output <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">&quot;▲ &quot;</span>
+            <span class="token keyword">case</span> <span class="token keyword">let</span> snake <span class="token keyword">where</span> snake <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+                output <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">&quot;▼ &quot;</span>
+            <span class="token keyword">default</span><span class="token punctuation">:</span>
+                output <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">&quot;○ &quot;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> output
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>この extension は、<code>SnakesAndLadders</code> 型が <code>PrettyTextRepresentable</code> プロトコルに準拠し、 <code>prettyTextualDescription</code> のプロパティの実装を提供していることを示しています。<code>PrettyTextRepresentable</code> に準拠するものは、必ず全て <code>TextRepresentable</code> なので、<code>prettyTextualDescription</code> の実装は、<code>TextRepresentable</code> プロトコルの <code>textualDescription</code> プロパティにアクセスして出力文字列を開始します。コロン(<code>:</code>)と改行(<code>\n</code>)を追加し、これをテキストの開始表現として使用します。次に、ボードの正方形の配列を繰り返し処理し、各正方形の内容を表す幾何学的形状を追加します:</p>
+<ul>
+<li>正方形の値が <code>0</code> より大きい場合、それははしごの根本で、<code>▲</code> で表されます</li>
+<li>マスの値が <code>0</code> 未満の場合、それはヘビの頭で、<code>▼</code> で表されます</li>
+<li>それ以外の場合、正方形の値は <code>0</code> で、それは <code>○</code> で表される「自由な」正方形です</li>
+</ul>
+<p><code>prettyTextualDescription</code> プロパティを使用して、<code>SnakesAndLadders</code> インスタンスの説明をきれいに表示できるようになりました:</p>
+<pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span>game<span class="token punctuation">.</span>prettyTextualDescription<span class="token punctuation">)</span>
+<span class="token comment">// A game of Snakes and Ladders with 25 squares:</span>
+<span class="token comment">// ○ ○ ▲ ○ ○ ▲ ○ ○ ▲ ▲ ○ ○ ○ ▼ ○ ○ ○ ○ ▼ ○ ○ ▼ ○ ▼ ○</span>
+</code></pre>
+<h2 id="クラス専用プロトコルclass-only-protocols"><a id="class-only-protocols">クラス専用プロトコル(Class-Only Protocols)</a></h2>
+<p><code>AnyObject</code> プロトコルをプロトコル継承の一覧に追加することで、プロトコルへの準拠を(構造体や列挙型ではなく)クラス型に制限できます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">SomeClassOnlyProtocol</span><span class="token punctuation">:</span> <span class="token builtin">AnyObject</span><span class="token punctuation">,</span> <span class="token builtin">SomeInheritedProtocol</span> <span class="token punctuation">{</span>
+    <span class="token comment">// クラス専用プロトコルの実装をここに</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>上記の例では、<code>SomeClassOnlyProtocol</code> はクラス型でのみ準拠できます。<code>SomeClassOnlyProtocol</code> に準拠しようとする構造体または列挙型の定義を作成すると、コンパイルエラーになります。</p>
+<blockquote>
+<p>NOTE<br>そのプロトコルの要件によって定義された動作が、準拠する型が値型のセマンティクスではなく参照型のセマンティクスであることを想定(要求)する場合は、クラス専用プロトコルを使用してください。参照型と値型のセマンティクスの詳細については、<a href="structures-and-classes#structures-and-enumerations-are-value-type">Structures and Enumerations Are Value Types(構造体と列挙型は値型)</a>、<a href="structures-and-classes#classes-are-reference-types">Classes Are Reference Types(クラスは参照型)</a>を参照ください。</p>
+</blockquote>
+<h2 id="プロトコル合成protocol-composition"><a id="protocol-composition">プロトコル合成(Protocol Composition)</a></h2>
+<p>同時に複数のプロトコルに準拠すると便利な場合があります。プロトコル合成を使用して、複数のプロトコルを 1 つの要件に組み合わせることができます。プロトコル合成は、合成内の全てのプロトコルの要件を組み合わせた一時的なローカルプロトコルを定義したかのように動作します。プロトコル合成は、新しいプロトコル型を定義しません。</p>
+<p>プロトコル合成は <code>SomeProtocol &amp; AnotherProtocol</code> という形式で記述します。アンパサンド (<code>&amp;</code>) で区切って、必要な数のプロトコルを並べることができます。プロトコルに加えて、プロトコル合成には、必要なスーパークラスを 1 つ含めることもできます。</p>
+<p><code>Named</code> と <code>Aged</code> という 2 つのプロトコルを組み合わせて、単一の関数パラメータに指定した例を次に示します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">protocol</span> <span class="token builtin">Named</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span> <span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">protocol</span> <span class="token builtin">Aged</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> age<span class="token punctuation">:</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">struct</span> <span class="token builtin">Person</span><span class="token punctuation">:</span> <span class="token builtin">Named</span><span class="token punctuation">,</span> <span class="token builtin">Aged</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">var</span> age<span class="token punctuation">:</span> <span class="token builtin">Int</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">wishHappyBirthday</span><span class="token punctuation">(</span>to celebrator<span class="token punctuation">:</span> <span class="token builtin">Named</span> <span class="token operator">&amp;</span> <span class="token builtin">Aged</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Happy birthday, <span class="token interpolation"><span class="token delimiter variable">\(</span>celebrator<span class="token punctuation">.</span>name<span class="token delimiter variable">)</span></span>, you&apos;re <span class="token interpolation"><span class="token delimiter variable">\(</span>celebrator<span class="token punctuation">.</span>age<span class="token delimiter variable">)</span></span>!&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> birthdayPerson <span class="token operator">=</span> <span class="token function">Person</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Malcolm&quot;</span><span class="token punctuation">,</span> age<span class="token punctuation">:</span> <span class="token number">21</span><span class="token punctuation">)</span>
+<span class="token function">wishHappyBirthday</span><span class="token punctuation">(</span>to<span class="token punctuation">:</span> birthdayPerson<span class="token punctuation">)</span>
+<span class="token comment">// &quot;Happy birthday, Malcolm, you&apos;re 21!&quot;</span>
+</code></pre>
+<p>この例では、<code>Named</code> プロトコルには、<code>name</code> という <code>String</code> 型のプロパティの get 要件が 1 つのあります。<code>Aged</code> プロトコルには、<code>age</code> と呼ばれる <code>Int</code> 型のプロパティの get 要件が 1 つあります。どちらのプロトコルも、<code>Person</code> と呼ばれる構造体に準拠されています。</p>
+<p>この例では、<code>wishHappyBirthday(to:)</code> 関数も定義されています。<code>celebrator</code> パラメータの型は <code>Named &amp; Aged</code> です。これは、「<code>Named</code> プロトコルと <code>Aged</code> プロトコルの両方に準拠する任意の型」を意味します。必要なプロトコルの両方に準拠している限り、関数に渡される特定の型は問題ではありません。</p>
+<p>この例では、<code>birthdayPerson</code> という名前の新しい <code>Person</code> インスタンスを作成し、この新しいインスタンスを <code>wishHappyBirthday(to:)</code> 関数に渡しています。<code>Person</code> は両方のプロトコルに準拠しているため、<code>wishHappyBirthday(to:)</code> 関数は誕生日の挨拶を出力できます。</p>
+<p>先ほどの例の <code>Named</code> プロトコルと <code>Location</code> クラスを組み合わせた例を次に示します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">Location</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> latitude<span class="token punctuation">:</span> <span class="token builtin">Double</span>
+    <span class="token keyword">var</span> longitude<span class="token punctuation">:</span> <span class="token builtin">Double</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>latitude<span class="token punctuation">:</span> <span class="token builtin">Double</span><span class="token punctuation">,</span> longitude<span class="token punctuation">:</span> <span class="token builtin">Double</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>latitude <span class="token operator">=</span> latitude
+        <span class="token keyword">self</span><span class="token punctuation">.</span>longitude <span class="token operator">=</span> longitude
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">City</span><span class="token punctuation">:</span> <span class="token builtin">Location</span><span class="token punctuation">,</span> <span class="token builtin">Named</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> latitude<span class="token punctuation">:</span> <span class="token builtin">Double</span><span class="token punctuation">,</span> longitude<span class="token punctuation">:</span> <span class="token builtin">Double</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token keyword">init</span><span class="token punctuation">(</span>latitude<span class="token punctuation">:</span> latitude<span class="token punctuation">,</span> longitude<span class="token punctuation">:</span> longitude<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">beginConcert</span><span class="token punctuation">(</span><span class="token keyword">in</span> location<span class="token punctuation">:</span> <span class="token builtin">Location</span> <span class="token operator">&amp;</span> <span class="token builtin">Named</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Hello, <span class="token interpolation"><span class="token delimiter variable">\(</span>location<span class="token punctuation">.</span>name<span class="token delimiter variable">)</span></span>!&quot;</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> seattle <span class="token operator">=</span> <span class="token function">City</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Seattle&quot;</span><span class="token punctuation">,</span> latitude<span class="token punctuation">:</span> <span class="token number">47.6</span><span class="token punctuation">,</span> longitude<span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">122.3</span><span class="token punctuation">)</span>
+<span class="token function">beginConcert</span><span class="token punctuation">(</span><span class="token keyword">in</span><span class="token punctuation">:</span> seattle<span class="token punctuation">)</span>
+<span class="token comment">// &quot;Hello, Seattle!&quot;</span>
+</code></pre>
+<p><code>beginConcert(in:)</code> 関数は、<code>Location &amp; Named</code> 型のパラメータを受け取ります。これは、「<code>Location</code> のサブクラスで、<code>Named</code> プロトコルに準拠する任意の型」を意味します。この場合、<code>City</code> は両方の要件を満たしています。</p>
+<p><code>Person</code> は <code>Location</code> のサブクラスではないため、<code>beginConcert(in:)</code> 関数に <code>birthdayPerson</code> を渡すことは無効です。同様に、<code>Named</code> プロトコルに準拠していない <code>Location</code> のサブクラスを作成した場合、その型のインスタンスで <code>beginConcert(in:)</code> を呼び出すことも無効です。</p>
+<h2 id="プロトコル準拠チェックchecking-for-protocol-conformance"><a id="checking-for-protocol-conformance">プロトコル準拠チェック(Checking for Protocol Conformance)</a></h2>
+<p><a href="type-casting.html">Type Casting(型キャスト)</a>で説明されている <code>is</code> および <code>as</code> 演算子を使用して、プロトコルの準拠を確認し、特定のプロトコルにキャストできます。プロトコルのチェックと型へのキャストは、型のチェックやキャストとまったく同じ構文を使用します。</p>
+<ul>
+<li><code>is</code> 演算子は、インスタンスがプロトコルに準拠している場合は <code>true</code> を返し、準拠していない場合は <code>false</code> を返します</li>
+<li>ダウンキャスト演算子の <code>as?</code> は、プロトコルの型のオプショナル値を返します。インスタンスがそのプロトコルに準拠していない場合、この値は <code>nil</code> です</li>
+<li>ダウンキャスト演算子の <code>as!</code> は、強制的にダウンキャストし、ダウンキャストが成功しない場合は実行時エラーを引き起こします</li>
+</ul>
+<p>この例では、<code>HasArea</code> というプロトコルを定義しています。このプロトコルには、<code>area</code> という <code>Double</code> 型の単一のプロパティの get 要件があります:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">Circle</span><span class="token punctuation">:</span> <span class="token builtin">HasArea</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token number">3.1415927</span>
+    <span class="token keyword">var</span> radius<span class="token punctuation">:</span> <span class="token builtin">Double</span>
+    <span class="token keyword">var</span> area<span class="token punctuation">:</span> <span class="token builtin">Double</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> pi <span class="token operator">*</span> radius <span class="token operator">*</span> radius <span class="token punctuation">}</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>radius<span class="token punctuation">:</span> <span class="token builtin">Double</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">self</span><span class="token punctuation">.</span>radius <span class="token operator">=</span> radius <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Country</span><span class="token punctuation">:</span> <span class="token builtin">HasArea</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> area<span class="token punctuation">:</span> <span class="token builtin">Double</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>area<span class="token punctuation">:</span> <span class="token builtin">Double</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">self</span><span class="token punctuation">.</span>area <span class="token operator">=</span> area <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>Circle</code> と <code>Country</code> の 2 つのクラスがあり、どちらも <code>HasArea</code> プロトコルに準拠しています:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">Circle</span><span class="token punctuation">:</span> <span class="token builtin">HasArea</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token number">3.1415927</span>
+    <span class="token keyword">var</span> radius<span class="token punctuation">:</span> <span class="token builtin">Double</span>
+    <span class="token keyword">var</span> area<span class="token punctuation">:</span> <span class="token builtin">Double</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> pi <span class="token operator">*</span> radius <span class="token operator">*</span> radius <span class="token punctuation">}</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>radius<span class="token punctuation">:</span> <span class="token builtin">Double</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">self</span><span class="token punctuation">.</span>radius <span class="token operator">=</span> radius <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Country</span><span class="token punctuation">:</span> <span class="token builtin">HasArea</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> area<span class="token punctuation">:</span> <span class="token builtin">Double</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>area<span class="token punctuation">:</span> <span class="token builtin">Double</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">self</span><span class="token punctuation">.</span>area <span class="token operator">=</span> area <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>Circle</code> クラスは、<code>radius</code> という格納プロパティに基づいて、計算プロパティ <code>area</code> プロパティの要件を実装します。<code>Country</code> クラスは、格納プロパティとして <code>area</code> プロパティを直接実装します。どちらのクラスも、<code>HasArea</code> プロトコルに正しく準拠しています。</p>
+<p>下記は、<code>HasArea</code> プロトコルに準拠していない <code>Animal</code> というクラスです:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">Animal</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> legs<span class="token punctuation">:</span> <span class="token builtin">Int</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>legs<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">self</span><span class="token punctuation">.</span>legs <span class="token operator">=</span> legs <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>Circle</code>、<code>Country</code>、および <code>Animal</code> クラスには、共通の基本クラスがありません。とはいえ、それらは全てクラスなため、3 つ全ての型のインスタンスを使用して、<code>AnyObject</code> 型の値を格納する配列を初期化できます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> objects<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">AnyObject</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token function">Circle</span><span class="token punctuation">(</span>radius<span class="token punctuation">:</span> <span class="token number">2.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">Country</span><span class="token punctuation">(</span>area<span class="token punctuation">:</span> <span class="token number">243_610</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">Animal</span><span class="token punctuation">(</span>legs<span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token punctuation">]</span>
+</code></pre>
+<p><code>objects</code> の配列は、半径 2 の <code>Circle</code> インスタンス、英国の表面積を平方キロメートル単位で初期化した <code>Country</code> インスタンス、そして 4 本の足を持つ Animal インスタンスを含む配列リテラルで初期化されています。</p>
+<p><code>objects</code> 配列を繰り返し処理して、配列内の各オブジェクトをチェックして、<code>HasArea</code> プロトコルに準拠しているかどうかを確認できます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> object <span class="token keyword">in</span> objects <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token keyword">let</span> objectWithArea <span class="token operator">=</span> object <span class="token keyword">as</span><span class="token operator">?</span> <span class="token builtin">HasArea</span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Area is <span class="token interpolation"><span class="token delimiter variable">\(</span>objectWithArea<span class="token punctuation">.</span>area<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Something that doesn&apos;t have an area&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// Area is 12.5663708</span>
+<span class="token comment">// Area is 243610.0</span>
+<span class="token comment">// Something that doesn&apos;t have an area</span>
+</code></pre>
+<p>配列内のオブジェクトが <code>HasArea</code> プロトコルに準拠している場合は、常に <code>as?</code> 演算子は、<code>objectWithArea</code> と呼ばれる定数へオプショナルバインドでアンラップされます。<code>objectWithArea</code> 定数は <code>HasArea</code> 型なことがわかっているため、その <code>area</code> プロパティは型安全な方法でアクセスおよび出力できます。</p>
+<p>プロトコルに準拠したオブジェクトは、キャストで変更されないことに注目してください。それらはそれぞれ <code>Circle</code>、<code>Country</code>、<code>Animal</code> です。ただし、オブジェクトが <code>objectWithArea</code> 定数に格納されている時点では、<code>HasArea</code> 型とのみ認識されているため、アクセスできるのは <code>area</code> プロパティのみです。</p>
+<h2 id="オプショナルのプロトコル要件optional-protocol-requirements"><a id="optional-protocol-requirements">オプショナルのプロトコル要件(Optional Protocol Requirements)</a></h2>
+<p>プロトコルにオプショナルの要件を定義できます。これらの要件は、プロトコルに準拠する型によって実装される必要はありません。オプショナルの要件には、プロトコルの定義の一部として <code>optional</code> 修飾子が付けられます。Objective-C と相互運用するコードを作成できるように、オプショナルの要件が利用可能です。プロトコルとオプショナルの要件の両方が <code>@objc</code> 属性でマークされている必要があります。<code>@objc</code> プロトコルは、Objective-C クラスまたは他の <code>@objc</code> クラスから継承するクラスによってのみ準拠できることに注目してください。構造体や列挙型が準拠することはできません。</p>
+<p>オプショナルの要件でメソッドまたはプロパティを使用すると、その型は自動的にオプショナルになります。たとえば、<code>(Int) -&gt; String</code> 型のメソッドは <code>((Int) -&gt; String)?</code> になります。メソッドの戻り値ではなく、関数型全体がオプショナルになっていることに注目してください。</p>
+<p>プロトコルに準拠する型によって要件が実装されていない可能性を考慮して、オプショナルのプロトコル要件をオプショナルチェーンで呼び出すことができます。オプショナルメソッドの実装を確認するには、メソッドの呼び出し時にメソッド名の後に疑問符(<code>?</code>)を記述します(<code>someOptionalMethod?(someArgument)</code> など)。オプショナルチェーンについては、<a href="optional-chaining.html">Optional Chaining(オプショナルチェーン)</a>を参照ください。</p>
+<p>次の例では、<code>Counter</code> という整数をカウントするクラスを定義しています。これは、外部データソースを使用して増分量を提供します。このデータソースは、次の 2 つのオプショナルの要件がある <code>CounterDataSource</code> プロトコルによって定義されます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token atrule">@objc</span> <span class="token keyword">protocol</span> <span class="token builtin">CounterDataSource</span> <span class="token punctuation">{</span>
+    <span class="token atrule">@objc</span> <span class="token keyword">optional</span> <span class="token keyword">func</span> <span class="token function">increment</span><span class="token punctuation">(</span>forCount <span class="token builtin">count</span><span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span>
+    <span class="token atrule">@objc</span> <span class="token keyword">optional</span> <span class="token keyword">var</span> fixedIncrement<span class="token punctuation">:</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>CounterDataSource</code> プロトコルは、<code>increment(forCount:)</code> と呼ばれるオプショナルメソッドの要件と、<code>fixedIncrement</code> と呼ばれるオプショナルのプロパティの要件を定義しています。これらの要件は、データソースが <code>Counter</code> インスタンスに適切な増分量を提供するための 2 つの異なる方法を定義します。</p>
+<blockquote>
+<p>NOTE<br>厳密に言えば、いずれのプロトコル要件を実装していなくても、<code>CounterDataSource</code> に準拠する独自クラスを作成できます。結局のところ、どちらもオプショナルです。技術的には許可されていますが、これはあまり有用なデータソースではありません。</p>
+</blockquote>
+<p>以下で定義される <code>Counter</code> クラスには、<code>CounterDataSource?</code> 型のオプショナルの <code>dataSource</code> プロパティがあります:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">Counter</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> <span class="token builtin">count</span> <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">var</span> dataSource<span class="token punctuation">:</span> <span class="token builtin">CounterDataSource</span><span class="token operator">?</span>
+    <span class="token keyword">func</span> <span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token keyword">let</span> amount <span class="token operator">=</span> dataSource<span class="token operator">?</span><span class="token punctuation">.</span>increment<span class="token operator">?</span><span class="token punctuation">(</span>forCount<span class="token punctuation">:</span> <span class="token builtin">count</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token builtin">count</span> <span class="token operator">+</span><span class="token operator">=</span> amount
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token keyword">let</span> amount <span class="token operator">=</span> dataSource<span class="token operator">?</span><span class="token punctuation">.</span>fixedIncrement <span class="token punctuation">{</span>
+            <span class="token builtin">count</span> <span class="token operator">+</span><span class="token operator">=</span> amount
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>Counter</code> クラスは、現在の値を <code>count</code> という変数プロパティに保存します。<code>Counter</code> クラスは、メソッドが呼び出されるたびに <code>count</code> プロパティを増加する <code>increment</code> というメソッドも定義します。</p>
+<p><code>increment()</code> メソッドは、最初に、データソースで <code>increment(forCount:)</code> メソッドの実装を呼び出して、増分量を取得しようとします。<code>increment()</code> メソッドは、オプショナルチェーンを使用して <code>increment(forCount:)</code> の呼び出しを試み、現在の <code>count</code> をメソッドの単一の引数として渡します。</p>
+<p>ここでは、2 つの階層のオプショナルチェーンが行われていることに注目してください。まず、<code>dataSource</code> が <code>nil</code> の可能性があるため、<code>dataSource</code> にはその名前の後に疑問符(<code>?</code>)があり、<code>dataSource</code> が <code>nil</code> でない場合にのみ <code>increment(forCount:)</code> を呼び出す必要があることを示しています。次に、<code>dataSource</code> が存在する場合でも、<code>increment(forCount:)</code> がオプショナルのため、必ず実装されている保証はありません。ここで、<code>increment(forCount:)</code> が実装されない可能性も、オプショナルチェーンによって処理されます。<code>increment(forCount:)</code> の呼び出しは、<code>increment(forCount:)</code> が存在する場合、つまり <code>nil</code> でない場合にのみ発生します。これが <code>increment(forCount:)</code> にも名前の後に疑問符が付いている理由です。</p>
+<p><code>increment(forCount:)</code> の呼び出しはこれら 2 つの理由のいずれかで失敗する可能性があるため、呼び出しはオプショナルの <code>Int</code> 値を返します。これは、<code>CounterDataSource</code> の定義で <code>increment(forCount:)</code> がオプショナルではない <code>Int</code> 値を返すように定義されている場合でも当てはまります。オプショナルチェーンは 2 回行われていますが、結果は 1 つのオプショナルにラップされます。複数のオプショナルチェーンの詳細については、<a href="optional-chaining#linking-multiple-levels-of-chaining">Linking Multiple Levels of Chaining(複数階層のチェーンへのリンク)</a>を参照ください。</p>
+<p><code>increment(forCount:)</code> を呼び出した後、それが返すオプショナルの <code>Int</code> は、オプショナルバインディングを使用して、<code>amount</code> という定数にアンラップされます。オプショナルの <code>Int</code> に値が含まれている場合、つまり、デリゲートとメソッドの両方が存在し、メソッドが値を返した場合、<code>count</code> 格納プロパティに値が追加され、増加の動作が完了します。</p>
+<p><code>increment(forCount:)</code> メソッドから値を取得できない場合(<code>dataSource</code> が <code>nil</code> か、データソースが <code>increment(forCount:)</code> を実装していないため)、 <code>increment()</code> メソッドはデータソースの <code>fixedIncrement</code> プロパティから値を取得しようとします。<code>fixedIncrement</code> プロパティもオプショナルの要件のため、その値はオプショナルの <code>Int</code> 値です。ただし、<code>fixedIncrement</code> は、<code>CounterDataSource</code> プロトコル定義の一部として非オプショナルの <code>Int</code> プロパティとして定義されています。</p>
+<p>下記は、<code>fixedIncrement</code> にアクセスされる度にデータソースが定数 <code>3</code> を返す簡単な <code>CounterDataSource</code> の実装です。これは、オプショナルの <code>fixedIncrement</code> プロパティ要件を実装することでこれを行います。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">ThreeSource</span><span class="token punctuation">:</span> <span class="token builtin">NSObject</span><span class="token punctuation">,</span> <span class="token builtin">CounterDataSource</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> fixedIncrement <span class="token operator">=</span> <span class="token number">3</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>ThreeSource</code> のインスタンスを新しい <code>Counter</code> インスタンスのデータソースとして使用できます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> counter <span class="token operator">=</span> <span class="token function">Counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+counter<span class="token punctuation">.</span>dataSource <span class="token operator">=</span> <span class="token function">ThreeSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> <span class="token number">_</span> <span class="token keyword">in</span> <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">4</span> <span class="token punctuation">{</span>
+    counter<span class="token punctuation">.</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>counter<span class="token punctuation">.</span><span class="token builtin">count</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 3</span>
+<span class="token comment">// 6</span>
+<span class="token comment">// 9</span>
+<span class="token comment">// 12</span>
+</code></pre>
+<p>上記のコードは、新しい <code>Counter</code> インスタンスを作成します。データソースを新しい <code>ThreeSource</code> インスタンスに設定します。そして、カウンタの <code>increment()</code> メソッドを 4 回呼び出します。予想どおり、カウンタの count プロパティは、<code>increment()</code> が呼び出されるたびに 3 ずつ増加します。</p>
+<p>下記は <code>TowardsZeroSource</code> と呼ばれるより複雑なデータソースで、<code>Counter</code> インスタンスを現在の <code>count</code> からゼロに向かってカウントアップまたはカウントダウンします:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">TowardsZeroSource</span><span class="token punctuation">:</span> <span class="token builtin">NSObject</span><span class="token punctuation">,</span> <span class="token builtin">CounterDataSource</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">increment</span><span class="token punctuation">(</span>forCount <span class="token builtin">count</span><span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Int</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token builtin">count</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token number">0</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token builtin">count</span> <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token number">1</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>TowardsZeroSource</code> クラスは、<code>CounterDataSource</code> プロトコルからオプショナルの <code>increment(forCount:)</code> メソッドを実装し、<code>count</code> 引数を使用して、カウントする方向を決定します。<code>count</code> が既にゼロの場合、メソッドは <code>0</code> を返し、それ以上のカウントが行われないことを示します。</p>
+<p><code>TowardsZeroSource</code> のインスタンスを既存の <code>Counter</code> インスタンスとともに使用して、-4 から 0 までカウントできます。カウンタがゼロに達すると、それ以上のカウントは行われません:</p>
+<pre class="language-"><code class="lang-swift">counter<span class="token punctuation">.</span><span class="token builtin">count</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">4</span>
+counter<span class="token punctuation">.</span>dataSource <span class="token operator">=</span> <span class="token function">TowardsZeroSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> <span class="token number">_</span> <span class="token keyword">in</span> <span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">5</span> <span class="token punctuation">{</span>
+    counter<span class="token punctuation">.</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>counter<span class="token punctuation">.</span><span class="token builtin">count</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// -3</span>
+<span class="token comment">// -2</span>
+<span class="token comment">// -1</span>
+<span class="token comment">// 0</span>
+<span class="token comment">// 0</span>
+</code></pre>
+<h2 id="プロトコル-extensionprotocol-extensions"><a id="protocol-extensions">プロトコル Extension(Protocol Extensions)</a></h2>
+<p>プロトコル Extension を使用して、準拠する型にメソッド、イニシャライザ、subscript、および計算プロパティの実装を提供できます。これにより、準拠する個々の型やグローバル関数ではなく、プロトコル自体に動作を定義できます。</p>
+<p>例えば、<code>RandomNumberGenerator</code> プロトコルを拡張して、必須要件の <code>random()</code> メソッドを使用してランダムな <code>Bool</code> 値を返す <code>randomBool()</code> メソッドを提供できます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">RandomNumberGenerator</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">randomBool</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Bool</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0.5</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>プロトコル Extension を作成することにより、全ての準拠する型は、追加の変更なしでこのメソッドの実装を自動的に使用することができます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> generator <span class="token operator">=</span> <span class="token function">LinearCongruentialGenerator</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>&quot;<span class="token builtin">Here&apos;s</span> a random number<span class="token punctuation">:</span> \<span class="token punctuation">(</span>generator<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>&quot;<span class="token punctuation">)</span>
+<span class="token comment">// &quot;Here&apos;s a random number: 0.3746499199817101&quot;</span>
+<span class="token function">print</span><span class="token punctuation">(</span>&quot;<span class="token builtin">And</span> here&apos;s a random <span class="token builtin">Boolean</span><span class="token punctuation">:</span> \<span class="token punctuation">(</span>generator<span class="token punctuation">.</span><span class="token function">randomBool</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>&quot;<span class="token punctuation">)</span>
+<span class="token comment">// &quot;And here&apos;s a random Boolean: true&quot;</span>
+</code></pre>
+<p>プロトコル Extension は、準拠する型に実装を追加できますが、プロトコルにさらに定義を追加して拡張したり、別のプロトコルを継承することはできません。プロトコルの継承は、常にプロトコル宣言内で指定されます。</p>
+<h3 id="デフォルト実装の提供providing-default-implementations">デフォルト実装の提供(Providing Default Implementations)</h3>
+<p>プロトコル Extension を使用して、そのプロトコルのメソッドまたは計算プロパティ要件にデフォルトの実装を提供できます。準拠する型が要件のメソッドまたはプロパティの実装を提供している場合、プロトコル Extension によって提供されるものの代わりに、準拠する型の実装が使用されます。</p>
+<blockquote>
+<p>NOTE<br>extension によって提供されるプロトコル要件のデフォルト実装は、オプショナルのプロトコル要件とは異なります。準拠する型は、独自の実装を提供する必要はありませんが、デフォルトの実装を持つ要件は、オプショナルチェーンなしで呼び出すことができます。</p>
+</blockquote>
+<p>例えば、<code>TextRepresentable</code> プロトコルを継承する <code>PrettyTextRepresentable</code> プロトコルは、要件の <code>prettyTextualDescription</code> プロパティのデフォルト実装を提供して、<code>textualDescription</code> プロパティにアクセスした結果を返すことができます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">PrettyTextRepresentable</span>  <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> prettyTextualDescription<span class="token punctuation">:</span> <span class="token builtin">String</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> textualDescription
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="プロトコル-extensionに制約の追加adding-constraints-to-protocol-extensions">プロトコル Extensionに制約の追加(Adding Constraints to Protocol Extensions)</h3>
+<p>プロトコル Extension を定義するとき、準拠する型が拡張したメソッドとプロパティを使用できる前に、その型が満たす必要がある制約を指定できます。これらの制約は、拡張するプロトコルの名前の後のジェネリックの <code>where</code> 句によって記述されます。ジェネリック <code>where</code> 句の詳細については、<a href="generics#generic-where-clauses">Generic Where Clauses(ジェネリック where 句)</a>を参照ください。</p>
+<p>例えば、要素が <code>Equatable</code> プロトコルに準拠しているコレクションに適用される <code>Collection</code> プロトコルの拡張を定義できます。コレクションの要素を標準ライブラリの <code>Equatable</code> プロトコルに制約することで、<code>==</code> および <code>!=</code> 演算子を使用して、2 つの要素間の等価性と不等価性をチェックできます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">extension</span> <span class="token builtin">Collection</span> <span class="token keyword">where</span> <span class="token builtin">Element</span><span class="token punctuation">:</span> <span class="token builtin">Equatable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">func</span> <span class="token function">allEqual</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">Bool</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> element <span class="token keyword">in</span> <span class="token keyword">self</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> element <span class="token operator">!=</span> <span class="token keyword">self</span><span class="token punctuation">.</span><span class="token builtin">first</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>allEqual()</code> メソッドは、コレクション内の全ての要素が等しい場合にのみ <code>true</code> を返します。</p>
+<p>1 つは全ての要素が同じで、もう 1 つは要素が同じでない、整数の 2 つの配列を考えます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> equalNumbers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">]</span>
+<span class="token keyword">let</span> differentNumbers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">]</span>
+</code></pre>
+<p>配列は <code>Collection</code> に準拠し、整数は <code>Equatable</code> に準拠しているため、 <code>equalNumbers</code> および <code>differentNumbers</code> は <code>allEqual()</code> メソッドを使用できます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span>equalNumbers<span class="token punctuation">.</span><span class="token function">allEqual</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;true&quot;</span>
+<span class="token function">print</span><span class="token punctuation">(</span>differentNumbers<span class="token punctuation">.</span><span class="token function">allEqual</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;false&quot;</span>
+</code></pre>
+<blockquote>
+<p>NOTE<br>準拠する型が、複数の制約が付いた拡張の要件を満たす同じメソッドまたはプロパティを実装している場合、Swift は最も厳しい制約がついている実装を選択して使用します。</p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="extensions.html" class="navigation navigation-prev " aria-label="Previous page: 拡張(Extensions)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="generics.html" class="navigation navigation-next " aria-label="Next page: ジェネリクス(Generics)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"プロトコル(Protocols)","level":"3.22","depth":1,"next":{"title":"ジェネリクス(Generics)","level":"3.23","depth":1,"path":"language-guide/generics.md","ref":"language-guide/generics.md","articles":[]},"previous":{"title":"拡張(Extensions)","level":"3.21","depth":1,"path":"language-guide/extensions.md","ref":"language-guide/extensions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL8AAAA7CAYAAAAqy1vIAAAABmJLR0QA/wD/AP+gvaeTAAANsElEQVR42u1dC3QU1RkeEaXYYjzWFkQp4gF6BCsoJbsJr6BSCwgkGxKgyJtKRFAKQhT0gPIStcqjFEFQQykFpSCPKhU5FgFBwkPlodACEh6FQjbZ7Oa1r9v/n50Nm7v3zmNnNvvIfOd8Jzk7d/6dnfvdO//973/vCIIKlNqsD5VmWqeVZln/5siy7i7NSjsN/9uBfiCJAfG7LwAPwrVtgL/5jsy0VCIINwgmTOgFmSU0KMm0jgRhnYiRwCMhXmseychoaNagiYjgyLa0AREdSCDRU7QcKclK7WDWpAlNKLFZeoKAShNX+DV0Omypfc0aNaFO+NlpD6JokkD4QbqxMZs1a0IW9pxOKSCW80kk/CCvuXI6NzNr2AS/18+0Lk5C4YssybKuMWvYBBNX+3dpji5Csoofac9Kv9+saRPh0Z1M68yYijM7nZRNGBTt3n+RWdMmwgDiOBTrnrli2aukauNqUjqwa3S+w2Y9U8e39UYghlvzgLOBfwKuBa4Azgc+C+wCbGQqMEYo7m25FcThjblrYksjnmOHiffkUVL2+wFR+Y7iAZ1b1MEtRUHjGKMMSFSwErgZ+Bsh+WaocbIxH3gU+D1wHvBHEdj5MTANmAMcDbQBewB/pq/Xz7R0ihe/3DllBCF+H/GXXCPO50ZFwb2yPhrFisYxxZcqBc/j18BfJ5H45zJ+Y4GG81OBW4Fezv0ary/KY0vL0iXYqSDSgV0ME6j7i38ShL+ygrhmTjTY708bHaVKngSs1in8ID3A6UkgfHyKlTB+nx94m4rzhwPdCvdKp/hBEHoE5RicQao+WGWYr142cTAo3x9oANVV0AAmGCd+m2VKFCo53yDR03wtwcV/k0yHoOR+tgdWqbhH+sTvsFknqhJPbjdSNqYfu/f/wzDi3rtTLGOESD3fFJIg/OUusUEYI37rLIMreLBMxeCj+mPgOOCDwKbAn0h+Kg6ExwC3SD09z8bIBG8AWzmunRJWcu5HOfAQcIdk5wnqvHaceuC5PZYpqiMyS+cS5wtPso+980fiObJffBLoFWn5a9NJKHwXzxHHE48a0QDmGFixPwVe4VTSHqki1KAt8HOOnWJgIs9O3wXcH/J7jgPvU3HeBca9KJTuuRy0iR9y86eqj8ikE/dXu0j5wlnMaA0e8546Thwjfkv0ulL+qspaDcDz9VfifIA+8afNN7BiZ3AE+1EE4cuGUhiUZW9Bgvf+DSTBPyD9TiXcwbkP3VWcq1X81nxNwgRh+y5fJJVrV4iCr3Vs+GPEd+US8V04R8rybPpcn8I9hEbl+0viSfwnGDf6ksrBHAuNOTYvSHMG9QVtOYPkW2IuftHHnzxM7Jndu7aHuTkYrsSBqhiunDw8YqFWvrc4TPz+inLuuEMlXzWogppzeqdXdNr9HcfuQ/VI/B0Yv79U5bnRF7/ol7/xohiV8Z49RcrGD6zt/y9+pUasrjlTIhIqhjlZcO/+NB7Eb+GItLdOu405A+DceiT+jozfXxJX4kdW/b0gIHKXk5TPm1rrWPUnG6TRqi8id8Uxqg/hwfXiU7EWfz+O+LsaYBtTIZZTDJ2cSwF2oqg1ae/nDBstNdq4h2GjGWPAS5dpRZVpRB0fwrivZQw7LA5knOvjlG2mS/w4AK7xzeEpUL1t/fUJL4j7e44fud5jfwE9dm53TbZxtpcFDIXGWPwZHPGPrYOesSXjezEmriVtYAXDxj6N17GXYYNeOTePUeavVJk2UZonUWK+PvFjDw0hSN/5s7WE6Rj9eGDCaszjxHftSs0x73ffip+pte13lnF7f5xbiKH4W3Nu6GGVEQ29+D7CaEgQZzjuwe0a3DN6AqtamseoP+IXRQ6RHRzg1gxMHSXENTfg6zsnDYWJKuf1YyXFqt0Wf6mdK/6qretiKX7Eec5NLZBmN6OJRYzvnaEjmhLkQJU2ejLO3ckol/ziF0UOiWiYj3Nd5eAG/eND0dXBFAXicV8/5vWSyoIlYaFSmrXOoSM/0NjQNYqh+BcI8glqvaIo/j6M79yu8twJMte9XKWNmYxzp0Uo/nuB9hA6OKFOuwo6OL+LVfZZw8QvRmigt8cBbii8506LvX/5wpdrcnZqXCScER7Vl+1ODelJlOB8bmQsxX+HwE7cCuUJaQDb0WDx3yKE5744Vbpcm2Wu9weV3/8Z49yOEYpfTbSnIu6iPcw0h7cXMEaoblK1fpXIsB4cXBtWONSZP1ZR/OLTI3biF6TQplflY/aMNNAcJEVb9IIlQKV06IZSzFzuOtsq2ECXzkWdc1lgr0WoX+IXQ6AfvscUKw6MvUWnGT4Mukgf1IoGVSx/XVH87j07Yi1+RDZDDErEx/i3wNeBjwiRreaayrA7WeGcroxBahH12cQI5jhWc8rWP/GLDWDTGqIV2Dicz48N5PXv+1yxvPeHf8eD+AUpzr5Lx+ALe+NlUvxZLR5g2NmkcM7LVHl8eiykPtuiYGMa43uHmuKnG8DmtUR7C/CR6u0bxRQJJWBUKU7EH0SmFPXw62gIn0hT/EpAN+OiEJ4F2kDmnH1UeVzf8Bj1mUvhSbSV8RRrZoqf1QAgJBk1QEOJM/GHhu/QLfmXIJ+vL7cWYLqgvKb3fca57Tllb2OMT9pJk2Pl1Oc9ODYaSA2MntsQTPFzFqbjzG9U4I9b8YeiiRSaxJVZhRoGyEQSt1wDYKUC5MmMTULLFYUc20Ydm6PB1Zpvil+hAUTjCYDzCgkgfhop0mTSOik8qdQAXlAIt/pUiuttqtyykGNPU8cOaJgjyDDFryZNefXSsFi/Lq/nvxcSUfx0mgCGPo/KiB9dkuYyNgqF8Px/Fk5T5fqHHGslhCeDsbYFWa9xfJCY4se9c4IpCobOAyyCyS6vxxDxew7tTXTxh8bfZ8sMlOXWCcxhlKczJ1szQpxNqDJ0vtBgxndd1BgZStyeH+P1uJVIMFHNsJngGXmyeTtqgdeXJOKXSxtA7pc5pxuj/AiqzFOMECeNN6kyqxiDePp7JiSt+DE92XP0oOhbV20oMGoRec2TxXvmpC7x46L5JBP/TQz3JOj6aJm1XUmV2cgIcdLopeA+jWFcV5vkFT/m2IzsLa7LDWwj4hRnYsueGaK/939lEvH+5zt9A16nQ1OKdAKIX2BMOgUpt4Z1E1X2VMgxXP9rZ4Q4aTRiDMDbyYRVz6r4LYk/4C17OjfMTfGePAaL2JcHkssUsjNr7DyZKa7q8p45Zdig13Poy7oWP6Yj7KC4XTAuj38KR/yNZc7JY5QPDpLTZUKcNLZQZSfJDJiX1QvxBzem4vnpuFYXtyyp3rFFdI8wqlOx8k1xhwcMcboP7Ca+4qtRm+tyvTS+LsVv5Yizs0Hiny+w9++Rwz0Cf93vLA2ipccGH0uf38Wwn1VvxC/23BNyie/qZRJvEPf0qTvxpzBi6yw/O1IcENgrxJRwkjpnifT5XpkQJ40WjLFGI8Zkmke6D/VH/IGF5X1hOeI3cdcA1O0TZNi+PZ8K7A1mu+u020eIfEuUxUL4gppbhdqbvbJCnDSOU3bQzfsz9dlulb+nrsV/n8DOoL2ZI34NO7YFmdMtkLTGWWAeC1SueqsuxZ/LESluX5gaoU1MHfgfx66a3Rn6MiaqRqsIcdJ4gzoHn5bHqM9eilPxt+Tcv9bM0lr26gyL2ICv7bt0Pi7Ej1slqtiodraBk1IHODcaK2qGwgBVoKIxOGDlLcFbr9IOvsChihGRUQpx0nhYCF/dRU++WeJU/CmceziNWVr1Ls0yuzfjABd3U46est3EvX9XYCANry/C3dxwIUvoGl9shIouG7x7zMCQZDtBfhvta8ClwAHAXwi1txzEXRIyJHfmrIwNXCZ5p4Zr2inI5wmp2TwXXQS5t8rYBfXbJ9a1+AUhfHFO0N3DLNkO0r1vIf7Vuz9/jbCG9RKjO5hjb1jiGixSr3x3obgHKG+iDF9lpDbJDV5KN1kwFv0EdfvIB+kQ1Kc4owC1boI1TcZekQY7H8nYWafBTizE/67K+ztJ95tZWOOB8gXPi+FN7LEjAS51xB5e1SZX8OTBvYJw8UuM3szSS+rljdxW46IUn9eKDjI2l2mwM07Gzqg4F38HQfmNLgHxR/OdXI5BPYhr1jNi7F+M9V8qggZRHZaWjMsX3Xs+EyfAMJwaUaoEvMguhu/kwgzINQaI3ie5SikRXgfm/l/i2O6vwc7dMtfYIs7FH5z08yqKPyZvY4ScIXSTjHztqGPoI8pvY7RZ7o5yagKG2t6K4ElwTgisr21pwDUUcHzeJhrtsNKsj2m0ESvxI9KktA8XV/xSrP9gMr99XQpznhbqDg2k8CQmg+Huari7wTYpFWID8B0h8KbCHIMEHwpcrngvxUhewdqUYaepRhu3M2wobdtyM+OcVjruBw7OfylFqHpKblELIbgOIeZvYK8Dmm9gN8FEua3TnSAQdzKLvzi7c3uzpk2wJ7syrYuTuNf/i1nDJriw53RKAaEUJaH4r7r6W5qaNWxCvgFkpd8PYilNIuG7IX2jp1mzJtS5P7b07iCaa0kg/DJHtqWPWaMmNAFE0waSwPYmrPAzrYftA9J+ZdakiYgAswA3QDrA8NIsy5EEEv4JWFI5juTk3GjWoAmDIkHpHTEpDMS1vtRm3Q896zn43w70x0jkdnFwnplWCNezARfkODLTUony3pYmTNTg/9SxB5WAdrwRAAAAAElFTkSuQmCC","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-guide/protocols.md","mtime":"2021-07-17T06:39:57.073Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-17T06:40:39.672Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,1310 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <title>自動参照カウント ARC(Automatic Reference Counting) · The Swift Programming Language日本語版</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="memory-safety.html" />
+    
+    
+    <link rel="prev" href="opaque-types.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索ワードを入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    The Swift Programming Language(日本語版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Swiftへようこそ(WELCOME TO SWIFT)</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../welcome-to-swift/about-swift.html">
+            
+                <a href="../welcome-to-swift/about-swift.html">
+            
+                    
+                    Swiftについて(About Swift)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../welcome-to-swift/version-compatibility.html">
+            
+                <a href="../welcome-to-swift/version-compatibility.html">
+            
+                    
+                    バージョン互換性(Version Compatibility)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../welcome-to-swift/a-swift-tour.html">
+            
+                <a href="../welcome-to-swift/a-swift-tour.html">
+            
+                    
+                    Swiftツアー(A Swift Tour)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">言語ガイド(LANGUAGE GUIDE)</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="the-basics.html">
+            
+                <a href="the-basics.html">
+            
+                    
+                    基本(The Basics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="basic-operators.html">
+            
+                <a href="basic-operators.html">
+            
+                    
+                    基本演算子(Basic Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="strings-and-characters.html">
+            
+                <a href="strings-and-characters.html">
+            
+                    
+                    文字と文字列(Strings and Characters)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="collection-types.html">
+            
+                <a href="collection-types.html">
+            
+                    
+                    コレクション型(Collection Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="control-flow.html">
+            
+                <a href="control-flow.html">
+            
+                    
+                    制御フロー(Control Flow)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="functions.html">
+            
+                <a href="functions.html">
+            
+                    
+                    関数(Functions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="closures.html">
+            
+                <a href="closures.html">
+            
+                    
+                    クロージャ(Closures)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="enumerations.html">
+            
+                <a href="enumerations.html">
+            
+                    
+                    列挙型(Enumerations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="structures-and-classes.html">
+            
+                <a href="structures-and-classes.html">
+            
+                    
+                    構造体とクラス(Structures and Classes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="properties.html">
+            
+                <a href="properties.html">
+            
+                    
+                    プロパティ(Properties)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="methods.html">
+            
+                <a href="methods.html">
+            
+                    
+                    メソッド(Methods)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="subscripts.html">
+            
+                <a href="subscripts.html">
+            
+                    
+                    サブスクリプト(Subscripts)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="inheritance.html">
+            
+                <a href="inheritance.html">
+            
+                    
+                    継承(Inheritance)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="initialization.html">
+            
+                <a href="initialization.html">
+            
+                    
+                    初期化(Initialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="deinitialization.html">
+            
+                <a href="deinitialization.html">
+            
+                    
+                    デイニシャライゼーション(Deinitialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="optional-chaining.html">
+            
+                <a href="optional-chaining.html">
+            
+                    
+                    オプショナルチェーン(Optional Chaining)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="error-handling.html">
+            
+                <a href="error-handling.html">
+            
+                    
+                    エラー処理(Error Handling)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="concurrency.html">
+            
+                <a href="concurrency.html">
+            
+                    
+                    同時並行処理(Concurrency)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="type-casting.html">
+            
+                <a href="type-casting.html">
+            
+                    
+                    型キャスト(Type Casting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="nested-types.html">
+            
+                <a href="nested-types.html">
+            
+                    
+                    ネスト型(Nested Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.21" data-path="extensions.html">
+            
+                <a href="extensions.html">
+            
+                    
+                    拡張(Extensions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.22" data-path="protocols.html">
+            
+                <a href="protocols.html">
+            
+                    
+                    プロトコル(Protocols)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.23" data-path="generics.html">
+            
+                <a href="generics.html">
+            
+                    
+                    ジェネリクス(Generics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.24" data-path="opaque-types.html">
+            
+                <a href="opaque-types.html">
+            
+                    
+                    Opaque 型(Opaque Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.25" data-path="automatic-reference-counting.html">
+            
+                <a href="automatic-reference-counting.html">
+            
+                    
+                    自動参照カウント ARC(Automatic Reference Counting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.26" data-path="memory-safety.html">
+            
+                <a href="memory-safety.html">
+            
+                    
+                    メモリ安全性(Memory Safety)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.27" data-path="access-control.html">
+            
+                <a href="access-control.html">
+            
+                    
+                    アクセスコントロール(Access Control)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.28" data-path="advanced-operators.html">
+            
+                <a href="advanced-operators.html">
+            
+                    
+                    高度な演算子(Advanced Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">言語リファレンス(LANGUAGE REFERENCE)</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../language-reference/about-the-language-reference.html">
+            
+                <a href="../language-reference/about-the-language-reference.html">
+            
+                    
+                    言語リファレンスについて(About the Language Reference)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../language-reference/lexical-structure.html">
+            
+                <a href="../language-reference/lexical-structure.html">
+            
+                    
+                    構文の構造(Lexical Structure)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../language-reference/types.html">
+            
+                <a href="../language-reference/types.html">
+            
+                    
+                    型(Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../language-reference/expressions.html">
+            
+                <a href="../language-reference/expressions.html">
+            
+                    
+                    式(Expressions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../language-reference/statements.html">
+            
+                <a href="../language-reference/statements.html">
+            
+                    
+                    文(Statements)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../language-reference/declarations.html">
+            
+                <a href="../language-reference/declarations.html">
+            
+                    
+                    宣言(Declarations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../language-reference/attributes.html">
+            
+                <a href="../language-reference/attributes.html">
+            
+                    
+                    属性(Attributes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../language-reference/patterns.html">
+            
+                <a href="../language-reference/patterns.html">
+            
+                    
+                    パターン(Patterns)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../language-reference/generic-parameters-and-arguments.html">
+            
+                <a href="../language-reference/generic-parameters-and-arguments.html">
+            
+                    
+                    ジェネリックパラメータと引数(Generic Parameters and Arguments)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="../language-reference/summary-of-the-grammar.html">
+            
+                <a href="../language-reference/summary-of-the-grammar.html">
+            
+                    
+                    文法のまとめ(Summary of the Grammar)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">REVISION HISTORY (改訂履歴)</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../revision-history/document-revision-history.html">
+            
+                <a href="../revision-history/document-revision-history.html">
+            
+                    
+                    ドキュメント改訂履歴(Document Revision History)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKitで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >自動参照カウント ARC(Automatic Reference Counting)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="自動参照カウント-arcautomatic-reference-counting">自動参照カウント ARC(Automatic Reference Counting)</h1>
+<p>最終更新日: 2021/6/30</p>
+<p>Swift は自動参照カウント(以下 <em>ARC</em> )を使用して、アプリのメモリ使用状況を追跡および管理します。ほとんどの場合、これはメモリ管理が Swift によって「ただ行われている」ことを意味し、メモリ管理について自身で考える必要はありません。ARC は、クラスインスタンスが不要になったときに、クラスインスタンスによって使用されていたメモリを自動的に解放します。</p>
+<p>ただし、場合によっては、ARC がメモリを管理するために、各コード間の関係についてより多くの情報を必要とすることがあります。この章では、これらの状況について説明し、ARC でアプリの全てのメモリを管理できるようにする方法を示します。Swift での ARC の使用は、<a href="https://developer.apple.com/library/archive/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html" target="_blank">Transitioning to ARC Release Notes</a>で説明されているアプローチと非常によく似ています。</p>
+<p>参照カウントは、クラスインスタンスにのみ適用されます。構造体と列挙型は、参照型ではなく値型なので、参照が格納および渡されることはありません。</p>
+<h2 id="arcはどう機能するのかhow-arc-works">ARCはどう機能するのか(How ARC Works)</h2>
+<p>クラスの新しいインスタンスを作成するたびに、ARC はそのインスタンスに関する情報を格納するためにメモリの一部を割り当てます。このメモリには、インスタンスの型に関する情報と、そのインスタンスに関連付けられた格納プロパティの値が保持されます。</p>
+<p>さらに、インスタンスが不要になった場合、ARC はそのインスタンスが使用していたメモリを解放し、代わりにメモリを他の目的に使用できるようにします。これにより、クラスインスタンスが不要になったときにメモリ内のスペースを占有しないようにします。</p>
+<p>ただし、ARC がまだ使用中のインスタンスの割り当てを解除すると、そのインスタンスのプロパティにアクセスすることも、そのインスタンスのメソッドを呼び出すこともできなくなります。実際、インスタンスにアクセスしようとすると、アプリがクラッシュする可能性が高くなります。</p>
+<p>インスタンスがまだ必要なときにインスタンスが消えないようにするために、ARC は各クラスインスタンスを現在参照しているプロパティ、定数、変数の数を追跡します。そのインスタンスへのアクティブな参照が少なくとも 1 つ存在する限り、ARC はインスタンスの割り当てを解除しません。</p>
+<p>割り当ての解除を防ぐために、クラスインスタンスをプロパティ、定数、または変数に割り当てると、そのプロパティ、定数、または変数はインスタンスへの強参照を作成します。参照は、強参照が残っている限り割り当てを解除できないため、「強い」参照と呼ばれています。</p>
+<h2 id="arcの挙動arc-in-action">ARCの挙動(ARC in Action)</h2>
+<p>ARC がどのように動くのかの例を次に示します。この例は、<code>name</code> という名前の定数格納プロパティを定義する <code>Person</code> というシンプルなクラスから始まります。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>name<span class="token delimiter variable">)</span></span> is being initialized&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">deinit</span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>name<span class="token delimiter variable">)</span></span> is being deinitialized&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>Person</code> クラスには、インスタンスの <code>name</code> プロパティを設定し、初期化が進行中だということを示すメッセージを出力するイニシャライザがあります。インスタンスの割り当てが解除されたときにメッセージを出力するデイニシャライザもあります。</p>
+<p>次のコードスニペットでは、<code>Person?</code> 型の 3 つの変数を定義しています。これらの変数は、後で出てくるコードスニペットで新しい <code>Person</code> インスタンスへの複数の参照を設定するために使用されます。これらの変数はオプショナルの型(<code>Person?</code>、<code>Person</code> ではない)のため、<code>nil</code> で自動的に初期化され、現在 <code>Person</code> インスタンスを参照していません。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> reference1<span class="token punctuation">:</span> <span class="token builtin">Person</span><span class="token operator">?</span>
+<span class="token keyword">var</span> reference2<span class="token punctuation">:</span> <span class="token builtin">Person</span><span class="token operator">?</span>
+<span class="token keyword">var</span> reference3<span class="token punctuation">:</span> <span class="token builtin">Person</span><span class="token operator">?</span>
+</code></pre>
+<p>新しい <code>Person</code> インスタンスを作成して、次の 3 つの変数のいずれかに割り当てることができます。</p>
+<pre class="language-"><code class="lang-swift">reference1 <span class="token operator">=</span> <span class="token function">Person</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;John Appleseed&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;John Appleseed is being initialized&quot;</span>
+</code></pre>
+<p><code>Person</code> クラスのイニシャライザを呼び出した時点で、<code>&quot;John Appleseed is being initialized&quot;</code> というメッセージが出力されることに注目してください。これは、初期化が行われたことを確認します。</p>
+<p>新しい <code>Person</code> インスタンスが <code>reference1</code> 変数に割り当てられているため、<code>reference1</code> から新しい <code>Person</code> インスタンスへの強参照があります。少なくとも 1 つの強参照があるため、ARC はこの <code>Person</code> をメモリに保持し続け、割り当てが解除されないようにします。</p>
+<p>同じ <code>Person</code> インスタンスをさらに 2 つの変数に割り当てると、そのインスタンスへのさらに 2 つの強参照ができます。</p>
+<pre class="language-"><code class="lang-swift">reference2 <span class="token operator">=</span> reference1
+reference3 <span class="token operator">=</span> reference1
+</code></pre>
+<p>現在、この単一の <code>Person</code> インスタンスへ 3 つの強参照があります。</p>
+<p>2 つの変数に <code>nil</code> を代入してこれらの 2 つの強参照(元の参照を含む)を解除すると、1 つの強参照が残り、<code>Person</code> インスタンスの割り当てが解除されません。</p>
+<pre class="language-"><code class="lang-swift">reference1 <span class="token operator">=</span> <span class="token constant">nil</span>
+reference2 <span class="token operator">=</span> <span class="token constant">nil</span>
+</code></pre>
+<p>ARC は、最後の 3 番目の強参照がなくなるまで、<code>Person</code> インスタンスの割り当てを解除しません。強参照がなくなった時点で、<code>Person</code> インスタンスを使用していないことが明らかになります。</p>
+<pre class="language-"><code class="lang-swift">reference3 <span class="token operator">=</span> <span class="token constant">nil</span>
+<span class="token comment">// &quot;John Appleseed is being deinitialized&quot;</span>
+</code></pre>
+<h2 id="クラスインスタンス間の強参照循環strong-reference-cycles-between-class-instances"><a id="strong-reference-cycles-between-class-instances">クラスインスタンス間の強参照循環(Strong Reference Cycles Between Class Instances)</a></h2>
+<p>上記の例では、ARC は、作成した新しい <code>Person</code> インスタンスへの参照の数を追跡し、不要になったらその <code>Person</code> インスタンスの割り当てを解除できます。</p>
+<p>ただし、クラスインスタンスの強参照がゼロにならないコードを書いてしまう可能性があります。これは、2 つのクラスインスタンスが互いに強参照を保持している場合に発生する可能性があります。これは、<em>強参照循環</em>と呼ばれています。</p>
+<p>クラス間の関係の一部を強参照ではなく、弱参照または非所有参照として定義することにより、強参照循環を解決できます。このプロセスは、<a href="automatic-reference-counting#resolving-strong-reference-cycles-between-class-instances">Resolving Strong Reference Cycles Between Class Instances(クラスインスタンス間の強参照循環の解消)</a>で説明されています。ただし、強参照循環を解決する方法を学ぶ前に、そのような循環がどのように発生するかを理解しておくと役に立ちます。</p>
+<p>強参照循環が偶発的に発生する例を次に示します。この例では、<code>Person</code> と <code>Apartment</code> という 2 つのクラスを定義しており、アパートのブロックとその住人をモデル化しています。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">self</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> apartment<span class="token punctuation">:</span> <span class="token builtin">Apartment</span><span class="token operator">?</span>
+    <span class="token keyword">deinit</span> <span class="token punctuation">{</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>name<span class="token delimiter variable">)</span></span> is being deinitialized&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Apartment</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> unit<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>unit<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">self</span><span class="token punctuation">.</span>unit <span class="token operator">=</span> unit <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> tenant<span class="token punctuation">:</span> <span class="token builtin">Person</span><span class="token operator">?</span>
+    <span class="token keyword">deinit</span> <span class="token punctuation">{</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Apartment <span class="token interpolation"><span class="token delimiter variable">\(</span>unit<span class="token delimiter variable">)</span></span> is being deinitialized&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>全ての <code>Person</code> インスタンスには、<code>String</code> 型の <code>name</code> プロパティと、最初は <code>nil</code> のオプショナルの <code>apartment</code> プロパティがあります。人は常にアパートを所有しているとは限らないため、<code>apartment</code> のプロパティはオプショナルです。</p>
+<p>同様に、全ての <code>Apartment</code> インスタンスには <code>String</code> 型の <code>unit</code> プロパティがあり、最初は <code>nil</code> のオプショナルの <code>tenant</code> プロパティがあります。アパートには常にテナントがあるとは限らないため、<code>tenant</code> プロパティはオプショナルです。</p>
+<p>これらのクラスは両方とも、そのクラスのインスタンスがメモリから割り当て解除されていることを出力するデイニシャライザ(<code>deinit</code>)も定義しています。これにより、<code>Person</code> と <code>Apartment</code> のインスタンスが期待どおりに割り当て解除されているかどうかを確認できます。</p>
+<p>この次のコードスニペットは、<code>john</code> と <code>unit4A</code> と呼ばれるオプショナルの型の 2 つの変数を定義してます。これらは、下記の特定の <code>Apartment</code> および <code>Person</code> インスタンスに設定されています。これらの変数は両方とも、オプショナルなため、初期値は <code>nil</code> です:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> john<span class="token punctuation">:</span> <span class="token builtin">Person</span><span class="token operator">?</span>
+<span class="token keyword">var</span> unit4A<span class="token punctuation">:</span> <span class="token builtin">Apartment</span><span class="token operator">?</span>
+</code></pre>
+<p>特定の <code>Person</code> インスタンスと <code>Apartment</code> インスタンスを作成し、これらの新しいインスタンスを <code>john</code> 変数と <code>unit4A</code> 変数に割り当てることができます:</p>
+<pre class="language-"><code class="lang-swift">john <span class="token operator">=</span> <span class="token function">Person</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;John Appleseed&quot;</span><span class="token punctuation">)</span>
+unit4A <span class="token operator">=</span> <span class="token function">Apartment</span><span class="token punctuation">(</span>unit<span class="token punctuation">:</span> <span class="token string">&quot;4A&quot;</span><span class="token punctuation">)</span>
+</code></pre>
+<p>これら 2 つのインスタンスを作成して割り当てた後、強参照がどのように見えるかを次に示します。<code>john</code> 変数には新しい <code>Person</code> インスタンスへの強参照があり、<code>unit4A</code> 変数には新しい <code>Apartment</code> インスタンスへの強参照があります:</p>
+<p><img src="../assets/referenceCycle01_2x.png" alt="循環参照 インスタンスへの強参照"></p>
+<p>2 つのインスタンスをリンクして、その人にアパートを持たせ、そのアパートにテナントがあるようにすることができます。感嘆符(<code>!</code>)は、オプショナルの <code>john</code> および <code>unit4A</code> 変数内に格納されているインスタンスをアンラップしてアクセスするために使用され、これらのインスタンスプロパティに値を設定できます:</p>
+<pre class="language-"><code class="lang-swift">john<span class="token operator">!</span><span class="token punctuation">.</span>apartment <span class="token operator">=</span> unit4A
+unit4A<span class="token operator">!</span><span class="token punctuation">.</span>tenant <span class="token operator">=</span> john
+</code></pre>
+<p>2 つのインスタンスをリンクした後、強参照がどのように見えるかを次に示します。</p>
+<p><img src="../assets/referenceCycle02_2x.png" alt="循環参照 2 つのインスタンスをリンクした後の強参照"></p>
+<p>残念ながら、これら 2 つのインスタンスをリンクすると、それらの間に強参照循環ができます。<code>Person</code> インスタンスは <code>Apartment</code> インスタンスへの強参照を持ち、<code>Apartment</code> インスタンスは <code>Person</code> インスタンスへの強参照を持つようになりました。したがって、<code>john</code> 変数と <code>unit4A</code> 変数で保持されている強参照を解除しても、参照カウントはゼロにはならず、インスタンスは ARC によって割り当て解除されません。</p>
+<pre class="language-"><code class="lang-swift">john <span class="token operator">=</span> <span class="token constant">nil</span>
+unit4A <span class="token operator">=</span> <span class="token constant">nil</span>
+</code></pre>
+<p>これら 2 つの変数を <code>nil</code> に設定したときには、どちらのデイニシャライザも呼び出されなかったことに注目してください。強参照循環により、<code>Person</code> インスタンスと <code>Apartment</code> インスタンスの割り当てが解除されることがなくなり、アプリでメモリリークが発生します。</p>
+<p><code>john</code> 変数と <code>unit4A</code> 変数を <code>nil</code> に設定した後、強参照がどのように見えるかを次に示します。</p>
+<p><img src="../assets/referenceCycle03_2x.png" alt="循環参照 nil 設定後の強参照"></p>
+<p><code>Person</code> インスタンスと <code>Apartment</code> インスタンス間の強参照は残り、なくなることはありません。</p>
+<h2 id="クラスインスタンス間の強参照循環の解消resolving-strong-reference-cycles-between-class-instances"><a id="resolving-strong-reference-cycles-between-class-instances">クラスインスタンス間の強参照循環の解消(Resolving Strong Reference Cycles Between Class Instances)</a></h2>
+<p>Swift は、クラス型のプロパティを操作するときに強参照循環を解決する 2 つの方法を提供します。<em>弱参照</em>(<em>weak reference</em>)と<em>非所有参照</em>(<em>unowned reference</em>)です。</p>
+<p>弱参照と非所有参照により、参照循環の 1 つのインスタンスは、強参照を維持することなく、他のインスタンスを参照できます。その後、インスタンスは強参照循環を作成せずに相互に参照できます。</p>
+<p>他のインスタンスの有効期間が短い場合、つまり、他のインスタンスの割り当てを最初に解除できる場合は、弱参照を使用します。上記の <code>Apartment</code> の例では、アパートがその存続期間のある時点でテナントが存在しないこともあるため、この場合、弱参照が参照循環を断ち切る適切な方法です。対照的に、他のインスタンスの存続期間が同じか、それよりも長い場合は、非所有参照を使用します。</p>
+<h3 id="弱参照weak-references"><a id="weak-references">弱参照(Weak References)</a></h3>
+<p><em>弱参照</em>は、参照するインスタンスを強く保持せず、 ARC がインスタンスを破棄することを防ぎません。この動作により、参照が強参照循環の一部になるのを防ぎます。プロパティまたは変数宣言の前に <code>weak</code> キーワードを配置することにより、弱参照を示します。</p>
+<p>弱参照は参照するインスタンスを強く保持しないため、弱参照が参照している間にそのインスタンスの割り当てが解除される可能性があります。したがって、ARC は、参照するインスタンスの割り当てが解除されると、自動的に弱参照を <code>nil</code> に設定します。また、弱参照は実行時に値を <code>nil</code> に変更できるようにする必要があるため、常にオプショナル型の定数ではなく変数として宣言されます。</p>
+<p>他のオプショナルの値と同様に、弱参照内の値の存在を確認できます。存在しない無効なインスタンスへの参照で終わることはありません。</p>
+<blockquote>
+<p>NOTE<br>ARC が弱参照を <code>nil</code> に設定した場合、プロパティオブザーバは呼び出されません。</p>
+</blockquote>
+<p>下記の例は、上記の <code>Person</code> と <code>Apartment</code> の例と同じですが、1 つの重要な違いがあります。今回は、<code>Apartment</code> 型の <code>tenant</code> プロパティが弱参照として宣言されています:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">self</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> apartment<span class="token punctuation">:</span> <span class="token builtin">Apartment</span><span class="token operator">?</span>
+    <span class="token keyword">deinit</span> <span class="token punctuation">{</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>name<span class="token delimiter variable">)</span></span> is being deinitialized&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Apartment</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> unit<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>unit<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">self</span><span class="token punctuation">.</span>unit <span class="token operator">=</span> unit <span class="token punctuation">}</span>
+    <span class="token keyword">weak</span> <span class="token keyword">var</span> tenant<span class="token punctuation">:</span> <span class="token builtin">Person</span><span class="token operator">?</span>
+    <span class="token keyword">deinit</span> <span class="token punctuation">{</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Apartment <span class="token interpolation"><span class="token delimiter variable">\(</span>unit<span class="token delimiter variable">)</span></span> is being deinitialized&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2 つの変数(<code>john</code> と <code>unit4A</code>)からの強参照と、2 つのインスタンス間のリンクは、以前と同じように作成されます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> john<span class="token punctuation">:</span> <span class="token builtin">Person</span><span class="token operator">?</span>
+<span class="token keyword">var</span> unit4A<span class="token punctuation">:</span> <span class="token builtin">Apartment</span><span class="token operator">?</span>
+
+john <span class="token operator">=</span> <span class="token function">Person</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;John Appleseed&quot;</span><span class="token punctuation">)</span>
+unit4A <span class="token operator">=</span> <span class="token function">Apartment</span><span class="token punctuation">(</span>unit<span class="token punctuation">:</span> <span class="token string">&quot;4A&quot;</span><span class="token punctuation">)</span>
+
+john<span class="token operator">!</span><span class="token punctuation">.</span>apartment <span class="token operator">=</span> unit4A
+unit4A<span class="token operator">!</span><span class="token punctuation">.</span>tenant <span class="token operator">=</span> john
+</code></pre>
+<p>2 つのインスタンスをリンクしたので、参照は次のようになります:</p>
+<p><img src="../assets/weakReference01_2x.png" alt="弱参照 2 つのインスタンスをリンク"></p>
+<p><code>Person</code> インスタンスは依然として <code>Apartment</code> インスタンスへの強参照を持っていますが、<code>Apartment</code> インスタンスは <code>Person</code> インスタンスへの弱参照を持っています。これは、<code>john</code> 変数を <code>nil</code> に設定してその強参照を解除すると、<code>Person</code> インスタンスへの強参照がなくなることを意味します。</p>
+<pre class="language-"><code class="lang-swift">john <span class="token operator">=</span> <span class="token constant">nil</span>
+<span class="token comment">// &quot;John Appleseed is being deinitialized&quot;</span>
+</code></pre>
+<p><code>Person</code> インスタンスへの強参照がなくなったため、割り当てが解除され、<code>tenant</code> プロパティが <code>nil</code> に設定されます:</p>
+<p><img src="../assets/weakReference02_2x.png" alt="弱参照 割り当ての解除"></p>
+<p><code>Apartment</code> インスタンスへの唯一の強参照は、<code>unit4A</code> 変数です。その強参照がなくなると、<code>Apartment</code> インスタンスへの強参照はなくなります。</p>
+<pre class="language-"><code class="lang-swift">unit4A <span class="token operator">=</span> <span class="token constant">nil</span>
+<span class="token comment">// &quot;Apartment 4A is being deinitialized&quot;</span>
+</code></pre>
+<p><code>Apartment</code> インスタンスへの強参照がなくなったため、この割り当ても解除されます:</p>
+<p><img src="../assets/weakReference03_2x.png" alt="弱参照 Apartment インスタンスの割り当て解除"></p>
+<blockquote>
+<p>NOTE<br>ガベージコレクションを使用するシステムでは、メモリプレッシャによってガベージコレクションがトリガされた場合にのみ、 強参照を持たないオブジェクトの割り当てが解除されるため、シンプルなキャッシュメカニズムを実装するために弱いポインタが使用されることがあります。ただし、ARC では、最後の強参照が削除されるとすぐに値の割り当てが解除されるため、弱参照はそのような目的には適していません。</p>
+</blockquote>
+<h3 id="非所有参照unowned-references"><a id="unowned-references">非所有参照(Unowned References)</a></h3>
+<p>弱参照と同様に、<em>非所有参照</em>は、インスタンスを強参照しません。ただし、弱参照とは異なり、非所有参照は、他のインスタンスの存続期間が同じか、存続期間がより長い場合に使用します。プロパティまたは変数の宣言の前に <code>unowned</code> キーワードを配置することにより、非所有参照を示します。弱参照とは異なり、非所有参照は常に値を持つことが期待されます。その結果、値を <code>unowned</code> としてマークしてもオプショナルにはなりません。また、ARC は非所有参照の値を <code>nil</code> に設定することはありません。</p>
+<blockquote>
+<p>NOTE<br>割​​り当て解除されないインスタンスを参照していることが確実な場合にのみ、非所有参照を使用してください。</p>
+</blockquote>
+<p>インスタンスの割り当てが解除された後に非所有参照の値にアクセスしようとすると、実行時エラーが発生します。 次の例では、2 つのクラス、<code>Customer</code> と <code>CreditCard</code> を定義しています。これらのクラスは、銀行の顧客と、その顧客のクレジットカードをモデル化しています。これら 2 つのクラスはそれぞれ、もう一方のクラスのインスタンスをプロパティとして保持しています。この関係は、強参照循環を生む可能性があります。</p>
+<p><code>Customer</code> と <code>CreditCard</code> の関係は、上記の弱参照の例に見られる <code>Apartment</code> と <code>Person</code> の関係とは少し異なります。このデータモデルでは、顧客はクレジットカードを持っている場合と持っていない場合がありますが、クレジットカードは常に顧客に関連付けられます。<code>CreditCard</code> インスタンスは、それが参照する顧客より長生きすることはありません。これを表すために、<code>Customer</code> クラスにはオプショナルの <code>card</code> プロパティがありますが、<code>CreditCard</code> クラスには(オプショナルではない)非所有(<code>unowned</code>)の顧客プロパティがあります。</p>
+<p>さらに、新しい <code>CreditCard</code> インスタンスは、数値と顧客インスタンスを独自の <code>CreditCard</code> イニシャライザに渡すことによってのみ作成できます。これにより、<code>CreditCard</code> インスタンスの作成時に、<code>CreditCard</code> インスタンスに常に顧客インスタンスが関連付けられます。</p>
+<p>クレジットカードには常に顧客がいるため、強参照循環を避けるために、その顧客プロパティを非所有参照として定義します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">Customer</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">var</span> card<span class="token punctuation">:</span> <span class="token builtin">CreditCard</span><span class="token operator">?</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+    <span class="token punctuation">}</span>
+    <span class="token keyword">deinit</span> <span class="token punctuation">{</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>name<span class="token delimiter variable">)</span></span> is being deinitialized&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">CreditCard</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> number<span class="token punctuation">:</span> <span class="token builtin">UInt64</span>
+    <span class="token keyword">unowned</span> <span class="token keyword">let</span> customer<span class="token punctuation">:</span> <span class="token builtin">Customer</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>number<span class="token punctuation">:</span> <span class="token builtin">UInt64</span><span class="token punctuation">,</span> customer<span class="token punctuation">:</span> <span class="token builtin">Customer</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>number <span class="token operator">=</span> number
+        <span class="token keyword">self</span><span class="token punctuation">.</span>customer <span class="token operator">=</span> customer
+    <span class="token punctuation">}</span>
+    <span class="token keyword">deinit</span> <span class="token punctuation">{</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;Card #<span class="token interpolation"><span class="token delimiter variable">\(</span>number<span class="token delimiter variable">)</span></span> is being deinitialized&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<blockquote>
+<p>NOTE<br><code>CreditCard</code> クラスの <code>number</code> プロパティは、<code>Int</code> ではなく <code>UInt64</code> の型で定義され、<code>number</code> プロパティの容量は 32 ビットと 64 ビットの両方のシステムで 16 桁のカード番号を格納するのに十分な大きさです。</p>
+</blockquote>
+<p>次のコードスニペットは、<code>john</code> というオプショナルの <code>Customer</code> 変数を定義します。この変数は、特定の顧客への参照を保存するために使用されます。この変数はオプショナルのため、初期値は <code>nil</code> です:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> john<span class="token punctuation">:</span> <span class="token builtin">Customer</span><span class="token operator">?</span>
+</code></pre>
+<p>これで <code>Customer</code> インスタンスを作成し、それを使用して新しい <code>CreditCard</code> インスタンスを初期化し、その顧客の <code>card</code> プロパティとして割り当てることができます:</p>
+<pre class="language-"><code class="lang-swift">john <span class="token operator">=</span> <span class="token function">Customer</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;John Appleseed&quot;</span><span class="token punctuation">)</span>
+john<span class="token operator">!</span><span class="token punctuation">.</span>card <span class="token operator">=</span> <span class="token function">CreditCard</span><span class="token punctuation">(</span>number<span class="token punctuation">:</span> <span class="token number">1234_5678_9012_3456</span><span class="token punctuation">,</span> customer<span class="token punctuation">:</span> john<span class="token operator">!</span><span class="token punctuation">)</span>
+</code></pre>
+<p>2 つのインスタンスをリンクしたので、参照は次のようになります:</p>
+<p><img src="../assets/unownedReference01_2x.png" alt="非所有参照 2 つのインスタンスをリンク"></p>
+<p><code>Customer</code> インスタンスには、<code>CreditCard</code> インスタンスへの強参照があり、<code>CreditCard</code> インスタンスには、<code>Customer</code> インスタンスへの非所有参照があります。</p>
+<p><code>customer</code> は非所有参照のため、<code>john</code> 変数によって保持されている強参照を解除すると、<code>Customer</code> インスタンスへの強参照はなくなります:</p>
+<p><img src="../assets/unownedReference02_2x.png" alt="非所有参照 \`Customer\` インスタンスへの強参照の解除"></p>
+<p><code>Customer</code> インスタンスへの強参照がなくなったため、割り当てが解除されます。これが発生すると、<code>CreditCard</code> インスタンスへの強参照もなくなり、割り当ても解除されます。</p>
+<pre class="language-"><code class="lang-swift">john <span class="token operator">=</span> <span class="token constant">nil</span>
+<span class="token comment">// &quot;John Appleseed is being deinitialized&quot;</span>
+<span class="token comment">// &quot;Card #1234567890123456 is being deinitialized&quot;</span>
+</code></pre>
+<p>上記の最後のコードスニペットは、<code>john</code> 変数が <code>nil</code> に設定された後、<code>Customer</code> インスタンスと <code>CreditCard</code> インスタンスのデイニシャライザが両方の&quot;deinitialized&quot;メッセージを出力することを示しています。</p>
+<blockquote>
+<p>NOTE<br>上記の例は、安全な非所有参照の使用方法を示しています。Swift は、パフォーマンス上の理由などで、ランタイムの安全性チェックを無効にする必要がある場合に、安全でない非所有参照も提供します。他の全ての安全でない操作と同様、そのコードの安全性をチェックする責任はあなたにあります。</p>
+<p><code>unowned(unsafe)</code> と書くことで、安全でない非所有参照を示します。参照しているインスタンスの割り当てが解除された後で、所有されていない安全でない参照にアクセスしようとすると、プログラムはインスタンスがかつて存在していたメモリアドレスにアクセスしようとしますが、これは安全ではありません。</p>
+</blockquote>
+<h3 id="オプショナル値への非所有参照unowned-optional-references"><a id="unowned-optional-references">オプショナル値への非所有参照(Unowned Optional References)</a></h3>
+<p>クラスへのオプショナルの参照を <code>unowned</code> とマークできます。ARC 所有権モデルに関しては、オプショナルの非所有参照と弱参照の両方を同じコンテキストで使用できます。違いは、オプショナルの非所有参照を使用する場合、それが常に有効なオブジェクトを参照しているのか、<code>nil</code> が設定されているのかを確認する責任があることです。</p>
+<p>学校の特定の学科が提供するコースを追跡する例を次に示します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">Department</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">var</span> courses<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Course</span><span class="token punctuation">]</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        <span class="token keyword">self</span><span class="token punctuation">.</span>courses <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Course</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">unowned</span> <span class="token keyword">var</span> department<span class="token punctuation">:</span> <span class="token builtin">Department</span>
+    <span class="token keyword">unowned</span> <span class="token keyword">var</span> nextCourse<span class="token punctuation">:</span> <span class="token builtin">Course</span><span class="token operator">?</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> <span class="token keyword">in</span> department<span class="token punctuation">:</span> <span class="token builtin">Department</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        <span class="token keyword">self</span><span class="token punctuation">.</span>department <span class="token operator">=</span> department
+        <span class="token keyword">self</span><span class="token punctuation">.</span>nextCourse <span class="token operator">=</span> <span class="token constant">nil</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>Department</code> は、学科が提供する各コースへの強参照を維持します。ARC 所有権モデルでは、学科がそのコースを所有します。<code>Course</code> には非所有参照が 2 つあります。1 つは学科へ、もう 1 つは学生が受講する必要がある次のコースです。コースはこれらのオブジェクトのいずれも所有しません。全てのコースはいくつかの部門の一部のため、<code>department</code> プロパティはオプショナルではありません。ただし、一部のコースには推奨される次のコースがないため、<code>nextCourse</code> プロパティはオプショナルです。</p>
+<p>これらのクラスの使用例を次に示します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> department <span class="token operator">=</span> <span class="token function">Department</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Horticulture&quot;</span><span class="token punctuation">)</span>
+
+<span class="token keyword">let</span> intro <span class="token operator">=</span> <span class="token function">Course</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Survey of Plants&quot;</span><span class="token punctuation">,</span> <span class="token keyword">in</span><span class="token punctuation">:</span> department<span class="token punctuation">)</span>
+<span class="token keyword">let</span> intermediate <span class="token operator">=</span> <span class="token function">Course</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Growing Common Herbs&quot;</span><span class="token punctuation">,</span> <span class="token keyword">in</span><span class="token punctuation">:</span> department<span class="token punctuation">)</span>
+<span class="token keyword">let</span> advanced <span class="token operator">=</span> <span class="token function">Course</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Caring for Tropical Plants&quot;</span><span class="token punctuation">,</span> <span class="token keyword">in</span><span class="token punctuation">:</span> department<span class="token punctuation">)</span>
+
+intro<span class="token punctuation">.</span>nextCourse <span class="token operator">=</span> intermediate
+intermediate<span class="token punctuation">.</span>nextCourse <span class="token operator">=</span> advanced
+department<span class="token punctuation">.</span>courses <span class="token operator">=</span> <span class="token punctuation">[</span>intro<span class="token punctuation">,</span> intermediate<span class="token punctuation">,</span> advanced<span class="token punctuation">]</span>
+</code></pre>
+<p>上記のコードは、学科とその 3 つのコースを作成します。入門コースと中級コースの両方には、<code>nextCourse</code> プロパティに次のコースの提案があり、このコースを完了した後に学生が受講する必要があるコースへのオプショナルの非所有参照が保持されます。</p>
+<p><img src="../assets/unownedOptionalReference_2x.png" alt="オプショナル値への非所有参照 参照の保持"></p>
+<p>オプショナル値への非所有参照は、ラップするクラスのインスタンスを強く保持しないため、ARC によるインスタンスの割り当て解除を妨げません。これは、オプショナル値への非所有参照が <code>nil</code> にできることを除いて、ARC での非所有参照と同じように動作します。</p>
+<p>オプショナル値への非所有参照と同様に、<code>nextCourse</code> が常に割り当てが解除されていないコースを参照するようにする必要があります。この場合、例えば、<code>department.courses</code> からコースを削除するときに、他のコースが持つ可能性のあるそのコースへの参照も全て削除する必要があります。</p>
+<blockquote>
+<p>NOTE<br>オプショナル値の基になる型は <code>Optional</code> です。これは、Swift 標準ライブラリの列挙型です。<code>Optional</code> は、値型を <code>unowned</code> でマークできないという規則の例外です。</p>
+<p>クラスをラップするオプショナルは ARC を使用しないため、オプショナルへの強参照を維持する必要はありません。</p>
+</blockquote>
+<h3 id="非所有参照と暗黙アンラップしたオプショナルプロパティunowned-references-and-implicitly-unwrapped-optional-properties">非所有参照と暗黙アンラップしたオプショナルプロパティ(Unowned References and Implicitly Unwrapped Optional Properties)</h3>
+<p>上記の弱参照と非所有参照の例は、強参照循環を断ち切る必要がある、より一般的な 2 つのシナリオをカバーしています。</p>
+<p><code>Person</code> と <code>Apartment</code> の例は、両方とも <code>nil</code> にすることができる 2 つのプロパティが、強参照循環を引き起こす可能性がある状況を示しています。このシナリオは、弱参照で解決するのが最善です。</p>
+<p><code>Customer</code> と <code>CreditCard</code> の例は、<code>nil</code> にできる 1 つのプロパティと <code>nil</code> にできない別のプロパティが、強参照循環を引き起こす可能性がある状況を示しています。このシナリオは、非所有参照で解決するのが最善です。</p>
+<p>ただし、3 番目のシナリオでは、両方のプロパティに常に値が必要で、初期化が完了すると、どちらのプロパティも <code>nil</code> にはできません。このシナリオでは、一方のクラスに <code>unowned</code> プロパティ、もう一方のクラスに暗黙アンラップオプショナルプロパティを使用すると便利です。</p>
+<p>これにより、初期化が完了すると、参照循環を回避しながら、両方のプロパティに直接(オプショナルのアンラップなしで)アクセスできます。このセクションでは、そのような関係を設定する方法を示します。</p>
+<p>下記の例では、<code>Country</code> と <code>City</code> の 2 つのクラスが定義されており、それぞれが他のクラスのインスタンスをプロパティとして保持しています。このデータモデルでは、全ての国には常に首都が必要で、全ての都市は常に国に属している必要があります。これを表すために、<code>Country</code> クラスには <code>capitalCity</code> プロパティがあり、<code>City</code> クラスには <code>country</code> プロパティがあります:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">Country</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">var</span> capitalCity<span class="token punctuation">:</span> <span class="token builtin">City</span><span class="token operator">!</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> capitalName<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        <span class="token keyword">self</span><span class="token punctuation">.</span>capitalCity <span class="token operator">=</span> <span class="token function">City</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> capitalName<span class="token punctuation">,</span> country<span class="token punctuation">:</span> <span class="token keyword">self</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">City</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">unowned</span> <span class="token keyword">let</span> country<span class="token punctuation">:</span> <span class="token builtin">Country</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> country<span class="token punctuation">:</span> <span class="token builtin">Country</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        <span class="token keyword">self</span><span class="token punctuation">.</span>country <span class="token operator">=</span> country
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2 つのクラス間の相互依存関係を設定するために、<code>City</code> のイニシャライザは <code>Country</code> インスタンスを取得し、このインスタンスを <code>country</code> プロパティに格納します。</p>
+<p><code>City</code> のイニシャライザは、<code>Country</code> のイニシャライザ内から呼び出されます。ただし、<a href="initialization#two-phase-initialization">Two-Phase Initialization(2 段階の初期化)</a>で説明されているように、新しい <code>Country</code> インスタンスが完全に初期化されるまで、<code>Country</code> のイニシャライザは <code>self</code> を <code>City</code> イニシャライザに渡すことはできません。</p>
+<p>この要件に対処するには、<code>Country</code> の <code>capitalCity</code> プロパティを、型注釈の最後に感嘆符で示される、暗黙アンラップオプショナルプロパティ(<code>City!</code>)として宣言しています。これは、他のオプショナルと同様に、<code>capitalCity</code> プロパティのデフォルト値は <code>nil</code> ですが、<a href="the-basics#implicitly-unwrapped-optionals">Implicitly Unwrapped Optionals(暗黙アンラップオプショナル)</a>で説明されているように、その値をアンラップする必要なくアクセスできることを意味します。</p>
+<p><code>capitalCity</code> にはデフォルトの <code>nil</code> 値があるため、新しい <code>Country</code> インスタンスは、イニシャライザ内で <code>name</code> プロパティを設定するとすぐに完全に初期化されたと見なされます。これは、<code>name</code> プロパティが設定されるとすぐに、<code>Country</code> イニシャライザが暗黙の <code>self</code> プロパティの参照の受け渡しを開始できることを意味します。そして、<code>Country</code> イニシャライザが自身の <code>capitalCity</code> プロパティを設定するときに、<code>self</code> を <code>City</code> イニシャライザのパラメータの 1 つとして渡すことができます。</p>
+<p>こうすることで、強参照循環を作成せずに単一の文で <code>Country</code> と <code>City</code> のインスタンスを作成できることを意味します。また、オプショナルの値をアンラップするために感嘆符を使用する必要もなく、<code>capitalCity</code> プロパティに直接アクセスできます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> country <span class="token operator">=</span> <span class="token function">Country</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;Canada&quot;</span><span class="token punctuation">,</span> capitalName<span class="token punctuation">:</span> <span class="token string">&quot;Ottawa&quot;</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>country<span class="token punctuation">.</span>name<span class="token delimiter variable">)</span></span>&apos;s capital city is called <span class="token interpolation"><span class="token delimiter variable">\(</span>country<span class="token punctuation">.</span>capitalCity<span class="token punctuation">.</span>name<span class="token delimiter variable">)</span></span>&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;Canada&apos;s capital city is called Ottawa&quot;</span>
+</code></pre>
+<p>上記の例では、暗黙アンラップオプショナルを使用することは、2 段階のクラスイニシャライザの要件が全て満たされることを意味します。<code>capitalCity</code> プロパティは、初期化が完了すると、強参照循環を回避しつつ、オプショナルではない値のように使用およびアクセスできます。</p>
+<h2 id="クロージャの強参照循環strong-reference-cycles-for-closures"><a id="strong-reference-cycles-for-closures">クロージャの強参照循環(Strong Reference Cycles for Closures)</a></h2>
+<p>2 つのクラスのインスタンスプロパティが互いに強参照を保持している場合に、強参照循環がどのように作成されるかを上で説明しました。また、弱参照と非所有参照を使用して、これらの強参照循環を破る方法についても説明しました。</p>
+<p>クラスのインスタンスプロパティにクロージャを割り当て、そのクロージャの本文がインスタンスをキャプチャした場合にも、強参照循環が発生する可能性があります。このキャプチャは、クロージャの本文がインスタンスのプロパティ(<code>self.someProperty</code> など) にアクセスした場合、またはクロージャがインスタンスのメソッド(<code>self.someMethod()</code> など)を呼び出した場合に発生する可能性があります。いずれの場合も、これらのアクセスにより、クロージャが <code>self</code> を「キャプチャ」し、強参照循環が作成されます。</p>
+<p>この強参照循環が発生するのは、クロージャがクラスと同様に参照型のためです。プロパティにクロージャを割り当てると、そのクロージャへの参照が割り当てられます。本質的に、これは上記と同じ問題です。2 つの強参照がお互いを生かし続けてしまいます。ただし、2 つのクラスインスタンスではなく、今回はクラスインスタンスとクロージャがお互いを生かし続けています。</p>
+<p>Swift は、<em>クロージャキャプチャリスト</em>と呼ばれるこの問題に対するエレガントなソリューションを提供します。ただし、クロージャキャプチャリストを使用して強参照循環を中断する方法を学ぶ前に、そのような循環がどのように発生するのかを理解しておくと役立ちます。</p>
+<p>下記の例は、<code>self</code> を参照するクロージャを使用する場合に強参照循環を作成する方法を示しています。この例では、<code>HTMLElement</code> というクラスを定義しています。これは、HTML ドキュメント内の個々の要素にシンプルなモデルを提供します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">HTMLElement</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">let</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">let</span> text<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token operator">?</span>
+
+    <span class="token keyword">lazy</span> <span class="token keyword">var</span> asHTML<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token keyword">let</span> text <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>text <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">&quot;&lt;<span class="token interpolation"><span class="token delimiter variable">\(</span><span class="token keyword">self</span><span class="token punctuation">.</span>name<span class="token delimiter variable">)</span></span>&gt;<span class="token interpolation"><span class="token delimiter variable">\(</span>text<span class="token delimiter variable">)</span></span>&lt;/<span class="token interpolation"><span class="token delimiter variable">\(</span><span class="token keyword">self</span><span class="token punctuation">.</span>name<span class="token delimiter variable">)</span></span>&gt;&quot;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">&quot;&lt;<span class="token interpolation"><span class="token delimiter variable">\(</span><span class="token keyword">self</span><span class="token punctuation">.</span>name<span class="token delimiter variable">)</span></span> /&gt;&quot;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">init</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> text<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token constant">nil</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        <span class="token keyword">self</span><span class="token punctuation">.</span>text <span class="token operator">=</span> text
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">deinit</span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>name<span class="token delimiter variable">)</span></span> is being deinitialized&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>HTMLElement</code> クラスは、見出し要素の場合は <code>&quot;h1&quot;</code>、段落要素の場合は <code>&quot;p&quot;</code>、改行要素の場合は <code>&quot;br&quot;</code> など、要素の名前を示す <code>name</code> プロパティを定義しています。<code>HTMLElement</code> は、オプショナルの <code>text</code> プロパティも定義しています。このプロパティは、その HTML 要素内でレンダリングされるテキストを表す文字列に設定できます。</p>
+<p>これら 2 つのシンプルなプロパティに加えて、<code>HTMLElement</code> クラスは <code>asHTML</code> と呼ばれる遅延プロパティを定義しています。このプロパティは、<code>name</code> と <code>text</code> を HTML 文字列フラグメントに結合するクロージャを参照しています。<code>asHTML</code> プロパティの型は <code>() -&gt; String</code>、または「パラメータを受け取らず、<code>String</code> 値を返す関数」です。</p>
+<p>デフォルトでは、<code>asHTML</code> プロパティには、HTML タグの文字列表現を返すクロージャが割り当てられます。このタグには、(存在する場合)オプショナルの <code>text</code> 値が含まれます。<code>text</code> が存在しない場合、テキストコンテンツは含まれません。段落要素の場合、クロージャは <code>text</code> プロパティが <code>&quot;some text&quot;</code> または <code>nil</code> かどうかに応じて、<code>&quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>some text<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>&quot;</code> または <code>&quot;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token punctuation">/&gt;</span></span>&quot;</code> を返します。</p>
+<p><code>asHTML</code> プロパティには名前が付けられ、インスタンスメソッドのように使用されます。ただし、<code>asHTML</code> はインスタンスメソッドではなくクロージャプロパティのため、特定の HTML 要素の HTML レンダリングを変更する場合は、<code>asHTML</code> プロパティのデフォルト値を独自のクロージャに置き換えることができます。</p>
+<p>例えば、表現が空の HTML タグを返さないようにするために、<code>asHTML</code> プロパティは、<code>text</code> プロパティが <code>nil</code> の場合にデフォルトで何らかのテキストになるクロージャを設定できます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> heading <span class="token operator">=</span> <span class="token function">HTMLElement</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;h1&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> defaultText <span class="token operator">=</span> <span class="token string">&quot;some default text&quot;</span>
+heading<span class="token punctuation">.</span>asHTML <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">&quot;&lt;<span class="token interpolation"><span class="token delimiter variable">\(</span>heading<span class="token punctuation">.</span>name<span class="token delimiter variable">)</span></span>&gt;<span class="token interpolation"><span class="token delimiter variable">\(</span>heading<span class="token punctuation">.</span>text <span class="token operator">?</span><span class="token operator">?</span> defaultText<span class="token delimiter variable">)</span></span>&lt;/<span class="token interpolation"><span class="token delimiter variable">\(</span>heading<span class="token punctuation">.</span>name<span class="token delimiter variable">)</span></span>&gt;&quot;</span>
+<span class="token punctuation">}</span>
+<span class="token function">print</span><span class="token punctuation">(</span>heading<span class="token punctuation">.</span><span class="token function">asHTML</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;&lt;h1&gt;some default text&lt;/h1&gt;&quot;</span>
+</code></pre>
+<blockquote>
+<p>NOTE<br><code>asHTML</code> プロパティは遅延プロパティとして宣言されています。これは、要素が実際に HTML の出力ターゲットの文字列値の一部としてレンダリングされる場合にのみ必要になるためです。<code>asHTML</code> が遅延プロパティであるということは、デフォルトクロージャ内で <code>self</code> を参照できることを意味します。これは、初期化が完了し、<code>self</code> が存在することがわかるまで遅延プロパティにアクセスできないためです。</p>
+</blockquote>
+<p><code>HTMLElement</code> クラスは単一のイニシャライザを提供します。このイニシャライザは、新しい要素を初期化するための <code>name</code> 引数と(必要に応じて)<code>text</code> 引数を受け取ります。このクラスは、<code>HTMLElement</code> インスタンスの割り当てが解除されたときに表示するメッセージを出力するデイニシャライザも定義しています。</p>
+<p><code>HTMLElement</code> クラスを使用して新しいインスタンスを作成および出力する方法は次のとおりです:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> paragraph<span class="token punctuation">:</span> <span class="token builtin">HTMLElement</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token function">HTMLElement</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;p&quot;</span><span class="token punctuation">,</span> text<span class="token punctuation">:</span> <span class="token string">&quot;hello, world&quot;</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>paragraph<span class="token operator">!</span><span class="token punctuation">.</span><span class="token function">asHTML</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;&lt;p&gt;hello, world&lt;/p&gt;&quot;</span>
+</code></pre>
+<blockquote>
+<p>NOTE<br>上記の <code>paragraph</code> 変数はオプショナルの <code>HTMLElement</code> として定義されているため、下記では <code>nil</code> に設定して、強参照循環の存在を示すことができます。</p>
+</blockquote>
+<p>残念ながら、上記の <code>HTMLElement</code> クラスは、<code>HTMLElement</code> インスタンスと、デフォルトの <code>asHTML</code> 値に使用されるクロージャとの間に強参照循環を作成します。循環は次のようになります:</p>
+<p><img src="../assets/closureReferenceCycle01_2x.png" alt="クロージャの循環参照 強参照循環"></p>
+<p>インスタンスの <code>asHTML</code> プロパティは、そのクロージャへの強参照を保持します。ただし、クロージャは(<code>self.name</code> および <code>self.text</code> を参照する方法として)本文内の <code>self</code> を参照するため、クロージャは <code>self</code> をキャプチャします。つまり、クロージャは <code>HTMLElement</code> インスタンスへの強参照を保持します。2 つの間に強参照循環が作成されます。(クロージャでの値のキャプチャの詳細については、<a href="closures#capturing-values">Capturing Values(値のキャプチャ)</a>を参照してください)</p>
+<blockquote>
+<p>NOTE<br>クロージャは <code>self</code> を複数回参照していますが、<code>HTMLElement</code> インスタンスへの強参照は 1 つだけです。</p>
+</blockquote>
+<p><code>paragraph</code> 変数を <code>nil</code> に設定し、<code>HTMLElement</code> インスタンスへの強参照を解除しても、強参照循環のため、<code>HTMLElement</code> インスタンスもそのクロージャも割り当てを解除できません。</p>
+<pre class="language-"><code class="lang-swift">paragraph <span class="token operator">=</span> <span class="token constant">nil</span>
+</code></pre>
+<p><code>HTMLElement</code> のデイニシャライザのメッセージは出力されないことに注目してください。<code>HTMLElement</code> インスタンスが割り当て解除されていないことを示しています。</p>
+<h2 id="クロージャの強参照循環の解消resolving-strong-reference-cycles-for-closures"><a id="resolving-strong-reference-cycles-for-closures">クロージャの強参照循環の解消(Resolving Strong Reference Cycles for Closures)</a></h2>
+<p>クロージャの定義の一部にキャプチャリストを使用することで、クロージャとクラスインスタンス間の強参照循環を解決します。キャプチャリストは、クロージャの本文内で 1 つ以上の参照型をキャプチャするときに使用するルールを定義します。2 つのクラスインスタンス間の強参照循環と同様に、キャプチャされた各参照は、強参照ではなく、弱参照または非所有参照と宣言します。弱いか非所有かの適切な選択は、コード間の様々な関係によって異なります。</p>
+<blockquote>
+<p>NOTE<br>Swift では、クロージャ内で <code>self</code> のメンバを参照するときは常に、(<code>someProperty</code> または <code>someMethod()</code> だけでなく) <code>self.someProperty</code> または <code>self.someMethod()</code> と記述する必要があります。これは、気づかずに <code>self</code> をキャプチャする可能性があることを防ぐのに役立ちます。</p>
+</blockquote>
+<h2 id="キャプチャリストの定義defining-a-capture-list"><a id="defining-a-capture-list">キャプチャリストの定義(Defining a Capture List)</a></h2>
+<p>キャプチャリストの各アイテムは、<code>weak</code> または <code>unowned</code> キーワードと、クラスインスタンス(<code>self</code> など)への参照、または何らかの値で初期化された変数(<code>delegate = self.delegate</code> など)とのペアです。これらのペアは、カンマで区切られた 1 組の角括弧内(<code>[]</code>)に記述されます。</p>
+<p>キャプチャリストをクロージャのパラメータリストと(提供されている場合は)戻り値の型の前に配置します。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">lazy</span> <span class="token keyword">var</span> someClosure <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span><span class="token keyword">unowned</span> <span class="token keyword">self</span><span class="token punctuation">,</span> <span class="token keyword">weak</span> delegate <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>delegate<span class="token punctuation">]</span>
+    <span class="token punctuation">(</span>index<span class="token punctuation">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> stringToProcess<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token keyword">in</span>
+     <span class="token comment">// クロージャ本文がここに来ます</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>コンテキストから推論できるため、クロージャがパラメータリストまたは戻り値の型を指定しない場合は、キャプチャリストをクロージャの最初に置き、その後に <code>in</code> キーワードを置きます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">lazy</span> <span class="token keyword">var</span> someClosure <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">[</span><span class="token keyword">unowned</span> <span class="token keyword">self</span><span class="token punctuation">,</span> <span class="token keyword">weak</span> delegate <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>delegate<span class="token punctuation">]</span> <span class="token keyword">in</span>
+     <span class="token comment">// クロージャ本文がここに来ます</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="弱参照と非所有参照weak-and-unowned-references">弱参照と非所有参照(Weak and Unowned References)</h2>
+<p>クロージャとキャプチャするインスタンスが常に相互に参照し、常に同時に割り当てが解除される場合は、クロージャ内のキャプチャを非所有参照として定義します。</p>
+<p>逆に、キャプチャされた参照が将来のある時点でゼロになる可能性がある場合は、キャプチャを弱参照として定義します。弱参照は常にオプショナル型で、参照するインスタンスの割り当てが解除されると、自動的に <code>nil</code> になります。これにより、クロージャの本文内に存在するかどうかを確認できます。</p>
+<blockquote>
+<p>NOTE<br>キャプチャされた参照が <code>nil</code> にならない場合は、弱参照ではなく、常に非所有参照としてキャプチャする必要があります。</p>
+</blockquote>
+<p>非所有参照は、<a href="automatic-reference-counting#strong-reference-cycles-for-closures">Strong Reference Cycles for Closures(クロージャの強参照循環)</a>の <code>HTMLElement</code> の例を解決するために適切なキャプチャ方法です。循環を回避するための <code>HTMLElement</code> クラスの作成方法は次のとおりです:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">HTMLElement</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">let</span> name<span class="token punctuation">:</span> <span class="token builtin">String</span>
+    <span class="token keyword">let</span> text<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token operator">?</span>
+
+    <span class="token keyword">lazy</span> <span class="token keyword">var</span> asHTML<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">String</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">[</span><span class="token keyword">unowned</span> <span class="token keyword">self</span><span class="token punctuation">]</span> <span class="token keyword">in</span>
+        <span class="token keyword">if</span> <span class="token keyword">let</span> text <span class="token operator">=</span> <span class="token keyword">self</span><span class="token punctuation">.</span>text <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">&quot;&lt;<span class="token interpolation"><span class="token delimiter variable">\(</span><span class="token keyword">self</span><span class="token punctuation">.</span>name<span class="token delimiter variable">)</span></span>&gt;<span class="token interpolation"><span class="token delimiter variable">\(</span>text<span class="token delimiter variable">)</span></span>&lt;/<span class="token interpolation"><span class="token delimiter variable">\(</span><span class="token keyword">self</span><span class="token punctuation">.</span>name<span class="token delimiter variable">)</span></span>&gt;&quot;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token string">&quot;&lt;<span class="token interpolation"><span class="token delimiter variable">\(</span><span class="token keyword">self</span><span class="token punctuation">.</span>name<span class="token delimiter variable">)</span></span> /&gt;&quot;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">init</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> text<span class="token punctuation">:</span> <span class="token builtin">String</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token constant">nil</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        <span class="token keyword">self</span><span class="token punctuation">.</span>text <span class="token operator">=</span> text
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">deinit</span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;<span class="token interpolation"><span class="token delimiter variable">\(</span>name<span class="token delimiter variable">)</span></span> is being deinitialized&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>この <code>HTMLElement</code> の実装は、<code>asHTML</code> クロージャ内にキャプチャリストが追加されていることを除けば、前の実装と同じです。この場合、キャプチャリストは <code>[unowned self]</code> で、「強参照ではなく、非所有参照として <code>self</code> をキャプチャする」という意味です。</p>
+<p>先ほどと同じように <code>HTMLElement</code> インスタンスを作成して出力できます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> paragraph<span class="token punctuation">:</span> <span class="token builtin">HTMLElement</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token function">HTMLElement</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string">&quot;p&quot;</span><span class="token punctuation">,</span> text<span class="token punctuation">:</span> <span class="token string">&quot;hello, world&quot;</span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span>paragraph<span class="token operator">!</span><span class="token punctuation">.</span><span class="token function">asHTML</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// &quot;&lt;p&gt;hello, world&lt;/p&gt;&quot;</span>
+</code></pre>
+<p>キャプチャリストを配置した場合の参照は次のようになります：</p>
+<p><img src="../assets/closureReferenceCycle02_2x.png" alt="クロージャの循環参照 キャプチャリスト"></p>
+<p>今回は、クロージャによる <code>self</code> のキャプチャは非所有参照で、キャプチャした <code>HTMLElement</code> インスタンスを強く保持しません。<code>paragraph</code> 変数からの強参照を <code>nil</code> に設定すると、<code>HTMLElement</code> インスタンスの割り当てが解除されます。これは、下記の例のデイニシャライザメッセージの出力からもわかります:</p>
+<pre class="language-"><code class="lang-swift">paragraph <span class="token operator">=</span> <span class="token constant">nil</span>
+<span class="token comment">// &quot;p is being deinitialized&quot;</span>
+</code></pre>
+<p>キャプチャリストの詳細については、<a href="../language-reference/expressions#capture-lists">Capture Lists(キャプチャリスト)</a>を参照ください。</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="opaque-types.html" class="navigation navigation-prev " aria-label="Previous page: Opaque 型(Opaque Types)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="memory-safety.html" class="navigation navigation-next " aria-label="Next page: メモリ安全性(Memory Safety)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"自動参照カウント ARC(Automatic Reference Counting)","level":"3.25","depth":1,"next":{"title":"メモリ安全性(Memory Safety)","level":"3.26","depth":1,"path":"language-guide/memory-safety.md","ref":"language-guide/memory-safety.md","articles":[]},"previous":{"title":"Opaque 型(Opaque Types)","level":"3.24","depth":1,"path":"language-guide/opaque-types.md","ref":"language-guide/opaque-types.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-guide/automatic-reference-counting.md","mtime":"2021-07-17T06:39:57.069Z","type":"markdown"},"gitbook":{"version":"3.7.0","time":"2021-07-17T06:40:39.672Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
