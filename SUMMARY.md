@@ -8,7 +8,7 @@
 * [バージョン互換性\(Version Compatibility\)](welcome-to-swift/version-compatibility.md)
 * [Swiftツアー\(A Swift Tour\)](welcome-to-swift/a-swift-tour.md)
 
-## 言語ガイド\(LANGUAGE GUIDE\)
+## 言語ガイド\(LANGUAGE GUIDE\) <a id="language-guide"></a>
 
 * [基本\(The Basics\)](language-guide/the-basics.md)
 * [基本演算子\(Basic Operators\)](language-guide/basic-operators.md)

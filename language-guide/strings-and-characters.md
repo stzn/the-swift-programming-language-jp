@@ -285,7 +285,7 @@ _Unicode_は、様々な書記体系で、テキストをエンコード、抽�
 
 ### <a id="unicode-scalar-values">Unicode スカラ値\(Unicode Scalar Values\)</a>
 
-内部では、Swift 固有の `String` 型は  *Unicodeスカラ* から構築されています。Unicode スカラは 21 ビットの文字と修飾子で構成されています。例えば、`U+0061` は `LATIN SMALL LETTER A ("a")`、`U+1F425` は `FRONT-FACING BABY CHICK ("🐥")` です。
+内部では、Swift 固有の `String` 型は *Unicode スカラ*から構築されています。Unicode スカラは 21 ビットの文字と修飾子で構成されています。例えば、`U+0061` は `LATIN SMALL LETTER A ("a")`、`U+1F425` は `FRONT-FACING BABY CHICK ("🐥")` です。
 
 全ての 21 ビットのスカラが 1 つの文字に当てはまるわけではありません。いくつかは将来的に必要になるために確保されていたり、UTF-16 で使われています。文字に割り当てられているスカラには、上記の `LATIN SMALL LETTER A` や `FRONT-FACING BABY CHICK` のように一般的には名前が付いています。
 
