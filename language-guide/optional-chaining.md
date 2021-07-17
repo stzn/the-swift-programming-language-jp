@@ -157,7 +157,7 @@ class Address {
 
 ## <a id="accessing-properties-through-optional-chaining">オプショナルチェーンを通したプロパティへのアクセス\(Accessing Properties Through Optional Chaining\)</a>
 
-[Optional Chaining as an Alternative to Forced Unwrapping\(強制アンラップの代替としてのオプショナルチェーン\)](../language-guide/optional-chaining#optional-chaining-as-an-alternative-to-forced-unwrapping)で示されているように、オプショナルチェーンを使用してオプショナルのプロパティにアクセスし、アクセスが成功したかどうかを確認できます。
+[Optional Chaining as an Alternative to Forced Unwrapping\(強制アンラップの代替としてのオプショナルチェーン\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/optional-chaining#optional-chaining-as-an-alternative-to-forced-unwrapping)で示されているように、オプショナルチェーンを使用してオプショナルのプロパティにアクセスし、アクセスが成功したかどうかを確認できます。
 
 上で定義したクラスを使用して新しい `Person` インスタンスを作成し、以前と同じように `numberOfRooms` プロパティにアクセスしてみます:
 
@@ -213,7 +213,7 @@ func printNumberOfRooms() {
 }
 ```
 
-このメソッドは戻り値の型を指定しません。ただし、[Functions Without Return Values\(戻り値のない関数\)](../language-guide/functions#functions-without-return-values)で説明されているように、戻り値の型のない関数とメソッドには、暗黙的な戻り値の型 `Void` があります。これは、`()` の値、または空のタプルを返すことを意味します。
+このメソッドは戻り値の型を指定しません。ただし、[Functions Without Return Values\(戻り値のない関数\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/functions#functions-without-return-values)で説明されているように、戻り値の型のない関数とメソッドには、暗黙的な戻り値の型 `Void` があります。これは、`()` の値、または空のタプルを返すことを意味します。
 
 オプショナルチェーンを使用してオプショナルの値でこのメソッドを呼び出す場合、メソッドの戻り値の型は `Void` ではなく `Void?` になります。これにより、メソッド自体が戻り値を定義していなくても、`if` 文を使用して、`printNumberOfRooms()` メソッドを呼び出すことができたかどうかを確認できます。`printNumberOfRooms` の呼び出しからの戻り値を `nil` と比較して、メソッド呼び出しが成功したかどうかを確認します:
 

@@ -115,7 +115,7 @@ print(friendlyWelcome)
 // "Bonjour!"
 ```
 
-`print(_:separator:terminator:)` 関数はグローバル関数で、1 つ以上の値を適切なアウトプット先に出力します。Xcode では、`print(_:separator:terminator:)` 関数を使用すると、 Xcode のコンソールパネルへ値を出力します。`separator` と `terminator` パラメータには、デフォルト値が用意されているので省略可能です。デフォルトでは最後に改行を追加します。改行を付けたくない場合は `terminator` に空文字を渡してください。例えば `print(someValue, terminator: "")`。詳細は[Default Parameter Values\(デフォルトパラメータ値\)](../language-guide/functions#default-parameter-values)。
+`print(_:separator:terminator:)` 関数はグローバル関数で、1 つ以上の値を適切なアウトプット先に出力します。Xcode では、`print(_:separator:terminator:)` 関数を使用すると、 Xcode のコンソールパネルへ値を出力します。`separator` と `terminator` パラメータには、デフォルト値が用意されているので省略可能です。デフォルトでは最後に改行を追加します。改行を付けたくない場合は `terminator` に空文字を渡してください。例えば `print(someValue, terminator: "")`。詳細は[Default Parameter Values\(デフォルトパラメータ値\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/functions#default-parameter-values)。
 
 Swift は長い文字列の中で定数や変数をプレースホルダとして使用したい場合、_文字列補間_を使い、定数や変数の現在値に置き換えるように Swift に伝えることができます。名前を括弧\(`()`\)で囲み、開始括弧の前にバックスラッシュ\(`\`\)を付けます。
 
@@ -125,7 +125,7 @@ print("The current value of friendlyWelcome is \(friendlyWelcome)")
 ```
 
 > NOTE  
-> 文字列補間で使用できるオブションは[String Interpolation\(文字列補間\)](../language-guide/strings-and-characters#string-interpolation)に記載しています
+> 文字列補間で使用できるオブションは[String Interpolation\(文字列補間\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/strings-and-characters#string-interpolation)に記載しています
 
 ## コメント\(Comments\)
 

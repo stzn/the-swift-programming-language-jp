@@ -389,11 +389,11 @@ if twoThree == anotherTwoThree {
 // These two vectors are equivalent.
 ```
 
-多くのシンプルなケースでは、Swift の等価演算子のデフォルト実装を使用できます\([Adopting a Protocol Using a Synthesized Implementation\(デフォルト実装を使用したプロトコル準拠\)](../language-guide/protocols#adopting-a-protocol-using-a-synthesized-implementation)で説明されています\)。
+多くのシンプルなケースでは、Swift の等価演算子のデフォルト実装を使用できます\([Adopting a Protocol Using a Synthesized Implementation\(デフォルト実装を使用したプロトコル準拠\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/protocols#adopting-a-protocol-using-a-synthesized-implementation)で説明されています\)。
 
 ## <a id="custom-operators">カスタム演算子\(Custom Operators\)</a>
 
-Swift が提供する標準演算子に加えて、独自の演算子を宣言して実装できます。カスタム演算子の定義に使用できる文字のリストについては、[Operators\(演算子\)](../language-reference/lexical-structure#operators)を参照ください。
+Swift が提供する標準演算子に加えて、独自の演算子を宣言して実装できます。カスタム演算子の定義に使用できる文字のリストについては、[Operators\(演算子\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/lexical-structure#operators)を参照ください。
 
 新しい演算子は、`operator` キーワードを使用してグローバルレベルで宣言され、`prefix`、`infix` または `postfix` 修飾子でマークされます。
 
@@ -438,7 +438,7 @@ let plusMinusVector = firstVector +- secondVector
 // plusMinusVector は、値が (4.0, -2.0) の Vector2D インスタンスです
 ```
 
-この演算子は、2 つのベクトルの `x` 値を加算し、最初のベクトルから 2 番目のベクトルの `y` 値を減算します。これは本質的に「加算」演算子のため、`+` や `-` などの加算中置演算子と同じ優先順位グループが与えられています。演算子の優先順位グループと結合規則設定の完全なリストを含む、Swift 標準ライブラリによって提供される演算子については、[Operator Declarations\(演算子宣言\)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。優先順位グループの詳細と、独自の演算子と優先順位グループを定義するための構文については、[Operator Declarations\(演算子の宣言\)](../language-reference/declarations#operator-declaration)を参照ください。
+この演算子は、2 つのベクトルの `x` 値を加算し、最初のベクトルから 2 番目のベクトルの `y` 値を減算します。これは本質的に「加算」演算子のため、`+` や `-` などの加算中置演算子と同じ優先順位グループが与えられています。演算子の優先順位グループと結合規則設定の完全なリストを含む、Swift 標準ライブラリによって提供される演算子については、[Operator Declarations\(演算子宣言\)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。優先順位グループの詳細と、独自の演算子と優先順位グループを定義するための構文については、[Operator Declarations\(演算子の宣言\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/declarations#operator-declaration)を参照ください。
 
 > NOTE  
 > 前置または後置演算子を定義するときは、優先順位を指定しません。ただし、前置と後置演算子の両方を同じオペランドに適用すると、後置演算子が最初に適用されます。
@@ -587,5 +587,5 @@ let manyStars = draw {
 
 上記のコードでは、`for` ループが描画の配列を作成し、`buildArray(_:)` メソッドがその配列を `Line` に変換します。
 
-Swift が builder 構文を builder 型のメソッドの呼び出しに変換する方法の完全なリストについては、[resultBuilder](../language-reference/attributes#resultbuilder)を参照ください。
+Swift が builder 構文を builder 型のメソッドの呼び出しに変換する方法の完全なリストについては、[resultBuilder](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-reference/attributes#resultbuilder)を参照ください。
 
