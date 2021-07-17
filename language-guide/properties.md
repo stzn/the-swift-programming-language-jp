@@ -14,7 +14,7 @@
 
 最もシンプルな形式だと、_格納プロパティ_は、特定のクラスまたは構造体のインスタンスの一部として保存される定数または変数です。格納プロパティは、変数格納プロパティ\(`var` キーワードを使用\)または定数格納プロパティ\(`let` キーワードを使用\) のいずれかです。
 
-[Default Property Values\(プロパティのデフォルト値\)](../language-guide/initialization#default-property-values)で説明されているように、格納プロパティのデフォルト値をその定義の一部として設定できます。また、初期化中に格納プロパティに初期値の設定や変更もできます。これは、[Assigning Constant Properties During Initialization\(初期化中の定数プロパティへの値の設定\)](../language-guide/initialization#assigning-constant-properties-during-initialization)で説明されているように、定数の格納プロパティにも当てはまります。
+[Default Property Values\(プロパティのデフォルト値\)](../language-guide/initialization.md#default-property-values)で説明されているように、格納プロパティのデフォルト値をその定義の一部として設定できます。また、初期化中に格納プロパティに初期値の設定や変更もできます。これは、[Assigning Constant Properties During Initialization\(初期化中の定数プロパティへの値の設定\)](../language-guide/initialization.md#assigning-constant-properties-during-initialization)で説明されているように、定数の格納プロパティにも当てはまります。
 
 下記の例では、`FixedLengthRange` という構造体を定義しています。これは、作成後に範囲の長さを変更できない整数の範囲を表します。
 
@@ -197,7 +197,7 @@ struct CompactRect {
 }
 ```
 
-get からの戻り値の省略は、[Functions With an Implicit Return\(暗黙的な戻り値がある関数\)](../language-guide/functions#functions-with-an-implicit-return)で説明されているように、関数からの戻り値を省略した場合と同じ規則に従います。
+get からの戻り値の省略は、[Functions With an Implicit Return\(暗黙的な戻り値がある関数\)](../language-guide/functions.md#functions-with-an-implicit-return)で説明されているように、関数からの戻り値を省略した場合と同じ規則に従います。
 
 ### <a id="read-only-computed-properties">読み取り専用計算プロパティ\(Read-Only Computed Properties\)</a>
 
@@ -232,7 +232,7 @@ _プロパティオブザーバ_は、プロパティの値の変化を監視し
 * 継承した格納プロパティ
 * 継承した計算プロパティ
 
-継承したプロパティの場合、サブクラスでそのプロパティをオーバーライドすることにより、プロパティオブザーバを追加します。自身で定義した計算プロパティの場合、オブザーバを作成する代わりに、set を使用して値の変更を監視し、応答します。プロパティのオーバーライドについては、[Overriding\(オーバーライド\)](../language-guide/inheritance#overriding)で説明されています。
+継承したプロパティの場合、サブクラスでそのプロパティをオーバーライドすることにより、プロパティオブザーバを追加します。自身で定義した計算プロパティの場合、オブザーバを作成する代わりに、set を使用して値の変更を監視し、応答します。プロパティのオーバーライドについては、[Overriding\(オーバーライド\)](../language-guide/inheritance.md#overriding)で説明されています。
 
 プロパティにこれらのオブザーバの下記のいずれかまたは両方を定義できます:
 
@@ -244,7 +244,7 @@ _プロパティオブザーバ_は、プロパティの値の変化を監視し
 同様に、`didSet` オブザーバを実装する場合、古いプロパティ値を含む定数パラメータが渡されます。パラメータに名前を付けるか、`oldValue` というデフォルトパラメータ名を使用できます。独自の `didSet` オブザーバ内のプロパティに値を割り当てると、新しい値によって、設定されたばかりの値が置き換えられます。
 
 > NOTE  
-> スーパークラスのプロパティの `willSet` および `didSet` オブザーバは、プロパティがサブクラスのイニシャライザで設定されると、スーパークラスのイニシャライザが呼び出された後に呼び出されます。スーパークラスのイニシャライザが呼び出される前に、サブクラスが独自のプロパティを設定している間は呼び出されません。 イニシャライザの委譲については、[Initializer Delegation for Value Types\(値型のイニシャライザの委譲\)](../language-guide/initialization#initializer-delegation-for-value-types)、[Initializer Delegation for Class Types\(クラス型のイニシャライザの委譲\)](../language-guide/initialization#initializer-delegation-for-class-types)を参照ください。
+> スーパークラスのプロパティの `willSet` および `didSet` オブザーバは、プロパティがサブクラスのイニシャライザで設定されると、スーパークラスのイニシャライザが呼び出された後に呼び出されます。スーパークラスのイニシャライザが呼び出される前に、サブクラスが独自のプロパティを設定している間は呼び出されません。 イニシャライザの委譲については、[Initializer Delegation for Value Types\(値型のイニシャライザの委譲\)](../language-guide/initialization.md#initializer-delegation-for-value-types)、[Initializer Delegation for Class Types\(クラス型のイニシャライザの委譲\)](../language-guide/initialization.md#initializer-delegation-for-class-types)を参照ください。
 
 `willSet` と `didSet` の使用例を次に示します。下記の例では、`StepCounter` という名前の新しいクラスを定義しています。これは、人の合計歩数を追跡します。このクラスは、万歩計からの入力データやその他の日常生活での運動を追跡する歩数計に使われます。
 
@@ -282,7 +282,7 @@ stepCounter.totalSteps = 896
 `didSet` オブザーバは、`totalSteps` の値が更新された後に呼び出されます。これは、`totalSteps` の新しい値を古い値と比較します。合計ステップ数が増えると、新しく何ステップ増えたかを示すメッセージが出力されます。`didSet` オブザーバは古い値のカスタムパラメータ名を提供せず、代わりに `oldValue` のデフォルト名が使用されます。
 
 > NOTE  
-> オブザーバを持つプロパティを関数に入出力パラメータとして渡すと、`willSet` および `didSet` オブザーバが常に呼び出されます。これは、入出力パラメータのコピーインコピーアウト\(copy-in copy-out\)メモリモデルによるものです。値は常に関数の最後でプロパティに書き戻されます。入出力パラメータの動作の詳細については、[In-Out Parameters\(In-Out パラメータ\)](../language-reference/declarations#declarations-in-out-parameters)を参照ください。
+> オブザーバを持つプロパティを関数に入出力パラメータとして渡すと、`willSet` および `didSet` オブザーバが常に呼び出されます。これは、入出力パラメータのコピーインコピーアウト\(copy-in copy-out\)メモリモデルによるものです。値は常に関数の最後でプロパティに書き戻されます。入出力パラメータの動作の詳細については、[In-Out Parameters\(In-Out パラメータ\)](../language-reference/declarations.md#declarations-in-out-parameters)を参照ください。
 
 ## <a id="property-wrappers">プロパティラッパ\(Property Wrappers\)</a>
 

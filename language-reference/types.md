@@ -4,7 +4,7 @@
 
 Swift では、_名前付き型_\(_named type_\)と_複合型_\(_compound type_\)の 2 種類があります。名前付き型は、定義時に特定の名前を指定できる型です。名前付き型には、クラス、構造体、列挙型、およびプロトコルが含まれます。例えば、`MyClass` という名前のユーザ定義クラスのインスタンスは `MyClass` 型です。ユーザ定義の型に加えて、Swift 標準ライブラリは、配列、辞書、およびオプショナルの値を含む多くの広く使用される型の名前を定義します。
 
-通常、数字、文字、文字列を表す型など、他の言語で基本的またはプリミティブと見なされるデータ型は、Swift 標準ライブラリでは構造体を使用して定義、実装されている名前付き型です。名前付き型のため、[Extensions\(拡張\)](expressions.md)、[Extension Declaration\(拡張宣言\)](../language-reference/declarations#extension-declaration)で説明されている extension を使用して、プログラムのニーズに合わせて振る舞いを拡張することができます。
+通常、数字、文字、文字列を表す型など、他の言語で基本的またはプリミティブと見なされるデータ型は、Swift 標準ライブラリでは構造体を使用して定義、実装されている名前付き型です。名前付き型のため、[Extensions\(拡張\)](expressions.md)、[Extension Declaration\(拡張宣言\)](../language-reference/declarations.md#extension-declaration)で説明されている extension を使用して、プログラムのニーズに合わせて振る舞いを拡張することができます。
 
 複合型は、Swift 言語で定義されている名前のない型です。関数型とタプル型の 2 つの複合型があります。複合型の種類は、名前付き型および他の複合型を含めることができます。例えば、タプル型 `(Int, (Int, Int))` には、名前付き型の `Int` と複合型の `(Int, Int)` の 2 つの要素が含まれています。
 
@@ -70,7 +70,7 @@ var someValue: ExampleModule.MyType
 
 _タプル型_は、括弧に囲まれた、型のカンマ区切りのリストです。
 
-関数が複数の値を含む単一の値を返すことを可能にするために、関数の戻り値の型としてタプル型を使用できます。タプル型の要素に名前を付けることもでき、それらの名前を使用して個々の要素の値を参照することもできます。要素名はコロン\(`:`\)の直前に識別子を指定します。これらの機能を示す例については、[Functions with Multiple Return Values\(複数の戻り値がある関数\)](../language-guide/functions#functions-with-multiple-return-values)を参照ください。
+関数が複数の値を含む単一の値を返すことを可能にするために、関数の戻り値の型としてタプル型を使用できます。タプル型の要素に名前を付けることもでき、それらの名前を使用して個々の要素の値を参照することもできます。要素名はコロン\(`:`\)の直前に識別子を指定します。これらの機能を示す例については、[Functions with Multiple Return Values\(複数の戻り値がある関数\)](../language-guide/functions.md#functions-with-multiple-return-values)を参照ください。
 
 タプル型の要素に名前がある場合、その名前は型の一部です。
 
@@ -97,11 +97,11 @@ _関数型_は関数、メソッド、またはクロージャの型を表し、
 
 _パラメータ型_は、型のカンマ\(`,`\)区切りのリストです。関数型は、_戻り値の型_がタプル型の可能性があるため、複数の値を返す関数とメソッドをサポートします。
 
-関数型のパラメータ `() -> T`\(`T` は任意の型\)は、呼び出し側で暗黙的なクロージャを作成するために、`autoclosure` を適用できます。これは、関数を呼び出すときに明示的にクロージャを書くことなく、式を遅延評価するための構文上の便利な方法です。`autoclosure` の関数型のパラメータの例については、[AutoClosures\(自動クロージャ\)](../language-guide/closures#autoclosures)を参照ください。
+関数型のパラメータ `() -> T`\(`T` は任意の型\)は、呼び出し側で暗黙的なクロージャを作成するために、`autoclosure` を適用できます。これは、関数を呼び出すときに明示的にクロージャを書くことなく、式を遅延評価するための構文上の便利な方法です。`autoclosure` の関数型のパラメータの例については、[AutoClosures\(自動クロージャ\)](../language-guide/closures.md#autoclosures)を参照ください。
 
-関数型は、そのパラメータ型に多様なパラメータを持たせることができます。構文上、可変長パラメータは、`Int...` のように要素の型名の後ろに 3 つのドット\(`...`\)を記載し、要素の型の配列として扱われます。例えば、可変長パラメータ `Int...` は `[Int]` として扱われます。可変長パラメータを使用する例については、[Variadic Parameters\(可変長パラメータ\)](../language-guide/functions#variadic-parameters)を参照ください。
+関数型は、そのパラメータ型に多様なパラメータを持たせることができます。構文上、可変長パラメータは、`Int...` のように要素の型名の後ろに 3 つのドット\(`...`\)を記載し、要素の型の配列として扱われます。例えば、可変長パラメータ `Int...` は `[Int]` として扱われます。可変長パラメータを使用する例については、[Variadic Parameters\(可変長パラメータ\)](../language-guide/functions.md#variadic-parameters)を参照ください。
 
-in-out パラメータを使用するには、`inout` キーワードをパラメータの型の前に付けます。可変長パラメータまたは戻り値の型にマークすることはできません。in-out パラメータは、[In-Out Parameters\(In-Out パラメータ\)](../language-reference/declarations#declarations-in-out-parameters)で説明されています。
+in-out パラメータを使用するには、`inout` キーワードをパラメータの型の前に付けます。可変長パラメータまたは戻り値の型にマークすることはできません。in-out パラメータは、[In-Out Parameters\(In-Out パラメータ\)](../language-reference/declarations.md#declarations-in-out-parameters)で説明されています。
 
 関数型にパラメータが 1 つしかなく、タプル型の場合、関数型を書くときにタプル型を括弧\(`()`\)で囲む必要があります。例えば、`((Int, Int)) -> Void` は、タプル型 `(Int, Int)` を単一のパラメータとして受け取り、値を返さない関数の型です。対照的に、括弧なしで `(Int, Int) -> Void` と書いた場合は 2 つの `Int` パラメータを受け取り、値を返さない関数型です。同様に、`Void` は `()` のエイリアスのため、`(Void)-> Void` は `(()) -> ()` と同じで、空のタプルの単一の引数を受け取ります。`() -> ()` は引数を受け取らないので同じではありません。
 
@@ -133,7 +133,7 @@ var operation: (Int, Int) -> Int          // OK
 
 関数型に 1 つ以上の矢印\(`->`\)が含まれている場合、関数型は右から左にグループ化されます。例えば、関数型 `(Int) -> (Int) -> Int` は、`(Int) -> ((Int) -> Int)` で、`Int` を受け取り、別の `Int` を受け取り、`Int` を返す関数を返します。
 
-エラーを_スロー_または_再スロー_する関数型は、`throws` キーワードでマークする必要があります。`throws` キーワードは関数型の一部で、_スローしない_関数はスロー関数のサブタイプです。その結果、スロー関数が使われる場所で、スローしない関数を使用できます。スロー関数や再スロー関数は、[Throwing Functions and Methods\(スロー関数とメソッド\)](../language-reference/declarations#throwing-functions-and-methods)、[Rethrowing Functions and Methods\(再スロー関数と再スローメソッド\)](../language-reference/declarations#rethrowing-functions-and-methods)で説明されています。
+エラーを_スロー_または_再スロー_する関数型は、`throws` キーワードでマークする必要があります。`throws` キーワードは関数型の一部で、_スローしない_関数はスロー関数のサブタイプです。その結果、スロー関数が使われる場所で、スローしない関数を使用できます。スロー関数や再スロー関数は、[Throwing Functions and Methods\(スロー関数とメソッド\)](../language-reference/declarations.md#throwing-functions-and-methods)、[Rethrowing Functions and Methods\(再スロー関数と再スローメソッド\)](../language-reference/declarations.md#rethrowing-functions-and-methods)で説明されています。
 
 ### 非エスケープクロージャの制限\(Restrictions for Nonescaping Closures\)
 
@@ -192,7 +192,7 @@ var array3D: [[[Int]]] = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
 
 多次元配列内の要素にアクセスするとき、左端の `subscript` のインデックスは、最も外側の配列内のインデックスの要素を指します。次に右の `subscript` のインデックスは、1 階層ネストされている配列内のインデックスの要素になります。これは、上記の例では、`array3D[0]` は `[[1, 2], [3, 4]]`、`array3D[0][1]` は `[3,4]`、`array3D[0][1][1]` は値 `4` を表します。
 
-Swift 標準ライブラリの配列型の詳細については、[Arrays\(配列\)](../language-guide/collection-types#arrays)を参照ください。
+Swift 標準ライブラリの配列型の詳細については、[Arrays\(配列\)](../language-guide/collection-types.md#arrays)を参照ください。
 
 > GRAMMAR OF AN ARRAY TYPE  
 > array-type → `[` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) `]`
@@ -216,7 +216,7 @@ let someDictionary: Dictionary<String, Int> = ["Alex": 31, "Paul": 39]
 
 辞書のキーの型は、Swift 標準ライブラリの `Hashable` に準拠している必要があります。
 
-標準ライブラリ `Dictionary` 型の詳細については、[Dictionaries\(辞書\)](../language-guide/collection-types#dictionaries)を参照ください。
+標準ライブラリ `Dictionary` 型の詳細については、[Dictionaries\(辞書\)](../language-guide/collection-types.md#dictionaries)を参照ください。
 
 > GRAMMAR OF A DICTIONARY TYPE  
 > dictionary-type → `[` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) `:` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) `]`
@@ -245,7 +245,7 @@ optionalInteger! // 42
 
 オプショナルチェーンとオプショナルバインディングを使用して、式を操作することもできます。値が `nil` の場合、操作は実行されず、したがって実行時エラーが発生しません。
 
-オプショナル型の使用方法を示す例を示した詳細については、[Optionals\(オプショナル\)](../language-guide/the-basics#optionals)を参照ください。
+オプショナル型の使用方法を示す例を示した詳細については、[Optionals\(オプショナル\)](../language-guide/the-basics.md#optionals)を参照ください。
 
 > GRAMMAR OF AN OPTIONAL TYPE  
 > optional-type → [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) `?`
@@ -277,7 +277,7 @@ let implicitlyUnwrappedArray: [Int]!                  // OK
 
 条件付きで暗黙アンラップオプショナルの式を操作するには、オプショナルチェーンを使用します。値が `nil` の場合、操作は実行されず、したがって実行時エラーが発生しません。
 
-暗黙アンラップオプショナル型の詳細については、[Implicitly Unwrapped Optionals\(暗黙アンラップオプショナル\)](../language-guide/the-basics#implicitly-unwrapped-optionals)を参照ください。
+暗黙アンラップオプショナル型の詳細については、[Implicitly Unwrapped Optionals\(暗黙アンラップオプショナル\)](../language-guide/the-basics.md#implicitly-unwrapped-optionals)を参照ください。
 
 > GRAMMAR OF AN IMPLICITLY UNWRAPPED OPTIONAL TYPE  
 > implicitly-unwrapped-optional-type → [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) `!`
@@ -399,7 +399,7 @@ if let first = mixed.first as? String {
 
 キャストの詳細については、[Type Casting\(型キャスト\)](../language-guide/type-casting.md)を参照ください。
 
-`AnyObject` プロトコルは `Any` 型と似ています。全てのクラスは暗黙的に `AnyObject` に準拠しています。言語によって定義されているものとは異なり、`AnyObject` は標準ライブラリで定義されています。詳細については、[Class-Only Protocols\(クラス専用プロトコル\)](../language-guide/protocols#class-only-protocols)と [AnyObject](https://developer.apple.com/documentation/swift/anyobject)を参照ください。
+`AnyObject` プロトコルは `Any` 型と似ています。全てのクラスは暗黙的に `AnyObject` に準拠しています。言語によって定義されているものとは異なり、`AnyObject` は標準ライブラリで定義されています。詳細については、[Class-Only Protocols\(クラス専用プロトコル\)](../language-guide/protocols.md#class-only-protocols)と [AnyObject](https://developer.apple.com/documentation/swift/anyobject)を参照ください。
 
 > GRAMMAR OF AN ANY TYPE  
 > any-type → `Any`
@@ -454,7 +454,7 @@ _型継承句_は、名前付き型がどのクラスを継承しているか、
 
 その他の名前付き型は、プロトコルのみ継承または準拠することができます。プロトコル型は、任意の数の他のプロトコルを継承できます。プロトコル型が他のプロトコルを継承すると、他のプロトコルの要件も集約され、現在のプロトコルから継承する型は全ての要件に準拠する必要があります。
 
-列挙型の型継承句は、プロトコルのリスト、または列挙ケースに Raw Value を割り当てる場合は、それらの Raw Value の型を特定する単一の名前付き型を継承することができます。型継承句を使用して Raw Value 型を指定する列挙型の定義の例については、[Raw Values](../language-guide/enumerations#raw-values)を参照ください。
+列挙型の型継承句は、プロトコルのリスト、または列挙ケースに Raw Value を割り当てる場合は、それらの Raw Value の型を特定する単一の名前付き型を継承することができます。型継承句を使用して Raw Value 型を指定する列挙型の定義の例については、[Raw Values](../language-guide/enumerations.md#raw-values)を参照ください。
 
 > GRAMMAR OF A TYPE INHERITANCE CLAUSE  
 > type-inheritance-clause → `:` [type-inheritance-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-list)  
