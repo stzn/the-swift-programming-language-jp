@@ -242,7 +242,7 @@ if tenEighty === alsoTenEighty {
 
 「同一」\(3 つの等号または `===`\)は、「等しい」\(2 つの等号または `==` で表される\)と同じではないことに注意してください。「同一」とは、クラスタイプの 2 つの定数または変数がまったく同じクラスインスタンスを参照することを意味します。「等しい」とは、型の設計者が定義する「等しい」という観点で、適切に 2 つのインスタンスの値が等しいまたは同等だと見なされることを意味します。
 
-独自の構造体とクラスを定義するときは、2 つのインスタンスがどうすれば等しいと見なされるのかを決定するのはあなた次第です。`==` および `!=` 演算子の独自の実装を定義するプロセスは、[Equivalence Operators\(等価演算子\)](../language-guide/advanced-operators#equivalence-operators)で説明されています。
+独自の構造体とクラスを定義するときは、2 つのインスタンスがどうすれば等しいと見なされるのかを決定するのはあなた次第です。`==` および `!=` 演算子の独自の実装を定義するプロセスは、[Equivalence Operators\(等価演算子\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/advanced-operators#equivalence-operators)で説明されています。
 
 ### ポインタ\(Pointers\)
 
