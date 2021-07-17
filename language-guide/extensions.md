@@ -13,7 +13,7 @@ _拡張機能_は、既存のクラス、構造体、列挙型、またはプロ
 * 新しくネスト型を定義する
 * 既存の型をプロトコルに準拠させる
 
-Swift では、プロトコルを拡張してその要件の実装を提供したり、準拠する型が利用できる機能を追加することもできます。詳細については、[Protocol Extensions\(プロトコル Extension\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/protocols#protocol-extensions)を参照ください。
+Swift では、プロトコルを拡張してその要件の実装を提供したり、準拠する型が利用できる機能を追加することもできます。詳細については、[Protocol Extensions\(プロトコル Extension\)](../language-guide/protocols#protocol-extensions)を参照ください。
 
 > NOTE  
 > 拡張機能は型に新しい機能を追加できますが、既存の機能をオーバーライドすることはできません。
@@ -36,9 +36,9 @@ extension SomeType: SomeProtocol, AnotherProtocol {
 }
 ```
 
-この方法でプロトコル準拠を追加する方法は、[Adding Protocol Conformance with an Extension\(拡張機能を使用したプロトコル準拠の追加\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/protocols#adding-protocol-conformance-with-an-extension)で説明されています。
+この方法でプロトコル準拠を追加する方法は、[Adding Protocol Conformance with an Extension\(拡張機能を使用したプロトコル準拠の追加\)](../language-guide/protocols#adding-protocol-conformance-with-an-extension)で説明されています。
 
-拡張機能は、[Extending a Generic Type\(ジェネリック型の拡張\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/generics#extending-a-generic-type)で説明されているように、既存のジェネリック型を拡張するためにも使用できます。ジェネリック型を拡張して、条件付きで機能を追加することもできます\([Extensions with a Generic Where Clause\(ジェネリックな Where 句を使用した拡張機能](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/generics#extensions-with-a-generic-where-clause)を参照ください\)。
+拡張機能は、[Extending a Generic Type\(ジェネリック型の拡張\)](../language-guide/generics#extending-a-generic-type)で説明されているように、既存のジェネリック型を拡張するためにも使用できます。ジェネリック型を拡張して、条件付きで機能を追加することもできます\([Extensions with a Generic Where Clause\(ジェネリックな Where 句を使用した拡張機能](../language-guide/generics#extensions-with-a-generic-where-clause)を参照ください\)。
 
 > NOTE  
 > 拡張機能を定義して既存の型に新しい機能を追加すると、拡張機能が定義される前に作成されたものであっても、その型の既存の全てのインスタンスで新しい機能を使用できます。
@@ -86,7 +86,7 @@ print("A marathon is \(aMarathon) meters long")
 
 拡張機能は、新しい convenience イニシャライザをクラスに追加できますが、新しい指定イニシャライザまたはデイニシャライザを追加することはできません。指定イニシャライザとデイニシャライザは、常に元のクラス実装によって提供される必要があります。
 
-拡張機能を使用して、カスタムイニシャライザを定義しない値型に全ての格納プロパティのデフォルト値を提供するイニシャライザを追加する場合は、拡張機能のイニシャライザ内からデフォルトイニシャライザとメンバワイズイニシャライザを呼び出すことができます。[Initializer Delegation for Value Types\(値型のイニシャライザの委譲\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/initialization#initializer-delegation-for-value-types)で説明されているように、値型の元の実装の一部としてイニシャライザを作成した場合は、これに当てはまりません。
+拡張機能を使用して、カスタムイニシャライザを定義しない値型に全ての格納プロパティのデフォルト値を提供するイニシャライザを追加する場合は、拡張機能のイニシャライザ内からデフォルトイニシャライザとメンバワイズイニシャライザを呼び出すことができます。[Initializer Delegation for Value Types\(値型のイニシャライザの委譲\)](../language-guide/initialization#initializer-delegation-for-value-types)で説明されているように、値型の元の実装の一部としてイニシャライザを作成した場合は、これに当てはまりません。
 
 別のモジュールで宣言された構造体にイニシャライザを追加する場合、新しいイニシャライザは、定義モジュールからイニシャライザを呼び出されるまで、`self` にアクセスできません。
 
@@ -105,7 +105,7 @@ struct Rect {
 }
 ```
 
-`Rect` 構造体はその全てのプロパティにデフォルト値を提供しているため、[Default Initializers\(デフォルトイニシャライザ\)](https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/language-guide/initialization#default-initializers)で説明されているように、デフォルトイニシャライザとメンバワイズイニシャライザを自動的に生成します。これらのイニシャライザを使用して、新しい `Rect` インスタンスを作成できます:
+`Rect` 構造体はその全てのプロパティにデフォルト値を提供しているため、[Default Initializers\(デフォルトイニシャライザ\)](../language-guide/initialization#default-initializers)で説明されているように、デフォルトイニシャライザとメンバワイズイニシャライザを自動的に生成します。これらのイニシャライザを使用して、新しい `Rect` インスタンスを作成できます:
 
 ```swift
 let defaultRect = Rect()
