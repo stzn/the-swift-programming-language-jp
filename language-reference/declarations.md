@@ -82,9 +82,9 @@ let (firstNumber, secondNumber) = (10, 42)
 
 ```swift
 print("The first number is \(firstNumber).")
-// "The first number is 10."
+// The first number is 10.
 print("The second number is \(secondNumber).")
-// "The second number is 42."
+// The second number is 42.
 ```
 
 型注釈\(`:type`\)は、[Type Inference\(型推論\)](../language-reference/types.md#type-inference)で説明されているように、_constant name_ の型を推論できる場合は、省略可能です。
@@ -180,9 +180,9 @@ class New: Superclass {
 }
 let new = New()
 new.x = 100
-// "Setter was called"
-// "Getter was called"
-// "New value 100"
+// Setter was called
+// Getter was called
+// New value 100
 
 // このサブクラスはそのオブザーバの oldValue を参照しているので、スーパークラスの
 // get はセッターの前に一度呼び出され、また値を出力します
@@ -193,10 +193,10 @@ class NewAndOld: Superclass {
 }
 let newAndOld = NewAndOld()
 newAndOld.x = 200
-// "Getter was called"
-// "Setter was called"
-// "Getter was called"
-// "Old value 12 - new value 200"
+// Getter was called
+// Setter was called
+// Getter was called
+// Old value 12 - new value 200
 ```
 
 より詳細な情報やプロパティオブザーバの使用方法の例は、[Property Observers\(プロパティオブザーバ\)](../language-guide/properties.md#property-observers)を参照ください。
@@ -1041,7 +1041,7 @@ extension String: TitledLoggable {
 ```swift
 let oneAndTwo = Pair(first: "one", second: "two")
 oneAndTwo.log()
-// "Pair of 'String': (one, two)"
+// Pair of 'String': (one, two)
 ```
 
 ただし、`oneAndTwo` がジェネリックなコンテキストや `Loggable` プロトコルのインスタンスとして使用される場合、`TitledLoggable` バージョンは使用されません。Swift は、`Pair` が `Loggable` に準拠するために必要な最小要件のみを参照して、`log()` の実装を選択します。このため、代わりに `Loggable` プロトコルによって提供されるデフォルト実装が使用されます。
@@ -1051,7 +1051,7 @@ func doSomething<T: Loggable>(with x: T) {
     x.log()
 }
 doSomething(with: oneAndTwo)
-// "(one, two)"
+// (one, two)
 ```
 
 `doSomething(_ :)` に渡されたインスタンスで `log()` が呼び出されると、ログに記録された文字列にカスタマイズされたタイトルは出力されません。

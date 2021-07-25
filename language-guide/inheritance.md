@@ -143,7 +143,7 @@ class Train: Vehicle {
 ```swift
 let train = Train()
 train.makeNoise()
-// "Choo Choo"
+// Choo Choo
 ```
 
 ### プロパティのオーバーライド\(Overriding Properties\)

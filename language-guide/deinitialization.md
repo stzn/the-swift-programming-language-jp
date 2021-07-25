@@ -68,9 +68,9 @@ class Player {
 ```swift
 var playerOne: Player? = Player(coins: 100)
 print("A new player has joined the game with \(playerOne!.coinsInPurse) coins")
-// "A new player has joined the game with 100 coins"
+// A new player has joined the game with 100 coins
 print("There are now \(Bank.coinsInBank) coins left in the bank")
-// "There are now 9900 coins left in the bank"
+// There are now 9900 coins left in the bank
 ```
 
 新しい `Player` インスタンスは、可能ならば 100 コインを受け取って作成されています。この `Player` インスタンスは、`playerOne` というオプショナルの `Player` 変数に保存されます。プレイヤーはいつでもゲームを終了できるため、ここではオプショナルの変数が使用されます。オプショナルを使用すると、現在ゲームにプレイヤーがいるかどうかを追跡できます。
@@ -80,9 +80,9 @@ print("There are now \(Bank.coinsInBank) coins left in the bank")
 ```swift
 playerOne!.win(coins: 2_000)
 print("PlayerOne won 2000 coins & now has \(playerOne!.coinsInPurse) coins")
-// "PlayerOne won 2000 coins & now has 2100 coins"
+// PlayerOne won 2000 coins & now has 2100 coins
 print("The bank now only has \(Bank.coinsInBank) coins left")
-// "The bank now only has 7900 coins left"
+// The bank now only has 7900 coins left
 ```
 
 ここで、プレイヤーは 2,000 コインを獲得しました。プレイヤーの財布には 2,100 枚のコインがあり、銀行には 7,900 枚のコインしか残っていません。
@@ -90,9 +90,9 @@ print("The bank now only has \(Bank.coinsInBank) coins left")
 ```swift
 playerOne = nil
 print("PlayerOne has left the game")
-// "PlayerOne has left the game"
+// PlayerOne has left the game
 print("The bank now has \(Bank.coinsInBank) coins")
-// "The bank now has 10000 coins"
+// The bank now has 10000 coins
 ```
 
 プレイヤーはゲームから離れました。これは、オプショナルの `playerOne` 変数を `nil` に設定することで示しています。つまり「`Player` インスタンスがない」ことを意味します。この時点で、`playerOne` 変数の `Player` インスタンスへの参照が解放されています。他のプロパティや変数が `Player` インスタンスを参照していないため、メモリから解放されます。解放される直前に、デイニシャライザが自動的に呼び出され、コインが銀行に戻されています。

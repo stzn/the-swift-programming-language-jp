@@ -87,7 +87,7 @@ let someVideoMode = VideoMode()
 
 ```swift
 print("The width of someResolution is \(someResolution.width)")
-// "The width of someResolution is 0"
+// The width of someResolution is 0
 ```
 
 この例では、`someResolution.width` は `someResolution` の `width` プロパティを参照し、デフォルトの初期値 `0` を返します。
@@ -96,7 +96,7 @@ print("The width of someResolution is \(someResolution.width)")
 
 ```swift
 print("The width of someVideoMode is \(someVideoMode.resolution.width)")
-// "The width of someVideoMode is 0"
+// The width of someVideoMode is 0
 ```
 
 ドット構文を使用して、変数プロパティに新しい値を代入することもできます。
@@ -104,7 +104,7 @@ print("The width of someVideoMode is \(someVideoMode.resolution.width)")
 ```swift
 someVideoMode.resolution.width = 1280
 print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
-// "The width of someVideoMode is now 1280"
+// The width of someVideoMode is now 1280
 ```
 
 ### <a id="structures-and-classes-memberwise-initializers-for-structure-types">構造体のメンバワイズイニシャライザ\(Memberwise Initializers for Structure Types\)</a>
@@ -149,14 +149,14 @@ cinema.width = 2048
 
 ```swift
 print("cinema is now \(cinema.width) pixels wide")
-// "cinema is now 2048 pixels wide"
+// cinema is now 2048 pixels wide
 ```
 
 ただし、元の `hd` インスタンスの `width` プロパティは、1920 のままです。
 
 ```swift
 print("hd is still \(hd.width) pixels wide")
-// "hd is still 1920 pixels wide"
+// hd is still 1920 pixels wide
 ```
 
 `cinema` に `hd` の現在の値が与えられると、`hd` に保存されている値が新しい `cinema` インスタンスにコピーされます。これらは、同じ数値を含む 2 つの完全に別個のインスタンスですが、次の図に示すように、`cinema` の幅を `2048` に設定しても、`hd` に保存される幅には影響しません:
@@ -178,8 +178,8 @@ currentDirection.turnNorth()
 
 print("The current direction is \(currentDirection)")
 print("The remembered direction is \(rememberedDirection)")
-// "The current direction is north"
-// "The remembered direction is west"
+// The current direction is north
+// The remembered direction is west
 ```
 
 `RememberedDirection` に `currentDirection` の値が割り当てられると、実際にはその値のコピーが設定されます。その後、`currentDirection` の値を変更しても、`rememberedDirection` に保存されていた元の値には影響しません。
@@ -215,7 +215,7 @@ alsoTenEighty.frameRate = 30.0
 
 ```swift
 print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
-// "The frameRate property of tenEighty is now 30.0"
+// The frameRate property of tenEighty is now 30.0
 ```
 
 この例は、参照型の扱いがいかに難しいかを示しています。`tenEighty` と `alsoTenEighty` がコード内で大きく離れている場合、ビデオモードが変更される全ての場所を見つけるのは難しいかもしれません。`tenEighty` を使用する場合は常に `alsoTenEighty` を使用するコードも考慮する必要があります。その逆も同様です。対照的に、値型は、同じ値に作用する全てのコードは近くにあるため、考慮する点が少なく扱いが簡単です。
@@ -237,7 +237,7 @@ print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 if tenEighty === alsoTenEighty {
     print("tenEighty and alsoTenEighty refer to the same VideoMode instance.")
 }
-// "tenEighty and alsoTenEighty refer to the same VideoMode instance."
+// tenEighty and alsoTenEighty refer to the same VideoMode instance.
 ```
 
 「同一」\(3 つの等号または `===`\)は、「等しい」\(2 つの等号または `==` で表される\)と同じではないことに注意してください。「同一」とは、クラスタイプの 2 つの定数または変数がまったく同じクラスインスタンスを参照することを意味します。「等しい」とは、型の設計者が定義する「等しい」という観点で、適切に 2 つのインスタンスの値が等しいまたは同等だと見なされることを意味します。

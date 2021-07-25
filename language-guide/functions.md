@@ -29,9 +29,9 @@ func greet(person: String) -> String {
 
 ```swift
 print(greet(person: "Anna"))
-// "Hello, Anna!"
+// Hello, Anna!
 print(greet(person: "Brian"))
-// "Hello, Brian!"
+// Hello, Brian!
 ```
 
 `greet(person:)` 関数を呼び出すには、`greet(person: "Anna")` のように、`person` 引数ラベルの後に `String` 型の値を渡します。この関数は `String` 型の値を返すため、上記のように、`greet(person:)` を `print(_:separator:terminator:)` 関数の呼び出しでラップして、その文字列を出力して戻り値を確認できます。
@@ -48,7 +48,7 @@ func greetAgain(person: String) -> String {
     return "Hello again, " + person + "!"
 }
 print(greetAgain(person: "Anna"))
-// "Hello again, Anna!"
+// Hello again, Anna!
 ```
 
 ## 関数のパラメータと戻り値\(Function Parameters and Return Values\)
@@ -64,7 +64,7 @@ func sayHelloWorld() -> String {
     return "hello, world"
 }
 print(sayHelloWorld())
-// "hello, world"
+// hello, world
 ```
 
 関数は、パラメータを受け取りませんが、関数名の後に括弧が必要です。関数が呼び出されると、関数名の後に空の括弧のペア\(`()`\)も書きます。
@@ -84,7 +84,7 @@ func greet(person: String, alreadyGreeted: Bool) -> String {
     }
 }
 print(greet(person: "Tim", alreadyGreeted: true))
-// "Hello again, Tim!"
+// Hello again, Tim!
 ```
 
 `person` というラベルの付いた `String` 型の値と、括弧\(`()`\) 内にカンマ\(`,`\)で区切られた `alreadyGreeted` というラベルの付いた `Bool` 型の値の両方を渡して `great(person:alreadyGreeted:)` 関数を呼び出しています。この関数は、 前のセクションで示した `greet(person:)` 関数とは異なることに注意してください。どちらも `greet` という関数名ですが、`greet(person:alreadyGreeted:)` は 2 つの引数を取り、`greet(person:)` 関数は 1 つしか取りません。
@@ -98,7 +98,7 @@ func greet(person: String) {
     print("Hello, \(person)!")
 }
 greet(person: "Dave")
-// "Hello, Dave!"
+// Hello, Dave!
 ```
 
 値を返す必要がないため、関数の定義には戻り矢印\(`->`\)や戻り値の型は含まれていません。
@@ -117,9 +117,9 @@ func printWithoutCounting(string: String) {
     let _ = printAndCount(string: string)
 }
 printAndCount(string: "hello, world")
-// "hello, world" and returns a value of 12
+// hello, world" and returns a value of 12
 printWithoutCounting(string: "hello, world")
-// "hello, world" but doesn't return a value
+// hello, world" but doesn't return a value
 ```
 
 最初の関数 `printAndCount(string:)` は文字列を出力し、その文字数を `Int` として返します。2 番目の関数 `printWithoutCounting(string:)` は、最初の関数を呼び出しますが、その戻り値を無視します。2 番目の関数が呼び出されても、メッセージは最初の関数によって出力されますが、戻り値は使われていません。
@@ -157,7 +157,7 @@ func minMax(array: [Int]) -> (min: Int, max: Int) {
 ```swift
 let bounds = minMax(array: [8, -6, 2, 109, 3, 71])
 print("min is \(bounds.min) and max is \(bounds.max)")
-// "min is -6 and max is 109"
+// min is -6 and max is 109
 ```
 
 タプルの各値は、関数の戻り値の型で名前がすでに指定されているため、関数からタプルが返されるときに名前を付ける必要がないことに注目してください。
@@ -195,7 +195,7 @@ func minMax(array: [Int]) -> (min: Int, max: Int)? {
 if let bounds = minMax(array: [8, -6, 2, 109, 3, 71]) {
     print("min is \(bounds.min) and max is \(bounds.max)")
 }
-// "min is -6 and max is 109"
+// min is -6 and max is 109
 ```
 
 ### <a id="functions-with-an-implicit-return">暗黙的な戻り値がある関数\(Functions With an Implicit Return\)</a>
@@ -207,13 +207,13 @@ func greeting(for person: String) -> String {
     "Hello, " + person + "!"
 }
 print(greeting(for: "Dave"))
-// "Hello, Dave!"
+// Hello, Dave!
 
 func anotherGreeting(for person: String) -> String {
     return "Hello, " + person + "!"
 }
 print(anotherGreeting(for: "Dave"))
-// "Hello, Dave!"
+// Hello, Dave!
 ```
 
 `greeting(for:)` 関数の全体の定義は、戻り値の挨拶文です。つまり、この短い形式を使用できます。`anotherGreeting(for:)` 関数は、複数の式を持つ関数と同様に `return` キーワードを使用して、同じ挨拶文を返しています。1 つの戻り行として記述した関数は、`return` を省略できます。
@@ -254,7 +254,7 @@ func greet(person: String, from hometown: String) -> String {
     return "Hello \(person)!  Glad you could visit from \(hometown)."
 }
 print(greet(person: "Bill", from: "Cupertino"))
-// "Hello Bill!  Glad you could visit from Cupertino."
+// Hello Bill!  Glad you could visit from Cupertino.
 ```
 
 引数ラベルを使用すると、関数の本文に読みやすく明確な意図を持たせつつ、表現豊かな文章のように関数を呼び出すことができます。
@@ -342,7 +342,7 @@ var someInt = 3
 var anotherInt = 107
 swapTwoInts(&someInt, &anotherInt)
 print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
-// "someInt is now 107, and anotherInt is now 3"
+// someInt is now 107, and anotherInt is now 3
 ```
 
 上記の例は、`someInt` と `anotherInt` の元の値が、関数の外部で定義されていたとしても、`swapTwoInts(_:_:)` 関数によって変更されることを示しています。
@@ -400,7 +400,7 @@ var mathFunction: (Int, Int) -> Int = addTwoInts
 ```swift
 mathFunction = multiplyTwoInts
 print("Result: \(mathFunction(2, 3))")
-// "Result: 6"
+// Result: 6
 ```
 
 他の型と同様に、定数または変数に関数を代入するときに、関数型を推論することができます。
@@ -421,7 +421,7 @@ func printMathResult(_ mathFunction: (Int, Int) -> Int, _ a: Int, _ b: Int) {
     print("Result: \(mathFunction(a, b))")
 }
 printMathResult(addTwoInts, 3, 5)
-// "Result: 8"
+// Result: 8
 ```
 
 この例では、3 つのパラメータを持つ `printMathResult(_:_:_:)` という関数を定義します。最初のパラメータは `mathFunction` と呼ばれ、`(Int, Int) -> Int` 型です。この最初のパラメータとして、その型の任意の関数を渡すことができます。2 番目と 3 番目のパラメータは `a` と `b` と呼ばれ、どちらも `Int` 型です。これらは、提供されている数学関数の 2 つの入力値として使用されています。

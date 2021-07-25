@@ -57,10 +57,10 @@ extension Double {
 }
 let oneInch = 25.4.mm
 print("One inch is \(oneInch) meters")
-// "One inch is 0.0254 meters"
+// One inch is 0.0254 meters
 let threeFeet = 3.ft
 print("Three feet is \(threeFeet) meters")
-// "Three feet is 0.914399970739201 meters"
+// Three feet is 0.914399970739201 meters
 ```
 
 これらの計算プロパティは、`Double` の値を特定の長さの単位と見なしています。計算プロパティとして実装されていますが、ドット構文\(`.`\)を使用して浮動小数点リテラルの後に追加して使用できます。
@@ -74,7 +74,7 @@ print("Three feet is \(threeFeet) meters")
 ```swift
 let aMarathon = 42.km + 195.m
 print("A marathon is \(aMarathon) meters long")
-// "A marathon is 42195.0 meters long"
+// A marathon is 42195.0 meters long
 ```
 
 > NOTE  

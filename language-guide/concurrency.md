@@ -201,7 +201,7 @@ actor TemperatureLogger {
 ```swift
 let logger = TemperatureLogger(label: "Outdoors", measurement: 25)
 print(await logger.max)
-// "25"
+// 25
 ```
 
 この例では、`logger.max` へのアクセスは中断する可能性があります。アクターはその可変状態にアクセスすることを一度に 1 つのタスクのみに制限しているため、別のタスクからのコードが既にロガーとやり取りしている場合、このコードはプロパティへのアクセスを待機します。

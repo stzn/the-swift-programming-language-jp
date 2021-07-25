@@ -36,7 +36,7 @@ Swift の配列の型は全体で `Array<Element>` と書きます。`Element` �
 ```swift
 var someInts = [Int]()
 print("someInts is of type [Int] with \(someInts.count) items.")
-// "someInts is of type [Int] with 0 items."
+// someInts is of type [Int] with 0 items.
 ```
 
 `someInts` 変数の型は、イニシャライザから `[Int]` と推論されます。
@@ -107,7 +107,7 @@ var shoppingList = ["Eggs", "Milk"]
 
 ```swift
 print("The shopping list contains \(shoppingList.count) items.")
-// "The shopping list contains 2 items."
+// The shopping list contains 2 items.
 ```
 
 `Bool` 型の `isEmpty` プロパティは、`count` プロパティが `0` かどうかをチェックする簡略記法です。
@@ -118,7 +118,7 @@ if shoppingList.isEmpty {
 } else {
     print("The shopping list isn't empty.")
 }
-// "The shopping list isn't empty."
+// The shopping list isn't empty.
 ```
 
 `append(_:)` メソッドを使用して、配列の末尾に新しいアイテムを追加することができます。
@@ -257,7 +257,7 @@ Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デ
 ```swift
 var letters = Set<Character>()
 print("letters is of type Set<Character> with \(letters.count) items.")
-// "letters is of type Set<Character> with 0 items."
+// letters is of type Set<Character> with 0 items.
 ```
 
 > NOTE  
@@ -306,7 +306,7 @@ var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
 
 ```swift
 print("I have \(favoriteGenres.count) favorite music genres.")
-// "I have 3 favorite music genres."
+// I have 3 favorite music genres.
 ```
 
 `Bool` 型の `isEmpty` プロパティは、`count` プロパティが `0` かどうかをチェックする簡略記法です。
@@ -317,7 +317,7 @@ if favoriteGenres.isEmpty {
 } else {
     print("I have particular music preferences.")
 }
-// "I have particular music preferences."
+// I have particular music preferences.
 ```
 
 `insert(_:)` メソッドを使用して、セットに新しいアイテムを追加することができます。
@@ -335,7 +335,7 @@ if let removedGenre = favoriteGenres.remove("Rock") {
 } else {
     print("I never much cared for that.")
 }
-// "Rock? I'm over it."
+// Rock? I'm over it.
 ```
 
 特定のアイテムが含まれているかどうかを調べるには、`contains(_:)` メソッドを使用することができます。
@@ -346,7 +346,7 @@ if favoriteGenres.contains("Funk") {
 } else {
     print("It's too funky in here.")
 }
-// "It's too funky in here."
+// It's too funky in here.
 ```
 
 ### セットの繰り返し処理\(Iterating Over a Set\)
@@ -505,7 +505,7 @@ var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 ```swift
 print("The airports dictionary contains \(airports.count) items.")
-// "The airports dictionary contains 2 items."
+// The airports dictionary contains 2 items.
 ```
 
 `Bool` 型の `isEmpty` プロパティは、`count` プロパティが `0` かどうかをチェックする簡略記法です。
@@ -516,7 +516,7 @@ if airports.isEmpty {
 } else {
     print("The airports dictionary isn't empty.")
 }
-// "The airports dictionary isn't empty."
+// The airports dictionary isn't empty.
 ```
 
 subscript 構文を使用して、新しいアイテムを追加することができます。適切な型の新しいキーを subscript のインデックスに入れ、適切な型の新しいバリューを代入できます。
@@ -550,7 +550,7 @@ airports["LHR"] = "London Heathrow"
 if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
     print("The old value for DUB was \(oldValue).")
 }
-// "The old value for DUB was Dublin."
+// The old value for DUB was Dublin.
 ```
 
 subscript 構文を使用して特定のキーのバリューを取得することもできます。バリューの存在しないキーに対してもリクエストすることが可能で、バリューの型のオプショナル値を返します。存在しなければ `nil` を返します:
@@ -561,7 +561,7 @@ if let airportName = airports["DUB"] {
 } else {
     print("That airport isn't in the airports dictionary.")
 }
-// "The name of the airport is Dublin Airport."
+// The name of the airport is Dublin Airport.
 ```
 
 subscript 構文を使用して、キーに `nil` を代入することで、キーバリューペアを削除できます:
@@ -581,7 +581,7 @@ if let removedValue = airports.removeValue(forKey: "DUB") {
 } else {
     print("The airports dictionary doesn't contain a value for DUB.")
 }
-// "The removed airport's name is Dublin Airport."
+// The removed airport's name is Dublin Airport.
 ```
 
 ### 辞書の繰り返し処理\(Iterating Over a Dictionary\)

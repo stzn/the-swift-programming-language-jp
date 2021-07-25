@@ -491,7 +491,7 @@ let manualDrawing = Line(elements: [
     Stars(length: 2),
     ])
 print(manualDrawing.draw())
-// "***Hello RAVI PATEL!**"
+// ***Hello RAVI PATEL!**
 ```
 
 このコードは機能しますが、少し扱いにづらく感じます。`AllCaps` の後の深くネストされた括弧は読みにくく、`name` が `nil` の場合に「World」を使用するフォールバックロジックは、`??` を使用してインラインで実行する必要があります。これは、より複雑なものに対しては困難です。描画の一部を構成するために `switch` または `for` ループを含める必要があっても、方法はありません。リザルトビルダを使用すると、このようなコードを書き換えて、通常の Swift のコードのように見せることができます。
@@ -543,11 +543,11 @@ func makeGreeting(for name: String? = nil) -> Drawable {
 }
 let genericGreeting = makeGreeting()
 print(genericGreeting.draw())
-// "***Hello WORLD!**"
+// ***Hello WORLD!**
 
 let personalGreeting = makeGreeting(for: "Ravi Patel")
 print(personalGreeting.draw())
-// "***Hello RAVI PATEL!**"
+// ***Hello RAVI PATEL!**
 ```
 
 `makeGreeting(for:)` 関数は `name` パラメータを受け取り、それを使用してパーソナライズされた挨拶を描画します。`draw(_:)` 関数と `caps(_:)` 関数はどちらも、`@DrawingBuilder` 属性でマークされた単一のクロージャを引数として受け取ります。これらの関数を呼び出すときは、`DrawingBuilder` が定義する特別な構文を使用します。Swift は、描画の宣言的な記述を `DrawingBuilder` のメソッドへの一連の呼び出しに変換し、関数の引数として渡される値を構築します。例えば、Swift は `caps(_:)` の呼び出しを次のようなコードに変換します:

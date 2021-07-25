@@ -77,7 +77,7 @@ for item in library {
 }
 
 print("Media library contains \(movieCount) movies and \(songCount) songs")
-// "Media library contains 2 movies and 3 songs"
+// Media library contains 2 movies and 3 songs
 ```
 
 この例では、`library` 配列内の全てのアイテムを繰り返します。`for-in` ループの各ループでは、`item` 定数に配列内の次の `MediaItem` を設定します。

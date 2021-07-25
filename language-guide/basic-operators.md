@@ -189,7 +189,7 @@ if name == "world" {
 } else {
     print("I'm sorry \(name), but I don't recognize you")
 }
-// name は "world" と等しいので、"hello, world" が出力される。
+// name は "world" と等しいので、 hello, world が出力される。
 ```
 
 `if` については、[Control FLow\(制御フロー\)](control-flow.md)を参照ください。同じ型、同じ数の値を持ったタプル同士の比較もできます。タプルは左から右へと順番に値を比較します。それぞれの値の比較結果が全体の結果に反映されます。全て等しい場合、タプル同士は等しいと見なされます。例えば:
@@ -388,7 +388,7 @@ let allowedEntry = false
 if !allowedEntry {
     print("ACCESS DENIED")
 }
-// "ACCESS DENIED"
+// ACCESS DENIED
 ```
 
 `if !allowedEntry` は「もし許可されたエントリでなければ」と読み取れます。次の行は、「もし許可されたエントリでなければ」が `true` だった場合のみ実行されます。つまり、`if allowedEntry` は `false` です。
@@ -411,7 +411,7 @@ if enteredDoorCode && passedRetinaScan {
 } else {
     print("ACCESS DENIED")
 }
-// "ACCESS DENIED"
+// ACCESS DENIED
 ```
 
 ### 論理和演算子\(Logical OR Operator\)
@@ -430,7 +430,7 @@ if hasDoorKey || knowsOverridePassword {
 } else {
     print("ACCESS DENIED")
 }
-// "Welcome!"
+// Welcome!
 ```
 
 ### 論理演算子の合成\(Combining Logical Operators\)
@@ -443,7 +443,7 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 } else {
     print("ACCESS DENIED")
 }
-// "Welcome!"
+// Welcome!
 ```
 
 この例では、複数の `&&` と `||` を使用して複合式を作っています。`&&` と `||` は 2 つの値しか操作することができないため、実際には 3 つの小さい式を繋げています。この例は下記のように読み取れます:
@@ -465,7 +465,7 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 } else {
     print("ACCESS DENIED")
 }
-// "Welcome!"
+// Welcome!
 ```
 
 この括弧は、最初の 2 つの値が、全体の論理の中で別の状態を持つことを明確にしています。複合式の出力結果は変わりませんが、全体の意図は読み手により明確になります。可読性は簡潔さよりも常に優先されます。意図を明確にすることができるならば、括弧を使いましょう。
