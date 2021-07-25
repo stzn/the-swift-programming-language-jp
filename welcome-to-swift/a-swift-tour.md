@@ -6,7 +6,7 @@
 
 ```swift
 print("Hello, world!")
-// "Hello, world!"
+// Hello, world!
 ```
 
 もし C 言語や Objective-C の経験があるならばこの構文に馴染みがあるかもしれませんが、Swift ではこの 1 行のコードでプログラミングは完成しています。input/output や文字列を扱うために他のライブラリを import する必要もありません。グローバル領域に書かれたコードはプログラムのエントリポイントとして使用されます。`main()` 関数は必要ありません。全てのステートメントの末尾にセミコロンをつける必要もありません。
@@ -122,7 +122,7 @@ for score in individualScores {
     }
 }
 print(teamScore)
-// "11"
+// 11
 ```
 
 `if` 文の中で、条件はブール式でなければなりません。つまり、`if score { ... }` などのコードはエラーで、暗黙的に 0 にはなりません。
@@ -132,7 +132,7 @@ print(teamScore)
 ```swift
 var optionalString: String? = "Hello"
 print(optionalString == nil)
-// "false"
+// false
 
 var optionalName: String? = "John Appleseed"
 var greeting = "Hello!"
@@ -168,7 +168,7 @@ case let x where x.hasSuffix("pepper"):
 default:
     print("Everything tastes good in soup.")
 }
-// "Is it a spicy red pepper?"
+// Is it a spicy red pepper?
 ```
 
 > Experiment  
@@ -195,7 +195,7 @@ for (_, numbers) in interestingNumbers {
     }
 }
 print(largest)
-// "25"
+// 25
 ```
 
 > Experiment  
@@ -209,14 +209,14 @@ while n < 100 {
     n *= 2
 }
 print(n)
-// "128"
+// 128
 
 var m = 2
 repeat {
     m *= 2
 } while m < 100
 print(m)
-// "128"
+// 128
 ```
 
 `..<` を使用すると、インデックスの範囲を生成でき、ループのインデックスを追うことができます。
@@ -227,7 +227,7 @@ for i in 0..<4 {
     total += i
 }
 print(total)
-// "6
+// 6
 ```
 
 `..<` では後ろの値は除外され、`...` は両方の値を含みます。
@@ -267,9 +267,9 @@ func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
 }
 let statistics = calculateStatistics(scores: [5, 3, 100, 3, 9])
 print(statistics.sum)
-// "120"
+// 120
 print(statistics.2)
-// "120"
+// 120
 ```
 
 関数はネストして使用することができます。ネストした関数は、外側で定義された変数にアクセスすることができます。ネストした関数を使用することで、長くて複雑な関数を整理することができます。
@@ -334,7 +334,7 @@ numbers.map({ (number: Int) -> Int in
 ```swift
 let mappedNumbers = numbers.map({ number in 3 * number })
 print(mappedNumbers)
-// "[60, 57, 21, 36]"
+// [60, 57, 21, 36]
 ```
 
 名前ではなく番号でパラメータを参照できます。このアプローチは、非常に短いクロージャで特に役立ちます。関数の最後の引数として渡されたクロージャは、括弧の直後に表示できます。 クロージャが関数の唯一の引数の場合は、括弧を完全に省略できます。
@@ -342,7 +342,7 @@ print(mappedNumbers)
 ```swift
 let sortedNumbers = numbers.sorted { $0 > $1 }
 print(sortedNumbers)
-// "[20, 19, 12, 7]"
+// [20, 19, 12, 7]
 ```
 
 ## オブジェクトとクラス\(Objects and Classes\)
@@ -447,10 +447,10 @@ class EquilateralTriangle: NamedShape {
 }
 var triangle = EquilateralTriangle(sideLength: 3.1, name: "a triangle")
 print(triangle.perimeter)
-// "9.3"
+// 9.3
 triangle.perimeter = 9.9
 print(triangle.sideLength)
-// "3.3000000000000003"
+// 3.3000000000000003
 ```
 
 `perimeter` の sett の中で、新しい値は暗黙的に `newValue` という名前になります。`set` の後に丸括弧\(`()`\)で囲んで明示的に指定することもできます。
@@ -482,12 +482,12 @@ class TriangleAndSquare {
 }
 var triangleAndSquare = TriangleAndSquare(size: 10, name: "another test shape")
 print(triangleAndSquare.square.sideLength)
-// "10.0"
+// 10.0
 print(triangleAndSquare.triangle.sideLength)
-// "10.0"
+// 10.0
 triangleAndSquare.square = Square(sideLength: 50, name: "larger square")
 print(triangleAndSquare.triangle.sideLength)
-// "50.0"
+// 50.0
 ```
 
 オプショナルな値を扱う場合、`?` をメソッド、プロパティ、subscript のような操作の前に書きます。もし `?` の前の値が `nil` の場合、`?` の後の処理は全て無視され、その式全体の値は `nil` になります。それ以外、オプショナルの値はアンラップされて、`?` の後は全てアンラップされた値として実行されます。どちらの場合も、式全体はオプショナルな値です。
@@ -584,7 +584,7 @@ case let .result(sunrise, sunset):
 case let .failure(message):
     print("Failure...  \(message)")
 }
-// "Sunrise is at 6:00 am and sunset is at 8:09 pm."
+// Sunrise is at 6:00 am and sunset is at 8:09 pm.
 ```
 
 > Experiment  
@@ -662,7 +662,7 @@ extension Int: ExampleProtocol {
     }
 }
 print(7.simpleDescription)
-// "The number 7"
+// The number 7
 ```
 
 > Experiment  
@@ -673,11 +673,11 @@ print(7.simpleDescription)
 ```swift
 let protocolValue: ExampleProtocol = a
 print(protocolValue.simpleDescription)
-// "A very simple class.  Now 100% adjusted."
-// print(protocolValue.anotherProperty)  // Uncomment to see the error
+// A very simple class.  Now 100% adjusted. が出力されます。
+// print(protocolValue.anotherProperty)  // エラーを確認したい場合はコメントアウトを外しましょう
 ```
 
-変数 `protocolValue` が実行時に `SimpleClass` になることはわかるものの、コンパイラはこれを、ある `ExampleProtocol` として扱います。つまり、プロトコルで定義されたメソッドやプロパティ以外へアクセスすることはできません。
+変数 `protocolValue` が実行時に `SimpleClass` になることはわかるものの、コンパイラはこれを、`ExampleProtocol` として扱います。つまり、プロトコルで定義されたメソッドやプロパティ以外へアクセスすることはできません。
 
 ## エラーハンドリング\(Error Handling\)
 
@@ -711,7 +711,7 @@ do {
 } catch {
     print(error)
 }
-// "Job sent"
+// Job sent
 ```
 
 > Experiment  
@@ -730,7 +730,7 @@ do {
 } catch {
     print(error)
 }
-// "Job sent"
+// Job sent
 ```
 
 > Experiment  
@@ -760,7 +760,7 @@ func fridgeContains(_ food: String) -> Bool {
 }
 fridgeContains("banana")
 print(fridgeIsOpen)
-// "false"
+// false
 ```
 
 ## ジェネリクス\(Generics\)

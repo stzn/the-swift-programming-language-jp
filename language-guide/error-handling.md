@@ -154,7 +154,7 @@ do {
 } catch {
     print("Unexpected error: \(error).")
 }
-// "Insufficient funds. Please insert an additional 2 coins."
+// Insufficient funds. Please insert an additional 2 coins.
 ```
 
 上記の例では、エラーをスローする可能性があるため、`buyFavoriteSnack(person:vendingMachine:)` 関数が `try` 式で呼び出されます。エラーがスローされた場合、実行はすぐに `catch` 句に移り、伝播を続行できるかどうかを決定します。一致するパターンがない場合、エラーは最後の `catch` 句によってキャッチされ、ローカル `error` 定数にバインドされます。エラーがスローされない場合は、`do` 文の残りの文が実行されます。
@@ -177,7 +177,7 @@ do {
 } catch {
     print("Unexpected non-vending-machine-related error: \(error)")
 }
-// "Couldn't buy that from the vending machine."
+// Couldn't buy that from the vending machine.
 ```
 
 `nourish(with:)` 関数では、`vend(itemNamed:)` が `VendingMachineError` 列挙ケースの 1 つのエラーをスローした場合、`nourish(with:)` はメッセージを出力してエラーを処理します。それ以外の場合、`nourish(with:)` はエラーを呼び出し側に伝播します。その後、エラーは一般的な `catch` 句によってキャッチされます。

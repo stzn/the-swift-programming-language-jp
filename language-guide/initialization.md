@@ -38,7 +38,7 @@ struct Fahrenheit {
 }
 var f = Fahrenheit()
 print("The default temperature is \(f.temperature)° Fahrenheit")
-// "The default temperature is 32.0° Fahrenheit"
+// The default temperature is 32.0° Fahrenheit
 ```
 
 この構造体はパラメータのない単一のイニシャライザ `init` を定義します。これは、格納された温度を `32.0`\(華氏での水の凝固点\)の値で初期化します。
@@ -170,7 +170,7 @@ class SurveyQuestion {
 }
 let cheeseQuestion = SurveyQuestion(text: "Do you like cheese?")
 cheeseQuestion.ask()
-// "Do you like cheese?"
+// Do you like cheese?
 cheeseQuestion.response = "Yes, I do like cheese."
 ```
 
@@ -198,7 +198,7 @@ class SurveyQuestion {
 }
 let beetsQuestion = SurveyQuestion(text: "How about beets?")
 beetsQuestion.ask()
-// "How about beets?"
+// How about beets?
 beetsQuestion.response = "I also like beets. (But not with cheese.)"
 ```
 
@@ -241,11 +241,11 @@ let twoByTwo = Size(width: 2.0, height: 2.0)
 ```swift
 let zeroByTwo = Size(height: 2.0)
 print(zeroByTwo.width, zeroByTwo.height)
-// "0.0 2.0"
+// 0.0 2.0
 
 let zeroByZero = Size()
 print(zeroByZero.width, zeroByZero.height)
-// "0.0 0.0"
+// 0.0 0.0
 ```
 
 ## <a id="initializer-delegation-for-value-types">値型のイニシャライザの委譲\(Initializer Delegation for Value Types\)</a>
@@ -693,7 +693,7 @@ let pi = 3.14159
 if let valueMaintained = Int(exactly: wholeNumber) {
     print("\(wholeNumber) conversion to Int maintains value of \(valueMaintained)")
 }
-// "12345.0 conversion to Int maintains value of 12345"
+// 12345.0 conversion to Int maintains value of 12345
 
 let valueChanged = Int(exactly: pi)
 // valueChanged は Int? で Int ではありません
@@ -701,7 +701,7 @@ let valueChanged = Int(exactly: pi)
 if valueChanged == nil {
     print("\(pi) conversion to Int doesn't maintain value")
 }
-// "3.14159 conversion to Int doesn't maintain value"
+// 3.14159 conversion to Int doesn't maintain value
 ```
 
 下記の例では、`Animal` と呼ばれる構造体を定義し、`species` と呼ばれる `String` の定数プロパティを使用しています。`Animal` 構造体は、`species` と呼ばれる単一のパラメータを持つ失敗可能イニシャライザも定義します。このイニシャライザは、イニシャライザに渡された `species` の値が空の文字列かどうかをチェックします。空の文字列が見つかった場合、初期化に失敗します。それ以外の場合、`species` のプロパティの値が設定され、初期化が成功します:
@@ -725,7 +725,7 @@ let someCreature = Animal(species: "Giraffe")
 if let giraffe = someCreature {
     print("An animal was initialized with a species of \(giraffe.species)")
 }
-// "An animal was initialized with a species of Giraffe"
+// An animal was initialized with a species of Giraffe
 ```
 
 空の文字列を失敗可能イニシャライザの `species` パラメータに渡すと、イニシャライザは初期化に失敗します:
@@ -737,7 +737,7 @@ let anonymousCreature = Animal(species: "")
 if anonymousCreature == nil {
     print("The anonymous creature couldn't be initialized")
 }
-// "The anonymous creature couldn't be initialized"
+// The anonymous creature couldn't be initialized
 ```
 
 > NOTE  
@@ -774,13 +774,13 @@ let fahrenheitUnit = TemperatureUnit(symbol: "F")
 if fahrenheitUnit != nil {
     print("This is a defined temperature unit, so initialization succeeded.")
 }
-// "This is a defined temperature unit, so initialization succeeded."
+// This is a defined temperature unit, so initialization succeeded.
 
 let unknownUnit = TemperatureUnit(symbol: "X")
 if unknownUnit == nil {
     print("This isn't a defined temperature unit, so initialization failed.")
 }
-// "This isn't a defined temperature unit, so initialization failed."
+// This isn't a defined temperature unit, so initialization failed.
 ```
 
 ### Raw Value を持つ列挙型の失敗可能イニシャライザ\(Failable Initializers for Enumerations with Raw Values\)
@@ -798,13 +798,13 @@ let fahrenheitUnit = TemperatureUnit(rawValue: "F")
 if fahrenheitUnit != nil {
     print("This is a defined temperature unit, so initialization succeeded.")
 }
-// "This is a defined temperature unit, so initialization succeeded."
+// This is a defined temperature unit, so initialization succeeded.
 
 let unknownUnit = TemperatureUnit(rawValue: "X")
 if unknownUnit == nil {
     print("This isn't a defined temperature unit, so initialization failed.")
 }
-// "This isn't a defined temperature unit, so initialization failed."
+// This isn't a defined temperature unit, so initialization failed.
 ```
 
 ### 初期化の失敗の伝播\(Propagation of Initialization Failure\)
@@ -845,7 +845,7 @@ class CartItem: Product {
 if let twoSocks = CartItem(name: "sock", quantity: 2) {
     print("Item: \(twoSocks.name), quantity: \(twoSocks.quantity)")
 }
-// "Item: sock, quantity: 2"
+// Item: sock, quantity: 2
 ```
 
 `quantity` の値が `0` の `CartItem` インスタンスを作成しようとすると、`CartItem` のイニシャライザによって初期化が失敗します:
@@ -856,7 +856,7 @@ if let zeroShirts = CartItem(name: "shirt", quantity: 0) {
 } else {
     print("Unable to initialize zero shirts")
 }
-// "Unable to initialize zero shirts"
+// Unable to initialize zero shirts
 ```
 
 同様に、`name` の値が空の `CartItem` インスタンスを作成しようとすると、スーパークラスの `Product` イニシャライザによって初期化が失敗します。
@@ -867,7 +867,7 @@ if let oneUnnamed = CartItem(name: "", quantity: 1) {
 } else {
     print("Unable to initialize one unnamed product")
 }
-// "Unable to initialize one unnamed product"
+// Unable to initialize one unnamed product
 ```
 
 ### <a id="overriding-a-failable-initializer">失敗可能イニシャライザのオーバーライド\(Overriding a Failable Initializer\)</a>
@@ -1014,8 +1014,8 @@ struct Chessboard {
 ```swift
 let board = Chessboard()
 print(board.squareIsBlackAt(row: 0, column: 1))
-// "true"
+// true
 print(board.squareIsBlackAt(row: 7, column: 7))
-// "false"
+// false
 ```
 

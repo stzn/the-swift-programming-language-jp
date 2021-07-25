@@ -137,10 +137,10 @@ let dial = TelephoneExchange()
 
 // 動的メソッド呼び出しを使用します
 dial(4, 1, 1)
-// "Get Swift help on forums.swift.org"
+// Get Swift help on forums.swift.org
 
 dial(8, 6, 7, 5, 3, 0, 9)
-// "Unrecognized number"
+// Unrecognized number
 
 // 基になるメソッドを直接呼び出します
 dial.dynamicallyCall(withArguments: [4, 1, 1])
@@ -205,12 +205,12 @@ let s = DynamicStruct()
 //動的メンバ検索を使用します。
 let dynamic = s.someDynamicMember
 print(dynamic)
-// "325"
+// 325
 
 // 基になる subscript を直接呼び出します
 let equivalent = s[dynamicMember: "someDynamicMember"]
 print(dynamic == equivalent)
-// "true"
+// true
 ```
 
 KeyPath による動的メンバ検索を使用して、コンパイル時の型チェックをサポートする方法でラッパ型を実装できます。例えば:

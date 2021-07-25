@@ -27,7 +27,7 @@ var someInt = 3
 var anotherInt = 107
 swapTwoInts(&someInt, &anotherInt)
 print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
-// "someInt is now 107, and anotherInt is now 3"
+// someInt is now 107, and anotherInt is now 3
 ```
 
 `swapTwoInts(_:_:)` 関数は便利ですが、`Int` 値でのみ使用できます。2 つの `String` 値または 2 つの `Double` 値を交換する場合は、下記に示す `swapTwoStrings(_:_:)` および `swapTwoDoubles(_:_:)` 関数などの関数をさらに作成する必要があります:
@@ -221,7 +221,7 @@ extension Stack {
 if let topItem = stackOfStrings.topItem {
     print("The top item on the stack is \(topItem).")
 }
-// "The top item on the stack is tres."
+// The top item on the stack is tres.
 ```
 
 ジェネリック型の extension には、下記の[Extensions with a Generic Where Clause\(ジェネリック where 句を使った拡張\)](generics.md#extensions-with-a-generic-where-clause)で説明されているように、新しい機能を取得するために拡張した型のインスタンスが満たさなければならない要件を含めることもできます。
@@ -270,7 +270,7 @@ let strings = ["cat", "dog", "llama", "parakeet", "terrapin"]
 if let foundIndex = findIndex(ofString: "llama", in: strings) {
     print("The index of llama is \(foundIndex)")
 }
-// "The index of llama is 2"
+// The index of llama is 2
 ```
 
 ただし、配列内の値のインデックスを見つけるという動作は、文字列だけで有用というわけではありません。文字列を何らかの `T` 型の値に置き換えることで、ジェネリック関数と同じ機能を作成できます。
@@ -557,7 +557,7 @@ if allItemsMatch(stackOfStrings, arrayOfStrings) {
 } else {
     print("Not all items match.")
 }
-// "All items match."
+// All items match.
 ```
 
 上記の例では、`String` 値を格納する `Stack` インスタンスを作成し、3 つの文字列をスタックにプッシュします。この例では、スタックと同じ 3 つの文字列を含む配列リテラルで初期化された `Array` インスタンスも作成します。スタックと配列は型が異なりますが、どちらも `Container` プロトコルに準拠しており、両方に同じ型の値が含まれています。したがって、これら 2 つのコンテナを引数として `allItemsMatch(_:_:)` 関数を呼び出すことができます。上記の例では、`allItemsMatch(_:_:)` 関数は、2 つのアイテムの全てが合致していることを出力します。
@@ -587,7 +587,7 @@ if stackOfStrings.isTop("tres") {
 } else {
     print("Top element is something else.")
 }
-// "Top element is tres."
+// Top element is tres.
 ```
 
 要素が `Equatable` でないスタックで `isTop(_:)` メソッドを呼び出そうとすると、コンパイルエラーが発生します。
@@ -618,7 +618,7 @@ if [9, 9, 9].startsWith(42) {
 } else {
     print("Starts with something else.")
 }
-// "Starts with something else."
+// Starts with something else.
 ```
 
 上記の例のジェネリック `where` 句では、`Item` がプロトコルに準拠する必要がありますが、`Item` の型を特定する必要があるジェネリック `where` 句を記述することもできます。例えば:
@@ -634,7 +634,7 @@ extension Container where Item == Double {
     }
 }
 print([1260.0, 1200.0, 98.6, 37.0].average())
-// "648.9"
+// 648.9
 ```
 
 この例では、`Item` 型が `Double` のコンテナに `average()` メソッドを追加します。コンテナ内のアイテムを繰り返して合計し、コンテナの数で除算して平均を計算します。浮動小数点除算ができるように、`count` を `Int` から `Double` に明示的に変換します。
@@ -660,9 +660,9 @@ extension Container {
 }
 let numbers = [1260, 1200, 98, 37]
 print(numbers.average())
-// "648.75"
+// 648.75
 print(numbers.endsWith(37))
-// "true"
+// true
 ```
 
 この例では、アイテムが整数の場合は `average()` メソッドを `Container` に追加し、アイテムが `Equatable` の場合は `endsWith(_:)` メソッドを追加します。どちらの関数にも、`Container` で宣言したジェネリックな `Item` 型パラメータに型制約を追加するジェネリック `where` 句が含まれています。

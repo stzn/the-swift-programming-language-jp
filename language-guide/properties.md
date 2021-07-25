@@ -92,7 +92,7 @@ manager.data.append("Some more data")
 ```swift
 print(manager.importer.filename)
 // importer プロパティの DataImporter インスタンスが作成されました
-// "data.txt"
+// data.txt
 ```
 
 > NOTE  
@@ -135,7 +135,7 @@ var square = Rect(origin: Point(x: 0.0, y: 0.0),
 let initialSquareCenter = square.center
 square.center = Point(x: 15.0, y: 15.0)
 print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
-// "square.origin is now at (10.0, 10.0)"
+// square.origin is now at (10.0, 10.0)
 ```
 
 この例では、幾何学的形状を操作するための 3 つの構造体を定義しています。
@@ -217,7 +217,7 @@ struct Cuboid {
 }
 let fourByFiveByTwo = Cuboid(width: 4.0, height: 5.0, depth: 2.0)
 print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
-// "the volume of fourByFiveByTwo is 40.0"
+// the volume of fourByFiveByTwo is 40.0
 ```
 
 この例では、`Cuboid` という新しい構造体を定義します。これは、`width`、`height`、`depth` プロパティを持つ 3D の長方形のボックスを表します。この構造体には、`volume` と呼ばれる読み取り専用計算プロパティもあります。これは、直方体の現在のボリュームを計算して返します。特定のボリューム値に `width`、`height`、`depth` のどの値が使用されているかがあいまいなため、`volume` に set 可能にすることは意味がありません。それでも、`Cuboid` が読み取り専用計算プロパティを提供して、外部ユーザーが現在の計算済みボリュームを見られようにすると便利です。
@@ -316,15 +316,15 @@ struct SmallRectangle {
 
 var rectangle = SmallRectangle()
 print(rectangle.height)
-// "0"
+// 0
 
 rectangle.height = 10
 print(rectangle.height)
-// "10"
+// 10
 
 rectangle.height = 24
 print(rectangle.height)
-// "12"
+// 12
 ```
 
 `height` と `width` のプロパティは、`TwelveOrLess.number` を 0 に設定する `TwelveOrLess` の定義から初期値を取得します。`TwelveOrLess` の set は、`10` を有効な値として扱うため、数値 `10` を `rectangle.height` に格納すると、記述どおりに進みます。ただし、`24` は `TwelveOrLess` が許容する値よりも大きいため、`24` を格納しようとすると、代わりに `rectangle.height` を最大許容値の `12` に設定することになります。
@@ -390,7 +390,7 @@ truct ZeroRectangle {
 
 var zeroRectangle = ZeroRectangle()
 print(zeroRectangle.height, zeroRectangle.width)
-// "0 0"
+// 0 0
 ```
 
 `height` と `width` をラップする `SmallNumber` のインスタンスは、`SmallNumber()` を呼び出すことによって作成されます。そのイニシャライザ内のコードは、0 と 12 のデフォルト値を使用して、ラップされた値の初期値と最大値の初期値を設定します。プロパティラッパは、`SmallRectangle` で `TwelveOrLess` を使用した前の例のように、引き続き全ての初期値を設定します。その例とは異なり、`SmallNumber` は、プロパティの宣言の一部としてこれらの初期値を書き込むこともサポートしています。
@@ -405,7 +405,7 @@ struct UnitRectangle {
 
 var unitRectangle = UnitRectangle()
 print(unitRectangle.height, unitRectangle.width)
-// "1 1"
+// 1 1
 ```
 
 ラッパを使用してプロパティに `= 1` を書き込むと、それは `init(wrappedValue:)` イニシャライザの呼び出しに変換されます。`height` と `width` をラップする `SmallNumber` のインスタンスは、`SmallNumber(wrappedValue: 1)` を呼び出すことによって作成されます。イニシャライザは、ここで指定されたラップされた値を使用し、デフォルトの最大値の `12` を使用します。
@@ -420,12 +420,12 @@ struct NarrowRectangle {
 
 var narrowRectangle = NarrowRectangle()
 print(narrowRectangle.height, narrowRectangle.width)
-// "2 3"
+// 2 3
 
 narrowRectangle.height = 100
 narrowRectangle.width = 100
 print(narrowRectangle.height, narrowRectangle.width)
-// "5 4"
+// 5 4
 ```
 
 `height` をラップする `SmallNumber` のインスタンスは `SmallNumber(wrappedValue: 2, maximum: 5)` を呼び出すことで作成され、`width` をラップするインスタンスは `SmallNumber(wrappedValue: 3, maximum: 4)` を呼び出すことで作成されます。
@@ -442,11 +442,11 @@ struct MixedRectangle {
 
 var mixedRectangle = MixedRectangle()
 print(mixedRectangle.height)
-// "1"
+// 1
 
 mixedRectangle.height = 20
 print(mixedRectangle.height)
-// "12"
+// 12
 ```
 
 `height` をラップする `SmallNumber` のインスタンスは、デフォルトの最大値 12 を使用する `SmallNumber(wrappedValue: 1)` を呼び出すことによって作成されます。`width` をラップするインスタンスは、`SmallNumber(wrappedValue: 2, maximum: 9)` を呼び出すことによって作成されます。
@@ -482,11 +482,11 @@ var someStructure = SomeStructure()
 
 someStructure.someNumber = 4
 print(someStructure.$someNumber)
-// "false"
+// false
 
 someStructure.someNumber = 55
 print(someStructure.$someNumber)
-// "true"
+// true
 ```
 
 `someStructure.$someNumber` を書き込むと、ラッパの projectedValue にアクセスします。4 などの小さな数を格納した後、`someStructure.$someNumber` の値は `false` です。ただし、55 などの大きすぎる数値を格納しようとすると、projectedValue は `true` になります。
@@ -599,14 +599,14 @@ class SomeClass {
 
 ```swift
 print(SomeStructure.storedTypeProperty)
-// "Some value."
+// Some value.
 SomeStructure.storedTypeProperty = "Another value."
 print(SomeStructure.storedTypeProperty)
-// "Another value."
+// Another value.
 print(SomeEnumeration.computedTypeProperty)
-// "6"
+// 6
 print(SomeClass.computedTypeProperty)
-// "27"
+// 27
 ```
 
 下記の例では、いくつかのオーディオチャネルのオーディオレベルメータをモデル化する構造体の一部として、2 つの格納型プロパティを使用します。各チャンネルには、`0` から `10` までの整数のオーディオレベルがあります。
@@ -662,9 +662,9 @@ var rightChannel = AudioChannel()
 ```swift
 leftChannel.currentLevel = 7
 print(leftChannel.currentLevel)
-// "7"
+// 7
 print(AudioChannel.maxInputLevelForAllChannels)
-// "7"
+// 7
 ```
 
 右チャネルの `currentLevel` を `11` に設定しようとすると、右チャネルの `currentLevel` プロパティが最大値 `10` に制限され、`maxInputLevelForAllChannels` 型プロパティが `10` に更新されることがわかります。
@@ -672,8 +672,8 @@ print(AudioChannel.maxInputLevelForAllChannels)
 ```swift
 rightChannel.currentLevel = 11
 print(rightChannel.currentLevel)
-// "10"
+// 10
 print(AudioChannel.maxInputLevelForAllChannels)
-// "10"
+// 10
 ```
 

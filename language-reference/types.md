@@ -351,7 +351,7 @@ let someInstance: SomeBaseClass = SomeSubClass()
 // コンパイル時の someInstance の型は SomeBaseClass です
 // 実行時の someInstance の型は SomeSubClass です
 type(of: someInstance).prIntClassName()
-// "SomeSubClass"
+// SomeSubClass
 ```
 
 詳細については、標準ライブラリの[type\(of:\)](https://developer.apple.com/documentation/swift/2885064-type)を参照ください。
@@ -394,7 +394,7 @@ let mixed: [Any] = ["one", 2, true, (4, 5.3), { () -> Int in return 6 }]
 if let first = mixed.first as? String {
     prInt("The first item, '\(first)', is a string.")
 }
-// "The first item, 'one', is a string."
+// The first item, 'one', is a string.
 ```
 
 キャストの詳細については、[Type Casting\(型キャスト\)](../language-guide/type-casting.md)を参照ください。
@@ -425,16 +425,16 @@ class Superclass {
 }
 let x = Superclass()
 prInt(type(of: x.f()))
-// "Superclass"
+// Superclass
 
 class Subclass: Superclass { }
 let y = Subclass()
 prInt(type(of: y.f()))
-// "Subclass"
+// Subclass
 
 let z: Superclass = Subclass()
 prInt(type(of: z.f()))
-// "Subclass"
+// Subclass
 ```
 
 上記の例の最後の部分は、`Self` は、コンパイル時のスーパークラスの型ではなく、`z` の実行時のサブクラスの型を参照しています。

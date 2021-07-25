@@ -51,7 +51,7 @@ var reference3: Person?
 
 ```swift
 reference1 = Person(name: "John Appleseed")
-// "John Appleseed is being initialized"
+// John Appleseed is being initialized
 ```
 
 `Person` クラスのイニシャライザを呼び出した時点で、`"John Appleseed is being initialized"` というメッセージが出力されることに注目してください。これは、初期化が行われたことを確認します。
@@ -78,7 +78,7 @@ ARC は、最後の 3 番目の強参照がなくなるまで、`Person` イン�
 
 ```swift
 reference3 = nil
-// "John Appleseed is being deinitialized"
+// John Appleseed is being deinitialized
 ```
 
 ## <a id="strong-reference-cycles-between-class-instances">クラスインスタンス間の強参照循環\(Strong Reference Cycles Between Class Instances\)</a>
@@ -215,7 +215,7 @@ unit4A!.tenant = john
 
 ```swift
 john = nil
-// "John Appleseed is being deinitialized"
+// John Appleseed is being deinitialized
 ```
 
 `Person` インスタンスへの強参照がなくなったため、割り当てが解除され、`tenant` プロパティが `nil` に設定されます:
@@ -226,7 +226,7 @@ john = nil
 
 ```swift
 unit4A = nil
-// "Apartment 4A is being deinitialized"
+// Apartment 4A is being deinitialized
 ```
 
 `Apartment` インスタンスへの強参照がなくなったため、この割り当ても解除されます:
@@ -302,8 +302,8 @@ john!.card = CreditCard(number: 1234_5678_9012_3456, customer: john!)
 
 ```swift
 john = nil
-// "John Appleseed is being deinitialized"
-// "Card #1234567890123456 is being deinitialized"
+// John Appleseed is being deinitialized
+// Card #1234567890123456 is being deinitialized
 ```
 
 上記の最後のコードスニペットは、`john` 変数が `nil` に設定された後、`Customer` インスタンスと `CreditCard` インスタンスのデイニシャライザが両方の"deinitialized"メッセージを出力することを示しています。
@@ -417,7 +417,7 @@ class City {
 ```swift
 var country = Country(name: "Canada", capitalName: "Ottawa")
 print("\(country.name)'s capital city is called \(country.capitalCity.name)")
-// "Canada's capital city is called Ottawa"
+// Canada's capital city is called Ottawa
 ```
 
 上記の例では、暗黙アンラップオプショナルを使用することは、2 段階のクラスイニシャライザの要件が全て満たされることを意味します。`capitalCity` プロパティは、初期化が完了すると、強参照循環を回避しつつ、オプショナルではない値のように使用およびアクセスできます。
@@ -477,7 +477,7 @@ heading.asHTML = {
     return "<\(heading.name)>\(heading.text ?? defaultText)</\(heading.name)>"
 }
 print(heading.asHTML())
-// "<h1>some default text</h1>"
+// <h1>some default text</h1>
 ```
 
 > NOTE  
@@ -490,7 +490,7 @@ print(heading.asHTML())
 ```swift
 var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
 print(paragraph!.asHTML())
-// "<p>hello, world</p>"
+// <p>hello, world</p>
 ```
 
 > NOTE  
@@ -587,7 +587,7 @@ class HTMLElement {
 ```swift
 var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello, world")
 print(paragraph!.asHTML())
-// "<p>hello, world</p>"
+// <p>hello, world</p>
 ```
 
 キャプチャリストを配置した場合の参照は次のようになります：
@@ -598,7 +598,7 @@ print(paragraph!.asHTML())
 
 ```swift
 paragraph = nil
-// "p is being deinitialized"
+// p is being deinitialized
 ```
 
 キャプチャリストの詳細については、[Capture Lists\(キャプチャリスト\)](../language-reference/expressions.md#capture-lists)を参照ください。

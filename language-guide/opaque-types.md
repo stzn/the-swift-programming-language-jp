@@ -245,7 +245,7 @@ func makeOpaqueContainer<T>(item: T) -> some Container {
 let opaqueContainer = makeOpaqueContainer(item: 12)
 let twelve = opaqueContainer[0]
 print(type(of: twelve))
-// "Int"
+// Int
 ```
 
 `twelve` の型は `Int` だと推論されます。これは、型推論が Opaque 型でも機能することを示しています。`makeOpaqueContainer(item:)` の実装では、Opaque 型の基になる型は `[T]` です。この場合、`T` は `Int` のため、戻り値は整数の配列で、関連型 `Item` は `Int` だと推論されます。`Container` の subscript は `Item` を返します。これは、`twelve` の型も `Int` だと推論されることを意味します。

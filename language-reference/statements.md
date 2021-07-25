@@ -199,7 +199,7 @@ case .suppressed:
 @unknown default:
     print("Use a representation that was unknown when this code was compiled.")
 }
-// "Generate a default mirror for all ancestor classes."
+// Generate a default mirror for all ancestor classes.
 ```
 
 #### ケース間を暗黙的に通り抜けない\(Execution Does Not Fall Through Cases Implicitly\)
@@ -351,9 +351,9 @@ func f() {
     print("End of function")
 }
 f()
-// "End of function"
-// "Second defer"
-// "First defer"
+// End of function
+// Second defer
+// First defer
 ```
 
 `defer` 文内の文は、プログラム制御を `defer` 文の外部に移すことはできません。
@@ -430,9 +430,9 @@ print("Compiled in Swift 4.2 mode or later")
 #if compiler(>=5) && swift(<5)
 print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 5")
 #endif
-// "Compiled with the Swift 5 compiler or later"
-// "Compiled in Swift 4.2 mode or later"
-// "Compiled with the Swift 5 compiler or later in a Swift mode earlier than 5"
+// Compiled with the Swift 5 compiler or later
+// Compiled in Swift 4.2 mode or later
+// Compiled with the Swift 5 compiler or later in a Swift mode earlier than 5
 ```
 
 `canImport()` プラットフォーム条件の引数は、全てのプラットフォームに存在するとは限らないモジュールの名前です。この条件は、モジュールをインポートできるかどうかをテストしますが、実際にはインポートしません。モジュールが存在する場合、プラットフォーム条件は `true` を返します。それ以外の場合は、`false` を返します。

@@ -363,11 +363,11 @@ class SomeClass {
 let instance = SomeClass()
 instance.doSomething()
 print(instance.x)
-// "200"
+// 200
 
 completionHandlers.first?()
 print(instance.x)
-// "100"
+// 100
 ```
 
 下記は、クロージャのキャプチャリストに含めることで `self` をキャプチャし、暗黙的に `self` を参照する `doSomething()` のバージョンです。
@@ -407,16 +407,16 @@ _自動クロージャ_は、関数の引数として渡された式をラップ
 ```swift
 var customersInLine = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
 print(customersInLine.count)
-// "5"
+// 5
 
 let customerProvider = { customersInLine.remove(at: 0) }
 print(customersInLine.count)
-// "5"
+// 5
 
 print("Now serving \(customerProvider())!")
-// "Now serving Chris!"
+// Now serving Chris!
 print(customersInLine.count)
-// "4"
+// 4
 ```
 
 `customersInLine` 配列の最初の要素はクロージャ内のコードによって削除されますが、配列要素はクロージャが実際に呼び出されるまで削除されません。クロージャが呼び出されない場合、クロージャ内の式が評価されることはありません。つまり、配列要素が削除されることはありません。`customerProvider` の型は `String` ではなく、`() -> String` で、文字列を返すパラメータのない関数だということに注意してください。
@@ -429,7 +429,7 @@ func serve(customer customerProvider: () -> String) {
     print("Now serving \(customerProvider())!")
 }
 serve(customer: { customersInLine.remove(at: 0) } )
-// "Now serving Alex!"
+// Now serving Alex!
 ```
 
 上記のリストの `serve(customer:)` 関数は、顧客の名前を返す明示的なクロージャを受け取ります。下記のバージョンの `serve(customer:)` は同じ操作を実行しますが、明示的なクロージャを取得する代わりに、パラメータの型を `@autoclosure` 属性でマークすることによって自動クロージャを取得します。これで、クロージャの代わりに `String` 引数を受け取ったかのように関数を呼び出すことができます。`customerProvider` パラメータの型は `@autoclosure` 属性でマークされているため、引数は自動的にクロージャに変換されます。
@@ -440,7 +440,7 @@ func serve(customer customerProvider: @autoclosure () -> String) {
     print("Now serving \(customerProvider())!")
 }
 serve(customer: customersInLine.remove(at: 0))
-// "Now serving Ewa!"
+// Now serving Ewa!
 ```
 
 > NOTE  
@@ -458,12 +458,12 @@ collectCustomerProviders(customersInLine.remove(at: 0))
 collectCustomerProviders(customersInLine.remove(at: 0))
 
 print("Collected \(customerProviders.count) closures.")
-// "Collected 2 closures."
+// Collected 2 closures.
 for customerProvider in customerProviders {
     print("Now serving \(customerProvider())!")
 }
-// "Now serving Barry!"
-// "Now serving Daniella!"
+// Now serving Barry!
+// Now serving Daniella!
 ```
 
 上記のコードでは、`customerProvider` 引数として渡されたクロージャを呼び出す代わりに、`collectCustomerProviders(_:)` 関数がクロージャを `customerProviders` 配列に追加します。配列は関数のスコープ外で宣言されています。つまり、配列のクロージャは関数が戻った後に実行される場合があります。その結果、`customerProvider` 引数の値は、関数のスコープをエスケープできるようにする必要があります。

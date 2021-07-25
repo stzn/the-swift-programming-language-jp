@@ -177,14 +177,14 @@ func f(_ any: Any) { print("Function for Any") }
 func f(_ int: Int) { print("Function for Int") }
 let x = 10
 f(x)
-// "Function for Int"
+// Function for Int
 
 let y: Any = x
 f(y)
-// "Function for Any"
+// Function for Any
 
 f(x as Any)
-// "Function for Any"
+// Function for Any
 ```
 
 ブリッジングを使用して、新しいインスタンスを作成せずに、`String` などの Swift 標準ライブラリ型の式を、それに相応する `NSString` などの Foudation 型で使用できるようにしています。ブリッジングの詳細については、[Working with Foundation Types](https://developer.apple.com/documentation/swift/imported_c_and_objective_c_apis/working_with_foundation_types)を参照ください。
@@ -249,7 +249,7 @@ func logFunctionName(string: String = #function) {
    print(string)
 }
 func myFunction() {
-   logFunctionName() // "myFunction()".
+   logFunctionName() // myFunction().
 }
 ```
 
@@ -401,7 +401,7 @@ a = 10
 b = 10
 closure()
 
-// "0 10"
+// 0 10
 ```
 
 クロージャの範囲内の定数と周囲の範囲内の変数に 2 つ `a` という同じ名前の異なるものがありますが、`b` という名前の変数は 1 つだけです。内部スコープ内の `a` は、クロージャが作成されたときに外側の `a` 値で初期化されますが、それらの値は繋がっていません。つまり、これは、外側の範囲内の `a` の値の変化が内側の範囲内の `a` の値に影響を与えず、クロージャの内側の値の変化も外側の `a` に影響を与えません。対照的に、`b` という名前の変数は外側の範囲内に 1 つしかなく、クロージャの内側または外側からの変化は両方に影響を与えます。
@@ -421,7 +421,7 @@ let closure = { [x] in
 x.value = 10
 y.value = 10
 closure()
-// "10 10"
+// 10 10
 ```
 
 式の値の型がクラスの場合は、式の値へ弱参照または非所有参照で取り込むために、キャプチャリスト内の式に `weak` または `unowned` をマークすることができます。
@@ -620,18 +620,18 @@ let path = \[String].[index]
 let fn: ([String]) -> String = { strings in strings[index] }
 
 print(greetings[keyPath: path])
-// "bonjour"
+// bonjour
 print(fn(greetings))
-// "bonjour"
+// bonjour
 
 // index に新しい値を設定しても、path には影響しません
 index += 1
 print(greetings[keyPath: path])
-// "bonjour"
+// bonjour
 
 // fn が index を参照するので、新しい値を使用しています
 print(fn(greetings))
-// "안녕"
+// 안녕
 ```
 
 _path_ はオプショナルチェーンと強制アンラップを使用できます。このコードは、オプショナルの文字列のプロパティにアクセスするためのキーパスでオプショナルチェーンを使用しています。
@@ -639,12 +639,12 @@ _path_ はオプショナルチェーンと強制アンラップを使用でき�
 ```swift
 let firstGreeting: String? = greetings.first
 print(firstGreeting?.count as Any)
-// "Optional(5)"
+// Optional(5)
 
 // key-path を使用して同じことをしています
 let count = greetings[keyPath: \[String].first?.count]
 print(count as Any)
-// "Optional(5)"
+// Optional(5)
 ```
 
 キーパスのコンポーネントを、型内に深くネストされている値にアクセスために組み合わせることができます。次のコードは、これらのコンポーネントを組み合わせた key-path 式を使用して、配列内の辞書のプロパティの様々な値にアクセスしています:
@@ -654,13 +654,13 @@ let interestingNumbers = ["prime": [2, 3, 5, 7, 11, 13, 17],
                           "triangular": [1, 3, 6, 10, 15, 21, 28],
                           "hexagonal": [1, 6, 15, 28, 45, 66, 91]]
 print(interestingNumbers[keyPath: \[String: [Int]].["prime"]] as Any)
-// "Optional([2, 3, 5, 7, 11, 13, 17])"
+// Optional([2, 3, 5, 7, 11, 13, 17])
 print(interestingNumbers[keyPath: \[String: [Int]].["prime"]![0]])
-// "2"
+// 2
 print(interestingNumbers[keyPath: \[String: [Int]].["hexagonal"]!.count])
-// "7"
+// 7
 print(interestingNumbers[keyPath: \[String: [Int]].["hexagonal"]!.count.bitWidth])
-// "64"
+// 64
 ```
 
 関数またはクロージャを使用できるコンテキストでは、key-path 式を使用できます。具体的には、`(SomeType) -> Value` 型の関数やクロージャの代わりに、基の型が `SomeType` で、そのパスが `Value` 型の値を生成することができます。
@@ -690,7 +690,7 @@ func makeIndex() -> Int {
 }
 // 下の行は makeIndex() を呼び出します
 let taskKeyPath = \[Task][makeIndex()]
-// "Made an index"
+// Made an index
 
 // taskKeyPath を使用すると makeIndex() は再び呼び出されません。
 let someTask = toDoList[keyPath: taskKeyPath]
@@ -774,7 +774,7 @@ let keyPath = #keyPath(SomeClass.someProperty)
 if let value = c.value(forKey: keyPath) {
     print(value)
 }
-// "12"
+// 12
 ```
 
 クラス内で key-path 文字列式を使用すると、クラス名なしでプロパティ名だけを書くことでそのクラスのプロパティを参照できます。
@@ -786,7 +786,7 @@ extension SomeClass {
     }
 }
 print(keyPath == c.getSomeKeyPath())
-// "true"
+// true
 ```
 
 キーパス文字列は、実行時ではなくコンパイル時に作成されているため、コンパイラはプロパティが存在すること、およびそのプロパティが Objective-C ランタイムに公開されていることを確認できます。
@@ -881,9 +881,9 @@ func someFunction(firstClosure: Callback? = nil,
     print(first ?? "-", second ?? "-")
 }
 
-someFunction()  // "- -"
-someFunction { return $0 + 100 }  // "Ambiguous"
-someFunction { return $0 } secondClosure: { return $0 }  // "10 20"
+someFunction()  // - -
+someFunction { return $0 + 100 }  // Ambiguous
+someFunction { return $0 } secondClosure: { return $0 }  // 10 20
 ```
 
 上記の例では、"Ambiguous"とマークされている関数の呼び出しは"- 120"が出力され、Swift 5.3 ではコンパイラが警告を生成します。それ以降の Swift のバージョンでは "110 -"が出力されます。
@@ -955,7 +955,7 @@ class SomeSubClass: SomeSuperClass {
 let initializer: (Int) -> String = String.init
 let oneTwoThree = [1, 2, 3].map(initializer).reduce("", +)
 print(oneTwoThree)
-// "123"
+// 123
 ```
 
 名前で型を指定した場合は、イニシャライザ式を使用せずに型のイニシャライザにアクセスできます。他の場合では、イニシャライザ式を使用する必要があります。

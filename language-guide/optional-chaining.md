@@ -54,7 +54,7 @@ if let roomCount = john.residence?.numberOfRooms {
 } else {
     print("Unable to retrieve the number of rooms.")
 }
-// "Unable to retrieve the number of rooms."
+// Unable to retrieve the number of rooms.
 ```
 
 これは、オプショナルの `residence` プロパティを「チェーン」し、`residence` が存在する場合は `numberOfRooms` の値を取得するように Swift に指示します。
@@ -77,7 +77,7 @@ if let roomCount = john.residence?.numberOfRooms {
 } else {
     print("Unable to retrieve the number of rooms.")
 }
-// "John's residence has 1 room(s)."
+// John's residence has 1 room(s).
 ```
 
 ## オプショナルチェーンモデルのクラスの定義\(Defining Model Classes for Optional Chaining\)
@@ -168,7 +168,7 @@ if let roomCount = john.residence?.numberOfRooms {
 } else {
     print("Unable to retrieve the number of rooms.")
 }
-// "Unable to retrieve the number of rooms."
+// Unable to retrieve the number of rooms.
 ```
 
 `john.residence` が `nil` のため、このオプショナルチェーンは以前と同じように失敗します。
@@ -223,7 +223,7 @@ if john.residence?.printNumberOfRooms() != nil {
 } else {
     print("It was not possible to print the number of rooms.")
 }
-// "It was not possible to print the number of rooms."
+// It was not possible to print the number of rooms.
 ```
 
 オプショナルチェーンによってプロパティを設定しようとする場合も同様です。[Accessing Properties Through Optional Chaining\(オプショナルチェーンを通したプロパティへのアクセス\)](optional-chaining.md#accessing-properties-through-optional-chaining)の上記の例では、`residence` プロパティが `nil` にもかかわらず、`john.residence` のアドレス値を設定しようとしています。オプショナルチェーンによってプロパティを設定しようとすると、`Void?` 型の値が返されます。これにより、`nil` と比較して、プロパティが正常に設定されたかどうかを確認できます:
@@ -234,7 +234,7 @@ if (john.residence?.address = someAddress) != nil {
 } else {
     print("It was not possible to set the address.")
 }
-// "It was not possible to set the address."
+// It was not possible to set the address.
 ```
 
 ## オプショナルチェーンを通したsubscriptへのアクセス\(Accessing Subscripts Through Optional Chaining\)
@@ -252,7 +252,7 @@ if let firstRoomName = john.residence?[0].name {
 } else {
     print("Unable to retrieve the first room name.")
 }
-// "Unable to retrieve the first room name."
+// Unable to retrieve the first room name.
 ```
 
 `john.residence` がオプショナルの値のため、疑問符\(`?`\)は、`john.residence` の直後、subscript の括弧\(`[`\)の_前に_置かれます。
@@ -278,7 +278,7 @@ if let firstRoomName = john.residence?[0].name {
 } else {
     print("Unable to retrieve the first room name.")
 }
-// "The first room name is Living Room."
+// The first room name is Living Room.
 ```
 
 ### <a id="accessing-subscripts-of-optional-type">オプショナル型のsubscriptへのアクセス\(Accessing Subscripts of Optional Type\)</a>
@@ -317,7 +317,7 @@ if let johnsStreet = john.residence?.address?.street {
 } else {
     print("Unable to retrieve the address.")
 }
-// "Unable to retrieve the address."
+// Unable to retrieve the address.
 ```
 
 `john.residence` の値には現在 `Residence` インスタンスが含まれています。ただし、`john.residence.address` の値は現在 `nil` です。このため、`john.residence?.address?.street` への呼び出しは失敗します。
@@ -337,7 +337,7 @@ if let johnsStreet = john.residence?.address?.street {
 } else {
     print("Unable to retrieve the address.")
 }
-// "John's street name is Laurel Street."
+// John's street name is Laurel Street.
 ```
 
 この例では、`john.residence` の値に現在 `Residence` インスタンスが含まれているため、`john.residence` の `address` プロパティを設定する試みは成功します。
@@ -352,7 +352,7 @@ if let johnsStreet = john.residence?.address?.street {
 if let buildingIdentifier = john.residence?.address?.buildingIdentifier() {
     print("John's building identifier is \(buildingIdentifier).")
 }
-// "John's building identifier is The Larches."
+// John's building identifier is The Larches.
 ```
 
 このメソッドの戻り値に対してさらにオプショナルチェーンを実行する場合は、メソッドの括弧\(`)`\)の_後に_疑問符\(`?`\)を配置します。
@@ -366,7 +366,7 @@ if let beginsWithThe =
         print("John's building identifier doesn't begin with \"The\".")
     }
 }
-// "John's building identifier begins with "The"."
+// John's building identifier begins with "The".
 ```
 
 > NOTE  

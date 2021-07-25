@@ -139,9 +139,9 @@ class LinearCongruentialGenerator: RandomNumberGenerator {
 }
 let generator = LinearCongruentialGenerator()
 print("Here's a random number: \(generator.random())")
-// "Here's a random number: 0.3746499199817101"
+// Here's a random number: 0.3746499199817101
 print("And another one: \(generator.random())")
-// "And another one: 0.729023776863283"
+// And another one: 0.729023776863283
 ```
 
 ## mutating メソッド要件\(Mutating Method Requirements\)
@@ -429,7 +429,7 @@ extension Dice: TextRepresentable {
 ```swift
 let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
 print(d12.textualDescription)
-// "A 12-sided dice"
+// A 12-sided dice
 ```
 
 同様に、`SnakesAndLadders` クラスを拡張して、`TextRepresentable` プロトコルに準拠させることができます:
@@ -441,7 +441,7 @@ extension SnakesAndLadders: TextRepresentable {
     }
 }
 print(game.textualDescription)
-// "A game of Snakes and Ladders with 25 squares"
+// A game of Snakes and Ladders with 25 squares
 ```
 
 ### <a id="conditionally-conforming-to-a-protocol">条件付きでのプロトコルへの準拠\(Conditionally Conforming to a Protocol\)</a>
@@ -459,7 +459,7 @@ extension Array: TextRepresentable where Element: TextRepresentable {
 }
 let myDice = [d6, d12]
 print(myDice.textualDescription)
-// "[A 6-sided dice, A 12-sided dice]"
+// [A 6-sided dice, A 12-sided dice]
 ```
 
 ### <a id="declaring-protocol-adoption-with-an-extension">拡張機能を使ったプロトコル準拠の宣言\(Declaring Protocol Adoption with an Extension\)</a>
@@ -482,7 +482,7 @@ extension Hamster: TextRepresentable {}
 let simonTheHamster = Hamster(name: "Simon")
 let somethingTextRepresentable: TextRepresentable = simonTheHamster
 print(somethingTextRepresentable.textualDescription)
-// "A hamster named Simon"
+// A hamster named Simon
 ```
 
 > NOTE  
@@ -512,7 +512,7 @@ let anotherTwoThreeFour = Vector3D(x: 2.0, y: 3.0, z: 4.0)
 if twoThreeFour == anotherTwoThreeFour {
     print("These two vectors are also equivalent.")
 }
-// "These two vectors are also equivalent."
+// These two vectors are also equivalent.
 ```
 
 Swift は、次の種類の独自の型に対して `Hashable` のデフォルト実装を提供します。
@@ -538,10 +538,10 @@ var levels = [SkillLevel.intermediate, SkillLevel.beginner,
 for level in levels.sorted() {
     print(level)
 }
-// "beginner"
-// "intermediate"
-// "expert(stars: 3)"
-// "expert(stars: 5)"
+// beginner
+// intermediate
+// expert(stars: 3)
+// expert(stars: 5)
 ```
 
 ## プロトコル型のコレクション\(Collections of Protocol Types\)
@@ -659,7 +659,7 @@ func wishHappyBirthday(to celebrator: Named & Aged) {
 }
 let birthdayPerson = Person(name: "Malcolm", age: 21)
 wishHappyBirthday(to: birthdayPerson)
-// "Happy birthday, Malcolm, you're 21!"
+// Happy birthday, Malcolm, you're 21!
 ```
 
 この例では、`Named` プロトコルには、`name` という `String` 型のプロパティの get 要件が 1 つのあります。`Aged` プロトコルには、`age` と呼ばれる `Int` 型のプロパティの get 要件が 1 つあります。どちらのプロトコルも、`Person` と呼ばれる構造体に準拠されています。
@@ -692,7 +692,7 @@ func beginConcert(in location: Location & Named) {
 
 let seattle = City(name: "Seattle", latitude: 47.6, longitude: -122.3)
 beginConcert(in: seattle)
-// "Hello, Seattle!"
+// Hello, Seattle!
 ```
 
 `beginConcert(in:)` 関数は、`Location & Named` 型のパラメータを受け取ります。これは、「`Location` のサブクラスで、`Named` プロトコルに準拠する任意の型」を意味します。この場合、`City` は両方の要件を満たしています。
@@ -907,9 +907,9 @@ extension RandomNumberGenerator {
 ```swift
 let generator = LinearCongruentialGenerator()
 print("Here's a random number: \(generator.random())")
-// "Here's a random number: 0.3746499199817101"
+// Here's a random number: 0.3746499199817101
 print("And here's a random Boolean: \(generator.randomBool())")
-// "And here's a random Boolean: true"
+// And here's a random Boolean: true
 ```
 
 プロトコル Extension は、準拠する型に実装を追加できますが、プロトコルにさらに定義を追加して拡張したり、別のプロトコルを継承することはできません。プロトコルの継承は、常にプロトコル宣言内で指定されます。
@@ -963,9 +963,9 @@ let differentNumbers = [100, 100, 200, 100, 200]
 
 ```swift
 print(equalNumbers.allEqual())
-// "true"
+// true
 print(differentNumbers.allEqual())
-// "false"
+// false
 ```
 
 > NOTE  

@@ -61,7 +61,7 @@ switch point {
 case let (x, y):
     print("The point is at (\(x), \(y)).")
 }
-// "The point is at (3, 2)."
+// The point is at (3, 2).
 ```
 
 上記の例では、タプルパターン `(x, y)` の各識別子パターンに `let` が適用されます。このため、`switch` ケースの `case let (x, y):` と `case (let x, let y):` は同じ値に一致します。
@@ -117,7 +117,7 @@ case .right:
 case nil:
     print("Keep going straight")
 }
-// "Turn left"
+// Turn left
 ```
 
 > GRAMMAR OF AN ENUMERATION CASE PATTERN  
@@ -191,7 +191,7 @@ case (-2...2, -2...2):
 default:
     print("The point is at (\(point.0), \(point.1)).")
 }
-// "(1, 2) is near the origin."
+// (1, 2) is near the origin.
 ```
 
 `~=` 演算子をオーバーロードして、独自の式マッチングの動作を提供できます。例えば、`point` 式を point の文字列表現と比較するために上記の例を書き換えることができます。
@@ -207,7 +207,7 @@ case ("0", "0"):
 default:
     print("The point is at (\(point.0), \(point.1)).")
 }
-// "The point is at (1, 2)."
+// The point is at (1, 2).
 ```
 
 > GRAMMAR OF AN EXPRESSION PATTERN  

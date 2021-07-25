@@ -81,7 +81,7 @@ let somePoint = Point(x: 4.0, y: 5.0)
 if somePoint.isToTheRightOf(x: 1.0) {
     print("This point is to the right of the line where x == 1.0")
 }
-// "This point is to the right of the line where x == 1.0"
+// This point is to the right of the line where x == 1.0
 ```
 
 `self` プレフィックスがない場合、Swift は両方の `x` をメソッドパラメータを参照していると見なします。
@@ -105,7 +105,7 @@ struct Point {
 var somePoint = Point(x: 1.0, y: 1.0)
 somePoint.moveBy(x: 2.0, y: 3.0)
 print("The point is now at (\(somePoint.x), \(somePoint.y))")
-// "The point is now at (3.0, 4.0)"
+// The point is now at (3.0, 4.0)
 ```
 
 上記の `Point` 構造体は、自身に変更を加える `moveBy(x:y:)` メソッドを定義します。これは、`Point` インスタンスを一定量移動します。新しいポイントを返す代わりに、呼び出されたポイントを実際に変更します。プロパティを変更できるようにするために、`mutating` キーワードがその定義に追加されてます。
@@ -241,7 +241,7 @@ class Player {
 var player = Player(name: "Argyrios")
 player.complete(level: 1)
 print("highest unlocked level is now \(LevelTracker.highestUnlockedLevel)")
-// "highest unlocked level is now 2"
+// highest unlocked level is now 2
 ```
 
 2 番目のプレーヤーを作成し、そのプレーヤーをゲーム内のどのプレーヤーもまだ解放していないレベルに移動しようとすると、プレーヤーの現在のレベルを設定する際に失敗します:
@@ -253,6 +253,6 @@ if player.tracker.advance(to: 6) {
 } else {
     print("level 6 hasn't yet been unlocked")
 }
-// "level 6 hasn't yet been unlocked"
+// level 6 hasn't yet been unlocked
 ```
 
