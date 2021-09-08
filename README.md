@@ -4,7 +4,7 @@
 
 ## ドキュメントURL
 
-### `app.gitbook.com` 版
+### app.gitbook.com 版
 
 https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/
 
