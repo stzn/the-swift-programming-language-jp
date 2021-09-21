@@ -2,18 +2,6 @@
 
 [The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。
 
-## ドキュメントURL
-
-### app.gitbook.com 版
-
-https://swift-programming-language-jp.gitbook.io/the-swift-programming-language-jp/
-
-### GitHub Pages 版
-
-https://www.swiftlangjp.com
-
-※ 試験的に 2 つのバージョンで検討しています
-
 ## バージョン履歴
 
 2021/9/21 Swift5.5
