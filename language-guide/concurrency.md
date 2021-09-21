@@ -1,6 +1,6 @@
 # 同時並行処理\(Concurrency\)
 
-最終更新日: 2021/7/16
+最終更新日: 2021/9/21
 
 Swift には、構造化された方法で非同期および同時並行コードを書くためのサポートが組み込まれています。非同期コード\(_asynchronous code_\)は、コードは一度にプログラムの 1 箇所のみで実行されますが、後で中断\(_suspend_\)および再開\(_resume_\)できます。こうすることで、ネットワーク上のデータの取得やファイルの解析などの長く時間のかかる操作の途中で、UI の更新などの短い時間で完了できる操作を行い、その後引き続き操作を続けることができます。並列コード\(_parallel code_\)とは、複数のコードを同時に実行することを意味します。例えば、4 コアプロセッサを搭載したコンピュータは、各コアがタスクを 1 つ実行し、4 つのコードを同時に実行できます。並列および非同期コードを使用するプログラムは、一度に複数の操作を実行します。例えば、外部システムからの結果を待つ操作を中断し、メモリセーフな方法でこのコードを簡単に記述できます。
 
@@ -143,7 +143,7 @@ show(photos)
 await withTaskGroup(of: Data.self) { taskGroup in
     let photoNames = await listPhotos(inGallery: "Summer Vacation")
     for name in photoNames {
-        taskGroup.async { await downloadPhoto(named: name) }
+        taskGroup.addTask { await downloadPhoto(named: name) }
     }
 }
 ```
