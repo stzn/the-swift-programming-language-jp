@@ -1,11 +1,12 @@
 # ドキュメント改訂履歴\(Document Revision History\)
 
-最終更新日: 2021/7/3
+最終更新日: 2021/9/20
 
-## 2021-06-07
+## 2021-09-20
 
 * Swift 5.5 に更新しました
 * 非同期関数、Task、およびアクターについての情報を[Concurrency\(同時並行\)](../language-guide/concurrency.md)の章、および[Actor Declaration\(アクター宣言\)](../language-reference/declarations.md#actor-declaration)、[Asynchronous Functions and Methods\(非同期関数と非同期メソッド\)](../language-reference/declarations.md#asynchronous-functions-and-asynchronous-methods)、および[Await Operator\(Await 演算子\)](../language-reference/expressions.md#await-operator)セクションに追加しました
+* [Identifiers\(識別子\)](../language-reference/lexical-structure.md#identifiers)セクションに、アンダースコアで始まる識別子についての情報を追加しました
 
 ## 2021-04-26
 

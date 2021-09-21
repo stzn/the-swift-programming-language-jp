@@ -35,7 +35,7 @@ Swift の_字句構造_は、文字のシーケンスの中で Swift 言語で�
 > multiline-comment-text-item → [comment-text-item](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_comment-text-item)  
 > multiline-comment-text-item → `/*` または `*/` を除く任意のUnicodeスカラ値
 
-## 識別子\(Identifiers\)
+## <a id="identifiers">識別子\(Identifiers\)</a>
 
 _識別子_は、大文字または小文字の `A` から `Z`、アンダースコア\(`_`\)、基本多言語平面内の非結合英数 `Unicode` 文字、または私用面にない基本多言語平面外の文字で始まります。最初の文字の後に、数字と `Unicode` 文字を組み合わせることもできます。
 

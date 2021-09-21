@@ -16,7 +16,7 @@ https://www.swiftlangjp.com
 
 ## バージョン履歴
 
-2021/7/16 Swift5.5\(Beta\)
+2021/9/21 Swift5.5
 
 ## 開発
 
