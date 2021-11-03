@@ -6,7 +6,11 @@
 
 2021/9/21 Swift5.5
 
-## 開発
+## URL
+
+[https://www.swiftlangjp.com](https://www.swiftlangjp.com)
+
+## 開発について
 
 [開発ガイド](https://github.com/stzn/the-swift-programming-language-jp/tree/fb429c05ba8213016ca97e93f9454d86ed274ab7/CONTRIBUTION.md)を参照ください。
 

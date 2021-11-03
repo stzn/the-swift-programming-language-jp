@@ -586,20 +586,7 @@ if let removedValue = airports.removeValue(forKey: "DUB") {
 
 ### 辞書の繰り返し処理\(Iterating Over a Dictionary\)
 
-`for-in` ループを使用して辞書のキーバリューペア全部に繰り返し処理することができます。
-
-```swift
-for item in shoppingList {
-    print(item)
-}
-// Six eggs
-// Milk
-// Flour
-// Baking Powder
-// Bananas
-```
-
-各アイテムのインデックスが必要な場合は、`enumerated()` を代わりに使いましょう。各アイテムは `(key, value)` のタプルを返し、繰り返し処理の中で、このタプルを一時的な定数や変数に展開することができます。
+`for-in` ループを使用して辞書のキーバリューペア全部に繰り返し処理することができます。各アイテムは `(key, value)` のタプルを返し、繰り返し処理の中で、このタプルを一時的な定数や変数に展開することができます。
 
 ```swift
 for (airportCode, airportName) in airports {
