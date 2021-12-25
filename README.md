@@ -14,3 +14,6 @@
 
 [開発ガイド](https://github.com/stzn/the-swift-programming-language-jp/tree/fb429c05ba8213016ca97e93f9454d86ed274ab7/CONTRIBUTION.md)を参照ください。
 
+## 目標
+
+[公式サイト](https://www.swift.org/documentation/#swift-language)のTranslationsに掲載してもらうこと。
