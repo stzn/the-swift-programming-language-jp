@@ -4,7 +4,8 @@
 
 ## バージョン履歴
 
-2021/9/21 Swift5.5
+- 2022/1/31 Swift5.6(Beta)
+- 2021/9/21 Swift5.5
 
 ## URL
 
@@ -13,7 +14,3 @@
 ## 開発について
 
 [開発ガイド](https://github.com/stzn/the-swift-programming-language-jp/tree/fb429c05ba8213016ca97e93f9454d86ed274ab7/CONTRIBUTION.md)を参照ください。
-
-## 目標
-
-[公式サイト](https://www.swift.org/documentation/#swift-language)のTranslationsに掲載してもらうこと。
