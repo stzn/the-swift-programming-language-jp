@@ -1,6 +1,6 @@
 # 式\(Expressions\)
 
-最終更新日: 2021/7/1
+最終更新日: 2022/1/31
 
 Swift では、前置式、バイナリ式、基本式、後置式の 4 種類の式があります。式が評価されると、値を返すか、副作用を起こすか、またはその両方を引き起こします。
 
@@ -1026,10 +1026,28 @@ let x = [10, 3, 20, 15, 4]
     .map { $0 * 100 }
 ```
 
+それぞれのメソッドが呼ばれた時に制御するための条件付きコンパイルブロックを複数行のチェーン構文と組み合わせることもできます。例えば、次のコードは、iOS では異なるフィルタ条件が使用されます:
+
+```swift
+let numbers = [10, 20, 33, 43, 50]
+#if os(iOS)
+.filter { $0 < 40 }
+#else
+.filter { $0 > 25 }
+#endif
+```
+
+`#if` と `#endif`、その他のコンパイルディレクティブの間に、条件付きコンパイルブロックに、暗黙メンバ式とそれに続く 0 個以上の接尾辞を含めて、後置式を形成することができます。また、他の条件付きコンパイルブロック、またはこれらの式とブロックの組み合わせも含めることができます。
+
+この構文は明示的メンバ式を記載できるところんまらどこでも使用可能ですが、トップレベルのコードでは使用できません。
+
+条件付きコンパイルブロックの中では、`#if` コンパイルディレクティブの条件分岐は、少なくとも 1 つの式を含めなければなりません。その他の分岐は空でも構いません。
+
 > GRAMMAR OF AN EXPLICIT MEMBER EXPRESSION  
 > explicit-member-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) `.` [decimal-digits](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits)  
 > explicit-member-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) `.` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause)<sub>opt</sub>  
 > explicit-member-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) `.` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) `(` [argument-names](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names) `)`  
+> explicit-member-expression → [postfix-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression) [conditional-compilation-block](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_conditional-compilation-block)  
 > argument-names → [argument-name](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-name) [argument-names](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names)<sub>opt</sub>  
 > argument-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) `:`
 
