@@ -221,7 +221,7 @@ print(anotherGreeting(for: "Dave"))
 [Shorthand Getter Declaration\(省略 get プロパティ宣言\)](../language-guide/properties.md#shorthand-getter-declaration)でも説明されていますが、プロパティの get でも暗黙的な戻り値を使用することができます。
 
 > NOTE  
-> 暗黙の戻り値を使ったコードは、何かしらの値を返す必要があります。例えば、`fatalError("Oh no!")` または `print(13)` を暗黙の戻り値として使用することはできません。
+> 暗黙の戻り値を使ったコードは、何かしらの値を返す必要があります。例えば、`fatalError("Oh no!")` または `print(13)` を暗黙の戻り値として使用することはできません。これは Swift が暗黙の戻り値がないことを知っているからです。
 
 ## <a id="function-argument-labels-and-parameter-names">引数ラベルとパラメータ名\(Function Argument Labels and Parameter Names\)</a>
 
