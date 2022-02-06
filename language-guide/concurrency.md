@@ -70,11 +70,11 @@ show(photo)
 * 下記の[Unstructured Concurrency\(非構造同時並行処理\)](concurrency.md#unstructured-concurrency)で示す独立した子タスク\(_child task_\)のコード
 
 > NOTE  
-> `Task.sleep(_:)` メソッドは、同時並行処理が機能する方法を学ぶために簡単なコードを書くときに役立ちます。このメソッドは何もしませんが、それがリターンする前に少なくとも指定されたナノ秒数処理を待ちます。下記は、ネットワーク操作の待機をシミュレートするために `sleep()` を使用する `listPhotos(inGallery:)` 関数のバージョンです。
+> `Task.sleep(_:)` メソッドは、同時並行処理が機能する方法を学ぶために簡単なコードを書くときに役立ちます。このメソッドは何もしませんが、それがリターンする前に少なくとも指定されたナノ秒数処理を待ちます。下記は、ネットワーク操作の待機をシミュレートするために `sleep(nanoseconds:)` を使用する `listPhotos(inGallery:)` 関数のバージョンです。
 >
 > ```swift
-> func listPhotos(inGallery name: String) async -> [String] {
->     await Task.sleep(2 * 1_000_000_000)  // 2 秒
+> func listPhotos(inGallery name: String) async throws -> [String] {
+>     try await Task.sleep(nanoseconds: 2 * 1_000_000_000)  // 2 秒
 >     return ["IMG001", "IMG99", "IMG0404"]
 > }
 > ```
