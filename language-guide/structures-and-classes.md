@@ -33,6 +33,9 @@ Swift の構造体とクラスには多くの共通点があります。いず�
 
 クラスは追加の機能をサポートしている分、複雑さが増します。一般的なガイドラインとして、構造体の方が扱いやすく推奨されます。クラスは適切または必要な場合にのみ使用してください。つまり、実際は、独自に定義するデータ型のほとんどが構造体と列挙型になることを意味します。より詳細な比較は[Choosing Between Structures and Classes](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes)を参照ください。
 
+> NOTE  
+> クラスとアクターは多くの共通の特徴や振る舞いを持ちます。アクターについては、[同時並行処理\(Concurrency\)](./concurrency.md)を参照ください。
+
 ### 定義構文\(Definition Syntax\)
 
 構造体とクラスの定義構文は似ています。`struct` キーワードを使用して構造体を作成し、`class` キーワードを使用してクラスを作成します。どちらも、定義全体を中括弧のペア\(`{}`\)内に配置します:
