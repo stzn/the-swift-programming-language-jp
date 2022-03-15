@@ -1,8 +1,8 @@
 # ドキュメント改訂履歴\(Document Revision History\)
 
-最終更新日: 2022/1/31
+最終更新日: 2022/3/14
 
-## 2022-01-27
+## 2022-03-14
 
 * Swift 5.6 に更新しました
 * [明示的メンバ式\(Explicit Member Expression\)](../language-reference/expressions.md#explicit-member-expression)セクションにメソッドチェーンや他の後置式の周りで `#if` が使えることについての情報を追加しました
