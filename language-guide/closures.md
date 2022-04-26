@@ -1,6 +1,6 @@
 # クロージャ\(Closures\)
 
-最終更新日: 2021/5/23
+最終更新日: 2022/4/26
 
 _クロージャ_は、コード内で受け渡して使用できる、ある機能の独立したブロックです。Swift のクロージャは、C 言語や Objective-C のブロック、他のプログラミング言語のラムダに似ています。
 
@@ -307,7 +307,7 @@ incrementByTen()
 ```
 
 > NOTE  
-> クラスインスタンスのプロパティにクロージャを代入して、クロージャがインスタンスまたはそのメンバを参照して、そのインスタンスをキャプチャする場合、クロージャとインスタンスの間に循環参照\(strong reference cycle\)が作成されます。Swift は、キャプチャリストを使用して、これらの循環参照を防ぎます。詳細については、 [Strong Reference Cycles for Closures\(クロージャの強参照循環\)](../language-guide/functions.md#function-types-as-return-types)を参照ください。
+> クラスインスタンスのプロパティにクロージャを代入して、クロージャがインスタンスまたはそのメンバを参照して、そのインスタンスをキャプチャする場合、クロージャとインスタンスの間に循環参照\(strong reference cycle\)が作成されます。Swift は、キャプチャリストを使用して、これらの循環参照を防ぎます。詳細については、 [Strong Reference Cycles for Closures\(クロージャの強参照循環\)](../language-guide/automatic-reference-counting.md#strong-reference-cycles-for-closure)を参照ください。
 
 ## <a id="closures-are-reference-types">クロージャは参照型\(Closures Are Reference Types\)</a>
 
