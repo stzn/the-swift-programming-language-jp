@@ -41,7 +41,7 @@ npm install
 
 > Swift has struct and class.
 
-❌ Swift5.5 には、struct と class があります。
+❌ Swift5.5には、structとclassがあります。
 
 ⭕️ Swift5.5 には、struct と class があります。
 
