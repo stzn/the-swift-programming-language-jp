@@ -1,6 +1,6 @@
 # 属性\(Attributes\)
 
-最終更新日: 2022/1/31
+最終更新日: 2022/6/7
 
 Swift には、宣言に適用される属性と型に適用される属性の 2 種類があります。属性は、宣言または型に関する追加情報を提供します。例えば、関数宣言の `discardableResult` 属性は、関数は値を返しますが、戻り値が使用されていない場合に、コンパイラが警告を生成しないことを示します。
 
@@ -744,6 +744,14 @@ Interface Builder 属性は、Xcode と同期するために InterfaceBuilder �
 ### escaping
 
 この属性を関数またはメソッド宣言のパラメータの型に適用すると、パラメータの値を後で実行するために保持されることがあることを示します。これは、値が呼び出し側の生存期間を超えて存続できることを意味します。`escaping` 属性を持つ関数型パラメータは、プロパティまたはメソッドに対して `self` を明示的に使用する必要があります。`escaping` 属性の使用方法の例については、[Escaping Closures\(エスケープクロージャ\)](../language-guide/closures.md#escaping-closures)を参照ください。
+
+### Sendable
+
+この属性を関数の型に適用して、関数またはクロージャが `Sendable` なことを示します。この属性を関数型に適用することは、非関数型を [`Sendable`](https://developer.apple.com/documentation/swift/sendable) プロトコルに準拠させることと同じ意味です。
+
+この属性は、関数またはクロージャが `Sendable` の値を期待するコンテキストで使用され、関数またはクロージャが `Sendable` の要件を満たしている場合に、関数およびクロージャで推論されます。
+
+`Sendable` な関数型は、対応する `Sendable` ではない関数型のサブタイプです。
 
 ## Switch Case Attributes \(Switch ケース属性\)
 
