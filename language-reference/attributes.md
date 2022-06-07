@@ -755,7 +755,7 @@ Interface Builder 属性は、Xcode と同期するために InterfaceBuilder �
 
 この属性を関数の型に適用して、関数またはクロージャが `Sendable` なことを示します。この属性を関数型に適用することは、非関数型を [`Sendable`](https://developer.apple.com/documentation/swift/sendable) プロトコルに準拠させることと同じ意味です。
 
-この属性は、関数またはクロージャが `Sendable` の値を期待するコンテキストで使用され、関数またはクロージャが `Sendable` の要件を満たしている場合に、関数およびクロージャで推論されます。
+この属性は、関数またはクロージャが `Sendable` の値を期待するコンテキストで使用され、 `Sendable` の要件を満たしている場合、その関数またはクロージャは `Sendable` だと推論されます。
 
 `Sendable` な関数型は、対応する `Sendable` ではない関数型のサブタイプです。
 
