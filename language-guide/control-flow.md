@@ -724,3 +724,36 @@ if #available(iOS 10, macOS 10.12, *) {
 
 ![API&#x30A2;&#x30D9;&#x30A4;&#x30E9;&#x30D3;&#x30EA;&#x30C6;&#x30A3;&#x6761;&#x4EF6;](../assets/05_availabilitycondition.png)
 
+`guard` 文でアベイラビリティ条件を使用すると、そのコードブロック内の残りのコードに使用されるアベイラビリティ情報が絞り込まれます。
+
+```swift
+@available(macOS 10.12, *)
+struct ColorPreference {
+    var bestColor = "blue"
+}
+
+func chooseBestColor() -> String {
+    guard #available(macOS 10.12, *) else {
+        return "gray"
+    }
+    let colors = ColorPreference()
+    return colors.bestColor
+}
+```
+
+上記の例では、`ColorPreference` 構造体には `macOS10.12` 以降が必要です。 `chooseBestColor()` 関数は、アベイラビリティガードから始まります。プラットフォームのバージョンが古すぎて `ColorPreference` を使用できない場合は、常に利用可能な動作にフォールバックします。`guard` 文の後、`macOS10.12` 以降を必要とする API を使用できます。
+
+`#available` に加えて、Swift は使用不可条件を使用した反対のチェックもサポートします。 例えば、次の 2 つのチェックは同じことを行います。
+
+```swift
+if #available(iOS 10, *) {
+} else {
+    // フォールバックコード
+}
+
+if #unavailable(iOS 10) {
+    // フォールバックコード
+}
+```
+
+`#unavailable` 形式を使用すると、フォールバックコードのみが含まれている場合に、コードが読みやすくなります。
