@@ -1,6 +1,6 @@
 # 基本\(The Basics\)
 
-最終更新日: 2021/7/4
+最終更新日: 2022/6/11
 
 Swift は iOS, macOS, watchOS, tyOS アプリ開発のための新しいプログラミング言語です。新しい言語ではあるものの、Swift の多くの部分は C 言語と Objective-C の開発経験があれば慣れ親しんだ部分もあるかと思います。
 
@@ -574,6 +574,29 @@ if let actualNumber = Int(possibleNumber) {
 「`Int(possibleNumber)` が返すオプショナルの `Int` が値を含んでいた場合、`actualNumber` にその値を設定します」
 
 この変換が成功した場合、`actualNumber` 定数は `if` 文の最初の分岐内で使用することができます。オプショナル_内に_ラップされている値で既に初期化は完了しているので、`!` を後ろに付ける必要はありません。この例では、`actualNumber` は変換した結果を出力します。
+
+オプショナルに含まれている値にアクセスした後、元のオプショナルの定数または変数を参照する必要がない場合は、新しい定数または変数に同じ名前を使用できます。
+
+```swift
+let myNumber = Int(possibleNumber)
+// ここでmyNumberはオプショナルのInt
+if let myNumber = myNumber {
+    // ここでmyNumberはオプショナルではないInt
+    print("My number is \(myNumber)")
+}
+// My number is 123
+```
+
+このコードは、前の例のコードと同様に、`myNumber` に値が含まれているかどうかを確認することから始まります。`myNumber` に値がある場合、`myNumber` という名前の新しい定数の値がその値に設定されます。`if` 文の本文内では、`myNumber` は新しいオプショナルではない定数が参照されます。`if` 文の開始前と終了後で `myNumber` を使うと、オプショナルの定数 `Int` が参照されます。
+
+この種のコードはとても一般的で、短いスペルを使用してオプショナルの値をアンラップできます。アンラップする定数または変数の名前だけを記述します。ラップされていない新しい定数または変数は、オプショナルの値と同じ名前を暗黙的に使用します。
+
+```swift
+if let myNumber {
+    print("My number is \(myNumber)")
+}
+// My number is 123
+```
 
 オプショナルバインディングは定数と変数の両方に使用することができます。`if` 文の最初の分岐内で `actualNumber` を変更したい場合は、`if var actualNumber` と書くことで、定数の代わりに変数としてこのオプショナル値を使用できます。
 
