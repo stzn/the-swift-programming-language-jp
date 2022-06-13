@@ -284,18 +284,16 @@ let textB = "Hello world"
 ### <a id="lexical-structure-regular-expression-literals">正規表現リテラル\(Regular Expression Literals\)</a>
 正規表現リテラルは、次のような形でスラッシュ（/）によって囲まれた、連続した文字のことを言います:
 
-/正規表現/
+![](../assets/regex-literal-1.png)
+
 正規表現リテラルはエスケープされていないタブかスペースで始まってはいけません。また、正規表現リテラルは、エスケープされていないスラッシュ（/）、キャリッジリターン、もしくはラインフィードを含んではいけません。
 
 正規表現リテラルの中では、バックスラッシュは、正規表現の一部として解釈され、文字列リテラル内のようにエスケープ文字としては解釈されません。バックスラッシュは、続く特殊文字が文字通りに解釈されるべき、もしくは続く非特殊文字が特別な解釈をされるべきことを示します。例えば、 /\(/ は 1 つの左括弧に、そして /\d/ は一桁の数字と一致します。
 
 拡張デリミタによって区切られた正規表現リテラルは、スラッシュ（/）もしくは 1 つ以上のナンバー記号（#）の釣り合った集合によって囲まれた、連続した文字のことを言います。拡張デリミタによって区切られた正規表現リテラルは次のように表現されます:
 
-#/正規表現/#
+![](../assets/regex-literal-2.png)
 
-#/
-正規表現
-/#
 拡張デリミタを利用する正規表現リテラルは、エスケープされていないスペースかタブで始まることができ、エスケープされていないスラッシュ（/）を含むことができ、さらに複数行に渡って広げることができます。複数行の正規表現リテラルに対しては、開始区切り文字は、行の最後になければいけず、終了区切り文字はそれ単体のみの行になければいけません。複数行の正規表現リテラル内では、拡張正規表現構文がデフォルトで有効です。特に、ホワイトスペースは無視され、コメントが許可されます。
 
 もし複数のナンバー記号を使って、拡張デリミタ構文での正規表現リテラルを構成する場合、空白文字をナンバー記号の間に置いてはいけません:
@@ -306,12 +304,12 @@ let regex2 = # #/abc/# #     // Error
 ```
 もし空の正規表現リテラルを作る必要がある場合、 拡張デリミタ構文を使わなければいけません。
 
-> GRAMMAR OF A REGULAR EXPRESSION LITERAL
-> regular-expression-literal → regular-expression-literal-opening-delimiter regular-expression regular-expression-literal-closing-delimiter
-> regular-expression → Any regular expression
-> regular-expression-literal-opening-delimiter → extended-regular-expression-literal-delimiter opt /
-> regular-expression-literal-closing-delimiter → / extended-regular-expression-literal-delimiter opt
-> extended-regular-expression-literal-delimiter → # extended-regular-expression-literal-delimiter opt
+> GRAMMAR OF A REGULAR EXPRESSION LITERAL  
+> regular-expression-literal → [regular-expression-literal-opening-delimiter](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_regular-expression-literal-opening-delimiter) [regular-expression](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_regular-expression) [regular-expression-literal-closing-delimiter](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_regular-expression-literal-closing-delimiter)  
+> regular-expression → Any regular expression  
+> regular-expression-literal-opening-delimiter → [extended-regular-expression-literal-delimiter](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_extended-regular-expression-literal-delimiter) <sub>opt</sub> /  
+> regular-expression-literal-closing-delimiter → / [extended-regular-expression-literal-delimiter](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_extended-regular-expression-literal-delimiter) <sub>opt</sub>  
+> extended-regular-expression-literal-delimiter → # [extended-regular-expression-literal-delimiter](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_extended-regular-expression-literal-delimiter) <sub>opt</sub>  
 
 ## <a id="operators">演算子\(Operators\)</a>
 
