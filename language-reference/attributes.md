@@ -1,6 +1,6 @@
 # 属性\(Attributes\)
 
-最終更新日: 2022/6/7
+最終更新日: 2022/6/13
 
 Swift には、宣言に適用される属性と型に適用される属性の 2 種類があります。属性は、宣言または型に関する追加情報を提供します。例えば、関数宣言の `discardableResult` 属性は、関数は値を返しますが、戻り値が使用されていない場合に、コンパイラが警告を生成しないことを示します。
 
@@ -699,6 +699,12 @@ resultBuilder 属性を適用しても、ABI の互換性には影響しませ�
 
 実行可能ファイルを作成するためにコンパイルする Swift コードには、[Top-Level Code\(トップレベルコード\)](../language-reference/declarations.md#top-level-code)で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。
 
+### unchecked
+
+型宣言に適用されたプロトコルのリストの一部としてこの属性をあるプロトコルの型に適用した場合、そのプロトコルの要件の適用をオフにします。
+
+サポートされているプロトコルは[`Sendable`](https://developer.apple.com/documentation/swift/sendable)のみです。
+
 ### usableFromInline
 
 この属性を関数、メソッド、計算プロパティ、subscript、イニシャライザ、またはデイニシャライザの宣言に適用すると、宣言と同じモジュールで定義されているインライン化されたコードでそのシンボルを使用できるようにします。宣言には、`internal` 修飾子が必要です。`usedFromInline` がマークされた構造体またはクラスは、そのプロパティに `public` または `usableFromInline` の型のみを使用できます。`usedFromInline` がマークされた列挙型は、そのケースの Raw Value と関連値に対して、`public` または `usableFromInline` の型のみを使用できます。
@@ -706,12 +712,6 @@ resultBuilder 属性を適用しても、ABI の互換性には影響しませ�
 `public` 修飾子と同様に、この属性はモジュールの公開インターフェイスの一部として宣言が公開されます。`public` とは異なり、コンパイラは、宣言のシンボルがエクスポートされている場合でも、`usableFromInline` がマークされた宣言をモジュール外のコードで参照することを許可しません。ただし、モジュール外のコードは、ランタイム時の動作を使用して宣言のシンボルとやり取りできることもあります。
 
 `inlinable` 属性がマークされた宣言は、inlinable コードから暗黙的に使用できます。`inlinable` または `usableFromInline` のいずれかを `internal` 宣言に適用できますが、両方の属性を適用するとエラーです。
-
-### unchecked
-
-型宣言に適用されたプロトコルのリストの一部としてこの属性をあるプロトコルの型に適用した場合、そのプロトコルの要件の適用をオフにします。
-
-サポートされているプロトコルは[`Sendable`](https://developer.apple.com/documentation/swift/sendable)のみです。
 
 ### warn\_unqualified\_access
 
