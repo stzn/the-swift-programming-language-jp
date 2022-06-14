@@ -302,7 +302,7 @@ let textB = "Hello world"
 let regex1 = ##/abc/##       // OK
 let regex2 = # #/abc/# #     // Error
 ```
-もし空の正規表現リテラルを作る必要がある場合、 拡張デリミタ構文を使わなければいけません。
+もし空の正規表現リテラルを作る必要がある場合、 拡張区切り文字構文を使わなければいけません。
 
 > GRAMMAR OF A REGULAR EXPRESSION LITERAL  
 > regular-expression-literal → [regular-expression-literal-opening-delimiter](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_regular-expression-literal-opening-delimiter) [regular-expression](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_regular-expression) [regular-expression-literal-closing-delimiter](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_regular-expression-literal-closing-delimiter)  
