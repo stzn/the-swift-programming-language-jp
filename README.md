@@ -17,5 +17,5 @@
 
 ## Contributors
 
-<!-- readme: GitBook Bot/-,contributors -start -->
+<!-- readme: contributors -start -->
 <!-- readme: contributors -end -->
