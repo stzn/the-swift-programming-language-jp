@@ -281,6 +281,36 @@ let textB = "Hello world"
 > unicode-scalar-digits → 0 から 8 までの16進数  
 > escaped-newline → [escape-sequence](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_escape-sequence) [inline-spaces](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_inline-spaces)<sub>opt</sub> [line-break](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_line-break)
 
+### <a id="lexical-structure-regular-expression-literals">正規表現リテラル\(Regular Expression Literals\)</a>
+正規表現リテラルは、次のような形でスラッシュ（/）によって囲まれた、連続した文字のことを言います:
+
+![正規表現リテラルの例](../assets/regex-literal-1.png)
+
+正規表現リテラルはエスケープされていないタブかスペースで始まってはいけません。また、正規表現リテラルは、エスケープされていないスラッシュ（/）、キャリッジリターン、もしくはラインフィードを含んではいけません。
+
+正規表現リテラルの中では、バックスラッシュは、正規表現の一部として解釈され、文字列リテラル内のようにエスケープ文字としては解釈されません。バックスラッシュは、続く特殊文字が文字通りに解釈されるべき、もしくは続く非特殊文字が特別な解釈をされるべきことを示します。例えば、 /\(/ は 1 つの左括弧に、そして /\d/ は一桁の数字と一致します。
+
+拡張区切り文字によって区切られた正規表現リテラルは、スラッシュ（/）もしくは 1 つ以上の番号記号（#）の釣り合った集合によって囲まれた、連続した文字のことを言います。拡張区切り文字によって区切られた正規表現リテラルは次のように表現されます:
+
+![拡張区切り文字を利用する正規表現リテラルの例](../assets/regex-literal-2.png)
+
+拡張区切り文字を利用する正規表現リテラルは、エスケープされていないスペースかタブで始めることができ、エスケープされていないスラッシュ（/）を含むことができ、さらに複数行にまたがることができます。複数行の正規表現リテラルに対しては、開始区切り文字は、行の最後に置かなければならず、終了区切り文字はそれ単体のみの行に置かなければなりません。複数行の正規表現リテラル内では、拡張正規表現構文がデフォルトで有効です。特に、ホワイトスペースは無視され、コメントは記載できます。
+
+もし複数の番号記号を使って、拡張区切り文字構文での正規表現リテラルを構成する場合、ホワイトスペースを番号記号の間に置いてはいけません:
+
+```swift
+let regex1 = ##/abc/##       // OK
+let regex2 = # #/abc/# #     // Error
+```
+もし空の正規表現リテラルを作る必要がある場合、 拡張区切り文字構文を使わなければいけません。
+
+> GRAMMAR OF A REGULAR EXPRESSION LITERAL  
+> regular-expression-literal → [regular-expression-literal-opening-delimiter](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_regular-expression-literal-opening-delimiter) [regular-expression](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_regular-expression) [regular-expression-literal-closing-delimiter](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_regular-expression-literal-closing-delimiter)  
+> regular-expression → Any regular expression  
+> regular-expression-literal-opening-delimiter → [extended-regular-expression-literal-delimiter](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_extended-regular-expression-literal-delimiter) <sub>opt</sub> /  
+> regular-expression-literal-closing-delimiter → / [extended-regular-expression-literal-delimiter](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_extended-regular-expression-literal-delimiter) <sub>opt</sub>  
+> extended-regular-expression-literal-delimiter → # [extended-regular-expression-literal-delimiter](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_extended-regular-expression-literal-delimiter) <sub>opt</sub>  
+
 ## <a id="operators">演算子\(Operators\)</a>
 
 Swift 標準ライブラリは、数多くの_演算子_を定義します。その多くは、[Basic Operators\(基本演算子\)](../language-guide/basic-operators.md)と[Advanced Operators\(高度な演算子\)](../language-guide/advanced-operators.md)で説明しています。このセクションでは、カスタム演算子を定義するために使用できる文字を説明します。
