@@ -14,3 +14,11 @@
 ## 開発について
 
 [開発ガイド](https://github.com/stzn/the-swift-programming-language-jp/tree/fb429c05ba8213016ca97e93f9454d86ed274ab7/CONTRIBUTION.md)を参照ください。
+
+## 貢献者
+
+<a href="https://github.com/stzn/the-swift-programming-language-jp/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=stzn/the-swift-programming-language-jp" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
