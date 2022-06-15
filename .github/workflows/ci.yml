@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -16,14 +16,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16.x"
-
       - name: Install dependencies
         run: yarn --frozen-lockfile
-
-      - name: Update contributors
-        uses: akhilmhdh/contributors-readme-action@v2.3.4
-        env:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Honkit
         run: yarn build
