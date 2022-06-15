@@ -55,13 +55,7 @@
             <sub><b>Hideyuki Nanashima</b></sub>
         </a>
     </td>
-    <td align="center">
-        <a href="https://github.com/gitbook-bot">
-            <img src="https://avatars.githubusercontent.com/u/31919211?v=4" width="100;" alt="gitbook-bot"/>
-            <br />
-            <sub><b>GitBook Bot</b></sub>
-        </a>
-    </td></tr>
+    </tr>
 <tr>
     <td align="center">
         <a href="https://github.com/hira22">
@@ -85,4 +79,5 @@
         </a>
     </td></tr>
 </table>
+<!-- readme: GitBook Bot/-,contributors -start -->
 <!-- readme: contributors -end -->
