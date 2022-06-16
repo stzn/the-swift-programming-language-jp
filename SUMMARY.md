@@ -42,7 +42,7 @@
 ## 言語リファレンス\(LANGUAGE REFERENCE\) <a id="language-reference"></a>
 
 * [言語リファレンスについて\(About the Language Reference\)](language-reference/about-the-language-reference.md)
-* [構文の構造\(Lexical Structure\)](language-reference/lexical-structure.md)
+* [字句構造\(Lexical Structure\)](language-reference/lexical-structure.md)
 * [型\(Types\)](language-reference/types.md)
 * [式\(Expressions\)](language-reference/expressions.md)
 * [文\(Statements\)](language-reference/statements.md)
