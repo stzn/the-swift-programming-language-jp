@@ -46,7 +46,7 @@
         <a href="https://github.com/uhooi">
             <img src="https://avatars.githubusercontent.com/u/21194714?v=4" width="100;" alt="uhooi"/>
             <br />
-            <sub><b>uhooi</b></sub>
+            <sub><b>Uhooi</b></sub>
         </a>
     </td>
     <td align="center">
