@@ -16,10 +16,15 @@
 [開発ガイド](https://github.com/stzn/the-swift-programming-language-jp/tree/fb429c05ba8213016ca97e93f9454d86ed274ab7/CONTRIBUTION.md)を参照ください。
 
 ## 貢献者
-
-<div>
+<style>
+#contributors {
+    table-layout: fixed;
+    width: 100px;
+}
+</style>
+<div id="contributors">
 <!-- readme: contributors -start -->
-<table style="table-layout: fixed;" width="100;">
+<table>
 <tr>
     <td align="center">
         <a href="https://github.com/stzn">
