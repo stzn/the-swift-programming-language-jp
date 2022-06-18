@@ -17,6 +17,7 @@
 
 ## 貢献者
 
+<div>
 <!-- readme: contributors -start -->
 <table>
 <tr>
@@ -86,3 +87,4 @@
     </td></tr>
 </table>
 <!-- readme: contributors -end -->
+</div>
