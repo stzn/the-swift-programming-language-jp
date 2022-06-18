@@ -19,7 +19,7 @@
 
 <div>
 <!-- readme: contributors -start -->
-<table>
+<table style="table-layout: fixed;" width="100;">
 <tr>
     <td align="center">
         <a href="https://github.com/stzn">
