@@ -1,6 +1,7 @@
 # エラー処理\(Error Handling\)
 
-最終更新日: 2021/6/29
+最終更新日: 2021/6/29  
+原文: https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html
 
 _エラー処理_は、プログラムのエラー状態に応答し、エラー状態から回復するプロセスです。Swift は、実行時に回復可能なエラーをスロー、キャッチ、伝播、および操作するための第一級クラスのサポートを提供します。
 

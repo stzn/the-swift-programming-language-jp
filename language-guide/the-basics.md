@@ -1,6 +1,7 @@
 # 基本\(The Basics\)
 
-最終更新日: 2022/6/11
+最終更新日: 2022/6/11  
+原文: https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html
 
 Swift は iOS, macOS, watchOS, tyOS アプリ開発のための新しいプログラミング言語です。新しい言語ではあるものの、Swift の多くの部分は C 言語と Objective-C の開発経験があれば慣れ親しんだ部分もあるかと思います。
 

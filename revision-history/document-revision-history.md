@@ -1,6 +1,7 @@
 # ドキュメント改訂履歴\(Document Revision History\)
 
-最終更新日: 2022/3/14
+最終更新日: 2022/3/14  
+原文: https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html
 
 ## 2022-03-14
 

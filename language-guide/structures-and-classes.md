@@ -1,6 +1,7 @@
 # 構造体とクラス\(Structures and Classes\)
 
-最終更新日: 2021/6/27
+最終更新日: 2021/6/27  
+原文: https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html
 
 _構造体_と_クラス_は、プログラムのコードの構成要素を構築する汎用的で柔軟な構造概念です。定数、変数、関数の定義に使用するのと同じ構文を使用して、プロパティとメソッドを定義して機能を追加します。
 

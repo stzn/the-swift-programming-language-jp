@@ -1,6 +1,7 @@
 # クロージャ\(Closures\)
 
-最終更新日: 2022/4/26
+最終更新日: 2022/4/26  
+原文: https://docs.swift.org/swift-book/LanguageGuide/Closures.html
 
 _クロージャ_は、コード内で受け渡して使用できる、ある機能の独立したブロックです。Swift のクロージャは、C 言語や Objective-C のブロック、他のプログラミング言語のラムダに似ています。
 

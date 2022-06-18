@@ -1,6 +1,7 @@
 # バージョン互換性\(Version Compatibility\)
 
-最終更新日: 2021/2/1
+最終更新日: 2021/2/1  
+原文: https://docs.swift.org/swift-book/GuidedTour/Compatibility.html
 
 この本は Xcode13 のデフォルトバージョン Swift5.6 で記載されています。Xcode13 では、Swift5.6, Swift4.2, Swift4 を build target に指定できます。
 
