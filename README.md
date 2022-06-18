@@ -1,3 +1,5 @@
+<link href="./readme.css" rel="stylesheet"></link>
+
 # The Swift Programming Language\(日本語版\)
 
 [The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。
@@ -16,10 +18,9 @@
 [開発ガイド](https://github.com/stzn/the-swift-programming-language-jp/tree/fb429c05ba8213016ca97e93f9454d86ed274ab7/CONTRIBUTION.md)を参照ください。
 
 ## 貢献者
-
-<div>
+<div id="contributors">
 <!-- readme: contributors -start -->
-<table style="table-layout: fixed;" width="100;">
+<table>
 <tr>
     <td align="center">
         <a href="https://github.com/stzn">
