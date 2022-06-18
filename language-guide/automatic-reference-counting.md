@@ -1,6 +1,7 @@
 # 自動参照カウント ARC\(Automatic Reference Counting\)
 
-最終更新日: 2021/6/30
+最終更新日: 2021/6/30  
+原文: https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html
 
 Swift は自動参照カウント\(以下 _ARC_ \)を使用して、アプリのメモリ使用状況を追跡および管理します。ほとんどの場合、これはメモリ管理が Swift によって「ただ行われている」ことを意味し、メモリ管理について自身で考える必要はありません。ARC は、クラスインスタンスが不要になったときに、クラスインスタンスによって使用されていたメモリを自動的に解放します。
 

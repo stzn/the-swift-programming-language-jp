@@ -1,6 +1,7 @@
 # デイニシャライゼーション\(Deinitialization\)
 
-最終更新日: 2021/6/29
+最終更新日: 2021/6/29  
+原文: https://docs.swift.org/swift-book/LanguageGuide/Deinitialization.html
 
 クラスのインスタンスが解放される直前に、_デイニシャライザ_が呼び出されます。`init` キーワードを使用してイニシャライザを作成する方法と同様に、`deinit` キーワードを使用してデイニシャライザを作成します。デイニシャライザは、クラス型でのみ使用できます。
 

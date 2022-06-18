@@ -1,6 +1,7 @@
 # 文法のまとめ\(Summary of the Grammar\)
 
-最終更新日: 2021/7/3
+最終更新日: 2021/7/3  
+原文: https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html
 
 ## Lexical Structure\(構文の構造\)
 
