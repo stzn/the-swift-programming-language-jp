@@ -17,8 +17,5 @@
 
 ## 貢献者
 
-<a href="https://github.com/stzn/the-swift-programming-language-jp/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=stzn/the-swift-programming-language-jp" />
-</a>
-
-Made with [contrib.rocks](https://contrib.rocks).
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
