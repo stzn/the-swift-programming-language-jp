@@ -58,13 +58,20 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/rymshm">
+            <img src="https://avatars.githubusercontent.com/u/23201810?v=4" width="100;" alt="rymshm"/>
+            <br />
+            <sub><b>Ryo Mashima</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
         <a href="https://github.com/gitbook-bot">
             <img src="https://avatars.githubusercontent.com/u/31919211?v=4" width="100;" alt="gitbook-bot"/>
             <br />
             <sub><b>GitBook Bot</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/hira22">
             <img src="https://avatars.githubusercontent.com/u/31942637?v=4" width="100;" alt="hira22"/>
