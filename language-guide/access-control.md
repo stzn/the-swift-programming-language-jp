@@ -1,7 +1,7 @@
 # アクセスコントロール\(Access Control\)
 
 最終更新日: 2021/6/30  
-原文: https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html
+原文: https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html
 
 アクセス制御は、他のソースファイルやモジュールのコードから一部のコードへのアクセスを制限します。この機能を使用すると、コードの実装の詳細を隠し、そのコードにアクセスして使用するために望ましいインターフェイスを指定できます。
 
