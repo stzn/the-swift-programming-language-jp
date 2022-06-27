@@ -1,6 +1,7 @@
 # 属性\(Attributes\)
 
-最終更新日: 2022/6/13
+最終更新日: 2022/6/13  
+原文: https://docs.swift.org/swift-book/ReferenceManual/Attributes.html
 
 Swift には、宣言に適用される属性と型に適用される属性の 2 種類があります。属性は、宣言または型に関する追加情報を提供します。例えば、関数宣言の `discardableResult` 属性は、関数は値を返しますが、戻り値が使用されていない場合に、コンパイラが警告を生成しないことを示します。
 

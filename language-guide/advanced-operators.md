@@ -1,6 +1,7 @@
 # 高度な演算子\(Advanced Operators\)
 
-最終更新日: 2022/5/8
+最終更新日: 2022/5/8  
+原文: https://docs.swift.org/swift-book/LanguageGuide/AdvancedOperators.html
 
 [Basic Operators\(基本演算子\)](basic-operators.md)で説明されている演算子に加えて、Swift は、より複雑な値操作を実行するいくつかの高度な演算子を提供します。これらには、C 言語および Objective-C でおなじみの全てのビット演算子およびビットシフト演算子が含まれます。
 

@@ -1,6 +1,7 @@
 # 言語リファレンスについて\(About the Language Reference\)
 
-最終更新日: 2021/7/1
+最終更新日: 2021/7/1  
+原文: https://docs.swift.org/swift-book/ReferenceManual/AboutTheLanguageReference.html
 
 このパートでは、Swift プログラミング言語の正式な文法について説明します。ここで説明する文法は、パーサやコンパイラを直接実装できるようにするのではなく、言語をより詳細に理解できるようにすることを目的としています。
 

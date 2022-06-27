@@ -1,6 +1,7 @@
 # 制御フロー\(Control Flow\)
 
-最終更新日: 2021/6/27
+最終更新日: 2021/6/27  
+原文: https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html
 
 Swift は、様々な制御フロー文を提供しています。1 つのタスクを複数回行う `while` ループ、ある条件を基に異なる分岐のコードを実行する `if`、`guard`、`switch` 文、コードの他の地点へ実行フローを移動させる `break` や `continue` のような文があります。
 

@@ -1,6 +1,7 @@
 # サブスクリプト\(Subscripts\)
 
-最終更新日: 2021/6/28
+最終更新日: 2021/6/28  
+原文: https://docs.swift.org/swift-book/LanguageGuide/Subscripts.html
 
 クラス、構造体、および列挙型は、コレクション、リスト、またはシーケンスの要素にアクセスするためのショートカットとして subscript を定義できます。subscript を使用すると、インデックスを使って値を設定および取得でき、設定と取得に個別のメソッドを必要としません。例えば、`Array` インスタンスの要素には `someArray[index]` としてアクセスし、`Dictionary` インスタンスの要素には `someDictionary[key]` としてアクセスします。
 

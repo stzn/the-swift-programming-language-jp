@@ -1,6 +1,7 @@
 # 型キャスト\(Type Casting\)
 
-最終更新日: 2021/6/29
+最終更新日: 2021/6/29  
+原文: https://docs.swift.org/swift-book/LanguageGuide/TypeCasting.html
 
 _型キャスト_は、インスタンスの型をチェックする、またはそのインスタンスを独自のクラス階層のスーパークラスまたはサブクラスとして扱う方法です。
 
