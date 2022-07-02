@@ -41,7 +41,7 @@ npm install
 
 > Swift has struct and class.
 
-❌ Swiftには、structとclassがあります。
+❌ Swift には、struct と class があります。
 
 ⭕️ Swift には、struct と class があります。
 
