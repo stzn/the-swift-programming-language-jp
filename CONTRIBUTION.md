@@ -122,3 +122,7 @@ npm install
 ```text
 npm run lint
 ```
+
+### フィードバック
+
+ご要望、ご質問などございましたら [Discord チャンネル](https://discord.com/channels/291054398077927425/981108847714381844)よりお願いします。
