@@ -17,6 +17,25 @@
 
 [開発ガイド](https://github.com/stzn/the-swift-programming-language-jp/tree/fb429c05ba8213016ca97e93f9454d86ed274ab7/CONTRIBUTION.md)を参照ください。
 
+以下の表は用語に関する英和対応表です。これを参考にしながら、できるだけ日本語の列と合うよう表記揺れを抑えます。
+
+|英語|日本語|
+|--------|--------|
+|array|配列|
+|binary|二項、2進|
+|character|文字|
+|class|クラス|
+|enum|列挙型|
+|error handling|エラー処理|
+|function|関数|
+|initialization|初期化|
+|method|メソッド|
+|property|プロパティ|
+|set|セット|
+|string|文字列|
+|struct|構造体|
+|type|型|
+
 ## 貢献者
 <div id="contributors">
 <!-- readme: contributors -start -->
