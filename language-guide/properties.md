@@ -1,6 +1,6 @@
 # プロパティ\(Properties\)
 
-最終更新日: 2021/6/27  
+最終更新日: 2022/7/15  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Properties.html
 
 プロパティは、値を特定のクラス、構造体、または列挙型に関連付けます。_格納プロパティ_は定数と変数の値をインスタンスの一部として保存しますが、_計算プロパティ_は値を\(保存するのではなく\)計算します。計算プロパティは、クラス、構造体、および列挙型で使用できます。格納プロパティは、クラスと構造体のみで使用できます。
@@ -32,13 +32,13 @@ rangeOfThreeItems.firstValue = 6
 
 `FixedLengthRange` のインスタンスには、`firstValue` と呼ばれる変数格納プロパティと `length` という定数格納プロパティがあります。上記の例では、定数のため、長さは新しい範囲が作成されたときに初期化され、それ以降は変更できません。
 
-### <a id="stored-properties-of-constant-structure-instances">定数の格納インスタンスのプロパティ\(Stored Properties of Constant Structure Instances\)</a>
+### <a id="stored-properties-of-constant-structure-instances">定数に割り当てられた構造体のインスタンスの格納プロパティ\(Stored Properties of Constant Structure Instances\)</a>
 
 構造体のインスタンスを作成し、そのインスタンスを定数に割り当てる場合、インスタンスのプロパティは、変数で宣言されていても変更できません。
 
 ```swift
 let rangeOfFourItems = FixedLengthRange(firstValue: 0, length: 4)
-// 0, 1, 2 の整数の範囲を表しています
+// 0, 1, 2, 3 の整数の範囲を表しています
 rangeOfFourItems.firstValue = 6
 // firstValue は変数ですがエラーになります
 ```
