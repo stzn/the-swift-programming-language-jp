@@ -1,6 +1,6 @@
 # メソッド \(Methods\)
 
-最終更新日: 2021/6/28  
+最終更新日: 2022/7/15  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Methods.html
 
 メソッドは、特定の型に紐づいた関数です。クラス、構造体、および列挙型は全て、インスタンスメソッドを定義できます。インスタンスメソッドは、特定の型のインスタンスを操作するための特定のタスクと機能をカプセル化します。クラス、構造体、および列挙型は、型自体に関連付けられている型メソッドを定義することもできます。型メソッドは、Objective-C のクラスメソッドに似ています。
@@ -111,7 +111,7 @@ print("The point is now at (\(somePoint.x), \(somePoint.y))")
 
 上記の `Point` 構造体は、自身に変更を加える `moveBy(x:y:)` メソッドを定義します。これは、`Point` インスタンスを一定量移動します。新しいポイントを返す代わりに、呼び出されたポイントを実際に変更します。プロパティを変更できるようにするために、`mutating` キーワードがその定義に追加されてます。
 
-[Stored Properties of Constant Structure Instances\(定数の格納インスタンスのプロパティ\)](../language-guide/properties.md#stored-properties-of-constant-structure-instances)で説明されているように、構造体の定数内の変数プロパティを変更できないため、構造体の定数で変更メソッドを呼び出すことはできないことに注意してください。
+[Stored Properties of Constant Structure Instances\(定数に割り当てられた構造体のインスタンスの格納プロパティ\)](../language-guide/properties.md#stored-properties-of-constant-structure-instances)で説明されているように、構造体の定数内の変数プロパティを変更できないため、構造体の定数で変更メソッドを呼び出すことはできないことに注意してください。
 
 ```swift
 let fixedPoint = Point(x: 3.0, y: 3.0)
