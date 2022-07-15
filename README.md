@@ -77,13 +77,20 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/t-ae">
+            <img src="https://avatars.githubusercontent.com/u/12446914?v=4" width="100;" alt="t-ae"/>
+            <br />
+            <sub><b>T.ae</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
         <a href="https://github.com/jollyjoester">
             <img src="https://avatars.githubusercontent.com/u/2178775?v=4" width="100;" alt="jollyjoester"/>
             <br />
             <sub><b>Hideyuki Nanashima</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/rymshm">
             <img src="https://avatars.githubusercontent.com/u/23201810?v=4" width="100;" alt="rymshm"/>
