@@ -41,7 +41,9 @@ npm install
 
 > Swift has struct and class.
 
+<!-- textlint-disable -->
 ❌ Swiftには、structとclassがあります。
+<!-- textlint-enable -->`
 
 ⭕️ Swift には、struct と class があります。
 
