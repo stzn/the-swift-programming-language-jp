@@ -68,7 +68,7 @@ let combinedbits = someBits | moreBits  // 11111110 と等しい
 
 ![&#x30D3;&#x30C3;&#x30C8;&#x6392;&#x4ED6;&#x7684;&#x8AD6;&#x7406;&#x548C;&#x6F14;&#x7B97;&#x5B50;](../assets/bitwiseXOR_2x.png)
 
-下記の例にある `firstBits` と `otherBits` のビットは、一方が持たない `1` を互いに設定されています。ビット排他的論理和演算子は、これらに `1` を設定した新しいビット値を出力します。`firstBits` および `otherBits` が持つ他のビットはすべて一致しているので、それらは `0` に設定されます。
+下記の例にある `firstBits` と `otherBits` のビットは、一方が持たない `1` が互いに設定されています。ビット排他的論理和演算子は、これらに `1` が設定された新しいビット値を出力します。`firstBits` および `otherBits` が持つ他のビットはすべて一致しているので、それらは `0` が設定されます。
 
 ```swift
 let firstBits: UInt8 = 0b00010100
