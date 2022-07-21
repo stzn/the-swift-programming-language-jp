@@ -64,17 +64,17 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/KS1019">
-            <img src="https://avatars.githubusercontent.com/u/6828522?v=4" width="100;" alt="KS1019"/>
-            <br />
-            <sub><b>Kotaro Suto</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/tsubasarc">
             <img src="https://avatars.githubusercontent.com/u/26360184?v=4" width="100;" alt="tsubasarc"/>
             <br />
             <sub><b>Tsubasa ISHIHARA</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/KS1019">
+            <img src="https://avatars.githubusercontent.com/u/6828522?v=4" width="100;" alt="KS1019"/>
+            <br />
+            <sub><b>Kotaro Suto</b></sub>
         </a>
     </td>
     <td align="center">
