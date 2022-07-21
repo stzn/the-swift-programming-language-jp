@@ -618,7 +618,7 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 ```
 
 > Experiment  
-> `rank` と `suit` を持った全種類のカードを含む配列を返すメソッドを書いてみよう。
+> 全種\(ランクとスートの全組み合わせ\)のカードからなる配列を返すメソッドを書いてみよう。
 
 ## 同時並行処理\(Concurrency\)
 
