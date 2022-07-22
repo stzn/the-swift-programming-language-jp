@@ -155,7 +155,6 @@ let fullName: String = "John Appleseed"
 let informalGreeting = "Hi \(nickname ?? fullName)"
 ```
 
-<!-- Swift 5.7で追加
 アンラップ後の変数に同名を用いる場合、右辺を省略することができます。
 
 ```swift
@@ -163,7 +162,6 @@ if let nickname {
     print("Hey, \(nickname)")
 }
 ```
--->
 
 `switch` は、あらゆる種類のデータと比較のための演算子を扱うことができます。\(整数や等価チェックだけに限定されません\)
 
