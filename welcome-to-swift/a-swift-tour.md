@@ -1,6 +1,6 @@
 # Swiftツアー\(A Swift Tour\)
 
-最終更新日: 2022/7/21  
+最終更新日: 2022/7/22  
 原文: https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html
 
 伝統的に、新しい言語の最初のプログラミングは "Hello world!" を画面に表示することを勧めます。これを Swift ではたった 1 行で達成できます。
