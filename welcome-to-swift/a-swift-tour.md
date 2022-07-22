@@ -633,7 +633,7 @@ func fetchUserID(from server: String) async -> Int {
 }
 ```
 
-非同期関数の呼び出す際には、その前に `await` を付けます。
+非同期関数を呼び出す際には、その前に `await` を付けます。
 
 ```swift
 func fetchUsername(from server: String) async -> String {
