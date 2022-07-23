@@ -15,7 +15,7 @@
 
 ## 開発について
 
-[開発ガイド](https://github.com/stzn/the-swift-programming-language-jp/tree/fb429c05ba8213016ca97e93f9454d86ed274ab7/CONTRIBUTION.md)を参照ください。
+[開発ガイド](https://github.com/stzn/the-swift-programming-language-jp/blob/master/CONTRIBUTION.md)を参照ください。
 
 以下の表は用語に関する英和対応表です。これを参考にしながら、できるだけ日本語の列と合うよう表記揺れを抑えます。一般的に邦訳があるもの、Apple がドキュメント内で邦訳で言及したものについてはそれを採用し、適した訳が見つからない場合は英語のまま表記します。随時更新。
 
