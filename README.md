@@ -22,10 +22,10 @@
 なお、英語のまま表記の大文字、小文字は、原文の記載に従います。
 
 通常の英語と同様に文の開始は大文字、その他は小文字  
-例: 開始 -> Computed property、その他 -> computed property
+例: 開始 -&gt; Computed property、その他 -&gt; computed property
 
 慣例的に大文字、小文字が決まっているもの  
-例: URL、UI、Swift、SwiftUI、HTML、CSSなど
+例: URL、UI、Swift、SwiftUI、HTML、CSS など
 
 |英語|日本語|
 |--------|--------|
