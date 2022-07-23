@@ -63,7 +63,7 @@ let fruitSummary = "I have \(apples + oranges) pieces of fruit."
 ```
 
 > Experiment  
-> 文字列に浮動小数点の計算を含めたり、誰かの名前を greeting に含めるために、`\()` を使用してみましょう。
+> 文字列に浮動小数点の計算を含めたり、誰かの名前を挨拶に含めるために、`\()` を使用してみましょう。
 
 複数行の文字列に対しては、3 つのダブルクォーテーション\(`"""`\)を使いましょう。末尾のクォーテーションに到達するまで、各行の最初のインデントは除外されます。
 
@@ -253,7 +253,7 @@ greet(person: "Bob", day: "Tuesday")
 ```
 
 > Experiment  
-> `day` パラメータを削除して、`greet` に今日の lunch special を指定するためのパラメータを追加してみましょう。
+> `day` パラメータを削除して、`greet` に今日のランチスペシャルを指定するためのパラメータを追加してみましょう。
 
 デフォルトで、関数はパラメータ名をそのままラベルとして使用します。独自の引数ラベルを設定したい場合は、パラメータ名の前に引数ラベルを記載してください。引数にラベルが不要な場合は、`_` を書きましょう。
 
@@ -427,7 +427,7 @@ test.simpleDescription()
 ```
 
 > Experiment  
-> radius と name をイニシャライザの引数に受けとる `Circle` という名前の `NameShape` の別のサブクラスを作ってみましょう。そして、 `Circle` クラスに `area()`、`simpleDescription()` メソッドを実装してみましょう。
+> `radius` と `name` をイニシャライザの引数に受けとる `Circle` という名前の `NameShape` の別のサブクラスを作ってみましょう。そして、 `Circle` クラスに `area()`、`simpleDescription()` メソッドを実装してみましょう。
 
 単純に値を保持するプロパティ以外に、プロパティが get と set を持つこともできます。
 
@@ -769,7 +769,7 @@ do {
 ```
 
 > Experiment  
-> printer の名前を `"Never Has Toner"` に変えてみましょう。`send(job:toPrinter:)` はエラーをスローします。
+> プリンタの名前を `"Never Has Toner"` に変えてみましょう。`send(job:toPrinter:)` はエラーをスローします。
 
 特定のエラーを処理するために、複数の `catch` ブロックを書くこともできます。switch 文の `case` のように `catch` の後ろにパターンを書きます。
 
