@@ -42,6 +42,7 @@
 |set|セット|
 |string|文字列|
 |struct|構造体|
+|subscript|サブスクリプト|
 |type|型|
 
 ## 貢献者
