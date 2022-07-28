@@ -768,12 +768,12 @@ if age > 10 {
 
 ### 事前条件を強制する\(Enforcing Preconditions\)
 
-`false` になる可能性があるものの、コードの実行を継続するためには_必ず_ `true` にならなければならない条件に対しては、事前条件を使いましょう。例えば、subscript が範囲超えエラーを起こしていないかの確認や、適切な値を関数に渡しているかなどには、事前条件を使いましょう。
+`false` になる可能性があるものの、コードの実行を継続するためには_必ず_ `true` にならなければならない条件に対しては、事前条件を使いましょう。例えば、サブスクリプトが範囲超えエラーを起こしていないかの確認や、適切な値を関数に渡しているかなどには、事前条件を使いましょう。
 
 事前条件は[precondition\(_:_:file:line:\)](https://developer.apple.com/documentation/swift/1540960-precondition)関数を呼ぶことで、事前条件を書けます。`true` か `false` と評価される式と、`false` だった場合に出力するメッセージを式として渡すことができます。例えば:
 
 ```swift
-// subscript の実装内で
+// サブスクリプトの実装内で
 precondition(index > 0, "Index must be greater than zero.")
 ```
 
