@@ -1,7 +1,15 @@
 # ドキュメント改訂履歴\(Document Revision History\)
 
-最終更新日: 2022/3/14  
+最終更新日: 2022/7/27
 原文: https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html
+
+## 2022-06-06
+
+* Swift 5.7 に更新しました
+* アクターとタスク間のデータ送信に関する情報を [Sendable Types](../language-guide/concurrency.md#sendable-types) セクションを追加しました。また、[@Sendable](../language-reference/attributes.md#sendable) 属性と [@unchecked](../language-reference/attributes.md#unchecked) 属性に関するセクションを追加しました
+* 正規表現の作成に関する情報を含む [正規表現リテラル](../language-reference/lexical-structure.md#lexical-structure-regular-expression-literals) セクションを追加しました
+* `if-let` の短縮形に関する情報を [オプショナルバインディング](../language-guide/the-basics.md#optional-binding) のセクションに追加しました
+* `#unavailable` に関する情報を [APIアベイラビリティチェック](../language-guide/control-flow.md#checking-api-availability) セクションに追加しました
 
 ## 2022-03-14
 
