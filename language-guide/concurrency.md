@@ -68,7 +68,7 @@ show(photo)
 
 * 非同期の関数、メソッド、プロパティの本文
 * `@main` でマークされている構造体、クラス、または列挙型の `static main()` メソッド内
-* 下記の[Unstructured Concurrency\(構造化されていない並行処理\)](concurrency.md#unstructured-concurrency)で示す独立した子タスク\(_child task_\)のコード
+* 下記の[Unstructured Concurrency\(独立した並行処理\)](concurrency.md#unstructured-concurrency)で示す独立した子タスク\(_child task_\)のコード
 
 > NOTE  
 > `Task.sleep(nanoseconds:)` メソッドは、同時並行処理が機能する方法を学ぶために簡単なコードを書くときに役立ちます。このメソッドは何もしませんが、それがリターンする前に少なくとも指定されたナノ秒数処理を待ちます。下記は、ネットワーク操作の待機をシミュレートするために `sleep(nanoseconds:)` を使用する `listPhotos(inGallery:)` 関数のバージョンです。
@@ -151,9 +151,9 @@ await withTaskGroup(of: Data.self) { taskGroup in
 
 タスクグループの詳細については、[TaskGroup](https://developer.apple.com/documentation/swift/taskgroup)を参照ください。
 
-### <a id="unstructured-concurrency">構造化されていない並行処理\(Unstructured Concurrency\)</a>
+### <a id="unstructured-concurrency">独立した並行処理\(Unstructured Concurrency\)</a>
 
-前のセクションで説明されている構造化された並行処理のアプローチに加えて、Swift は構造化されていない並行処理\(_unstructured concurrency_\)もサポートしています。タスクグループの一部のタスクとは異なり、非構造タスクには親タスクがありません。どんな方法で使われたとしても、非構造タスクを完全に柔軟に管理することができます。しかし、それらの正しい動作を保証することは完全に開発者の責任です。現在のアクター\(_actor_\)上で実行される非構造タスクを作成するには、[Task.init\(priority:operation:\)](https://developer.apple.com/documentation/swift/task/3856790-init) 関数を呼びます。現在のアクター上で実行されないタスク\(デタッチタスク\(_detached task_\)\)を作成するには、[Task.detached\(priority:operation:\)](https://developer.apple.com/documentation/swift/task/3856786-detached) 関数を呼び出します。これらの関数は両方ともタスクハンドル\(_task handle_\)を返し、例えば、その結果を待つかキャンセルすることができます。
+前のセクションで説明されている構造化された並行処理のアプローチに加えて、Swift は独立した並行処理\(_unstructured concurrency_\)もサポートしています。タスクグループの一部のタスクとは異なり、独立したタスク\(_unstructured task_\)には親タスクがありません。どんな方法で使われたとしても、独立したタスクを完全に柔軟に管理することができます。しかし、それらの正しい動作を保証することは完全に開発者の責任です。現在のアクター\(_actor_\)上で実行される独立したタスクを作成するには、[Task.init\(priority:operation:\)](https://developer.apple.com/documentation/swift/task/3856790-init) 関数を呼びます。現在のアクター上で実行されないタスク\(デタッチタスク\(_detached task_\)\)を作成するには、[Task.detached\(priority:operation:\)](https://developer.apple.com/documentation/swift/task/3856786-detached) 関数を呼び出します。これらの関数は両方ともタスクハンドル\(_task handle_\)を返し、例えば、その結果を待つかキャンセルすることができます。
 
 ```swift
 let newPhoto = // ... ある写真データ ...
