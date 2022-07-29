@@ -186,9 +186,9 @@ repeatLabels(a: "four") // エラー
 
 この属性をクラス、構造体、列挙型、またはプロトコルに適用すると、実行時にメンバを名前で検索できるようになります。型は `subscript(dynamicMember:)` を実装する必要があります。
 
-明示的メンバ式では、指定されたメンバに対応する宣言がない場合、式は型の `subscript(dynamicMember:)` の呼び出しとして解釈され、メンバに関する情報を引数として渡します。subscript は、KeyPath またはメンバ名のいずれかでパラメータを受け取ることができます。両方の subscript を実装する場合、KeyPath 引数を取る subscript が使用されます。
+明示的メンバ式では、指定されたメンバに対応する宣言がない場合、式は型の `subscript(dynamicMember:)` の呼び出しとして解釈され、メンバに関する情報を引数として渡します。サブスクリプトは、KeyPath またはメンバ名のいずれかでパラメータを受け取ることができます。両方のサブスクリプトを実装する場合、KeyPath 引数を取るサブスクリプトが使用されます。
 
-`subscript(dynamicMember:)` の実装は、[KeyPath](https://developer.apple.com/documentation/swift/keypath)、[WritableKeyPath](https://developer.apple.com/documentation/swift/writablekeypath)、または [ReferenceWritableKeyPath](https://developer.apple.com/documentation/swift/referencewritablekeypath)の引数を使用して KeyPath を受け取ることができます。[ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral)プロトコル\(ほとんどの場合、`String`\)に準拠する型の引数を使用して、メンバ名を受け入れることができます。subscript の戻り値の型は任意の型にすることができます。
+`subscript(dynamicMember:)` の実装は、[KeyPath](https://developer.apple.com/documentation/swift/keypath)、[WritableKeyPath](https://developer.apple.com/documentation/swift/writablekeypath)、または [ReferenceWritableKeyPath](https://developer.apple.com/documentation/swift/referencewritablekeypath)の引数を使用して KeyPath を受け取ることができます。[ExpressibleByStringLiteral](https://developer.apple.com/documentation/swift/expressiblebystringliteral)プロトコル\(ほとんどの場合、`String`\)に準拠する型の引数を使用して、メンバ名を受け入れることができます。サブスクリプトの戻り値の型は任意の型にすることができます。
 
 メンバ名による動的なメンバ検索を使用して、他の言語のデータを Swift にブリッジする場合など、コンパイル時に型チェックできないデータのラッパ型を作成できます。例えば:
 
@@ -208,7 +208,7 @@ let dynamic = s.someDynamicMember
 print(dynamic)
 // 325
 
-// 基になる subscript を直接呼び出します
+// 基になるサブスクリプトを直接呼び出します
 let equivalent = s[dynamicMember: "someDynamicMember"]
 print(dynamic == equivalent)
 // true
@@ -253,7 +253,7 @@ frozen 列挙型の switch 文は、[Switching Over Future Enumeration Cases\(�
 
 ### inlinable
 
-この属性を関数、メソッド、計算プロパティ、subscript、convenience イニシャライザ、またはデイニシャライザ宣言に適用すると、モジュールのパブリックインターフェイスの一部としてその宣言の実装を公開します。コンパイラは、inlinable シンボルへの呼び出しを、呼び出し側でシンボルの実装のコピーに置き換えることができます。
+この属性を関数、メソッド、計算プロパティ、サブスクリプト、convenience イニシャライザ、またはデイニシャライザ宣言に適用すると、モジュールのパブリックインターフェイスの一部としてその宣言の実装を公開します。コンパイラは、inlinable シンボルへの呼び出しを、呼び出し側でシンボルの実装のコピーに置き換えることができます。
 
 inlinable コードは、任意のモジュールで宣言された `public` シンボルとやり取りし、`usableFromInline` 属性がマークされた同じモジュールで宣言された `internal` シンボルとやり取りできます。inline 化したコードは、`private` シンボルまたは fileprivate シンボルとやり取りできません。
 
@@ -284,7 +284,7 @@ protocol ProvidesMain {
 
 ### nonobjc
 
-この属性をメソッド、プロパティ、subscript、またはイニシャライザ宣言に適用すると、暗黙の `objc` 属性を抑制します。`nonobjc` 属性は、Objective-C で宣言を使用することができる場合でも、使用できないようにするようコンパイラに指示します。
+この属性をメソッド、プロパティ、サブスクリプト、またはイニシャライザ宣言に適用すると、暗黙の `objc` 属性を抑制します。`nonobjc` 属性は、Objective-C で宣言を使用することができる場合でも、使用できないようにするようコンパイラに指示します。
 
 この属性を extension に適用すると、`objc` 属性が明示的にマークされていないその extension の全てのメンバに適用するのと同じ効果があります。
 
@@ -317,7 +317,7 @@ NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
 
 ### objc
 
-この属性は Objective-C で使用することができる全ての宣言に適用します。例えば、ネストされていないクラス、プロトコル、\(整数の Raw Value 型の\)非ジェネリック列挙型、クラスのプロパティとメソッド\(get と set を含む\)、プロトコル、およびオプショナルのプロトコル、イニシャライザ、および subscript など。`objc` 属性は、Objective-C コードで宣言を使用できることをコンパイラに通知します。
+この属性は Objective-C で使用することができる全ての宣言に適用します。例えば、ネストされていないクラス、プロトコル、\(整数の Raw Value 型の\)非ジェネリック列挙型、クラスのプロパティとメソッド\(get と set を含む\)、プロトコル、およびオプショナルのプロトコル、イニシャライザ、およびサブスクリプトなど。`objc` 属性は、Objective-C コードで宣言を使用できることをコンパイラに通知します。
 
 この属性を extension に適用すると、`nonobjc` 属性が明示的にマークされていないその extension 内の全てのメンバに適用するのと同じ効果があります。
 
@@ -679,7 +679,7 @@ let manualArray = ArrayBuilder.buildArray(temporary)
 リザルトビルダ型を作成すると、同じ名前のカスタム属性が作成されます。その属性は、次の場所に適用できます:
 
 * 関数宣言では、リザルトビルダは関数の本文を作成します
-* get を含む変数または subscript の宣言で、リザルトビルダは get の本文を作成します
+* get を含む変数またはサブスクリプトの宣言で、リザルトビルダは get の本文を作成します
 * 関数宣言のパラメータでは、リザルトビルダは対応する引数として渡されるクロージャの本文を作成します
 
 resultBuilder 属性を適用しても、ABI の互換性には影響しません。リザルトビルダ属性をパラメータに適用すると、その属性が関数のインターフェースの一部になり、ソースの互換性に影響を与える可能性があります。
@@ -708,7 +708,7 @@ resultBuilder 属性を適用しても、ABI の互換性には影響しませ�
 
 ### usableFromInline
 
-この属性を関数、メソッド、計算プロパティ、subscript、イニシャライザ、またはデイニシャライザの宣言に適用すると、宣言と同じモジュールで定義されているインライン化されたコードでそのシンボルを使用できるようにします。宣言には、`internal` 修飾子が必要です。`usedFromInline` がマークされた構造体またはクラスは、そのプロパティに `public` または `usableFromInline` の型のみを使用できます。`usedFromInline` がマークされた列挙型は、そのケースの Raw Value と関連値に対して、`public` または `usableFromInline` の型のみを使用できます。
+この属性を関数、メソッド、計算プロパティ、サブスクリプト、イニシャライザ、またはデイニシャライザの宣言に適用すると、宣言と同じモジュールで定義されているインライン化されたコードでそのシンボルを使用できるようにします。宣言には、`internal` 修飾子が必要です。`usedFromInline` がマークされた構造体またはクラスは、そのプロパティに `public` または `usableFromInline` の型のみを使用できます。`usedFromInline` がマークされた列挙型は、そのケースの Raw Value と関連値に対して、`public` または `usableFromInline` の型のみを使用できます。
 
 `public` 修飾子と同様に、この属性はモジュールの公開インターフェイスの一部として宣言が公開されます。`public` とは異なり、コンパイラは、宣言のシンボルがエクスポートされている場合でも、`usableFromInline` がマークされた宣言をモジュール外のコードで参照することを許可しません。ただし、モジュール外のコードは、ランタイム時の動作を使用して宣言のシンボルとやり取りできることもあります。
 

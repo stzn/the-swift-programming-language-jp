@@ -356,7 +356,7 @@ print("the number of characters in \(word) is \(word.count)")
 
 ## 文字列へのアクセスと変更\(Accessing and Modifying a String\)
 
-メソッドやプロパティを使ったり、subscript 構文を使用して、文字列へアクセスしたり、変更をすることができます。
+メソッドやプロパティを使ったり、サブスクリプト構文を使用して、文字列へアクセスしたり、変更をすることができます。
 
 ### <a id="string-indices">文字列のインデックス\(String Indices\)</a>
 
@@ -364,11 +364,11 @@ print("the number of characters in \(word) is \(word.count)")
 
 上記で述べたように、異なる文字には異なるメモリ量が必要になります。つまり、`Character` の位置を特定するには、Unicode スカラを文字列の最初または最後から反復して探さなければなりません。こういった理由から Swift の `String` のインデックスは数値にすることはできません。
 
-`String` の最初の `Character` の位置を知るためには、`startIndex` プロパティを使いましょう。`endIndex` プロパティは `String` の最後の `Character` の位置の次の位置です。つまり、`endIndex` プロパティは文字列の subscript に使用してはいけません。`String` が空ならば、`startIndex` と `endIndex` は等しくなります。
+`String` の最初の `Character` の位置を知るためには、`startIndex` プロパティを使いましょう。`endIndex` プロパティは `String` の最後の `Character` の位置の次の位置です。つまり、`endIndex` プロパティは文字列のサブスクリプトに使用してはいけません。`String` が空ならば、`startIndex` と `endIndex` は等しくなります。
 
 `index(before:)` と `index(after:)` を使用して、あるインデックスの前後のインデックスにアクセスできます。あるインデックスから離れた位置のインデックスにアクセスするためには、上記 2 つのメソッドを繰り返し呼ぶのではなく、`index(_:offsetBy:)` を使います。
 
-`String` のある特定の位置の `Character` へアクセスするには、subscript 構文を使います。
+`String` のある特定の位置の `Character` へアクセスするには、サブスクリプト構文を使います。
 
 ```swift
 let greeting = "Guten Tag!"
@@ -431,7 +431,7 @@ welcome.removeSubrange(range)
 
 ## 部分文字列\(Substrings\)
 
-文字列から部分文字列を取得した場合\(例えば subscript や `prefix(_:)` などのメソッドを使用するなど\)、[Substring](https://developer.apple.com/documentation/swift/substring)インスタンスが結果として取得できます。部分文字列には文字列とほぼ同じメソッドを使用することができます。つまり、部分文字列を文字列と同じような方法で扱うことができます。しかし、文字列とは異なり、部分文字列は、文字列に対して何かアクションを起こしているほんの短い間だけに使います。処理の結果をより長い期間保持するときは、部分文字列を `String` のインスタンスに変換します。例えば:
+文字列から部分文字列を取得した場合\(例えばサブスクリプトや `prefix(_:)` などのメソッドを使用するなど\)、[Substring](https://developer.apple.com/documentation/swift/substring)インスタンスが結果として取得できます。部分文字列には文字列とほぼ同じメソッドを使用することができます。つまり、部分文字列を文字列と同じような方法で扱うことができます。しかし、文字列とは異なり、部分文字列は、文字列に対して何かアクションを起こしているほんの短い間だけに使います。処理の結果をより長い期間保持するときは、部分文字列を `String` のインスタンスに変換します。例えば:
 
 ```swift
 let greeting = "Hello, world!"

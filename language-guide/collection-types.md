@@ -102,7 +102,7 @@ var shoppingList = ["Eggs", "Milk"]
 
 ### <a id="accessing-and-modifying-an-array">配列へのアクセスと変更\(Accessing and Modifying an Array\)</a>
 
-メソッドやプロパティ、subscript 構文を通して配列の要素へのアクセス、変更ができます。
+メソッドやプロパティ、サブスクリプト構文を通して配列の要素へのアクセス、変更ができます。
 
 配列のアイテムの数を調べるために、読み取り専用の `count` プロパティをチェックします。
 
@@ -138,7 +138,7 @@ shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
 // shoppingList は 7 つのアイテムを含んでいます
 ```
 
-subscript 構文を使用すると、配列から値を取得します。配列名のすぐ後の角括弧\(`[]`\)の中に、取得したい値のインデックスを渡します。
+サブスクリプト構文を使用すると、配列から値を取得します。配列名のすぐ後の角括弧\(`[]`\)の中に、取得したい値のインデックスを渡します。
 
 ```swift
 var firstItem = shoppingList[0]
@@ -148,16 +148,16 @@ var firstItem = shoppingList[0]
 > NOTE  
 > 配列の最初のアイテムのindexは `0` であって `1` ではありません。SwiftのArrayはいつも 0 から始まるインデックス方式です。
 
-あるインデックスの既存の値を変更したい場合も subscript 構文を使います。
+あるインデックスの既存の値を変更したい場合もサブスクリプト構文を使います。
 
 ```swift
 shoppingList[0] = "Six eggs"
 // リストの最初のアイテムは "Eggs" ではなく、 "Six eggs"
 ```
 
-subscript 構文を使用するとき、指定したインデックスは値の存在する範囲内でなければなりません。例えば、配列の最後に値を追加しようとして `shoppingList[shoppingList.count] = "Salt"` と書くと、実行時エラーになります。
+サブスクリプト構文を使用するとき、指定したインデックスは値の存在する範囲内でなければなりません。例えば、配列の最後に値を追加しようとして `shoppingList[shoppingList.count] = "Salt"` と書くと、実行時エラーになります。
 
-ある一定範囲の値を一度に変更する場合にも、subscript 構文を使用することができます。これは置き換えたい値のセットの数と指定した置き換える範囲の長さが異なっていても可能です。次の例は `"Chocolate Spread"`、`"Cheese"`、`"Butter"` を `"Bananas"`、`"Apples"` に置き換えています。
+ある一定範囲の値を一度に変更する場合にも、サブスクリプト構文を使用することができます。これは置き換えたい値のセットの数と指定した置き換える範囲の長さが異なっていても可能です。次の例は `"Chocolate Spread"`、`"Cheese"`、`"Butter"` を `"Bananas"`、`"Apples"` に置き換えています。
 
 ```swift
 shoppingList[4...6] = ["Bananas", "Apples"]
@@ -500,7 +500,7 @@ var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 ### <a id="accessing-and-modifying-a-dictionary">辞書へのアクセスと変更\(Accessing and Modifying a Dictionary\)</a>
 
-メソッドやプロパティ、subscript 構文を通して、辞書へのアクセス、変更ができます。
+メソッドやプロパティ、サブスクリプト構文を通して、辞書へのアクセス、変更ができます。
 
 配列と同様に、`Dictionary` のアイテムの数を調べるために、読み取り専用の `count` プロパティをチェックします。
 
@@ -520,7 +520,7 @@ if airports.isEmpty {
 // The airports dictionary isn't empty.
 ```
 
-subscript 構文を使用して、新しいアイテムを追加することができます。適切な型の新しいキーを subscript のインデックスに入れ、適切な型の新しいバリューを代入できます。
+サブスクリプト構文を使用して、新しいアイテムを追加することができます。適切な型の新しいキーをサブスクリプトのインデックスに入れ、適切な型の新しいバリューを代入できます。
 
 ```swift
 airports["LHR"] = "London"
@@ -536,14 +536,14 @@ shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
 // shoppingList は 7 つのアイテムを含んでいます
 ```
 
-subscript 構文を使用すると、特定のキーのバリューを変更することもできます。
+サブスクリプト構文を使用すると、特定のキーのバリューを変更することもできます。
 
 ```swift
 airports["LHR"] = "London Heathrow"
 // "LHR"の値は "London Heathrow" へ変更
 ```
 
-別の方法として、`updateValue(_:forKey:)` メソッドを使用して、特定のキーのバリューの設定/更新ができます。subscript と同様に `updateValue(_:forKey:)` は、特定のキーのバリューがなければ新しく値を設定し、既にバリューが存在していたら更新します。subscript と違う点として、`updateValue(_:forKey:)` メソッドは、更新後に前の値を返します。こうすることで、更新が実際に起きたかどうかが確認できます。
+別の方法として、`updateValue(_:forKey:)` メソッドを使用して、特定のキーのバリューの設定/更新ができます。サブスクリプトと同様に `updateValue(_:forKey:)` は、特定のキーのバリューがなければ新しく値を設定し、既にバリューが存在していたら更新します。サブスクリプトと違う点として、`updateValue(_:forKey:)` メソッドは、更新後に前の値を返します。こうすることで、更新が実際に起きたかどうかが確認できます。
 
 `updateValue(_:forKey:)` メソッドは、辞書のバリューの型のオプショナル値を返します。例えば辞書が `String` を保持している場合、このメソッドは `String?`\(オプショナル `String`\)を返します。このオプショナル値は更新前にバリューが存在していた場合はその値のオプショナルを返し、存在していなかった場合は `nil` を返します:
 
@@ -554,7 +554,7 @@ if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
 // The old value for DUB was Dublin.
 ```
 
-subscript 構文を使用して特定のキーのバリューを取得することもできます。バリューの存在しないキーに対してもリクエストすることが可能で、バリューの型のオプショナル値を返します。存在しなければ `nil` を返します:
+サブスクリプト構文を使用して特定のキーのバリューを取得することもできます。バリューの存在しないキーに対してもリクエストすることが可能で、バリューの型のオプショナル値を返します。存在しなければ `nil` を返します:
 
 ```swift
 if let airportName = airports["DUB"] {
@@ -565,7 +565,7 @@ if let airportName = airports["DUB"] {
 // The name of the airport is Dublin Airport.
 ```
 
-subscript 構文を使用して、キーに `nil` を代入することで、キーバリューペアを削除できます:
+サブスクリプト構文を使用して、キーに `nil` を代入することで、キーバリューペアを削除できます:
 
 ```swift
 airports["APL"] = "Apple International"
