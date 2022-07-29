@@ -7,7 +7,7 @@
 
 * Swift 5.7 に更新しました
 * アクターとタスク間のデータ送信に関する情報を [Sendable Types](../language-guide/concurrency.md#sendable-types) セクションに追加しました。また、[@Sendable](../language-reference/attributes.md#sendable) 属性と [@unchecked](../language-reference/attributes.md#unchecked) 属性に関するセクションを追加しました
-* 正規表現の作成に関する情報を含む [正規表現リテラル](../language-reference/lexical-structure.md#lexical-structure-regular-expression-literals) セクションを追加しました
+* 正規表現の作成に関する情報を [正規表現リテラル](../language-reference/lexical-structure.md#lexical-structure-regular-expression-literals) セクションに追加しました
 * `if-let` の短縮形に関する情報を [オプショナルバインディング](../language-guide/the-basics.md#optional-binding) のセクションに追加しました
 * `#unavailable` に関する情報を [APIアベイラビリティチェック](../language-guide/control-flow.md#checking-api-availability) セクションに追加しました
 
