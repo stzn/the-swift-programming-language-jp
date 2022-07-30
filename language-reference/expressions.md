@@ -536,19 +536,19 @@ _タプル式_の各識別子は、タプル式の範囲内で一意な必要が
 > GRAMMAR OF A WILDCARD EXPRESSION  
 > wildcard-expression → `_`
 
-### <a id="keypath-expression">Key-Path 式\(Key-Path Expression\)</a>
+### <a id="keypath-expression">KeyPath 式\(Key-Path Expression\)</a>
 
-_key-path 式_は、型のプロパティまたはサブスクリプトを参照します。key-value observing などのような、動的プログラミングのタスクで key-path 式を使用します。次の形式があります:
+_KeyPath 式_は、型のプロパティまたはサブスクリプトを参照します。key-value observing などのような、動的プログラミングのタスクで KeyPath 式を使用します。次の形式があります:
 
 ![Key-Path &#x5F0F;](../assets/key-path_expression.png)
 
 _type name_ は、`String`、`[Int]`、や `Set<Int>` などのジェネリックなパラメータを含めた、具体的な型の名前です。
 
-_path_ は、プロパティ名、サブスクリプト、オプショナルチェーン式、および強制アンラップ式で構成されます。これらの key-path コンポーネントのそれぞれは、必要に応じて任意の順序で繰り返すことができます。
+_path_ は、プロパティ名、サブスクリプト、オプショナルチェーン式、および強制アンラップ式で構成されます。これらの KeyPath コンポーネントのそれぞれは、必要に応じて任意の順序で繰り返すことができます。
 
-コンパイル時には、key-path 式は [KeyPath](https://developer.apple.com/documentation/swift/keypath)クラスのインスタンスに置き換えられます。
+コンパイル時には、KeyPath 式は [KeyPath](https://developer.apple.com/documentation/swift/keypath)クラスのインスタンスに置き換えられます。
 
-key-path を使用して値にアクセスするには、キーパスを `subscript(keyPath:)` に渡します。これは全ての型で利用可能です。例えば:
+KeyPath を使用して値にアクセスするには、KeyPath を `subscript(keyPath:)` に渡します。これは全ての型で利用可能です。例えば:
 
 ```swift
 struct SomeStructure {
@@ -578,7 +578,7 @@ c.observe(\.someProperty) { object, change in
 }
 ```
 
-_path_ は、識別キーパス `(\.self)` を作成するために `self` を参照できます。識別キーパスは、インスタンス全体を参照しているので、それを使用して、変数に格納されている全てのデータを単一のステップでアクセスして変更できます。例えば:
+_path_ は、self KeyPath `(\.self)` を作成するために `self` を参照できます。self KeyPath は、インスタンス全体を参照しているので、それを使用して、変数に格納されている全てのデータを単一のステップでアクセスして変更できます。例えば:
 
 ```swift
 var compoundValue = (a: 1, b: 2)
@@ -586,7 +586,7 @@ var compoundValue = (a: 1, b: 2)
 compoundValue[keyPath: \.self] = (a: 10, b: 20)
 ```
 
-_path_ には、プロパティのプロパティを参照するために、ピリオドで区切って複数のプロパティ名を含めることができます。このコードは、key-path 式 `\OuterStructure.outer.someValue` を使用して、`OuterStructure` 型の `outer` プロパティの `someValue` プロパティにアクセスしています:
+_path_ には、プロパティのプロパティを参照するために、ピリオドで区切って複数のプロパティ名を含めることができます。このコードは、KeyPath 式 `\OuterStructure.outer.someValue` を使用して、`OuterStructure` 型の `outer` プロパティの `someValue` プロパティにアクセスしています:
 
 ```swift
 struct OuterStructure {
@@ -603,7 +603,7 @@ let nestedValue = nested[keyPath: nestedKeyPath]
 // nestedValue は 24
 ```
 
-_path_ は、サブスクリプトのパラメータ型が `Hashable` プロトコルに準拠している限り角括弧\(`[]`\)を使用してサブスクリプトを含めることができます。この例では、key-path のサブスクリプトを使用して、配列の 2 番目の要素にアクセスしています。
+_path_ は、サブスクリプトのパラメータ型が `Hashable` プロトコルに準拠している限り角括弧\(`[]`\)を使用してサブスクリプトを含めることができます。この例では、KeyPath のサブスクリプトを使用して、配列の 2 番目の要素にアクセスしています。
 
 ```swift
 let greetings = ["hello", "hola", "bonjour", "안녕"]
@@ -611,7 +611,7 @@ let myGreeting = greetings[keyPath: \[String].[1]]
 // myGreeting は 'hola'
 ```
 
-サブスクリプトで使用される値は、名前付きの値またはリテラルです。値は Value セマンティクスを使用してキーパス内にキャプチャされます。次のコードは、key-path 式と `greetings` 配列の 3 番目の要素の両方にアクセスするために、可変の `index` を使用しています。`index` が変更されると、key-path 式は依然として 3 番目の要素を参照する一方、クロージャは新しいインデックスを使用しています。
+サブスクリプトで使用される値は、名前付きの値またはリテラルです。値は Value セマンティクスを使用して KeyPath 内にキャプチャされます。次のコードは、KeyPath 式と `greetings` 配列の 3 番目の要素の両方にアクセスするために、可変の `index` を使用しています。`index` が変更されると、KeyPath 式は依然として 3 番目の要素を参照する一方、クロージャは新しいインデックスを使用しています。
 
 ```swift
 var index = 2
@@ -633,20 +633,20 @@ print(fn(greetings))
 // 안녕
 ```
 
-_path_ はオプショナルチェーンと強制アンラップを使用できます。このコードは、オプショナルの文字列のプロパティにアクセスするためのキーパスでオプショナルチェーンを使用しています。
+_path_ はオプショナルチェーンと強制アンラップを使用できます。このコードは、オプショナルの文字列のプロパティにアクセスするための KeyPath でオプショナルチェーンを使用しています。
 
 ```swift
 let firstGreeting: String? = greetings.first
 print(firstGreeting?.count as Any)
 // Optional(5)
 
-// key-path を使用して同じことをしています
+// KeyPath を使用して同じことをしています
 let count = greetings[keyPath: \[String].first?.count]
 print(count as Any)
 // Optional(5)
 ```
 
-キーパスのコンポーネントを、型内に深くネストされている値にアクセスために組み合わせることができます。次のコードは、これらのコンポーネントを組み合わせた key-path 式を使用して、配列内の辞書のプロパティの様々な値にアクセスしています:
+KeyPath のコンポーネントを、型内に深くネストされている値にアクセスために組み合わせることができます。次のコードは、これらのコンポーネントを組み合わせた KeyPath 式を使用して、配列内の辞書のプロパティの様々な値にアクセスしています:
 
 ```swift
 let interestingNumbers = ["prime": [2, 3, 5, 7, 11, 13, 17],
@@ -662,7 +662,7 @@ print(interestingNumbers[keyPath: \[String: [Int]].["hexagonal"]!.count.bitWidth
 // 64
 ```
 
-関数またはクロージャを使用できるコンテキストでは、key-path 式を使用できます。具体的には、`(SomeType) -> Value` 型の関数やクロージャの代わりに、基の型が `SomeType` で、そのパスが `Value` 型の値を生成することができます。
+関数またはクロージャを使用できるコンテキストでは、KeyPath 式を使用できます。具体的には、`(SomeType) -> Value` 型の関数やクロージャの代わりに、基の型が `SomeType` で、そのパスが `Value` 型の値を生成することができます。
 
 ```swift
 struct Task {
@@ -680,7 +680,7 @@ let descriptions = toDoList.filter(\.completed).map(\.description)
 let descriptions2 = toDoList.filter { $0.completed }.map { $0.description }
 ```
 
-key-path 式の副作用は、式が評価される時点でのみ評価されます。例えば、key-path 式でサブスクリプトの内側の関数呼び出しを行うと、関数は、キーパスが使用される度にではなく、式を評価する際に 1 回だけ呼び出されます。
+KeyPath 式の副作用は、式が評価される時点でのみ評価されます。例えば、KeyPath 式でサブスクリプトの内側の関数呼び出しを行うと、関数は、KeyPath が使用される度にではなく、式を評価する際に 1 回だけ呼び出されます。
 
 ```swift
 func makeIndex() -> Int {
@@ -695,7 +695,7 @@ let taskKeyPath = \[Task][makeIndex()]
 let someTask = toDoList[keyPath: taskKeyPath]
 ```
 
-Objective-C API とやり取りするコード内のキーパスの使用方法の詳細については、[Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift)を参照ください。Key-Value Coding や Key-Value Observing については、[Key-Value Coding Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i)と[Key-Value Observing Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i)を参照ください。
+Objective-C API とやり取りするコード内の KeyPath の使用方法の詳細については、[Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift)を参照ください。Key-Value Coding や Key-Value Observing については、[Key-Value Coding Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i)と[Key-Value Observing Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i)を参照ください。
 
 > GRAMMAR OF A KEY-PATH EXPRESSION  
 > key-path-expression → `\` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)<sub>opt</sub> `.` [key-path-components](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-components)  
@@ -751,13 +751,13 @@ Objective-C API とやり取りする Swift コードでセレクタを使用す
 > selector-expression → `#selector` `(` `getter:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `)`  
 > selector-expression → `#selector` `(` `setter:` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `)`
 
-### Key-Path 文字列式\(Key-Path String Expression\)
+### KeyPath 文字列式\(Key-Path String Expression\)
 
-key-path 文字列式を使用すると、Key-Value Coding や Key-Value Observing API で使用するために、Objective-C のプロパティを参照するための文字列にアクセスできます。形式は次のとおりです:
+KeyPath 文字列式を使用すると、Key-Value Coding や Key-Value Observing API で使用するために、Objective-C のプロパティを参照するための文字列にアクセスできます。形式は次のとおりです:
 
 ![Key-Path&#x6587;&#x5B57;&#x5217;&#x5F0F;](../assets/key-path_string_expression.png)
 
-_property name_ は、Objective-C ランタイムで使用可能なプロパティを参照する必要があります。コンパイル時には、key-path 文字列式は文字列リテラルに置き換えられます。例えば:
+_property name_ は、Objective-C ランタイムで使用可能なプロパティを参照する必要があります。コンパイル時には、KeyPath 文字列式は文字列リテラルに置き換えられます。例えば:
 
 ```swift
 class SomeClass: NSObject {
@@ -776,7 +776,7 @@ if let value = c.value(forKey: keyPath) {
 // 12
 ```
 
-クラス内で key-path 文字列式を使用すると、クラス名なしでプロパティ名だけを書くことでそのクラスのプロパティを参照できます。
+クラス内で KeyPath 文字列式を使用すると、クラス名なしでプロパティ名だけを書くことでそのクラスのプロパティを参照できます。
 
 ```swift
 extension SomeClass {
@@ -788,9 +788,9 @@ print(keyPath == c.getSomeKeyPath())
 // true
 ```
 
-キーパス文字列は、実行時ではなくコンパイル時に作成されているため、コンパイラはプロパティが存在すること、およびそのプロパティが Objective-C ランタイムに公開されていることを確認できます。
+KeyPath 文字列は、実行時ではなくコンパイル時に作成されているため、コンパイラはプロパティが存在すること、およびそのプロパティが Objective-C ランタイムに公開されていることを確認できます。
 
-Objective-C API とやり取りする Swift コードで key-path を使用する方法の詳細については、[Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift)を参照ください。Key-Value Coding と Key-Value Observing については、[Key-Value Coding Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i)と[Key-Value Observing Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i)を参照ください。
+Objective-C API とやり取りする Swift コードで KeyPath を使用する方法の詳細については、[Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift)を参照ください。Key-Value Coding と Key-Value Observing については、[Key-Value Coding Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i)と[Key-Value Observing Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i)を参照ください。
 
 > NOTE  
 > プロパティ名は式ですが、それらは決して評価されません。
