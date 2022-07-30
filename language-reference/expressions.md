@@ -562,7 +562,7 @@ let value = s[keyPath: pathToProperty]
 // value は 12
 ```
 
-_type name_ は、型推論で暗黙的に型を決定できるコンテキストでは省略できます。次のコードは、`\ someClass.someProperty` の代わりに `\.someProperty` を使用しています:
+_type name_ は、型推論で暗黙的に型を決定できるコンテキストでは省略できます。次のコードは、`\SomeClass.someProperty` の代わりに `\.someProperty` を使用しています:
 
 ```swift
 class SomeClass: NSObject {
