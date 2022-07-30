@@ -700,7 +700,7 @@ resultBuilder 属性を適用しても、ABI の互換性には影響しませ�
 
 実行可能ファイルを作成するためにコンパイルする Swift コードには、[Top-Level Code\(トップレベルコード\)](../language-reference/declarations.md#top-level-code)で説明されているように、ただ 1 つのトップレベルのエントリポイントのみを含めます。
 
-### unchecked
+### <a id="unchecked">unchecked</a>
 
 型宣言に適用されたプロトコルのリストの一部としてこの属性をあるプロトコルの型に適用した場合、そのプロトコルの要件の適用をオフにします。
 
@@ -752,7 +752,7 @@ Interface Builder 属性は、Xcode と同期するために InterfaceBuilder �
 
 この属性を関数またはメソッド宣言のパラメータの型に適用すると、パラメータの値を後で実行するために保持されることがあることを示します。これは、値が呼び出し側の生存期間を超えて存続できることを意味します。`escaping` 属性を持つ関数型パラメータは、プロパティまたはメソッドに対して `self` を明示的に使用する必要があります。`escaping` 属性の使用方法の例については、[Escaping Closures\(エスケープクロージャ\)](../language-guide/closures.md#escaping-closures)を参照ください。
 
-### Sendable
+### <a id="sendable">Sendable</a>
 
 この属性を関数の型に適用して、関数またはクロージャが `Sendable` なことを示します。この属性を関数型に適用することは、非関数型を [`Sendable`](https://developer.apple.com/documentation/swift/sendable) プロトコルに準拠させることと同じ意味です。
 
