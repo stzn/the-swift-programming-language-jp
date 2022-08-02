@@ -338,13 +338,13 @@ protocol Container {
 
 * `append(_:)` メソッドを使用して、コンテナに新しいアイテムを追加できる必要があります
 * `Int` 値を返す `count` プロパティを介して、コンテナ内のアイテムの数にアクセスできる必要があります
-* `Int` のインデックスを受け取る subscript を使用して、コンテナ内の各アイテムを取得できる必要があります
+* `Int` のインデックスを受け取るサブスクリプトを使用して、コンテナ内の各アイテムを取得できる必要があります
 
 このプロトコルは、コンテナ内のアイテムの保存方法や、許可される型を指定していません。プロトコルは、`Container` と見なされるために型が提供しなければならない 3 つ小さな機能のみを指定します。準拠する型は、これら 3 つの要件を満たす限り、追加の機能を提供できます。
 
-`Container` プロトコルに準拠する全ての型は、格納する値の型を指定する必要があります。具体的には、正しい型のアイテムのみがコンテナに追加されるようにする必要があり、subscript で返されるアイテムの型を明確にする必要があります。
+`Container` プロトコルに準拠する全ての型は、格納する値の型を指定する必要があります。具体的には、正しい型のアイテムのみがコンテナに追加されるようにする必要があり、サブスクリプトで返されるアイテムの型を明確にする必要があります。
 
-これらの要件を定義するために、`Container` プロトコルは、コンテナが保持する要素の型を参照する必要がありますが、特定のコンテナの型が何かを知る必要はありません。`Container` プロトコルは、`append(_:)` メソッドに渡される値をコンテナの要素の型と同じにする必要があり、コンテナの subscript によって返される値をコンテナの要素の型と同じ型を指定する必要があります。
+これらの要件を定義するために、`Container` プロトコルは、コンテナが保持する要素の型を参照する必要がありますが、特定のコンテナの型が何かを知る必要はありません。`Container` プロトコルは、`append(_:)` メソッドに渡される値をコンテナの要素の型と同じにする必要があり、コンテナのサブスクリプトによって返される値をコンテナの要素の型と同じ型を指定する必要があります。
 
 これを実現するために、`Container` プロトコルは `Item` と呼ばれる関連型を `associatedtype Item` として記述することで宣言しています。プロトコルは `Item` が何かを定義しません。その情報は、準拠する型が提供します。それにもかかわらず、`Item` エイリアスを通して、`Container` 内のアイテムの型への参照、`append(_:)` メソッドと `subscript` で使用する型の定義は、どんな `Container` でも期待通りに動くことを保証しています。
 
@@ -378,7 +378,7 @@ struct IntStack: Container {
 
 さらに、`IntStack` は、`Container` の実装の中で使用する `Item` に `Int` 型を指定しています。`typealias Item = Int` の定義により、抽象的な `Item` が、具象的な `Int` に変わります。
 
-Swift の型推論のおかげで、`IntStack` の定義の中で `Item` が `Int` なこと宣言する必要は実際はありません。`IntStack` は `Container` プロトコルの全ての要件に準拠しているため、`append(_:)` メソッドの `item` パラメータの型と subscript の戻り値の型から、使用する適切な `Item` を推論できます。実際、上記のコードから `typealias Item = Int` 行を削除しても、`Item` に使用する型が明確になっているため、全てが引き続き機能します。
+Swift の型推論のおかげで、`IntStack` の定義の中で `Item` が `Int` なこと宣言する必要は実際はありません。`IntStack` は `Container` プロトコルの全ての要件に準拠しているため、`append(_:)` メソッドの `item` パラメータの型とサブスクリプトの戻り値の型から、使用する適切な `Item` を推論できます。実際、上記のコードから `typealias Item = Int` 行を削除しても、`Item` に使用する型が明確になっているため、全てが引き続き機能します。
 
 ジェネリックな `Stack` 型を `Container` プロトコルに準拠させることもできます:
 
@@ -405,19 +405,19 @@ struct Stack<Element>: Container {
 }
 ```
 
-今回は、`append(_:)` メソッドの `item` パラメータの型と subscript の戻り値の型として型パラメータ `Element` を使用しています。したがって、Swift は、`Element` がこの特定のコンテナの `Item` として使用する型を適切に推論できます。
+今回は、`append(_:)` メソッドの `item` パラメータの型とサブスクリプトの戻り値の型として型パラメータ `Element` を使用しています。したがって、Swift は、`Element` がこの特定のコンテナの `Item` として使用する型を適切に推論できます。
 
 ### 関連型を特定するための既存の型の拡張\(Extending an Existing Type to Specify an Associated Type\)
 
 [Adding Protocol Conformance with an Extension\(拡張機能を使ったプロトコル準拠の追加\)](../language-guide/protocols.md#adding-protocol-conformance-with-an-extension)で説明されているように、既存の型を拡張してプロトコルへの準拠を追加できます。これには、関連型を持つプロトコルが含まれます。
 
-Swift の `Array` 型は、要素を取得するために、`append(_:)` メソッド、`count` プロパティ、および `Int` インデックスの subscript を既存で提供しています。これら 3 つの機能は、`Container` プロトコルの要件に準拠します。これは、`Array` がプロトコルに準拠することを宣言するだけで、`Container` プロトコルに準拠するように `Array` を拡張できることを意味します。[Declaring Protocol Adoption with an Extension\(拡張機能を使ったプロトコル準拠の宣言\)](../language-guide/protocols.md#declaring-protocol-adoption-with-an-extension)で説明されているように、これは空の extension で行います:
+Swift の `Array` 型は、要素を取得するために、`append(_:)` メソッド、`count` プロパティ、および `Int` インデックスのサブスクリプトを既存で提供しています。これら 3 つの機能は、`Container` プロトコルの要件に準拠します。これは、`Array` がプロトコルに準拠することを宣言するだけで、`Container` プロトコルに準拠するように `Array` を拡張できることを意味します。[Declaring Protocol Adoption with an Extension\(拡張機能を使ったプロトコル準拠の宣言\)](../language-guide/protocols.md#declaring-protocol-adoption-with-an-extension)で説明されているように、これは空の extension で行います:
 
 ```swift
 extension Array: Container {}
 ```
 
-`Array` の既存の `append(_:)` メソッドと subscript により、Swift は、上記のジェネリックな `Stack` 型と同様に、`Item` に使用する適切な型を推論できます。この extension を定義した後、任意の配列を `Container` として使用できます。
+`Array` の既存の `append(_:)` メソッドとサブスクリプトにより、Swift は、上記のジェネリックな `Stack` 型と同様に、`Item` に使用する適切な型を推論できます。この extension を定義した後、任意の配列を `Container` として使用できます。
 
 ### 関連型への制約の追加\(Adding Constraints to an Associated Type\)
 
@@ -485,7 +485,7 @@ extension IntStack: SuffixableContainer {
 
 ## <a id="generic-where-clauses">ジェネリック where 句\(Generic Where Clauses\)</a>
 
-[Type Constraints\(型制約\)](../language-guide/generics.md#type-constraints)で説明されているように、型制約を使用すると、ジェネリック関数、subscript、または型に関連した型パラメータの要件を定義できます。
+[Type Constraints\(型制約\)](../language-guide/generics.md#type-constraints)で説明されているように、型制約を使用すると、ジェネリック関数、サブスクリプト、または型に関連した型パラメータの要件を定義できます。
 
 関連型の要件を定義するのにも役立ちます。これを行うには、_ジェネリック where 句_を定義します。ジェネリック `where` 句を使用すると、関連型が特定のプロトコルに準拠する必要があること、または特定の型パラメータと関連型を同じにする必要があることを要求できます。ジェネリック `where` 句は `where` キーワードで始まり、その後に関連型の制約、または型と関連型の間の等価関係が続きます。型または関数の本文の開始中括弧\(`{`\)の直前に、ジェネリック `where` 句を記述します。
 
@@ -644,7 +644,7 @@ print([1260.0, 1200.0, 98.6, 37.0].average())
 
 ## <a id="contextual-where-clauses">コンテキスト上の where 句\(Contextual Where Clauses\)</a>
 
-既にジェネリック型を使っているコンテキスト上で、型制約を持たない宣言にジェネリック `where` 句を記述できます。例えば、ジェネリック型の subscript、またはジェネリック型の extension のメソッドにジェネリック `where` 句を記述できます。`Container` 構造体はジェネリックで、下記の例の `where` 句は、新しいメソッドを `Container` で使用できるようにするために満たす必要のある型制約を指定しています。
+既にジェネリック型を使っているコンテキスト上で、型制約を持たない宣言にジェネリック `where` 句を記述できます。例えば、ジェネリック型のサブスクリプト、またはジェネリック型の extension のメソッドにジェネリック `where` 句を記述できます。`Container` 構造体はジェネリックで、下記の例の `where` 句は、新しいメソッドを `Container` で使用できるようにするために満たす必要のある型制約を指定しています。
 
 ```swift
 extension Container {
@@ -713,9 +713,9 @@ protocol Container {
 protocol ComparableContainer: Container where Item: Comparable { }
 ```
 
-## <a id="generic-subscripts">ジェネリック subscript\(Generic Subscripts\)</a>
+## <a id="generic-subscripts">ジェネリックサブスクリプト\(Generic Subscripts\)</a>
 
-subscript はジェネリックにすることができ、ジェネリック `where` 句を含めることができます。subscript の後の山括弧内\(`<>`\)にプレースホルダの型名を記述し、subscript の本文の開始の中括弧\(`{`\)の直前にジェネリック `where` 句を記述します。例えば:
+サブスクリプトはジェネリックにすることができ、ジェネリック `where` 句を含めることができます。サブスクリプトの後の山括弧内\(`<>`\)にプレースホルダの型名を記述し、サブスクリプトの本文の開始の中括弧\(`{`\)の直前にジェネリック `where` 句を記述します。例えば:
 
 ```swift
 extension Container {
@@ -730,10 +730,10 @@ extension Container {
 }
 ```
 
-`Container` プロトコルへのこの extension は、インデックスのシーケンスを受け取り、指定された各インデックスのアイテムを含む配列を返す subscript を追加します。このジェネリックな subscript は、次のように制約されます:
+`Container` プロトコルへのこの extension は、インデックスのシーケンスを受け取り、指定された各インデックスのアイテムを含む配列を返すサブスクリプトを追加します。このジェネリックなサブスクリプトは、次のように制約されます:
 
 * 山括弧\(`<>`\)内のジェネリックパラメータのインデックスは、標準ライブラリの `Sequence` プロトコルに準拠した型にする必要があります
-* subscript は、単一の `Indices` 型のインスタンスのパラメータ `indices` を受け取ります
+* サブスクリプトは、単一の `Indices` 型のインスタンスのパラメータ `indices` を受け取ります
 * ジェネリック `where` 句では、シーケンスのイテレータが `Int` 型の要素を繰り返し処理することを要求します。これにより、シーケンス内のインデックスは、コンテナに使用されるインデックスと同じ型だということが保証されます
 
 まとめると、これらの制約は、`indices` パラメータに渡される値が整数のシーケンスだということを意味します。
