@@ -153,7 +153,7 @@ await withTaskGroup(of: Data.self) { taskGroup in
 
 ### <a id="unstructured-concurrency">独立した並行処理\(Unstructured Concurrency\)</a>
 
-前のセクションで説明されている構造化された並行処理のアプローチに加えて、Swift は独立した並行処理\(_unstructured concurrency_\)もサポートしています。タスクグループの一部のタスクとは異なり、独立したタスク\(_unstructured task_\)には親タスクがありません。どんな方法で使われたとしても、独立したタスクを完全に柔軟に管理することができます。しかし、それらの正しい動作を保証することは完全に開発者の責任です。現在のアクター\(_actor_\)上で実行される独立したタスクを作成するには、[Task.init\(priority:operation:\)](https://developer.apple.com/documentation/swift/task/3856790-init) 関数を呼びます。現在のアクター上で実行されないタスク\(デタッチタスク\(_detached task_\)\)を作成するには、[Task.detached\(priority:operation:\)](https://developer.apple.com/documentation/swift/task/3856786-detached) 関数を呼び出します。これらの関数は両方ともタスクハンドル\(_task handle_\)を返し、例えば、その結果を待つかキャンセルすることができます。
+前のセクションで説明されている構造化された並行処理のアプローチに加えて、Swift は独立した並行処理\(_unstructured concurrency_\)もサポートしています。タスクグループの一部のタスクとは異なり、独立したタスク\(_unstructured task_\)には親タスクがありません。どんな方法で使われたとしても、独立したタスクを完全に柔軟に管理することができます。しかし、それらの正しい動作を保証することは完全に開発者の責任です。現在のアクター\(_actor_\)上で実行される独立したタスクを作成するには、[Task.init\(priority:operation:\)](https://developer.apple.com/documentation/swift/task/3856790-init) 関数を呼びます。現在のアクター上で実行されないタスク\(切り離されたタスク\(_detached task_\)\)を作成するには、[Task.detached\(priority:operation:\)](https://developer.apple.com/documentation/swift/task/3856786-detached) 関数を呼び出します。これらの関数は両方ともタスクハンドル\(_task handle_\)を返し、例えば、その結果を待つかキャンセルすることができます。
 
 ```swift
 let newPhoto = // ... ある写真データ ...
@@ -163,7 +163,7 @@ let handle = Task {
 let result = await handle.value
 ```
 
-デタッチタスクの管理の詳細については、[Task](https://developer.apple.com/documentation/swift/task)を参照ください。
+切り離されたタスクの管理の詳細については、[Task](https://developer.apple.com/documentation/swift/task)を参照ください。
 
 ### タスクのキャンセル\(Task Cancellation\)
 
