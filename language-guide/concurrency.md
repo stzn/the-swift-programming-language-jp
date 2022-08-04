@@ -1,6 +1,6 @@
 # 同時並行処理\(Concurrency\)
 
-最終更新日: 2022/6/7  
+最終更新日: 2022/7/28  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html
 
 Swift には、構造化された方法で非同期および同時並行コードを書くためのサポートが組み込まれています。非同期コード\(_asynchronous code_\)は、コードは一度にプログラムの 1 箇所のみで実行されますが、後で中断\(_suspend_\)および再開\(_resume_\)できます。こうすることで、ネットワーク上のデータの取得やファイルの解析などの長く時間のかかる操作の途中で、UI の更新などの短い時間で完了できる操作を行い、その後引き続き操作を続けることができます。並列コード\(_parallel code_\)とは、複数のコードを同時に実行することを意味します。例えば、4 コアプロセッサを搭載したコンピュータは、各コアがタスクを 1 つ実行し、4 つのコードを同時に実行できます。並列および非同期コードを使用するプログラムは、一度に複数の操作を実行します。例えば、外部システムからの結果を待つ操作を中断し、メモリセーフな方法でこのコードを簡単に記述できます。
@@ -68,7 +68,7 @@ show(photo)
 
 * 非同期の関数、メソッド、プロパティの本文
 * `@main` でマークされている構造体、クラス、または列挙型の `static main()` メソッド内
-* 下記の[Unstructured Concurrency\(非構造同時並行処理\)](concurrency.md#unstructured-concurrency)で示す独立した子タスク\(_child task_\)のコード
+* 下記の[Unstructured Concurrency\(独立した並行処理\)](concurrency.md#unstructured-concurrency)で示す独立した子タスク\(_child task_\)のコード
 
 > NOTE  
 > `Task.sleep(nanoseconds:)` メソッドは、同時並行処理が機能する方法を学ぶために簡単なコードを書くときに役立ちます。このメソッドは何もしませんが、それがリターンする前に少なくとも指定されたナノ秒数処理を待ちます。下記は、ネットワーク操作の待機をシミュレートするために `sleep(nanoseconds:)` を使用する `listPhotos(inGallery:)` 関数のバージョンです。
@@ -138,7 +138,7 @@ show(photos)
 
 タスク\(_task_\)は、プログラムの一部として非同期に実行できる作業単位です。全ての非同期コードはいくつかのタスクの一部として実行されます。前のセクションで説明されている `async-let` 構文は子タスク\(_child task_\)を作成します。タスクグループ\(_task group_\)を作成し、そのグループに子タスクを追加することもできます。こうすることで、グループでの優先順位とキャンセルをより制御しやすくし、動的な数のタスクを作成することもできます。
 
-タスクは階層を構築します。タスクグループ内の各タスクは同じ親タスク\(_parent task_\)を持ち、各タスクは子タスクを持つことができます。タスクとタスクグループの間の明示的な関係のために、このアプローチは構造同時並行性\(_structured concurrency_\)と呼ばれます。処理の正しさを保つためのいくつかの責務は開発者にありますが、この明示的な親子関係によって、Swift は、キャンセルの伝播のような行動を処理したり、コンパイル時にいくつかのエラーを検出することができます。
+タスクは階層を構築します。タスクグループ内の各タスクは同じ親タスク\(_parent task_\)を持ち、各タスクは子タスクを持つことができます。タスクとタスクグループの間の明示的な関係のために、このアプローチは構造化された並行性\(_structured concurrency_\)と呼ばれます。処理の正しさを保つためのいくつかの責務は開発者にありますが、この明示的な親子関係によって、Swift は、キャンセルの伝播のような行動を処理したり、コンパイル時にいくつかのエラーを検出することができます。
 
 ```swift
 await withTaskGroup(of: Data.self) { taskGroup in
@@ -151,9 +151,9 @@ await withTaskGroup(of: Data.self) { taskGroup in
 
 タスクグループの詳細については、[TaskGroup](https://developer.apple.com/documentation/swift/taskgroup)を参照ください。
 
-### <a id="unstructured-concurrency">非構造同時並行処理\(Unstructured Concurrency\)</a>
+### <a id="unstructured-concurrency">独立した並行処理\(Unstructured Concurrency\)</a>
 
-前のセクションで説明されている構造同時並行処理のアプローチに加えて、Swift は非構造同時並行処理\(_unstructured concurrency_\)もサポートしています。タスクグループの一部のタスクとは異なり、非構造タスクには親タスクがありません。どんな方法で使われたとしても、非構造タスクを完全に柔軟に管理することができます。しかし、それらの正しい動作を保証することは完全に開発者の責任です。現在のアクター\(_actor_\)上で実行される非構造タスクを作成するには、[Task.init\(priority:operation:\)](https://developer.apple.com/documentation/swift/task/3856790-init) 関数を呼びます。現在のアクター上で実行されないタスク\(デタッチタスク\(_detached task_\)\)を作成するには、[Task.detached\(priority:operation:\)](https://developer.apple.com/documentation/swift/task/3856786-detached) 関数を呼び出します。これらの関数は両方ともタスクハンドル\(_task handle_\)を返し、例えば、その結果を待つかキャンセルすることができます。
+前のセクションで説明されている構造化された並行処理のアプローチに加えて、Swift は独立した並行処理\(_unstructured concurrency_\)もサポートしています。タスクグループの一部のタスクとは異なり、独立したタスク\(_unstructured task_\)には親タスクがありません。どんな方法で使われたとしても、独立したタスクを完全に柔軟に管理することができます。しかし、それらの正しい動作を保証することは完全に開発者の責任です。現在のアクター\(_actor_\)上で実行される独立したタスクを作成するには、[Task.init\(priority:operation:\)](https://developer.apple.com/documentation/swift/task/3856790-init) 関数を呼びます。現在のアクター上で実行されないタスク\(切り離されたタスク\(_detached task_\)\)を作成するには、[Task.detached\(priority:operation:\)](https://developer.apple.com/documentation/swift/task/3856786-detached) 関数を呼び出します。これらの関数は両方ともタスクハンドル\(_task handle_\)を返し、例えば、その結果を待つかキャンセルすることができます。
 
 ```swift
 let newPhoto = // ... ある写真データ ...
@@ -163,7 +163,7 @@ let handle = Task {
 let result = await handle.value
 ```
 
-デタッチタスクの管理の詳細については、[Task](https://developer.apple.com/documentation/swift/task)を参照ください。
+切り離されたタスクの管理の詳細については、[Task](https://developer.apple.com/documentation/swift/task)を参照ください。
 
 ### タスクのキャンセル\(Task Cancellation\)
 
