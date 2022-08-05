@@ -358,7 +358,7 @@ extension SomeStruct: SomeProtocol {
 
 ## タイプエイリアス\(Type Aliases\)
 
-全てのタイプエイリアスは、アクセス制御の目的で別個の型として扱われます。タイプエイリアスは、エイリアスする型のアクセスレベルより制限の厳しいアクセスレベルを設定することができます。例えば、private タイプエイリアスは private、fileprivate、internal、public、または open 型のエイリアスになれますが、public タイプエイリアスは internal、fileprivate 、または private 型のエイリアスにはなれません。
+全てのタイプエイリアスは、アクセス制御の目的で別個の型として扱われます。タイプエイリアスは、エイリアスする型のアクセスレベルより制限の厳しいアクセスレベルを設定することができます。例えば、private タイプエイリアスは private、fileprivate、internal、public、または open 型のエイリアスになれますが、public タイプエイリアスは internal、fileprivate、または private 型のエイリアスにはなれません。
 
 > NOTE  
 > この規則は、プロトコル準拠を満たすために使用される関連型のタイプエイリアスにも適用されます。
