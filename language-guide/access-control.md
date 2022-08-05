@@ -280,7 +280,7 @@ public struct TrackedString {
 
 ### デフォルトイニシャライザ\(Default Initializers\)
 
-[Default Initializers\(デフォルトイニシャライザ\)](../language-guide/initialization.md#default-initializers)で説明されているように、Swift は、全てのプロパティにデフォルト値を提供されていて、かつ 1 つもイニシャライザが定義されていない構造体または基本クラスに、引数なしの_デフォルトイニシャライザ_を自動的に提供します。
+[Default Initializers\(デフォルトイニシャライザ\)](../language-guide/initialization.md#default-initializers)で説明されているように、Swift は、全てのプロパティにデフォルト値が提供されていて、かつ 1 つもイニシャライザが定義されていない構造体または基本クラスに、引数なしの_デフォルトイニシャライザ_を自動的に提供します。
 
 デフォルトイニシャライザは、その型が public として定義されていない限り、初期化する型と同じアクセスレベルを持ちます。public として定義されている型の場合、デフォルトイニシャライザは internal と見なされます。public 型を別のモジュールで使用するときに引数なしのイニシャライザで初期化できるようにする場合は、型の定義で public 型の引数なしのイニシャライザを明示的に提供する必要があります。
 
