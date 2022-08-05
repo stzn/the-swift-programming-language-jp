@@ -173,7 +173,7 @@ public enum CompassPoint {
 
 ### ネスト型\(Nested Types\)
 
-ネスト型のアクセスレベルは、ラップしている型が public でない限り、ラップしている型と同じです。public 型内のネスト型には、internal が自動で設定されています。public 型内のネスト型を public で使用できるようにする場合は、ネスト型を public として明示的に宣言する必要があります。
+ネスト型のアクセスレベルは、ラップしている型が public でない限り、ラップしている型と同じです。public 型内のネスト型には、internal が自動で設定されます。public 型内のネスト型を public で使用できるようにする場合は、ネスト型を public として明示的に宣言する必要があります。
 
 ## [サブクラス\(Subclassing\)](access-control.md) <a id="subclassing"></a>
 
