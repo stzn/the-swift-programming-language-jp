@@ -252,8 +252,8 @@ var stringToEdit = TrackedString()
 stringToEdit.value = "This string will be tracked."
 stringToEdit.value += " This edit will increment numberOfEdits."
 stringToEdit.value += " So will this one."
-print("The number of edits is \(stringToEdit.numberOfEdits)")
-// The number of edits is 3
+print("変更回数は \(stringToEdit.numberOfEdits)")
+// 変更回数は 3
 ```
 
 `numberOfEdits` プロパティの現在の値へ別のソースファイルからアクセスすることはできますが、別のソースファイルからプロパティを変更することはできません。この制限により、`TrackedString` 編集追跡機能の実装の詳細が保護されつつ、その機能の便利な一側面へのアクセスは提供することができています。

@@ -30,10 +30,10 @@ class Person {
     let name: String
     init(name: String) {
         self.name = name
-        print("\(name) is being initialized")
+        print("\(name) さんの初期化が進行中です")
     }
     deinit {
-        print("\(name) is being deinitialized")
+        print("\(name) さんのインスタンス割り当てが解除されました")
     }
 }
 ```
@@ -52,10 +52,10 @@ var reference3: Person?
 
 ```swift
 reference1 = Person(name: "John Appleseed")
-// John Appleseed is being initialized
+// John Appleseed さんの初期化が進行中です
 ```
 
-`Person` クラスのイニシャライザを呼び出した時点で、`"John Appleseed is being initialized"` というメッセージが出力されることに注目してください。これは、初期化が行われたことを確認します。
+`Person` クラスのイニシャライザを呼び出した時点で、`"John Appleseed さんの初期化が進行中です"` というメッセージが出力されることに注目してください。これは、初期化が行われたことを確認します。
 
 新しい `Person` インスタンスが `reference1` 変数に割り当てられているため、`reference1` から新しい `Person` インスタンスへの強参照があります。少なくとも 1 つの強参照があるため、ARC はこの `Person` をメモリに保持し続け、割り当てが解除されないようにします。
 
@@ -79,7 +79,7 @@ ARC は、最後の 3 番目の強参照がなくなるまで、`Person` イン�
 
 ```swift
 reference3 = nil
-// John Appleseed is being deinitialized
+// John Appleseed さんのインスタンス割り当てが解除されました
 ```
 
 ## <a id="strong-reference-cycles-between-class-instances">クラスインスタンス間の強参照循環\(Strong Reference Cycles Between Class Instances\)</a>
@@ -97,14 +97,14 @@ class Person {
     let name: String
     init(name: String) { self.name = name }
     var apartment: Apartment?
-    deinit { print("\(name) is being deinitialized") }
+    deinit { print("\(name) さんのインスタンス割り当てが解除されました") }
 }
 
 class Apartment {
     let unit: String
     init(unit: String) { self.unit = unit }
     var tenant: Person?
-    deinit { print("Apartment \(unit) is being deinitialized") }
+    deinit { print("アパート \(unit) のインスタンス割り当てが解除されました") }
 }
 ```
 
@@ -184,14 +184,14 @@ class Person {
     let name: String
     init(name: String) { self.name = name }
     var apartment: Apartment?
-    deinit { print("\(name) is being deinitialized") }
+    deinit { print("\(name) さんのインスタンス割り当てが解除されました") }
 }
 
 class Apartment {
     let unit: String
     init(unit: String) { self.unit = unit }
     weak var tenant: Person?
-    deinit { print("Apartment \(unit) is being deinitialized") }
+    deinit { print("アパート \(unit) のインスタンス割り当てが解除されました") }
 }
 ```
 
@@ -216,7 +216,7 @@ unit4A!.tenant = john
 
 ```swift
 john = nil
-// John Appleseed is being deinitialized
+// John Appleseed さんのインスタンス割り当てが解除されました
 ```
 
 `Person` インスタンスへの強参照がなくなったため、割り当てが解除され、`tenant` プロパティが `nil` に設定されます:
@@ -227,7 +227,7 @@ john = nil
 
 ```swift
 unit4A = nil
-// Apartment 4A is being deinitialized
+// アパート 4A のインスタンス割り当てが解除されました
 ```
 
 `Apartment` インスタンスへの強参照がなくなったため、この割り当ても解除されます:
@@ -259,7 +259,7 @@ class Customer {
     init(name: String) {
         self.name = name
     }
-    deinit { print("\(name) is being deinitialized") }
+    deinit { print("\(name) さまのインスタンス割り当てが解除されました") }
 }
 
 class CreditCard {
@@ -269,7 +269,7 @@ class CreditCard {
         self.number = number
         self.customer = customer
     }
-    deinit { print("Card #\(number) is being deinitialized") }
+    deinit { print("カード番号 #\(number) のインスタンス割り当てが解除されました") }
 }
 ```
 
@@ -303,8 +303,8 @@ john!.card = CreditCard(number: 1234_5678_9012_3456, customer: john!)
 
 ```swift
 john = nil
-// John Appleseed is being deinitialized
-// Card #1234567890123456 is being deinitialized
+// John Appleseed さまのインスタンス割り当てが解除されました
+// カード番号 #1234567890123456 のインスタンス割り当てが解除されました
 ```
 
 上記の最後のコードスニペットは、`john` 変数が `nil` に設定された後、`Customer` インスタンスと `CreditCard` インスタンスのデイニシャライザが両方の"deinitialized"メッセージを出力することを示しています。
@@ -347,11 +347,11 @@ class Course {
 これらのクラスの使用例を次に示します:
 
 ```swift
-let department = Department(name: "Horticulture")
+let department = Department(name: "園芸学")
 
-let intro = Course(name: "Survey of Plants", in: department)
-let intermediate = Course(name: "Growing Common Herbs", in: department)
-let advanced = Course(name: "Caring for Tropical Plants", in: department)
+let intro = Course(name: "植物調査", in: department)
+let intermediate = Course(name: "一般的なハーブ栽培", in: department)
+let advanced = Course(name: "熱帯植物の育て方", in: department)
 
 intro.nextCourse = intermediate
 intermediate.nextCourse = advanced
@@ -416,9 +416,9 @@ class City {
 こうすることで、強参照循環を作成せずに単一の文で `Country` と `City` のインスタンスを作成できることを意味します。また、オプショナルの値をアンラップするために感嘆符を使用する必要もなく、`capitalCity` プロパティに直接アクセスできます:
 
 ```swift
-var country = Country(name: "Canada", capitalName: "Ottawa")
-print("\(country.name)'s capital city is called \(country.capitalCity.name)")
-// Canada's capital city is called Ottawa
+var country = Country(name: "カナダ", capitalName: "オタワ")
+print("\(country.name) の首都は \(country.capitalCity.name) です")
+// カナダ の首都は オタワ です
 ```
 
 上記の例では、暗黙アンラップオプショナルを使用することは、2 段階のクラスイニシャライザの要件が全て満たされることを意味します。`capitalCity` プロパティは、初期化が完了すると、強参照循環を回避しつつ、オプショナルではない値のように使用およびアクセスできます。
@@ -455,7 +455,7 @@ class HTMLElement {
     }
 
     deinit {
-        print("\(name) is being deinitialized")
+        print("\(name) のインスタンス割り当てが解除されました")
     }
 
 }
@@ -473,12 +473,12 @@ class HTMLElement {
 
 ```swift
 let heading = HTMLElement(name: "h1")
-let defaultText = "some default text"
+let defaultText = "デフォルトテキスト"
 heading.asHTML = {
     return "<\(heading.name)>\(heading.text ?? defaultText)</\(heading.name)>"
 }
 print(heading.asHTML())
-// <h1>some default text</h1>
+// <h1>デフォルトテキスト</h1>
 ```
 
 > NOTE  
@@ -576,7 +576,7 @@ class HTMLElement {
     }
 
     deinit {
-        print("\(name) is being deinitialized")
+        print("\(name) のインスタンス割り当てが解除されました")
     }
 }
 ```
@@ -599,7 +599,7 @@ print(paragraph!.asHTML())
 
 ```swift
 paragraph = nil
-// p is being deinitialized
+// p のインスタンス割り当てが解除されました
 ```
 
 キャプチャリストの詳細については、[Capture Lists\(キャプチャリスト\)](../language-reference/expressions.md#capture-lists)を参照ください。
