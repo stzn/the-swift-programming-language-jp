@@ -22,7 +22,7 @@ Xcode の各ビルドターゲット\(アプリバンドルやフレームワー
 
 ソースファイルは、モジュール内の Swift のソースコードファイルです\(実際には、アプリまたはフレームワーク内の単一のファイル\)。個別のソースファイルで個々の型を定義するのが一般的ですが、1 つのソースファイルに複数の型や関数などの定義を含めることができます。
 
-## [アクセスレベル\(Access Levels\)](access-control.md) <a id="access-levels"></a>
+## <a id="access-levels">アクセスレベル\(Access Levels\)</a>
 
 Swift は、コード内のエンティティに 5 つの異なるアクセスレベルを提供します。これらのアクセスレベルは、エンティティが定義されているソースファイルに関連しており、ソースファイルが属するモジュールにも関連しています。
 
@@ -46,7 +46,7 @@ Swift のアクセスレベルは、全体の指針に従います: より低い
 
 言語の様々な側面に対するこの指針の具体的な意味については、下記で詳しく説明します。
 
-### [デフォルトのアクセスレベル\(Default Access Levels\)](access-control.md) <a id="default-access-levels"></a>
+### <a id="default-access-levels">デフォルトのアクセスレベル\(Default Access Levels\)</a>
 
 自身で明示的なアクセスレベルを指定しない場合、コード内の全てのエンティティ\(この章の後半で説明するいくつかの特定の例外を除く\)には、デフォルトのアクセスレベル internal が設定されています。その結果、多くの場合、コードで明示的なアクセスレベルを指定する必要はありません。
 
@@ -61,7 +61,7 @@ Swift のアクセスレベルは、全体の指針に従います: より低い
 > NOTE  
 > フレームワークの内部実装の詳細は、引き続きデフォルトの internal アクセスレベルを使用するか、フレームワークの内部コードを他の部分から隠したい場合は private または fileprivate としてマークすることができます。エンティティをフレームワークの API の一部にする場合にのみ、エンティティを open または public としてマークする必要があります。
 
-### [単体テストターゲットのアクセスレベル\(Access Levels for Unit Test Targets\)](access-control.md) <a id="access-levels-for-unit-test-targets"></a>
+### <a id="access-levels-for-unit-test-targets">単体テストターゲットのアクセスレベル\(Access Levels for Unit Test Targets\)</a>
 
 単体テストターゲットを使用してアプリを作成する場合、アプリのコードをテストするには、そのモジュールで使用できるようにする必要があります。デフォルトでは、open または public としてマークされたエンティティのみが他のモジュールにアクセスできます。ただし、プロダクションモジュールのインポート宣言を `@testable` 属性でマークし、テストを有効にしてそのプロダクションモジュールをコンパイルすると、単体テストターゲットは任意の internal エンティティにアクセスできます。
 
@@ -88,7 +88,7 @@ class SomeInternalClass {}  // 暗黙的に internal
 let someInternalConstant = 0  // 暗黙的に internal
 ```
 
-## [独自型\(Custom Types\)](access-control.md) <a id="custom-types"></a>
+## <a id="custom-types">独自型\(Custom Types\)</a>
 
 独自型に明示的なアクセスレベルを指定する場合は、型を定義する時点で指定します。新しい型は、アクセスレベルが許可する場所ではどこでも使用できます。例えば、fileprivate クラスを定義する場合、そのクラスは、fileprivate クラスが定義されているソースファイル内で、プロパティの型、または関数パラメータまたは戻り値の型としてのみ使用できます。
 
@@ -175,7 +175,7 @@ public enum CompassPoint {
 
 ネスト型のアクセスレベルは、ラップされている型が public でない限り、ラップされている型と同じです。public 型内のネスト型には、internal が自動で設定されています。public 型内のネスト型を public で使用できるようにする場合は、ネスト型を public として明示的に宣言する必要があります。
 
-## [サブクラス\(Subclassing\)](access-control.md) <a id="subclassing"></a>
+## <a id="subclassing">サブクラス\(Subclassing\)</a>
 
 現在のアクセスレベルのコンテキストで使用でき、同じモジュールで定義されている任意のクラスをサブクラス化できます。また、別のモジュールで定義されている open クラスをサブクラス化することもできます。サブクラスは、そのスーパークラスよりも制限の緩いアクセスレベルを設定することはできません。例えば、internal スーパークラスから public サブクラスを作成することはできません。
 
@@ -219,7 +219,7 @@ internal class B: A {
 private var privateInstance = SomePrivateClass()
 ```
 
-### [get と set\(Getters and Setters\)](access-control.md) <a id="getters-and-setters"></a>
+### <a id="getters-and-setters">get と set\(Getters and Setters\)</a>
 
 定数、変数、プロパティ、およびサブスクリプトの get と set は、それらが属する定数、変数、プロパティ、またはサブスクリプトと同じアクセスレベルを自動的に受け取ります。
 

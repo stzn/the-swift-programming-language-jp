@@ -232,7 +232,7 @@ for (index, value) in shoppingList.enumerated() {
 
 `for-in` ループについては、[For-In Loops\(For-In ループ\)](../language-guide/control-flow.md#for-in-loops)を参照ください。
 
-## [Sets\(セット\)](collection-types.md) <a id="sets"></a>
+## <a id="sets">Sets\(セット\)</a>
 
 _セット_はコレクション内に、同じ型の値を、決まった順序と値の重複なしに保持します。アイテムの順序が重要でない場合や、アイテムに重複がないことを保証したい場合に、配列の変わりにセットを使用することができます。
 
