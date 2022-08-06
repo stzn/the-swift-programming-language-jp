@@ -161,7 +161,7 @@ value を評価した結果得られた値が expression に設定されます�
 > GRAMMAR OF A CONDITIONAL OPERATOR  
 > conditional-operator → `?` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression) `:`
 
-### [Type-Casting Operators\(型キャスト演算子\)](expressions.md) <a id="type-casting-operators"></a>
+### <a id="type-casting-operators">Type-Casting Operators\(型キャスト演算子\)</a>
 
 4 つの型キャスト演算子があります: `is` 演算子、`as` 演算子、`as?` 演算子、そして `as!` 演算子。
 
@@ -890,8 +890,6 @@ someFunction { return $0 } secondClosure: { return $0 }  // 10 20
 クラス、構造体、または列挙型は、<a href="../language-reference/declarations.md#methods-with-special-names" target="_self">Methods with Special Names(特別な名前のメソッド)</a>で説明されているような、いくつかのメソッドの 1 つを宣言することで、関数呼び出しの糖衣構文(シンタックスシュガー)を使うことができます。
 
 #### <a id="implicit-conversion-to-a-pointer-type">ポインタ型への暗黙変換\(Implicit Conversion to a Pointer Type\)</a>
-
-#### [Implicit Conversion to a Pointer Type\(ポインタ型への暗黙変換\)](expressions.md) <a id="implicit-conversion-to-a-pointer-type"></a>
 
 関数呼び出し式で、引数とパラメータが異なる場合、コンパイラは次のリストの暗黙的な変換の 1 つを適用することによって、その型が一致するようにします。
 

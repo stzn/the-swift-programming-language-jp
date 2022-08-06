@@ -228,7 +228,7 @@ signedOverflow = signedOverflow &- 1
 
 符号付き整数と符号なし整数の両方で、正の方向のオーバーフローは有効な整数値の最大値から最小値に巻き戻り、負の方向のオーバーフローは最小値から最大値に巻き戻ります。
 
-## [Precedence and Associativity\(優先順位と結合規則\)](advanced-operators.md) <a id="#precedence-and-associativity"></a>
+## <a id="#precedence-and-associativity">Precedence and Associativity\(優先順位と結合規則\)</a>
 
 演算子の_優先順位_により、一部の演算子は他の演算子よりも優先されます。これらの演算子は最初に適用されます。
 
@@ -337,7 +337,7 @@ let alsoPositive = -negative
 // alsoPositive は、値が (3.0, 4.0) の Vector2D インスタンスです。
 ```
 
-### [Compound Assignment Operators\(複合代入演算子\)](advanced-operators.md) <a id="advanced-operators-compound-assignment-operators"></a>
+### <a id="advanced-operators-compound-assignment-operators">Compound Assignment Operators\(複合代入演算子\)</a>
 
 _複合代入演算子_は、代入\(`=`\)と別の演算子を組み合わせます。例えば、加算代入演算子\(`+=`\)は、加算と代入を 1 つの演算に結合します。パラメータの値は演算子メソッド内から直接変更されるため、複合代入演算子の左側の入力パラメータ型を `inout` としてマークします。
 
