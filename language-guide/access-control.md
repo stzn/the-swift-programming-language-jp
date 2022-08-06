@@ -169,7 +169,7 @@ public enum CompassPoint {
 
 #### Raw Value と関連値\(Raw Values and Associated Values\)
 
-列挙型定義の Raw Value または関連値に使用される型には、少なくとも列挙型のアクセスレベルと同じレベルのアクセスレベルが必要です。例えば、private 型を internal アクセスレベルの列挙型の Raw Value 型として使用することはできません。
+列挙型定義の Raw Value または関連値に使用される型には、少なくとも列挙型のアクセスレベルと同じ高さのアクセスレベルが必要です。例えば、private 型を internal アクセスレベルの列挙型の Raw Value 型として使用することはできません。
 
 ### ネスト型\(Nested Types\)
 
