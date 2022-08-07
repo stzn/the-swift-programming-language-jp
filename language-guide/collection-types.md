@@ -36,8 +36,8 @@ Swift の配列の型は全体で `Array<Element>` と書きます。`Element` �
 
 ```swift
 var someInts = [Int]()
-print("someInts is of type [Int] with \(someInts.count) items.")
-// someInts is of type [Int] with 0 items.
+print("someInts は \(someInts.count) 個の要素を持つ [Int] 型です。")
+// someInts は 0 個の要素を持つ [Int] 型です。
 ```
 
 `someInts` 変数の型は、イニシャライザから `[Int]` と推論されます。
@@ -107,19 +107,19 @@ var shoppingList = ["Eggs", "Milk"]
 配列のアイテムの数を調べるために、読み取り専用の `count` プロパティをチェックします。
 
 ```swift
-print("The shopping list contains \(shoppingList.count) items.")
-// The shopping list contains 2 items.
+print("ショッピングリストには \(shoppingList.count) 個のアイテムがあります。")
+// ショッピングリストには 2 個のアイテムがあります。
 ```
 
 `Bool` 型の `isEmpty` プロパティは、`count` プロパティが `0` かどうかをチェックする簡略記法です。
 
 ```swift
 if shoppingList.isEmpty {
-    print("The shopping list is empty.")
+    print("ショッピングリストは空です。")
 } else {
-    print("The shopping list isn't empty.")
+    print("ショッピングリストは空ではありません。")
 }
-// The shopping list isn't empty.
+// ショッピングリストは空ではありません。
 ```
 
 `append(_:)` メソッドを使用して、配列の末尾に新しいアイテムを追加することができます。
@@ -221,13 +221,13 @@ for item in shoppingList {
 
 ```swift
 for (index, value) in shoppingList.enumerated() {
-    print("Item \(index + 1): \(value)")
+    print("アイテム \(index + 1): \(value)")
 }
-// Item 1: Six eggs
-// Item 2: Milk
-// Item 3: Flour
-// Item 4: Baking Powder
-// Item 5: Bananas
+// アイテム 1: Six eggs
+// アイテム 2: Milk
+// アイテム 3: Flour
+// アイテム 4: Baking Powder
+// アイテム 5: Bananas
 ```
 
 `for-in` ループについては、[For-In Loops\(For-In ループ\)](../language-guide/control-flow.md#for-in-loops)を参照ください。
@@ -257,8 +257,8 @@ Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デ
 
 ```swift
 var letters = Set<Character>()
-print("letters is of type Set<Character> with \(letters.count) items.")
-// letters is of type Set<Character> with 0 items.
+print("letters は \(letters.count) 個の要素を持つ Set<Character> 型です.")
+// letters は 0 個の要素を持つ Set<Character> 型です。
 ```
 
 > NOTE  
@@ -306,19 +306,19 @@ var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
 セットのアイテムの数を調べるために、読み取り専用の `count` プロパティをチェックします。
 
 ```swift
-print("I have \(favoriteGenres.count) favorite music genres.")
-// I have 3 favorite music genres.
+print("私には \(favoriteGenres.count) 個の好きな音楽ジャンがあります。")
+// 私には 3 個の好きな音楽ジャンがあります。
 ```
 
 `Bool` 型の `isEmpty` プロパティは、`count` プロパティが `0` かどうかをチェックする簡略記法です。
 
 ```swift
 if favoriteGenres.isEmpty {
-    print("As far as music goes, I'm not picky.")
+    print("音楽に関しては、こだわりはありません。")
 } else {
-    print("I have particular music preferences.")
+    print("私には音楽の好みがあります。")
 }
-// I have particular music preferences.
+// 私には音楽の好みがあります。
 ```
 
 `insert(_:)` メソッドを使用して、セットに新しいアイテムを追加することができます。
@@ -332,22 +332,22 @@ favoriteGenres.insert("Jazz")
 
 ```swift
 if let removedGenre = favoriteGenres.remove("Rock") {
-    print("\(removedGenre)? I'm over it.")
+    print("\(removedGenre)? もう好きじゃなくなりました。")
 } else {
-    print("I never much cared for that.")
+    print("そのジャンルはあんまり好きではないです。")
 }
-// Rock? I'm over it.
+// Rock? もう好きじゃなくなりました。
 ```
 
 特定のアイテムが含まれているかどうかを調べるには、`contains(_:)` メソッドを使用することができます。
 
 ```swift
 if favoriteGenres.contains("Funk") {
-    print("I get up on the good foot.")
+    print("James BrownのGet On The Good Footは最高です！")
 } else {
-    print("It's too funky in here.")
+    print("ちょっとファンキー(funky)すぎます。")
 }
-// It's too funky in here.
+// ちょっとファンキー(funky)すぎます。
 ```
 
 ### セットの繰り返し処理\(Iterating Over a Set\)
