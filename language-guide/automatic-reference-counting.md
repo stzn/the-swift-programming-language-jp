@@ -30,10 +30,10 @@ class Person {
     let name: String
     init(name: String) {
         self.name = name
-        print("\(name) さんの初期化が進行中です")
+        print("\(name) の初期化が進行中です")
     }
     deinit {
-        print("\(name) さんのインスタンス割り当てが解除されました")
+        print("\(name) のインスタンス割り当てが解除されました")
     }
 }
 ```
@@ -52,10 +52,10 @@ var reference3: Person?
 
 ```swift
 reference1 = Person(name: "John Appleseed")
-// John Appleseed さんの初期化が進行中です
+// John Appleseed の初期化が進行中です
 ```
 
-`Person` クラスのイニシャライザを呼び出した時点で、`"John Appleseed さんの初期化が進行中です"` というメッセージが出力されることに注目してください。これは、初期化が行われたことを確認します。
+`Person` クラスのイニシャライザを呼び出した時点で、`"John Appleseed の初期化が進行中です"` というメッセージが出力されることに注目してください。これは、初期化が行われたことを確認します。
 
 新しい `Person` インスタンスが `reference1` 変数に割り当てられているため、`reference1` から新しい `Person` インスタンスへの強参照があります。少なくとも 1 つの強参照があるため、ARC はこの `Person` をメモリに保持し続け、割り当てが解除されないようにします。
 
@@ -79,7 +79,7 @@ ARC は、最後の 3 番目の強参照がなくなるまで、`Person` イン�
 
 ```swift
 reference3 = nil
-// John Appleseed さんのインスタンス割り当てが解除されました
+// John Appleseed のインスタンス割り当てが解除されました
 ```
 
 ## <a id="strong-reference-cycles-between-class-instances">クラスインスタンス間の強参照循環\(Strong Reference Cycles Between Class Instances\)</a>
@@ -97,7 +97,7 @@ class Person {
     let name: String
     init(name: String) { self.name = name }
     var apartment: Apartment?
-    deinit { print("\(name) さんのインスタンス割り当てが解除されました") }
+    deinit { print("\(name) のインスタンス割り当てが解除されました") }
 }
 
 class Apartment {
@@ -184,7 +184,7 @@ class Person {
     let name: String
     init(name: String) { self.name = name }
     var apartment: Apartment?
-    deinit { print("\(name) さんのインスタンス割り当てが解除されました") }
+    deinit { print("\(name) のインスタンス割り当てが解除されました") }
 }
 
 class Apartment {
@@ -216,7 +216,7 @@ unit4A!.tenant = john
 
 ```swift
 john = nil
-// John Appleseed さんのインスタンス割り当てが解除されました
+// John Appleseed のインスタンス割り当てが解除されました
 ```
 
 `Person` インスタンスへの強参照がなくなったため、割り当てが解除され、`tenant` プロパティが `nil` に設定されます:
@@ -259,7 +259,7 @@ class Customer {
     init(name: String) {
         self.name = name
     }
-    deinit { print("\(name) さまのインスタンス割り当てが解除されました") }
+    deinit { print("\(name) のインスタンス割り当てが解除されました") }
 }
 
 class CreditCard {
@@ -303,7 +303,7 @@ john!.card = CreditCard(number: 1234_5678_9012_3456, customer: john!)
 
 ```swift
 john = nil
-// John Appleseed さまのインスタンス割り当てが解除されました
+// John Appleseed のインスタンス割り当てが解除されました
 // カード番号 #1234567890123456 のインスタンス割り当てが解除されました
 ```
 
