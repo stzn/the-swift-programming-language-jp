@@ -18,12 +18,12 @@ Swift の `switch` 文は、C のような他の言語と比べてもかなり�
 ```swift
 let names = ["Anna", "Alex", "Brian", "Jack"]
 for name in names {
-    print("Hello, \(name)!")
+    print("こんにちは、 \(name)!")
 }
-// Hello, Anna!
-// Hello, Alex!
-// Hello, Brian!
-// Hello, Jack!
+// こんにちは、 Anna!
+// こんにちは、 Alex!
+// こんにちは、 Brian!
+// こんにちは、 Jack!
 ```
 
 辞書のキーバリューペアにアクセスするためにもループ処理を使用することができます。辞書を繰り返す際に、辞書内の個々のアイテムは `(key, value)` のタプルとして返され、`for-in` ループ内で使用するために、`(key, value)` のタプルの個々のメンバは明示的に命名した定数に展開できます。下記のコードは、辞書のキーは `animalName` 定数に、バリューは `legCount` 定数に展開されています。
@@ -31,11 +31,11 @@ for name in names {
 ```swift
 let numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
 for (animalName, legCount) in numberOfLegs {
-    print("\(animalName)s have \(legCount) legs")
+    print("\(animalName) は \(legCount) 本の足があります。")
 }
-// cats have 4 legs
-// ants have 6 legs
-// spiders have 8 legs
+// cat は 4 本の足があります。
+// ant は 6 本の足があります。
+// spider は 8 本の足があります。
 ```
 
 `Dictionary` の定数は元々順序がなく、ループ処理をするときに、取得されるキーバリューの順序も保証されていません。配列や辞書に関しては、[Collection Types\(コレクション型\)](collection-types.md)を参照ください。
@@ -44,13 +44,13 @@ for (animalName, legCount) in numberOfLegs {
 
 ```swift
 for index in 1...5 {
-    print("\(index) times 5 is \(index * 5)")
+    print("\(index) × 5 は \(index * 5)")
 }
-// 1 times 5 is 5
-// 2 times 5 is 10
-// 3 times 5 is 15
-// 4 times 5 is 20
-// 5 times 5 is 25
+// 1 × 5 は 5
+// 2 × 5 は 10
+// 3 × 5 は 15
+// 4 × 5 は 20
+// 5 × 5 は 25
 ```
 
 繰り返されているシーケンスは、閉範囲演算子\(`...`\)を使用して最初と最後も含んだ `1` から `5` の数字の範囲です。`index` の値は、まず範囲の最初の値\(`1`\)が設定され、ループ内の文が実行されます。この例では、ループは 1 つの文\(`index` とそれに対応する 5 の倍数の値を出力する文\)のみを含んでいます。文が完了すると、`index` は範囲の次の値\(`2`\)に更新され、`print(_:separator:terminator:)` が再び呼ばれます。このプロセスは範囲の終わり\(`5`\)に達するまで続きます。
