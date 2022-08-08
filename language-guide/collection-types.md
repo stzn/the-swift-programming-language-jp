@@ -505,19 +505,19 @@ var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 配列と同様に、`Dictionary` のアイテムの数を調べるために、読み取り専用の `count` プロパティをチェックします。
 
 ```swift
-print("The airports dictionary contains \(airports.count) items.")
-// The airports dictionary contains 2 items.
+print("airports 辞書には \(airports.count) 個のアイテムがあります。")
+// airports 辞書には 2 個のアイテムがあります。
 ```
 
 `Bool` 型の `isEmpty` プロパティは、`count` プロパティが `0` かどうかをチェックする簡略記法です。
 
 ```swift
 if airports.isEmpty {
-    print("The airports dictionary is empty.")
+    print("airports 辞書は空です。")
 } else {
-    print("The airports dictionary isn't empty.")
+    print("airports 辞書は空ではありません。")
 }
-// The airports dictionary isn't empty.
+// airports 辞書は空ではありません。
 ```
 
 サブスクリプト構文を使用して、新しいアイテムを追加することができます。適切な型の新しいキーをサブスクリプトのインデックスに入れ、適切な型の新しいバリューを代入できます。
@@ -549,20 +549,20 @@ airports["LHR"] = "London Heathrow"
 
 ```swift
 if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
-    print("The old value for DUB was \(oldValue).")
+    print("DUB キーに対する更新前のバリューは \(oldValue) でした。")
 }
-// The old value for DUB was Dublin.
+// DUB キーに対する更新前のバリューは Dublin でした。
 ```
 
 サブスクリプト構文を使用して特定のキーのバリューを取得することもできます。バリューの存在しないキーに対してもリクエストすることが可能で、バリューの型のオプショナル値を返します。存在しなければ `nil` を返します:
 
 ```swift
 if let airportName = airports["DUB"] {
-    print("The name of the airport is \(airportName).")
+    print("この空港の名前は \(airportName) です。")
 } else {
-    print("That airport isn't in the airports dictionary.")
+    print("その空港は airports 辞書にはありません。")
 }
-// The name of the airport is Dublin Airport.
+// この空港の名前は Dublin Airport です。
 ```
 
 サブスクリプト構文を使用して、キーに `nil` を代入することで、キーバリューペアを削除できます:
@@ -578,11 +578,11 @@ airports["APL"] = nil
 
 ```swift
 if let removedValue = airports.removeValue(forKey: "DUB") {
-    print("The removed airport's name is \(removedValue).")
+    print("削除された空港の名前は \(removedValue) です。")
 } else {
-    print("The airports dictionary doesn't contain a value for DUB.")
+    print("airports 辞書には DUB キーに対する値がありません。")
 }
-// The removed airport's name is Dublin Airport.
+// 削除された空港の名前は Dublin Airport です。
 ```
 
 ### 辞書の繰り返し処理\(Iterating Over a Dictionary\)
@@ -603,26 +603,26 @@ for (airportCode, airportName) in airports {
 
 ```swift
 for airportCode in airports.keys {
-    print("Airport code: \(airportCode)")
+    print("空港コード: \(airportCode)")
 }
-// Airport code: LHR
-// Airport code: YYZ
+// 空港コード: LHR
+// 空港コード: YYZ
 
 for airportName in airports.values {
-    print("Airport name: \(airportName)")
+    print("空港名: \(airportName)")
 }
-// Airport name: London Heathrow
-// Airport name: Toronto Pearson
+// 空港名: London Heathrow
+// 空港名: Toronto Pearson
 ```
 
 `Array` インスタンスを引数に受け取る API で辞書のキーとバリューを使いたい場合、`keys` と `values` プロパティを使用して新しい配列を初期化してください:
 
 ```swift
 let airportCodes = [String](airports.keys)
-// airportCodes is ["LHR", "YYZ"]
+// 空港コードは ["LHR", "YYZ"]
 
 let airportNames = [String](airports.values)
-// airportNames is ["London Heathrow", "Toronto Pearson"]
+// 空港名は ["London Heathrow", "Toronto Pearson"]
 ```
 
 `Dictionary` 型には決まった順序がありません。特定の順番で値を繰り返し処理をしたい場合、`keys` か `values` プロパティの `sorted()` メソッドを使いましょう。
