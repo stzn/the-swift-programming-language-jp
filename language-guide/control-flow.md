@@ -159,7 +159,7 @@ while square < finalSquare {
         square += board[square]
     }
 }
-print("Game over!")
+print("ゲームオーバー!")
 ```
 
 この例では、サイコロを振るアクションにとてもシンプルな方法を使用しています。ランダムな数字を生成するのではなく、`0` で初期化された `diceRoll` から開始します。`while` ループが繰り返される度に、`diceRoll` は 1 つずつ加算され、値が大きすぎないかをチェックしています。`7` になると、大きすぎるため `1` にリセットされます。つまり、`diceRoll` は `1, 2, 3, 4, 5, 6, 1, 2` のように繰り返されます。
@@ -209,7 +209,7 @@ repeat {
     // 出た目分移動
     square += diceRoll
 } while square < finalSquare
-print("Game over!")
+print("ゲームオーバー!")
 ```
 
 蛇かはしごかのチェック後に、サイコロが振られ、プレイヤーは `diceRoll` 分枠を移動します。そして現在のループを終了します。
@@ -229,9 +229,9 @@ Swift は、コードに条件分岐を追加する 2 つの方法、`if` 文と
 ```swift
 var temperatureInFahrenheit = 30
 if temperatureInFahrenheit <= 32 {
-    print("It's very cold. Consider wearing a scarf.")
+    print("とても寒いですね。マフラーを着たほうがいいでしょう。")
 }
-// It's very cold. Consider wearing a scarf.
+// とても寒いですね。マフラーを着たほうがいいでしょう。
 ```
 
 上記の例は、気温が華氏 32 度以下かどうかをチェックしています。もしそうならばメッセージが出力されます。そうでないならばメッセージは出力されません。コードの実行は `if` 文の右中括弧\(`}`\)の後のコードが継続して実行します。
@@ -241,11 +241,11 @@ if temperatureInFahrenheit <= 32 {
 ```swift
 temperatureInFahrenheit = 40
 if temperatureInFahrenheit <= 32 {
-    print("It's very cold. Consider wearing a scarf.")
+    print("とても寒いですね。マフラーを着たほうがいいでしょう。")
 } else {
-    print("It's not that cold. Wear a t-shirt.")
+    print("そんなに寒くありません。Tシャツを着ましょう。")
 }
-// It's not that cold. Wear a t-shirt.
+// そんなに寒くありません。Tシャツを着ましょう。
 ```
 
 この 2 つの分岐の内の 1 つが必ず実行されます。気温は華氏 40 度に増加しているので、スカーフを巻くアドバイスをする程寒くはなく、`else` の分岐が実行されます。
@@ -255,13 +255,13 @@ if temperatureInFahrenheit <= 32 {
 ```swift
 temperatureInFahrenheit = 90
 if temperatureInFahrenheit <= 32 {
-    print("It's very cold. Consider wearing a scarf.")
+    print("とても寒いですね。マフラーを着たほうがいいでしょう。")
 } else if temperatureInFahrenheit >= 86 {
-    print("It's really warm. Don't forget to wear sunscreen.")
+    print("とても暖かいですね。日焼け止めを忘れずにしましょう。")
 } else {
-    print("It's not that cold. Wear a t-shirt.")
+    print("そんなに寒くありません。Tシャツを着ましょう。")
 }
-// It's really warm. Don't forget to wear sunscreen.
+// とても暖かいですね。日焼け止めを忘れずにしましょう。
 ```
 
 ここで、特定の暖かい温度に応答するために、追加の `if` 文が提供されています。最後の `else` 句で、暑すぎず寒すぎない温度全ての応答を出力します。
@@ -271,9 +271,9 @@ if temperatureInFahrenheit <= 32 {
 ```swift
 temperatureInFahrenheit = 72
 if temperatureInFahrenheit <= 32 {
-    print("It's very cold. Consider wearing a scarf.")
+    print("とても寒いですね。マフラーを着たほうがいいでしょう。")
 } else if temperatureInFahrenheit >= 86 {
-    print("It's really warm. Don't forget to wear sunscreen.")
+    print("とても暖かいですね。日焼け止めを忘れずにしましょう。")
 }
 ```
 
@@ -299,13 +299,13 @@ if temperatureInFahrenheit <= 32 {
 let someCharacter: Character = "z"
 switch someCharacter {
 case "a":
-    print("The first letter of the alphabet")
+    print("アルファベットの最初の文字")
 case "z":
-    print("The last letter of the alphabet")
+    print("アルファベットの最後の文字")
 default:
-    print("Some other character")
+    print("その他の文字")
 }
-// The last letter of the alphabet
+// アルファベットの最後の文字
 ```
 
 `switch` 文の最初のケースは、英語アルファベットの最初の文字 `a` に合致し、2 番目のケースは最後の文字 `z` に合致します。全ての可能性がある文字をカバーしなければならないため、`a` と `z` 以外の全ての文字に対して `default` ケースを使用しています。こうすることで全てのケースを網羅できています。
@@ -324,9 +324,9 @@ let anotherCharacter: Character = "a"
 switch anotherCharacter {
 case "a": // 空の 本文 は不正
 case "A":
-    print("The letter A")
+    print("A の文字")
 default:
-    print("Not the letter A")
+    print("A ではない文字")
 }
 // コンパイルエラーが発生します
 ```
@@ -339,11 +339,11 @@ C 言語の `switch` 文と異なり、`"a"` と `"A"` の両方に合致する�
 let anotherCharacter: Character = "a"
 switch anotherCharacter {
 case "a", "A":
-    print("The letter A")
+    print("A の文字")
 default:
-    print("Not the letter A")
+    print("A ではない文字")
 }
-// The letter A
+// A の文字
 ```
 
 可読性のために、複合ケースを複数行に分けて書くこともできます。複合ケースについての詳細は[Compound Cases\(複合ケース\)](control-flow.md#compound-cases)を参照ください。
