@@ -102,6 +102,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/SatoTakeshiX">
+            <img src="https://avatars.githubusercontent.com/u/4253490?v=4" width="100;" alt="SatoTakeshiX"/>
+            <br />
+            <sub><b>佐藤剛士</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/rymshm">
             <img src="https://avatars.githubusercontent.com/u/23201810?v=4" width="100;" alt="rymshm"/>
             <br />
@@ -128,7 +135,8 @@
             <br />
             <sub><b>Ribilynn Zhou</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/treastrain">
             <img src="https://avatars.githubusercontent.com/u/13805382?v=4" width="100;" alt="treastrain"/>
