@@ -186,11 +186,11 @@ Swift は、次の比較演算子をサポートしています。
 ```swift
 let name = "world"
 if name == "world" {
-    print("hello, world")
+    print("こんにちは, world")
 } else {
-    print("I'm sorry \(name), but I don't recognize you")
+    print("ごめんなさい \(name), あなただと気づきませんでした")
 }
-// name は "world" と等しいので、 hello, world が出力される。
+// name は "world" と等しいので、 こんにちは, world が出力される。
 ```
 
 `if` については、[Control FLow\(制御フロー\)](control-flow.md)を参照ください。同じ型、同じ数の値を持ったタプル同士の比較もできます。タプルは左から右へと順番に値を比較します。それぞれの値の比較結果が全体の結果に反映されます。全て等しい場合、タプル同士は等しいと見なされます。例えば:
@@ -198,7 +198,7 @@ if name == "world" {
 ```swift
 (1, "zebra") < (2, "apple")   // 1 は 2 より小さいので true。"zebra" と "apple" は比較しない
 (3, "apple") < (3, "bird")    // 3 と 3 は同じで、"apple" は "bird" はより小さいので true
-(4, "dog") == (4, "dog")      // 3 と 3、"dog" と "dog" は等しいので true
+(4, "dog") == (4, "dog")      // 4 と 4、"dog" と "dog" は等しいので true
 ```
 
 上記の例では、最初の行では左から右へと比較をしています。`1` は `2` より小さいので、`(1, "zebra")` はタプルの他の値がどんな値でも `(2, "apple")` よりも小さいと判定されます。既に最初の値同士でこのタプルの比較は完了しているので、`"zebra"` と `"apple"` の比較は関係ありません。しかし、最初の値が同じ場合、2 番目の値同士で比較されます。上記の 2, 3 行目がこれに当たります。
@@ -301,13 +301,13 @@ Swift は、値の範囲を表すショートカットとして複数の_範囲�
 
 ```swift
 for index in 1...5 {
-    print("\(index) times 5 is \(index * 5)")
+    print("\(index) × 5 is \(index * 5)")
 }
-// 1 times 5 is 5
-// 2 times 5 is 10
-// 3 times 5 is 15
-// 4 times 5 is 20
-// 5 times 5 is 25
+// 1 × 5 は 5
+// 2 × 5 は 10
+// 3 × 5 は 15
+// 4 × 5 は 20
+// 5 × 5 は 25
 ```
 
 `for-in` ループについては、[Control FLow\(制御フロー\)](control-flow.md)を参照ください。
@@ -322,12 +322,12 @@ for index in 1...5 {
 let names = ["Anna", "Alex", "Brian", "Jack"]
 let count = names.count
 for i in 0..<count {
-    print("Person \(i + 1) is called \(names[i])")
+    print("人物 \(i + 1) の名前は \(names[i])")
 }
-// Person 1 is called Anna
-// Person 2 is called Alex
-// Person 3 is called Brian
-// Person 4 is called Jack
+// 人物 1 の名前は Anna
+// 人物 2 の名前は Alex
+// 人物 3 の名前は Brian
+// 人物 4 の名前は Jack
 ```
 
 この配列は 4 つの要素が含まれていますが、`0..<count` は半開範囲演算子なので `3`\(配列の最後のインデックス\)までしかカウントしないことに注目してください。配列については、[Arrays\(配列\)](../language-guide/collection-types.md#arrays)を参照ください。
@@ -387,9 +387,9 @@ _論理演算子_は、ブール論理値の `true` と `false` を変更した�
 ```swift
 let allowedEntry = false
 if !allowedEntry {
-    print("ACCESS DENIED")
+    print("アクセス拒否")
 }
-// ACCESS DENIED
+// アクセス拒否
 ```
 
 `if !allowedEntry` は「もし許可されたエントリでなければ」と読み取れます。次の行は、「もし許可されたエントリでなければ」が `true` だった場合のみ実行されます。つまり、`if allowedEntry` は `false` です。
@@ -408,11 +408,11 @@ if !allowedEntry {
 let enteredDoorCode = true
 let passedRetinaScan = false
 if enteredDoorCode && passedRetinaScan {
-    print("Welcome!")
+    print("こんにちは!")
 } else {
-    print("ACCESS DENIED")
+    print("アクセス拒否")
 }
-// ACCESS DENIED
+// アクセス拒否
 ```
 
 ### 論理和演算子\(Logical OR Operator\)
@@ -427,11 +427,11 @@ if enteredDoorCode && passedRetinaScan {
 let hasDoorKey = false
 let knowsOverridePassword = true
 if hasDoorKey || knowsOverridePassword {
-    print("Welcome!")
+    print("こんにちは!")
 } else {
-    print("ACCESS DENIED")
+    print("アクセス拒否")
 }
-// Welcome!
+// こんにちは!
 ```
 
 ### 論理演算子の合成\(Combining Logical Operators\)
@@ -440,11 +440,11 @@ if hasDoorKey || knowsOverridePassword {
 
 ```swift
 if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
-    print("Welcome!")
+    print("こんにちは!")
 } else {
-    print("ACCESS DENIED")
+    print("アクセス拒否")
 }
-// Welcome!
+// こんにちは!
 ```
 
 この例では、複数の `&&` と `||` を使用して複合式を作っています。`&&` と `||` は 2 つの値しか操作することができないため、実際には 3 つの小さい式を繋げています。この例は下記のように読み取れます:
@@ -462,11 +462,11 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 
 ```swift
 if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword {
-    print("Welcome!")
+    print("こんにちは!")
 } else {
-    print("ACCESS DENIED")
+    print("アクセス拒否")
 }
-// Welcome!
+// こんにちは!
 ```
 
 この括弧は、最初の 2 つの値が、全体の論理の中で別の状態を持つことを明確にしています。複合式の出力結果は変わりませんが、全体の意図は読み手により明確になります。可読性は簡潔さよりも常に優先されます。意図を明確にすることができるならば、括弧を使いましょう。

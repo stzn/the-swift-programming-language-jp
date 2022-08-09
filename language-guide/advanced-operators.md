@@ -385,9 +385,9 @@ extension Vector2D: Equatable {
 let twoThree = Vector2D(x: 2.0, y: 3.0)
 let anotherTwoThree = Vector2D(x: 2.0, y: 3.0)
 if twoThree == anotherTwoThree {
-    print("These two vectors are equivalent.")
+    print("2つのVector2Dは等しいです。")
 }
-// These two vectors are equivalent.
+// 2つのVector2Dは等しいです。
 ```
 
 多くのシンプルなケースでは、Swift の等価演算子のデフォルト実装を使用できます\([Adopting a Protocol Using a Synthesized Implementation\(デフォルト実装を使用したプロトコル準拠\)](../language-guide/protocols.md#adopting-a-protocol-using-a-synthesized-implementation)で説明されています\)。
