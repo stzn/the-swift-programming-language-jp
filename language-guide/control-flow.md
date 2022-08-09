@@ -357,27 +357,27 @@ default:
 
 ```swift
 let approximateCount = 62
-let countedThings = "moons orbiting Saturn"
+let countedThings = "土星を回る月"
 let naturalCount: String
 switch approximateCount {
 case 0:
-    naturalCount = "no"
+    naturalCount = "まったくない"
 case 1..<5:
-    naturalCount = "a few"
+    naturalCount = "少しある"
 case 5..<12:
-    naturalCount = "several"
+    naturalCount = "多少ある"
 case 12..<100:
-    naturalCount = "dozens of"
+    naturalCount = "数多くある"
 case 100..<1000:
-    naturalCount = "hundreds of"
+    naturalCount = "たくさんある"
 default:
-    naturalCount = "many"
+    naturalCount = "膨大にある"
 }
 print("There are \(naturalCount) \(countedThings).")
-// There are dozens of moons orbiting Saturn.
+// 土星を回る月 は 数多くある。
 ```
 
-上記の例では、`approximateCount` が `switch` 文で評価されています。それぞれのケースでは、1 つの数値または範囲で比較しています。`approximateCount` の値は、12 から 100 の間にあるので、`naturalCount` は `"dozens of"` に値が代入されます。実行後は `switch` 文から抜け出します。
+上記の例では、`approximateCount` が `switch` 文で評価されています。それぞれのケースでは、1 つの数値または範囲で比較しています。`approximateCount` の値は、12 から 100 の間にあるので、`naturalCount` は `"数多くある"` に値が代入されます。実行後は `switch` 文から抜け出します。
 
 #### タプル\(Tuples\)
 
@@ -389,17 +389,17 @@ print("There are \(naturalCount) \(countedThings).")
 let somePoint = (1, 1)
 switch somePoint {
 case (0, 0):
-    print("\(somePoint) is at the origin")
+    print("\(somePoint) は原点にあります。")
 case (_, 0):
-    print("\(somePoint) is on the x-axis")
+    print("\(somePoint) は x 軸上にあります。")
 case (0, _):
-    print("\(somePoint) is on the y-axis")
+    print("\(somePoint) は y 軸上にあります。")
 case (-2...2, -2...2):
-    print("\(somePoint) is inside the box")
+    print("\(somePoint) は箱の中にあります。")
 default:
-    print("\(somePoint) is outside of the box")
+    print("\(somePoint) は箱の外にあります。")
 }
-// (1, 1) is inside the box
+// (1, 1) は箱の中にあります。
 ```
 
 ![switch&#x6587; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../assets/coordinategraphsimple_2x.png)
@@ -418,13 +418,13 @@ C 言語と異なり、Swift では複数のケースで同じ値を検証する
 let anotherPoint = (2, 0)
 switch anotherPoint {
 case (let x, 0):
-    print("on the x-axis with an x value of \(x)")
+    print("x 軸上の x の値が \(x) の点")
 case (0, let y):
-    print("on the y-axis with a y value of \(y)")
+    print("y 軸上の y の値が \(y) の点")
 case let (x, y):
-    print("somewhere else at (\(x), \(y))")
+    print("その他の (\(x), \(y)) の点")
 }
-// on the x-axis with an x value of 2
+// x 軸上の x の値が 2 の点
 ```
 
 ![switch&#x6587; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../assets/coordinategraphmedium_2x.png)
