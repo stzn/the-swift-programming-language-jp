@@ -1296,7 +1296,7 @@ weak
 
  この修飾子を格納変数または格納変数プロパティに適用すると、変数またはプロパティがその値に格納されているオブジェクトへ弱い参照を持っていることを示します。変数またはプロパティの型は、オプショナルのクラス型の必要があります。オブジェクトの割り当てが解除された後に変数またはプロパティにアクセスすると、その値は \`nil\` になります。\`weak\` 修飾子の例と詳細については、[Weak References\(弱参照\)](../language-guide/automatic-reference-counting.md#weak-references)を参照ください。
 
-## [Access Control Levels\(アクセス制御レベル\)](declarations.md) <a id="access-control-levels"></a>
+## <a id="access-control-levels">Access Control Levels\(アクセス制御レベル\)</a>
 
 Swift は、open、public、internal、file private、private の 5 つのレベルのアクセス制御を提供します。下記のアクセスレベル修飾子のいずれかで宣言をマークして、宣言のアクセスレベルを指定できます。アクセス制御については、[Access Control\(アクセスコントロール\)](../language-guide/access-control.md)で詳しく説明しています。
 

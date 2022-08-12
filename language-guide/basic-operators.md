@@ -193,7 +193,7 @@ if name == "world" {
 // name は "world" と等しいので、 こんにちは, world が出力される。
 ```
 
-`if` については、[Control FLow\(制御フロー\)](control-flow.md)を参照ください。同じ型、同じ数の値を持ったタプル同士の比較もできます。タプルは左から右へと順番に値を比較します。それぞれの値の比較結果が全体の結果に反映されます。全て等しい場合、タプル同士は等しいと見なされます。例えば:
+`if` については、[Control Flow\(制御フロー\)](control-flow.md)を参照ください。同じ型、同じ数の値を持ったタプル同士の比較もできます。タプルは左から右へと順番に値を比較します。それぞれの値の比較結果が全体の結果に反映されます。全て等しい場合、タプル同士は等しいと見なされます。例えば:
 
 ```swift
 (1, "zebra") < (2, "apple")   // 1 は 2 より小さいので true。"zebra" と "apple" は比較しない
@@ -310,7 +310,7 @@ for index in 1...5 {
 // 5 × 5 は 25
 ```
 
-`for-in` ループについては、[Control FLow\(制御フロー\)](control-flow.md)を参照ください。
+`for-in` ループについては、[Control Flow\(制御フロー\)](control-flow.md)を参照ください。
 
 ### <a id="halfopen-range-operator">半開範囲演算子\(Half-Open Range Operator\)</a>
 
