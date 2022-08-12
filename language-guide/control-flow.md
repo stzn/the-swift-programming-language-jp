@@ -373,7 +373,7 @@ case 100..<1000:
 default:
     naturalCount = "膨大にある"
 }
-print("There are \(naturalCount) \(countedThings).")
+print("\(naturalCount) は \(countedThings)。")
 // 土星を回る月 は 数多くある。
 ```
 
@@ -395,9 +395,9 @@ case (_, 0):
 case (0, _):
     print("\(somePoint) は y 軸上にあります。")
 case (-2...2, -2...2):
-    print("\(somePoint) は箱の中にあります。")
+    print("\(somePoint) はボックスの中にあります。")
 default:
-    print("\(somePoint) は箱の外にあります。")
+    print("\(somePoint) はボックスの外にあります。")
 }
 // (1, 1) は箱の中にあります。
 ```
@@ -447,13 +447,13 @@ case let (x, y):
 let yetAnotherPoint = (1, -1)
 switch yetAnotherPoint {
 case let (x, y) where x == y:
-    print("(\(x), \(y)) is on the line x == y")
+    print("(\(x), \(y)) は x == y 線上にある。")
 case let (x, y) where x == -y:
-    print("(\(x), \(y)) is on the line x == -y")
+    print("(\(x), \(y)) は x == -y 線上にある。")
 case let (x, y):
-    print("(\(x), \(y)) is just some arbitrary point")
+    print("(\(x), \(y)) は単なる任意の点です。")
 }
-// (1, -1) is on the line x == -y
+// (1, -1) は x == -y 線上にある。
 ```
 
 ![switch&#x6587; where&#x53E5; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../assets/coordinategraphcomplex_2x.png)
@@ -472,14 +472,14 @@ case let (x, y):
 let someCharacter: Character = "e"
 switch someCharacter {
 case "a", "e", "i", "o", "u":
-    print("\(someCharacter) is a vowel")
+    print("\(someCharacter) は母音です。")
 case "b", "c", "d", "f", "g", "h", "j", "k", "l", "m",
      "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z":
-    print("\(someCharacter) is a consonant")
+    print("\(someCharacter) は子音です。")
 default:
-    print("\(someCharacter) isn't a vowel or a consonant")
+    print("\(someCharacter) は母音でも子音でもありません。")
 }
-// e is a vowel
+// e は母音です。
 ```
 
 最初のケースは英語の小文字の母音全てに合致します。同様に、2 番目のケースは英語の子音全てに合致します。`default` は他の全ての文字に合致します。
@@ -490,11 +490,11 @@ default:
 let stillAnotherPoint = (9, 0)
 switch stillAnotherPoint {
 case (let distance, 0), (0, let distance):
-    print("On an axis, \(distance) from the origin")
+    print("x 軸上または y 軸上にあり、原点から \(distance) 離れている。")
 default:
-    print("Not on an axis")
+    print("x 軸上または y 軸上にはない。")
 }
-// On an axis, 9 from the origin
+// x 軸上または y 軸上にあり、原点から 9 離れている。
 ```
 
 上記のケースでは 2 つのパターンを含んでいます: `(let distance, 0)` は x 軸上にある点に合致し、`(0, let distance)` は y 軸上にある点に合致します。どちらのパターンでも、`distance` へのバインディングが含まれており、どちらも数値です。つまり、ケース内では常に `distance` にアクセスできます。
@@ -566,11 +566,11 @@ default:
     break
 }
 if let integerValue = possibleIntegerValue {
-    print("The integer value of \(numberSymbol) is \(integerValue).")
+    print("\(numberSymbol) の整数値は \(integerValue) です。")
 } else {
-    print("An integer value couldn't be found for \(numberSymbol).")
+    print("\(numberSymbol) の整数値は見つかりませんでした。")
 }
-// The integer value of 三 is 3.
+// 三 の整数値は 3 です。
 ```
 
 この例では、`numberSymbol` が `1`〜`4` のラテン語、アラビア語、中国語、タイ語に合致するかどうかをチェックしています。合致した場合、各ケースは、`Int?` の `possibleIntegerValue` 変数に適切な数字を設定しています。
@@ -587,16 +587,16 @@ Swift の `switch` 文は、各ケースの底から次のケースに通り抜�
 
 ```swift
 let integerToDescribe = 5
-var description = "The number \(integerToDescribe) is"
+var description = "数字 \(integerToDescribe) は"
 switch integerToDescribe {
 case 2, 3, 5, 7, 11, 13, 17, 19:
-    description += " a prime number, and also"
+    description += " 素数です。そして、"
     fallthrough
 default:
-    description += " an integer."
+    description += "整数です。"
 }
 print(description)
-// The number 5 is a prime number, and also an integer.
+// 数字 5 は 素数です。そして、整数です。
 ```
 
 この例では、`description` という新しい `String` 変数を宣言して、初期値を設定しています。この関数は `switch` 文で `integerToDescribe` を検証しています。`integerToDescribe` がリストの素数の 1 つの場合、この関数は `description` の末尾に、数字が素数だと説明したテキストを追加します。`default` ケースにも「通り抜ける」ように、`fallthrough` キーワードを使用しています。`default` ケースでは、説明の末尾に追加のテキストを追加して `switch` 文は完了します。数字の説明は、`print(_:separator:terminator:)` 関数を使用して出力されています。この例では、素数として `5` が適切に特定されています。
@@ -656,7 +656,7 @@ gameLoop: while square != finalSquare {
         square += board[square]
     }
 }
-print("Game over!")
+print("ゲーム終了!")
 ```
 
 各ループの最初でサイコロを振ります。即座にプレイヤーが移動する前に、ループの移動結果を検証して、その移動ができるかどうかを判定しています:
@@ -679,22 +679,22 @@ func greet(person: [String: String]) {
         return
     }
 
-    print("Hello \(name)!")
+    print("こんにちは \(name)!")
 
     guard let location = person["location"] else {
-        print("I hope the weather is nice near you.")
+        print("そちらのお天気は良いといいですね。")
         return
     }
 
-    print("I hope the weather is nice in \(location).")
+    print("\(location) のお天気が良いといいですね。")
 }
 
 greet(person: ["name": "John"])
-// Hello John!
-// I hope the weather is nice near you.
+// こんにちは John!
+// そちらのお天気は良いといいですね。
 greet(person: ["name": "Jane", "location": "Cupertino"])
-// Hello Jane!
-// I hope the weather is nice in Cupertino.
+// こんにちは Jane!
+// Cupertino のお天気が良いといいですね。
 ```
 
 `guard` 文の条件を満たした場合、`guard` の閉じ括弧\(`}`\)以降のコードを続けて実行します。条件の一部としてオプショナルバインディングに使われている変数や定数は、`guard` の後のコードで利用できるようになります。
