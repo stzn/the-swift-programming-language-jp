@@ -69,20 +69,20 @@ directionToHead = .east
 directionToHead = .south
 switch directionToHead {
 case .north:
-    print("Lots of planets have a north")
+    print("多くの惑星には北があります")
 case .south:
-    print("Watch out for penguins")
+    print("ペンギンに気をつけて")
 case .east:
-    print("Where the sun rises")
+    print("太陽が登る場所")
 case .west:
-    print("Where the skies are blue")
+    print("空が青い場所")
 }
-// Watch out for penguins
+// ペンギンに気をつけて
 ```
 
 このコードは次のように読むことができます。
 
-「`directionToHead` の値を検証してください。`.north` に等しい場合は、「多くの惑星は北にあります」と出力します。`.south` に等しい場合は、「ペンギンに気をつけて」と出力してください」
+「`directionToHead` の値を検証してください。`.north` に等しい場合は、「多くの惑星には北があります」と出力します。`.south` に等しい場合は、「ペンギンに気をつけて」と出力してください」
 
 …などなど。
 
@@ -94,11 +94,11 @@ case .west:
 let somePlanet = Planet.earth
 switch somePlanet {
 case .earth:
-    print("Mostly harmless")
+    print("ほとんど無害")
 default:
-    print("Not a safe place for humans")
+    print("人間にとっては安全な場所ではありません")
 }
-// Mostly harmless
+// ほとんど無害
 ```
 
 ## <a id="iterating-over-enumeration-cases">列挙ケースの繰り返し処理\(Iterating over Enumeration Cases\)</a>
@@ -111,7 +111,7 @@ enum Beverage: CaseIterable {
 }
 let numberOfChoices = Beverage.allCases.count
 print("\(numberOfChoices) beverages available")
-// 3 beverages available
+// 3 種類の飲み物が用意しています
 ```
 
 上記の例では、`Beverage.allCases` を記述して、列挙型 `Beverage` の全てのケースを含むコレクションにアクセスします。`allCases` は、他のコレクションと同じように使用できます。コレクションの要素は列挙型のインスタンスで、今回は `Beverage` の値です。上記の例では、ケースの数をカウントし、下記の例では、`for` ループを使用して全てのケースを繰り返し処理しています。
@@ -280,14 +280,14 @@ let positionToFind = 11
 if let somePlanet = Planet(rawValue: positionToFind) {
     switch somePlanet {
     case .earth:
-        print("Mostly harmless")
+        print("ほとんど無害")
     default:
-        print("Not a safe place for humans")
+        print("人間にとっては安全な場所ではありません")
     }
 } else {
-    print("There isn't a planet at position \(positionToFind)")
+    print("位置が \(positionToFind) の惑星はありません")
 }
-// There isn't a planet at position 11
+// 位置が 11 の惑星はありません
 ```
 
 この例では、オプションバインディングを使用して、Raw Value が `11` の惑星にアクセスしようとします。`if let somePlanet = Planet(rawValue: 11)` は、オプショナルの `Planet` を作成し、取得できる場合は、`somePlanet` をそのオプショナルの `Planet` の値に設定します。この場合、位置が `11` の惑星を取得することはできないため、代わりに `else` の分岐が実行されます。
