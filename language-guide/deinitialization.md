@@ -1,6 +1,6 @@
 # デイニシャライゼーション\(Deinitialization\)
 
-最終更新日: 2021/6/29  
+最終更新日: 2022/8/12  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Deinitialization.html
 
 クラスのインスタンスが解放される直前に、_デイニシャライザ_が呼び出されます。`init` キーワードを使用してイニシャライザを作成する方法と同様に、`deinit` キーワードを使用してデイニシャライザを作成します。デイニシャライザは、クラス型でのみ使用できます。
@@ -68,10 +68,10 @@ class Player {
 
 ```swift
 var playerOne: Player? = Player(coins: 100)
-print("A new player has joined the game with \(playerOne!.coinsInPurse) coins")
-// A new player has joined the game with 100 coins
-print("There are now \(Bank.coinsInBank) coins left in the bank")
-// There are now 9900 coins left in the bank
+print("新しいプレイヤーが \(playerOne!.coinsInPurse) コインを受け取りゲームに参加しました。")
+// 新しいプレイヤーが 100 コインを受け取りゲームに参加しました。
+print("現在、銀行には \(Bank.coinsInBank) コインが残っています。")
+// 現在、銀行には 9900 コインが残っています。
 ```
 
 新しい `Player` インスタンスは、可能ならば 100 コインを受け取って作成されています。この `Player` インスタンスは、`playerOne` というオプショナルの `Player` 変数に保存されます。プレイヤーはいつでもゲームを終了できるため、ここではオプショナルの変数が使用されます。オプショナルを使用すると、現在ゲームにプレイヤーがいるかどうかを追跡できます。
@@ -80,20 +80,20 @@ print("There are now \(Bank.coinsInBank) coins left in the bank")
 
 ```swift
 playerOne!.win(coins: 2_000)
-print("PlayerOne won 2000 coins & now has \(playerOne!.coinsInPurse) coins")
-// PlayerOne won 2000 coins & now has 2100 coins
-print("The bank now only has \(Bank.coinsInBank) coins left")
-// The bank now only has 7900 coins left
+print("PlayerOne は 2000 コインを獲得しました。そして現在 \(playerOne!.coinsInPurse) コインを持っています。")
+// PlayerOne は 2000 コインを獲得しました。そして現在 2100 コインを持っています。
+print("現在、銀行には \(Bank.coinsInBank) コインしか残っていません。")
+// 現在銀行には 7900 コインしか残っていません。
 ```
 
 ここで、プレイヤーは 2,000 コインを獲得しました。プレイヤーの財布には 2,100 枚のコインがあり、銀行には 7,900 枚のコインしか残っていません。
 
 ```swift
 playerOne = nil
-print("PlayerOne has left the game")
-// PlayerOne has left the game
-print("The bank now has \(Bank.coinsInBank) coins")
-// The bank now has 10000 coins
+print("PlayerOne はゲームから離れました。")
+// PlayerOne はゲームから離れました。
+print("現在、銀行には \(Bank.coinsInBank) コインがあります。")
+// 現在、銀行には 10000 コインがあります。
 ```
 
 プレイヤーはゲームから離れました。これは、オプショナルの `playerOne` 変数を `nil` に設定することで示しています。つまり「`Player` インスタンスがない」ことを意味します。この時点で、`playerOne` 変数の `Player` インスタンスへの参照が解放されています。他のプロパティや変数が `Player` インスタンスを参照していないため、メモリから解放されます。解放される直前に、デイニシャライザが自動的に呼び出され、コインが銀行に戻されています。
