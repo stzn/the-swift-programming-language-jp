@@ -1,6 +1,6 @@
 # 列挙型\(Enumerations\)
 
-最終更新日: 2021/6/27  
+最終更新日: 2022/8/13  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html
 
 _列挙型_は、関連する値のグループに共通の型を定義し、コード内で型安全にそれらの値を操作できるようにします。
@@ -111,7 +111,7 @@ enum Beverage: CaseIterable {
 }
 let numberOfChoices = Beverage.allCases.count
 print("\(numberOfChoices) beverages available")
-// 3 種類の飲み物が用意しています
+// 3 種類の飲み物を用意しています
 ```
 
 上記の例では、`Beverage.allCases` を記述して、列挙型 `Beverage` の全てのケースを含むコレクションにアクセスします。`allCases` は、他のコレクションと同じように使用できます。コレクションの要素は列挙型のインスタンスで、今回は `Beverage` の値です。上記の例では、ケースの数をカウントし、下記の例では、`for` ループを使用して全てのケースを繰り返し処理しています。

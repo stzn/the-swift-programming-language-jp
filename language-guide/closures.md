@@ -1,6 +1,6 @@
 # クロージャ\(Closures\)
 
-最終更新日: 2022/4/26  
+最終更新日: 2022/8/13  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Closures.html
 
 _クロージャ_は、コード内で受け渡して使用できる、ある機能の独立したブロックです。Swift のクロージャは、C 言語や Objective-C のブロック、他のプログラミング言語のラムダに似ています。
@@ -414,8 +414,8 @@ let customerProvider = { customersInLine.remove(at: 0) }
 print(customersInLine.count)
 // 5
 
-print("ただ今 \(customerProvider()) を対応中!")
-// ただ今 Chris を対応中!
+print("ただ今 \(customerProvider()) を接客中!")
+// ただ今 Chris を接客中!
 print(customersInLine.count)
 // 4
 ```
@@ -427,10 +427,10 @@ print(customersInLine.count)
 ```swift
 // customersInLine は ["Alex", "Ewa", "Barry", "Daniella"]
 func serve(customer customerProvider: () -> String) {
-    print("ただ今 \(customerProvider()) を対応中!")
+    print("ただ今 \(customerProvider()) を接客中!")
 }
 serve(customer: { customersInLine.remove(at: 0) } )
-// ただ今 Alex を対応中!
+// ただ今 Alex を接客中!
 ```
 
 上記のリストの `serve(customer:)` 関数は、顧客の名前を返す明示的なクロージャを受け取ります。下記のバージョンの `serve(customer:)` は同じ操作を実行しますが、明示的なクロージャを取得する代わりに、パラメータの型を `@autoclosure` 属性でマークすることによって自動クロージャを取得します。これで、クロージャの代わりに `String` 引数を受け取ったかのように関数を呼び出すことができます。`customerProvider` パラメータの型は `@autoclosure` 属性でマークされているため、引数は自動的にクロージャに変換されます。
@@ -438,10 +438,10 @@ serve(customer: { customersInLine.remove(at: 0) } )
 ```swift
 // customersInLine は ["Ewa", "Barry", "Daniella"]
 func serve(customer customerProvider: @autoclosure () -> String) {
-    print("ただ今 \(customerProvider()) を対応中!")
+    print("ただ今 \(customerProvider()) を接客中!")
 }
 serve(customer: customersInLine.remove(at: 0))
-// ただ今 Ewa を対応中!
+// ただ今 Ewa を接客中!
 ```
 
 > NOTE  
@@ -461,10 +461,10 @@ collectCustomerProviders(customersInLine.remove(at: 0))
 print("集められた \(customerProviders.count) 個のクロージャー。")
 // 集められた 2 個のクロージャー。
 for customerProvider in customerProviders {
-    print("ただ今 \(customerProvider()) を対応中!")
+    print("ただ今 \(customerProvider()) を接客中!")
 }
-// ただ今 Barry を対応中!
-// ただ今 Daniella を対応中!
+// ただ今 Barry を接客中!
+// ただ今 Daniella を接客中!
 ```
 
 上記のコードでは、`customerProvider` 引数として渡されたクロージャを呼び出す代わりに、`collectCustomerProviders(_:)` 関数がクロージャを `customerProviders` 配列に追加します。配列は関数のスコープ外で宣言されています。つまり、配列のクロージャは関数が戻った後に実行される場合があります。その結果、`customerProvider` 引数の値は、関数のスコープをエスケープできるようにする必要があります。

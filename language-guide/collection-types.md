@@ -1,6 +1,6 @@
 # コレクション型\(Collection Types\)
 
-最終更新日: 2021/6/27  
+最終更新日: 2022/8/13  
 原文: https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html
 
 Swift は、配列、セット、辞書と呼ばれる 3 つの基本的な_コレクション型_を提供しています。配列は順序が決まったコレクションです。セットは値の重複と順序のないコレクションです。辞書はキーとバリューに関連性を持たせた順序のないコレクションです。
@@ -257,7 +257,7 @@ Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デ
 
 ```swift
 var letters = Set<Character>()
-print("letters は \(letters.count) 個の要素を持つ Set<Character> 型です.")
+print("letters は \(letters.count) 個の要素を持つ Set<Character> 型です。")
 // letters は 0 個の要素を持つ Set<Character> 型です。
 ```
 
@@ -332,11 +332,11 @@ favoriteGenres.insert("Jazz")
 
 ```swift
 if let removedGenre = favoriteGenres.remove("Rock") {
-    print("\(removedGenre)? もう好きじゃなくなりました。")
+    print("\(removedGenre)? もういいです。")
 } else {
-    print("そのジャンルはあんまり好きではないです。")
+    print("そのジャンルはあんまり気にしたことがないです。")
 }
-// Rock? もう好きじゃなくなりました。
+// Rock? もういいです。
 ```
 
 特定のアイテムが含まれているかどうかを調べるには、`contains(_:)` メソッドを使用することができます。
@@ -345,9 +345,9 @@ if let removedGenre = favoriteGenres.remove("Rock") {
 if favoriteGenres.contains("Funk") {
     print("James BrownのGet On The Good Footは最高です！")
 } else {
-    print("ちょっとファンキー(funky)すぎます。")
+    print("ちょっとファンキー（funky）すぎます。")
 }
-// ちょっとファンキー(funky)すぎます。
+// ちょっとファンキー（funky）すぎます。
 ```
 
 ### セットの繰り返し処理\(Iterating Over a Set\)

@@ -1,6 +1,6 @@
 # 制御フロー\(Control Flow\)
 
-最終更新日: 2021/6/27  
+最終更新日: 2022/8/13  
 原文: https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html
 
 Swift は、様々な制御フロー文を提供しています。1 つのタスクを複数回行う `while` ループ、ある条件を基に異なる分岐のコードを実行する `if`、`guard`、`switch` 文、コードの他の地点へ実行フローを移動させる `break` や `continue` のような文があります。
@@ -31,11 +31,11 @@ for name in names {
 ```swift
 let numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
 for (animalName, legCount) in numberOfLegs {
-    print("\(animalName) は \(legCount) 本の足があります。")
+    print("\(animalName) は \(legCount) 本の足があります")
 }
-// cat は 4 本の足があります。
-// ant は 6 本の足があります。
-// spider は 8 本の足があります。
+// cat は 4 本の足があります
+// ant は 6 本の足があります
+// spider は 8 本の足があります
 ```
 
 `Dictionary` の定数は元々順序がなく、ループ処理をするときに、取得されるキーバリューの順序も保証されていません。配列や辞書に関しては、[Collection Types\(コレクション型\)](collection-types.md)を参照ください。
@@ -389,17 +389,17 @@ print("\(naturalCount) は \(countedThings)。")
 let somePoint = (1, 1)
 switch somePoint {
 case (0, 0):
-    print("\(somePoint) は原点にあります。")
+    print("\(somePoint) は原点にあります")
 case (_, 0):
-    print("\(somePoint) は x 軸上にあります。")
+    print("\(somePoint) は x 軸上にあります")
 case (0, _):
-    print("\(somePoint) は y 軸上にあります。")
+    print("\(somePoint) は y 軸上にあります")
 case (-2...2, -2...2):
-    print("\(somePoint) はボックスの中にあります。")
+    print("\(somePoint) はボックスの中にあります")
 default:
-    print("\(somePoint) はボックスの外にあります。")
+    print("\(somePoint) はボックスの外にあります")
 }
-// (1, 1) は箱の中にあります。
+// (1, 1) は箱の中にあります
 ```
 
 ![switch&#x6587; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../assets/coordinategraphsimple_2x.png)
@@ -447,13 +447,13 @@ case let (x, y):
 let yetAnotherPoint = (1, -1)
 switch yetAnotherPoint {
 case let (x, y) where x == y:
-    print("(\(x), \(y)) は x == y 線上にある。")
+    print("(\(x), \(y)) は x == y 線上にあります")
 case let (x, y) where x == -y:
-    print("(\(x), \(y)) は x == -y 線上にある。")
+    print("(\(x), \(y)) は x == -y 線上にあります")
 case let (x, y):
-    print("(\(x), \(y)) は単なる任意の点です。")
+    print("(\(x), \(y)) は単なる任意の点です")
 }
-// (1, -1) は x == -y 線上にある。
+// (1, -1) は x == -y 線上にあります
 ```
 
 ![switch&#x6587; where&#x53E5; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../assets/coordinategraphcomplex_2x.png)
@@ -472,14 +472,14 @@ case let (x, y):
 let someCharacter: Character = "e"
 switch someCharacter {
 case "a", "e", "i", "o", "u":
-    print("\(someCharacter) は母音です。")
+    print("\(someCharacter) は母音です")
 case "b", "c", "d", "f", "g", "h", "j", "k", "l", "m",
      "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z":
-    print("\(someCharacter) は子音です。")
+    print("\(someCharacter) は子音です")
 default:
-    print("\(someCharacter) は母音でも子音でもありません。")
+    print("\(someCharacter) は母音でも子音でもありません")
 }
-// e は母音です。
+// e は母音です
 ```
 
 最初のケースは英語の小文字の母音全てに合致します。同様に、2 番目のケースは英語の子音全てに合致します。`default` は他の全ての文字に合致します。
@@ -490,11 +490,11 @@ default:
 let stillAnotherPoint = (9, 0)
 switch stillAnotherPoint {
 case (let distance, 0), (0, let distance):
-    print("x 軸上または y 軸上にあり、原点から \(distance) 離れている。")
+    print("x 軸上または y 軸上にあり、原点から \(distance) 離れている")
 default:
-    print("x 軸上または y 軸上にはない。")
+    print("x 軸上または y 軸上にはない")
 }
-// x 軸上または y 軸上にあり、原点から 9 離れている。
+// x 軸上または y 軸上にあり、原点から 9 離れている
 ```
 
 上記のケースでは 2 つのパターンを含んでいます: `(let distance, 0)` は x 軸上にある点に合致し、`(0, let distance)` は y 軸上にある点に合致します。どちらのパターンでも、`distance` へのバインディングが含まれており、どちらも数値です。つまり、ケース内では常に `distance` にアクセスできます。
