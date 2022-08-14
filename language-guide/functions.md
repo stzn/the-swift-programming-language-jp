@@ -62,7 +62,7 @@ Swift では、関数のパラメータと戻り値は非常に柔軟です。�
 
 ```swift
 func sayHelloWorld() -> String {
-    return "こんにちは、 world"
+    return "hello, world"
 }
 print(sayHelloWorld())
 // こんにちは、 world

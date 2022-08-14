@@ -399,7 +399,7 @@ case (-2...2, -2...2):
 default:
     print("\(somePoint) はボックスの外にあります")
 }
-// (1, 1) は箱の中にあります
+// (1, 1) はボックスの中にあります
 ```
 
 ![switch&#x6587; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../assets/coordinategraphsimple_2x.png)
