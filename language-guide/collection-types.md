@@ -306,8 +306,8 @@ var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
 セットのアイテムの数を調べるために、読み取り専用の `count` プロパティをチェックします。
 
 ```swift
-print("私には \(favoriteGenres.count) 個の好きな音楽ジャンがあります。")
-// 私には 3 個の好きな音楽ジャンがあります。
+print("私には \(favoriteGenres.count) 個の好きな音楽ジャンルがあります。")
+// 私には 3 個の好きな音楽ジャンルがあります。
 ```
 
 `Bool` 型の `isEmpty` プロパティは、`count` プロパティが `0` かどうかをチェックする簡略記法です。
@@ -316,9 +316,9 @@ print("私には \(favoriteGenres.count) 個の好きな音楽ジャンがあり
 if favoriteGenres.isEmpty {
     print("音楽に関しては、こだわりはありません。")
 } else {
-    print("私には音楽の好みがあります。")
+    print("私は音楽にこだわりがあります。")
 }
-// 私には音楽の好みがあります。
+// 私は音楽にこだわりがあります。
 ```
 
 `insert(_:)` メソッドを使用して、セットに新しいアイテムを追加することができます。

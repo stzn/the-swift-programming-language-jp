@@ -724,9 +724,9 @@ let someCreature = Animal(species: "Giraffe")
 // someCreature は Animal? で Animal ではありません
 
 if let giraffe = someCreature {
-    print("ある動物が、種類は \(giraffe.species) として初期化されました")
+    print("動物の種類は \(giraffe.species) として初期化されました")
 }
-// ある動物が、種類は Giraffe として初期化されました
+// 動物の種類は Giraffe として初期化されました
 ```
 
 空の文字列を失敗可能イニシャライザの `species` パラメータに渡すと、イニシャライザは初期化に失敗します:
@@ -736,9 +736,9 @@ let anonymousCreature = Animal(species: "")
 // anonymousCreature は Animal? で Animal ではありません
 
 if anonymousCreature == nil {
-    print("この不明な生き物は初期化ができませんでした")
+    print("この未知の生き物は初期化ができませんでした")
 }
-// この不明な生き物は初期化ができませんでした
+// この未知の生き物は初期化ができませんでした
 ```
 
 > NOTE  
@@ -773,15 +773,15 @@ enum TemperatureUnit {
 ```swift
 let fahrenheitUnit = TemperatureUnit(symbol: "F")
 if fahrenheitUnit != nil {
-    print("これは温度の単位として定義されているので、初期化は成功しました。")
+    print("これは温度の単位として定義されているので、初期化に成功しました。")
 }
-// これは温度の単位として定義されているので、初期化は成功しました。
+// これは温度の単位として定義されているので、初期化に成功しました。
 
 let unknownUnit = TemperatureUnit(symbol: "X")
 if unknownUnit == nil {
-    print("これは温度の単位としては定義されていないので、初期化は失敗しました。")
+    print("これは温度の単位としては定義されていないので、初期化に失敗しました。")
 }
-// これは温度の単位としては定義されていないので、初期化は失敗しました。
+// これは温度の単位としては定義されていないので、初期化に失敗しました。
 ```
 
 ### Raw Value を持つ列挙型の失敗可能イニシャライザ\(Failable Initializers for Enumerations with Raw Values\)
@@ -797,15 +797,15 @@ enum TemperatureUnit: Character {
 
 let fahrenheitUnit = TemperatureUnit(rawValue: "F")
 if fahrenheitUnit != nil {
-    print("これは温度の単位として定義されているので、初期化は成功しました。")
+    print("これは温度の単位として定義されているので、初期化に成功しました。")
 }
-// これは温度の単位として定義されているので、初期化は成功しました。
+// これは温度の単位として定義されているので、初期化に成功しました。
 
 let unknownUnit = TemperatureUnit(rawValue: "X")
 if unknownUnit == nil {
-    print("これは温度の単位としては定義されていないので、初期化は失敗しました。")
+    print("これは温度の単位としては定義されていないので、初期化に失敗しました。")
 }
-// これは温度の単位としては定義されていないので、初期化は失敗しました。
+// これは温度の単位としては定義されていないので、初期化に失敗しました。
 ```
 
 ### 初期化の失敗の伝播\(Propagation of Initialization Failure\)

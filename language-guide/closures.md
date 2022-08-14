@@ -230,7 +230,7 @@ func loadPicture(from server: Server, completion: (Picture) -> Void, onFailure: 
 loadPicture(from: someServer) { picture in
     someView.currentPicture = picture
 } onFailure: {
-    print("画像がダウンロードできませんでした。")
+    print("画像をダウンロードできませんでした。")
 }
 ```
 
@@ -458,8 +458,8 @@ func collectCustomerProviders(_ customerProvider: @autoclosure @escaping () -> S
 collectCustomerProviders(customersInLine.remove(at: 0))
 collectCustomerProviders(customersInLine.remove(at: 0))
 
-print("集められた \(customerProviders.count) 個のクロージャー。")
-// 集められた 2 個のクロージャー。
+print("\(customerProviders.count) 個のクロージャーが保持されています。")
+// 2 個のクロージャーが保持されています。
 for customerProvider in customerProviders {
     print("ただ今 \(customerProvider()) を接客中!")
 }

@@ -31,11 +31,11 @@ for name in names {
 ```swift
 let numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
 for (animalName, legCount) in numberOfLegs {
-    print("\(animalName) は \(legCount) 本の足があります")
+    print("\(animalName) には \(legCount) 本の足があります")
 }
-// cat は 4 本の足があります
-// ant は 6 本の足があります
-// spider は 8 本の足があります
+// cat には 4 本の足があります
+// ant には 6 本の足があります
+// spider には 8 本の足があります
 ```
 
 `Dictionary` の定数は元々順序がなく、ループ処理をするときに、取得されるキーバリューの順序も保証されていません。配列や辞書に関しては、[Collection Types\(コレクション型\)](collection-types.md)を参照ください。
@@ -229,9 +229,9 @@ Swift は、コードに条件分岐を追加する 2 つの方法、`if` 文と
 ```swift
 var temperatureInFahrenheit = 30
 if temperatureInFahrenheit <= 32 {
-    print("とても寒いですね。マフラーを着たほうがいいでしょう。")
+    print("とても寒いですね。マフラーを巻いたほうがいいでしょう。")
 }
-// とても寒いですね。マフラーを着たほうがいいでしょう。
+// とても寒いですね。マフラーを巻いたほうがいいでしょう。
 ```
 
 上記の例は、気温が華氏 32 度以下かどうかをチェックしています。もしそうならばメッセージが出力されます。そうでないならばメッセージは出力されません。コードの実行は `if` 文の右中括弧\(`}`\)の後のコードが継続して実行します。
@@ -241,7 +241,7 @@ if temperatureInFahrenheit <= 32 {
 ```swift
 temperatureInFahrenheit = 40
 if temperatureInFahrenheit <= 32 {
-    print("とても寒いですね。マフラーを着たほうがいいでしょう。")
+    print("とても寒いですね。マフラーを巻いたほうがいいでしょう。")
 } else {
     print("そんなに寒くありません。Tシャツを着ましょう。")
 }
@@ -255,7 +255,7 @@ if temperatureInFahrenheit <= 32 {
 ```swift
 temperatureInFahrenheit = 90
 if temperatureInFahrenheit <= 32 {
-    print("とても寒いですね。マフラーを着たほうがいいでしょう。")
+    print("とても寒いですね。マフラーを巻いたほうがいいでしょう。")
 } else if temperatureInFahrenheit >= 86 {
     print("とても暖かいですね。日焼け止めを忘れずにしましょう。")
 } else {
@@ -271,7 +271,7 @@ if temperatureInFahrenheit <= 32 {
 ```swift
 temperatureInFahrenheit = 72
 if temperatureInFahrenheit <= 32 {
-    print("とても寒いですね。マフラーを着たほうがいいでしょう。")
+    print("とても寒いですね。マフラーを巻いたほうがいいでしょう。")
 } else if temperatureInFahrenheit >= 86 {
     print("とても暖かいですね。日焼け止めを忘れずにしましょう。")
 }
@@ -324,9 +324,9 @@ let anotherCharacter: Character = "a"
 switch anotherCharacter {
 case "a": // 空の 本文 は不正
 case "A":
-    print("A の文字")
+    print("文字 A")
 default:
-    print("A ではない文字")
+    print("A 以外の文字")
 }
 // コンパイルエラーが発生します
 ```
@@ -339,11 +339,11 @@ C 言語の `switch` 文と異なり、`"a"` と `"A"` の両方に合致する�
 let anotherCharacter: Character = "a"
 switch anotherCharacter {
 case "a", "A":
-    print("A の文字")
+    print("文字 A")
 default:
-    print("A ではない文字")
+    print("A 以外の文字")
 }
-// A の文字
+// 文字 A
 ```
 
 可読性のために、複合ケースを複数行に分けて書くこともできます。複合ケースについての詳細は[Compound Cases\(複合ケース\)](control-flow.md#compound-cases)を参照ください。
@@ -656,7 +656,7 @@ gameLoop: while square != finalSquare {
         square += board[square]
     }
 }
-print("ゲーム終了!")
+print("ゲームオーバー!")
 ```
 
 各ループの最初でサイコロを振ります。即座にプレイヤーが移動する前に、ループの移動結果を検証して、その移動ができるかどうかを判定しています:
@@ -686,7 +686,7 @@ func greet(person: [String: String]) {
         return
     }
 
-    print("\(location) のお天気が良いといいですね。")
+    print("\(location) のお天気は良いといいですね。")
 }
 
 greet(person: ["name": "John"])
@@ -694,7 +694,7 @@ greet(person: ["name": "John"])
 // そちらのお天気は良いといいですね。
 greet(person: ["name": "Jane", "location": "Cupertino"])
 // こんにちは Jane!
-// Cupertino のお天気が良いといいですね。
+// Cupertino のお天気は良いといいですね。
 ```
 
 `guard` 文の条件を満たした場合、`guard` の閉じ括弧\(`}`\)以降のコードを続けて実行します。条件の一部としてオプショナルバインディングに使われている変数や定数は、`guard` の後のコードで利用できるようになります。

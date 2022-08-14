@@ -43,7 +43,7 @@ struct BlackjackCard {
     // BlackjackCard のプロパティとメソッド
     let rank: Rank, suit: Suit
     var description: String {
-        var output = "スートは \(suit.rawValue),"
+        var output = "柄は \(suit.rawValue),"
         output += " 数字は \(rank.values.first)"
         if let second = rank.values.second {
             output += " と \(second)"
@@ -71,7 +71,7 @@ struct BlackjackCard {
 ```swift
 let theAceOfSpades = BlackjackCard(rank: .ace, suit: .spades)
 print("theAceOfSpades: \(theAceOfSpades.description)")
-// theAceOfSpades: スートは ♠, 数字は 1 と 11
+// theAceOfSpades: 柄は ♠, 数字は 1 と 11
 ```
 
 `Rank` と `Suit` は `BlackjackCard` 内にネストされていますが、それらの型は推論できるため、このインスタンスの初期化では、ケース名\(`.ace` および `.spades`\) のみで列挙ケースを参照できます。上記の例では、`description` プロパティは、スペードのエースが `1` または `11` だと正しく示しています。

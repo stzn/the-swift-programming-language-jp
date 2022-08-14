@@ -68,8 +68,8 @@ class Player {
 
 ```swift
 var playerOne: Player? = Player(coins: 100)
-print("新しいプレイヤーが \(playerOne!.coinsInPurse) コインを受け取りゲームに参加しました")
-// 新しいプレイヤーが 100 コインを受け取りゲームに参加しました
+print("新しいプレイヤーが \(playerOne!.coinsInPurse) コイン受け取りゲームに参加しました")
+// 新しいプレイヤーが 100 コイン受け取りゲームに参加しました
 print("現在、銀行には \(Bank.coinsInBank) コインが残っています")
 // 現在、銀行には 9900 コインが残っています
 ```

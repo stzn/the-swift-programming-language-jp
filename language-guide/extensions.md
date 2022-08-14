@@ -74,8 +74,8 @@ print("3 フィートは \(threeFeet) メートル")
 
 ```swift
 let aMarathon = 42.km + 195.m
-print("マラソンは \(aMarathon) メートルの距離があります")
-// マラソンは 42195.0 メートルの距離があります
+print("マラソンは \(aMarathon) メートルです")
+// マラソンは 42195.0 メートルです
 ```
 
 > NOTE  
