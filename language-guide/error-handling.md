@@ -176,7 +176,7 @@ func nourish(with item: String) throws {
 do {
     try nourish(with: "Beet-Flavored Chips")
 } catch {
-    print("予期しない自動販売機とは関係ないのエラーが発生: \(error)")
+    print("予期せぬ自動販売機とは関係ないエラーが発生: \(error)")
 }
 // 自動販売機から買うことができませんでした。
 ```
