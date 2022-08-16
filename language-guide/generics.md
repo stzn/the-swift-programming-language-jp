@@ -1,6 +1,6 @@
 # ジェネリクス\(Generics\)
 
-最終更新日: 2021/6/30  
+最終更新日: 2022/8/16  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Generics.html
 
 ジェネリックなコードを使用すると、定義した要件に従って、任意の型で機能する柔軟で再利用可能な関数と型を作成できます。重複を避け、その意図を明確で抽象的な方法で表現するコードを書くことができます。
@@ -115,10 +115,10 @@ swapTwoValues(&someString, &anotherString)
 
 ジェネリック関数に加えて、Swift では独自のジェネリック型を定義できます。これらは、`Array` や `Dictionary` と同様の方法で、独自のクラス、構造体、および列挙型の任意の型で機能します。
 
-このセクションでは、`Stack` と呼ばれるジェネリックなコレクション型を作成する方法を示します。スタックは、配列に似た順序付けられた値のセットですが、`Array` 型よりも操作が制限されています。配列を使用すると、配列内の任意の場所で新しいアイテムを挿入および削除できます。ただし、スタックでは、コレクションの最後にのみ新しいアイテムを追加できます\(スタックに新しい値をプッシュする\(_pushing_\)と呼ばれています\)。同様に、スタックでは、コレクションの最後からのみアイテムを削除できます\(スタックから値をポップする\(_popping_\)と呼ばれています\)。
+このセクションでは、`Stack` と呼ばれるジェネリックなコレクション型を作成する方法を示します。スタックは、配列に似た順序付けられた値のセットですが、`Array` 型よりも操作が制限されています。配列を使用すると、配列内の任意の場所で新しいアイテムを挿入および削除できます。ただし、スタックでは、コレクションの最後にのみ新しいアイテムを追加できます\(スタックに新しい値をプッシュする\(_pushing_\)と呼ばれています\)。同様に、スタックでは、コレクションの最後からのみアイテムを削除できます\(スタックから値をポップする\(_popping_\)と呼ばれています\)。
 
 > NOTE  
-> `UINavigationController` クラスは、スタックの概念を使用して、ナビゲーション階層内の view controller をモデル化します。`UINavigationController` クラスの `pushViewController(_:animated:)` メソッドを呼び出して view controller をナビゲーションスタックに追加\(プッシュ\)し、popViewControllerAnimated\(\_:\) メソッドを呼び出してナビゲーションスタックから view controller を削除\(ポップ\)します。スタックは、コレクションの管理に厳密な「後入れ先出し\(LIFO\)」アプローチが必要な場合に役立つコレクションモデルです。
+> `UINavigationController` クラスは、スタックの概念を使用して、ナビゲーション階層内の view controller をモデル化します。`UINavigationController` クラスの `pushViewController(_:animated:)` メソッドを呼び出して view controller をナビゲーションスタックに追加\(プッシュ\)し、`popViewControllerAnimated\(\_:\)` メソッドを呼び出してナビゲーションスタックから view controller を削除\(ポップ\)します。スタックは、コレクションの管理に厳密な「後入れ先出し\(LIFO\)」アプローチが必要な場合に役立つコレクションモデルです。
 
 下記の図は、スタックのプッシュとポップの動作を示しています:
 
@@ -231,7 +231,7 @@ if let topItem = stackOfStrings.topItem {
 
 `swapTwoValues(_:_:)` 関数と `Stack` 型は、どの型でも使用できます。ただし、ジェネリック関数およびジェネリック型で使用できる型に特定の型制約を適用すると便利な場合があります。型制約は、型パラメータが特定のクラスを継承する必要があるか、特定のプロトコルまたはプロトコル合成に準拠する必要があるかなどを指定できます。
 
-例えば、Swift の `Dictionary` 型では、辞書のキーとして使用できる型に制限があります。[Dictionaries\(辞書\)](../language-guide/collection-types.md#dictionaries)で説明されているように、辞書のキーの型はハッシュ可能でなければなりません。つまり、個々のキーがユニークだということを表明する方法を提供する必要があります。`Dictionary` は、特定のキーの値がすでに含まれているかどうかを確認できるように、そのキーがハッシュ可能なことが必要な場合があります。この要件がなければ、`Dictionary` は特定のキーの値を挿入または置換するべきかどうかを判断できず、すでに存在する特定のキーの値を見つけることもできません。
+例えば、Swift の `Dictionary` 型では、辞書のキーとして使用できる型に制限があります。[Dictionaries\(辞書\)](../language-guide/collection-types.md#dictionaries)で説明されているように、辞書のキーの型はハッシュ可能でなければなりません。つまり、個々のキーがユニークだということを表明する方法を提供する必要があります。`Dictionary` は、特定のキーの値がすでに含まれているかどうかを確認できるように、そのキーがハッシュ可能なことを要求します。この要件がなければ、`Dictionary` は特定のキーの値を挿入または置換するべきかどうかを判断できず、すでに存在する特定のキーの値を見つけることもできません。
 
 この要件は、`Dictionary` のキーの型制約によって強制されています。これは、キーの型が Swift 標準ライブラリで定義された `Hashable` プロトコルに準拠する必要があることを指定します。Swift の全ての基本型\(`String`、`Int`、`Double`、`Bool` など\)は、デフォルトでハッシュ可能です。独自の型を `Hashable` プロトコルに準拠させる方法については、[Conforming to the Hashable Protocol](https://developer.apple.com/documentation/swift/hashable#2849490)を参照ください。
 
@@ -247,7 +247,7 @@ func someFunction<T: SomeClass, U: SomeProtocol>(someT: T, someU: U) {
 }
 ```
 
-上記の関数には、2 つの型パラメータがあります。最初の型パラメータ `T` には、`T` が `SomeClass` を継承する必要がある型制約です。2 番目の型パラメータ `U` には、`U` が `SomeProtocol` プロトコルに準拠する必要がある型制約です。
+上記の関数には、2 つの型パラメータがあります。最初の型パラメータ `T` は、`T` が `SomeClass` を継承していることを要求する型制約を持ちます。2 番目の型パラメータ `U` は、`U` が `SomeProtocol` プロトコルに準拠していることを要求する型制約を持ちます。
 
 ### 型制約の挙動\(Type Constraints in Action\)
 
@@ -291,9 +291,9 @@ func findIndex<T>(of valueToFind: T, in array:[T]) -> Int? {
 
 この関数はコンパイルできません。問題は、等価チェック `"if value == valueToFind"` にあります。Swift の全ての型を等価演算子\(`==`\)で比較できるわけではありません。例えば、複雑なデータモデルを表す独自のクラスまたは構造体を作成する場合、そのクラスまたは構造体の「等しい」の意味は Swift が推論できるものではありません。このため、このコードが全ての型 `T` で機能することを保証することはできず、コードをコンパイルしようとすると、適切なエラーが報告されます。
 
-ただし、全てが失われるわけではありません。Swift 標準ライブラリは、`Equatable` と呼ばれるプロトコルを定義しています。このプロトコルでは、準拠する型で、その型の 2 つの値を比較するために、等価演算子\(`==`\)および不等価演算子\(`!=`\)を実装する必要があります。Swift の全ての標準型は、`Equatable` プロトコルを自動的にサポートしています。
+ただし、全てが失われるわけではありません。Swift 標準ライブラリは、`Equatable` と呼ばれるプロトコルを定義しています。このプロトコルに準拠する型では、その型の 2 つの値を比較するために、等価演算子\(`==`\)および不等価演算子\(`!=`\)を実装する必要があります。Swift の全ての標準型は、`Equatable` プロトコルを自動的にサポートしています。
 
-`Equatable` に準拠する全ての型は、等価演算子をサポートすることが保証されているため、`findIndex(of:in:)` 関数で安全に使用できます。この事実を表現するには、関数を定義するときに、型パラメータの定義に `Equatable` の型制約を記述します:
+`Equatable` に準拠する全ての型は、等価演算子をサポートすることが保証されているため、`findIndex(of:in:)` 関数で安全に使用できます。このことを表現するには、関数を定義するときに、型パラメータの定義に `Equatable` の型制約を記述します:
 
 ```swift
 func findIndex<T: Equatable>(of valueToFind: T, in array:[T]) -> Int? {
@@ -344,7 +344,7 @@ protocol Container {
 
 `Container` プロトコルに準拠する全ての型は、格納する値の型を指定する必要があります。具体的には、正しい型のアイテムのみがコンテナに追加されるようにする必要があり、サブスクリプトで返されるアイテムの型を明確にする必要があります。
 
-これらの要件を定義するために、`Container` プロトコルは、コンテナが保持する要素の型を参照する必要がありますが、特定のコンテナの型が何かを知る必要はありません。`Container` プロトコルは、`append(_:)` メソッドに渡される値をコンテナの要素の型と同じにする必要があり、コンテナのサブスクリプトによって返される値をコンテナの要素の型と同じ型を指定する必要があります。
+これらの要件を定義するために、`Container` プロトコルは、コンテナが保持する要素の型を参照する必要がありますが、特定のコンテナでその型が何なのかを知る必要はありません。`Container` プロトコルは、`append(_:)` メソッドに渡される値の型をコンテナの要素の型と同じにする必要があり、コンテナのサブスクリプトによって返される値の型にコンテナの要素の型と同じ型を指定する必要があります。
 
 これを実現するために、`Container` プロトコルは `Item` と呼ばれる関連型を `associatedtype Item` として記述することで宣言しています。プロトコルは `Item` が何かを定義しません。その情報は、準拠する型が提供します。それにもかかわらず、`Item` エイリアスを通して、`Container` 内のアイテムの型への参照、`append(_:)` メソッドと `subscript` で使用する型の定義は、どんな `Container` でも期待通りに動くことを保証しています。
 
@@ -405,7 +405,7 @@ struct Stack<Element>: Container {
 }
 ```
 
-今回は、`append(_:)` メソッドの `item` パラメータの型とサブスクリプトの戻り値の型として型パラメータ `Element` を使用しています。したがって、Swift は、`Element` がこの特定のコンテナの `Item` として使用する型を適切に推論できます。
+今回は、`append(_:)` メソッドの `item` パラメータの型とサブスクリプトの戻り値の型として型パラメータ `Element` を使用しています。したがって、Swift は、`Element` がこの特定のコンテナの `Item` として使用するのに適切な型だと推論できます。
 
 ### 関連型を特定するための既存の型の拡張\(Extending an Existing Type to Specify an Associated Type\)
 
@@ -432,7 +432,7 @@ protocol Container {
 }
 ```
 
-このバージョンのコンテナに準拠するには、コンテナのアイテム型が `Equatable` プロトコルに準拠している必要があります。
+このバージョンの `Container` に準拠するには、コンテナのアイテム型が `Equatable` プロトコルに準拠している必要があります。
 
 ### 関連型の制約へのプロトコルの使用\(Using a Protocol in Its Associated Type’s Constraints\)
 
@@ -445,7 +445,7 @@ protocol SuffixableContainer: Container {
 }
 ```
 
-このプロトコルでは、`Suffix` は、上記の `Container` の例の `Item` 型のように、関連型です。`Suffix` には 2 つの制約があります。`SuffixableContainer` プロトコル\(現在定義されているプロトコル\)に準拠している必要があり、その `Item` 型は `Container` の `Item` 型と同じだということが必要です。`Item` の制約はジェネリック `where` 句です。これについては、下記の[Associated Types with a Generic Where Clause\(ジェネリック where 句を使用した関連型\)](generics.md#associated-types-with-a-generic-where-clause)で説明します。
+このプロトコルでは、`Suffix` は、上記の `Container` の例の `Item` 型のように、関連型です。`Suffix` には 2 つの制約があります。`SuffixableContainer` プロトコル\(現在定義されているプロトコル\)に準拠している必要があり、その `Item` 型はこのコンテナの `Item` 型と一致することが必要です。`Item` の制約はジェネリック `where` 句です。これについては、下記の[Associated Types with a Generic Where Clause\(ジェネリック where 句を使用した関連型\)](generics.md#associated-types-with-a-generic-where-clause)で説明します。
 
 上記の[Generic Types\(ジェネリック型\)](generics.md#generic-types)の `Stack` 型に `SuffixableContainer` プロトコルへの準拠を追加した拡張を次に示します:
 
@@ -515,13 +515,13 @@ func allItemsMatch<C1: Container, C2: Container>
 }
 ```
 
-この関数は、`someContainer` と `anotherContainer` という 2 つの引数を取ります。`someContainer` 引数は `C1` 型で、`otherContainer` 引数は `C2` 型です。`C1` と `C2` はどちらも、関数が呼び出されたときに決定される 2 つの `Container` 型の型パラメータです。
+この関数は、`someContainer` と `anotherContainer` という 2 つの引数を取ります。`someContainer` 引数は `C1` 型で、`otherContainer` 引数は `C2` 型です。`C1` と `C2` は、どちらも関数が呼び出されたときに決定される 2 つの `Container` 型の型パラメータです。
 
 関数の 2 つの型パラメータには、次の要件が適用されます。
 
 * `C1` は、`Container` プロトコル\(`C1: Container` と表記\)に準拠する必要があります
 * `C2` も、`Container` プロトコル\(`C2: Container` と表記\)に準拠する必要があります
-* `C1` の `Item` は、`C2` の `Item` と同じにする必要があります\(`C1.Item == C2.Item` と記述\)
+* `C1` の `Item` は、`C2` の `Item` と一致する必要があります\(`C1.Item == C2.Item` と記述\)
 * `C1` の `Item` は、`Equatable` プロトコル\(`C1.Item: Equatable` と表記\)に準拠する必要があります
 
 1 番目と 2 番目の要件は関数の型パラメータリストで定義され、3 番目と 4 番目の要件は関数のジェネリック `where` 句で定義されます。
@@ -705,7 +705,7 @@ protocol Container {
 }
 ```
 
-`Iterator` のジェネリック `where` 句では、`Iterator` の型に関係なく、コンテナのアイテムと同じアイテム型の要素をイテレータが反復する必要があります。`makeIterator()` 関数は、コンテナのイテレータへのアクセスを提供します。
+`Iterator` のジェネリック `where` 句では、`Iterator` の型に関係なく、コンテナのアイテムと同じアイテム型の要素をイテレータが反復することを要求します。`makeIterator()` 関数は、コンテナのイテレータへのアクセスを提供します。
 
 別のプロトコルを継承したプロトコルの場合、プロトコル宣言にジェネリック `where` 句を含めることにより、継承した関連型に制約を追加できます。例えば、次のコードは、`Item` が `Comparable` に準拠することを要求する `ComparableContainer` プロトコルを宣言しています:
 
