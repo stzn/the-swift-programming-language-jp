@@ -449,7 +449,7 @@ switch yetAnotherPoint {
 case let (x, y) where x == y:
     print("(\(x), \(y)) は x == y の線上にあります")
 case let (x, y) where x == -y:
-    print("(\(x), \(y)) は x == -y 線上にあります")
+    print("(\(x), \(y)) は x == -y の線上にあります")
 case let (x, y):
     print("(\(x), \(y)) は単なる任意の点です")
 }
