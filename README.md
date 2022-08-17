@@ -73,6 +73,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/SatoTakeshiX">
+            <img src="https://avatars.githubusercontent.com/u/4253490?v=4" width="100;" alt="SatoTakeshiX"/>
+            <br />
+            <sub><b>佐藤剛士</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/tsubasarc">
             <img src="https://avatars.githubusercontent.com/u/26360184?v=4" width="100;" alt="tsubasarc"/>
             <br />
@@ -85,27 +92,20 @@
             <br />
             <sub><b>Kotaro Suto</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/jollyjoester">
             <img src="https://avatars.githubusercontent.com/u/2178775?v=4" width="100;" alt="jollyjoester"/>
             <br />
             <sub><b>Hideyuki Nanashima</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/uhooi">
             <img src="https://avatars.githubusercontent.com/u/21194714?v=4" width="100;" alt="uhooi"/>
             <br />
             <sub><b>Uhooi</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/SatoTakeshiX">
-            <img src="https://avatars.githubusercontent.com/u/4253490?v=4" width="100;" alt="SatoTakeshiX"/>
-            <br />
-            <sub><b>佐藤剛士</b></sub>
         </a>
     </td>
     <td align="center">
