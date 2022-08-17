@@ -1,6 +1,6 @@
 # メソッド \(Methods\)
 
-最終更新日: 2022/7/15  
+最終更新日: 2022/8/13  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Methods.html
 
 メソッドは、特定の型に紐づいた関数です。クラス、構造体、および列挙型は全て、インスタンスメソッドを定義できます。インスタンスメソッドは、特定の型のインスタンスを操作するための特定のタスクと機能をカプセル化します。クラス、構造体、および列挙型は、型自体に関連付けられている型メソッドを定義することもできます。型メソッドは、Objective-C のクラスメソッドに似ています。
@@ -80,9 +80,9 @@ struct Point {
 }
 let somePoint = Point(x: 4.0, y: 5.0)
 if somePoint.isToTheRightOf(x: 1.0) {
-    print("This point is to the right of the line where x == 1.0")
+    print("この点は x == 1.0 の直線の右側にあります")
 }
-// This point is to the right of the line where x == 1.0
+// この点は x == 1.0 の直線の右側にあります
 ```
 
 `self` プレフィックスがない場合、Swift は両方の `x` をメソッドパラメータを参照していると見なします。
@@ -105,8 +105,8 @@ struct Point {
 }
 var somePoint = Point(x: 1.0, y: 1.0)
 somePoint.moveBy(x: 2.0, y: 3.0)
-print("The point is now at (\(somePoint.x), \(somePoint.y))")
-// The point is now at (3.0, 4.0)
+print("点は現在 (\(somePoint.x), \(somePoint.y)) です")
+// 点は現在 (3.0, 4.0) です
 ```
 
 上記の `Point` 構造体は、自身に変更を加える `moveBy(x:y:)` メソッドを定義します。これは、`Point` インスタンスを一定量移動します。新しいポイントを返す代わりに、呼び出されたポイントを実際に変更します。プロパティを変更できるようにするために、`mutating` キーワードがその定義に追加されてます。
@@ -241,8 +241,8 @@ class Player {
 ```swift
 var player = Player(name: "Argyrios")
 player.complete(level: 1)
-print("highest unlocked level is now \(LevelTracker.highestUnlockedLevel)")
-// highest unlocked level is now 2
+print("解放された最高レベルは現在 \(LevelTracker.highestUnlockedLevel) です")
+// 解放された最高レベルは現在 2 です
 ```
 
 2 番目のプレーヤーを作成し、そのプレーヤーをゲーム内のどのプレーヤーもまだ解放していないレベルに移動しようとすると、プレーヤーの現在のレベルを設定する際に失敗します:
@@ -250,10 +250,10 @@ print("highest unlocked level is now \(LevelTracker.highestUnlockedLevel)")
 ```swift
 player = Player(name: "Beto")
 if player.tracker.advance(to: 6) {
-    print("player is now on level 6")
+    print("プレイヤーは現在、レベル 6 です")
 } else {
-    print("level 6 hasn't yet been unlocked")
+    print("レベル 6 はまだ解放されていません")
 }
-// level 6 hasn't yet been unlocked
+// レベル 6 はまだ解放されていません
 ```
 

@@ -1,6 +1,6 @@
 # 初期化\(Initialization\)
 
-最終更新日: 2021/6/29  
+最終更新日: 2022/8/13  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Initialization.html
 
 _初期化_は、使用するクラス、構造体、または列挙型のインスタンスを準備するプロセスです。このプロセスには、そのインスタンスに保存されている各プロパティの初期値の設定と、新しいインスタンスの使用準備が整う前に必要なその他の要素のセットアップや初期化の実行が含まれます。
@@ -38,8 +38,8 @@ struct Fahrenheit {
     }
 }
 var f = Fahrenheit()
-print("The default temperature is \(f.temperature)° Fahrenheit")
-// The default temperature is 32.0° Fahrenheit
+print("温度の初期値は華氏 \(f.temperature)°")
+// 温度の初期値は華氏 32.0°
 ```
 
 この構造体はパラメータのない単一のイニシャライザ `init` を定義します。これは、格納された温度を `32.0`\(華氏での水の凝固点\)の値で初期化します。
@@ -169,10 +169,10 @@ class SurveyQuestion {
         print(text)
     }
 }
-let cheeseQuestion = SurveyQuestion(text: "Do you like cheese?")
+let cheeseQuestion = SurveyQuestion(text: "チーズは好きですか？")
 cheeseQuestion.ask()
-// Do you like cheese?
-cheeseQuestion.response = "Yes, I do like cheese."
+// チーズは好きですか？
+cheeseQuestion.response = "ええ、大好きです。"
 ```
 
 アンケートの質問への回答は質問されるまでわからないため、回答プロパティは `String?` または `Optional<String>` で宣言されています。`SurveyQuestion` の新しいインスタンスが初期化されると、デフォルト値の `nil`、つまり「文字列はまだありません」が自動的に割り当てられます。
@@ -197,10 +197,10 @@ class SurveyQuestion {
         print(text)
     }
 }
-let beetsQuestion = SurveyQuestion(text: "How about beets?")
+let beetsQuestion = SurveyQuestion(text: "ビーツはどうでしょう？")
 beetsQuestion.ask()
-// How about beets?
-beetsQuestion.response = "I also like beets. (But not with cheese.)"
+// ビーツはどうでしょう？
+beetsQuestion.response = "ビーツも好きですよ。(でもチーズと一緒にはしないでください。)"
 ```
 
 ## <a id="default-initializers">デフォルトイニシャライザ\(Default Initializers\)</a>
@@ -469,7 +469,7 @@ Objective-C のサブクラスとは異なり、Swift のサブクラスはデ�
 class Vehicle {
     var numberOfWheels = 0
     var description: String {
-        return "\(numberOfWheels) wheel(s)"
+        return "\(numberOfWheels) 輪車"
     }
 }
 ```
@@ -478,8 +478,8 @@ class Vehicle {
 
 ```swift
 let vehicle = Vehicle()
-print("Vehicle: \(vehicle.description)")
-// Vehicle: 0 wheel(s)
+print("乗り物: \(vehicle.description)")
+// 乗り物: 0 輪車
 ```
 
 次の例では、`Bicycle` という `Vehicle` のサブクラスを定義しています:
@@ -501,8 +501,8 @@ class Bicycle: Vehicle {
 
 ```swift
 let bicycle = Bicycle()
-print("Bicycle: \(bicycle.description)")
-// Bicycle: 2 wheel(s)
+print("自転車: \(bicycle.description)")
+// 自転車: 2 輪車
 ```
 
 サブクラスのイニシャライザが第 2 段階の初期化プロセスで何も行わず、スーパークラスに引数のない指定イニシャライザがある場合、サブクラスの全ての格納プロパティに値を割り当てた後、`super.init()` の呼び出しを省略できます。
@@ -517,7 +517,7 @@ class Hoverboard: Vehicle {
         // super.init() は暗黙的に呼ばれています
     }
     override var description: String {
-        return "\(super.description) in a beautiful \(color)"
+        return "キレイな \(color) の \(super.description)"
     }
 }
 ```
@@ -526,8 +526,8 @@ class Hoverboard: Vehicle {
 
 ```swift
 let hoverboard = Hoverboard(color: "silver")
-print("Hoverboard: \(hoverboard.description)")
-// Hoverboard: 0 wheel(s) in a beautiful silver
+print("ホバーボード: \(hoverboard.description)")
+// ホバーボード: キレイな silver の 0 車輪
 ```
 
 > NOTE  
@@ -692,17 +692,17 @@ let wholeNumber: Double = 12345.0
 let pi = 3.14159
 
 if let valueMaintained = Int(exactly: wholeNumber) {
-    print("\(wholeNumber) conversion to Int maintains value of \(valueMaintained)")
+    print("\(wholeNumber) を Int に変換すると \(valueMaintained) になります") 
 }
-// 12345.0 conversion to Int maintains value of 12345
+// 12345.0 を Int に変換すると 12345 になります
 
 let valueChanged = Int(exactly: pi)
 // valueChanged は Int? で Int ではありません
 
 if valueChanged == nil {
-    print("\(pi) conversion to Int doesn't maintain value")
+    print("\(pi) を Int に変換することはできません")
 }
-// 3.14159 conversion to Int doesn't maintain value
+// 3.14159 を Int に変換することはできません
 ```
 
 下記の例では、`Animal` と呼ばれる構造体を定義し、`species` と呼ばれる `String` の定数プロパティを使用しています。`Animal` 構造体は、`species` と呼ばれる単一のパラメータを持つ失敗可能イニシャライザも定義します。このイニシャライザは、イニシャライザに渡された `species` の値が空の文字列かどうかをチェックします。空の文字列が見つかった場合、初期化に失敗します。それ以外の場合、`species` のプロパティの値が設定され、初期化が成功します:
@@ -724,9 +724,9 @@ let someCreature = Animal(species: "Giraffe")
 // someCreature は Animal? で Animal ではありません
 
 if let giraffe = someCreature {
-    print("An animal was initialized with a species of \(giraffe.species)")
+    print("動物の種類は \(giraffe.species) として初期化されました")
 }
-// An animal was initialized with a species of Giraffe
+// 動物の種類は Giraffe として初期化されました
 ```
 
 空の文字列を失敗可能イニシャライザの `species` パラメータに渡すと、イニシャライザは初期化に失敗します:
@@ -736,9 +736,9 @@ let anonymousCreature = Animal(species: "")
 // anonymousCreature は Animal? で Animal ではありません
 
 if anonymousCreature == nil {
-    print("The anonymous creature couldn't be initialized")
+    print("この未知の生き物は初期化ができませんでした")
 }
-// The anonymous creature couldn't be initialized
+// この未知の生き物は初期化ができませんでした
 ```
 
 > NOTE  
@@ -773,15 +773,15 @@ enum TemperatureUnit {
 ```swift
 let fahrenheitUnit = TemperatureUnit(symbol: "F")
 if fahrenheitUnit != nil {
-    print("This is a defined temperature unit, so initialization succeeded.")
+    print("これは温度の単位として定義されているので、初期化に成功しました。")
 }
-// This is a defined temperature unit, so initialization succeeded.
+// これは温度の単位として定義されているので、初期化に成功しました。
 
 let unknownUnit = TemperatureUnit(symbol: "X")
 if unknownUnit == nil {
-    print("This isn't a defined temperature unit, so initialization failed.")
+    print("これは温度の単位としては定義されていないので、初期化に失敗しました。")
 }
-// This isn't a defined temperature unit, so initialization failed.
+// これは温度の単位としては定義されていないので、初期化に失敗しました。
 ```
 
 ### Raw Value を持つ列挙型の失敗可能イニシャライザ\(Failable Initializers for Enumerations with Raw Values\)
@@ -797,15 +797,15 @@ enum TemperatureUnit: Character {
 
 let fahrenheitUnit = TemperatureUnit(rawValue: "F")
 if fahrenheitUnit != nil {
-    print("This is a defined temperature unit, so initialization succeeded.")
+    print("これは温度の単位として定義されているので、初期化に成功しました。")
 }
-// This is a defined temperature unit, so initialization succeeded.
+// これは温度の単位として定義されているので、初期化に成功しました。
 
 let unknownUnit = TemperatureUnit(rawValue: "X")
 if unknownUnit == nil {
-    print("This isn't a defined temperature unit, so initialization failed.")
+    print("これは温度の単位としては定義されていないので、初期化に失敗しました。")
 }
-// This isn't a defined temperature unit, so initialization failed.
+// これは温度の単位としては定義されていないので、初期化に失敗しました。
 ```
 
 ### 初期化の失敗の伝播\(Propagation of Initialization Failure\)
@@ -844,31 +844,31 @@ class CartItem: Product {
 
 ```swift
 if let twoSocks = CartItem(name: "sock", quantity: 2) {
-    print("Item: \(twoSocks.name), quantity: \(twoSocks.quantity)")
+    print("商品: \(twoSocks.name), 在庫数: \(twoSocks.quantity)")
 }
-// Item: sock, quantity: 2
+// 商品: sock, 在庫数: 2
 ```
 
 `quantity` の値が `0` の `CartItem` インスタンスを作成しようとすると、`CartItem` のイニシャライザによって初期化が失敗します:
 
 ```swift
 if let zeroShirts = CartItem(name: "shirt", quantity: 0) {
-    print("Item: \(zeroShirts.name), quantity: \(zeroShirts.quantity)")
+    print("商品: \(zeroShirts.name), 在庫数: \(zeroShirts.quantity)")
 } else {
-    print("Unable to initialize zero shirts")
+    print("0 個のワイシャツは初期化できません")
 }
-// Unable to initialize zero shirts
+// 0 個のワイシャツは初期化できません
 ```
 
 同様に、`name` の値が空の `CartItem` インスタンスを作成しようとすると、スーパークラスの `Product` イニシャライザによって初期化が失敗します。
 
 ```swift
 if let oneUnnamed = CartItem(name: "", quantity: 1) {
-    print("Item: \(oneUnnamed.name), quantity: \(oneUnnamed.quantity)")
+    print("商品: \(oneUnnamed.name), 在庫数: \(oneUnnamed.quantity)")
 } else {
-    print("Unable to initialize one unnamed product")
+    print("名前のない商品は初期化できません")
 }
-// Unable to initialize one unnamed product
+// 名前のない商品は初期化できません
 ```
 
 ### <a id="overriding-a-failable-initializer">失敗可能イニシャライザのオーバーライド\(Overriding a Failable Initializer\)</a>

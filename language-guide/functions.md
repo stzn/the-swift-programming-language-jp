@@ -1,6 +1,6 @@
 # 関数\(Functions\)
 
-最終更新日: 2021/5/23  
+最終更新日: 2022/8/13  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Functions.html
 
 _関数_は、特定のタスクを実行する独立したコードの塊です。何をするものなのかを特定するために名前を与え、必要なときにタスクを実行するためにこの関数が「呼び出す」ときに名前は使われます。
@@ -19,7 +19,7 @@ Swift の統一された関数構文は、シンプルな C 言語スタイル�
 
 ```swift
 func greet(person: String) -> String {
-    let greeting = "Hello, " + person + "!"
+    let greeting = "こんにちは、 " + person + "!"
     return greeting
 }
 ```
@@ -30,9 +30,9 @@ func greet(person: String) -> String {
 
 ```swift
 print(greet(person: "Anna"))
-// Hello, Anna!
+// こんにちは、 Anna!
 print(greet(person: "Brian"))
-// Hello, Brian!
+// こんにちは、 Brian!
 ```
 
 `greet(person:)` 関数を呼び出すには、`greet(person: "Anna")` のように、`person` 引数ラベルの後に `String` 型の値を渡します。この関数は `String` 型の値を返すため、上記のように、`greet(person:)` を `print(_:separator:terminator:)` 関数の呼び出しでラップして、その文字列を出力して戻り値を確認できます。
@@ -46,10 +46,10 @@ print(greet(person: "Brian"))
 
 ```swift
 func greetAgain(person: String) -> String {
-    return "Hello again, " + person + "!"
+    return "もう一度こんにちは、 " + person + "!"
 }
 print(greetAgain(person: "Anna"))
-// Hello again, Anna!
+// もう一度こんにちは、 Anna!
 ```
 
 ## 関数のパラメータと戻り値\(Function Parameters and Return Values\)
@@ -65,7 +65,7 @@ func sayHelloWorld() -> String {
     return "hello, world"
 }
 print(sayHelloWorld())
-// hello, world
+// こんにちは、 world
 ```
 
 関数は、パラメータを受け取りませんが、関数名の後に括弧が必要です。関数が呼び出されると、関数名の後に空の括弧のペア\(`()`\)も書きます。
@@ -85,7 +85,7 @@ func greet(person: String, alreadyGreeted: Bool) -> String {
     }
 }
 print(greet(person: "Tim", alreadyGreeted: true))
-// Hello again, Tim!
+// もう一度こんにちは、 Tim!
 ```
 
 `person` というラベルの付いた `String` 型の値と、括弧\(`()`\) 内にカンマ\(`,`\)で区切られた `alreadyGreeted` というラベルの付いた `Bool` 型の値の両方を渡して `great(person:alreadyGreeted:)` 関数を呼び出しています。この関数は、 前のセクションで示した `greet(person:)` 関数とは異なることに注意してください。どちらも `greet` という関数名ですが、`greet(person:alreadyGreeted:)` は 2 つの引数を取り、`greet(person:)` 関数は 1 つしか取りません。
@@ -96,10 +96,10 @@ print(greet(person: "Tim", alreadyGreeted: true))
 
 ```swift
 func greet(person: String) {
-    print("Hello, \(person)!")
+    print("こんにちは、 \(person)!")
 }
 greet(person: "Dave")
-// Hello, Dave!
+// こんにちは、 Dave!
 ```
 
 値を返す必要がないため、関数の定義には戻り矢印\(`->`\)や戻り値の型は含まれていません。
@@ -118,9 +118,9 @@ func printWithoutCounting(string: String) {
     let _ = printAndCount(string: string)
 }
 printAndCount(string: "hello, world")
-// hello, world" and returns a value of 12
+// "hello, world" を出力し、 12 の値が返されます
 printWithoutCounting(string: "hello, world")
-// hello, world" but doesn't return a value
+// "hello, world" を出力しますが、値は返されません
 ```
 
 最初の関数 `printAndCount(string:)` は文字列を出力し、その文字数を `Int` として返します。2 番目の関数 `printWithoutCounting(string:)` は、最初の関数を呼び出しますが、その戻り値を無視します。2 番目の関数が呼び出されても、メッセージは最初の関数によって出力されますが、戻り値は使われていません。
@@ -157,8 +157,8 @@ func minMax(array: [Int]) -> (min: Int, max: Int) {
 
 ```swift
 let bounds = minMax(array: [8, -6, 2, 109, 3, 71])
-print("min is \(bounds.min) and max is \(bounds.max)")
-// min is -6 and max is 109
+print("最小値は \(bounds.min) で最大値は \(bounds.max)")
+// 最小値は -6 で最大値は 109
 ```
 
 タプルの各値は、関数の戻り値の型で名前がすでに指定されているため、関数からタプルが返されるときに名前を付ける必要がないことに注目してください。
@@ -194,9 +194,9 @@ func minMax(array: [Int]) -> (min: Int, max: Int)? {
 
 ```swift
 if let bounds = minMax(array: [8, -6, 2, 109, 3, 71]) {
-    print("min is \(bounds.min) and max is \(bounds.max)")
+    print("最小値は \(bounds.min) で最大値は \(bounds.max)")
 }
-// min is -6 and max is 109
+// 最小値は -6 で最大値は 109
 ```
 
 ### <a id="functions-with-an-implicit-return">暗黙的な戻り値がある関数\(Functions With an Implicit Return\)</a>
@@ -342,8 +342,8 @@ func swapTwoInts(_ a: inout Int, _ b: inout Int) {
 var someInt = 3
 var anotherInt = 107
 swapTwoInts(&someInt, &anotherInt)
-print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
-// someInt is now 107, and anotherInt is now 3
+print("someInt は現在 \(someInt) で、anotherInt は現在 \(anotherInt)")
+// someInt は現在 107 で、anotherInt は現在 3
 ```
 
 上記の例は、`someInt` と `anotherInt` の元の値が、関数の外部で定義されていたとしても、`swapTwoInts(_:_:)` 関数によって変更されることを示しています。
@@ -400,8 +400,8 @@ var mathFunction: (Int, Int) -> Int = addTwoInts
 
 ```swift
 mathFunction = multiplyTwoInts
-print("Result: \(mathFunction(2, 3))")
-// Result: 6
+print("結果: \(mathFunction(2, 3))")
+// 結果: 6
 ```
 
 他の型と同様に、定数または変数に関数を代入するときに、関数型を推論することができます。
@@ -419,10 +419,10 @@ let anotherMathFunction = addTwoInts
 
 ```swift
 func printMathResult(_ mathFunction: (Int, Int) -> Int, _ a: Int, _ b: Int) {
-    print("Result: \(mathFunction(a, b))")
+    print("結果: \(mathFunction(a, b))")
 }
 printMathResult(addTwoInts, 3, 5)
-// Result: 8
+// 結果: 8
 ```
 
 この例では、3 つのパラメータを持つ `printMathResult(_:_:_:)` という関数を定義します。最初のパラメータは `mathFunction` と呼ばれ、`(Int, Int) -> Int` 型です。この最初のパラメータとして、その型の任意の関数を渡すことができます。2 番目と 3 番目のパラメータは `a` と `b` と呼ばれ、どちらも `Int` 型です。これらは、提供されている数学関数の 2 つの入力値として使用されています。
@@ -459,17 +459,17 @@ let moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
 `moveNearerToZero` が適切な関数を参照しているので、ゼロまでカウントできます:
 
 ```swift
-print("Counting to zero:")
+print("0 までカウントします:")
 // 0 までカウントします:
 while currentValue != 0 {
     print("\(currentValue)... ")
     currentValue = moveNearerToZero(currentValue)
 }
-print("zero!")
+print("0!")
 // 3...
 // 2...
 // 1...
-// zero!
+// 0!
 ```
 
 ## <a id="nested-functions">ネスト関数\(Nested Functions\)</a>
@@ -493,11 +493,11 @@ while currentValue != 0 {
     print("\(currentValue)... ")
     currentValue = moveNearerToZero(currentValue)
 }
-print("zero!")
+print("0!")
 // -4...
 // -3...
 // -2...
 // -1...
-// zero!
+// 0!
 ```
 

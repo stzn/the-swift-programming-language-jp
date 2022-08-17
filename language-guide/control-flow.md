@@ -1,6 +1,6 @@
 # 制御フロー\(Control Flow\)
 
-最終更新日: 2021/6/27  
+最終更新日: 2022/8/13  
 原文: https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html
 
 Swift は、様々な制御フロー文を提供しています。1 つのタスクを複数回行う `while` ループ、ある条件を基に異なる分岐のコードを実行する `if`、`guard`、`switch` 文、コードの他の地点へ実行フローを移動させる `break` や `continue` のような文があります。
@@ -18,12 +18,12 @@ Swift の `switch` 文は、C のような他の言語と比べてもかなり�
 ```swift
 let names = ["Anna", "Alex", "Brian", "Jack"]
 for name in names {
-    print("Hello, \(name)!")
+    print("こんにちは、 \(name)!")
 }
-// Hello, Anna!
-// Hello, Alex!
-// Hello, Brian!
-// Hello, Jack!
+// こんにちは、 Anna!
+// こんにちは、 Alex!
+// こんにちは、 Brian!
+// こんにちは、 Jack!
 ```
 
 辞書のキーバリューペアにアクセスするためにもループ処理を使用することができます。辞書を繰り返す際に、辞書内の個々のアイテムは `(key, value)` のタプルとして返され、`for-in` ループ内で使用するために、`(key, value)` のタプルの個々のメンバは明示的に命名した定数に展開できます。下記のコードは、辞書のキーは `animalName` 定数に、バリューは `legCount` 定数に展開されています。
@@ -31,11 +31,11 @@ for name in names {
 ```swift
 let numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
 for (animalName, legCount) in numberOfLegs {
-    print("\(animalName)s have \(legCount) legs")
+    print("\(animalName) には \(legCount) 本の足があります")
 }
-// cats have 4 legs
-// ants have 6 legs
-// spiders have 8 legs
+// cat には 4 本の足があります
+// ant には 6 本の足があります
+// spider には 8 本の足があります
 ```
 
 `Dictionary` の定数は元々順序がなく、ループ処理をするときに、取得されるキーバリューの順序も保証されていません。配列や辞書に関しては、[Collection Types\(コレクション型\)](collection-types.md)を参照ください。
@@ -44,13 +44,13 @@ for (animalName, legCount) in numberOfLegs {
 
 ```swift
 for index in 1...5 {
-    print("\(index) times 5 is \(index * 5)")
+    print("\(index) × 5 は \(index * 5)")
 }
-// 1 times 5 is 5
-// 2 times 5 is 10
-// 3 times 5 is 15
-// 4 times 5 is 20
-// 5 times 5 is 25
+// 1 × 5 は 5
+// 2 × 5 は 10
+// 3 × 5 は 15
+// 4 × 5 は 20
+// 5 × 5 は 25
 ```
 
 繰り返されているシーケンスは、閉範囲演算子\(`...`\)を使用して最初と最後も含んだ `1` から `5` の数字の範囲です。`index` の値は、まず範囲の最初の値\(`1`\)が設定され、ループ内の文が実行されます。この例では、ループは 1 つの文\(`index` とそれに対応する 5 の倍数の値を出力する文\)のみを含んでいます。文が完了すると、`index` は範囲の次の値\(`2`\)に更新され、`print(_:separator:terminator:)` が再び呼ばれます。このプロセスは範囲の終わり\(`5`\)に達するまで続きます。
@@ -159,7 +159,7 @@ while square < finalSquare {
         square += board[square]
     }
 }
-print("Game over!")
+print("ゲームオーバー!")
 ```
 
 この例では、サイコロを振るアクションにとてもシンプルな方法を使用しています。ランダムな数字を生成するのではなく、`0` で初期化された `diceRoll` から開始します。`while` ループが繰り返される度に、`diceRoll` は 1 つずつ加算され、値が大きすぎないかをチェックしています。`7` になると、大きすぎるため `1` にリセットされます。つまり、`diceRoll` は `1, 2, 3, 4, 5, 6, 1, 2` のように繰り返されます。
@@ -209,7 +209,7 @@ repeat {
     // 出た目分移動
     square += diceRoll
 } while square < finalSquare
-print("Game over!")
+print("ゲームオーバー!")
 ```
 
 蛇かはしごかのチェック後に、サイコロが振られ、プレイヤーは `diceRoll` 分枠を移動します。そして現在のループを終了します。
@@ -229,9 +229,9 @@ Swift は、コードに条件分岐を追加する 2 つの方法、`if` 文と
 ```swift
 var temperatureInFahrenheit = 30
 if temperatureInFahrenheit <= 32 {
-    print("It's very cold. Consider wearing a scarf.")
+    print("とても寒いですね。マフラーを巻いたほうがいいでしょう。")
 }
-// It's very cold. Consider wearing a scarf.
+// とても寒いですね。マフラーを巻いたほうがいいでしょう。
 ```
 
 上記の例は、気温が華氏 32 度以下かどうかをチェックしています。もしそうならばメッセージが出力されます。そうでないならばメッセージは出力されません。コードの実行は `if` 文の右中括弧\(`}`\)の後のコードが継続して実行します。
@@ -241,11 +241,11 @@ if temperatureInFahrenheit <= 32 {
 ```swift
 temperatureInFahrenheit = 40
 if temperatureInFahrenheit <= 32 {
-    print("It's very cold. Consider wearing a scarf.")
+    print("とても寒いですね。マフラーを巻いたほうがいいでしょう。")
 } else {
-    print("It's not that cold. Wear a t-shirt.")
+    print("そんなに寒くありません。Tシャツを着ましょう。")
 }
-// It's not that cold. Wear a t-shirt.
+// そんなに寒くありません。Tシャツを着ましょう。
 ```
 
 この 2 つの分岐の内の 1 つが必ず実行されます。気温は華氏 40 度に増加しているので、スカーフを巻くアドバイスをする程寒くはなく、`else` の分岐が実行されます。
@@ -255,13 +255,13 @@ if temperatureInFahrenheit <= 32 {
 ```swift
 temperatureInFahrenheit = 90
 if temperatureInFahrenheit <= 32 {
-    print("It's very cold. Consider wearing a scarf.")
+    print("とても寒いですね。マフラーを巻いたほうがいいでしょう。")
 } else if temperatureInFahrenheit >= 86 {
-    print("It's really warm. Don't forget to wear sunscreen.")
+    print("とても暖かいですね。日焼け止めを忘れずにしましょう。")
 } else {
-    print("It's not that cold. Wear a t-shirt.")
+    print("そんなに寒くありません。Tシャツを着ましょう。")
 }
-// It's really warm. Don't forget to wear sunscreen.
+// とても暖かいですね。日焼け止めを忘れずにしましょう。
 ```
 
 ここで、特定の暖かい温度に応答するために、追加の `if` 文が提供されています。最後の `else` 句で、暑すぎず寒すぎない温度全ての応答を出力します。
@@ -271,9 +271,9 @@ if temperatureInFahrenheit <= 32 {
 ```swift
 temperatureInFahrenheit = 72
 if temperatureInFahrenheit <= 32 {
-    print("It's very cold. Consider wearing a scarf.")
+    print("とても寒いですね。マフラーを巻いたほうがいいでしょう。")
 } else if temperatureInFahrenheit >= 86 {
-    print("It's really warm. Don't forget to wear sunscreen.")
+    print("とても暖かいですね。日焼け止めを忘れずにしましょう。")
 }
 ```
 
@@ -299,13 +299,13 @@ if temperatureInFahrenheit <= 32 {
 let someCharacter: Character = "z"
 switch someCharacter {
 case "a":
-    print("The first letter of the alphabet")
+    print("アルファベットの最初の文字")
 case "z":
-    print("The last letter of the alphabet")
+    print("アルファベットの最後の文字")
 default:
-    print("Some other character")
+    print("その他の文字")
 }
-// The last letter of the alphabet
+// アルファベットの最後の文字
 ```
 
 `switch` 文の最初のケースは、英語アルファベットの最初の文字 `a` に合致し、2 番目のケースは最後の文字 `z` に合致します。全ての可能性がある文字をカバーしなければならないため、`a` と `z` 以外の全ての文字に対して `default` ケースを使用しています。こうすることで全てのケースを網羅できています。
@@ -324,9 +324,9 @@ let anotherCharacter: Character = "a"
 switch anotherCharacter {
 case "a": // 空の 本文 は不正
 case "A":
-    print("The letter A")
+    print("文字 A")
 default:
-    print("Not the letter A")
+    print("A 以外の文字")
 }
 // コンパイルエラーが発生します
 ```
@@ -339,11 +339,11 @@ C 言語の `switch` 文と異なり、`"a"` と `"A"` の両方に合致する�
 let anotherCharacter: Character = "a"
 switch anotherCharacter {
 case "a", "A":
-    print("The letter A")
+    print("文字 A")
 default:
-    print("Not the letter A")
+    print("A 以外の文字")
 }
-// The letter A
+// 文字 A
 ```
 
 可読性のために、複合ケースを複数行に分けて書くこともできます。複合ケースについての詳細は[Compound Cases\(複合ケース\)](control-flow.md#compound-cases)を参照ください。
@@ -357,27 +357,27 @@ default:
 
 ```swift
 let approximateCount = 62
-let countedThings = "moons orbiting Saturn"
+let countedThings = "土星を回る月"
 let naturalCount: String
 switch approximateCount {
 case 0:
-    naturalCount = "no"
+    naturalCount = "まったくない"
 case 1..<5:
-    naturalCount = "a few"
+    naturalCount = "少しある"
 case 5..<12:
-    naturalCount = "several"
+    naturalCount = "多少ある"
 case 12..<100:
-    naturalCount = "dozens of"
+    naturalCount = "数多くある"
 case 100..<1000:
-    naturalCount = "hundreds of"
+    naturalCount = "たくさんある"
 default:
-    naturalCount = "many"
+    naturalCount = "膨大にある"
 }
-print("There are \(naturalCount) \(countedThings).")
-// There are dozens of moons orbiting Saturn.
+print("\(naturalCount) は \(countedThings)。")
+// 土星を回る月 は 数多くある。
 ```
 
-上記の例では、`approximateCount` が `switch` 文で評価されています。それぞれのケースでは、1 つの数値または範囲で比較しています。`approximateCount` の値は、12 から 100 の間にあるので、`naturalCount` は `"dozens of"` に値が代入されます。実行後は `switch` 文から抜け出します。
+上記の例では、`approximateCount` が `switch` 文で評価されています。それぞれのケースでは、1 つの数値または範囲で比較しています。`approximateCount` の値は、12 から 100 の間にあるので、`naturalCount` には `"数多くある"` という値が代入されます。実行後は `switch` 文から抜け出します。
 
 #### タプル\(Tuples\)
 
@@ -389,17 +389,17 @@ print("There are \(naturalCount) \(countedThings).")
 let somePoint = (1, 1)
 switch somePoint {
 case (0, 0):
-    print("\(somePoint) is at the origin")
+    print("\(somePoint) は原点にあります")
 case (_, 0):
-    print("\(somePoint) is on the x-axis")
+    print("\(somePoint) は x 軸上にあります")
 case (0, _):
-    print("\(somePoint) is on the y-axis")
+    print("\(somePoint) は y 軸上にあります")
 case (-2...2, -2...2):
-    print("\(somePoint) is inside the box")
+    print("\(somePoint) はボックスの中にあります")
 default:
-    print("\(somePoint) is outside of the box")
+    print("\(somePoint) はボックスの外にあります")
 }
-// (1, 1) is inside the box
+// (1, 1) はボックスの中にあります
 ```
 
 ![switch&#x6587; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../assets/coordinategraphsimple_2x.png)
@@ -418,13 +418,13 @@ C 言語と異なり、Swift では複数のケースで同じ値を検証する
 let anotherPoint = (2, 0)
 switch anotherPoint {
 case (let x, 0):
-    print("on the x-axis with an x value of \(x)")
+    print("x 軸上の x の値が \(x) の点")
 case (0, let y):
-    print("on the y-axis with a y value of \(y)")
+    print("y 軸上の y の値が \(y) の点")
 case let (x, y):
-    print("somewhere else at (\(x), \(y))")
+    print("その他の (\(x), \(y)) の点")
 }
-// on the x-axis with an x value of 2
+// x 軸上の x の値が 2 の点
 ```
 
 ![switch&#x6587; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../assets/coordinategraphmedium_2x.png)
@@ -447,13 +447,13 @@ case let (x, y):
 let yetAnotherPoint = (1, -1)
 switch yetAnotherPoint {
 case let (x, y) where x == y:
-    print("(\(x), \(y)) is on the line x == y")
+    print("(\(x), \(y)) は x == y の線上にあります")
 case let (x, y) where x == -y:
-    print("(\(x), \(y)) is on the line x == -y")
+    print("(\(x), \(y)) は x == -y の線上にあります")
 case let (x, y):
-    print("(\(x), \(y)) is just some arbitrary point")
+    print("(\(x), \(y)) は単なる任意の点です")
 }
-// (1, -1) is on the line x == -y
+// (1, -1) は x == -y 線上にあります
 ```
 
 ![switch&#x6587; where&#x53E5; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../assets/coordinategraphcomplex_2x.png)
@@ -472,14 +472,14 @@ case let (x, y):
 let someCharacter: Character = "e"
 switch someCharacter {
 case "a", "e", "i", "o", "u":
-    print("\(someCharacter) is a vowel")
+    print("\(someCharacter) は母音です")
 case "b", "c", "d", "f", "g", "h", "j", "k", "l", "m",
      "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z":
-    print("\(someCharacter) is a consonant")
+    print("\(someCharacter) は子音です")
 default:
-    print("\(someCharacter) isn't a vowel or a consonant")
+    print("\(someCharacter) は母音でも子音でもありません")
 }
-// e is a vowel
+// e は母音です
 ```
 
 最初のケースは英語の小文字の母音全てに合致します。同様に、2 番目のケースは英語の子音全てに合致します。`default` は他の全ての文字に合致します。
@@ -490,11 +490,11 @@ default:
 let stillAnotherPoint = (9, 0)
 switch stillAnotherPoint {
 case (let distance, 0), (0, let distance):
-    print("On an axis, \(distance) from the origin")
+    print("x 軸上または y 軸上にあり、原点から \(distance) 離れている")
 default:
-    print("Not on an axis")
+    print("x 軸上または y 軸上にはない")
 }
-// On an axis, 9 from the origin
+// x 軸上または y 軸上にあり、原点から 9 離れている
 ```
 
 上記のケースでは 2 つのパターンを含んでいます: `(let distance, 0)` は x 軸上にある点に合致し、`(0, let distance)` は y 軸上にある点に合致します。どちらのパターンでも、`distance` へのバインディングが含まれており、どちらも数値です。つまり、ケース内では常に `distance` にアクセスできます。
@@ -566,11 +566,11 @@ default:
     break
 }
 if let integerValue = possibleIntegerValue {
-    print("The integer value of \(numberSymbol) is \(integerValue).")
+    print("\(numberSymbol) の整数値は \(integerValue) です。")
 } else {
-    print("An integer value couldn't be found for \(numberSymbol).")
+    print("\(numberSymbol) の整数値は見つかりませんでした。")
 }
-// The integer value of 三 is 3.
+// 三 の整数値は 3 です。
 ```
 
 この例では、`numberSymbol` が `1`〜`4` のラテン語、アラビア語、中国語、タイ語に合致するかどうかをチェックしています。合致した場合、各ケースは、`Int?` の `possibleIntegerValue` 変数に適切な数字を設定しています。
@@ -587,16 +587,16 @@ Swift の `switch` 文は、各ケースの底から次のケースに通り抜�
 
 ```swift
 let integerToDescribe = 5
-var description = "The number \(integerToDescribe) is"
+var description = "数字 \(integerToDescribe) は"
 switch integerToDescribe {
 case 2, 3, 5, 7, 11, 13, 17, 19:
-    description += " a prime number, and also"
+    description += " 素数です。そして、"
     fallthrough
 default:
-    description += " an integer."
+    description += "整数です。"
 }
 print(description)
-// The number 5 is a prime number, and also an integer.
+// 数字 5 は 素数です。そして、整数です。
 ```
 
 この例では、`description` という新しい `String` 変数を宣言して、初期値を設定しています。この関数は `switch` 文で `integerToDescribe` を検証しています。`integerToDescribe` がリストの素数の 1 つの場合、この関数は `description` の末尾に、数字が素数だと説明したテキストを追加します。`default` ケースにも「通り抜ける」ように、`fallthrough` キーワードを使用しています。`default` ケースでは、説明の末尾に追加のテキストを追加して `switch` 文は完了します。数字の説明は、`print(_:separator:terminator:)` 関数を使用して出力されています。この例では、素数として `5` が適切に特定されています。
@@ -656,7 +656,7 @@ gameLoop: while square != finalSquare {
         square += board[square]
     }
 }
-print("Game over!")
+print("ゲームオーバー!")
 ```
 
 各ループの最初でサイコロを振ります。即座にプレイヤーが移動する前に、ループの移動結果を検証して、その移動ができるかどうかを判定しています:
@@ -679,22 +679,22 @@ func greet(person: [String: String]) {
         return
     }
 
-    print("Hello \(name)!")
+    print("こんにちは \(name)!")
 
     guard let location = person["location"] else {
-        print("I hope the weather is nice near you.")
+        print("そちらのお天気は良いといいですね。")
         return
     }
 
-    print("I hope the weather is nice in \(location).")
+    print("\(location) のお天気は良いといいですね。")
 }
 
 greet(person: ["name": "John"])
-// Hello John!
-// I hope the weather is nice near you.
+// こんにちは John!
+// そちらのお天気は良いといいですね。
 greet(person: ["name": "Jane", "location": "Cupertino"])
-// Hello Jane!
-// I hope the weather is nice in Cupertino.
+// こんにちは Jane!
+// Cupertino のお天気は良いといいですね。
 ```
 
 `guard` 文の条件を満たした場合、`guard` の閉じ括弧\(`}`\)以降のコードを続けて実行します。条件の一部としてオプショナルバインディングに使われている変数や定数は、`guard` の後のコードで利用できるようになります。

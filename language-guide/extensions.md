@@ -1,6 +1,6 @@
 # 拡張\(Extensions\)
 
-最終更新日: 2021/6/29  
+最終更新日: 2022/8/13  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Extensions.html
 
 _拡張機能_は、既存のクラス、構造体、列挙型、またはプロトコル型に新しい機能を追加します。これは、\(_遡及モデリング_と呼ばれる\)元のソースコードにアクセスできない型を拡張することもできます。拡張機能は、Objective-C のカテゴリに似ています。\(ただし、Objective-C のカテゴリとは異なり、Swift の拡張機能には名前がありません\)
@@ -57,11 +57,11 @@ extension Double {
     var ft: Double { return self / 3.28084 }
 }
 let oneInch = 25.4.mm
-print("One inch is \(oneInch) meters")
-// One inch is 0.0254 meters
+print("1 インチは \(oneInch) メートル")
+// 1 インチは 0.0254 メートル
 let threeFeet = 3.ft
-print("Three feet is \(threeFeet) meters")
-// Three feet is 0.914399970739201 meters
+print("3 フィートは \(threeFeet) メートル")
+// 3 フィートは 0.914399970739201 メートル
 ```
 
 これらの計算プロパティは、`Double` の値を特定の長さの単位と見なしています。計算プロパティとして実装されていますが、ドット構文\(`.`\)を使用して浮動小数点リテラルの後に追加して使用できます。
@@ -74,8 +74,8 @@ print("Three feet is \(threeFeet) meters")
 
 ```swift
 let aMarathon = 42.km + 195.m
-print("A marathon is \(aMarathon) meters long")
-// A marathon is 42195.0 meters long
+print("マラソンは \(aMarathon) メートルです")
+// マラソンは 42195.0 メートルです
 ```
 
 > NOTE  
@@ -157,11 +157,11 @@ extension Int {
 
 ```swift
 3.repetitions {
-    print("Hello!")
+    print("こんにちは!")
 }
-// Hello!
-// Hello!
-// Hello!
+// こんにちは!
+// こんにちは!
+// こんにちは!
 ```
 
 ### mutatingインスタンスメソッド\(Mutating Instance Methods\)
