@@ -377,7 +377,7 @@ print("\(naturalCount) は \(countedThings)。")
 // 土星を回る月 は 数多くある。
 ```
 
-上記の例では、`approximateCount` が `switch` 文で評価されています。それぞれのケースでは、1 つの数値または範囲で比較しています。`approximateCount` の値は、12 から 100 の間にあるので、`naturalCount` は `"数多くある"` に値が代入されます。実行後は `switch` 文から抜け出します。
+上記の例では、`approximateCount` が `switch` 文で評価されています。それぞれのケースでは、1 つの数値または範囲で比較しています。`approximateCount` の値は、12 から 100 の間にあるので、`naturalCount` には `"数多くある"` という値が代入されます。実行後は `switch` 文から抜け出します。
 
 #### タプル\(Tuples\)
 
