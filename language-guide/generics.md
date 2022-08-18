@@ -378,7 +378,7 @@ struct IntStack: Container {
 
 さらに、`IntStack` は、`Container` の実装の中で使用する `Item` に `Int` 型を指定しています。`typealias Item = Int` の定義により、抽象的な `Item` が、具象的な `Int` に変わります。
 
-Swift の型推論のおかげで、`IntStack` の定義の中で `Item` が `Int` であること宣言する必要は実際はありません。`IntStack` は `Container` プロトコルの全ての要件に準拠しているため、`append(_:)` メソッドの `item` パラメータの型とサブスクリプトの戻り値の型から、使用する適切な `Item` を推論できます。実際、上記のコードから `typealias Item = Int` 行を削除しても、`Item` に使用する型が明確になっているため、全てが引き続き機能します。
+Swift の型推論のおかげで、`IntStack` の定義の中で `Item` が `Int` であることを宣言する必要は実際はありません。`IntStack` は `Container` プロトコルの全ての要件に準拠しているため、`append(_:)` メソッドの `item` パラメータの型とサブスクリプトの戻り値の型から、使用する適切な `Item` を推論できます。実際、上記のコードから `typealias Item = Int` 行を削除しても、`Item` に使用する型が明確になっているため、全てが引き続き機能します。
 
 ジェネリックな `Stack` 型を `Container` プロトコルに準拠させることもできます:
 
