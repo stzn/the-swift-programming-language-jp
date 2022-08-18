@@ -1,6 +1,6 @@
 # ジェネリクス\(Generics\)
 
-最終更新日: 2022/8/16  
+最終更新日: 2022/8/17  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Generics.html
 
 ジェネリックなコードを使用すると、定義した要件に従って、任意の型で機能する柔軟で再利用可能な関数と型を作成できます。重複を避け、その意図を明確で抽象的な方法で表現するコードを書くことができます。
@@ -27,8 +27,8 @@ func swapTwoInts(_ a: inout Int, _ b: inout Int) {
 var someInt = 3
 var anotherInt = 107
 swapTwoInts(&someInt, &anotherInt)
-print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
-// someInt is now 107, and anotherInt is now 3
+print("someInt は現在 \(someInt) で、 anotherInt は現在 \(anotherInt)")
+// someInt は現在 107 で、 anotherInt は現在 3
 ```
 
 `swapTwoInts(_:_:)` 関数は便利ですが、`Int` 値でのみ使用できます。2 つの `String` 値または 2 つの `Double` 値を交換する場合は、下記に示す `swapTwoStrings(_:_:)` および `swapTwoDoubles(_:_:)` 関数などの関数をさらに作成する必要があります:
@@ -220,9 +220,9 @@ extension Stack {
 
 ```swift
 if let topItem = stackOfStrings.topItem {
-    print("The top item on the stack is \(topItem).")
+    print("スタックの一番上のアイテムは \(topItem) 。")
 }
-// The top item on the stack is tres.
+// スタックの一番上のアイテムは tres 。
 ```
 
 ジェネリック型の extension には、下記の[Extensions with a Generic Where Clause\(ジェネリック where 句を使った拡張\)](generics.md#extensions-with-a-generic-where-clause)で説明されているように、新しい機能を取得するために拡張した型のインスタンスが満たさなければならない要件を含めることもできます。
@@ -269,9 +269,9 @@ func findIndex(ofString valueToFind: String, in array: [String]) -> Int? {
 ```swift
 let strings = ["cat", "dog", "llama", "parakeet", "terrapin"]
 if let foundIndex = findIndex(ofString: "llama", in: strings) {
-    print("The index of llama is \(foundIndex)")
+    print("llama のインデックスは \(foundIndex)")
 }
-// The index of llama is 2
+// llama のインデックスは 2
 ```
 
 ただし、配列内の値のインデックスを見つけるという動作は、文字列だけで有用というわけではありません。文字列を何らかの `T` 型の値に置き換えることで、ジェネリック関数と同じ機能を作成できます。
@@ -312,7 +312,7 @@ func findIndex<T: Equatable>(of valueToFind: T, in array:[T]) -> Int? {
 
 ```swift
 let doubleIndex = findIndex(of: 9.3, in: [3.14159, 0.1, 0.25])
-// doubleIndex は、9.3 が配列にないため、オプショナルの Int です。
+// doubleIndex は、9.3 が配列にないため、オプショナルの Int 型で値はありません。
 let stringIndex = findIndex(of: "Andrea", in: ["Mike", "Malcolm", "Andrea"])
 // stringIndex は、2 を含むオプショナルの Int です
 ```
@@ -554,11 +554,11 @@ stackOfStrings.push("tres")
 var arrayOfStrings = ["uno", "dos", "tres"]
 
 if allItemsMatch(stackOfStrings, arrayOfStrings) {
-    print("All items match.")
+    print("全てアイテムが一致しました。")
 } else {
-    print("Not all items match.")
+    print("全てのアイテムが一致したわけではありません。")
 }
-// All items match.
+// 全てアイテムが一致しました。
 ```
 
 上記の例では、`String` 値を格納する `Stack` インスタンスを作成し、3 つの文字列をスタックにプッシュします。この例では、スタックと同じ 3 つの文字列を含む配列リテラルで初期化された `Array` インスタンスも作成します。スタックと配列は型が異なりますが、どちらも `Container` プロトコルに準拠しており、両方に同じ型の値が含まれています。したがって、これら 2 つのコンテナを引数として `allItemsMatch(_:_:)` 関数を呼び出すことができます。上記の例では、`allItemsMatch(_:_:)` 関数は、2 つのアイテムの全てが合致していることを出力します。
@@ -584,11 +584,11 @@ extension Stack where Element: Equatable {
 
 ```swift
 if stackOfStrings.isTop("tres") {
-    print("Top element is tres.")
+    print("最上位の要素は tres です。")
 } else {
-    print("Top element is something else.")
+    print("最上位の要素はその他のなにかです。")
 }
-// Top element is tres.
+// 最上位の要素は tres です。
 ```
 
 要素が `Equatable` でないスタックで `isTop(_:)` メソッドを呼び出そうとすると、コンパイルエラーが発生します。
@@ -615,11 +615,11 @@ extension Container where Item: Equatable {
 
 ```swift
 if [9, 9, 9].startsWith(42) {
-    print("Starts with 42.")
+    print("42 から始まります。")
 } else {
-    print("Starts with something else.")
+    print("その他の数字から始まります。")
 }
-// Starts with something else.
+// その他の数字から始まります。
 ```
 
 上記の例のジェネリック `where` 句では、`Item` がプロトコルに準拠する必要がありますが、`Item` の型を特定する必要があるジェネリック `where` 句を記述することもできます。例えば:

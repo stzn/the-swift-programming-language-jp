@@ -1,6 +1,6 @@
 # ネスト型\(Nested Types\)
 
-最終更新日: 2021/5/31  
+最終更新日: 2022/8/7  
 原文: https://docs.swift.org/swift-book/LanguageGuide/NestedTypes.html
 
 列挙型は、特定のクラスまたは構造体の機能をサポートするために作成されることがよくあります。同様に、より複雑な型の中で使用するためにユーティリティクラスや構造体を定義すると便利な場合があります。これを実現するために、Swift ではネスト型を定義でき、列挙型、クラス、および構造体を、それらがサポートする型の定義内でネストして定義できます。
@@ -43,10 +43,10 @@ struct BlackjackCard {
     // BlackjackCard のプロパティとメソッド
     let rank: Rank, suit: Suit
     var description: String {
-        var output = "suit is \(suit.rawValue),"
-        output += " value is \(rank.values.first)"
+        var output = "柄は \(suit.rawValue),"
+        output += " 数字は \(rank.values.first)"
         if let second = rank.values.second {
-            output += " or \(second)"
+            output += " と \(second)"
         }
         return output
     }
@@ -71,7 +71,7 @@ struct BlackjackCard {
 ```swift
 let theAceOfSpades = BlackjackCard(rank: .ace, suit: .spades)
 print("theAceOfSpades: \(theAceOfSpades.description)")
-// theAceOfSpades: suit is ♠, value is 1 or 11
+// theAceOfSpades: 柄は ♠, 数字は 1 と 11
 ```
 
 `Rank` と `Suit` は `BlackjackCard` 内にネストされていますが、それらの型は推論できるため、このインスタンスの初期化では、ケース名\(`.ace` および `.spades`\) のみで列挙ケースを参照できます。上記の例では、`description` プロパティは、スペードのエースが `1` または `11` だと正しく示しています。

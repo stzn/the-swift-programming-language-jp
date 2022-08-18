@@ -1,6 +1,6 @@
 # 継承\(Inheritance\)
 
-最終更新日: 2021/6/28  
+最終更新日: 2022/8/13  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Inheritance.html
 
 クラスは、メソッド、プロパティ、およびその他の特性を別のクラスから継承できます。あるクラスが別のクラスを継承する場合、継承するクラスは_サブクラス_と呼ばれ、継承されるクラスは_スーパークラス_と呼ばれます。継承は、Swift においてクラスと他の型を区別する重要な挙動です。
@@ -24,7 +24,7 @@ Swift のクラスは、スーパークラスに属するメソッド、プロ�
 class Vehicle {
     var currentSpeed = 0.0
     var description: String {
-        return "traveling at \(currentSpeed) miles per hour"
+        return "走行時速 \(currentSpeed) マイル"
     }
     func makeNoise() {
         // 何もしない - 乗り物は必ずしも騒音を出しません
@@ -41,8 +41,8 @@ let someVehicle = Vehicle()
 新しい `Vehicle` インスタンスを作成したら、その `description` プロパティにアクセスして、乗り物の現在の速度の人間が読める形式の説明を出力します。
 
 ```swift
-print("Vehicle: \(someVehicle.description)")
-// Vehicle: traveling at 0.0 miles per hour
+print("乗り物: \(someVehicle.description)")
+// 乗り物: 走行時速 0.0 マイル
 ```
 
 `Vehicle` クラスは、任意の乗り物に共通の特性を定義しますが、そのまま使用されることはあまりありません。より有用にするには、より具体的な種類の乗り物を記述する必要があります。
@@ -82,8 +82,8 @@ bicycle.hasBasket = true
 
 ```swift
 bicycle.currentSpeed = 15.0
-print("Bicycle: \(bicycle.description)")
-// Bicycle: traveling at 15.0 miles per hour
+print("自転車: \(bicycle.description)")
+// 自転車: 走行時速 15.0 マイル
 ```
 
 サブクラス自体をサブクラス化できます。次の例では、「タンデム」と呼ばれる 2 人乗り自転車のサブクラスを作成します。
@@ -103,8 +103,8 @@ let tandem = Tandem()
 tandem.hasBasket = true
 tandem.currentNumberOfPassengers = 2
 tandem.currentSpeed = 22.0
-print("Tandem: \(tandem.description)")
-// Tandem: traveling at 22.0 miles per hour
+print("タンデム: \(tandem.description)")
+// タンデム: 走行時速 22.0 マイル
 ```
 
 ## <a id="overriding">オーバーライド\(Overriding\)</a>
@@ -134,7 +134,7 @@ print("Tandem: \(tandem.description)")
 ```swift
 class Train: Vehicle {
     override func makeNoise() {
-        print("Choo Choo")
+        print("シュッシュ、ポッポ")
     }
 }
 ```
@@ -144,7 +144,7 @@ class Train: Vehicle {
 ```swift
 let train = Train()
 train.makeNoise()
-// Choo Choo
+// シュッシュ、ポッポ
 ```
 
 ### プロパティのオーバーライド\(Overriding Properties\)
@@ -166,7 +166,7 @@ train.makeNoise()
 class Car: Vehicle {
     var gear = 1
     override var description: String {
-        return super.description + " in gear \(gear)"
+        return super.description + "でギアは \(gear)"
     }
 }
 ```
@@ -179,8 +179,8 @@ class Car: Vehicle {
 let car = Car()
 car.currentSpeed = 25.0
 car.gear = 3
-print("Car: \(car.description)")
-// Car: traveling at 25.0 miles per hour in gear 3
+print("自動車: \(car.description)")
+// 自動車: 走行時速 25.0 マイルでギアは 3
 ```
 
 #### <a id="overriding-property-observers">プロパティオブザーバのオーバーライド\(Overriding Property Observers\)</a>
@@ -190,7 +190,7 @@ print("Car: \(car.description)")
 > NOTE  
 > 継承した定数の格納プロパティまたは継承した読み取り専用計算プロパティにプロパティオブザーバを追加することはできません。これらのプロパティの値は変更できないため、オーバーライドの一部として `willSet` または `didSet` の実装を提供することは適切ではありません。 同じプロパティに対して、set のオーバーライドとプロパティオブザーバのオーバーライドの、両方を提供することはできないことにも注意してください。プロパティの値の変更を監視する必要があり、そのプロパティのカスタムの set を既に提供している場合は、カスタムの set 内から値の変更が簡単に監視できます。
 
-次の例では、`Car` のサブクラスの `AutomaticCar` という新しいクラスを定義しています。`AutomaticCar` クラスは、現在の速度に基づいて使用する適切なギアを自動的に選択する自動ギアボックスを備えた車を表します:
+次の例では、`Car` のサブクラスの `AutomaticCar` という新しいクラスを定義しています。`AutomaticCar` クラスは、現在の速度に基づいて使用する適切なギアを自動的に選択するギアボックスを備えた車、オートマ車を表します:
 
 ```swift
 class AutomaticCar: Car {
@@ -207,8 +207,8 @@ class AutomaticCar: Car {
 ```swift
 let automatic = AutomaticCar()
 automatic.currentSpeed = 35.0
-print("AutomaticCar: \(automatic.description)")
-// AutomaticCar: traveling at 35.0 miles per hour in gear 4
+print("オートマ車: \(automatic.description)")
+// オートマ車: 走行時速 35.0 マイルでギアは 4
 ```
 
 ## <a id="preventing-overrides">オーバーライドを防ぐ\(Preventing Overrides\)</a>

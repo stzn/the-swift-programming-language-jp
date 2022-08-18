@@ -1,6 +1,6 @@
 # コレクション型\(Collection Types\)
 
-最終更新日: 2021/6/27  
+最終更新日: 2022/8/13  
 原文: https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html
 
 Swift は、配列、セット、辞書と呼ばれる 3 つの基本的な_コレクション型_を提供しています。配列は順序が決まったコレクションです。セットは値の重複と順序のないコレクションです。辞書はキーとバリューに関連性を持たせた順序のないコレクションです。
@@ -36,8 +36,8 @@ Swift の配列の型は全体で `Array<Element>` と書きます。`Element` �
 
 ```swift
 var someInts = [Int]()
-print("someInts is of type [Int] with \(someInts.count) items.")
-// someInts is of type [Int] with 0 items.
+print("someInts は \(someInts.count) 個の要素を持つ [Int] 型です。")
+// someInts は 0 個の要素を持つ [Int] 型です。
 ```
 
 `someInts` 変数の型は、イニシャライザから `[Int]` と推論されます。
@@ -107,19 +107,19 @@ var shoppingList = ["Eggs", "Milk"]
 配列のアイテムの数を調べるために、読み取り専用の `count` プロパティをチェックします。
 
 ```swift
-print("The shopping list contains \(shoppingList.count) items.")
-// The shopping list contains 2 items.
+print("ショッピングリストには \(shoppingList.count) 個のアイテムがあります。")
+// ショッピングリストには 2 個のアイテムがあります。
 ```
 
 `Bool` 型の `isEmpty` プロパティは、`count` プロパティが `0` かどうかをチェックする簡略記法です。
 
 ```swift
 if shoppingList.isEmpty {
-    print("The shopping list is empty.")
+    print("ショッピングリストは空です。")
 } else {
-    print("The shopping list isn't empty.")
+    print("ショッピングリストは空ではありません。")
 }
-// The shopping list isn't empty.
+// ショッピングリストは空ではありません。
 ```
 
 `append(_:)` メソッドを使用して、配列の末尾に新しいアイテムを追加することができます。
@@ -221,13 +221,13 @@ for item in shoppingList {
 
 ```swift
 for (index, value) in shoppingList.enumerated() {
-    print("Item \(index + 1): \(value)")
+    print("アイテム \(index + 1): \(value)")
 }
-// Item 1: Six eggs
-// Item 2: Milk
-// Item 3: Flour
-// Item 4: Baking Powder
-// Item 5: Bananas
+// アイテム 1: Six eggs
+// アイテム 2: Milk
+// アイテム 3: Flour
+// アイテム 4: Baking Powder
+// アイテム 5: Bananas
 ```
 
 `for-in` ループについては、[For-In Loops\(For-In ループ\)](../language-guide/control-flow.md#for-in-loops)を参照ください。
@@ -257,8 +257,8 @@ Swift の基本的な型\(`String`、`Int`、`Double`、`Bool` など\)は、デ
 
 ```swift
 var letters = Set<Character>()
-print("letters is of type Set<Character> with \(letters.count) items.")
-// letters is of type Set<Character> with 0 items.
+print("letters は \(letters.count) 個の要素を持つ Set<Character> 型です。")
+// letters は 0 個の要素を持つ Set<Character> 型です。
 ```
 
 > NOTE  
@@ -306,19 +306,19 @@ var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
 セットのアイテムの数を調べるために、読み取り専用の `count` プロパティをチェックします。
 
 ```swift
-print("I have \(favoriteGenres.count) favorite music genres.")
-// I have 3 favorite music genres.
+print("私には \(favoriteGenres.count) 個の好きな音楽ジャンルがあります。")
+// 私には 3 個の好きな音楽ジャンルがあります。
 ```
 
 `Bool` 型の `isEmpty` プロパティは、`count` プロパティが `0` かどうかをチェックする簡略記法です。
 
 ```swift
 if favoriteGenres.isEmpty {
-    print("As far as music goes, I'm not picky.")
+    print("音楽に関しては、こだわりはありません。")
 } else {
-    print("I have particular music preferences.")
+    print("私は音楽にこだわりがあります。")
 }
-// I have particular music preferences.
+// 私は音楽にこだわりがあります。
 ```
 
 `insert(_:)` メソッドを使用して、セットに新しいアイテムを追加することができます。
@@ -332,22 +332,22 @@ favoriteGenres.insert("Jazz")
 
 ```swift
 if let removedGenre = favoriteGenres.remove("Rock") {
-    print("\(removedGenre)? I'm over it.")
+    print("\(removedGenre)? もういいです。")
 } else {
-    print("I never much cared for that.")
+    print("そのジャンルはあんまり気にしたことがないです。")
 }
-// Rock? I'm over it.
+// Rock? もういいです。
 ```
 
 特定のアイテムが含まれているかどうかを調べるには、`contains(_:)` メソッドを使用することができます。
 
 ```swift
 if favoriteGenres.contains("Funk") {
-    print("I get up on the good foot.")
+    print("James BrownのGet On The Good Footは最高です！")
 } else {
-    print("It's too funky in here.")
+    print("ちょっとファンキー（funky）すぎます。")
 }
-// It's too funky in here.
+// ちょっとファンキー（funky）すぎます。
 ```
 
 ### セットの繰り返し処理\(Iterating Over a Set\)
@@ -505,19 +505,19 @@ var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 配列と同様に、`Dictionary` のアイテムの数を調べるために、読み取り専用の `count` プロパティをチェックします。
 
 ```swift
-print("The airports dictionary contains \(airports.count) items.")
-// The airports dictionary contains 2 items.
+print("airports 辞書には \(airports.count) 個のアイテムがあります。")
+// airports 辞書には 2 個のアイテムがあります。
 ```
 
 `Bool` 型の `isEmpty` プロパティは、`count` プロパティが `0` かどうかをチェックする簡略記法です。
 
 ```swift
 if airports.isEmpty {
-    print("The airports dictionary is empty.")
+    print("airports 辞書は空です。")
 } else {
-    print("The airports dictionary isn't empty.")
+    print("airports 辞書は空ではありません。")
 }
-// The airports dictionary isn't empty.
+// airports 辞書は空ではありません。
 ```
 
 サブスクリプト構文を使用して、新しいアイテムを追加することができます。適切な型の新しいキーをサブスクリプトのインデックスに入れ、適切な型の新しいバリューを代入できます。
@@ -549,20 +549,20 @@ airports["LHR"] = "London Heathrow"
 
 ```swift
 if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
-    print("The old value for DUB was \(oldValue).")
+    print("DUB キーに対する更新前のバリューは \(oldValue) でした。")
 }
-// The old value for DUB was Dublin.
+// DUB キーに対する更新前のバリューは Dublin でした。
 ```
 
 サブスクリプト構文を使用して特定のキーのバリューを取得することもできます。バリューの存在しないキーに対してもリクエストすることが可能で、バリューの型のオプショナル値を返します。存在しなければ `nil` を返します:
 
 ```swift
 if let airportName = airports["DUB"] {
-    print("The name of the airport is \(airportName).")
+    print("この空港の名前は \(airportName) です。")
 } else {
-    print("That airport isn't in the airports dictionary.")
+    print("その空港は airports 辞書にはありません。")
 }
-// The name of the airport is Dublin Airport.
+// この空港の名前は Dublin Airport です。
 ```
 
 サブスクリプト構文を使用して、キーに `nil` を代入することで、キーバリューペアを削除できます:
@@ -578,11 +578,11 @@ airports["APL"] = nil
 
 ```swift
 if let removedValue = airports.removeValue(forKey: "DUB") {
-    print("The removed airport's name is \(removedValue).")
+    print("削除された空港の名前は \(removedValue) です。")
 } else {
-    print("The airports dictionary doesn't contain a value for DUB.")
+    print("airports 辞書には DUB キーに対する値がありません。")
 }
-// The removed airport's name is Dublin Airport.
+// 削除された空港の名前は Dublin Airport です。
 ```
 
 ### 辞書の繰り返し処理\(Iterating Over a Dictionary\)
@@ -603,26 +603,26 @@ for (airportCode, airportName) in airports {
 
 ```swift
 for airportCode in airports.keys {
-    print("Airport code: \(airportCode)")
+    print("空港コード: \(airportCode)")
 }
-// Airport code: LHR
-// Airport code: YYZ
+// 空港コード: LHR
+// 空港コード: YYZ
 
 for airportName in airports.values {
-    print("Airport name: \(airportName)")
+    print("空港名: \(airportName)")
 }
-// Airport name: London Heathrow
-// Airport name: Toronto Pearson
+// 空港名: London Heathrow
+// 空港名: Toronto Pearson
 ```
 
 `Array` インスタンスを引数に受け取る API で辞書のキーとバリューを使いたい場合、`keys` と `values` プロパティを使用して新しい配列を初期化してください:
 
 ```swift
 let airportCodes = [String](airports.keys)
-// airportCodes is ["LHR", "YYZ"]
+// 空港コードは ["LHR", "YYZ"]
 
 let airportNames = [String](airports.values)
-// airportNames is ["London Heathrow", "Toronto Pearson"]
+// 空港名は ["London Heathrow", "Toronto Pearson"]
 ```
 
 `Dictionary` 型には決まった順序がありません。特定の順番で値を繰り返し処理をしたい場合、`keys` か `values` プロパティの `sorted()` メソッドを使いましょう。
