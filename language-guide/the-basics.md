@@ -394,7 +394,7 @@ if turnipsAreDelicious {
 // Eww, turnips are horrible.
 ```
 
-`if` のような条件文については、[Control Flow\(制御フロー\)](control-flow.md)でより詳細に記載しています。
+`if` のような条件文については、[Control Flow\(制御フロー\)](control-flow.md)でより詳細に記載しています。
 
 Swift は型安全なので、`Bool` 以外の値を `Bool` として使うことはできません。次の例はコンパイルエラーになります:
 

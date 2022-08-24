@@ -1,8 +1,6 @@
 {
     "rules": {
-	    "textlint-rule-detect-bad-chars": {
-
-        },
+        "@textlint-rule/no-invalid-control-character": true,
         "preset-jtf-style": {
             "1.1.3.箇条書き": false,
             "2.1.5.カタカナ": false,
