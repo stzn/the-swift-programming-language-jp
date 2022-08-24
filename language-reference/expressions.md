@@ -439,7 +439,7 @@ myFunction { [unowned self] in print(self.title) }  // 非所有参照
 myFunction { [weak parent = self.parent] in print(parent!.title) }
 ```
 
-クロージャ式の詳細と例については、[Closure Expressions\(クロージャ式\)](../language-guide/closures.md#closure-expressions)を参照ください。キャプチャリストの詳細および例については、[Resolving Strong Reference Cycles for Closures\(クロージャの強参照循環の解消\)](../language-guide/automatic-reference-counting.md#resolving-strong-reference-cycles-for-closures)を参照ください。
+クロージャ式の詳細と例については、[Closure Expressions\(クロージャ式\)](../language-guide/closures.md#closure-expressions)を参照ください。キャプチャリストの詳細および例については、[Resolving Strong Reference Cycles for Closures\(クロージャの強循環参照の解消\)](../language-guide/automatic-reference-counting.md#resolving-strong-reference-cycles-for-closures)を参照ください。
 
 > GRAMMAR OF A CLOSURE EXPRESSION  
 > closure-expression → `{` [closure-signature](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-signature)<sub>opt</sub> [statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements)<sub>opt</sub> `}`  

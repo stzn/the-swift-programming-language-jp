@@ -45,6 +45,7 @@
 |struct|構造体|
 |subscript|サブスクリプト|
 |type|型|
+|reference cycle|循環参照|
 
 ## 貢献者
 <div id="contributors">
