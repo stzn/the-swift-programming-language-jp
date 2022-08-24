@@ -895,7 +895,7 @@ class Document {
 }
 ```
 
-次の例では、`AutomaticallyNamedDocument` という `Document` のサブクラスを定義しています。`AutomaticNamedDocument` サブクラスは、`Document` の指定イニシャライザの両方をオーバーライドします。これらのオーバーライドにより、インスタンスが名前なしで初期化された場合、または空の文字列が `init(name:)` イニシャライザに渡された場合に、`AutomaticallyNamedDocument` インスタンスは `"[Untitled]"` を`name` の初期値として持つことが保証されます。
+次の例では、`AutomaticallyNamedDocument` という `Document` のサブクラスを定義しています。`AutomaticNamedDocument` サブクラスは、`Document` の指定イニシャライザの両方をオーバーライドします。これらのオーバーライドにより、インスタンスが名前なしで初期化された場合、または空の文字列が `init(name:)` イニシャライザに渡された場合に、`AutomaticallyNamedDocument` インスタンスは `"[Untitled]"` を `name` の初期値として持つことが保証されます。
 
 ```swift
 class AutomaticallyNamedDocument: Document {

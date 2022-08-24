@@ -500,7 +500,7 @@ if latinCapitalLetterA != cyrillicCapitalLetterA {
 ```
 
 > NOTE  
-> Swift の文字列と文字の比較は、ロケール依存です。
+> Swift の文字列と文字の比較は、ロケール依存です。
 
 ### 前方一致と後方一致\(Prefix and Suffix Equality\)
 
