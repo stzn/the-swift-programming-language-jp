@@ -84,7 +84,7 @@ _condition_ の値は、`Bool` 型または `Bool` にブリッジされた型�
 
 _condition_ の値は _statements_ の実行後に評価されるため、`repeat-while` 文内の文は少なくとも 1 回実行されます。
 
-_condition_ の値は、`Bool` 型または `Bool` にブリッジされた型にする必要があります。[Optional Binding\(オプショナルバインディング\)](../language-guide/the-basics.md#optional-binding)で説明したように、条件はオプショナルバインディング宣言にすることもできます。
+_condition_ の値は、`Bool` 型または `Bool` にブリッジされた型にする必要があります。
 
 > GRAMMAR OF A REPEAT-WHILE STATEMENT  
 > repeat-while-statement → `repeat` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block) `while` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
