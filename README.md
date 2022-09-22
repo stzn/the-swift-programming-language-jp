@@ -81,8 +81,8 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/tsubasarc">
-            <img src="https://avatars.githubusercontent.com/u/26360184?v=4" width="100;" alt="tsubasarc"/>
+        <a href="https://github.com/rycoil">
+            <img src="https://avatars.githubusercontent.com/u/26360184?v=4" width="100;" alt="rycoil"/>
             <br />
             <sub><b>Tsubasa ISHIHARA</b></sub>
         </a>
