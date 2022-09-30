@@ -83,8 +83,8 @@ _識別子_は、大文字または小文字の `A` から `Z`、アンダース
 次のキーワードは予約されており、前述のようにバッククォート\(\`\)でエスケープしない限り識別子としては使用できません。`inout`、`var`、`let` 以外のキーワードは、バッククォートでエスケープすることなく関数宣言、または関数の引数名として使用できます。メンバの名前がキーワードと同じ場合、およびメンバの参照とキーワードの使用の間に曖昧さがある場合を除いて、そのメンバへの参照をバッククォートでエスケープする必要はありません。しかし、例えば `self`、`Type`、および `Protocol` には明示的メンバ式の中で特別な意味があるため、そのコンテキストではバッククォートによるエスケープが必要です。
 
 * 宣言で使用されるキーワード: `associatedtype`、`class`、`deinit`、`enum`、`extension`、`fileprivate`、`func`、`import`、`init`、`inout`、`internal`、`let`、`open`、`operator`、`private`、`protocol`、`public`、`rethrows`、`static`、`struct`、`subscript`、`typealias`、および `var`
-* ステートメントで使用されるキーワード: `break`、`case`、`continue`、`default`、`defer`、`do`、`else`、`fallthrough`、`for`、`guard`、`if`、`in`、`repeat`、`return`、`switch`、`where`、`while`
-* 式と型で使用されるキーワード: `as`、`Any`、`catch`、`false`、`is`、`nil`、`super`、`self`、`Self`、`throw`、`throws`、`true`、および `try`
+* 文で使用されるキーワード: `break`、`case`、`continue`、`default`、`defer`、`do`、`else`、`fallthrough`、`for`、`guard`、`if`、`in`、`repeat`、`return`、`switch`、`where`、`while`
+* 式と型で使用されるキーワード: `Any`、`as`、`await`、`catch`、`false`、`is`、`nil`、`super`、`self`、`Self`、`throw`、`throws`、`true`、および `try`
 * パターンで使用されるキーワード: `_`
 * シャープ記号\(`#`\)で始まるキーワード: `#available`、`#colorLiteral`、`#column`、`#else`、`#elseif`、`#endif`、`#error`、`#file`、`#fileID`、`#fileLiteral`、`#filePath`、`#function`、`#if`、`#imageLiteral`、`#line`、`#selector`、`#sourceLocation`、および `#warning`
 * 特定のコンテキストで予約されているキーワード: `associativity`、`convenient`、`dynamic`、`didSet`、`final`、`get`、`infix`、`indirect`、`lazy`、`left`、`mutating`、`none`、`nonmutating`、`optional`、`override`、`postfix`、`precedence`、`prefix`、プロトコル、`Protocol`、 `required`、`right`、`set`、`Type`、 `unowned`、 `weak`、 および `willSet`。該当するコンテキスト外では、識別子として使用することができます
