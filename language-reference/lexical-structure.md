@@ -87,7 +87,7 @@ _識別子_は、大文字または小文字の `A` から `Z`、アンダース
 * 式と型で使用されるキーワード: `Any`、`as`、`await`、`catch`、`false`、`is`、`nil`、`super`、`self`、`Self`、`throw`、`throws`、`true`、および `try`
 * パターンで使用されるキーワード: `_`
 * シャープ記号\(`#`\)で始まるキーワード: `#available`、`#colorLiteral`、`#column`、`#else`、`#elseif`、`#endif`、`#error`、`#file`、`#fileID`、`#fileLiteral`、`#filePath`、`#function`、`#if`、`#imageLiteral`、`#line`、`#selector`、`#sourceLocation`、および `#warning`
-* 特定のコンテキストで予約されているキーワード: `associativity`、`convenient`、`dynamic`、`didSet`、`final`、`get`、`infix`、`indirect`、`lazy`、`left`、`mutating`、`none`、`nonmutating`、`optional`、`override`、`postfix`、`precedence`、`prefix`、プロトコル、`Protocol`、 `required`、`right`、`set`、`Type`、 `unowned`、 `weak`、 および `willSet`。該当するコンテキスト外では、識別子として使用することができます
+* 特定のコンテキストで予約されているキーワード: `associativity`、`convenient`、`dynamic`、`didSet`、`final`、`get`、`infix`、`indirect`、`lazy`、`left`、`mutating`、`none`、`nonmutating`、`optional`、`override`、`postfix`、`precedence`、`prefix`、`Protocol`、 `required`、`right`、`set`、`Type`、 `unowned`、 `weak`、 および `willSet`。該当するコンテキスト外では、識別子として使用することができます
 
 次のトークンは句読点として予約されており、カスタム演算子としては使用できません: `(`、 `)`、 `{`、 `}`、 `[`、 `]`、 `.`、 `,`、 `:`、 `;`、 `=`、 `@`、 `#`、 `&`\(前置演算子として\)、`->`、\`、`?`、および `!`\(後置演算子として\)
 
