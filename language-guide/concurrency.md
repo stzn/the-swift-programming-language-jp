@@ -70,12 +70,35 @@ show(photo)
 * `@main` でマークされている構造体、クラス、または列挙型の `static main()` メソッド内
 * 下記の[Unstructured Concurrency\(独立した並行処理\)](concurrency.md#unstructured-concurrency)で示す独立した子タスク\(_child task_\)のコード
 
+処理が中断する可能性のあるポイント間のコードは、他の同時並行処理のコードから中断される可能性はなく、順次実行されます。例えば、次のコードはあるギャラリーから別のギャラリーに画像を移動します。
+
+```swift
+let firstPhoto = await listPhotos(inGallery: "夏休み")[0]
+add(firstPhoto toGallery: "車旅")
+// この時点でfirstPhotoは一時的に両方のギャラリーに存在する
+remove(firstPhoto fromGallery: "夏休み")
+```
+
+`add(_:toGallery:)` と `remove(_:fromGallery:)` の呼び出し間に他のコードを実行する方法はありません。 その間、最初の写真が両方のギャラリーに表示され、アプリの不変条件の 1 つが一時的に壊れます。この部分に今後 `await` を追加してはならないことをさらに明確にするために、このコードを同期関数にリファクタリングできます。
+
+```swift
+func move(_ photoName: String, from source: String, to destination: String) {
+    add(photoName, to: destination)
+    remove(photoName, from: source)
+}
+// ...
+let firstPhoto = await listPhotos(inGallery: "夏休み")[0]
+move(firstPhoto, from: "夏休み", to: "車旅")
+```
+
+上記の例では、`move(_:from:to:)` 関数が同期処理であるため、中断する可能性のあるポイントが決して含まれないことが保証されます。将来、この関数に同時並行処理のコードを追加しようとしても、つまり中断する可能性のあるポイントを導入しようとしても、コンパイルエラーが発生し、バグが混入する可能性はありません。
+
 > NOTE  
-> `Task.sleep(nanoseconds:)` メソッドは、同時並行処理が機能する方法を学ぶために簡単なコードを書くときに役立ちます。このメソッドは何もしませんが、それがリターンする前に少なくとも指定されたナノ秒数処理を待ちます。下記は、ネットワーク操作の待機をシミュレートするために `sleep(nanoseconds:)` を使用する `listPhotos(inGallery:)` 関数のバージョンです。
+> [`Task.sleep(until:tolerance:clock:)`](https://developer.apple.com/documentation/swift/task/sleep(until:tolerance:clock:)) メソッドは、同時並行処理が機能する方法を学ぶために簡単なコードを書くときに役立ちます。このメソッドは何もしませんが、それがリターンする前に少なくとも指定されたナノ秒数処理を待ちます。下記は、ネットワーク操作の待機をシミュレートするために `sleep(nanoseconds:)` を使用する `listPhotos(inGallery:)` 関数のバージョンです。
 >
 > ```swift
 > func listPhotos(inGallery name: String) async throws -> [String] {
->     try await Task.sleep(nanoseconds: 2 * 1_000_000_000)  // 2 秒
+>     try await Task.sleep(until: .now + .seconds(2), clock: .continuous)
 >     return ["IMG001", "IMG99", "IMG0404"]
 > }
 > ```
