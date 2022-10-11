@@ -1,6 +1,6 @@
 # 同時並行処理\(Concurrency\)
 
-最終更新日: 2022/7/28  
+最終更新日: 2022/10/12  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html
 
 Swift には、構造化された方法で非同期および同時並行コードを書くためのサポートが組み込まれています。非同期コード\(_asynchronous code_\)は、コードは一度にプログラムの 1 箇所のみで実行されますが、後で中断\(_suspend_\)および再開\(_resume_\)できます。こうすることで、ネットワーク上のデータの取得やファイルの解析などの長く時間のかかる操作の途中で、UI の更新などの短い時間で完了できる操作を行い、その後引き続き操作を続けることができます。並列コード\(_parallel code_\)とは、複数のコードを同時に実行することを意味します。例えば、4 コアプロセッサを搭載したコンピュータは、各コアがタスクを 1 つ実行し、4 つのコードを同時に実行できます。並列および非同期コードを使用するプログラムは、一度に複数の操作を実行します。例えば、外部システムからの結果を待つ操作を中断し、メモリセーフな方法でこのコードを簡単に記述できます。
@@ -15,7 +15,7 @@ Swift には、構造化された方法で非同期および同時並行コー�
 Swift の言語サポートを使用せずに同時並行処理を書くことは可能ですが、そのコードは読みにくくなる傾向があります。例えば、次のコードは写真名のリストをダウンロードし、そのリストの最初の写真をダウンロードし、その写真をユーザに表示します。
 
 ```swift
-listPhotos(inGallery: "Summer Vacation") { photoNames in
+listPhotos(inGallery: "夏休み") { photoNames in
     let sortedNames = photoNames.sorted()
     let name = sortedNames[1]
     downloadPhoto(named: name) { photo in
@@ -46,7 +46,7 @@ func listPhotos(inGallery name: String) async -> [String] {
 例えば、下記のコードは、ギャラリ内の全ての写真名を取得し、最初の写真を表示します:
 
 ```swift
-let photoNames = await listPhotos(inGallery: "Summer Vacation")
+let photoNames = await listPhotos(inGallery: "夏休み")
 let sortedNames = photoNames.sorted()
 let name = sortedNames[1]
 let photo = await downloadPhoto(named: name)
@@ -165,7 +165,7 @@ show(photos)
 
 ```swift
 await withTaskGroup(of: Data.self) { taskGroup in
-    let photoNames = await listPhotos(inGallery: "Summer Vacation")
+    let photoNames = await listPhotos(inGallery: "夏休み")
     for name in photoNames {
         taskGroup.addTask { await downloadPhoto(named: name) }
     }
@@ -223,7 +223,7 @@ actor TemperatureLogger {
 構造体やクラスと同じイニシャライザの構文を使用して、アクターのインスタンスを作成します。アクターのプロパティやメソッドにアクセスするとき、中断する可能性のあるポイントを示すために `await` を使用します。例えば:
 
 ```swift
-let logger = TemperatureLogger(label: "Outdoors", measurement: 25)
+let logger = TemperatureLogger(label: "アウトドア", measurement: 25)
 print(await logger.max)
 // 25
 ```
@@ -286,7 +286,7 @@ extension TemperatureLogger {
     }
 }
 
-let logger = TemperatureLogger(label: "Tea kettle", measurement: 85)
+let logger = TemperatureLogger(label: "紅茶用のやかん", measurement: 85)
 let reading = TemperatureReading(measurement: 45)
 await logger.addReading(from: reading)
 ```
