@@ -1,6 +1,6 @@
 # コレクション型\(Collection Types\)
 
-最終更新日: 2022/8/13  
+最終更新日: 2022/11/2  
 原文: https://docs.swift.org/swift-book/LanguageGuide/CollectionTypes.html
 
 Swift は、配列、セット、辞書と呼ばれる 3 つの基本的な_コレクション型_を提供しています。配列は順序が決まったコレクションです。セットは値の重複と順序のないコレクションです。辞書はキーとバリューに関連性を持たせた順序のないコレクションです。
@@ -525,15 +525,6 @@ if airports.isEmpty {
 ```swift
 airports["LHR"] = "London"
 // airports 辞書は 3 つのアイテムを含んでいます
-```
-
-他には加算代入演算子\(`+=`\)を使用して 1 つ以上の互換性のある型のアイテムを追加できます。
-
-```swift
-shoppingList += ["Baking Powder"]
-// shoppingList 4 つのアイテムを含んでいます
-shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
-// shoppingList は 7 つのアイテムを含んでいます
 ```
 
 サブスクリプト構文を使用すると、特定のキーのバリューを変更することもできます。
