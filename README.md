@@ -142,7 +142,7 @@
         <a href="https://github.com/sumomoneko">
             <img src="https://avatars.githubusercontent.com/u/6897176?v=4" width="100;" alt="sumomoneko"/>
             <br />
-            <sub><b>sumomoneko</b></sub>
+            <sub><b>Sumomoneko</b></sub>
         </a>
     </td>
     <td align="center">
