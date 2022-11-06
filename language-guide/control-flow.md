@@ -1,6 +1,6 @@
 # 制御フロー\(Control Flow\)
 
-最終更新日: 2022/8/13  
+最終更新日: 2022/11/6  
 原文: https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html
 
 Swift は、様々な制御フロー文を提供しています。1 つのタスクを複数回行う `while` ループ、ある条件を基に異なる分岐のコードを実行する `if`、`guard`、`switch` 文、コードの他の地点へ実行フローを移動させる `break` や `continue` のような文があります。
@@ -315,7 +315,8 @@ default:
 C 言語や Objective-C と異なり、Swift の `switch` 文は、デフォルトでは、それぞれのケースの下から次のケースに行くことはありません。その代わりに、最初に合致した `switch` ケースの実行が完了すると、明示的に `break` しなくても、全体の `switch` 文も完了します。こうすることで、C 言語の `switch` 文よりも、より安全に簡単に使えるようにしています。間違って 1 つ以上のケースを実行してしまうリスクを防ぎます。
 
 > NOTE  
-> `break` は必須ではありませんが、合致したけど何も実行しないような場合や、あるケースの中で最後まで実行される前にそのブロックを抜けたい場合に、`break` を使用することができます。詳細は、&lt; href="\#break-in-a-switch-statement" target="\_self"&gt;Break in a Switch Statement\(switch 内で break\)&lt;/a&gt;を参照ください。
+> `break` は必須ではありませんが、合致したけど何も実行しないような場合や、あるケースの中で最後まで実行される前にそのブロックを抜けたい場合に、`break` を使用することができます。詳細は、[Switch内でBreak\(Break in a Switch Statement\)](control-flow.md#break-in-a-switch-statement)
+を参照ください。
 
 各ケースの本文は少なくとも 1 つの文を実行しなければなりません。次のコードは最初のケースの本文が空なので不正です。
 
