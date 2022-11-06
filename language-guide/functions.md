@@ -1,6 +1,6 @@
 # 関数\(Functions\)
 
-最終更新日: 2022/8/13  
+最終更新日: 2022/11/6  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Functions.html
 
 _関数_は、特定のタスクを実行する独立したコードの塊です。何をするものなのかを特定するために名前を与え、必要なときにタスクを実行するためにこの関数が「呼び出す」ときに名前は使われます。
@@ -446,7 +446,14 @@ func stepBackward(_ input: Int) -> Int {
 }
 ```
 
-これが `chooseStepFunction(backward:)` という関数で、その戻り値の型は `(Int) -> Int` です。`chooseStepFunction(backward:)` 関数は、`backward` と呼ばれるブール値に基づいて `stepForward(_:)` または `stepBackward(_:)` を返します。
+以下が `chooseStepFunction(backward:)` という関数で、その戻り値の型は `(Int) -> Int` です。`chooseStepFunction(backward:)` 関数は、`backward` と呼ばれるブール値に基づいて `stepForward(_:)` または `stepBackward(_:)` を返します:
+
+```swift
+func chooseStepFunction(backward: Bool) -> (Int) -> Int {
+    return backward ? stepBackward : stepForward
+```
+
+これで `chooseStepFunction(backward:)` を使って、どちらかの方向にステップする関数を得ることができるようになりました:
 
 ```swift
 var currentValue = 3
