@@ -1,6 +1,6 @@
 # プロトコル\(Protocols\)
 
-最終更新日: 2021/6/29  
+最終更新日: 2021/11/6  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Protocols.html
 
 _プロトコル_は、特定のタスクまたは機能に準拠するメソッド、プロパティ、およびその他の要件の設計図を定義します。クラス、構造体、または列挙型がプロトコルに準拠でき、それらの要件の実装を提供します。プロトコルの要件を満たす全ての型は、そのプロトコルに_準拠している_といいます。
@@ -157,6 +157,12 @@ print("And another one: \(generator.random())")
 下記の例では、`Togglable` というプロトコルが定義されています。これは、`toggle` という単一のインスタンスメソッドの要件を定義しています。その名前が示すように、`toggle()` メソッドは、通常、その型のプロパティを変更することによって、準拠する型の状態をトグル\(反転\)することを目的としています。
 
 `toggle()` メソッドは、`Togglable` プロトコル定義の一部として `mutating` キーワードがマークされており、メソッドが呼び出されたときに準拠するインスタンスの状態を変更する可能性を示しています。
+
+```swift
+protocol Togglable {
+    mutating func toggle()
+}
+```
 
 構造体または列挙型に対して `Togglable` プロトコルを実装する場合、その構造体または列挙型は、`mutating` がマークされている `toggle()` メソッドの実装を提供することにより、プロトコルに準拠できます。
 
@@ -711,15 +717,8 @@ beginConcert(in: seattle)
 この例では、`HasArea` というプロトコルを定義しています。このプロトコルには、`area` という `Double` 型の単一のプロパティの get 要件があります:
 
 ```swift
-class Circle: HasArea {
-    let pi = 3.1415927
-    var radius: Double
-    var area: Double { return pi * radius * radius }
-    init(radius: Double) { self.radius = radius }
-}
-class Country: HasArea {
-    var area: Double
-    init(area: Double) { self.area = area }
+protocol HasArea {
+    var area: Double { get }
 }
 ```
 

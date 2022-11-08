@@ -1,6 +1,6 @@
 # 初期化\(Initialization\)
 
-最終更新日: 2022/8/13  
+最終更新日: 2022/11/6  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Initialization.html
 
 _初期化_は、使用するクラス、構造体、または列挙型のインスタンスを準備するプロセスです。このプロセスには、そのインスタンスに保存されている各プロパティの初期値の設定と、新しいインスタンスの使用準備が整う前に必要なその他の要素のセットアップや初期化の実行が含まれます。
@@ -220,8 +220,8 @@ var item = ShoppingListItem()
 
 `ShoppingListItem` クラスの全てのプロパティにはデフォルト値があり、スーパークラスを持たない基本クラスのため、`ShoppingListItem` は、全てのプロパティにデフォルト値が設定された新しいインスタンスを作成するイニシャライザの実装を自動で獲得します\(`name` プロパティはオプショナルの `String` プロパティのため、この値がコードに記述されていなくても、デフォルト値の `nil` が自動的に設定されます\)。上記の例では、`ShoppingListItem` クラスのデフォルトイニシャライザを使用して `ShoppingListItem()` と記述し、新しいインスタンスを作成して `item` という変数に割り当てています。
 
-### <a id="initialization-memberwise-initializers-for-structure-types">構造体のメンバワイズイニシャライザ\(Memberwise Initializers for Structure Types\)
-</a>
+### <a id="initialization-memberwise-initializers-for-structure-types">構造体のメンバワイズイニシャライザ\(Memberwise Initializers for Structure Types\)</a>
+
 構造体は、独自のカスタムイニシャライザを定義していない場合、*メンバワイズイニシャライザ*を自動的に定義されます。デフォルトイニシャライザとは異なり、構造体は、デフォルト値を持たないプロパティが格納されている場合でも、メンバワイズイニシャライザが定義されます。
 
 メンバワイズイニシャライザは、新しい構造体インスタンスのプロパティを初期化する簡単な方法です。新しいインスタンスのプロパティの初期値は、プロパティ名によってメンバワイズイニシャライザに渡すことができます。
