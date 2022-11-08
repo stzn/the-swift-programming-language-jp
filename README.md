@@ -88,13 +88,20 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/sumomoneko">
+            <img src="https://avatars.githubusercontent.com/u/6897176?v=4" width="100;" alt="sumomoneko"/>
+            <br />
+            <sub><b>Sumomoneko</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
         <a href="https://github.com/KS1019">
             <img src="https://avatars.githubusercontent.com/u/6828522?v=4" width="100;" alt="KS1019"/>
             <br />
             <sub><b>Kotaro Suto</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/jollyjoester">
             <img src="https://avatars.githubusercontent.com/u/2178775?v=4" width="100;" alt="jollyjoester"/>
@@ -129,20 +136,13 @@
             <br />
             <sub><b>Hiraoka</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/ribilynn">
             <img src="https://avatars.githubusercontent.com/u/11924267?v=4" width="100;" alt="ribilynn"/>
             <br />
             <sub><b>Ribilynn Zhou</b></sub>
-        </a>
-    </td></tr>
-<tr>
-    <td align="center">
-        <a href="https://github.com/sumomoneko">
-            <img src="https://avatars.githubusercontent.com/u/6897176?v=4" width="100;" alt="sumomoneko"/>
-            <br />
-            <sub><b>Sumomoneko</b></sub>
         </a>
     </td>
     <td align="center">
