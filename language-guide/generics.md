@@ -1,6 +1,6 @@
 # ジェネリクス\(Generics\)
 
-最終更新日: 2022/8/17  
+最終更新日: 2022/11/8  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Generics.html
 
 ジェネリックなコードを使用すると、定義した要件に従って、任意の型で機能する柔軟で再利用可能な関数と型を作成できます。重複を避け、その意図を明確で抽象的な方法で表現するコードを書くことができます。
@@ -436,7 +436,7 @@ protocol Container {
 
 ### 関連型の制約へのプロトコルの使用\(Using a Protocol in Its Associated Type’s Constraints\)
 
-プロトコルは、独自の要件を表現できます。例えば、下記は `Container` プロトコルを改良し、`suffix(_:)` メソッドの要件を追加するプロトコルです。`suffix(_:)` メソッドは、コンテナの最後から指定された数の要素を返し、それらを `Suffix` 型のインスタンスに格納します。
+プロトコルは、自分自身を要件の一部に含めることが出来ます。例えば、下記は `Container` プロトコルを改良し、`suffix(_:)` メソッドの要件を追加するプロトコルです。`suffix(_:)` メソッドは、コンテナの最後から指定された数の要素を返し、それらを `Suffix` 型のインスタンスに格納します。
 
 ```swift
 protocol SuffixableContainer: Container {
