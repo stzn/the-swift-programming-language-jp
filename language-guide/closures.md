@@ -336,7 +336,7 @@ incrementByTen()
 クロージャをエスケープする 1 つの方法は、関数の外部で定義された変数に格納することです。例として、非同期操作を開始する多くの関数は、完了ハンドラとしてクロージャ引数を取ります。関数は操作の開始後に戻り値を返しますが、操作が完了するまでクロージャは呼び出されません。そのため、クロージャはエスケープする必要があり、後で呼び出す必要があります。例えば:
 
 ```swift
-var completionHandlers = [() -> Void]()
+var completionHandlers: [() -> Void] = []
 func someFunctionWithEscapingClosure(completionHandler: @escaping () -> Void) {
     completionHandlers.append(completionHandler)
 }

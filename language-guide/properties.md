@@ -72,7 +72,7 @@ class DataImporter {
 
 class DataManager {
     lazy var importer = DataImporter()
-    var data = [String]()
+    var data: [String] = []
     // DataManager クラスはここでデータの管理機能を提供します
 }
 

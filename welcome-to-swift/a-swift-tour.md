@@ -104,8 +104,8 @@ occupations = [:]
 空の配列または辞書を新しい変数、または型情報がない別の場所に割り当てる場合は、型を指定する必要があります。
 
 ```swift
-let emptyArray = [String]()
-let emptyDictionary = [String: Float]()
+let emptyArray: [String] = []
+let emptyDictionary: [String: Float] = [:]
 ```
 
 ## 制御フロー\(Control Flow\)
