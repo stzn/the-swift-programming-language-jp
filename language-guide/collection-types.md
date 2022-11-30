@@ -35,7 +35,7 @@ Swift の配列の型は全体で `Array<Element>` と書きます。`Element` �
 イニシャライザの構文を使用して、ある型の空の配列を作成できます。
 
 ```swift
-var someInts = [Int]()
+var someInts: [Int] = []
 print("someInts は \(someInts.count) 個の要素を持つ [Int] 型です。")
 // someInts は 0 個の要素を持つ [Int] 型です。
 ```
@@ -452,7 +452,7 @@ Swift の辞書は、全体で `Dictionary<Key, Value>` と書きます。`Key` 
 配列と同様に、ある型の空の `Dictionary` をイニシャライザの構文を使用して作成できます。
 
 ```swift
-var namesOfIntegers = [Int: String]()
+var namesOfIntegers: [Int: String] = [:]
 // namesOfIntegers は空の [Int: String] 辞書
 ```
 

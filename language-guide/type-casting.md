@@ -138,7 +138,7 @@ Swift は、型を特定できない型を操作するための 2 つの特別�
 `Any` を使用して、関数型と非クラス型を含む様々な型の組み合わせを処理する例を次に示します。この例では、`Any` 型の値を格納できる `things` という配列を作成します:
 
 ```swift
-var things = [Any]()
+var things: [Any] = []
 
 things.append(0)
 things.append(0.0)

@@ -94,18 +94,18 @@ shoppingList.append("blue paint")
 print(shoppingList)
 ```
 
-空の配列や辞書を作成するためには、初期化の構文を使います。
+また、括弧を使用して、空の配列または辞書を記述します。配列の場合は `[]`、辞書の場合は `[:]` と書きます。
 
 ```swift
-let emptyArray = [String]()
-let emptyDictionary = [String: Float]()
+fruits = []
+occupations = [:]
 ```
 
-型が推論できる場合は、空の配列は `[]`、辞書は `[:]` で書くことができます。\(例えば、変数に新しい値を設定する場合や関数に引数を渡す場合など\)
+空の配列または辞書を新しい変数、または型情報がない別の場所に割り当てる場合は、型を指定する必要があります。
 
 ```swift
-shoppingList = []
-occupations = [:]
+let emptyArray: [String] = []
+let emptyDictionary: [String: Float] = [:]
 ```
 
 ## 制御フロー\(Control Flow\)

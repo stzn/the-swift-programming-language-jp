@@ -134,7 +134,7 @@ swapTwoValues(&someString, &anotherString)
 
 ```swift
 struct IntStack {
-    var items = [Int]()
+    var items: [Int] = []
     mutating func push(_ item: Int) {
         items.append(item)
     }
@@ -152,7 +152,7 @@ struct IntStack {
 
 ```swift
 struct Stack<Element> {
-    var items = [Element]()
+    var items: [Element] = []
     mutating func push(_ item: Element) {
         items.append(item)
     }
@@ -353,7 +353,7 @@ protocol Container {
 ```swift
 struct IntStack: Container {
     // 元の IntStack 実装
-    var items = [Int]()
+    var items: [Int] = []
     mutating func push(_ item: Int) {
         items.append(item)
     }
@@ -385,7 +385,7 @@ Swift の型推論のおかげで、`IntStack` の定義の中で `Item` が `In
 ```swift
 struct Stack<Element>: Container {
     // 元の Stack<Element> 実装
-    var items = [Element]()
+    var items: [Element] = []
     mutating func push(_ item: Element) {
         items.append(item)
     }
@@ -721,7 +721,7 @@ protocol ComparableContainer: Container where Item: Comparable { }
 extension Container {
     subscript<Indices: Sequence>(indices: Indices) -> [Item]
         where Indices.Iterator.Element == Int {
-            var result = [Item]()
+            var result: [Item] = []
             for index in indices {
                 result.append(self[index])
             }
