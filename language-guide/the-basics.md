@@ -1,9 +1,9 @@
 # 基本\(The Basics\)
 
-最終更新日: 2022/6/11  
+最終更新日: 2022/11/26  
 原文: https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html
 
-Swift は iOS, macOS, watchOS, tyOS アプリ開発のための新しいプログラミング言語です。新しい言語ではあるものの、Swift の多くの部分は C 言語と Objective-C の開発経験があれば慣れ親しんだ部分もあるかと思います。
+Swift は iOS, macOS, watchOS, tyOS アプリ開発のためのプログラミング言語です。C 言語と Objective-C の開発経験があれば、Swift の多くの部分は慣れ親しんだものでしょう。
 
 Swift は C 言語と Objective-C の全ての基本的な型に対応した Swift 版の型を提供します。数値に対する `Int`、浮動小数点数に対する `Double` と `Float`、ブール値に対する `Bool`、文字データに対する `String` があります。また、3 つのより強力な collection 型\(`Array`, `Set`, `Dictionary`\)も提供しています。詳細は [Collection Types\(コレクション型\)](collection-types.md)に記載しています。
 
