@@ -1,7 +1,9 @@
 # 文字と文字列\(Strings and Characters\)
 
-最終更新日: 2021/6/27  
+最終更新日: 2022/12/3  
 原文: https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html
+
+テキストを保存して操作する。
 
 _文字列_は `"hello, world"` や `"albatross"` のような一連の文字です。Swift の文字列は `String` 型で表されます。`String` の内容には、様々な方法でアクセスすることができます\(`Character` 型の値のコレクションとしてなど\)。
 

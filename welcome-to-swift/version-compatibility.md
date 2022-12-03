@@ -1,7 +1,9 @@
 # バージョン互換性\(Version Compatibility\)
 
-最終更新日: 2022/9/17 
+最終更新日: 2022/12/3  
 原文: https://docs.swift.org/swift-book/GuidedTour/Compatibility.html
+
+どの機能が古い言語モードで利用可能かを知る。
 
 この本は Xcode14 のデフォルトバージョン Swift5.7 で記載されています。Xcode14 では、Swift5.7, Swift4.2, Swift4 を build target に指定できます。
 

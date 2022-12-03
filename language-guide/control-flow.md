@@ -1,7 +1,9 @@
 # 制御フロー\(Control Flow\)
 
-最終更新日: 2022/11/6  
+最終更新日: 2022/12/3  
 原文: https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html
+
+分岐、ループ、および早期終了を使ってコードを構造化する。
 
 Swift は、様々な制御フロー文を提供しています。1 つのタスクを複数回行う `while` ループ、ある条件を基に異なる分岐のコードを実行する `if`、`guard`、`switch` 文、コードの他の地点へ実行フローを移動させる `break` や `continue` のような文があります。
 

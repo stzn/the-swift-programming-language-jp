@@ -1,7 +1,9 @@
 # 基本\(The Basics\)
 
-最終更新日: 2022/11/26  
+最終更新日: 2022/12/3  
 原文: https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html
+
+一般的な種類のデータを操作し、基本的な構文を記述する。
 
 Swift は iOS, macOS, watchOS, tyOS アプリ開発のためのプログラミング言語です。C 言語と Objective-C の開発経験があれば、Swift の多くの部分は慣れ親しんだものでしょう。
 
