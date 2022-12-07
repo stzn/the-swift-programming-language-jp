@@ -1,7 +1,9 @@
 # 式\(Expressions\)
 
-最終更新日: 2022/1/31  
+最終更新日: 2022/12/3  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Expressions.html
+
+型、演算子、変数、およびその他の名前と構造を紹介する。
 
 Swift では、前置式、バイナリ式、基本式、後置式の 4 種類の式があります。式が評価されると、値を返すか、副作用を起こすか、またはその両方を引き起こします。
 

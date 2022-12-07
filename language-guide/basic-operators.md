@@ -1,7 +1,9 @@
 # 基本演算子\(Basic Operators\)
 
-最終更新日: 2022/8/12  
+最終更新日: 2022/12/3  
 原文: https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html
+
+代入、算術、比較、およびブール演算を行う。
 
 _演算子_は、値のチェックや変更、合成するために使われる特殊な記号や用語です。例えば、加算演算子\(`+`\)は `let i = 1 + 2` のように 2 つの数値を足します。論理 AND 演算子\(`&&`\)は、`if enteredDoorCode && passedRetinaScan` のように 2 つのブール値を組み合わせます。
 

@@ -1,7 +1,9 @@
 # 列挙型\(Enumerations\)
 
-最終更新日: 2022/8/13  
+最終更新日: 2022/12/3  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html
+
+可能な値のリストを定義する独自の型をモデル化する。
 
 _列挙型_は、関連する値のグループに共通の型を定義し、コード内で型安全にそれらの値を操作できるようにします。
 
