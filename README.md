@@ -117,6 +117,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/NiwakaDev">
+            <img src="https://avatars.githubusercontent.com/u/61189782?v=4" width="100;" alt="NiwakaDev"/>
+            <br />
+            <sub><b>Niwaka</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/rymshm">
             <img src="https://avatars.githubusercontent.com/u/23201810?v=4" width="100;" alt="rymshm"/>
             <br />
@@ -129,15 +136,15 @@
             <br />
             <sub><b>GitBook Bot</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/hira22">
             <img src="https://avatars.githubusercontent.com/u/31942637?v=4" width="100;" alt="hira22"/>
             <br />
             <sub><b>Hiraoka</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/ribilynn">
             <img src="https://avatars.githubusercontent.com/u/11924267?v=4" width="100;" alt="ribilynn"/>
