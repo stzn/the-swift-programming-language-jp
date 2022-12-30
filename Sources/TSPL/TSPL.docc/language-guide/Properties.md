@@ -155,7 +155,7 @@ print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 
 次に、`center` プロパティに新しく `(15, 15)` が設定されます。これにより、下の図のオレンジ色の正方形で示されている新しい位置に正方形が上下に移動します。`center` プロパティを設定すると、保存されている `origin` プロパティの `x` と `y` の値を変更する `center` の set が呼び出され、正方形が新しい位置に移動します。
 
-![&#x8A08;&#x7B97;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;](../assets/computedProperties_2x.png)
+![&#x8A08;&#x7B97;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;](computedProperties)
 
 ### <a id="shorthand-setter-declaration">省略プロパティ set 宣言\(Shorthand Setter Declaration\)</a>
 
@@ -616,7 +616,7 @@ print(SomeClass.computedTypeProperty)
 
 次の図は、これらのオーディオチャネルの 2 つを組み合わせてステレオオーディオレベルメータをモデル化する方法を示しています。チャンネルのオーディオレベルが `0` の場合、そのチャンネルのライトはどれも点灯しません。オーディオレベルが `10` の場合、そのチャンネルの全てのライトが点灯します。この図では、左チャネルの現在のレベルは `9` で、右チャネルの現在のレベルは `7` です。
 
-![&#x578B;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;VU&#x30E1;&#x30FC;&#x30BF;&#x30FC;](../assets/staticPropertiesVUMeter_2x.png)
+![&#x578B;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;VU&#x30E1;&#x30FC;&#x30BF;&#x30FC;](staticPropertiesVUMeter)
 
 上記のオーディオチャネルは、`AudioChannel` 構造体のインスタンスによって表されます。
 

@@ -84,7 +84,7 @@ C 言語や Objective-C と異なり、Swift はデフォルトでオーバー�
 
 剰余演算子がどのように機能するかの例を見てみましょう。`9 % 4` を計算すると、まず `9` の中にいくつ `4` が含まれているかの結果を出します。
 
-![remainderinteger](../assets/remainderinteger_2x.png)
+![残りの整数](remainderInteger)
 
 `9` の中には 2 つの `4` があり、剰余は `1` です\(オレンジ色の部分\)。
 

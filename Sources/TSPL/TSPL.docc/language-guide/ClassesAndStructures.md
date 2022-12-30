@@ -167,7 +167,7 @@ print("hd is still \(hd.width) pixels wide")
 
 `cinema` に `hd` の現在の値が与えられると、`hd` に保存されている値が新しい `cinema` インスタンスにコピーされます。これらは、同じ数値を含む 2 つの完全に別個のインスタンスですが、次の図に示すように、`cinema` の幅を `2048` に設定しても、`hd` に保存される幅には影響しません:
 
-![&#x69CB;&#x9020;&#x4F53;&#x306E;&#x72B6;&#x614B;&#x306E;&#x5171;&#x6709;](../assets/sharedStateStruct_2x.png)
+![&#x69CB;&#x9020;&#x4F53;&#x306E;&#x72B6;&#x614B;&#x306E;&#x5171;&#x6709;](sharedStateStruct)
 
 列挙型でも同じように動きます。
 
@@ -215,7 +215,7 @@ alsoTenEighty.frameRate = 30.0
 
 クラスは参照型のため、`tenEighty` と `alsoTenEighty` は両方とも同じ `VideoMode` インスタンスを参照しています。事実上、次の図に示すように、これらは同じインスタンスに 2 つの異なる名前を付けているだけです:
 
-![&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x72B6;&#x614B;&#x306E;&#x5171;&#x6709;](../assets/sharedStateClass_2x.png)
+![&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x72B6;&#x614B;&#x306E;&#x5171;&#x6709;](sharedStateClass)
 
 `tenEighty` の `frameRate` プロパティを確認すると、基になる `VideoMode` インスタンスから `30.0` の新しいフレームレートが正しく設定されていることがわかります。
 

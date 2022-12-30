@@ -117,11 +117,15 @@ for tickMark in stride(from: 3, through: hours, by: hourInterval) {
 
 `while` ループの基本的な書き方は下記の通りです:
 
-![While&#x30EB;&#x30FC;&#x30D7;](../assets/05_whileform.png)
+```swift
+while <#condition#> {
+<#statements#>
+}
+```
 
 下記の例は、_蛇とはしご_と呼ばれるシンプルなゲームの例です。
 
-![&#x86C7;&#x3068;&#x306F;&#x3057;&#x3054;](../assets/snakesandladders_2x.png)
+![&#x86C7;&#x3068;&#x306F;&#x3057;&#x3054;](snakesAndLadders)
 
 ゲームのルールは下記のようです:
 
@@ -184,7 +188,11 @@ print("ゲームオーバー!")
 
 下記が `repeat-while` ループの一般的な形式です。
 
-![repeat-while](../assets/05_repeatwhile.png)
+```swift
+repeat {
+<#statements#>
+} while <#condition#>
+```
 
 ここで蛇とはしごの例を `while` の代わりに `repeat-while` を使用して書き換えてみます。`finalSquare`、`board`、`square` と `diceRoll` は `while` と全く同じ方法で初期化します。
 
@@ -287,7 +295,17 @@ if temperatureInFahrenheit <= 32 {
 
 最もシンプルな形式として、`switch` 文は同じ型の 1 つ以上の値を比較します。
 
-![switch](../assets/05_switchform.png)
+```swift
+switch <#some value to consider#> {
+case <#value 1#>:
+<#respond to value 1#>
+case <#value 2#>,
+<#value 3#>:
+<#respond to value 2 or 3#>
+default:
+<#otherwise, do something else#>
+}
+```
 
 全ての `switch` 文は、`case` キーワードで始まる複数の可能性があるケースで構成されます。特定の値の比較に加えて、さらに複雑なパターンマッチをケースに指定するための様々な方法を提供しています。この章で後ほど記載しています。
 
@@ -405,7 +423,7 @@ default:
 // (1, 1) はボックスの中にあります
 ```
 
-![switch&#x6587; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../assets/coordinategraphsimple_2x.png)
+![switch&#x6587; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](coordinateGraphSimple)
 
 `switch` 文は、座標が原点 `(0、0)` にあるか、赤い x 軸上にあるか、緑の y 軸上にあるか、原点を中心とする青い 4x4 列のボックスの内側にあるか、ボックスの外側にあるかを判別します。
 
@@ -430,7 +448,7 @@ case let (x, y):
 // x 軸上の x の値が 2 の点
 ```
 
-![switch&#x6587; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../assets/coordinategraphmedium_2x.png)
+![switch&#x6587; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](coordinateGraphMedium)
 
 `switch` 文は、座標が赤い x 軸上にあるか、緑の y 軸上にあるか、または他の場所にあるか\(どちらの軸上にもないか\)を判別します。
 
@@ -459,7 +477,7 @@ case let (x, y):
 // (1, -1) は x == -y 線上にあります
 ```
 
-![switch&#x6587; where&#x53E5; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](../assets/coordinategraphcomplex_2x.png)
+![switch&#x6587; where&#x53E5; &#x5EA7;&#x6A19;&#x5206;&#x5E03;&#x56F3;](coordinateGraphComplex)
 
 `switch` 文は、座標が `x == y` の場合は緑色の対角線上にあるか、`x == -y` の場合は紫色の対角線上にあるか、またはどちらでもないかを判別します。
 
@@ -615,7 +633,11 @@ Swift では、より複雑な制御フローを作成するために、ルー�
 
 ラベル付き文は、文の導入キーワードの前にコロン\(`:`\)を付けて同じ行にラベルを配置することで示せます。下記は、`while` ループの構文の例ですが、他の全てのループや `switch` にも同じ原則が当てはまります。
 
-![&#x30E9;&#x30D9;&#x30EB;&#x4ED8;&#x304D;&#x6587;](../assets/05_lebeledstatements.png)
+```swift
+<#label name#>: while <#condition#> {
+<#statements#>
+}
+```
 
 次の例は、この章の前で見てきた「蛇とはしご」にラベル付き `while` ループと `break` と `continue` 文を適用したバージョンです。今回は、追加のルールがあります。
 
@@ -625,7 +647,7 @@ Swift では、より複雑な制御フローを作成するために、ルー�
 
 ゲーム盤は、前と同じです。
 
-![&#x86C7;&#x3068;&#x306F;&#x3057;&#x3054;](../assets/snakesandladders_2x.png)
+![&#x86C7;&#x3068;&#x306F;&#x3057;&#x3054;](snakesAndLadders)
 
 `finalSquare`、`board`、`square` と `diceRoll` は前と同じように初期化されています。
 
@@ -726,7 +748,13 @@ if #available(iOS 10, macOS 10.12, *) {
 
 基本的な形式として、アベイラビリティ条件はプラットフォームの名前とバージョンのリストを受け取ります。`iOS`、`macOS`、`watchOS`、`tvOS` などをプラットフォームの名前として使います。全リストは[Declaration Attributes\(宣言属性\)](../language-reference/attributes.md)を参照ください。`iOS 8` や `macOS 10.10` のようなメジャーバージョンに加え、`iOS 11.2.6` や `macOS 10.13.3` のようにマイナーバージョンも指定できます。
 
-![API&#x30A2;&#x30D9;&#x30A4;&#x30E9;&#x30D3;&#x30EA;&#x30C6;&#x30A3;&#x6761;&#x4EF6;](../assets/05_availabilitycondition.png)
+```swift
+if #available(<#platform name#> <#version#>, <#...#>, *) {
+<#statements to execute if the APIs are available#>
+} else {
+<#fallback statements to execute if the APIs are unavailable#>
+}
+```
 
 `guard` 文でアベイラビリティ条件を使用すると、そのコードブロック内の残りのコードに使用されるアベイラビリティ情報が絞り込まれます。
 

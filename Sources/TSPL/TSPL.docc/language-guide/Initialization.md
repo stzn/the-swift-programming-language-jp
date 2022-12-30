@@ -344,11 +344,19 @@ convenience イニシャライザは二次的なもので、クラスのイニ�
 
 クラスの指定イニシャライザは、値型のシンプルなイニシャライザと同じ方法で記述します:
 
-![&#x6307;&#x5B9A;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;](../assets/14_designatedInitializer.png)
+```swift
+init(<#parameters#>) {
+<#statements#>
+}
+```
 
 covenience イニシャライザは同じスタイルで記述できますが、`init` キーワードの前にスペース区切りで `covenience` 修飾子を配置します:
 
-![covenience &#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;](../assets/14_convenienceInitializer.png)
+```swift
+convenience init(<#parameters#>) {
+<#statements#>
+}
+```
 
 ### <a id="initializer-delegation-for-class-types">クラス型のイニシャライザの委譲\(Initializer Delegation for Class Types\)</a>
 
@@ -365,7 +373,7 @@ covenience イニシャライザは同じスタイルで記述できますが、
 
 これらのルールを次の図に示します:
 
-![&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x306E;&#x59D4;&#x8B72;](../assets/initializerDelegation01_2x.png)
+![&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x306E;&#x59D4;&#x8B72;](initializerDelegation01)
 
 ここでは、スーパークラスには、1 つの指定イニシャライザと 2 つの convenience イニシャライザがあります。ある convenience イニシャライザが別の convenience イニシャライザを呼び出し、それが次に単一の指定イニシャライザを呼び出します。これは、上記のルール 2 と 3 を満たします。スーパークラス自体にはそれ以上のスーパークラスがないため、ルール 1 は適用されません。
 
@@ -376,7 +384,7 @@ covenience イニシャライザは同じスタイルで記述できますが、
 
 次の図は、4 つのクラスのより複雑なクラス階層を示しています。これは、この階層の指定イニシャライザがクラスイニシャライザ初期化の「漏斗」のように機能し、チェーン内のクラス間の相互関係をシンプルにする方法を示しています:
 
-![&#x3088;&#x308A;&#x8907;&#x96D1;&#x306A;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x306E;&#x59D4;&#x8B72;](../assets/initializerDelegation02_2x.png)
+![&#x3088;&#x308A;&#x8907;&#x96D1;&#x306A;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x306E;&#x59D4;&#x8B72;](initializerDelegation02)
 
 ### <a id="two-phase-initialization">2段階の初期化\(Two-Phase Initialization\)</a>
 
@@ -427,7 +435,7 @@ convenience イニシャライザは、値をプロパティ\(同じクラスで
 
 仮のサブクラスとスーパークラスを使った第 1 段階の初期化呼び出し方法は次のとおりです:
 
-![2&#x6BB5;&#x968E;&#x306E;&#x521D;&#x671F;&#x5316; &#x7B2C; 1 &#x6BB5;&#x968E;](../assets/twoPhaseInitialization01_2x.png)
+![2&#x6BB5;&#x968E;&#x306E;&#x521D;&#x671F;&#x5316; &#x7B2C; 1 &#x6BB5;&#x968E;](twoPhaseInitialization01)
 
 この例では、初期化はサブクラスの convenience イニシャライザの呼び出しから始まります。この convenience イニシャライザは、まだプロパティを変更できません。まず convenience イニシャライザから同じクラスの指定イニシャライザに委譲します。
 
@@ -439,7 +447,7 @@ convenience イニシャライザは、値をプロパティ\(同じクラスで
 
 第 2 段階での同じ初期化呼び出し方法は次のとおりです:
 
-![2&#x6BB5;&#x968E;&#x306E;&#x521D;&#x671F;&#x5316; &#x7B2C; 2 &#x6BB5;&#x968E;](../assets/twoPhaseInitialization02_2x.png)
+![2&#x6BB5;&#x968E;&#x306E;&#x521D;&#x671F;&#x5316; &#x7B2C; 2 &#x6BB5;&#x968E;](twoPhaseInitialization02)
 
 スーパークラスの指定イニシャライザは、インスタンスをさらにカスタマイズする機会を得ます\(ただし、必ず必要ではありません\)。
 
@@ -574,7 +582,7 @@ class Food {
 
 次の図は、`Food` クラスのイニシャライザのチェーンを示しています。
 
-![Food&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x306E;&#x30C1;&#x30A7;&#x30FC;&#x30F3;](../assets/initializersExample01_2x.png)
+![Food&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x306E;&#x30C1;&#x30A7;&#x30FC;&#x30F3;](initializersExample01)
 
 クラスにはデフォルトで_メンバワイズイニシャライザ_を生成しないため、`Food` クラスは、`name` という単一の引数を受け取る指定イニシャライザを提供します。このイニシャライザを使用して、特定の名前で新しい `Food` インスタンスを作成できます。
 
@@ -609,7 +617,7 @@ class RecipeIngredient: Food {
 
 次の図は、`RecipeIngredient` クラスのイニシャライザのチェーンを示しています。
 
-![RecipeIngredient&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x306E;&#x30C1;&#x30A7;&#x30FC;&#x30F3;](../assets/initializersExample02_2x.png)
+![RecipeIngredient&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x306E;&#x30C1;&#x30A7;&#x30FC;&#x30F3;](initializersExample02)
 
 `RecipeIngredient` クラスには、単一の指定イニシャライザ `init(name: String, amount: Int)` があり、これを使用して新しい `RecipeIngredient` インスタンスの全てのプロパティを設定できます。このイニシャライザは、渡された `quantity` 引数を `quantity` プロパティに割り当てることから開始します。これは、`RecipeIngredient` で定義された唯一の新しいプロパティです。その後、イニシャライザは `Food` クラスの `init(name: String)` イニシャライザに委譲します。このプロセスは、上記の[Two-Phase Initialization\(2 段階の初期化\)](initialization.md#two-phase-initialization)の初期化の安全チェック 1 を満たしています。
 
@@ -651,7 +659,7 @@ class ShoppingListItem: RecipeIngredient {
 
 次の図は、3 つのクラス全てのイニシャライザのチェーンの全体を示しています。
 
-![3 &#x3064;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x306E;&#x30C1;&#x30A7;&#x30FC;&#x30F3;](../assets/initializersExample03_2x.png)
+![3 &#x3064;&#x306E;&#x30AF;&#x30E9;&#x30B9;&#x306E;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x306E;&#x30C1;&#x30A7;&#x30FC;&#x30F3;](initializersExample03)
 
 継承した 3 つのイニシャライザ全てを使用して、新しい `ShoppingListItem` インスタンスを作成できます。
 
@@ -986,7 +994,7 @@ class SomeClass {
 
 下記の例では、チェスゲームのボードをモデル化する `Chessboard` という構造体を定義しています。チェスは `8 x 8` の盤上で、白と黒の正方形が交互に並んでいます。
 
-![&#x30C1;&#x30A7;&#x30B9;&#x30B2;&#x30FC;&#x30E0;&#x306E;&#x30DC;&#x30FC;&#x30C9;](../assets/chessBoard_2x.png)
+![&#x30C1;&#x30A7;&#x30B9;&#x30B2;&#x30FC;&#x30E0;&#x306E;&#x30DC;&#x30FC;&#x30C9;](chessBoard)
 
 このゲームボードを表すために、`Chessboard` 構造体には、`boardColors` という 1 つのプロパティがあり、これは 64 の `Bool` 値の配列です。配列内の `true` の値は黒い正方形を表し、`false` の値は白い正方形を表します。配列の最初のアイテムはボードの左上の正方形を表し、配列の最後のアイテムはボードの右下の正方形を表します。
 

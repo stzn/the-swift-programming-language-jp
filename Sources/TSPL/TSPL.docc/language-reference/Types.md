@@ -96,7 +96,9 @@ someTuple = (left: 5, right: 5)  // Error: 名前が一致していません
 
 _関数型_は関数、メソッド、またはクロージャの型を表し、パラメータと矢印で区切られた戻り値の型で構成されています\(`->`\)。
 
-![Function Type\(&#x95A2;&#x6570;&#x578B;\)](../assets/function_type.png)
+```swift
+(<#parameter type#>) -> <#return type#>
+```
 
 _パラメータ型_は、型のカンマ\(`,`\)区切りのリストです。関数型は、_戻り値の型_がタプル型の可能性があるため、複数の値を返す関数とメソッドをサポートします。
 
@@ -176,7 +178,9 @@ func takesTwoFunctions(first: (() -> Void) -> Void, second: (() -> Void) -> Void
 
 Swift は、標準ライブラリで定義されている `Array<Element>` の次の糖衣構文\(シンタックスシュガー\)を提供しています。
 
-![&#x914D;&#x5217;&#x578B;&#x306E;&#x7CD6;&#x8863;&#x69CB;&#x6587;](../assets/array_type.png)
+```swift
+[<#type#>]
+```
 
 つまり、次の 2 つの宣言は同等です:
 
@@ -204,7 +208,9 @@ Swift 標準ライブラリの配列型の詳細については、[Arrays\(配�
 
 Swift は、標準ライブラリで定義されている `Dictionary<Key, Value>` 型に次の糖衣構文\(シンタックスシュガー\)を提供しています。
 
-![&#x8F9E;&#x66F8;](../assets/dictionary_type.png)
+```swift
+[<#key type#>: <#value type#>]
+```
 
 つまり、次の 2 つの宣言は同等です:
 
@@ -291,7 +297,9 @@ let implicitlyUnwrappedArray: [Int]!                  // OK
 
 プロトコル合成型の形式は次のとおりです:
 
-![&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x5408;&#x6210;&#x578B;](../assets/protocol_compose_type.png)
+```swift
+<#Protocol 1#> & <#Protocol 2#>
+```
 
 プロトコル合成型を使用すると、型に準拠した各プロトコルを継承した新しい名前のプロトコルを明示的に定義することなく、型が複数のプロトコルの要件に準拠することを指定できます。例えば、`ProtocolA` と `ProtocolB` と `ProtocolC` を継承する新しいプロトコルを宣言する代わりに、プロトコル合成型の `ProtocolA & ProtocolB & ProtocolC` を使用できます。同様に、`SuperClass` のサブクラスと `ProtocolA` に準拠した新しいプロトコルを宣言する代わりに `SuperClass & ProtocolA` を使用することができ、`ProtocolA` に準拠できます。
 
@@ -320,7 +328,9 @@ Opaque 型は、関数または `subscript` の戻り値の型、またはプロ
 
 Opaque 型の形式は次のとおりです:
 
-![Opaque &#x578B;](../assets/opaque_type.png)
+```swift
+some <#constraint#>
+```
 
 _constraint_ に入るのは、クラス型、プロトコル型、プロトコル合成型、または `Any` 型です。値としては、リスト内のプロトコルまたはプロトコル合成に準拠した型、またはリスト内のクラスを継承した型のインスタンスのみ使用できます。Opaque 型の値とやり取りするコードは、_constraint_ に定義された型のインターフェイスを通してのみ使用できます。
 

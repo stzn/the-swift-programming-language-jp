@@ -124,7 +124,7 @@ swapTwoValues(&someString, &anotherString)
 
 下記の図は、スタックのプッシュとポップの動作を示しています:
 
-![&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x306E;&#x30D7;&#x30C3;&#x30B7;&#x30E5;&#x3068;&#x30DD;&#x30C3;&#x30D7;](../assets/stackPushPop_2x.png)
+![&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x306E;&#x30D7;&#x30C3;&#x30B7;&#x30E5;&#x3068;&#x30DD;&#x30C3;&#x30D7;](stackPushPop)
 
 1. 現在、スタックには 3 つの値があります
 2. 4 番目の値はスタックの一番上にプッシュされます
@@ -187,7 +187,7 @@ stackOfStrings.push("cuatro")
 
 これらの 4 つの値をスタックにプッシュした後、`stackOfStrings` がどのように見えるかを次に示します:
 
-![4 &#x3064;&#x306E;&#x5024;&#x3092;&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x306B;&#x30D7;&#x30C3;&#x30B7;&#x30E5;](../assets/stackPushedFourStrings_2x.png)
+![4 &#x3064;&#x306E;&#x5024;&#x3092;&#x30B9;&#x30BF;&#x30C3;&#x30AF;&#x306B;&#x30D7;&#x30C3;&#x30B7;&#x30E5;](stackPushedFourStrings)
 
 スタックから値をポップすると、最上位の値 `"cuatro"` が削除されて返されます:
 
@@ -198,7 +198,7 @@ let fromTheTop = stackOfStrings.pop()
 
 最上位の値をポップした後のスタックは次のとおりです:
 
-![&#x6700;&#x4E0A;&#x4F4D;&#x306E;&#x5024;&#x3092;&#x30DD;&#x30C3;&#x30D7;](../assets/stackPoppedOneString_2x.png)
+![&#x6700;&#x4E0A;&#x4F4D;&#x306E;&#x5024;&#x3092;&#x30DD;&#x30C3;&#x30D7;](stackPoppedOneString)
 
 ## <a id="extending-a-generic-type">ジェネリック型の拡張\(Extending a Generic Type\)</a>
 

@@ -72,7 +72,7 @@ It also ends with a line break.
 
 複数行文字列は、周りのコードに合わせてインデントさせることができます。終了クォーテーションマーク\(`"""`\)の前に空白を加えると、他の行に存在する同じ位置の空白も無視するようになります。一方で、終了クォーテーションマーク\(`"""`\)の空白のさらに後に空白を追加すると、その行の空白_は_含まれるようになります。
 
-![&#x8907;&#x6570;&#x884C;&#x6587;&#x5B57;&#x5217;&#x306E;&#x30B9;&#x30DA;&#x30FC;&#x30B9;](../assets/multilinestringwhitespace_2x.png)
+![&#x8907;&#x6570;&#x884C;&#x6587;&#x5B57;&#x5217;&#x306E;&#x30B9;&#x30DA;&#x30FC;&#x30B9;](multilineStringWhitespace)
 
 上記の例では、全ての複数行文字列にインデントが加えられていますが、最初と最後の行は冒頭に空白はありません。真ん中の行は終了クォーテーションマーク\(`"""`\)よりもさらにインデントを追加しているため、4 つの空白から開始します。
 
@@ -449,7 +449,7 @@ let newString = String(beginning)
 
 上記の例では、`greeting` は文字列です。つまり、文字列を構築する文字を保持したメモリ領域を持っています。`beginning` は `greeting` の部分文字列です。`greeting` が使用しているメモリを再利用しています。反対に、`newString` は文字列で、部分文字列から生成されたときに独自のメモリ領域を持ちます。下記の図はこの関係を示しています。
 
-![&#x6587;&#x5B57;&#x5217;&#x3068;&#x90E8;&#x5206;&#x6587;&#x5B57;&#x5217;](../assets/stringsubstring_2x.png)
+![&#x6587;&#x5B57;&#x5217;&#x3068;&#x90E8;&#x5206;&#x6587;&#x5B57;&#x5217;](stringSubstring)
 
 > NOTE  
 > 文字列と部分文字列は、[StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol)に準拠しています。つまり、文字列操作を行う関数は、`StringProtocol` の値を受け取るとしばしば便利なことがあります。文字列、部分文字列のどちらを使用しても、その関数を使用することができます。
@@ -580,7 +580,7 @@ let dogString = "Dog‼🐶"
 
 UTF-8 表現には `String` の `utf8` プロパティを使います。このプロパティの型は、`String.UTF8View` で、符号なし 8 ビット\(`UInt8`\)のコレクションで、文字列の UTF-8 表現のそれぞれのバイトを表しています:
 
-![UTF-8](../assets/utf8_2x.png)
+![UTF-8](UTF8)
 
 ```swift
 for codeUnit in dogString.utf8 {
@@ -596,7 +596,7 @@ print("")
 
 UTF-16 表現には `String` の `utf16` プロパティを使います。このプロパティの型は、`String.UTF16View` で、符号なし 16 ビット\(`UInt16`\)のコレクションで、文字列の UTF-16 表現のそれぞれのバイトを表しています:
 
-![UTF-16](../assets/utf16_2x.png)
+![UTF-16](UTF16)
 
 ```swift
 for codeUnit in dogString.utf16 {
@@ -617,7 +617,7 @@ Unicode スカラ表現には `String` の `unicodeScalars` プロパティを�
 
 それぞれの `UnicodeScalar` には `UInt32` で表される 21 ビットのスカラを返す `value` プロパティを持っています。
 
-![Unicode Scalar](../assets/unicodescalar_2x.png)
+![Unicode Scalar](UnicodeScalar)
 
 ```swift
 for scalar in dogString.unicodeScalars {

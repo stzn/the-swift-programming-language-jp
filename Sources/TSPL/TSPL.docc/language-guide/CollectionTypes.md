@@ -7,7 +7,7 @@
 
 Swift は、配列、セット、辞書と呼ばれる 3 つの基本的な_コレクション型_を提供しています。配列は順序が決まったコレクションです。セットは値の重複と順序のないコレクションです。辞書はキーとバリューに関連性を持たせた順序のないコレクションです。
 
-![Collection Types\(&#x30B3;&#x30EC;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x578B;\)](../assets/collectiontypes_intro_2x.png)
+![Collection Types\(&#x30B3;&#x30EC;&#x30AF;&#x30B7;&#x30E7;&#x30F3;&#x578B;\)](CollectionTypes_intro)
 
 Swift の配列、セット、辞書は、常に保持しているキーやバリューの型が明確です。つまり、間違った型の値を挿入することができません。これは、コレクションから取得する値の型がはっきりとわかっていることにもなります。
 
@@ -78,7 +78,9 @@ var sixDoubles = threeDoubles + anotherThreeDoubles
 
 配列リテラルからも配列を初期化できます。これは、1 つ以上の要素を持った配列コレクションの簡略記法です。配列リテラルはカンマ区切りの角括弧\(`[]`\)で囲んだ値のリストです:
 
-![Array Literal](../assets/arrayliteral_2x.png)
+```swift
+[<#value 1#>, <#value 2#>, <#value 3#>]
+```
 
 下記の例は、`String` を保持する `shoppingList` という配列を作成しています。
 
@@ -386,7 +388,7 @@ for genre in favoriteGenres.sorted() {
 
 下記のイラストでは、`a` と `b` の 2 つのセットに対して、それぞれ操作を行い、色の付いた部分が結果\(戻り値\)を表しています。
 
-![Set&#x306E;&#x30D9;&#x30F3;&#x56F3;](../assets/setvenndiagram_2x.png)
+![Set&#x306E;&#x30D9;&#x30F3;&#x56F3;](setVennDiagram)
 
 * `intersection(_:)` は、2 つのセットの共通要素を含めた新しいセットを作成します
 * `symmetricDifference(_:)` は、どちらかのセットにあるものの、両方には含まれていない要素を含めた新しいセットを作成します
@@ -412,7 +414,7 @@ oddDigits.symmetricDifference(singleDigitPrimeNumbers).sorted()
 
 下記のイラストでは、`a`、`b`、`c` の 3 つのセットで共有している要素の領域を表しています。 `a` は、`b` に含まれる全ての要素を含んでいるため、`b` の_上位集合_です。反対に、`b` は `a` の_下位集合_です。`b` と `c` は、共通の要素がないため、互いに_素_です。
 
-![Set&#x306E;&#x30AA;&#x30A4;&#x30E9;&#x30FC;&#x56F3;](../assets/seteulerdiagram_2x.png)
+![Set&#x306E;&#x30AA;&#x30A4;&#x30E9;&#x30FC;&#x56F3;](setEulerDiagram)
 
 * 等価演算子\(`==`\)を使用して、2 つのセットの要素が全て同じかどうかを判定できます
 * `isSubset(of:)` を使用してあるセットの要素が他のセットに全て含まれているかどうかを判定できます
@@ -475,7 +477,9 @@ namesOfIntegers = [:]
 
 _キーバリューペア_は、キーとバリューの組み合わせです。辞書リテラルは、それぞれのキーバリューペアのキーとバリューをコロン\(`:`\)で分けます。複数のキーバリューペアは、カンマ\(`,`\)区切りのリストを角括弧\(`[]`\)で囲みます:
 
-![&#x8F9E;&#x66F8;&#x306E;&#x4F5C;&#x6210;](../assets/04_dictionarycreating.png)
+```swift
+[<#key 1#>: <#value 1#>, <#key 2#>: <#value 2#>, <#key 3#>: <#value 3#>]
+```
 
 下記の例では、国際空港の名前を保持する辞書を作成します。この辞書は、3 文字の国際空港コードをキーに、空港名をバリューにしています。
 

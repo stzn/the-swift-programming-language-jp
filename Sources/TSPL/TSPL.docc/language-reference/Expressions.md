@@ -29,7 +29,9 @@ Swift 標準ライブラリによって提供されている演算子につい�
 
 in-out 式は、関数呼び出し式に in-out パラメータとして渡された変数にマークをします。
 
-![in-out&#x5F0F;](../assets/inout_expression.png)
+```swift
+&<#expression#>
+```
 
 in-out パラメータの詳細については、[In-Out Parameters\(In-Out パラメータ\)](../language-reference/declarations.md#declarations-in-out-parameters)を参照ください。
 
@@ -42,19 +44,25 @@ in-out 式は、[Implicit Conversion to a Pointer Type\(ポインタ型への暗
 
 _Try 演算子_は、`try` 演算子の後にエラーをスローできる式が続く形で構成されます。形式は次のとおりです:
 
-![try&#x6F14;&#x7B97;&#x5B50;](../assets/try_operator.png)
+```swift
+try <#expression#>
+```
 
 `try` 式の値は _expression_ の値です。
 
 _オプショナル try 式_は `try?` 演算子の後にエラーをスローできる式が続く形で構成されます。形式は次のとおりです:
 
-![try?&#x6F14;&#x7B97;&#x5B50;](../assets/try_hatena_operator.png)
+```swift
+try? <#expression#>
+```
 
 式がエラーをスローしない場合、`try?` の値は式の値を含むオプショナルです。それ以外の場合、`try?` の値は `nil` です。
 
 _強制 try 式_は `try!` 演算子の後にエラーをスローできる式が続く形で構成されます。形式は次のとおりです:
 
-![try!&#x6F14;&#x7B97;&#x5B50;](../assets/try!_operator.png)
+```swift
+try! <#expression#>
+```
 
 `try!` の値は _experssion_ の値です。式がエラーをスローすると、実行時エラーが発生します。
 
@@ -84,7 +92,9 @@ sum = (try someThrowingFunction()) + anotherThrowingFunction()
 
 _await 式_は、`await` 演算子の後に非同期関数の結果を返す式が続けて構成されます。形式は次のとおりです:
 
-![await &#x6F14;&#x7B97;&#x5B50;](../assets/await_operator.png)
+```swift
+await <#expression#>
+```
 
 `await` 式の値は _experssion_ の値です。
 
@@ -116,7 +126,9 @@ sum = (await someAsyncFunction()) + anotherAsyncFunction()
 
 _中置式_は、左右の引数を受け取る式と中置バイナリ演算子を組み合わせます。形式は次のとおりです:
 
-![&#x30D0;&#x30A4;&#x30CA;&#x30EA;&#x5F0F;](../assets/binary_expression.png)
+```swift
+<#left-hand argument#> <#operator#> <#right-hand argument#>
+```
 
 これらの演算子の動作については、[Basic Operators\(基本演算子\)](../language-guide/basic-operators.md) と [Advanced Operators\(高度な演算子\)](../language-guide/advanced-operators.md)を参照ください。
 
@@ -136,7 +148,9 @@ _中置式_は、左右の引数を受け取る式と中置バイナリ演算子
 
 代入演算子は特定の式に新しい値を設定します。形式は次のとおりです:
 
-![&#x4EE3;&#x5165;&#x6F14;&#x7B97;&#x5B50;](../assets/assignment_operator.png)
+```swift
+<#expression#> = <#value#>
+```
 
 value を評価した結果得られた値が expression に設定されます。式がタプルの場合、値は同じ数の要素を持つタプルでなければなりません。\(タプルはネストすることもできます\)。代入は、値の各部分から expression の中の対応する部分に対して行われます。例えば:
 
@@ -154,7 +168,9 @@ value を評価した結果得られた値が expression に設定されます�
 
 三項条件演算子は、条件の値に基づいて、2 つの値のうちの 1 つに評価されます。形式は次のとおりです:
 
-![&#x4E09;&#x9805;&#x6761;&#x4EF6;&#x6F14;&#x7B97;&#x5B50;](../assets/ternary_conditional_operator.png)
+```swift
+<#condition#> ? <#expression used if true#> : <#expression used if false#>
+```
 
 条件が `true` と評価された場合、条件演算子は最初の式を評価し、その値を返します。それ以外の場合は、2 番目の式を評価してその値を返します。未使用の式は評価されません。
 
@@ -169,7 +185,12 @@ value を評価した結果得られた値が expression に設定されます�
 
 それらは次の形式を持っています:
 
-![&#x578B;&#x30AD;&#x30E3;&#x30B9;&#x30C8;&#x6F14;&#x7B97;&#x5B50;](../assets/type_casting_operator.png)
+```swift
+<#expression#> is <#type#>
+<#expression#> as <#type#>
+<#expression#> as? <#type#>
+<#expression#> as! <#type#>
+```
 
 `is` 演算子は実行時に式が指定された型にキャストできるかどうかを確認します。キャストできる場合は `true` を返します。それ以外の場合は、`false` を返します。
 
@@ -258,7 +279,9 @@ func myFunction() {
 
 _配列リテラル_は、順序付けられた値の集合です。形式は次のとおりです:
 
-![&#x914D;&#x5217;&#x30EA;&#x30C6;&#x30E9;&#x30EB;](../assets/array_expression.png)
+```swift
+[<#value 1#>, <#value 2#>, <#...#>]
+```
 
 配列内の最後の式の後にカンマ\(`,`\)を続けることもできます。配列リテラルの値は `[T]` 型で、`T` はその内部の式の型です。複数の型の式がある場合、`T` はそれらに最も近い共通のスーパー型になります。空の配列リテラルは、空の角括弧\(`[]`\)を使用し、指定された型の空の配列を作成するためにも使用できます。
 
@@ -268,7 +291,9 @@ var emptyArray: [Double] = []
 
 _辞書リテラル_は、順序のないキーバリューペアのコレクションです。形式は次のとおりです:
 
-![&#x8F9E;&#x66F8;&#x30EA;&#x30C6;&#x30E9;&#x30EB;](../assets/dictionary_expression.png)
+```swift
+[<#key 1#>: <#value 1#>, <#key 2#>: <#value 2#>, <#...#>]
+```
 
 辞書内の最後の式の後にカンマ\(`,`\)を続けることができます。辞書リテラルの値は `[Key：Value]` 型で、`Key` はそのキー式の型、`Value` はその値式の型です。複数の型の式がある場合、キーとバリューはそれぞれの値に最も近い共通のスーパー型になります。空の辞書リテラルは、空の配列リテラルと区別するために、一対の括弧内にコロンを書きます\(`[:]`\)。空の辞書リテラルを使用して、指定されたキーとバリュー型の空の辞書リテラルを作成できます。
 
@@ -299,7 +324,13 @@ Xcode の playground リテラルの使用方法については、Xcode ヘル�
 
 `self` 式は、それが使用さえている現在の型またはインスタンスへの明示的な参照です。形式は次のとおりです:
 
-![Self&#x5F0F;](../assets/self_expression.png)
+```swift
+self
+self.<#member name#>
+self[<#subscript index#>]
+self(<#initializer arguments#>)
+self.init(<#initializer arguments#>)
+```
 
 イニシャライザ、サブスクリプト、またはインスタンスメソッドでは、`self` は、それが出現する現在の型のインスタンスを表します。型メソッドでは、`self` はそれが登場する現在の型を表します。
 
@@ -335,7 +366,11 @@ struct Point {
 
 _スーパークラス式_は、クラスがスーパークラスとやり取りすることを可能にします。次のいずれかの形式があります:
 
-![&#x30B9;&#x30FC;&#x30D1;&#x30FC;&#x30AF;&#x30E9;&#x30B9;&#x5F0F;](../assets/superclass_expression.png)
+```swift
+super.<#member name#>
+super[<#subscript index#>]
+super.init(<#initializer arguments#>)
+```
 
 最初の形式はスーパークラスのメンバにアクセスするために使用されます。2 番目の形式は、スーパークラスのサブスクリプトの実装にアクセスするために使用されます。3 番目の形式は、スーパークラスのイニシャライザにアクセスするために使用されます。
 
@@ -351,9 +386,28 @@ _スーパークラス式_は、クラスがスーパークラスとやり取り
 
 _クロージャ式_は、他のプログラミング言語では、_ラムダ_または_匿名関数_とも呼ばれているクロージャを作成します。関数宣言のように、クロージャには文が含まれており、その囲まれている範囲から定数と変数をキャプチャします。形式は次のとおりです:
 
-![&#x30AF;&#x30ED;&#x30FC;&#x30B8;&#x30E3;&#x5F0F;](../assets/closure_expression.png)
+```swift
+{ (<#parameters#>) -> <#return type#> in
+<#statements#>
+}
 
 [Function Declaration\(関数宣言\)](../language-reference/declarations.md#function-declaration)で説明されているように、_parameters_は関数宣言内のパラメータと同じ形式です。
+
+<!-- TODO -->
+
+Writing `throws` or `async` in a closure expression
+explicitly marks a closure as throwing or asynchronous.
+
+```swift
+{ (<#parameters#>) async throws -> <#return type#> in
+<#statements#>
+}
+```
+
+If the body of a closure includes a try expression,
+the closure is understood to be throwing.
+Likewise, if it includes an await expression,
+it's understood to be asynchronous.
 
 クロージャをより簡潔に書くことができるいくつかの特別な形式があります:
 
@@ -463,7 +517,9 @@ myFunction { [weak parent = self.parent] in print(parent!.title) }
 
 _暗黙メンバ式_は、型推論によって暗黙的に型を決定できるコンテキストにおいて、列挙ケースや型メソッドなどの型のメンバにアクセスするための省略記法です。形式は次のとおりです:
 
-![&#x6697;&#x9ED9;&#x30E1;&#x30F3;&#x30D0;&#x5F0F;](../assets/implicit_member_expression.png)
+```swift
+.<#member name#>
+```
 
 例えば:
 
@@ -512,7 +568,9 @@ _括弧で囲まれた式_は、括弧で囲まれた式で構成されます。
 
 タプル式は、括弧で囲まれた式のカンマ区切りのリストで構成されています。各式は、コロン\(`:`\)で区切られ、その前に識別子を指定することもできます。形式は次のとおりです:
 
-![&#x30BF;&#x30D7;&#x30EB;&#x5F0F;](../assets/tuple_expression.png)
+```swift
+(<#identifier 1#>: <#expression 1#>, <#identifier 2#>: <#expression 2#>, <#...#>)
+```
 
 _タプル式_の各識別子は、タプル式の範囲内で一意な必要があります。ネストしたタプル式では、同じレベルでネスト識別子を一意にする必要があります。例えば、`(a: 10, a: 20)` はラベル `a` が同じレベルで 2 回使用されているため無効です。ただし、`(a: 10, b: (a: 1, x: 2))` は有効です。`a` は 2 回使用されていますが、外側のタプルに 1 回、内側のタプルに 1 回使用されています。
 
@@ -542,7 +600,9 @@ _タプル式_の各識別子は、タプル式の範囲内で一意な必要が
 
 _KeyPath 式_は、型のプロパティまたはサブスクリプトを参照します。key-value observing などのような、動的プログラミングのタスクで KeyPath 式を使用します。次の形式があります:
 
-![Key-Path &#x5F0F;](../assets/key-path_expression.png)
+```swift
+\<#type name#>.<#path#>
+```
 
 _type name_ は、`String`、`[Int]`、や `Set<Int>` などのジェネリックなパラメータを含めた、具体的な型の名前です。
 
@@ -710,7 +770,11 @@ Objective-C API とやり取りするコード内の KeyPath の使用方法の�
 
 セレクタ式を使用すると、Objective-C のメソッドまたはプロパティの get や set を参照するために使用されるセレクタにアクセスできます。形式は次のとおりです:
 
-![Selector &#x5F0F;](../assets/selector_expression.png)
+```swift
+#selector(<#method name#>)
+#selector(getter: <#property name#>)
+#selector(setter: <#property name#>)
+```
 
 メソッド名とプロパティ名は、Objective-C ランタイムで使用可能なメソッドまたはプロパティを参照する必要があります。セレクタ式の値は `Selector` 型のインスタンスです。例えば:
 
@@ -757,7 +821,9 @@ Objective-C API とやり取りする Swift コードでセレクタを使用す
 
 KeyPath 文字列式を使用すると、Key-Value Coding や Key-Value Observing API で使用するために、Objective-C のプロパティを参照するための文字列にアクセスできます。形式は次のとおりです:
 
-![Key-Path&#x6587;&#x5B57;&#x5217;&#x5F0F;](../assets/key-path_string_expression.png)
+```swift
+#keyPath(<#property name#>)
+```
 
 _property name_ は、Objective-C ランタイムで使用可能なプロパティを参照する必要があります。コンパイル時には、KeyPath 文字列式は文字列リテラルに置き換えられます。例えば:
 
@@ -823,13 +889,17 @@ Swift 標準ライブラリによって提供されている演算子につい�
 
 _関数呼び出し式_は、関数名とそれに続く関数の引数のカンマ区切りのリストからなる関数名で構成されています。関数呼び出し式は形式は次のとおりです:
 
-![&#x95A2;&#x6570;&#x547C;&#x3073;&#x51FA;&#x3057;&#x5F0F;1](../assets/function_call_expression1.png)
+```swift
+<#function name#>(<#argument value 1#>, <#argument value 2#>)
+```
 
 _function name_ は、関数型の任意の式です。
 
 関数定義にパラメータ名が含まれている場合、関数呼び出しは、コロン\(`:`\)で区切られた引数値の前に名前を含める必要があります。この種の関数呼び出し式は形式は次のとおりです:
 
-![&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x540D;&#x3092;&#x542B;&#x3093;&#x3060;&#x95A2;&#x6570;&#x547C;&#x3073;&#x51FA;&#x3057;&#x5F0F;](../assets/function_call_expression2.png)
+```swift
+<#function name#>(<#argument name 1#>: <#argument value 1#>, <#argument name 2#>: <#argument value 2#>)
+```
 
 関数呼び出し式は、閉じ括弧\(`}`\)の直後にクロージャ式の形で末尾クロージャを含めることができます。末尾クロージャは、最後の括弧内の引数の後の関数型の引数と解釈されます。最初のクロージャ式に引数ラベルは付けません。次のクロージャ式の前には引数ラベルを付けます。下記の例は、末尾クロージャの構文を使用して、 末尾クロージャを使用しない関数呼び出しバージョンと同等だということを示しています:
 
@@ -934,7 +1004,9 @@ withUnsafePointer(to: myNumber) { unsafeFunction(pointer: $0) }
 
 _イニシャライザ式_は型のイニシャライザへアクセスします。形式は次のとおりです:
 
-![&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x5F0F;](../assets/initializer_expression.png)
+```swift
+<#expression#>.init(<#initializer arguments#>)
+```
 
 イニシャライザ式を使用して、型の新しいインスタンスを初期化します。スーパークラスのイニシャライザに委譲するイニシャライザ式を使用することもできます。
 
@@ -975,7 +1047,9 @@ let s4 = type(of: someValue)(data: 5)       // エラー
 
 _明示的メンバ式_では、名前付き型、タプル、またはモジュールのメンバへアクセスできます。アイテムとそのメンバの識別子の間のピリオド\(`.`\)で構成されています。
 
-![&#x660E;&#x793A;&#x7684;&#x30E1;&#x30F3;&#x30D0;&#x5F0F;](../assets/explicit_member_expression.png)
+```swift
+<#expression#>.<#member name#>
+```
 
 名前付き型のメンバは、型の宣言または extension の一部で指定されます。例えば:
 
@@ -1056,7 +1130,10 @@ let numbers = [10, 20, 33, 43, 50]
 
 後置 `self` 式は、型や式の直後に `.self` を付けて構成します。次の形式があります:
 
-![&#x5F8C;&#x7F6E; self &#x5F0F;](../assets/postfix_self_expression.png)
+```swift
+<#expression#>.self
+<#type#>.self
+```
 
 最初の形式は _expression_ の値に評価されます。例えば、`x.self` は `x` と評価されます。
 
@@ -1069,7 +1146,9 @@ let numbers = [10, 20, 33, 43, 50]
 
 _サブスクリプト式_は、対応するサブスクリプト宣言の get と set を使用してサブスクリプトへのアクセスすることができます。形式は次のとおりです:
 
-![subscript&#x5F0F;](../assets/subscript_expression.png)
+```swift
+<#expression#>[<#index expressions#>]
+```
 
 サブスクリプト式の値を評価するには、_expression_ 型のサブスクリプトの get をサブスクリプトのパラメータとして_インデックス式_を渡して呼び出します。値を設定するために、サブスクリプトの set を同じ方法で呼び出します。
 
@@ -1082,7 +1161,9 @@ _サブスクリプト式_は、対応するサブスクリプト宣言の get �
 
 _強制アンラップ式_は、特定の値が `nil` ではないオプショナルの値を表します。形式は次のとおりです:
 
-![&#x5F37;&#x5236;&#x30A2;&#x30F3;&#x30E9;&#x30C3;&#x30D7;&#x5F0F;](../assets/forced-Value_expression.png)
+```swift
+<#expression#>!
+```
 
 _expression_ の値が `nil` でない場合、オプショナルの値はアンラップされ、対応するオプショナルの非オプショナルの型で返されます。それ以外の場合は、実行時エラーが発生します。
 
@@ -1105,7 +1186,9 @@ someDictionary["a"]![0] = 100
 
 _オプショナルチェーン式_は後置式で、オプショナルの値を使用するための簡単な構文を提供します。形式は次のとおりです:
 
-![&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30CA;&#x30EB;&#x30C1;&#x30A7;&#x30FC;&#x30F3;&#x5F0F;](../assets/optional-chaining_expression.png)
+```swift
+<#expression#>?
+```
 
 後置 `?` 演算子は式の値を変更せずに式からオプショナルチェーン式を作成します。
 
