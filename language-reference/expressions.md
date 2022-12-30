@@ -1,6 +1,6 @@
 # 式\(Expressions\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2022/12/31  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Expressions.html
 
 型、演算子、変数、およびその他の名前と構造を紹介する。
@@ -354,6 +354,12 @@ _クロージャ式_は、他のプログラミング言語では、_ラムダ_�
 ![&#x30AF;&#x30ED;&#x30FC;&#x30B8;&#x30E3;&#x5F0F;](../assets/closure_expression.png)
 
 [Function Declaration\(関数宣言\)](../language-reference/declarations.md#function-declaration)で説明されているように、_parameters_は関数宣言内のパラメータと同じ形式です。
+
+クロージャ式で `throw` または `async` を記述すると、クロージャはエラーをスローする、または非同期であることを明示します。
+
+![throwやawaitがマークしたクロージャ式](../assets/await_throw_closure_expression.png)
+
+クロージャの本文に `try` 式が含まれている場合、クロージャはエラーをスローすると見なします。同様に、`await` 式が含まれている場合は、非同期であると見なします。
 
 クロージャをより簡潔に書くことができるいくつかの特別な形式があります:
 
