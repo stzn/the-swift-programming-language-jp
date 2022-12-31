@@ -1,7 +1,7 @@
 # ``TSPL``
 
 @Metadata {
-  @DisplayName("Swift言語ガイド日本語版")
+  @DisplayName("Swift 言語ガイド日本語版")
 }
 
 @Options(scope: global) {

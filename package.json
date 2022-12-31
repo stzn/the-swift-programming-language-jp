@@ -5,8 +5,8 @@
   "description": "[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。",
   "main": "index.js",
   "scripts": {
-    "textlint": "textlint",
-    "textlintf": "textlint --fix",
+    "textlint": "textlint ./Sources/TSPL/TSPL.docc",
+    "textlintf": "textlint --fix ./Sources/TSPL/TSPL.docc",
     "lint": "node -e \"var shell=require('shelljs');var files=shell.find(['./**/*.md']).filter(function(file){return !file.includes('node_modules')}).join(' ');if(shell.exec('textlint -f pretty-error '+files).code!==0){shell.exit(1)};\"",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
