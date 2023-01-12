@@ -81,27 +81,20 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/LivingRecoil">
-            <img src="https://avatars.githubusercontent.com/u/26360184?v=4" width="100;" alt="LivingRecoil"/>
-            <br />
-            <sub><b>Tsubasa ISHIHARA</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/sumomoneko">
             <img src="https://avatars.githubusercontent.com/u/6897176?v=4" width="100;" alt="sumomoneko"/>
             <br />
             <sub><b>Sumomoneko</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/KS1019">
             <img src="https://avatars.githubusercontent.com/u/6828522?v=4" width="100;" alt="KS1019"/>
             <br />
             <sub><b>Kotaro Suto</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/jollyjoester">
             <img src="https://avatars.githubusercontent.com/u/2178775?v=4" width="100;" alt="jollyjoester"/>
@@ -136,15 +129,15 @@
             <br />
             <sub><b>GitBook Bot</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/hira22">
             <img src="https://avatars.githubusercontent.com/u/31942637?v=4" width="100;" alt="hira22"/>
             <br />
             <sub><b>Hiraoka</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/ribilynn">
             <img src="https://avatars.githubusercontent.com/u/11924267?v=4" width="100;" alt="ribilynn"/>
