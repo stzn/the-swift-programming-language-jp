@@ -494,7 +494,7 @@ print(someStructure.$someNumber)
 
 `someStructure.$someNumber` を書き込むと、ラッパの projectedValue にアクセスします。4 などの小さな数を格納した後、`someStructure.$someNumber` の値は `false` です。ただし、55 などの大きすぎる数値を格納しようとすると、projectedValue は `true` になります。
 
-プロパティラッパは、projectedValue として任意の型の値を返すことができます。この例では、プロパティラッパは、数値が調整されたかどうかに関係なく、1 つの情報のみを公開するため、そのブール値をその projectedValue として公開します。より多くの情報を公開する必要があるラッパは、他のデータ型のインスタンスを返すことも、`self` を返してラッパのインスタンスをその projectedValue として公開することもできます。
+プロパティラッパは、projectedValue として任意の型の値を返すことができます。この例では、プロパティラッパは、数値が調整されたかどうかに関係なく、1 つの情報のみを公開するため、そのブール値をその projectedValue として公開します。より多くの情報を公開する必要があるラッパは、他の型のインスタンスを返すことも、`self` を返してラッパのインスタンスをその projectedValue として公開することもできます。
 
 get やインスタンスメソッドなど、型の一部から投影された値にアクセスする場合、他のプロパティにアクセスするのと同じように、プロパティ名の前の `self.` を省略できます。次の例のコードは、`height` と `width` のラッパの projectedValue を `$height` および `$width` として参照します。
 
