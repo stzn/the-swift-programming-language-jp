@@ -1,6 +1,6 @@
 # プロパティ\(Properties\)
 
-最終更新日: 2022/11/8  
+最終更新日: 2023/1/15  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Properties.html
 
 インスタンスまたは型の一部である、格納および計算された値にアクセスする。

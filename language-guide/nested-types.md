@@ -1,6 +1,6 @@
 # ネスト型\(Nested Types\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2023/1/15  
 原文: https://docs.swift.org/swift-book/LanguageGuide/NestedTypes.html
 
 別の型のスコープ内に型を定義する。

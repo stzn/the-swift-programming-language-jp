@@ -1,6 +1,6 @@
 # 基本演算子\(Basic Operators\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2023/1/15  
 原文: https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html
 
 代入、算術、比較などの演算を行う。

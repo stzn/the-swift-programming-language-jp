@@ -1,6 +1,6 @@
 # 構造体とクラス\(Structures and Classes\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2023/1/15  
 原文: https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html
 
 データをカプセル化する独自のデータ型をモデル化する。
