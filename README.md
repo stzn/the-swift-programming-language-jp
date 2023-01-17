@@ -103,17 +103,17 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/uhooi">
-            <img src="https://avatars.githubusercontent.com/u/21194714?v=4" width="100;" alt="uhooi"/>
-            <br />
-            <sub><b>Uhooi</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/NiwakaDev">
             <img src="https://avatars.githubusercontent.com/u/61189782?v=4" width="100;" alt="NiwakaDev"/>
             <br />
             <sub><b>Niwaka</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/uhooi">
+            <img src="https://avatars.githubusercontent.com/u/21194714?v=4" width="100;" alt="uhooi"/>
+            <br />
+            <sub><b>Uhooi</b></sub>
         </a>
     </td>
     <td align="center">
