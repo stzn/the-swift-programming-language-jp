@@ -9,10 +9,7 @@
     "textlintf": "textlint --fix ./Sources/TSPL/TSPL.docc",
     "lint": "node -e \"var shell=require('shelljs');var files=shell.find(['./**/*.md']).filter(function(file){return !file.includes('node_modules')}).join(' ');if(shell.exec('textlint -f pretty-error '+files).code!==0){shell.exit(1)};\"",
     "prepare": "husky install",
-    "lint-staged": "lint-staged",
-    "build": "honkit build",
-    "serve": "honkit serve",
-    "deploy": "gh-pages -d _book"
+    "lint-staged": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -30,19 +27,6 @@
   "devDependencies": {
     "@proofdict/textlint-rule-proofdict": "^3.1.1",
     "@textlint-rule/textlint-rule-no-invalid-control-character": "^2.0.0",
-    "gh-pages": "^3.2.3",
-    "gitbook-plugin-back-to-top-button": "^0.1.4",
-    "gitbook-plugin-collapsible-chapters": "^0.1.8",
-    "gitbook-plugin-copy-code-button": "^0.0.2",
-    "gitbook-plugin-custom-favicon": "^0.0.4",
-    "gitbook-plugin-edit-link": "^2.0.2",
-    "gitbook-plugin-expand-active-chapter": "^1.0.0",
-    "gitbook-plugin-hide-published-with": "^0.0.1",
-    "gitbook-plugin-insert-logo": "^0.1.5",
-    "gitbook-plugin-intopic-toc": "^1.1.1",
-    "gitbook-plugin-katex": "^1.1.4",
-    "gitbook-plugin-prism": "^2.4.0",
-    "honkit": "^3.7.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "shelljs": "^0.8.4",
