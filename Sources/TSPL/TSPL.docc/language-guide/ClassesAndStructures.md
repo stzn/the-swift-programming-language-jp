@@ -23,7 +23,7 @@ Swift の構造体とクラスには多くの共通点があります。いず�
 * `extension` で機能を拡張できます
 * 特定の種類の標準機能を提供するためにプロトコルに準拠できます
 
-これらの機能の詳細については、[Properties\(プロパティ\)](properties.md)、[Methods\(メソッド\)](methods.md)、[Initialization\(初期化\)](initialization.md)、[Extensions\(拡張\)](extensions.md)および[Protocols\(プロトコル\)](protocols.md)を参照ください。
+これらの機能の詳細については、[Properties\(プロパティ\)](properties)、[Methods\(メソッド\)](methods)、[Initialization\(初期化\)](initialization)、[Extensions\(拡張\)](extensions)および[Protocols\(プロトコル\)](protocols)を参照ください。
 
 一方で、クラスには、構造体にはない追加の機能があります。
 
@@ -32,12 +32,12 @@ Swift の構造体とクラスには多くの共通点があります。いず�
 * _デイニシャライザ_を使ったクラスのインスタンスに割り当てられているリソースの解放
 * _参照カウント_を使ったある同じクラスインスタンスへ複数から参照できます
 
-これらの機能の詳細については、[Inheritance\(継承\)](inheritance.md)、[Type Casting\(型キャスト\)](type-casting.md)、[Deinitialization\(デイニシャライザ\)](deinitialization.md)、[Automatic Reference Counting\(自動参照カウント\)](automatic-reference-counting.md)を参照ください。
+これらの機能の詳細については、[Inheritance\(継承\)](inheritance)、[Type Casting\(型キャスト\)](type-casting)、[Deinitialization\(デイニシャライザ\)](deinitialization)、[Automatic Reference Counting\(自動参照カウント\)](automatic-reference-counting)を参照ください。
 
 クラスは追加の機能をサポートしている分、複雑さが増します。一般的なガイドラインとして、構造体の方が扱いやすく推奨されます。クラスは適切または必要な場合にのみ使用してください。つまり、実際は、独自に定義するデータ型のほとんどが構造体と列挙型になることを意味します。より詳細な比較は[Choosing Between Structures and Classes](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes)を参照ください。
 
 > NOTE  
-> クラスとアクターは多くの共通の特徴や振る舞いを持ちます。アクターについては、[同時並行処理\(Concurrency\)](./concurrency.md)を参照ください。
+> クラスとアクターは多くの共通の特徴や振る舞いを持ちます。アクターについては、[同時並行処理\(Concurrency\)](./concurrency)を参照ください。
 
 ### 定義構文\(Definition Syntax\)
 
@@ -85,7 +85,7 @@ let someResolution = Resolution()
 let someVideoMode = VideoMode()
 ```
 
-構造体とクラスはどちらも、新しいインスタンスに初期化構文\(`init`\)を使用します。初期化構文の最もシンプルな形式では、クラスまたは構造体の型名の後に、`Resolution()` や `VideoMode()` などの空の括弧\(`()`\)が続きます。これにより、クラスまたは構造の新しいインスタンスが作成され、プロパティはデフォルト値で初期化されます。クラスと構造体の初期化については、[Initialization\(初期化\)](initialization.md)で詳しく説明しています。
+構造体とクラスはどちらも、新しいインスタンスに初期化構文\(`init`\)を使用します。初期化構文の最もシンプルな形式では、クラスまたは構造体の型名の後に、`Resolution()` や `VideoMode()` などの空の括弧\(`()`\)が続きます。これにより、クラスまたは構造の新しいインスタンスが作成され、プロパティはデフォルト値で初期化されます。クラスと構造体の初期化については、[Initialization\(初期化\)](initialization)で詳しく説明しています。
 
 ### <a id="accessing-properties">プロパティへのアクセス\(Accessing Properties\)</a>
 
@@ -121,7 +121,7 @@ print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
 let vga = Resolution(width: 640, height: 480)
 ```
 
-構造体とは異なり、クラスはデフォルトのイニシャライザを自動で生成しません。イニシャライザについては、[Initialization\(初期化\)](initialization.md)で詳しく説明しています。
+構造体とは異なり、クラスはデフォルトのイニシャライザを自動で生成しません。イニシャライザについては、[Initialization\(初期化\)](initialization)で詳しく説明しています。
 
 ## <a id="structures-and-enumerations-are-value-type">構造体と列挙型は値型\(Structures and Enumerations Are Value Types\)</a>
 

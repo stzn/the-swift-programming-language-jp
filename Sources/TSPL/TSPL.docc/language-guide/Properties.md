@@ -307,7 +307,7 @@ struct TwelveOrLess {
 set は新しい値が `12` 未満だと確認し、get は格納された値を返します。
 
 > NOTE  
-> 上記の例の `number` の宣言は、変数を `private` としてマークします。これにより、`number` は `TwelveOrLess` の実装でのみ使用されます。それ以外の場所に記述されたコードは、`wrappedValue` のプロパティの get/set を通して値にアクセスし、数値を直接使用することはできません。`private` については、[Access Control\(アクセスコントロール\)](access-control.md)を参照ください。
+> 上記の例の `number` の宣言は、変数を `private` としてマークします。これにより、`number` は `TwelveOrLess` の実装でのみ使用されます。それ以外の場所に記述されたコードは、`wrappedValue` のプロパティの get/set を通して値にアクセスし、数値を直接使用することはできません。`private` については、[Access Control\(アクセスコントロール\)](access-control)を参照ください。
 
 プロパティラッパを適用するには、属性としてプロパティの前にラッパの名前を記述します。`TwelveOrLess` プロパティラッパを使用して、大きさが常に `12` 以下になるようにする四角形を格納する構造体を次に示します。
 
@@ -381,7 +381,7 @@ struct SmallNumber {
 }
 ```
 
-`SmallNumber` の定義には、`init()`、`init(wrappedValue:)`、および `init(wrappedValue:maximum:)` の 3 つのイニシャライザが含まれています。下記の例では、これらのイニシャライザを使用して、ラップされた値と最大値を設定します。イニシャライザとその構文については、[Initialization\(初期化\)](initialization.md)を参照ください。
+`SmallNumber` の定義には、`init()`、`init(wrappedValue:)`、および `init(wrappedValue:maximum:)` の 3 つのイニシャライザが含まれています。下記の例では、これらのイニシャライザを使用して、ラップされた値と最大値を設定します。イニシャライザとその構文については、[Initialization\(初期化\)](initialization)を参照ください。
 
 プロパティラッパを適用し、初期値を指定しない場合、Swift は `init()` を使用してラッパを設定します。例えば:
 

@@ -316,7 +316,7 @@ protocol DiceGameDelegate: AnyObject {
 
 `DiceGameDelegate` プロトコルは、`DiceGame` の進行状況を追跡するために準拠できます。_強参照_循環を防ぐために、デリゲートは_弱参照_として宣言されます。弱参照については、[Strong Reference Cycles Between Class Instances\(クラスインスタンス間の強循環参照\)](../language-guide/automatic-reference-counting.md#strong-reference-cycles-between-class-instances)を参照ください。プロトコルをクラス専用としてマークすると、この章の後半で登場する `SnakesAndLadders` クラスがそのデリゲートを弱参照で使用しなければならないことを宣言できるようになります。クラス専用プロトコルは、[Class-Only Protocols\(クラス専用プロトコル\)](../language-guide/protocols.md#class-only-protocols)で説明されているように、`AnyObject` を継承します。
 
-これは、最初に [Control Flow\(制御フロー\)](control-flow.md) で紹介した「蛇とはしごゲーム」の別バージョンです。このバージョンは、ダイスロールに `Dice` インスタンスを使用しています。`SnakesAndLadders` は `DiceGame` プロトコルに準拠し、その進行状況を `DiceGameDelegate` に通知します:
+これは、最初に [Control Flow\(制御フロー\)](control-flow) で紹介した「蛇とはしごゲーム」の別バージョンです。このバージョンは、ダイスロールに `Dice` インスタンスを使用しています。`SnakesAndLadders` は `DiceGame` プロトコルに準拠し、その進行状況を `DiceGameDelegate` に通知します:
 
 ```swift
 class SnakesAndLadders: DiceGame {
@@ -408,7 +408,7 @@ game.play()
 
 ## <a id="adding-protocol-conformance-with-an-extension">拡張機能を使ったプロトコル準拠の追加\(Adding Protocol Conformance with an Extension\)</a>
 
-既存の型のソースコードにアクセスできない場合でも、既存の型を拡張して新しいプロトコルに準拠させることができます。extension は、新しいプロパティ、メソッド、およびサブスクリプトを既存の型に追加できるため、プロトコルの要件を追加できます。拡張機能の詳細については、[Extensions\(拡張\)](extensions.md)を参照ください。
+既存の型のソースコードにアクセスできない場合でも、既存の型を拡張して新しいプロトコルに準拠させることができます。extension は、新しいプロパティ、メソッド、およびサブスクリプトを既存の型に追加できるため、プロトコルの要件を追加できます。拡張機能の詳細については、[Extensions\(拡張\)](extensions)を参照ください。
 
 > NOTE  
 > 型の既存のインスタンスは、extension でそのインスタンスの型がプロトコルに準拠すると、自動的にプロトコルに準拠します。
@@ -710,7 +710,7 @@ beginConcert(in: seattle)
 
 ## <a id="checking-for-protocol-conformance">プロトコル準拠チェック\(Checking for Protocol Conformance\)</a>
 
-[Type Casting\(型キャスト\)](type-casting.md)で説明されている `is` および `as` 演算子を使用して、プロトコルの準拠を確認し、特定のプロトコルにキャストできます。プロトコルのチェックと型へのキャストは、型のチェックやキャストとまったく同じ構文を使用します。
+[Type Casting\(型キャスト\)](type-casting)で説明されている `is` および `as` 演算子を使用して、プロトコルの準拠を確認し、特定のプロトコルにキャストできます。プロトコルのチェックと型へのキャストは、型のチェックやキャストとまったく同じ構文を使用します。
 
 * `is` 演算子は、インスタンスがプロトコルに準拠している場合は `true` を返し、準拠していない場合は `false` を返します
 * ダウンキャスト演算子の `as?` は、プロトコルの型のオプショナル値を返します。インスタンスがそのプロトコルに準拠していない場合、この値は `nil` です
@@ -787,7 +787,7 @@ for object in objects {
 
 オプショナルの要件でメソッドまたはプロパティを使用すると、その型は自動的にオプショナルになります。たとえば、`(Int) -> String` 型のメソッドは `((Int) -> String)?` になります。メソッドの戻り値ではなく、関数型全体がオプショナルになっていることに注目してください。
 
-プロトコルに準拠する型によって要件が実装されていない可能性を考慮して、オプショナルのプロトコル要件をオプショナルチェーンで呼び出すことができます。オプショナルメソッドの実装を確認するには、メソッドの呼び出し時にメソッド名の後に疑問符\(`?`\)を記述します\(`someOptionalMethod?(someArgument)` など\)。オプショナルチェーンについては、[Optional Chaining\(オプショナルチェーン\)](optional-chaining.md)を参照ください。
+プロトコルに準拠する型によって要件が実装されていない可能性を考慮して、オプショナルのプロトコル要件をオプショナルチェーンで呼び出すことができます。オプショナルメソッドの実装を確認するには、メソッドの呼び出し時にメソッド名の後に疑問符\(`?`\)を記述します\(`someOptionalMethod?(someArgument)` など\)。オプショナルチェーンについては、[Optional Chaining\(オプショナルチェーン\)](optional-chaining)を参照ください。
 
 次の例では、`Counter` という整数をカウントするクラスを定義しています。これは、外部データソースを使用して増分量を提供します。このデータソースは、次の 2 つのオプショナルの要件がある `CounterDataSource` プロトコルによって定義されます:
 

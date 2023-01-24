@@ -40,7 +40,7 @@ for (animalName, legCount) in numberOfLegs {
 // spider には 8 本の足があります
 ```
 
-`Dictionary` の定数は元々順序がなく、ループ処理をするときに、取得されるキーバリューの順序も保証されていません。配列や辞書に関しては、[Collection Types\(コレクション型\)](collection-types.md)を参照ください。
+`Dictionary` の定数は元々順序がなく、ループ処理をするときに、取得されるキーバリューの順序も保証されていません。配列や辞書に関しては、[Collection Types\(コレクション型\)](collection-types)を参照ください。
 
 数値の範囲にも `for-in` ループを使用することができます。下記の例では、5 の倍数の最初のいくつかを出力しています。
 
@@ -530,7 +530,7 @@ _制御転送文_は、コードの一部の制御を他の部分へ転送させ
 * `return`
 * `throw`
 
-`continue`、`break` と `fallthrough` は下記に記載しています。`return` は[Functions\(関数\)](functions.md)、`throw` は[Propagating Errors Using Throwing Functions](../language-guide/error-handling.md#propagating-errors-using-throwing-functions)に記載しています。
+`continue`、`break` と `fallthrough` は下記に記載しています。`return` は[Functions\(関数\)](functions)、`throw` は[Propagating Errors Using Throwing Functions](../language-guide/error-handling.md#propagating-errors-using-throwing-functions)に記載しています。
 
 ### Continue
 
@@ -746,7 +746,7 @@ if #available(iOS 10, macOS 10.12, *) {
 
 上記のアベイラビリティ条件は、iOS では、`if` 文が `iOS10` 以降でのみ実行されることを指定しています。`macOS` では、`macOS10.12` 以降のみになります。最後の引数 `*` は必須で、他のプラットフォームでは、`if` の本文がターゲットで指定された最小のデプロイメントターゲットで実行されることを示します。
 
-基本的な形式として、アベイラビリティ条件はプラットフォームの名前とバージョンのリストを受け取ります。`iOS`、`macOS`、`watchOS`、`tvOS` などをプラットフォームの名前として使います。全リストは[Declaration Attributes\(宣言属性\)](../language-reference/attributes.md)を参照ください。`iOS 8` や `macOS 10.10` のようなメジャーバージョンに加え、`iOS 11.2.6` や `macOS 10.13.3` のようにマイナーバージョンも指定できます。
+基本的な形式として、アベイラビリティ条件はプラットフォームの名前とバージョンのリストを受け取ります。`iOS`、`macOS`、`watchOS`、`tvOS` などをプラットフォームの名前として使います。全リストは[Declaration Attributes\(宣言属性\)](../language-reference/attributes)を参照ください。`iOS 8` や `macOS 10.10` のようなメジャーバージョンに加え、`iOS 11.2.6` や `macOS 10.13.3` のようにマイナーバージョンも指定できます。
 
 ```swift
 if #available(<#platform name#> <#version#>, <#...#>, *) {

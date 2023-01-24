@@ -206,7 +206,7 @@ default:
 
 `switch` 文の _control expression_ が評価され、それぞれの場合に指定されたパターンと比較されます。一致するものが見つかった場合、プログラムはそのケースの範囲内の _statements_ を実行します。各ケースのスコープを空にすることはできません。そのため、各ケースラベルのコロン\(`:`\)の後に少なくとも 1 つの文を含める必要があります。コードを実行する予定がない場合は、単一の `break` 文を使用します。
 
-コードが分岐できる式の値は非常に柔軟です。例えば、整数や文字などのスカラ型の値に加えて、浮動小数点数、文字列、タプル、独自で作成したクラスのインスタンス、オプショナルなど、任意の型の値で分岐できます。_control expression_ の値は、列挙型内のケースと一致しているか、または指定された値の範囲に含まれているかどうかを確認することもできます。`switch` 文でこれらの様々な種類の値を使用する方法の例については、[Control Flow\(制御フロー\)](../language-guide/control-flow.md)の[Switch](../language-guide/control-flow.md#switch)を参照ください。
+コードが分岐できる式の値は非常に柔軟です。例えば、整数や文字などのスカラ型の値に加えて、浮動小数点数、文字列、タプル、独自で作成したクラスのインスタンス、オプショナルなど、任意の型の値で分岐できます。_control expression_ の値は、列挙型内のケースと一致しているか、または指定された値の範囲に含まれているかどうかを確認することもできます。`switch` 文でこれらの様々な種類の値を使用する方法の例については、[Control Flow\(制御フロー\)](../language-guide/control-flow)の[Switch](../language-guide/control-flow.md#switch)を参照ください。
 
 `switch` のケースには、各パターンの後に `where` 句を含めることができます。_where 句_は、`where` キーワードの後に​​式が続くことで導入され、ケースのパターンが _control expression_ に一致すると見なされる前に追加の条件を提供するために使用されます。`where` 句が存在する場合、関連するケース内の _statements_ は、_control expression_ の値がケースのパターンの 1 つと一致し、`where` 句の式が `true` と評価された場合にのみ実行されます。例えば、_control expression_ は、`(1、1)` など、同じ値の 2 つの要素を含むタプルの場合にのみ、下記の例のケースに一致します。
 
@@ -276,7 +276,7 @@ case .suppressed:
 
 ラベル付き文のスコープは、文ラベルに続く文全体です。ラベル付き文はネストできますが、各文ラベルの名前を一意にする必要があります。
 
-文ラベルの詳細および使用例については、[Control Flow\(制御フロー\)](../language-guide/control-flow.md)の[Labeled Statements\(ラベル付き文\)](../language-guide/control-flow.md#labeled-statements)を参照ください。
+文ラベルの詳細および使用例については、[Control Flow\(制御フロー\)](../language-guide/control-flow)の[Labeled Statements\(ラベル付き文\)](../language-guide/control-flow.md#labeled-statements)を参照ください。
 
 > GRAMMAR OF A LABELED STATEMENT  
 > labeled-statement → [statement-label](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statement-label) [loop-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_loop-statement)  
@@ -312,7 +312,7 @@ break <#label name#>
 
 どちらの場合も、プログラム制御は、ループまたは `switch` 文\(存在する場合\)で囲まれているコードの次の行に移ります。
 
-`break` 文の使用方法の例については、[Break](../language-guide/control-flow.md#break)と[Control Flow\(制御フロー\)](../language-guide/control-flow.md)の[Labeled Statements\(ラベル付き文\)](../language-guide/control-flow.md#labeled-statements)を参照ください。
+`break` 文の使用方法の例については、[Break](../language-guide/control-flow.md#break)と[Control Flow\(制御フロー\)](../language-guide/control-flow)の[Labeled Statements\(ラベル付き文\)](../language-guide/control-flow.md#labeled-statements)を参照ください。
 
 > GRAMMAR OF A BREAK STATEMENT  
 > break-statement → `break` [label-name](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_label-name)<sub>opt</sub>
@@ -334,7 +334,7 @@ continue <#label name#>
 
 `for` 文では、increment 式はループの本文の実行後に評価されるため、`continue` 文の実行後も increment 式は評価されます。
 
-`continue` 文の使用方法の例については、[Continue](../language-guide/control-flow.md#continue)と[Control Flow\(制御フロー\)](../language-guide/control-flow.md)の[Labeled Statements\(ラベル付き文\)](../language-guide/control-flow.md#labeled-statements)を参照ください。
+`continue` 文の使用方法の例については、[Continue](../language-guide/control-flow.md#continue)と[Control Flow\(制御フロー\)](../language-guide/control-flow)の[Labeled Statements\(ラベル付き文\)](../language-guide/control-flow.md#labeled-statements)を参照ください。
 
 > GRAMMAR OF A CONTINUE STATEMENT  
 > continue-statement → `continue` [label-name](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_label-name)<sub>opt</sub>
@@ -345,7 +345,7 @@ continue <#label name#>
 
 `fallthrough` 文は、ケースブロックの最後の文としてだけでなく、`switch` 文内のどこにでも表示できますが、最後のケースブロックでは使用できません。また、パターンに値バインディングのパターンが含まれているケースのブロックに制御を移すこともできません。
 
-`switch` 文で `fallthrough` 文を使用する方法の例については、[Control Flow\(制御フロー\)](../language-guide/control-flow.md)の[Control Transfer Statements\(制御転送文\)](../language-guide/control-flow.md#control-flow-control-transfer-statements)を参照ください。
+`switch` 文で `fallthrough` 文を使用する方法の例については、[Control Flow\(制御フロー\)](../language-guide/control-flow)の[Control Transfer Statements\(制御転送文\)](../language-guide/control-flow.md#control-flow-control-transfer-statements)を参照ください。
 
 > GRAMMAR OF A FALLTHROUGH STATEMENT  
 > fallthrough-statement → `fallthrough`
@@ -385,7 +385,7 @@ throw <#expression#>
 
 _expression_ の値は、`Error` プロトコルに準拠する型でなければなりません。
 
-`throw` 文の使用方法の例については、[Error Handling\(エラーハンドリング\)](../language-guide/error-handling.md)の[Propagating Errors Using Throwing Functions\(スロー関数を使用したエラーの伝播\)](../language-guide/error-handling.md#propagating-errors-using-throwing-functions)を参照ください。
+`throw` 文の使用方法の例については、[Error Handling\(エラーハンドリング\)](../language-guide/error-handling)の[Propagating Errors Using Throwing Functions\(スロー関数を使用したエラーの伝播\)](../language-guide/error-handling.md#propagating-errors-using-throwing-functions)を参照ください。
 
 > GRAMMAR OF A THROW STATEMENT  
 > throw-statement → `throw` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
@@ -474,7 +474,7 @@ try <#expression#>
 
 複数のパターンを持つ `catch` 句は、そのパターンのいずれかにエラーが一致する場合、エラーに一致すると見なされます。`catch` 句に複数のパターンが含まれている場合、全てのパターンで同じ定数または変数にバインドされる必要があり、バインドされた各変数または定数は、`catch` 句の全てのパターンで同じ型でなければなりません。
 
-エラーが確実に処理されるようにするには、ワイルドカードパターン\(`_`\)など、全てのエラーに一致するパターンで `catch` 句を使用します。`catch` 句でパターンが指定されていない場合、`catch` 句は全てのエラーと一致し、`error` という名前のローカル定数にバインドします。`catch` 句で使用できるパターンの詳細については、[Patterns\(パターン\)](patterns.md)を参照ください。
+エラーが確実に処理されるようにするには、ワイルドカードパターン\(`_`\)など、全てのエラーに一致するパターンで `catch` 句を使用します。`catch` 句でパターンが指定されていない場合、`catch` 句は全てのエラーと一致し、`error` という名前のローカル定数にバインドします。`catch` 句で使用できるパターンの詳細については、[Patterns\(パターン\)](patterns)を参照ください。
 
 複数の `catch` 句を指定して `do` 文を使用する方法の例については、[Handling Errors\(エラー処理\)](../language-guide/error-handling.md#handling-errorsエラー処理)を参照ください。
 

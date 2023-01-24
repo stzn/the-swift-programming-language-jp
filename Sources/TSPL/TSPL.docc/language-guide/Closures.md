@@ -12,7 +12,7 @@ _クロージャ_は、コード内で受け渡して使用できる、ある機
 > NOTE  
 > キャプチャの概念に慣れていなくても心配しないでください。これについては、[Capturing Values\(値のキャプチャ\)](../language-guide/closures.md#capturing-values)で詳しく説明します。
 
-[Functions\(関数\)](functions.md)で紹介したグローバル関数やネスト関数は、実際にはクロージャの特殊なケースです。クロージャは、次の 3 つの形式のいずれかを取ります:
+[Functions\(関数\)](functions)で紹介したグローバル関数やネスト関数は、実際にはクロージャの特殊なケースです。クロージャは、次の 3 つの形式のいずれかを取ります:
 
 * グローバル関数は、名前があり、値をキャプチャしないクロージャ
 * ネスト関数は、名前があり、囲んでいる関数から値を取得できるクロージャ
@@ -350,7 +350,7 @@ func someFunctionWithEscapingClosure(completionHandler: @escaping () -> Void) {
 
 `someFunctionWithEscapingClosure(_:)` 関数は、引数としてクロージャを取り、関数の外部で宣言されている配列に追加します。この関数のパラメータを `@escaping` でマークしなかった場合、コンパイルエラーが発生します。
 
-`self` がクラスのインスタンスを参照する場合、`self` を参照するエスケープクロージャには特別な考慮が必要です。エスケープクロージャで `self` をキャプチャすると、誤って循環参照を作りやすくなります。循環参照については、[Automatic Reference Counting\(自動参照カウント\)](automatic-reference-counting.md)を参照ください。
+`self` がクラスのインスタンスを参照する場合、`self` を参照するエスケープクロージャには特別な考慮が必要です。エスケープクロージャで `self` をキャプチャすると、誤って循環参照を作りやすくなります。循環参照については、[Automatic Reference Counting\(自動参照カウント\)](automatic-reference-counting)を参照ください。
 
 通常、クロージャは、本文の変数を使用する際は暗黙的に変数をキャプチャしますが、`self` がクラスのインスタンスを参照する場合は、明示的に宣言する必要があります。使用するときに `self` を記述するか、クロージャの_キャプチャリスト_に `self` を含めます。`self` を明示的に書くことで、意図を表現でき、循環参照がないことを確認することができます。例えば、下記のコードでは、`someFunctionWithEscapingClosure(_:)` に渡されたクロージャは `self` を明示的に参照しています。対照的に、`someFunctionWithNonescapingClosure(_:)` に渡されるクロージャは、エスケープなしのクロージャです。つまり、暗黙的に `self` を参照できます。
 

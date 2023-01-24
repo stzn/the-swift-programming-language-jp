@@ -48,7 +48,7 @@ _識別子_は、大文字または小文字の `A` から `Z`、アンダース
 
 明示的な引数名のないクロージャ内では、引数には暗黙的に `$0`、`$1`、`$2` などの名前が付けられます。これらの名前は、クロージャのスコープ内で有効な識別子です。
 
-コンパイラは、プロパティラッパのプロジェクション値を持つプロパティにドル記号\(`$`\)で始まる識別子を合成します。コード上でこれらの識別子とやり取りできますが、ドル記号\(`$`\)から始まる識別子を宣言することはできません。詳細については、[Attributes\(属性\)](attributes.md)の章の[propertyWrapper](../language-reference/attributes.md#propertywrapper)セクションを参照ください。
+コンパイラは、プロパティラッパのプロジェクション値を持つプロパティにドル記号\(`$`\)で始まる識別子を合成します。コード上でこれらの識別子とやり取りできますが、ドル記号\(`$`\)から始まる識別子を宣言することはできません。詳細については、[Attributes\(属性\)](attributes)の章の[propertyWrapper](../language-reference/attributes.md#propertywrapper)セクションを参照ください。
 
 > GRAMMAR OF AN IDENTIFIER  
 > identifier → [identifier-head](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier-head) [identifier-characters](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier-characters)<sub>opt</sub>  
@@ -259,7 +259,7 @@ print(# # #"Line 1\# # #nLine 2"# # #) // Error
 
 拡張区切り文字を使用して作成する複数行の文字列リテラルには、通常の複数行の文字列リテラルと同じインデントの要件が適用されます。
 
-文字列リテラルのデフォルトで推論される型は `String` です。`String` 型の詳細については、[Strings and Characters\(文字列と文字\)](../language-guide/strings-and-characters.md)、[String](https://developer.apple.com/documentation/swift/string)を参照ください。
+文字列リテラルのデフォルトで推論される型は `String` です。`String` 型の詳細については、[Strings and Characters\(文字列と文字\)](../language-guide/strings-and-characters)、[String](https://developer.apple.com/documentation/swift/string)を参照ください。
 
 `+` 演算子によって連結された文字列リテラルはコンパイル時に連結されます。例えば下記の例の `textA` と `textB` の値は同じで、実行時に連結は実行されません。
 
@@ -336,7 +336,7 @@ let regex2 = # #/abc/# #     // Error
 
 ## <a id="operators">演算子\(Operators\)</a>
 
-Swift 標準ライブラリは数多くの_演算子_を定義します。その多くは[Basic Operators\(基本演算子\)](../language-guide/basic-operators.md)と[Advanced Operators\(高度な演算子\)](../language-guide/advanced-operators.md)で説明しています。このセクションではカスタム演算子を定義するために使用できる文字を説明します。
+Swift 標準ライブラリは数多くの_演算子_を定義します。その多くは[Basic Operators\(基本演算子\)](../language-guide/basic-operators)と[Advanced Operators\(高度な演算子\)](../language-guide/advanced-operators)で説明しています。このセクションではカスタム演算子を定義するために使用できる文字を説明します。
 
 カスタム演算子は、ASCII 文字 `/`、 `=`、 `-` 、`+`、`！`、`*`、`％`、`<`、`>`、`＆`、`|`、`^`、`？`、または `〜` または下記の文法で定義されている Unicode 文字の 1 つ\(これは、数学演算子、その他のシンボル、および装飾記号 Unicode ブロックからの文字を含む\)で始めることができます。最初の文字の後に Unicode 文字を組み合わせることもできます。
 

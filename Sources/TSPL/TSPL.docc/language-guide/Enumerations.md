@@ -13,7 +13,7 @@ C 言語に馴染みがあれば、C 言語の列挙型が、関連する名前�
 
 Swift の列挙型は、それ自体が第一級の型です。これらは、列挙型の現在値の追加情報を提供する計算プロパティや、列挙型が表す値に関わる機能を提供するインスタンスメソッドなど、従来はクラスでのみサポートされていた多くの機能を使うことができます。列挙型は、初期のケース値を指定するイニシャライザも定義しています。`extension` で機能を拡張することもできます。また、プロトコルに準拠して標準機能を提供することもできます。
 
-これらの機能の詳細については、[Properties](properties.md)、[Methods](methods.md)、[Initialization\(イニシャライザ\)](initialization.md)、[Extensions\(拡張\)](extensions.md)および[Protocols\(プロトコル\)](protocols.md)を参照ください。
+これらの機能の詳細については、[Properties](properties)、[Methods](methods)、[Initialization\(イニシャライザ\)](initialization)、[Extensions\(拡張\)](extensions)および[Protocols\(プロトコル\)](protocols)を参照ください。
 
 ## <a id="enumeration-syntax">列挙型構文\(Enumeration Syntax\)</a>
 
@@ -88,7 +88,7 @@ case .west:
 
 …などなど。
 
-[Control Flow\(制御フロー\)](control-flow.md)で説明されているように、列挙ケースを検証するときは、`switch` 文で全てのケースを網羅する必要があります。`.west` の `case` を省略した場合、このコードはコンパイルできません。これによって、列挙ケースが誤って省略できないようにします。
+[Control Flow\(制御フロー\)](control-flow)で説明されているように、列挙ケースを検証するときは、`switch` 文で全てのケースを網羅する必要があります。`.west` の `case` を省略した場合、このコードはコンパイルできません。これによって、列挙ケースが誤って省略できないようにします。
 
 全ての列挙ケースの `case` を並べることが適切でない場合は、明示的に対処されていないケースをカバーする `default` のケースを提供できます。
 
@@ -127,7 +127,7 @@ for beverage in Beverage.allCases {
 // juice
 ```
 
-上記の例で使用されている構文では、[`CaseIterable`](https://developer.apple.com/documentation/swift/caseiterable) プロトコルに準拠しています。プロトコルの詳細については、[Protocols\(プロトコル\)](protocols.md)を参照ください。
+上記の例で使用されている構文では、[`CaseIterable`](https://developer.apple.com/documentation/swift/caseiterable) プロトコルに準拠しています。プロトコルの詳細については、[Protocols\(プロトコル\)](protocols)を参照ください。
 
 ## <a id="associated-values">関連値\(Associated Values\)</a>
 
@@ -214,7 +214,7 @@ enum ASCIIControlCharacter: Character {
 }
 ```
 
-ここで、`ASCIIControlCharacter` と呼ばれる列挙型の Raw Value は、`Character` 型で定義されており、一般的な ASCII 制御文字のいくつかが設定されています。`Character` 値は、[Strings and Characters\(文字列と文字\)](strings-and-characters.md)で説明しています。
+ここで、`ASCIIControlCharacter` と呼ばれる列挙型の Raw Value は、`Character` 型で定義されており、一般的な ASCII 制御文字のいくつかが設定されています。`Character` 値は、[Strings and Characters\(文字列と文字\)](strings-and-characters)で説明しています。
 
 Raw Value は、文字列、文字、または整数型または浮動小数点数型のいずれかです。各 Raw Value は、その列挙型内で一意でなければなりません。
 

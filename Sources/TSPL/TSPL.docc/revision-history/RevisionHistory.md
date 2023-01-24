@@ -22,7 +22,7 @@
 ## 2021-09-20
 
 * Swift 5.5 に更新しました
-* 非同期関数、Task、およびアクターについての情報を[同時並行処理\(Concurrency\)](../language-guide/concurrency.md)の章、および[アクター宣言\(Actor Declaration\)](../language-reference/declarations.md#actor-declaration)、[非同期関数と非同期メソッド\(Asynchronous Functions and Methods\)](../language-reference/declarations.md#asynchronous-functions-and-asynchronous-methods)、および[Await 演算子\(Await Operator\)](../language-reference/expressions.md#await-operator)セクションに追加しました
+* 非同期関数、Task、およびアクターについての情報を[同時並行処理\(Concurrency\)](../language-guide/concurrency)の章、および[アクター宣言\(Actor Declaration\)](../language-reference/declarations.md#actor-declaration)、[非同期関数と非同期メソッド\(Asynchronous Functions and Methods\)](../language-reference/declarations.md#asynchronous-functions-and-asynchronous-methods)、および[Await 演算子\(Await Operator\)](../language-reference/expressions.md#await-operator)セクションに追加しました
 * [識別子\(Identifiers\)](../language-reference/lexical-structure.md#identifiers)セクションに、アンダースコアで始まる識別子についての情報を追加しました
 
 ## 2021-04-26
@@ -48,7 +48,7 @@
 * [プロパティオブザーバ\(Property Observers\)](../language-guide/properties.md#property-observers)セクションを更新しました、`lazy` プロパティでもオブザーバが使用できるようになりました
 * [プロトコル宣言\(Protocol Declaration\)](../language-reference/declarations.md#protocol-declaration)セクションを更新しました。列挙型のメンバがプロトコル要件を満たすことができるようになりました
 * [格納変数オブザーバとプロパティオブザーバ\(Stored Variable Observers and Property Observers\)](../language-reference/declarations.md#stored-variable-observers-and-property-observers)セクションを更新して、get がいつオブザーバの前に呼び出されるかついて記述しました
-* [メモリ安全性\(Memory Safety\)](../language-guide/memory-safety.md)の章を更新して、アトミック操作について記述しました
+* [メモリ安全性\(Memory Safety\)](../language-guide/memory-safety)の章を更新して、アトミック操作について記述しました
 
 ## 2020-03-24
 
@@ -62,7 +62,7 @@
 ## 2019-09-10
 
 * Swift 5.1 に更新しました
-* [Opaque 型\(Opaque Types\)](../language-guide/opaque-types.md)の章に、戻り値に特定の名前の戻り値の型を提供するのではなく、戻り値が準拠するプロトコルを指定する関数についての情報を追加しました
+* [Opaque 型\(Opaque Types\)](../language-guide/opaque-types)の章に、戻り値に特定の名前の戻り値の型を提供するのではなく、戻り値が準拠するプロトコルを指定する関数についての情報を追加しました
 * [プロパティラッパ\(Property Wrappers\)](../language-guide/properties.md#property-wrappers)セクションに、プロパティラッパについての情報を追加しました
 * [frozen](../language-reference/attributes.md#frozen)セクションに、ライブラリエボリューションのための frozen な列挙型と構造体についての情報を追加しました
 * [暗黙的な戻り値がある関数\(Functions With an Implicit Return\)](../language-guide/functions.md#functions-with-an-implicit-return)と[省略 get プロパティ宣言\(Shorthand Getter Declaration\)](../language-guide/properties.md#shorthand-getter-declaration)セクションに、`return` を省略した関数についての情報を追加しました
@@ -97,7 +97,7 @@
 
 * Swift 4.1 に更新しました
 * [等価演算子\(Equivalence Operators\)](../language-guide/advanced-operators.md#equivalence-operators)セクションに、等価演算子の合成実装についての情報を追加しました
-* [宣言\(Declarations\)](../language-reference/declarations.md)の章の[拡張宣言\(Extension Declaration\)](../language-reference/declarations.md#extension-declaration)セクションと、[プロトコル\(Protocols\)](../language-guide/protocols.md)の章の[条件付きでのプロトコルへの準拠\(Conditionally Conforming to a Protocol\)](../language-guide/protocols.md#conditionally-conforming-to-a-protocol)セクションに、条件付きプロトコル準拠についての情報を追加しました
+* [宣言\(Declarations\)](../language-reference/declarations)の章の[拡張宣言\(Extension Declaration\)](../language-reference/declarations.md#extension-declaration)セクションと、[プロトコル\(Protocols\)](../language-guide/protocols)の章の[条件付きでのプロトコルへの準拠\(Conditionally Conforming to a Protocol\)](../language-guide/protocols.md#conditionally-conforming-to-a-protocol)セクションに、条件付きプロトコル準拠についての情報を追加しました
 * [関連型の制約へのプロトコルの使用\(Using a Protocol in Its Associated Type’s Constraints\)](../language-guide/generics.md#using-a-protocol-in-its-associated-types-constraintsnohenopurotokoruno)セクションに、再帰的プロトコル制約についての情報を追加しました
 * [条件付きコンパイルブロック\(Conditional Compilation Block\)](../language-reference/statements.md#conditional-compilation-block)セクションに、`canImport()` と `targetEnvironment()` プラットフォーム条件についての情報を追加しました
 
@@ -109,12 +109,12 @@
 ## 2017-09-19
 
 * Swift 4.0 に更新しました
-* [メモリ安全性\(Memory Safety\)](../language-guide/memory-safety.md)の章に、メモリへの排他アクセスについての情報を追加しました
+* [メモリ安全性\(Memory Safety\)](../language-guide/memory-safety)の章に、メモリへの排他アクセスについての情報を追加しました
 * [ジェネリック where 句を使用した関連型\(Associated Types with a Generic Where Clause\)](../language-guide/generics.md#associated-types-with-a-generic-where-clause)セクションを追加しました。ジェネリック `where` 句で関連型を制約できるようになりました
-* [文字列と文字\(Strings and Characters\)](../language-guide/strings-and-characters.md)の章の[文字列リテラル\(String Literals\)](../language-guide/strings-and-characters.md#strings-and-characters-string-literals)セクションと、[字句構造\(Lexical Structure\)](../language-reference/lexical-structure.md)の章の[文字列リテラル\(String Literals\)](../language-reference/lexical-structure.md#lexical-structure-string-literals)セクションに、複数行文字列リテラルについての情報を追加しました
+* [文字列と文字\(Strings and Characters\)](../language-guide/strings-and-characters)の章の[文字列リテラル\(String Literals\)](../language-guide/strings-and-characters.md#strings-and-characters-string-literals)セクションと、[字句構造\(Lexical Structure\)](../language-reference/lexical-structure)の章の[文字列リテラル\(String Literals\)](../language-reference/lexical-structure.md#lexical-structure-string-literals)セクションに、複数行文字列リテラルについての情報を追加しました
 * [宣言属性\(Declaration Attributes\)](../language-reference/attributes.md#declaration-attributes)セクションの `objc` 属性の説明を更新しました。この属性が推論される場所がより少なくなりました
 * [ジェネリック subscript\(Generic Subscripts\)](../language-guide/generics.md#generic-subscripts)セクションを追加しました。subscript はジェネリックにできます
-* [プロトコル\(Protocols\)](../language-guide/protocols.md)の章の[プロトコル合成\(Protocol Composition\)](../language-guide/protocols.md#protocol-composition)セクションと、[型\(Types\)](../language-reference/types.md)の章の[プロトコル合成型\(Protocol Composition Type\)](../language-reference/types.md#protocol-composition-type)セクションの説明を更新しました。プロトコル合成型にスーパークラスの要件を含めることができるようになりました
+* [プロトコル\(Protocols\)](../language-guide/protocols)の章の[プロトコル合成\(Protocol Composition\)](../language-guide/protocols.md#protocol-composition)セクションと、[型\(Types\)](../language-reference/types)の章の[プロトコル合成型\(Protocol Composition Type\)](../language-reference/types.md#protocol-composition-type)セクションの説明を更新しました。プロトコル合成型にスーパークラスの要件を含めることができるようになりました
 * [拡張宣言\(Extension Declaration\)](../language-reference/declarations.md#extension-declaration)のプロトコル拡張の説明を更新しました。`final` は使用できなくなりました
 * [アサーションと事前条件\(Assertions and Preconditions\)](../language-guide/the-basics.md#assertions-and-preconditions)セクションに、前提条件と致命的エラーについての情報を追加しました
 
@@ -128,48 +128,48 @@
 * [関数型\(Function Type\)](../language-reference/types.md#types-function-type)セクションの説明を更新し、関数型に引数ラベルを書くことができないことを記載しました
 * [条件付きコンパイルブロック\(Conditional Compilation Block\)](../language-reference/statements.md#conditional-compilation-block)セクションの Swift 言語バージョン番号の説明を更新しました。オプショナルのパッチ番号が使用できるようになりました
 * [関数型\(Function Type\)](../language-reference/types.md#types-function-type)セクションの説明を更新し、Swift は、タプル型の単一のパラメータを受け取る関数と、複数のパラメータを受け取る関数が区別できるようになりました
-* [式\(Expressions\)](../language-reference/expressions.md)の章から動的型式のセクションを削除しました。`type(of:)` は Swift 標準ライブラリ関数になりました
+* [式\(Expressions\)](../language-reference/expressions)の章から動的型式のセクションを削除しました。`type(of:)` は Swift 標準ライブラリ関数になりました
 
 ## 2016-10-27
 
 * Swift 3.0.1 に更新しました
-* [自動参照カウント\(Automatic Reference Counting\)](../language-guide/automatic-reference-counting.md)の章の弱参照、非所有参照の説明を更新しました
+* [自動参照カウント\(Automatic Reference Counting\)](../language-guide/automatic-reference-counting)の章の弱参照、非所有参照の説明を更新しました
 * [宣言修飾子\(Declaration Modifiers\)](../language-reference/declarations.md#declaration-modifiers)セクションに、`unowned`、`unowned(safe)` と `unowned(unsafe)` 修飾子についての情報を追加しました
 * [Any および AnyObject の型キャスト\(Type Casting for Any and AnyObject\)](../language-guide/type-casting.md#type-casting-for-any-and-anyobject)セクションに、Any 型の値が期待される場所にオプショナルの値を使用することについての記載を追加しました
-* 括弧付き式とタプル式の説明を分けるように、[Expressions\(式\)](../language-reference/expressions.md)の章を更新しました
+* 括弧付き式とタプル式の説明を分けるように、[Expressions\(式\)](../language-reference/expressions)の章を更新しました
 
 ## 2016-09-13
 
 * Swift 3.0 に更新しました
-* [関数\(Functions\)](../language-guide/functions.md)の章と[関数宣言\(Function Declaration\)](../language-reference/declarations.md#function-declaration)セクションの関数の説明を、デフォルトで全てのパラメータが引数ラベルを持つように更新しました
-* [高度な演算子\(Advanced Operators\)](../language-guide/advanced-operators.md)の章の演算子の説明を更新しました。これらの演算子をグローバル関数としてはなく型メソッドとして実装できるようになりました
-* [アクセスコントロール\(Access Control\)](../language-guide/access-control.md)の章に、`open` と `filePrivate` アクセスレベル修飾子についての情報を追加しました
+* [関数\(Functions\)](../language-guide/functions)の章と[関数宣言\(Function Declaration\)](../language-reference/declarations.md#function-declaration)セクションの関数の説明を、デフォルトで全てのパラメータが引数ラベルを持つように更新しました
+* [高度な演算子\(Advanced Operators\)](../language-guide/advanced-operators)の章の演算子の説明を更新しました。これらの演算子をグローバル関数としてはなく型メソッドとして実装できるようになりました
+* [アクセスコントロール\(Access Control\)](../language-guide/access-control)の章に、`open` と `filePrivate` アクセスレベル修飾子についての情報を追加しました
 * [関数宣言\(Function Declaration\)](../language-reference/declarations.md#function-declaration)セクションの `inout` の説明を、パラメータ名の前ではなくパラメータの型の前に使用するように更新しました
-* [エスケープクロージャ\(Escaping Closures\)](../language-guide/closures.md#escaping-closures)と[自動クロージャ\(AutoClosures\)](../language-guide/closures.md#autoclosures)セクションと、[属性\(Attributes\)](../language-reference/attributes.md)の章の説明で、`@noescape` および `@autoclosures` 属性を宣言属性から型属性へ更新しました
-* [高度な演算子\(Advanced Operators\)](../language-guide/advanced-operators.md)の章の[Precedence for Custom Infix Operators\(カスタム中置演算子の優先順位\)](../language-guide/advanced-operators.md#precedence-for-custom-infix-operators)セクションと、[宣言\(Declaration\)](../language-reference/declarations.md)の章の[優先順位グループ宣言\(Precedence Group Declaration\)](../language-guide/advanced-operators.md#precedence-for-custom-infix-operators)セクションに、演算子の優先順位グループについての情報を追加しました
+* [エスケープクロージャ\(Escaping Closures\)](../language-guide/closures.md#escaping-closures)と[自動クロージャ\(AutoClosures\)](../language-guide/closures.md#autoclosures)セクションと、[属性\(Attributes\)](../language-reference/attributes)の章の説明で、`@noescape` および `@autoclosures` 属性を宣言属性から型属性へ更新しました
+* [高度な演算子\(Advanced Operators\)](../language-guide/advanced-operators)の章の[Precedence for Custom Infix Operators\(カスタム中置演算子の優先順位\)](../language-guide/advanced-operators.md#precedence-for-custom-infix-operators)セクションと、[宣言\(Declaration\)](../language-reference/declarations)の章の[優先順位グループ宣言\(Precedence Group Declaration\)](../language-guide/advanced-operators.md#precedence-for-custom-infix-operators)セクションに、演算子の優先順位グループについての情報を追加しました
 * OS X の変わりに macOS、`ErrorProtocol` の代わりに `Error`、`StringLiteralConvertible` の代わりに `ExpressibleByStringLiteral` などのプロトコル名を使用するように説明を更新しました
-* [ジェネリクス\(Generics\)](../language-guide/generics.md)の章の[ジェネリック where 句\(Generic Where Clauses\)](../language-guide/generics.md#generic-where-clauses)セクションと、[ジェネリックパラメータと引数\(Generic Parameters and Arguments\)](../language-reference/generic-parameters-and-arguments.md)の章の説明を更新しました。ジェネリック `where` 句を宣言の最後に書くことができるようになりました
+* [ジェネリクス\(Generics\)](../language-guide/generics)の章の[ジェネリック where 句\(Generic Where Clauses\)](../language-guide/generics.md#generic-where-clauses)セクションと、[ジェネリックパラメータと引数\(Generic Parameters and Arguments\)](../language-reference/generic-parameters-and-arguments)の章の説明を更新しました。ジェネリック `where` 句を宣言の最後に書くことができるようになりました
 * [エスケープクロージャ\(Escaping Closures\)](../language-guide/closures.md#escaping-closures)セクションの説明を更新しました。クロージャはデフォルトが非エスケープになりました
-* [基本\(The Basics\)](../language-guide/the-basics.md)の章の[オプショナルバインディング\(Optional Binding\)](../language-guide/the-basics.md#optional-binding)セクションと、[文\(Statement\)](../language-reference/statements.md)の章の[While 文\(While Statement\)](../language-reference/statements.md#while-statement)セクションの説明を更新しました。`if`、`while`、`guard` 文は、`where` 句なしで、カンマ区切りリストの条件を使用できるようになりました
-* [制御フロー\(Control Flow\)](../language-guide/control-flow.md)の章の[Switch](../language-guide/control-flow.md#switch)セクションと、[文\(Statement\)](../language-reference/statements.md)の章の[Switch 文\(Switch Statement\)](../language-reference/statements.md#switch-statement)セクションに、複数のパターンを持つ列挙ケースについての情報を追加しました
+* [基本\(The Basics\)](../language-guide/the-basics)の章の[オプショナルバインディング\(Optional Binding\)](../language-guide/the-basics.md#optional-binding)セクションと、[文\(Statement\)](../language-reference/statements)の章の[While 文\(While Statement\)](../language-reference/statements.md#while-statement)セクションの説明を更新しました。`if`、`while`、`guard` 文は、`where` 句なしで、カンマ区切りリストの条件を使用できるようになりました
+* [制御フロー\(Control Flow\)](../language-guide/control-flow)の章の[Switch](../language-guide/control-flow.md#switch)セクションと、[文\(Statement\)](../language-reference/statements)の章の[Switch 文\(Switch Statement\)](../language-reference/statements.md#switch-statement)セクションに、複数のパターンを持つ列挙ケースについての情報を追加しました
 * [関数型\(Function Type\)](../language-reference/types.md#types-function-type)セクションの関数型の説明を更新しました。引数ラベルが関数の型の一部ではなくなりました
-* [プロトコル\(Protocols\)](../language-guide/protocols.md)の章の[プロトコル合成\(Protocol Composition\)](../language-guide/protocols.md#protocol-composition)セクションと、[型\(Types\)](../language-reference/types.md)の章の[プロトコル合成型\(Protocol Composition Type\)](../language-reference/types.md#protocol-composition-type)セクションの説明を更新し、新しい `Protocol1 & Protocol2` 構文を使用するようになりました
+* [プロトコル\(Protocols\)](../language-guide/protocols)の章の[プロトコル合成\(Protocol Composition\)](../language-guide/protocols.md#protocol-composition)セクションと、[型\(Types\)](../language-reference/types)の章の[プロトコル合成型\(Protocol Composition Type\)](../language-reference/types.md#protocol-composition-type)セクションの説明を更新し、新しい `Protocol1 & Protocol2` 構文を使用するようになりました
 * 動的型式セクションで、新しい `type(of:)` を使用するように説明を更新しました
 * [行制御文\(Line Control Statement\)](../language-reference/statements.md#line-control-statement)セクションで、`#sourceLocation(file:line:)` 構文を使用するように、行制御文の説明を更新しました
 * [ノーリターン関数\(Functions that Never Return\)](../language-reference/declarations.md#functions-that-never-return)の説明を更新し、新しい `Never` 型を使用するようにしました
 * [リテラル式\(Literal Expression\)](../language-reference/expressions.md#literal-expression)セクションに、playground リテラルについての情報を追加しました
 * [In-Out パラメータ\(In-Out Parameters\)](../language-reference/declarations.md#declarations-in-out-parameters)セクションの説明を更新し、非エスケープクロージャのみが in-out パラメータをキャプチャできることを記載しました
 * [デフォルトパラメータ値\(Default Parameter Values\)](../language-guide/functions.md#default-parameter-values)セクションのデフォルトパラメータの説明を更新しました。関数呼び出し時にデフォルトパラメータを並べ替えることができなくなりました
-* [属性\(Attributes\)](../language-reference/attributes.md)の章でコロンを使用するように属性引数を更新しました
+* [属性\(Attributes\)](../language-reference/attributes)の章でコロンを使用するように属性引数を更新しました
 * [再スロー関数と再スローメソッド\(Rethrowing Functions and Methods\)](../language-reference/declarations.md#rethrowing-functions-and-methods)セクションに、再スロー関数のキャッチブロック内でエラーをスローすることについての情報を追加しました
 * [Selector 式\(Selector Expression\)](../language-reference/expressions.md#selector-expression)セクションに、Objective-C プロパティの get または set のセレクタへのアクセスについての情報を追加しました
 * [タイプエイリアス宣言\(Type Alias Declaration\)](../language-reference/declarations.md#type-alias-declaration)セクションに、ジェネリックなタイプエイリアスとプロトコル内でのタイプエイリアスの使用について情報を追加しました
 * [関数型\(Function Type\)](../language-reference/types.md#types-function-type)セクションの説明を更新し、パラメータ型の周囲に括弧が必須だということを記載しました
-* [属性\(Attributes\)](../language-reference/attributes.md)の章を更新して、`@IBAction`、`@IBOutlet`、および `@NSManaged` 属性は `@objc` 属性を暗黙的に含んでいることを記載しました
+* [属性\(Attributes\)](../language-reference/attributes)の章を更新して、`@IBAction`、`@IBOutlet`、および `@NSManaged` 属性は `@objc` 属性を暗黙的に含んでいることを記載しました
 * [宣言属性\(Declaration Attributes\)](../language-reference/attributes.md#declaration-attributes)セクションに、`@GKInspectable` 属性についての情報を追加しました
 * [オプショナルのプロトコル要件\(Optional Protocol Requirements\)](../language-guide/protocols.md#optional-protocol-requirements)のオプショナルのプロトコル要件の説明を更新し、Objective-C と相互運用されるコードでのみ使用できることを明確にしました
 * [関数宣言\(Function Declaration\)](../language-reference/declarations.md#function-declaration)セクションから、関数パラメータを使用して明示的に `let` を使用することの説明を削除しました
-* [文\(Statement\)](../language-reference/statements.md)の章から `Boolean` プロトコルの説明を削除しました。このプロトコルは Swift 標準ライブラリから削除されました
+* [文\(Statement\)](../language-reference/statements)の章から `Boolean` プロトコルの説明を削除しました。このプロトコルは Swift 標準ライブラリから削除されました
 * [宣言属性\(Declaration Attributes\)](../language-reference/attributes.md#declaration-attributes)セクションの `@NSApplicationMain` 属性の説明を修正しました
 
 ## 2016-03-21
@@ -186,7 +186,7 @@
 * [演算子\(Operators\)](../language-reference/lexical-structure.md#operators)セクションの、ドットを含むカスタム演算子の説明を更新しました
 * [再スロー関数と再スローメソッド\(Rethrowing Functions and Methods\)](../language-reference/declarations.md#rethrowing-functions-and-methods)セクションに、再スロー関数が直接エラーをスローできないことを記載した記載を追加しました
 * [プロパティオブザーバ\(Property Observers\)](../language-guide/properties.md#property-observers)セクションに、in-out パラメータとしてプロパティを渡した際に呼ばれるプロパティオブサーバについての記載を追加しました
-* [Swift ツアー\(A Swift Tour\)](https://github.com/stzn/the-swift-programming-language-jp/tree/4a13fdef628bb6cc8c2acf9fc744c981d1891aa0/welcome-to-swift-swift/a-swift-tour.md)の章に、エラー処理についてのセクションを追加しました
+* [Swift ツアー\(A Swift Tour\)](https://github.com/stzn/the-swift-programming-language-jp/tree/4a13fdef628bb6cc8c2acf9fc744c981d1891aa0/welcome-to-swift-swift/a-swift-tour)の章に、エラー処理についてのセクションを追加しました
 * [弱参照\(Weak References\)](../language-guide/automatic-reference-counting.md#weak-references)セクションに、メモリ割り当て解除プロセスをより明確に表示するために図を更新しました
 * C 言語スタイルの `for` ループ、`++` 前置および後置演算子、`--` 前置および後置演算子の説明を削除しました
 * 可変関数引数とカリー関数の特別な構文の説明を削除しました
@@ -201,24 +201,24 @@
 * [キャプチャリスト\(Capture Lists\)](../language-reference/expressions.md#capture-lists)セクションに、キャプチャリストで指定された値がキャプチャされる方法についての情報を追加しました
 * [オプショナルチェーンを通したプロパティへのアクセス\(Accessing Properties Through Optional Chaining\)](../language-guide/optional-chaining.md#accessing-properties-through-optional-chaining)セクションを更新し、オプショナルチェーンを介して代入する方法が明確になるようにしました
 * [自動クロージャ\(AutoClosures\)](../language-guide/closures.md#autoclosures)セクションの autoclosure の説明を改善しました
-* [Swift ツアー\(A Swift Tour\)](https://github.com/stzn/the-swift-programming-language-jp/tree/4a13fdef628bb6cc8c2acf9fc744c981d1891aa0/welcome-to-swift-swift/a-swift-tour.md)の章の `??` 演算子を使用する例を追加しました
+* [Swift ツアー\(A Swift Tour\)](https://github.com/stzn/the-swift-programming-language-jp/tree/4a13fdef628bb6cc8c2acf9fc744c981d1891aa0/welcome-to-swift-swift/a-swift-tour)の章の `??` 演算子を使用する例を追加しました
 
 ## 2015-09-16
 
 * Swift 2.0 に更新しました
-* [Error Handling\(エラーハンドリング\)](../language-guide/error-handling.md)の章、[Do 文\(Do Statement\)](../language-reference/statements.md#do-statement)セクション、[Throw 文\(Throw Statement\)](../language-reference/statements.md#throw-statement)セクション、[Defer 文\(Defer Statement\)](../language-reference/statements.md#defer-statement)セクション、および[Try 演算子\(Try Operator\)](../language-reference/expressions.md#try-operator)セクションに、エラー処理についての情報を追加しました
+* [Error Handling\(エラーハンドリング\)](../language-guide/error-handling)の章、[Do 文\(Do Statement\)](../language-reference/statements.md#do-statement)セクション、[Throw 文\(Throw Statement\)](../language-reference/statements.md#throw-statement)セクション、[Defer 文\(Defer Statement\)](../language-reference/statements.md#defer-statement)セクション、および[Try 演算子\(Try Operator\)](../language-reference/expressions.md#try-operator)セクションに、エラー処理についての情報を追加しました
 * [エラーの表現とスロー\(Representing and Throwing Errors\)](../language-guide/error-handling.md#representing-and-throwing-errors)セクションを更新しました。全ての型が `ErrorType` プロトコルに準拠するようになりました
 * [エラーからオプショナル値への変換\(Converting Errors to Optional Values\)](../language-guide/error-handling.md#converting-errors-to-optional-values)セクションに、新しい `try?` キーワードについての情報を追加しました
-* [列挙型\(Enumerations\)](../language-guide/enumerations.md)の章の[再帰的列挙型\(Recursive Enumerations\)](../language-guide/enumerations.md#recursive-enumerations)セクションと、[宣言\(Declarations\)](../language-reference/declarations.md)の章の[任意の型のケースを持つ列挙型\(Enumerations with Cases of Any Type\)](../language-reference/declarations.md#enumerations-with-cases-of-any-type)セクションに、再帰的な列挙型の情報を追加しました
-* [制御フロー\(Control Flow\)](../language-guide/control-flow.md)の章の[API アベイラビリティチェック\(Checking API Availability\)](../language-guide/control-flow.md#checking-api-availability)セクションと、[文\(Statements\)](../language-reference/statements.md)の章の[Availability Condition\(アベイラビリティ条件\)](../language-reference/statements.md#availability-condition)セクションに、API アベイラビリティチェックについての情報を追加しました
-* [制御フロー\(Control Flow\)](../language-guide/control-flow.md)の章の[Early Exit\(早期リターン\)](../language-guide/control-flow.md#early-exit)と、[文\(Statements\)](../language-reference/statements.md)の章の[Guard 文\(Guard Statement\)](../language-reference/statements.md#guard-statement)セクションに、新しい `guard` 文についての情報を追加しました
-* [プロトコル\(Protocols\)](../language-guide/protocols.md)の章の[プロトコル Extension\(Protocol Extensions\)](../language-guide/protocols.md#protocol-extensions)についての情報を追加しました
-* [アクセスコントロール\(Access Control\)](../language-guide/access-control.md)の章の[単体テストターゲットのアクセスレベル\(Access Levels for Unit Test Targets\)](../language-guide/access-control.md#access-levels-for-unit-test-targets)セクションに、単体テストでのアクセス制御についての情報を追加しました
-* [パターン\(Patterns\)](../language-reference/patterns.md)の章の[オプショナルパターン\(Optional Pattern\)](../language-reference/patterns.md#optional-pattern)セクションに、新しいオプショナルパターンについての情報を追加しました
+* [列挙型\(Enumerations\)](../language-guide/enumerations)の章の[再帰的列挙型\(Recursive Enumerations\)](../language-guide/enumerations.md#recursive-enumerations)セクションと、[宣言\(Declarations\)](../language-reference/declarations)の章の[任意の型のケースを持つ列挙型\(Enumerations with Cases of Any Type\)](../language-reference/declarations.md#enumerations-with-cases-of-any-type)セクションに、再帰的な列挙型の情報を追加しました
+* [制御フロー\(Control Flow\)](../language-guide/control-flow)の章の[API アベイラビリティチェック\(Checking API Availability\)](../language-guide/control-flow.md#checking-api-availability)セクションと、[文\(Statements\)](../language-reference/statements)の章の[Availability Condition\(アベイラビリティ条件\)](../language-reference/statements.md#availability-condition)セクションに、API アベイラビリティチェックについての情報を追加しました
+* [制御フロー\(Control Flow\)](../language-guide/control-flow)の章の[Early Exit\(早期リターン\)](../language-guide/control-flow.md#early-exit)と、[文\(Statements\)](../language-reference/statements)の章の[Guard 文\(Guard Statement\)](../language-reference/statements.md#guard-statement)セクションに、新しい `guard` 文についての情報を追加しました
+* [プロトコル\(Protocols\)](../language-guide/protocols)の章の[プロトコル Extension\(Protocol Extensions\)](../language-guide/protocols.md#protocol-extensions)についての情報を追加しました
+* [アクセスコントロール\(Access Control\)](../language-guide/access-control)の章の[単体テストターゲットのアクセスレベル\(Access Levels for Unit Test Targets\)](../language-guide/access-control.md#access-levels-for-unit-test-targets)セクションに、単体テストでのアクセス制御についての情報を追加しました
+* [パターン\(Patterns\)](../language-reference/patterns)の章の[オプショナルパターン\(Optional Pattern\)](../language-reference/patterns.md#optional-pattern)セクションに、新しいオプショナルパターンについての情報を追加しました
 * [Repeat-While](../language-guide/control-flow.md#repeat-while)セクションを更新し、`repeat-while` ループについての情報を追加しました
-* [文字列と文字\(Strings and Characters\)](../language-guide/strings-and-characters.md)の章を更新しました。`String` は Swift 標準ライブラリの `CollectionType` プロトコルに準拠しなくなりました
+* [文字列と文字\(Strings and Characters\)](../language-guide/strings-and-characters)の章を更新しました。`String` は Swift 標準ライブラリの `CollectionType` プロトコルに準拠しなくなりました
 * [定数と変数の出力\(Printing Constants and Variables\)](../language-guide/the-basics.md#printing-constants-and-variables)セクションに、新しい Swift 標準ライブラリの `print(_:separator:terminator)` 関数についての情報を追加しました
-* [列挙型\(Enumerations\)](../language-guide/enumerations.md)の章の[暗黙的に割り当てられた Raw Value\(Implicitly Assigned Raw Values\)](../language-guide/enumerations.md#implicitly-assigned-raw-values)セクションと、[宣言\(Declarations\)](../language-reference/declarations.md)の章の[Raw Value 型のケースを持つ列挙型\(Enumerations with Cases of a Raw-Value Type\)](../language-reference/declarations.md#enumerations-with-cases-of-a-raw-value-type)セクションに、`String` 型の Raw Value を持つ列挙ケースの動作についての情報を追加しました
+* [列挙型\(Enumerations\)](../language-guide/enumerations)の章の[暗黙的に割り当てられた Raw Value\(Implicitly Assigned Raw Values\)](../language-guide/enumerations.md#implicitly-assigned-raw-values)セクションと、[宣言\(Declarations\)](../language-reference/declarations)の章の[Raw Value 型のケースを持つ列挙型\(Enumerations with Cases of a Raw-Value Type\)](../language-reference/declarations.md#enumerations-with-cases-of-a-raw-value-type)セクションに、`String` 型の Raw Value を持つ列挙ケースの動作についての情報を追加しました
 * [自動クロージャ\(AutoClosures\)](../language-guide/closures.md#autoclosures)セクションに、`@autoclosure` 属性または `@autoclosure(escaping)` についての情報を追加しました
 * [宣言属性\(Declaration Attributes\)](../language-reference/attributes.md#declaration-attributes)セクションを更新し、`@available` および `@warn_unused_result` 属性についての情報を追加しました
 * [Type Attributes\(型属性\)](../language-reference/attributes.md#type-attributes)セクションを更新し、`@convention` 属性についての情報を追加しました
@@ -290,11 +290,11 @@
 * [オプショナル\(Optionals\)](../language-guide/the-basics.md#optionals)は、オプショナルの `Bool` 値を使用しているときに、混乱を避けるために、値がある場合に `true`、ない場合に `false` と評価されません。代わりに、`==` または `!=` 演算子を指定して、オプショナルに値が含まれているかどうか、明示的な `nil` チェックを行いましょう
 * [nil 合体演算子\(Nil-Coalescing Operator\)](../language-guide/basic-operators.md#nilcoalescing-operator)\(`a ?? b`\)ができました。これは、オプショナルの値が存在する場合はオプショナルの値をアンラップし、`nil` の場合はデフォルト値を返します
 * [文字列の比較\(Comparing Strings\)](../language-guide/strings-and-characters.md#comparing-strings)セクションを更新、拡張し、文字列と文字の比較や、前方比較、後方比較は、拡張書記素クラスタの Unicode の正規等価性に基づいていることを反映し、例を示しました
-* [オプショナルチェーン\(Optional Chaining\)](../language-guide/optional-chaining.md)を使って、mutating メソッドや演算子の呼び出し、subscript への値の割り当て、プロパティ値の設定を試すことができます。[オプショナルチェーンを通したプロパティへのアクセス\(Accessing Properties Through Optional Chaining\)](../language-guide/optional-chaining.md#accessing-properties-through-optional-chaining)の情報は、これに応じて更新され、[オプショナルチェーンを通したメソッドの呼び出し\(Calling Methods Through Optional Chaining\)](../language-guide/optional-chaining.md#calling-methods-through-optional-chaining)のメソッド呼び出しが成功したかどうかの例では、プロパティの設定が成功したかどうかをチェックする方法も例として示すように拡張しました
+* [オプショナルチェーン\(Optional Chaining\)](../language-guide/optional-chaining)を使って、mutating メソッドや演算子の呼び出し、subscript への値の割り当て、プロパティ値の設定を試すことができます。[オプショナルチェーンを通したプロパティへのアクセス\(Accessing Properties Through Optional Chaining\)](../language-guide/optional-chaining.md#accessing-properties-through-optional-chaining)の情報は、これに応じて更新され、[オプショナルチェーンを通したメソッドの呼び出し\(Calling Methods Through Optional Chaining\)](../language-guide/optional-chaining.md#calling-methods-through-optional-chaining)のメソッド呼び出しが成功したかどうかの例では、プロパティの設定が成功したかどうかをチェックする方法も例として示すように拡張しました
 * オプショナルチェーンを通じて、オプショナルの subscript にアクセスするための新しいセクション\([オプショナル型の subscript へのアクセス\(Accessing Subscripts of Optional Type\)](../language-guide/optional-chaining.md#accessing-subscripts-of-optional-type)\)を追加しました
 * [Array 配列へのアクセスと変更\(Accessing and Modifying an Array\)](../language-guide/collection-types.md#accessing-and-modifying-an-array)を更新し、`+=` 演算子を使って配列にその単一の要素を追加できなくなりました。代わりに、`append(_:)` メソッドを使用するか、単一の要素を持つ配列に `+=` 演算子を使用して追加します
 * 範囲演算子\([範囲演算子\(Range Operators\)](../language-guide/basic-operators.md#range-operators)\) `a...b` と `a..<b` の開始値 `a` を、終了値 `b` より大きくしてはならないことを記載しました
-* [継承\(Inheritance\)](../language-guide/inheritance.md)の章を書き直して、イニシャライザのオーバーライドの紹介部分を削除しました。この章では、サブクラス内に新しい機能を追加し、オーバーライドを使用して既存の機能を変更することに焦点を当てています。[プロパティの get プロパティ、set プロパティドのオーバーライド\(Overriding Property Getters and Setters\)](../language-guide/inheritance.md#overriding-property-getters-and-setters)の章の例は、`description` プロパティをオーバーライドする方法を示すために書き換えられました。\(サブクラスのイニシャライザで継承したプロパティのデフォルト値を変更する例は、[イニシャライザ\(Initialization\)](../language-guide/initialization.md)の章に移動しました\)
+* [継承\(Inheritance\)](../language-guide/inheritance)の章を書き直して、イニシャライザのオーバーライドの紹介部分を削除しました。この章では、サブクラス内に新しい機能を追加し、オーバーライドを使用して既存の機能を変更することに焦点を当てています。[プロパティの get プロパティ、set プロパティドのオーバーライド\(Overriding Property Getters and Setters\)](../language-guide/inheritance.md#overriding-property-getters-and-setters)の章の例は、`description` プロパティをオーバーライドする方法を示すために書き換えられました。\(サブクラスのイニシャライザで継承したプロパティのデフォルト値を変更する例は、[イニシャライザ\(Initialization\)](../language-guide/initialization)の章に移動しました\)
 * [イニシャライザの継承とオーバーライド\(Initializer Inheritance and Overriding\)](../language-guide/initialization.md#initializer-inheritance-and-overriding)セクションを更新し、指定イニシャライザのオーバーライドを `override` 修飾子でマークする必要があることを記載しました
 * [必須イニシャライザ\(Required Initializers\)](../language-guide/initialization.md#required-initializers)セクションを更新し、`required` 修飾子が全てのサブクラスの必須イニシャライザの実装の前に書かれ、自動的に継承したイニシャライザが必須イニシャライザの要件を満たすことができることを記載しました
 * 中置演算子メソッド\([演算子メソッド\(Operator Methods\)](../language-guide/advanced-operators.md#advanced-operators-operator-methods)\)に `@infix` 属性が必要なくなりました
@@ -305,11 +305,11 @@
 * [宣言修飾子\(Declaration Modifiers\)](../language-reference/declarations.md#declaration-modifiers)に、`dynamic` 修飾子についての情報を追加しました
 * 型推論が[リテラル\(Literals\)](../language-reference/lexical-structure.md#literals)で動作する方法についての情報を追加しました
 * カリー関数のより詳しい情報を追加しました
-* [アクセスコントロール\(Access Control\)](../language-guide/access-control.md)についての新しい章を追加しました
-* [文字列と文字\(Strings and Characters\)](../language-guide/strings-and-characters.md)の章を更新し、Swift の `Character` 型が単一の Unicode 拡張書記素クラスタを表すことを反映しました。[拡張書記素クラスタ\(Extended Grapheme Clusters\)](../language-guide/strings-and-characters.md#extended-grapheme-clusters)上の新しいセクションと、[Unicode Scalar Values\(Unicode スカラ値\)](../language-guide/strings-and-characters.md#unicode-scalar-values)と[文字列の比較\(Comparing Strings\)](../language-guide/strings-and-characters.md#comparing-strings)についての詳しい情報も含まれています
+* [アクセスコントロール\(Access Control\)](../language-guide/access-control)についての新しい章を追加しました
+* [文字列と文字\(Strings and Characters\)](../language-guide/strings-and-characters)の章を更新し、Swift の `Character` 型が単一の Unicode 拡張書記素クラスタを表すことを反映しました。[拡張書記素クラスタ\(Extended Grapheme Clusters\)](../language-guide/strings-and-characters.md#extended-grapheme-clusters)上の新しいセクションと、[Unicode Scalar Values\(Unicode スカラ値\)](../language-guide/strings-and-characters.md#unicode-scalar-values)と[文字列の比較\(Comparing Strings\)](../language-guide/strings-and-characters.md#comparing-strings)についての詳しい情報も含まれています
 * [文字列リテラル\(String Literals\)](../language-guide/strings-and-characters.md#strings-and-characters-string-literals)セクションを更新し、文字列内の Unicode スカラを `\u{n}`\(n には 0 から 10FFFF の間の 16 進数が入る\)で書けることを記載しました
 * `NSString` の `length` プロパティは、`utf16count` ではなく、Swift のネイティブの `String` 型の `utf16count` にマッピングされるようになりました
-* Swift のネイティブ `String` 型は、`uppercaseString` または `lowercaseString` プロパティを使用しなくなりました。[文字列と文字\(Strings and Characters\)](../language-guide/strings-and-characters.md)の対応するセクションは削除され、様々なコード例を更新しました
+* Swift のネイティブ `String` 型は、`uppercaseString` または `lowercaseString` プロパティを使用しなくなりました。[文字列と文字\(Strings and Characters\)](../language-guide/strings-and-characters)の対応するセクションは削除され、様々なコード例を更新しました
 * [引数ラベルのないイニシャライザパラメータ\(Initializer Parameters Without Argument Labels\)](../language-guide/initialization.md#initializer-parameters-without-argument-labels)についての新しいセクションを追加しました
 * [必須イニシャライザ\(Required Initializers\)](../language-guide/initialization.md#required-initializers)についての新しいセクションを追加しました
 * [オプショナルのタプルの戻り値の型\(Optional Tuple Return Types\)](../language-guide/functions.md#optional-tuple-return-types)についての新しいセクションを追加しました

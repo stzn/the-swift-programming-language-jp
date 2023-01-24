@@ -394,7 +394,7 @@ in-out パラメータは次のように渡されます:
 
 関数内で、元の値が現在のスコープで使用可能でも、in-out 引数として渡された値にアクセスしないでください。元の値へのアクセスは、Swift のメモリ排他性に対する保証に違反した値への同時アクセスです。同じ理由で、同じ値を複数の in-out パラメータに渡すことはできません。
 
-メモリの安全性とメモリの排他性の詳細については、[Memory Safety\(メモリ安全性\)](../language-guide/memory-safety.md)を参照ください。
+メモリの安全性とメモリの排他性の詳細については、[Memory Safety\(メモリ安全性\)](../language-guide/memory-safety)を参照ください。
 
 in-out パラメータをキャプチャするクロージャまたはネスト関数は、非エスケープでなければなりません。in-out パラメータを変えることなくキャプチャする必要がある場合は、キャプチャリストを使用して、パラメータを不変なものとして明示的にキャプチャします。
 
@@ -703,7 +703,7 @@ struct <#structure name#>: <#adopted protocols#> {
 }
 ```
 
-構造体の本文には、0 個以上の _declarations_ が含まれています。これらの _declarations_ には、格納プロパティと計算プロパティ、型プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、サブスクリプト、タイプエイリアス、さらにはその他の構造体、クラス、アクター、列挙型の宣言を含めることができます。構造体宣言にデイニシャライザまたはプロトコル宣言を含めることはできません。様々な種類の宣言を含む構造体の説明といくつかの例については、[Structures and Classes\(構造体とクラス\)](../language-guide/structures-and-classes.md)を参照ください。
+構造体の本文には、0 個以上の _declarations_ が含まれています。これらの _declarations_ には、格納プロパティと計算プロパティ、型プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、サブスクリプト、タイプエイリアス、さらにはその他の構造体、クラス、アクター、列挙型の宣言を含めることができます。構造体宣言にデイニシャライザまたはプロトコル宣言を含めることはできません。様々な種類の宣言を含む構造体の説明といくつかの例については、[Structures and Classes\(構造体とクラス\)](../language-guide/structures-and-classes)を参照ください。
 
 構造体型は任意の数のプロトコルに準拠できますが、クラス、列挙型、またはその他の構造体を継承することはできません。
 
@@ -713,7 +713,7 @@ struct <#structure name#>: <#adopted protocols#> {
 * イニシャライザが宣言されていない場合は、[Memberwise Initializers for Structure Types\(構造体のメンバワイズイニシャライザ\)](../language-guide/initialization.md#initialization-memberwise-initializers-for-structure-types)で説明されているように、構造体のメンバワイズイニシャライザを呼び出します
 * イニシャライザが宣言されておらず、構造体宣言の全てプロパティに初期値が指定されている場合は、[Default Initializers\(デフォルトイニシャライザ\)](../language-guide/initialization.md#default-initializers)で説明されているように、構造体のデフォルトイニシャライザを呼び出します
 
-構造体の宣言されたプロパティを初期化するプロセスは、[Initialization\(初期化\)](../language-guide/initialization.md)で説明されています
+構造体の宣言されたプロパティを初期化するプロセスは、[Initialization\(初期化\)](../language-guide/initialization)で説明されています
 
 構造体インスタンスのプロパティには、[Accessing Properties\(プロパティへのアクセス\)](../language-guide/structures-and-classes.md#accessing-properties)で説明されているように、ドット\(`.`\)構文を使用してアクセスできます。
 
@@ -738,7 +738,7 @@ class <#class name#>: <#superclass#>, <#adopted protocols#> {
 }
 ```
 
-クラスの本文には、0 個以上の _declarations_ が含まれています。これらの _declarations_ には、格納プロパティと計算プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、単一のデイニシャライザ、サブスクリプト、タイプエイリアス、さらには他のクラス、構造体、アクター、列挙型の宣言を含めることができます。クラス宣言にプロトコル宣言を含めることはできません。様々な種類の宣言を含むクラスの説明といくつかの例については、[Structures and Classes](../language-guide/structures-and-classes.md)を参照ください。
+クラスの本文には、0 個以上の _declarations_ が含まれています。これらの _declarations_ には、格納プロパティと計算プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、単一のデイニシャライザ、サブスクリプト、タイプエイリアス、さらには他のクラス、構造体、アクター、列挙型の宣言を含めることができます。クラス宣言にプロトコル宣言を含めることはできません。様々な種類の宣言を含むクラスの説明といくつかの例については、[Structures and Classes](../language-guide/structures-and-classes)を参照ください。
 
 クラス型は、1 つの _superclass_ のみ継承できますが、任意の数のプロトコルに準拠できます。_superclass_ は、_class name_ とコロン\(`:`\)の後の最初に表示され、その後に _adopted protocols_ が続きます。ジェネリッククラスは他のジェネリッククラスと非ジェネリッククラスを継承できますが、非ジェネリッククラスは他の非ジェネリッククラスのみ継承できます。コロンの後にジェネリックなスーパークラスの名前を書くときは、ジェネリックパラメータを含めたそのジェネリッククラスの全てを含める必要があります。
 
@@ -793,7 +793,7 @@ actor <#actor name#>: <#adopted protocols#> {
 
 アクターのメンバは、nonisolated または非同期の場合にのみ `@objc` 属性でマークできます。
 
-アクターの宣言されたプロパティを初期化するプロセスは、[Initialization\(イニシャライザ\)](../language-guide/initialization.md)で説明されています。
+アクターの宣言されたプロパティを初期化するプロセスは、[Initialization\(イニシャライザ\)](../language-guide/initialization)で説明されています。
 
 アクターインスタンスのプロパティには、[Accessing Properties\(プロパティへのアクセス\)](../language-guide/structures-and-classes.md#accessing-properties)で説明されているように、ドット\(`.`\)構文を使用してアクセスできます。
 
@@ -960,7 +960,7 @@ protocol SubProtocolB: SomeProtocol where SomeType: Equatable { }
 
 _イニシャライザ宣言_は、クラス、構造体、または列挙型のイニシャライザをプログラムに導入します。イニシャライザ宣言は、`init` キーワードを使用して宣言され、2 つの基本的な形式があります。
 
-構造体、列挙型、およびクラス型には任意の数のイニシャライザを含めることができますが、クラスイニシャライザのルールと関連する動作は異なります。構造体や列挙型とは異なり、クラスには、[Initialization\(イニシャライザ\)](../language-guide/initialization.md)で説明されているように、指定イニシャライザと convenience イニシャライザの 2 種類のイニシャライザがあります。
+構造体、列挙型、およびクラス型には任意の数のイニシャライザを含めることができますが、クラスイニシャライザのルールと関連する動作は異なります。構造体や列挙型とは異なり、クラスには、[Initialization\(イニシャライザ\)](../language-guide/initialization)で説明されているように、指定イニシャライザと convenience イニシャライザの 2 種類のイニシャライザがあります。
 
 次の形式は、構造体、列挙型、およびクラスの指定イニシャライザを宣言しています:
 
@@ -997,7 +997,7 @@ convenience イニシャライザは、初期化プロセスを別の convenienc
 
 関数やメソッドと同様に、イニシャライザはエラーをスローまたは再スローできます。また、関数やメソッドと同様に、イニシャライザのパラメータの後に `throws` または `rethrows` キーワードを使用して、適切な動作を示します。
 
-様々な種類の宣言のイニシャライザの例を確認するには、[Initialization\(イニシャライザ\)](../language-guide/initialization.md)を参照ください。
+様々な種類の宣言のイニシャライザの例を確認するには、[Initialization\(イニシャライザ\)](../language-guide/initialization)を参照ください。
 
 ### <a id="declarations-failable-initializers">失敗可能イニシャライザ\(Failable Initializers\)</a>
 
@@ -1061,7 +1061,7 @@ deinit {
 
 デイニシャライザは直接呼び出せません。
 
-クラス宣言でデイニシャライザを使用する方法の例については、[Deinitialization\(デイニシャライザ\)](../language-guide/deinitialization.md)を参照ください。
+クラス宣言でデイニシャライザを使用する方法の例については、[Deinitialization\(デイニシャライザ\)](../language-guide/deinitialization)を参照ください。
 
 > GRAMMAR OF A DEINITIALIZER DECLARATION  
 > deinitializer-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> `deinit` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
@@ -1076,7 +1076,7 @@ extension <#type name#> where <#requirements#> {
 }
 ```
 
-拡張宣言の本文には、0 個以上の _declarations_ が含まれています。これらの _declarations_ には、計算プロパティ、計算型プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、サブスクリプト、さらにはクラス、構造体、列挙型の宣言を含めることができます。拡張宣言には、デイニシャライザ、プロトコル宣言、格納プロパティ、プロパティオブザーバ、またはその他の拡張宣言を含めることはできません。プロトコルの extension は `final` をマークすることはできません。様々な種類の宣言を含む extension の説明といくつかの例については、[Extensions\(拡張\)](expressions.md)を参照ください。
+拡張宣言の本文には、0 個以上の _declarations_ が含まれています。これらの _declarations_ には、計算プロパティ、計算型プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、サブスクリプト、さらにはクラス、構造体、列挙型の宣言を含めることができます。拡張宣言には、デイニシャライザ、プロトコル宣言、格納プロパティ、プロパティオブザーバ、またはその他の拡張宣言を含めることはできません。プロトコルの extension は `final` をマークすることはできません。様々な種類の宣言を含む extension の説明といくつかの例については、[Extensions\(拡張\)](expressions)を参照ください。
 
 _type name_ がクラス、構造体、または列挙型の場合、extension はその型を拡張します。_type name_ がプロトコルの場合、extension はそのプロトコルに準拠する全ての型を拡張します。
 
@@ -1279,7 +1279,7 @@ _parameters_ または _return type_ がオーバーロードしているもの�
 
 [Protocol Subscript Declaration\(プロトコルサブスクリプト宣言\)](declarations.md#protocol-subscript-declaration)で説明されているように、プロトコル宣言のコンテキストでサブスクリプトを宣言することもできます。
 
-サブスクリプトの詳細とサブスクリプト宣言の例については、[サブスクリプト](../language-guide/subscripts.md)を参照ください。
+サブスクリプトの詳細とサブスクリプト宣言の例については、[サブスクリプト](../language-guide/subscripts)を参照ください。
 
 ### 型サブスクリプト宣言\(Type Subscript Declarations\)
 
@@ -1430,7 +1430,7 @@ weak
 
 ## <a id="access-control-levels">Access Control Levels\(アクセス制御レベル\)</a>
 
-Swift は、open、public、internal、file private、private の 5 つのレベルのアクセス制御を提供します。下記のアクセスレベル修飾子のいずれかで宣言をマークして、宣言のアクセスレベルを指定できます。アクセス制御については、[Access Control\(アクセスコントロール\)](../language-guide/access-control.md)で詳しく説明しています。
+Swift は、open、public、internal、file private、private の 5 つのレベルのアクセス制御を提供します。下記のアクセスレベル修飾子のいずれかで宣言をマークして、宣言のアクセスレベルを指定できます。アクセス制御については、[Access Control\(アクセスコントロール\)](../language-guide/access-control)で詳しく説明しています。
 
 ## <a id="access-control-levels">アクセス制御レベル\(Access Control Levels\)</a>
 

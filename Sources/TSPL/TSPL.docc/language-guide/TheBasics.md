@@ -7,7 +7,7 @@
 
 Swift は iOS, macOS, watchOS, tyOS アプリ開発のためのプログラミング言語です。C 言語と Objective-C の開発経験があれば、Swift の多くの部分は慣れ親しんだものでしょう。
 
-Swift は C 言語と Objective-C の全ての基本的な型に対応した Swift 版の型を提供します。数値に対する `Int`、浮動小数点数に対する `Double` と `Float`、ブール値に対する `Bool`、文字データに対する `String` があります。また、3 つのより強力な collection 型\(`Array`, `Set`, `Dictionary`\)も提供しています。詳細は [Collection Types\(コレクション型\)](collection-types.md)に記載しています。
+Swift は C 言語と Objective-C の全ての基本的な型に対応した Swift 版の型を提供します。数値に対する `Int`、浮動小数点数に対する `Double` と `Float`、ブール値に対する `Bool`、文字データに対する `String` があります。また、3 つのより強力な collection 型\(`Array`, `Set`, `Dictionary`\)も提供しています。詳細は [Collection Types\(コレクション型\)](collection-types)に記載しています。
 
 C 言語のように、Swift は、名前を特定して、値を保持したり、その値を参照するために変数を使います。また、変数の値を変更できなくすることで、より幅広い方法で変数を使用することができます。これらは、定数として知られており、C 言語の定数よりもかなり強力です。定数は、値を変更する必要がない場合に、コードを、意図的に、より安全に、よりわかりやすくするために Swift 全体で使われます。
 
@@ -328,7 +328,7 @@ let twoThousandAndOne = twoThousand + UInt16(one)
 
 今はどちらも `UInt16` なので、足し算は可能です。そして計算結果の定数\(`twoThousandAndOne`\)も `UInt16` に推論されます。
 
-`SomeType(ofInitialValue)` という形式は、初期値を渡して初期化を行う Swift のデフォルトの方法です。裏側では、`UInt16` 型が `UInt8` の値を受け取って、新しい `UInt16` 型の値を生成しています。とはいっても、あらゆる型を渡せるわけではありません。`UInt16` 型が提供するイニシャライザに合った型が必要です。新しい型を渡して初期化する方法は、[Extensions\(拡張\)](extensions.md)に記載しています。
+`SomeType(ofInitialValue)` という形式は、初期値を渡して初期化を行う Swift のデフォルトの方法です。裏側では、`UInt16` 型が `UInt8` の値を受け取って、新しい `UInt16` 型の値を生成しています。とはいっても、あらゆる型を渡せるわけではありません。`UInt16` 型が提供するイニシャライザに合った型が必要です。新しい型を渡して初期化する方法は、[Extensions\(拡張\)](extensions)に記載しています。
 
 ### 整数と浮動小数点数の変換\(Integer and Floating-Point Conversion\)
 
@@ -396,7 +396,7 @@ if turnipsAreDelicious {
 // Eww, turnips are horrible.
 ```
 
-`if` のような条件文については、[Control Flow\(制御フロー\)](control-flow.md)でより詳細に記載しています。
+`if` のような条件文については、[Control Flow\(制御フロー\)](control-flow)でより詳細に記載しています。
 
 Swift は型安全なので、`Bool` 以外の値を `Bool` として使うことはできません。次の例はコンパイルエラーになります:
 
@@ -416,7 +416,7 @@ if i == 1 {
 }
 ```
 
-`i == 1` の比較結果は `Bool` なので、型チェックを通過できます。`i == 1` のような比較については、[Basic Operators\(基本演算子\)](basic-operators.md)でより詳しく記載しています。
+`i == 1` の比較結果は `Bool` なので、型チェックを通過できます。`i == 1` のような比較については、[Basic Operators\(基本演算子\)](basic-operators)でより詳しく記載しています。
 
 他の型安全性を示した例と同様に、型の違いによる予期せぬエラーの発生を防ぎ、型が明確なので、コードの意図をより明確に表すことができます。
 
@@ -544,14 +544,14 @@ if convertedNumber != nil {
 // convertedNumber has an integer value of 123.
 ```
 
-`if` 文についての詳細は、[Control Flow\(制御フロー\)](control-flow.md)を参照ください。
+`if` 文についての詳細は、[Control Flow\(制御フロー\)](control-flow)を参照ください。
 
 > NOTE  
 > 値が存在しないオプショナル値に `!` を付けてアクセスしようとすると、実行時エラーが発生します。`!` を使った強制アンラップを行う際は、確実に `nil` ではないことを常に確かめましょう。
 
 ### <a id="optional-binding">オプショナルバインディング\(Optional Binding\)</a>
 
-オプショナル値に、_オプショナルバインディング_を使用して、値を含んでいるかどうかを判定できます。もし含んでいる場合は、一時的な定数や変数として値を使用できるようになります。オプショナルバインディングは、`if` や `while` 文の 1 つのアクションで、オプショナル値に値が存在することを証明し、定数や変数にその内部の値を設定することを、まとめて行うことができます。`if` や `while` の詳細は[Control Flow\(制御フロー\)](control-flow.md)を参照ください。
+オプショナル値に、_オプショナルバインディング_を使用して、値を含んでいるかどうかを判定できます。もし含んでいる場合は、一時的な定数や変数として値を使用できるようになります。オプショナルバインディングは、`if` や `while` 文の 1 つのアクションで、オプショナル値に値が存在することを証明し、定数や変数にその内部の値を設定することを、まとめて行うことができます。`if` や `while` の詳細は[Control Flow\(制御フロー\)](control-flow)を参照ください。
 
 `if` 文でオプショナルバインディングを行う場合、次のように書きます:
 
@@ -724,7 +724,7 @@ do {
 
 エラーがスローされない場合、`eatASandwich()` 関数が呼ばれます。エラーがスローされ、それが `SandwichError.outOfCleanDishes`case と合致する場合、`washDishes()` 関数が呼ばれます。`SandwichError.missingIngredients` ケースに合致する場合、`buyGroceries(_:)` 関数が `catch` でキャッチされた `[String]` 値をパラメータに呼び出されます。
 
-エラーのスロー、キャッチそして伝播は、[Error Handling\(エラーハンドリング\)](error-handling.md)でより詳細に書かれています。
+エラーのスロー、キャッチそして伝播は、[Error Handling\(エラーハンドリング\)](error-handling)でより詳細に書かれています。
 
 ## <a id="assertions-and-preconditions">アサーションと事前条件\(Assertions and Preconditions\)</a>
 

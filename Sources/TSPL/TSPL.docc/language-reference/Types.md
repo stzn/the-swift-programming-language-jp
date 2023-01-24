@@ -7,7 +7,7 @@
 
 Swift では、_名前付き型_\(_named type_\)と_複合型_\(_compound type_\)の 2 種類があります。名前付き型は、定義時に特定の名前を指定できる型です。名前付き型には、クラス、構造体、列挙型、およびプロトコルが含まれます。例えば、`MyClass` という名前のユーザ定義クラスのインスタンスは `MyClass` 型です。ユーザ定義の型に加えて、Swift 標準ライブラリは、配列、辞書、およびオプショナルの値を含む多くの広く使用される型の名前を定義します。
 
-通常、数字、文字、文字列を表す型など、他の言語で基本的またはプリミティブと見なされるデータ型は、Swift 標準ライブラリでは構造体を使用して定義、実装されている名前付き型です。名前付き型のため、[Extensions\(拡張\)](expressions.md)、[Extension Declaration\(拡張宣言\)](../language-reference/declarations.md#extension-declaration)で説明されている extension を使用して、プログラムのニーズに合わせて振る舞いを拡張することができます。
+通常、数字、文字、文字列を表す型など、他の言語で基本的またはプリミティブと見なされるデータ型は、Swift 標準ライブラリでは構造体を使用して定義、実装されている名前付き型です。名前付き型のため、[Extensions\(拡張\)](expressions)、[Extension Declaration\(拡張宣言\)](../language-reference/declarations.md#extension-declaration)で説明されている extension を使用して、プログラムのニーズに合わせて振る舞いを拡張することができます。
 
 複合型は、Swift 言語で定義されている名前のない型です。関数型とタプル型の 2 つの複合型があります。複合型の種類は、名前付き型および他の複合型を含めることができます。例えば、タプル型 `(Int, (Int, Int))` には、名前付き型の `Int` と複合型の `(Int, Int)` の 2 つの要素が含まれています。
 
@@ -164,7 +164,7 @@ func takesTwoFunctions(first: (() -> Void) -> Void, second: (() -> Void) -> Void
 
 上記の例で「エラー」とマークされた 4 つの関数の呼び出しは、コンパイラエラーが発生します。最初と 2 番目のパラメータは非エスケープ関数のため、引数として別の非エスケープ関数をパラメータに渡すことはできません。対照的に、「OK」とマークされた 2 つの関数呼び出しは、コンパイラエラーが発生しません。これらの関数呼び出しは、`external` が `takesTwoFunctions(first:second:)` のパラメータではないため、制限に違反しません。
 
-この制限を回避する必要がある場合は、いずれかのパラメータを `@esescaping` とマークしたり、パラメータの非エスケープ関数の 1 つを `withoutActuallyEscaping(_:do:)` を使ってエスケープ関数に一時的に変換します。メモリへのアクセス競合を回避する方法については、[Memory Safety\(メモリ安全性\)](../language-guide/memory-safety.md)を参照ください。
+この制限を回避する必要がある場合は、いずれかのパラメータを `@esescaping` とマークしたり、パラメータの非エスケープ関数の 1 つを `withoutActuallyEscaping(_:do:)` を使ってエスケープ関数に一時的に変換します。メモリへのアクセス競合を回避する方法については、[Memory Safety\(メモリ安全性\)](../language-guide/memory-safety)を参照ください。
 
 > GRAMMAR OF A FUNCTION TYPE  
 > function-type → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [function-type-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument-clause) `throws`<sub>opt</sub> `->` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
@@ -410,7 +410,7 @@ if let first = mixed.first as? String {
 // The first item, 'one', is a string.
 ```
 
-キャストの詳細については、[Type Casting\(型キャスト\)](../language-guide/type-casting.md)を参照ください。
+キャストの詳細については、[Type Casting\(型キャスト\)](../language-guide/type-casting)を参照ください。
 
 `AnyObject` プロトコルは `Any` 型と似ています。全てのクラスは暗黙的に `AnyObject` に準拠しています。言語によって定義されているものとは異なり、`AnyObject` は標準ライブラリで定義されています。詳細については、[Class-Only Protocols\(クラス専用プロトコル\)](../language-guide/protocols.md#class-only-protocols)と [AnyObject](https://developer.apple.com/documentation/swift/anyobject)を参照ください。
 
@@ -463,7 +463,7 @@ prInt(type(of: z.f()))
 
 _型継承句_は、名前付き型がどのクラスを継承しているか、どのプロトコルに準拠しているかを指定するために使用されます。型継承句はコロン\(`:`\)で始まり、その後に型識別子のリストが続きます。
 
-クラス型は、単一のスーパークラスのみ継承できますが、任意の数のプロトコルに準拠できます。クラスを定義するときは、スーパークラスの名前が型識別子のリストの最初に表示され、その後にクラスが準拠しなければならないプロトコルが続きます。クラスが別のクラスを継承していない場合は、プロトコルから始めることができます。より発展的な議論とクラス継承の例については、[Inheritance\(継承\)](../language-guide/inheritance.md)を参照ください。
+クラス型は、単一のスーパークラスのみ継承できますが、任意の数のプロトコルに準拠できます。クラスを定義するときは、スーパークラスの名前が型識別子のリストの最初に表示され、その後にクラスが準拠しなければならないプロトコルが続きます。クラスが別のクラスを継承していない場合は、プロトコルから始めることができます。より発展的な議論とクラス継承の例については、[Inheritance\(継承\)](../language-guide/inheritance)を参照ください。
 
 その他の名前付き型は、プロトコルのみ継承または準拠することができます。プロトコル型は、任意の数の他のプロトコルを継承できます。プロトコル型が他のプロトコルを継承すると、他のプロトコルの要件も集約され、現在のプロトコルから継承する型は全ての要件に準拠する必要があります。
 

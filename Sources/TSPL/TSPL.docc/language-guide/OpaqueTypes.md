@@ -214,7 +214,7 @@ protoFlippedTriangle == sameThing  // エラー
 
 このアプローチのもう 1 つの問題は、形状変換をネストできないことです。三角形を反転した結果は、`Shape` 型の値で、`protoFlip(_:)` 関数は、`Shape` プロトコルに準拠した何らかの型の引数を取ります。ただし、プロトコル型はそのプロトコル自体に準拠しません。`protoFlip(_:)` によって返される値は `Shape` に準拠していません。これは、反転した形状が `protoFlip(_:)` の有効な引数ではないため、複数の変換を適用する `protoFlip(protoFlip(smallTriangle))` のようなコードが無効だということを意味します。
 
-対照的に、Opaque 型は、基になる型情報を保持します。Swift は関連型を推論できるため、プロトコル型を戻り値として使用できない場所で Opaque 型な戻り値の型を使用できます。例えば、これは [Generics\(ジェネリクス\)](generics.md)の `Container` プロトコルの別のバージョンです:
+対照的に、Opaque 型は、基になる型情報を保持します。Swift は関連型を推論できるため、プロトコル型を戻り値として使用できない場所で Opaque 型な戻り値の型を使用できます。例えば、これは [Generics\(ジェネリクス\)](generics)の `Container` プロトコルの別のバージョンです:
 
 ```swift
 protocol Container {

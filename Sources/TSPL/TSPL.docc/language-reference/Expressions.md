@@ -17,7 +17,7 @@ Swift では、前置式、バイナリ式、基本式、後置式の 4 種類�
 
 前置式は、式と任意の前置演算子を組み合わせます。前置演算子は 1 つの引数を受け取り、その後に式が続きます。
 
-これらの演算子の動作については、[Basic Operators\(基本演算子\)](../language-guide/basic-operators.md)と[Advanced Operators\(高度な演算子\)](../language-guide/advanced-operators.md)を参照ください。
+これらの演算子の動作については、[Basic Operators\(基本演算子\)](../language-guide/basic-operators)と[Advanced Operators\(高度な演算子\)](../language-guide/advanced-operators)を参照ください。
 
 Swift 標準ライブラリによって提供されている演算子については、[Operator Declarations\(演算子宣言\)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
 
@@ -83,7 +83,7 @@ sum = (try someThrowingFunction()) + anotherThrowingFunction()
 
 `try` と `await` 演算子の両方を含む場合は、最初に `try` が来なければなりません。
 
-`try`、`try?` と `try!` の使用方法についての詳細は[Error Handling\(エラーハンドリング\)](../language-guide/error-handling.md)を参照ください。
+`try`、`try?` と `try!` の使用方法についての詳細は[Error Handling\(エラーハンドリング\)](../language-guide/error-handling)を参照ください。
 
 > GRAMMAR OF A TRY EXPRESSION  
 > try-operator → `try` \| `try` `?` \| `try` `!`
@@ -130,7 +130,7 @@ _中置式_は、左右の引数を受け取る式と中置バイナリ演算子
 <#left-hand argument#> <#operator#> <#right-hand argument#>
 ```
 
-これらの演算子の動作については、[Basic Operators\(基本演算子\)](../language-guide/basic-operators.md) と [Advanced Operators\(高度な演算子\)](../language-guide/advanced-operators.md)を参照ください。
+これらの演算子の動作については、[Basic Operators\(基本演算子\)](../language-guide/basic-operators) と [Advanced Operators\(高度な演算子\)](../language-guide/advanced-operators)を参照ください。
 
 標準ライブラリによって提供されている演算子については、[Operator Declarations\(演算子宣言\)](https://developer.apple.com/documentation/swift/operator_declarations)を参照ください。
 
@@ -217,7 +217,7 @@ f(x as Any)
 
 `as!` 演算子は、指定された型に強制キャストを実行します。`as!` 演算子は、オプショナル型ではなく、指定された型の値を返します。キャストが失敗した場合は、実行時エラーが発生します。`x as! T` は `(x as? T)!` の挙動と同じです。
 
-型キャストの詳細や型キャスト演算子を使用する例については、[Type Casting\(型キャスト\)](../language-guide/type-casting.md)を参照ください。
+型キャストの詳細や型キャスト演算子を使用する例については、[Type Casting\(型キャスト\)](../language-guide/type-casting)を参照ください。
 
 > GRAMMAR OF A TYPE-CASTING OPERATOR  
 > type-casting-operator → `is` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
@@ -870,7 +870,7 @@ Objective-C API とやり取りする Swift コードで KeyPath を使用する
 
 _後置式_は、後置演算子またはその他の後置構文を式に適用することによって形成されます。構文的には、全ての基本式も後置式です。
 
-これらの演算子の動作については、[Basic Operators\(基本演算子\)](../language-guide/basic-operators.md)と[Advanced Operators\(高度な演算子\)](../language-guide/advanced-operators.md)を参照ください。
+これらの演算子の動作については、[Basic Operators\(基本演算子\)](../language-guide/basic-operators)と[Advanced Operators\(高度な演算子\)](../language-guide/advanced-operators)を参照ください。
 
 Swift 標準ライブラリによって提供されている演算子については、[Operator Declarations\(演算子宣言\)](https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations)を参照ください。
 
@@ -1071,7 +1071,7 @@ t.0 = t.1
 
 モジュールのメンバはそのモジュールの最上位の宣言にアクセスします。
 
-`dynamicMemberLookup` 属性で宣言された型には、[Attributes\(属性\)](attributes.md)で説明されているように、実行時に検索できるメンバが含まれています。
+`dynamicMemberLookup` 属性で宣言された型には、[Attributes\(属性\)](attributes)で説明されているように、実行時に検索できるメンバが含まれています。
 
 パラメータ名だけが異なるメソッドまたはイニシャライザを区別するには、パラメータ名を括弧内に入れ、パラメータ名の後にコロン\(`:`\)を書きます。名前のない引数にはアンダースコア\(`_`\)を書きます。オーバーロードされたメソッドを区別するには、型注釈を使用してください。例えば:
 
