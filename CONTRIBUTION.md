@@ -139,7 +139,7 @@ npm run lint
 ビルドに成功すると localhost の URL が表示されるので、そちらからブラウザ上での表示が確認できます。
 
 ```text
-docc preview TSPL.docc
+make preview
 ```
 
 

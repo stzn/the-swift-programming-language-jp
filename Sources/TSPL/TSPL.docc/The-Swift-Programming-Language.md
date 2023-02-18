@@ -1,4 +1,4 @@
-# ``Swift 言語ガイド日本語版``
+# Swift言語ガイド 日本語版
 
 @Metadata {
   @TechnologyRoot
