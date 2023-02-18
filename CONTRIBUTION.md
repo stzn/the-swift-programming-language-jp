@@ -133,6 +133,16 @@ npm install
 npm run lint
 ```
 
+### ビルド
+
+下記を実行してください。
+ビルドに成功すると localhost の URL が表示されるので、そちらからブラウザ上での表示が確認できます。
+
+```text
+docc preview TSPL.docc
+```
+
+
 ### フィードバック
 
 ご要望、ご質問などございましたら [Discord チャンネル](https://discord.com/channels/291054398077927425/981108847714381844)よりお願いします。
