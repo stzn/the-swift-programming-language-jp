@@ -1,3 +1,4 @@
+/* 貢献者欄の表示を修正するため */
 #contributors > table {
     table-layout: fixed;
 }
