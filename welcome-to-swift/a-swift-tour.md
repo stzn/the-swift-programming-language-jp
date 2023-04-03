@@ -71,9 +71,13 @@ let fruitSummary = "I have \(apples + oranges) pieces of fruit."
 
 ```swift
 let quotation = """
-I said "I have \(apples) apples."
-And then I said "I have \(apples + oranges) pieces of fruit."
-"""
+        Even though there's whitespace to the left,
+        the actual lines aren't indented.
+            Except for this line.
+        Double quotes (") can appear without being escaped.
+
+        I still have \(apples + oranges) pieces of fruit.
+        """
 ```
 
 配列や辞書の作成には角括弧\(`[]`\)を使い、それらの要素へアクセスする際は角括弧内にインデックスやキーを書きます。最後の要素の後ろにもカンマ\(`,`\)を付けることができます。
