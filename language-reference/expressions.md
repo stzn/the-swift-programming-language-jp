@@ -1,6 +1,6 @@
 # 式\(Expressions\)
 
-最終更新日: 2022/12/31  
+最終更新日: 2023/5/27  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Expressions.html
 
 型、演算子、変数、およびその他の名前と構造を紹介する。
@@ -213,6 +213,7 @@ f(x as Any)
 > primary-expression → [literal-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_literal-expression)  
 > primary-expression → [self-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-expression)  
 > primary-expression → [superclass-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_superclass-expression)  
+> *primary-expression* → *conditional-expression*  
 > primary-expression → [closure-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-expression)  
 > primary-expression → [parenthesized-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_parenthesized-expression)  
 > primary-expression → [tuple-expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-expression)  
@@ -346,6 +347,78 @@ _スーパークラス式_は、クラスがスーパークラスとやり取り
 > superclass-method-expression → `super` `.` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
 > superclass-subscript-expression → `super` `[` [function-call-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list) `]`  
 > superclass-initializer-expression → `super` `.` `init`
+
+### 条件式\(Conditional Expression\)
+
+_条件式_は、条件の値に基づいて、与えられたいくつかの値のうちの 1 つに評価されます。
+
+形式は次の通りです:
+
+```swift
+if <#condition 1#> {
+   <#expression used if condition 1 is true#>
+} else if <#condition 2#> {
+   <#expression used if condition 2 is true#>
+} else {
+   <#expression used if both conditions are false#>
+}
+switch <#expression#> {
+case <#pattern 1#>:
+    <#expression 1#>
+case <#pattern 2#> where <#condition#>:
+    <#expression 2#>
+default:
+    <#expression 3#>
+}
+```
+
+条件式は、`if` 文や `switch` 文と同じ動作と構文ですが、以下の段落で説明する違いがあります。
+
+条件式は、以下の状況でのみ使用できます:  
+
+- 変数に代入される値として
+- 変数または定数宣言の初期値として
+- `throw` 式が投げるエラーとして
+- 関数、クロージャ、プロパティの `get` が返す値として
+- 条件式の分岐内の値として
+
+条件式の分岐は網羅的であり、条件に関係なく常に値を生成することを保証します。つまり、各 `if` 分岐には対応する `else` 分岐が必要です。
+
+各分岐には、その分岐の条件が真である場合に条件式の値として使用される単一式、`throw` 文、または戻り値を返さない関数への呼び出しが含まれます。
+
+各分岐は、同じ型の値を生成する必要があります。各分岐の型チェックは独立しているので、分岐に異なる種類のリテラルを含む場合や、分岐の値が `nil` である場合など、値の型を明示的に指定する必要がある場合があります。このような情報を提供する必要がある場合は、結果が代入される変数に型注釈を追加するか、分岐の値に `as` キャストを追加してください。
+
+```swift
+let number: Double = if someCondition { 10 } else { 12.34 }
+let number = if someCondition { 10 as Double } else { 12.34 }
+```
+
+リザルトビルビルダの内部では、条件式は変数や定数の初期値としてのみ使用することができます。つまり、変数や定数の宣言のないリザルトビルダ内で `if` や `switch` を記述すると、そのコードは分岐文として理解され、リザルトビルダのメソッドの 1 つが、そのコードを変換することになります。
+
+条件式の分岐の 1 つがエラーをスローする場合でも、条件式を `try` 式の中に入れてはいけません。
+
+
+> Grammar of a conditional expression:
+>
+> *conditional-expression* → *if-expression* | *switch-expression*
+>
+>
+>
+> *if-expression* → **`if`** *condition-list* **`{`** *statement* **`}`** *if-expression-tail*
+>
+> *if-expression-tail* → **`else`** *if-expression*
+>
+> *if-expression-tail* → **`else`** **`{`** *statement* **`}`** *if-expression-tail*
+>
+>
+>
+> *switch-expression* → **`switch`** *expression* **`{`** *switch-expression-cases* **`}`**
+>
+> *switch-expression-cases* → *switch-expression-case* *switch-expression-cases*_?_
+>
+> *switch-expression-case* → *case-label* *statement*
+>
+> *switch-expression-case* → *default-label* *statement*
 
 ### クロージャ式\(Closure Expression\)
 
