@@ -124,20 +124,27 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/elmetal">
+            <img src="https://avatars.githubusercontent.com/u/20150994?v=4" width="100;" alt="elmetal"/>
+            <br />
+            <sub><b>elmetal</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/gitbook-bot">
             <img src="https://avatars.githubusercontent.com/u/31919211?v=4" width="100;" alt="gitbook-bot"/>
             <br />
             <sub><b>GitBook Bot</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/hira22">
             <img src="https://avatars.githubusercontent.com/u/31942637?v=4" width="100;" alt="hira22"/>
             <br />
             <sub><b>Hiraoka</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/ribilynn">
             <img src="https://avatars.githubusercontent.com/u/11924267?v=4" width="100;" alt="ribilynn"/>
