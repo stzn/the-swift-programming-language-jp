@@ -1,6 +1,6 @@
 # Swiftツアー\(A Swift Tour\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2023/5/27  
 原文: https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html
 
 Swift の特徴とシンタックスを探る。
@@ -15,11 +15,6 @@ print("Hello, world!")
 もし C 言語や Objective-C の経験があるならばこの構文に馴染みがあるかもしれませんが、Swift ではこの 1 行のコードでプログラミングは完成しています。input/output や文字列を扱うために他のライブラリを import する必要もありません。グローバル領域に書かれたコードはプログラムのエントリポイントとして使用されます。`main()` 関数は必要ありません。全てのステートメントの末尾にセミコロンをつける必要もありません。
 
 このツアーでは、様々なプログラム上のタスクを遂行する方法を示すことで、Swift でコードを書き始めるために必要十分な情報を提供します。もし理解できなくても心配しないでください。このツアーで紹介することは全て、この本で後々詳細に説明しています。
-
-> NOTE  
-> より理解を深めるために、Xcode でこのチャプターを開いて遊んでみましょう。Playgrounds を使用すると、コードを編集して結果をすぐに確認することができます。
->
-> [Download Playground](https://docs.swift.org/swift-book/GuidedTour/GuidedTour.playground.zip)
 
 ## シンプルな値\(Simple Values\)
 
