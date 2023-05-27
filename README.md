@@ -127,7 +127,7 @@
         <a href="https://github.com/elmetal">
             <img src="https://avatars.githubusercontent.com/u/20150994?v=4" width="100;" alt="elmetal"/>
             <br />
-            <sub><b>elmetal</b></sub>
+            <sub><b>Elmetal</b></sub>
         </a>
     </td>
     <td align="center">
