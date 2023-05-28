@@ -1,6 +1,6 @@
 # 文法のまとめ\(Summary of the Grammar\)
 
-最終更新日: 2021/7/3  
+最終更新日: 2023/5/28  
 原文: https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html
 
 ## Lexical Structure\(構文の構造\)
@@ -214,6 +214,10 @@
 
 > GRAMMAR OF AN OPAQUE TYPE  
 > opaque-type → `some` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
+
+> Grammar of a boxed protocol type:
+>
+> *boxed-protocol-type* → **`any`** *type*
 
 > GRAMMAR OF A METATYPE TYPE  
 > metatype-type → [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) `.` `Type` \| [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) `.` `Protocol`

@@ -1,6 +1,6 @@
 # 型\(Types\)
 
-最終更新日: 2023/1/15  
+最終更新日: 2023/5/28  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Types.html
 
 組み込みの名前付き型と複合型を使用します。
@@ -24,6 +24,7 @@ Swift では、_名前付き型_\(_named type_\)と_複合型_\(_compound type_\
 > type → [optional-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_optional-type)  
 > type → [implicitly-unwrapped-optional-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_implicitly-unwrapped-optional-type)  
 > type → [protocol-composition-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_protocol-composition-type)  
+> *type* → *boxed-protocol-type*
 > type → [opaque-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_opaque-type)  
 > type → [metatype-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_metatype-type)  
 > type → [any-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_any-type)  
@@ -324,12 +325,33 @@ Opaque 型の形式は次のとおりです:
 
 _constraint_ に入るのは、クラス型、プロトコル型、プロトコル合成型、または `Any` 型です。値としては、リスト内のプロトコルまたはプロトコル合成に準拠した型、またはリスト内のクラスを継承した型のインスタンスのみ使用できます。Opaque 型の値とやり取りするコードは、_constraint_ に定義された型のインターフェイスを通してのみ使用できます。
 
+コンパイル時に、Opaque 型の値は特定の具象型を持っています。そして、Swift は、最適化のためにその基礎となる型を使用することができます。しかし、利用時には、Opaque 型は、その基礎となる型に関する情報との間に超えることができない境界を形成します。
+
 プロトコルの宣言には Opaque 型を含めることはできません。また、クラスは、`final` ではないメソッドの戻り値の型として Opaque 型を使用することはできません。
 
 戻り値の型として Opaque 型を使用する関数は、単一の型の値を返す必要があります。戻り値の型には、関数のジェネリックな型パラメータの一部を含めることができます。例えば、`someFunction<T>()` は `T` 型または `Dictionary<String, T>` 型の値を返すことができます。
 
 > GRAMMAR OF AN OPAQUE TYPE  
 > opaque-type → `some` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
+
+## ボックス化されたプロトコル型\(Boxed Protocol Type\)
+
+*ボックス化されたプロトコル型*は、プロトコルまたはプロトコル合成に準拠する型を定義し、その準拠する型がプログラムの実行中に動的に変わる能力を持ちます。
+
+ボックス化されたプロトコル型の形式は次のとおりです:
+
+```swift
+any <#constraint#>
+```
+
+*制約*は、プロトコル型、プロトコル合成型、プロトコル型のメタタイプ、またはプロトコル合成型のメタタイプです。
+
+実行時に、ボックス化されたプロトコル型のインスタンスは、制約を満たす任意の型の値を含むことができます。この動作は、コンパイル時に既知の特定の準拠型が存在する Opaque 型の動作とは対照的です。ボックス化されたプロトコル型を扱う際に使用される追加の間接層は、`boxing` と呼ばれます。`boxing` は通常、ストレージのための別のメモリ割り当てと、アクセスのための追加の間接層を必要とし、実行時にパフォーマンスコストを発生させます。
+`Any` 型や `AnyObject` 型に `any` を適用しても、これらの型はすでにボックス化されたプロトコル型であるため、何の効果もありません。
+
+> Grammar of a boxed protocol type:
+>
+> *boxed-protocol-type* → **`any`** *type*
 
 ## <a id="metatype-type">Metatype 型\(Metatype Type\)</a>
 
