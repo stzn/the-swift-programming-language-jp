@@ -15,21 +15,35 @@ Swift では、_名前付き型_\(_named type_\)と_複合型_\(_compound type_\
 
 この章では、Swift 言語自体で定義されている型について説明し、Swift の型推論の動作について説明します。
 
-> GRAMMAR OF A TYPE  
-> type → [function-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type)  
-> type → [array-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_array-type)  
-> type → [dictionary-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_dictionary-type)  
-> type → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  
-> type → [tuple-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type)  
-> type → [optional-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_optional-type)  
-> type → [implicitly-unwrapped-optional-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_implicitly-unwrapped-optional-type)  
-> type → [protocol-composition-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_protocol-composition-type)  
+> Grammar of a type:
+>
+> *type* → *function-type*
+>
+> *type* → *array-type*
+>
+> *type* → *dictionary-type*
+>
+> *type* → *type-identifier*
+>
+> *type* → *tuple-type*
+>
+> *type* → *optional-type*
+>
+> *type* → *implicitly-unwrapped-optional-type*
+>
+> *type* → *protocol-composition-type*
+>
 > *type* → *boxed-protocol-type*
-> type → [opaque-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_opaque-type)  
-> type → [metatype-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_metatype-type)  
-> type → [any-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_any-type)  
-> type → [self-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_self-type)  
-> type → `(` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) `)`
+>
+> *type* → *opaque-type*
+>
+> *type* → *metatype-type*
+>
+> *type* → *any-type*
+>
+> *type* → *self-type*
+>
+> *type* → **`(`** *type* **`)`**
 
 ## 型注釈\(Type Annotation\)
 
@@ -44,8 +58,9 @@ func someFunction(a: Int) { /* ... */ }
 
 型注釈は、型の前に型属性の任意のリストを含めることができます。
 
-> GRAMMAR OF A TYPE ANNOTATION  
-> type-annotation → `:` [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> **inout**<sub>opt</sub> [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
+> Grammar of a type annotation:
+>
+> *type-annotation* → **`:`** *attributes*_?_ **`inout`**_?_ *type*
 
 ## 型識別子\(Type Identifier\)
 
@@ -66,9 +81,11 @@ let origin: PoInt = (0, 0)
 var someValue: ExampleModule.MyType
 ```
 
-> GRAMMAR OF A TYPE IDENTIFIER  
-> type-identifier → [type-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-name) [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause)<sub>opt</sub> \| [type-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-name) [generic-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause)<sub>opt</sub> `.`[type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)  
-> type-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
+> Grammar of a type identifier:
+>
+> *type-identifier* → *type-name* *generic-argument-clause*_?_ | *type-name* *generic-argument-clause*_?_ **`.`** *type-identifier*
+>
+> *type-name* → *identifier*
 
 ## タプル型\(Tuple Type\)
 
@@ -87,17 +104,23 @@ someTuple = (left: 5, right: 5)  // Error: 名前が一致していません
 
 全てのタプル型には、空のタプル型 `()` のタイプエイリアスの `Void` を除いて、2 つ以上の型が含まれています。
 
-> GRAMMAR OF A TUPLE TYPE  
-> tuple-type → `(` `)` \| `(` [tuple-type-element](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type-element) `,` [tuple-type-element-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type-element-list) `)`  
-> tuple-type-element-list → [tuple-type-element](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type-element) \| [tuple-type-element](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type-element) `,` [tuple-type-element-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type-element-list)  
-> tuple-type-element → [element-name](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_element-name) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation) \| [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
-> element-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
+> Grammar of a tuple type:
+>
+> *tuple-type* → **`(`** **`)`** | **`(`** *tuple-type-element* **`,`** *tuple-type-element-list* **`)`**
+>
+> *tuple-type-element-list* → *tuple-type-element* | *tuple-type-element* **`,`** *tuple-type-element-list*
+>
+> *tuple-type-element* → *element-name* *type-annotation* | *type*
+>
+> *element-name* → *identifier*
 
 ## <a id="types-function-type">関数型\(Function Type\)</a>
 
 _関数型_は関数、メソッド、またはクロージャの型を表し、パラメータと矢印で区切られた戻り値の型で構成されています\(`->`\)。
 
-![Function Type\(&#x95A2;&#x6570;&#x578B;\)](../assets/function_type.png)
+```swift
+(<#parameter type#>) -> <#return type#>
+```
 
 _パラメータ型_は、型のカンマ\(`,`\)区切りのリストです。関数型は、_戻り値の型_がタプル型の可能性があるため、複数の値を返す関数とメソッドをサポートします。
 
@@ -165,19 +188,31 @@ func takesTwoFunctions(first: (() -> Void) -> Void, second: (() -> Void) -> Void
 
 この制限を回避する必要がある場合は、いずれかのパラメータを `@esescaping` とマークしたり、パラメータの非エスケープ関数の 1 つを `withoutActuallyEscaping(_:do:)` を使ってエスケープ関数に一時的に変換します。メモリへのアクセス競合を回避する方法については、[Memory Safety\(メモリ安全性\)](../language-guide/memory-safety.md)を参照ください。
 
-> GRAMMAR OF A FUNCTION TYPE  
-> function-type → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [function-type-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument-clause) `throws`<sub>opt</sub> `->` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
-> function-type-argument-clause → `(` `)`  
-> function-type-argument-clause → `(` [function-type-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument-list) `...`<sub>opt</sub> `)`  
-> function-type-argument-list → [function-type-argument](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument) \| [function-type-argument](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument) `,` [function-type-argument-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_function-type-argument-list)  
-> function-type-argument → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> `inout`<sub>opt</sub> [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) \| [argument-label](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_argument-label) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)  
-> argument-label → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
+> Grammar of a function type:
+>
+> *function-type* → *attributes*_?_ *function-type-argument-clause* **`async`**_?_ **`throws`**_?_ **`->`** *type*
+>
+>
+>
+> *function-type-argument-clause* → **`(`** **`)`**
+>
+> *function-type-argument-clause* → **`(`** *function-type-argument-list* **`...`**_?_ **`)`**
+>
+>
+>
+> *function-type-argument-list* → *function-type-argument* | *function-type-argument* **`,`** *function-type-argument-list*
+>
+> *function-type-argument* → *attributes*_?_ **`inout`**_?_ *type* | *argument-label* *type-annotation*
+>
+> *argument-label* → *identifier*
 
 ## 配列型\(Array Type\)
 
 Swift は、標準ライブラリで定義されている `Array<Element>` の次の糖衣構文\(シンタックスシュガー\)を提供しています。
 
-![&#x914D;&#x5217;&#x578B;&#x306E;&#x7CD6;&#x8863;&#x69CB;&#x6587;](../assets/array_type.png)
+```swift
+[<#type#>]
+```
 
 つまり、次の 2 つの宣言は同等です:
 
@@ -198,14 +233,17 @@ var array3D: [[[Int]]] = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
 
 Swift 標準ライブラリの配列型の詳細については、[Arrays\(配列\)](../language-guide/collection-types.md#arrays)を参照ください。
 
-> GRAMMAR OF AN ARRAY TYPE  
-> array-type → `[` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) `]`
+> Grammar of an array type:
+>
+> *array-type* → **`[`** *type* **`]`**
 
 ## 辞書型\(Dictionary Type\)
 
 Swift は、標準ライブラリで定義されている `Dictionary<Key, Value>` 型に次の糖衣構文\(シンタックスシュガー\)を提供しています。
 
-![&#x8F9E;&#x66F8;](../assets/dictionary_type.png)
+```swift
+[<#key type#>: <#value type#>]
+```
 
 つまり、次の 2 つの宣言は同等です:
 
@@ -222,8 +260,9 @@ let someDictionary: Dictionary<String, Int> = ["Alex": 31, "Paul": 39]
 
 標準ライブラリ `Dictionary` 型の詳細については、[Dictionaries\(辞書\)](../language-guide/collection-types.md#dictionaries)を参照ください。
 
-> GRAMMAR OF A DICTIONARY TYPE  
-> dictionary-type → `[` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) `:` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) `]`
+> Grammar of a dictionary type:
+>
+> *dictionary-type* → **`[`** *type* **`:`** *type* **`]`**
 
 ## オプショナル型\(Optional Type\)
 
@@ -251,8 +290,9 @@ optionalInteger! // 42
 
 オプショナル型の使用方法を示す例を示した詳細については、[Optionals\(オプショナル\)](../language-guide/the-basics.md#optionals)を参照ください。
 
-> GRAMMAR OF AN OPTIONAL TYPE  
-> optional-type → [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) `?`
+> Grammar of an optional type:
+>
+> *optional-type* → *type* **`?`**
 
 ## 暗黙アンラップオプショナル型\(Implicitly Unwrapped Optional Type\)
 
@@ -283,8 +323,9 @@ let implicitlyUnwrappedArray: [Int]!                  // OK
 
 暗黙アンラップオプショナル型の詳細については、[Implicitly Unwrapped Optionals\(暗黙アンラップオプショナル\)](../language-guide/the-basics.md#implicitly-unwrapped-optionals)を参照ください。
 
-> GRAMMAR OF AN IMPLICITLY UNWRAPPED OPTIONAL TYPE  
-> implicitly-unwrapped-optional-type → [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) `!`
+> Grammar of an implicitly unwrapped optional type:
+>
+> *implicitly-unwrapped-optional-type* → *type* **`!`**
 
 ## <a id="protocol-composition-type">プロトコル合成型\(Protocol Composition Type\)</a>
 
@@ -292,7 +333,9 @@ let implicitlyUnwrappedArray: [Int]!                  // OK
 
 プロトコル合成型の形式は次のとおりです:
 
-![&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x5408;&#x6210;&#x578B;](../assets/protocol_compose_type.png)
+```swift
+<#Protocol 1#> & <#Protocol 2#>
+```
 
 プロトコル合成型を使用すると、型に準拠した各プロトコルを継承した新しい名前のプロトコルを明示的に定義することなく、型が複数のプロトコルの要件に準拠することを指定できます。例えば、`ProtocolA` と `ProtocolB` と `ProtocolC` を継承する新しいプロトコルを宣言する代わりに、プロトコル合成型の `ProtocolA & ProtocolB & ProtocolC` を使用できます。同様に、`SuperClass` のサブクラスと `ProtocolA` に準拠した新しいプロトコルを宣言する代わりに `SuperClass & ProtocolA` を使用することができ、`ProtocolA` に準拠できます。
 
@@ -309,9 +352,11 @@ typealias PQ = P & Q
 typealias PQR = PQ & Q & R
 ```
 
-> GRAMMAR OF A PROTOCOL COMPOSITION TYPE  
-> protocol-composition-type → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier) `&` [protocol-composition-continuation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_protocol-composition-continuation)  
-> protocol-composition-continuation → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier) \| [protocol-composition-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_protocol-composition-type)
+> Grammar of a protocol composition type:
+>
+> *protocol-composition-type* → *type-identifier* **`&`** *protocol-composition-continuation*
+>
+> *protocol-composition-continuation* → *type-identifier* | *protocol-composition-type*
 
 ## Opaque 型\(Opaque Type\)
 
@@ -321,7 +366,9 @@ Opaque 型は、関数または `subscript` の戻り値の型、またはプロ
 
 Opaque 型の形式は次のとおりです:
 
-![Opaque &#x578B;](../assets/opaque_type.png)
+```swift
+some <#constraint#>
+```
 
 _constraint_ に入るのは、クラス型、プロトコル型、プロトコル合成型、または `Any` 型です。値としては、リスト内のプロトコルまたはプロトコル合成に準拠した型、またはリスト内のクラスを継承した型のインスタンスのみ使用できます。Opaque 型の値とやり取りするコードは、_constraint_ に定義された型のインターフェイスを通してのみ使用できます。
 
@@ -331,8 +378,9 @@ _constraint_ に入るのは、クラス型、プロトコル型、プロトコ�
 
 戻り値の型として Opaque 型を使用する関数は、単一の型の値を返す必要があります。戻り値の型には、関数のジェネリックな型パラメータの一部を含めることができます。例えば、`someFunction<T>()` は `T` 型または `Dictionary<String, T>` 型の値を返すことができます。
 
-> GRAMMAR OF AN OPAQUE TYPE  
-> opaque-type → `some` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
+> Grammar of an opaque type:
+>
+> *opaque-type* → **`some`** *type*
 
 ## ボックス化されたプロトコル型\(Boxed Protocol Type\)
 
@@ -397,8 +445,9 @@ let metatype: AnotherSubClass.Type = AnotherSubClass.self
 let anotherInstance = metatype.init(string: "some string")
 ```
 
-> GRAMMAR OF A METATYPE TYPE  
-> metatype-type → [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) `.` `Type` \| [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type) `.` `Protocol`
+> Grammar of a metatype type:
+>
+> *metatype-type* → *type* **`.`** **`Type`** | *type* **`.`** **`Protocol`**
 
 ## <a id="any-type">Any 型\(Any Type\)</a>
 
@@ -426,8 +475,9 @@ if let first = mixed.first as? String {
 
 `AnyObject` プロトコルは `Any` 型と似ています。全てのクラスは暗黙的に `AnyObject` に準拠しています。言語によって定義されているものとは異なり、`AnyObject` は標準ライブラリで定義されています。詳細については、[Class-Only Protocols\(クラス専用プロトコル\)](../language-guide/protocols.md#class-only-protocols)と [AnyObject](https://developer.apple.com/documentation/swift/anyobject)を参照ください。
 
-> GRAMMAR OF AN ANY TYPE  
-> any-type → `Any`
+> Grammar of an Any type:
+>
+> *any-type* → **`Any`**
 
 ## <a id="self-type">Self 型\(Self Type\)</a>
 
@@ -468,8 +518,9 @@ prInt(type(of: z.f()))
 
 `Self` 型は、標準ライブラリ[type\(of:\)](https://developer.apple.com/documentation/swift/2885064-type)関数と同じ型を指します。現在の型のメンバにアクセスするめに `Self.SomeStaticMember` を書くことは、`type(of: self).someStaticMember` を書くのと同じです。
 
-> GRAMMAR OF A SELF TYPE  
-> self-type → `Self`
+> Grammar of a Self type:
+>
+> *self-type* → **`Self`**
 
 ## 型継承句\(Type Inheritance Clause\)
 
@@ -481,9 +532,11 @@ _型継承句_は、名前付き型がどのクラスを継承しているか、
 
 列挙型の型継承句は、プロトコルのリスト、または列挙ケースに Raw Value を割り当てる場合は、それらの Raw Value の型を特定する単一の名前付き型を継承することができます。型継承句を使用して Raw Value 型を指定する列挙型の定義の例については、[Raw Values](../language-guide/enumerations.md#raw-values)を参照ください。
 
-> GRAMMAR OF A TYPE INHERITANCE CLAUSE  
-> type-inheritance-clause → `:` [type-inheritance-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-list)  
-> type-inheritance-list → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier) \| [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier) `,` [type-inheritance-list](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-list)
+> Grammar of a type inheritance clause:
+>
+> *type-inheritance-clause* → **`:`** *type-inheritance-list*
+>
+> *type-inheritance-list* → *attributes*_?_ *type-identifier* | *attributes*_?_ *type-identifier* **`,`** *type-inheritance-list*
 
 ## <a id="type-inference">型推論\(Type Inference\)</a>
 
