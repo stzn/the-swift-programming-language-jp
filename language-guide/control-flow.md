@@ -1,6 +1,6 @@
 # 制御フロー\(Control Flow\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2023/5/27  
 原文: https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html
 
 分岐、ループ、および早期終了を使ってコードを構造化する。
@@ -281,6 +281,81 @@ if temperatureInFahrenheit <= 32 {
 
 この温度は、暑すぎず寒すぎない温度なので、`if` も `else if` も実行されず、何も出力しません。
 
+Swift は、値を設定するときに使用できる `if` の省略記法のスペルを提供します。例えば、以下のコードを考えてみましょう:
+
+```swift
+let temperatureInCelsius = 25
+let weatherAdvice: String
+
+if temperatureInCelsius <= 0 {
+    weatherAdvice = "とても寒いですね。マフラーを巻いたほうがいいでしょう。"
+} else if temperatureInCelsius >= 30 {
+    weatherAdvice = "とても暖かいですね。日焼け止めを忘れずにしましょう。"
+} else {
+    weatherAdvice = "そんなに寒くありません。Tシャツを着ましょう。"
+}
+
+print(weatherAdvice)
+// "そんなに寒くありません。Tシャツを着ましょう。"
+```
+
+ここでは、それぞれの分岐が `weatherAdvice` 定数の値を設定し、`if` 文の後で出力しています。
+
+`if` 式と呼ばれる別の構文を使えば、このコードをより簡潔に書くことができます:
+
+```swift
+let weatherAdvice = if temperatureInCelsius <= 0 {
+    "とても寒いですね。マフラーを巻いたほうがいいでしょう。"
+} else if temperatureInCelsius >= 30 {
+    "とても暖かいですね。日焼け止めを忘れずにしましょう。"
+} else {
+    "そんなに寒くありません。Tシャツを着ましょう。"
+}
+
+print(weatherAdvice)
+// "そんなに寒くありません。Tシャツを着ましょう。"
+```
+
+この `if` 式のバージョンでは、各分岐に 1 つの値が含まれています。ある分岐の条件が真であれば、その分岐の値が `weatherAdvice` の割り当てられ、 `if` 式全体の値として使用されます。すべての `if` の分岐には対応する `else if` 分岐または `else` 分岐があり、どの条件が真であっても、必ずいずれかの分岐が一致し、`if` 式が常に値を生成します。
+
+代入の構文は `if` 式の外側から始まるので、各分岐の中で `weatherAdvice =` を繰り返す必要はありません。その代わり、`if` 式の各分岐は `weatherAdvice` の 3 つの可能性のある値のうちの 1 つを生成し、代入後はその値を使用します。
+
+`if` 式のすべての分岐には、同じ型の値を含む必要があります。Swift は各分岐の型を別々にチェックするので、複数の型で使用できる `nil` のような値は、Swift が `if` 式の型を自動的に決定することを妨げます。代わりに、あなたは明示的に型を指定する必要があります---例えば:
+
+```swift
+let freezeWarning: String? = if temperatureInCelsius <= 0 {
+    "氷点下です。氷に注意しましょう!"
+} else {
+    nil
+}
+```
+
+上のコードでは、`if` 式の一方の分岐に `String` 値が、もう一方の分岐に `nil` 値が設定されています。`nil` 値は任意のオプショナル型の値として使用できるため、doc:TheBasics#Type-Annotations [型注釈\(Type Annotations\)](../language-guide/the-basics.md#type-annotations)にあるように、`freezeWarning` がオプショナルの文字列であることを明示的に記述する必要があります。
+この型情報を提供する別の方法として、`freezeWarning` に明示的な型を提供する代わりに、`nil` に明示的な型を提供することができます：
+
+
+```swift
+let freezeWarning = if temperatureInCelsius <= 0 {
+    "氷点下です。氷に注意しましょう！"
+} else {
+    nil as String?
+}
+```
+
+`if` 式は、予期せぬ失敗に対して、エラーを投げたり、`fatalError(_:file:line:)` のように、戻り値を返さない関数を呼び出して対応することができます。例えば、次のようなものです:
+
+```swift
+let weatherAdvice = if temperatureInCelsius > 100 {
+    throw TemperatureError.boiling
+} else {
+    "適度な気温ですね。"
+}
+```
+
+この例では、`if` 式は予報気温が 100°C(水の沸点)より高いかどうかをチェックします。これほど高温になると、`if` 式はテキストの要約を返す代わりに、`.boiling` エラーを投げることになります。この `if` 式がエラーを投げる可能性があるにもかかわらず、その前に `try` を書いていません。エラーの扱いについては、[エラー処理\(Error Handling\)](../language-guide/error-handling.md)を参照してください。
+
+上の例のように、`if` 式を代入の右辺で使うだけでなく、関数やクロージャが返す値として使うこともできます。
+
 ### Switch
 
 `switch` 文は、複数の可能性に対してパターンマッチを使用して比較を行い、値を検討します。そして、一致した最初のパターンのコードのブロックを実行します。`switch` 文は、複数の可能性がある状態に対して `if` 文の代わりに使用することができます。
@@ -311,6 +386,27 @@ default:
 ```
 
 `switch` 文の最初のケースは、英語アルファベットの最初の文字 `a` に合致し、2 番目のケースは最後の文字 `z` に合致します。全ての可能性がある文字をカバーしなければならないため、`a` と `z` 以外の全ての文字に対して `default` ケースを使用しています。こうすることで全てのケースを網羅できています。
+
+`if` 文と同様に、`switch` 文にも式があります:
+
+```swift
+let anotherCharacter: Character = "a"
+let message = switch anotherCharacter {
+case "a":
+    "アルファベットの最初の文字"
+case "z":
+    "アルファベットの最後の文字"
+default:
+    "その他の文字"
+}
+
+print(message)
+// "アルファベットの最初の文字"
+```
+
+この例では、`switch` 式の各ケースには、そのケースが `anotherCharacter` にマッチしたときに使用される `message` の値が含まれています。`switch` は常に網羅的であるため、代入する値は必ず存在します。
+
+`if` 式と同様に、与えられたケースに値を与える代わりに、エラーを投げたり、`fatalError(_:file:line:)` のように戻り値を返さない関数を呼び出すことができます。`switch` 式は、上の例のように代入の右辺で使ったり、関数やクロージャが返す値として使うことができます。
 
 #### 暗黙的にfallthroughしない\(No Implicit Fallthrough\)
 
