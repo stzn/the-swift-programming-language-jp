@@ -745,37 +745,46 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="式expressions">式(Expressions)</h1>
-<p>最終更新日: 2022/12/31<br>原文: <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html" target="_blank">https://docs.swift.org/swift-book/ReferenceManual/Expressions.html</a></p>
+<p>最終更新日: 2023/5/27<br>原文: <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html" target="_blank">https://docs.swift.org/swift-book/ReferenceManual/Expressions.html</a></p>
 <p>型、演算子、変数、およびその他の名前と構造を紹介する。</p>
 <p>Swift では、前置式、バイナリ式、基本式、後置式の 4 種類の式があります。式が評価されると、値を返すか、副作用を起こすか、またはその両方を引き起こします。</p>
 <p>前置式とバイナリ式を使用すると、演算子をより小さな式に適用できます。基本式は概念的には最もシンプルな種類の式で、値にアクセスする方法を提供します。後置式は、前置式やバイナリ式と同様に、関数呼び出しやメンバアクセスなど、後置式を使用してより複雑な式を構築できます。各式は、下記のセクションで詳しく説明されています。</p>
 <blockquote>
-<p>GRAMMAR OF AN EXPRESSION<br>expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_try-operator" target="_blank">try-operator</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression" target="_blank">prefix-expression</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_binary-expressions" target="_blank">binary-expressions</a><sub>opt</sub><br>expression-list → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> <code>,</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression-list" target="_blank">expression-list</a></p>
+<p>Grammar of an expression:</p>
+<p><em>expression</em> → <em>try-operator</em><em>?</em> <em>await-operator</em><em>?</em> <em>prefix-expression</em> <em>infix-expressions</em><em>?</em></p>
+<p><em>expression-list</em> → <em>expression</em> | <em>expression</em> <strong><code>,</code></strong> <em>expression-list</em></p>
 </blockquote>
 <h2 id="前置式prefix-expressions">前置式(Prefix Expressions)</h2>
 <p>前置式は、式と任意の前置演算子を組み合わせます。前置演算子は 1 つの引数を受け取り、その後に式が続きます。</p>
 <p>これらの演算子の動作については、<a href="../language-guide/basic-operators.html">Basic Operators(基本演算子)</a>と<a href="../language-guide/advanced-operators.html">Advanced Operators(高度な演算子)</a>を参照ください。</p>
 <p>Swift 標準ライブラリによって提供されている演算子については、<a href="https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations" target="_blank">Operator Declarations(演算子宣言)</a>を参照ください。</p>
 <blockquote>
-<p>GRAMMAR OF A PREFIX EXPRESSION<br>prefix-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_prefix-operator" target="_blank">prefix-operator</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression" target="_blank">postfix-expression</a><br>prefix-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_in-out-expression" target="_blank">in-out-expression</a></p>
+<p>Grammar of a prefix expression:</p>
+<p><em>prefix-expression</em> → <em>prefix-operator</em><em>?</em> <em>postfix-expression</em></p>
+<p><em>prefix-expression</em> → <em>in-out-expression</em></p>
 </blockquote>
 <h3 id="in-out-式in-out-expression">In-Out 式(In-Out Expression)</h3>
 <p>in-out 式は、関数呼び出し式に in-out パラメータとして渡された変数にマークをします。</p>
-<p><img src="../assets/inout_expression.png" alt="in-out式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token operator">&amp;&lt;</span><span class="token other-directive property">#expression</span>#<span class="token operator">&gt;</span>
+</code></pre>
 <p>in-out パラメータの詳細については、<a href="declarations.html#declarations-in-out-parameters">In-Out Parameters(In-Out パラメータ)</a>を参照ください。</p>
 <p>in-out 式は、<a href="expressions.html#implicit-conversion-to-a-pointer-type">Implicit Conversion to a Pointer Type(ポインタ型への暗黙変換)</a>で説明されているように、ポインタが必要なコンテキストに非ポインタ引数を指定するときにも使用されます。</p>
 <blockquote>
-<p>GRAMMAR OF AN IN-OUT EXPRESSION<br>in-out-expression → <code>&amp;</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a></p>
+<p>Grammar of an in-out expression:</p>
+<p><em>in-out-expression</em> → <strong><code>&amp;</code></strong> <em>identifier</em></p>
 </blockquote>
 <h3 id="try-演算子try-operator"><a id="try-operator">Try 演算子(Try Operator)</a></h3>
 <p><em>Try 演算子</em>は、<code>try</code> 演算子の後にエラーをスローできる式が続く形で構成されます。形式は次のとおりです:</p>
-<p><img src="../assets/try_operator.png" alt="try演算子"></p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">try</span> <span class="token operator">&lt;</span><span class="token other-directive property">#expression</span>#<span class="token operator">&gt;</span>
+</code></pre>
 <p><code>try</code> 式の値は <em>expression</em> の値です。</p>
 <p><em>オプショナル try 式</em>は <code>try?</code> 演算子の後にエラーをスローできる式が続く形で構成されます。形式は次のとおりです:</p>
-<p><img src="../assets/try_hatena_operator.png" alt="try?演算子"></p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">try</span><span class="token operator">?</span> <span class="token operator">&lt;</span><span class="token other-directive property">#expression</span>#<span class="token operator">&gt;</span>
+</code></pre>
 <p>式がエラーをスローしない場合、<code>try?</code> の値は式の値を含むオプショナルです。それ以外の場合、<code>try?</code> の値は <code>nil</code> です。</p>
 <p><em>強制 try 式</em>は <code>try!</code> 演算子の後にエラーをスローできる式が続く形で構成されます。形式は次のとおりです:</p>
-<p><img src="../assets/try!_operator.png" alt="try!演算子"></p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">try</span><span class="token operator">!</span> <span class="token operator">&lt;</span><span class="token other-directive property">#expression</span>#<span class="token operator">&gt;</span>
+</code></pre>
 <p><code>try!</code> の値は <em>experssion</em> の値です。式がエラーをスローすると、実行時エラーが発生します。</p>
 <p>バイナリ演算子の左側の式に <code>try</code>、<code>try?</code> または <code>try!</code>、がマークされている場合、その演算子はバイナリ式全体に適用されます。一方で、括弧(<code>()</code>)を使用して、演算子の適用範囲を明示することもできます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token comment">//両方の関数呼び出しに適用されます</span>
@@ -791,11 +800,13 @@ sum <span class="token operator">=</span> <span class="token punctuation">(</spa
 <p><code>try</code> と <code>await</code> 演算子の両方を含む場合は、最初に <code>try</code> が来なければなりません。</p>
 <p><code>try</code>、<code>try?</code> と <code>try!</code> の使用方法についての詳細は<a href="../language-guide/error-handling.html">Error Handling(エラーハンドリング)</a>を参照ください。</p>
 <blockquote>
-<p>GRAMMAR OF A TRY EXPRESSION<br>try-operator → <code>try</code> | <code>try</code> <code>?</code> | <code>try</code> <code>!</code></p>
+<p>Grammar of a try expression:</p>
+<p><em>try-operator</em> → <strong><code>try</code></strong> | <strong><code>try</code></strong> <strong><code>?</code></strong> | <strong><code>try</code></strong> <strong><code>!</code></strong></p>
 </blockquote>
 <h3 id="await-演算子await-operator"><a id="await-operator">Await 演算子(Await Operator)</a></h3>
 <p><em>await 式</em>は、<code>await</code> 演算子の後に非同期関数の結果を返す式が続けて構成されます。形式は次のとおりです:</p>
-<p><img src="../assets/await_operator.png" alt="await 演算子"></p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">await</span> <span class="token operator">&lt;</span><span class="token other-directive property">#expression</span>#<span class="token operator">&gt;</span>
+</code></pre>
 <p><code>await</code> 式の値は <em>experssion</em> の値です。</p>
 <p><code>await</code> でマークされた式を<em>潜在的中断ポイント</em>と呼びます。非同期関数の実行は、<code>await</code> でマークされている箇所で中断することができます。また、同時並行コードの実行は他の点で中断されることはありません。つまり、潜在的中断ポイント間で、次の潜在的中断ポイントに行く前に状態の更新が完了する条件で、一時的に破壊された不変式を必要とする状態を、安全に更新することができます。</p>
 <p><code>await</code> 式は、<code>async(priority:operation:)</code> 関数に渡される末尾クロージャのように、非同期コンテキスト内でのみ使用することができます。<code>defer</code> 文、または同期関数型の自動クロージャでは使用できません。</p>
@@ -812,40 +823,55 @@ sum <span class="token operator">=</span> <span class="token punctuation">(</spa
 <p>バイナリ演算子が代入演算子の場合、または <code>await</code> 式が括弧内に囲まれていない限り、<code>await</code> 式はバイナリ演算子の右側に使用できません。</p>
 <p>式が <code>await</code> と <code>try</code> 演算子の両方を含む場合、最初に <code>try</code> 演算子が来なければなりません。</p>
 <blockquote>
-<p>GRAMMAR OF AN AWAIT EXPRESSION<br><em>await-operator</em> → <code>await</code></p>
+<p>Grammar of an await expression:</p>
+<p><em>await-operator</em> → <strong><code>await</code></strong></p>
 </blockquote>
 <h2 id="中置式infix-expressions">中置式(Infix Expressions)</h2>
 <p><em>中置式</em>は、左右の引数を受け取る式と中置バイナリ演算子を組み合わせます。形式は次のとおりです:</p>
-<p><img src="../assets/binary_expression.png" alt="バイナリ式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token operator">&lt;</span><span class="token other-directive property">#left</span><span class="token operator">-</span>hand argument#<span class="token operator">&gt;</span> <span class="token operator">&lt;</span><span class="token other-directive property">#operator</span>#<span class="token operator">&gt;</span> <span class="token operator">&lt;</span><span class="token other-directive property">#right</span><span class="token operator">-</span>hand argument#<span class="token operator">&gt;</span>
+</code></pre>
 <p>これらの演算子の動作については、<a href="../language-guide/basic-operators.html">Basic Operators(基本演算子)</a> と <a href="../language-guide/advanced-operators.html">Advanced Operators(高度な演算子)</a>を参照ください。</p>
 <p>標準ライブラリによって提供されている演算子については、<a href="https://developer.apple.com/documentation/swift/operator_declarations" target="_blank">Operator Declarations(演算子宣言)</a>を参照ください。</p>
 <blockquote>
 <p>NOTE<br>構文解析時には、式はバイナリ演算子のフラットなリストを構成します。このリストは、演算子の優先順位を適用することによってツリーに変換されます。例えば、式 <code>2 + 3 * 5</code> は、最初は5つの項目、<code>2</code>、<code>+</code>、<code>3</code>、<code>*</code>、および <code>5</code> として解釈され、その後 <code>(2 + (3 * 5))</code> のツリーに変換します</p>
-<p>GRAMMAR OF A INFIX EXPRESSION<br>infix-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_infix-operator" target="_blank">infix-operator</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression" target="_blank">prefix-expression</a><br>infix-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_assignment-operator" target="_blank">assignment-operator</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression" target="_blank">prefix-expression</a><br>infix-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_conditional-operator" target="_blank">conditional-operator</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_prefix-expression" target="_blank">prefix-expression</a><br>infix-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_type-casting-operator" target="_blank">type-casting-operator</a><br>infix-expressions → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_infix-expression" target="_blank">infix-expression</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_infix-expressions" target="_blank">infix-expressions</a><sub>opt</sub></p>
+<p>Grammar of an infix expression:</p>
+<p><em>infix-expression</em> → <em>infix-operator</em> <em>prefix-expression</em></p>
+<p><em>infix-expression</em> → <em>assignment-operator</em> <em>try-operator</em><em>?</em> <em>prefix-expression</em></p>
+<p><em>infix-expression</em> → <em>conditional-operator</em> <em>try-operator</em><em>?</em> <em>prefix-expression</em></p>
+<p><em>infix-expression</em> → <em>type-casting-operator</em></p>
+<p><em>infix-expressions</em> → <em>infix-expression</em> <em>infix-expressions</em><em>?</em></p>
 </blockquote>
 <h3 id="代入演算子assignment-operator">代入演算子(Assignment Operator)</h3>
 <p>代入演算子は特定の式に新しい値を設定します。形式は次のとおりです:</p>
-<p><img src="../assets/assignment_operator.png" alt="代入演算子"></p>
+<pre class="language-"><code class="lang-swift"><span class="token operator">&lt;</span><span class="token other-directive property">#expression</span>#<span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token other-directive property">#value</span>#<span class="token operator">&gt;</span>
+</code></pre>
 <p>value を評価した結果得られた値が expression に設定されます。式がタプルの場合、値は同じ数の要素を持つタプルでなければなりません。(タプルはネストすることもできます)。代入は、値の各部分から expression の中の対応する部分に対して行われます。例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token omit keyword">_</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>b<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;test&quot;</span></span><span class="token punctuation">,</span> <span class="token number">9.45</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token comment">// a は&quot;test&quot;、 b は 12、 c は 3、 9.45 は無視されます</span>
 </code></pre>
 <p>代入演算子は任意の値を返しません。</p>
 <blockquote>
-<p>GRAMMAR OF AN asSIGNMENT OPERATOR<br>assignment-operator → <code>=</code></p>
+<p>Grammar of an assignment operator:</p>
+<p><em>assignment-operator</em> → <strong><code>=</code></strong></p>
 </blockquote>
 <h3 id="三項条件演算子ternary-conditional-operator">三項条件演算子(Ternary Conditional Operator)</h3>
 <p>三項条件演算子は、条件の値に基づいて、2 つの値のうちの 1 つに評価されます。形式は次のとおりです:</p>
-<p><img src="../assets/ternary_conditional_operator.png" alt="三項条件演算子"></p>
+<pre class="language-"><code class="lang-swift"><span class="token operator">&lt;</span><span class="token other-directive property">#condition</span>#<span class="token operator">&gt;</span> <span class="token operator">?</span> <span class="token operator">&lt;</span><span class="token other-directive property">#expression</span> used <span class="token keyword">if</span> <span class="token boolean">true</span>#<span class="token operator">&gt;</span> <span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token other-directive property">#expression</span> used <span class="token keyword">if</span> <span class="token boolean">false</span>#<span class="token operator">&gt;</span>
+</code></pre>
 <p>条件が <code>true</code> と評価された場合、条件演算子は最初の式を評価し、その値を返します。それ以外の場合は、2 番目の式を評価してその値を返します。未使用の式は評価されません。</p>
 <p>三項条件演算子を使用する例については、<a href="../language-guide/basic-operators.html#basic-operator-ternary-conditional-operator">Ternary Conditional Operator(三項条件演算子)</a>を参照ください。</p>
 <blockquote>
-<p>GRAMMAR OF A CONDITIONAL OPERATOR<br>conditional-operator → <code>?</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> <code>:</code></p>
+<p>Grammar of a conditional operator:</p>
+<p><em>conditional-operator</em> → <strong><code>?</code></strong> <em>expression</em> <strong><code>:</code></strong></p>
 </blockquote>
 <h3 id="type-casting-operators型キャスト演算子"><a id="type-casting-operators">Type-Casting Operators(型キャスト演算子)</a></h3>
 <p>4 つの型キャスト演算子があります: <code>is</code> 演算子、<code>as</code> 演算子、<code>as?</code> 演算子、そして <code>as!</code> 演算子。</p>
 <p>それらは次の形式を持っています:</p>
-<p><img src="../assets/type_casting_operator.png" alt="型キャスト演算子"></p>
+<pre class="language-"><code class="lang-swift"><span class="token operator">&lt;</span><span class="token other-directive property">#expression</span>#<span class="token operator">&gt;</span> <span class="token keyword">is</span> <span class="token operator">&lt;</span><span class="token other-directive property">#type</span>#<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token other-directive property">#expression</span>#<span class="token operator">&gt;</span> <span class="token keyword">as</span> <span class="token operator">&lt;</span><span class="token other-directive property">#type</span>#<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token other-directive property">#expression</span>#<span class="token operator">&gt;</span> <span class="token keyword">as</span><span class="token operator">?</span> <span class="token operator">&lt;</span><span class="token other-directive property">#type</span>#<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token other-directive property">#expression</span>#<span class="token operator">&gt;</span> <span class="token keyword">as</span><span class="token operator">!</span> <span class="token operator">&lt;</span><span class="token other-directive property">#type</span>#<span class="token operator">&gt;</span>
+</code></pre>
 <p><code>is</code> 演算子は実行時に式が指定された型にキャストできるかどうかを確認します。キャストできる場合は <code>true</code> を返します。それ以外の場合は、<code>false</code> を返します。</p>
 <p><code>as</code> 演算子は、コンパイル時にキャストが常に成功するとわかっている場合にキャストを実行します。アップキャストは、中間変数を使用せずに型のスーパー型のインスタンスとして式を使用できます。下記のアプローチはどれも同等です。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function-definition function">f</span><span class="token punctuation">(</span><span class="token omit keyword">_</span> any<span class="token punctuation">:</span> <span class="token keyword">Any</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;Function for Any&quot;</span></span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
@@ -866,12 +892,29 @@ sum <span class="token operator">=</span> <span class="token punctuation">(</spa
 <p><code>as!</code> 演算子は、指定された型に強制キャストを実行します。<code>as!</code> 演算子は、オプショナル型ではなく、指定された型の値を返します。キャストが失敗した場合は、実行時エラーが発生します。<code>x as! T</code> は <code>(x as? T)!</code> の挙動と同じです。</p>
 <p>型キャストの詳細や型キャスト演算子を使用する例については、<a href="../language-guide/type-casting.html">Type Casting(型キャスト)</a>を参照ください。</p>
 <blockquote>
-<p>GRAMMAR OF A TYPE-CASTING OPERATOR<br>type-casting-operator → <code>is</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type" target="_blank">type</a><br>type-casting-operator → <code>as</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type" target="_blank">type</a><br>type-casting-operator → <code>as</code> <code>?</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type" target="_blank">type</a><br>type-casting-operator → <code>as</code> <code>!</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type" target="_blank">type</a></p>
+<p>Grammar of a type-casting operator:</p>
+<p><em>type-casting-operator</em> → <strong><code>is</code></strong> <em>type</em></p>
+<p><em>type-casting-operator</em> → <strong><code>as</code></strong> <em>type</em></p>
+<p><em>type-casting-operator</em> → <strong><code>as</code></strong> <strong><code>?</code></strong> <em>type</em></p>
+<p><em>type-casting-operator</em> → <strong><code>as</code></strong> <strong><code>!</code></strong> <em>type</em></p>
 </blockquote>
 <h2 id="基本式primary-expressions">基本式(Primary Expressions)</h2>
 <p>基本式は最も基本的な種類の式です。それらは自身を式として使用したり、他のトークンと組み合わせたり、前置式、バイナリ式、および後置式を作成することができます。</p>
 <blockquote>
-<p>GRAMMAR OF A PRIMARY EXPRESSION<br>primary-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause" target="_blank">generic-argument-clause</a><sub>opt</sub><br>primary-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_literal-expression" target="_blank">literal-expression</a><br>primary-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-expression" target="_blank">self-expression</a><br>primary-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_superclass-expression" target="_blank">superclass-expression</a><br>primary-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-expression" target="_blank">closure-expression</a><br>primary-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_parenthesized-expression" target="_blank">parenthesized-expression</a><br>primary-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-expression" target="_blank">tuple-expression</a><br>primary-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_implicit-member-expression" target="_blank">implicit-member-expression</a><br>primary-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_wildcard-expression" target="_blank">wildcard-expression</a><br>primary-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-expression" target="_blank">key-path-expression</a><br>primary-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_selector-expression" target="_blank">selector-expression</a><br>primary-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-string-expression" target="_blank">key-path-string-expression</a></p>
+<p>Grammar of a primary expression:</p>
+<p><em>primary-expression</em> → <em>identifier</em> <em>generic-argument-clause</em><em>?</em></p>
+<p><em>primary-expression</em> → <em>literal-expression</em></p>
+<p><em>primary-expression</em> → <em>self-expression</em></p>
+<p><em>primary-expression</em> → <em>superclass-expression</em></p>
+<p><em>primary-expression</em> → <em>conditional-expression</em></p>
+<p><em>primary-expression</em> → <em>closure-expression</em></p>
+<p><em>primary-expression</em> → <em>parenthesized-expression</em></p>
+<p><em>primary-expression</em> → <em>tuple-expression</em></p>
+<p><em>primary-expression</em> → <em>implicit-member-expression</em></p>
+<p><em>primary-expression</em> → <em>wildcard-expression</em></p>
+<p><em>primary-expression</em> → <em>key-path-expression</em></p>
+<p><em>primary-expression</em> → <em>selector-expression</em></p>
+<p><em>primary-expression</em> → <em>key-path-string-expression</em></p>
 </blockquote>
 <h3 id="リテラル式literal-expression"><a id="literal-expression">リテラル式(Literal Expression)</a></h3>
 <p>リテラル式は、通常のリテラル(文字列や数など)、配列または辞書リテラル、playground リテラル、または下記の特別なリテラルのいずれかで構成されます。</p>
@@ -936,23 +979,43 @@ sum <span class="token operator">=</span> <span class="token punctuation">(</spa
 <span class="token punctuation">}</span>
 </code></pre>
 <p><em>配列リテラル</em>は、順序付けられた値の集合です。形式は次のとおりです:</p>
-<p><img src="../assets/array_expression.png" alt="配列リテラル"></p>
+<pre class="language-"><code class="lang-swift"><span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token other-directive property">#value</span> <span class="token number">1</span>#<span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token other-directive property">#value</span> <span class="token number">2</span>#<span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>#<span class="token operator">...</span>#<span class="token operator">&gt;</span><span class="token punctuation">]</span>
+</code></pre>
 <p>配列内の最後の式の後にカンマ(<code>,</code>)を続けることもできます。配列リテラルの値は <code>[T]</code> 型で、<code>T</code> はその内部の式の型です。複数の型の式がある場合、<code>T</code> はそれらに最も近い共通のスーパー型になります。空の配列リテラルは、空の角括弧(<code>[]</code>)を使用し、指定された型の空の配列を作成するためにも使用できます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> emptyArray<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">Double</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 </code></pre>
 <p><em>辞書リテラル</em>は、順序のないキーバリューペアのコレクションです。形式は次のとおりです:</p>
-<p><img src="../assets/dictionary_expression.png" alt="辞書リテラル"></p>
+<pre class="language-"><code class="lang-swift"><span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token other-directive property">#key</span> <span class="token number">1</span>#<span class="token operator">&gt;</span><span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token other-directive property">#value</span> <span class="token number">1</span>#<span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token other-directive property">#key</span> <span class="token number">2</span>#<span class="token operator">&gt;</span><span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token other-directive property">#value</span> <span class="token number">2</span>#<span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>#<span class="token operator">...</span>#<span class="token operator">&gt;</span><span class="token punctuation">]</span>
+</code></pre>
 <p>辞書内の最後の式の後にカンマ(<code>,</code>)を続けることができます。辞書リテラルの値は <code>[Key：Value]</code> 型で、<code>Key</code> はそのキー式の型、<code>Value</code> はその値式の型です。複数の型の式がある場合、キーとバリューはそれぞれの値に最も近い共通のスーパー型になります。空の辞書リテラルは、空の配列リテラルと区別するために、一対の括弧内にコロンを書きます(<code>[:]</code>)。空の辞書リテラルを使用して、指定されたキーとバリュー型の空の辞書リテラルを作成できます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> emptyDictionary<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span><span class="token punctuation">:</span> <span class="token class-name">Double</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
 </code></pre>
 <p><em>playground リテラル</em>は、プログラムエディタ内の色、ファイル、または画像の対話型な表現を作成するために Xcode によって使用されます。Xcode の外側のプレーンテキストの <code>playground</code> リテラルには、特別なリテラル構文を使用します。</p>
 <p>Xcode の playground リテラルの使用方法については、Xcode ヘルプ内の<a href="https://help.apple.com/xcode/mac/current/#/dev4c60242fc" target="_blank">Add a color, file, or image literal</a>を参照ください。</p>
 <blockquote>
-<p>GRAMMAR OF A LITERAL EXPRESSION<br>literal-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_literal" target="_blank">literal</a><br>literal-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal" target="_blank">array-literal</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal" target="_blank">dictionary-literal</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_playground-literal" target="_blank">playground-literal</a><br>literal-expression → <code>#file</code> | <code>#fileID</code> | <code>#filePath</code><br>literal-expression → <code>#line</code> | <code>#column</code> | <code>#function</code> | <code>#dsohandle</code><br>array-literal → <code>[</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal-items" target="_blank">array-literal-items</a><sub>opt</sub> <code>]</code><br>array-literal-items → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal-item" target="_blank">array-literal-item</a> <code>,</code><sub>opt</sub> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal-item" target="_blank">array-literal-item</a> <code>,</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_array-literal-items" target="_blank">array-literal-items</a><br>array-literal-item → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a><br>dictionary-literal → <code>[</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal-items" target="_blank">dictionary-literal-items</a> <code>]</code> | <code>[</code> <code>:</code> <code>]</code><br>dictionary-literal-items → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal-item" target="_blank">dictionary-literal-item</a> <code>,</code><sub>opt</sub> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal-item" target="_blank">dictionary-literal-item</a> <code>,</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_dictionary-literal-items" target="_blank">dictionary-literal-items</a><br>dictionary-literal-item → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> <code>:</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a><br>playground-literal → <code>#colorLiteral</code> <code>(</code> <code>red</code> <code>:</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> <code>,</code> <code>green</code> <code>:</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> <code>,</code> <code>blue</code> <code>:</code><a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> <code>,</code> <code>alpha</code> <code>:</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> <code>)</code><br>playground-literal → <code>#fileLiteral</code> <code>(</code> <code>resourceName</code> <code>:</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> <code>)</code><br>playground-literal → <code>#imageLiteral</code> <code>(</code> <code>resourceName</code> <code>:</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> <code>)</code></p>
+<p>Grammar of a literal expression:</p>
+<p><em>literal-expression</em> → <em>literal</em></p>
+<p><em>literal-expression</em> → <em>array-literal</em> | <em>dictionary-literal</em> | <em>playground-literal</em></p>
+<p><em>literal-expression</em> → <strong><code>#file</code></strong> | <strong><code>#fileID</code></strong> | <strong><code>#filePath</code></strong></p>
+<p><em>literal-expression</em> → <strong><code>#line</code></strong> | <strong><code>#column</code></strong> | <strong><code>#function</code></strong> | <strong><code>#dsohandle</code></strong></p>
+<p><em>array-literal</em> → <strong><code>[</code></strong> <em>array-literal-items</em><em>?</em> <strong><code>]</code></strong></p>
+<p><em>array-literal-items</em> → <em>array-literal-item</em> <strong><code>,</code></strong><em>?</em> | <em>array-literal-item</em> <strong><code>,</code></strong> <em>array-literal-items</em></p>
+<p><em>array-literal-item</em> → <em>expression</em></p>
+<p><em>dictionary-literal</em> → <strong><code>[</code></strong> <em>dictionary-literal-items</em> <strong><code>]</code></strong> | <strong><code>[</code></strong> <strong><code>:</code></strong> <strong><code>]</code></strong></p>
+<p><em>dictionary-literal-items</em> → <em>dictionary-literal-item</em> <strong><code>,</code></strong><em>?</em> | <em>dictionary-literal-item</em> <strong><code>,</code></strong> <em>dictionary-literal-items</em></p>
+<p><em>dictionary-literal-item</em> → <em>expression</em> <strong><code>:</code></strong> <em>expression</em></p>
+<p><em>playground-literal</em> → <strong><code>#colorLiteral</code></strong> <strong><code>(</code></strong> <strong><code>red</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>,</code></strong> <strong><code>green</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>,</code></strong> <strong><code>blue</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>,</code></strong> <strong><code>alpha</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
+<p><em>playground-literal</em> → <strong><code>#fileLiteral</code></strong> <strong><code>(</code></strong> <strong><code>resourceName</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
+<p><em>playground-literal</em> → <strong><code>#imageLiteral</code></strong> <strong><code>(</code></strong> <strong><code>resourceName</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
 </blockquote>
 <h3 id="self-式self-expression">self 式(Self Expression)</h3>
 <p><code>self</code> 式は、それが使用さえている現在の型またはインスタンスへの明示的な参照です。形式は次のとおりです:</p>
-<p><img src="../assets/self_expression.png" alt="Self式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">self</span>
+<span class="token keyword">self</span><span class="token operator">.&lt;</span><span class="token other-directive property">#member</span> name#<span class="token operator">&gt;</span>
+<span class="token keyword">self</span><span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token other-directive property">#subscript</span> index#<span class="token operator">&gt;</span><span class="token punctuation">]</span>
+<span class="token keyword">self</span><span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token other-directive property">#initializer</span> arguments#<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+<span class="token keyword">self</span><span class="token punctuation">.</span><span class="token keyword">init</span><span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token other-directive property">#initializer</span> arguments#<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+</code></pre>
 <p>イニシャライザ、サブスクリプト、またはインスタンスメソッドでは、<code>self</code> は、それが出現する現在の型のインスタンスを表します。型メソッドでは、<code>self</code> はそれが登場する現在の型を表します。</p>
 <p><code>self</code> 式は、関数パラメータなどスコープ内に同じ名前の別の変数があり、何を指すのかが曖昧な場合に、メンバへアクセスするときに指定します。例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">SomeClass</span> <span class="token punctuation">{</span>
@@ -971,22 +1034,86 @@ sum <span class="token operator">=</span> <span class="token punctuation">(</spa
 <span class="token punctuation">}</span>
 </code></pre>
 <blockquote>
-<p>GRAMMAR OF A SELF EXPRESSION<br>self-expression → <code>self</code> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-method-expression" target="_blank">self-method-expression</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-subscript-expression" target="_blank">self-subscript-expression</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-initializer-expression" target="_blank">self-initializer-expression</a><br>self-method-expression → <code>self</code> <code>.</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a><br>self-subscript-expression → <code>self</code> <code>[</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list" target="_blank">function-call-argument-list</a> <code>]</code><br>self-initializer-expression → <code>self</code> <code>.</code> <code>init</code></p>
+<p>Grammar of a self expression:</p>
+<p><em>self-expression</em> → <strong><code>self</code></strong> | <em>self-method-expression</em> | <em>self-subscript-expression</em> | <em>self-initializer-expression</em></p>
+<p><em>self-method-expression</em> → <strong><code>self</code></strong> <strong><code>.</code></strong> <em>identifier</em></p>
+<p><em>self-subscript-expression</em> → <strong><code>self</code></strong> <strong><code>[</code></strong> <em>function-call-argument-list</em> <strong><code>]</code></strong></p>
+<p><em>self-initializer-expression</em> → <strong><code>self</code></strong> <strong><code>.</code></strong> <strong><code>init</code></strong></p>
 </blockquote>
 <h3 id="スーパークラス式superclass-expression">スーパークラス式(Superclass Expression)</h3>
 <p><em>スーパークラス式</em>は、クラスがスーパークラスとやり取りすることを可能にします。次のいずれかの形式があります:</p>
-<p><img src="../assets/superclass_expression.png" alt="スーパークラス式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">super</span><span class="token operator">.&lt;</span><span class="token other-directive property">#member</span> name#<span class="token operator">&gt;</span>
+<span class="token keyword">super</span><span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token other-directive property">#subscript</span> index#<span class="token operator">&gt;</span><span class="token punctuation">]</span>
+<span class="token keyword">super</span><span class="token punctuation">.</span><span class="token keyword">init</span><span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token other-directive property">#initializer</span> arguments#<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+</code></pre>
 <p>最初の形式はスーパークラスのメンバにアクセスするために使用されます。2 番目の形式は、スーパークラスのサブスクリプトの実装にアクセスするために使用されます。3 番目の形式は、スーパークラスのイニシャライザにアクセスするために使用されます。</p>
 <p>サブクラスは、スーパークラスの実装を利用するために、メンバ、サブスクリプト、およびイニシャライザの実装でスーパークラス式を使用できます。</p>
 <blockquote>
-<p>GRAMMAR OF A SUPERCLASS EXPRESSION<br>superclass-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_superclass-method-expression" target="_blank">superclass-method-expression</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_superclass-subscript-expression" target="_blank">superclass-subscript-expression</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_superclass-initializer-expression" target="_blank">superclass-initializer-expression</a><br>superclass-method-expression → <code>super</code> <code>.</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a><br>superclass-subscript-expression → <code>super</code> <code>[</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list" target="_blank">function-call-argument-list</a> <code>]</code><br>superclass-initializer-expression → <code>super</code> <code>.</code> <code>init</code></p>
+<p>Grammar of a superclass expression:</p>
+<p><em>superclass-expression</em> → <em>superclass-method-expression</em> | <em>superclass-subscript-expression</em> | <em>superclass-initializer-expression</em></p>
+<p><em>superclass-method-expression</em> → <strong><code>super</code></strong> <strong><code>.</code></strong> <em>identifier</em></p>
+<p><em>superclass-subscript-expression</em> → <strong><code>super</code></strong> <strong><code>[</code></strong> <em>function-call-argument-list</em> <strong><code>]</code></strong></p>
+<p><em>superclass-initializer-expression</em> → <strong><code>super</code></strong> <strong><code>.</code></strong> <strong><code>init</code></strong></p>
+</blockquote>
+<h3 id="条件式conditional-expression">条件式(Conditional Expression)</h3>
+<p><em>条件式</em>は、条件の値に基づいて、与えられたいくつかの値のうちの 1 つに評価されます。</p>
+<p>形式は次の通りです:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> <span class="token operator">&lt;</span><span class="token other-directive property">#condition</span> <span class="token number">1</span>#<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+   <span class="token operator">&lt;</span><span class="token other-directive property">#expression</span> used <span class="token keyword">if</span> condition <span class="token number">1</span> <span class="token keyword">is</span> <span class="token boolean">true</span>#<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token operator">&lt;</span><span class="token other-directive property">#condition</span> <span class="token number">2</span>#<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+   <span class="token operator">&lt;</span><span class="token other-directive property">#expression</span> used <span class="token keyword">if</span> condition <span class="token number">2</span> <span class="token keyword">is</span> <span class="token boolean">true</span>#<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+   <span class="token operator">&lt;</span><span class="token other-directive property">#expression</span> used <span class="token keyword">if</span> both conditions are <span class="token boolean">false</span>#<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">switch</span> <span class="token operator">&lt;</span><span class="token other-directive property">#expression</span>#<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+<span class="token keyword">case</span> <span class="token operator">&lt;</span><span class="token other-directive property">#pattern</span> <span class="token number">1</span>#<span class="token operator">&gt;</span><span class="token punctuation">:</span>
+    <span class="token operator">&lt;</span><span class="token other-directive property">#expression</span> <span class="token number">1</span>#<span class="token operator">&gt;</span>
+<span class="token keyword">case</span> <span class="token operator">&lt;</span><span class="token other-directive property">#pattern</span> <span class="token number">2</span>#<span class="token operator">&gt;</span> <span class="token keyword">where</span> <span class="token operator">&lt;</span><span class="token other-directive property">#condition</span>#<span class="token operator">&gt;</span><span class="token punctuation">:</span>
+    <span class="token operator">&lt;</span><span class="token other-directive property">#expression</span> <span class="token number">2</span>#<span class="token operator">&gt;</span>
+<span class="token keyword">default</span><span class="token punctuation">:</span>
+    <span class="token operator">&lt;</span><span class="token other-directive property">#expression</span> <span class="token number">3</span>#<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>条件式は、<code>if</code> 文や <code>switch</code> 文と同じ動作と構文ですが、以下の段落で説明する違いがあります。</p>
+<p>条件式は、以下の状況でのみ使用できます:  </p>
+<ul>
+<li>変数に代入される値として</li>
+<li>変数または定数宣言の初期値として</li>
+<li><code>throw</code> 式が投げるエラーとして</li>
+<li>関数、クロージャ、プロパティの <code>get</code> が返す値として</li>
+<li>条件式の分岐内の値として</li>
+</ul>
+<p>条件式の分岐は網羅的であり、条件に関係なく常に値を生成することを保証します。つまり、各 <code>if</code> 分岐には対応する <code>else</code> 分岐が必要です。</p>
+<p>各分岐には、その分岐の条件が真である場合に条件式の値として使用される単一式、<code>throw</code> 文、または戻り値を返さない関数への呼び出しが含まれます。</p>
+<p>各分岐は、同じ型の値を生成する必要があります。各分岐の型チェックは独立しているので、分岐に異なる種類のリテラルを含む場合や、分岐の値が <code>nil</code> である場合など、値の型を明示的に指定する必要がある場合があります。このような情報を提供する必要がある場合は、結果が代入される変数に型注釈を追加するか、分岐の値に <code>as</code> キャストを追加してください。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> number<span class="token punctuation">:</span> <span class="token class-name">Double</span> <span class="token operator">=</span> <span class="token keyword">if</span> someCondition <span class="token punctuation">{</span> <span class="token number">10</span> <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span> <span class="token number">12.34</span> <span class="token punctuation">}</span>
+<span class="token keyword">let</span> number <span class="token operator">=</span> <span class="token keyword">if</span> someCondition <span class="token punctuation">{</span> <span class="token number">10</span> <span class="token keyword">as</span> <span class="token class-name">Double</span> <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span> <span class="token number">12.34</span> <span class="token punctuation">}</span>
+</code></pre>
+<p>リザルトビルビルダの内部では、条件式は変数や定数の初期値としてのみ使用することができます。つまり、変数や定数の宣言のないリザルトビルダ内で <code>if</code> や <code>switch</code> を記述すると、そのコードは分岐文として理解され、リザルトビルダのメソッドの 1 つが、そのコードを変換することになります。</p>
+<p>条件式の分岐の 1 つがエラーをスローする場合でも、条件式を <code>try</code> 式の中に入れてはいけません。</p>
+<blockquote>
+<p>Grammar of a conditional expression:</p>
+<p><em>conditional-expression</em> → <em>if-expression</em> | <em>switch-expression</em></p>
+<p><em>if-expression</em> → <strong><code>if</code></strong> <em>condition-list</em> <strong><code>{</code></strong> <em>statement</em> <strong><code>}</code></strong> <em>if-expression-tail</em></p>
+<p><em>if-expression-tail</em> → <strong><code>else</code></strong> <em>if-expression</em></p>
+<p><em>if-expression-tail</em> → <strong><code>else</code></strong> <strong><code>{</code></strong> <em>statement</em> <strong><code>}</code></strong> <em>if-expression-tail</em></p>
+<p><em>switch-expression</em> → <strong><code>switch</code></strong> <em>expression</em> <strong><code>{</code></strong> <em>switch-expression-cases</em> <strong><code>}</code></strong></p>
+<p><em>switch-expression-cases</em> → <em>switch-expression-case</em> <em>switch-expression-cases</em><em>?</em></p>
+<p><em>switch-expression-case</em> → <em>case-label</em> <em>statement</em></p>
+<p><em>switch-expression-case</em> → <em>default-label</em> <em>statement</em></p>
 </blockquote>
 <h3 id="クロージャ式closure-expression">クロージャ式(Closure Expression)</h3>
 <p><em>クロージャ式</em>は、他のプログラミング言語では、<em>ラムダ</em>または<em>匿名関数</em>とも呼ばれているクロージャを作成します。関数宣言のように、クロージャには文が含まれており、その囲まれている範囲から定数と変数をキャプチャします。形式は次のとおりです:</p>
-<p><img src="../assets/closure_expression.png" alt="クロージャ式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token punctuation">{</span> <span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token other-directive property">#parameters</span>#<span class="token operator">&gt;</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token operator">&lt;</span><span class="token other-directive property">#return</span> type#<span class="token operator">&gt;</span> <span class="token keyword">in</span>
+   <span class="token operator">&lt;</span><span class="token other-directive property">#statements</span>#<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <p><a href="declarations.html#function-declaration">Function Declaration(関数宣言)</a>で説明されているように、<em>parameters</em>は関数宣言内のパラメータと同じ形式です。</p>
 <p>クロージャ式で <code>throw</code> または <code>async</code> を記述すると、クロージャはエラーをスローする、または非同期であることを明示します。</p>
-<p><img src="../assets/await_throw_closure_expression.png" alt="throwやawaitがマークしたクロージャ式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token punctuation">{</span> <span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token other-directive property">#parameters</span>#<span class="token operator">&gt;</span><span class="token punctuation">)</span> <span class="token keyword">async</span> <span class="token keyword">throws</span> <span class="token operator">-&gt;</span> <span class="token operator">&lt;</span><span class="token other-directive property">#return</span> type#<span class="token operator">&gt;</span> <span class="token keyword">in</span>
+   <span class="token operator">&lt;</span><span class="token other-directive property">#statements</span>#<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <p>クロージャの本文に <code>try</code> 式が含まれている場合、クロージャはエラーをスローすると見なします。同様に、<code>await</code> 式が含まれている場合は、非同期であると見なします。</p>
 <p>クロージャをより簡潔に書くことができるいくつかの特別な形式があります:</p>
 <ul>
@@ -1054,11 +1181,26 @@ myFunction <span class="token punctuation">{</span> <span class="token punctuati
 </code></pre>
 <p>クロージャ式の詳細と例については、<a href="../language-guide/closures.html#closure-expressions">Closure Expressions(クロージャ式)</a>を参照ください。キャプチャリストの詳細および例については、<a href="../language-guide/automatic-reference-counting.html#resolving-strong-reference-cycles-for-closures">Resolving Strong Reference Cycles for Closures(クロージャの強循環参照の解消)</a>を参照ください。</p>
 <blockquote>
-<p>GRAMMAR OF A CLOSURE EXPRESSION<br>closure-expression → <code>{</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-signature" target="_blank">closure-signature</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements" target="_blank">statements</a><sub>opt</sub> <code>}</code><br>closure-signature → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list" target="_blank">capture-list</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-clause" target="_blank">closure-parameter-clause</a> <code>throws</code><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-result" target="_blank">function-result</a><sub>opt</sub> <code>in</code><br>closure-signature → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list" target="_blank">capture-list</a> <code>in</code><br>closure-parameter-clause → <code>(</code> <code>)</code> | <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-list" target="_blank">closure-parameter-list</a> <code>)</code> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier-list" target="_blank">identifier-list</a><br>closure-parameter-list → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter" target="_blank">closure-parameter</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter" target="_blank">closure-parameter</a> <code>,</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-list" target="_blank">closure-parameter-list</a><br>closure-parameter → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-name" target="_blank">closure-parameter-name</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation" target="_blank">type-annotation</a><sub>opt</sub><br>closure-parameter → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-parameter-name" target="_blank">closure-parameter-name</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation" target="_blank">type-annotation</a> <code>...</code><br>closure-parameter-name → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a><br>capture-list → <code>[</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list-items" target="_blank">capture-list-items</a> <code>]</code><br>capture-list-items → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list-item" target="_blank">capture-list-item</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list-item" target="_blank">capture-list-item</a> <code>,</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-list-items" target="_blank">capture-list-items</a><br>capture-list-item → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-specifier" target="_blank">capture-specifier</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a><br>capture-list-item → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-specifier" target="_blank">capture-specifier</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a> <code>=</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a><br>capture-list-item → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_capture-specifier" target="_blank">capture-specifier</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_self-expression" target="_blank">self-expression</a><br>capture-specifier → <code>weak</code> | <code>unowned</code> | <code>unowned(safe)</code> | <code>unowned(unsafe)</code></p>
+<p>Grammar of a closure expression:</p>
+<p><em>closure-expression</em> → <strong><code>{</code></strong> <em>attributes</em><em>?</em> <em>closure-signature</em><em>?</em> <em>statements</em><em>?</em> <strong><code>}</code></strong></p>
+<p><em>closure-signature</em> → <em>capture-list</em><em>?</em> <em>closure-parameter-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>throws</code></strong><em>?</em> <em>function-result</em><em>?</em> <strong><code>in</code></strong></p>
+<p><em>closure-signature</em> → <em>capture-list</em> <strong><code>in</code></strong></p>
+<p><em>closure-parameter-clause</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>closure-parameter-list</em> <strong><code>)</code></strong> | <em>identifier-list</em></p>
+<p><em>closure-parameter-list</em> → <em>closure-parameter</em> | <em>closure-parameter</em> <strong><code>,</code></strong> <em>closure-parameter-list</em></p>
+<p><em>closure-parameter</em> → <em>closure-parameter-name</em> <em>type-annotation</em><em>?</em></p>
+<p><em>closure-parameter</em> → <em>closure-parameter-name</em> <em>type-annotation</em> <strong><code>...</code></strong></p>
+<p><em>closure-parameter-name</em> → <em>identifier</em></p>
+<p><em>capture-list</em> → <strong><code>[</code></strong> <em>capture-list-items</em> <strong><code>]</code></strong></p>
+<p><em>capture-list-items</em> → <em>capture-list-item</em> | <em>capture-list-item</em> <strong><code>,</code></strong> <em>capture-list-items</em></p>
+<p><em>capture-list-item</em> → <em>capture-specifier</em><em>?</em> <em>identifier</em></p>
+<p><em>capture-list-item</em> → <em>capture-specifier</em><em>?</em> <em>identifier</em> <strong><code>=</code></strong> <em>expression</em></p>
+<p><em>capture-list-item</em> → <em>capture-specifier</em><em>?</em> <em>self-expression</em></p>
+<p><em>capture-specifier</em> → <strong><code>weak</code></strong> | <strong><code>unowned</code></strong> | <strong><code>unowned(safe)</code></strong> | <strong><code>unowned(unsafe)</code></strong></p>
 </blockquote>
 <h3 id="暗黙メンバ式implicit-member-expression"><a id="implicit-member-expression">暗黙メンバ式(Implicit Member Expression)</a></h3>
 <p><em>暗黙メンバ式</em>は、型推論によって暗黙的に型を決定できるコンテキストにおいて、列挙ケースや型メソッドなどの型のメンバにアクセスするための省略記法です。形式は次のとおりです:</p>
-<p><img src="../assets/implicit_member_expression.png" alt="暗黙メンバ式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token operator">.&lt;</span><span class="token other-directive property">#member</span> name#<span class="token operator">&gt;</span>
+</code></pre>
 <p>例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token class-name">MyEnumeration</span><span class="token punctuation">.</span>someValue
 x <span class="token operator">=</span> <span class="token punctuation">.</span>anotherValue
@@ -1083,21 +1225,28 @@ x <span class="token operator">=</span> <span class="token punctuation">.</span>
 </code></pre>
 <p>上記のコードでは、<code>x</code> の型はそのコンテキストから暗黙的に推論された型と正確に一致し、<code>y</code> の型は <code>Someclass</code> から <code>SomeClass?</code> に変換され、<code>z</code> の型は <code>SomeSubclass</code> から <code>SomeClass</code> に変換されます。</p>
 <blockquote>
-<p>GRAMMAR OF A IMPLICIT MEMBER EXPRESSION<br>implicit-member-expression → <code>.</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a></p>
+<p>Grammar of a implicit member expression:</p>
+<p><em>implicit-member-expression</em> → <strong><code>.</code></strong> <em>identifier</em></p>
+<p><em>implicit-member-expression</em> → <strong><code>.</code></strong> <em>identifier</em> <strong><code>.</code></strong> <em>postfix-expression</em></p>
 </blockquote>
 <h3 id="括弧で囲まれた式parenthesized-expression">括弧で囲まれた式(Parenthesized Expression)</h3>
 <p><em>括弧で囲まれた式</em>は、括弧で囲まれた式で構成されます。式を明示的にグループ化することで、括弧を使用して操作の優先順位を指定できます。括弧のグループ化は式の型を変更しません(例：<code>(1)</code> はただの <code>Int</code> です。</p>
 <blockquote>
-<p>GRAMMAR OF A PARENTHESIZED EXPRESSION<br>parenthesized-expression → <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> <code>)</code></p>
+<p>Grammar of a parenthesized expression:</p>
+<p><em>parenthesized-expression</em> → <strong><code>(</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
 </blockquote>
 <h3 id="タプル式tuple-expression">タプル式(Tuple Expression)</h3>
 <p>タプル式は、括弧で囲まれた式のカンマ区切りのリストで構成されています。各式は、コロン(<code>:</code>)で区切られ、その前に識別子を指定することもできます。形式は次のとおりです:</p>
-<p><img src="../assets/tuple_expression.png" alt="タプル式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token other-directive property">#identifier</span> <span class="token number">1</span>#<span class="token operator">&gt;</span><span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token other-directive property">#expression</span> <span class="token number">1</span>#<span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token other-directive property">#identifier</span> <span class="token number">2</span>#<span class="token operator">&gt;</span><span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token other-directive property">#expression</span> <span class="token number">2</span>#<span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>#<span class="token operator">...</span>#<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+</code></pre>
 <p><em>タプル式</em>の各識別子は、タプル式の範囲内で一意な必要があります。ネストしたタプル式では、同じレベルでネスト識別子を一意にする必要があります。例えば、<code>(a: 10, a: 20)</code> はラベル <code>a</code> が同じレベルで 2 回使用されているため無効です。ただし、<code>(a: 10, b: (a: 1, x: 2))</code> は有効です。<code>a</code> は 2 回使用されていますが、外側のタプルに 1 回、内側のタプルに 1 回使用されています。</p>
 <p>タプル式には、式を全く含めなくても、2 つ以上の式を含めることもできます。括弧内の単一式は括弧で囲まれた式です。</p>
 <blockquote>
 <p>NOTE<br>空のタプル式と空のタプル型はいずれもSwiftでは <code>()</code> で書きます。<code>Void</code> は <code>()</code> のタイプエイリアスのため、空のタプル型を書くために使用できます。ただし、全てのタイプエイリアスと同様に、<code>Void</code> は常に型で、空のタプル式を書くためには使用できません。</p>
-<p>GRAMMAR OF A TUPLE EXPRESSION<br>tuple-expression → <code>(</code> <code>)</code> | <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element" target="_blank">tuple-element</a> <code>,</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element-list" target="_blank">tuple-element-list</a> <code>)</code><br>tuple-element-list → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element" target="_blank">tuple-element</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element" target="_blank">tuple-element</a> <code>,</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_tuple-element-list" target="_blank">tuple-element-list</a><br>tuple-element → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a> <code>:</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a></p>
+<p>Grammar of a tuple expression:</p>
+<p><em>tuple-expression</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>tuple-element</em> <strong><code>,</code></strong> <em>tuple-element-list</em> <strong><code>)</code></strong></p>
+<p><em>tuple-element-list</em> → <em>tuple-element</em> | <em>tuple-element</em> <strong><code>,</code></strong> <em>tuple-element-list</em></p>
+<p><em>tuple-element</em> → <em>expression</em> | <em>identifier</em> <strong><code>:</code></strong> <em>expression</em></p>
 </blockquote>
 <h3 id="ワイルドカード式wildcard-expression">ワイルドカード式(Wildcard Expression)</h3>
 <p>ワイルドカード式は、代入中に値を明示的に無視するために使用されます。例えば、次の代入式 <code>10</code> は <code>x</code> に代入されますが、<code>20</code> は無視されています:</p>
@@ -1105,11 +1254,13 @@ x <span class="token operator">=</span> <span class="token punctuation">.</span>
 <span class="token comment">// x は 10 で 20 は 無視されます</span>
 </code></pre>
 <blockquote>
-<p>GRAMMAR OF A WILDCARD EXPRESSION<br>wildcard-expression → <code>_</code></p>
+<p>Grammar of a wildcard expression:</p>
+<p><em>wildcard-expression</em> → <strong><code>_</code></strong></p>
 </blockquote>
 <h3 id="keypath-式key-path-expression"><a id="keypath-expression">KeyPath 式(Key-Path Expression)</a></h3>
 <p><em>KeyPath 式</em>は、型のプロパティまたはサブスクリプトを参照します。key-value observing などのような、動的プログラミングのタスクで KeyPath 式を使用します。次の形式があります:</p>
-<p><img src="../assets/key-path_expression.png" alt="Key-Path 式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token punctuation">\</span><span class="token operator">&lt;</span><span class="token other-directive property">#type</span> name#<span class="token operator">&gt;</span><span class="token operator">.&lt;</span><span class="token other-directive property">#path</span>#<span class="token operator">&gt;</span>
+</code></pre>
 <p><em>type name</em> は、<code>String</code>、<code>[Int]</code>、や <code>Set<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Int</span><span class="token punctuation">&gt;</span></span></code> などのジェネリックなパラメータを含めた、具体的な型の名前です。</p>
 <p><em>path</em> は、プロパティ名、サブスクリプト、オプショナルチェーン式、および強制アンラップ式で構成されます。これらの KeyPath コンポーネントのそれぞれは、必要に応じて任意の順序で繰り返すことができます。</p>
 <p>コンパイル時には、KeyPath 式は <a href="https://developer.apple.com/documentation/swift/keypath" target="_blank">KeyPath</a>クラスのインスタンスに置き換えられます。</p>
@@ -1232,11 +1383,19 @@ index <span class="token operator">+=</span> <span class="token number">1</span>
 </code></pre>
 <p>Objective-C API とやり取りするコード内の KeyPath の使用方法の詳細については、<a href="https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift" target="_blank">Using Objective-C Runtime Features in Swift</a>を参照ください。Key-Value Coding や Key-Value Observing については、<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i" target="_blank">Key-Value Coding Programming Guide</a>と<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i" target="_blank">Key-Value Observing Programming Guide</a>を参照ください。</p>
 <blockquote>
-<p>GRAMMAR OF A KEY-PATH EXPRESSION<br>key-path-expression → <code>\</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type" target="_blank">type</a><sub>opt</sub> <code>.</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-components" target="_blank">key-path-components</a><br>key-path-components → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-component" target="_blank">key-path-component</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-component" target="_blank">key-path-component</a> <code>.</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-components" target="_blank">key-path-components</a><br>key-path-component → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes" target="_blank">key-path-postfixes</a><sub>opt</sub> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes" target="_blank">key-path-postfixes</a><br>key-path-postfixes → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfix" target="_blank">key-path-postfix</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_key-path-postfixes" target="_blank">key-path-postfixes</a><sub>opt</sub><br>key-path-postfix → <code>?</code> | <code>!</code> | <code>self</code> | <code>[</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list" target="_blank">function-call-argument-list</a> <code>]</code></p>
+<p>Grammar of a key-path expression:</p>
+<p><em>key-path-expression</em> → <strong><code>\</code></strong> <em>type</em><em>?</em> <strong><code>.</code></strong> <em>key-path-components</em></p>
+<p><em>key-path-components</em> → <em>key-path-component</em> | <em>key-path-component</em> <strong><code>.</code></strong> <em>key-path-components</em></p>
+<p><em>key-path-component</em> → <em>identifier</em> <em>key-path-postfixes</em><em>?</em> | <em>key-path-postfixes</em></p>
+<p><em>key-path-postfixes</em> → <em>key-path-postfix</em> <em>key-path-postfixes</em><em>?</em></p>
+<p><em>key-path-postfix</em> → <strong><code>?</code></strong> | <strong><code>!</code></strong> | <strong><code>self</code></strong> | <strong><code>[</code></strong> <em>function-call-argument-list</em> <strong><code>]</code></strong></p>
 </blockquote>
 <h3 id="selector-式selector-expression"><a id="selector-expression">Selector 式(Selector Expression)</a></h3>
 <p>セレクタ式を使用すると、Objective-C のメソッドまたはプロパティの get や set を参照するために使用されるセレクタにアクセスできます。形式は次のとおりです:</p>
-<p><img src="../assets/selector_expression.png" alt="Selector 式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token other-directive property">#selector</span><span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token other-directive property">#method</span> name#<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+<span class="token other-directive property">#selector</span><span class="token punctuation">(</span>getter<span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token other-directive property">#property</span> name#<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+<span class="token other-directive property">#selector</span><span class="token punctuation">(</span>setter<span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token other-directive property">#property</span> name#<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+</code></pre>
 <p>メソッド名とプロパティ名は、Objective-C ランタイムで使用可能なメソッドまたはプロパティを参照する必要があります。セレクタ式の値は <code>Selector</code> 型のインスタンスです。例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">SomeClass</span><span class="token punctuation">:</span> <span class="token class-name">NSObject</span> <span class="token punctuation">{</span>
     <span class="token attribute atrule">@objc</span> <span class="token keyword">let</span> property<span class="token punctuation">:</span> <span class="token class-name">String</span>
@@ -1265,11 +1424,15 @@ index <span class="token operator">+=</span> <span class="token number">1</span>
 </blockquote>
 <p>Objective-C API とやり取りする Swift コードでセレクタを使用する方法の詳細については、<a href="https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift" target="_blank">Using Objective-C Runtime Features in Swift</a>を参照ください。</p>
 <blockquote>
-<p>GRAMMAR OF A SELECTOR EXPRESSION<br>selector-expression → <code>#selector</code> <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> <code>)</code><br>selector-expression → <code>#selector</code> <code>(</code> <code>getter:</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> <code>)</code><br>selector-expression → <code>#selector</code> <code>(</code> <code>setter:</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> <code>)</code></p>
+<p>Grammar of a selector expression:</p>
+<p><em>selector-expression</em> → <strong><code>#selector</code></strong> <strong><code>(</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
+<p><em>selector-expression</em> → <strong><code>#selector</code></strong> <strong><code>(</code></strong> <strong><code>getter:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
+<p><em>selector-expression</em> → <strong><code>#selector</code></strong> <strong><code>(</code></strong> <strong><code>setter:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
 </blockquote>
 <h3 id="keypath-文字列式key-path-string-expression">KeyPath 文字列式(Key-Path String Expression)</h3>
 <p>KeyPath 文字列式を使用すると、Key-Value Coding や Key-Value Observing API で使用するために、Objective-C のプロパティを参照するための文字列にアクセスできます。形式は次のとおりです:</p>
-<p><img src="../assets/key-path_string_expression.png" alt="Key-Path文字列式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token other-directive property">#keyPath</span><span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token other-directive property">#property</span> name#<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+</code></pre>
 <p><em>property name</em> は、Objective-C ランタイムで使用可能なプロパティを参照する必要があります。コンパイル時には、KeyPath 文字列式は文字列リテラルに置き換えられます。例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">SomeClass</span><span class="token punctuation">:</span> <span class="token class-name">NSObject</span> <span class="token punctuation">{</span>
     <span class="token attribute atrule">@objc</span> <span class="token keyword">var</span> someProperty<span class="token punctuation">:</span> <span class="token class-name">Int</span>
@@ -1299,21 +1462,33 @@ index <span class="token operator">+=</span> <span class="token number">1</span>
 <p>Objective-C API とやり取りする Swift コードで KeyPath を使用する方法の詳細については、<a href="https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift" target="_blank">Using Objective-C Runtime Features in Swift</a>を参照ください。Key-Value Coding と Key-Value Observing については、<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i" target="_blank">Key-Value Coding Programming Guide</a>と<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i" target="_blank">Key-Value Observing Programming Guide</a>を参照ください。</p>
 <blockquote>
 <p>NOTE<br>プロパティ名は式ですが、それらは決して評価されません。</p>
-<p>GRAMMAR OF A KEY-PATH STRING EXPRESSION<br>key-path-string-expression → <code>#keyPath</code> <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> <code>)</code></p>
+<p>Grammar of a key-path string expression:</p>
+<p><em>key-path-string-expression</em> → <strong><code>#keyPath</code></strong> <strong><code>(</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
 </blockquote>
 <h2 id="後置式postfix-expressions"><a id="postfix-expressions">後置式(Postfix Expressions)</a></h2>
 <p><em>後置式</em>は、後置演算子またはその他の後置構文を式に適用することによって形成されます。構文的には、全ての基本式も後置式です。</p>
 <p>これらの演算子の動作については、<a href="../language-guide/basic-operators.html">Basic Operators(基本演算子)</a>と<a href="../language-guide/advanced-operators.html">Advanced Operators(高度な演算子)</a>を参照ください。</p>
 <p>Swift 標準ライブラリによって提供されている演算子については、<a href="https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations" target="_blank">Operator Declarations(演算子宣言)</a>を参照ください。</p>
 <blockquote>
-<p>GRAMMAR OF A POSTFIX EXPRESSION<br>postfix-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_primary-expression" target="_blank">primary-expression</a><br>postfix-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression" target="_blank">postfix-expression</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_postfix-operator" target="_blank">postfix-operator</a><br>postfix-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-expression" target="_blank">function-call-expression</a><br>postfix-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_initializer-expression" target="_blank">initializer-expression</a><br>postfix-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_explicit-member-expression" target="_blank">explicit-member-expression</a><br>postfix-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-self-expression" target="_blank">postfix-self-expression</a><br>postfix-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_subscript-expression" target="_blank">subscript-expression</a><br>postfix-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_forced-value-expression" target="_blank">forced-value-expression</a><br>postfix-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_optional-chaining-expression" target="_blank">optional-chaining-expression</a></p>
+<p>Grammar of a postfix expression:</p>
+<p><em>postfix-expression</em> → <em>primary-expression</em></p>
+<p><em>postfix-expression</em> → <em>postfix-expression</em> <em>postfix-operator</em></p>
+<p><em>postfix-expression</em> → <em>function-call-expression</em></p>
+<p><em>postfix-expression</em> → <em>initializer-expression</em></p>
+<p><em>postfix-expression</em> → <em>explicit-member-expression</em></p>
+<p><em>postfix-expression</em> → <em>postfix-self-expression</em></p>
+<p><em>postfix-expression</em> → <em>subscript-expression</em></p>
+<p><em>postfix-expression</em> → <em>forced-value-expression</em></p>
+<p><em>postfix-expression</em> → <em>optional-chaining-expression</em></p>
 </blockquote>
 <h3 id="関数呼び出し式function-call-expression"><a id="function-call-expression">関数呼び出し式(Function Call Expression)</a></h3>
 <p><em>関数呼び出し式</em>は、関数名とそれに続く関数の引数のカンマ区切りのリストからなる関数名で構成されています。関数呼び出し式は形式は次のとおりです:</p>
-<p><img src="../assets/function_call_expression1.png" alt="関数呼び出し式1"></p>
+<pre class="language-"><code class="lang-swift"><span class="token operator">&lt;</span><span class="token literal constant">#function</span> name#<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token other-directive property">#argument</span> value <span class="token number">1</span>#<span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token other-directive property">#argument</span> value <span class="token number">2</span>#<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+</code></pre>
 <p><em>function name</em> は、関数型の任意の式です。</p>
 <p>関数定義にパラメータ名が含まれている場合、関数呼び出しは、コロン(<code>:</code>)で区切られた引数値の前に名前を含める必要があります。この種の関数呼び出し式は形式は次のとおりです:</p>
-<p><img src="../assets/function_call_expression2.png" alt="パラメータ名を含んだ関数呼び出し式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token operator">&lt;</span><span class="token literal constant">#function</span> name#<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token other-directive property">#argument</span> name <span class="token number">1</span>#<span class="token operator">&gt;</span><span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token other-directive property">#argument</span> value <span class="token number">1</span>#<span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token other-directive property">#argument</span> name <span class="token number">2</span>#<span class="token operator">&gt;</span><span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token other-directive property">#argument</span> value <span class="token number">2</span>#<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+</code></pre>
 <p>関数呼び出し式は、閉じ括弧(<code>}</code>)の直後にクロージャ式の形で末尾クロージャを含めることができます。末尾クロージャは、最後の括弧内の引数の後の関数型の引数と解釈されます。最初のクロージャ式に引数ラベルは付けません。次のクロージャ式の前には引数ラベルを付けます。下記の例は、末尾クロージャの構文を使用して、 末尾クロージャを使用しない関数呼び出しバージョンと同等だということを示しています:</p>
 <pre class="language-"><code class="lang-swift"><span class="token comment">// someFunction 関数は引数として整数とクロージャを受け取ります</span>
 <span class="token function">someFunction</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> x<span class="token punctuation">,</span> f<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token short-argument">$0</span> <span class="token operator">==</span> <span class="token number">13</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -1403,11 +1578,21 @@ someFunction <span class="token punctuation">{</span> <span class="token keyword
 </blockquote>
 <p><code>withUnsafePointer(to:)</code> のような明示的な機能の代わりに、<code>&amp;</code> を使うことで、低レベルの C 言語の関数を呼び出しやすくするのに役立ちます。ただし、他の Swift コードから関数を呼び出すときは、安全でない API を明示的に使用する代わりとして <code>&amp;</code> を使用しないでください。</p>
 <blockquote>
-<p>GRAMMAR OF A FUNCTION CALL EXPRESSION<br>function-call-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression" target="_blank">postfix-expression</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-clause" target="_blank">function-call-argument-clause</a><br>function-call-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression" target="_blank">postfix-expression</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-clause" target="_blank">function-call-argument-clause</a><sub>opt</sub> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_trailing-closures" target="_blank">trailing-closures</a><br>function-call-argument-clause → <code>(</code> <code>)</code> | <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list" target="_blank">function-call-argument-list</a> <code>)</code><br>function-call-argument-list → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument" target="_blank">function-call-argument</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument" target="_blank">function-call-argument</a> <code>,</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list" target="_blank">function-call-argument-list</a><br>function-call-argument → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a> <code>:</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression" target="_blank">expression</a><br>function-call-argument → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator" target="_blank">operator</a> | <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a> <code>:</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator" target="_blank">operator</a><br>trailing-closures → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-expression" target="_blank">closure-expression</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_labeled-trailing-closures" target="_blank">labeled-trailing-closures</a><sub>opt</sub><br>labeled-trailing-closures → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_labeled-trailing-closure" target="_blank">labeled-trailing-closure</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_labeled-trailing-closures" target="_blank">labeled-trailing-closures</a><sub>opt</sub><br>labeled-trailing-closure → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a> <code>:</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_closure-expression" target="_blank">closure-expression</a></p>
+<p>Grammar of a function call expression:</p>
+<p><em>function-call-expression</em> → <em>postfix-expression</em> <em>function-call-argument-clause</em></p>
+<p><em>function-call-expression</em> → <em>postfix-expression</em> <em>function-call-argument-clause</em><em>?</em> <em>trailing-closures</em></p>
+<p><em>function-call-argument-clause</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>function-call-argument-list</em> <strong><code>)</code></strong></p>
+<p><em>function-call-argument-list</em> → <em>function-call-argument</em> | <em>function-call-argument</em> <strong><code>,</code></strong> <em>function-call-argument-list</em></p>
+<p><em>function-call-argument</em> → <em>expression</em> | <em>identifier</em> <strong><code>:</code></strong> <em>expression</em></p>
+<p><em>function-call-argument</em> → <em>operator</em> | <em>identifier</em> <strong><code>:</code></strong> <em>operator</em></p>
+<p><em>trailing-closures</em> → <em>closure-expression</em> <em>labeled-trailing-closures</em><em>?</em></p>
+<p><em>labeled-trailing-closures</em> → <em>labeled-trailing-closure</em> <em>labeled-trailing-closures</em><em>?</em></p>
+<p><em>labeled-trailing-closure</em> → <em>identifier</em> <strong><code>:</code></strong> <em>closure-expression</em></p>
 </blockquote>
 <h3 id="イニシャライザ式initializer-expression"><a id="initializer-expression">イニシャライザ式(Initializer Expression)</a></h3>
 <p><em>イニシャライザ式</em>は型のイニシャライザへアクセスします。形式は次のとおりです:</p>
-<p><img src="../assets/initializer_expression.png" alt="イニシャライザ式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token operator">&lt;</span><span class="token other-directive property">#expression</span>#<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token keyword">init</span><span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token other-directive property">#initializer</span> arguments#<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+</code></pre>
 <p>イニシャライザ式を使用して、型の新しいインスタンスを初期化します。スーパークラスのイニシャライザに委譲するイニシャライザ式を使用することもできます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">SomeSubClass</span><span class="token punctuation">:</span> <span class="token class-name">SomeSuperClass</span> <span class="token punctuation">{</span>
     <span class="token keyword">override</span> <span class="token keyword">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1431,11 +1616,14 @@ someFunction <span class="token punctuation">{</span> <span class="token keyword
 <span class="token keyword">let</span> s4 <span class="token operator">=</span> <span class="token function">type</span><span class="token punctuation">(</span>of<span class="token punctuation">:</span> someValue<span class="token punctuation">)</span><span class="token punctuation">(</span>data<span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">)</span>       <span class="token comment">// エラー</span>
 </code></pre>
 <blockquote>
-<p>GRAMMAR OF AN INITIALIZER EXPRESSION<br>initializer-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression" target="_blank">postfix-expression</a> <code>.</code> <code>init</code><br>initializer-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression" target="_blank">postfix-expression</a> <code>.</code> <code>init</code> <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names" target="_blank">argument-names</a> <code>)</code></p>
+<p>Grammar of an initializer expression:</p>
+<p><em>initializer-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <strong><code>init</code></strong></p>
+<p><em>initializer-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <strong><code>init</code></strong> <strong><code>(</code></strong> <em>argument-names</em> <strong><code>)</code></strong></p>
 </blockquote>
 <h3 id="明示的メンバ式explicit-member-expression"><a id="explicit-member-expression">明示的メンバ式(Explicit Member Expression)</a></h3>
 <p><em>明示的メンバ式</em>では、名前付き型、タプル、またはモジュールのメンバへアクセスできます。アイテムとそのメンバの識別子の間のピリオド(<code>.</code>)で構成されています。</p>
-<p><img src="../assets/explicit_member_expression.png" alt="明示的メンバ式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token operator">&lt;</span><span class="token other-directive property">#expression</span>#<span class="token operator">&gt;</span><span class="token operator">.&lt;</span><span class="token other-directive property">#member</span> name#<span class="token operator">&gt;</span>
+</code></pre>
 <p>名前付き型のメンバは、型の宣言または extension の一部で指定されます。例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">SomeClass</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> someProperty <span class="token operator">=</span> <span class="token number">42</span>
@@ -1484,27 +1672,39 @@ t<span class="token punctuation">.</span><span class="token number">0</span> <sp
 <p>この構文は明示的メンバ式を記載できるところんまらどこでも使用可能ですが、トップレベルのコードでは使用できません。</p>
 <p>条件付きコンパイルブロックの中では、<code>#if</code> コンパイルディレクティブの条件分岐は、少なくとも 1 つの式を含めなければなりません。その他の分岐は空でも構いません。</p>
 <blockquote>
-<p>GRAMMAR OF AN EXPLICIT MEMBER EXPRESSION<br>explicit-member-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression" target="_blank">postfix-expression</a> <code>.</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_decimal-digits" target="_blank">decimal-digits</a><br>explicit-member-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression" target="_blank">postfix-expression</a> <code>.</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-argument-clause" target="_blank">generic-argument-clause</a><sub>opt</sub><br>explicit-member-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression" target="_blank">postfix-expression</a> <code>.</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a> <code>(</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names" target="_blank">argument-names</a> <code>)</code><br>explicit-member-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression" target="_blank">postfix-expression</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_conditional-compilation-block" target="_blank">conditional-compilation-block</a><br>argument-names → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-name" target="_blank">argument-name</a> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_argument-names" target="_blank">argument-names</a><sub>opt</sub><br>argument-name → <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier" target="_blank">identifier</a> <code>:</code></p>
+<p>Grammar of an explicit member expression:</p>
+<p><em>explicit-member-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <em>decimal-digits</em></p>
+<p><em>explicit-member-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <em>identifier</em> <em>generic-argument-clause</em><em>?</em></p>
+<p><em>explicit-member-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <em>identifier</em> <strong><code>(</code></strong> <em>argument-names</em> <strong><code>)</code></strong></p>
+<p><em>explicit-member-expression</em> → <em>postfix-expression</em> <em>conditional-compilation-block</em></p>
+<p><em>argument-names</em> → <em>argument-name</em> <em>argument-names</em><em>?</em></p>
+<p><em>argument-name</em> → <em>identifier</em> <strong><code>:</code></strong></p>
 </blockquote>
 <h3 id="後置-self-式postfix-self-expression">後置 self 式(Postfix Self Expression)</h3>
 <p>後置 <code>self</code> 式は、型や式の直後に <code>.self</code> を付けて構成します。次の形式があります:</p>
-<p><img src="../assets/postfix_self_expression.png" alt="後置 self 式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token operator">&lt;</span><span class="token other-directive property">#expression</span>#<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token keyword">self</span>
+<span class="token operator">&lt;</span><span class="token other-directive property">#type</span>#<span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token keyword">self</span>
+</code></pre>
 <p>最初の形式は <em>expression</em> の値に評価されます。例えば、<code>x.self</code> は <code>x</code> と評価されます。</p>
 <p>2 番目の形式は <em>type</em> の値に評価されます。この形式を使用して、型に値としてアクセスできます。例えば、<code>SomeClass.self</code> は <code>SomeClass</code> 型自体に評価されるため、型レベルの引数を受け取る関数またはメソッドに渡すことができます。</p>
 <blockquote>
-<p>GRAMMAR OF A POSTFIX SELF EXPRESSION<br>postfix-self-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression" target="_blank">postfix-expression</a> <code>.</code> <code>self</code></p>
+<p>Grammar of a postfix self expression:</p>
+<p><em>postfix-self-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <strong><code>self</code></strong></p>
 </blockquote>
 <h3 id="サブスクリプト式subscript-expression">サブスクリプト式(Subscript Expression)</h3>
 <p><em>サブスクリプト式</em>は、対応するサブスクリプト宣言の get と set を使用してサブスクリプトへのアクセスすることができます。形式は次のとおりです:</p>
-<p><img src="../assets/subscript_expression.png" alt="subscript式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token operator">&lt;</span><span class="token other-directive property">#expression</span>#<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token other-directive property">#index</span> expressions#<span class="token operator">&gt;</span><span class="token punctuation">]</span>
+</code></pre>
 <p>サブスクリプト式の値を評価するには、<em>expression</em> 型のサブスクリプトの get をサブスクリプトのパラメータとして<em>インデックス式</em>を渡して呼び出します。値を設定するために、サブスクリプトの set を同じ方法で呼び出します。</p>
 <p>サブスクリプト宣言については、<a href="declarations.html#protocol-subscript-declaration">Protocol Subscript Declaration(プロトコルサブスクリプト宣言)</a>を参照ください。</p>
 <blockquote>
-<p>GRAMMAR OF A SUBSCRIPT EXPRESSION<br>subscript-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression" target="_blank">postfix-expression</a> <code>[</code> <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_function-call-argument-list" target="_blank">function-call-argument-list</a> <code>]</code></p>
+<p>Grammar of a subscript expression:</p>
+<p><em>subscript-expression</em> → <em>postfix-expression</em> <strong><code>[</code></strong> <em>function-call-argument-list</em> <strong><code>]</code></strong></p>
 </blockquote>
 <h3 id="強制アンラップ式forced-value-expression">強制アンラップ式(Forced-Value Expression)</h3>
 <p><em>強制アンラップ式</em>は、特定の値が <code>nil</code> ではないオプショナルの値を表します。形式は次のとおりです:</p>
-<p><img src="../assets/forced-Value_expression.png" alt="強制アンラップ式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token operator">&lt;</span><span class="token other-directive property">#expression</span>#<span class="token operator">&gt;!</span>
+</code></pre>
 <p><em>expression</em> の値が <code>nil</code> でない場合、オプショナルの値はアンラップされ、対応するオプショナルの非オプショナルの型で返されます。それ以外の場合は、実行時エラーが発生します。</p>
 <p>強制アンラップされた値は、値自体を変化させる、またはその値のメンバの 1 つに割り当てることによって、変更できます。例えば:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> x<span class="token punctuation">:</span> <span class="token class-name">Int</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token number">0</span>
@@ -1516,11 +1716,13 @@ someDictionary<span class="token punctuation">[</span><span class="token string-
 <span class="token comment">// someDictionary は [&quot;a&quot;: [100, 2, 3], &quot;b&quot;: [10, 20]]</span>
 </code></pre>
 <blockquote>
-<p>GRAMMAR OF A FORCED-VALUE EXPRESSION<br>forced-value-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression" target="_blank">postfix-expression</a> <code>!</code></p>
+<p>Grammar of a forced-value expression:</p>
+<p><em>forced-value-expression</em> → <em>postfix-expression</em> <strong><code>!</code></strong></p>
 </blockquote>
 <h3 id="オプショナルチェーン式optional-chaining-expression"><a id="optional-chaining-expression">オプショナルチェーン式(Optional-Chaining Expression)</a></h3>
 <p><em>オプショナルチェーン式</em>は後置式で、オプショナルの値を使用するための簡単な構文を提供します。形式は次のとおりです:</p>
-<p><img src="../assets/optional-chaining_expression.png" alt="オプショナルチェーン式"></p>
+<pre class="language-"><code class="lang-swift"><span class="token operator">&lt;</span><span class="token other-directive property">#expression</span>#<span class="token operator">&gt;?</span>
+</code></pre>
 <p>後置 <code>?</code> 演算子は式の値を変更せずに式からオプショナルチェーン式を作成します。</p>
 <p>オプショナルチェーン式は、後置式で使用しなければならず、後置式を特別な方法で評価します。オプショナルチェーン式の値が <code>nil</code> の場合、後置式の他の全ての操作は無視され、後置式全体が <code>nil</code> に評価されます。<code>nil</code> ではない場合、値はアンラップされ、後置式の残りの部分を評価するために使用されます。どちらの場合も、後置式の値は依然としてオプショナル型です。</p>
 <p>オプショナルチェーン式を含む後置式が他の後置式の内側にネストされている場合は、最も外側の式だけがオプショナル型を返します。下記の例では、<code>c</code> が <code>nil</code> ではない場合、その値はアンラップされ、その値は <code>.performAction()</code> を評価するために使用される <code>.property</code> を評価するために使用されます。全体の式 <code>c？.property.performAction()</code> はオプショナルの型の値を持ちます。</p>
@@ -1548,7 +1750,8 @@ someDictionary<span class="token punctuation">[</span><span class="token string-
 <span class="token comment">// someDictionary は今 [&quot;a&quot;: [42, 2, 3], &quot;b&quot;: [10, 20]]</span>
 </code></pre>
 <blockquote>
-<p>GRAMMAR OF AN OPTIONAL-CHAINING EXPRESSION<br>optional-chaining-expression → <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_postfix-expression" target="_blank">postfix-expression</a> <code>?</code></p>
+<p>Grammar of an optional-chaining expression:</p>
+<p><em>optional-chaining-expression</em> → <em>postfix-expression</em> <strong><code>?</code></strong></p>
 </blockquote>
 
                                 
@@ -1593,7 +1796,7 @@ someDictionary<span class="token punctuation">[</span><span class="token string-
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"式(Expressions)","level":"4.4","depth":1,"next":{"title":"文(Statements)","level":"4.5","depth":1,"path":"language-reference/statements.md","ref":"language-reference/statements.md","articles":[]},"previous":{"title":"型(Types)","level":"4.3","depth":1,"path":"language-reference/types.md","ref":"language-reference/types.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-reference/expressions.md","mtime":"2023-05-27T04:40:34.868Z","type":"markdown"},"gitbook":{"version":"3.7.5","time":"2023-05-27T04:41:06.671Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"式(Expressions)","level":"4.4","depth":1,"next":{"title":"文(Statements)","level":"4.5","depth":1,"path":"language-reference/statements.md","ref":"language-reference/statements.md","articles":[]},"previous":{"title":"型(Types)","level":"4.3","depth":1,"path":"language-reference/types.md","ref":"language-reference/types.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-reference/expressions.md","mtime":"2023-06-02T20:09:22.681Z","type":"markdown"},"gitbook":{"version":"3.7.5","time":"2023-06-02T20:09:51.968Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
