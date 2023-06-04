@@ -344,11 +344,19 @@ convenience イニシャライザは二次的なもので、クラスのイニ�
 
 クラスの指定イニシャライザは、値型のシンプルなイニシャライザと同じ方法で記述します:
 
-![&#x6307;&#x5B9A;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;](../assets/14_designatedInitializer.png)
+```swift
+init(<#parameters#>) {
+   <#statements#>
+}
+```
 
 covenience イニシャライザは同じスタイルで記述できますが、`init` キーワードの前にスペース区切りで `covenience` 修飾子を配置します:
 
-![covenience &#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;](../assets/14_convenienceInitializer.png)
+```swift
+convenience init(<#parameters#>) {
+   <#statements#>
+}
+```
 
 ### <a id="initializer-delegation-for-class-types">クラス型のイニシャライザの委譲\(Initializer Delegation for Class Types\)</a>
 
