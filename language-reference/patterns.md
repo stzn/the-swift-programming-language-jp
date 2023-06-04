@@ -165,7 +165,10 @@ for case let number? in arrayOfOptionalInts {
 
 2 つのタイプの_型キャストパターン_、`is` パターンと `as` パターンがあります。`is` パターンは `switch` 文のケースラベルにのみ使用できます。`is` と `as` パターンの形式は次のとおりです。
 
-![&#x578B;&#x30AD;&#x30E3;&#x30B9;&#x30C8;&#x30D1;&#x30BF;&#x30FC;&#x30F3;](../assets/type-casting_patterns.png)
+```swift
+is <#type#>
+<#pattern#> as <#type#>
+```
 
 `is` パターンは、実行時の値の型が、`is` パターンの右側で指定された型、またはその型のサブクラスと同じ型の場合に、値と一致します。`is` パターンは、両方とも型キャストを実行しますが、返された型を破棄するという点で、`is` 演算子のように動作します。
 
