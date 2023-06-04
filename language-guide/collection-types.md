@@ -78,7 +78,9 @@ var sixDoubles = threeDoubles + anotherThreeDoubles
 
 配列リテラルからも配列を初期化できます。これは、1 つ以上の要素を持った配列コレクションの簡略記法です。配列リテラルはカンマ区切りの角括弧\(`[]`\)で囲んだ値のリストです:
 
-![Array Literal](../assets/arrayliteral_2x.png)
+```swift
+[<#value 1#>, <#value 2#>, <#value 3#>]
+```
 
 下記の例は、`String` を保持する `shoppingList` という配列を作成しています。
 

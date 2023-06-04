@@ -9,7 +9,10 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 
 `@` 記号に続けて属性の名前と、属性が受け入れる引数を書き込むことにより、属性を指定します。
 
-![&#x5C5E;&#x6027;](../assets/attributes.png)
+```swift
+@<#attribute name#>
+@<#attribute name#>(<#attribute arguments#>)
+```
 
 一部の宣言属性は、属性とそれが特定の宣言にどのように適用されるかについての詳細情報を指定する引数を受け入れます。これらの _attribute arguments_ は括弧\(`()`\)で囲まれ、その形式は属する属性によって定義されています。
 
@@ -64,31 +67,41 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 * `unavailable` 引数は、指定されたプラットフォームで宣言が使用できないことを示します。この引数は、Swift のアベイラビリティバージョンを指定している場合は使用できません
 * `introduced` 引数は、宣言が導入された特定のプラットフォームまたは言語の最初のバージョンを示します。形式は次のとおりです:
 
-![introduced &#x5F15;&#x6570;](../assets/introduced.png)
+  ```swift
+  introduced: <#version number#>
+  ```
 
 _version number_ は、ピリオド\(`.`\)で区切られた 1〜3 個の正の整数で構成されます。
 
 * `deprecated` 引数は、宣言が非推奨になった特定のプラットフォームまたは言語の最初のバージョンを示します。形式は次のとおりです:
 
-![deprecated &#x5F15;&#x6570;](../assets/deprecated.png)
+  ```swift
+  deprecated: <#version number#>
+  ```
 
 任意の _version number_ は、ピリオド\(`.`\)で区切られた 1〜3 個の正の整数で構成されます。バージョン番号を省略すると、deprecated がいつ発生したかについての情報を提供せずに、宣言が現在 deprecated になっていることのみを示します。バージョン番号を省略する場合は、コロン\(`:`\)も省略してください。
 
 * `obsoleted` 引数は、宣言が廃止された特定のプラットフォームまたは言語の最初のバージョンを示します。宣言が廃止されると、指定されたプラットフォームまたは言語から削除され、使用できなくなります。形式は次のとおりです:
 
-![obsoleted &#x5F15;&#x6570;](../assets/obsoleted.png)
+  ```swift
+  obsoleted: <#version number#>
+  ```
 
 _version number_ は、ピリオド\(`.`\)で区切られた 1〜3 個の正の整数で構成されます。
 
 * `message` 引数は、deprecated または obsoleted された宣言に使用した際に、コンパイラが表示する警告またはエラーのテキストメッセージを提供します。形式は次のとおりです:
 
-![message &#x5F15;&#x6570;](../assets/message.png)
+  ```swift
+  message: <#message#>
+  ```
 
 _message_ は文字列リテラルで構成されます。
 
 * `renamed` 引数は、名前が変更された宣言の新しい名前を示すテキストメッセージを提供します。コンパイラは、名前が変更された宣言が使用された際にエラーを発行し、新しい名前を表示します。形式は次のとおりです:
 
-![renamed &#x5F15;&#x6570;](../assets/renamed.png)
+  ```swift
+  renamed: <#new name#>
+  ```
 
 _new name_ は文字列リテラルで構成されます。
 
@@ -115,7 +128,10 @@ typealias MyProtocol = MyRenamedProtocol
 
 `available` 属性がプラットフォームまたは言語名の引数に加えて `introduced` 引数を指定するだけの場合は、代わりに次の省略構文を使用できます:
 
-![available&#x5C5E;&#x6027;](../assets/available.png)
+```swift
+@available(<#platform name#> <#version number#>, *)
+@available(swift <#version number#>)
+```
 
 `available` 属性の省略構文は、複数のプラットフォームのアベイラビリティを簡潔に表しています。2 つの形式は機能的に同等ですが、可能な限り省略形が推奨されます。
 
