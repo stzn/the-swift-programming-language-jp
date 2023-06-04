@@ -738,10 +738,10 @@ print(7.simpleDescription)
 > Experiment  
 > `absoluteValue` プロパティを `Double` に追加する `extension` を書いてみましょう。
 
-プロトコルの名前は、他の名前が付いた型と同じように使用することができます。例えば、同じ 1 つのプロトコルに準拠した異なる型のオブジェクトのコレクションを作成することができます。プロトコル型の値をそのまま扱っている場合、プロトコルの外側で定義されたメソッドを使用することはできません。
+プロトコルの名前は、他の名前が付いた型と同じように使用することができます。例えば、同じ 1 つのプロトコルに準拠した異なる型のオブジェクトのコレクションを作成することができます。Box プロトコル型の値をそのまま扱っている場合、プロトコルの外側で定義されたメソッドを使用することはできません。
 
 ```swift
-let protocolValue: ExampleProtocol = a
+let protocolValue: any ExampleProtocol = a
 print(protocolValue.simpleDescription)
 // A very simple class.  Now 100% adjusted. が出力されます。
 // print(protocolValue.anotherProperty)  // エラーを確認したい場合はコメントアウトを外しましょう
