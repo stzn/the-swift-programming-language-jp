@@ -35,6 +35,11 @@ class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
 }
 ```
 
+> NOTE: 
+> プロトコルは型のため、
+> Swiftの他の型に一致するように(`Int`、`String` や `Double` など)
+> 名前は大文字から始めてください。(`FullyNamed` や `RandomNumberGenerator` など)
+
 ## <a id="property-requirements">プロパティ要件\(Property Requirements\)</a>
 
 プロトコルは、特定の名前と型のインスタンスプロパティまたは型プロパティを要件にできます。プロトコルでは、格納プロパティか計算プロパティかを指定しません。必要なプロパティの名前と型を指定するだけです。また、プロトコルは、各プロパティが get のみか、get/set どちらも必要かどうかも指定します。
@@ -245,54 +250,16 @@ class SomeSubClass: SomeSuperClass, SomeProtocol {
 
 ## <a id="protocols-as-types">型としてのプロトコル\(Protocols as Types\)</a>
 
-プロトコルは、実際には機能を実装しません。それにもかかわらず、コード内で完全な型としてプロトコルを使用できます。プロトコルを型として使用することは、_存在型_と呼ばれることもあります。これは、「T がプロトコルに準拠するような型 T が存在する」というフレーズから来ています。
+プロトコルは、実際には機能を実装しません。
+それにもかかわらず、コード内で型としてプロトコルを使用できます。
 
-次のような他の型が許可されている多くの場所でプロトコルを使用できます。
+プロトコルを型として使用する最も一般的な方法は、プロトコルをジェネリック制約として使用することです。ジェネリック制約を持つコードは、プロトコルに準拠する任意の型を扱うことができ、特定の型は API を使用する側のコードで選択されます。例えば、引数を取る関数を呼び出したとき、その引数の型がジェネリックであれば、呼び出し元がその型を選びます。
 
-* 関数、メソッド、またはイニシャライザのパラメータの型または戻り値の型として
-* 定数、変数、またはプロパティの型として
-* 配列、辞書、またはその他のコンテナ内のアイテムの型として
+Opaque 型を持つコードは、プロトコルに準拠した何らかの型を使って機能します。基本的な型はコンパイル時に判明し、API 実装はその型を選択しますが、その型の正体は API のクライアントから隠されています。例えば、ある関数の戻り値の型を隠し、その値があるプロトコルに準拠していることだけを保証します。
 
-> NOTE  
-> プロトコルは型であるため、他の型 \(`Int`、`String`、`Double` など\) と同じように名前を大文字で始めます。\(`FullyNamed` や `RandomNumberGenerator` など\)
+Box プロトコル型を持つコードは、プロトコルに準拠する、実行時に選択された任意の型で動作します。この実行時の柔軟性をサポートするために、Swift は必要なときに間接的なレイヤーを追加します。これは、*ボックス*として知られており、これはパフォーマンスコストを伴います。この柔軟性が理由で、Swift はコンパイル時に基礎となる型を知らなりません。つまり、プロトコルによって必要とされるメンバのみにアクセスできることを意味します。基礎となる型で定義された他の API にアクセスするには、実行時にキャストが必要です。
 
-型として使用されるプロトコルの例を次に示します:
-
-```swift
-class Dice {
-    let sides: Int
-    let generator: RandomNumberGenerator
-    init(sides: Int, generator: RandomNumberGenerator) {
-        self.sides = sides
-        self.generator = generator
-    }
-    func roll() -> Int {
-        return Int(generator.random() * Double(sides)) + 1
-    }
-}
-```
-
-この例では、ボードゲームで使用する n 面のサイコロを表す `Dice` という新しいクラスを定義しています。`Dice` のインスタンスには、側面の数を表す `sides` と呼ばれる整数のプロパティと、ダイスの出目を作成するための乱数ジェネレータを提供する `generator` と呼ばれるプロパティがあります。
-
-`generator` プロパティの型は `RandomNumberGenerator` です。したがって、`RandomNumberGenerator` プロトコルに準拠する任意の型のインスタンスを設定できます。このプロパティに割り当てるインスタンスには、インスタンスが `RandomNumberGenerator` プロトコルに準拠する必要があることを除いて、他に何も必要ありません。型は `RandomNumberGenerator` なので、`Dice` クラス内のコードは、このプロトコルに準拠する `generator` のみを使用できます。つまり、その具体的なジェネレータの型で定義されているメソッドやプロパティを使用することはできません。ただし、[Downcasting\(ダウンキャスト\)](../language-guide/type-casting.md#downcasting)で説明されているように、スーパークラスからサブクラスにダウンキャストできるのと同じ方法で、プロトコル型から準拠した具体的な型にダウンキャストできます。
-
-`Dice` には、初期状態を設定するためのイニシャライザもあります。このイニシャライザには、`RandomNumberGenerator` 型の `generator` と呼ばれるパラメータがあります。新しい `Dice` インスタンスを初期化するときに、このパラメータに `RandomNumberGenerator` に準拠する型の値を渡すことができます。
-
-`Dice` は、1 からサイコロの面の数までの整数値を返す 1 つのインスタンスメソッド、`roll` を提供しています。このメソッドは、ジェネレータの `random()` メソッドを呼び出して `0.0` から `1.0` の間の新しい乱数を作成し、この乱数を使用して正しい範囲内でサイコロの目を作成します。`generator` は `RandomNumberGenerator` に準拠することがわかっているため、呼び出すべき `random()` メソッドが存在していることは保証されています。
-
-`Dice` クラスを使用して、`LinearCongruentialGenerator` インスタンスを乱数ジェネレータとして使用して、6 面体のサイコロを作成する方法を次に示します:
-
-```swift
-var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
-for _ in 1...5 {
-    print("Random dice roll is \(d6.roll())")
-}
-// Random dice roll is 3
-// Random dice roll is 5
-// Random dice roll is 4
-// Random dice roll is 5
-// Random dice roll is 4
-```
+プロトコルをジェネリック制約として使用することについては、[ジェネリクス\(Generics\)](../language-guide/generics.md)を参照してください。Opaque 型と Box プロトコル型については、[Opaque 型とBox プロトコル型\(Opaque Types and Boxed Types\)](language-guide/opaque-types.md)を参照してください。
 
 ## <a id="delegation">委譲\(Delegation\)</a>
 
