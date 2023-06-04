@@ -1,6 +1,6 @@
 # 属性\(Attributes\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2023/6/3  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Attributes.html
 
 宣言と型に情報を追加する。

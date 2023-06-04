@@ -270,6 +270,8 @@ f(x as Any)
 >
 > *primary-expression* → *wildcard-expression*
 >
+> *primary-expression* → *macro-expansion-expression*
+>
 > *primary-expression* → *key-path-expression*
 >
 > *primary-expression* → *selector-expression*
@@ -754,6 +756,26 @@ _タプル式_の各識別子は、タプル式の範囲内で一意な必要が
 > Grammar of a wildcard expression:
 >
 > *wildcard-expression* → **`_`**
+
+### マクロ展開式\(Macro-Expansion Expression\)
+
+*マクロ展開式*は、マクロ名と、その後ろに括弧で囲んだカンマ区切りのマクロ引数のリストで構成されます。  
+マクロはコンパイル時に展開されます。  
+マクロ展開式は次のような形式をとります:
+
+```swift
+<#macro name#>(<#macro argument 1#>, <#macro argument 2#>)
+```
+
+マクロ展開式では、引数がない場合は括弧を省略します。
+
+マクロ式は、Swift 標準ライブラリの[`file`](http://developer.apple.com/documentation/swift/documentation/swift/file)と[`line`](http://developer.apple.com/documentation/swift/documentation/swift/line)マクロを除いて、パラメータのデフォルト値に使用することはできません。
+
+関数やメソッドのパラメータのデフォルト値として使用される場合、これらのマクロの値はデフォルト値式が呼び出し先で評価されたときに決定されます。
+
+> Grammar of a macro-expansion expression:
+>
+> *macro-expansion-expression* → **`#`** *identifier* *generic-argument-clause*_?_ *function-call-argument-clause*_?_ *trailing-closures*_?_
 
 ### <a id="keypath-expression">KeyPath 式\(Key-Path Expression\)</a>
 

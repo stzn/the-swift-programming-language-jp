@@ -24,6 +24,8 @@ Swift では、ほとんどの宣言は、宣言されているのと同時に�
 > declaration → [extension-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_extension-declaration)  
 > declaration → [subscript-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-declaration)  
 > declaration → [operator-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_operator-declaration)  
+> *declaration* → *macro-declaration*  
+>
 > declaration → [precedence-group-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-declaration)  
 > declarations → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) [declarations](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declarations)<sub>opt</sub>
 
@@ -1174,6 +1176,33 @@ _parameters_ または _return type_ がオーバーロードしているもの�
 > subscript-declaration → [subscript-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-head) [subscript-result](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-result) [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub> [getter-setter-keyword-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-setter-keyword-block)  
 > subscript-head → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>opt</sub> `subscript` [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>opt</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)  
 > subscript-result → `->` [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
+
+## マクロ宣言\(Macro Declaration\)
+
+*マクロ宣言*は新しいマクロを導入するものです。これは `macro` キーワードで始まり、次のような形式です:
+
+```swift
+macro <#name#> = <#macro implementation#>
+```
+
+*マクロ実装*は別のマクロで、このマクロの展開を行うコードの場所を示しています。Swift 標準ライブラリの `externalMacro(module:type:)` マクロを呼び出し、 マクロの実装を含む型の名前と、その型を含むモジュールの名前を渡します。
+
+マクロは、関数と同じ形でオーバーロードすることができます。
+マクロ宣言は、ファイルスコープにのみ表示されます。
+
+より詳細は[マクロ\(Macros\)](../language-guide/macros.md)を参照ください。
+
+> Grammar of a macro declaration:
+>
+> *macro-declaration* → *macro-head* *identifier* *generic-parameter-clause*_?_ *macro-signature* *macro-definition*_?_ *generic-where-clause*
+>
+> *macro-head* → *attributes*_?_ *declaration-modifiers*_?_ **`macro`**
+>
+> *macro-signature* → *parameter-clause* *macro-function-signature-result*_?_
+>
+> *macro-function-signature-result* → **`->`** *type*
+>
+> *macro-definition* → **`=`** *expression*
 
 ## <a id="operator-declaration">演算子宣言\(Operator Declaration\)</a>
 

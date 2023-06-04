@@ -135,7 +135,7 @@ public macro OptionSet<RawType>() =
 
 上記の宣言では、`@attached(member)` マクロは、`@OptionSet` マクロが生成する各シンボルの `named:` ラベルの後に引数を含んでいます。マクロは、`RawValue`、`rawValue`、`init` という名前のシンボルに対する宣言を追加します --- これらの名前は前もってわかっているので、マクロ宣言はそれらを明示的にリストアップします。
 また、マクロ宣言には名前のリストの後に `arbitrary` が含まれており、これは、マクロを使用するまで名前がわからない宣言をマクロで生成できるようにします。この場合、private な `Options` の `enum` の各 `case` に対して、`@OptionSet` は同じ名前を持つそれぞれの case に対応する宣言を生成します。
-マクロの役割の全リストを含む詳細については、[Attributes]を参照してください。
+マクロの役割の全リストを含む詳細については、[属性\(Attributes\)](../language-reference/attributes.md)を参照してください。
 
 ## マクロ展開
 
@@ -272,7 +272,7 @@ private func fourCharacterCode(for characters: String) -> UInt32? {
 enum CustomError: Error { case message(String) }
 ```
 
-`#fourCharacterCode` マクロは、式を生成する自立式マクロなので、これを実装した `FourCharacterCode` 型は、 `ExpressionMacro` プロトコルに準拠します。`ExpressionMacro` プロトコルの要件は 1 つで、AST を展開する `expansion(of:in:)` メソッドです。マクロの役割とそれに対応する `SwiftSystem` プロトコルのリストについては、[Attributes]の[Attributes attached]と [Attributes:freestanding]() を参照してください。
+`#fourCharacterCode` マクロは、式を生成する自立式マクロなので、これを実装した `FourCharacterCode` 型は、 `ExpressionMacro` プロトコルに準拠します。`ExpressionMacro` プロトコルの要件は 1 つで、AST を展開する `expansion(of:in:)` メソッドです。マクロの役割とそれに対応する `SwiftSystem` プロトコルのリストについては、[属性\(Attributes\)](../language-reference/attributes.md)の[属性\(Attributes\)のattached](../language-reference/attributes.md#attached)と[属性\(Attributes\)のfreestanding](../language-reference/attributes.md#freestanding) を参照してください。
 
 `#fourCharacterCode` マクロを展開するために、Swift はこのマクロを使用するコードの AST を、マクロの実装を含むライブラリに送信します。ライブラリの中で、Swift はメソッドの引数として AST とコンテキストを渡して `FourCharacterCode.expansion(of:in:)` を呼び出します。`expansion(of:in:)` の実装は、`#fourCharacterCode` に引数として渡された文字列を見つけ、対応する整数リテラルの値を計算します。
 
