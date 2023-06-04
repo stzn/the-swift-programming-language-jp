@@ -63,7 +63,11 @@ var reversedNames = names.sorted(by: backward)
 
 クロージャ式の構文には、次の一般的な形式があります:
 
-![&#x30AF;&#x30ED;&#x30FC;&#x30B8;&#x30E3;&#x5F0F;&#x69CB;&#x6587;](../assets/07_closureexpressionsyntax.png)
+```swift
+{ (<#parameters#>) -> <#return type#> in
+   <#statements#>
+}
+```
 
 クロージャ式構文のパラメータは、in-out パラメータをとることもできますが、デフォルト値を設定することはできません。可変長パラメータに名前を付けると、可変長パラメータを使用できます。タプルも、パラメータの型および戻り値の型として使用できます。
 
