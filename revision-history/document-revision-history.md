@@ -1,11 +1,17 @@
 # ドキュメント改訂履歴\(Document Revision History\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2023/6/6  
 原文: https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html
 
 本書に対する最近の変更点を確認する。
 
-## 2022-06-06
+## 2023-03-30
+
+* Swift 5.8 に更新しました
+* [遅延アクション\(Deferred Actions\)](../language-guide/control-flow.md#遅延アクションdeferred-actions)を追加し、エラーハンドリングの以外の `defer` の使い方を示しました
+* 全体的な細かい修正と追加
+
+## 2022-09-12
 
 * Swift 5.7 に更新しました
 * アクターとタスク間のデータ送信に関する情報を [Sendable Types](../language-guide/concurrency.md#sendable-types) セクションに追加しました。また、[@Sendable](../language-reference/attributes.md#sendable) 属性と [@unchecked](../language-reference/attributes.md#unchecked) 属性に関するセクションを追加しました
