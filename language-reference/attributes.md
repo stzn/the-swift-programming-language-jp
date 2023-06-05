@@ -465,47 +465,38 @@ s.$x.wrapper  // WrapperWithProjection 値
 
 ### resultBuilder
 
-この属性をクラス、構造体、列挙型に適用して、その型をリザルトビルダとして使用できます。_リザルトビルダ_は、ネストされたデータ構造を段階的に構築する型です。リザルトビルダを使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語\(DSL\)を実装します。`resultBuilder` 属性の使用方法の例については、[Result Builders\(リザルトビルダ\)](../language-guide/advanced-operators.md#result-builders)を参照ください。
+この属性をクラス、構造体、列挙型に適用して、その型をリザルトビルダとして使用できます。_リザルトビルダ_は、ネストされたデータ構造を段階的に構築する型です。リザルトビルダを使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語(DSL)を実装します。`resultBuilder` 属性の使用方法の例については、[Result Builders(リザルトビルダ)](../language-guide/advanced-operators.md#result-builders)を参照ください。
 
 #### Result-Building Methods
 
-リザルトビルダは、下記で説明する静的メソッドを実装します。リザルトビルダの全ての機能は静的メソッドを介して公開されるため、その型のインスタンスを初期化することはありません。`buildBlock(_:)` メソッドが必要です。DSL の追加機能を有効にする他の方法は省略可能です。リザルトビルダ型の宣言には、プロトコルの準拠を含める必要はありません。
+リザルトビルダは、下記で説明する静的メソッドを実装します。リザルトビルダの全ての機能は静的メソッドを介して公開されるため、その型のインスタンスを初期化することはありません。リザルトビルダは `buildBlock(_:)` メソッド、または `buildPartialBlock(first:)` と `buildPartialBlock(accumulated:next:)` メソッドの両方を実装する必要があります。その他のメソッド（DSL の追加機能を実現するメソッド）はオプションです。リザルトビルダ型の宣言は、実際にはプロトコルへの準拠を含む必要はありません。
 
 静的メソッドの記述では、プレースホルダとして 3 つの型を使用しています。`Expression` 型は、リザルトビルダの入力の型のプレースホルダで、`Component` は、部分的な結果の型のプレースホルダで、`FinalResult` は、リザルトビルダが生成する最終的な結果の型のプレースホルダです。これらの型を、リザルトビルダが使用する実際の型に置き換えます。リザルトビルダメソッドで `Expression` または `FinalResult` の型が指定されていない場合、デフォルトで `Component` と同じになります。
 
-リザルトビルダの作成方法は次のとおりです:
+ブロック構築メソッドは次のとおりです:
 
-static func buildBlock\(\_ components: Component...\) -&gt; Component
+- `static func buildBlock(_ components: Component...) -> Component`: 部分的な結果の配列を単一の部分的な結果に結合する
 
- 部分的な結果の配列を単一の部分的な結果に結合します。リザルトビルダは、このメソッドを実装する必要があります。
+- `static func buildPartialBlock(first: Component) -> Component`: 最初のコンポーネントから部分的な結果を構築する。このメソッドと `buildPartialBlock(accumulated:next:)` の両方を実装して、一度に 1 つのコンポーネントを構築するブロックをサポートする。`buildBlock(_:)` と比較して、この方法は、異なる数の引数を処理する汎用的なオーバーロードの必要性を減らせる
 
-static func buildOptional\(\_ component: Component?\) -&gt; Component
+- `static func buildPartialBlock(accumulated: Component, next: Component) -> Component`: 蓄積されたコンポーネントと新しいコンポーネントを組み合わせて、部分的な結果を構築する。このメソッドと `buildPartialBlock(first:)` の両方を実装して、一度に 1 つのコンポーネントを構築するブロックをサポートする。`buildBlock(_:)` と比較して、このアプローチは、異なる数の引数を処理する汎用的オーバーロードの必要性を減らせる
 
- \`nil\` になる可能性のある部分的な結果から部分的な結果を構築します。このメソッドを実装して、\`else\` 句を含まない \`if\` 文をサポートします。
+リザルトビルダは、上記のブロック構築メソッドの 3 つすべてを実装できます。その場合、アベイラビリティによってどのメソッドが呼び出されるかが決まります。デフォルトでは、Swift は `buildPartialBlock(first:)` と `buildPartialBlock(second:)` のメソッドを呼び出します。Swift が代わりに `buildBlock(_:)` を呼び出すようにするには、囲んでいる宣言のアベイラビリティが、`buildPartialBlock(first:)` と `buildPartialBlock(second:)` に書いたアベイラビリティよりも広範囲になるようにマークしてください。
 
-static func buildEither\(first: Component\) -&gt; Component
+追加の結果構築メソッドは以下の通りです:
 
- 条件によって値が変化する部分的な結果を作成します。このメソッドと \`buildEither\(second:\)\` の両方を実装して、\`switch\` 文と \`else\` 句を含む \`if\` 文をサポートします。
+- `static func buildOptional(_ component: Component?) -> Component`: `nil` になる可能性のある部分的な結果から部分的な結果を構築する。このメソッドを実装して、`else` 句を含まない `if` 文をサポートする
 
-static func buildEither\(second: Component\) -&gt; Component
+- `static func buildEither(first: Component) -> Component`: 条件によって値が変化する部分的な結果を作成する。このメソッドと `buildEither(second:)` の両方を実装して、`switch` 文と `else` 句を含む `if` 文をサポートする
 
- 条件によって値が変化する部分的な結果を作成します。このメソッドと \`buildEither\(first:\)\` の両方を実装して、\`switch\` 文と \`else\` 句を含む \`if\` 文をサポートします。
+- `static func buildEither(second: Component) -> Component`: 条件によって値が変化する部分的な結果を作成する。このメソッドと `buildEither(first:)` の両方を実装して、`switch` 文と `else` 句を含む `if` 文をサポートする
 
-static func buildArray\(\_ components: \[Component\]\) -&gt; Component
+- `static func buildArray(_ components: [Component]) -> Component`: 部分的な結果の配列から部分的な結果を構築する。このメソッドを実装して、ループをサポートする
 
- 部分的な結果の配列から部分的な結果を構築します。このメソッドを実装して、ループをサポートします。
+- `static func buildExpression(_ expression: Expression) -> Component`: 式から部分的な結果を作成する。このメソッドを実装して、前処理(例えば、式を内部型に変換する)を実行したり、使用側で型推論のための追加情報を提供したりできる
 
-static func buildExpression\(\_ expression: Expression\) -&gt; Component
-
- 式から部分的な結果を作成します。このメソッドを実装して、前処理\(例えば、式を内部型に変換する\)を実行したり、使用側で型推論のための追加情報を提供したりできます。
-
-static func buildFinalResult\(\_ component: Component\) -&gt; FinalResult
-
- 部分的な結果から最終結果を作成します。このメソッドは、部分結果と最終結果で異なる型を使用するリザルトビルダの一部として実装したり、結果を返す前に結果に対して後処理を実行したりできます。
-
-static func buildLimitedAvailability\(\_ component: Component\) -&gt; Component
-
- アベイラビリティチェックを実行するコンパイラ制御文の外部で型情報を伝播または消去する部分的な結果を作成します。これを使用して、条件分岐間で異なる型情報を消去できます。
+- `static func buildFinalResult(_ component: Component) -> FinalResult`: 部分的な結果から最終結果を作成する。このメソッドは、部分結果と最終結果で異なる型を使用するリザルトビルダの一部として実装したり、結果を返す前に結果に対して後処理を実行したりできる
+- `static func buildLimitedAvailability(_ component: Component) -> Component`: アベイラビリティチェックを実行するコンパイラ制御文の外部で型情報を伝播または消去する部分的な結果を作成する。これを使用して、条件分岐間で異なる型情報を消去できる
 
 例えば、下記のコードは、整数の配列を作成するシンプルなリザルトビルダを定義しています。このコードは、`Compontent` と `Expression` をタイプエイリアスとして定義し、下記の例を上記のメソッドのリストに簡単に一致させることができます。
 
