@@ -412,7 +412,20 @@
             
         </li>
     
-        <li class="chapter " data-level="3.19" data-path="../language-guide/type-casting.html">
+        <li class="chapter " data-level="3.19" data-path="../language-guide/macros.html">
+            
+                <a href="../language-guide/macros.html">
+            
+                    
+                    マクロ(Macros)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="../language-guide/type-casting.html">
             
                 <a href="../language-guide/type-casting.html">
             
@@ -425,7 +438,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.20" data-path="../language-guide/nested-types.html">
+        <li class="chapter " data-level="3.21" data-path="../language-guide/nested-types.html">
             
                 <a href="../language-guide/nested-types.html">
             
@@ -438,7 +451,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.21" data-path="../language-guide/extensions.html">
+        <li class="chapter " data-level="3.22" data-path="../language-guide/extensions.html">
             
                 <a href="../language-guide/extensions.html">
             
@@ -451,7 +464,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.22" data-path="../language-guide/protocols.html">
+        <li class="chapter " data-level="3.23" data-path="../language-guide/protocols.html">
             
                 <a href="../language-guide/protocols.html">
             
@@ -464,7 +477,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.23" data-path="../language-guide/generics.html">
+        <li class="chapter " data-level="3.24" data-path="../language-guide/generics.html">
             
                 <a href="../language-guide/generics.html">
             
@@ -477,7 +490,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.24" data-path="../language-guide/opaque-types.html">
+        <li class="chapter " data-level="3.25" data-path="../language-guide/opaque-types.html">
             
                 <a href="../language-guide/opaque-types.html">
             
@@ -490,7 +503,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.25" data-path="../language-guide/automatic-reference-counting.html">
+        <li class="chapter " data-level="3.26" data-path="../language-guide/automatic-reference-counting.html">
             
                 <a href="../language-guide/automatic-reference-counting.html">
             
@@ -503,7 +516,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.26" data-path="../language-guide/memory-safety.html">
+        <li class="chapter " data-level="3.27" data-path="../language-guide/memory-safety.html">
             
                 <a href="../language-guide/memory-safety.html">
             
@@ -516,7 +529,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.27" data-path="../language-guide/access-control.html">
+        <li class="chapter " data-level="3.28" data-path="../language-guide/access-control.html">
             
                 <a href="../language-guide/access-control.html">
             
@@ -529,7 +542,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.28" data-path="../language-guide/advanced-operators.html">
+        <li class="chapter " data-level="3.29" data-path="../language-guide/advanced-operators.html">
             
                 <a href="../language-guide/advanced-operators.html">
             
@@ -745,14 +758,35 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="属性attributes">属性(Attributes)</h1>
-<p>最終更新日: 2022/12/3<br>原文: <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html" target="_blank">https://docs.swift.org/swift-book/ReferenceManual/Attributes.html</a></p>
+<p>最終更新日: 2023/6/3<br>原文: <a href="https://docs.swift.org/swift-book/ReferenceManual/Attributes.html" target="_blank">https://docs.swift.org/swift-book/ReferenceManual/Attributes.html</a></p>
 <p>宣言と型に情報を追加する。</p>
 <p>Swift には、宣言に適用される属性と型に適用される属性の 2 種類があります。属性は、宣言または型に関する追加情報を提供します。例えば、関数宣言の <code>discardableResult</code> 属性は、関数は値を返しますが、戻り値が使用されていない場合に、コンパイラが警告を生成しないことを示します。</p>
 <p><code>@</code> 記号に続けて属性の名前と、属性が受け入れる引数を書き込むことにより、属性を指定します。</p>
-<p><img src="../assets/attributes.png" alt="属性"></p>
+<pre class="language-"><code class="lang-swift">@<span class="token operator">&lt;</span><span class="token other-directive property">#attribute</span> name#<span class="token operator">&gt;</span>
+@<span class="token operator">&lt;</span><span class="token other-directive property">#attribute</span> name#<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token other-directive property">#attribute</span> arguments#<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+</code></pre>
 <p>一部の宣言属性は、属性とそれが特定の宣言にどのように適用されるかについての詳細情報を指定する引数を受け入れます。これらの <em>attribute arguments</em> は括弧(<code>()</code>)で囲まれ、その形式は属する属性によって定義されています。</p>
 <h2 id="宣言属性declaration-attributes"><a id="declaration-attributes">宣言属性(Declaration Attributes)</a></h2>
 <p>宣言属性は宣言にのみ適用できます。</p>
+<h3 id="attached">attached</h3>
+<p>マクロ宣言に <code>attached</code> 属性を適用します。この属性の引数は、マクロの役割を示します。複数の役割を持つマクロの場合、各役割に対して 1 回ずつ、<code>attached</code> マクロを複数回適用します。</p>
+<p>この属性の最初の引数は、マクロの役割を示します:</p>
+<ul>
+<li>ピアマクロ(Peer macros): この属性の第 1 引数に <code>peer</code> を書く。このマクロを実装する型は、<code>PeerMacro</code> プロトコルに準拠する。これらのマクロは、マクロが添付されている宣言と同じスコープで新しい宣言を生成する。例えば、構造体のメソッドにピアマクロを適用すると、その構造体に追加のメソッドとプロパティを定義することができる</li>
+<li>メンバマクロ(Member macro): この属性の最初の引数として <code>member</code> を記述する。このマクロを実装する型は、<code>MemberMacro</code> プロトコルに準拠する。これらのマクロは、マクロが添付されている型または <code>extension</code> のメンバの新しい宣言を生成する。例えば、構造体宣言にメンバマクロを適用すると、その構造体に追加のメソッドとプロパティを定義できる</li>
+<li>メンバ属性(Member attribute): この属性の第 1 引数として <code>memberAttribute</code> を書く。このマクロを実装する型は、MemberAttributeMacro プロトコルに準拠する。これらのマクロは、マクロが添付されている型または <code>extension</code> のメンバに属性を追加する</li>
+<li>アクセサマクロ(Accessor macros): この属性の第 1 引数としてアクセサを書く。このマクロを実装する型は <code>AccessorMacro</code> プロトコルに準拠する。これらのマクロは、マクロが添付されている格納プロパティにアクセサを追加し、それを計算プロパティに変換する</li>
+<li>Conformance マクロ(Conformance macros): この属性の最初の引数として準拠するプロトコルを書く。このマクロを実装した型は、<code>ConformanceMacro</code> プロトコルに準拠する。これらのマクロは、マクロが添付されている型にプロトコルへの準拠を追加する</li>
+</ul>
+<p>ピアメンバおよびアクセサマクロには、マクロが生成するシンボルの名前を列挙した <code>named:</code> 引数が必要です。マクロ宣言に <code>named:</code> 引数が含まれる場合、マクロの実装は、そのリストに一致する名前を持つシンボルだけを生成しなければなりません。とはいえ、マクロはリストされたすべての名前に対してシンボルを生成する必要はありません。この引数の値は、以下の 1 つ以上のリストです:</p>
+<ul>
+<li><code>named(<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>#name#</span><span class="token punctuation">&gt;</span></span>)</code> あらかじめ分かっている名前に対して固定のシンボル名を付与する<em>名前</em></li>
+<li><code>overloaded</code> 既存のシンボルと同じ名前に対して上書きする</li>
+<li><code>prefixed(<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>#prefix#</span><span class="token punctuation">&gt;</span></span>)</code> 固定の文字列で始まる名前のシンボル名の前に付加される<em>プレフィックス</em></li>
+<li><code>suffixed(<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>#suffix#</span><span class="token punctuation">&gt;</span></span>)</code> 固定の文字列で終わる名前のシンボル名の後に付加される<em>サフィックス</em></li>
+<li><code>arbitrary</code> マクロが展開するまで確定できない名前に対して付与する</li>
+</ul>
+<p>特殊なケースとして、プロパティラッパに似た動作をするマクロに <code>prefixed($)</code> を書くことができます。</p>
 <h3 id="available">available</h3>
 <p>この属性を適用すると、特定の Swift 言語バージョンまたは特定のプラットフォームとオペレーティングシステムのバージョンに関連する宣言のライフサイクルを示します。</p>
 <p><code>available</code> 属性は、常に 2 つ以上のカンマ区切り(<code>,</code>)の属性引数のリストを伴います。これらの引数は、次のプラットフォーム名または言語名のいずれかで始まります:</p>
@@ -773,29 +807,39 @@
 <p>残りの引数は任意の順序で記述でき、重要なマイルストーンなど、宣言のライフサイクルに関する追加情報を指定できます。</p>
 <ul>
 <li><code>unavailable</code> 引数は、指定されたプラットフォームで宣言が使用できないことを示します。この引数は、Swift のアベイラビリティバージョンを指定している場合は使用できません</li>
-<li><code>introduced</code> 引数は、宣言が導入された特定のプラットフォームまたは言語の最初のバージョンを示します。形式は次のとおりです:</li>
+<li><p><code>introduced</code> 引数は、宣言が導入された特定のプラットフォームまたは言語の最初のバージョンを示します。形式は次のとおりです:</p>
+<pre class="language-"><code class="lang-swift">introduced<span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token other-directive property">#version</span> number#<span class="token operator">&gt;</span>
+</code></pre>
+</li>
 </ul>
-<p><img src="../assets/introduced.png" alt="introduced 引数"></p>
 <p><em>version number</em> は、ピリオド(<code>.</code>)で区切られた 1〜3 個の正の整数で構成されます。</p>
 <ul>
-<li><code>deprecated</code> 引数は、宣言が非推奨になった特定のプラットフォームまたは言語の最初のバージョンを示します。形式は次のとおりです:</li>
+<li><p><code>deprecated</code> 引数は、宣言が非推奨になった特定のプラットフォームまたは言語の最初のバージョンを示します。形式は次のとおりです:</p>
+<pre class="language-"><code class="lang-swift">deprecated<span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token other-directive property">#version</span> number#<span class="token operator">&gt;</span>
+</code></pre>
+</li>
 </ul>
-<p><img src="../assets/deprecated.png" alt="deprecated 引数"></p>
 <p>任意の <em>version number</em> は、ピリオド(<code>.</code>)で区切られた 1〜3 個の正の整数で構成されます。バージョン番号を省略すると、deprecated がいつ発生したかについての情報を提供せずに、宣言が現在 deprecated になっていることのみを示します。バージョン番号を省略する場合は、コロン(<code>:</code>)も省略してください。</p>
 <ul>
-<li><code>obsoleted</code> 引数は、宣言が廃止された特定のプラットフォームまたは言語の最初のバージョンを示します。宣言が廃止されると、指定されたプラットフォームまたは言語から削除され、使用できなくなります。形式は次のとおりです:</li>
+<li><p><code>obsoleted</code> 引数は、宣言が廃止された特定のプラットフォームまたは言語の最初のバージョンを示します。宣言が廃止されると、指定されたプラットフォームまたは言語から削除され、使用できなくなります。形式は次のとおりです:</p>
+<pre class="language-"><code class="lang-swift">obsoleted<span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token other-directive property">#version</span> number#<span class="token operator">&gt;</span>
+</code></pre>
+</li>
 </ul>
-<p><img src="../assets/obsoleted.png" alt="obsoleted 引数"></p>
 <p><em>version number</em> は、ピリオド(<code>.</code>)で区切られた 1〜3 個の正の整数で構成されます。</p>
 <ul>
-<li><code>message</code> 引数は、deprecated または obsoleted された宣言に使用した際に、コンパイラが表示する警告またはエラーのテキストメッセージを提供します。形式は次のとおりです:</li>
+<li><p><code>message</code> 引数は、deprecated または obsoleted された宣言に使用した際に、コンパイラが表示する警告またはエラーのテキストメッセージを提供します。形式は次のとおりです:</p>
+<pre class="language-"><code class="lang-swift">message<span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token other-directive property">#message</span>#<span class="token operator">&gt;</span>
+</code></pre>
+</li>
 </ul>
-<p><img src="../assets/message.png" alt="message 引数"></p>
 <p><em>message</em> は文字列リテラルで構成されます。</p>
 <ul>
-<li><code>renamed</code> 引数は、名前が変更された宣言の新しい名前を示すテキストメッセージを提供します。コンパイラは、名前が変更された宣言が使用された際にエラーを発行し、新しい名前を表示します。形式は次のとおりです:</li>
+<li><p><code>renamed</code> 引数は、名前が変更された宣言の新しい名前を示すテキストメッセージを提供します。コンパイラは、名前が変更された宣言が使用された際にエラーを発行し、新しい名前を表示します。形式は次のとおりです:</p>
+<pre class="language-"><code class="lang-swift">renamed<span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token other-directive property">#new</span> name#<span class="token operator">&gt;</span>
+</code></pre>
+</li>
 </ul>
-<p><img src="../assets/renamed.png" alt="renamed 引数"></p>
 <p><em>new name</em> は文字列リテラルで構成されます。</p>
 <p>下記に示すように、フレームワークまたはライブラリのリリース間で宣言の名前が変更されたことを示すために、タイプエイリアス宣言に <code>renamed</code> 引数と <code>unavailable</code> 引数を持つ <code>available</code> 属性を適用することができます。この組み合わせにより、宣言の名前が変更されたというコンパイルエラーが発生します。</p>
 <pre class="language-"><code class="lang-swift"><span class="token comment">// 初回リリース</span>
@@ -813,7 +857,9 @@
 </code></pre>
 <p>1 つの宣言に複数の <code>available</code> 属性を適用して、様々なプラットフォームおよび様々なバージョンの Swift のアベイラビリティを指定できます。属性が現在のターゲットと一致しないプラットフォームまたは言語バージョンを指定している場合、<code>available</code> 属性が適用される宣言は無視されます。複数の <code>available</code> 属性を使用する場合、有効なアベイラビリティは、プラットフォームと Swift のアベイラビリティの組み合わせです。</p>
 <p><code>available</code> 属性がプラットフォームまたは言語名の引数に加えて <code>introduced</code> 引数を指定するだけの場合は、代わりに次の省略構文を使用できます:</p>
-<p><img src="../assets/available.png" alt="available属性"></p>
+<pre class="language-"><code class="lang-swift"><span class="token attribute atrule">@available</span><span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token other-directive property">#platform</span> name#<span class="token operator">&gt;</span> <span class="token operator">&lt;</span><span class="token other-directive property">#version</span> number#<span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">)</span>
+<span class="token attribute atrule">@available</span><span class="token punctuation">(</span>swift <span class="token operator">&lt;</span><span class="token other-directive property">#version</span> number#<span class="token operator">&gt;</span><span class="token punctuation">)</span>
+</code></pre>
 <p><code>available</code> 属性の省略構文は、複数のプラットフォームのアベイラビリティを簡潔に表しています。2 つの形式は機能的に同等ですが、可能な限り省略形が推奨されます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token attribute atrule">@available</span><span class="token punctuation">(</span>iOS <span class="token number">10.0</span><span class="token punctuation">,</span> macOS <span class="token number">10.12</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">)</span>
 <span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">{</span>
@@ -921,6 +967,8 @@ dial<span class="token punctuation">.</span><span class="token function">dynamic
 <span class="token keyword">let</span> wrapper <span class="token operator">=</span> <span class="token class-name">PassthroughWrapper</span><span class="token punctuation">(</span>value<span class="token punctuation">:</span> point<span class="token punctuation">)</span>
 <span class="token function">print</span><span class="token punctuation">(</span>wrapper<span class="token punctuation">.</span>x<span class="token punctuation">)</span>
 </code></pre>
+<h3 id="freestanding">freestanding</h3>
+<p>自立型マクロの宣言に <code>freestanding</code> 属性を適用する。</p>
 <h3 id="frozen">frozen</h3>
 <p>この属性を構造体または列挙型宣言に適用すると、型に加えることができる変更の種類を制限します。この属性は、ライブラリエボリューションモードでコンパイルする場合にのみ許可されます。ライブラリの将来のバージョンでは、列挙型のケースまたは構造体の格納インスタンスプロパティを追加、削除、または並べ替えて宣言を変更することはできません。これらの変更は nonfrozen 型で許可されますが、frozen 型の ABI 互換性が損なわれます。</p>
 <blockquote>
@@ -1367,7 +1415,7 @@ s<span class="token punctuation">.</span>$x<span class="token punctuation">.</sp
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"属性(Attributes)","level":"4.7","depth":1,"next":{"title":"パターン(Patterns)","level":"4.8","depth":1,"path":"language-reference/patterns.md","ref":"language-reference/patterns.md","articles":[]},"previous":{"title":"宣言(Declarations)","level":"4.6","depth":1,"path":"language-reference/declarations.md","ref":"language-reference/declarations.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-reference/attributes.md","mtime":"2023-06-05T19:23:15.413Z","type":"markdown"},"gitbook":{"version":"3.7.5","time":"2023-06-05T19:23:43.666Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"属性(Attributes)","level":"4.7","depth":1,"next":{"title":"パターン(Patterns)","level":"4.8","depth":1,"path":"language-reference/patterns.md","ref":"language-reference/patterns.md","articles":[]},"previous":{"title":"宣言(Declarations)","level":"4.6","depth":1,"path":"language-reference/declarations.md","ref":"language-reference/declarations.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-reference/attributes.md","mtime":"2023-06-06T18:19:21.559Z","type":"markdown"},"gitbook":{"version":"3.7.5","time":"2023-06-06T18:19:46.028Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1,0 +1,1143 @@
+
+<!DOCTYPE HTML>
+<html lang="ja" >
+    <head>
+        <meta charset="UTF-8">
+        <title>マクロ(Macros) · The Swift Programming Language日本語版</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 3.7.5">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="type-casting.html" />
+    
+    
+    <link rel="prev" href="concurrency.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="検索ワードを入力" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    The Swift Programming Language(日本語版)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Swiftへようこそ(WELCOME TO SWIFT)</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../welcome-to-swift/about-swift.html">
+            
+                <a href="../welcome-to-swift/about-swift.html">
+            
+                    
+                    Swiftについて(About Swift)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../welcome-to-swift/version-compatibility.html">
+            
+                <a href="../welcome-to-swift/version-compatibility.html">
+            
+                    
+                    バージョン互換性(Version Compatibility)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../welcome-to-swift/a-swift-tour.html">
+            
+                <a href="../welcome-to-swift/a-swift-tour.html">
+            
+                    
+                    Swiftツアー(A Swift Tour)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">言語ガイド(LANGUAGE GUIDE)</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="the-basics.html">
+            
+                <a href="the-basics.html">
+            
+                    
+                    基本(The Basics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="basic-operators.html">
+            
+                <a href="basic-operators.html">
+            
+                    
+                    基本演算子(Basic Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="strings-and-characters.html">
+            
+                <a href="strings-and-characters.html">
+            
+                    
+                    文字と文字列(Strings and Characters)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="collection-types.html">
+            
+                <a href="collection-types.html">
+            
+                    
+                    コレクション型(Collection Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="control-flow.html">
+            
+                <a href="control-flow.html">
+            
+                    
+                    制御フロー(Control Flow)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="functions.html">
+            
+                <a href="functions.html">
+            
+                    
+                    関数(Functions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="closures.html">
+            
+                <a href="closures.html">
+            
+                    
+                    クロージャ(Closures)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="enumerations.html">
+            
+                <a href="enumerations.html">
+            
+                    
+                    列挙型(Enumerations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="structures-and-classes.html">
+            
+                <a href="structures-and-classes.html">
+            
+                    
+                    構造体とクラス(Structures and Classes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="properties.html">
+            
+                <a href="properties.html">
+            
+                    
+                    プロパティ(Properties)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="methods.html">
+            
+                <a href="methods.html">
+            
+                    
+                    メソッド(Methods)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="subscripts.html">
+            
+                <a href="subscripts.html">
+            
+                    
+                    サブスクリプト(Subscripts)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="inheritance.html">
+            
+                <a href="inheritance.html">
+            
+                    
+                    継承(Inheritance)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="initialization.html">
+            
+                <a href="initialization.html">
+            
+                    
+                    初期化(Initialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="deinitialization.html">
+            
+                <a href="deinitialization.html">
+            
+                    
+                    デイニシャライゼーション(Deinitialization)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="optional-chaining.html">
+            
+                <a href="optional-chaining.html">
+            
+                    
+                    オプショナルチェーン(Optional Chaining)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="error-handling.html">
+            
+                <a href="error-handling.html">
+            
+                    
+                    エラー処理(Error Handling)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="concurrency.html">
+            
+                <a href="concurrency.html">
+            
+                    
+                    同時並行処理(Concurrency)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.19" data-path="macros.html">
+            
+                <a href="macros.html">
+            
+                    
+                    マクロ(Macros)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="type-casting.html">
+            
+                <a href="type-casting.html">
+            
+                    
+                    型キャスト(Type Casting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.21" data-path="nested-types.html">
+            
+                <a href="nested-types.html">
+            
+                    
+                    ネスト型(Nested Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.22" data-path="extensions.html">
+            
+                <a href="extensions.html">
+            
+                    
+                    拡張(Extensions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.23" data-path="protocols.html">
+            
+                <a href="protocols.html">
+            
+                    
+                    プロトコル(Protocols)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.24" data-path="generics.html">
+            
+                <a href="generics.html">
+            
+                    
+                    ジェネリクス(Generics)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.25" data-path="opaque-types.html">
+            
+                <a href="opaque-types.html">
+            
+                    
+                    Opaque 型とBox プロトコル型(Opaque Types and Boxed Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.26" data-path="automatic-reference-counting.html">
+            
+                <a href="automatic-reference-counting.html">
+            
+                    
+                    自動参照カウント ARC(Automatic Reference Counting)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.27" data-path="memory-safety.html">
+            
+                <a href="memory-safety.html">
+            
+                    
+                    メモリ安全性(Memory Safety)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.28" data-path="access-control.html">
+            
+                <a href="access-control.html">
+            
+                    
+                    アクセスコントロール(Access Control)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.29" data-path="advanced-operators.html">
+            
+                <a href="advanced-operators.html">
+            
+                    
+                    高度な演算子(Advanced Operators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">言語リファレンス(LANGUAGE REFERENCE)</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../language-reference/about-the-language-reference.html">
+            
+                <a href="../language-reference/about-the-language-reference.html">
+            
+                    
+                    言語リファレンスについて(About the Language Reference)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../language-reference/lexical-structure.html">
+            
+                <a href="../language-reference/lexical-structure.html">
+            
+                    
+                    字句構造(Lexical Structure)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../language-reference/types.html">
+            
+                <a href="../language-reference/types.html">
+            
+                    
+                    型(Types)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../language-reference/expressions.html">
+            
+                <a href="../language-reference/expressions.html">
+            
+                    
+                    式(Expressions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../language-reference/statements.html">
+            
+                <a href="../language-reference/statements.html">
+            
+                    
+                    文(Statements)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../language-reference/declarations.html">
+            
+                <a href="../language-reference/declarations.html">
+            
+                    
+                    宣言(Declarations)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../language-reference/attributes.html">
+            
+                <a href="../language-reference/attributes.html">
+            
+                    
+                    属性(Attributes)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../language-reference/patterns.html">
+            
+                <a href="../language-reference/patterns.html">
+            
+                    
+                    パターン(Patterns)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../language-reference/generic-parameters-and-arguments.html">
+            
+                <a href="../language-reference/generic-parameters-and-arguments.html">
+            
+                    
+                    ジェネリックパラメータと引数(Generic Parameters and Arguments)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="../language-reference/summary-of-the-grammar.html">
+            
+                <a href="../language-reference/summary-of-the-grammar.html">
+            
+                    
+                    文法のまとめ(Summary of the Grammar)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">REVISION HISTORY (改訂履歴)</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../revision-history/document-revision-history.html">
+            
+                <a href="../revision-history/document-revision-history.html">
+            
+                    
+                    ドキュメント改訂履歴(Document Revision History)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            HonKitで公開 
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >マクロ(Macros)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="マクロmacros">マクロ(Macros)</h1>
+<p>最終更新日: 2023/6/3<br>原文: <a href="https://docs.swift.org/swift-book/documentation/the-swift-programming-language/macros" target="_blank">https://docs.swift.org/swift-book/documentation/the-swift-programming-language/macros</a></p>
+<p>繰り返しコードを生成するために、コンパイル時にコードを変換します。</p>
+<p>マクロは、ソースコードのコンパイル時にコードを変換し、あなたが繰り返し同じコードを手で書く手間を省いてくれます。コンパイルの間、Swift は、通常通りのコードの構築をする前にマクロを展開します。</p>
+<p><img src="../assets/macro-expansion%402x.png" alt="マクロ展開の概要を示す図。左側は、Swiftのコードを様式化したもの。右は、マクロによって数行が追加された同じコード。"></p>
+<p>マクロを展開することは、常に加算操作です。つまり、マクロは新しいコードを追加しますが、既存のコードを削除したり修正したりすることはありません。</p>
+<p>マクロへの入力とマクロ展開の出力の両方が、構文的に有効な Swift コードであることを確認するためにチェックされます。同様に、マクロに渡す値とマクロによって生成されるコードの値は、それらが正しい型であるかを確認するためにチェックされます。さらに、マクロの実装がそのマクロを展開するときにエラーが発生した場合、コンパイラはこれをコンパイルエラーとして扱います。これらの保証により、マクロを使用するコードの推論が容易になり、マクロの使い方が間違っている、マクロの実装にバグがある、などの問題を特定しやすくなります。</p>
+<p>Swift には 2 種類のマクロがあります:</p>
+<ul>
+<li><em>自立型マクロ</em>は、宣言に添付されることなく、それ自体独立して表示されます</li>
+<li><em>付属型マクロ</em>は、それが添付されている宣言を変更します</li>
+</ul>
+<p>付属型マクロと自立型マクロの呼び出し方は若干異なりますが、どちらもマクロ展開のための同じモデルに従っており、同じ手法で両方を実装します。以下のセクションでは、この 2 種類のマクロについてより詳しく説明します。</p>
+<h2 id="自立型マクロ">自立型マクロ</h2>
+<p>自立型マクロを呼び出すには、その名前の前に数字記号(<code>#</code>)を書き、その名前の後の括弧内にマクロの引数を書きます。たとえば、次のようになります:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> currentFunctionName <span class="token operator">=</span> <span class="token literal constant">#function</span>
+<span class="token other-directive property">#warning</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;何かが間違っています&quot;</span></span><span class="token punctuation">)</span>
+</code></pre>
+<p>最初の行で、<code>#function</code> は Swift 標準ライブラリから <code>function</code> マクロを呼び出します。このコードをコンパイルするとき、Swift は、<code>#function</code> を現在の関数の名前に置き換えるマクロの実装を呼び出します。2 行目では、<code>#warning</code> は、カスタムコンパイル時の警告を生成するために標準ライブラリから別のマクロを呼び出します。</p>
+<p>自立型マクロは、<code>#function</code> のように値を生成したり、または <code>#warning</code> のようにコンパイル時にアクションを実行できます。</p>
+<h2 id="付属型マクロ">付属型マクロ</h2>
+<p>付属型マクロを呼び出すには、名前の前にアットマーク(<code>@</code>)を書き、名前の後の括弧の中にマクロの引数を書きます。</p>
+<p>付属型マクロは、それが添付されている宣言を変更します。例えば、新しいメソッドを定義したり、プロトコルに準拠するコードを追加したりします。</p>
+<p>例えば、マクロを使用しない次のようなコードを考えてみましょう:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token class-name">SundaeToppings</span><span class="token punctuation">:</span> <span class="token class-name">OptionSet</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> rawValue<span class="token punctuation">:</span> <span class="token class-name">Int</span>
+    <span class="token keyword">static</span> <span class="token keyword">let</span> nuts <span class="token operator">=</span> <span class="token class-name">SundaeToppings</span><span class="token punctuation">(</span>rawValue<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">static</span> <span class="token keyword">let</span> cherry <span class="token operator">=</span> <span class="token class-name">SundaeToppings</span><span class="token punctuation">(</span>rawValue<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">static</span> <span class="token keyword">let</span> fudge <span class="token operator">=</span> <span class="token class-name">SundaeToppings</span><span class="token punctuation">(</span>rawValue<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>このコードでは、<code>SundaeToppings</code> オプションセットの各オプションに、イニシャライザの呼び出しが含まれており、これは繰り返し手で書かなければなりません。そのため、新しいオプションを追加するときに、行末に間違った数字を入力するなどのミスを犯しやすいでしょう。</p>
+<p>ここでは、このコードの代わりにマクロを使用したバージョンを紹介します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token attribute atrule">@OptionSet</span><span class="token operator">&lt;</span><span class="token class-name">Int</span><span class="token operator">&gt;</span>
+<span class="token keyword">struct</span> <span class="token class-name">SundaeToppings</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">enum</span> <span class="token class-name">Options</span><span class="token punctuation">:</span> <span class="token class-name">Int</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> nuts
+        <span class="token keyword">case</span> cherry
+        <span class="token keyword">case</span> fudge
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>このバージョンの <code>SundaeToppings</code> は Swift 標準ライブラリから <code>@OptionSet</code> マクロを呼び出します。このマクロは private な <code>enum</code> の <code>case</code> のリストを読み、各選択肢に対する定数のリストを生成し、<code>OptionSet</code> プロトコルへの準拠を追加します。</p>
+<p>比較のために、<code>@OptionSet</code> マクロの展開版がどのようなものであるかを示します。あなたはこのコードを書きませんし、マクロの展開を表示するように Swift に特別に依頼した場合にのみ、それを見ることになります。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">struct</span> <span class="token class-name">SundaeToppings</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">enum</span> <span class="token class-name">Options</span><span class="token punctuation">:</span> <span class="token class-name">Int</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> nuts
+        <span class="token keyword">case</span> cherry
+        <span class="token keyword">case</span> fudge
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">typealias</span> <span class="token class-name">RawValue</span> <span class="token operator">=</span> <span class="token class-name">Int</span>
+    <span class="token keyword">var</span> rawValue<span class="token punctuation">:</span> <span class="token class-name">RawValue</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">self</span><span class="token punctuation">.</span>rawValue <span class="token operator">=</span> <span class="token number">0</span> <span class="token punctuation">}</span>
+    <span class="token keyword">init</span><span class="token punctuation">(</span>rawValue<span class="token punctuation">:</span> <span class="token class-name">RawValue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">self</span><span class="token punctuation">.</span>rawValue <span class="token operator">=</span> rawValue <span class="token punctuation">}</span>
+    <span class="token keyword">static</span> <span class="token keyword">let</span> nuts<span class="token punctuation">:</span> <span class="token keyword">Self</span> <span class="token operator">=</span> <span class="token keyword">Self</span><span class="token punctuation">(</span>rawValue<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token class-name">Options</span><span class="token punctuation">.</span>nuts<span class="token punctuation">.</span>rawValue<span class="token punctuation">)</span>
+    <span class="token keyword">static</span> <span class="token keyword">let</span> cherry<span class="token punctuation">:</span> <span class="token keyword">Self</span> <span class="token operator">=</span> <span class="token keyword">Self</span><span class="token punctuation">(</span>rawValue<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token class-name">Options</span><span class="token punctuation">.</span>cherry<span class="token punctuation">.</span>rawValue<span class="token punctuation">)</span>
+    <span class="token keyword">static</span> <span class="token keyword">let</span> fudge<span class="token punctuation">:</span> <span class="token keyword">Self</span> <span class="token operator">=</span> <span class="token keyword">Self</span><span class="token punctuation">(</span>rawValue<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token class-name">Options</span><span class="token punctuation">.</span>fudge<span class="token punctuation">.</span>rawValue<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">extension</span> <span class="token class-name">SundaeToppings</span><span class="token punctuation">:</span> <span class="token class-name">OptionSet</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+</code></pre>
+<p>private な <code>enum</code> 以降のコードはすべて <code>@OptionSet</code> マクロからきています。マクロを使ってすべての静的変数を生成する <code>SundaeToppings</code> のバージョンは、先ほどの手動でコード化したバージョンよりも読みやすく、保守もしやすくなっています。</p>
+<h2 id="マクロ宣言">マクロ宣言</h2>
+<p>ほとんどの Swift のコードでは、関数や型のようなシンボルを実装し、別の宣言はありません。しかし、マクロの場合、宣言と実装は別々です。マクロの実装には、Swift のコードを生成してマクロを展開するコードとその宣言、マクロの名前とマクロが受け取るパラメータ、マクロが使用できる場所、生成されるコードの種類、が含まれます。
+マクロの宣言は、<code>macro</code> キーワードで導入します。例えば、前の例で使用した <code>@OptionSet</code> マクロの宣言の一部を以下に示します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">public</span> macro <span class="token class-name">OptionSet</span><span class="token operator">&lt;</span><span class="token class-name">RawType</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span>。
+        <span class="token other-directive property">#externalMacro</span><span class="token punctuation">(</span>module<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;SwiftMacros&quot;</span></span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;OptionSetMacro&quot;</span></span><span class="token punctuation">)</span>
+</code></pre>
+<p>最初の行は、マクロの名前である <code>OptionSet</code> と、受け取る引数(このケースではなし)を指定します。2 行目は、マクロの実装がどこにあるかを Swift に伝えるために、Swift 標準ライブラリから <code>#externalMacro(module:type:)</code> マクロを使用します。この場合、<code>SwiftMacros</code> モジュールは、<code>@OptionSet</code> マクロを実装する <code>OptionSetMacro</code> という名前の型を含んでいます。
+<code>OptionSet</code> は付属型マクロなので、その名前は構造体やクラスの名前のように、大文字始まりのキャメルケースを使用します。自立型マクロは、変数や関数の名前と同じように、小文字始まりのキャメルケースを使用します。</p>
+<blockquote>
+<p>NOTE: マクロは常に <code>public</code> として宣言します。マクロを宣言するコードは、そのマクロを使用するコードとは別のモジュールにあるため、public ではないマクロを適用できる場所はありません。</p>
+</blockquote>
+<p>マクロ宣言は、マクロの役割(マクロが呼び出されるソースコード内の場所、マクロが生成できるコードの種類)を定義します。すべてのマクロには 1 つ以上の役割があり、マクロ宣言の冒頭で属性の一部として記述します。以下は、<code>@OptionSet</code> の宣言の一部で、その役割の属性を含みます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token attribute atrule">@attached</span><span class="token punctuation">(</span>member<span class="token punctuation">)</span>
+<span class="token attribute atrule">@attached</span><span class="token punctuation">(</span>conformance<span class="token punctuation">)</span>
+<span class="token keyword">public</span> macro <span class="token class-name">OptionSet</span><span class="token operator">&lt;</span><span class="token class-name">RawType</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span>
+        <span class="token other-directive property">#externalMacro</span><span class="token punctuation">(</span>module<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;SwiftMacros&quot;</span></span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;OptionSetMacro&quot;</span></span><span class="token punctuation">)</span>
+</code></pre>
+<p><code>attached</code> 属性は、この宣言で 2 回、各マクロの役割のために 1 回ずつ、現れます。最初の使用である <code>@attached(member)</code> は、マクロがそれを適用する型に新しいメンバーを追加することを示します。<code>OptionSet</code> マクロは、<code>OptionSet</code> プロトコルで必要な <code>init(rawValue:)</code> イニシャライザと、いくつかの追加メンバを追加します。2 つ目の使い方である <code>@attached(conformance)</code> は、<code>@OptionSet</code> が 1 つまたは複数のプロトコルへの準拠を追加することを示します。<code>OptionSet</code> マクロは、マクロを適用した型を展開し、<code>OptionSet</code> プロトコルへの準拠を追加します。
+自立型マクロの場合、<code>@freestanding</code> 属性を記述してその役割を指定します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token attribute atrule">@freestanding</span><span class="token punctuation">(</span>expression<span class="token punctuation">)</span>
+<span class="token keyword">public</span> macro line<span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token punctuation">:</span> <span class="token class-name">ExpressibleByIntegerLiteral</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token class-name">T</span> <span class="token operator">=</span>
+        <span class="token comment">/* ... マクロ実装の場所... */</span>
+</code></pre>
+<p>上記の <code>#line</code> マクロは、<code>expression</code> の役割を担っています。式マクロは、値を生成したり、警告を生成するようなコンパイル時のアクションを実行します。
+マクロの役割に加えて、マクロの宣言は、マクロが生成するシンボルの名前に関する情報を提供します。マクロ宣言で名前のリストを提供すると、その名前を使用する宣言だけが生成されることが保証され、生成されたコードの理解やデバッグに役立ちます。以下は、<code>@OptionSet</code> の完全な宣言です:</p>
+<pre class="language-"><code class="lang-swift"><span class="token attribute atrule">@attached</span><span class="token punctuation">(</span>member<span class="token punctuation">,</span> names<span class="token punctuation">:</span> <span class="token function">named</span><span class="token punctuation">(</span><span class="token class-name">RawValue</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">named</span><span class="token punctuation">(</span>rawValue<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">named</span><span class="token punctuation">(</span>`<span class="token keyword">init</span>`<span class="token punctuation">)</span><span class="token punctuation">,</span> arbitrary<span class="token punctuation">)</span>
+<span class="token attribute atrule">@attached</span><span class="token punctuation">(</span>conformance<span class="token punctuation">)</span>
+<span class="token keyword">public</span> macro <span class="token class-name">OptionSet</span><span class="token operator">&lt;</span><span class="token class-name">RawType</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span>
+        <span class="token other-directive property">#externalMacro</span><span class="token punctuation">(</span>module<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;SwiftMacros&quot;</span></span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;OptionSetMacro&quot;</span></span><span class="token punctuation">)</span>
+</code></pre>
+<p>上記の宣言では、<code>@attached(member)</code> マクロは、<code>@OptionSet</code> マクロが生成する各シンボルの <code>named:</code> ラベルの後に引数を含んでいます。マクロは、<code>RawValue</code>、<code>rawValue</code>、<code>init</code> という名前のシンボルに対する宣言を追加します --- これらの名前は前もってわかっているので、マクロ宣言はそれらを明示的にリストアップします。
+また、マクロ宣言には名前のリストの後に <code>arbitrary</code> が含まれており、これは、マクロを使用するまで名前がわからない宣言をマクロで生成できるようにします。この場合、private な <code>Options</code> の <code>enum</code> の各 <code>case</code> に対して、<code>@OptionSet</code> は同じ名前を持つそれぞれの case に対応する宣言を生成します。
+マクロの役割の全リストを含む詳細については、<a href="../language-reference/attributes.html">属性(Attributes)</a>を参照してください。</p>
+<h2 id="マクロ展開">マクロ展開</h2>
+<p>多くの Swift のコードで、マクロを使用する Swift のコードを構築する一環として、コンパイラとマクロの実装は、マクロを展開するためにそのコードを前後に渡します。</p>
+<p>マクロは以下のように展開されます:</p>
+<ol>
+<li>コンパイラは、コードを読み、構文のメモリ内表現を作成する</li>
+<li>コンパイラは、メモリ内表現の一部をマクロの実装に送信し、マクロの実装はマクロを展開する</li>
+<li>コンパイラは、マクロの呼び出しを展開した形に置き換える</li>
+<li>コンパイラは、展開されたソースコードを使用してコンパイルを続行する</li>
+</ol>
+<p>これらのステップにより、以下のようにコードが変換されます:</p>
+<p><img src="../assets/macro-expansion-full%402x.png" alt="マクロを展開する4つのステップを示す図。入力はSwiftのソースコードです。これがツリーとなり、コードの構造を表す。マクロの実装は、ツリーにノードを追加します。その結果、コードが追加されたSwiftソースができあがります。"></p>
+<p>具体的な手順を説明するために、次のように考えてみます:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> magicNumber <span class="token operator">=</span> <span class="token other-directive property">#fourCharacterCode</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;ABCD&quot;</span></span><span class="token punctuation">)</span>
+</code></pre>
+<p><code>fourCharacterCode</code> マクロは、4 文字の文字列を受け取り、その文字列の ASCII 値を足し合わせた符号なし 32 ビット整数を返します。ファイルフォーマットによっては、コンパクトな一方でデータをデバッガで読めるという理由から、データを識別するためにこのような整数を使用することがあります。以下の doc:Macros#Implementing-Macros のセクションで、このマクロを実装する方法を示します。</p>
+<p>上記のコードでマクロを展開するために、コンパイラは Swift ファイルを読み、抽象構文木、または AST として知られているそのコードのメモリ内表現を作成します。AST は、コードの意味と構造を明確にし、コンパイラやマクロの実装のように、その構造とやり取りするコードを簡単に書けるようにします。上のコードの AST を、余分な部分を省いて少し簡略化して表現すると、次のようになります:</p>
+<p><img src="../assets/macro-ast-original%402x.png" alt="定数をルート要素とするツリー図。定数は、名前、マジックナンバー、値があります。定数の値は、マクロの呼び出しです。マクロの呼び出しは、fourCharacterCodeという名前、および引数を持ちます。引数は、文字列リテラルABCDです。"></p>
+<p>上の図は、このコードの構造が、メモリ上でどう表現されるかを示しています。AST の各要素は、ソースコードの意味の一部に対応しています。「定数宣言 AST」要素には、その下に 2 つの子要素があり、定数宣言の 2 つの部分、つまり名前と値を表しています。「マクロ呼び出し」要素には、マクロの名前とマクロに渡される引数のリストを表す子要素があります。この AST を構築する一部として、コンパイラは、ソースコードが有効な Swift であることをチェックします。たとえば、<code>#fourCharacterCode</code> は、文字列でなければならない単一の引数を取ります。もし、整数の引数を渡そうとしたり、文字列リテラルの最後に引用符(<code>&quot;</code>)を忘れたりすると、プロセスのこの時点でエラーが発生します。</p>
+<p>コンパイラは、コードの中でマクロを呼び出す場所を見つけ、そのマクロを実装した外部バイナリをロードします。マクロを呼び出すたびに、コンパイラは AST の一部をそのマクロの実装に渡します。以下は、その部分的な AST の表現です:</p>
+<p><img src="../assets/macro-ast-input%402x.png" alt="マクロコールをルート要素とするツリー図。マクロの呼び出しは、fourCharacterCodeという名前、および引数を持っています。引数は、文字列リテラル「ABCD」です。"></p>
+<p><code>fourCharacterCode</code> マクロの実装は、マクロを展開する際に、この部分的な AST を入力として読み込みます。マクロの実装は、入力として受け取った部分的な AST に対してのみ動作します。つまり、マクロは、その前後のコードに関係なく、常に同じ方法で展開されます。この制限は、マクロの展開を理解しやすくするのに役立ち、Swift が変更されていないマクロの展開を避けることができるので、あなたのコードをより速く構築するのに役立ちます。</p>
+<p>Swift は、マクロを実装するコードを制限することによって、マクロの作者が誤って他の入力を読み取れないようにできます:</p>
+<ul>
+<li>マクロの実装に渡される AST は、マクロを表す AST 要素のみを含み、その前後に来るコードは一切含まれない</li>
+<li>マクロ実装に渡される AST は、マクロを表す AST 要素のみを含み、その前後のコードは一切含まれない。マクロ実装は、ファイルシステムやネットワークにアクセスできないサンドボックス環境で実行される</li>
+</ul>
+<p>これらの安全策に加えて、マクロの作者は、責任を持ってマクロの入力以外のものを読んだり変更しないようにします。たとえば、マクロの展開が現在の時刻に依存することはありません。</p>
+<p><code>fourCharacterCode</code> の実装は、展開されたコードを含む新しい AST を生成します。そのコードがコンパイラに返すものは以下の通りです：</p>
+<p><img src="../assets/macro-ast-output%402x.png" alt="シングルノードが整数リテラル1145258561であるツリー図"></p>
+<p>コンパイラはこの展開を受け取ると、マクロの呼び出しを含む AST 要素を、マクロの展開を含む要素に置き換えます。マクロの展開の後、コンパイラはプログラムがまだ構文的に有効な Swift であり、すべての型が正しいことを確認するために再度チェックします。それにより、通常通りコンパイルできる最終的な AST が生成されます:</p>
+<p><img src="../assets/macro-ast-result%402x.png" alt="定数をルート要素とするツリー図。定数には、名前、マジックナンバー、値を持ちます。定数の値は、整数リテラル1145258561です。"></p>
+<p>この AST は、次のような Swift のコードに対応します:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> magicNumber <span class="token operator">=</span> <span class="token number">1145258561</span>
+</code></pre>
+<p>この例では、入力ソースコードには 1 つのマクロしかありませんが、実際のプログラムでは、同じマクロの複数のインスタンスと異なるマクロへの複数の呼び出しがあるかもしれません。コンパイラは、マクロを 1 つずつ展開します。</p>
+<p>あるマクロが別のマクロの中にある場合、外側のマクロが最初に展開されます。これにより、展開される前に、外側のマクロが内側のマクロを変更することができます。</p>
+<h2 id="マクロの実装">マクロの実装</h2>
+<p>マクロを実装するためには、2 つの部品を作ります: マクロを展開する型と、マクロを API として公開するためにマクロを宣言するライブラリです。これらの部品は、マクロとそのクライアントを一緒に開発している場合でも、マクロの実装はマクロのクライアントを構築する一部として実行されるので、マクロを使用するコードとは別に構築されます。</p>
+<p>Swift パッケージマネージャを使用して新しいマクロを作成するには、<code>swift package init --type macro</code> これを実行すると、マクロの実装と宣言のためのテンプレートを含むいくつかのファイルが作成されます。</p>
+<p>既存のプロジェクトにマクロを追加するには、マクロの実装のためのターゲットとマクロライブラリのためのターゲットを追加します。例えば、以下のようなものを <code>Package.swift</code> ファイルに追加し、プロジェクトに合わせて名前を変更します:</p>
+<pre class="language-"><code class="lang-swift">targets<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token comment">// ソース変換を行うマクロの実装</span>
+    <span class="token punctuation">.</span><span class="token function">macro</span><span class="token punctuation">(</span>
+        name<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;MyProjectMacros&quot;</span></span><span class="token punctuation">,</span>
+        dependencies<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">.</span><span class="token function">product</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;SwiftSyntaxMacros&quot;</span></span><span class="token punctuation">,</span> package<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;swift-syntax&quot;</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">.</span><span class="token function">product</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;SwiftCompilerPlugin&quot;</span></span><span class="token punctuation">,</span> package<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;swift-syntax&quot;</span></span><span class="token punctuation">)</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// APIの一部としてマクロを公開するライブラリ</span>
+    <span class="token punctuation">.</span><span class="token function">target</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;MyProject&quot;</span></span><span class="token punctuation">,</span> dependencies<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string-literal"><span class="token string">&quot;MyProjectMacros&quot;</span></span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+</code></pre>
+<p>上記のコードでは、2 つのターゲットを定義しています: <code>MyProjectMacros</code> はマクロの実装を含み、<code>MyProject</code> はそれらのマクロを利用できるようにします。</p>
+<p>マクロの実装は、抽象構文木(AST)を使用して、構造化された方法で Swift コードと対話するために <code>SwiftSyntax</code> モジュールを使用します。Swift パッケージマネージャで新しいマクロパッケージを作成した場合、生成された <code>Package.swift</code> ファイルは、自動的に <code>SwiftSyntax</code> への依存関係を含みます。既存のプロジェクトにマクロを追加する場合は、<code>Package.swift</code> ファイルに <code>SwiftSyntax</code> への依存関係を追加してください:</p>
+<pre class="language-"><code class="lang-swift">dependencies<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">.</span><span class="token function">package</span><span class="token punctuation">(</span>url<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;https://github.com/apple/swift-syntax.git&quot;</span></span><span class="token punctuation">,</span> from<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;some-tag&quot;</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">,</span>
+</code></pre>
+<p>上記のコードの <code>some-tag</code> プレースホルダを、使用したい <code>SwiftSyntax</code> のバージョンの Git タグで置き換えてください。</p>
+<p>マクロの役割に応じて、マクロの実装が準拠するべき <code>SwiftSystem</code> にある対応するプロトコルがあります。例えば、前のセクションの <code>#fourCharacterCode</code> を考えてみましょう。そのマクロを実装した構造体がこちらです:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">public</span> <span class="token keyword">struct</span> <span class="token class-name">FourCharacterCode</span><span class="token punctuation">:</span> <span class="token class-name">ExpressionMacro</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">func</span> <span class="token function-definition function">expansion</span><span class="token punctuation">(</span>
+        of node<span class="token punctuation">:</span> <span class="token keyword">some</span> <span class="token class-name">FreestandingMacroExpansionSyntax</span><span class="token punctuation">,</span>
+        <span class="token keyword">in</span> context<span class="token punctuation">:</span> <span class="token keyword">some</span> <span class="token class-name">MacroExpansionContext</span>
+    <span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token operator">-&gt;</span> <span class="token class-name">ExprSyntax</span> <span class="token punctuation">{</span>
+        <span class="token keyword">guard</span> <span class="token keyword">let</span> argument <span class="token operator">=</span> node<span class="token punctuation">.</span>argumentList<span class="token punctuation">.</span>first<span class="token operator">?</span><span class="token punctuation">.</span>expression<span class="token punctuation">,</span>
+              <span class="token keyword">let</span> segments <span class="token operator">=</span> argument<span class="token punctuation">.</span><span class="token keyword">as</span><span class="token punctuation">(</span><span class="token class-name">StringLiteralExprSyntax</span><span class="token punctuation">.</span><span class="token keyword">self</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span>segments<span class="token punctuation">,</span>
+              segments<span class="token punctuation">.</span>count <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">,</span>
+              <span class="token keyword">case</span> <span class="token punctuation">.</span><span class="token function">stringSegment</span><span class="token punctuation">(</span><span class="token keyword">let</span> literalSegment<span class="token punctuation">)</span><span class="token operator">?</span> <span class="token operator">=</span> segments<span class="token punctuation">.</span>first
+        <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token class-name">CustomError</span><span class="token punctuation">.</span><span class="token function">message</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;Need a static string&quot;</span></span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">let</span> string <span class="token operator">=</span> literalSegment<span class="token punctuation">.</span>content<span class="token punctuation">.</span>text
+        <span class="token keyword">guard</span> <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token function">fourCharacterCode</span><span class="token punctuation">(</span><span class="token keyword">for</span><span class="token punctuation">:</span> string<span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token class-name">CustomError</span><span class="token punctuation">.</span><span class="token function">message</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;Invalid four-character code&quot;</span></span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> <span class="token string-literal"><span class="token string">&quot;</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">raw<span class="token punctuation">:</span> result</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string">&quot;</span></span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">private</span> <span class="token keyword">func</span> <span class="token function-definition function">fourCharacterCode</span><span class="token punctuation">(</span><span class="token keyword">for</span> characters<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token class-name">UInt32</span><span class="token operator">?</span> <span class="token punctuation">{</span>
+    <span class="token keyword">guard</span> characters<span class="token punctuation">.</span>count <span class="token operator">==</span> <span class="token number">4</span> <span class="token keyword">else</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token nil constant">nil</span> <span class="token punctuation">}</span>
+
+    <span class="token keyword">var</span> result<span class="token punctuation">:</span> <span class="token class-name">UInt32</span> <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> character <span class="token keyword">in</span> characters <span class="token punctuation">{</span>
+        result <span class="token operator">=</span> result <span class="token operator">&lt;&lt;</span> <span class="token number">8</span>
+        <span class="token keyword">guard</span> <span class="token keyword">let</span> asciiValue <span class="token operator">=</span> character<span class="token punctuation">.</span>asciiValue <span class="token keyword">else</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token nil constant">nil</span> <span class="token punctuation">}</span>
+        result <span class="token operator">+=</span> <span class="token class-name">UInt32</span><span class="token punctuation">(</span>asciiValue<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> result<span class="token punctuation">.</span>bigEndian
+<span class="token punctuation">}</span>
+<span class="token keyword">enum</span> <span class="token class-name">CustomError</span><span class="token punctuation">:</span> <span class="token class-name">Error</span> <span class="token punctuation">{</span> <span class="token keyword">case</span> <span class="token function">message</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+</code></pre>
+<p><code>#fourCharacterCode</code> マクロは、式を生成する自立式マクロなので、これを実装した <code>FourCharacterCode</code> 型は、 <code>ExpressionMacro</code> プロトコルに準拠します。<code>ExpressionMacro</code> プロトコルの要件は 1 つで、AST を展開する <code>expansion(of:in:)</code> メソッドです。マクロの役割とそれに対応する <code>SwiftSystem</code> プロトコルのリストについては、<a href="../language-reference/attributes.html">属性(Attributes)</a>の<a href="../language-reference/attributes.html#attached">属性(Attributes)のattached</a>と<a href="../language-reference/attributes.html#freestanding">属性(Attributes)のfreestanding</a> を参照してください。</p>
+<p><code>#fourCharacterCode</code> マクロを展開するために、Swift はこのマクロを使用するコードの AST を、マクロの実装を含むライブラリに送信します。ライブラリの中で、Swift はメソッドの引数として AST とコンテキストを渡して <code>FourCharacterCode.expansion(of:in:)</code> を呼び出します。<code>expansion(of:in:)</code> の実装は、<code>#fourCharacterCode</code> に引数として渡された文字列を見つけ、対応する整数リテラルの値を計算します。</p>
+<p>上記の例では、最初の <code>guard</code> ブロックが AST から文字列リテラルを取り出し、その AST 要素を <code>literalSegment</code> に代入しています。2 番目の <code>guard</code> ブロックは、private な <code>FourCharacterCode(for:)</code> 関数を呼び出します。これらのブロックはいずれも、マクロの使い方が間違っているとエラーを発生させます(エラーメッセージは、不正な呼び出し先でのコンパイラエラーになります)。例えば、マクロを <code>#fourCharacterCode(&quot;AB&quot; + &quot;CD&quot;)</code> として呼び出そうとすると、コンパイラは「静的な文字列が必要です(Need a static string)」というエラーを表示します。</p>
+<p><code>expansion(of:in:)</code> メソッドは、AST で式を表す <code>SwiftSyntax</code> からの型である <code>ExprSyntax</code> のインスタンスを返します。この型は、<code>StringLiteralConvertible</code> プロトコルに準拠しているので、マクロの実装は、その結果を作成するために、軽量な構文として文字列リテラルを使用します。マクロの実装から返す <code>SwiftSyntax</code> の型はすべて、 <code>StringLiteralConvertible</code> に準拠しているので、あらゆる種類のマクロを実装するときにこのアプローチを使用することができます。</p>
+<h2 id="マクロの開発とデバッグ">マクロの開発とデバッグ</h2>
+<p>マクロは、テストを使った開発に適しています。これは、マクロは、外部の状態に依存することなく、また外部の状態に変更を加えることなく、ある AST から別の AST に変換するからです。また、文字列リテラルから構文ノードを作成することができるので、ユニットテストの入力設定を簡略化することができます。また、AST の <code>description</code> プロパティを読み込んで、期待値と比較するための文字列を取得することも可能です。例えば、前のセクションで紹介した <code>#fourCharacterCode</code> マクロのテストは以下のとおりです:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> source<span class="token punctuation">:</span> <span class="token class-name">SourceFileSyntax</span> <span class="token operator">=</span>
+    <span class="token string-literal"><span class="token string">&quot;&quot;&quot;
+    let abcd = #fourCharacterCode(&quot;ABCD&quot;)
+    &quot;&quot;&quot;</span></span>
+
+<span class="token keyword">let</span> file <span class="token operator">=</span> <span class="token class-name">BasicMacroExpansionContext</span><span class="token punctuation">.</span><span class="token class-name">KnownSourceFile</span><span class="token punctuation">(</span>
+    moduleName<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;MyModule&quot;</span></span><span class="token punctuation">,</span>
+    fullFilePath<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;test.swift&quot;</span></span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">let</span> context <span class="token operator">=</span> <span class="token class-name">BasicMacroExpansionContext</span><span class="token punctuation">(</span>sourceFiles<span class="token punctuation">:</span> <span class="token punctuation">[</span>source<span class="token punctuation">:</span> file<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token keyword">let</span> transformedSF <span class="token operator">=</span> source<span class="token punctuation">.</span><span class="token function">expand</span><span class="token punctuation">(</span>
+    macros<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token string-literal"><span class="token string">&quot;fourCharacterCode&quot;</span></span><span class="token punctuation">:</span> <span class="token class-name">FourCC</span><span class="token punctuation">.</span><span class="token keyword">self</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token keyword">in</span><span class="token punctuation">:</span> context
+<span class="token punctuation">)</span>
+
+<span class="token keyword">let</span> expectedDescription <span class="token operator">=</span>
+    <span class="token string-literal"><span class="token string">&quot;&quot;&quot;
+    let abcd = 1145258561
+    &quot;&quot;&quot;</span></span>
+
+<span class="token function">precondition</span><span class="token punctuation">(</span>transformedSF<span class="token punctuation">.</span>description <span class="token operator">==</span> expectedDescription<span class="token punctuation">)</span>
+</code></pre>
+<p>上記の例では、<code>precondition</code> を使ってマクロをテストしていますが、代わりにテストフレームワークを使うこともできます。</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="concurrency.html" class="navigation navigation-prev " aria-label="Previous page: 同時並行処理(Concurrency)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="type-casting.html" class="navigation navigation-next " aria-label="Next page: 型キャスト(Type Casting)">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"マクロ(Macros)","level":"3.19","depth":1,"next":{"title":"型キャスト(Type Casting)","level":"3.20","depth":1,"path":"language-guide/type-casting.md","ref":"language-guide/type-casting.md","articles":[]},"previous":{"title":"同時並行処理(Concurrency)","level":"3.18","depth":1,"path":"language-guide/concurrency.md","ref":"language-guide/concurrency.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-guide/macros.md","mtime":"2023-06-06T18:19:21.555Z","type":"markdown"},"gitbook":{"version":"3.7.5","time":"2023-06-06T18:19:46.028Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-chapters/collapsible-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expand-active-chapter/expand-active-chapter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-hide-published-with/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
