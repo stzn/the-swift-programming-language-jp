@@ -1,6 +1,6 @@
 # 属性\(Attributes\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2023/6/3  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Attributes.html
 
 宣言と型に情報を追加する。
@@ -9,13 +9,38 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 
 `@` 記号に続けて属性の名前と、属性が受け入れる引数を書き込むことにより、属性を指定します。
 
-![&#x5C5E;&#x6027;](../assets/attributes.png)
+```swift
+@<#attribute name#>
+@<#attribute name#>(<#attribute arguments#>)
+```
 
 一部の宣言属性は、属性とそれが特定の宣言にどのように適用されるかについての詳細情報を指定する引数を受け入れます。これらの _attribute arguments_ は括弧\(`()`\)で囲まれ、その形式は属する属性によって定義されています。
 
 ## <a id="declaration-attributes">宣言属性\(Declaration Attributes\)</a>
 
 宣言属性は宣言にのみ適用できます。
+
+### attached
+
+マクロ宣言に `attached` 属性を適用します。この属性の引数は、マクロの役割を示します。複数の役割を持つマクロの場合、各役割に対して 1 回ずつ、`attached` マクロを複数回適用します。
+
+この属性の最初の引数は、マクロの役割を示します:
+
+- ピアマクロ(Peer macros): この属性の第 1 引数に `peer` を書く。このマクロを実装する型は、`PeerMacro` プロトコルに準拠する。これらのマクロは、マクロが添付されている宣言と同じスコープで新しい宣言を生成する。例えば、構造体のメソッドにピアマクロを適用すると、その構造体に追加のメソッドとプロパティを定義することができる
+- メンバマクロ(Member macro): この属性の最初の引数として `member` を記述する。このマクロを実装する型は、`MemberMacro` プロトコルに準拠する。これらのマクロは、マクロが添付されている型または `extension` のメンバの新しい宣言を生成する。例えば、構造体宣言にメンバマクロを適用すると、その構造体に追加のメソッドとプロパティを定義できる
+- メンバ属性(Member attribute): この属性の第 1 引数として `memberAttribute` を書く。このマクロを実装する型は、MemberAttributeMacro プロトコルに準拠する。これらのマクロは、マクロが添付されている型または `extension` のメンバに属性を追加する
+- アクセサマクロ(Accessor macros): この属性の第 1 引数としてアクセサを書く。このマクロを実装する型は `AccessorMacro` プロトコルに準拠する。これらのマクロは、マクロが添付されている格納プロパティにアクセサを追加し、それを計算プロパティに変換する
+- Conformance マクロ(Conformance macros): この属性の最初の引数として準拠するプロトコルを書く。このマクロを実装した型は、`ConformanceMacro` プロトコルに準拠する。これらのマクロは、マクロが添付されている型にプロトコルへの準拠を追加する
+
+ピアメンバおよびアクセサマクロには、マクロが生成するシンボルの名前を列挙した `named:` 引数が必要です。マクロ宣言に `named:` 引数が含まれる場合、マクロの実装は、そのリストに一致する名前を持つシンボルだけを生成しなければなりません。とはいえ、マクロはリストされたすべての名前に対してシンボルを生成する必要はありません。この引数の値は、以下の 1 つ以上のリストです:
+
+- `named(<#name#>)` あらかじめ分かっている名前に対して固定のシンボル名を付与する*名前*
+- `overloaded` 既存のシンボルと同じ名前に対して上書きする
+- `prefixed(<#prefix#>)` 固定の文字列で始まる名前のシンボル名の前に付加される*プレフィックス*
+- `suffixed(<#suffix#>)` 固定の文字列で終わる名前のシンボル名の後に付加される*サフィックス*
+- `arbitrary` マクロが展開するまで確定できない名前に対して付与する
+
+特殊なケースとして、プロパティラッパに似た動作をするマクロに `prefixed($)` を書くことができます。
 
 ### available
 
@@ -42,31 +67,41 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 * `unavailable` 引数は、指定されたプラットフォームで宣言が使用できないことを示します。この引数は、Swift のアベイラビリティバージョンを指定している場合は使用できません
 * `introduced` 引数は、宣言が導入された特定のプラットフォームまたは言語の最初のバージョンを示します。形式は次のとおりです:
 
-![introduced &#x5F15;&#x6570;](../assets/introduced.png)
+  ```swift
+  introduced: <#version number#>
+  ```
 
 _version number_ は、ピリオド\(`.`\)で区切られた 1〜3 個の正の整数で構成されます。
 
 * `deprecated` 引数は、宣言が非推奨になった特定のプラットフォームまたは言語の最初のバージョンを示します。形式は次のとおりです:
 
-![deprecated &#x5F15;&#x6570;](../assets/deprecated.png)
+  ```swift
+  deprecated: <#version number#>
+  ```
 
 任意の _version number_ は、ピリオド\(`.`\)で区切られた 1〜3 個の正の整数で構成されます。バージョン番号を省略すると、deprecated がいつ発生したかについての情報を提供せずに、宣言が現在 deprecated になっていることのみを示します。バージョン番号を省略する場合は、コロン\(`:`\)も省略してください。
 
 * `obsoleted` 引数は、宣言が廃止された特定のプラットフォームまたは言語の最初のバージョンを示します。宣言が廃止されると、指定されたプラットフォームまたは言語から削除され、使用できなくなります。形式は次のとおりです:
 
-![obsoleted &#x5F15;&#x6570;](../assets/obsoleted.png)
+  ```swift
+  obsoleted: <#version number#>
+  ```
 
 _version number_ は、ピリオド\(`.`\)で区切られた 1〜3 個の正の整数で構成されます。
 
 * `message` 引数は、deprecated または obsoleted された宣言に使用した際に、コンパイラが表示する警告またはエラーのテキストメッセージを提供します。形式は次のとおりです:
 
-![message &#x5F15;&#x6570;](../assets/message.png)
+  ```swift
+  message: <#message#>
+  ```
 
 _message_ は文字列リテラルで構成されます。
 
 * `renamed` 引数は、名前が変更された宣言の新しい名前を示すテキストメッセージを提供します。コンパイラは、名前が変更された宣言が使用された際にエラーを発行し、新しい名前を表示します。形式は次のとおりです:
 
-![renamed &#x5F15;&#x6570;](../assets/renamed.png)
+  ```swift
+  renamed: <#new name#>
+  ```
 
 _new name_ は文字列リテラルで構成されます。
 
@@ -93,7 +128,10 @@ typealias MyProtocol = MyRenamedProtocol
 
 `available` 属性がプラットフォームまたは言語名の引数に加えて `introduced` 引数を指定するだけの場合は、代わりに次の省略構文を使用できます:
 
-![available&#x5C5E;&#x6027;](../assets/available.png)
+```swift
+@available(<#platform name#> <#version number#>, *)
+@available(swift <#version number#>)
+```
 
 `available` 属性の省略構文は、複数のプラットフォームのアベイラビリティを簡潔に表しています。2 つの形式は機能的に同等ですが、可能な限り省略形が推奨されます。
 
@@ -233,6 +271,10 @@ let point = Point(x: 381, y: 431)
 let wrapper = PassthroughWrapper(value: point)
 print(wrapper.x)
 ```
+
+### freestanding
+
+自立型マクロの宣言に `freestanding` 属性を適用する。
 
 ### frozen
 

@@ -9,23 +9,44 @@ _宣言_はプログラムに新しい名前または構文を導入します。
 
 Swift では、ほとんどの宣言は、宣言されているのと同時に実装または初期化されているという点で定義と同等です。一方で、プロトコルはメンバを実装していないため、ほとんどのプロトコルメンバは宣言だけです。便宜上、この区別は重要ではないため、_宣言_という用語は宣言と定義の両方をカバーします。
 
-> GRAMMAR OF A DECLARATION  
-> declaration → [import-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-declaration)  
-> declaration → [constant-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_constant-declaration)  
-> declaration → [variable-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-declaration)  
-> declaration → [typealias-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-declaration)  
-> declaration → [function-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-declaration)  
-> declaration → [enum-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_enum-declaration)  
-> declaration → [struct-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_struct-declaration)  
-> declaration → [class-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-declaration)  
-> declaration → [protocol-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-declaration)  
-> declaration → [initializer-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-declaration)  
-> declaration → [deinitializer-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_deinitializer-declaration)  
-> declaration → [extension-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_extension-declaration)  
-> declaration → [subscript-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-declaration)  
-> declaration → [operator-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_operator-declaration)  
-> declaration → [precedence-group-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-declaration)  
-> declarations → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) [declarations](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declarations)<sub>opt</sub>
+> Grammar of a declaration:
+>
+> *declaration* → *import-declaration*
+>
+> *declaration* → *constant-declaration*
+>
+> *declaration* → *variable-declaration*
+>
+> *declaration* → *typealias-declaration*
+>
+> *declaration* → *function-declaration*
+>
+> *declaration* → *enum-declaration*
+>
+> *declaration* → *struct-declaration*
+>
+> *declaration* → *class-declaration*
+>
+> *declaration* → *actor-declaration*
+>
+> *declaration* → *protocol-declaration*
+>
+> *declaration* → *initializer-declaration*
+>
+> *declaration* → *deinitializer-declaration*
+>
+> *declaration* → *extension-declaration*
+>
+> *declaration* → *subscript-declaration*
+>
+> *declaration* → *macro-declaration*
+>
+> *declaration* → *operator-declaration*
+>
+> *declaration* → *precedence-group-declaration*
+>
+> *declarations* → *declaration* *declarations*_?_
+>
 
 ## <a id="top-level-code">トップレベルコード\(Top-Level Code\)</a>
 
@@ -35,41 +56,58 @@ Swift ソースファイルのトップレベルコードは、0 個以上の文
 
 コードがファイルやモジュールに構成されている方法に関係なく、実行可能にするためにコンパイルした Swift のコードは、トップレベルのエントリポイントをマークする次の方法の内の 1 つを含めることができます: `main` 属性、`NSApplicationMain` 属性、`UIApplicationMain` 属性、`main.swift` ファイル、またはトップレベルの実行可能コードを含むファイルです。
 
-> GRAMMAR OF A TOP-LEVEL DECLARATION  
-> top-level-declaration → [statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements)<sub>opt</sub>
+> Grammar of a top-level declaration:
+>
+> *top-level-declaration* → *statements*_?_
 
 ## コードブロック\(Code Blocks\)
 
 _コードブロック_は、文をグループ化するための様々な宣言および制御構造によって使用されます。形式は次のとおりです:
 
-![&#x30B3;&#x30FC;&#x30C9;&#x30D6;&#x30ED;&#x30C3;&#x30AF;](../assets/code_blocks.png)
+```swift
+{
+   <#statements#>
+}
+```
 
 コードブロック内の _statements_ には、宣言、式、およびその他の文が含まれており、ソースコード内の出現順に実行されます。
 
-> GRAMMAR OF A CODE BLOCK  
-> code-block → `{` [statements](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_statements)<sub>opt</sub> `}`
+> Grammar of a code block:
+>
+> *code-block* → **`{`** *statements*_?_ **`}`**
 
 ## インポート宣言\(Import Declaration\)
 
 _インポート宣言_を使用すると、現在のファイルの外部で宣言されているシンボルにアクセスできます。基本形式はモジュール全体をインポートします。`import` キーワードとそれに続くモジュール名で構成されます:
 
-![&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x5BA3;&#x8A00;](../assets/import_declaration.png)
+```swift
+import <#module#>
+```
 
 シンボルのインポートをより細かく制限するために、インポート宣言には、モジュールまたはサブモジュール内で特定のサブモジュールまたは宣言を指定できます。この詳細な形式を使用する場合は、\(それを宣言するモジュールではなく\)インポートされたシンボルだけが現在のスコープで利用可能になります。
 
-![&#x30B7;&#x30F3;&#x30DC;&#x30EB;&#x306E;&#x30A4;&#x30F3;&#x30DD;&#x30FC;&#x30C8;&#x5BA3;&#x8A00;](../assets/import_declaration2.png)
+```swift
+import <#import kind#> <#module#>.<#symbol name#>
+import <#module#>.<#submodule#>
+```
 
-> GRAMMAR OF AN IMPORT DECLARATION  
-> import-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> `import` [import-kind](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-kind)<sub>opt</sub> [import-path](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path)  
-> import-kind → `typealias` \| `struct` \| `class` \| `enum` \| `protocol` \| `let` \| `var` \| `func`  
-> import-path → [import-path-identifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path-identifier) \| [import-path-identifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path-identifier) `.` [import-path](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_import-path)  
-> import-path-identifier → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) \| [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator)
+> Grammar of an import declaration:
+>
+> *import-declaration* → *attributes*_?_ **`import`** *import-kind*_?_ *import-path*
+>
+>
+>
+> *import-kind* → **`typealias`** | **`struct`** | **`class`** | **`enum`** | **`protocol`** | **`let`** | **`var`** | **`func`**
+>
+> *import-path* → *identifier* | *identifier* **`.`** *import-path*
 
 ## <a id="constant-declaration">定数宣言\(Constant Declaration\)</a>
 
 _定数宣言_では、プログラムに名前付きの定数値を導入します。定数宣言は `let` キーワードを使用して宣言され、形式は次のとおりです。
 
-![Constant Declaration\(&#x5B9A;&#x6570;&#x5BA3;&#x8A00;\)](../assets/constant_declaration.png)
+```swift
+let <#constant name#>: <#type#> = <#expression#>
+```
 
 定数宣言は、_constant name_ と値を初期化する _expression_ の間の不変の繋がりを定義します。定数の値は設定されたら変更できません。つまり、定数がクラスオブジェクトで初期化されている場合、オブジェクト自体を変更できますが、定数名とそれが参照するオブジェクトの間の繋がりは変更できません。
 
@@ -96,11 +134,17 @@ print("The second number is \(secondNumber).")
 
 定数の詳細およびそれらを使用するときのガイダンスについては、[Constants and Variables\(定数と変数\)](../language-guide/the-basics.md#constants-and-variables)と[Stored Properties\(格納プロパティ\)](../language-guide/properties.md#stored-properties)を参照ください。
 
-> GRAMMAR OF A CONSTANT DECLARATION  
-> constant-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>opt</sub> `let` [pattern-initializer-list](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_pattern-initializer-list)  
-> pattern-initializer-list → [pattern-initializer](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_pattern-initializer) \| [pattern-initializer](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_pattern-initializer) `,` [pattern-initializer-list](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_pattern-initializer-list)  
-> pattern-initializer → [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern) [initializer](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer)<sub>opt</sub>  
-> initializer → `=` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
+> Grammar of a constant declaration:
+>
+> *constant-declaration* → *attributes*_?_ *declaration-modifiers*_?_ **`let`** *pattern-initializer-list*
+>
+>
+>
+> *pattern-initializer-list* → *pattern-initializer* | *pattern-initializer* **`,`** *pattern-initializer-list*
+>
+> *pattern-initializer* → *pattern* *initializer*_?_
+>
+> *initializer* → **`=`** *expression*
 
 ## <a id="variable-declaration">変数宣言\(Variable Declaration\)</a>
 
@@ -117,7 +161,9 @@ _変数宣言_では、プログラムに名前付きの変数値を導入し、
 
 次の形式は、格納変数や格納可変プロパティを宣言します。
 
-![&#x683C;&#x7D0D;&#x5909;&#x6570;&#x3001;&#x683C;&#x7D0D;&#x53EF;&#x5909;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;](../assets/variable_declaration.png)
+```swift
+var <#variable name#>: <#type#> = <#expression#>
+```
 
 この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラスまたは構造体宣言のコンテキストで定義できます。この形式の変数宣言が、グローバルスコープまたは関数のローカルスコープで宣言されている場合は、_格納変数_と呼ばれます。クラスまたは構造体宣言のコンテキストで宣言されている場合は、_格納可変プロパティ_と呼ばれます。
 
@@ -131,7 +177,16 @@ _変数宣言_では、プログラムに名前付きの変数値を導入し、
 
 次の形式は、計算変数または計算プロパティを宣言します。
 
-![&#x8A08;&#x7B97;&#x5909;&#x6570;&#x3001;&#x8A08;&#x7B97;&#x5909;&#x6570;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;](../assets/computed_variables_and_computed_properties.png)
+```swift
+var <#variable name#>: <#type#> {
+   get {
+      <#statements#>
+   }
+   set(<#setter name#>) {
+      <#statements#>
+   }
+}
+```
 
 この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラス、構造体、列挙型、または extension のコンテキストで定義できます。この形式の変数宣言がグローバルスコープまたは関数のローカルスコープで宣言されている場合は、_計算変数_と呼ばれます。クラス、構造体、または extension のコンテキストで宣言されている場合は、それは_計算プロパティ_と呼ばれます。
 
@@ -147,7 +202,16 @@ _setter name_ とそれを囲む括弧は省略可能です。setter name を指
 
 格納変数またはプロパティを `willSet` や `didSet` オブザーバと一緒に宣言することもできます。オブザーバで宣言された格納変数またはプロパティの形式は次のとおりです:
 
-![&#x683C;&#x7D0D;&#x5909;&#x6570;&#x30AA;&#x30D6;&#x30B6;&#x30FC;&#x30D0;&#x3068;&#x30D7;&#x30ED;&#x30D1;&#x30C6;&#x30A3;&#x30AA;&#x30D6;&#x30B6;&#x30FC;&#x30D0;](../assets/stored_variable_observers_and_property_observers.png)
+```swift
+var <#variable name#>: <#type#> = <#expression#> {
+   willSet(<#setter name#>) {
+      <#statements#>
+   }
+   didSet(<#setter name#>) {
+      <#statements#>
+   }
+}
+```
 
 この形式の変数宣言は、グローバルスコープ、関数のローカルスコープ、またはクラスまたは構造体宣言のコンテキストで定義できます。この形式の変数宣言がグローバルスコープまたは関数のローカルスコープで宣言されている場合、オブザーバは_格納変数オブザーバ_と呼ばれます。クラスまたは構造体宣言のコンテキストで宣言されている場合、オブザーバは_プロパティオブザーバ_と呼ばれます。
 
@@ -208,35 +272,67 @@ newAndOld.x = 200
 
 型変数プロパティを宣言するには、宣言を `static` 修飾子でマークします。サブクラスがスーパークラスの実装をオーバーライドできるようにするには、代わりに `class` 修飾子を使用して型計算プロパティを宣言することができます。型プロパティは、[Type Properties\(型プロパティ\)](../language-guide/properties.md#type-properties)で説明されています。
 
-> GRAMMAR OF A VARIABLE DECLARATION  
-> variable-declaration → [variable-declaration-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-declaration-head) [pattern-initializer-list](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_pattern-initializer-list)  
-> variable-declaration → [variable-declaration-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-declaration-head) [variable-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-name) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation) [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  
-> variable-declaration → [variable-declaration-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-declaration-head) [variable-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-name) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation) [getter-setter-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-setter-block)  
-> variable-declaration → [variable-declaration-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-declaration-head) [variable-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-name) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation) [getter-setter-keyword-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-setter-keyword-block)  
-> variable-declaration → [variable-declaration-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-declaration-head) [variable-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-name) [initializer](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer) [willSet-didSet-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_willSet-didSet-block)  
-> variable-declaration → [variable-declaration-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-declaration-head) [variable-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-name) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation) [initializer](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer)<sub>opt</sub> [willSet-didSet-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_willSet-didSet-block)  
-> variable-declaration-head → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>opt</sub> `var`  
-> variable-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
-> getter-setter-block → [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  
-> getter-setter-block → `{` [getter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-clause) [setter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-clause)<sub>opt</sub> `}`  
-> getter-setter-block → `{` [setter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-clause) [getter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-clause) `}`  
-> getter-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [mutation-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_mutation-modifier)<sub>opt</sub> `get` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  
-> setter-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [mutation-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_mutation-modifier)<sub>opt</sub> `set` [setter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-name)<sub>opt</sub> [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  
-> setter-name → `(` [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) `)`  
-> getter-setter-keyword-block → `{` [getter-keyword-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-keyword-clause) [setter-keyword-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-keyword-clause)<sub>opt</sub> `}`  
-> getter-setter-keyword-block → `{` [setter-keyword-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-keyword-clause) [getter-keyword-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-keyword-clause) `}`  
-> getter-keyword-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [mutation-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_mutation-modifier)<sub>opt</sub> `get`  
-> setter-keyword-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [mutation-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_mutation-modifier)<sub>opt</sub> `set`  
-> willSet-didSet-block → `{` [willSet-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_willSet-clause) [didSet-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_didSet-clause)<sub>opt</sub> `}`  
-> willSet-didSet-block → `{` [didSet-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_didSet-clause) [willSet-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_willSet-clause)<sub>opt</sub> `}`  
-> willSet-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> `willSet` [setter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-name)<sub>opt</sub> [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  
-> didSet-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> `didSet` [setter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_setter-name)<sub>opt</sub> [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
+> Grammar of a variable declaration:
+>
+> *variable-declaration* → *variable-declaration-head* *pattern-initializer-list*
+>
+> *variable-declaration* → *variable-declaration-head* *variable-name* *type-annotation* *code-block*
+>
+> *variable-declaration* → *variable-declaration-head* *variable-name* *type-annotation* *getter-setter-block*
+>
+> *variable-declaration* → *variable-declaration-head* *variable-name* *type-annotation* *getter-setter-keyword-block*
+>
+> *variable-declaration* → *variable-declaration-head* *variable-name* *initializer* *willSet-didSet-block*
+>
+> *variable-declaration* → *variable-declaration-head* *variable-name* *type-annotation* *initializer*_?_ *willSet-didSet-block*
+>
+>
+>
+> *variable-declaration-head* → *attributes*_?_ *declaration-modifiers*_?_ **`var`**
+>
+> *variable-name* → *identifier*
+>
+>
+>
+> *getter-setter-block* → *code-block*
+>
+> *getter-setter-block* → **`{`** *getter-clause* *setter-clause*_?_ **`}`**
+>
+> *getter-setter-block* → **`{`** *setter-clause* *getter-clause* **`}`**
+>
+> *getter-clause* → *attributes*_?_ *mutation-modifier*_?_ **`get`** *code-block*
+>
+> *setter-clause* → *attributes*_?_ *mutation-modifier*_?_ **`set`** *setter-name*_?_ *code-block*
+>
+> *setter-name* → **`(`** *identifier* **`)`**
+>
+>
+>
+> *getter-setter-keyword-block* → **`{`** *getter-keyword-clause* *setter-keyword-clause*_?_ **`}`**
+>
+> *getter-setter-keyword-block* → **`{`** *setter-keyword-clause* *getter-keyword-clause* **`}`**
+>
+> *getter-keyword-clause* → *attributes*_?_ *mutation-modifier*_?_ **`get`**
+>
+> *setter-keyword-clause* → *attributes*_?_ *mutation-modifier*_?_ **`set`**
+>
+>
+>
+> *willSet-didSet-block* → **`{`** *willSet-clause* *didSet-clause*_?_ **`}`**
+>
+> *willSet-didSet-block* → **`{`** *didSet-clause* *willSet-clause*_?_ **`}`**
+>
+> *willSet-clause* → *attributes*_?_ **`willSet`** *setter-name*_?_ *code-block*
+>
+> *didSet-clause* → *attributes*_?_ **`didSet`** *setter-name*_?_ *code-block*
 
 ## <a id="type-alias-declaration">タイプエイリアス宣言\(Type Alias Declaration\)</a>
 
 _タイプエイリアス宣言_では、既存の型に別名を導入します。タイプエイリアス宣言は、`typealias` キーワードを使用して宣言され、形式は次のとおりです:
 
-![&#x30BF;&#x30A4;&#x30D7;&#x30A8;&#x30A4;&#x30EA;&#x30A2;&#x30B9;&#x5BA3;&#x8A00;](../assets/type_alias_declaration.png)
+```swift
+typealias <#name#> = <#existing type#>
+```
 
 タイプエイリアスが宣言された後、プログラム内の既存の型の代わりに注釈された _name_ を使用できます。_existing type_ は、名前付き型または複合型にすることができます。タイプエイリアスは新しい型を作成しません。それらは単に名前が既存の型を参照することを可能にします。
 
@@ -281,20 +377,31 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 
 [Protocol Associated Type Declaration\(プロトコル関連型宣言\)](declarations.md#protocol-associated-type-declaration)も参照ください。
 
-> GRAMMAR OF A TYPE ALIAS DECLARATION  
-> typealias-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>opt</sub> `typealias` [typealias-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-name) [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>opt</sub> [typealias-assignment](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-assignment)  
-> typealias-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
-> typealias-assignment → `=` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
+> Grammar of a type alias declaration:
+>
+> *typealias-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`typealias`** *typealias-name* *generic-parameter-clause*_?_ *typealias-assignment*
+>
+> *typealias-name* → *identifier*
+>
+> *typealias-assignment* → **`=`** *type*
 
 ## <a id="function-declaration">関数宣言\(Function Declaration\)</a>
 
 _関数宣言_では、プログラムに関数またはメソッドを導入します。クラス、構造体、列挙型、またはプロトコルのコンテキストで宣言されている関数は_メソッド_と呼ばれます。関数宣言は `func` キーワードを使用して宣言され、形式は次のとおりです:
 
-![&#x95A2;&#x6570;&#x5BA3;&#x8A00;](../assets/function_declaration.png)
+```swift
+func <#function name#>(<#parameters#>) -> <#return type#> {
+   <#statements#>
+}
+```
 
 関数の戻り値の型が `Void` の場合は、次のように戻り値の型を省略できます:
 
-![&#x95A2;&#x6570;&#x5BA3;&#x8A00;&#x623B;&#x308A;&#x5024;&#x306E;&#x578B;Void](../assets/function_declaration2.png)
+```swift
+func <#function name#>(<#parameters#>) {
+   <#statements#>
+}
+```
 
 各パラメータには型を含める必要があります。推論することはできません。パラメータ型の前に `inout` を書くと、その関数の範囲内でパラメータを変更できます。in-out パラメータについては、下記の[In-Out Parameters\(In-Out パラメータ\)](declarations.md#declarations-in-out-parameters)で詳細に説明されています。
 
@@ -312,7 +419,9 @@ _statements_ が単一式のみを含む関数宣言は、その式の値を返�
 
 関数パラメータは、各パラメータが複数の形式のうちの 1 つを持つカンマ区切りのリストです。関数呼び出し内の引数の順序は、関数の宣言内のパラメータの順序と一致する必要があります。パラメータリスト内の最もシンプルなエントリの形式は次のとおりです:
 
-![&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;&#x30EA;&#x30B9;&#x30C8;&#x5185;&#x306E;&#x6700;&#x3082;&#x30B7;&#x30F3;&#x30D7;&#x30EB;&#x306A;&#x30A8;&#x30F3;&#x30C8;&#x30EA;](../assets/parameter_names.png)
+```swift
+<#parameter name#>: <#parameter type#>
+```
 
 パラメータには、関数本文内で使用されている名前、および関数またはメソッドを呼び出すときに使用される引数ラベルがあります。デフォルトでは、パラメータ名は引数ラベルとしても使用されます。例えば:
 
@@ -323,7 +432,10 @@ f(x: 1, y: 2) // x と y の両方にラベルがあります
 
 次のいずれかの形式で、引数ラベルのデフォルトの動作を上書きできます。
 
-![&#x5F15;&#x6570;&#x30E9;&#x30D9;&#x30EB;&#x306E;&#x30C7;&#x30D5;&#x30A9;&#x30EB;&#x30C8;&#x306E;&#x52D5;&#x4F5C;&#x3092;&#x4E0A;&#x66F8;&#x304D;](../assets/parameter_names2.png)
+```swift
+<#argument label#> <#parameter name#>: <#parameter type#>
+_ <#parameter name#>: <#parameter type#>
+```
 
 パラメータ名の前の名前は、パラメータの明示的な引数ラベルで、パラメータ名とは異なる可能性があります。関数呼び出しまたはメソッド呼び出し時は、対応する引数に指定された引数ラベルを使用する必要があります。
 
@@ -378,7 +490,11 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 
 パラメータを無視したり、1 つのパラメータに複数の値を受け取ったり、デフォルト値を提供できます。形式は次のとおりです:
 
-![&#x7279;&#x6B8A;&#x306A;&#x7A2E;&#x985E;&#x306E;&#x30D1;&#x30E9;&#x30E1;&#x30FC;&#x30BF;](../assets/special_kinds-of_parameters.png)
+```swift
+_ : <#parameter type#>
+<#parameter name#>: <#parameter type#>...
+<#parameter name#>: <#parameter type#> = <#default argument value#>
+```
 
 アンダースコア\(`_`\)パラメータは明示的に無視され、関数の本文内でアクセスすることはできません。
 
@@ -439,7 +555,11 @@ let someFunction2: (Int, Int) -> Void = callable.callAsFunction(_:scale:)
 
 スロー関数とスローメソッドは、`throws` キーワードでマークされている必要があります。これらの関数およびメソッドは、_スロー関数_および_スローメソッド_と呼ばれます。形式は次のとおりです:
 
-![&#x30B9;&#x30ED;&#x30FC;&#x95A2;&#x6570;&#x3068;&#x30B9;&#x30ED;&#x30FC;&#x30E1;&#x30BD;&#x30C3;&#x30C9;](../assets/throwing_functions_and_methods.png)
+```swift
+func <#function name#>(<#parameters#>) throws -> <#return type#> {
+   <#statements#>
+}
+```
 
 スロー関数またはスローメソッドの呼び出しは、`try` または `try!` 式で囲まれていなければなりません\(つまり、`try` または `try!` 演算子のスコープ内\)。
 
@@ -481,7 +601,11 @@ func someFunction(callback: () throws -> Void) rethrows {
 
 非同期に実行される関数とメソッドは、`async` キーワードでマークされている必要があります。これらの関数とメソッドは、_非同期関数_と_非同期メソッド_と呼ばれています。形式は次のとおりです:
 
-![&#x975E;&#x540C;&#x671F;&#x95A2;&#x6570;&#x3068;&#x975E;&#x540C;&#x671F;&#x30E1;&#x30BD;&#x30C3;&#x30C9;](../assets/asynchronous_functions_and_methods.png)
+```swift
+func <#function name#>(<#parameters#>) async -> <#return type#> {
+   <#statements#>
+}
+```
 
 非同期関数または非同期メソッドの呼び出しは、`await` でラップされていなければなりません。
 
@@ -495,22 +619,43 @@ Swift は、関数またはメソッドがその呼び出し元に戻り値を�
 
 ノーリターンメソッドはオーバーライドできますが、その新しいメソッドは戻り値の型とノーリターンの動作を保ち続ける必要があります。
 
-> GRAMMAR OF A FUNCTION DECLARATION  
-> function-declaration → [function-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-head) [function-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-name) [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>opt</sub> [function-signature](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-signature)[generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub> [function-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-body)<sub>opt</sub>  
-> function-head → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>opt</sub> `func`  
-> function-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) \| [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator)  
-> function-signature → [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause) `async`<sub>opt</sub> `throws`<sub>opt</sub> [function-result](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-result)<sub>opt</sub>  
-> function-signature → [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause) `async`<sub>opt</sub> `rethrows` [function-result](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-result)<sub>opt</sub>  
-> function-result → `->` [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
-> function-body → [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  
-> parameter-clause → `(` `)` \| `(` [parameter-list](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-list) `)`  
-> parameter-list → [parameter](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter) \| [parameter](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter) `,` [parameter-list](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-list)  
-> parameter → [external-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_external-parameter-name)<sub>opt</sub> [local-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_local-parameter-name) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation) [default-argument-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_default-argument-clause)<sub>opt</sub>  
-> parameter → [external-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_external-parameter-name)<sub>opt</sub> [local-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_local-parameter-name) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)  
-> parameter → [external-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_external-parameter-name)<sub>opt</sub> [local-parameter-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_local-parameter-name) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation) `...`  
-> external-parameter-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
-> local-parameter-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
-> default-argument-clause → `=` [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
+> Grammar of a function declaration:
+>
+> *function-declaration* → *function-head* *function-name* *generic-parameter-clause*_?_ *function-signature* *generic-where-clause*_?_ *function-body*_?_
+>
+>
+>
+> *function-head* → *attributes*_?_ *declaration-modifiers*_?_ **`func`**
+>
+> *function-name* → *identifier* | *operator*
+>
+>
+>
+> *function-signature* → *parameter-clause* **`async`**_?_ **`throws`**_?_ *function-result*_?_
+>
+> *function-signature* → *parameter-clause* **`async`**_?_ **`rethrows`** *function-result*_?_
+>
+> *function-result* → **`->`** *attributes*_?_ *type*
+>
+> *function-body* → *code-block*
+>
+>
+>
+> *parameter-clause* → **`(`** **`)`** | **`(`** *parameter-list* **`)`**
+>
+> *parameter-list* → *parameter* | *parameter* **`,`** *parameter-list*
+>
+> *parameter* → *external-parameter-name*_?_ *local-parameter-name* *type-annotation* *default-argument-clause*_?_
+>
+> *parameter* → *external-parameter-name*_?_ *local-parameter-name* *type-annotation*
+>
+> *parameter* → *external-parameter-name*_?_ *local-parameter-name* *type-annotation* **`...`**
+>
+> *external-parameter-name* → *identifier*
+>
+> *local-parameter-name* → *identifier*
+>
+> *default-argument-clause* → **`=`** *expression*
 
 ## 列挙型宣言\(Enumeration Declaration\)
 
@@ -530,7 +675,12 @@ _列挙型宣言_は、名前付きの列挙型をプログラムに導入しま
 
 次の形式は、任意の型のケースを含む列挙型を宣言しています。
 
-![&#x4EFB;&#x610F;&#x306E;&#x578B;&#x306E;&#x30B1;&#x30FC;&#x30B9;&#x3092;&#x6301;&#x3064;&#x5217;&#x6319;&#x578B;](../assets/enumerations_with_cases_of_any_type.png)
+```swift
+enum <#enumeration name#>: <#adopted protocols#> {
+    case <#enumeration case 1#>
+    case <#enumeration case 2#>(<#associated value types#>)
+}
+```
 
 この形式で宣言された列挙型は、他のプログラミング言語では判別共用体\(_discriminated union_\)と呼ばれることもあります。
 
@@ -573,7 +723,12 @@ enum Tree<T> {
 
 次の形式は、同じ基となる型のケースを持つ列挙型を宣言しています。
 
-![Raw Value&#x578B;&#x306E;&#x30B1;&#x30FC;&#x30B9;&#x3092;&#x6301;&#x3064;&#x5217;&#x6319;&#x578B;](../assets/enumerations_with_cases_of_a_raw-value_type.png)
+```swift
+enum <#enumeration name#>: <#raw-value type#>, <#adopted protocols#> {
+    case <#enumeration case 1#> = <#raw value 1#>
+    case <#enumeration case 2#> = <#raw value 2#>
+}
+```
 
 この形式では、各ケースブロックは、`case` キーワードと、それに続く 1 つ以上の列挙ケースで構成され、カンマ\(`,`\)で区切られます。最初の形式のケースとは異なり、各ケースには、同じ基本型の _Raw Value_ と呼ばれる基になる値があります。これらの値の型は _Raw Value 型_ で指定され、整数、浮動小数点数、文字列、または単一文字の必要があります。特に、Raw Value 型は、`Equatable` プロトコルおよび次のいずれかのプロトコルに準拠する必要があります: 整数リテラルの場合は `ExpressibleByIntegerLiteral`、浮動小数点リテラルの場合は `ExpressibleByFloatLiteral`、任意の数の文字を含む文字列リテラルの場合は `ExpressibleByStringLiteral`、文字列の場合は `ExpressibleByUnicodeScalarLiteral`、1 文字のみを含むリテラルの場合は `ExpressibleByExtendedGraphemeClusterLiteral` です。各ケースには一意の名前と一意の Raw Value が割り当てられている必要があります。
 
@@ -605,31 +760,57 @@ Raw Value 型のケースを持つ列挙型は、Swift 標準ライブラリで�
 
 列挙ケースの値を確認するには、[Matching Enumeration Values with a Switch Statement\(Switch 文を使った列挙値のパターンマッチング\)](../language-guide/enumerations.md#matching-enumeration-values-with-a-switch-statement)で説明されているように、`switch` 文を使用します。列挙型は、[Enumeration Case Pattern\(列挙ケースパターン\)](../language-reference/patterns.md#enumeration-case-pattern)で説明されているように、`switch` 文のケースブロックの列挙ケースのパターンに対してパターンマッチングできます。
 
-> GRAMMAR OF AN ENUMERATION DECLARATION  
-> enum-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>opt</sub> [union-style-enum](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_union-style-enum)  
-> enum-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>opt</sub> [raw-value-style-enum](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_raw-value-style-enum)  
-> union-style-enum → `indirect`<sub>opt</sub> `enum` [enum-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_enum-name) [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>opt</sub> [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>opt</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub> `{` [union-style-enum-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_union-style-enum-members)<sub>opt</sub> `}`  
-> union-style-enum-members → [union-style-enum-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_union-style-enum-member) [union-style-enum-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_union-style-enum-members)<sub>opt</sub>  
-> union-style-enum-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \| [union-style-enum-case-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_union-style-enum-case-clause) \| [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)  
-> union-style-enum-case-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> `indirect`<sub>opt</sub> `case` [union-style-enum-case-list](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_union-style-enum-case-list)  
-> union-style-enum-case-list → [union-style-enum-case](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_union-style-enum-case) \| [union-style-enum-case](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_union-style-enum-case) `,` [union-style-enum-case-list](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_union-style-enum-case-list)  
-> union-style-enum-case → [enum-case-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_enum-case-name) [tuple-type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_tuple-type)<sub>opt</sub>  
-> enum-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
-> enum-case-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
-> raw-value-style-enum → `enum` [enum-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_enum-name) [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>opt</sub> [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause) [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub> `{` [raw-value-style-enum-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_raw-value-style-enum-members) `}`  
-> raw-value-style-enum-members → [raw-value-style-enum-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_raw-value-style-enum-member) [raw-value-style-enum-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_raw-value-style-enum-members)<sub>opt</sub>  
-> raw-value-style-enum-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \| [raw-value-style-enum-case-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_raw-value-style-enum-case-clause) \| [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)  
-> raw-value-style-enum-case-clause → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> `case` [raw-value-style-enum-case-list](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_raw-value-style-enum-case-list)  
-> raw-value-style-enum-case-list → [raw-value-style-enum-case](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_raw-value-style-enum-case) \| [raw-value-style-enum-case](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_raw-value-style-enum-case) `,` [raw-value-style-enum-case-list](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_raw-value-style-enum-case-list)  
-> raw-value-style-enum-case → [enum-case-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_enum-case-name) [raw-value-assignment](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_raw-value-assignment)<sub>opt</sub>  
-> raw-value-assignment → `=` [raw-value-literal](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_raw-value-literal)  
-> raw-value-literal → [numeric-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_numeric-literal) \| [static-string-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_static-string-literal) \| [boolean-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_boolean-literal)
+> Grammar of an enumeration declaration:
+>
+> *enum-declaration* → *attributes*_?_ *access-level-modifier*_?_ *union-style-enum*
+>
+> *enum-declaration* → *attributes*_?_ *access-level-modifier*_?_ *raw-value-style-enum*
+>
+>
+>
+> *union-style-enum* → **`indirect`**_?_ **`enum`** *enum-name* *generic-parameter-clause*_?_ *type-inheritance-clause*_?_ *generic-where-clause*_?_ **`{`** *union-style-enum-members*_?_ **`}`**
+>
+> *union-style-enum-members* → *union-style-enum-member* *union-style-enum-members*_?_
+>
+> *union-style-enum-member* → *declaration* | *union-style-enum-case-clause* | *compiler-control-statement*
+>
+> *union-style-enum-case-clause* → *attributes*_?_ **`indirect`**_?_ **`case`** *union-style-enum-case-list*
+>
+> *union-style-enum-case-list* → *union-style-enum-case* | *union-style-enum-case* **`,`** *union-style-enum-case-list*
+>
+> *union-style-enum-case* → *enum-case-name* *tuple-type*_?_
+>
+> *enum-name* → *identifier*
+>
+> *enum-case-name* → *identifier*
+>
+>
+>
+> *raw-value-style-enum* → **`enum`** *enum-name* *generic-parameter-clause*_?_ *type-inheritance-clause* *generic-where-clause*_?_ **`{`** *raw-value-style-enum-members* **`}`**
+>
+> *raw-value-style-enum-members* → *raw-value-style-enum-member* *raw-value-style-enum-members*_?_
+>
+> *raw-value-style-enum-member* → *declaration* | *raw-value-style-enum-case-clause* | *compiler-control-statement*
+>
+> *raw-value-style-enum-case-clause* → *attributes*_?_ **`case`** *raw-value-style-enum-case-list*
+>
+> *raw-value-style-enum-case-list* → *raw-value-style-enum-case* | *raw-value-style-enum-case* **`,`** *raw-value-style-enum-case-list*
+>
+> *raw-value-style-enum-case* → *enum-case-name* *raw-value-assignment*_?_
+>
+> *raw-value-assignment* → **`=`** *raw-value-literal*
+>
+> *raw-value-literal* → *numeric-literal* | *static-string-literal* | *boolean-literal*
 
 ## 構造体宣言\(Structure Declaration\)
 
 _構造体宣言_は、名前付きの構造体型をプログラムに導入します。構造体宣言は `struct` キーワードを使用して宣言され、形式は次のとおりです。
 
-![&#x69CB;&#x9020;&#x4F53;&#x5BA3;&#x8A00;](../assets/structure_declaration.png)
+```swift
+struct <#structure name#>: <#adopted protocols#> {
+   <#declarations#>
+}
+```
 
 構造体の本文には、0 個以上の _declarations_ が含まれています。これらの _declarations_ には、格納プロパティと計算プロパティ、型プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、サブスクリプト、タイプエイリアス、さらにはその他の構造体、クラス、アクター、列挙型の宣言を含めることができます。構造体宣言にデイニシャライザまたはプロトコル宣言を含めることはできません。様々な種類の宣言を含む構造体の説明といくつかの例については、[Structures and Classes\(構造体とクラス\)](../language-guide/structures-and-classes.md)を参照ください。
 
@@ -649,18 +830,29 @@ _構造体宣言_は、名前付きの構造体型をプログラムに導入し
 
 [Extension Declaration\(拡張宣言\)](declarations.md#extension-declaration)で説明されているように、extension を使用して構造体の動作を拡張できます。
 
-> GRAMMAR OF A STRUCTURE DECLARATION  
-> struct-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>opt</sub> `struct` [struct-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_struct-name) [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>opt</sub> [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>opt</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub> [struct-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_struct-body)  
-> struct-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
-> struct-body → `{` [struct-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_struct-members)<sub>opt</sub> `}`  
-> struct-members → [struct-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_struct-member) [struct-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_struct-members)<sub>opt</sub>  
-> struct-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \| [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
+> Grammar of a structure declaration:
+>
+> *struct-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`struct`** *struct-name* *generic-parameter-clause*_?_ *type-inheritance-clause*_?_ *generic-where-clause*_?_ *struct-body*
+>
+> *struct-name* → *identifier*
+>
+> *struct-body* → **`{`** *struct-members*_?_ **`}`**
+>
+>
+>
+> *struct-members* → *struct-member* *struct-members*_?_
+>
+> *struct-member* → *declaration* | *compiler-control-statement*
 
 ## クラス宣言\(Class Declaration\)
 
 _クラス宣言_は、名前付きクラス型をプログラムに導入します。クラス宣言は、`class` キーワードを使用して宣言され、形式は次のとおりです。
 
-![&#x30AF;&#x30E9;&#x30B9;&#x5BA3;&#x8A00;](../assets/class_declaration.png)
+```swift
+class <#class name#>: <#superclass#>, <#adopted protocols#> {
+   <#declarations#>
+}
+```
 
 クラスの本文には、0 個以上の _declarations_ が含まれています。これらの _declarations_ には、格納プロパティと計算プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、単一のデイニシャライザ、サブスクリプト、タイプエイリアス、さらには他のクラス、構造体、アクター、列挙型の宣言を含めることができます。クラス宣言にプロトコル宣言を含めることはできません。様々な種類の宣言を含むクラスの説明といくつかの例については、[Structures and Classes](../language-guide/structures-and-classes.md)を参照ください。
 
@@ -684,19 +876,31 @@ _superclass_ で宣言されたプロパティとメソッドは現在のクラ�
 
 [Extension Declaration\(拡張宣言\)](declarations.md#extension-declaration)で説明されているように、extension を使用してクラス型の動作を拡張できます。
 
-> GRAMMAR OF A CLASS DECLARATION  
-> class-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>opt</sub> `final`<sub>opt</sub> `class` [class-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-name) [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>opt</sub> [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>opt</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub> [class-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-body)  
-> class-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> `final` [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>opt</sub> `class` [class-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-name) [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>opt</sub> [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>opt</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub> [class-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-body)  
-> class-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
-> class-body → `{` [class-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-members)<sub>opt</sub> `}`  
-> class-members → [class-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-member) [class-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_class-members)<sub>opt</sub>  
-> class-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \| [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
+> Grammar of a class declaration:
+>
+> *class-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`final`**_?_ **`class`** *class-name* *generic-parameter-clause*_?_ *type-inheritance-clause*_?_ *generic-where-clause*_?_ *class-body*
+>
+> *class-declaration* → *attributes*_?_ **`final`** *access-level-modifier*_?_ **`class`** *class-name* *generic-parameter-clause*_?_ *type-inheritance-clause*_?_ *generic-where-clause*_?_ *class-body*
+>
+> *class-name* → *identifier*
+>
+> *class-body* → **`{`** *class-members*_?_ **`}`**
+>
+>
+>
+> *class-members* → *class-member* *class-members*_?_
+>
+> *class-member* → *declaration* | *compiler-control-statement*
 
 ## <a id="actor-declaration">アクター宣言\(Actor Declaration\)</a>
 
 アクター宣言は、名前付きのアクター型をプログラムに導入します。アクター宣言は、`actor` キーワードを使用して宣言され、形式は次のとおりです。
 
-![&#x30A2;&#x30AF;&#x30BF;&#x30FC;&#x5BA3;&#x8A00;](../assets/actor_declaration.png)
+```swift
+actor <#actor name#>: <#adopted protocols#> {
+    <#declarations#>
+}
+```
 
 アクターの本文には、0 個以上の _declarations_ が含まれています。これらの _declarations_ には、格納プロパティと計算プロパテ、インスタンスメソッド、型メソッド、イニシャライザ、単一のデイニシャライザ、サブスクリプト、タイプエイリアス、さらには他のクラス、構造体、列挙型の宣言を含めることができます。様々な種類の宣言を含むアクターの説明といくつかの例については、[Actors\(アクター\)](../language-guide/concurrency.md#Actorsアクター)を参照ください。
 
@@ -721,18 +925,29 @@ _superclass_ で宣言されたプロパティとメソッドは現在のクラ�
 
 [Extension Declaration\(拡張宣言\)](declarations.md#extension-declaration)で説明されているように、extension を使用してアクター型の動作を拡張できます。
 
-> GRAMMAR OF A ACTOR DECLARATION  
-> actor-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>opt</sub> `actor` [actor-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-name) [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>opt</sub> [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>opt</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub> [actor-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-body)  
-> actor-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
-> actor-body → `{` [actor-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-members)<sub>opt</sub> `}`  
-> actor-members → [actor-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-member) [actor-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-members)<sub>opt</sub>  
-> actor-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \| [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
+> Grammar of an actor declaration:
+>
+> *actor-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`actor`** *actor-name* *generic-parameter-clause*_?_ *type-inheritance-clause*_?_ *generic-where-clause*_?_ *actor-body*
+>
+> *actor-name* → *identifier*
+>
+> *actor-body* → **`{`** *actor-members*_?_ **`}`**
+>
+>
+>
+> *actor-members* → *actor-member* *actor-members*_?_
+>
+> *actor-member* → *declaration* | *compiler-control-statement*
 
 ## <a id="protocol-declaration">プロトコル宣言\(Protocol Declaration\)</a>
 
 _プロトコル宣言_は、名前付きのプロトコル型をプログラムに導入します。プロトコル宣言は、`protocol` キーワードを使用してグローバルスコープで宣言され、形式は次のとおりです。
 
-![&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x5BA3;&#x8A00;](../assets/protocol_declaration.png)
+```swift
+protocol <#protocol name#>: <#inherited protocols#> {
+   <#protocol member declarations#>
+}
+```
 
 プロトコルの本文には、プロトコルに準拠する全ての型が満たさなければならない 0 個以上の _protocol member declarations_ が含まれています。特に、プロトコルは、準拠する型が特定のプロパティ、メソッド、イニシャライザ、およびサブスクリプトを実装する必要があることを宣言できます。プロトコルは、_関連型_と呼ばれる特別な種類のタイプエイリアスを宣言することもできます。これにより、プロトコルの様々な宣言間の関係を指定できます。プロトコル宣言には、クラス、構造体、列挙型、またはその他のプロトコル宣言を含めることはできません。_protocol member declarations_の宣言については、下記で詳しく説明します。
 
@@ -775,24 +990,41 @@ protocol SomeProtocol: AnyObject {
 
 [Delegation\(委譲\)](../language-guide/protocols.md#delegation)で説明されているように、クラスまたは構造体のデリゲートが実装するべきメソッドを宣言するためにプロトコルを使用できます。
 
-> GRAMMAR OF A PROTOCOL DECLARATION  
-> protocol-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>opt</sub> `protocol` [protocol-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-name) [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>opt</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub> [protocol-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-body)  
-> protocol-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)  
-> protocol-body → `{` [protocol-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-members)<sub>opt</sub> `}`  
-> protocol-members → [protocol-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-member) [protocol-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-members)<sub>opt</sub>  
-> protocol-member → [protocol-member-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-member-declaration) \| [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)  
-> protocol-member-declaration → [protocol-property-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-property-declaration)  
-> protocol-member-declaration → [protocol-method-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-method-declaration)  
-> protocol-member-declaration → [protocol-initializer-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-initializer-declaration)  
-> protocol-member-declaration → [protocol-subscript-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-subscript-declaration)  
-> protocol-member-declaration → [protocol-associated-type-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_protocol-associated-type-declaration)  
-> protocol-member-declaration → [typealias-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-declaration)
+> Grammar of a protocol declaration:
+>
+> *protocol-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`protocol`** *protocol-name* *type-inheritance-clause*_?_ *generic-where-clause*_?_ *protocol-body*
+>
+> *protocol-name* → *identifier*
+>
+> *protocol-body* → **`{`** *protocol-members*_?_ **`}`**
+>
+>
+>
+> *protocol-members* → *protocol-member* *protocol-members*_?_
+>
+> *protocol-member* → *protocol-member-declaration* | *compiler-control-statement*
+>
+>
+>
+> *protocol-member-declaration* → *protocol-property-declaration*
+>
+> *protocol-member-declaration* → *protocol-method-declaration*
+>
+> *protocol-member-declaration* → *protocol-initializer-declaration*
+>
+> *protocol-member-declaration* → *protocol-subscript-declaration*
+>
+> *protocol-member-declaration* → *protocol-associated-type-declaration*
+>
+> *protocol-member-declaration* → *typealias-declaration*
 
 ### <a id="protocol-property-declaration">プロトコルプロパティ宣言\(Protocol Property Declaration\)</a>
 
 プロトコルは、プロトコル宣言の本文に_プロトコルプロパティ宣言_を含めることによって準拠する型がプロパティを実装する必要があることを宣言します。プロトコルプロパティ宣言には、変数宣言の特別な形式があります。
 
-![Protocol Property Declaration](../assets/protocol_property_declaration.png)
+```swift
+var <#property name#>: <#type#> { get set }
+```
 
 他のプロトコルメンバ宣言と同様に、これらのプロパティ宣言は、プロトコルに準拠する型の get と set の要件のみを宣言します。その結果、get または set を、プロトコルの宣言で直接実装することはありません。
 
@@ -802,8 +1034,9 @@ protocol SomeProtocol: AnyObject {
 
 [Variable Declaration\(変数宣言\)](declarations.md#variable-declaration)も参照ください。
 
-> GRAMMAR OF A PROTOCOL PROPERTY DECLARATION  
-> protocol-property-declaration → [variable-declaration-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-declaration-head) [variable-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_variable-name) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation) [getter-setter-keyword-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-setter-keyword-block)
+> Grammar of a protocol property declaration:
+>
+> *protocol-property-declaration* → *variable-declaration-head* *variable-name* *type-annotation* *getter-setter-keyword-block*
 
 ### プロトコルメソッド宣言\(Protocol Method Declaration\)
 
@@ -813,8 +1046,9 @@ protocol SomeProtocol: AnyObject {
 
 [Function Declaration\(関数宣言\)](declarations.md#function-declaration)も参照ください。
 
-> GRAMMAR OF A PROTOCOL METHOD DECLARATION  
-> protocol-method-declaration → [function-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-head) [function-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-name) [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>opt</sub> [function-signature](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_function-signature) [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub>
+> Grammar of a protocol method declaration:
+>
+> *protocol-method-declaration* → *function-head* *function-name* *generic-parameter-clause*_?_ *function-signature* *generic-where-clause*_?_
 
 ### プロトコルイニシャライザ宣言\(Protocol Initializer Declaration\)
 
@@ -826,22 +1060,28 @@ protocol SomeProtocol: AnyObject {
 
 [Initializer Declaration\(イニシャライザ宣言\)](declarations.md#initializer-declaration)も参照ください。
 
-> GRAMMAR OF A PROTOCOL INITIALIZER DECLARATION  
-> protocol-initializer-declaration → [initializer-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-head) [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>opt</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)`throws`<sub>opt</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub>  
-> protocol-initializer-declaration → [initializer-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-head) [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>opt</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)`rethrows` [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub>
+> Grammar of a protocol initializer declaration:
+>
+> *protocol-initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* **`throws`**_?_ *generic-where-clause*_?_
+>
+> *protocol-initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* **`rethrows`** *generic-where-clause*_?_
+
 
 ### <a id="protocol-subscript-declaration">プロトコルサブスクリプト宣言\(Protocol Subscript Declaration\)</a>
 
 プロトコルは、プロトコル宣言の本文にプロトコルサブスクリプト宣言を含めることによって準拠する型がサブスクリプトを実装する必要があることを宣言します。プロトコルサブスクリプト宣言には、特殊な形式のサブスクリプト宣言があります:
 
-![&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;subscript&#x5BA3;&#x8A00;](../assets/protocol_subscript_declaration.png)
+```swift
+subscript (<#parameters#>) -> <#return type#> { get set }
+```
 
 サブスクリプト宣言は、プロトコルに準拠するために最低限必要な get および set の要件のみを宣言します。サブスクリプト宣言に `get` キーワードと `set` キーワードの両方が含まれている場合、準拠する型は get 句と set 句の両方を実装する必要があります。サブスクリプト宣言に `get` キーワードのみが含まれている場合、準拠する型は_少なくとも_ get 句を実装する必要があり、任意で set 句を実装できます。
 
 プロトコル宣言で静的サブスクリプト要件を宣言するには、`static` 修飾子を使用してサブスクリプト宣言をマークします。プロトコルに準拠する構造体と列挙型は、`static` キーワードを使用してサブスクリプトを宣言し、プロトコルに準拠するクラスは、`static` または `class` キーワードを使用してサブスクリプトを宣言します。構造体、列挙型、またはクラスにプロトコルの準拠を追加する extension は、拡張する型と同じキーワードを使用します。静的サブスクリプト要件のデフォルト実装を提供する extension は、`static` キーワードを使用します。
 
-> GRAMMAR OF A PROTOCOL SUBSCRIPT DECLARATION  
-> protocol-subscript-declaration → [subscript-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-head) [subscript-result](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-result) [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub> [getter-setter-keyword-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-setter-keyword-block)
+> Grammar of a protocol subscript declaration:
+>
+> *protocol-subscript-declaration* → *subscript-head* *subscript-result* *generic-where-clause*_?_ *getter-setter-keyword-block*
 
 ### <a id="protocol-associated-type-declaration">プロトコル関連型宣言\(Protocol Associated Type Declaration\)</a>
 
@@ -865,8 +1105,9 @@ protocol SubProtocolB: SomeProtocol where SomeType: Equatable { }
 
 [Type Alias Declaration\(タイプエイリアス宣言\)](declarations.md#type-alias-declaration)も参照ください。
 
-> GRAMMAR OF A PROTOCOL ASSOCIATED TYPE DECLARATION  
-> protocol-associated-type-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>opt</sub> `associatedtype` [typealias-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-name) [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>opt</sub> [typealias-assignment](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_typealias-assignment)<sub>opt</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub>
+> Grammar of a protocol associated type declaration:
+>
+> *protocol-associated-type-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`associatedtype`** *typealias-name* *type-inheritance-clause*_?_ *typealias-assignment*_?_ *generic-where-clause*_?_
 
 ## <a id="initializer-declaration">イニシャライザ宣言\(Initializer Declaration\)</a>
 
@@ -876,7 +1117,11 @@ _イニシャライザ宣言_は、クラス、構造体、または列挙型の
 
 次の形式は、構造体、列挙型、およびクラスの指定イニシャライザを宣言しています:
 
-![&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x5BA3;&#x8A00;](../assets/initializer_declaration.png)
+```swift
+init(<#parameters#>) {
+   <#statements#>
+}
+```
 
 クラスの指定イニシャライザは、クラスの全てのプロパティを直接初期化します。同じクラスの他のイニシャライザを呼び出すことはできません。クラスにスーパークラスがある場合は、スーパークラスの指定イニシャライザの 1 つを呼び出す必要があります。クラスがそのスーパークラスからプロパティを継承する場合、これらのプロパティのいずれかを現在のクラスで設定または変更する前に、スーパークラスの指定イニシャライザの 1 つを呼び出す必要があります。
 
@@ -886,7 +1131,11 @@ _イニシャライザ宣言_は、クラス、構造体、または列挙型の
 
 クラスの convenience イニシャライザを宣言するには、`convenience` 修飾子を使用してイニシャライザ宣言をマークします。
 
-![convenience &#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x5BA3;&#x8A00;](../assets/initializer_declaration2.png)
+```swift
+convenience init(<#parameters#>) {
+   <#statements#>
+}
+```
 
 convenience イニシャライザは、初期化プロセスを別の convenience イニシャライザまたはクラスの指定イニシャライザの 1 つに委譲できます。つまり、初期化プロセスは、最終的にクラスのプロパティを初期化するために、指定イニシャライザを呼び出して終える必要があります。convenience イニシャライザは、スーパークラスのイニシャライザを呼び出すことはできません。
 
@@ -941,19 +1190,29 @@ if let actualInstance = SomeStruct(input: "Hello") {
 
 詳細および失敗可能イニシャライザの例については、[Failable Initializers\(失敗可能イニシャライザ\)](declarations.md#declarations-failable-initializers)を参照ください。
 
-> GRAMMAR OF AN INITIALIZER DECLARATION  
-> initializer-declaration → [initializer-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-head) [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>opt</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause) `throws`<sub>opt</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub> [initializer-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-body)  
-> initializer-declaration → [initializer-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-head) [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>opt</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause) `rethrows` [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub> [initializer-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_initializer-body)  
-> initializer-head → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>opt</sub> `init`  
-> initializer-head → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>opt</sub> `init` `?`  
-> initializer-head → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>opt</sub> `init` `!`  
-> initializer-body → [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
+> Grammar of an initializer declaration:
+>
+> *initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* **`async`**_?_ **`throws`**_?_ *generic-where-clause*_?_ *initializer-body*
+>
+> *initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* **`async`**_?_ **`rethrows`** *generic-where-clause*_?_ *initializer-body*
+>
+> *initializer-head* → *attributes*_?_ *declaration-modifiers*_?_ **`init`**
+>
+> *initializer-head* → *attributes*_?_ *declaration-modifiers*_?_ **`init`** **`?`**
+>
+> *initializer-head* → *attributes*_?_ *declaration-modifiers*_?_ **`init`** **`!`**
+>
+> *initializer-body* → *code-block
 
 ## デイニシャライザ宣言\(Deinitializer Declaration\)
 
 _デイニシャライザ宣言_は、クラス型のデイニシャライザを宣言します。デイニシャライザはパラメータを受け取らず、形式は次のとおりです:
 
-![&#x30C7;&#x30A4;&#x30CB;&#x30B7;&#x30E3;&#x30E9;&#x30A4;&#x30B6;&#x5BA3;&#x8A00;](../assets/deinitializer_declaration.png)
+```swift
+deinit {
+   <#statements#>
+}
+```
 
 デイニシャライザは、クラスオブジェクトへの参照がなくなると、クラスオブジェクトの割り当てが解除される直前に、自動的に呼び出されます。デイニシャライザは、クラス宣言の本文でのみ宣言でき、extension では宣言できません。各クラスは最大で 1 つのデイニシャライザを持つことができます。
 
@@ -963,14 +1222,19 @@ _デイニシャライザ宣言_は、クラス型のデイニシャライザを
 
 クラス宣言でデイニシャライザを使用する方法の例については、[Deinitialization\(デイニシャライザ\)](../language-guide/deinitialization.md)を参照ください。
 
-> GRAMMAR OF A DEINITIALIZER DECLARATION  
-> deinitializer-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> `deinit` [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)
+> Grammar of a deinitializer declaration:
+>
+> *deinitializer-declaration* → *attributes*_?_ **`deinit`** *code-block*
 
 ## <a id="extension-declaration">拡張宣言\(Extension Declaration\)</a>
 
 _拡張宣言_を使用すると、既存の型の動作を拡張できます。拡張宣言は、`extension` キーワードを使用して宣言され、形式は次のとおりです:
 
-![&#x62E1;&#x5F35;&#x5BA3;&#x8A00;](../assets/extension_declaration.png)
+```swift
+extension <#type name#> where <#requirements#> {
+   <#declarations#>
+}
+```
 
 拡張宣言の本文には、0 個以上の _declarations_ が含まれています。これらの _declarations_ には、計算プロパティ、計算型プロパティ、インスタンスメソッド、型メソッド、イニシャライザ、サブスクリプト、さらにはクラス、構造体、列挙型の宣言を含めることができます。拡張宣言には、デイニシャライザ、プロトコル宣言、格納プロパティ、プロパティオブザーバ、またはその他の拡張宣言を含めることはできません。プロトコルの extension は `final` をマークすることはできません。様々な種類の宣言を含む extension の説明といくつかの例については、[Extensions\(拡張\)](expressions.md)を参照ください。
 
@@ -984,7 +1248,11 @@ extension には、イニシャライザ宣言を含めることができます�
 
 extension は、既存のクラス、構造体、または列挙型に _adopted protocols_ を指定することで、プロトコルへの準拠を追加できます。
 
-![extension &#x3067;&#x306E;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3078;&#x306E;&#x6E96;&#x62E0;](../assets/extension_declaration2.png)
+```swift
+extension <#type name#> where <#requirements#> {
+   <#declarations#>
+}
+```
 
 extension は既存のクラスへの継承を追加できないため、_type name_ とコロン\(`:`\)の後にはプロトコルのリストのみを指定できます。
 
@@ -1136,17 +1404,32 @@ extension Array: Loggable where Element: MarkedLoggable { }
 // エラー： Array <Element> のプロトコル Loggable への冗長な準拠
 ```
 
-> GRAMMAR OF AN EXTENSION DECLARATION  
-> extension-declaration → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)<sub>opt</sub> `extension` [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier) [type-inheritance-clause](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-inheritance-clause)<sub>opt</sub> [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub> [extension-body](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_extension-body)  
-> extension-body → `{` [extension-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_extension-members)<sub>opt</sub> `}`  
-> extension-members → [extension-member](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_extension-member) [extension-members](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_extension-members)<sub>opt</sub>  
-> extension-member → [declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration) \| [compiler-control-statement](https://docs.swift.org/swift-book/ReferenceManual/Statements.html#grammar_compiler-control-statement)
+> Grammar of an extension declaration:
+>
+> *extension-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`extension`** *type-identifier* *type-inheritance-clause*_?_ *generic-where-clause*_?_ *extension-body*
+>
+> *extension-body* → **`{`** *extension-members*_?_ **`}`**
+>
+>
+>
+> *extension-members* → *extension-member* *extension-members*_?_
+>
+> *extension-member* → *declaration* | *compiler-control-statement*
 
 ## サブスクリプト宣言\(Subscript Declaration\)
 
 _サブスクリプト宣言_を使用すると、特定の型のオブジェクトにサブスクリプトのサポートを追加できます。通常、コレクション、リスト、またはシーケンス内の要素にアクセスするための便利な構文を提供するために使用されます。サブスクリプト宣言は、`subscript` キーワードを使用して宣言され、形式は次のとおりです:
 
-![subscript&#x5BA3;&#x8A00;](../assets/subscript_declaration.png)
+```swift
+subscript (<#parameters#>) -> <#return type#> {
+   get {
+      <#statements#>
+   }
+   set(<#setter name#>) {
+      <#statements#>
+   }
+}
+```
 
 サブスクリプト宣言は、クラス、構造体、列挙型、 extension、またはプロトコル宣言のコンテキストでのみ使用できます。
 
@@ -1168,12 +1451,44 @@ _parameters_ または _return type_ がオーバーロードしているもの�
 
 型のインスタンスではなく、型自体のサブスクリプトを宣言するには、`static` 修飾子をサブスクリプト宣言にマークします。クラスは、サブクラスがスーパークラスの実装をオーバーライドできるようにする代わりに、`class` 修飾子を型計算プロパティにマークできます。クラス宣言では、`static` キーワードは、`class` と `final` 修飾子の両方で宣言をマークするのと同じ効果があります。
 
-> GRAMMAR OF A SUBSCRIPT DECLARATION  
-> subscript-declaration → [subscript-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-head) [subscript-result](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-result) [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub> [code-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_code-block)  
-> subscript-declaration → [subscript-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-head) [subscript-result](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-result) [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub> [getter-setter-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-setter-block)  
-> subscript-declaration → [subscript-head](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-head) [subscript-result](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_subscript-result) [generic-where-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-where-clause)<sub>opt</sub> [getter-setter-keyword-block](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_getter-setter-keyword-block)  
-> subscript-head → [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>opt</sub> `subscript` [generic-parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html#grammar_generic-parameter-clause)<sub>opt</sub> [parameter-clause](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_parameter-clause)  
-> subscript-result → `->` [attributes](https://docs.swift.org/swift-book/ReferenceManual/Attributes.html#grammar_attributes)<sub>opt</sub> [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
+> Grammar of a subscript declaration:
+>
+> *subscript-declaration* → *subscript-head* *subscript-result* *generic-where-clause*_?_ *code-block*
+>
+> *subscript-declaration* → *subscript-head* *subscript-result* *generic-where-clause*_?_ *getter-setter-block*
+>
+> *subscript-declaration* → *subscript-head* *subscript-result* *generic-where-clause*_?_ *getter-setter-keyword-block*
+>
+> *subscript-head* → *attributes*_?_ *declaration-modifiers*_?_ **`subscript`** *generic-parameter-clause*_?_ *parameter-clause*
+>
+> *subscript-result* → **`->`** *attributes*_?_ *type*
+
+## マクロ宣言\(Macro Declaration\)
+
+*マクロ宣言*は新しいマクロを導入するものです。これは `macro` キーワードで始まり、次のような形式です:
+
+```swift
+macro <#name#> = <#macro implementation#>
+```
+
+*マクロ実装*は別のマクロで、このマクロの展開を行うコードの場所を示しています。Swift 標準ライブラリの `externalMacro(module:type:)` マクロを呼び出し、 マクロの実装を含む型の名前と、その型を含むモジュールの名前を渡します。
+
+マクロは、関数と同じ形でオーバーロードすることができます。
+マクロ宣言は、ファイルスコープにのみ表示されます。
+
+より詳細は[マクロ\(Macros\)](../language-guide/macros.md)を参照ください。
+
+> Grammar of a macro declaration:
+>
+> *macro-declaration* → *macro-head* *identifier* *generic-parameter-clause*_?_ *macro-signature* *macro-definition*_?_ *generic-where-clause*
+>
+> *macro-head* → *attributes*_?_ *declaration-modifiers*_?_ **`macro`**
+>
+> *macro-signature* → *parameter-clause* *macro-function-signature-result*_?_
+>
+> *macro-function-signature-result* → **`->`** *type*
+>
+> *macro-definition* → **`=`** *expression*
 
 ## <a id="operator-declaration">演算子宣言\(Operator Declaration\)</a>
 
@@ -1185,7 +1500,9 @@ _演算子宣言_は、新しい中置、前置、または後置演算子をプ
 
 次の形式で新しい中置演算子を宣言します:
 
-![&#x4E2D;&#x7F6E;&#x6F14;&#x7B97;&#x5B50;](../assets/infix_operator_declaration.png)
+```swift
+infix operator <#operator name#>: <#precedence group#>
+```
 
 _中置演算子_は、式 `1 + 2` でおなじみの加算演算子\(`+`\)など、2 つのオペランドの間に記述される二項演算子です。
 
@@ -1193,7 +1510,9 @@ _中置演算子_は、式 `1 + 2` でおなじみの加算演算子\(`+`\)な�
 
 次の形式で新しい前置演算子を宣言します:
 
-![&#x524D;&#x7F6E;&#x6F14;&#x7B97;&#x5B50;](../assets/prefix_operator_declaration.png)
+```swift
+prefix operator <#operator name#>
+```
 
 _前置演算子_は、式 `!a` のような前置論理 `NOT` 演算子\(`!`\)など、オペランドの直前に記述される単項演算子です。
 
@@ -1201,7 +1520,9 @@ _前置演算子_は、式 `!a` のような前置論理 `NOT` 演算子\(`!`\)�
 
 次の形式で新しい後置演算子を宣言します:
 
-![&#x5F8C;&#x7F6E;&#x6F14;&#x7B97;&#x5B50;](../assets/postfix_operator_declaration.png)
+```swift
+postfix operator <#operator name#>
+```
 
 _後置演算子_は、式 `a!` のような後置強制アンラップ演算子\(`!`\)など、オペランドの直後に記述される単項演算子です。
 
@@ -1209,12 +1530,21 @@ _後置演算子_は、式 `a!` のような後置強制アンラップ演算子
 
 新しい演算子を宣言した後、演算子と同じ名前の静的メソッドを宣言して実装します。静的メソッドは、演算子が引数として受け取る値の型のメンバの 1 つです。例えば、`Double` に `Int` を乗算する演算子は、`Double` または `Int` 構造体のいずれかに静的メソッドとして実装されます。前置または後置演算子を実装している場合は、そのメソッド宣言に対応する `prefix` または `postfix` 修飾子もマークする必要があります。新しい演算子を作成して実装する方法の例については、[Custom Operators\(カスタム演算子\)](../language-guide/advanced-operators.md#custom-operators)を参照ください。
 
-> GRAMMAR OF AN OPERATOR DECLARATION  
-> operator-declaration → [prefix-operator-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_prefix-operator-declaration) \| [postfix-operator-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_postfix-operator-declaration) \| [infix-operator-declaration](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_infix-operator-declaration)  
-> prefix-operator-declaration → `prefix` `operator` [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator)  
-> postfix-operator-declaration → `postfix` `operator` [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator)  
-> infix-operator-declaration → `infix` `operator` [operator](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_operator) [infix-operator-group](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_infix-operator-group)<sub>opt</sub>  
-> infix-operator-group → `:` [precedence-group-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-name)
+> Grammar of an operator declaration:
+>
+> *operator-declaration* → *prefix-operator-declaration* | *postfix-operator-declaration* | *infix-operator-declaration*
+>
+>
+>
+> *prefix-operator-declaration* → **`prefix`** **`operator`** *operator*
+>
+> *postfix-operator-declaration* → **`postfix`** **`operator`** *operator*
+>
+> *infix-operator-declaration* → **`infix`** **`operator`** *operator* *infix-operator-group*_?_
+>
+>
+>
+> *infix-operator-group* → **`:`** *precedence-group-name*
 
 ## <a id="precedence-group-declaration">優先順位グループ宣言\(Precedence Group Declaration\)</a>
 
@@ -1222,7 +1552,14 @@ _優先順位グループ宣言_は、プログラムに中置演算子の優先
 
 優先順位グループ宣言の形式は次のとおりです:
 
-![&#x512A;&#x5148;&#x9806;&#x4F4D;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5BA3;&#x8A00;](../assets/precedence_group_declaration.png)
+```swift
+precedencegroup <#precedence group name#> {
+    higherThan: <#lower group names#>
+    lowerThan: <#higher group names#>
+    associativity: <#associativity#>
+    assignment: <#assignment#>
+}
+```
 
 _lower group names_ と _higher group names_ のリストは、既存の優先順位グループに対する新しい優先順位グループの関係を指定します。`lowerThan` 優先順位グループ属性は、現在のモジュールの外部で宣言された優先順位グループを参照するためにのみ使用できます。式 `2 + 3 * 5` のように、2 つの演算子のオペランドが競合する場合、相対的に優先順位の高い演算子がオペランドにバインドされます。
 
@@ -1235,68 +1572,80 @@ Swift は、標準ライブラリが提供する演算子に多数の優先順�
 
 優先順位グループの _assignment_ は、オプショナルチェーンを含む操作で使用される場合の演算子の優先順位を指定します。`true` にすると、対応する優先順位グループの演算子は、オプショナルチェーン中に、標準ライブラリの代入演算子と同じグループ化結合規則を使用します。それ以外の場合、`false` にするか省略すると、優先順位グループの演算子は、代入を実行しない演算子と同じオプショナルチェーンの結合規則に従います。
 
-> GRAMMAR OF A PRECEDENCE GROUP DECLARATION  
-> precedence-group-declaration → `precedencegroup` [precedence-group-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-name) `{` [precedence-group-attributes](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-attributes)<sub>opt</sub> `}`  
-> precedence-group-attributes → [precedence-group-attribute](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-attribute) [precedence-group-attributes](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-attributes)<sub>opt</sub>  
-> precedence-group-attribute → [precedence-group-relation](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-relation)  
-> precedence-group-attribute → [precedence-group-assignment](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-assignment)  
-> precedence-group-attribute → [precedence-group-associativity](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-associativity)  
-> precedence-group-relation → `higherThan` `:` [precedence-group-names](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-names)  
-> precedence-group-relation → `lowerThan` `:` [precedence-group-names](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-names)  
-> precedence-group-assignment → `assignment` `:` [boolean-literal](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_boolean-literal)  
-> precedence-group-associativity → `associativity` `:` `left`  
-> precedence-group-associativity → `associativity` `:` `right`  
-> precedence-group-associativity → `associativity` `:` `none`  
-> precedence-group-names → [precedence-group-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-name) \| [precedence-group-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-name) `,` [precedence-group-names](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_precedence-group-names)  
-> precedence-group-name → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
+> Grammar of a precedence group declaration:
+>
+> *precedence-group-declaration* → **`precedencegroup`** *precedence-group-name* **`{`** *precedence-group-attributes*_?_ **`}`**
+>
+>
+>
+> *precedence-group-attributes* → *precedence-group-attribute* *precedence-group-attributes*_?_
+>
+> *precedence-group-attribute* → *precedence-group-relation*
+>
+> *precedence-group-attribute* → *precedence-group-assignment*
+>
+> *precedence-group-attribute* → *precedence-group-associativity*
+>
+>
+>
+> *precedence-group-relation* → **`higherThan`** **`:`** *precedence-group-names*
+>
+> *precedence-group-relation* → **`lowerThan`** **`:`** *precedence-group-names*
+>
+>
+>
+> *precedence-group-assignment* → **`assignment`** **`:`** *boolean-literal*
+>
+>
+>
+> *precedence-group-associativity* → **`associativity`** **`:`** **`left`**
+>
+> *precedence-group-associativity* → **`associativity`** **`:`** **`right`**
+>
+> *precedence-group-associativity* → **`associativity`** **`:`** **`none`**
+>
+>
+>
+> *precedence-group-names* → *precedence-group-name* | *precedence-group-name* **`,`** *precedence-group-names*
+>
+> *precedence-group-name* → *identifier*
 
 ## <a id="declaration-modifiers">宣言修飾子\(Declaration Modifiers\)</a>
 
 _宣言修飾子_は、宣言の動作または意味を変更するキーワードまたはコンテキスト依存キーワードです。\(存在する場合は\)宣言の属性と宣言を導入するキーワードの間に適切なキーワードまたはコンテキスト依存キーワードを記述することにより、宣言修飾子を指定します。
 
-class
+- `class`:  
+この修飾子をクラスのメンバに適用して、メンバがクラスのインスタンスのメンバではなく、クラス自体のメンバだということを示します。この修飾子があり、\`final\` 修飾子がないスーパークラスのメンバは、サブクラスでオーバーライドできます。
 
- この修飾子をクラスのメンバに適用して、メンバがクラスのインスタンスのメンバではなく、クラス自体のメンバだということを示します。この修飾子があり、\`final\` 修飾子がないスーパークラスのメンバは、サブクラスでオーバーライドできます。
+- `dynamic`:  
+この修飾子は、Objective-C で使用できるクラスの全てのメンバに適用します。\`dynamic\` 修飾子を使用してメンバ宣言をマークすると、そのメンバへのアクセスは常に Objective-C ランタイムを使用して動的にディスパッチされます。そのメンバへのアクセスは、コンパイラによってインライン化または非仮想化されることはありません。 \`dynamic\` 修飾子でマークされた宣言は Objective-C ランタイムを使用してディスパッチされるため、\`objc\` 属性でマークする必要があります。
 
-dynamic
+- `final`:  
+この修飾子をクラス、またはクラスのプロパティ、メソッド、またはサブスクリプトメンバに適用します。クラスに適用するとサブクラス化できないことを示し、クラスのプロパティ、メソッド、またはサブスクリプトに適用すると、クラスメンバがどのサブクラスでもオーバーライドできないことを示します。\`final\` 属性の使用方法の例については、[Preventing Overrides\(オーバーライドを防ぐ\)](../language-guide/inheritance.md#preventing-overrides)を参照ください。
 
- この修飾子は、Objective-C で使用できるクラスの全てのメンバに適用します。\`dynamic\` 修飾子を使用してメンバ宣言をマークすると、そのメンバへのアクセスは常に Objective-C ランタイムを使用して動的にディスパッチされます。そのメンバへのアクセスは、コンパイラによってインライン化または非仮想化されることはありません。 \`dynamic\` 修飾子でマークされた宣言は Objective-C ランタイムを使用してディスパッチされるため、\`objc\` 属性でマークする必要があります。
+- `lazy`:  
+この修飾子をクラスまたは構造体の格納変数プロパティに適用すると、プロパティが最初にアクセスされたときに、一度だけプロパティの初期値が計算され、格納されることを示します。lazy 修飾子の使用方法の例については、[Lazy Stored Properties\(遅延格納プロパティ\)](../language-guide/properties.md#lazy-stored-properties)を参照ください。
 
-final
+- `optional`:  
+この修飾子をプロトコルのプロパティ、メソッド、またはサブスクリプトのメンバに適用して、準拠する型がこれらのメンバを実装する必要がないことを示します。 \`optional\` 修飾子は、\`objc\` 属性でマークされているプロトコルにのみ適用できます。その結果、クラス型のみが、オプショナルのメンバ要件を含むプロトコルに準拠できます。\`optional\` 修飾子の使用方法の詳細と、オプショナルのプロトコルメンバにアクセスする方法のガイダンス\(例えば、準拠する型がそれらを実装しているかどうかわからない場合\)については、[Optional Protocol Requirements\(オプショナルのプロトコル要件\)](../language-guide/protocols.md#optional-protocol-requirements)を参照ください。
 
- この修飾子をクラス、またはクラスのプロパティ、メソッド、またはサブスクリプトメンバに適用します。クラスに適用するとサブクラス化できないことを示し、クラスのプロパティ、メソッド、またはサブスクリプトに適用すると、クラスメンバがどのサブクラスでもオーバーライドできないことを示します。\`final\` 属性の使用方法の例については、[Preventing Overrides\(オーバーライドを防ぐ\)](../language-guide/inheritance.md#preventing-overrides)を参照ください。
+- `required`:  
+この修飾子をクラスの指定イニシャライザまたは convenience イニシャライザに適用して、全てのサブクラスがそのイニシャライザを実装する必要があることを示します。そのイニシャライザのサブクラスの実装にも、\`required\` 修飾子を付ける必要があります。
 
-lazy
+- `static`:  
+この修飾子を構造体、クラス、列挙型、またはプロトコルのメンバに適用して、メンバがその型のインスタンスのメンバではなく、その型自体のメンバだということを示します。クラス宣言のスコープでは、メンバ宣言に \`static\` 修飾子を書き込むことは、そのメンバ宣言に \`class\` および \`final\` 修飾子を書き込むことと同じ効果があります。ただし、クラスの定数型プロパティは例外です:\`static\` は、宣言に \`class\` または \`final\` を記述できないため、通常はクラスではない、という意味になります。
 
- この修飾子をクラスまたは構造体の格納変数プロパティに適用すると、プロパティが最初にアクセスされたときに、一度だけプロパティの初期値が計算され、格納されることを示します。lazy 修飾子の使用方法の例については、[Lazy Stored Properties\(遅延格納プロパティ\)](../language-guide/properties.md#lazy-stored-properties)を参照ください。
+- `unowned`:  
+この修飾子を格納変数、定数、または格納プロパティに適用すると、変数またはプロパティがその値に格納されたオブジェクトの参照を所有していないことを示します。オブジェクトの割り当てが解除された後で変数またはプロパティにアクセスしようとすると、実行時エラーが発生します。弱参照と同様に、プロパティまたは値の型はクラス型の必要があります。ただし、弱参照とは異なり、型はオプショナルではありません。\`unowned\` 修飾子の例と詳細については、[Unowned References\(非所有参照\)](../language-guide/automatic-reference-counting.md#unowned-references)を参照ください。
 
-optional
+- `unowned\(safe\)`:  
+\`unowned\` の明示的な記述。
 
- この修飾子をプロトコルのプロパティ、メソッド、またはサブスクリプトのメンバに適用して、準拠する型がこれらのメンバを実装する必要がないことを示します。 \`optional\` 修飾子は、\`objc\` 属性でマークされているプロトコルにのみ適用できます。その結果、クラス型のみが、オプショナルのメンバ要件を含むプロトコルに準拠できます。\`optional\` 修飾子の使用方法の詳細と、オプショナルのプロトコルメンバにアクセスする方法のガイダンス\(例えば、準拠する型がそれらを実装しているかどうかわからない場合\)については、[Optional Protocol Requirements\(オプショナルのプロトコル要件\)](../language-guide/protocols.md#optional-protocol-requirements)を参照ください。
+- `unowned\(unsafe\)`:  
+この修飾子を格納変数、定数、または格納プロパティに適用すると、変数またはプロパティがその値に格納されたオブジェクトの参照を所有していないことを示します。オブジェクトの割り当てが解除された後で変数またはプロパティにアクセスしようとすると、オブジェクトがあった場所のメモリにアクセスします。これは、メモリ安全ではない操作です。弱参照と同様に、プロパティまたは値の型はクラス型の必要があります。ただし、弱参照とは異なり、型はオプショナルではありません。 \`unowned\` 修飾子の例と詳細については、[Unowned References\(非所有参照\)](../language-guide/automatic-reference-counting.md#unowned-references)を参照ください。
 
-required
-
- この修飾子をクラスの指定イニシャライザまたは convenience イニシャライザに適用して、全てのサブクラスがそのイニシャライザを実装する必要があることを示します。そのイニシャライザのサブクラスの実装にも、\`required\` 修飾子を付ける必要があります。
-
-static
-
- この修飾子を構造体、クラス、列挙型、またはプロトコルのメンバに適用して、メンバがその型のインスタンスのメンバではなく、その型自体のメンバだということを示します。クラス宣言のスコープでは、メンバ宣言に \`static\` 修飾子を書き込むことは、そのメンバ宣言に \`class\` および \`final\` 修飾子を書き込むことと同じ効果があります。ただし、クラスの定数型プロパティは例外です:\`static\` は、宣言に \`class\` または \`final\` を記述できないため、通常はクラスではない、という意味になります。
-
-unowned
-
- この修飾子を格納変数、定数、または格納プロパティに適用すると、変数またはプロパティがその値に格納されたオブジェクトの参照を所有していないことを示します。オブジェクトの割り当てが解除された後で変数またはプロパティにアクセスしようとすると、実行時エラーが発生します。弱参照と同様に、プロパティまたは値の型はクラス型の必要があります。ただし、弱参照とは異なり、型はオプショナルではありません。\`unowned\` 修飾子の例と詳細については、[Unowned References\(非所有参照\)](../language-guide/automatic-reference-counting.md#unowned-references)を参照ください。
-
-unowned\(safe\)
-
- \`unowned\` の明示的な記述。
-
-unowned\(unsafe\)
-
- この修飾子を格納変数、定数、または格納プロパティに適用すると、変数またはプロパティがその値に格納されたオブジェクトの参照を所有していないことを示します。オブジェクトの割り当てが解除された後で変数またはプロパティにアクセスしようとすると、オブジェクトがあった場所のメモリにアクセスします。これは、メモリ安全ではない操作です。弱参照と同様に、プロパティまたは値の型はクラス型の必要があります。ただし、弱参照とは異なり、型はオプショナルではありません。 \`unowned\` 修飾子の例と詳細については、[Unowned References\(非所有参照\)](../language-guide/automatic-reference-counting.md#unowned-references)を参照ください。
-
-weak
-
- この修飾子を格納変数または格納変数プロパティに適用すると、変数またはプロパティがその値に格納されているオブジェクトへ弱い参照を持っていることを示します。変数またはプロパティの型は、オプショナルのクラス型の必要があります。オブジェクトの割り当てが解除された後に変数またはプロパティにアクセスすると、その値は \`nil\` になります。\`weak\` 修飾子の例と詳細については、[Weak References\(弱参照\)](../language-guide/automatic-reference-counting.md#weak-references)を参照ください。
+- `weak`:  
+この修飾子を格納変数または格納変数プロパティに適用すると、変数またはプロパティがその値に格納されているオブジェクトへ弱い参照を持っていることを示します。変数またはプロパティの型は、オプショナルのクラス型の必要があります。オブジェクトの割り当てが解除された後に変数またはプロパティにアクセスすると、その値は \`nil\` になります。\`weak\` 修飾子の例と詳細については、[Weak References\(弱参照\)](../language-guide/automatic-reference-counting.md#weak-references)を参照ください。
 
 ## <a id="access-control-levels">Access Control Levels\(アクセス制御レベル\)</a>
 
@@ -1304,39 +1653,53 @@ Swift は、open、public、internal、file private、private の 5 つのレベ
 
 ## <a id="access-control-levels">アクセス制御レベル\(Access Control Levels\)</a>
 
- この修飾子を宣言に適用すると、同じモジュール内のコードから宣言にアクセスしたり、サブクラス化できることを示します。\`open\` 修飾子でマークされた宣言は、その宣言を含むモジュールをインポートしたモジュール内のコードからアクセスおよびサブクラス化することもできます。
+- `open`:  
+この修飾子を宣言に適用すると、同じモジュール内のコードから宣言にアクセスしたり、サブクラス化できることを示します。\`open\` 修飾子でマークされた宣言は、その宣言を含むモジュールをインポートしたモジュール内のコードからアクセスおよびサブクラス化することもできます。
 
-public
+- public:  
+この修飾子を宣言に適用すると、同じモジュール内のコードから宣言にアクセスしたり、サブクラス化できることを示します。\`public\` 修飾子でマークされた宣言は、その宣言を含むモジュールをインポートするモジュール内のコードからアクセスできます\(ただし、サブクラス化はできません\)。
 
- この修飾子を宣言に適用すると、同じモジュール内のコードから宣言にアクセスしたり、サブクラス化できることを示します。\`public\` 修飾子でマークされた宣言は、その宣言を含むモジュールをインポートするモジュール内のコードからアクセスできます\(ただし、サブクラス化はできません\)。
+- `internal`:  
+この修飾子を宣言に適用すると、同じモジュール内のコードからのみ宣言にアクセスできることを示します。デフォルトでは、ほとんどの宣言は、\`internal\` 修飾子で暗黙的にマークされています。
 
-internal
+- `fileprivate`:  
+この修飾子を宣言に適用すると、宣言と同じソースファイル内のコードからのみ宣言にアクセスできることを示します。
 
- この修飾子を宣言に適用すると、同じモジュール内のコードからのみ宣言にアクセスできることを示します。デフォルトでは、ほとんどの宣言は、\`internal\` 修飾子で暗黙的にマークされています。
-
-fileprivate
-
- この修飾子を宣言に適用すると、宣言と同じソースファイル内のコードからのみ宣言にアクセスできることを示します。
-
-private
-
- この修飾子を宣言に適用すると、宣言で囲んだスコープ内のコードからのみ宣言にアクセスできることを示します。
+- `private`:  
+この修飾子を宣言に適用すると、宣言で囲んだスコープ内のコードからのみ宣言にアクセスできることを示します。
 
 アクセス制御の目的で、同じファイル内にある同じ型の extension は、アクセス制御スコープを共有します。その型を拡張する型も同じファイル内にある場合、同様にその型のアクセス制御スコープを共有します。型の宣言で宣言されたプライベートメンバは extension からもアクセスでき、1 つの extension で宣言されたプライベートメンバは、他の extension および型の宣言からもアクセスできます。
 
 上記の各アクセスレベル修飾子は、任意で 1 つの引数、括弧で囲まれた `set` キーワード\(例えば、`private(set)`\)を受け入れます。[Getters and Setters\(get と set\)](../language-guide/access-control.md#getters-and-setters)で説明されているように、変数またはサブスクリプト自体のアクセスレベル以下のアクセスレベルを変数またはサブスクリプトの set に指定する場合は、この形式のアクセスレベル修飾子を使用します。
 
-> GRAMMAR OF A DECLARATION MODIFIER  
-> declaration-modifier → `class` \| `convenience` \| `dynamic` \| `final` \| `infix` \| `lazy` \| `optional` \| `override` \| `postfix` \| `prefix` \| `required` \| `static` \| `unowned` \| `unowned` `(` `safe` `)` \| `unowned(` `unsafe` `)` \| `weak`  
-> declaration-modifier → [access-level-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_access-level-modifier)  
-> declaration-modifier → [mutation-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_mutation-modifier)  
-> declaration-modifier → [actor-isolation-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_actor-isolation-modifier)  
-> declaration-modifiers → [declaration-modifier](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifier) [declaration-modifiers](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_declaration-modifiers)<sub>opt</sub>  
-> access-level-modifier → `private` \| `private` `(` `set` `)`  
-> access-level-modifier → `fileprivate` \| `fileprivate` `(` `set` `)`  
-> access-level-modifier → `internal` \| `internal` `(` `set` `)`  
-> access-level-modifier → `public` \| `public` `(` `set` `)`  
-> access-level-modifier → `open` \| `open` `(` `set` `)`  
-> mutation-modifier → `mutating` \| `nonmutating`  
-> actor-isolation-modifier → `nonisolated`
-
+> Grammar of a declaration modifier:
+>
+> *declaration-modifier* → **`class`** | **`convenience`** | **`dynamic`** | **`final`** | **`infix`** | **`lazy`** | **`optional`** | **`override`** | **`postfix`** | **`prefix`** | **`required`** | **`static`** | **`unowned`** | **`unowned`** **`(`** **`safe`** **`)`** | **`unowned`** **`(`** **`unsafe`** **`)`** | **`weak`**
+>
+> *declaration-modifier* → *access-level-modifier*
+>
+> *declaration-modifier* → *mutation-modifier*
+>
+> *declaration-modifier* → *actor-isolation-modifier*
+>
+> *declaration-modifiers* → *declaration-modifier* *declaration-modifiers*_?_
+>
+>
+>
+> *access-level-modifier* → **`private`** | **`private`** **`(`** **`set`** **`)`**
+>
+> *access-level-modifier* → **`fileprivate`** | **`fileprivate`** **`(`** **`set`** **`)`**
+>
+> *access-level-modifier* → **`internal`** | **`internal`** **`(`** **`set`** **`)`**
+>
+> *access-level-modifier* → **`public`** | **`public`** **`(`** **`set`** **`)`**
+>
+> *access-level-modifier* → **`open`** | **`open`** **`(`** **`set`** **`)`**
+>
+>
+>
+> *mutation-modifier* → **`mutating`** | **`nonmutating`**
+>
+>
+>
+> *actor-isolation-modifier* → **`nonisolated`**
