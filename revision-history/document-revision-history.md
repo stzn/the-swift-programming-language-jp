@@ -11,7 +11,7 @@
 - [制御フロー\(Control Flow\)](../language-guide/control-flow.md)の章と[条件文\(Conditional Statements\)](../language-guide/control-flow.md#条件文conditional-statements)セクションに、`if` 式と `switch` 式に関する情報を追加しました
 - [マクロ\(Macros\)](../language-guide/macros.md)の章を追加し、コンパイル時にコードを生成することについての情報を追加しました
 - [Opaque 型とBox 型\(Opaque Types and Boxed Types\)](../language-guide/opaque-types.md#opaque-型とbox-型opaque-types-and-boxed-types)の章に、Box 型プロトコルに関する情報を追加しました
-- [](../language-reference/attributes.md#result-building-methods)のセクションを更新し、`buildPartialBlock(first:)` メソッドと `buildPartialBlock(cumulated:next:)` メソッドについての情報を追加しました
+- [Result-Building Methods](../language-reference/attributes.md#result-building-methods)のセクションを更新し、`buildPartialBlock(first:)` メソッドと `buildPartialBlock(cumulated:next:)` メソッドについての情報を追加しました
 
 ## 2023-03-30
 
