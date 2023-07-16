@@ -64,7 +64,7 @@ struct SundaeToppings {
 }
 ```
 
-このバージョンの `SundaeToppings` は Swift 標準ライブラリから `@OptionSet` マクロを呼び出します。このマクロは private な `enum` の `case` のリストを読み、各選択肢に対する定数のリストを生成し、`OptionSet` プロトコルへの準拠を追加します。
+このバージョンの `SundaeToppings` は `@OptionSet` マクロを呼び出します。このマクロは private な `enum` の `case` のリストを読み、各選択肢に対する定数のリストを生成し、`OptionSet` プロトコルへの準拠を追加します。
 
 比較のために、`@OptionSet` マクロの展開版がどのようなものであるかを示します。あなたはこのコードを書きませんし、マクロの展開を表示するように Swift に特別に依頼した場合にのみ、それを見ることになります。
 
