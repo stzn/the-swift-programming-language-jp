@@ -283,8 +283,16 @@ f(x as Any)
 リテラル式は、通常のリテラル\(文字列や数など\)、配列または辞書リテラル、playground リテラルで構成されます。
 
 > NOTE  
-> Swift 5.9以前は、以下の特殊リテラルが認識されていましたが、現在はSwift標準ライブラリのマクロとして実装されています:  
-> `#column`, `#dsohandle` , `#fileID`, `#filePath`, `#file`, `#function`, `#line`
+> Swift 5.9以前は、以下の特殊リテラルが認識されていました:  
+> `#column`, `#dsohandle` , `#fileID`, `#filePath`, `#file`, `#function`, `#line`。
+> 現在はSwift標準ライブラリのマクロとして実装されています:  
+> [`column`](https://developer.apple.com/documentation/swift/column),
+> [`dsohandle`](https://developer.apple.com/documentation/swift/dsohandle),
+> [`fileID`](https://developer.apple.com/documentation/swift/fileID),
+> [`filePath`](https://developer.apple.com/documentation/swift/filePath),
+> [`file`](https://developer.apple.com/documentation/swift/file),
+> [`function`](https://developer.apple.com/documentation/swift/function),
+> [`line`](https://developer.apple.com/documentation/swift/line)。
 
 _配列リテラル_は、順序付けられた値の集合です。形式は次のとおりです:
 
@@ -676,7 +684,7 @@ let y: SomeClass? = .shared
 let z: SomeClass = .sharedSubclass
 ```
 
-上記のコードでは、`x` の型はそのコンテキストから暗黙的に推論された型と正確に一致し、`y` の型は `Someclass` から `SomeClass?` に変換され、`z` の型は `SomeSubclass` から `SomeClass` に変換されます。
+上記のコードでは、`x` の型はそのコンテキストから暗黙的に推論された型と正確に一致し、`y` の型は `SomeClass` から `SomeClass?` に変換され、`z` の型は `SomeSubclass` から `SomeClass` に変換されます。
 
 > Grammar of a implicit member expression:
 >
