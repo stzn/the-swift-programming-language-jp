@@ -481,7 +481,7 @@ s.$x.wrapper  // WrapperWithProjection 値
 
 - `static func buildPartialBlock(accumulated: Component, next: Component) -> Component`: 蓄積されたコンポーネントと新しいコンポーネントを組み合わせて、部分的な結果を構築する。このメソッドと `buildPartialBlock(first:)` の両方を実装して、一度に 1 つのコンポーネントを構築するブロックをサポートする。`buildBlock(_:)` と比較して、このアプローチは、異なる数の引数を処理する汎用的オーバーロードの必要性を減らせる
 
-リザルトビルダは、上記のブロック構築メソッドの 3 つすべてを実装できます。その場合、アベイラビリティによってどのメソッドが呼び出されるかが決まります。デフォルトでは、Swift は `buildPartialBlock(first:)` と `buildPartialBlock(second:)` のメソッドを呼び出します。Swift が代わりに `buildBlock(_:)` を呼び出すようにするには、囲んでいる宣言のアベイラビリティが、`buildPartialBlock(first:)` と `buildPartialBlock(second:)` に書いたアベイラビリティよりも広範囲になるようにマークしてください。
+リザルトビルダは、上記のブロック構築メソッドの 3 つすべてを実装できます。その場合、アベイラビリティによってどのメソッドが呼び出されるかが決まります。デフォルトでは、Swift は `buildPartialBlock(first:)` と `buildPartialBlock(accumulated:next:)` のメソッドを呼び出します。Swift が代わりに `buildBlock(_:)` を呼び出すようにするには、囲んでいる宣言のアベイラビリティが、`buildPartialBlock(first:)` と `buildPartialBlock(accumulated:next:)` に書いたアベイラビリティよりも広範囲になるようにマークしてください。
 
 追加の結果構築メソッドは以下の通りです:
 
@@ -498,7 +498,7 @@ s.$x.wrapper  // WrapperWithProjection 値
 - `static func buildFinalResult(_ component: Component) -> FinalResult`: 部分的な結果から最終結果を作成する。このメソッドは、部分結果と最終結果で異なる型を使用するリザルトビルダの一部として実装したり、結果を返す前に結果に対して後処理を実行したりできる
 - `static func buildLimitedAvailability(_ component: Component) -> Component`: アベイラビリティチェックを実行するコンパイラ制御文の外部で型情報を伝播または消去する部分的な結果を作成する。これを使用して、条件分岐間で異なる型情報を消去できる
 
-例えば、下記のコードは、整数の配列を作成するシンプルなリザルトビルダを定義しています。このコードは、`Compontent` と `Expression` をタイプエイリアスとして定義し、下記の例を上記のメソッドのリストに簡単に一致させることができます。
+例えば、下記のコードは、整数の配列を作成するシンプルなリザルトビルダを定義しています。このコードは、`Component` と `Expression` をタイプエイリアスとして定義し、下記の例を上記のメソッドのリストに簡単に一致させることができます。
 
 ```swift
 @resultBuilder
