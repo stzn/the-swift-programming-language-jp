@@ -72,11 +72,13 @@ Swift のアクセスレベルは、全体の指針に従います: より低い
 エンティティの宣言の先頭に `open`、`public`、`internal`、`fileprivate`、または `private` 修飾子を配置して、エンティティのアクセスレベルを定義します。
 
 ```swift
+open class SomeOpenClass {}
 public class SomePublicClass {}
 internal class SomeInternalClass {}
 fileprivate class SomeFilePrivateClass {}
 private class SomePrivateClass {}
 
+open var someOpenVariable = 0
 public var somePublicVariable = 0
 internal let someInternalConstant = 0
 fileprivate func someFilePrivateFunction() {}

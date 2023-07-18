@@ -590,7 +590,7 @@ _コンパイル条件_には、`true` および `false` のブールリテラ�
 
 | **プラットフォーム条件** | **有効な引数** |
 | :---: | :---: |
-| `os()` | `macOS`, `iOS`, `watchOS`, `tvOS`, `Linux`, `Windows` |
+| `os()` | `macOS`, `iOS`, `watchOS`, `tvOS`, `visionOS`, `Linux`, `Windows` |
 | `arch()` | `i386`, `x86_64`, `arm`, `arm64` |
 | `swift()` | `>=` または `<` の後ろにバージョン番号 |
 | `compiler()` | `>=` または `<` の後ろにバージョン番号 |
@@ -787,6 +787,8 @@ if #unavailable(<#platform name#> <#version#>, <#...#>) {
 > *platform-name* → **`watchOS`** | **`watchOSApplicationExtension`**
 >
 > *platform-name* → **`tvOS`** | **`tvOSApplicationExtension`**
+>
+> *platform-name* → **`visionOS`**
 >
 > *platform-version* → *decimal-digits*
 >

@@ -510,13 +510,13 @@ print(paragraph!.asHTML())
 > NOTE  
 > クロージャは `self` を複数回参照していますが、`HTMLElement` インスタンスへの強参照は 1 つだけです。
 
-`paragraph` 変数を `nil` に設定し、`HTMLElement` インスタンスへの強参照を解除しても、強循環参照のため、`HTMLElement` インスタンスもそのクロージャも割り当てを解除できません。
+`paragraph` 変数を `nil` に設定し、`HTMLElement` インスタンスへの強参照を解除しても、強循環参照は、`HTMLElement` インスタンスとそのクロージャの割り当てを解除の解除を妨げます。
 
 ```swift
 paragraph = nil
 ```
 
-`HTMLElement` のデイニシャライザのメッセージは出力されないことに注目してください。`HTMLElement` インスタンスが割り当て解除されていないことを示しています。
+`HTMLElement` のデイニシャライザのメッセージが出力されないことに注目してください。`HTMLElement` インスタンスが割り当て解除されていないことを示しています。
 
 ## <a id="resolving-strong-reference-cycles-for-closures">クロージャの強循環参照の解消\(Resolving Strong Reference Cycles for Closures\)</a>
 

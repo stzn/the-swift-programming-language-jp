@@ -152,8 +152,17 @@ _識別子_は、大文字または小文字の `A` から `Z`、アンダース
 * シャープ記号\(`#`\)で始まるキーワード: `#available`、`#colorLiteral`、`#else`、`#elseif`、`#endif`、`#if`、`#imageLiteral`、`#selector`、`#sourceLocation`
 
 > NOTE  
-> Swift 5.9以前は、以下の特殊リテラルが認識されていましたが、現在はSwift標準ライブラリのマクロとして実装されています:  
-> `#column`, `#dsohandle` , `#fileID`, `#filePath`, `#file`, `#function`, `#line`
+> Swift 5.9以前は、以下の特殊リテラルが認識されていました:  
+> `#column`, `#dsohandle` , `#error`, `#fileID`, `#filePath`, `#file`, `#function`, `#line`, `#warning`。現在はSwift標準ライブラリのマクロとして実装されています:  
+> [`column`](https://developer.apple.com/documentation/swift/column),
+> [`dsohandle`](https://developer.apple.com/documentation/swift/dsohandle),
+> [`error(_:)`](https://developer.apple.com/documentation/swift/error(_:)),
+> [`fileID`](https://developer.apple.com/documentation/swift/fileID),
+> [`filePath`](https://developer.apple.com/documentation/swift/filePath),
+> [`file`](https://developer.apple.com/documentation/swift/file),
+> [`function`](https://developer.apple.com/documentation/swift/function),
+> [`line`](https://developer.apple.com/documentation/swift/line),
+> and [`warning(_:)`](https://developer.apple.com/documentation/swift/warning(_:))。
 
 * 特定のコンテキストで予約されているキーワード: `associativity`、`convenient`、`dynamic`、`didSet`、`final`、`get`、`infix`、`indirect`、`lazy`、`left`、`mutating`、`none`、`nonmutating`、`optional`、`override`、`postfix`、`precedence`、`prefix`、`Protocol`、 `required`、`right`、`set`、`Type`、 `unowned`、 `weak`、 および `willSet`。該当するコンテキスト外では、識別子として使用することができます
 
