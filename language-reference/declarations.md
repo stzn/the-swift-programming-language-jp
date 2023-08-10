@@ -1,6 +1,6 @@
 # 宣言\(Declarations\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2023/8/11  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Declarations.html
 
 型、演算子、変数、およびその他の名前と構造を紹介する。

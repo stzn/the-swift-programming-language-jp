@@ -1,6 +1,6 @@
 # 文\(Statements\)
 
-最終更新日: 2023/6/4  
+最終更新日: 2023/8/11  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Statements.html
 
 式を分類し、実行の流れを制御する。

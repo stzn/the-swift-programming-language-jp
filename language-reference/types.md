@@ -1,6 +1,6 @@
 # 型\(Types\)
 
-最終更新日: 2023/5/28  
+最終更新日: 2023/8/11  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Types.html
 
 組み込みの名前付き型と複合型を使用します。

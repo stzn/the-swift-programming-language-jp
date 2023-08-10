@@ -1,6 +1,6 @@
 # 字句構造 \(Lexical Structure\)
 
-最終更新日: 2023/6/4  
+最終更新日: 2023/8/11  
 原文: https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html
 
 最低水準の構成要素を使用する。
