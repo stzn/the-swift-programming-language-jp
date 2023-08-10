@@ -286,13 +286,13 @@ f(x as Any)
 > Swift 5.9以前は、以下の特殊リテラルが認識されていました:  
 > `#column`, `#dsohandle` , `#fileID`, `#filePath`, `#file`, `#function`, `#line`。
 > 現在はSwift標準ライブラリのマクロとして実装されています:  
-> [`column`](https://developer.apple.com/documentation/swift/column),
-> [`dsohandle`](https://developer.apple.com/documentation/swift/dsohandle),
-> [`fileID`](https://developer.apple.com/documentation/swift/fileID),
-> [`filePath`](https://developer.apple.com/documentation/swift/filePath),
-> [`file`](https://developer.apple.com/documentation/swift/file),
-> [`function`](https://developer.apple.com/documentation/swift/function),
-> [`line`](https://developer.apple.com/documentation/swift/line)。
+> [`column`](https://developer.apple.com/documentation/swift/column()),
+> [`dsohandle`](https://developer.apple.com/documentation/swift/dsohandle()),
+> [`fileID`](https://developer.apple.com/documentation/swift/fileID()),
+> [`filePath`](https://developer.apple.com/documentation/swift/filePath()),
+> [`file`](https://developer.apple.com/documentation/swift/file()),
+> [`function`](https://developer.apple.com/documentation/swift/function()),
+> [`line`](https://developer.apple.com/documentation/swift/line())。
 
 _配列リテラル_は、順序付けられた値の集合です。形式は次のとおりです:
 
