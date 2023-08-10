@@ -11,42 +11,24 @@ Swift では、ほとんどの宣言は、宣言されているのと同時に�
 
 > Grammar of a declaration:
 >
-> *declaration* → *import-declaration*
->
-> *declaration* → *constant-declaration*
->
-> *declaration* → *variable-declaration*
->
-> *declaration* → *typealias-declaration*
->
-> *declaration* → *function-declaration*
->
-> *declaration* → *enum-declaration*
->
-> *declaration* → *struct-declaration*
->
-> *declaration* → *class-declaration*
->
-> *declaration* → *actor-declaration*
->
-> *declaration* → *protocol-declaration*
->
-> *declaration* → *initializer-declaration*
->
-> *declaration* → *deinitializer-declaration*
->
-> *declaration* → *extension-declaration*
->
-> *declaration* → *subscript-declaration*
->
-> *declaration* → *macro-declaration*
->
-> *declaration* → *operator-declaration*
->
-> *declaration* → *precedence-group-declaration*
->
+> *declaration* → *import-declaration* \
+> *declaration* → *constant-declaration* \
+> *declaration* → *variable-declaration* \
+> *declaration* → *typealias-declaration* \
+> *declaration* → *function-declaration* \
+> *declaration* → *enum-declaration* \
+> *declaration* → *struct-declaration* \
+> *declaration* → *class-declaration* \
+> *declaration* → *actor-declaration* \
+> *declaration* → *protocol-declaration* \
+> *declaration* → *initializer-declaration* \
+> *declaration* → *deinitializer-declaration* \
+> *declaration* → *extension-declaration* \
+> *declaration* → *subscript-declaration* \
+> *declaration* → *macro-declaration* \
+> *declaration* → *operator-declaration* \
+> *declaration* → *precedence-group-declaration* \
 > *declarations* → *declaration* *declarations*_?_
->
 
 ## <a id="top-level-code">トップレベルコード\(Top-Level Code\)</a>
 
@@ -95,10 +77,7 @@ import <#module#>.<#submodule#>
 >
 > *import-declaration* → *attributes*_?_ **`import`** *import-kind*_?_ *import-path*
 >
->
->
-> *import-kind* → **`typealias`** | **`struct`** | **`class`** | **`enum`** | **`protocol`** | **`let`** | **`var`** | **`func`**
->
+> *import-kind* → **`typealias`** | **`struct`** | **`class`** | **`enum`** | **`protocol`** | **`let`** | **`var`** | **`func`** \
 > *import-path* → *identifier* | *identifier* **`.`** *import-path*
 
 ## <a id="constant-declaration">定数宣言\(Constant Declaration\)</a>
@@ -138,12 +117,8 @@ print("The second number is \(secondNumber).")
 >
 > *constant-declaration* → *attributes*_?_ *declaration-modifiers*_?_ **`let`** *pattern-initializer-list*
 >
->
->
-> *pattern-initializer-list* → *pattern-initializer* | *pattern-initializer* **`,`** *pattern-initializer-list*
->
-> *pattern-initializer* → *pattern* *initializer*_?_
->
+> *pattern-initializer-list* → *pattern-initializer* | *pattern-initializer* **`,`** *pattern-initializer-list* \
+> *pattern-initializer* → *pattern* *initializer*_?_ \
 > *initializer* → **`=`** *expression*
 
 ## <a id="variable-declaration">変数宣言\(Variable Declaration\)</a>
@@ -274,56 +249,31 @@ newAndOld.x = 200
 
 > Grammar of a variable declaration:
 >
-> *variable-declaration* → *variable-declaration-head* *pattern-initializer-list*
->
-> *variable-declaration* → *variable-declaration-head* *variable-name* *type-annotation* *code-block*
->
-> *variable-declaration* → *variable-declaration-head* *variable-name* *type-annotation* *getter-setter-block*
->
-> *variable-declaration* → *variable-declaration-head* *variable-name* *type-annotation* *getter-setter-keyword-block*
->
-> *variable-declaration* → *variable-declaration-head* *variable-name* *initializer* *willSet-didSet-block*
->
+> *variable-declaration* → *variable-declaration-head* *pattern-initializer-list* \
+> *variable-declaration* → *variable-declaration-head* *variable-name* *type-annotation* *code-block* \
+> *variable-declaration* → *variable-declaration-head* *variable-name* *type-annotation* *getter-setter-block* \
+> *variable-declaration* → *variable-declaration-head* *variable-name* *type-annotation* *getter-setter-keyword-block* \
+> *variable-declaration* → *variable-declaration-head* *variable-name* *initializer* *willSet-didSet-block* \
 > *variable-declaration* → *variable-declaration-head* *variable-name* *type-annotation* *initializer*_?_ *willSet-didSet-block*
 >
->
->
-> *variable-declaration-head* → *attributes*_?_ *declaration-modifiers*_?_ **`var`**
->
+> *variable-declaration-head* → *attributes*_?_ *declaration-modifiers*_?_ **`var`** \
 > *variable-name* → *identifier*
 >
->
->
-> *getter-setter-block* → *code-block*
->
+> *getter-setter-block* → *code-block* \
 > *getter-setter-block* → **`{`** *getter-clause* *setter-clause*_?_ **`}`** \
->
-> *getter-setter-block* → **`{`** *setter-clause* *getter-clause* **`}`**
->
-> *getter-clause* → *attributes*_?_ *mutation-modifier*_?_ **`get`** *code-block*
->
-> *setter-clause* → *attributes*_?_ *mutation-modifier*_?_ **`set`** *setter-name*_?_ *code-block*
->
+> *getter-setter-block* → **`{`** *setter-clause* *getter-clause* **`}`** \
+> *getter-clause* → *attributes*_?_ *mutation-modifier*_?_ **`get`** *code-block* \
+> *setter-clause* → *attributes*_?_ *mutation-modifier*_?_ **`set`** *setter-name*_?_ *code-block* \
 > *setter-name* → **`(`** *identifier* **`)`**
 >
->
->
-> *getter-setter-keyword-block* → **`{`** *getter-keyword-clause* *setter-keyword-clause*_?_ **`}`**
->
-> *getter-setter-keyword-block* → **`{`** *setter-keyword-clause* *getter-keyword-clause* **`}`**
->
-> *getter-keyword-clause* → *attributes*_?_ *mutation-modifier*_?_ **`get`**
->
+> *getter-setter-keyword-block* → **`{`** *getter-keyword-clause* *setter-keyword-clause*_?_ **`}`** \
+> *getter-setter-keyword-block* → **`{`** *setter-keyword-clause* *getter-keyword-clause* **`}`** \
+> *getter-keyword-clause* → *attributes*_?_ *mutation-modifier*_?_ **`get`** \
 > *setter-keyword-clause* → *attributes*_?_ *mutation-modifier*_?_ **`set`**
 >
->
->
-> *willSet-didSet-block* → **`{`** *willSet-clause* *didSet-clause*_?_ **`}`**
->
-> *willSet-didSet-block* → **`{`** *didSet-clause* *willSet-clause*_?_ **`}`**
->
-> *willSet-clause* → *attributes*_?_ **`willSet`** *setter-name*_?_ *code-block*
->
+> *willSet-didSet-block* → **`{`** *willSet-clause* *didSet-clause*_?_ **`}`** \
+> *willSet-didSet-block* → **`{`** *didSet-clause* *willSet-clause*_?_ **`}`** \
+> *willSet-clause* → *attributes*_?_ **`willSet`** *setter-name*_?_ *code-block* \
 > *didSet-clause* → *attributes*_?_ **`didSet`** *setter-name*_?_ *code-block*
 
 ## <a id="type-alias-declaration">タイプエイリアス宣言\(Type Alias Declaration\)</a>
@@ -379,10 +329,8 @@ func sum<T: Sequence>(_ sequence: T) -> Int where T.Element == Int {
 
 > Grammar of a type alias declaration:
 >
-> *typealias-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`typealias`** *typealias-name* *generic-parameter-clause*_?_ *typealias-assignment*
->
-> *typealias-name* → *identifier*
->
+> *typealias-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`typealias`** *typealias-name* *generic-parameter-clause*_?_ *typealias-assignment* \
+> *typealias-name* → *identifier* \
 > *typealias-assignment* → **`=`** *type*
 
 ## <a id="function-declaration">関数宣言\(Function Declaration\)</a>
@@ -623,38 +571,21 @@ Swift は、関数またはメソッドがその呼び出し元に戻り値を�
 >
 > *function-declaration* → *function-head* *function-name* *generic-parameter-clause*_?_ *function-signature* *generic-where-clause*_?_ *function-body*_?_
 >
->
->
-> *function-head* → *attributes*_?_ *declaration-modifiers*_?_ **`func`**
->
+> *function-head* → *attributes*_?_ *declaration-modifiers*_?_ **`func`** \
 > *function-name* → *identifier* | *operator*
 >
->
->
-> *function-signature* → *parameter-clause* **`async`**_?_ **`throws`**_?_ *function-result*_?_
->
-> *function-signature* → *parameter-clause* **`async`**_?_ **`rethrows`** *function-result*_?_
->
-> *function-result* → **`->`** *attributes*_?_ *type*
->
+> *function-signature* → *parameter-clause* **`async`**_?_ **`throws`**_?_ *function-result*_?_ \
+> *function-signature* → *parameter-clause* **`async`**_?_ **`rethrows`** *function-result*_?_ \
+> *function-result* → **`->`** *attributes*_?_ *type* \
 > *function-body* → *code-block*
 >
->
->
-> *parameter-clause* → **`(`** **`)`** | **`(`** *parameter-list* **`)`**
->
-> *parameter-list* → *parameter* | *parameter* **`,`** *parameter-list*
->
-> *parameter* → *external-parameter-name*_?_ *local-parameter-name* *type-annotation* *default-argument-clause*_?_
->
-> *parameter* → *external-parameter-name*_?_ *local-parameter-name* *type-annotation*
->
-> *parameter* → *external-parameter-name*_?_ *local-parameter-name* *type-annotation* **`...`**
->
-> *external-parameter-name* → *identifier*
->
-> *local-parameter-name* → *identifier*
->
+> *parameter-clause* → **`(`** **`)`** | **`(`** *parameter-list* **`)`** \
+> *parameter-list* → *parameter* | *parameter* **`,`** *parameter-list* \
+> *parameter* → *external-parameter-name*_?_ *local-parameter-name* *type-annotation* *default-argument-clause*_?_ \
+> *parameter* → *external-parameter-name*_?_ *local-parameter-name* *type-annotation* \
+> *parameter* → *external-parameter-name*_?_ *local-parameter-name* *type-annotation* **`...`** \
+> *external-parameter-name* → *identifier* \
+> *local-parameter-name* → *identifier* \
 > *default-argument-clause* → **`=`** *expression*
 
 ## 列挙型宣言\(Enumeration Declaration\)
@@ -762,44 +693,25 @@ Raw Value 型のケースを持つ列挙型は、Swift 標準ライブラリで�
 
 > Grammar of an enumeration declaration:
 >
-> *enum-declaration* → *attributes*_?_ *access-level-modifier*_?_ *union-style-enum*
->
+> *enum-declaration* → *attributes*_?_ *access-level-modifier*_?_ *union-style-enum* \
 > *enum-declaration* → *attributes*_?_ *access-level-modifier*_?_ *raw-value-style-enum*
 >
->
->
-> *union-style-enum* → **`indirect`**_?_ **`enum`** *enum-name* *generic-parameter-clause*_?_ *type-inheritance-clause*_?_ *generic-where-clause*_?_ **`{`** *union-style-enum-members*_?_ **`}`**
->
-> *union-style-enum-members* → *union-style-enum-member* *union-style-enum-members*_?_
->
-> *union-style-enum-member* → *declaration* | *union-style-enum-case-clause* | *compiler-control-statement*
->
-> *union-style-enum-case-clause* → *attributes*_?_ **`indirect`**_?_ **`case`** *union-style-enum-case-list*
->
-> *union-style-enum-case-list* → *union-style-enum-case* | *union-style-enum-case* **`,`** *union-style-enum-case-list*
->
-> *union-style-enum-case* → *enum-case-name* *tuple-type*_?_
->
-> *enum-name* → *identifier*
->
+> *union-style-enum* → **`indirect`**_?_ **`enum`** *enum-name* *generic-parameter-clause*_?_ *type-inheritance-clause*_?_ *generic-where-clause*_?_ **`{`** *union-style-enum-members*_?_ **`}`** \
+> *union-style-enum-members* → *union-style-enum-member* *union-style-enum-members*_?_ \
+> *union-style-enum-member* → *declaration* | *union-style-enum-case-clause* | *compiler-control-statement* \
+> *union-style-enum-case-clause* → *attributes*_?_ **`indirect`**_?_ **`case`** *union-style-enum-case-list* \
+> *union-style-enum-case-list* → *union-style-enum-case* | *union-style-enum-case* **`,`** *union-style-enum-case-list* \
+> *union-style-enum-case* → *enum-case-name* *tuple-type*_?_ \
+> *enum-name* → *identifier* \
 > *enum-case-name* → *identifier*
 >
->
->
-> *raw-value-style-enum* → **`enum`** *enum-name* *generic-parameter-clause*_?_ *type-inheritance-clause* *generic-where-clause*_?_ **`{`** *raw-value-style-enum-members* **`}`**
->
-> *raw-value-style-enum-members* → *raw-value-style-enum-member* *raw-value-style-enum-members*_?_
->
-> *raw-value-style-enum-member* → *declaration* | *raw-value-style-enum-case-clause* | *compiler-control-statement*
->
-> *raw-value-style-enum-case-clause* → *attributes*_?_ **`case`** *raw-value-style-enum-case-list*
->
-> *raw-value-style-enum-case-list* → *raw-value-style-enum-case* | *raw-value-style-enum-case* **`,`** *raw-value-style-enum-case-list*
->
-> *raw-value-style-enum-case* → *enum-case-name* *raw-value-assignment*_?_
->
-> *raw-value-assignment* → **`=`** *raw-value-literal*
->
+> *raw-value-style-enum* → **`enum`** *enum-name* *generic-parameter-clause*_?_ *type-inheritance-clause* *generic-where-clause*_?_ **`{`** *raw-value-style-enum-members* **`}`** \
+> *raw-value-style-enum-members* → *raw-value-style-enum-member* *raw-value-style-enum-members*_?_ \
+> *raw-value-style-enum-member* → *declaration* | *raw-value-style-enum-case-clause* | *compiler-control-statement* \
+> *raw-value-style-enum-case-clause* → *attributes*_?_ **`case`** *raw-value-style-enum-case-list* \
+> *raw-value-style-enum-case-list* → *raw-value-style-enum-case* | *raw-value-style-enum-case* **`,`** *raw-value-style-enum-case-list* \
+> *raw-value-style-enum-case* → *enum-case-name* *raw-value-assignment*_?_ \
+> *raw-value-assignment* → **`=`** *raw-value-literal* \
 > *raw-value-literal* → *numeric-literal* | *static-string-literal* | *boolean-literal*
 
 ## 構造体宣言\(Structure Declaration\)
@@ -832,16 +744,11 @@ struct <#structure name#>: <#adopted protocols#> {
 
 > Grammar of a structure declaration:
 >
-> *struct-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`struct`** *struct-name* *generic-parameter-clause*_?_ *type-inheritance-clause*_?_ *generic-where-clause*_?_ *struct-body*
->
-> *struct-name* → *identifier*
->
+> *struct-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`struct`** *struct-name* *generic-parameter-clause*_?_ *type-inheritance-clause*_?_ *generic-where-clause*_?_ *struct-body* \
+> *struct-name* → *identifier* \
 > *struct-body* → **`{`** *struct-members*_?_ **`}`**
 >
->
->
-> *struct-members* → *struct-member* *struct-members*_?_
->
+> *struct-members* → *struct-member* *struct-members*_?_ \
 > *struct-member* → *declaration* | *compiler-control-statement*
 
 ## クラス宣言\(Class Declaration\)
@@ -878,18 +785,12 @@ _superclass_ で宣言されたプロパティとメソッドは現在のクラ�
 
 > Grammar of a class declaration:
 >
-> *class-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`final`**_?_ **`class`** *class-name* *generic-parameter-clause*_?_ *type-inheritance-clause*_?_ *generic-where-clause*_?_ *class-body*
->
-> *class-declaration* → *attributes*_?_ **`final`** *access-level-modifier*_?_ **`class`** *class-name* *generic-parameter-clause*_?_ *type-inheritance-clause*_?_ *generic-where-clause*_?_ *class-body*
->
-> *class-name* → *identifier*
->
+> *class-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`final`**_?_ **`class`** *class-name* *generic-parameter-clause*_?_ *type-inheritance-clause*_?_ *generic-where-clause*_?_ *class-body* \
+> *class-declaration* → *attributes*_?_ **`final`** *access-level-modifier*_?_ **`class`** *class-name* *generic-parameter-clause*_?_ *type-inheritance-clause*_?_ *generic-where-clause*_?_ *class-body* \
+> *class-name* → *identifier* \
 > *class-body* → **`{`** *class-members*_?_ **`}`**
 >
->
->
-> *class-members* → *class-member* *class-members*_?_
->
+> *class-members* → *class-member* *class-members*_?_ \
 > *class-member* → *declaration* | *compiler-control-statement*
 
 ## <a id="actor-declaration">アクター宣言\(Actor Declaration\)</a>
@@ -927,16 +828,11 @@ actor <#actor name#>: <#adopted protocols#> {
 
 > Grammar of an actor declaration:
 >
-> *actor-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`actor`** *actor-name* *generic-parameter-clause*_?_ *type-inheritance-clause*_?_ *generic-where-clause*_?_ *actor-body*
->
-> *actor-name* → *identifier*
->
+> *actor-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`actor`** *actor-name* *generic-parameter-clause*_?_ *type-inheritance-clause*_?_ *generic-where-clause*_?_ *actor-body* \
+> *actor-name* → *identifier* \
 > *actor-body* → **`{`** *actor-members*_?_ **`}`**
 >
->
->
-> *actor-members* → *actor-member* *actor-members*_?_
->
+> *actor-members* → *actor-member* *actor-members*_?_ \
 > *actor-member* → *declaration* | *compiler-control-statement*
 
 ## <a id="protocol-declaration">プロトコル宣言\(Protocol Declaration\)</a>
@@ -992,30 +888,18 @@ protocol SomeProtocol: AnyObject {
 
 > Grammar of a protocol declaration:
 >
-> *protocol-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`protocol`** *protocol-name* *type-inheritance-clause*_?_ *generic-where-clause*_?_ *protocol-body*
->
-> *protocol-name* → *identifier*
->
+> *protocol-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`protocol`** *protocol-name* *type-inheritance-clause*_?_ *generic-where-clause*_?_ *protocol-body* \
+> *protocol-name* → *identifier* \
 > *protocol-body* → **`{`** *protocol-members*_?_ **`}`**
 >
->
->
-> *protocol-members* → *protocol-member* *protocol-members*_?_
->
+> *protocol-members* → *protocol-member* *protocol-members*_?_ \
 > *protocol-member* → *protocol-member-declaration* | *compiler-control-statement*
 >
->
->
-> *protocol-member-declaration* → *protocol-property-declaration*
->
-> *protocol-member-declaration* → *protocol-method-declaration*
->
-> *protocol-member-declaration* → *protocol-initializer-declaration*
->
-> *protocol-member-declaration* → *protocol-subscript-declaration*
->
-> *protocol-member-declaration* → *protocol-associated-type-declaration*
->
+> *protocol-member-declaration* → *protocol-property-declaration* \
+> *protocol-member-declaration* → *protocol-method-declaration* \
+> *protocol-member-declaration* → *protocol-initializer-declaration* \
+> *protocol-member-declaration* → *protocol-subscript-declaration* \
+> *protocol-member-declaration* → *protocol-associated-type-declaration* \
 > *protocol-member-declaration* → *typealias-declaration*
 
 ### <a id="protocol-property-declaration">プロトコルプロパティ宣言\(Protocol Property Declaration\)</a>
@@ -1062,10 +946,8 @@ var <#property name#>: <#type#> { get set }
 
 > Grammar of a protocol initializer declaration:
 >
-> *protocol-initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* **`throws`**_?_ *generic-where-clause*_?_
->
+> *protocol-initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* **`throws`**_?_ *generic-where-clause*_?_ \
 > *protocol-initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* **`rethrows`** *generic-where-clause*_?_
-
 
 ### <a id="protocol-subscript-declaration">プロトコルサブスクリプト宣言\(Protocol Subscript Declaration\)</a>
 
@@ -1406,14 +1288,10 @@ extension Array: Loggable where Element: MarkedLoggable { }
 
 > Grammar of an extension declaration:
 >
-> *extension-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`extension`** *type-identifier* *type-inheritance-clause*_?_ *generic-where-clause*_?_ *extension-body*
->
+> *extension-declaration* → *attributes*_?_ *access-level-modifier*_?_ **`extension`** *type-identifier* *type-inheritance-clause*_?_ *generic-where-clause*_?_ *extension-body* \
 > *extension-body* → **`{`** *extension-members*_?_ **`}`**
 >
->
->
-> *extension-members* → *extension-member* *extension-members*_?_
->
+> *extension-members* → *extension-member* *extension-members*_?_ \
 > *extension-member* → *declaration* | *compiler-control-statement*
 
 ## サブスクリプト宣言\(Subscript Declaration\)
@@ -1453,14 +1331,10 @@ _parameters_ または _return type_ がオーバーロードしているもの�
 
 > Grammar of a subscript declaration:
 >
-> *subscript-declaration* → *subscript-head* *subscript-result* *generic-where-clause*_?_ *code-block*
->
-> *subscript-declaration* → *subscript-head* *subscript-result* *generic-where-clause*_?_ *getter-setter-block*
->
-> *subscript-declaration* → *subscript-head* *subscript-result* *generic-where-clause*_?_ *getter-setter-keyword-block*
->
-> *subscript-head* → *attributes*_?_ *declaration-modifiers*_?_ **`subscript`** *generic-parameter-clause*_?_ *parameter-clause*
->
+> *subscript-declaration* → *subscript-head* *subscript-result* *generic-where-clause*_?_ *code-block* \
+> *subscript-declaration* → *subscript-head* *subscript-result* *generic-where-clause*_?_ *getter-setter-block* \
+> *subscript-declaration* → *subscript-head* *subscript-result* *generic-where-clause*_?_ *getter-setter-keyword-block* \
+> *subscript-head* → *attributes*_?_ *declaration-modifiers*_?_ **`subscript`** *generic-parameter-clause*_?_ *parameter-clause* \
 > *subscript-result* → **`->`** *attributes*_?_ *type*
 
 ## マクロ宣言\(Macro Declaration\)
@@ -1480,14 +1354,10 @@ macro <#name#> = <#macro implementation#>
 
 > Grammar of a macro declaration:
 >
-> *macro-declaration* → *macro-head* *identifier* *generic-parameter-clause*_?_ *macro-signature* *macro-definition*_?_ *generic-where-clause*
->
-> *macro-head* → *attributes*_?_ *declaration-modifiers*_?_ **`macro`**
->
-> *macro-signature* → *parameter-clause* *macro-function-signature-result*_?_
->
-> *macro-function-signature-result* → **`->`** *type*
->
+> *macro-declaration* → *macro-head* *identifier* *generic-parameter-clause*_?_ *macro-signature* *macro-definition*_?_ *generic-where-clause* \
+> *macro-head* → *attributes*_?_ *declaration-modifiers*_?_ **`macro`** \
+> *macro-signature* → *parameter-clause* *macro-function-signature-result*_?_ \
+> *macro-function-signature-result* → **`->`** *type* \
 > *macro-definition* → **`=`** *expression*
 
 ## <a id="operator-declaration">演算子宣言\(Operator Declaration\)</a>
@@ -1534,15 +1404,9 @@ _後置演算子_は、式 `a!` のような後置強制アンラップ演算子
 >
 > *operator-declaration* → *prefix-operator-declaration* | *postfix-operator-declaration* | *infix-operator-declaration*
 >
->
->
-> *prefix-operator-declaration* → **`prefix`** **`operator`** *operator*
->
-> *postfix-operator-declaration* → **`postfix`** **`operator`** *operator*
->
+> *prefix-operator-declaration* → **`prefix`** **`operator`** *operator* \
+> *postfix-operator-declaration* → **`postfix`** **`operator`** *operator* \
 > *infix-operator-declaration* → **`infix`** **`operator`** *operator* *infix-operator-group*_?_
->
->
 >
 > *infix-operator-group* → **`:`** *precedence-group-name*
 
@@ -1576,38 +1440,21 @@ Swift は、標準ライブラリが提供する演算子に多数の優先順�
 >
 > *precedence-group-declaration* → **`precedencegroup`** *precedence-group-name* **`{`** *precedence-group-attributes*_?_ **`}`**
 >
->
->
-> *precedence-group-attributes* → *precedence-group-attribute* *precedence-group-attributes*_?_
->
-> *precedence-group-attribute* → *precedence-group-relation*
->
-> *precedence-group-attribute* → *precedence-group-assignment*
->
+> *precedence-group-attributes* → *precedence-group-attribute* *precedence-group-attributes*_?_ \
+> *precedence-group-attribute* → *precedence-group-relation* \
+> *precedence-group-attribute* → *precedence-group-assignment* \
 > *precedence-group-attribute* → *precedence-group-associativity*
 >
->
->
-> *precedence-group-relation* → **`higherThan`** **`:`** *precedence-group-names*
->
+> *precedence-group-relation* → **`higherThan`** **`:`** *precedence-group-names* \
 > *precedence-group-relation* → **`lowerThan`** **`:`** *precedence-group-names*
->
->
 >
 > *precedence-group-assignment* → **`assignment`** **`:`** *boolean-literal*
 >
->
->
-> *precedence-group-associativity* → **`associativity`** **`:`** **`left`**
->
-> *precedence-group-associativity* → **`associativity`** **`:`** **`right`**
->
+> *precedence-group-associativity* → **`associativity`** **`:`** **`left`** \
+> *precedence-group-associativity* → **`associativity`** **`:`** **`right`** \
 > *precedence-group-associativity* → **`associativity`** **`:`** **`none`**
 >
->
->
-> *precedence-group-names* → *precedence-group-name* | *precedence-group-name* **`,`** *precedence-group-names*
->
+> *precedence-group-names* → *precedence-group-name* | *precedence-group-name* **`,`** *precedence-group-names* \
 > *precedence-group-name* → *identifier*
 
 ## <a id="declaration-modifiers">宣言修飾子\(Declaration Modifiers\)</a>
@@ -1674,32 +1521,18 @@ Swift は、open、public、internal、file private、private の 5 つのレベ
 
 > Grammar of a declaration modifier:
 >
-> *declaration-modifier* → **`class`** | **`convenience`** | **`dynamic`** | **`final`** | **`infix`** | **`lazy`** | **`optional`** | **`override`** | **`postfix`** | **`prefix`** | **`required`** | **`static`** | **`unowned`** | **`unowned`** **`(`** **`safe`** **`)`** | **`unowned`** **`(`** **`unsafe`** **`)`** | **`weak`**
->
-> *declaration-modifier* → *access-level-modifier*
->
-> *declaration-modifier* → *mutation-modifier*
->
-> *declaration-modifier* → *actor-isolation-modifier*
->
+> *declaration-modifier* → **`class`** | **`convenience`** | **`dynamic`** | **`final`** | **`infix`** | **`lazy`** | **`optional`** | **`override`** | **`postfix`** | **`prefix`** | **`required`** | **`static`** | **`unowned`** | **`unowned`** **`(`** **`safe`** **`)`** | **`unowned`** **`(`** **`unsafe`** **`)`** | **`weak`** \
+> *declaration-modifier* → *access-level-modifier* \
+> *declaration-modifier* → *mutation-modifier* \
+> *declaration-modifier* → *actor-isolation-modifier* \
 > *declaration-modifiers* → *declaration-modifier* *declaration-modifiers*_?_
 >
->
->
-> *access-level-modifier* → **`private`** | **`private`** **`(`** **`set`** **`)`**
->
-> *access-level-modifier* → **`fileprivate`** | **`fileprivate`** **`(`** **`set`** **`)`**
->
-> *access-level-modifier* → **`internal`** | **`internal`** **`(`** **`set`** **`)`**
->
-> *access-level-modifier* → **`public`** | **`public`** **`(`** **`set`** **`)`**
->
+> *access-level-modifier* → **`private`** | **`private`** **`(`** **`set`** **`)`** \
+> *access-level-modifier* → **`fileprivate`** | **`fileprivate`** **`(`** **`set`** **`)`** \
+> *access-level-modifier* → **`internal`** | **`internal`** **`(`** **`set`** **`)`** \
+> *access-level-modifier* → **`public`** | **`public`** **`(`** **`set`** **`)`** \
 > *access-level-modifier* → **`open`** | **`open`** **`(`** **`set`** **`)`**
 >
->
->
 > *mutation-modifier* → **`mutating`** | **`nonmutating`**
->
->
 >
 > *actor-isolation-modifier* → **`nonisolated`**
