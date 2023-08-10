@@ -296,7 +296,7 @@ newAndOld.x = 200
 >
 > *getter-setter-block* → *code-block*
 >
-> *getter-setter-block* → **`{`** *getter-clause* *setter-clause*_?_ **`}`**
+> *getter-setter-block* → **`{`** *getter-clause* *setter-clause*_?_ **`}`** \
 >
 > *getter-setter-block* → **`{`** *setter-clause* *getter-clause* **`}`**
 >
