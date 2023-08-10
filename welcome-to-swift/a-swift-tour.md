@@ -828,7 +828,9 @@ func fridgeContains(_ food: String) -> Bool {
     let result = fridgeContent.contains(food)
     return result
 }
-fridgeContains("banana")
+if fridgeContains("banana") {
+    print("Found a banana")
+}
 print(fridgeIsOpen)
 // false
 ```
