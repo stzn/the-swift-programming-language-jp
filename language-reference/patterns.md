@@ -1,6 +1,6 @@
 # パターン\(Patterns\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2023/8/11  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Patterns.html
 
 値を一致させて分解する。
