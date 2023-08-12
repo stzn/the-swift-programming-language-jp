@@ -1,6 +1,6 @@
 # 文\(Statements\)
 
-最終更新日: 2023/6/4  
+最終更新日: 2023/8/11  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Statements.html
 
 式を分類し、実行の流れを制御する。
@@ -13,24 +13,15 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 
 > Grammar of a statement:
 >
-> *statement* → *expression* **`;`**_?_
->
-> *statement* → *declaration* **`;`**_?_
->
-> *statement* → *loop-statement* **`;`**_?_
->
-> *statement* → *branch-statement* **`;`**_?_
->
-> *statement* → *labeled-statement* **`;`**_?_
->
-> *statement* → *control-transfer-statement* **`;`**_?_
->
-> *statement* → *defer-statement* **`;`**_?_
->
-> *statement* → *do-statement* **`;`**_?_
->
-> *statement* → *compiler-control-statement*
->
+> *statement* → *expression* **`;`**_?_ \
+> *statement* → *declaration* **`;`**_?_ \
+> *statement* → *loop-statement* **`;`**_?_ \
+> *statement* → *branch-statement* **`;`**_?_ \
+> *statement* → *labeled-statement* **`;`**_?_ \
+> *statement* → *control-transfer-statement* **`;`**_?_ \
+> *statement* → *defer-statement* **`;`**_?_ \
+> *statement* → *do-statement* **`;`**_?_ \
+> *statement* → *compiler-control-statement* \
 > *statements* → *statement* *statements*_?_
 
 ## ループ文\(Loop Statements\)
@@ -41,10 +32,8 @@ Swift では、単純な文、コンパイラ制御文、および制御フロ�
 
 > Grammar of a loop statement:
 >
-> *loop-statement* → *for-in-statement*
->
-> *loop-statement* → *while-statement*
->
+> *loop-statement* → *for-in-statement* \
+> *loop-statement* → *while-statement* \
 > *loop-statement* → *repeat-while-statement*
 
 ### For-In 文\(For-In Statement\)
@@ -90,16 +79,10 @@ _condition_ の値は、`Bool` 型または `Bool` にブリッジされた型�
 >
 > *while-statement* → **`while`** *condition-list* *code-block*
 >
->
->
-> *condition-list* → *condition* | *condition* **`,`** *condition-list*
->
+> *condition-list* → *condition* | *condition* **`,`** *condition-list* \
 > *condition* → *expression* | *availability-condition* | *case-condition* | *optional-binding-condition*
 >
->
->
-> *case-condition* → **`case`** *pattern* *initializer*
->
+> *case-condition* → **`case`** *pattern* *initializer* \
 > *optional-binding-condition* → **`let`** *pattern* *initializer*_?_ | **`var`** *pattern* *initializer*_?_
 
 ### Repeat-While 文\(Repeat-While Statement\)
@@ -135,10 +118,8 @@ _condition_ の値は、`Bool` 型または `Bool` にブリッジされた型�
 
 > Grammar of a branch statement:
 >
-> *branch-statement* → *if-statement*
->
-> *branch-statement* → *guard-statement*
->
+> *branch-statement* → *if-statement* \
+> *branch-statement* → *guard-statement* \
 > *branch-statement* → *switch-statement*
 
 ### If 文\(If Statement\)
@@ -181,8 +162,7 @@ if <#condition 1#> {
 
 > Grammar of an if statement:
 >
-> *if-statement* → **`if`** *condition-list* *code-block* *else-clause*_?_
->
+> *if-statement* → **`if`** *condition-list* *code-block* *else-clause*_?_ \
 > *else-clause* → **`else`** *code-block* | **`else`** *if-statement*
 
 ### <a id="guard-statement">Guard 文\(Guard Statement\)</a>
@@ -285,40 +265,23 @@ case .suppressed:
 
 > Grammar of a switch statement:
 >
-> *switch-statement* → **`switch`** *expression* **`{`** *switch-cases*_?_ **`}`**
->
-> *switch-cases* → *switch-case* *switch-cases*_?_
->
-> *switch-case* → *case-label* *statements*
->
-> *switch-case* → *default-label* *statements*
->
+> *switch-statement* → **`switch`** *expression* **`{`** *switch-cases*_?_ **`}`** \
+> *switch-cases* → *switch-case* *switch-cases*_?_ \
+> *switch-case* → *case-label* *statements* \
+> *switch-case* → *default-label* *statements* \
 > *switch-case* → *conditional-switch-case*
 >
->
->
-> *case-label* → *attributes*_?_ **`case`** *case-item-list* **`:`**
->
-> *case-item-list* → *pattern* *where-clause*_?_ | *pattern* *where-clause*_?_ **`,`** *case-item-list*
->
+> *case-label* → *attributes*_?_ **`case`** *case-item-list* **`:`** \
+> *case-item-list* → *pattern* *where-clause*_?_ | *pattern* *where-clause*_?_ **`,`** *case-item-list* \
 > *default-label* → *attributes*_?_ **`default`** **`:`**
 >
->
->
-> *where-clause* → **`where`** *where-expression*
->
+> *where-clause* → **`where`** *where-expression* \
 > *where-expression* → *expression*
 >
->
->
-> *conditional-switch-case* → *switch-if-directive-clause* *switch-elseif-directive-clauses*_?_ *switch-else-directive-clause*_?_ *endif-directive*
->
-> *switch-if-directive-clause* → *if-directive* *compilation-condition* *switch-cases*_?_
->
-> *switch-elseif-directive-clauses* → *elseif-directive-clause* *switch-elseif-directive-clauses*_?_
->
-> *switch-elseif-directive-clause* → *elseif-directive* *compilation-condition* *switch-cases*_?_
->
+> *conditional-switch-case* → *switch-if-directive-clause* *switch-elseif-directive-clauses*_?_ *switch-else-directive-clause*_?_ *endif-directive* \
+> *switch-if-directive-clause* → *if-directive* *compilation-condition* *switch-cases*_?_ \
+> *switch-elseif-directive-clauses* → *elseif-directive-clause* *switch-elseif-directive-clauses*_?_ \
+> *switch-elseif-directive-clause* → *elseif-directive* *compilation-condition* *switch-cases*_?_ \
 > *switch-else-directive-clause* → *else-directive* *switch-cases*_?_
 
 ## ラベル付き文\(Labeled Statement\)
@@ -331,18 +294,12 @@ case .suppressed:
 
 > Grammar of a labeled statement:
 >
-> *labeled-statement* → *statement-label* *loop-statement*
->
-> *labeled-statement* → *statement-label* *if-statement*
->
-> *labeled-statement* → *statement-label* *switch-statement*
->
+> *labeled-statement* → *statement-label* *loop-statement* \
+> *labeled-statement* → *statement-label* *if-statement* \
+> *labeled-statement* → *statement-label* *switch-statement* \
 > *labeled-statement* → *statement-label* *do-statement*
 >
->
->
-> *statement-label* → *label-name* **`:`**
->
+> *statement-label* → *label-name* **`:`** \
 > *label-name* → *identifier*
 
 ## 制御転送文\(Control Transfer Statements\)
@@ -351,14 +308,10 @@ case .suppressed:
 
 > Grammar of a control transfer statement:
 >
-> *control-transfer-statement* → *break-statement*
->
-> *control-transfer-statement* → *continue-statement*
->
-> *control-transfer-statement* → *fallthrough-statement*
->
-> *control-transfer-statement* → *return-statement*
->
+> *control-transfer-statement* → *break-statement* \
+> *control-transfer-statement* → *continue-statement* \
+> *control-transfer-statement* → *fallthrough-statement* \
+> *control-transfer-statement* → *return-statement* \
 > *control-transfer-statement* → *throw-statement*
 
 ### <a id="break-statement">Break 文\(Break Statement\)</a>
@@ -550,14 +503,10 @@ do {
 
 > Grammar of a do statement:
 >
-> *do-statement* → **`do`** *code-block* *catch-clauses*_?_
->
-> *catch-clauses* → *catch-clause* *catch-clauses*_?_
->
-> *catch-clause* → **`catch`** *catch-pattern-list*_?_ *code-block*
->
-> *catch-pattern-list* → *catch-pattern* | *catch-pattern* **`,`** *catch-pattern-list*
->
+> *do-statement* → **`do`** *code-block* *catch-clauses*_?_ \
+> *catch-clauses* → *catch-clause* *catch-clauses*_?_ \
+> *catch-clause* → **`catch`** *catch-pattern-list*_?_ *code-block* \
+> *catch-pattern-list* → *catch-pattern* | *catch-pattern* **`,`** *catch-pattern-list* \
 > *catch-pattern* → *pattern* *where-clause*_?_
 
 ## <a id="compiler-control-statements">コンパイラ制御文\(Compiler Control Statements\)</a>
@@ -566,10 +515,8 @@ do {
 
 > Grammar of a compiler control statement:
 >
-> *compiler-control-statement* → *conditional-compilation-block*
->
-> *compiler-control-statement* → *line-control-statement*
->
+> *compiler-control-statement* → *conditional-compilation-block* \
+> *compiler-control-statement* → *line-control-statement* \
 > *compiler-control-statement* → *diagnostic-statement*
 
 ### <a id="conditional-compilation-block">条件付きコンパイルブロック\(Conditional Compilation Block\)</a>
@@ -644,64 +591,34 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 >
 > *conditional-compilation-block* → *if-directive-clause* *elseif-directive-clauses*_?_ *else-directive-clause*_?_ *endif-directive*
 >
->
->
-> *if-directive-clause* → *if-directive* *compilation-condition* *statements*_?_
->
-> *elseif-directive-clauses* → *elseif-directive-clause* *elseif-directive-clauses*_?_
->
-> *elseif-directive-clause* → *elseif-directive* *compilation-condition* *statements*_?_
->
-> *else-directive-clause* → *else-directive* *statements*_?_
->
-> *if-directive* → **`#if`**
->
-> *elseif-directive* → **`#elseif`**
->
-> *else-directive* → **`#else`**
->
+> *if-directive-clause* → *if-directive* *compilation-condition* *statements*_?_ \
+> *elseif-directive-clauses* → *elseif-directive-clause* *elseif-directive-clauses*_?_ \
+> *elseif-directive-clause* → *elseif-directive* *compilation-condition* *statements*_?_ \
+> *else-directive-clause* → *else-directive* *statements*_?_ \
+> *if-directive* → **`#if`** \
+> *elseif-directive* → **`#elseif`** \
+> *else-directive* → **`#else`** \
 > *endif-directive* → **`#endif`**
 >
->
->
-> *compilation-condition* → *platform-condition*
->
-> *compilation-condition* → *identifier*
->
-> *compilation-condition* → *boolean-literal*
->
-> *compilation-condition* → **`(`** *compilation-condition* **`)`**
->
-> *compilation-condition* → **`!`** *compilation-condition*
->
-> *compilation-condition* → *compilation-condition* **`&&`** *compilation-condition*
->
+> *compilation-condition* → *platform-condition* \
+> *compilation-condition* → *identifier* \
+> *compilation-condition* → *boolean-literal* \
+> *compilation-condition* → **`(`** *compilation-condition* **`)`** \
+> *compilation-condition* → **`!`** *compilation-condition* \
+> *compilation-condition* → *compilation-condition* **`&&`** *compilation-condition* \
 > *compilation-condition* → *compilation-condition* **`||`** *compilation-condition*
 >
->
->
-> *platform-condition* → **`os`** **`(`** *operating-system* **`)`**
->
-> *platform-condition* → **`arch`** **`(`** *architecture* **`)`**
->
-> *platform-condition* → **`swift`** **`(`** **`>=`** *swift-version* **`)`** | **`swift`** **`(`** **`<`** *swift-version* **`)`**
->
-> *platform-condition* → **`compiler`** **`(`** **`>=`** *swift-version* **`)`** | **`compiler`** **`(`** **`<`** *swift-version* **`)`**
->
-> *platform-condition* → **`canImport`** **`(`** *import-path* **`)`**
->
+> *platform-condition* → **`os`** **`(`** *operating-system* **`)`** \
+> *platform-condition* → **`arch`** **`(`** *architecture* **`)`** \
+> *platform-condition* → **`swift`** **`(`** **`>=`** *swift-version* **`)`** | **`swift`** **`(`** **`<`** *swift-version* **`)`** \
+> *platform-condition* → **`compiler`** **`(`** **`>=`** *swift-version* **`)`** | **`compiler`** **`(`** **`<`** *swift-version* **`)`** \
+> *platform-condition* → **`canImport`** **`(`** *import-path* **`)`** \
 > *platform-condition* → **`targetEnvironment`** **`(`** *environment* **`)`**
 >
->
->
-> *operating-system* → **`macOS`** | **`iOS`** | **`watchOS`** | **`tvOS`** | **`Linux`** | **`Windows`**
->
-> *architecture* → **`i386`** | **`x86_64`** | **`arm`** | **`arm64`**
->
-> *swift-version* → *decimal-digits* *swift-version-continuation*_?_
->
-> *swift-version-continuation* → **`.`** *decimal-digits* *swift-version-continuation*_?_
->
+> *operating-system* → **`macOS`** | **`iOS`** | **`watchOS`** | **`tvOS`** | **`Linux`** | **`Windows`** \
+> *architecture* → **`i386`** | **`x86_64`** | **`arm`** | **`arm64`** \
+> *swift-version* → *decimal-digits* *swift-version-continuation*_?_ \
+> *swift-version-continuation* → **`.`** *decimal-digits* *swift-version-continuation*_?_ \
 > *environment* → **`simulator`** | **`macCatalyst`**
 
 ### <a id="line-control-statement">行制御文\(Line Control Statement\)</a>
@@ -721,12 +638,9 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 > Grammar of a line control statement:
 >
-> *line-control-statement* → **`#sourceLocation`** **`(`** **`file:`** *file-path* **`,`** **`line:`** *line-number* **`)`**
->
-> *line-control-statement* → **`#sourceLocation`** **`(`** **`)`**
->
-> *line-number* → A decimal integer greater than zero
->
+> *line-control-statement* → **`#sourceLocation`** **`(`** **`file:`** *file-path* **`,`** **`line:`** *line-number* **`)`** \
+> *line-control-statement* → **`#sourceLocation`** **`(`** **`)`** \
+> *line-number* → A decimal integer greater than zero \
 > *file-path* → *static-string-literal*
 
 ### <a id="compile-time-diagnostic-statement">コンパイル時診断文\(Compile-Time Diagnostic Statement\)</a>
@@ -766,33 +680,21 @@ if #unavailable(<#platform name#> <#version#>, <#...#>) {
 
 > Grammar of an availability condition:
 >
-> *availability-condition* → **`#available`** **`(`** *availability-arguments* **`)`**
->
-> *availability-condition* → **`#unavailable`** **`(`** *availability-arguments* **`)`**
->
-> *availability-arguments* → *availability-argument* | *availability-argument* **`,`** *availability-arguments*
->
-> *availability-argument* → *platform-name* *platform-version*
->
+> *availability-condition* → **`#available`** **`(`** *availability-arguments* **`)`** \
+> *availability-condition* → **`#unavailable`** **`(`** *availability-arguments* **`)`** \
+> *availability-arguments* → *availability-argument* | *availability-argument* **`,`** *availability-arguments* \
+> *availability-argument* → *platform-name* *platform-version* \
 > *availability-argument* → **`*`**
 >
 >
 >
-> *platform-name* → **`iOS`** | **`iOSApplicationExtension`**
->
-> *platform-name* → **`macOS`** | **`macOSApplicationExtension`**
->
-> *platform-name* → **`macCatalyst`** | **`macCatalystApplicationExtension`**
->
-> *platform-name* → **`watchOS`** | **`watchOSApplicationExtension`**
->
-> *platform-name* → **`tvOS`** | **`tvOSApplicationExtension`**
->
-> *platform-name* → **`visionOS`**
->
-> *platform-version* → *decimal-digits*
->
-> *platform-version* → *decimal-digits* **`.`** *decimal-digits*
->
+> *platform-name* → **`iOS`** | **`iOSApplicationExtension`** \
+> *platform-name* → **`macOS`** | **`macOSApplicationExtension`** \
+> *platform-name* → **`macCatalyst`** | **`macCatalystApplicationExtension`** \
+> *platform-name* → **`watchOS`** | **`watchOSApplicationExtension`** \
+> *platform-name* → **`tvOS`** | **`tvOSApplicationExtension`** \
+> *platform-name* → **`visionOS`** \
+> *platform-version* → *decimal-digits* \
+> *platform-version* → *decimal-digits* **`.`** *decimal-digits* \
 > *platform-version* → *decimal-digits* **`.`** *decimal-digits* **`.`** *decimal-digits*
 

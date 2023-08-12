@@ -1,6 +1,6 @@
 # パターン\(Patterns\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2023/8/11  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Patterns.html
 
 値を一致させて分解する。
@@ -13,15 +13,16 @@ Swift には、2 つの基本的な種類のパターンがあります: 任意�
 
 2 番目の種類のパターンは、完全なパターンマッチングに使用されます。この場合、照合しようとしている値が実行時に存在しない可能性があります。これらには、列挙型ケースパターン、オプショナルパターン、式パターン、および型キャストパターンが含まれます。これらのパターンは、`switch` 文の `case` ラベル、`do` 文の `catch` 句、または `if`、`while`、`guard`、または `for-in` 文の `case` 条件で使用できます。
 
-> GRAMMAR OF A PATTERN  
-> pattern → [wildcard-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_wildcard-pattern) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)<sub>opt</sub>  
-> pattern → [identifier-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_identifier-pattern) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)<sub>opt</sub>  
-> pattern → [value-binding-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_value-binding-pattern)  
-> pattern → [tuple-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern) [type-annotation](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-annotation)<sub>opt</sub>  
-> pattern → [enum-case-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_enum-case-pattern)  
-> pattern → [optional-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_optional-pattern)  
-> pattern → [type-casting-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_type-casting-pattern)  
-> pattern → [expression-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_expression-pattern)
+> Grammar of a pattern:
+>
+> *pattern* → *wildcard-pattern* *type-annotation*_?_ \
+> *pattern* → *identifier-pattern* *type-annotation*_?_ \
+> *pattern* → *value-binding-pattern* \
+> *pattern* → *tuple-pattern* *type-annotation*_?_ \
+> *pattern* → *enum-case-pattern* \
+> *pattern* → *optional-pattern* \
+> *pattern* → *type-casting-pattern* \
+> *pattern* → *expression-pattern*
 
 ## ワイルドカードパターン\(Wildcard Pattern\)
 
@@ -33,8 +34,9 @@ for _ in 1...3 {
 }
 ```
 
-> GRAMMAR OF A WILDCARD PATTERN  
-> wildcard-pattern → `_`
+> Grammar of a wildcard pattern:
+>
+> *wildcard-pattern* → **`_`**
 
 ## 識別子パターン\(Identifier Pattern\)
 
@@ -48,8 +50,9 @@ let someValue = 42
 
 変数または定数宣言の左側のパターンが識別子パターンの場合、識別子パターンは暗黙的に値バインドパターンのサブパターンになります。
 
-> GRAMMAR OF AN IDENTIFIER PATTERN  
-> identifier-pattern → [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier)
+> Grammar of an identifier pattern:
+>
+> *identifier-pattern* → *identifier*
 
 ## 値バインディングパターン\(Value-Binding Pattern\)
 
@@ -69,8 +72,9 @@ case let (x, y):
 
 上記の例では、タプルパターン `(x, y)` の各識別子パターンに `let` が適用されます。このため、`switch` ケースの `case let (x, y):` と `case (let x, let y):` は同じ値に一致します。
 
-> GRAMMAR OF A VALUE-BINDING PATTERN  
-> value-binding-pattern → `var` [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern) \| `let` [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)
+> Grammar of a value-binding pattern:
+>
+> *value-binding-pattern* → **`var`** *pattern* | **`let`** *pattern*
 
 ## タプルパターン\(Tuple Pattern\)
 
@@ -96,10 +100,11 @@ let (a) = 2      // a: Int = 2
 let (a): Int = 2 // a: Int = 2
 ```
 
-> GRAMMAR OF A TUPLE PATTERN  
-> tuple-pattern → `(` [tuple-pattern-element-list](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element-list)<sub>opt</sub> `)`  
-> tuple-pattern-element-list → [tuple-pattern-element](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element) \| [tuple-pattern-element](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element) `,` [tuple-pattern-element-list](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern-element-list)  
-> tuple-pattern-element → [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern) \| [identifier](https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html#grammar_identifier) `:` [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern)
+> Grammar of a tuple pattern:
+>
+> *tuple-pattern* → **`(`** *tuple-pattern-element-list*_?_ **`)`** \
+> *tuple-pattern-element-list* → *tuple-pattern-element* | *tuple-pattern-element* **`,`** *tuple-pattern-element-list* \
+> *tuple-pattern-element* → *pattern* | *identifier* **`:`** *pattern*
 
 ## <a id="enumeration-case-pattern">列挙型ケースパターン\(Enumeration Case Pattern\)</a>
 
@@ -123,8 +128,9 @@ case nil:
 // Turn left
 ```
 
-> GRAMMAR OF AN ENUMERATION CASE PATTERN  
-> enum-case-pattern → [type-identifier](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type-identifier)<sub>opt</sub> `.` [enum-case-name](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#grammar_enum-case-name) [tuple-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_tuple-pattern)<sub>opt</sub>
+> Grammar of an enumeration case pattern:
+>
+> *enum-case-pattern* → *type-identifier*_?_ **`.`** *enum-case-name* *tuple-pattern*_?_
 
 ## <a id="optional-pattern">オプショナルパターン\(Optional Pattern\)</a>
 
@@ -158,8 +164,9 @@ for case let number? in arrayOfOptionalInts {
 // Found a 5
 ```
 
-> GRAMMAR OF AN OPTIONAL PATTERN  
-> optional-pattern → [identifier-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_identifier-pattern) `?`
+> Grammar of an optional pattern:
+>
+> *optional-pattern* → *identifier-pattern* **`?`**
 
 ## 型キャストパターン\(Type-Casting Patterns\)
 
@@ -176,10 +183,11 @@ is <#type#>
 
 `switch` 文を使用して `is` パターンを一致させる例については、[Type Casting for Any and AnyObject\(Any および AnyObject の型キャスト\)](../language-guide/type-casting.md#type-casting-for-any-and-anyobject)を参照ください。
 
-> GRAMMAR OF A TYPE CASTING PATTERN  
-> type-casting-pattern → [is-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_is-pattern) \| [as-pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_as-pattern)  
-> is-pattern → `is` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)  
-> as-pattern → [pattern](https://docs.swift.org/swift-book/ReferenceManual/Patterns.html#grammar_pattern) `as` [type](https://docs.swift.org/swift-book/ReferenceManual/Types.html#grammar_type)
+> Grammar of a type casting pattern:
+>
+> *type-casting-pattern* → *is-pattern* | *as-pattern* \
+> *is-pattern* → **`is`** *type* \
+> *as-pattern* → *pattern* **`as`** *type*
 
 ## 式パターン\(Expression Pattern\)
 
@@ -216,6 +224,7 @@ default:
 // The point is at (1, 2).
 ```
 
-> GRAMMAR OF AN EXPRESSION PATTERN  
-> expression-pattern → [expression](https://docs.swift.org/swift-book/ReferenceManual/Expressions.html#grammar_expression)
+> Grammar of an expression pattern:
+>
+> *expression-pattern* → *expression*
 

@@ -1,6 +1,6 @@
 # 型\(Types\)
 
-最終更新日: 2023/5/28  
+最終更新日: 2023/8/11  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Types.html
 
 組み込みの名前付き型と複合型を使用します。
@@ -17,32 +17,19 @@ Swift では、_名前付き型_\(_named type_\)と_複合型_\(_compound type_\
 
 > Grammar of a type:
 >
-> *type* → *function-type*
->
-> *type* → *array-type*
->
-> *type* → *dictionary-type*
->
-> *type* → *type-identifier*
->
-> *type* → *tuple-type*
->
-> *type* → *optional-type*
->
-> *type* → *implicitly-unwrapped-optional-type*
->
-> *type* → *protocol-composition-type*
->
-> *type* → *boxed-protocol-type*
->
-> *type* → *opaque-type*
->
-> *type* → *metatype-type*
->
-> *type* → *any-type*
->
-> *type* → *self-type*
->
+> *type* → *function-type* \
+> *type* → *array-type* \
+> *type* → *dictionary-type* \
+> *type* → *type-identifier* \
+> *type* → *tuple-type* \
+> *type* → *optional-type* \
+> *type* → *implicitly-unwrapped-optional-type* \
+> *type* → *protocol-composition-type* \
+> *type* → *boxed-protocol-type* \
+> *type* → *opaque-type* \
+> *type* → *metatype-type* \
+> *type* → *any-type* \
+> *type* → *self-type* \
 > *type* → **`(`** *type* **`)`**
 
 ## 型注釈\(Type Annotation\)
@@ -83,8 +70,7 @@ var someValue: ExampleModule.MyType
 
 > Grammar of a type identifier:
 >
-> *type-identifier* → *type-name* *generic-argument-clause*_?_ | *type-name* *generic-argument-clause*_?_ **`.`** *type-identifier*
->
+> *type-identifier* → *type-name* *generic-argument-clause*_?_ | *type-name* *generic-argument-clause*_?_ **`.`** *type-identifier* \
 > *type-name* → *identifier*
 
 ## タプル型\(Tuple Type\)
@@ -106,12 +92,9 @@ someTuple = (left: 5, right: 5)  // Error: 名前が一致していません
 
 > Grammar of a tuple type:
 >
-> *tuple-type* → **`(`** **`)`** | **`(`** *tuple-type-element* **`,`** *tuple-type-element-list* **`)`**
->
-> *tuple-type-element-list* → *tuple-type-element* | *tuple-type-element* **`,`** *tuple-type-element-list*
->
-> *tuple-type-element* → *element-name* *type-annotation* | *type*
->
+> *tuple-type* → **`(`** **`)`** | **`(`** *tuple-type-element* **`,`** *tuple-type-element-list* **`)`** \
+> *tuple-type-element-list* → *tuple-type-element* | *tuple-type-element* **`,`** *tuple-type-element-list* \
+> *tuple-type-element* → *element-name* *type-annotation* | *type* \
 > *element-name* → *identifier*
 
 ## <a id="types-function-type">関数型\(Function Type\)</a>
@@ -192,18 +175,11 @@ func takesTwoFunctions(first: (() -> Void) -> Void, second: (() -> Void) -> Void
 >
 > *function-type* → *attributes*_?_ *function-type-argument-clause* **`async`**_?_ **`throws`**_?_ **`->`** *type*
 >
->
->
-> *function-type-argument-clause* → **`(`** **`)`**
->
+> *function-type-argument-clause* → **`(`** **`)`** \
 > *function-type-argument-clause* → **`(`** *function-type-argument-list* **`...`**_?_ **`)`**
 >
->
->
-> *function-type-argument-list* → *function-type-argument* | *function-type-argument* **`,`** *function-type-argument-list*
->
-> *function-type-argument* → *attributes*_?_ **`inout`**_?_ *type* | *argument-label* *type-annotation*
->
+> *function-type-argument-list* → *function-type-argument* | *function-type-argument* **`,`** *function-type-argument-list* \
+> *function-type-argument* → *attributes*_?_ **`inout`**_?_ *type* | *argument-label* *type-annotation* \
 > *argument-label* → *identifier*
 
 ## 配列型\(Array Type\)
@@ -354,8 +330,7 @@ typealias PQR = PQ & Q & R
 
 > Grammar of a protocol composition type:
 >
-> *protocol-composition-type* → *type-identifier* **`&`** *protocol-composition-continuation*
->
+> *protocol-composition-type* → *type-identifier* **`&`** *protocol-composition-continuation* \
 > *protocol-composition-continuation* → *type-identifier* | *protocol-composition-type*
 
 ## Opaque 型\(Opaque Type\)
@@ -534,8 +509,7 @@ _型継承句_は、名前付き型がどのクラスを継承しているか、
 
 > Grammar of a type inheritance clause:
 >
-> *type-inheritance-clause* → **`:`** *type-inheritance-list*
->
+> *type-inheritance-clause* → **`:`** *type-inheritance-list* \
 > *type-inheritance-list* → *attributes*_?_ *type-identifier* | *attributes*_?_ *type-identifier* **`,`** *type-inheritance-list*
 
 ## <a id="type-inference">型推論\(Type Inference\)</a>
