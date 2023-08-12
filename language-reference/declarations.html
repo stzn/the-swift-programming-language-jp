@@ -758,30 +758,30 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="宣言declarations">宣言(Declarations)</h1>
-<p>最終更新日: 2022/12/3<br>原文: <a href="https://docs.swift.org/swift-book/ReferenceManual/Declarations.html" target="_blank">https://docs.swift.org/swift-book/ReferenceManual/Declarations.html</a></p>
+<p>最終更新日: 2023/8/11<br>原文: <a href="https://docs.swift.org/swift-book/ReferenceManual/Declarations.html" target="_blank">https://docs.swift.org/swift-book/ReferenceManual/Declarations.html</a></p>
 <p>型、演算子、変数、およびその他の名前と構造を紹介する。</p>
 <p><em>宣言</em>はプログラムに新しい名前または構文を導入します。例えば、関数とメソッド、変数と定数の導入や、列挙型、構造体、クラス、およびプロトコルの型の定義のために宣言を使用します。既存の名前付き型の動作を拡張したり、他の場所で宣言されているプログラムにシンボルをインポートするために宣言を使用できます。</p>
 <p>Swift では、ほとんどの宣言は、宣言されているのと同時に実装または初期化されているという点で定義と同等です。一方で、プロトコルはメンバを実装していないため、ほとんどのプロトコルメンバは宣言だけです。便宜上、この区別は重要ではないため、<em>宣言</em>という用語は宣言と定義の両方をカバーします。</p>
 <blockquote>
 <p>Grammar of a declaration:</p>
-<p><em>declaration</em> → <em>import-declaration</em></p>
-<p><em>declaration</em> → <em>constant-declaration</em></p>
-<p><em>declaration</em> → <em>variable-declaration</em></p>
-<p><em>declaration</em> → <em>typealias-declaration</em></p>
-<p><em>declaration</em> → <em>function-declaration</em></p>
-<p><em>declaration</em> → <em>enum-declaration</em></p>
-<p><em>declaration</em> → <em>struct-declaration</em></p>
-<p><em>declaration</em> → <em>class-declaration</em></p>
-<p><em>declaration</em> → <em>actor-declaration</em></p>
-<p><em>declaration</em> → <em>protocol-declaration</em></p>
-<p><em>declaration</em> → <em>initializer-declaration</em></p>
-<p><em>declaration</em> → <em>deinitializer-declaration</em></p>
-<p><em>declaration</em> → <em>extension-declaration</em></p>
-<p><em>declaration</em> → <em>subscript-declaration</em></p>
-<p><em>declaration</em> → <em>macro-declaration</em></p>
-<p><em>declaration</em> → <em>operator-declaration</em></p>
-<p><em>declaration</em> → <em>precedence-group-declaration</em></p>
-<p><em>declarations</em> → <em>declaration</em> <em>declarations</em><em>?</em></p>
+<p><em>declaration</em> → <em>import-declaration</em> \
+<em>declaration</em> → <em>constant-declaration</em> \
+<em>declaration</em> → <em>variable-declaration</em> \
+<em>declaration</em> → <em>typealias-declaration</em> \
+<em>declaration</em> → <em>function-declaration</em> \
+<em>declaration</em> → <em>enum-declaration</em> \
+<em>declaration</em> → <em>struct-declaration</em> \
+<em>declaration</em> → <em>class-declaration</em> \
+<em>declaration</em> → <em>actor-declaration</em> \
+<em>declaration</em> → <em>protocol-declaration</em> \
+<em>declaration</em> → <em>initializer-declaration</em> \
+<em>declaration</em> → <em>deinitializer-declaration</em> \
+<em>declaration</em> → <em>extension-declaration</em> \
+<em>declaration</em> → <em>subscript-declaration</em> \
+<em>declaration</em> → <em>macro-declaration</em> \
+<em>declaration</em> → <em>operator-declaration</em> \
+<em>declaration</em> → <em>precedence-group-declaration</em> \
+<em>declarations</em> → <em>declaration</em> <em>declarations</em><em>?</em></p>
 </blockquote>
 <h2 id="トップレベルコードtop-level-code"><a id="top-level-code">トップレベルコード(Top-Level Code)</a></h2>
 <p>Swift ソースファイルのトップレベルコードは、0 個以上の文、宣言、式で構成されています。デフォルトでは、ソースファイルのトップレベルで宣言されている変数、定数、およびその他の名前付き宣言は、同じモジュールの全てのソースファイル内のコードからアクセスできます。<a href="declarations.html#access-control-levels">Access Control Levels(アクセス制御レベル)</a>で説明されているように、宣言をアクセスレベル修飾子でマークすることで、このデフォルトの動作をオーバーライドできます。</p>
@@ -813,8 +813,8 @@
 <blockquote>
 <p>Grammar of an import declaration:</p>
 <p><em>import-declaration</em> → <em>attributes</em><em>?</em> <strong><code>import</code></strong> <em>import-kind</em><em>?</em> <em>import-path</em></p>
-<p><em>import-kind</em> → <strong><code>typealias</code></strong> | <strong><code>struct</code></strong> | <strong><code>class</code></strong> | <strong><code>enum</code></strong> | <strong><code>protocol</code></strong> | <strong><code>let</code></strong> | <strong><code>var</code></strong> | <strong><code>func</code></strong></p>
-<p><em>import-path</em> → <em>identifier</em> | <em>identifier</em> <strong><code>.</code></strong> <em>import-path</em></p>
+<p><em>import-kind</em> → <strong><code>typealias</code></strong> | <strong><code>struct</code></strong> | <strong><code>class</code></strong> | <strong><code>enum</code></strong> | <strong><code>protocol</code></strong> | <strong><code>let</code></strong> | <strong><code>var</code></strong> | <strong><code>func</code></strong> \
+<em>import-path</em> → <em>identifier</em> | <em>identifier</em> <strong><code>.</code></strong> <em>import-path</em></p>
 </blockquote>
 <h2 id="定数宣言constant-declaration"><a id="constant-declaration">定数宣言(Constant Declaration)</a></h2>
 <p><em>定数宣言</em>では、プログラムに名前付きの定数値を導入します。定数宣言は <code>let</code> キーワードを使用して宣言され、形式は次のとおりです。</p>
@@ -837,9 +837,9 @@
 <blockquote>
 <p>Grammar of a constant declaration:</p>
 <p><em>constant-declaration</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>let</code></strong> <em>pattern-initializer-list</em></p>
-<p><em>pattern-initializer-list</em> → <em>pattern-initializer</em> | <em>pattern-initializer</em> <strong><code>,</code></strong> <em>pattern-initializer-list</em></p>
-<p><em>pattern-initializer</em> → <em>pattern</em> <em>initializer</em><em>?</em></p>
-<p><em>initializer</em> → <strong><code>=</code></strong> <em>expression</em></p>
+<p><em>pattern-initializer-list</em> → <em>pattern-initializer</em> | <em>pattern-initializer</em> <strong><code>,</code></strong> <em>pattern-initializer-list</em> \
+<em>pattern-initializer</em> → <em>pattern</em> <em>initializer</em><em>?</em> \
+<em>initializer</em> → <strong><code>=</code></strong> <em>expression</em></p>
 </blockquote>
 <h2 id="変数宣言variable-declaration"><a id="variable-declaration">変数宣言(Variable Declaration)</a></h2>
 <p><em>変数宣言</em>では、プログラムに名前付きの変数値を導入し、<code>var</code> キーワードを使用して宣言されます。</p>
@@ -931,28 +931,28 @@ newAndOld<span class="token punctuation">.</span>x <span class="token operator">
 <p>型変数プロパティを宣言するには、宣言を <code>static</code> 修飾子でマークします。サブクラスがスーパークラスの実装をオーバーライドできるようにするには、代わりに <code>class</code> 修飾子を使用して型計算プロパティを宣言することができます。型プロパティは、<a href="../language-guide/properties.html#type-properties">Type Properties(型プロパティ)</a>で説明されています。</p>
 <blockquote>
 <p>Grammar of a variable declaration:</p>
-<p><em>variable-declaration</em> → <em>variable-declaration-head</em> <em>pattern-initializer-list</em></p>
-<p><em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>type-annotation</em> <em>code-block</em></p>
-<p><em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>type-annotation</em> <em>getter-setter-block</em></p>
-<p><em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>type-annotation</em> <em>getter-setter-keyword-block</em></p>
-<p><em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>initializer</em> <em>willSet-didSet-block</em></p>
-<p><em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>type-annotation</em> <em>initializer</em><em>?</em> <em>willSet-didSet-block</em></p>
-<p><em>variable-declaration-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>var</code></strong></p>
-<p><em>variable-name</em> → <em>identifier</em></p>
-<p><em>getter-setter-block</em> → <em>code-block</em></p>
-<p><em>getter-setter-block</em> → <strong><code>{</code></strong> <em>getter-clause</em> <em>setter-clause</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>getter-setter-block</em> → <strong><code>{</code></strong> <em>setter-clause</em> <em>getter-clause</em> <strong><code>}</code></strong></p>
-<p><em>getter-clause</em> → <em>attributes</em><em>?</em> <em>mutation-modifier</em><em>?</em> <strong><code>get</code></strong> <em>code-block</em></p>
-<p><em>setter-clause</em> → <em>attributes</em><em>?</em> <em>mutation-modifier</em><em>?</em> <strong><code>set</code></strong> <em>setter-name</em><em>?</em> <em>code-block</em></p>
-<p><em>setter-name</em> → <strong><code>(</code></strong> <em>identifier</em> <strong><code>)</code></strong></p>
-<p><em>getter-setter-keyword-block</em> → <strong><code>{</code></strong> <em>getter-keyword-clause</em> <em>setter-keyword-clause</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>getter-setter-keyword-block</em> → <strong><code>{</code></strong> <em>setter-keyword-clause</em> <em>getter-keyword-clause</em> <strong><code>}</code></strong></p>
-<p><em>getter-keyword-clause</em> → <em>attributes</em><em>?</em> <em>mutation-modifier</em><em>?</em> <strong><code>get</code></strong></p>
-<p><em>setter-keyword-clause</em> → <em>attributes</em><em>?</em> <em>mutation-modifier</em><em>?</em> <strong><code>set</code></strong></p>
-<p><em>willSet-didSet-block</em> → <strong><code>{</code></strong> <em>willSet-clause</em> <em>didSet-clause</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>willSet-didSet-block</em> → <strong><code>{</code></strong> <em>didSet-clause</em> <em>willSet-clause</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>willSet-clause</em> → <em>attributes</em><em>?</em> <strong><code>willSet</code></strong> <em>setter-name</em><em>?</em> <em>code-block</em></p>
-<p><em>didSet-clause</em> → <em>attributes</em><em>?</em> <strong><code>didSet</code></strong> <em>setter-name</em><em>?</em> <em>code-block</em></p>
+<p><em>variable-declaration</em> → <em>variable-declaration-head</em> <em>pattern-initializer-list</em> \
+<em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>type-annotation</em> <em>code-block</em> \
+<em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>type-annotation</em> <em>getter-setter-block</em> \
+<em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>type-annotation</em> <em>getter-setter-keyword-block</em> \
+<em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>initializer</em> <em>willSet-didSet-block</em> \
+<em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>type-annotation</em> <em>initializer</em><em>?</em> <em>willSet-didSet-block</em></p>
+<p><em>variable-declaration-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>var</code></strong> \
+<em>variable-name</em> → <em>identifier</em></p>
+<p><em>getter-setter-block</em> → <em>code-block</em> \
+<em>getter-setter-block</em> → <strong><code>{</code></strong> <em>getter-clause</em> <em>setter-clause</em><em>?</em> <strong><code>}</code></strong> \
+<em>getter-setter-block</em> → <strong><code>{</code></strong> <em>setter-clause</em> <em>getter-clause</em> <strong><code>}</code></strong> \
+<em>getter-clause</em> → <em>attributes</em><em>?</em> <em>mutation-modifier</em><em>?</em> <strong><code>get</code></strong> <em>code-block</em> \
+<em>setter-clause</em> → <em>attributes</em><em>?</em> <em>mutation-modifier</em><em>?</em> <strong><code>set</code></strong> <em>setter-name</em><em>?</em> <em>code-block</em> \
+<em>setter-name</em> → <strong><code>(</code></strong> <em>identifier</em> <strong><code>)</code></strong></p>
+<p><em>getter-setter-keyword-block</em> → <strong><code>{</code></strong> <em>getter-keyword-clause</em> <em>setter-keyword-clause</em><em>?</em> <strong><code>}</code></strong> \
+<em>getter-setter-keyword-block</em> → <strong><code>{</code></strong> <em>setter-keyword-clause</em> <em>getter-keyword-clause</em> <strong><code>}</code></strong> \
+<em>getter-keyword-clause</em> → <em>attributes</em><em>?</em> <em>mutation-modifier</em><em>?</em> <strong><code>get</code></strong> \
+<em>setter-keyword-clause</em> → <em>attributes</em><em>?</em> <em>mutation-modifier</em><em>?</em> <strong><code>set</code></strong></p>
+<p><em>willSet-didSet-block</em> → <strong><code>{</code></strong> <em>willSet-clause</em> <em>didSet-clause</em><em>?</em> <strong><code>}</code></strong> \
+<em>willSet-didSet-block</em> → <strong><code>{</code></strong> <em>didSet-clause</em> <em>willSet-clause</em><em>?</em> <strong><code>}</code></strong> \
+<em>willSet-clause</em> → <em>attributes</em><em>?</em> <strong><code>willSet</code></strong> <em>setter-name</em><em>?</em> <em>code-block</em> \
+<em>didSet-clause</em> → <em>attributes</em><em>?</em> <strong><code>didSet</code></strong> <em>setter-name</em><em>?</em> <em>code-block</em></p>
 </blockquote>
 <h2 id="タイプエイリアス宣言type-alias-declaration"><a id="type-alias-declaration">タイプエイリアス宣言(Type Alias Declaration)</a></h2>
 <p><em>タイプエイリアス宣言</em>では、既存の型に別名を導入します。タイプエイリアス宣言は、<code>typealias</code> キーワードを使用して宣言され、形式は次のとおりです:</p>
@@ -987,9 +987,9 @@ newAndOld<span class="token punctuation">.</span>x <span class="token operator">
 <p><a href="declarations.html#protocol-associated-type-declaration">Protocol Associated Type Declaration(プロトコル関連型宣言)</a>も参照ください。</p>
 <blockquote>
 <p>Grammar of a type alias declaration:</p>
-<p><em>typealias-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>typealias</code></strong> <em>typealias-name</em> <em>generic-parameter-clause</em><em>?</em> <em>typealias-assignment</em></p>
-<p><em>typealias-name</em> → <em>identifier</em></p>
-<p><em>typealias-assignment</em> → <strong><code>=</code></strong> <em>type</em></p>
+<p><em>typealias-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>typealias</code></strong> <em>typealias-name</em> <em>generic-parameter-clause</em><em>?</em> <em>typealias-assignment</em> \
+<em>typealias-name</em> → <em>identifier</em> \
+<em>typealias-assignment</em> → <strong><code>=</code></strong> <em>type</em></p>
 </blockquote>
 <h2 id="関数宣言function-declaration"><a id="function-declaration">関数宣言(Function Declaration)</a></h2>
 <p><em>関数宣言</em>では、プログラムに関数またはメソッドを導入します。クラス、構造体、列挙型、またはプロトコルのコンテキストで宣言されている関数は<em>メソッド</em>と呼ばれます。関数宣言は <code>func</code> キーワードを使用して宣言され、形式は次のとおりです:</p>
@@ -1138,20 +1138,20 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 <blockquote>
 <p>Grammar of a function declaration:</p>
 <p><em>function-declaration</em> → <em>function-head</em> <em>function-name</em> <em>generic-parameter-clause</em><em>?</em> <em>function-signature</em> <em>generic-where-clause</em><em>?</em> <em>function-body</em><em>?</em></p>
-<p><em>function-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>func</code></strong></p>
-<p><em>function-name</em> → <em>identifier</em> | <em>operator</em></p>
-<p><em>function-signature</em> → <em>parameter-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>throws</code></strong><em>?</em> <em>function-result</em><em>?</em></p>
-<p><em>function-signature</em> → <em>parameter-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>rethrows</code></strong> <em>function-result</em><em>?</em></p>
-<p><em>function-result</em> → <strong><code>-&gt;</code></strong> <em>attributes</em><em>?</em> <em>type</em></p>
-<p><em>function-body</em> → <em>code-block</em></p>
-<p><em>parameter-clause</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>parameter-list</em> <strong><code>)</code></strong></p>
-<p><em>parameter-list</em> → <em>parameter</em> | <em>parameter</em> <strong><code>,</code></strong> <em>parameter-list</em></p>
-<p><em>parameter</em> → <em>external-parameter-name</em><em>?</em> <em>local-parameter-name</em> <em>type-annotation</em> <em>default-argument-clause</em><em>?</em></p>
-<p><em>parameter</em> → <em>external-parameter-name</em><em>?</em> <em>local-parameter-name</em> <em>type-annotation</em></p>
-<p><em>parameter</em> → <em>external-parameter-name</em><em>?</em> <em>local-parameter-name</em> <em>type-annotation</em> <strong><code>...</code></strong></p>
-<p><em>external-parameter-name</em> → <em>identifier</em></p>
-<p><em>local-parameter-name</em> → <em>identifier</em></p>
-<p><em>default-argument-clause</em> → <strong><code>=</code></strong> <em>expression</em></p>
+<p><em>function-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>func</code></strong> \
+<em>function-name</em> → <em>identifier</em> | <em>operator</em></p>
+<p><em>function-signature</em> → <em>parameter-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>throws</code></strong><em>?</em> <em>function-result</em><em>?</em> \
+<em>function-signature</em> → <em>parameter-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>rethrows</code></strong> <em>function-result</em><em>?</em> \
+<em>function-result</em> → <strong><code>-&gt;</code></strong> <em>attributes</em><em>?</em> <em>type</em> \
+<em>function-body</em> → <em>code-block</em></p>
+<p><em>parameter-clause</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>parameter-list</em> <strong><code>)</code></strong> \
+<em>parameter-list</em> → <em>parameter</em> | <em>parameter</em> <strong><code>,</code></strong> <em>parameter-list</em> \
+<em>parameter</em> → <em>external-parameter-name</em><em>?</em> <em>local-parameter-name</em> <em>type-annotation</em> <em>default-argument-clause</em><em>?</em> \
+<em>parameter</em> → <em>external-parameter-name</em><em>?</em> <em>local-parameter-name</em> <em>type-annotation</em> \
+<em>parameter</em> → <em>external-parameter-name</em><em>?</em> <em>local-parameter-name</em> <em>type-annotation</em> <strong><code>...</code></strong> \
+<em>external-parameter-name</em> → <em>identifier</em> \
+<em>local-parameter-name</em> → <em>identifier</em> \
+<em>default-argument-clause</em> → <strong><code>=</code></strong> <em>expression</em></p>
 </blockquote>
 <h2 id="列挙型宣言enumeration-declaration">列挙型宣言(Enumeration Declaration)</h2>
 <p><em>列挙型宣言</em>は、名前付きの列挙型をプログラムに導入します。</p>
@@ -1217,24 +1217,24 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 <p>列挙ケースの値を確認するには、<a href="../language-guide/enumerations.html#matching-enumeration-values-with-a-switch-statement">Matching Enumeration Values with a Switch Statement(Switch 文を使った列挙値のパターンマッチング)</a>で説明されているように、<code>switch</code> 文を使用します。列挙型は、<a href="patterns.html#enumeration-case-pattern">Enumeration Case Pattern(列挙ケースパターン)</a>で説明されているように、<code>switch</code> 文のケースブロックの列挙ケースのパターンに対してパターンマッチングできます。</p>
 <blockquote>
 <p>Grammar of an enumeration declaration:</p>
-<p><em>enum-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <em>union-style-enum</em></p>
-<p><em>enum-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <em>raw-value-style-enum</em></p>
-<p><em>union-style-enum</em> → <strong><code>indirect</code></strong><em>?</em> <strong><code>enum</code></strong> <em>enum-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <strong><code>{</code></strong> <em>union-style-enum-members</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>union-style-enum-members</em> → <em>union-style-enum-member</em> <em>union-style-enum-members</em><em>?</em></p>
-<p><em>union-style-enum-member</em> → <em>declaration</em> | <em>union-style-enum-case-clause</em> | <em>compiler-control-statement</em></p>
-<p><em>union-style-enum-case-clause</em> → <em>attributes</em><em>?</em> <strong><code>indirect</code></strong><em>?</em> <strong><code>case</code></strong> <em>union-style-enum-case-list</em></p>
-<p><em>union-style-enum-case-list</em> → <em>union-style-enum-case</em> | <em>union-style-enum-case</em> <strong><code>,</code></strong> <em>union-style-enum-case-list</em></p>
-<p><em>union-style-enum-case</em> → <em>enum-case-name</em> <em>tuple-type</em><em>?</em></p>
-<p><em>enum-name</em> → <em>identifier</em></p>
-<p><em>enum-case-name</em> → <em>identifier</em></p>
-<p><em>raw-value-style-enum</em> → <strong><code>enum</code></strong> <em>enum-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em> <em>generic-where-clause</em><em>?</em> <strong><code>{</code></strong> <em>raw-value-style-enum-members</em> <strong><code>}</code></strong></p>
-<p><em>raw-value-style-enum-members</em> → <em>raw-value-style-enum-member</em> <em>raw-value-style-enum-members</em><em>?</em></p>
-<p><em>raw-value-style-enum-member</em> → <em>declaration</em> | <em>raw-value-style-enum-case-clause</em> | <em>compiler-control-statement</em></p>
-<p><em>raw-value-style-enum-case-clause</em> → <em>attributes</em><em>?</em> <strong><code>case</code></strong> <em>raw-value-style-enum-case-list</em></p>
-<p><em>raw-value-style-enum-case-list</em> → <em>raw-value-style-enum-case</em> | <em>raw-value-style-enum-case</em> <strong><code>,</code></strong> <em>raw-value-style-enum-case-list</em></p>
-<p><em>raw-value-style-enum-case</em> → <em>enum-case-name</em> <em>raw-value-assignment</em><em>?</em></p>
-<p><em>raw-value-assignment</em> → <strong><code>=</code></strong> <em>raw-value-literal</em></p>
-<p><em>raw-value-literal</em> → <em>numeric-literal</em> | <em>static-string-literal</em> | <em>boolean-literal</em></p>
+<p><em>enum-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <em>union-style-enum</em> \
+<em>enum-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <em>raw-value-style-enum</em></p>
+<p><em>union-style-enum</em> → <strong><code>indirect</code></strong><em>?</em> <strong><code>enum</code></strong> <em>enum-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <strong><code>{</code></strong> <em>union-style-enum-members</em><em>?</em> <strong><code>}</code></strong> \
+<em>union-style-enum-members</em> → <em>union-style-enum-member</em> <em>union-style-enum-members</em><em>?</em> \
+<em>union-style-enum-member</em> → <em>declaration</em> | <em>union-style-enum-case-clause</em> | <em>compiler-control-statement</em> \
+<em>union-style-enum-case-clause</em> → <em>attributes</em><em>?</em> <strong><code>indirect</code></strong><em>?</em> <strong><code>case</code></strong> <em>union-style-enum-case-list</em> \
+<em>union-style-enum-case-list</em> → <em>union-style-enum-case</em> | <em>union-style-enum-case</em> <strong><code>,</code></strong> <em>union-style-enum-case-list</em> \
+<em>union-style-enum-case</em> → <em>enum-case-name</em> <em>tuple-type</em><em>?</em> \
+<em>enum-name</em> → <em>identifier</em> \
+<em>enum-case-name</em> → <em>identifier</em></p>
+<p><em>raw-value-style-enum</em> → <strong><code>enum</code></strong> <em>enum-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em> <em>generic-where-clause</em><em>?</em> <strong><code>{</code></strong> <em>raw-value-style-enum-members</em> <strong><code>}</code></strong> \
+<em>raw-value-style-enum-members</em> → <em>raw-value-style-enum-member</em> <em>raw-value-style-enum-members</em><em>?</em> \
+<em>raw-value-style-enum-member</em> → <em>declaration</em> | <em>raw-value-style-enum-case-clause</em> | <em>compiler-control-statement</em> \
+<em>raw-value-style-enum-case-clause</em> → <em>attributes</em><em>?</em> <strong><code>case</code></strong> <em>raw-value-style-enum-case-list</em> \
+<em>raw-value-style-enum-case-list</em> → <em>raw-value-style-enum-case</em> | <em>raw-value-style-enum-case</em> <strong><code>,</code></strong> <em>raw-value-style-enum-case-list</em> \
+<em>raw-value-style-enum-case</em> → <em>enum-case-name</em> <em>raw-value-assignment</em><em>?</em> \
+<em>raw-value-assignment</em> → <strong><code>=</code></strong> <em>raw-value-literal</em> \
+<em>raw-value-literal</em> → <em>numeric-literal</em> | <em>static-string-literal</em> | <em>boolean-literal</em></p>
 </blockquote>
 <h2 id="構造体宣言structure-declaration">構造体宣言(Structure Declaration)</h2>
 <p><em>構造体宣言</em>は、名前付きの構造体型をプログラムに導入します。構造体宣言は <code>struct</code> キーワードを使用して宣言され、形式は次のとおりです。</p>
@@ -1256,11 +1256,11 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 <p><a href="declarations.html#extension-declaration">Extension Declaration(拡張宣言)</a>で説明されているように、extension を使用して構造体の動作を拡張できます。</p>
 <blockquote>
 <p>Grammar of a structure declaration:</p>
-<p><em>struct-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>struct</code></strong> <em>struct-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>struct-body</em></p>
-<p><em>struct-name</em> → <em>identifier</em></p>
-<p><em>struct-body</em> → <strong><code>{</code></strong> <em>struct-members</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>struct-members</em> → <em>struct-member</em> <em>struct-members</em><em>?</em></p>
-<p><em>struct-member</em> → <em>declaration</em> | <em>compiler-control-statement</em></p>
+<p><em>struct-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>struct</code></strong> <em>struct-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>struct-body</em> \
+<em>struct-name</em> → <em>identifier</em> \
+<em>struct-body</em> → <strong><code>{</code></strong> <em>struct-members</em><em>?</em> <strong><code>}</code></strong></p>
+<p><em>struct-members</em> → <em>struct-member</em> <em>struct-members</em><em>?</em> \
+<em>struct-member</em> → <em>declaration</em> | <em>compiler-control-statement</em></p>
 </blockquote>
 <h2 id="クラス宣言class-declaration">クラス宣言(Class Declaration)</h2>
 <p><em>クラス宣言</em>は、名前付きクラス型をプログラムに導入します。クラス宣言は、<code>class</code> キーワードを使用して宣言され、形式は次のとおりです。</p>
@@ -1284,12 +1284,12 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 <p><a href="declarations.html#extension-declaration">Extension Declaration(拡張宣言)</a>で説明されているように、extension を使用してクラス型の動作を拡張できます。</p>
 <blockquote>
 <p>Grammar of a class declaration:</p>
-<p><em>class-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>final</code></strong><em>?</em> <strong><code>class</code></strong> <em>class-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>class-body</em></p>
-<p><em>class-declaration</em> → <em>attributes</em><em>?</em> <strong><code>final</code></strong> <em>access-level-modifier</em><em>?</em> <strong><code>class</code></strong> <em>class-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>class-body</em></p>
-<p><em>class-name</em> → <em>identifier</em></p>
-<p><em>class-body</em> → <strong><code>{</code></strong> <em>class-members</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>class-members</em> → <em>class-member</em> <em>class-members</em><em>?</em></p>
-<p><em>class-member</em> → <em>declaration</em> | <em>compiler-control-statement</em></p>
+<p><em>class-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>final</code></strong><em>?</em> <strong><code>class</code></strong> <em>class-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>class-body</em> \
+<em>class-declaration</em> → <em>attributes</em><em>?</em> <strong><code>final</code></strong> <em>access-level-modifier</em><em>?</em> <strong><code>class</code></strong> <em>class-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>class-body</em> \
+<em>class-name</em> → <em>identifier</em> \
+<em>class-body</em> → <strong><code>{</code></strong> <em>class-members</em><em>?</em> <strong><code>}</code></strong></p>
+<p><em>class-members</em> → <em>class-member</em> <em>class-members</em><em>?</em> \
+<em>class-member</em> → <em>declaration</em> | <em>compiler-control-statement</em></p>
 </blockquote>
 <h2 id="アクター宣言actor-declaration"><a id="actor-declaration">アクター宣言(Actor Declaration)</a></h2>
 <p>アクター宣言は、名前付きのアクター型をプログラムに導入します。アクター宣言は、<code>actor</code> キーワードを使用して宣言され、形式は次のとおりです。</p>
@@ -1313,11 +1313,11 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 <p><a href="declarations.html#extension-declaration">Extension Declaration(拡張宣言)</a>で説明されているように、extension を使用してアクター型の動作を拡張できます。</p>
 <blockquote>
 <p>Grammar of an actor declaration:</p>
-<p><em>actor-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>actor</code></strong> <em>actor-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>actor-body</em></p>
-<p><em>actor-name</em> → <em>identifier</em></p>
-<p><em>actor-body</em> → <strong><code>{</code></strong> <em>actor-members</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>actor-members</em> → <em>actor-member</em> <em>actor-members</em><em>?</em></p>
-<p><em>actor-member</em> → <em>declaration</em> | <em>compiler-control-statement</em></p>
+<p><em>actor-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>actor</code></strong> <em>actor-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>actor-body</em> \
+<em>actor-name</em> → <em>identifier</em> \
+<em>actor-body</em> → <strong><code>{</code></strong> <em>actor-members</em><em>?</em> <strong><code>}</code></strong></p>
+<p><em>actor-members</em> → <em>actor-member</em> <em>actor-members</em><em>?</em> \
+<em>actor-member</em> → <em>declaration</em> | <em>compiler-control-statement</em></p>
 </blockquote>
 <h2 id="プロトコル宣言protocol-declaration"><a id="protocol-declaration">プロトコル宣言(Protocol Declaration)</a></h2>
 <p><em>プロトコル宣言</em>は、名前付きのプロトコル型をプログラムに導入します。プロトコル宣言は、<code>protocol</code> キーワードを使用してグローバルスコープで宣言され、形式は次のとおりです。</p>
@@ -1355,17 +1355,17 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 <p><a href="../language-guide/protocols.html#delegation">Delegation(委譲)</a>で説明されているように、クラスまたは構造体のデリゲートが実装するべきメソッドを宣言するためにプロトコルを使用できます。</p>
 <blockquote>
 <p>Grammar of a protocol declaration:</p>
-<p><em>protocol-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>protocol</code></strong> <em>protocol-name</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>protocol-body</em></p>
-<p><em>protocol-name</em> → <em>identifier</em></p>
-<p><em>protocol-body</em> → <strong><code>{</code></strong> <em>protocol-members</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>protocol-members</em> → <em>protocol-member</em> <em>protocol-members</em><em>?</em></p>
-<p><em>protocol-member</em> → <em>protocol-member-declaration</em> | <em>compiler-control-statement</em></p>
-<p><em>protocol-member-declaration</em> → <em>protocol-property-declaration</em></p>
-<p><em>protocol-member-declaration</em> → <em>protocol-method-declaration</em></p>
-<p><em>protocol-member-declaration</em> → <em>protocol-initializer-declaration</em></p>
-<p><em>protocol-member-declaration</em> → <em>protocol-subscript-declaration</em></p>
-<p><em>protocol-member-declaration</em> → <em>protocol-associated-type-declaration</em></p>
-<p><em>protocol-member-declaration</em> → <em>typealias-declaration</em></p>
+<p><em>protocol-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>protocol</code></strong> <em>protocol-name</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>protocol-body</em> \
+<em>protocol-name</em> → <em>identifier</em> \
+<em>protocol-body</em> → <strong><code>{</code></strong> <em>protocol-members</em><em>?</em> <strong><code>}</code></strong></p>
+<p><em>protocol-members</em> → <em>protocol-member</em> <em>protocol-members</em><em>?</em> \
+<em>protocol-member</em> → <em>protocol-member-declaration</em> | <em>compiler-control-statement</em></p>
+<p><em>protocol-member-declaration</em> → <em>protocol-property-declaration</em> \
+<em>protocol-member-declaration</em> → <em>protocol-method-declaration</em> \
+<em>protocol-member-declaration</em> → <em>protocol-initializer-declaration</em> \
+<em>protocol-member-declaration</em> → <em>protocol-subscript-declaration</em> \
+<em>protocol-member-declaration</em> → <em>protocol-associated-type-declaration</em> \
+<em>protocol-member-declaration</em> → <em>typealias-declaration</em></p>
 </blockquote>
 <h3 id="プロトコルプロパティ宣言protocol-property-declaration"><a id="protocol-property-declaration">プロトコルプロパティ宣言(Protocol Property Declaration)</a></h3>
 <p>プロトコルは、プロトコル宣言の本文に<em>プロトコルプロパティ宣言</em>を含めることによって準拠する型がプロパティを実装する必要があることを宣言します。プロトコルプロパティ宣言には、変数宣言の特別な形式があります。</p>
@@ -1394,8 +1394,8 @@ callable<span class="token punctuation">.</span><span class="token function">cal
 <p><a href="declarations.html#initializer-declaration">Initializer Declaration(イニシャライザ宣言)</a>も参照ください。</p>
 <blockquote>
 <p>Grammar of a protocol initializer declaration:</p>
-<p><em>protocol-initializer-declaration</em> → <em>initializer-head</em> <em>generic-parameter-clause</em><em>?</em> <em>parameter-clause</em> <strong><code>throws</code></strong><em>?</em> <em>generic-where-clause</em><em>?</em></p>
-<p><em>protocol-initializer-declaration</em> → <em>initializer-head</em> <em>generic-parameter-clause</em><em>?</em> <em>parameter-clause</em> <strong><code>rethrows</code></strong> <em>generic-where-clause</em><em>?</em></p>
+<p><em>protocol-initializer-declaration</em> → <em>initializer-head</em> <em>generic-parameter-clause</em><em>?</em> <em>parameter-clause</em> <strong><code>throws</code></strong><em>?</em> <em>generic-where-clause</em><em>?</em> \
+<em>protocol-initializer-declaration</em> → <em>initializer-head</em> <em>generic-parameter-clause</em><em>?</em> <em>parameter-clause</em> <strong><code>rethrows</code></strong> <em>generic-where-clause</em><em>?</em></p>
 </blockquote>
 <h3 id="プロトコルサブスクリプト宣言protocol-subscript-declaration"><a id="protocol-subscript-declaration">プロトコルサブスクリプト宣言(Protocol Subscript Declaration)</a></h3>
 <p>プロトコルは、プロトコル宣言の本文にプロトコルサブスクリプト宣言を含めることによって準拠する型がサブスクリプトを実装する必要があることを宣言します。プロトコルサブスクリプト宣言には、特殊な形式のサブスクリプト宣言があります:</p>
@@ -1636,10 +1636,10 @@ oneAndTwo<span class="token punctuation">.</span><span class="token function">lo
 </code></pre>
 <blockquote>
 <p>Grammar of an extension declaration:</p>
-<p><em>extension-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>extension</code></strong> <em>type-identifier</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>extension-body</em></p>
-<p><em>extension-body</em> → <strong><code>{</code></strong> <em>extension-members</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>extension-members</em> → <em>extension-member</em> <em>extension-members</em><em>?</em></p>
-<p><em>extension-member</em> → <em>declaration</em> | <em>compiler-control-statement</em></p>
+<p><em>extension-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>extension</code></strong> <em>type-identifier</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>extension-body</em> \
+<em>extension-body</em> → <strong><code>{</code></strong> <em>extension-members</em><em>?</em> <strong><code>}</code></strong></p>
+<p><em>extension-members</em> → <em>extension-member</em> <em>extension-members</em><em>?</em> \
+<em>extension-member</em> → <em>declaration</em> | <em>compiler-control-statement</em></p>
 </blockquote>
 <h2 id="サブスクリプト宣言subscript-declaration">サブスクリプト宣言(Subscript Declaration)</h2>
 <p><em>サブスクリプト宣言</em>を使用すると、特定の型のオブジェクトにサブスクリプトのサポートを追加できます。通常、コレクション、リスト、またはシーケンス内の要素にアクセスするための便利な構文を提供するために使用されます。サブスクリプト宣言は、<code>subscript</code> キーワードを使用して宣言され、形式は次のとおりです:</p>
@@ -1664,11 +1664,11 @@ oneAndTwo<span class="token punctuation">.</span><span class="token function">lo
 <p>型のインスタンスではなく、型自体のサブスクリプトを宣言するには、<code>static</code> 修飾子をサブスクリプト宣言にマークします。クラスは、サブクラスがスーパークラスの実装をオーバーライドできるようにする代わりに、<code>class</code> 修飾子を型計算プロパティにマークできます。クラス宣言では、<code>static</code> キーワードは、<code>class</code> と <code>final</code> 修飾子の両方で宣言をマークするのと同じ効果があります。</p>
 <blockquote>
 <p>Grammar of a subscript declaration:</p>
-<p><em>subscript-declaration</em> → <em>subscript-head</em> <em>subscript-result</em> <em>generic-where-clause</em><em>?</em> <em>code-block</em></p>
-<p><em>subscript-declaration</em> → <em>subscript-head</em> <em>subscript-result</em> <em>generic-where-clause</em><em>?</em> <em>getter-setter-block</em></p>
-<p><em>subscript-declaration</em> → <em>subscript-head</em> <em>subscript-result</em> <em>generic-where-clause</em><em>?</em> <em>getter-setter-keyword-block</em></p>
-<p><em>subscript-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>subscript</code></strong> <em>generic-parameter-clause</em><em>?</em> <em>parameter-clause</em></p>
-<p><em>subscript-result</em> → <strong><code>-&gt;</code></strong> <em>attributes</em><em>?</em> <em>type</em></p>
+<p><em>subscript-declaration</em> → <em>subscript-head</em> <em>subscript-result</em> <em>generic-where-clause</em><em>?</em> <em>code-block</em> \
+<em>subscript-declaration</em> → <em>subscript-head</em> <em>subscript-result</em> <em>generic-where-clause</em><em>?</em> <em>getter-setter-block</em> \
+<em>subscript-declaration</em> → <em>subscript-head</em> <em>subscript-result</em> <em>generic-where-clause</em><em>?</em> <em>getter-setter-keyword-block</em> \
+<em>subscript-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>subscript</code></strong> <em>generic-parameter-clause</em><em>?</em> <em>parameter-clause</em> \
+<em>subscript-result</em> → <strong><code>-&gt;</code></strong> <em>attributes</em><em>?</em> <em>type</em></p>
 </blockquote>
 <h2 id="マクロ宣言macro-declaration">マクロ宣言(Macro Declaration)</h2>
 <p><em>マクロ宣言</em>は新しいマクロを導入するものです。これは <code>macro</code> キーワードで始まり、次のような形式です:</p>
@@ -1680,11 +1680,11 @@ oneAndTwo<span class="token punctuation">.</span><span class="token function">lo
 <p>より詳細は<a href="../language-guide/macros.html">マクロ(Macros)</a>を参照ください。</p>
 <blockquote>
 <p>Grammar of a macro declaration:</p>
-<p><em>macro-declaration</em> → <em>macro-head</em> <em>identifier</em> <em>generic-parameter-clause</em><em>?</em> <em>macro-signature</em> <em>macro-definition</em><em>?</em> <em>generic-where-clause</em></p>
-<p><em>macro-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>macro</code></strong></p>
-<p><em>macro-signature</em> → <em>parameter-clause</em> <em>macro-function-signature-result</em><em>?</em></p>
-<p><em>macro-function-signature-result</em> → <strong><code>-&gt;</code></strong> <em>type</em></p>
-<p><em>macro-definition</em> → <strong><code>=</code></strong> <em>expression</em></p>
+<p><em>macro-declaration</em> → <em>macro-head</em> <em>identifier</em> <em>generic-parameter-clause</em><em>?</em> <em>macro-signature</em> <em>macro-definition</em><em>?</em> <em>generic-where-clause</em> \
+<em>macro-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>macro</code></strong> \
+<em>macro-signature</em> → <em>parameter-clause</em> <em>macro-function-signature-result</em><em>?</em> \
+<em>macro-function-signature-result</em> → <strong><code>-&gt;</code></strong> <em>type</em> \
+<em>macro-definition</em> → <strong><code>=</code></strong> <em>expression</em></p>
 </blockquote>
 <h2 id="演算子宣言operator-declaration"><a id="operator-declaration">演算子宣言(Operator Declaration)</a></h2>
 <p><em>演算子宣言</em>は、新しい中置、前置、または後置演算子をプログラムに導入し、<code>operator</code> キーワードを使用して宣言されます。</p>
@@ -1709,9 +1709,9 @@ oneAndTwo<span class="token punctuation">.</span><span class="token function">lo
 <blockquote>
 <p>Grammar of an operator declaration:</p>
 <p><em>operator-declaration</em> → <em>prefix-operator-declaration</em> | <em>postfix-operator-declaration</em> | <em>infix-operator-declaration</em></p>
-<p><em>prefix-operator-declaration</em> → <strong><code>prefix</code></strong> <strong><code>operator</code></strong> <em>operator</em></p>
-<p><em>postfix-operator-declaration</em> → <strong><code>postfix</code></strong> <strong><code>operator</code></strong> <em>operator</em></p>
-<p><em>infix-operator-declaration</em> → <strong><code>infix</code></strong> <strong><code>operator</code></strong> <em>operator</em> <em>infix-operator-group</em><em>?</em></p>
+<p><em>prefix-operator-declaration</em> → <strong><code>prefix</code></strong> <strong><code>operator</code></strong> <em>operator</em> \
+<em>postfix-operator-declaration</em> → <strong><code>postfix</code></strong> <strong><code>operator</code></strong> <em>operator</em> \
+<em>infix-operator-declaration</em> → <strong><code>infix</code></strong> <strong><code>operator</code></strong> <em>operator</em> <em>infix-operator-group</em><em>?</em></p>
 <p><em>infix-operator-group</em> → <strong><code>:</code></strong> <em>precedence-group-name</em></p>
 </blockquote>
 <h2 id="優先順位グループ宣言precedence-group-declaration"><a id="precedence-group-declaration">優先順位グループ宣言(Precedence Group Declaration)</a></h2>
@@ -1734,18 +1734,18 @@ oneAndTwo<span class="token punctuation">.</span><span class="token function">lo
 <blockquote>
 <p>Grammar of a precedence group declaration:</p>
 <p><em>precedence-group-declaration</em> → <strong><code>precedencegroup</code></strong> <em>precedence-group-name</em> <strong><code>{</code></strong> <em>precedence-group-attributes</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>precedence-group-attributes</em> → <em>precedence-group-attribute</em> <em>precedence-group-attributes</em><em>?</em></p>
-<p><em>precedence-group-attribute</em> → <em>precedence-group-relation</em></p>
-<p><em>precedence-group-attribute</em> → <em>precedence-group-assignment</em></p>
-<p><em>precedence-group-attribute</em> → <em>precedence-group-associativity</em></p>
-<p><em>precedence-group-relation</em> → <strong><code>higherThan</code></strong> <strong><code>:</code></strong> <em>precedence-group-names</em></p>
-<p><em>precedence-group-relation</em> → <strong><code>lowerThan</code></strong> <strong><code>:</code></strong> <em>precedence-group-names</em></p>
+<p><em>precedence-group-attributes</em> → <em>precedence-group-attribute</em> <em>precedence-group-attributes</em><em>?</em> \
+<em>precedence-group-attribute</em> → <em>precedence-group-relation</em> \
+<em>precedence-group-attribute</em> → <em>precedence-group-assignment</em> \
+<em>precedence-group-attribute</em> → <em>precedence-group-associativity</em></p>
+<p><em>precedence-group-relation</em> → <strong><code>higherThan</code></strong> <strong><code>:</code></strong> <em>precedence-group-names</em> \
+<em>precedence-group-relation</em> → <strong><code>lowerThan</code></strong> <strong><code>:</code></strong> <em>precedence-group-names</em></p>
 <p><em>precedence-group-assignment</em> → <strong><code>assignment</code></strong> <strong><code>:</code></strong> <em>boolean-literal</em></p>
-<p><em>precedence-group-associativity</em> → <strong><code>associativity</code></strong> <strong><code>:</code></strong> <strong><code>left</code></strong></p>
-<p><em>precedence-group-associativity</em> → <strong><code>associativity</code></strong> <strong><code>:</code></strong> <strong><code>right</code></strong></p>
-<p><em>precedence-group-associativity</em> → <strong><code>associativity</code></strong> <strong><code>:</code></strong> <strong><code>none</code></strong></p>
-<p><em>precedence-group-names</em> → <em>precedence-group-name</em> | <em>precedence-group-name</em> <strong><code>,</code></strong> <em>precedence-group-names</em></p>
-<p><em>precedence-group-name</em> → <em>identifier</em></p>
+<p><em>precedence-group-associativity</em> → <strong><code>associativity</code></strong> <strong><code>:</code></strong> <strong><code>left</code></strong> \
+<em>precedence-group-associativity</em> → <strong><code>associativity</code></strong> <strong><code>:</code></strong> <strong><code>right</code></strong> \
+<em>precedence-group-associativity</em> → <strong><code>associativity</code></strong> <strong><code>:</code></strong> <strong><code>none</code></strong></p>
+<p><em>precedence-group-names</em> → <em>precedence-group-name</em> | <em>precedence-group-name</em> <strong><code>,</code></strong> <em>precedence-group-names</em> \
+<em>precedence-group-name</em> → <em>identifier</em></p>
 </blockquote>
 <h2 id="宣言修飾子declaration-modifiers"><a id="declaration-modifiers">宣言修飾子(Declaration Modifiers)</a></h2>
 <p><em>宣言修飾子</em>は、宣言の動作または意味を変更するキーワードまたはコンテキスト依存キーワードです。(存在する場合は)宣言の属性と宣言を導入するキーワードの間に適切なキーワードまたはコンテキスト依存キーワードを記述することにより、宣言修飾子を指定します。</p>
@@ -1792,16 +1792,16 @@ oneAndTwo<span class="token punctuation">.</span><span class="token function">lo
 <p>上記の各アクセスレベル修飾子は、任意で 1 つの引数、括弧で囲まれた <code>set</code> キーワード(例えば、<code>private(set)</code>)を受け入れます。<a href="../language-guide/access-control.html#getters-and-setters">Getters and Setters(get と set)</a>で説明されているように、変数またはサブスクリプト自体のアクセスレベル以下のアクセスレベルを変数またはサブスクリプトの set に指定する場合は、この形式のアクセスレベル修飾子を使用します。</p>
 <blockquote>
 <p>Grammar of a declaration modifier:</p>
-<p><em>declaration-modifier</em> → <strong><code>class</code></strong> | <strong><code>convenience</code></strong> | <strong><code>dynamic</code></strong> | <strong><code>final</code></strong> | <strong><code>infix</code></strong> | <strong><code>lazy</code></strong> | <strong><code>optional</code></strong> | <strong><code>override</code></strong> | <strong><code>postfix</code></strong> | <strong><code>prefix</code></strong> | <strong><code>required</code></strong> | <strong><code>static</code></strong> | <strong><code>unowned</code></strong> | <strong><code>unowned</code></strong> <strong><code>(</code></strong> <strong><code>safe</code></strong> <strong><code>)</code></strong> | <strong><code>unowned</code></strong> <strong><code>(</code></strong> <strong><code>unsafe</code></strong> <strong><code>)</code></strong> | <strong><code>weak</code></strong></p>
-<p><em>declaration-modifier</em> → <em>access-level-modifier</em></p>
-<p><em>declaration-modifier</em> → <em>mutation-modifier</em></p>
-<p><em>declaration-modifier</em> → <em>actor-isolation-modifier</em></p>
-<p><em>declaration-modifiers</em> → <em>declaration-modifier</em> <em>declaration-modifiers</em><em>?</em></p>
-<p><em>access-level-modifier</em> → <strong><code>private</code></strong> | <strong><code>private</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong></p>
-<p><em>access-level-modifier</em> → <strong><code>fileprivate</code></strong> | <strong><code>fileprivate</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong></p>
-<p><em>access-level-modifier</em> → <strong><code>internal</code></strong> | <strong><code>internal</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong></p>
-<p><em>access-level-modifier</em> → <strong><code>public</code></strong> | <strong><code>public</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong></p>
-<p><em>access-level-modifier</em> → <strong><code>open</code></strong> | <strong><code>open</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong></p>
+<p><em>declaration-modifier</em> → <strong><code>class</code></strong> | <strong><code>convenience</code></strong> | <strong><code>dynamic</code></strong> | <strong><code>final</code></strong> | <strong><code>infix</code></strong> | <strong><code>lazy</code></strong> | <strong><code>optional</code></strong> | <strong><code>override</code></strong> | <strong><code>postfix</code></strong> | <strong><code>prefix</code></strong> | <strong><code>required</code></strong> | <strong><code>static</code></strong> | <strong><code>unowned</code></strong> | <strong><code>unowned</code></strong> <strong><code>(</code></strong> <strong><code>safe</code></strong> <strong><code>)</code></strong> | <strong><code>unowned</code></strong> <strong><code>(</code></strong> <strong><code>unsafe</code></strong> <strong><code>)</code></strong> | <strong><code>weak</code></strong> \
+<em>declaration-modifier</em> → <em>access-level-modifier</em> \
+<em>declaration-modifier</em> → <em>mutation-modifier</em> \
+<em>declaration-modifier</em> → <em>actor-isolation-modifier</em> \
+<em>declaration-modifiers</em> → <em>declaration-modifier</em> <em>declaration-modifiers</em><em>?</em></p>
+<p><em>access-level-modifier</em> → <strong><code>private</code></strong> | <strong><code>private</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong> \
+<em>access-level-modifier</em> → <strong><code>fileprivate</code></strong> | <strong><code>fileprivate</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong> \
+<em>access-level-modifier</em> → <strong><code>internal</code></strong> | <strong><code>internal</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong> \
+<em>access-level-modifier</em> → <strong><code>public</code></strong> | <strong><code>public</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong> \
+<em>access-level-modifier</em> → <strong><code>open</code></strong> | <strong><code>open</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong></p>
 <p><em>mutation-modifier</em> → <strong><code>mutating</code></strong> | <strong><code>nonmutating</code></strong></p>
 <p><em>actor-isolation-modifier</em> → <strong><code>nonisolated</code></strong></p>
 </blockquote>
@@ -1848,7 +1848,7 @@ oneAndTwo<span class="token punctuation">.</span><span class="token function">lo
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"宣言(Declarations)","level":"4.6","depth":1,"next":{"title":"属性(Attributes)","level":"4.7","depth":1,"path":"language-reference/attributes.md","ref":"language-reference/attributes.md","articles":[]},"previous":{"title":"文(Statements)","level":"4.5","depth":1,"path":"language-reference/statements.md","ref":"language-reference/statements.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-reference/declarations.md","mtime":"2023-07-18T21:59:33.422Z","type":"markdown"},"gitbook":{"version":"3.7.5","time":"2023-07-18T21:59:54.636Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"宣言(Declarations)","level":"4.6","depth":1,"next":{"title":"属性(Attributes)","level":"4.7","depth":1,"path":"language-reference/attributes.md","ref":"language-reference/attributes.md","articles":[]},"previous":{"title":"文(Statements)","level":"4.5","depth":1,"path":"language-reference/statements.md","ref":"language-reference/statements.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-reference/declarations.md","mtime":"2023-08-12T23:25:08.923Z","type":"markdown"},"gitbook":{"version":"3.7.5","time":"2023-08-12T23:25:42.339Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

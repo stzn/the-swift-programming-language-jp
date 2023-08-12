@@ -758,14 +758,14 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="式expressions">式(Expressions)</h1>
-<p>最終更新日: 2023/6/4<br>原文: <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html" target="_blank">https://docs.swift.org/swift-book/ReferenceManual/Expressions.html</a></p>
+<p>最終更新日: 2023/8/11<br>原文: <a href="https://docs.swift.org/swift-book/ReferenceManual/Expressions.html" target="_blank">https://docs.swift.org/swift-book/ReferenceManual/Expressions.html</a></p>
 <p>型、演算子、変数、およびその他の名前と構造を紹介する。</p>
 <p>Swift では、前置式、バイナリ式、基本式、後置式の 4 種類の式があります。式が評価されると、値を返すか、副作用を起こすか、またはその両方を引き起こします。</p>
 <p>前置式とバイナリ式を使用すると、演算子をより小さな式に適用できます。基本式は概念的には最もシンプルな種類の式で、値にアクセスする方法を提供します。後置式は、前置式やバイナリ式と同様に、関数呼び出しやメンバアクセスなど、後置式を使用してより複雑な式を構築できます。各式は、下記のセクションで詳しく説明されています。</p>
 <blockquote>
 <p>Grammar of an expression:</p>
-<p><em>expression</em> → <em>try-operator</em><em>?</em> <em>await-operator</em><em>?</em> <em>prefix-expression</em> <em>infix-expressions</em><em>?</em></p>
-<p><em>expression-list</em> → <em>expression</em> | <em>expression</em> <strong><code>,</code></strong> <em>expression-list</em></p>
+<p><em>expression</em> → <em>try-operator</em><em>?</em> <em>await-operator</em><em>?</em> <em>prefix-expression</em> <em>infix-expressions</em><em>?</em> \
+<em>expression-list</em> → <em>expression</em> | <em>expression</em> <strong><code>,</code></strong> <em>expression-list</em></p>
 </blockquote>
 <h2 id="前置式prefix-expressions">前置式(Prefix Expressions)</h2>
 <p>前置式は、式と任意の前置演算子を組み合わせます。前置演算子は 1 つの引数を受け取り、その後に式が続きます。</p>
@@ -773,8 +773,8 @@
 <p>Swift 標準ライブラリによって提供されている演算子については、<a href="https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations" target="_blank">Operator Declarations(演算子宣言)</a>を参照ください。</p>
 <blockquote>
 <p>Grammar of a prefix expression:</p>
-<p><em>prefix-expression</em> → <em>prefix-operator</em><em>?</em> <em>postfix-expression</em></p>
-<p><em>prefix-expression</em> → <em>in-out-expression</em></p>
+<p><em>prefix-expression</em> → <em>prefix-operator</em><em>?</em> <em>postfix-expression</em> \
+<em>prefix-expression</em> → <em>in-out-expression</em></p>
 </blockquote>
 <h3 id="in-out-式in-out-expression">In-Out 式(In-Out Expression)</h3>
 <p>in-out 式は、関数呼び出し式に in-out パラメータとして渡された変数にマークをします。</p>
@@ -848,11 +848,11 @@ sum <span class="token operator">=</span> <span class="token punctuation">(</spa
 <blockquote>
 <p>NOTE<br>構文解析時には、式はバイナリ演算子のフラットなリストを構成します。このリストは、演算子の優先順位を適用することによってツリーに変換されます。例えば、式 <code>2 + 3 * 5</code> は、最初は5つの項目、<code>2</code>、<code>+</code>、<code>3</code>、<code>*</code>、および <code>5</code> として解釈され、その後 <code>(2 + (3 * 5))</code> のツリーに変換します</p>
 <p>Grammar of an infix expression:</p>
-<p><em>infix-expression</em> → <em>infix-operator</em> <em>prefix-expression</em></p>
-<p><em>infix-expression</em> → <em>assignment-operator</em> <em>try-operator</em><em>?</em> <em>prefix-expression</em></p>
-<p><em>infix-expression</em> → <em>conditional-operator</em> <em>try-operator</em><em>?</em> <em>prefix-expression</em></p>
-<p><em>infix-expression</em> → <em>type-casting-operator</em></p>
-<p><em>infix-expressions</em> → <em>infix-expression</em> <em>infix-expressions</em><em>?</em></p>
+<p><em>infix-expression</em> → <em>infix-operator</em> <em>prefix-expression</em> \
+<em>infix-expression</em> → <em>assignment-operator</em> <em>try-operator</em><em>?</em> <em>prefix-expression</em> \
+<em>infix-expression</em> → <em>conditional-operator</em> <em>try-operator</em><em>?</em> <em>prefix-expression</em> \
+<em>infix-expression</em> → <em>type-casting-operator</em> \
+<em>infix-expressions</em> → <em>infix-expression</em> <em>infix-expressions</em><em>?</em></p>
 </blockquote>
 <h3 id="代入演算子assignment-operator">代入演算子(Assignment Operator)</h3>
 <p>代入演算子は特定の式に新しい値を設定します。形式は次のとおりです:</p>
@@ -906,41 +906,41 @@ sum <span class="token operator">=</span> <span class="token punctuation">(</spa
 <p>型キャストの詳細や型キャスト演算子を使用する例については、<a href="../language-guide/type-casting.html">Type Casting(型キャスト)</a>を参照ください。</p>
 <blockquote>
 <p>Grammar of a type-casting operator:</p>
-<p><em>type-casting-operator</em> → <strong><code>is</code></strong> <em>type</em></p>
-<p><em>type-casting-operator</em> → <strong><code>as</code></strong> <em>type</em></p>
-<p><em>type-casting-operator</em> → <strong><code>as</code></strong> <strong><code>?</code></strong> <em>type</em></p>
-<p><em>type-casting-operator</em> → <strong><code>as</code></strong> <strong><code>!</code></strong> <em>type</em></p>
+<p><em>type-casting-operator</em> → <strong><code>is</code></strong> <em>type</em> \
+<em>type-casting-operator</em> → <strong><code>as</code></strong> <em>type</em> \
+<em>type-casting-operator</em> → <strong><code>as</code></strong> <strong><code>?</code></strong> <em>type</em> \
+<em>type-casting-operator</em> → <strong><code>as</code></strong> <strong><code>!</code></strong> <em>type</em></p>
 </blockquote>
 <h2 id="基本式primary-expressions">基本式(Primary Expressions)</h2>
 <p>基本式は最も基本的な種類の式です。それらは自身を式として使用したり、他のトークンと組み合わせたり、前置式、バイナリ式、および後置式を作成することができます。</p>
 <blockquote>
 <p>Grammar of a primary expression:</p>
-<p><em>primary-expression</em> → <em>identifier</em> <em>generic-argument-clause</em><em>?</em></p>
-<p><em>primary-expression</em> → <em>literal-expression</em></p>
-<p><em>primary-expression</em> → <em>self-expression</em></p>
-<p><em>primary-expression</em> → <em>superclass-expression</em></p>
-<p><em>primary-expression</em> → <em>conditional-expression</em></p>
-<p><em>primary-expression</em> → <em>closure-expression</em></p>
-<p><em>primary-expression</em> → <em>parenthesized-expression</em></p>
-<p><em>primary-expression</em> → <em>tuple-expression</em></p>
-<p><em>primary-expression</em> → <em>implicit-member-expression</em></p>
-<p><em>primary-expression</em> → <em>wildcard-expression</em></p>
-<p><em>primary-expression</em> → <em>macro-expansion-expression</em></p>
-<p><em>primary-expression</em> → <em>key-path-expression</em></p>
-<p><em>primary-expression</em> → <em>selector-expression</em></p>
-<p><em>primary-expression</em> → <em>key-path-string-expression</em></p>
+<p><em>primary-expression</em> → <em>identifier</em> <em>generic-argument-clause</em><em>?</em> \
+<em>primary-expression</em> → <em>literal-expression</em> \
+<em>primary-expression</em> → <em>self-expression</em> \
+<em>primary-expression</em> → <em>superclass-expression</em> \
+<em>primary-expression</em> → <em>conditional-expression</em> \
+<em>primary-expression</em> → <em>closure-expression</em> \
+<em>primary-expression</em> → <em>parenthesized-expression</em> \
+<em>primary-expression</em> → <em>tuple-expression</em> \
+<em>primary-expression</em> → <em>implicit-member-expression</em> \
+<em>primary-expression</em> → <em>wildcard-expression</em> \
+<em>primary-expression</em> → <em>macro-expansion-expression</em> \
+<em>primary-expression</em> → <em>key-path-expression</em> \
+<em>primary-expression</em> → <em>selector-expression</em> \
+<em>primary-expression</em> → *key-path-string-expression</p>
 </blockquote>
 <h3 id="リテラル式literal-expression"><a id="literal-expression">リテラル式(Literal Expression)</a></h3>
 <p>リテラル式は、通常のリテラル(文字列や数など)、配列または辞書リテラル、playground リテラルで構成されます。</p>
 <blockquote>
 <p>NOTE<br>Swift 5.9以前は、以下の特殊リテラルが認識されていました:<br><code>#column</code>, <code>#dsohandle</code> , <code>#fileID</code>, <code>#filePath</code>, <code>#file</code>, <code>#function</code>, <code>#line</code>。
-現在はSwift標準ライブラリのマクロとして実装されています:<br><a href="https://developer.apple.com/documentation/swift/column" target="_blank"><code>column</code></a>,
-<a href="https://developer.apple.com/documentation/swift/dsohandle" target="_blank"><code>dsohandle</code></a>,
-<a href="https://developer.apple.com/documentation/swift/fileID" target="_blank"><code>fileID</code></a>,
-<a href="https://developer.apple.com/documentation/swift/filePath" target="_blank"><code>filePath</code></a>,
-<a href="https://developer.apple.com/documentation/swift/file" target="_blank"><code>file</code></a>,
-<a href="https://developer.apple.com/documentation/swift/function" target="_blank"><code>function</code></a>,
-<a href="https://developer.apple.com/documentation/swift/line" target="_blank"><code>line</code></a>。</p>
+現在はSwift標準ライブラリのマクロとして実装されています:<br><a href="https://developer.apple.com/documentation/swift/column(" target="_blank"><code>column</code></a>),
+<a href="https://developer.apple.com/documentation/swift/dsohandle(" target="_blank"><code>dsohandle</code></a>),
+<a href="https://developer.apple.com/documentation/swift/fileID(" target="_blank"><code>fileID</code></a>),
+<a href="https://developer.apple.com/documentation/swift/filePath(" target="_blank"><code>filePath</code></a>),
+<a href="https://developer.apple.com/documentation/swift/file(" target="_blank"><code>file</code></a>),
+<a href="https://developer.apple.com/documentation/swift/function(" target="_blank"><code>function</code></a>),
+<a href="https://developer.apple.com/documentation/swift/line(" target="_blank"><code>line</code></a>)。</p>
 </blockquote>
 <p><em>配列リテラル</em>は、順序付けられた値の集合です。形式は次のとおりです:</p>
 <pre class="language-"><code class="lang-swift"><span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token other-directive property">#value</span> <span class="token number">1</span>#<span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token other-directive property">#value</span> <span class="token number">2</span>#<span class="token operator">&gt;</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>#<span class="token operator">...</span>#<span class="token operator">&gt;</span><span class="token punctuation">]</span>
@@ -958,17 +958,17 @@ sum <span class="token operator">=</span> <span class="token punctuation">(</spa
 <p>Xcode の playground リテラルの使用方法については、Xcode ヘルプ内の<a href="https://help.apple.com/xcode/mac/current/#/dev4c60242fc" target="_blank">Add a color, file, or image literal</a>を参照ください。</p>
 <blockquote>
 <p>Grammar of a literal expression:</p>
-<p><em>literal-expression</em> → <em>literal</em></p>
-<p><em>literal-expression</em> → <em>array-literal</em> | <em>dictionary-literal</em> | <em>playground-literal</em></p>
-<p><em>array-literal</em> → <strong><code>[</code></strong> <em>array-literal-items</em><em>?</em> <strong><code>]</code></strong></p>
-<p><em>array-literal-items</em> → <em>array-literal-item</em> <strong><code>,</code></strong><em>?</em> | <em>array-literal-item</em> <strong><code>,</code></strong> <em>array-literal-items</em></p>
-<p><em>array-literal-item</em> → <em>expression</em></p>
-<p><em>dictionary-literal</em> → <strong><code>[</code></strong> <em>dictionary-literal-items</em> <strong><code>]</code></strong> | <strong><code>[</code></strong> <strong><code>:</code></strong> <strong><code>]</code></strong></p>
-<p><em>dictionary-literal-items</em> → <em>dictionary-literal-item</em> <strong><code>,</code></strong><em>?</em> | <em>dictionary-literal-item</em> <strong><code>,</code></strong> <em>dictionary-literal-items</em></p>
-<p><em>dictionary-literal-item</em> → <em>expression</em> <strong><code>:</code></strong> <em>expression</em></p>
-<p><em>playground-literal</em> → <strong><code>#colorLiteral</code></strong> <strong><code>(</code></strong> <strong><code>red</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>,</code></strong> <strong><code>green</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>,</code></strong> <strong><code>blue</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>,</code></strong> <strong><code>alpha</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
-<p><em>playground-literal</em> → <strong><code>#fileLiteral</code></strong> <strong><code>(</code></strong> <strong><code>resourceName</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
-<p><em>playground-literal</em> → <strong><code>#imageLiteral</code></strong> <strong><code>(</code></strong> <strong><code>resourceName</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
+<p><em>literal-expression</em> → <em>literal</em> \
+<em>literal-expression</em> → <em>array-literal</em> | <em>dictionary-literal</em> | <em>playground-literal</em></p>
+<p><em>array-literal</em> → <strong><code>[</code></strong> <em>array-literal-items</em><em>?</em> <strong><code>]</code></strong> \
+<em>array-literal-items</em> → <em>array-literal-item</em> <strong><code>,</code></strong><em>?</em> | <em>array-literal-item</em> <strong><code>,</code></strong> <em>array-literal-items</em> \
+<em>array-literal-item</em> → <em>expression</em></p>
+<p><em>dictionary-literal</em> → <strong><code>[</code></strong> <em>dictionary-literal-items</em> <strong><code>]</code></strong> | <strong><code>[</code></strong> <strong><code>:</code></strong> <strong><code>]</code></strong> \
+<em>dictionary-literal-items</em> → <em>dictionary-literal-item</em> <strong><code>,</code></strong><em>?</em> | <em>dictionary-literal-item</em> <strong><code>,</code></strong> <em>dictionary-literal-items</em> \
+<em>dictionary-literal-item</em> → <em>expression</em> <strong><code>:</code></strong> <em>expression</em></p>
+<p><em>playground-literal</em> → <strong><code>#colorLiteral</code></strong> <strong><code>(</code></strong> <strong><code>red</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>,</code></strong> <strong><code>green</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>,</code></strong> <strong><code>blue</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>,</code></strong> <strong><code>alpha</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>)</code></strong> \
+<em>playground-literal</em> → <strong><code>#fileLiteral</code></strong> <strong><code>(</code></strong> <strong><code>resourceName</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>)</code></strong> \
+<em>playground-literal</em> → <strong><code>#imageLiteral</code></strong> <strong><code>(</code></strong> <strong><code>resourceName</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
 </blockquote>
 <h3 id="self-式self-expression">self 式(Self Expression)</h3>
 <p><code>self</code> 式は、それが使用さえている現在の型またはインスタンスへの明示的な参照です。形式は次のとおりです:</p>
@@ -998,9 +998,9 @@ sum <span class="token operator">=</span> <span class="token punctuation">(</spa
 <blockquote>
 <p>Grammar of a self expression:</p>
 <p><em>self-expression</em> → <strong><code>self</code></strong> | <em>self-method-expression</em> | <em>self-subscript-expression</em> | <em>self-initializer-expression</em></p>
-<p><em>self-method-expression</em> → <strong><code>self</code></strong> <strong><code>.</code></strong> <em>identifier</em></p>
-<p><em>self-subscript-expression</em> → <strong><code>self</code></strong> <strong><code>[</code></strong> <em>function-call-argument-list</em> <strong><code>]</code></strong></p>
-<p><em>self-initializer-expression</em> → <strong><code>self</code></strong> <strong><code>.</code></strong> <strong><code>init</code></strong></p>
+<p><em>self-method-expression</em> → <strong><code>self</code></strong> <strong><code>.</code></strong> <em>identifier</em> \
+<em>self-subscript-expression</em> → <strong><code>self</code></strong> <strong><code>[</code></strong> <em>function-call-argument-list</em> <strong><code>]</code></strong> \
+<em>self-initializer-expression</em> → <strong><code>self</code></strong> <strong><code>.</code></strong> <strong><code>init</code></strong></p>
 </blockquote>
 <h3 id="スーパークラス式superclass-expression">スーパークラス式(Superclass Expression)</h3>
 <p><em>スーパークラス式</em>は、クラスがスーパークラスとやり取りすることを可能にします。次のいずれかの形式があります:</p>
@@ -1013,9 +1013,9 @@ sum <span class="token operator">=</span> <span class="token punctuation">(</spa
 <blockquote>
 <p>Grammar of a superclass expression:</p>
 <p><em>superclass-expression</em> → <em>superclass-method-expression</em> | <em>superclass-subscript-expression</em> | <em>superclass-initializer-expression</em></p>
-<p><em>superclass-method-expression</em> → <strong><code>super</code></strong> <strong><code>.</code></strong> <em>identifier</em></p>
-<p><em>superclass-subscript-expression</em> → <strong><code>super</code></strong> <strong><code>[</code></strong> <em>function-call-argument-list</em> <strong><code>]</code></strong></p>
-<p><em>superclass-initializer-expression</em> → <strong><code>super</code></strong> <strong><code>.</code></strong> <strong><code>init</code></strong></p>
+<p><em>superclass-method-expression</em> → <strong><code>super</code></strong> <strong><code>.</code></strong> <em>identifier</em> \
+<em>superclass-subscript-expression</em> → <strong><code>super</code></strong> <strong><code>[</code></strong> <em>function-call-argument-list</em> <strong><code>]</code></strong> \
+<em>superclass-initializer-expression</em> → <strong><code>super</code></strong> <strong><code>.</code></strong> <strong><code>init</code></strong></p>
 </blockquote>
 <h3 id="条件式conditional-expression">条件式(Conditional Expression)</h3>
 <p><em>条件式</em>は、条件の値に基づいて、与えられたいくつかの値のうちの 1 つに評価されます。</p>
@@ -1056,13 +1056,13 @@ sum <span class="token operator">=</span> <span class="token punctuation">(</spa
 <blockquote>
 <p>Grammar of a conditional expression:</p>
 <p><em>conditional-expression</em> → <em>if-expression</em> | <em>switch-expression</em></p>
-<p><em>if-expression</em> → <strong><code>if</code></strong> <em>condition-list</em> <strong><code>{</code></strong> <em>statement</em> <strong><code>}</code></strong> <em>if-expression-tail</em></p>
-<p><em>if-expression-tail</em> → <strong><code>else</code></strong> <em>if-expression</em></p>
-<p><em>if-expression-tail</em> → <strong><code>else</code></strong> <strong><code>{</code></strong> <em>statement</em> <strong><code>}</code></strong></p>
-<p><em>switch-expression</em> → <strong><code>switch</code></strong> <em>expression</em> <strong><code>{</code></strong> <em>switch-expression-cases</em> <strong><code>}</code></strong></p>
-<p><em>switch-expression-cases</em> → <em>switch-expression-case</em> <em>switch-expression-cases</em><em>?</em></p>
-<p><em>switch-expression-case</em> → <em>case-label</em> <em>statement</em></p>
-<p><em>switch-expression-case</em> → <em>default-label</em> <em>statement</em></p>
+<p><em>if-expression</em> → <strong><code>if</code></strong> <em>condition-list</em> <strong><code>{</code></strong> <em>statement</em> <strong><code>}</code></strong> <em>if-expression-tail</em> \
+<em>if-expression-tail</em> → <strong><code>else</code></strong> <em>if-expression</em> \
+<em>if-expression-tail</em> → <strong><code>else</code></strong> <strong><code>{</code></strong> <em>statement</em> <strong><code>}</code></strong></p>
+<p><em>switch-expression</em> → <strong><code>switch</code></strong> <em>expression</em> <strong><code>{</code></strong> <em>switch-expression-cases</em> <strong><code>}</code></strong> \
+<em>switch-expression-cases</em> → <em>switch-expression-case</em> <em>switch-expression-cases</em><em>?</em> \
+<em>switch-expression-case</em> → <em>case-label</em> <em>statement</em> \
+<em>switch-expression-case</em> → <em>default-label</em> <em>statement</em></p>
 </blockquote>
 <h3 id="クロージャ式closure-expression">クロージャ式(Closure Expression)</h3>
 <p><em>クロージャ式</em>は、他のプログラミング言語では、<em>ラムダ</em>または<em>匿名関数</em>とも呼ばれているクロージャを作成します。関数宣言のように、クロージャには文が含まれており、その囲まれている範囲から定数と変数をキャプチャします。形式は次のとおりです:</p>
@@ -1145,19 +1145,19 @@ myFunction <span class="token punctuation">{</span> <span class="token punctuati
 <blockquote>
 <p>Grammar of a closure expression:</p>
 <p><em>closure-expression</em> → <strong><code>{</code></strong> <em>attributes</em><em>?</em> <em>closure-signature</em><em>?</em> <em>statements</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>closure-signature</em> → <em>capture-list</em><em>?</em> <em>closure-parameter-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>throws</code></strong><em>?</em> <em>function-result</em><em>?</em> <strong><code>in</code></strong></p>
-<p><em>closure-signature</em> → <em>capture-list</em> <strong><code>in</code></strong></p>
-<p><em>closure-parameter-clause</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>closure-parameter-list</em> <strong><code>)</code></strong> | <em>identifier-list</em></p>
-<p><em>closure-parameter-list</em> → <em>closure-parameter</em> | <em>closure-parameter</em> <strong><code>,</code></strong> <em>closure-parameter-list</em></p>
-<p><em>closure-parameter</em> → <em>closure-parameter-name</em> <em>type-annotation</em><em>?</em></p>
-<p><em>closure-parameter</em> → <em>closure-parameter-name</em> <em>type-annotation</em> <strong><code>...</code></strong></p>
-<p><em>closure-parameter-name</em> → <em>identifier</em></p>
-<p><em>capture-list</em> → <strong><code>[</code></strong> <em>capture-list-items</em> <strong><code>]</code></strong></p>
-<p><em>capture-list-items</em> → <em>capture-list-item</em> | <em>capture-list-item</em> <strong><code>,</code></strong> <em>capture-list-items</em></p>
-<p><em>capture-list-item</em> → <em>capture-specifier</em><em>?</em> <em>identifier</em></p>
-<p><em>capture-list-item</em> → <em>capture-specifier</em><em>?</em> <em>identifier</em> <strong><code>=</code></strong> <em>expression</em></p>
-<p><em>capture-list-item</em> → <em>capture-specifier</em><em>?</em> <em>self-expression</em></p>
-<p><em>capture-specifier</em> → <strong><code>weak</code></strong> | <strong><code>unowned</code></strong> | <strong><code>unowned(safe)</code></strong> | <strong><code>unowned(unsafe)</code></strong></p>
+<p><em>closure-signature</em> → <em>capture-list</em><em>?</em> <em>closure-parameter-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>throws</code></strong><em>?</em> <em>function-result</em><em>?</em> <strong><code>in</code></strong> \
+<em>closure-signature</em> → <em>capture-list</em> <strong><code>in</code></strong></p>
+<p><em>closure-parameter-clause</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>closure-parameter-list</em> <strong><code>)</code></strong> | <em>identifier-list</em> \
+<em>closure-parameter-list</em> → <em>closure-parameter</em> | <em>closure-parameter</em> <strong><code>,</code></strong> <em>closure-parameter-list</em> \
+<em>closure-parameter</em> → <em>closure-parameter-name</em> <em>type-annotation</em><em>?</em> \
+<em>closure-parameter</em> → <em>closure-parameter-name</em> <em>type-annotation</em> <strong><code>...</code></strong> \
+<em>closure-parameter-name</em> → <em>identifier</em></p>
+<p><em>capture-list</em> → <strong><code>[</code></strong> <em>capture-list-items</em> <strong><code>]</code></strong> \
+<em>capture-list-items</em> → <em>capture-list-item</em> | <em>capture-list-item</em> <strong><code>,</code></strong> <em>capture-list-items</em> \
+<em>capture-list-item</em> → <em>capture-specifier</em><em>?</em> <em>identifier</em> \
+<em>capture-list-item</em> → <em>capture-specifier</em><em>?</em> <em>identifier</em> <strong><code>=</code></strong> <em>expression</em> \
+<em>capture-list-item</em> → <em>capture-specifier</em><em>?</em> <em>self-expression</em> \
+<em>capture-specifier</em> → <strong><code>weak</code></strong> | <strong><code>unowned</code></strong> | <strong><code>unowned(safe)</code></strong> | <strong><code>unowned(unsafe)</code></strong></p>
 </blockquote>
 <h3 id="暗黙メンバ式implicit-member-expression"><a id="implicit-member-expression">暗黙メンバ式(Implicit Member Expression)</a></h3>
 <p><em>暗黙メンバ式</em>は、型推論によって暗黙的に型を決定できるコンテキストにおいて、列挙ケースや型メソッドなどの型のメンバにアクセスするための省略記法です。形式は次のとおりです:</p>
@@ -1188,8 +1188,8 @@ x <span class="token operator">=</span> <span class="token punctuation">.</span>
 <p>上記のコードでは、<code>x</code> の型はそのコンテキストから暗黙的に推論された型と正確に一致し、<code>y</code> の型は <code>SomeClass</code> から <code>SomeClass?</code> に変換され、<code>z</code> の型は <code>SomeSubclass</code> から <code>SomeClass</code> に変換されます。</p>
 <blockquote>
 <p>Grammar of a implicit member expression:</p>
-<p><em>implicit-member-expression</em> → <strong><code>.</code></strong> <em>identifier</em></p>
-<p><em>implicit-member-expression</em> → <strong><code>.</code></strong> <em>identifier</em> <strong><code>.</code></strong> <em>postfix-expression</em></p>
+<p><em>implicit-member-expression</em> → <strong><code>.</code></strong> <em>identifier</em> \
+<em>implicit-member-expression</em> → <strong><code>.</code></strong> <em>identifier</em> <strong><code>.</code></strong> <em>postfix-expression</em></p>
 </blockquote>
 <h3 id="括弧で囲まれた式parenthesized-expression">括弧で囲まれた式(Parenthesized Expression)</h3>
 <p><em>括弧で囲まれた式</em>は、括弧で囲まれた式で構成されます。式を明示的にグループ化することで、括弧を使用して操作の優先順位を指定できます。括弧のグループ化は式の型を変更しません(例：<code>(1)</code> はただの <code>Int</code> です。</p>
@@ -1206,9 +1206,9 @@ x <span class="token operator">=</span> <span class="token punctuation">.</span>
 <blockquote>
 <p>NOTE<br>空のタプル式と空のタプル型はいずれもSwiftでは <code>()</code> で書きます。<code>Void</code> は <code>()</code> のタイプエイリアスのため、空のタプル型を書くために使用できます。ただし、全てのタイプエイリアスと同様に、<code>Void</code> は常に型で、空のタプル式を書くためには使用できません。</p>
 <p>Grammar of a tuple expression:</p>
-<p><em>tuple-expression</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>tuple-element</em> <strong><code>,</code></strong> <em>tuple-element-list</em> <strong><code>)</code></strong></p>
-<p><em>tuple-element-list</em> → <em>tuple-element</em> | <em>tuple-element</em> <strong><code>,</code></strong> <em>tuple-element-list</em></p>
-<p><em>tuple-element</em> → <em>expression</em> | <em>identifier</em> <strong><code>:</code></strong> <em>expression</em></p>
+<p><em>tuple-expression</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>tuple-element</em> <strong><code>,</code></strong> <em>tuple-element-list</em> <strong><code>)</code></strong> \
+<em>tuple-element-list</em> → <em>tuple-element</em> | <em>tuple-element</em> <strong><code>,</code></strong> <em>tuple-element-list</em> \
+<em>tuple-element</em> → <em>expression</em> | <em>identifier</em> <strong><code>:</code></strong> <em>expression</em></p>
 </blockquote>
 <h3 id="ワイルドカード式wildcard-expression">ワイルドカード式(Wildcard Expression)</h3>
 <p>ワイルドカード式は、代入中に値を明示的に無視するために使用されます。例えば、次の代入式 <code>10</code> は <code>x</code> に代入されますが、<code>20</code> は無視されています:</p>
@@ -1357,11 +1357,11 @@ index <span class="token operator">+=</span> <span class="token number">1</span>
 <p>Objective-C API とやり取りするコード内の KeyPath の使用方法の詳細については、<a href="https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift" target="_blank">Using Objective-C Runtime Features in Swift</a>を参照ください。Key-Value Coding や Key-Value Observing については、<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i" target="_blank">Key-Value Coding Programming Guide</a>と<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i" target="_blank">Key-Value Observing Programming Guide</a>を参照ください。</p>
 <blockquote>
 <p>Grammar of a key-path expression:</p>
-<p><em>key-path-expression</em> → <strong><code>\</code></strong> <em>type</em><em>?</em> <strong><code>.</code></strong> <em>key-path-components</em></p>
-<p><em>key-path-components</em> → <em>key-path-component</em> | <em>key-path-component</em> <strong><code>.</code></strong> <em>key-path-components</em></p>
-<p><em>key-path-component</em> → <em>identifier</em> <em>key-path-postfixes</em><em>?</em> | <em>key-path-postfixes</em></p>
-<p><em>key-path-postfixes</em> → <em>key-path-postfix</em> <em>key-path-postfixes</em><em>?</em></p>
-<p><em>key-path-postfix</em> → <strong><code>?</code></strong> | <strong><code>!</code></strong> | <strong><code>self</code></strong> | <strong><code>[</code></strong> <em>function-call-argument-list</em> <strong><code>]</code></strong></p>
+<p><em>key-path-expression</em> → <strong><code>\</code></strong> <em>type</em><em>?</em> <strong><code>.</code></strong> <em>key-path-components</em> \
+<em>key-path-components</em> → <em>key-path-component</em> | <em>key-path-component</em> <strong><code>.</code></strong> <em>key-path-components</em> \
+<em>key-path-component</em> → <em>identifier</em> <em>key-path-postfixes</em><em>?</em> | <em>key-path-postfixes</em></p>
+<p><em>key-path-postfixes</em> → <em>key-path-postfix</em> <em>key-path-postfixes</em><em>?</em> \
+<em>key-path-postfix</em> → <strong><code>?</code></strong> | <strong><code>!</code></strong> | <strong><code>self</code></strong> | <strong><code>[</code></strong> <em>function-call-argument-list</em> <strong><code>]</code></strong></p>
 </blockquote>
 <h3 id="selector-式selector-expression"><a id="selector-expression">Selector 式(Selector Expression)</a></h3>
 <p>セレクタ式を使用すると、Objective-C のメソッドまたはプロパティの get や set を参照するために使用されるセレクタにアクセスできます。形式は次のとおりです:</p>
@@ -1398,9 +1398,9 @@ index <span class="token operator">+=</span> <span class="token number">1</span>
 <p>Objective-C API とやり取りする Swift コードでセレクタを使用する方法の詳細については、<a href="https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift" target="_blank">Using Objective-C Runtime Features in Swift</a>を参照ください。</p>
 <blockquote>
 <p>Grammar of a selector expression:</p>
-<p><em>selector-expression</em> → <strong><code>#selector</code></strong> <strong><code>(</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
-<p><em>selector-expression</em> → <strong><code>#selector</code></strong> <strong><code>(</code></strong> <strong><code>getter:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
-<p><em>selector-expression</em> → <strong><code>#selector</code></strong> <strong><code>(</code></strong> <strong><code>setter:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
+<p><em>selector-expression</em> → <strong><code>#selector</code></strong> <strong><code>(</code></strong> <em>expression</em> <strong><code>)</code></strong> \
+<em>selector-expression</em> → <strong><code>#selector</code></strong> <strong><code>(</code></strong> <strong><code>getter:</code></strong> <em>expression</em> <strong><code>)</code></strong> \
+<em>selector-expression</em> → <strong><code>#selector</code></strong> <strong><code>(</code></strong> <strong><code>setter:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
 </blockquote>
 <h3 id="keypath-文字列式key-path-string-expression">KeyPath 文字列式(Key-Path String Expression)</h3>
 <p>KeyPath 文字列式を使用すると、Key-Value Coding や Key-Value Observing API で使用するために、Objective-C のプロパティを参照するための文字列にアクセスできます。形式は次のとおりです:</p>
@@ -1444,15 +1444,15 @@ index <span class="token operator">+=</span> <span class="token number">1</span>
 <p>Swift 標準ライブラリによって提供されている演算子については、<a href="https://developer.apple.com/documentation/swift/swift_standard_library/operator_declarations" target="_blank">Operator Declarations(演算子宣言)</a>を参照ください。</p>
 <blockquote>
 <p>Grammar of a postfix expression:</p>
-<p><em>postfix-expression</em> → <em>primary-expression</em></p>
-<p><em>postfix-expression</em> → <em>postfix-expression</em> <em>postfix-operator</em></p>
-<p><em>postfix-expression</em> → <em>function-call-expression</em></p>
-<p><em>postfix-expression</em> → <em>initializer-expression</em></p>
-<p><em>postfix-expression</em> → <em>explicit-member-expression</em></p>
-<p><em>postfix-expression</em> → <em>postfix-self-expression</em></p>
-<p><em>postfix-expression</em> → <em>subscript-expression</em></p>
-<p><em>postfix-expression</em> → <em>forced-value-expression</em></p>
-<p><em>postfix-expression</em> → <em>optional-chaining-expression</em></p>
+<p><em>postfix-expression</em> → <em>primary-expression</em> \
+<em>postfix-expression</em> → <em>postfix-expression</em> <em>postfix-operator</em> \
+<em>postfix-expression</em> → <em>function-call-expression</em> \
+<em>postfix-expression</em> → <em>initializer-expression</em> \
+<em>postfix-expression</em> → <em>explicit-member-expression</em> \
+<em>postfix-expression</em> → <em>postfix-self-expression</em> \
+<em>postfix-expression</em> → <em>subscript-expression</em> \
+<em>postfix-expression</em> → <em>forced-value-expression</em> \
+<em>postfix-expression</em> → <em>optional-chaining-expression</em></p>
 </blockquote>
 <h3 id="関数呼び出し式function-call-expression"><a id="function-call-expression">関数呼び出し式(Function Call Expression)</a></h3>
 <p><em>関数呼び出し式</em>は、関数名とそれに続く関数の引数のカンマ区切りのリストからなる関数名で構成されています。関数呼び出し式は形式は次のとおりです:</p>
@@ -1552,15 +1552,15 @@ someFunction <span class="token punctuation">{</span> <span class="token keyword
 <p><code>withUnsafePointer(to:)</code> のような明示的な機能の代わりに、<code>&amp;</code> を使うことで、低レベルの C 言語の関数を呼び出しやすくするのに役立ちます。ただし、他の Swift コードから関数を呼び出すときは、安全でない API を明示的に使用する代わりとして <code>&amp;</code> を使用しないでください。</p>
 <blockquote>
 <p>Grammar of a function call expression:</p>
-<p><em>function-call-expression</em> → <em>postfix-expression</em> <em>function-call-argument-clause</em></p>
-<p><em>function-call-expression</em> → <em>postfix-expression</em> <em>function-call-argument-clause</em><em>?</em> <em>trailing-closures</em></p>
-<p><em>function-call-argument-clause</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>function-call-argument-list</em> <strong><code>)</code></strong></p>
-<p><em>function-call-argument-list</em> → <em>function-call-argument</em> | <em>function-call-argument</em> <strong><code>,</code></strong> <em>function-call-argument-list</em></p>
-<p><em>function-call-argument</em> → <em>expression</em> | <em>identifier</em> <strong><code>:</code></strong> <em>expression</em></p>
-<p><em>function-call-argument</em> → <em>operator</em> | <em>identifier</em> <strong><code>:</code></strong> <em>operator</em></p>
-<p><em>trailing-closures</em> → <em>closure-expression</em> <em>labeled-trailing-closures</em><em>?</em></p>
-<p><em>labeled-trailing-closures</em> → <em>labeled-trailing-closure</em> <em>labeled-trailing-closures</em><em>?</em></p>
-<p><em>labeled-trailing-closure</em> → <em>identifier</em> <strong><code>:</code></strong> <em>closure-expression</em></p>
+<p><em>function-call-expression</em> → <em>postfix-expression</em> <em>function-call-argument-clause</em> \
+<em>function-call-expression</em> → <em>postfix-expression</em> <em>function-call-argument-clause</em><em>?</em> <em>trailing-closures</em></p>
+<p><em>function-call-argument-clause</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>function-call-argument-list</em> <strong><code>)</code></strong> \
+<em>function-call-argument-list</em> → <em>function-call-argument</em> | <em>function-call-argument</em> <strong><code>,</code></strong> <em>function-call-argument-list</em> \
+<em>function-call-argument</em> → <em>expression</em> | <em>identifier</em> <strong><code>:</code></strong> <em>expression</em> \
+<em>function-call-argument</em> → <em>operator</em> | <em>identifier</em> <strong><code>:</code></strong> <em>operator</em></p>
+<p><em>trailing-closures</em> → <em>closure-expression</em> <em>labeled-trailing-closures</em><em>?</em> \
+<em>labeled-trailing-closures</em> → <em>labeled-trailing-closure</em> <em>labeled-trailing-closures</em><em>?</em> \
+<em>labeled-trailing-closure</em> → <em>identifier</em> <strong><code>:</code></strong> <em>closure-expression</em></p>
 </blockquote>
 <h3 id="イニシャライザ式initializer-expression"><a id="initializer-expression">イニシャライザ式(Initializer Expression)</a></h3>
 <p><em>イニシャライザ式</em>は型のイニシャライザへアクセスします。形式は次のとおりです:</p>
@@ -1590,8 +1590,8 @@ someFunction <span class="token punctuation">{</span> <span class="token keyword
 </code></pre>
 <blockquote>
 <p>Grammar of an initializer expression:</p>
-<p><em>initializer-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <strong><code>init</code></strong></p>
-<p><em>initializer-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <strong><code>init</code></strong> <strong><code>(</code></strong> <em>argument-names</em> <strong><code>)</code></strong></p>
+<p><em>initializer-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <strong><code>init</code></strong> \
+<em>initializer-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <strong><code>init</code></strong> <strong><code>(</code></strong> <em>argument-names</em> <strong><code>)</code></strong></p>
 </blockquote>
 <h3 id="明示的メンバ式explicit-member-expression"><a id="explicit-member-expression">明示的メンバ式(Explicit Member Expression)</a></h3>
 <p><em>明示的メンバ式</em>では、名前付き型、タプル、またはモジュールのメンバへアクセスできます。アイテムとそのメンバの識別子の間のピリオド(<code>.</code>)で構成されています。</p>
@@ -1646,12 +1646,12 @@ t<span class="token punctuation">.</span><span class="token number">0</span> <sp
 <p>条件付きコンパイルブロックの中では、<code>#if</code> コンパイルディレクティブの条件分岐は、少なくとも 1 つの式を含めなければなりません。その他の分岐は空でも構いません。</p>
 <blockquote>
 <p>Grammar of an explicit member expression:</p>
-<p><em>explicit-member-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <em>decimal-digits</em></p>
-<p><em>explicit-member-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <em>identifier</em> <em>generic-argument-clause</em><em>?</em></p>
-<p><em>explicit-member-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <em>identifier</em> <strong><code>(</code></strong> <em>argument-names</em> <strong><code>)</code></strong></p>
-<p><em>explicit-member-expression</em> → <em>postfix-expression</em> <em>conditional-compilation-block</em></p>
-<p><em>argument-names</em> → <em>argument-name</em> <em>argument-names</em><em>?</em></p>
-<p><em>argument-name</em> → <em>identifier</em> <strong><code>:</code></strong></p>
+<p><em>explicit-member-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <em>decimal-digits</em> \
+<em>explicit-member-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <em>identifier</em> <em>generic-argument-clause</em><em>?</em> \
+<em>explicit-member-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <em>identifier</em> <strong><code>(</code></strong> <em>argument-names</em> <strong><code>)</code></strong> \
+<em>explicit-member-expression</em> → <em>postfix-expression</em> <em>conditional-compilation-block</em></p>
+<p><em>argument-names</em> → <em>argument-name</em> <em>argument-names</em><em>?</em> \
+<em>argument-name</em> → <em>identifier</em> <strong><code>:</code></strong></p>
 </blockquote>
 <h3 id="後置-self-式postfix-self-expression">後置 self 式(Postfix Self Expression)</h3>
 <p>後置 <code>self</code> 式は、型や式の直後に <code>.self</code> を付けて構成します。次の形式があります:</p>
@@ -1769,7 +1769,7 @@ someDictionary<span class="token punctuation">[</span><span class="token string-
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"式(Expressions)","level":"4.4","depth":1,"next":{"title":"文(Statements)","level":"4.5","depth":1,"path":"language-reference/statements.md","ref":"language-reference/statements.md","articles":[]},"previous":{"title":"型(Types)","level":"4.3","depth":1,"path":"language-reference/types.md","ref":"language-reference/types.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-reference/expressions.md","mtime":"2023-07-18T21:59:33.422Z","type":"markdown"},"gitbook":{"version":"3.7.5","time":"2023-07-18T21:59:54.636Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"式(Expressions)","level":"4.4","depth":1,"next":{"title":"文(Statements)","level":"4.5","depth":1,"path":"language-reference/statements.md","ref":"language-reference/statements.md","articles":[]},"previous":{"title":"型(Types)","level":"4.3","depth":1,"path":"language-reference/types.md","ref":"language-reference/types.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL8AAAA7CAYAAAAqy1vIAAAABmJLR0QA/wD/AP+gvaeTAAANsElEQVR42u1dC3QU1RkeEaXYYjzWFkQp4gF6BCsoJbsJr6BSCwgkGxKgyJtKRFAKQhT0gPIStcqjFEFQQykFpSCPKhU5FgFBwkPlodACEh6FQjbZ7Oa1r9v/n50Nm7v3zmNnNvvIfOd8Jzk7d/6dnfvdO//973/vCIIKlNqsD5VmWqeVZln/5siy7i7NSjsN/9uBfiCJAfG7LwAPwrVtgL/5jsy0VCIINwgmTOgFmSU0KMm0jgRhnYiRwCMhXmseychoaNagiYjgyLa0AREdSCDRU7QcKclK7WDWpAlNKLFZeoKAShNX+DV0Omypfc0aNaFO+NlpD6JokkD4QbqxMZs1a0IW9pxOKSCW80kk/CCvuXI6NzNr2AS/18+0Lk5C4YssybKuMWvYBBNX+3dpji5Csoofac9Kv9+saRPh0Z1M68yYijM7nZRNGBTt3n+RWdMmwgDiOBTrnrli2aukauNqUjqwa3S+w2Y9U8e39UYghlvzgLOBfwKuBa4Azgc+C+wCbGQqMEYo7m25FcThjblrYksjnmOHiffkUVL2+wFR+Y7iAZ1b1MEtRUHjGKMMSFSwErgZ+Bsh+WaocbIxH3gU+D1wHvBHEdj5MTANmAMcDbQBewB/pq/Xz7R0ihe/3DllBCF+H/GXXCPO50ZFwb2yPhrFisYxxZcqBc/j18BfJ5H45zJ+Y4GG81OBW4Fezv0ary/KY0vL0iXYqSDSgV0ME6j7i38ShL+ygrhmTjTY708bHaVKngSs1in8ID3A6UkgfHyKlTB+nx94m4rzhwPdCvdKp/hBEHoE5RicQao+WGWYr142cTAo3x9oANVV0AAmGCd+m2VKFCo53yDR03wtwcV/k0yHoOR+tgdWqbhH+sTvsFknqhJPbjdSNqYfu/f/wzDi3rtTLGOESD3fFJIg/OUusUEYI37rLIMreLBMxeCj+mPgOOCDwKbAn0h+Kg6ExwC3SD09z8bIBG8AWzmunRJWcu5HOfAQcIdk5wnqvHaceuC5PZYpqiMyS+cS5wtPso+980fiObJffBLoFWn5a9NJKHwXzxHHE48a0QDmGFixPwVe4VTSHqki1KAt8HOOnWJgIs9O3wXcH/J7jgPvU3HeBca9KJTuuRy0iR9y86eqj8ikE/dXu0j5wlnMaA0e8546Thwjfkv0ulL+qspaDcDz9VfifIA+8afNN7BiZ3AE+1EE4cuGUhiUZW9Bgvf+DSTBPyD9TiXcwbkP3VWcq1X81nxNwgRh+y5fJJVrV4iCr3Vs+GPEd+US8V04R8rybPpcn8I9hEbl+0viSfwnGDf6ksrBHAuNOTYvSHMG9QVtOYPkW2IuftHHnzxM7Jndu7aHuTkYrsSBqhiunDw8YqFWvrc4TPz+inLuuEMlXzWogppzeqdXdNr9HcfuQ/VI/B0Yv79U5bnRF7/ol7/xohiV8Z49RcrGD6zt/y9+pUasrjlTIhIqhjlZcO/+NB7Eb+GItLdOu405A+DceiT+jozfXxJX4kdW/b0gIHKXk5TPm1rrWPUnG6TRqi8id8Uxqg/hwfXiU7EWfz+O+LsaYBtTIZZTDJ2cSwF2oqg1ae/nDBstNdq4h2GjGWPAS5dpRZVpRB0fwrivZQw7LA5knOvjlG2mS/w4AK7xzeEpUL1t/fUJL4j7e44fud5jfwE9dm53TbZxtpcFDIXGWPwZHPGPrYOesSXjezEmriVtYAXDxj6N17GXYYNeOTePUeavVJk2UZonUWK+PvFjDw0hSN/5s7WE6Rj9eGDCaszjxHftSs0x73ffip+pte13lnF7f5xbiKH4W3Nu6GGVEQ29+D7CaEgQZzjuwe0a3DN6AqtamseoP+IXRQ6RHRzg1gxMHSXENTfg6zsnDYWJKuf1YyXFqt0Wf6mdK/6qretiKX7Eec5NLZBmN6OJRYzvnaEjmhLkQJU2ejLO3ckol/ziF0UOiWiYj3Nd5eAG/eND0dXBFAXicV8/5vWSyoIlYaFSmrXOoSM/0NjQNYqh+BcI8glqvaIo/j6M79yu8twJMte9XKWNmYxzp0Uo/nuB9hA6OKFOuwo6OL+LVfZZw8QvRmigt8cBbii8506LvX/5wpdrcnZqXCScER7Vl+1ODelJlOB8bmQsxX+HwE7cCuUJaQDb0WDx3yKE5744Vbpcm2Wu9weV3/8Z49yOEYpfTbSnIu6iPcw0h7cXMEaoblK1fpXIsB4cXBtWONSZP1ZR/OLTI3biF6TQplflY/aMNNAcJEVb9IIlQKV06IZSzFzuOtsq2ECXzkWdc1lgr0WoX+IXQ6AfvscUKw6MvUWnGT4Mukgf1IoGVSx/XVH87j07Yi1+RDZDDErEx/i3wNeBjwiRreaayrA7WeGcroxBahH12cQI5jhWc8rWP/GLDWDTGqIV2Dicz48N5PXv+1yxvPeHf8eD+AUpzr5Lx+ALe+NlUvxZLR5g2NmkcM7LVHl8eiykPtuiYGMa43uHmuKnG8DmtUR7C/CR6u0bxRQJJWBUKU7EH0SmFPXw62gIn0hT/EpAN+OiEJ4F2kDmnH1UeVzf8Bj1mUvhSbSV8RRrZoqf1QAgJBk1QEOJM/GHhu/QLfmXIJ+vL7cWYLqgvKb3fca57Tllb2OMT9pJk2Pl1Oc9ODYaSA2MntsQTPFzFqbjzG9U4I9b8YeiiRSaxJVZhRoGyEQSt1wDYKUC5MmMTULLFYUc20Ydm6PB1Zpvil+hAUTjCYDzCgkgfhop0mTSOik8qdQAXlAIt/pUiuttqtyykGNPU8cOaJgjyDDFryZNefXSsFi/Lq/nvxcSUfx0mgCGPo/KiB9dkuYyNgqF8Px/Fk5T5fqHHGslhCeDsbYFWa9xfJCY4se9c4IpCobOAyyCyS6vxxDxew7tTXTxh8bfZ8sMlOXWCcxhlKczJ1szQpxNqDJ0vtBgxndd1BgZStyeH+P1uJVIMFHNsJngGXmyeTtqgdeXJOKXSxtA7pc5pxuj/AiqzFOMECeNN6kyqxiDePp7JiSt+DE92XP0oOhbV20oMGoRec2TxXvmpC7x46L5JBP/TQz3JOj6aJm1XUmV2cgIcdLopeA+jWFcV5vkFT/m2IzsLa7LDWwj4hRnYsueGaK/939lEvH+5zt9A16nQ1OKdAKIX2BMOgUpt4Z1E1X2VMgxXP9rZ4Q4aTRiDMDbyYRVz6r4LYk/4C17OjfMTfGePAaL2JcHkssUsjNr7DyZKa7q8p45Zdig13Poy7oWP6Yj7KC4XTAuj38KR/yNZc7JY5QPDpLTZUKcNLZQZSfJDJiX1QvxBzem4vnpuFYXtyyp3rFFdI8wqlOx8k1xhwcMcboP7Ca+4qtRm+tyvTS+LsVv5Yizs0Hiny+w9++Rwz0Cf93vLA2ipccGH0uf38Wwn1VvxC/23BNyie/qZRJvEPf0qTvxpzBi6yw/O1IcENgrxJRwkjpnifT5XpkQJ40WjLFGI8Zkmke6D/VH/IGF5X1hOeI3cdcA1O0TZNi+PZ8K7A1mu+u020eIfEuUxUL4gppbhdqbvbJCnDSOU3bQzfsz9dlulb+nrsV/n8DOoL2ZI34NO7YFmdMtkLTGWWAeC1SueqsuxZ/LESluX5gaoU1MHfgfx66a3Rn6MiaqRqsIcdJ4gzoHn5bHqM9eilPxt+Tcv9bM0lr26gyL2ICv7bt0Pi7Ej1slqtiodraBk1IHODcaK2qGwgBVoKIxOGDlLcFbr9IOvsChihGRUQpx0nhYCF/dRU++WeJU/CmceziNWVr1Ls0yuzfjABd3U46est3EvX9XYCANry/C3dxwIUvoGl9shIouG7x7zMCQZDtBfhvta8ClwAHAXwi1txzEXRIyJHfmrIwNXCZ5p4Zr2inI5wmp2TwXXQS5t8rYBfXbJ9a1+AUhfHFO0N3DLNkO0r1vIf7Vuz9/jbCG9RKjO5hjb1jiGixSr3x3obgHKG+iDF9lpDbJDV5KN1kwFv0EdfvIB+kQ1Kc4owC1boI1TcZekQY7H8nYWafBTizE/67K+ztJ95tZWOOB8gXPi+FN7LEjAS51xB5e1SZX8OTBvYJw8UuM3szSS+rljdxW46IUn9eKDjI2l2mwM07Gzqg4F38HQfmNLgHxR/OdXI5BPYhr1jNi7F+M9V8qggZRHZaWjMsX3Xs+EyfAMJwaUaoEvMguhu/kwgzINQaI3ie5SikRXgfm/l/i2O6vwc7dMtfYIs7FH5z08yqKPyZvY4ScIXSTjHztqGPoI8pvY7RZ7o5yagKG2t6K4ElwTgisr21pwDUUcHzeJhrtsNKsj2m0ESvxI9KktA8XV/xSrP9gMr99XQpznhbqDg2k8CQmg+Huari7wTYpFWID8B0h8KbCHIMEHwpcrngvxUhewdqUYaepRhu3M2wobdtyM+OcVjruBw7OfylFqHpKblELIbgOIeZvYK8Dmm9gN8FEua3TnSAQdzKLvzi7c3uzpk2wJ7syrYuTuNf/i1nDJriw53RKAaEUJaH4r7r6W5qaNWxCvgFkpd8PYilNIuG7IX2jp1mzJtS5P7b07iCaa0kg/DJHtqWPWaMmNAFE0waSwPYmrPAzrYftA9J+ZdakiYgAswA3QDrA8NIsy5EEEv4JWFI5juTk3GjWoAmDIkHpHTEpDMS1vtRm3Q896zn43w70x0jkdnFwnplWCNezARfkODLTUony3pYmTNTg/9SxB5WAdrwRAAAAAElFTkSuQmCC","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-reference/expressions.md","mtime":"2023-08-12T23:25:08.923Z","type":"markdown"},"gitbook":{"version":"3.7.5","time":"2023-08-12T23:25:42.339Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

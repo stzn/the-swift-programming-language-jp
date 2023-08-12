@@ -758,7 +758,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="字句構造-lexical-structure">字句構造 (Lexical Structure)</h1>
-<p>最終更新日: 2023/6/4<br>原文: <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html" target="_blank">https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html</a></p>
+<p>最終更新日: 2023/8/11<br>原文: <a href="https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html" target="_blank">https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html</a></p>
 <p>最低水準の構成要素を使用する。</p>
 <p>Swift の<em>字句構造</em>は、言語として有効なトークンを形成する文字のシーケンスを説明しています。これらの有効なトークンは、言語の最低水準の構成要素を形成し、後の章で言語の残りの部分を説明することに使用されます。トークンは、識別子、キーワード、句読点、リテラル、または演算子で構成されます。</p>
 <p>ほとんどの場合、トークンは入力テキストから可能な限り下記に指定されている文法の制約内で最長の部分文字列を検討し、Swift ソースファイルの文字から形成されます。この動作は <em>最長一致</em>または<em>最大ムンク</em> と呼ばれます。</p>
@@ -768,25 +768,25 @@
 <p><a href="https://developer.apple.com/library/content/documentation/Xcode/Reference/xcode_markup_formatting_ref/index.html" target="_blank">Markup Formatting Reference</a>で説明されているとおり、コメントには追加のフォーマットとマークアップを含めることができます。</p>
 <blockquote>
 <p>Grammar of whitespace:</p>
-<p><em>whitespace</em> → <em>whitespace-item</em> <em>whitespace</em><em>?</em></p>
-<p><em>whitespace-item</em> → <em>line-break</em></p>
-<p><em>whitespace-item</em> → <em>inline-space</em></p>
-<p><em>whitespace-item</em> → <em>comment</em></p>
-<p><em>whitespace-item</em> → <em>multiline-comment</em></p>
-<p><em>whitespace-item</em> → U+0000, U+000B, or U+000C</p>
-<p><em>line-break</em> → U+000A</p>
-<p><em>line-break</em> → U+000D</p>
-<p><em>line-break</em> → U+000D followed by U+000A</p>
-<p><em>inline-spaces</em> → <em>inline-space</em> <em>inline-spaces</em><em>?</em></p>
-<p><em>inline-space</em> → U+0009 or U+0020</p>
-<p><em>comment</em> → <strong><code>//</code></strong> <em>comment-text</em> <em>line-break</em></p>
-<p><em>multiline-comment</em> → <strong><code>/*</code></strong> <em>multiline-comment-text</em> <strong><code>*/</code></strong></p>
-<p><em>comment-text</em> → <em>comment-text-item</em> <em>comment-text</em><em>?</em></p>
-<p><em>comment-text-item</em> → Any Unicode scalar value except U+000A or U+000D</p>
-<p><em>multiline-comment-text</em> → <em>multiline-comment-text-item</em> <em>multiline-comment-text</em><em>?</em></p>
-<p><em>multiline-comment-text-item</em> → <em>multiline-comment</em></p>
-<p><em>multiline-comment-text-item</em> → <em>comment-text-item</em></p>
-<p><em>multiline-comment-text-item</em> → Any Unicode scalar value except  <strong><code>/*</code></strong> or  <strong><code>*/</code></strong></p>
+<p><em>whitespace</em> → <em>whitespace-item</em> <em>whitespace</em><em>?</em> \
+<em>whitespace-item</em> → <em>line-break</em> \
+<em>whitespace-item</em> → <em>inline-space</em> \
+<em>whitespace-item</em> → <em>comment</em> \
+<em>whitespace-item</em> → <em>multiline-comment</em> \
+<em>whitespace-item</em> → U+0000, U+000B, または U+000C</p>
+<p><em>line-break</em> → U+000A \
+<em>line-break</em> → U+000D \
+<em>line-break</em> → U+000D followed by U+000A</p>
+<p><em>inline-spaces</em> → <em>inline-space</em> <em>inline-spaces</em><em>?</em> \
+<em>inline-space</em> → U+0009 または U+0020</p>
+<p><em>comment</em> → <strong><code>//</code></strong> <em>comment-text</em> <em>line-break</em> \
+<em>multiline-comment</em> → <strong><code>/*</code></strong> <em>multiline-comment-text</em> <strong><code>*/</code></strong></p>
+<p><em>comment-text</em> → <em>comment-text-item</em> <em>comment-text</em><em>?</em> \
+<em>comment-text-item</em> → U+000A または U+000D を除く任意のUnicodeスカラ値</p>
+<p><em>multiline-comment-text</em> → <em>multiline-comment-text-item</em> <em>multiline-comment-text</em><em>?</em> \
+<em>multiline-comment-text-item</em> → <em>multiline-comment</em> \
+<em>multiline-comment-text-item</em> → <em>comment-text-item</em> \
+<em>multiline-comment-text-item</em> → <strong><code>/*</code></strong> または <strong><code>*/</code></strong> を除く任意のUnicodeスカラ値</p>
 </blockquote>
 <h2 id="識別子identifiers"><a id="identifiers">識別子(Identifiers)</a></h2>
 <p><em>識別子</em>は、大文字または小文字の <code>A</code> から <code>Z</code>、アンダースコア(<code>_</code>)、基本多言語平面内の非結合英数 <code>Unicode</code> 文字、または私用面にない基本多言語平面外の文字で始まります。最初の文字の後ろに数字と <code>Unicode</code> 文字を組み合わせることもできます。</p>
@@ -796,33 +796,33 @@
 <p>コンパイラは、プロパティラッパのプロジェクション値を持つプロパティにドル記号(<code>$</code>)で始まる識別子を合成します。コード上でこれらの識別子とやり取りできますが、ドル記号(<code>$</code>)から始まる識別子を宣言することはできません。詳細については、<a href="attributes.html">Attributes(属性)</a>の章の<a href="attributes.html#propertywrapper">propertyWrapper</a>セクションを参照ください。</p>
 <blockquote>
 <p>Grammar of an identifier:</p>
-<p><em>identifier</em> → <em>identifier-head</em> <em>identifier-characters</em><em>?</em></p>
-<p><em>identifier</em> → <strong><code>` </code></strong> <em>identifier-head</em> <em>identifier-characters</em><em>?</em> <strong><code>` </code></strong></p>
-<p><em>identifier</em> → <em>implicit-parameter-name</em></p>
-<p><em>identifier</em> → <em>property-wrapper-projection</em></p>
-<p><em>identifier-list</em> → <em>identifier</em> | <em>identifier</em> <strong><code>,</code></strong> <em>identifier-list</em></p>
-<p><em>identifier-head</em> → Upper- or lowercase letter A through Z</p>
-<p><em>identifier-head</em> → <strong><code>_</code></strong></p>
-<p><em>identifier-head</em> → U+00A8, U+00AA, U+00AD, U+00AF, U+00B2–U+00B5, or U+00B7–U+00BA</p>
-<p><em>identifier-head</em> → U+00BC–U+00BE, U+00C0–U+00D6, U+00D8–U+00F6, or U+00F8–U+00FF</p>
-<p><em>identifier-head</em> → U+0100–U+02FF, U+0370–U+167F, U+1681–U+180D, or U+180F–U+1DBF</p>
-<p><em>identifier-head</em> → U+1E00–U+1FFF</p>
-<p><em>identifier-head</em> → U+200B–U+200D, U+202A–U+202E, U+203F–U+2040, U+2054, or U+2060–U+206F</p>
-<p><em>identifier-head</em> → U+2070–U+20CF, U+2100–U+218F, U+2460–U+24FF, or U+2776–U+2793</p>
-<p><em>identifier-head</em> → U+2C00–U+2DFF or U+2E80–U+2FFF</p>
-<p><em>identifier-head</em> → U+3004–U+3007, U+3021–U+302F, U+3031–U+303F, or U+3040–U+D7FF</p>
-<p><em>identifier-head</em> → U+F900–U+FD3D, U+FD40–U+FDCF, U+FDF0–U+FE1F, or U+FE30–U+FE44</p>
-<p><em>identifier-head</em> → U+FE47–U+FFFD</p>
-<p><em>identifier-head</em> → U+10000–U+1FFFD, U+20000–U+2FFFD, U+30000–U+3FFFD, or U+40000–U+4FFFD</p>
-<p><em>identifier-head</em> → U+50000–U+5FFFD, U+60000–U+6FFFD, U+70000–U+7FFFD, or U+80000–U+8FFFD</p>
-<p><em>identifier-head</em> → U+90000–U+9FFFD, U+A0000–U+AFFFD, U+B0000–U+BFFFD, or U+C0000–U+CFFFD</p>
-<p><em>identifier-head</em> → U+D0000–U+DFFFD or U+E0000–U+EFFFD</p>
-<p><em>identifier-character</em> → Digit 0 through 9</p>
-<p><em>identifier-character</em> → U+0300–U+036F, U+1DC0–U+1DFF, U+20D0–U+20FF, or U+FE20–U+FE2F</p>
-<p><em>identifier-character</em> → <em>identifier-head</em></p>
-<p><em>identifier-characters</em> → <em>identifier-character</em> <em>identifier-characters</em><em>?</em></p>
-<p><em>implicit-parameter-name</em> → <strong><code>$</code></strong> <em>decimal-digits</em></p>
-<p><em>property-wrapper-projection</em> → <strong><code>$</code></strong> <em>identifier-characters</em></p>
+<p><em>identifier</em> → <em>identifier-head</em> <em>identifier-characters</em><em>?</em> \
+<em>identifier</em> → <strong><code>` </code></strong> <em>identifier-head</em> <em>identifier-characters</em><em>?</em> <strong><code>` </code></strong> \
+<em>identifier</em> → <em>implicit-parameter-name</em> \
+<em>identifier</em> → <em>property-wrapper-projection</em> \
+<em>identifier-list</em> → <em>identifier</em> | <em>identifier</em> <strong><code>,</code></strong> <em>identifier-list</em></p>
+<p><em>identifier-head</em> → Upper- または lowercase letter A through Z \
+<em>identifier-head</em> → <strong><code>_</code></strong> \
+<em>identifier-head</em> → U+00A8, U+00AA, U+00AD, U+00AF, U+00B2–U+00B5, または U+00B7–U+00BA \
+<em>identifier-head</em> → U+00BC–U+00BE, U+00C0–U+00D6, U+00D8–U+00F6, または U+00F8–U+00FF \
+<em>identifier-head</em> → U+0100–U+02FF, U+0370–U+167F, U+1681–U+180D, または U+180F–U+1DBF \
+<em>identifier-head</em> → U+1E00–U+1FFF \
+<em>identifier-head</em> → U+200B–U+200D, U+202A–U+202E, U+203F–U+2040, U+2054, または U+2060–U+206F \
+<em>identifier-head</em> → U+2070–U+20CF, U+2100–U+218F, U+2460–U+24FF, または U+2776–U+2793 \
+<em>identifier-head</em> → U+2C00–U+2DFF または U+2E80–U+2FFF \
+<em>identifier-head</em> → U+3004–U+3007, U+3021–U+302F, U+3031–U+303F, または U+3040–U+D7FF \
+<em>identifier-head</em> → U+F900–U+FD3D, U+FD40–U+FDCF, U+FDF0–U+FE1F, または U+FE30–U+FE44 \
+<em>identifier-head</em> → U+FE47–U+FFFD \
+<em>identifier-head</em> → U+10000–U+1FFFD, U+20000–U+2FFFD, U+30000–U+3FFFD, または U+40000–U+4FFFD \
+<em>identifier-head</em> → U+50000–U+5FFFD, U+60000–U+6FFFD, U+70000–U+7FFFD, または U+80000–U+8FFFD \
+<em>identifier-head</em> → U+90000–U+9FFFD, U+A0000–U+AFFFD, U+B0000–U+BFFFD, または U+C0000–U+CFFFD \
+<em>identifier-head</em> → U+D0000–U+DFFFD または U+E0000–U+EFFFD</p>
+<p><em>identifier-character</em> → Digit 0 through 9 \
+<em>identifier-character</em> → U+0300–U+036F, U+1DC0–U+1DFF, U+20D0–U+20FF, または U+FE20–U+FE2F \
+<em>identifier-character</em> → <em>identifier-head</em> \
+<em>identifier-characters</em> → <em>identifier-character</em> <em>identifier-characters</em><em>?</em></p>
+<p><em>implicit-parameter-name</em> → <strong><code>$</code></strong> <em>decimal-digits</em> \
+<em>property-wrapper-projection</em> → <strong><code>$</code></strong> <em>identifier-characters</em></p>
 </blockquote>
 <h2 id="単語と句読点keywords-and-punctuation"><a id="keywords-and-punctuation">単語と句読点(Keywords and Punctuation)</a></h2>
 <p>次のキーワードは予約されており、前述のようにバッククォート(`)でエスケープしない限り識別子としては使用できません。<code>inout</code>、<code>var</code>、<code>let</code> 以外のキーワードは、バッククォートでエスケープすることなく関数宣言、または関数の引数名として使用できます。メンバの名前がキーワードと同じ場合、およびメンバの参照とキーワードの使用の間に曖昧さがある場合を除いて、そのメンバへの参照をバッククォートでエスケープする必要はありません。しかし、例えば <code>self</code>、<code>Type</code>、および <code>Protocol</code> には明示的メンバ式の中で特別な意味があるため、そのコンテキストではバッククォートによるエスケープが必要です。</p>
@@ -834,14 +834,14 @@
 <li>シャープ記号(<code>#</code>)で始まるキーワード: <code>#available</code>、<code>#colorLiteral</code>、<code>#else</code>、<code>#elseif</code>、<code>#endif</code>、<code>#if</code>、<code>#imageLiteral</code>、<code>#selector</code>、<code>#sourceLocation</code></li>
 </ul>
 <blockquote>
-<p>NOTE<br>Swift 5.9以前は、以下の特殊リテラルが認識されていました:<br><code>#column</code>, <code>#dsohandle</code> , <code>#error</code>, <code>#fileID</code>, <code>#filePath</code>, <code>#file</code>, <code>#function</code>, <code>#line</code>, <code>#warning</code>。現在はSwift標準ライブラリのマクロとして実装されています:<br><a href="https://developer.apple.com/documentation/swift/column" target="_blank"><code>column</code></a>,
-<a href="https://developer.apple.com/documentation/swift/dsohandle" target="_blank"><code>dsohandle</code></a>,
+<p>NOTE<br>Swift 5.9以前は、以下の特殊リテラルが認識されていました:<br><code>#column</code>, <code>#dsohandle</code> , <code>#error</code>, <code>#fileID</code>, <code>#filePath</code>, <code>#file</code>, <code>#function</code>, <code>#line</code>, <code>#warning</code>。現在はSwift標準ライブラリのマクロとして実装されています:<br><a href="https://developer.apple.com/documentation/swift/column(" target="_blank"><code>column</code></a>),
+<a href="https://developer.apple.com/documentation/swift/dsohandle(" target="_blank"><code>dsohandle</code></a>),
 <a href="https://developer.apple.com/documentation/swift/error(_:" target="_blank"><code>error(_:)</code></a>),
-<a href="https://developer.apple.com/documentation/swift/fileID" target="_blank"><code>fileID</code></a>,
-<a href="https://developer.apple.com/documentation/swift/filePath" target="_blank"><code>filePath</code></a>,
-<a href="https://developer.apple.com/documentation/swift/file" target="_blank"><code>file</code></a>,
-<a href="https://developer.apple.com/documentation/swift/function" target="_blank"><code>function</code></a>,
-<a href="https://developer.apple.com/documentation/swift/line" target="_blank"><code>line</code></a>,
+<a href="https://developer.apple.com/documentation/swift/fileID(" target="_blank"><code>fileID</code></a>),
+<a href="https://developer.apple.com/documentation/swift/filePath(" target="_blank"><code>filePath</code></a>),
+<a href="https://developer.apple.com/documentation/swift/file(" target="_blank"><code>file</code></a>),
+<a href="https://developer.apple.com/documentation/swift/function(" target="_blank"><code>function</code></a>),
+<a href="https://developer.apple.com/documentation/swift/line(" target="_blank"><code>line</code></a>),
 and <a href="https://developer.apple.com/documentation/swift/warning(_:" target="_blank"><code>warning(_:)</code></a>)。</p>
 </blockquote>
 <ul>
@@ -861,9 +861,9 @@ and <a href="https://developer.apple.com/documentation/swift/warning(_:" target=
 <blockquote>
 <p>Grammar of a literal:</p>
 <p><em>literal</em> → <em>numeric-literal</em> | <em>string-literal</em> | <em>regular-expression-literal</em> | <em>boolean-literal</em> | <em>nil-literal</em></p>
-<p><em>numeric-literal</em> → <strong><code>-</code></strong><em>?</em> <em>integer-literal</em> | <strong><code>-</code></strong><em>?</em> <em>floating-point-literal</em></p>
-<p><em>boolean-literal</em> → <strong><code>true</code></strong> | <strong><code>false</code></strong></p>
-<p><em>nil-literal</em> → <strong><code>nil</code></strong></p>
+<p><em>numeric-literal</em> → <strong><code>-</code></strong><em>?</em> <em>integer-literal</em> | <strong><code>-</code></strong><em>?</em> <em>floating-point-literal</em> \
+<em>boolean-literal</em> → <strong><code>true</code></strong> | <strong><code>false</code></strong> \
+<em>nil-literal</em> → <strong><code>nil</code></strong></p>
 </blockquote>
 <h3 id="整数リテラルinteger-literals">整数リテラル(Integer Literals)</h3>
 <p><em>整数リテラル</em>は不特定の精度の整数値を表します。デフォルトの整数リテラルは 10 進数で表され、前置を使用して他の基数を表現することもできます。2 進数リテラルは <code>0b</code> で始まり、8 進数リテラルは <code>0o</code> で始まり、16 進数リテラルは <code>0x</code> で始まります。</p>
@@ -873,27 +873,27 @@ and <a href="https://developer.apple.com/documentation/swift/warning(_:" target=
 <p>特に指定がない限り、整数リテラルのデフォルトの推論型は Swift 標準ライブラリの <code>Int</code> 型です。Swift 標準ライブラリは、<a href="../language-guide/the-basics.html#integers">Integers(整数)</a>で説明されているように、様々なサイズの符号付き整数および符号なし整数の型も定義します。</p>
 <blockquote>
 <p>Grammar of an integer literal:</p>
-<p><em>integer-literal</em> → <em>binary-literal</em></p>
-<p><em>integer-literal</em> → <em>octal-literal</em></p>
-<p><em>integer-literal</em> → <em>decimal-literal</em></p>
-<p><em>integer-literal</em> → <em>hexadecimal-literal</em></p>
-<p><em>binary-literal</em> → <strong><code>0b</code></strong> <em>binary-digit</em> <em>binary-literal-characters</em><em>?</em></p>
-<p><em>binary-digit</em> → Digit 0 or 1</p>
-<p><em>binary-literal-character</em> → <em>binary-digit</em> | <strong><code>_</code></strong></p>
-<p><em>binary-literal-characters</em> → <em>binary-literal-character</em> <em>binary-literal-characters</em><em>?</em></p>
-<p><em>octal-literal</em> → <strong><code>0o</code></strong> <em>octal-digit</em> <em>octal-literal-characters</em><em>?</em></p>
-<p><em>octal-digit</em> → Digit 0 through 7</p>
-<p><em>octal-literal-character</em> → <em>octal-digit</em> | <strong><code>_</code></strong></p>
-<p><em>octal-literal-characters</em> → <em>octal-literal-character</em> <em>octal-literal-characters</em><em>?</em></p>
-<p><em>decimal-literal</em> → <em>decimal-digit</em> <em>decimal-literal-characters</em><em>?</em></p>
-<p><em>decimal-digit</em> → Digit 0 through 9</p>
-<p><em>decimal-digits</em> → <em>decimal-digit</em> <em>decimal-digits</em><em>?</em></p>
-<p><em>decimal-literal-character</em> → <em>decimal-digit</em> | <strong><code>_</code></strong></p>
-<p><em>decimal-literal-characters</em> → <em>decimal-literal-character</em> <em>decimal-literal-characters</em><em>?</em></p>
-<p><em>hexadecimal-literal</em> → <strong><code>0x</code></strong> <em>hexadecimal-digit</em> <em>hexadecimal-literal-characters</em><em>?</em></p>
-<p><em>hexadecimal-digit</em> → Digit 0 through 9, a through f, or A through F</p>
-<p><em>hexadecimal-literal-character</em> → <em>hexadecimal-digit</em> | <strong><code>_</code></strong></p>
-<p><em>hexadecimal-literal-characters</em> → <em>hexadecimal-literal-character</em> <em>hexadecimal-literal-characters</em><em>?</em></p>
+<p><em>integer-literal</em> → <em>binary-literal</em> \
+<em>integer-literal</em> → <em>octal-literal</em> \
+<em>integer-literal</em> → <em>decimal-literal</em> \
+<em>integer-literal</em> → <em>hexadecimal-literal</em></p>
+<p><em>binary-literal</em> → <strong><code>0b</code></strong> <em>binary-digit</em> <em>binary-literal-characters</em><em>?</em> \
+<em>binary-digit</em> → Digit 0 または 1 \
+<em>binary-literal-character</em> → <em>binary-digit</em> | <strong><code>_</code></strong> \
+<em>binary-literal-characters</em> → <em>binary-literal-character</em> <em>binary-literal-characters</em><em>?</em></p>
+<p><em>octal-literal</em> → <strong><code>0o</code></strong> <em>octal-digit</em> <em>octal-literal-characters</em><em>?</em> \
+<em>octal-digit</em> → Digit 0 through 7 \
+<em>octal-literal-character</em> → <em>octal-digit</em> | <strong><code>_</code></strong> \
+<em>octal-literal-characters</em> → <em>octal-literal-character</em> <em>octal-literal-characters</em><em>?</em></p>
+<p><em>decimal-literal</em> → <em>decimal-digit</em> <em>decimal-literal-characters</em><em>?</em> \
+<em>decimal-digit</em> → Digit 0 through 9 \
+<em>decimal-digits</em> → <em>decimal-digit</em> <em>decimal-digits</em><em>?</em> \
+<em>decimal-literal-character</em> → <em>decimal-digit</em> | <strong><code>_</code></strong> \
+<em>decimal-literal-characters</em> → <em>decimal-literal-character</em> <em>decimal-literal-characters</em><em>?</em></p>
+<p><em>hexadecimal-literal</em> → <strong><code>0x</code></strong> <em>hexadecimal-digit</em> <em>hexadecimal-literal-characters</em><em>?</em> \
+<em>hexadecimal-digit</em> → Digit 0 through 9, a through f, または A through F \
+<em>hexadecimal-literal-character</em> → <em>hexadecimal-digit</em> | <strong><code>_</code></strong> \
+<em>hexadecimal-literal-characters</em> → <em>hexadecimal-literal-character</em> <em>hexadecimal-literal-characters</em><em>?</em></p>
 </blockquote>
 <h3 id="浮動小数点リテラルfloating-point-literals">浮動小数点リテラル(Floating-Point Literals)</h3>
 <p><em>浮動小数点リテラル</em>は不特定の精度の浮動小数点値を表します。</p>
@@ -905,15 +905,15 @@ and <a href="https://developer.apple.com/documentation/swift/warning(_:" target=
 <p>特に指定されていない限り、浮動小数点リテラルのデフォルトの推論型は 64 ビット浮動小数点数を表す Swift の標準ライブラリ <code>Double</code> 型です。Swift 標準ライブラリでは 32 ビットの浮動小数点数を表す <code>Float</code> 型も定義されています。</p>
 <blockquote>
 <p>Grammar of a floating-point literal:</p>
-<p><em>floating-point-literal</em> → <em>decimal-literal</em> <em>decimal-fraction</em><em>?</em> <em>decimal-exponent</em><em>?</em></p>
-<p><em>floating-point-literal</em> → <em>hexadecimal-literal</em> <em>hexadecimal-fraction</em><em>?</em> <em>hexadecimal-exponent</em></p>
-<p><em>decimal-fraction</em> → <strong><code>.</code></strong> <em>decimal-literal</em></p>
-<p><em>decimal-exponent</em> → <em>floating-point-e</em> <em>sign</em><em>?</em> <em>decimal-literal</em></p>
-<p><em>hexadecimal-fraction</em> → <strong><code>.</code></strong> <em>hexadecimal-digit</em> <em>hexadecimal-literal-characters</em><em>?</em></p>
-<p><em>hexadecimal-exponent</em> → <em>floating-point-p</em> <em>sign</em><em>?</em> <em>decimal-literal</em></p>
-<p><em>floating-point-e</em> → <strong><code>e</code></strong> | <strong><code>E</code></strong></p>
-<p><em>floating-point-p</em> → <strong><code>p</code></strong> | <strong><code>P</code></strong></p>
-<p><em>sign</em> → <strong><code>+</code></strong> | <strong><code>-</code></strong></p>
+<p><em>floating-point-literal</em> → <em>decimal-literal</em> <em>decimal-fraction</em><em>?</em> <em>decimal-exponent</em><em>?</em> \
+<em>floating-point-literal</em> → <em>hexadecimal-literal</em> <em>hexadecimal-fraction</em><em>?</em> <em>hexadecimal-exponent</em></p>
+<p><em>decimal-fraction</em> → <strong><code>.</code></strong> <em>decimal-literal</em> \
+<em>decimal-exponent</em> → <em>floating-point-e</em> <em>sign</em><em>?</em> <em>decimal-literal</em></p>
+<p><em>hexadecimal-fraction</em> → <strong><code>.</code></strong> <em>hexadecimal-digit</em> <em>hexadecimal-literal-characters</em><em>?</em> \
+<em>hexadecimal-exponent</em> → <em>floating-point-p</em> <em>sign</em><em>?</em> <em>decimal-literal</em></p>
+<p><em>floating-point-e</em> → <strong><code>e</code></strong> | <strong><code>E</code></strong> \
+<em>floating-point-p</em> → <strong><code>p</code></strong> | <strong><code>P</code></strong> \
+<em>sign</em> → <strong><code>+</code></strong> | <strong><code>-</code></strong></p>
 </blockquote>
 <h3 id="文字列リテラルstring-literals"><a id="lexical-structure-string-literals">文字列リテラル(String Literals)</a></h3>
 <p><em>文字列リテラル</em>は、引用符で囲まれた一連の文字です。単一行の文字列リテラルは二重引用符で囲まれ、次の形式になります:</p>
@@ -978,30 +978,30 @@ and <a href="https://developer.apple.com/documentation/swift/warning(_:" target=
 <blockquote>
 <p>Grammar of a string literal:</p>
 <p><em>string-literal</em> → <em>static-string-literal</em> | <em>interpolated-string-literal</em></p>
-<p><em>string-literal-opening-delimiter</em> → <em>extended-string-literal-delimiter</em><em>?</em> <strong><code>&quot;</code></strong></p>
-<p><em>string-literal-closing-delimiter</em> → <strong><code>&quot;</code></strong> <em>extended-string-literal-delimiter</em><em>?</em></p>
-<p><em>static-string-literal</em> → <em>string-literal-opening-delimiter</em> <em>quoted-text</em><em>?</em> <em>string-literal-closing-delimiter</em></p>
-<p><em>static-string-literal</em> → <em>multiline-string-literal-opening-delimiter</em> <em>multiline-quoted-text</em><em>?</em> <em>multiline-string-literal-closing-delimiter</em></p>
-<p><em>multiline-string-literal-opening-delimiter</em> → <em>extended-string-literal-delimiter</em><em>?</em> <strong><code>&quot;&quot;&quot;</code></strong></p>
-<p><em>multiline-string-literal-closing-delimiter</em> → <strong><code>&quot;&quot;&quot;</code></strong> <em>extended-string-literal-delimiter</em><em>?</em></p>
-<p><em>extended-string-literal-delimiter</em> → <strong><code>#</code></strong> <em>extended-string-literal-delimiter</em><em>?</em></p>
-<p><em>quoted-text</em> → <em>quoted-text-item</em> <em>quoted-text</em><em>?</em></p>
-<p><em>quoted-text-item</em> → <em>escaped-character</em></p>
-<p><em>quoted-text-item</em> → Any Unicode scalar value except  <strong><code>&quot;</code></strong>,  <strong><code>\</code></strong>, U+000A, or U+000D</p>
-<p><em>multiline-quoted-text</em> → <em>multiline-quoted-text-item</em> <em>multiline-quoted-text</em><em>?</em></p>
-<p><em>multiline-quoted-text-item</em> → <em>escaped-character</em></p>
-<p><em>multiline-quoted-text-item</em> → Any Unicode scalar value except  <strong><code>\</code></strong></p>
-<p><em>multiline-quoted-text-item</em> → <em>escaped-newline</em></p>
-<p><em>interpolated-string-literal</em> → <em>string-literal-opening-delimiter</em> <em>interpolated-text</em><em>?</em> <em>string-literal-closing-delimiter</em></p>
-<p><em>interpolated-string-literal</em> → <em>multiline-string-literal-opening-delimiter</em> <em>multiline-interpolated-text</em><em>?</em> <em>multiline-string-literal-closing-delimiter</em></p>
-<p><em>interpolated-text</em> → <em>interpolated-text-item</em> <em>interpolated-text</em><em>?</em></p>
-<p><em>interpolated-text-item</em> → <strong><code>\(</code></strong> <em>expression</em> <strong><code>)</code></strong> | <em>quoted-text-item</em></p>
-<p><em>multiline-interpolated-text</em> → <em>multiline-interpolated-text-item</em> <em>multiline-interpolated-text</em><em>?</em></p>
-<p><em>multiline-interpolated-text-item</em> → <strong><code>\(</code></strong> <em>expression</em> <strong><code>)</code></strong> | <em>multiline-quoted-text-item</em></p>
-<p><em>escape-sequence</em> → <strong><code>\</code></strong> <em>extended-string-literal-delimiter</em></p>
-<p><em>escaped-character</em> → <em>escape-sequence</em> <strong><code>0</code></strong> | <em>escape-sequence</em> <strong><code>\</code></strong> | <em>escape-sequence</em> <strong><code>t</code></strong> | <em>escape-sequence</em> <strong><code>n</code></strong> | <em>escape-sequence</em> <strong><code>r</code></strong> | <em>escape-sequence</em> <strong><code>&quot;</code></strong> | <em>escape-sequence</em> <strong><code>&apos;</code></strong></p>
-<p><em>escaped-character</em> → <em>escape-sequence</em> <strong><code>u</code></strong> <strong><code>{</code></strong> <em>unicode-scalar-digits</em> <strong><code>}</code></strong></p>
-<p><em>unicode-scalar-digits</em> → Between one and eight hexadecimal digits</p>
+<p><em>string-literal-opening-delimiter</em> → <em>extended-string-literal-delimiter</em><em>?</em> <strong><code>&quot;</code></strong> \
+<em>string-literal-closing-delimiter</em> → <strong><code>&quot;</code></strong> <em>extended-string-literal-delimiter</em><em>?</em></p>
+<p><em>static-string-literal</em> → <em>string-literal-opening-delimiter</em> <em>quoted-text</em><em>?</em> <em>string-literal-closing-delimiter</em> \
+<em>static-string-literal</em> → <em>multiline-string-literal-opening-delimiter</em> <em>multiline-quoted-text</em><em>?</em> <em>multiline-string-literal-closing-delimiter</em></p>
+<p><em>multiline-string-literal-opening-delimiter</em> → <em>extended-string-literal-delimiter</em><em>?</em> <strong><code>&quot;&quot;&quot;</code></strong> \
+<em>multiline-string-literal-closing-delimiter</em> → <strong><code>&quot;&quot;&quot;</code></strong> <em>extended-string-literal-delimiter</em><em>?</em> \
+<em>extended-string-literal-delimiter</em> → <strong><code>#</code></strong> <em>extended-string-literal-delimiter</em><em>?</em></p>
+<p><em>quoted-text</em> → <em>quoted-text-item</em> <em>quoted-text</em><em>?</em> \
+<em>quoted-text-item</em> → <em>escaped-character</em> \
+<em>quoted-text-item</em> → <strong><code>&quot;</code></strong>,  <strong><code>\</code></strong>, U+000A, または U+000D を除く任意のUnicodeスカラ値</p>
+<p><em>multiline-quoted-text</em> → <em>multiline-quoted-text-item</em> <em>multiline-quoted-text</em><em>?</em> \
+<em>multiline-quoted-text-item</em> → <em>escaped-character</em> \
+<em>multiline-quoted-text-item</em> → <strong><code>\</code></strong> を除く任意のUnicodeスカラ値 \
+<em>multiline-quoted-text-item</em> → <em>escaped-newline</em></p>
+<p><em>interpolated-string-literal</em> → <em>string-literal-opening-delimiter</em> <em>interpolated-text</em><em>?</em> <em>string-literal-closing-delimiter</em> \
+<em>interpolated-string-literal</em> → <em>multiline-string-literal-opening-delimiter</em> <em>multiline-interpolated-text</em><em>?</em> <em>multiline-string-literal-closing-delimiter</em></p>
+<p><em>interpolated-text</em> → <em>interpolated-text-item</em> <em>interpolated-text</em><em>?</em> \
+<em>interpolated-text-item</em> → <strong><code>\(</code></strong> <em>expression</em> <strong><code>)</code></strong> | <em>quoted-text-item</em></p>
+<p><em>multiline-interpolated-text</em> → <em>multiline-interpolated-text-item</em> <em>multiline-interpolated-text</em><em>?</em> \
+<em>multiline-interpolated-text-item</em> → <strong><code>\(</code></strong> <em>expression</em> <strong><code>)</code></strong> | <em>multiline-quoted-text-item</em></p>
+<p><em>escape-sequence</em> → <strong><code>\</code></strong> <em>extended-string-literal-delimiter</em> \
+<em>escaped-character</em> → <em>escape-sequence</em> <strong><code>0</code></strong> | <em>escape-sequence</em> <strong><code>\</code></strong> | <em>escape-sequence</em> <strong><code>t</code></strong> | <em>escape-sequence</em> <strong><code>n</code></strong> | <em>escape-sequence</em> <strong><code>r</code></strong> | <em>escape-sequence</em> <strong><code>&quot;</code></strong> | <em>escape-sequence</em> <strong><code>&apos;</code></strong> \
+<em>escaped-character</em> → <em>escape-sequence</em> <strong><code>u</code></strong> <strong><code>{</code></strong> <em>unicode-scalar-digits</em> <strong><code>}</code></strong> \
+<em>unicode-scalar-digits</em> → 1桁から8桁の16進数</p>
 <p><em>escaped-newline</em> → <em>escape-sequence</em> <em>inline-spaces</em><em>?</em> <em>line-break</em></p>
 </blockquote>
 <h3 id="正規表現リテラルregular-expression-literals"><a id="lexical-structure-regular-expression-literals">正規表現リテラル(Regular Expression Literals)</a></h3>
@@ -1025,10 +1025,10 @@ and <a href="https://developer.apple.com/documentation/swift/warning(_:" target=
 <p>もし空の正規表現リテラルを作る必要がある場合、 拡張区切り文字構文を使わなければいけません。</p>
 <blockquote>
 <p>Grammar of a regular expression literal:</p>
-<p><em>regular-expression-literal</em> → <em>regular-expression-literal-opening-delimiter</em> <em>regular-expression</em> <em>regular-expression-literal-closing-delimiter</em></p>
-<p><em>regular-expression</em> → Any regular expression</p>
-<p><em>regular-expression-literal-opening-delimiter</em> → <em>extended-regular-expression-literal-delimiter</em><em>?</em> <strong><code>/</code></strong></p>
-<p><em>regular-expression-literal-closing-delimiter</em> → <strong><code>/</code></strong> <em>extended-regular-expression-literal-delimiter</em><em>?</em></p>
+<p><em>regular-expression-literal</em> → <em>regular-expression-literal-opening-delimiter</em> <em>regular-expression</em> <em>regular-expression-literal-closing-delimiter</em> \
+<em>regular-expression</em> → Any regular expression</p>
+<p><em>regular-expression-literal-opening-delimiter</em> → <em>extended-regular-expression-literal-delimiter</em><em>?</em> <strong><code>/</code></strong> \
+<em>regular-expression-literal-closing-delimiter</em> → <strong><code>/</code></strong> <em>extended-regular-expression-literal-delimiter</em><em>?</em></p>
 <p><em>extended-regular-expression-literal-delimiter</em> → <strong><code>#</code></strong> <em>extended-regular-expression-literal-delimiter</em><em>?</em></p>
 </blockquote>
 <h2 id="演算子operators"><a id="operators">演算子(Operators)</a></h2>
@@ -1052,40 +1052,40 @@ and <a href="https://developer.apple.com/documentation/swift/warning(_:" target=
 <p>新しいカスタム演算子を定義する方法については、<a href="../language-guide/advanced-operators.html#custom-operators">Custom Operators(カスタム演算子)</a>と<a href="declarations.html#operator-declaration演算子宣言">Operator Declaration</a>を参照ください。既存の演算子をオーバーロードについては、<a href="declarations.html#operator-declaration">Operator Methods(演算子メソッド)</a>を参照ください</p>
 <blockquote>
 <p>Grammar of operators:</p>
-<p><em>operator</em> → <em>operator-head</em> <em>operator-characters</em><em>?</em></p>
-<p><em>operator</em> → <em>dot-operator-head</em> <em>dot-operator-characters</em></p>
-<p><em>operator-head</em> → <strong><code>/</code></strong> | <strong><code>=</code></strong> | <strong><code>-</code></strong> | <strong><code>+</code></strong> | <strong><code>!</code></strong> | <strong><code>*</code></strong> | <strong><code>%</code></strong> | <strong><code>&lt;</code></strong> | <strong><code>&gt;</code></strong> | <strong><code>&amp;</code></strong> | <strong><code>|</code></strong> | <strong><code>^</code></strong> | <strong><code>~</code></strong> | <strong><code>?</code></strong></p>
-<p><em>operator-head</em> → U+00A1–U+00A7</p>
-<p><em>operator-head</em> → U+00A9 or U+00AB</p>
-<p><em>operator-head</em> → U+00AC or U+00AE</p>
-<p><em>operator-head</em> → U+00B0–U+00B1</p>
-<p><em>operator-head</em> → U+00B6, U+00BB, U+00BF, U+00D7, or U+00F7</p>
-<p><em>operator-head</em> → U+2016–U+2017</p>
-<p><em>operator-head</em> → U+2020–U+2027</p>
-<p><em>operator-head</em> → U+2030–U+203E</p>
-<p><em>operator-head</em> → U+2041–U+2053</p>
-<p><em>operator-head</em> → U+2055–U+205E</p>
-<p><em>operator-head</em> → U+2190–U+23FF</p>
-<p><em>operator-head</em> → U+2500–U+2775</p>
-<p><em>operator-head</em> → U+2794–U+2BFF</p>
-<p><em>operator-head</em> → U+2E00–U+2E7F</p>
-<p><em>operator-head</em> → U+3001–U+3003</p>
-<p><em>operator-head</em> → U+3008–U+3020</p>
-<p><em>operator-head</em> → U+3030</p>
-<p><em>operator-character</em> → <em>operator-head</em></p>
-<p><em>operator-character</em> → U+0300–U+036F</p>
-<p><em>operator-character</em> → U+1DC0–U+1DFF</p>
-<p><em>operator-character</em> → U+20D0–U+20FF</p>
-<p><em>operator-character</em> → U+FE00–U+FE0F</p>
-<p><em>operator-character</em> → U+FE20–U+FE2F</p>
-<p><em>operator-character</em> → U+E0100–U+E01EF</p>
-<p><em>operator-characters</em> → <em>operator-character</em> <em>operator-characters</em><em>?</em></p>
-<p><em>dot-operator-head</em> → <strong><code>.</code></strong></p>
-<p><em>dot-operator-character</em> → <strong><code>.</code></strong> | <em>operator-character</em></p>
-<p><em>dot-operator-characters</em> → <em>dot-operator-character</em> <em>dot-operator-characters</em><em>?</em></p>
-<p><em>infix-operator</em> → <em>operator</em></p>
-<p><em>prefix-operator</em> → <em>operator</em></p>
-<p><em>postfix-operator</em> → <em>operator</em></p>
+<p><em>operator</em> → <em>operator-head</em> <em>operator-characters</em><em>?</em> \
+<em>operator</em> → <em>dot-operator-head</em> <em>dot-operator-characters</em></p>
+<p><em>operator-head</em> → <strong><code>/</code></strong> | <strong><code>=</code></strong> | <strong><code>-</code></strong> | <strong><code>+</code></strong> | <strong><code>!</code></strong> | <strong><code>*</code></strong> | <strong><code>%</code></strong> | <strong><code>&lt;</code></strong> | <strong><code>&gt;</code></strong> | <strong><code>&amp;</code></strong> | <strong><code>|</code></strong> | <strong><code>^</code></strong> | <strong><code>~</code></strong> | <strong><code>?</code></strong> \
+<em>operator-head</em> → U+00A1–U+00A7 \
+<em>operator-head</em> → U+00A9 または U+00AB \
+<em>operator-head</em> → U+00AC または U+00AE \
+<em>operator-head</em> → U+00B0–U+00B1 \
+<em>operator-head</em> → U+00B6, U+00BB, U+00BF, U+00D7, または U+00F7 \
+<em>operator-head</em> → U+2016–U+2017 \
+<em>operator-head</em> → U+2020–U+2027 \
+<em>operator-head</em> → U+2030–U+203E \
+<em>operator-head</em> → U+2041–U+2053 \
+<em>operator-head</em> → U+2055–U+205E \
+<em>operator-head</em> → U+2190–U+23FF \
+<em>operator-head</em> → U+2500–U+2775 \
+<em>operator-head</em> → U+2794–U+2BFF \
+<em>operator-head</em> → U+2E00–U+2E7F \
+<em>operator-head</em> → U+3001–U+3003 \
+<em>operator-head</em> → U+3008–U+3020 \
+<em>operator-head</em> → U+3030</p>
+<p><em>operator-character</em> → <em>operator-head</em> \
+<em>operator-character</em> → U+0300–U+036F \
+<em>operator-character</em> → U+1DC0–U+1DFF \
+<em>operator-character</em> → U+20D0–U+20FF \
+<em>operator-character</em> → U+FE00–U+FE0F \
+<em>operator-character</em> → U+FE20–U+FE2F \
+<em>operator-character</em> → U+E0100–U+E01EF \
+<em>operator-characters</em> → <em>operator-character</em> <em>operator-characters</em><em>?</em></p>
+<p><em>dot-operator-head</em> → <strong><code>.</code></strong> \
+<em>dot-operator-character</em> → <strong><code>.</code></strong> | <em>operator-character</em> \
+<em>dot-operator-characters</em> → <em>dot-operator-character</em> <em>dot-operator-characters</em><em>?</em></p>
+<p><em>infix-operator</em> → <em>operator</em> \
+<em>prefix-operator</em> → <em>operator</em> \
+<em>postfix-operator</em> → <em>operator</em></p>
 </blockquote>
 
                                 
@@ -1130,7 +1130,7 @@ and <a href="https://developer.apple.com/documentation/swift/warning(_:" target=
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"字句構造(Lexical Structure)","level":"4.2","depth":1,"next":{"title":"型(Types)","level":"4.3","depth":1,"path":"language-reference/types.md","ref":"language-reference/types.md","articles":[]},"previous":{"title":"言語リファレンスについて(About the Language Reference)","level":"4.1","depth":1,"path":"language-reference/about-the-language-reference.md","ref":"language-reference/about-the-language-reference.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-reference/lexical-structure.md","mtime":"2023-07-18T21:59:33.422Z","type":"markdown"},"gitbook":{"version":"3.7.5","time":"2023-07-18T21:59:54.636Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"字句構造(Lexical Structure)","level":"4.2","depth":1,"next":{"title":"型(Types)","level":"4.3","depth":1,"path":"language-reference/types.md","ref":"language-reference/types.md","articles":[]},"previous":{"title":"言語リファレンスについて(About the Language Reference)","level":"4.1","depth":1,"path":"language-reference/about-the-language-reference.md","ref":"language-reference/about-the-language-reference.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-reference/lexical-structure.md","mtime":"2023-08-12T23:25:08.923Z","type":"markdown"},"gitbook":{"version":"3.7.5","time":"2023-08-12T23:25:42.339Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

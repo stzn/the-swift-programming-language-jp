@@ -758,196 +758,194 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="文法のまとめsummary-of-the-grammar">文法のまとめ(Summary of the Grammar)</h1>
-<p>最終更新日: 2023/5/28<br>原文: <a href="https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html" target="_blank">https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html</a></p>
+<p>最終更新日: 2023/8/11<br>原文: <a href="https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html" target="_blank">https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html</a></p>
 <h2 id="lexical-structure構文の構造">Lexical Structure(構文の構造)</h2>
 <blockquote>
 <p>Grammar of whitespace:</p>
-<p><em>whitespace</em> → <em>whitespace-item</em> <em>whitespace</em><em>?</em></p>
-<p><em>whitespace-item</em> → <em>line-break</em></p>
-<p><em>whitespace-item</em> → <em>inline-space</em></p>
-<p><em>whitespace-item</em> → <em>comment</em></p>
-<p><em>whitespace-item</em> → <em>multiline-comment</em></p>
-<p><em>whitespace-item</em> → U+0000, U+000B, または U+000C</p>
-<p><em>line-break</em> → U+000A</p>
-<p><em>line-break</em> → U+000D</p>
-<p><em>line-break</em> → U+000D followed by U+000A</p>
-<p><em>inline-spaces</em> → <em>inline-space</em> <em>inline-spaces</em><em>?</em></p>
-<p><em>inline-space</em> → U+0009 または U+0020</p>
-<p><em>comment</em> → <strong><code>//</code></strong> <em>comment-text</em> <em>line-break</em></p>
-<p><em>multiline-comment</em> → <strong><code>/*</code></strong> <em>multiline-comment-text</em> <strong><code>*/</code></strong></p>
-<p><em>comment-text</em> → <em>comment-text-item</em> <em>comment-text</em><em>?</em></p>
-<p><em>comment-text-item</em> → Any Unicode scalar value except U+000A または U+000D</p>
-<p><em>multiline-comment-text</em> → <em>multiline-comment-text-item</em> <em>multiline-comment-text</em><em>?</em></p>
-<p><em>multiline-comment-text-item</em> → <em>multiline-comment</em></p>
-<p><em>multiline-comment-text-item</em> → <em>comment-text-item</em></p>
-<p><em>multiline-comment-text-item</em> → Any Unicode scalar value except  <strong><code>/*</code></strong> または  <strong><code>*/</code></strong></p>
+<p><em>whitespace</em> → <em>whitespace-item</em> <em>whitespace</em><em>?</em> \
+<em>whitespace-item</em> → <em>line-break</em> \
+<em>whitespace-item</em> → <em>inline-space</em> \
+<em>whitespace-item</em> → <em>comment</em> \
+<em>whitespace-item</em> → <em>multiline-comment</em> \
+<em>whitespace-item</em> → U+0000, U+000B, または U+000C</p>
+<p><em>line-break</em> → U+000A \
+<em>line-break</em> → U+000D \
+<em>line-break</em> → U+000A の前のU+000D</p>
+<p><em>inline-spaces</em> → <em>inline-space</em> <em>inline-spaces</em><em>?</em> \
+<em>inline-space</em> → U+0009 または U+0020</p>
+<p><em>comment</em> → <strong><code>//</code></strong> <em>comment-text</em> <em>line-break</em> \
+<em>multiline-comment</em> → <strong><code>/*</code></strong> <em>multiline-comment-text</em> <strong><code>*/</code></strong></p>
+<p><em>comment-text</em> → <em>comment-text-item</em> <em>comment-text</em><em>?</em> \
+<em>comment-text-item</em> → U+000A または U+000D を除く任意のUnicodeスカラ値</p>
+<p><em>multiline-comment-text</em> → <em>multiline-comment-text-item</em> <em>multiline-comment-text</em><em>?</em> \
+<em>multiline-comment-text-item</em> → <em>multiline-comment</em> \
+<em>multiline-comment-text-item</em> → <em>comment-text-item</em> \
+<em>multiline-comment-text-item</em> → <strong><code>/*</code></strong> または  <strong><code>*/</code></strong> を除く任意のUnicodeスカラ値</p>
 <p>Grammar of an identifier:</p>
-<p><em>identifier</em> → <em>identifier-head</em> <em>identifier-characters</em><em>?</em></p>
-<p><em>identifier</em> → <strong><code>` </code></strong> <em>identifier-head</em> <em>identifier-characters</em><em>?</em> <strong><code>` </code></strong></p>
-<p><em>identifier</em> → <em>implicit-parameter-name</em></p>
-<p><em>identifier</em> → <em>property-wrapper-projection</em></p>
-<p><em>identifier-list</em> → <em>identifier</em> | <em>identifier</em> <strong><code>,</code></strong> <em>identifier-list</em></p>
-<p><em>identifier-head</em> → 大文字または小文字の A ~ Z</p>
-<p><em>identifier-head</em> → <strong><code>_</code></strong></p>
-<p><em>identifier-head</em> → U+00A8, U+00AA, U+00AD, U+00AF, U+00B2–U+00B5, または U+00B7–U+00BA</p>
-<p><em>identifier-head</em> → U+00BC–U+00BE, U+00C0–U+00D6, U+00D8–U+00F6, または U+00F8–U+00FF</p>
-<p><em>identifier-head</em> → U+0100–U+02FF, U+0370–U+167F, U+1681–U+180D, または U+180F–U+1DBF</p>
-<p><em>identifier-head</em> → U+1E00–U+1FFF</p>
-<p><em>identifier-head</em> → U+200B–U+200D, U+202A–U+202E, U+203F–U+2040, U+2054, または U+2060–U+206F</p>
-<p><em>identifier-head</em> → U+2070–U+20CF, U+2100–U+218F, U+2460–U+24FF, または U+2776–U+2793</p>
-<p><em>identifier-head</em> → U+2C00–U+2DFF または U+2E80–U+2FFF</p>
-<p><em>identifier-head</em> → U+3004–U+3007, U+3021–U+302F, U+3031–U+303F, または U+3040–U+D7FF</p>
-<p><em>identifier-head</em> → U+F900–U+FD3D, U+FD40–U+FDCF, U+FDF0–U+FE1F, または U+FE30–U+FE44</p>
-<p><em>identifier-head</em> → U+FE47–U+FFFD</p>
-<p><em>identifier-head</em> → U+10000–U+1FFFD, U+20000–U+2FFFD, U+30000–U+3FFFD, または U+40000–U+4FFFD</p>
-<p><em>identifier-head</em> → U+50000–U+5FFFD, U+60000–U+6FFFD, U+70000–U+7FFFD, または U+80000–U+8FFFD</p>
-<p><em>identifier-head</em> → U+90000–U+9FFFD, U+A0000–U+AFFFD, U+B0000–U+BFFFD, または U+C0000–U+CFFFD</p>
-<p><em>identifier-head</em> → U+D0000–U+DFFFD または U+E0000–U+EFFFD</p>
-<p><em>identifier-character</em> → 数値 0 ~ 9</p>
-<p><em>identifier-character</em> → U+0300–U+036F, U+1DC0–U+1DFF, U+20D0–U+20FF, または U+FE20–U+FE2F</p>
-<p><em>identifier-character</em> → <em>identifier-head</em></p>
-<p><em>identifier-characters</em> → <em>identifier-character</em> <em>identifier-characters</em><em>?</em></p>
-<p><em>implicit-parameter-name</em> → <strong><code>$</code></strong> <em>decimal-digits</em></p>
-<p><em>property-wrapper-projection</em> → <strong><code>$</code></strong> <em>identifier-characters</em></p>
+<p><em>identifier</em> → <em>identifier-head</em> <em>identifier-characters</em><em>?</em> \
+<em>identifier</em> → <strong><code>` </code></strong> <em>identifier-head</em> <em>identifier-characters</em><em>?</em> <strong><code>` </code></strong> \
+<em>identifier</em> → <em>implicit-parameter-name</em> \
+<em>identifier</em> → <em>property-wrapper-projection</em> \
+<em>identifier-list</em> → <em>identifier</em> | <em>identifier</em> <strong><code>,</code></strong> <em>identifier-list</em></p>
+<p><em>identifier-head</em> → 大文字または小文字の A ~ Z \
+<em>identifier-head</em> → <strong><code>_</code></strong> \
+<em>identifier-head</em> → U+00A8, U+00AA, U+00AD, U+00AF, U+00B2–U+00B5, または U+00B7–U+00BA \
+<em>identifier-head</em> → U+00BC–U+00BE, U+00C0–U+00D6, U+00D8–U+00F6, または U+00F8–U+00FF \
+<em>identifier-head</em> → U+0100–U+02FF, U+0370–U+167F, U+1681–U+180D, または U+180F–U+1DBF \
+<em>identifier-head</em> → U+1E00–U+1FFF \
+<em>identifier-head</em> → U+200B–U+200D, U+202A–U+202E, U+203F–U+2040, U+2054, または U+2060–U+206F \
+<em>identifier-head</em> → U+2070–U+20CF, U+2100–U+218F, U+2460–U+24FF, または U+2776–U+2793 \
+<em>identifier-head</em> → U+2C00–U+2DFF または U+2E80–U+2FFF \
+<em>identifier-head</em> → U+3004–U+3007, U+3021–U+302F, U+3031–U+303F, または U+3040–U+D7FF \
+<em>identifier-head</em> → U+F900–U+FD3D, U+FD40–U+FDCF, U+FDF0–U+FE1F, または U+FE30–U+FE44 \
+<em>identifier-head</em> → U+FE47–U+FFFD \
+<em>identifier-head</em> → U+10000–U+1FFFD, U+20000–U+2FFFD, U+30000–U+3FFFD, または U+40000–U+4FFFD \
+<em>identifier-head</em> → U+50000–U+5FFFD, U+60000–U+6FFFD, U+70000–U+7FFFD, または U+80000–U+8FFFD \
+<em>identifier-head</em> → U+90000–U+9FFFD, U+A0000–U+AFFFD, U+B0000–U+BFFFD, または U+C0000–U+CFFFD \
+<em>identifier-head</em> → U+D0000–U+DFFFD または U+E0000–U+EFFFD</p>
+<p><em>identifier-character</em> → 数値 0 ~ 9 \
+<em>identifier-character</em> → U+0300–U+036F, U+1DC0–U+1DFF, U+20D0–U+20FF, または U+FE20–U+FE2F \
+<em>identifier-character</em> → <em>identifier-head</em> \
+<em>identifier-characters</em> → <em>identifier-character</em> <em>identifier-characters</em><em>?</em></p>
+<p><em>implicit-parameter-name</em> → <strong><code>$</code></strong> <em>decimal-digits</em> \
+<em>property-wrapper-projection</em> → <strong><code>$</code></strong> <em>identifier-characters</em></p>
 <p>Grammar of a literal:</p>
 <p><em>literal</em> → <em>numeric-literal</em> | <em>string-literal</em> | <em>regular-expression-literal</em> | <em>boolean-literal</em> | <em>nil-literal</em></p>
-<p><em>numeric-literal</em> → <strong><code>-</code></strong><em>?</em> <em>integer-literal</em> | <strong><code>-</code></strong><em>?</em> <em>floating-point-literal</em></p>
-<p><em>boolean-literal</em> → <strong><code>true</code></strong> | <strong><code>false</code></strong></p>
-<p><em>nil-literal</em> → <strong><code>nil</code></strong></p>
+<p><em>numeric-literal</em> → <strong><code>-</code></strong><em>?</em> <em>integer-literal</em> | <strong><code>-</code></strong><em>?</em> <em>floating-point-literal</em> \
+<em>boolean-literal</em> → <strong><code>true</code></strong> | <strong><code>false</code></strong> \
+<em>nil-literal</em> → <strong><code>nil</code></strong></p>
 <p>Grammar of an integer literal:</p>
-<p><em>integer-literal</em> → <em>binary-literal</em></p>
-<p><em>integer-literal</em> → <em>octal-literal</em></p>
-<p><em>integer-literal</em> → <em>decimal-literal</em></p>
-<p><em>integer-literal</em> → <em>hexadecimal-literal</em></p>
-<p><em>binary-literal</em> → <strong><code>0b</code></strong> <em>binary-digit</em> <em>binary-literal-characters</em><em>?</em></p>
-<p><em>binary-digit</em> → 数値 0 または 1</p>
-<p><em>binary-literal-character</em> → <em>binary-digit</em> | <strong><code>_</code></strong></p>
-<p><em>binary-literal-characters</em> → <em>binary-literal-character</em> <em>binary-literal-characters</em><em>?</em></p>
-<p><em>octal-literal</em> → <strong><code>0o</code></strong> <em>octal-digit</em> <em>octal-literal-characters</em><em>?</em></p>
-<p><em>octal-digit</em> → 数値 0 ~ 7</p>
-<p><em>octal-literal-character</em> → <em>octal-digit</em> | <strong><code>_</code></strong></p>
-<p><em>octal-literal-characters</em> → <em>octal-literal-character</em> <em>octal-literal-characters</em><em>?</em></p>
-<p><em>decimal-literal</em> → <em>decimal-digit</em> <em>decimal-literal-characters</em><em>?</em></p>
-<p><em>decimal-digit</em> → 数値 0 ~ 9</p>
-<p><em>decimal-digits</em> → <em>decimal-digit</em> <em>decimal-digits</em><em>?</em></p>
-<p><em>decimal-literal-character</em> → <em>decimal-digit</em> | <strong><code>_</code></strong></p>
-<p><em>decimal-literal-characters</em> → <em>decimal-literal-character</em> <em>decimal-literal-characters</em><em>?</em></p>
-<p><em>hexadecimal-literal</em> → <strong><code>0x</code></strong> <em>hexadecimal-digit</em> <em>hexadecimal-literal-characters</em><em>?</em></p>
-<p><em>hexadecimal-digit</em> → 数値 0 ~ 9, a ~ f、または A ~ F</p>
-<p><em>hexadecimal-literal-character</em> → <em>hexadecimal-digit</em> | <strong><code>_</code></strong></p>
-<p><em>hexadecimal-literal-characters</em> → <em>hexadecimal-literal-character</em> <em>hexadecimal-literal-characters</em><em>?</em></p>
+<p><em>integer-literal</em> → <em>binary-literal</em> \
+<em>integer-literal</em> → <em>octal-literal</em> \
+<em>integer-literal</em> → <em>decimal-literal</em> \
+<em>integer-literal</em> → <em>hexadecimal-literal</em></p>
+<p><em>binary-literal</em> → <strong><code>0b</code></strong> <em>binary-digit</em> <em>binary-literal-characters</em><em>?</em> \
+<em>binary-digit</em> → 数値 0 または 1 \
+<em>binary-literal-character</em> → <em>binary-digit</em> | <strong><code>_</code></strong> \
+<em>binary-literal-characters</em> → <em>binary-literal-character</em> <em>binary-literal-characters</em><em>?</em></p>
+<p><em>octal-literal</em> → <strong><code>0o</code></strong> <em>octal-digit</em> <em>octal-literal-characters</em><em>?</em> \
+<em>octal-digit</em> → 数値 0 ~ 7 \
+<em>octal-literal-character</em> → <em>octal-digit</em> | <strong><code>_</code></strong> \
+<em>octal-literal-characters</em> → <em>octal-literal-character</em> <em>octal-literal-characters</em><em>?</em></p>
+<p><em>decimal-literal</em> → <em>decimal-digit</em> <em>decimal-literal-characters</em><em>?</em> \
+<em>decimal-digit</em> → 数値 0 ~ 9 \
+<em>decimal-digits</em> → <em>decimal-digit</em> <em>decimal-digits</em><em>?</em> \
+<em>decimal-literal-character</em> → <em>decimal-digit</em> | <strong><code>_</code></strong> \
+<em>decimal-literal-characters</em> → <em>decimal-literal-character</em> <em>decimal-literal-characters</em><em>?</em></p>
+<p><em>hexadecimal-literal</em> → <strong><code>0x</code></strong> <em>hexadecimal-digit</em> <em>hexadecimal-literal-characters</em><em>?</em> \
+<em>hexadecimal-digit</em> → 数値 0 ~ 9, a ~ f、または A ~ F \
+<em>hexadecimal-literal-character</em> → <em>hexadecimal-digit</em> | <strong><code>_</code></strong> \
+<em>hexadecimal-literal-characters</em> → <em>hexadecimal-literal-character</em> <em>hexadecimal-literal-characters</em><em>?</em></p>
 <p>Grammar of a floating-point literal:</p>
-<p><em>floating-point-literal</em> → <em>decimal-literal</em> <em>decimal-fraction</em><em>?</em> <em>decimal-exponent</em><em>?</em></p>
-<p><em>floating-point-literal</em> → <em>hexadecimal-literal</em> <em>hexadecimal-fraction</em><em>?</em> <em>hexadecimal-exponent</em></p>
-<p><em>decimal-fraction</em> → <strong><code>.</code></strong> <em>decimal-literal</em></p>
-<p><em>decimal-exponent</em> → <em>floating-point-e</em> <em>sign</em><em>?</em> <em>decimal-literal</em></p>
-<p><em>hexadecimal-fraction</em> → <strong><code>.</code></strong> <em>hexadecimal-digit</em> <em>hexadecimal-literal-characters</em><em>?</em></p>
-<p><em>hexadecimal-exponent</em> → <em>floating-point-p</em> <em>sign</em><em>?</em> <em>decimal-literal</em></p>
-<p><em>floating-point-e</em> → <strong><code>e</code></strong> | <strong><code>E</code></strong></p>
-<p><em>floating-point-p</em> → <strong><code>p</code></strong> | <strong><code>P</code></strong></p>
-<p><em>sign</em> → <strong><code>+</code></strong> | <strong><code>-</code></strong></p>
+<p><em>floating-point-literal</em> → <em>decimal-literal</em> <em>decimal-fraction</em><em>?</em> <em>decimal-exponent</em><em>?</em> \
+<em>floating-point-literal</em> → <em>hexadecimal-literal</em> <em>hexadecimal-fraction</em><em>?</em> <em>hexadecimal-exponent</em></p>
+<p><em>decimal-fraction</em> → <strong><code>.</code></strong> <em>decimal-literal</em> \
+<em>decimal-exponent</em> → <em>floating-point-e</em> <em>sign</em><em>?</em> <em>decimal-literal</em></p>
+<p><em>hexadecimal-fraction</em> → <strong><code>.</code></strong> <em>hexadecimal-digit</em> <em>hexadecimal-literal-characters</em><em>?</em> \
+<em>hexadecimal-exponent</em> → <em>floating-point-p</em> <em>sign</em><em>?</em> <em>decimal-literal</em></p>
+<p><em>floating-point-e</em> → <strong><code>e</code></strong> | <strong><code>E</code></strong> \
+<em>floating-point-p</em> → <strong><code>p</code></strong> | <strong><code>P</code></strong> \
+<em>sign</em> → <strong><code>+</code></strong> | <strong><code>-</code></strong></p>
 <p>Grammar of a string literal:</p>
 <p><em>string-literal</em> → <em>static-string-literal</em> | <em>interpolated-string-literal</em></p>
-<p><em>string-literal-opening-delimiter</em> → <em>extended-string-literal-delimiter</em><em>?</em> <strong><code>&quot;</code></strong></p>
-<p><em>string-literal-closing-delimiter</em> → <strong><code>&quot;</code></strong> <em>extended-string-literal-delimiter</em><em>?</em></p>
-<p><em>static-string-literal</em> → <em>string-literal-opening-delimiter</em> <em>quoted-text</em><em>?</em> <em>string-literal-closing-delimiter</em></p>
-<p><em>static-string-literal</em> → <em>multiline-string-literal-opening-delimiter</em> <em>multiline-quoted-text</em><em>?</em> <em>multiline-string-literal-closing-delimiter</em></p>
-<p><em>multiline-string-literal-opening-delimiter</em> → <em>extended-string-literal-delimiter</em><em>?</em> <strong><code>&quot;&quot;&quot;</code></strong></p>
-<p><em>multiline-string-literal-closing-delimiter</em> → <strong><code>&quot;&quot;&quot;</code></strong> <em>extended-string-literal-delimiter</em><em>?</em></p>
-<p><em>extended-string-literal-delimiter</em> → <strong><code>#</code></strong> <em>extended-string-literal-delimiter</em><em>?</em></p>
-<p><em>quoted-text</em> → <em>quoted-text-item</em> <em>quoted-text</em><em>?</em></p>
-<p><em>quoted-text-item</em> → <em>escaped-character</em></p>
-<p><em>quoted-text-item</em> → <strong><code>&quot;</code></strong>,  <strong><code>\</code></strong>, U+000A、または U+000D を除く任意のUnicodeスカラ値</p>
-<p><em>multiline-quoted-text</em> → <em>multiline-quoted-text-item</em> <em>multiline-quoted-text</em><em>?</em></p>
-<p><em>multiline-quoted-text-item</em> → <em>escaped-character</em></p>
-<p><em>multiline-quoted-text-item</em> → <strong><code>\</code></strong> を除く任意のUnicodeスカラ値</p>
-<p><em>multiline-quoted-text-item</em> → <em>escaped-newline</em></p>
-<p><em>interpolated-string-literal</em> → <em>string-literal-opening-delimiter</em> <em>interpolated-text</em><em>?</em> <em>string-literal-closing-delimiter</em></p>
-<p><em>interpolated-string-literal</em> → <em>multiline-string-literal-opening-delimiter</em> <em>multiline-interpolated-text</em><em>?</em> <em>multiline-string-literal-closing-delimiter</em></p>
-<p><em>interpolated-text</em> → <em>interpolated-text-item</em> <em>interpolated-text</em><em>?</em></p>
-<p><em>interpolated-text-item</em> → <strong><code>\(</code></strong> <em>expression</em> <strong><code>)</code></strong> | <em>quoted-text-item</em></p>
-<p><em>multiline-interpolated-text</em> → <em>multiline-interpolated-text-item</em> <em>multiline-interpolated-text</em><em>?</em></p>
-<p><em>multiline-interpolated-text-item</em> → <strong><code>\(</code></strong> <em>expression</em> <strong><code>)</code></strong> | <em>multiline-quoted-text-item</em></p>
-<p><em>escape-sequence</em> → <strong><code>\</code></strong> <em>extended-string-literal-delimiter</em></p>
-<p><em>escaped-character</em> → <em>escape-sequence</em> <strong><code>0</code></strong> | <em>escape-sequence</em> <strong><code>\</code></strong> | <em>escape-sequence</em> <strong><code>t</code></strong> | <em>escape-sequence</em> <strong><code>n</code></strong> | <em>escape-sequence</em> <strong><code>r</code></strong> | <em>escape-sequence</em> <strong><code>&quot;</code></strong> | <em>escape-sequence</em> <strong><code>&apos;</code></strong></p>
-<p><em>escaped-character</em> → <em>escape-sequence</em> <strong><code>u</code></strong> <strong><code>{</code></strong> <em>unicode-scalar-digits</em> <strong><code>}</code></strong></p>
-<p><em>unicode-scalar-digits</em> → Between one and eight hexadecimal digits</p>
+<p><em>string-literal-opening-delimiter</em> → <em>extended-string-literal-delimiter</em><em>?</em> <strong><code>&quot;</code></strong> \
+<em>string-literal-closing-delimiter</em> → <strong><code>&quot;</code></strong> <em>extended-string-literal-delimiter</em><em>?</em></p>
+<p><em>static-string-literal</em> → <em>string-literal-opening-delimiter</em> <em>quoted-text</em><em>?</em> <em>string-literal-closing-delimiter</em> \
+<em>static-string-literal</em> → <em>multiline-string-literal-opening-delimiter</em> <em>multiline-quoted-text</em><em>?</em> <em>multiline-string-literal-closing-delimiter</em></p>
+<p><em>multiline-string-literal-opening-delimiter</em> → <em>extended-string-literal-delimiter</em><em>?</em> <strong><code>&quot;&quot;&quot;</code></strong> \
+<em>multiline-string-literal-closing-delimiter</em> → <strong><code>&quot;&quot;&quot;</code></strong> <em>extended-string-literal-delimiter</em><em>?</em> \
+<em>extended-string-literal-delimiter</em> → <strong><code>#</code></strong> <em>extended-string-literal-delimiter</em><em>?</em></p>
+<p><em>quoted-text</em> → <em>quoted-text-item</em> <em>quoted-text</em><em>?</em> \
+<em>quoted-text-item</em> → <em>escaped-character</em> \
+<em>quoted-text-item</em> → <strong><code>&quot;</code></strong>,  <strong><code>\</code></strong>, U+000A、または U+000D を除く任意のUnicodeスカラ値</p>
+<p><em>multiline-quoted-text</em> → <em>multiline-quoted-text-item</em> <em>multiline-quoted-text</em><em>?</em> \
+<em>multiline-quoted-text-item</em> → <em>escaped-character</em> \
+<em>multiline-quoted-text-item</em> → <strong><code>\</code></strong> U+000A、または U+000D を除く任意のUnicodeスカラ値 \
+<em>multiline-quoted-text-item</em> → <em>escaped-newline</em></p>
+<p><em>interpolated-string-literal</em> → <em>string-literal-opening-delimiter</em> <em>interpolated-text</em><em>?</em> <em>string-literal-closing-delimiter</em> \
+<em>interpolated-string-literal</em> → <em>multiline-string-literal-opening-delimiter</em> <em>multiline-interpolated-text</em><em>?</em> <em>multiline-string-literal-closing-delimiter</em></p>
+<p><em>interpolated-text</em> → <em>interpolated-text-item</em> <em>interpolated-text</em><em>?</em> \
+<em>interpolated-text-item</em> → <strong><code>\(</code></strong> <em>expression</em> <strong><code>)</code></strong> | <em>quoted-text-item</em></p>
+<p><em>multiline-interpolated-text</em> → <em>multiline-interpolated-text-item</em> <em>multiline-interpolated-text</em><em>?</em> \
+<em>multiline-interpolated-text-item</em> → <strong><code>\(</code></strong> <em>expression</em> <strong><code>)</code></strong> | <em>multiline-quoted-text-item</em></p>
+<p><em>escape-sequence</em> → <strong><code>\</code></strong> <em>extended-string-literal-delimiter</em> \
+<em>escaped-character</em> → <em>escape-sequence</em> <strong><code>0</code></strong> | <em>escape-sequence</em> <strong><code>\</code></strong> | <em>escape-sequence</em> <strong><code>t</code></strong> | <em>escape-sequence</em> <strong><code>n</code></strong> | <em>escape-sequence</em> <strong><code>r</code></strong> | <em>escape-sequence</em> <strong><code>&quot;</code></strong> | <em>escape-sequence</em> <strong><code>&apos;</code></strong> \
+<em>escaped-character</em> → <em>escape-sequence</em> <strong><code>u</code></strong> <strong><code>{</code></strong> <em>unicode-scalar-digits</em> <strong><code>}</code></strong> \
+<em>unicode-scalar-digits</em> → 1桁から8桁の16進数</p>
 <p><em>escaped-newline</em> → <em>escape-sequence</em> <em>inline-spaces</em><em>?</em> <em>line-break</em></p>
 <p>Grammar of a regular expression literal:</p>
-<p><em>regular-expression-literal</em> → <em>regular-expression-literal-opening-delimiter</em> <em>regular-expression</em> <em>regular-expression-literal-closing-delimiter</em></p>
-<p><em>regular-expression</em> → Any regular expression</p>
-<p><em>regular-expression-literal-opening-delimiter</em> → <em>extended-regular-expression-literal-delimiter</em><em>?</em> <strong><code>/</code></strong></p>
-<p><em>regular-expression-literal-closing-delimiter</em> → <strong><code>/</code></strong> <em>extended-regular-expression-literal-delimiter</em><em>?</em></p>
+<p><em>regular-expression-literal</em> → <em>regular-expression-literal-opening-delimiter</em> <em>regular-expression</em> <em>regular-expression-literal-closing-delimiter</em> \
+<em>regular-expression</em> → 任意の正規表現</p>
+<p><em>regular-expression-literal-opening-delimiter</em> → <em>extended-regular-expression-literal-delimiter</em><em>?</em> <strong><code>/</code></strong> \
+<em>regular-expression-literal-closing-delimiter</em> → <strong><code>/</code></strong> <em>extended-regular-expression-literal-delimiter</em><em>?</em></p>
 <p><em>extended-regular-expression-literal-delimiter</em> → <strong><code>#</code></strong> <em>extended-regular-expression-literal-delimiter</em><em>?</em></p>
 <p>Grammar of operators:</p>
-<p><em>operator</em> → <em>operator-head</em> <em>operator-characters</em><em>?</em></p>
-<p><em>operator</em> → <em>dot-operator-head</em> <em>dot-operator-characters</em></p>
-<p><em>operator-head</em> → <strong><code>/</code></strong> | <strong><code>=</code></strong> | <strong><code>-</code></strong> | <strong><code>+</code></strong> | <strong><code>!</code></strong> | <strong><code>*</code></strong> | <strong><code>%</code></strong> | <strong><code>&lt;</code></strong> | <strong><code>&gt;</code></strong> | <strong><code>&amp;</code></strong> | <strong><code>|</code></strong> | <strong><code>^</code></strong> | <strong><code>~</code></strong> | <strong><code>?</code></strong></p>
-<p><em>operator-head</em> → U+00A1–U+00A7</p>
-<p><em>operator-head</em> → U+00A9 または U+00AB</p>
-<p><em>operator-head</em> → U+00AC または U+00AE</p>
-<p><em>operator-head</em> → U+00B0–U+00B1</p>
-<p><em>operator-head</em> → U+00B6, U+00BB, U+00BF, U+00D7, または U+00F7</p>
-<p><em>operator-head</em> → U+2016–U+2017</p>
-<p><em>operator-head</em> → U+2020–U+2027</p>
-<p><em>operator-head</em> → U+2030–U+203E</p>
-<p><em>operator-head</em> → U+2041–U+2053</p>
-<p><em>operator-head</em> → U+2055–U+205E</p>
-<p><em>operator-head</em> → U+2190–U+23FF</p>
-<p><em>operator-head</em> → U+2500–U+2775</p>
-<p><em>operator-head</em> → U+2794–U+2BFF</p>
-<p><em>operator-head</em> → U+2E00–U+2E7F</p>
-<p><em>operator-head</em> → U+3001–U+3003</p>
-<p><em>operator-head</em> → U+3008–U+3020</p>
-<p><em>operator-head</em> → U+3030</p>
-<p><em>operator-character</em> → <em>operator-head</em></p>
-<p><em>operator-character</em> → U+0300–U+036F</p>
-<p><em>operator-character</em> → U+1DC0–U+1DFF</p>
-<p><em>operator-character</em> → U+20D0–U+20FF</p>
-<p><em>operator-character</em> → U+FE00–U+FE0F</p>
-<p><em>operator-character</em> → U+FE20–U+FE2F</p>
-<p><em>operator-character</em> → U+E0100–U+E01EF</p>
-<p><em>operator-characters</em> → <em>operator-character</em> <em>operator-characters</em><em>?</em></p>
-<p><em>dot-operator-head</em> → <strong><code>.</code></strong></p>
-<p><em>dot-operator-character</em> → <strong><code>.</code></strong> | <em>operator-character</em></p>
-<p><em>dot-operator-characters</em> → <em>dot-operator-character</em> <em>dot-operator-characters</em><em>?</em></p>
-<p><em>infix-operator</em> → <em>operator</em></p>
-<p><em>prefix-operator</em> → <em>operator</em></p>
-<p><em>postfix-operator</em> → <em>operator</em></p>
+<p><em>operator</em> → <em>operator-head</em> <em>operator-characters</em><em>?</em> \
+<em>operator</em> → <em>dot-operator-head</em> <em>dot-operator-characters</em></p>
+<p><em>operator-head</em> → <strong><code>/</code></strong> | <strong><code>=</code></strong> | <strong><code>-</code></strong> | <strong><code>+</code></strong> | <strong><code>!</code></strong> | <strong><code>*</code></strong> | <strong><code>%</code></strong> | <strong><code>&lt;</code></strong> | <strong><code>&gt;</code></strong> | <strong><code>&amp;</code></strong> | <strong><code>|</code></strong> | <strong><code>^</code></strong> | <strong><code>~</code></strong> | <strong><code>?</code></strong> \
+<em>operator-head</em> → U+00A1–U+00A7 \
+<em>operator-head</em> → U+00A9 または U+00AB \
+<em>operator-head</em> → U+00AC または U+00AE \
+<em>operator-head</em> → U+00B0–U+00B1 \
+<em>operator-head</em> → U+00B6, U+00BB, U+00BF, U+00D7, または U+00F7 \
+<em>operator-head</em> → U+2016–U+2017 \
+<em>operator-head</em> → U+2020–U+2027 \
+<em>operator-head</em> → U+2030–U+203E \
+<em>operator-head</em> → U+2041–U+2053 \
+<em>operator-head</em> → U+2055–U+205E \
+<em>operator-head</em> → U+2190–U+23FF \
+<em>operator-head</em> → U+2500–U+2775 \
+<em>operator-head</em> → U+2794–U+2BFF \
+<em>operator-head</em> → U+2E00–U+2E7F \
+<em>operator-head</em> → U+3001–U+3003 \
+<em>operator-head</em> → U+3008–U+3020 \
+<em>operator-head</em> → U+3030</p>
+<p><em>operator-character</em> → <em>operator-head</em> \
+<em>operator-character</em> → U+0300–U+036F \
+<em>operator-character</em> → U+1DC0–U+1DFF \
+<em>operator-character</em> → U+20D0–U+20FF \
+<em>operator-character</em> → U+FE00–U+FE0F \
+<em>operator-character</em> → U+FE20–U+FE2F \
+<em>operator-character</em> → U+E0100–U+E01EF \
+<em>operator-characters</em> → <em>operator-character</em> <em>operator-characters</em><em>?</em></p>
+<p><em>dot-operator-head</em> → <strong><code>.</code></strong> \
+<em>dot-operator-character</em> → <strong><code>.</code></strong> | <em>operator-character</em> \
+<em>dot-operator-characters</em> → <em>dot-operator-character</em> <em>dot-operator-characters</em><em>?</em></p>
+<p><em>infix-operator</em> → <em>operator</em> \
+<em>prefix-operator</em> → <em>operator</em> \
+<em>postfix-operator</em> → <em>operator</em></p>
 </blockquote>
 <h2 id="types型">Types(型)</h2>
 <blockquote>
 <p>Grammar of a type:</p>
-<p><em>type</em> → <em>function-type</em></p>
-<p><em>type</em> → <em>array-type</em></p>
-<p><em>type</em> → <em>dictionary-type</em></p>
-<p><em>type</em> → <em>type-identifier</em></p>
-<p><em>type</em> → <em>tuple-type</em></p>
-<p><em>type</em> → <em>optional-type</em></p>
-<p><em>type</em> → <em>implicitly-unwrapped-optional-type</em></p>
-<p><em>type</em> → <em>protocol-composition-type</em></p>
-<p><em>type</em> → <em>opaque-type</em></p>
-<p><em>type</em> → <em>metatype-type</em></p>
-<p><em>type</em> → <em>any-type</em></p>
-<p><em>type</em> → <em>self-type</em></p>
-<p><em>type</em> → <strong><code>(</code></strong> <em>type</em> <strong><code>)</code></strong></p>
-<p>Grammar of a type annotation:</p>
-<p><em>type-annotation</em> → <strong><code>:</code></strong> <em>attributes</em><em>?</em> <strong><code>inout</code></strong><em>?</em> <em>type</em></p>
+<p><em>type</em> → <em>function-type</em> \
+<em>type</em> → <em>array-type</em> \
+<em>type</em> → <em>dictionary-type</em> \
+<em>type</em> → <em>type-identifier</em> \
+<em>type</em> → <em>tuple-type</em> \
+<em>type</em> → <em>optional-type</em> \
+<em>type</em> → <em>implicitly-unwrapped-optional-type</em> \
+<em>type</em> → <em>protocol-composition-type</em> \
+<em>type</em> → <em>opaque-type</em> \
+<em>type</em> → <em>metatype-type</em> \
+<em>type</em> → <em>any-type</em> \
+<em>type</em> → <em>self-type</em> \
+<em>type</em> → <strong><code>(</code></strong> <em>type</em> <strong><code>)</code></strong></p>
 <p>Grammar of a type identifier:</p>
-<p><em>type-identifier</em> → <em>type-name</em> <em>generic-argument-clause</em><em>?</em> | <em>type-name</em> <em>generic-argument-clause</em><em>?</em> <strong><code>.</code></strong> <em>type-identifier</em></p>
-<p><em>type-name</em> → <em>identifier</em></p>
+<p><em>type-identifier</em> → <em>type-name</em> <em>generic-argument-clause</em><em>?</em> | <em>type-name</em> <em>generic-argument-clause</em><em>?</em> <strong><code>.</code></strong> <em>type-identifier</em> \
+<em>type-name</em> → <em>identifier</em></p>
 <p>Grammar of a tuple type:</p>
-<p><em>tuple-type</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>tuple-type-element</em> <strong><code>,</code></strong> <em>tuple-type-element-list</em> <strong><code>)</code></strong></p>
-<p><em>tuple-type-element-list</em> → <em>tuple-type-element</em> | <em>tuple-type-element</em> <strong><code>,</code></strong> <em>tuple-type-element-list</em></p>
-<p><em>tuple-type-element</em> → <em>element-name</em> <em>type-annotation</em> | <em>type</em></p>
-<p><em>element-name</em> → <em>identifier</em></p>
+<p><em>tuple-type</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>tuple-type-element</em> <strong><code>,</code></strong> <em>tuple-type-element-list</em> <strong><code>)</code></strong> \
+<em>tuple-type-element-list</em> → <em>tuple-type-element</em> | <em>tuple-type-element</em> <strong><code>,</code></strong> <em>tuple-type-element-list</em> \
+<em>tuple-type-element</em> → <em>element-name</em> <em>type-annotation</em> | <em>type</em> \
+<em>element-name</em> → <em>identifier</em></p>
 <p>Grammar of a function type:</p>
 <p><em>function-type</em> → <em>attributes</em><em>?</em> <em>function-type-argument-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>throws</code></strong><em>?</em> <strong><code>-&gt;</code></strong> <em>type</em></p>
-<p><em>function-type-argument-clause</em> → <strong><code>(</code></strong> <strong><code>)</code></strong></p>
-<p><em>function-type-argument-clause</em> → <strong><code>(</code></strong> <em>function-type-argument-list</em> <strong><code>...</code></strong><em>?</em> <strong><code>)</code></strong></p>
-<p><em>function-type-argument-list</em> → <em>function-type-argument</em> | <em>function-type-argument</em> <strong><code>,</code></strong> <em>function-type-argument-list</em></p>
-<p><em>function-type-argument</em> → <em>attributes</em><em>?</em> <strong><code>inout</code></strong><em>?</em> <em>type</em> | <em>argument-label</em> <em>type-annotation</em></p>
-<p><em>argument-label</em> → <em>identifier</em></p>
+<p><em>function-type-argument-clause</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> \
+<em>function-type-argument-clause</em> → <strong><code>(</code></strong> <em>function-type-argument-list</em> <strong><code>...</code></strong><em>?</em> <strong><code>)</code></strong></p>
+<p><em>function-type-argument-list</em> → <em>function-type-argument</em> | <em>function-type-argument</em> <strong><code>,</code></strong> <em>function-type-argument-list</em> \
+<em>function-type-argument</em> → <em>attributes</em><em>?</em> <strong><code>inout</code></strong><em>?</em> <em>type</em> | <em>argument-label</em> <em>type-annotation</em> \
+<em>argument-label</em> → <em>identifier</em></p>
 <p>Grammar of an array type:</p>
 <p><em>array-type</em> → <strong><code>[</code></strong> <em>type</em> <strong><code>]</code></strong></p>
 <p>Grammar of a dictionary type:</p>
@@ -957,8 +955,8 @@
 <p>Grammar of an implicitly unwrapped optional type:</p>
 <p><em>implicitly-unwrapped-optional-type</em> → <em>type</em> <strong><code>!</code></strong></p>
 <p>Grammar of a protocol composition type:</p>
-<p><em>protocol-composition-type</em> → <em>type-identifier</em> <strong><code>&amp;</code></strong> <em>protocol-composition-continuation</em></p>
-<p><em>protocol-composition-continuation</em> → <em>type-identifier</em> | <em>protocol-composition-type</em></p>
+<p><em>protocol-composition-type</em> → <em>type-identifier</em> <strong><code>&amp;</code></strong> <em>protocol-composition-continuation</em> \
+<em>protocol-composition-continuation</em> → <em>type-identifier</em> | <em>protocol-composition-type</em></p>
 <p>Grammar of an opaque type:</p>
 <p><em>opaque-type</em> → <strong><code>some</code></strong> <em>type</em></p>
 <p>Grammar of a boxed protocol type:</p>
@@ -970,17 +968,17 @@
 <p>Grammar of a Self type:</p>
 <p><em>self-type</em> → <strong><code>Self</code></strong></p>
 <p>Grammar of a type inheritance clause:</p>
-<p><em>type-inheritance-clause</em> → <strong><code>:</code></strong> <em>type-inheritance-list</em></p>
-<p><em>type-inheritance-list</em> → <em>attributes</em><em>?</em> <em>type-identifier</em> | <em>attributes</em><em>?</em> <em>type-identifier</em> <strong><code>,</code></strong> <em>type-inheritance-list</em></p>
+<p><em>type-inheritance-clause</em> → <strong><code>:</code></strong> <em>type-inheritance-list</em> \
+<em>type-inheritance-list</em> → <em>attributes</em><em>?</em> <em>type-identifier</em> | <em>attributes</em><em>?</em> <em>type-identifier</em> <strong><code>,</code></strong> <em>type-inheritance-list</em></p>
 </blockquote>
 <h2 id="expressions式">Expressions(式)</h2>
 <blockquote>
 <p>Grammar of an expression:</p>
-<p><em>expression</em> → <em>try-operator</em><em>?</em> <em>await-operator</em><em>?</em> <em>prefix-expression</em> <em>infix-expressions</em><em>?</em></p>
-<p><em>expression-list</em> → <em>expression</em> | <em>expression</em> <strong><code>,</code></strong> <em>expression-list</em></p>
+<p><em>expression</em> → <em>try-operator</em><em>?</em> <em>await-operator</em><em>?</em> <em>prefix-expression</em> <em>infix-expressions</em><em>?</em> \
+<em>expression-list</em> → <em>expression</em> | <em>expression</em> <strong><code>,</code></strong> <em>expression-list</em></p>
 <p>Grammar of a prefix expression:</p>
-<p><em>prefix-expression</em> → <em>prefix-operator</em><em>?</em> <em>postfix-expression</em></p>
-<p><em>prefix-expression</em> → <em>in-out-expression</em></p>
+<p><em>prefix-expression</em> → <em>prefix-operator</em><em>?</em> <em>postfix-expression</em> \
+<em>prefix-expression</em> → <em>in-out-expression</em></p>
 <p>Grammar of an in-out expression:</p>
 <p><em>in-out-expression</em> → <strong><code>&amp;</code></strong> <em>identifier</em></p>
 <p>Grammar of a try expression:</p>
@@ -988,135 +986,136 @@
 <p>Grammar of an await expression:</p>
 <p><em>await-operator</em> → <strong><code>await</code></strong></p>
 <p>Grammar of an infix expression:</p>
-<p><em>infix-expression</em> → <em>infix-operator</em> <em>prefix-expression</em></p>
-<p><em>infix-expression</em> → <em>assignment-operator</em> <em>try-operator</em><em>?</em> <em>prefix-expression</em></p>
-<p><em>infix-expression</em> → <em>conditional-operator</em> <em>try-operator</em><em>?</em> <em>prefix-expression</em></p>
-<p><em>infix-expression</em> → <em>type-casting-operator</em></p>
-<p><em>infix-expressions</em> → <em>infix-expression</em> <em>infix-expressions</em><em>?</em></p>
+<p><em>infix-expression</em> → <em>infix-operator</em> <em>prefix-expression</em> \
+<em>infix-expression</em> → <em>assignment-operator</em> <em>try-operator</em><em>?</em> <em>prefix-expression</em> \
+<em>infix-expression</em> → <em>conditional-operator</em> <em>try-operator</em><em>?</em> <em>prefix-expression</em> \
+<em>infix-expression</em> → <em>type-casting-operator</em> \
+<em>infix-expressions</em> → <em>infix-expression</em> <em>infix-expressions</em><em>?</em></p>
 <p>Grammar of an assignment operator:</p>
 <p><em>assignment-operator</em> → <strong><code>=</code></strong></p>
 <p>Grammar of a conditional operator:</p>
 <p><em>conditional-operator</em> → <strong><code>?</code></strong> <em>expression</em> <strong><code>:</code></strong></p>
 <p>Grammar of a type-casting operator:</p>
-<p><em>type-casting-operator</em> → <strong><code>is</code></strong> <em>type</em></p>
-<p><em>type-casting-operator</em> → <strong><code>as</code></strong> <em>type</em></p>
-<p><em>type-casting-operator</em> → <strong><code>as</code></strong> <strong><code>?</code></strong> <em>type</em></p>
-<p><em>type-casting-operator</em> → <strong><code>as</code></strong> <strong><code>!</code></strong> <em>type</em></p>
+<p><em>type-casting-operator</em> → <strong><code>is</code></strong> <em>type</em> \
+<em>type-casting-operator</em> → <strong><code>as</code></strong> <em>type</em> \
+<em>type-casting-operator</em> → <strong><code>as</code></strong> <strong><code>?</code></strong> <em>type</em> \
+<em>type-casting-operator</em> → <strong><code>as</code></strong> <strong><code>!</code></strong> <em>type</em></p>
 <p>Grammar of a primary expression:</p>
-<p><em>primary-expression</em> → <em>identifier</em> <em>generic-argument-clause</em><em>?</em></p>
-<p><em>primary-expression</em> → <em>literal-expression</em></p>
-<p><em>primary-expression</em> → <em>self-expression</em></p>
-<p><em>primary-expression</em> → <em>superclass-expression</em></p>
-<p><em>primary-expression</em> → <em>conditional-expression</em></p>
-<p><em>primary-expression</em> → <em>closure-expression</em></p>
-<p><em>primary-expression</em> → <em>parenthesized-expression</em></p>
-<p><em>primary-expression</em> → <em>tuple-expression</em></p>
-<p><em>primary-expression</em> → <em>implicit-member-expression</em></p>
-<p><em>primary-expression</em> → <em>wildcard-expression</em></p>
-<p><em>primary-expression</em> → <em>key-path-expression</em></p>
-<p><em>primary-expression</em> → <em>selector-expression</em></p>
-<p><em>primary-expression</em> → <em>key-path-string-expression</em></p>
+<p><em>primary-expression</em> → <em>identifier</em> <em>generic-argument-clause</em><em>?</em> \
+<em>primary-expression</em> → <em>literal-expression</em> \
+<em>primary-expression</em> → <em>self-expression</em> \
+<em>primary-expression</em> → <em>superclass-expression</em> \
+<em>primary-expression</em> → <em>conditional-expression</em> \
+<em>primary-expression</em> → <em>closure-expression</em> \
+<em>primary-expression</em> → <em>parenthesized-expression</em> \
+<em>primary-expression</em> → <em>tuple-expression</em> \
+<em>primary-expression</em> → <em>implicit-member-expression</em> \
+<em>primary-expression</em> → <em>wildcard-expression</em> \
+<em>primary-expression</em> → <em>macro-expansion-expression</em> \
+<em>primary-expression</em> → <em>key-path-expression</em> \
+<em>primary-expression</em> → <em>selector-expression</em> \
+<em>primary-expression</em> → <em>key-path-string-expression</em></p>
 <p>Grammar of a literal expression:</p>
-<p><em>literal-expression</em> → <em>literal</em></p>
-<p><em>literal-expression</em> → <em>array-literal</em> | <em>dictionary-literal</em> | <em>playground-literal</em></p>
-<p><em>array-literal</em> → <strong><code>[</code></strong> <em>array-literal-items</em><em>?</em> <strong><code>]</code></strong></p>
-<p><em>array-literal-items</em> → <em>array-literal-item</em> <strong><code>,</code></strong><em>?</em> | <em>array-literal-item</em> <strong><code>,</code></strong> <em>array-literal-items</em></p>
-<p><em>array-literal-item</em> → <em>expression</em></p>
-<p><em>dictionary-literal</em> → <strong><code>[</code></strong> <em>dictionary-literal-items</em> <strong><code>]</code></strong> | <strong><code>[</code></strong> <strong><code>:</code></strong> <strong><code>]</code></strong></p>
-<p><em>dictionary-literal-items</em> → <em>dictionary-literal-item</em> <strong><code>,</code></strong><em>?</em> | <em>dictionary-literal-item</em> <strong><code>,</code></strong> <em>dictionary-literal-items</em></p>
-<p><em>dictionary-literal-item</em> → <em>expression</em> <strong><code>:</code></strong> <em>expression</em></p>
-<p><em>playground-literal</em> → <strong><code>#colorLiteral</code></strong> <strong><code>(</code></strong> <strong><code>red</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>,</code></strong> <strong><code>green</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>,</code></strong> <strong><code>blue</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>,</code></strong> <strong><code>alpha</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
-<p><em>playground-literal</em> → <strong><code>#fileLiteral</code></strong> <strong><code>(</code></strong> <strong><code>resourceName</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
-<p><em>playground-literal</em> → <strong><code>#imageLiteral</code></strong> <strong><code>(</code></strong> <strong><code>resourceName</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
+<p><em>literal-expression</em> → <em>literal</em> \
+<em>literal-expression</em> → <em>array-literal</em> | <em>dictionary-literal</em> | <em>playground-literal</em></p>
+<p><em>array-literal</em> → <strong><code>[</code></strong> <em>array-literal-items</em><em>?</em> <strong><code>]</code></strong> \
+<em>array-literal-items</em> → <em>array-literal-item</em> <strong><code>,</code></strong><em>?</em> | <em>array-literal-item</em> <strong><code>,</code></strong> <em>array-literal-items</em> \
+<em>array-literal-item</em> → <em>expression</em></p>
+<p><em>dictionary-literal</em> → <strong><code>[</code></strong> <em>dictionary-literal-items</em> <strong><code>]</code></strong> | <strong><code>[</code></strong> <strong><code>:</code></strong> <strong><code>]</code></strong> \
+<em>dictionary-literal-items</em> → <em>dictionary-literal-item</em> <strong><code>,</code></strong><em>?</em> | <em>dictionary-literal-item</em> <strong><code>,</code></strong> <em>dictionary-literal-items</em> \
+<em>dictionary-literal-item</em> → <em>expression</em> <strong><code>:</code></strong> <em>expression</em></p>
+<p><em>playground-literal</em> → <strong><code>#colorLiteral</code></strong> <strong><code>(</code></strong> <strong><code>red</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>,</code></strong> <strong><code>green</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>,</code></strong> <strong><code>blue</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>,</code></strong> <strong><code>alpha</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>)</code></strong> \
+<em>playground-literal</em> → <strong><code>#fileLiteral</code></strong> <strong><code>(</code></strong> <strong><code>resourceName</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>)</code></strong> \
+<em>playground-literal</em> → <strong><code>#imageLiteral</code></strong> <strong><code>(</code></strong> <strong><code>resourceName</code></strong> <strong><code>:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
 <p>Grammar of a self expression:</p>
 <p><em>self-expression</em> → <strong><code>self</code></strong> | <em>self-method-expression</em> | <em>self-subscript-expression</em> | <em>self-initializer-expression</em></p>
-<p><em>self-method-expression</em> → <strong><code>self</code></strong> <strong><code>.</code></strong> <em>identifier</em></p>
-<p><em>self-subscript-expression</em> → <strong><code>self</code></strong> <strong><code>[</code></strong> <em>function-call-argument-list</em> <strong><code>]</code></strong></p>
-<p><em>self-initializer-expression</em> → <strong><code>self</code></strong> <strong><code>.</code></strong> <strong><code>init</code></strong></p>
+<p><em>self-method-expression</em> → <strong><code>self</code></strong> <strong><code>.</code></strong> <em>identifier</em> \
+<em>self-subscript-expression</em> → <strong><code>self</code></strong> <strong><code>[</code></strong> <em>function-call-argument-list</em> <strong><code>]</code></strong> \
+<em>self-initializer-expression</em> → <strong><code>self</code></strong> <strong><code>.</code></strong> <strong><code>init</code></strong></p>
 <p>Grammar of a superclass expression:</p>
 <p><em>superclass-expression</em> → <em>superclass-method-expression</em> | <em>superclass-subscript-expression</em> | <em>superclass-initializer-expression</em></p>
-<p><em>superclass-method-expression</em> → <strong><code>super</code></strong> <strong><code>.</code></strong> <em>identifier</em></p>
-<p><em>superclass-subscript-expression</em> → <strong><code>super</code></strong> <strong><code>[</code></strong> <em>function-call-argument-list</em> <strong><code>]</code></strong></p>
-<p><em>superclass-initializer-expression</em> → <strong><code>super</code></strong> <strong><code>.</code></strong> <strong><code>init</code></strong></p>
+<p><em>superclass-method-expression</em> → <strong><code>super</code></strong> <strong><code>.</code></strong> <em>identifier</em> \
+<em>superclass-subscript-expression</em> → <strong><code>super</code></strong> <strong><code>[</code></strong> <em>function-call-argument-list</em> <strong><code>]</code></strong> \
+<em>superclass-initializer-expression</em> → <strong><code>super</code></strong> <strong><code>.</code></strong> <strong><code>init</code></strong></p>
 <p>Grammar of a conditional expression:</p>
 <p><em>conditional-expression</em> → <em>if-expression</em> | <em>switch-expression</em></p>
-<p><em>if-expression</em> → <strong><code>if</code></strong> <em>condition-list</em> <strong><code>{</code></strong> <em>statement</em> <strong><code>}</code></strong> <em>if-expression-tail</em></p>
-<p><em>if-expression-tail</em> → <strong><code>else</code></strong> <em>if-expression</em></p>
-<p><em>if-expression-tail</em> → <strong><code>else</code></strong> <strong><code>{</code></strong> <em>statement</em> <strong><code>}</code></strong></p>
-<p><em>switch-expression</em> → <strong><code>switch</code></strong> <em>expression</em> <strong><code>{</code></strong> <em>switch-expression-cases</em> <strong><code>}</code></strong></p>
-<p><em>switch-expression-cases</em> → <em>switch-expression-case</em> <em>switch-expression-cases</em><em>?</em></p>
-<p><em>switch-expression-case</em> → <em>case-label</em> <em>statement</em></p>
-<p><em>switch-expression-case</em> → <em>default-label</em> <em>statement</em></p>
+<p><em>if-expression</em> → <strong><code>if</code></strong> <em>condition-list</em> <strong><code>{</code></strong> <em>statement</em> <strong><code>}</code></strong> <em>if-expression-tail</em> \
+<em>if-expression-tail</em> → <strong><code>else</code></strong> <em>if-expression</em> \
+<em>if-expression-tail</em> → <strong><code>else</code></strong> <strong><code>{</code></strong> <em>statement</em> <strong><code>}</code></strong></p>
+<p><em>switch-expression</em> → <strong><code>switch</code></strong> <em>expression</em> <strong><code>{</code></strong> <em>switch-expression-cases</em> <strong><code>}</code></strong> \
+<em>switch-expression-cases</em> → <em>switch-expression-case</em> <em>switch-expression-cases</em><em>?</em> \
+<em>switch-expression-case</em> → <em>case-label</em> <em>statement</em> \
+<em>switch-expression-case</em> → <em>default-label</em> <em>statement</em></p>
 <p>Grammar of a closure expression:</p>
 <p><em>closure-expression</em> → <strong><code>{</code></strong> <em>attributes</em><em>?</em> <em>closure-signature</em><em>?</em> <em>statements</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>closure-signature</em> → <em>capture-list</em><em>?</em> <em>closure-parameter-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>throws</code></strong><em>?</em> <em>function-result</em><em>?</em> <strong><code>in</code></strong></p>
-<p><em>closure-signature</em> → <em>capture-list</em> <strong><code>in</code></strong></p>
-<p><em>closure-parameter-clause</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>closure-parameter-list</em> <strong><code>)</code></strong> | <em>identifier-list</em></p>
-<p><em>closure-parameter-list</em> → <em>closure-parameter</em> | <em>closure-parameter</em> <strong><code>,</code></strong> <em>closure-parameter-list</em></p>
-<p><em>closure-parameter</em> → <em>closure-parameter-name</em> <em>type-annotation</em><em>?</em></p>
-<p><em>closure-parameter</em> → <em>closure-parameter-name</em> <em>type-annotation</em> <strong><code>...</code></strong></p>
-<p><em>closure-parameter-name</em> → <em>identifier</em></p>
-<p><em>capture-list</em> → <strong><code>[</code></strong> <em>capture-list-items</em> <strong><code>]</code></strong></p>
-<p><em>capture-list-items</em> → <em>capture-list-item</em> | <em>capture-list-item</em> <strong><code>,</code></strong> <em>capture-list-items</em></p>
-<p><em>capture-list-item</em> → <em>capture-specifier</em><em>?</em> <em>identifier</em></p>
-<p><em>capture-list-item</em> → <em>capture-specifier</em><em>?</em> <em>identifier</em> <strong><code>=</code></strong> <em>expression</em></p>
-<p><em>capture-list-item</em> → <em>capture-specifier</em><em>?</em> <em>self-expression</em></p>
-<p><em>capture-specifier</em> → <strong><code>weak</code></strong> | <strong><code>unowned</code></strong> | <strong><code>unowned(safe)</code></strong> | <strong><code>unowned(unsafe)</code></strong></p>
+<p><em>closure-signature</em> → <em>capture-list</em><em>?</em> <em>closure-parameter-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>throws</code></strong><em>?</em> <em>function-result</em><em>?</em> <strong><code>in</code></strong> \
+<em>closure-signature</em> → <em>capture-list</em> <strong><code>in</code></strong></p>
+<p><em>closure-parameter-clause</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>closure-parameter-list</em> <strong><code>)</code></strong> | <em>identifier-list</em> \
+<em>closure-parameter-list</em> → <em>closure-parameter</em> | <em>closure-parameter</em> <strong><code>,</code></strong> <em>closure-parameter-list</em> \
+<em>closure-parameter</em> → <em>closure-parameter-name</em> <em>type-annotation</em><em>?</em> \
+<em>closure-parameter</em> → <em>closure-parameter-name</em> <em>type-annotation</em> <strong><code>...</code></strong> \
+<em>closure-parameter-name</em> → <em>identifier</em></p>
+<p><em>capture-list</em> → <strong><code>[</code></strong> <em>capture-list-items</em> <strong><code>]</code></strong> \
+<em>capture-list-items</em> → <em>capture-list-item</em> | <em>capture-list-item</em> <strong><code>,</code></strong> <em>capture-list-items</em> \
+<em>capture-list-item</em> → <em>capture-specifier</em><em>?</em> <em>identifier</em> \
+<em>capture-list-item</em> → <em>capture-specifier</em><em>?</em> <em>identifier</em> <strong><code>=</code></strong> <em>expression</em> \
+<em>capture-list-item</em> → <em>capture-specifier</em><em>?</em> <em>self-expression</em> \
+<em>capture-specifier</em> → <strong><code>weak</code></strong> | <strong><code>unowned</code></strong> | <strong><code>unowned(safe)</code></strong> | <strong><code>unowned(unsafe)</code></strong></p>
 <p>Grammar of a implicit member expression:</p>
-<p><em>implicit-member-expression</em> → <strong><code>.</code></strong> <em>identifier</em></p>
-<p><em>implicit-member-expression</em> → <strong><code>.</code></strong> <em>identifier</em> <strong><code>.</code></strong> <em>postfix-expression</em></p>
+<p><em>implicit-member-expression</em> → <strong><code>.</code></strong> <em>identifier</em> \
+<em>implicit-member-expression</em> → <strong><code>.</code></strong> <em>identifier</em> <strong><code>.</code></strong> <em>postfix-expression</em></p>
 <p>Grammar of a parenthesized expression:</p>
 <p><em>parenthesized-expression</em> → <strong><code>(</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
 <p>Grammar of a tuple expression:</p>
-<p><em>tuple-expression</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>tuple-element</em> <strong><code>,</code></strong> <em>tuple-element-list</em> <strong><code>)</code></strong></p>
-<p><em>tuple-element-list</em> → <em>tuple-element</em> | <em>tuple-element</em> <strong><code>,</code></strong> <em>tuple-element-list</em></p>
-<p><em>tuple-element</em> → <em>expression</em> | <em>identifier</em> <strong><code>:</code></strong> <em>expression</em></p>
+<p><em>tuple-expression</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>tuple-element</em> <strong><code>,</code></strong> <em>tuple-element-list</em> <strong><code>)</code></strong> \
+<em>tuple-element-list</em> → <em>tuple-element</em> | <em>tuple-element</em> <strong><code>,</code></strong> <em>tuple-element-list</em> \
+<em>tuple-element</em> → <em>expression</em> | <em>identifier</em> <strong><code>:</code></strong> <em>expression</em></p>
 <p>Grammar of a wildcard expression:</p>
 <p><em>wildcard-expression</em> → <strong><code>_</code></strong></p>
 <p>Grammar of a macro-expansion expression:</p>
 <p><em>macro-expansion-expression</em> → <strong><code>#</code></strong> <em>identifier</em> <em>generic-argument-clause</em><em>?</em> <em>function-call-argument-clause</em><em>?</em> <em>trailing-closures</em><em>?</em></p>
 <p>Grammar of a key-path expression:</p>
-<p><em>key-path-expression</em> → <strong><code>\</code></strong> <em>type</em><em>?</em> <strong><code>.</code></strong> <em>key-path-components</em></p>
-<p><em>key-path-components</em> → <em>key-path-component</em> | <em>key-path-component</em> <strong><code>.</code></strong> <em>key-path-components</em></p>
-<p><em>key-path-component</em> → <em>identifier</em> <em>key-path-postfixes</em><em>?</em> | <em>key-path-postfixes</em></p>
-<p><em>key-path-postfixes</em> → <em>key-path-postfix</em> <em>key-path-postfixes</em><em>?</em></p>
-<p><em>key-path-postfix</em> → <strong><code>?</code></strong> | <strong><code>!</code></strong> | <strong><code>self</code></strong> | <strong><code>[</code></strong> <em>function-call-argument-list</em> <strong><code>]</code></strong></p>
+<p><em>key-path-expression</em> → <strong><code>\</code></strong> <em>type</em><em>?</em> <strong><code>.</code></strong> <em>key-path-components</em> \
+<em>key-path-components</em> → <em>key-path-component</em> | <em>key-path-component</em> <strong><code>.</code></strong> <em>key-path-components</em> \
+<em>key-path-component</em> → <em>identifier</em> <em>key-path-postfixes</em><em>?</em> | <em>key-path-postfixes</em></p>
+<p><em>key-path-postfixes</em> → <em>key-path-postfix</em> <em>key-path-postfixes</em><em>?</em> \
+<em>key-path-postfix</em> → <strong><code>?</code></strong> | <strong><code>!</code></strong> | <strong><code>self</code></strong> | <strong><code>[</code></strong> <em>function-call-argument-list</em> <strong><code>]</code></strong></p>
 <p>Grammar of a selector expression:</p>
-<p><em>selector-expression</em> → <strong><code>#selector</code></strong> <strong><code>(</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
-<p><em>selector-expression</em> → <strong><code>#selector</code></strong> <strong><code>(</code></strong> <strong><code>getter:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
-<p><em>selector-expression</em> → <strong><code>#selector</code></strong> <strong><code>(</code></strong> <strong><code>setter:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
+<p><em>selector-expression</em> → <strong><code>#selector</code></strong> <strong><code>(</code></strong> <em>expression</em> <strong><code>)</code></strong> \
+<em>selector-expression</em> → <strong><code>#selector</code></strong> <strong><code>(</code></strong> <strong><code>getter:</code></strong> <em>expression</em> <strong><code>)</code></strong> \
+<em>selector-expression</em> → <strong><code>#selector</code></strong> <strong><code>(</code></strong> <strong><code>setter:</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
 <p>Grammar of a key-path string expression:</p>
 <p><em>key-path-string-expression</em> → <strong><code>#keyPath</code></strong> <strong><code>(</code></strong> <em>expression</em> <strong><code>)</code></strong></p>
 <p>Grammar of a postfix expression:</p>
-<p><em>postfix-expression</em> → <em>primary-expression</em></p>
-<p><em>postfix-expression</em> → <em>postfix-expression</em> <em>postfix-operator</em></p>
-<p><em>postfix-expression</em> → <em>function-call-expression</em></p>
-<p><em>postfix-expression</em> → <em>initializer-expression</em></p>
-<p><em>postfix-expression</em> → <em>explicit-member-expression</em></p>
-<p><em>postfix-expression</em> → <em>postfix-self-expression</em></p>
-<p><em>postfix-expression</em> → <em>subscript-expression</em></p>
-<p><em>postfix-expression</em> → <em>forced-value-expression</em></p>
-<p><em>postfix-expression</em> → <em>optional-chaining-expression</em></p>
+<p><em>postfix-expression</em> → <em>primary-expression</em> \
+<em>postfix-expression</em> → <em>postfix-expression</em> <em>postfix-operator</em> \
+<em>postfix-expression</em> → <em>function-call-expression</em> \
+<em>postfix-expression</em> → <em>initializer-expression</em> \
+<em>postfix-expression</em> → <em>explicit-member-expression</em> \
+<em>postfix-expression</em> → <em>postfix-self-expression</em> \
+<em>postfix-expression</em> → <em>subscript-expression</em> \
+<em>postfix-expression</em> → <em>forced-value-expression</em> \
+<em>postfix-expression</em> → <em>optional-chaining-expression</em></p>
 <p>Grammar of a function call expression:</p>
-<p><em>function-call-expression</em> → <em>postfix-expression</em> <em>function-call-argument-clause</em></p>
-<p><em>function-call-expression</em> → <em>postfix-expression</em> <em>function-call-argument-clause</em><em>?</em> <em>trailing-closures</em></p>
-<p><em>function-call-argument-clause</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>function-call-argument-list</em> <strong><code>)</code></strong></p>
-<p><em>function-call-argument-list</em> → <em>function-call-argument</em> | <em>function-call-argument</em> <strong><code>,</code></strong> <em>function-call-argument-list</em></p>
-<p><em>function-call-argument</em> → <em>expression</em> | <em>identifier</em> <strong><code>:</code></strong> <em>expression</em></p>
-<p><em>function-call-argument</em> → <em>operator</em> | <em>identifier</em> <strong><code>:</code></strong> <em>operator</em></p>
-<p><em>trailing-closures</em> → <em>closure-expression</em> <em>labeled-trailing-closures</em><em>?</em></p>
-<p><em>labeled-trailing-closures</em> → <em>labeled-trailing-closure</em> <em>labeled-trailing-closures</em><em>?</em></p>
-<p><em>labeled-trailing-closure</em> → <em>identifier</em> <strong><code>:</code></strong> <em>closure-expression</em></p>
+<p><em>function-call-expression</em> → <em>postfix-expression</em> <em>function-call-argument-clause</em> \
+<em>function-call-expression</em> → <em>postfix-expression</em> <em>function-call-argument-clause</em><em>?</em> <em>trailing-closures</em></p>
+<p><em>function-call-argument-clause</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>function-call-argument-list</em> <strong><code>)</code></strong> \
+<em>function-call-argument-list</em> → <em>function-call-argument</em> | <em>function-call-argument</em> <strong><code>,</code></strong> <em>function-call-argument-list</em> \
+<em>function-call-argument</em> → <em>expression</em> | <em>identifier</em> <strong><code>:</code></strong> <em>expression</em> \
+<em>function-call-argument</em> → <em>operator</em> | <em>identifier</em> <strong><code>:</code></strong> <em>operator</em></p>
+<p><em>trailing-closures</em> → <em>closure-expression</em> <em>labeled-trailing-closures</em><em>?</em> \
+<em>labeled-trailing-closures</em> → <em>labeled-trailing-closure</em> <em>labeled-trailing-closures</em><em>?</em> \
+<em>labeled-trailing-closure</em> → <em>identifier</em> <strong><code>:</code></strong> <em>closure-expression</em></p>
 <p>Grammar of an initializer expression:</p>
-<p><em>initializer-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <strong><code>init</code></strong></p>
-<p><em>initializer-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <strong><code>init</code></strong> <strong><code>(</code></strong> <em>argument-names</em> <strong><code>)</code></strong></p>
+<p><em>initializer-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <strong><code>init</code></strong> \
+<em>initializer-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <strong><code>init</code></strong> <strong><code>(</code></strong> <em>argument-names</em> <strong><code>)</code></strong></p>
 <p>Grammar of an explicit member expression:</p>
-<p><em>explicit-member-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <em>decimal-digits</em></p>
-<p><em>explicit-member-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <em>identifier</em> <em>generic-argument-clause</em><em>?</em></p>
-<p><em>explicit-member-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <em>identifier</em> <strong><code>(</code></strong> <em>argument-names</em> <strong><code>)</code></strong></p>
-<p><em>explicit-member-expression</em> → <em>postfix-expression</em> <em>conditional-compilation-block</em></p>
-<p><em>argument-names</em> → <em>argument-name</em> <em>argument-names</em><em>?</em></p>
-<p><em>argument-name</em> → <em>identifier</em> <strong><code>:</code></strong></p>
+<p><em>explicit-member-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <em>decimal-digits</em> \
+<em>explicit-member-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <em>identifier</em> <em>generic-argument-clause</em><em>?</em> \
+<em>explicit-member-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <em>identifier</em> <strong><code>(</code></strong> <em>argument-names</em> <strong><code>)</code></strong> \
+<em>explicit-member-expression</em> → <em>postfix-expression</em> <em>conditional-compilation-block</em></p>
+<p><em>argument-names</em> → <em>argument-name</em> <em>argument-names</em><em>?</em> \
+<em>argument-name</em> → <em>identifier</em> <strong><code>:</code></strong></p>
 <p>Grammar of a postfix self expression:</p>
 <p><em>postfix-self-expression</em> → <em>postfix-expression</em> <strong><code>.</code></strong> <strong><code>self</code></strong></p>
 <p>Grammar of a subscript expression:</p>
@@ -1129,68 +1128,68 @@
 <h2 id="statements文">Statements(文)</h2>
 <blockquote>
 <p>Grammar of a statement:</p>
-<p><em>statement</em> → <em>expression</em> <strong><code>;</code></strong><em>?</em></p>
-<p><em>statement</em> → <em>declaration</em> <strong><code>;</code></strong><em>?</em></p>
-<p><em>statement</em> → <em>loop-statement</em> <strong><code>;</code></strong><em>?</em></p>
-<p><em>statement</em> → <em>branch-statement</em> <strong><code>;</code></strong><em>?</em></p>
-<p><em>statement</em> → <em>labeled-statement</em> <strong><code>;</code></strong><em>?</em></p>
-<p><em>statement</em> → <em>control-transfer-statement</em> <strong><code>;</code></strong><em>?</em></p>
-<p><em>statement</em> → <em>defer-statement</em> <strong><code>;</code></strong><em>?</em></p>
-<p><em>statement</em> → <em>do-statement</em> <strong><code>;</code></strong><em>?</em></p>
-<p><em>statement</em> → <em>compiler-control-statement</em></p>
-<p><em>statements</em> → <em>statement</em> <em>statements</em><em>?</em></p>
+<p><em>statement</em> → <em>expression</em> <strong><code>;</code></strong><em>?</em> \
+<em>statement</em> → <em>declaration</em> <strong><code>;</code></strong><em>?</em> \
+<em>statement</em> → <em>loop-statement</em> <strong><code>;</code></strong><em>?</em> \
+<em>statement</em> → <em>branch-statement</em> <strong><code>;</code></strong><em>?</em> \
+<em>statement</em> → <em>labeled-statement</em> <strong><code>;</code></strong><em>?</em> \
+<em>statement</em> → <em>control-transfer-statement</em> <strong><code>;</code></strong><em>?</em> \
+<em>statement</em> → <em>defer-statement</em> <strong><code>;</code></strong><em>?</em> \
+<em>statement</em> → <em>do-statement</em> <strong><code>;</code></strong><em>?</em> \
+<em>statement</em> → <em>compiler-control-statement</em> \
+<em>statements</em> → <em>statement</em> <em>statements</em><em>?</em></p>
 <p>Grammar of a loop statement:</p>
-<p><em>loop-statement</em> → <em>for-in-statement</em></p>
-<p><em>loop-statement</em> → <em>while-statement</em></p>
-<p><em>loop-statement</em> → <em>repeat-while-statement</em></p>
+<p><em>loop-statement</em> → <em>for-in-statement</em> \
+<em>loop-statement</em> → <em>while-statement</em> \
+<em>loop-statement</em> → <em>repeat-while-statement</em></p>
 <p>Grammar of a for-in statement:</p>
 <p><em>for-in-statement</em> → <strong><code>for</code></strong> <strong><code>case</code></strong><em>?</em> <em>pattern</em> <strong><code>in</code></strong> <em>expression</em> <em>where-clause</em><em>?</em> <em>code-block</em></p>
 <p>Grammar of a while statement:</p>
 <p><em>while-statement</em> → <strong><code>while</code></strong> <em>condition-list</em> <em>code-block</em></p>
-<p><em>condition-list</em> → <em>condition</em> | <em>condition</em> <strong><code>,</code></strong> <em>condition-list</em></p>
-<p><em>condition</em> → <em>expression</em> | <em>availability-condition</em> | <em>case-condition</em> | <em>optional-binding-condition</em></p>
-<p><em>case-condition</em> → <strong><code>case</code></strong> <em>pattern</em> <em>initializer</em></p>
-<p><em>optional-binding-condition</em> → <strong><code>let</code></strong> <em>pattern</em> <em>initializer</em><em>?</em> | <strong><code>var</code></strong> <em>pattern</em> <em>initializer</em><em>?</em></p>
+<p><em>condition-list</em> → <em>condition</em> | <em>condition</em> <strong><code>,</code></strong> <em>condition-list</em> \
+<em>condition</em> → <em>expression</em> | <em>availability-condition</em> | <em>case-condition</em> | <em>optional-binding-condition</em></p>
+<p><em>case-condition</em> → <strong><code>case</code></strong> <em>pattern</em> <em>initializer</em> \
+<em>optional-binding-condition</em> → <strong><code>let</code></strong> <em>pattern</em> <em>initializer</em><em>?</em> | <strong><code>var</code></strong> <em>pattern</em> <em>initializer</em><em>?</em></p>
 <p>Grammar of a repeat-while statement:</p>
 <p><em>repeat-while-statement</em> → <strong><code>repeat</code></strong> <em>code-block</em> <strong><code>while</code></strong> <em>expression</em></p>
 <p>Grammar of a branch statement:</p>
-<p><em>branch-statement</em> → <em>if-statement</em></p>
-<p><em>branch-statement</em> → <em>guard-statement</em></p>
-<p><em>branch-statement</em> → <em>switch-statement</em></p>
+<p><em>branch-statement</em> → <em>if-statement</em> \
+<em>branch-statement</em> → <em>guard-statement</em> \
+<em>branch-statement</em> → <em>switch-statement</em></p>
 <p>Grammar of an if statement:</p>
-<p><em>if-statement</em> → <strong><code>if</code></strong> <em>condition-list</em> <em>code-block</em> <em>else-clause</em><em>?</em></p>
-<p><em>else-clause</em> → <strong><code>else</code></strong> <em>code-block</em> | <strong><code>else</code></strong> <em>if-statement</em></p>
+<p><em>if-statement</em> → <strong><code>if</code></strong> <em>condition-list</em> <em>code-block</em> <em>else-clause</em><em>?</em> \
+<em>else-clause</em> → <strong><code>else</code></strong> <em>code-block</em> | <strong><code>else</code></strong> <em>if-statement</em></p>
 <p>Grammar of a guard statement:</p>
 <p><em>guard-statement</em> → <strong><code>guard</code></strong> <em>condition-list</em> <strong><code>else</code></strong> <em>code-block</em></p>
 <p>Grammar of a switch statement:</p>
-<p><em>switch-statement</em> → <strong><code>switch</code></strong> <em>expression</em> <strong><code>{</code></strong> <em>switch-cases</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>switch-cases</em> → <em>switch-case</em> <em>switch-cases</em><em>?</em></p>
-<p><em>switch-case</em> → <em>case-label</em> <em>statements</em></p>
-<p><em>switch-case</em> → <em>default-label</em> <em>statements</em></p>
-<p><em>switch-case</em> → <em>conditional-switch-case</em></p>
-<p><em>case-label</em> → <em>attributes</em><em>?</em> <strong><code>case</code></strong> <em>case-item-list</em> <strong><code>:</code></strong></p>
-<p><em>case-item-list</em> → <em>pattern</em> <em>where-clause</em><em>?</em> | <em>pattern</em> <em>where-clause</em><em>?</em> <strong><code>,</code></strong> <em>case-item-list</em></p>
-<p><em>default-label</em> → <em>attributes</em><em>?</em> <strong><code>default</code></strong> <strong><code>:</code></strong></p>
-<p><em>where-clause</em> → <strong><code>where</code></strong> <em>where-expression</em></p>
-<p><em>where-expression</em> → <em>expression</em></p>
-<p><em>conditional-switch-case</em> → <em>switch-if-directive-clause</em> <em>switch-elseif-directive-clauses</em><em>?</em> <em>switch-else-directive-clause</em><em>?</em> <em>endif-directive</em></p>
-<p><em>switch-if-directive-clause</em> → <em>if-directive</em> <em>compilation-condition</em> <em>switch-cases</em><em>?</em></p>
-<p><em>switch-elseif-directive-clauses</em> → <em>elseif-directive-clause</em> <em>switch-elseif-directive-clauses</em><em>?</em></p>
-<p><em>switch-elseif-directive-clause</em> → <em>elseif-directive</em> <em>compilation-condition</em> <em>switch-cases</em><em>?</em></p>
-<p><em>switch-else-directive-clause</em> → <em>else-directive</em> <em>switch-cases</em><em>?</em></p>
+<p><em>switch-statement</em> → <strong><code>switch</code></strong> <em>expression</em> <strong><code>{</code></strong> <em>switch-cases</em><em>?</em> <strong><code>}</code></strong> \
+<em>switch-cases</em> → <em>switch-case</em> <em>switch-cases</em><em>?</em> \
+<em>switch-case</em> → <em>case-label</em> <em>statements</em> \
+<em>switch-case</em> → <em>default-label</em> <em>statements</em> \
+<em>switch-case</em> → <em>conditional-switch-case</em></p>
+<p><em>case-label</em> → <em>attributes</em><em>?</em> <strong><code>case</code></strong> <em>case-item-list</em> <strong><code>:</code></strong> \
+<em>case-item-list</em> → <em>pattern</em> <em>where-clause</em><em>?</em> | <em>pattern</em> <em>where-clause</em><em>?</em> <strong><code>,</code></strong> <em>case-item-list</em> \
+<em>default-label</em> → <em>attributes</em><em>?</em> <strong><code>default</code></strong> <strong><code>:</code></strong></p>
+<p><em>where-clause</em> → <strong><code>where</code></strong> <em>where-expression</em> \
+<em>where-expression</em> → <em>expression</em></p>
+<p><em>conditional-switch-case</em> → <em>switch-if-directive-clause</em> <em>switch-elseif-directive-clauses</em><em>?</em> <em>switch-else-directive-clause</em><em>?</em> <em>endif-directive</em> \
+<em>switch-if-directive-clause</em> → <em>if-directive</em> <em>compilation-condition</em> <em>switch-cases</em><em>?</em> \
+<em>switch-elseif-directive-clauses</em> → <em>elseif-directive-clause</em> <em>switch-elseif-directive-clauses</em><em>?</em> \
+<em>switch-elseif-directive-clause</em> → <em>elseif-directive</em> <em>compilation-condition</em> <em>switch-cases</em><em>?</em> \
+<em>switch-else-directive-clause</em> → <em>else-directive</em> <em>switch-cases</em><em>?</em></p>
 <p>Grammar of a labeled statement:</p>
-<p><em>labeled-statement</em> → <em>statement-label</em> <em>loop-statement</em></p>
-<p><em>labeled-statement</em> → <em>statement-label</em> <em>if-statement</em></p>
-<p><em>labeled-statement</em> → <em>statement-label</em> <em>switch-statement</em></p>
-<p><em>labeled-statement</em> → <em>statement-label</em> <em>do-statement</em></p>
-<p><em>statement-label</em> → <em>label-name</em> <strong><code>:</code></strong></p>
-<p><em>label-name</em> → <em>identifier</em></p>
+<p><em>labeled-statement</em> → <em>statement-label</em> <em>loop-statement</em> \
+<em>labeled-statement</em> → <em>statement-label</em> <em>if-statement</em> \
+<em>labeled-statement</em> → <em>statement-label</em> <em>switch-statement</em> \
+<em>labeled-statement</em> → <em>statement-label</em> <em>do-statement</em></p>
+<p><em>statement-label</em> → <em>label-name</em> <strong><code>:</code></strong> \
+<em>label-name</em> → <em>identifier</em></p>
 <p>Grammar of a control transfer statement:</p>
-<p><em>control-transfer-statement</em> → <em>break-statement</em></p>
-<p><em>control-transfer-statement</em> → <em>continue-statement</em></p>
-<p><em>control-transfer-statement</em> → <em>fallthrough-statement</em></p>
-<p><em>control-transfer-statement</em> → <em>return-statement</em></p>
-<p><em>control-transfer-statement</em> → <em>throw-statement</em></p>
+<p><em>control-transfer-statement</em> → <em>break-statement</em> \
+<em>control-transfer-statement</em> → <em>continue-statement</em> \
+<em>control-transfer-statement</em> → <em>fallthrough-statement</em> \
+<em>control-transfer-statement</em> → <em>return-statement</em> \
+<em>control-transfer-statement</em> → <em>throw-statement</em></p>
 <p>Grammar of a break statement:</p>
 <p><em>break-statement</em> → <strong><code>break</code></strong> <em>label-name</em><em>?</em></p>
 <p>Grammar of a continue statement:</p>
@@ -1204,285 +1203,286 @@
 <p>Grammar of a defer statement:</p>
 <p><em>defer-statement</em> → <strong><code>defer</code></strong> <em>code-block</em></p>
 <p>Grammar of a do statement:</p>
-<p><em>do-statement</em> → <strong><code>do</code></strong> <em>code-block</em> <em>catch-clauses</em><em>?</em></p>
-<p><em>catch-clauses</em> → <em>catch-clause</em> <em>catch-clauses</em><em>?</em></p>
-<p><em>catch-clause</em> → <strong><code>catch</code></strong> <em>catch-pattern-list</em><em>?</em> <em>code-block</em></p>
-<p><em>catch-pattern-list</em> → <em>catch-pattern</em> | <em>catch-pattern</em> <strong><code>,</code></strong> <em>catch-pattern-list</em></p>
-<p><em>catch-pattern</em> → <em>pattern</em> <em>where-clause</em><em>?</em></p>
+<p><em>do-statement</em> → <strong><code>do</code></strong> <em>code-block</em> <em>catch-clauses</em><em>?</em> \
+<em>catch-clauses</em> → <em>catch-clause</em> <em>catch-clauses</em><em>?</em> \
+<em>catch-clause</em> → <strong><code>catch</code></strong> <em>catch-pattern-list</em><em>?</em> <em>code-block</em> \
+<em>catch-pattern-list</em> → <em>catch-pattern</em> | <em>catch-pattern</em> <strong><code>,</code></strong> <em>catch-pattern-list</em> \
+<em>catch-pattern</em> → <em>pattern</em> <em>where-clause</em><em>?</em></p>
 <p>Grammar of a compiler control statement:</p>
-<p><em>compiler-control-statement</em> → <em>conditional-compilation-block</em></p>
-<p><em>compiler-control-statement</em> → <em>line-control-statement</em></p>
-<p><em>compiler-control-statement</em> → <em>diagnostic-statement</em></p>
+<p><em>compiler-control-statement</em> → <em>conditional-compilation-block</em> \
+<em>compiler-control-statement</em> → <em>line-control-statement</em> \
+<em>compiler-control-statement</em> → <em>diagnostic-statement</em></p>
 <p>Grammar of a conditional compilation block:</p>
 <p><em>conditional-compilation-block</em> → <em>if-directive-clause</em> <em>elseif-directive-clauses</em><em>?</em> <em>else-directive-clause</em><em>?</em> <em>endif-directive</em></p>
-<p><em>if-directive-clause</em> → <em>if-directive</em> <em>compilation-condition</em> <em>statements</em><em>?</em></p>
-<p><em>elseif-directive-clauses</em> → <em>elseif-directive-clause</em> <em>elseif-directive-clauses</em><em>?</em></p>
-<p><em>elseif-directive-clause</em> → <em>elseif-directive</em> <em>compilation-condition</em> <em>statements</em><em>?</em></p>
-<p><em>else-directive-clause</em> → <em>else-directive</em> <em>statements</em><em>?</em></p>
-<p><em>if-directive</em> → <strong><code>#if</code></strong></p>
-<p><em>elseif-directive</em> → <strong><code>#elseif</code></strong></p>
-<p><em>else-directive</em> → <strong><code>#else</code></strong></p>
-<p><em>endif-directive</em> → <strong><code>#endif</code></strong></p>
-<p><em>compilation-condition</em> → <em>platform-condition</em></p>
-<p><em>compilation-condition</em> → <em>identifier</em></p>
-<p><em>compilation-condition</em> → <em>boolean-literal</em></p>
-<p><em>compilation-condition</em> → <strong><code>(</code></strong> <em>compilation-condition</em> <strong><code>)</code></strong></p>
-<p><em>compilation-condition</em> → <strong><code>!</code></strong> <em>compilation-condition</em></p>
-<p><em>compilation-condition</em> → <em>compilation-condition</em> <strong><code>&amp;&amp;</code></strong> <em>compilation-condition</em></p>
-<p><em>compilation-condition</em> → <em>compilation-condition</em> <strong><code>||</code></strong> <em>compilation-condition</em></p>
-<p><em>platform-condition</em> → <strong><code>os</code></strong> <strong><code>(</code></strong> <em>operating-system</em> <strong><code>)</code></strong></p>
-<p><em>platform-condition</em> → <strong><code>arch</code></strong> <strong><code>(</code></strong> <em>architecture</em> <strong><code>)</code></strong></p>
-<p><em>platform-condition</em> → <strong><code>swift</code></strong> <strong><code>(</code></strong> <strong><code>&gt;=</code></strong> <em>swift-version</em> <strong><code>)</code></strong> | <strong><code>swift</code></strong> <strong><code>(</code></strong> <strong><code>&lt;</code></strong> <em>swift-version</em> <strong><code>)</code></strong></p>
-<p><em>platform-condition</em> → <strong><code>compiler</code></strong> <strong><code>(</code></strong> <strong><code>&gt;=</code></strong> <em>swift-version</em> <strong><code>)</code></strong> | <strong><code>compiler</code></strong> <strong><code>(</code></strong> <strong><code>&lt;</code></strong> <em>swift-version</em> <strong><code>)</code></strong></p>
-<p><em>platform-condition</em> → <strong><code>canImport</code></strong> <strong><code>(</code></strong> <em>import-path</em> <strong><code>)</code></strong></p>
-<p><em>platform-condition</em> → <strong><code>targetEnvironment</code></strong> <strong><code>(</code></strong> <em>environment</em> <strong><code>)</code></strong></p>
-<p><em>operating-system</em> → <strong><code>macOS</code></strong> | <strong><code>iOS</code></strong> | <strong><code>watchOS</code></strong> | <strong><code>tvOS</code></strong> | <strong><code>Linux</code></strong> | <strong><code>Windows</code></strong></p>
-<p><em>architecture</em> → <strong><code>i386</code></strong> | <strong><code>x86_64</code></strong> | <strong><code>arm</code></strong> | <strong><code>arm64</code></strong></p>
-<p><em>swift-version</em> → <em>decimal-digits</em> <em>swift-version-continuation</em><em>?</em></p>
-<p><em>swift-version-continuation</em> → <strong><code>.</code></strong> <em>decimal-digits</em> <em>swift-version-continuation</em><em>?</em></p>
-<p><em>environment</em> → <strong><code>simulator</code></strong> | <strong><code>macCatalyst</code></strong></p>
+<p><em>if-directive-clause</em> → <em>if-directive</em> <em>compilation-condition</em> <em>statements</em><em>?</em> \
+<em>elseif-directive-clauses</em> → <em>elseif-directive-clause</em> <em>elseif-directive-clauses</em><em>?</em> \
+<em>elseif-directive-clause</em> → <em>elseif-directive</em> <em>compilation-condition</em> <em>statements</em><em>?</em> \
+<em>else-directive-clause</em> → <em>else-directive</em> <em>statements</em><em>?</em> \
+<em>if-directive</em> → <strong><code>#if</code></strong> \
+<em>elseif-directive</em> → <strong><code>#elseif</code></strong> \
+<em>else-directive</em> → <strong><code>#else</code></strong> \
+<em>endif-directive</em> → <strong><code>#endif</code></strong></p>
+<p><em>compilation-condition</em> → <em>platform-condition</em> \
+<em>compilation-condition</em> → <em>identifier</em> \
+<em>compilation-condition</em> → <em>boolean-literal</em> \
+<em>compilation-condition</em> → <strong><code>(</code></strong> <em>compilation-condition</em> <strong><code>)</code></strong> \
+<em>compilation-condition</em> → <strong><code>!</code></strong> <em>compilation-condition</em> \
+<em>compilation-condition</em> → <em>compilation-condition</em> <strong><code>&amp;&amp;</code></strong> <em>compilation-condition</em> \
+<em>compilation-condition</em> → <em>compilation-condition</em> <strong><code>||</code></strong> <em>compilation-condition</em></p>
+<p><em>platform-condition</em> → <strong><code>os</code></strong> <strong><code>(</code></strong> <em>operating-system</em> <strong><code>)</code></strong> \
+<em>platform-condition</em> → <strong><code>arch</code></strong> <strong><code>(</code></strong> <em>architecture</em> <strong><code>)</code></strong> \
+<em>platform-condition</em> → <strong><code>swift</code></strong> <strong><code>(</code></strong> <strong><code>&gt;=</code></strong> <em>swift-version</em> <strong><code>)</code></strong> | <strong><code>swift</code></strong> <strong><code>(</code></strong> <strong><code>&lt;</code></strong> <em>swift-version</em> <strong><code>)</code></strong> \
+<em>platform-condition</em> → <strong><code>compiler</code></strong> <strong><code>(</code></strong> <strong><code>&gt;=</code></strong> <em>swift-version</em> <strong><code>)</code></strong> | <strong><code>compiler</code></strong> <strong><code>(</code></strong> <strong><code>&lt;</code></strong> <em>swift-version</em> <strong><code>)</code></strong> \
+<em>platform-condition</em> → <strong><code>canImport</code></strong> <strong><code>(</code></strong> <em>import-path</em> <strong><code>)</code></strong> \
+<em>platform-condition</em> → <strong><code>targetEnvironment</code></strong> <strong><code>(</code></strong> <em>environment</em> <strong><code>)</code></strong></p>
+<p><em>operating-system</em> → <strong><code>macOS</code></strong> | <strong><code>iOS</code></strong> | <strong><code>watchOS</code></strong> | <strong><code>tvOS</code></strong> | <strong><code>Linux</code></strong> | <strong><code>Windows</code></strong> \
+<em>architecture</em> → <strong><code>i386</code></strong> | <strong><code>x86_64</code></strong> | <strong><code>arm</code></strong> | <strong><code>arm64</code></strong> \
+<em>swift-version</em> → <em>decimal-digits</em> <em>swift-version-continuation</em><em>?</em> \
+<em>swift-version-continuation</em> → <strong><code>.</code></strong> <em>decimal-digits</em> <em>swift-version-continuation</em><em>?</em> \
+<em>environment</em> → <strong><code>simulator</code></strong> | <strong><code>macCatalyst</code></strong></p>
 <p>Grammar of a line control statement:</p>
-<p><em>line-control-statement</em> → <strong><code>#sourceLocation</code></strong> <strong><code>(</code></strong> <strong><code>file:</code></strong> <em>file-path</em> <strong><code>,</code></strong> <strong><code>line:</code></strong> <em>line-number</em> <strong><code>)</code></strong></p>
-<p><em>line-control-statement</em> → <strong><code>#sourceLocation</code></strong> <strong><code>(</code></strong> <strong><code>)</code></strong></p>
-<p><em>line-number</em> → A decimal integer greater than zero</p>
-<p><em>file-path</em> → <em>static-string-literal</em></p>
+<p><em>line-control-statement</em> → <strong><code>#sourceLocation</code></strong> <strong><code>(</code></strong> <strong><code>file:</code></strong> <em>file-path</em> <strong><code>,</code></strong> <strong><code>line:</code></strong> <em>line-number</em> <strong><code>)</code></strong> \
+<em>line-control-statement</em> → <strong><code>#sourceLocation</code></strong> <strong><code>(</code></strong> <strong><code>)</code></strong> \
+<em>line-number</em> → A decimal integer greater than zero \
+<em>file-path</em> → <em>static-string-literal</em></p>
 <p>Grammar of an availability condition:</p>
-<p><em>availability-condition</em> → <strong><code>#available</code></strong> <strong><code>(</code></strong> <em>availability-arguments</em> <strong><code>)</code></strong></p>
-<p><em>availability-condition</em> → <strong><code>#unavailable</code></strong> <strong><code>(</code></strong> <em>availability-arguments</em> <strong><code>)</code></strong></p>
-<p><em>availability-arguments</em> → <em>availability-argument</em> | <em>availability-argument</em> <strong><code>,</code></strong> <em>availability-arguments</em></p>
-<p><em>availability-argument</em> → <em>platform-name</em> <em>platform-version</em></p>
-<p><em>availability-argument</em> → <strong><code>*</code></strong></p>
-<p><em>platform-name</em> → <strong><code>iOS</code></strong> | <strong><code>iOSApplicationExtension</code></strong></p>
-<p><em>platform-name</em> → <strong><code>macOS</code></strong> | <strong><code>macOSApplicationExtension</code></strong></p>
-<p><em>platform-name</em> → <strong><code>macCatalyst</code></strong> | <strong><code>macCatalystApplicationExtension</code></strong></p>
-<p><em>platform-name</em> → <strong><code>watchOS</code></strong> | <strong><code>watchOSApplicationExtension</code></strong></p>
-<p><em>platform-name</em> → <strong><code>tvOS</code></strong> | <strong><code>tvOSApplicationExtension</code></strong></p>
-<p><em>platform-version</em> → <em>decimal-digits</em></p>
-<p><em>platform-version</em> → <em>decimal-digits</em> <strong><code>.</code></strong> <em>decimal-digits</em></p>
-<p><em>platform-version</em> → <em>decimal-digits</em> <strong><code>.</code></strong> <em>decimal-digits</em> <strong><code>.</code></strong> <em>decimal-digits</em></p>
+<p><em>availability-condition</em> → <strong><code>#available</code></strong> <strong><code>(</code></strong> <em>availability-arguments</em> <strong><code>)</code></strong> \
+<em>availability-condition</em> → <strong><code>#unavailable</code></strong> <strong><code>(</code></strong> <em>availability-arguments</em> <strong><code>)</code></strong> \
+<em>availability-arguments</em> → <em>availability-argument</em> | <em>availability-argument</em> <strong><code>,</code></strong> <em>availability-arguments</em> \
+<em>availability-argument</em> → <em>platform-name</em> <em>platform-version</em> \
+<em>availability-argument</em> → <strong><code>*</code></strong></p>
+<p><em>platform-name</em> → <strong><code>iOS</code></strong> | <strong><code>iOSApplicationExtension</code></strong> \
+<em>platform-name</em> → <strong><code>macOS</code></strong> | <strong><code>macOSApplicationExtension</code></strong> \
+<em>platform-name</em> → <strong><code>macCatalyst</code></strong> | <strong><code>macCatalystApplicationExtension</code></strong> \
+<em>platform-name</em> → <strong><code>watchOS</code></strong> | <strong><code>watchOSApplicationExtension</code></strong> \
+<em>platform-name</em> → <strong><code>tvOS</code></strong> | <strong><code>tvOSApplicationExtension</code></strong> \
+<em>platform-name</em> → <strong><code>visionOS</code></strong> \
+<em>platform-version</em> → <em>decimal-digits</em> \
+<em>platform-version</em> → <em>decimal-digits</em> <strong><code>.</code></strong> <em>decimal-digits</em> \
+<em>platform-version</em> → <em>decimal-digits</em> <strong><code>.</code></strong> <em>decimal-digits</em> <strong><code>.</code></strong> <em>decimal-digits</em></p>
 </blockquote>
-<h2 id="declardeclarations宣言ations">DeclarDeclarations(宣言)ations</h2>
+<h2 id="declarations宣言">Declarations(宣言)</h2>
 <blockquote>
 <p>Grammar of a declaration:</p>
-<p><em>declaration</em> → <em>import-declaration</em></p>
-<p><em>declaration</em> → <em>constant-declaration</em></p>
-<p><em>declaration</em> → <em>variable-declaration</em></p>
-<p><em>declaration</em> → <em>typealias-declaration</em></p>
-<p><em>declaration</em> → <em>function-declaration</em></p>
-<p><em>declaration</em> → <em>enum-declaration</em></p>
-<p><em>declaration</em> → <em>struct-declaration</em></p>
-<p><em>declaration</em> → <em>class-declaration</em></p>
-<p><em>declaration</em> → <em>actor-declaration</em></p>
-<p><em>declaration</em> → <em>protocol-declaration</em></p>
-<p><em>declaration</em> → <em>initializer-declaration</em></p>
-<p><em>declaration</em> → <em>deinitializer-declaration</em></p>
-<p><em>declaration</em> → <em>extension-declaration</em></p>
-<p><em>declaration</em> → <em>subscript-declaration</em></p>
-<p><em>declaration</em> → <em>operator-declaration</em></p>
-<p><em>declaration</em> → <em>precedence-group-declaration</em></p>
-<p><em>declarations</em> → <em>declaration</em> <em>declarations</em><em>?</em></p>
+<p><em>declaration</em> → <em>import-declaration</em> \
+<em>declaration</em> → <em>constant-declaration</em> \
+<em>declaration</em> → <em>variable-declaration</em> \
+<em>declaration</em> → <em>typealias-declaration</em> \
+<em>declaration</em> → <em>function-declaration</em> \
+<em>declaration</em> → <em>enum-declaration</em> \
+<em>declaration</em> → <em>struct-declaration</em> \
+<em>declaration</em> → <em>class-declaration</em> \
+<em>declaration</em> → <em>actor-declaration</em> \
+<em>declaration</em> → <em>protocol-declaration</em> \
+<em>declaration</em> → <em>initializer-declaration</em> \
+<em>declaration</em> → <em>deinitializer-declaration</em> \
+<em>declaration</em> → <em>extension-declaration</em> \
+<em>declaration</em> → <em>subscript-declaration</em> \
+<em>declaration</em> → <em>operator-declaration</em> \
+<em>declaration</em> → <em>precedence-group-declaration</em> \
+<em>declarations</em> → <em>declaration</em> <em>declarations</em><em>?</em></p>
 <p>Grammar of a top-level declaration:</p>
 <p><em>top-level-declaration</em> → <em>statements</em><em>?</em></p>
 <p>Grammar of a code block:</p>
 <p><em>code-block</em> → <strong><code>{</code></strong> <em>statements</em><em>?</em> <strong><code>}</code></strong></p>
 <p>Grammar of an import declaration:</p>
 <p><em>import-declaration</em> → <em>attributes</em><em>?</em> <strong><code>import</code></strong> <em>import-kind</em><em>?</em> <em>import-path</em></p>
-<p><em>import-kind</em> → <strong><code>typealias</code></strong> | <strong><code>struct</code></strong> | <strong><code>class</code></strong> | <strong><code>enum</code></strong> | <strong><code>protocol</code></strong> | <strong><code>let</code></strong> | <strong><code>var</code></strong> | <strong><code>func</code></strong></p>
-<p><em>import-path</em> → <em>identifier</em> | <em>identifier</em> <strong><code>.</code></strong> <em>import-path</em></p>
+<p><em>import-kind</em> → <strong><code>typealias</code></strong> | <strong><code>struct</code></strong> | <strong><code>class</code></strong> | <strong><code>enum</code></strong> | <strong><code>protocol</code></strong> | <strong><code>let</code></strong> | <strong><code>var</code></strong> | <strong><code>func</code></strong> \
+<em>import-path</em> → <em>identifier</em> | <em>identifier</em> <strong><code>.</code></strong> <em>import-path</em></p>
 <p>Grammar of a constant declaration:</p>
 <p><em>constant-declaration</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>let</code></strong> <em>pattern-initializer-list</em></p>
-<p><em>pattern-initializer-list</em> → <em>pattern-initializer</em> | <em>pattern-initializer</em> <strong><code>,</code></strong> <em>pattern-initializer-list</em></p>
-<p><em>pattern-initializer</em> → <em>pattern</em> <em>initializer</em><em>?</em></p>
-<p><em>initializer</em> → <strong><code>=</code></strong> <em>expression</em></p>
+<p><em>pattern-initializer-list</em> → <em>pattern-initializer</em> | <em>pattern-initializer</em> <strong><code>,</code></strong> <em>pattern-initializer-list</em> \
+<em>pattern-initializer</em> → <em>pattern</em> <em>initializer</em><em>?</em> \
+<em>initializer</em> → <strong><code>=</code></strong> <em>expression</em></p>
 <p>Grammar of a variable declaration:</p>
-<p><em>variable-declaration</em> → <em>variable-declaration-head</em> <em>pattern-initializer-list</em></p>
-<p><em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>type-annotation</em> <em>code-block</em></p>
-<p><em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>type-annotation</em> <em>getter-setter-block</em></p>
-<p><em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>type-annotation</em> <em>getter-setter-keyword-block</em></p>
-<p><em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>initializer</em> <em>willSet-didSet-block</em></p>
-<p><em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>type-annotation</em> <em>initializer</em><em>?</em> <em>willSet-didSet-block</em></p>
-<p><em>variable-declaration-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>var</code></strong></p>
-<p><em>variable-name</em> → <em>identifier</em></p>
-<p><em>getter-setter-block</em> → <em>code-block</em></p>
-<p><em>getter-setter-block</em> → <strong><code>{</code></strong> <em>getter-clause</em> <em>setter-clause</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>getter-setter-block</em> → <strong><code>{</code></strong> <em>setter-clause</em> <em>getter-clause</em> <strong><code>}</code></strong></p>
-<p><em>getter-clause</em> → <em>attributes</em><em>?</em> <em>mutation-modifier</em><em>?</em> <strong><code>get</code></strong> <em>code-block</em></p>
-<p><em>setter-clause</em> → <em>attributes</em><em>?</em> <em>mutation-modifier</em><em>?</em> <strong><code>set</code></strong> <em>setter-name</em><em>?</em> <em>code-block</em></p>
-<p><em>setter-name</em> → <strong><code>(</code></strong> <em>identifier</em> <strong><code>)</code></strong></p>
-<p><em>getter-setter-keyword-block</em> → <strong><code>{</code></strong> <em>getter-keyword-clause</em> <em>setter-keyword-clause</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>getter-setter-keyword-block</em> → <strong><code>{</code></strong> <em>setter-keyword-clause</em> <em>getter-keyword-clause</em> <strong><code>}</code></strong></p>
-<p><em>getter-keyword-clause</em> → <em>attributes</em><em>?</em> <em>mutation-modifier</em><em>?</em> <strong><code>get</code></strong></p>
-<p><em>setter-keyword-clause</em> → <em>attributes</em><em>?</em> <em>mutation-modifier</em><em>?</em> <strong><code>set</code></strong></p>
-<p><em>willSet-didSet-block</em> → <strong><code>{</code></strong> <em>willSet-clause</em> <em>didSet-clause</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>willSet-didSet-block</em> → <strong><code>{</code></strong> <em>didSet-clause</em> <em>willSet-clause</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>willSet-clause</em> → <em>attributes</em><em>?</em> <strong><code>willSet</code></strong> <em>setter-name</em><em>?</em> <em>code-block</em></p>
-<p><em>didSet-clause</em> → <em>attributes</em><em>?</em> <strong><code>didSet</code></strong> <em>setter-name</em><em>?</em> <em>code-block</em></p>
+<p><em>variable-declaration</em> → <em>variable-declaration-head</em> <em>pattern-initializer-list</em> \
+<em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>type-annotation</em> <em>code-block</em> \
+<em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>type-annotation</em> <em>getter-setter-block</em> \
+<em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>type-annotation</em> <em>getter-setter-keyword-block</em> \
+<em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>initializer</em> <em>willSet-didSet-block</em> \
+<em>variable-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>type-annotation</em> <em>initializer</em><em>?</em> <em>willSet-didSet-block</em></p>
+<p><em>variable-declaration-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>var</code></strong> \
+<em>variable-name</em> → <em>identifier</em></p>
+<p><em>getter-setter-block</em> → <em>code-block</em> \
+<em>getter-setter-block</em> → <strong><code>{</code></strong> <em>getter-clause</em> <em>setter-clause</em><em>?</em> <strong><code>}</code></strong> \
+<em>getter-setter-block</em> → <strong><code>{</code></strong> <em>setter-clause</em> <em>getter-clause</em> <strong><code>}</code></strong> \
+<em>getter-clause</em> → <em>attributes</em><em>?</em> <em>mutation-modifier</em><em>?</em> <strong><code>get</code></strong> <em>code-block</em> \
+<em>setter-clause</em> → <em>attributes</em><em>?</em> <em>mutation-modifier</em><em>?</em> <strong><code>set</code></strong> <em>setter-name</em><em>?</em> <em>code-block</em> \
+<em>setter-name</em> → <strong><code>(</code></strong> <em>identifier</em> <strong><code>)</code></strong></p>
+<p><em>getter-setter-keyword-block</em> → <strong><code>{</code></strong> <em>getter-keyword-clause</em> <em>setter-keyword-clause</em><em>?</em> <strong><code>}</code></strong> \
+<em>getter-setter-keyword-block</em> → <strong><code>{</code></strong> <em>setter-keyword-clause</em> <em>getter-keyword-clause</em> <strong><code>}</code></strong> \
+<em>getter-keyword-clause</em> → <em>attributes</em><em>?</em> <em>mutation-modifier</em><em>?</em> <strong><code>get</code></strong> \
+<em>setter-keyword-clause</em> → <em>attributes</em><em>?</em> <em>mutation-modifier</em><em>?</em> <strong><code>set</code></strong></p>
+<p><em>willSet-didSet-block</em> → <strong><code>{</code></strong> <em>willSet-clause</em> <em>didSet-clause</em><em>?</em> <strong><code>}</code></strong> \
+<em>willSet-didSet-block</em> → <strong><code>{</code></strong> <em>didSet-clause</em> <em>willSet-clause</em><em>?</em> <strong><code>}</code></strong> \
+<em>willSet-clause</em> → <em>attributes</em><em>?</em> <strong><code>willSet</code></strong> <em>setter-name</em><em>?</em> <em>code-block</em> \
+<em>didSet-clause</em> → <em>attributes</em><em>?</em> <strong><code>didSet</code></strong> <em>setter-name</em><em>?</em> <em>code-block</em></p>
 <p>Grammar of a type alias declaration:</p>
-<p><em>typealias-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>typealias</code></strong> <em>typealias-name</em> <em>generic-parameter-clause</em><em>?</em> <em>typealias-assignment</em></p>
-<p><em>typealias-name</em> → <em>identifier</em></p>
-<p><em>typealias-assignment</em> → <strong><code>=</code></strong> <em>type</em></p>
+<p><em>typealias-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>typealias</code></strong> <em>typealias-name</em> <em>generic-parameter-clause</em><em>?</em> <em>typealias-assignment</em> \
+<em>typealias-name</em> → <em>identifier</em> \
+<em>typealias-assignment</em> → <strong><code>=</code></strong> <em>type</em></p>
 <p>Grammar of a function declaration:</p>
 <p><em>function-declaration</em> → <em>function-head</em> <em>function-name</em> <em>generic-parameter-clause</em><em>?</em> <em>function-signature</em> <em>generic-where-clause</em><em>?</em> <em>function-body</em><em>?</em></p>
-<p><em>function-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>func</code></strong></p>
-<p><em>function-name</em> → <em>identifier</em> | <em>operator</em></p>
-<p><em>function-signature</em> → <em>parameter-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>throws</code></strong><em>?</em> <em>function-result</em><em>?</em></p>
-<p><em>function-signature</em> → <em>parameter-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>rethrows</code></strong> <em>function-result</em><em>?</em></p>
-<p><em>function-result</em> → <strong><code>-&gt;</code></strong> <em>attributes</em><em>?</em> <em>type</em></p>
-<p><em>function-body</em> → <em>code-block</em></p>
-<p><em>parameter-clause</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>parameter-list</em> <strong><code>)</code></strong></p>
-<p><em>parameter-list</em> → <em>parameter</em> | <em>parameter</em> <strong><code>,</code></strong> <em>parameter-list</em></p>
-<p><em>parameter</em> → <em>external-parameter-name</em><em>?</em> <em>local-parameter-name</em> <em>type-annotation</em> <em>default-argument-clause</em><em>?</em></p>
-<p><em>parameter</em> → <em>external-parameter-name</em><em>?</em> <em>local-parameter-name</em> <em>type-annotation</em></p>
-<p><em>parameter</em> → <em>external-parameter-name</em><em>?</em> <em>local-parameter-name</em> <em>type-annotation</em> <strong><code>...</code></strong></p>
-<p><em>external-parameter-name</em> → <em>identifier</em></p>
-<p><em>local-parameter-name</em> → <em>identifier</em></p>
-<p><em>default-argument-clause</em> → <strong><code>=</code></strong> <em>expression</em></p>
+<p><em>function-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>func</code></strong> \
+<em>function-name</em> → <em>identifier</em> | <em>operator</em></p>
+<p><em>function-signature</em> → <em>parameter-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>throws</code></strong><em>?</em> <em>function-result</em><em>?</em> \
+<em>function-signature</em> → <em>parameter-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>rethrows</code></strong> <em>function-result</em><em>?</em> \
+<em>function-result</em> → <strong><code>-&gt;</code></strong> <em>attributes</em><em>?</em> <em>type</em> \
+<em>function-body</em> → <em>code-block</em></p>
+<p><em>parameter-clause</em> → <strong><code>(</code></strong> <strong><code>)</code></strong> | <strong><code>(</code></strong> <em>parameter-list</em> <strong><code>)</code></strong> \
+<em>parameter-list</em> → <em>parameter</em> | <em>parameter</em> <strong><code>,</code></strong> <em>parameter-list</em> \
+<em>parameter</em> → <em>external-parameter-name</em><em>?</em> <em>local-parameter-name</em> <em>type-annotation</em> <em>default-argument-clause</em><em>?</em> \
+<em>parameter</em> → <em>external-parameter-name</em><em>?</em> <em>local-parameter-name</em> <em>type-annotation</em> \
+<em>parameter</em> → <em>external-parameter-name</em><em>?</em> <em>local-parameter-name</em> <em>type-annotation</em> <strong><code>...</code></strong> \
+<em>external-parameter-name</em> → <em>identifier</em> \
+<em>local-parameter-name</em> → <em>identifier</em> \
+<em>default-argument-clause</em> → <strong><code>=</code></strong> <em>expression</em></p>
 <p>Grammar of an enumeration declaration:</p>
-<p><em>enum-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <em>union-style-enum</em></p>
-<p><em>enum-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <em>raw-value-style-enum</em></p>
-<p><em>union-style-enum</em> → <strong><code>indirect</code></strong><em>?</em> <strong><code>enum</code></strong> <em>enum-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <strong><code>{</code></strong> <em>union-style-enum-members</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>union-style-enum-members</em> → <em>union-style-enum-member</em> <em>union-style-enum-members</em><em>?</em></p>
-<p><em>union-style-enum-member</em> → <em>declaration</em> | <em>union-style-enum-case-clause</em> | <em>compiler-control-statement</em></p>
-<p><em>union-style-enum-case-clause</em> → <em>attributes</em><em>?</em> <strong><code>indirect</code></strong><em>?</em> <strong><code>case</code></strong> <em>union-style-enum-case-list</em></p>
-<p><em>union-style-enum-case-list</em> → <em>union-style-enum-case</em> | <em>union-style-enum-case</em> <strong><code>,</code></strong> <em>union-style-enum-case-list</em></p>
-<p><em>union-style-enum-case</em> → <em>enum-case-name</em> <em>tuple-type</em><em>?</em></p>
-<p><em>enum-name</em> → <em>identifier</em></p>
-<p><em>enum-case-name</em> → <em>identifier</em></p>
-<p><em>raw-value-style-enum</em> → <strong><code>enum</code></strong> <em>enum-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em> <em>generic-where-clause</em><em>?</em> <strong><code>{</code></strong> <em>raw-value-style-enum-members</em> <strong><code>}</code></strong></p>
-<p><em>raw-value-style-enum-members</em> → <em>raw-value-style-enum-member</em> <em>raw-value-style-enum-members</em><em>?</em></p>
-<p><em>raw-value-style-enum-member</em> → <em>declaration</em> | <em>raw-value-style-enum-case-clause</em> | <em>compiler-control-statement</em></p>
-<p><em>raw-value-style-enum-case-clause</em> → <em>attributes</em><em>?</em> <strong><code>case</code></strong> <em>raw-value-style-enum-case-list</em></p>
-<p><em>raw-value-style-enum-case-list</em> → <em>raw-value-style-enum-case</em> | <em>raw-value-style-enum-case</em> <strong><code>,</code></strong> <em>raw-value-style-enum-case-list</em></p>
-<p><em>raw-value-style-enum-case</em> → <em>enum-case-name</em> <em>raw-value-assignment</em><em>?</em></p>
-<p><em>raw-value-assignment</em> → <strong><code>=</code></strong> <em>raw-value-literal</em></p>
-<p><em>raw-value-literal</em> → <em>numeric-literal</em> | <em>static-string-literal</em> | <em>boolean-literal</em></p>
+<p><em>enum-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <em>union-style-enum</em> \
+<em>enum-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <em>raw-value-style-enum</em></p>
+<p><em>union-style-enum</em> → <strong><code>indirect</code></strong><em>?</em> <strong><code>enum</code></strong> <em>enum-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <strong><code>{</code></strong> <em>union-style-enum-members</em><em>?</em> <strong><code>}</code></strong> \
+<em>union-style-enum-members</em> → <em>union-style-enum-member</em> <em>union-style-enum-members</em><em>?</em> \
+<em>union-style-enum-member</em> → <em>declaration</em> | <em>union-style-enum-case-clause</em> | <em>compiler-control-statement</em> \
+<em>union-style-enum-case-clause</em> → <em>attributes</em><em>?</em> <strong><code>indirect</code></strong><em>?</em> <strong><code>case</code></strong> <em>union-style-enum-case-list</em> \
+<em>union-style-enum-case-list</em> → <em>union-style-enum-case</em> | <em>union-style-enum-case</em> <strong><code>,</code></strong> <em>union-style-enum-case-list</em> \
+<em>union-style-enum-case</em> → <em>enum-case-name</em> <em>tuple-type</em><em>?</em> \
+<em>enum-name</em> → <em>identifier</em> \
+<em>enum-case-name</em> → <em>identifier</em></p>
+<p><em>raw-value-style-enum</em> → <strong><code>enum</code></strong> <em>enum-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em> <em>generic-where-clause</em><em>?</em> <strong><code>{</code></strong> <em>raw-value-style-enum-members</em> <strong><code>}</code></strong> \
+<em>raw-value-style-enum-members</em> → <em>raw-value-style-enum-member</em> <em>raw-value-style-enum-members</em><em>?</em> \
+<em>raw-value-style-enum-member</em> → <em>declaration</em> | <em>raw-value-style-enum-case-clause</em> | <em>compiler-control-statement</em> \
+<em>raw-value-style-enum-case-clause</em> → <em>attributes</em><em>?</em> <strong><code>case</code></strong> <em>raw-value-style-enum-case-list</em> \
+<em>raw-value-style-enum-case-list</em> → <em>raw-value-style-enum-case</em> | <em>raw-value-style-enum-case</em> <strong><code>,</code></strong> <em>raw-value-style-enum-case-list</em> \
+<em>raw-value-style-enum-case</em> → <em>enum-case-name</em> <em>raw-value-assignment</em><em>?</em> \
+<em>raw-value-assignment</em> → <strong><code>=</code></strong> <em>raw-value-literal</em> \
+<em>raw-value-literal</em> → <em>numeric-literal</em> | <em>static-string-literal</em> | <em>boolean-literal</em></p>
 <p>Grammar of a structure declaration:</p>
-<p><em>struct-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>struct</code></strong> <em>struct-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>struct-body</em></p>
-<p><em>struct-name</em> → <em>identifier</em></p>
-<p><em>struct-body</em> → <strong><code>{</code></strong> <em>struct-members</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>struct-members</em> → <em>struct-member</em> <em>struct-members</em><em>?</em></p>
-<p><em>struct-member</em> → <em>declaration</em> | <em>compiler-control-statement</em></p>
+<p><em>struct-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>struct</code></strong> <em>struct-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>struct-body</em> \
+<em>struct-name</em> → <em>identifier</em> \
+<em>struct-body</em> → <strong><code>{</code></strong> <em>struct-members</em><em>?</em> <strong><code>}</code></strong></p>
+<p><em>struct-members</em> → <em>struct-member</em> <em>struct-members</em><em>?</em> \
+<em>struct-member</em> → <em>declaration</em> | <em>compiler-control-statement</em></p>
 <p>Grammar of a class declaration:</p>
-<p><em>class-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>final</code></strong><em>?</em> <strong><code>class</code></strong> <em>class-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>class-body</em></p>
-<p><em>class-declaration</em> → <em>attributes</em><em>?</em> <strong><code>final</code></strong> <em>access-level-modifier</em><em>?</em> <strong><code>class</code></strong> <em>class-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>class-body</em></p>
-<p><em>class-name</em> → <em>identifier</em></p>
-<p><em>class-body</em> → <strong><code>{</code></strong> <em>class-members</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>class-members</em> → <em>class-member</em> <em>class-members</em><em>?</em></p>
-<p><em>class-member</em> → <em>declaration</em> | <em>compiler-control-statement</em></p>
+<p><em>class-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>final</code></strong><em>?</em> <strong><code>class</code></strong> <em>class-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>class-body</em> \
+<em>class-declaration</em> → <em>attributes</em><em>?</em> <strong><code>final</code></strong> <em>access-level-modifier</em><em>?</em> <strong><code>class</code></strong> <em>class-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>class-body</em> \
+<em>class-name</em> → <em>identifier</em> \
+<em>class-body</em> → <strong><code>{</code></strong> <em>class-members</em><em>?</em> <strong><code>}</code></strong></p>
+<p><em>class-members</em> → <em>class-member</em> <em>class-members</em><em>?</em> \
+<em>class-member</em> → <em>declaration</em> | <em>compiler-control-statement</em></p>
 <p>Grammar of an actor declaration:</p>
-<p><em>actor-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>actor</code></strong> <em>actor-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>actor-body</em></p>
-<p><em>actor-name</em> → <em>identifier</em></p>
-<p><em>actor-body</em> → <strong><code>{</code></strong> <em>actor-members</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>actor-members</em> → <em>actor-member</em> <em>actor-members</em><em>?</em></p>
-<p><em>actor-member</em> → <em>declaration</em> | <em>compiler-control-statement</em></p>
+<p><em>actor-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>actor</code></strong> <em>actor-name</em> <em>generic-parameter-clause</em><em>?</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>actor-body</em> \
+<em>actor-name</em> → <em>identifier</em> \
+<em>actor-body</em> → <strong><code>{</code></strong> <em>actor-members</em><em>?</em> <strong><code>}</code></strong></p>
+<p><em>actor-members</em> → <em>actor-member</em> <em>actor-members</em><em>?</em> \
+<em>actor-member</em> → <em>declaration</em> | <em>compiler-control-statement</em></p>
 <p>Grammar of a protocol declaration:</p>
-<p><em>protocol-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>protocol</code></strong> <em>protocol-name</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>protocol-body</em></p>
-<p><em>protocol-name</em> → <em>identifier</em></p>
-<p><em>protocol-body</em> → <strong><code>{</code></strong> <em>protocol-members</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>protocol-members</em> → <em>protocol-member</em> <em>protocol-members</em><em>?</em></p>
-<p><em>protocol-member</em> → <em>protocol-member-declaration</em> | <em>compiler-control-statement</em></p>
-<p><em>protocol-member-declaration</em> → <em>protocol-property-declaration</em></p>
-<p><em>protocol-member-declaration</em> → <em>protocol-method-declaration</em></p>
-<p><em>protocol-member-declaration</em> → <em>protocol-initializer-declaration</em></p>
-<p><em>protocol-member-declaration</em> → <em>protocol-subscript-declaration</em></p>
-<p><em>protocol-member-declaration</em> → <em>protocol-associated-type-declaration</em></p>
-<p><em>protocol-member-declaration</em> → <em>typealias-declaration</em></p>
+<p><em>protocol-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>protocol</code></strong> <em>protocol-name</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>protocol-body</em> \
+<em>protocol-name</em> → <em>identifier</em> \
+<em>protocol-body</em> → <strong><code>{</code></strong> <em>protocol-members</em><em>?</em> <strong><code>}</code></strong></p>
+<p><em>protocol-members</em> → <em>protocol-member</em> <em>protocol-members</em><em>?</em> \
+<em>protocol-member</em> → <em>protocol-member-declaration</em> | <em>compiler-control-statement</em></p>
+<p><em>protocol-member-declaration</em> → <em>protocol-property-declaration</em> \
+<em>protocol-member-declaration</em> → <em>protocol-method-declaration</em> \
+<em>protocol-member-declaration</em> → <em>protocol-initializer-declaration</em> \
+<em>protocol-member-declaration</em> → <em>protocol-subscript-declaration</em> \
+<em>protocol-member-declaration</em> → <em>protocol-associated-type-declaration</em> \
+<em>protocol-member-declaration</em> → <em>typealias-declaration</em></p>
 <p>Grammar of a protocol property declaration:</p>
 <p><em>protocol-property-declaration</em> → <em>variable-declaration-head</em> <em>variable-name</em> <em>type-annotation</em> <em>getter-setter-keyword-block</em></p>
 <p>Grammar of a protocol method declaration:</p>
 <p><em>protocol-method-declaration</em> → <em>function-head</em> <em>function-name</em> <em>generic-parameter-clause</em><em>?</em> <em>function-signature</em> <em>generic-where-clause</em><em>?</em></p>
 <p>Grammar of a protocol initializer declaration:</p>
-<p><em>protocol-initializer-declaration</em> → <em>initializer-head</em> <em>generic-parameter-clause</em><em>?</em> <em>parameter-clause</em> <strong><code>throws</code></strong><em>?</em> <em>generic-where-clause</em><em>?</em></p>
-<p><em>protocol-initializer-declaration</em> → <em>initializer-head</em> <em>generic-parameter-clause</em><em>?</em> <em>parameter-clause</em> <strong><code>rethrows</code></strong> <em>generic-where-clause</em><em>?</em></p>
+<p><em>protocol-initializer-declaration</em> → <em>initializer-head</em> <em>generic-parameter-clause</em><em>?</em> <em>parameter-clause</em> <strong><code>throws</code></strong><em>?</em> <em>generic-where-clause</em><em>?</em> \
+<em>protocol-initializer-declaration</em> → <em>initializer-head</em> <em>generic-parameter-clause</em><em>?</em> <em>parameter-clause</em> <strong><code>rethrows</code></strong> <em>generic-where-clause</em><em>?</em></p>
 <p>Grammar of a protocol subscript declaration:</p>
 <p><em>protocol-subscript-declaration</em> → <em>subscript-head</em> <em>subscript-result</em> <em>generic-where-clause</em><em>?</em> <em>getter-setter-keyword-block</em></p>
 <p>Grammar of a protocol associated type declaration:</p>
 <p><em>protocol-associated-type-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>associatedtype</code></strong> <em>typealias-name</em> <em>type-inheritance-clause</em><em>?</em> <em>typealias-assignment</em><em>?</em> <em>generic-where-clause</em><em>?</em></p>
 <p>Grammar of an initializer declaration:</p>
-<p><em>initializer-declaration</em> → <em>initializer-head</em> <em>generic-parameter-clause</em><em>?</em> <em>parameter-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>throws</code></strong><em>?</em> <em>generic-where-clause</em><em>?</em> <em>initializer-body</em></p>
-<p><em>initializer-declaration</em> → <em>initializer-head</em> <em>generic-parameter-clause</em><em>?</em> <em>parameter-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>rethrows</code></strong> <em>generic-where-clause</em><em>?</em> <em>initializer-body</em></p>
-<p><em>initializer-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>init</code></strong></p>
-<p><em>initializer-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>init</code></strong> <strong><code>?</code></strong></p>
-<p><em>initializer-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>init</code></strong> <strong><code>!</code></strong></p>
-<p><em>initializer-body</em> → <em>code-block</em></p>
+<p><em>initializer-declaration</em> → <em>initializer-head</em> <em>generic-parameter-clause</em><em>?</em> <em>parameter-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>throws</code></strong><em>?</em> <em>generic-where-clause</em><em>?</em> <em>initializer-body</em> \
+<em>initializer-declaration</em> → <em>initializer-head</em> <em>generic-parameter-clause</em><em>?</em> <em>parameter-clause</em> <strong><code>async</code></strong><em>?</em> <strong><code>rethrows</code></strong> <em>generic-where-clause</em><em>?</em> <em>initializer-body</em> \
+<em>initializer-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>init</code></strong> \
+<em>initializer-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>init</code></strong> <strong><code>?</code></strong> \
+<em>initializer-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>init</code></strong> <strong><code>!</code></strong> \
+<em>initializer-body</em> → <em>code-block</em></p>
 <p>Grammar of a deinitializer declaration:</p>
 <p><em>deinitializer-declaration</em> → <em>attributes</em><em>?</em> <strong><code>deinit</code></strong> <em>code-block</em></p>
 <p>Grammar of an extension declaration:</p>
-<p><em>extension-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>extension</code></strong> <em>type-identifier</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>extension-body</em></p>
-<p><em>extension-body</em> → <strong><code>{</code></strong> <em>extension-members</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>extension-members</em> → <em>extension-member</em> <em>extension-members</em><em>?</em></p>
-<p><em>extension-member</em> → <em>declaration</em> | <em>compiler-control-statement</em></p>
+<p><em>extension-declaration</em> → <em>attributes</em><em>?</em> <em>access-level-modifier</em><em>?</em> <strong><code>extension</code></strong> <em>type-identifier</em> <em>type-inheritance-clause</em><em>?</em> <em>generic-where-clause</em><em>?</em> <em>extension-body</em> \
+<em>extension-body</em> → <strong><code>{</code></strong> <em>extension-members</em><em>?</em> <strong><code>}</code></strong></p>
+<p><em>extension-members</em> → <em>extension-member</em> <em>extension-members</em><em>?</em> \
+<em>extension-member</em> → <em>declaration</em> | <em>compiler-control-statement</em></p>
 <p>Grammar of a subscript declaration:</p>
-<p><em>subscript-declaration</em> → <em>subscript-head</em> <em>subscript-result</em> <em>generic-where-clause</em><em>?</em> <em>code-block</em></p>
-<p><em>subscript-declaration</em> → <em>subscript-head</em> <em>subscript-result</em> <em>generic-where-clause</em><em>?</em> <em>getter-setter-block</em></p>
-<p><em>subscript-declaration</em> → <em>subscript-head</em> <em>subscript-result</em> <em>generic-where-clause</em><em>?</em> <em>getter-setter-keyword-block</em></p>
-<p><em>subscript-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>subscript</code></strong> <em>generic-parameter-clause</em><em>?</em> <em>parameter-clause</em></p>
-<p><em>subscript-result</em> → <strong><code>-&gt;</code></strong> <em>attributes</em><em>?</em> <em>type</em></p>
+<p><em>subscript-declaration</em> → <em>subscript-head</em> <em>subscript-result</em> <em>generic-where-clause</em><em>?</em> <em>code-block</em> \
+<em>subscript-declaration</em> → <em>subscript-head</em> <em>subscript-result</em> <em>generic-where-clause</em><em>?</em> <em>getter-setter-block</em> \
+<em>subscript-declaration</em> → <em>subscript-head</em> <em>subscript-result</em> <em>generic-where-clause</em><em>?</em> <em>getter-setter-keyword-block</em> \
+<em>subscript-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>subscript</code></strong> <em>generic-parameter-clause</em><em>?</em> <em>parameter-clause</em> \
+<em>subscript-result</em> → <strong><code>-&gt;</code></strong> <em>attributes</em><em>?</em> <em>type</em></p>
 <p>Grammar of a macro declaration:</p>
-<p><em>macro-declaration</em> → <em>macro-head</em> <em>identifier</em> <em>generic-parameter-clause</em><em>?</em> <em>macro-signature</em> <em>macro-definition</em><em>?</em> <em>generic-where-clause</em></p>
-<p><em>macro-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>macro</code></strong> </p>
-<p><em>macro-signature</em> → <em>parameter-clause</em> <em>macro-function-signature-result</em><em>?</em></p>
-<p><em>macro-function-signature-result</em> → <strong><code>-&gt;</code></strong> <em>type</em></p>
-<p><em>macro-definition</em> → <strong><code>=</code></strong> <em>expression</em></p>
+<p><em>macro-declaration</em> → <em>macro-head</em> <em>identifier</em> <em>generic-parameter-clause</em><em>?</em> <em>macro-signature</em> <em>macro-definition</em><em>?</em> <em>generic-where-clause</em> \
+<em>macro-head</em> → <em>attributes</em><em>?</em> <em>declaration-modifiers</em><em>?</em> <strong><code>macro</code></strong>  \
+<em>macro-signature</em> → <em>parameter-clause</em> <em>macro-function-signature-result</em><em>?</em> \
+<em>macro-function-signature-result</em> → <strong><code>-&gt;</code></strong> <em>type</em> \
+<em>macro-definition</em> → <strong><code>=</code></strong> <em>expression</em></p>
 <p>Grammar of an operator declaration:</p>
 <p><em>operator-declaration</em> → <em>prefix-operator-declaration</em> | <em>postfix-operator-declaration</em> | <em>infix-operator-declaration</em></p>
-<p><em>prefix-operator-declaration</em> → <strong><code>prefix</code></strong> <strong><code>operator</code></strong> <em>operator</em></p>
-<p><em>postfix-operator-declaration</em> → <strong><code>postfix</code></strong> <strong><code>operator</code></strong> <em>operator</em></p>
-<p><em>infix-operator-declaration</em> → <strong><code>infix</code></strong> <strong><code>operator</code></strong> <em>operator</em> <em>infix-operator-group</em><em>?</em></p>
+<p><em>prefix-operator-declaration</em> → <strong><code>prefix</code></strong> <strong><code>operator</code></strong> <em>operator</em> \
+<em>postfix-operator-declaration</em> → <strong><code>postfix</code></strong> <strong><code>operator</code></strong> <em>operator</em> \
+<em>infix-operator-declaration</em> → <strong><code>infix</code></strong> <strong><code>operator</code></strong> <em>operator</em> <em>infix-operator-group</em><em>?</em></p>
 <p><em>infix-operator-group</em> → <strong><code>:</code></strong> <em>precedence-group-name</em></p>
 <p>Grammar of a precedence group declaration:</p>
 <p><em>precedence-group-declaration</em> → <strong><code>precedencegroup</code></strong> <em>precedence-group-name</em> <strong><code>{</code></strong> <em>precedence-group-attributes</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>precedence-group-attributes</em> → <em>precedence-group-attribute</em> <em>precedence-group-attributes</em><em>?</em></p>
-<p><em>precedence-group-attribute</em> → <em>precedence-group-relation</em></p>
-<p><em>precedence-group-attribute</em> → <em>precedence-group-assignment</em></p>
-<p><em>precedence-group-attribute</em> → <em>precedence-group-associativity</em></p>
-<p><em>precedence-group-relation</em> → <strong><code>higherThan</code></strong> <strong><code>:</code></strong> <em>precedence-group-names</em></p>
-<p><em>precedence-group-relation</em> → <strong><code>lowerThan</code></strong> <strong><code>:</code></strong> <em>precedence-group-names</em></p>
+<p><em>precedence-group-attributes</em> → <em>precedence-group-attribute</em> <em>precedence-group-attributes</em><em>?</em> \
+<em>precedence-group-attribute</em> → <em>precedence-group-relation</em> \
+<em>precedence-group-attribute</em> → <em>precedence-group-assignment</em> \
+<em>precedence-group-attribute</em> → <em>precedence-group-associativity</em></p>
+<p><em>precedence-group-relation</em> → <strong><code>higherThan</code></strong> <strong><code>:</code></strong> <em>precedence-group-names</em> \
+<em>precedence-group-relation</em> → <strong><code>lowerThan</code></strong> <strong><code>:</code></strong> <em>precedence-group-names</em></p>
 <p><em>precedence-group-assignment</em> → <strong><code>assignment</code></strong> <strong><code>:</code></strong> <em>boolean-literal</em></p>
-<p><em>precedence-group-associativity</em> → <strong><code>associativity</code></strong> <strong><code>:</code></strong> <strong><code>left</code></strong></p>
-<p><em>precedence-group-associativity</em> → <strong><code>associativity</code></strong> <strong><code>:</code></strong> <strong><code>right</code></strong></p>
-<p><em>precedence-group-associativity</em> → <strong><code>associativity</code></strong> <strong><code>:</code></strong> <strong><code>none</code></strong></p>
-<p><em>precedence-group-names</em> → <em>precedence-group-name</em> | <em>precedence-group-name</em> <strong><code>,</code></strong> <em>precedence-group-names</em></p>
-<p><em>precedence-group-name</em> → <em>identifier</em></p>
+<p><em>precedence-group-associativity</em> → <strong><code>associativity</code></strong> <strong><code>:</code></strong> <strong><code>left</code></strong> \
+<em>precedence-group-associativity</em> → <strong><code>associativity</code></strong> <strong><code>:</code></strong> <strong><code>right</code></strong> \
+<em>precedence-group-associativity</em> → <strong><code>associativity</code></strong> <strong><code>:</code></strong> <strong><code>none</code></strong></p>
+<p><em>precedence-group-names</em> → <em>precedence-group-name</em> | <em>precedence-group-name</em> <strong><code>,</code></strong> <em>precedence-group-names</em> \
+<em>precedence-group-name</em> → <em>identifier</em></p>
 <p>Grammar of a declaration modifier:</p>
-<p><em>declaration-modifier</em> → <strong><code>class</code></strong> | <strong><code>convenience</code></strong> | <strong><code>dynamic</code></strong> | <strong><code>final</code></strong> | <strong><code>infix</code></strong> | <strong><code>lazy</code></strong> | <strong><code>optional</code></strong> | <strong><code>override</code></strong> | <strong><code>postfix</code></strong> | <strong><code>prefix</code></strong> | <strong><code>required</code></strong> | <strong><code>static</code></strong> | <strong><code>unowned</code></strong> | <strong><code>unowned</code></strong> <strong><code>(</code></strong> <strong><code>safe</code></strong> <strong><code>)</code></strong> | <strong><code>unowned</code></strong> <strong><code>(</code></strong> <strong><code>unsafe</code></strong> <strong><code>)</code></strong> | <strong><code>weak</code></strong></p>
-<p><em>declaration-modifier</em> → <em>access-level-modifier</em></p>
-<p><em>declaration-modifier</em> → <em>mutation-modifier</em></p>
-<p><em>declaration-modifier</em> → <em>actor-isolation-modifier</em></p>
-<p><em>declaration-modifiers</em> → <em>declaration-modifier</em> <em>declaration-modifiers</em><em>?</em></p>
-<p><em>access-level-modifier</em> → <strong><code>private</code></strong> | <strong><code>private</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong></p>
-<p><em>access-level-modifier</em> → <strong><code>fileprivate</code></strong> | <strong><code>fileprivate</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong></p>
-<p><em>access-level-modifier</em> → <strong><code>internal</code></strong> | <strong><code>internal</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong></p>
-<p><em>access-level-modifier</em> → <strong><code>public</code></strong> | <strong><code>public</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong></p>
-<p><em>access-level-modifier</em> → <strong><code>open</code></strong> | <strong><code>open</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong></p>
+<p><em>declaration-modifier</em> → <strong><code>class</code></strong> | <strong><code>convenience</code></strong> | <strong><code>dynamic</code></strong> | <strong><code>final</code></strong> | <strong><code>infix</code></strong> | <strong><code>lazy</code></strong> | <strong><code>optional</code></strong> | <strong><code>override</code></strong> | <strong><code>postfix</code></strong> | <strong><code>prefix</code></strong> | <strong><code>required</code></strong> | <strong><code>static</code></strong> | <strong><code>unowned</code></strong> | <strong><code>unowned</code></strong> <strong><code>(</code></strong> <strong><code>safe</code></strong> <strong><code>)</code></strong> | <strong><code>unowned</code></strong> <strong><code>(</code></strong> <strong><code>unsafe</code></strong> <strong><code>)</code></strong> | <strong><code>weak</code></strong> \
+<em>declaration-modifier</em> → <em>access-level-modifier</em> \
+<em>declaration-modifier</em> → <em>mutation-modifier</em> \
+<em>declaration-modifier</em> → <em>actor-isolation-modifier</em> \
+<em>declaration-modifiers</em> → <em>declaration-modifier</em> <em>declaration-modifiers</em><em>?</em></p>
+<p><em>access-level-modifier</em> → <strong><code>private</code></strong> | <strong><code>private</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong> \
+<em>access-level-modifier</em> → <strong><code>fileprivate</code></strong> | <strong><code>fileprivate</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong> \
+<em>access-level-modifier</em> → <strong><code>internal</code></strong> | <strong><code>internal</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong> \
+<em>access-level-modifier</em> → <strong><code>public</code></strong> | <strong><code>public</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong> \
+<em>access-level-modifier</em> → <strong><code>open</code></strong> | <strong><code>open</code></strong> <strong><code>(</code></strong> <strong><code>set</code></strong> <strong><code>)</code></strong></p>
 <p><em>mutation-modifier</em> → <strong><code>mutating</code></strong> | <strong><code>nonmutating</code></strong></p>
 <p><em>actor-isolation-modifier</em> → <strong><code>nonisolated</code></strong></p>
 </blockquote>
 <h2 id="attributes属性">Attributes(属性)</h2>
 <blockquote>
 <p>Grammar of an attribute:</p>
-<p><em>attribute</em> → <strong><code>@</code></strong> <em>attribute-name</em> <em>attribute-argument-clause</em><em>?</em></p>
-<p><em>attribute-name</em> → <em>identifier</em></p>
-<p><em>attribute-argument-clause</em> → <strong><code>(</code></strong> <em>balanced-tokens</em><em>?</em> <strong><code>)</code></strong></p>
-<p><em>attributes</em> → <em>attribute</em> <em>attributes</em><em>?</em></p>
-<p><em>balanced-tokens</em> → <em>balanced-token</em> <em>balanced-tokens</em><em>?</em></p>
-<p><em>balanced-token</em> → <strong><code>(</code></strong> <em>balanced-tokens</em><em>?</em> <strong><code>)</code></strong></p>
-<p><em>balanced-token</em> → <strong><code>[</code></strong> <em>balanced-tokens</em><em>?</em> <strong><code>]</code></strong></p>
-<p><em>balanced-token</em> → <strong><code>{</code></strong> <em>balanced-tokens</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>balanced-token</em> → Any identifier, keyword, literal, または operator</p>
-<p><em>balanced-token</em> → Any punctuation except  <strong><code>(</code></strong>,  <strong><code>)</code></strong>,  <strong><code>[</code></strong>,  <strong><code>]</code></strong>,  <strong><code>{</code></strong>, または  <strong><code>}</code></strong></p>
+<p><em>attribute</em> → <strong><code>@</code></strong> <em>attribute-name</em> <em>attribute-argument-clause</em><em>?</em> \
+<em>attribute-name</em> → <em>identifier</em> \
+<em>attribute-argument-clause</em> → <strong><code>(</code></strong> <em>balanced-tokens</em><em>?</em> <strong><code>)</code></strong> \
+<em>attributes</em> → <em>attribute</em> <em>attributes</em><em>?</em></p>
+<p><em>balanced-tokens</em> → <em>balanced-token</em> <em>balanced-tokens</em><em>?</em> \
+<em>balanced-token</em> → <strong><code>(</code></strong> <em>balanced-tokens</em><em>?</em> <strong><code>)</code></strong> \
+<em>balanced-token</em> → <strong><code>[</code></strong> <em>balanced-tokens</em><em>?</em> <strong><code>]</code></strong> \
+<em>balanced-token</em> → <strong><code>{</code></strong> <em>balanced-tokens</em><em>?</em> <strong><code>}</code></strong> \
+<em>balanced-token</em> → Any identifier, keyword, literal, or operator \
+<em>balanced-token</em> → Any punctuation except  <strong><code>(</code></strong>,  <strong><code>)</code></strong>,  <strong><code>[</code></strong>,  <strong><code>]</code></strong>,  <strong><code>{</code></strong>, または  <strong><code>}</code></strong></p>
 </blockquote>
 <h2 id="patternsパターン">Patterns(パターン)</h2>
 <blockquote>
 <p>Grammar of a pattern:</p>
-<p><em>pattern</em> → <em>wildcard-pattern</em> <em>type-annotation</em><em>?</em></p>
-<p><em>pattern</em> → <em>identifier-pattern</em> <em>type-annotation</em><em>?</em></p>
-<p><em>pattern</em> → <em>value-binding-pattern</em></p>
-<p><em>pattern</em> → <em>tuple-pattern</em> <em>type-annotation</em><em>?</em></p>
-<p><em>pattern</em> → <em>enum-case-pattern</em></p>
-<p><em>pattern</em> → <em>optional-pattern</em></p>
-<p><em>pattern</em> → <em>type-casting-pattern</em></p>
-<p><em>pattern</em> → <em>expression-pattern</em></p>
+<p><em>pattern</em> → <em>wildcard-pattern</em> <em>type-annotation</em><em>?</em> \
+<em>pattern</em> → <em>identifier-pattern</em> <em>type-annotation</em><em>?</em> \
+<em>pattern</em> → <em>value-binding-pattern</em> \
+<em>pattern</em> → <em>tuple-pattern</em> <em>type-annotation</em><em>?</em> \
+<em>pattern</em> → <em>enum-case-pattern</em> \
+<em>pattern</em> → <em>optional-pattern</em> \
+<em>pattern</em> → <em>type-casting-pattern</em> \
+<em>pattern</em> → <em>expression-pattern</em></p>
 <p>Grammar of a wildcard pattern:</p>
 <p><em>wildcard-pattern</em> → <strong><code>_</code></strong></p>
 <p>Grammar of an identifier pattern:</p>
@@ -1490,38 +1490,38 @@
 <p>Grammar of a value-binding pattern:</p>
 <p><em>value-binding-pattern</em> → <strong><code>var</code></strong> <em>pattern</em> | <strong><code>let</code></strong> <em>pattern</em></p>
 <p>Grammar of a tuple pattern:</p>
-<p><em>tuple-pattern</em> → <strong><code>(</code></strong> <em>tuple-pattern-element-list</em><em>?</em> <strong><code>)</code></strong></p>
-<p><em>tuple-pattern-element-list</em> → <em>tuple-pattern-element</em> | <em>tuple-pattern-element</em> <strong><code>,</code></strong> <em>tuple-pattern-element-list</em></p>
-<p><em>tuple-pattern-element</em> → <em>pattern</em> | <em>identifier</em> <strong><code>:</code></strong> <em>pattern</em></p>
+<p><em>tuple-pattern</em> → <strong><code>(</code></strong> <em>tuple-pattern-element-list</em><em>?</em> <strong><code>)</code></strong> \
+<em>tuple-pattern-element-list</em> → <em>tuple-pattern-element</em> | <em>tuple-pattern-element</em> <strong><code>,</code></strong> <em>tuple-pattern-element-list</em> \
+<em>tuple-pattern-element</em> → <em>pattern</em> | <em>identifier</em> <strong><code>:</code></strong> <em>pattern</em></p>
 <p>Grammar of an enumeration case pattern:</p>
 <p><em>enum-case-pattern</em> → <em>type-identifier</em><em>?</em> <strong><code>.</code></strong> <em>enum-case-name</em> <em>tuple-pattern</em><em>?</em></p>
 <p>Grammar of an optional pattern:</p>
 <p><em>optional-pattern</em> → <em>identifier-pattern</em> <strong><code>?</code></strong></p>
 <p>Grammar of a type casting pattern:</p>
-<p><em>type-casting-pattern</em> → <em>is-pattern</em> | <em>as-pattern</em></p>
-<p><em>is-pattern</em> → <strong><code>is</code></strong> <em>type</em></p>
-<p><em>as-pattern</em> → <em>pattern</em> <strong><code>as</code></strong> <em>type</em></p>
+<p><em>type-casting-pattern</em> → <em>is-pattern</em> | <em>as-pattern</em> \
+<em>is-pattern</em> → <strong><code>is</code></strong> <em>type</em> \
+<em>as-pattern</em> → <em>pattern</em> <strong><code>as</code></strong> <em>type</em></p>
 <p>Grammar of an expression pattern:</p>
 <p><em>expression-pattern</em> → <em>expression</em></p>
 </blockquote>
 <h2 id="generic-parameters-and-argumentsジェネリックパラメータと引数">Generic Parameters and Arguments(ジェネリックパラメータと引数)</h2>
 <blockquote>
 <p>Grammar of a generic parameter clause:</p>
-<p><em>generic-parameter-clause</em> → <strong><code>&lt;</code></strong> <em>generic-parameter-list</em> <strong><code>&gt;</code></strong></p>
-<p><em>generic-parameter-list</em> → <em>generic-parameter</em> | <em>generic-parameter</em> <strong><code>,</code></strong> <em>generic-parameter-list</em></p>
-<p><em>generic-parameter</em> → <em>type-name</em></p>
-<p><em>generic-parameter</em> → <em>type-name</em> <strong><code>:</code></strong> <em>type-identifier</em></p>
-<p><em>generic-parameter</em> → <em>type-name</em> <strong><code>:</code></strong> <em>protocol-composition-type</em></p>
-<p><em>generic-where-clause</em> → <strong><code>where</code></strong> <em>requirement-list</em></p>
-<p><em>requirement-list</em> → <em>requirement</em> | <em>requirement</em> <strong><code>,</code></strong> <em>requirement-list</em></p>
-<p><em>requirement</em> → <em>conformance-requirement</em> | <em>same-type-requirement</em></p>
-<p><em>conformance-requirement</em> → <em>type-identifier</em> <strong><code>:</code></strong> <em>type-identifier</em></p>
-<p><em>conformance-requirement</em> → <em>type-identifier</em> <strong><code>:</code></strong> <em>protocol-composition-type</em></p>
-<p><em>same-type-requirement</em> → <em>type-identifier</em> <strong><code>==</code></strong> <em>type</em></p>
+<p><em>generic-parameter-clause</em> → <strong><code>&lt;</code></strong> <em>generic-parameter-list</em> <strong><code>&gt;</code></strong> \
+<em>generic-parameter-list</em> → <em>generic-parameter</em> | <em>generic-parameter</em> <strong><code>,</code></strong> <em>generic-parameter-list</em> \
+<em>generic-parameter</em> → <em>type-name</em> \
+<em>generic-parameter</em> → <em>type-name</em> <strong><code>:</code></strong> <em>type-identifier</em> \
+<em>generic-parameter</em> → <em>type-name</em> <strong><code>:</code></strong> <em>protocol-composition-type</em></p>
+<p><em>generic-where-clause</em> → <strong><code>where</code></strong> <em>requirement-list</em> \
+<em>requirement-list</em> → <em>requirement</em> | <em>requirement</em> <strong><code>,</code></strong> <em>requirement-list</em> \
+<em>requirement</em> → <em>conformance-requirement</em> | <em>same-type-requirement</em></p>
+<p><em>conformance-requirement</em> → <em>type-identifier</em> <strong><code>:</code></strong> <em>type-identifier</em> \
+<em>conformance-requirement</em> → <em>type-identifier</em> <strong><code>:</code></strong> <em>protocol-composition-type</em> \
+<em>same-type-requirement</em> → <em>type-identifier</em> <strong><code>==</code></strong> <em>type</em></p>
 <p>Grammar of a generic argument clause:</p>
-<p><em>generic-argument-clause</em> → <strong><code>&lt;</code></strong> <em>generic-argument-list</em> <strong><code>&gt;</code></strong></p>
-<p><em>generic-argument-list</em> → <em>generic-argument</em> | <em>generic-argument</em> <strong><code>,</code></strong> <em>generic-argument-list</em></p>
-<p><em>generic-argument</em> → <em>type</em></p>
+<p><em>generic-argument-clause</em> → <strong><code>&lt;</code></strong> <em>generic-argument-list</em> <strong><code>&gt;</code></strong> \
+<em>generic-argument-list</em> → <em>generic-argument</em> | <em>generic-argument</em> <strong><code>,</code></strong> <em>generic-argument-list</em> \
+<em>generic-argument</em> → <em>type</em></p>
 </blockquote>
 
                                 
@@ -1566,7 +1566,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"文法のまとめ(Summary of the Grammar)","level":"4.10","depth":1,"next":{"title":"ドキュメント改訂履歴(Document Revision History)","level":"5.1","depth":1,"path":"revision-history/document-revision-history.md","ref":"revision-history/document-revision-history.md","articles":[]},"previous":{"title":"ジェネリックパラメータと引数(Generic Parameters and Arguments)","level":"4.9","depth":1,"path":"language-reference/generic-parameters-and-arguments.md","ref":"language-reference/generic-parameters-and-arguments.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-reference/summary-of-the-grammar.md","mtime":"2023-07-18T21:59:33.422Z","type":"markdown"},"gitbook":{"version":"3.7.5","time":"2023-07-18T21:59:54.636Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"文法のまとめ(Summary of the Grammar)","level":"4.10","depth":1,"next":{"title":"ドキュメント改訂履歴(Document Revision History)","level":"5.1","depth":1,"path":"revision-history/document-revision-history.md","ref":"revision-history/document-revision-history.md","articles":[]},"previous":{"title":"ジェネリックパラメータと引数(Generic Parameters and Arguments)","level":"4.9","depth":1,"path":"language-reference/generic-parameters-and-arguments.md","ref":"language-reference/generic-parameters-and-arguments.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-reference/summary-of-the-grammar.md","mtime":"2023-08-12T23:25:08.923Z","type":"markdown"},"gitbook":{"version":"3.7.5","time":"2023-08-12T23:25:42.339Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

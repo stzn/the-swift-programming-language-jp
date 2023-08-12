@@ -758,32 +758,32 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="文statements">文(Statements)</h1>
-<p>最終更新日: 2023/6/4<br>原文: <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html" target="_blank">https://docs.swift.org/swift-book/ReferenceManual/Statements.html</a></p>
+<p>最終更新日: 2023/8/11<br>原文: <a href="https://docs.swift.org/swift-book/ReferenceManual/Statements.html" target="_blank">https://docs.swift.org/swift-book/ReferenceManual/Statements.html</a></p>
 <p>式を分類し、実行の流れを制御する。</p>
 <p>Swift では、単純な文、コンパイラ制御文、および制御フロー文の 3 種類の文があります。単純な文は最も一般的で、式または宣言で構成されています。コンパイラ制御文により、プログラムはコンパイラの動作を変更し、条件付きコンパイルブロックと行制御文が含まれます。</p>
 <p>制御フロー文は、プログラム内の実行の流れを制御するために使用されます。Swift には、ループ文、分岐文、および制御転送文を含む、いくつかの種類の制御フロー文があります。ループ文はコードブロックを繰り返し実行できるようにし、分岐文は特定の条件が満たされたときにのみ特定のコードブロックを実行できるようにし、制御転送文はコードが実行される順序を変更する方法を提供します。さらに、Swift は、スコープを導入し、エラーをキャッチして処理するための <code>do</code> 文、および現在のスコープが終了する直前のクリーンアップアクションを実行するための <code>defer</code> 文を提供します。</p>
 <p>セミコロン(<code>;</code>)は任意の文の後に書くことができ、同じ行に複数の文が書かれている場合に、それらを分離するために使用されます。</p>
 <blockquote>
 <p>Grammar of a statement:</p>
-<p><em>statement</em> → <em>expression</em> <strong><code>;</code></strong><em>?</em></p>
-<p><em>statement</em> → <em>declaration</em> <strong><code>;</code></strong><em>?</em></p>
-<p><em>statement</em> → <em>loop-statement</em> <strong><code>;</code></strong><em>?</em></p>
-<p><em>statement</em> → <em>branch-statement</em> <strong><code>;</code></strong><em>?</em></p>
-<p><em>statement</em> → <em>labeled-statement</em> <strong><code>;</code></strong><em>?</em></p>
-<p><em>statement</em> → <em>control-transfer-statement</em> <strong><code>;</code></strong><em>?</em></p>
-<p><em>statement</em> → <em>defer-statement</em> <strong><code>;</code></strong><em>?</em></p>
-<p><em>statement</em> → <em>do-statement</em> <strong><code>;</code></strong><em>?</em></p>
-<p><em>statement</em> → <em>compiler-control-statement</em></p>
-<p><em>statements</em> → <em>statement</em> <em>statements</em><em>?</em></p>
+<p><em>statement</em> → <em>expression</em> <strong><code>;</code></strong><em>?</em> \
+<em>statement</em> → <em>declaration</em> <strong><code>;</code></strong><em>?</em> \
+<em>statement</em> → <em>loop-statement</em> <strong><code>;</code></strong><em>?</em> \
+<em>statement</em> → <em>branch-statement</em> <strong><code>;</code></strong><em>?</em> \
+<em>statement</em> → <em>labeled-statement</em> <strong><code>;</code></strong><em>?</em> \
+<em>statement</em> → <em>control-transfer-statement</em> <strong><code>;</code></strong><em>?</em> \
+<em>statement</em> → <em>defer-statement</em> <strong><code>;</code></strong><em>?</em> \
+<em>statement</em> → <em>do-statement</em> <strong><code>;</code></strong><em>?</em> \
+<em>statement</em> → <em>compiler-control-statement</em> \
+<em>statements</em> → <em>statement</em> <em>statements</em><em>?</em></p>
 </blockquote>
 <h2 id="ループ文loop-statements">ループ文(Loop Statements)</h2>
 <p>ループ文では、ループで指定された条件に応じて、コードブロックを繰り返し実行できます。Swift には 3 つのループ文があります。<code>for-in</code> 文、<code>while</code> 文、および <code>repeat-while</code> 文です。</p>
 <p>ループ文内の制御フローは、<code>break</code> 文と <code>continue</code> 文によって変更でき、下記の<a href="statements.html#break-statement">Break Statement(Break 文)</a>と<a href="statements.html#continue-statement">Continue Statement(Continue 文)</a>で説明します。</p>
 <blockquote>
 <p>Grammar of a loop statement:</p>
-<p><em>loop-statement</em> → <em>for-in-statement</em></p>
-<p><em>loop-statement</em> → <em>while-statement</em></p>
-<p><em>loop-statement</em> → <em>repeat-while-statement</em></p>
+<p><em>loop-statement</em> → <em>for-in-statement</em> \
+<em>loop-statement</em> → <em>while-statement</em> \
+<em>loop-statement</em> → <em>repeat-while-statement</em></p>
 </blockquote>
 <h3 id="for-in-文for-in-statement">For-In 文(For-In Statement)</h3>
 <p><code>for-in</code> 文は、<a href="https://developer.apple.com/documentation/swift/sequence" target="_blank">Sequence</a>に準拠したコレクション(または任意の型)内の各項目ごとに 1 回、コードブロックを実行できます。</p>
@@ -814,10 +814,10 @@
 <blockquote>
 <p>Grammar of a while statement:</p>
 <p><em>while-statement</em> → <strong><code>while</code></strong> <em>condition-list</em> <em>code-block</em></p>
-<p><em>condition-list</em> → <em>condition</em> | <em>condition</em> <strong><code>,</code></strong> <em>condition-list</em></p>
-<p><em>condition</em> → <em>expression</em> | <em>availability-condition</em> | <em>case-condition</em> | <em>optional-binding-condition</em></p>
-<p><em>case-condition</em> → <strong><code>case</code></strong> <em>pattern</em> <em>initializer</em></p>
-<p><em>optional-binding-condition</em> → <strong><code>let</code></strong> <em>pattern</em> <em>initializer</em><em>?</em> | <strong><code>var</code></strong> <em>pattern</em> <em>initializer</em><em>?</em></p>
+<p><em>condition-list</em> → <em>condition</em> | <em>condition</em> <strong><code>,</code></strong> <em>condition-list</em> \
+<em>condition</em> → <em>expression</em> | <em>availability-condition</em> | <em>case-condition</em> | <em>optional-binding-condition</em></p>
+<p><em>case-condition</em> → <strong><code>case</code></strong> <em>pattern</em> <em>initializer</em> \
+<em>optional-binding-condition</em> → <strong><code>let</code></strong> <em>pattern</em> <em>initializer</em><em>?</em> | <strong><code>var</code></strong> <em>pattern</em> <em>initializer</em><em>?</em></p>
 </blockquote>
 <h3 id="repeat-while-文repeat-while-statement">Repeat-While 文(Repeat-While Statement)</h3>
 <p><code>repeat-while</code> 文は、条件が true な限り、コードブロックを 1 回以上実行できます。</p>
@@ -842,9 +842,9 @@
 <p><code>if</code> 文または <code>switch</code> 文の制御フローは <code>break</code> 文によって変更できます。これについては、下記の<a href="statements.html#break-statement">Break Statement(Break 文)</a>で説明します。</p>
 <blockquote>
 <p>Grammar of a branch statement:</p>
-<p><em>branch-statement</em> → <em>if-statement</em></p>
-<p><em>branch-statement</em> → <em>guard-statement</em></p>
-<p><em>branch-statement</em> → <em>switch-statement</em></p>
+<p><em>branch-statement</em> → <em>if-statement</em> \
+<em>branch-statement</em> → <em>guard-statement</em> \
+<em>branch-statement</em> → <em>switch-statement</em></p>
 </blockquote>
 <h3 id="if-文if-statement">If 文(If Statement)</h3>
 <p><code>if</code> 文は、1 つ以上の条件の評価に基づいてコードを実行するために使用されます。</p>
@@ -873,8 +873,8 @@
 <p><code>if</code> 文の条件の値は、<code>Bool</code> 型または <code>Bool</code> にブリッジされた型にする必要があります。<a href="../language-guide/the-basics.html#optional-binding">Optional Binding(オプショナルバインディング)</a>で説明したように、条件はオプショナルバインディング宣言にすることもできます。</p>
 <blockquote>
 <p>Grammar of an if statement:</p>
-<p><em>if-statement</em> → <strong><code>if</code></strong> <em>condition-list</em> <em>code-block</em> <em>else-clause</em><em>?</em></p>
-<p><em>else-clause</em> → <strong><code>else</code></strong> <em>code-block</em> | <strong><code>else</code></strong> <em>if-statement</em></p>
+<p><em>if-statement</em> → <strong><code>if</code></strong> <em>condition-list</em> <em>code-block</em> <em>else-clause</em><em>?</em> \
+<em>else-clause</em> → <strong><code>else</code></strong> <em>code-block</em> | <strong><code>else</code></strong> <em>if-statement</em></p>
 </blockquote>
 <h3 id="guard-文guard-statement"><a id="guard-statement">Guard 文(Guard Statement)</a></h3>
 <p><code>guard</code> 文は、1 つ以上の条件が満たされない場合に、プログラム制御をスコープ外に転送するために使用されます。</p>
@@ -944,21 +944,21 @@
 <p>一致したケース内のコードの実行が終了すると、プログラムは <code>switch</code> 文を終了します。プログラムの実行は次のケースまたはデフォルトのケースに続行または「通り抜け」ません。あるケースから次のケースまで実行を継続したい場合、<code>fallthrough</code> キーワードで構成される <code>fallthrough</code> 文を明示的に含めます。<code>fallthrough</code> 文の詳細については、下記の<a href="statements.html#fallthrough-statement">Fallthrough Statement(Fallthrough 文)</a>を参照ください。</p>
 <blockquote>
 <p>Grammar of a switch statement:</p>
-<p><em>switch-statement</em> → <strong><code>switch</code></strong> <em>expression</em> <strong><code>{</code></strong> <em>switch-cases</em><em>?</em> <strong><code>}</code></strong></p>
-<p><em>switch-cases</em> → <em>switch-case</em> <em>switch-cases</em><em>?</em></p>
-<p><em>switch-case</em> → <em>case-label</em> <em>statements</em></p>
-<p><em>switch-case</em> → <em>default-label</em> <em>statements</em></p>
-<p><em>switch-case</em> → <em>conditional-switch-case</em></p>
-<p><em>case-label</em> → <em>attributes</em><em>?</em> <strong><code>case</code></strong> <em>case-item-list</em> <strong><code>:</code></strong></p>
-<p><em>case-item-list</em> → <em>pattern</em> <em>where-clause</em><em>?</em> | <em>pattern</em> <em>where-clause</em><em>?</em> <strong><code>,</code></strong> <em>case-item-list</em></p>
-<p><em>default-label</em> → <em>attributes</em><em>?</em> <strong><code>default</code></strong> <strong><code>:</code></strong></p>
-<p><em>where-clause</em> → <strong><code>where</code></strong> <em>where-expression</em></p>
-<p><em>where-expression</em> → <em>expression</em></p>
-<p><em>conditional-switch-case</em> → <em>switch-if-directive-clause</em> <em>switch-elseif-directive-clauses</em><em>?</em> <em>switch-else-directive-clause</em><em>?</em> <em>endif-directive</em></p>
-<p><em>switch-if-directive-clause</em> → <em>if-directive</em> <em>compilation-condition</em> <em>switch-cases</em><em>?</em></p>
-<p><em>switch-elseif-directive-clauses</em> → <em>elseif-directive-clause</em> <em>switch-elseif-directive-clauses</em><em>?</em></p>
-<p><em>switch-elseif-directive-clause</em> → <em>elseif-directive</em> <em>compilation-condition</em> <em>switch-cases</em><em>?</em></p>
-<p><em>switch-else-directive-clause</em> → <em>else-directive</em> <em>switch-cases</em><em>?</em></p>
+<p><em>switch-statement</em> → <strong><code>switch</code></strong> <em>expression</em> <strong><code>{</code></strong> <em>switch-cases</em><em>?</em> <strong><code>}</code></strong> \
+<em>switch-cases</em> → <em>switch-case</em> <em>switch-cases</em><em>?</em> \
+<em>switch-case</em> → <em>case-label</em> <em>statements</em> \
+<em>switch-case</em> → <em>default-label</em> <em>statements</em> \
+<em>switch-case</em> → <em>conditional-switch-case</em></p>
+<p><em>case-label</em> → <em>attributes</em><em>?</em> <strong><code>case</code></strong> <em>case-item-list</em> <strong><code>:</code></strong> \
+<em>case-item-list</em> → <em>pattern</em> <em>where-clause</em><em>?</em> | <em>pattern</em> <em>where-clause</em><em>?</em> <strong><code>,</code></strong> <em>case-item-list</em> \
+<em>default-label</em> → <em>attributes</em><em>?</em> <strong><code>default</code></strong> <strong><code>:</code></strong></p>
+<p><em>where-clause</em> → <strong><code>where</code></strong> <em>where-expression</em> \
+<em>where-expression</em> → <em>expression</em></p>
+<p><em>conditional-switch-case</em> → <em>switch-if-directive-clause</em> <em>switch-elseif-directive-clauses</em><em>?</em> <em>switch-else-directive-clause</em><em>?</em> <em>endif-directive</em> \
+<em>switch-if-directive-clause</em> → <em>if-directive</em> <em>compilation-condition</em> <em>switch-cases</em><em>?</em> \
+<em>switch-elseif-directive-clauses</em> → <em>elseif-directive-clause</em> <em>switch-elseif-directive-clauses</em><em>?</em> \
+<em>switch-elseif-directive-clause</em> → <em>elseif-directive</em> <em>compilation-condition</em> <em>switch-cases</em><em>?</em> \
+<em>switch-else-directive-clause</em> → <em>else-directive</em> <em>switch-cases</em><em>?</em></p>
 </blockquote>
 <h2 id="ラベル付き文labeled-statement">ラベル付き文(Labeled Statement)</h2>
 <p>ループ文、<code>if</code> 文、<code>switch</code> 文、または <code>do</code> 文の前に<em>文ラベル</em>を付けることができます。文ラベルは、ラベルの名前の直後にコロン(<code>:</code>)が続きます。下記の <a href="statements.html#break-statementbreak文">Break</a>と<a href="statements.html#continue-statementcontinue文">Continue</a>で説明するように、<code>break</code> 文と <code>continue</code> 文で文ラベルを使用して、ループ文または <code>switch</code> 文の制御フローをどのように変更したいのかを明示できます。</p>
@@ -966,22 +966,22 @@
 <p>文ラベルの詳細および使用例については、<a href="../language-guide/control-flow.html">Control Flow(制御フロー)</a>の<a href="../language-guide/control-flow.html#labeled-statements">Labeled Statements(ラベル付き文)</a>を参照ください。</p>
 <blockquote>
 <p>Grammar of a labeled statement:</p>
-<p><em>labeled-statement</em> → <em>statement-label</em> <em>loop-statement</em></p>
-<p><em>labeled-statement</em> → <em>statement-label</em> <em>if-statement</em></p>
-<p><em>labeled-statement</em> → <em>statement-label</em> <em>switch-statement</em></p>
-<p><em>labeled-statement</em> → <em>statement-label</em> <em>do-statement</em></p>
-<p><em>statement-label</em> → <em>label-name</em> <strong><code>:</code></strong></p>
-<p><em>label-name</em> → <em>identifier</em></p>
+<p><em>labeled-statement</em> → <em>statement-label</em> <em>loop-statement</em> \
+<em>labeled-statement</em> → <em>statement-label</em> <em>if-statement</em> \
+<em>labeled-statement</em> → <em>statement-label</em> <em>switch-statement</em> \
+<em>labeled-statement</em> → <em>statement-label</em> <em>do-statement</em></p>
+<p><em>statement-label</em> → <em>label-name</em> <strong><code>:</code></strong> \
+<em>label-name</em> → <em>identifier</em></p>
 </blockquote>
 <h2 id="制御転送文control-transfer-statements">制御転送文(Control Transfer Statements)</h2>
 <p>制御転送文は、プログラム制御をあるコードから別のコードに無条件に転送することにより、プログラム内のコードが実行される順序を変更できます。Swift には、<code>break</code> 文、<code>continue</code> 文、<code>fallthrough</code> 文、<code>return</code> 文、および <code>throw</code> 文の 5 つの制御転送文があります。</p>
 <blockquote>
 <p>Grammar of a control transfer statement:</p>
-<p><em>control-transfer-statement</em> → <em>break-statement</em></p>
-<p><em>control-transfer-statement</em> → <em>continue-statement</em></p>
-<p><em>control-transfer-statement</em> → <em>fallthrough-statement</em></p>
-<p><em>control-transfer-statement</em> → <em>return-statement</em></p>
-<p><em>control-transfer-statement</em> → <em>throw-statement</em></p>
+<p><em>control-transfer-statement</em> → <em>break-statement</em> \
+<em>control-transfer-statement</em> → <em>continue-statement</em> \
+<em>control-transfer-statement</em> → <em>fallthrough-statement</em> \
+<em>control-transfer-statement</em> → <em>return-statement</em> \
+<em>control-transfer-statement</em> → <em>throw-statement</em></p>
 </blockquote>
 <h3 id="break-文break-statement"><a id="break-statement">Break 文(Break Statement)</a></h3>
 <p><code>break</code> 文は、ループ、<code>if</code> 文、または <code>switch</code> 文のプログラムの実行を終了します。下記に示すように、<code>break</code> 文は、<code>break</code> キーワードのみで構成することも、<code>break</code> キーワードの後に文ラベルを続けることもできます。</p>
@@ -1111,19 +1111,19 @@ continue</span> <span class="token operator">&lt;</span><span class="token other
 <p>複数の <code>catch</code> 句を指定して <code>do</code> 文を使用する方法の例については、<a href="../language-guide/error-handling.html#handling-errorsエラー処理">Handling Errors(エラー処理)</a>を参照ください。</p>
 <blockquote>
 <p>Grammar of a do statement:</p>
-<p><em>do-statement</em> → <strong><code>do</code></strong> <em>code-block</em> <em>catch-clauses</em><em>?</em></p>
-<p><em>catch-clauses</em> → <em>catch-clause</em> <em>catch-clauses</em><em>?</em></p>
-<p><em>catch-clause</em> → <strong><code>catch</code></strong> <em>catch-pattern-list</em><em>?</em> <em>code-block</em></p>
-<p><em>catch-pattern-list</em> → <em>catch-pattern</em> | <em>catch-pattern</em> <strong><code>,</code></strong> <em>catch-pattern-list</em></p>
-<p><em>catch-pattern</em> → <em>pattern</em> <em>where-clause</em><em>?</em></p>
+<p><em>do-statement</em> → <strong><code>do</code></strong> <em>code-block</em> <em>catch-clauses</em><em>?</em> \
+<em>catch-clauses</em> → <em>catch-clause</em> <em>catch-clauses</em><em>?</em> \
+<em>catch-clause</em> → <strong><code>catch</code></strong> <em>catch-pattern-list</em><em>?</em> <em>code-block</em> \
+<em>catch-pattern-list</em> → <em>catch-pattern</em> | <em>catch-pattern</em> <strong><code>,</code></strong> <em>catch-pattern-list</em> \
+<em>catch-pattern</em> → <em>pattern</em> <em>where-clause</em><em>?</em></p>
 </blockquote>
 <h2 id="コンパイラ制御文compiler-control-statements"><a id="compiler-control-statements">コンパイラ制御文(Compiler Control Statements)</a></h2>
 <p>コンパイラ制御文を使用すると、プログラムはコンパイラの動作を変更できます。Swift には、3 つのコンパイラ制御文があります。条件付きコンパイルブロックと、行制御文と、コンパイル時診断文です。</p>
 <blockquote>
 <p>Grammar of a compiler control statement:</p>
-<p><em>compiler-control-statement</em> → <em>conditional-compilation-block</em></p>
-<p><em>compiler-control-statement</em> → <em>line-control-statement</em></p>
-<p><em>compiler-control-statement</em> → <em>diagnostic-statement</em></p>
+<p><em>compiler-control-statement</em> → <em>conditional-compilation-block</em> \
+<em>compiler-control-statement</em> → <em>line-control-statement</em> \
+<em>compiler-control-statement</em> → <em>diagnostic-statement</em></p>
 </blockquote>
 <h3 id="条件付きコンパイルブロックconditional-compilation-block"><a id="conditional-compilation-block">条件付きコンパイルブロック(Conditional Compilation Block)</a></h3>
 <p>条件付きコンパイルブロックを使用すると、1 つ以上のコンパイル条件の値に応じてコードを条件付きでコンパイルできます。</p>
@@ -1204,32 +1204,32 @@ continue</span> <span class="token operator">&lt;</span><span class="token other
 <blockquote>
 <p>Grammar of a conditional compilation block:</p>
 <p><em>conditional-compilation-block</em> → <em>if-directive-clause</em> <em>elseif-directive-clauses</em><em>?</em> <em>else-directive-clause</em><em>?</em> <em>endif-directive</em></p>
-<p><em>if-directive-clause</em> → <em>if-directive</em> <em>compilation-condition</em> <em>statements</em><em>?</em></p>
-<p><em>elseif-directive-clauses</em> → <em>elseif-directive-clause</em> <em>elseif-directive-clauses</em><em>?</em></p>
-<p><em>elseif-directive-clause</em> → <em>elseif-directive</em> <em>compilation-condition</em> <em>statements</em><em>?</em></p>
-<p><em>else-directive-clause</em> → <em>else-directive</em> <em>statements</em><em>?</em></p>
-<p><em>if-directive</em> → <strong><code>#if</code></strong></p>
-<p><em>elseif-directive</em> → <strong><code>#elseif</code></strong></p>
-<p><em>else-directive</em> → <strong><code>#else</code></strong></p>
-<p><em>endif-directive</em> → <strong><code>#endif</code></strong></p>
-<p><em>compilation-condition</em> → <em>platform-condition</em></p>
-<p><em>compilation-condition</em> → <em>identifier</em></p>
-<p><em>compilation-condition</em> → <em>boolean-literal</em></p>
-<p><em>compilation-condition</em> → <strong><code>(</code></strong> <em>compilation-condition</em> <strong><code>)</code></strong></p>
-<p><em>compilation-condition</em> → <strong><code>!</code></strong> <em>compilation-condition</em></p>
-<p><em>compilation-condition</em> → <em>compilation-condition</em> <strong><code>&amp;&amp;</code></strong> <em>compilation-condition</em></p>
-<p><em>compilation-condition</em> → <em>compilation-condition</em> <strong><code>||</code></strong> <em>compilation-condition</em></p>
-<p><em>platform-condition</em> → <strong><code>os</code></strong> <strong><code>(</code></strong> <em>operating-system</em> <strong><code>)</code></strong></p>
-<p><em>platform-condition</em> → <strong><code>arch</code></strong> <strong><code>(</code></strong> <em>architecture</em> <strong><code>)</code></strong></p>
-<p><em>platform-condition</em> → <strong><code>swift</code></strong> <strong><code>(</code></strong> <strong><code>&gt;=</code></strong> <em>swift-version</em> <strong><code>)</code></strong> | <strong><code>swift</code></strong> <strong><code>(</code></strong> <strong><code>&lt;</code></strong> <em>swift-version</em> <strong><code>)</code></strong></p>
-<p><em>platform-condition</em> → <strong><code>compiler</code></strong> <strong><code>(</code></strong> <strong><code>&gt;=</code></strong> <em>swift-version</em> <strong><code>)</code></strong> | <strong><code>compiler</code></strong> <strong><code>(</code></strong> <strong><code>&lt;</code></strong> <em>swift-version</em> <strong><code>)</code></strong></p>
-<p><em>platform-condition</em> → <strong><code>canImport</code></strong> <strong><code>(</code></strong> <em>import-path</em> <strong><code>)</code></strong></p>
-<p><em>platform-condition</em> → <strong><code>targetEnvironment</code></strong> <strong><code>(</code></strong> <em>environment</em> <strong><code>)</code></strong></p>
-<p><em>operating-system</em> → <strong><code>macOS</code></strong> | <strong><code>iOS</code></strong> | <strong><code>watchOS</code></strong> | <strong><code>tvOS</code></strong> | <strong><code>Linux</code></strong> | <strong><code>Windows</code></strong></p>
-<p><em>architecture</em> → <strong><code>i386</code></strong> | <strong><code>x86_64</code></strong> | <strong><code>arm</code></strong> | <strong><code>arm64</code></strong></p>
-<p><em>swift-version</em> → <em>decimal-digits</em> <em>swift-version-continuation</em><em>?</em></p>
-<p><em>swift-version-continuation</em> → <strong><code>.</code></strong> <em>decimal-digits</em> <em>swift-version-continuation</em><em>?</em></p>
-<p><em>environment</em> → <strong><code>simulator</code></strong> | <strong><code>macCatalyst</code></strong></p>
+<p><em>if-directive-clause</em> → <em>if-directive</em> <em>compilation-condition</em> <em>statements</em><em>?</em> \
+<em>elseif-directive-clauses</em> → <em>elseif-directive-clause</em> <em>elseif-directive-clauses</em><em>?</em> \
+<em>elseif-directive-clause</em> → <em>elseif-directive</em> <em>compilation-condition</em> <em>statements</em><em>?</em> \
+<em>else-directive-clause</em> → <em>else-directive</em> <em>statements</em><em>?</em> \
+<em>if-directive</em> → <strong><code>#if</code></strong> \
+<em>elseif-directive</em> → <strong><code>#elseif</code></strong> \
+<em>else-directive</em> → <strong><code>#else</code></strong> \
+<em>endif-directive</em> → <strong><code>#endif</code></strong></p>
+<p><em>compilation-condition</em> → <em>platform-condition</em> \
+<em>compilation-condition</em> → <em>identifier</em> \
+<em>compilation-condition</em> → <em>boolean-literal</em> \
+<em>compilation-condition</em> → <strong><code>(</code></strong> <em>compilation-condition</em> <strong><code>)</code></strong> \
+<em>compilation-condition</em> → <strong><code>!</code></strong> <em>compilation-condition</em> \
+<em>compilation-condition</em> → <em>compilation-condition</em> <strong><code>&amp;&amp;</code></strong> <em>compilation-condition</em> \
+<em>compilation-condition</em> → <em>compilation-condition</em> <strong><code>||</code></strong> <em>compilation-condition</em></p>
+<p><em>platform-condition</em> → <strong><code>os</code></strong> <strong><code>(</code></strong> <em>operating-system</em> <strong><code>)</code></strong> \
+<em>platform-condition</em> → <strong><code>arch</code></strong> <strong><code>(</code></strong> <em>architecture</em> <strong><code>)</code></strong> \
+<em>platform-condition</em> → <strong><code>swift</code></strong> <strong><code>(</code></strong> <strong><code>&gt;=</code></strong> <em>swift-version</em> <strong><code>)</code></strong> | <strong><code>swift</code></strong> <strong><code>(</code></strong> <strong><code>&lt;</code></strong> <em>swift-version</em> <strong><code>)</code></strong> \
+<em>platform-condition</em> → <strong><code>compiler</code></strong> <strong><code>(</code></strong> <strong><code>&gt;=</code></strong> <em>swift-version</em> <strong><code>)</code></strong> | <strong><code>compiler</code></strong> <strong><code>(</code></strong> <strong><code>&lt;</code></strong> <em>swift-version</em> <strong><code>)</code></strong> \
+<em>platform-condition</em> → <strong><code>canImport</code></strong> <strong><code>(</code></strong> <em>import-path</em> <strong><code>)</code></strong> \
+<em>platform-condition</em> → <strong><code>targetEnvironment</code></strong> <strong><code>(</code></strong> <em>environment</em> <strong><code>)</code></strong></p>
+<p><em>operating-system</em> → <strong><code>macOS</code></strong> | <strong><code>iOS</code></strong> | <strong><code>watchOS</code></strong> | <strong><code>tvOS</code></strong> | <strong><code>Linux</code></strong> | <strong><code>Windows</code></strong> \
+<em>architecture</em> → <strong><code>i386</code></strong> | <strong><code>x86_64</code></strong> | <strong><code>arm</code></strong> | <strong><code>arm64</code></strong> \
+<em>swift-version</em> → <em>decimal-digits</em> <em>swift-version-continuation</em><em>?</em> \
+<em>swift-version-continuation</em> → <strong><code>.</code></strong> <em>decimal-digits</em> <em>swift-version-continuation</em><em>?</em> \
+<em>environment</em> → <strong><code>simulator</code></strong> | <strong><code>macCatalyst</code></strong></p>
 </blockquote>
 <h3 id="行制御文line-control-statement"><a id="line-control-statement">行制御文(Line Control Statement)</a></h3>
 <p>行制御文は、コンパイルされるソースコードの行番号およびファイル名とは異なる可能性のある行番号およびファイル名を指定するために使用されます。行制御文を使用して、診断およびデバッグの目的で Swift が使用するソースコードの場所を変更します。</p>
@@ -1241,10 +1241,10 @@ continue</span> <span class="token operator">&lt;</span><span class="token other
 <p>2 番目の形式の <code>#sourceLocation()</code> は、ソースコードの場所をデフォルトの行番号とファイルパスにリセットします。</p>
 <blockquote>
 <p>Grammar of a line control statement:</p>
-<p><em>line-control-statement</em> → <strong><code>#sourceLocation</code></strong> <strong><code>(</code></strong> <strong><code>file:</code></strong> <em>file-path</em> <strong><code>,</code></strong> <strong><code>line:</code></strong> <em>line-number</em> <strong><code>)</code></strong></p>
-<p><em>line-control-statement</em> → <strong><code>#sourceLocation</code></strong> <strong><code>(</code></strong> <strong><code>)</code></strong></p>
-<p><em>line-number</em> → A decimal integer greater than zero</p>
-<p><em>file-path</em> → <em>static-string-literal</em></p>
+<p><em>line-control-statement</em> → <strong><code>#sourceLocation</code></strong> <strong><code>(</code></strong> <strong><code>file:</code></strong> <em>file-path</em> <strong><code>,</code></strong> <strong><code>line:</code></strong> <em>line-number</em> <strong><code>)</code></strong> \
+<em>line-control-statement</em> → <strong><code>#sourceLocation</code></strong> <strong><code>(</code></strong> <strong><code>)</code></strong> \
+<em>line-number</em> → A decimal integer greater than zero \
+<em>file-path</em> → <em>static-string-literal</em></p>
 </blockquote>
 <h3 id="コンパイル時診断文compile-time-diagnostic-statement"><a id="compile-time-diagnostic-statement">コンパイル時診断文(Compile-Time Diagnostic Statement)</a></h3>
 <p>Swift 5.9 より前のバージョンでは、コンパイル中に <code>#warning</code> と <code>#error</code> ステートメントが診断結果を出力します。この動作は、現在 Swift 標準ライブラリの<a href="http://developer.apple.com/documentation/swift/documentation/swift/warning(_:" target="_blank"><code>warning(_:)</code></a>)と<a href="http://developer.apple.com/documentation/swift/documentation/swift/error(_:" target="_blank"><code>error(_:)</code></a>)マクロによって提供されています。</p>
@@ -1269,20 +1269,20 @@ continue</span> <span class="token operator">&lt;</span><span class="token other
 <p><code>unavailable</code> の形は、その条件を否定する糖衣構文です。 Unavailability の条件では、<code>*</code> は暗黙的なので、含めるべきではありません。これは Availability 条件における <code>*</code> 引数と同じ意味を持ちます。</p>
 <blockquote>
 <p>Grammar of an availability condition:</p>
-<p><em>availability-condition</em> → <strong><code>#available</code></strong> <strong><code>(</code></strong> <em>availability-arguments</em> <strong><code>)</code></strong></p>
-<p><em>availability-condition</em> → <strong><code>#unavailable</code></strong> <strong><code>(</code></strong> <em>availability-arguments</em> <strong><code>)</code></strong></p>
-<p><em>availability-arguments</em> → <em>availability-argument</em> | <em>availability-argument</em> <strong><code>,</code></strong> <em>availability-arguments</em></p>
-<p><em>availability-argument</em> → <em>platform-name</em> <em>platform-version</em></p>
-<p><em>availability-argument</em> → <strong><code>*</code></strong></p>
-<p><em>platform-name</em> → <strong><code>iOS</code></strong> | <strong><code>iOSApplicationExtension</code></strong></p>
-<p><em>platform-name</em> → <strong><code>macOS</code></strong> | <strong><code>macOSApplicationExtension</code></strong></p>
-<p><em>platform-name</em> → <strong><code>macCatalyst</code></strong> | <strong><code>macCatalystApplicationExtension</code></strong></p>
-<p><em>platform-name</em> → <strong><code>watchOS</code></strong> | <strong><code>watchOSApplicationExtension</code></strong></p>
-<p><em>platform-name</em> → <strong><code>tvOS</code></strong> | <strong><code>tvOSApplicationExtension</code></strong></p>
-<p><em>platform-name</em> → <strong><code>visionOS</code></strong></p>
-<p><em>platform-version</em> → <em>decimal-digits</em></p>
-<p><em>platform-version</em> → <em>decimal-digits</em> <strong><code>.</code></strong> <em>decimal-digits</em></p>
-<p><em>platform-version</em> → <em>decimal-digits</em> <strong><code>.</code></strong> <em>decimal-digits</em> <strong><code>.</code></strong> <em>decimal-digits</em></p>
+<p><em>availability-condition</em> → <strong><code>#available</code></strong> <strong><code>(</code></strong> <em>availability-arguments</em> <strong><code>)</code></strong> \
+<em>availability-condition</em> → <strong><code>#unavailable</code></strong> <strong><code>(</code></strong> <em>availability-arguments</em> <strong><code>)</code></strong> \
+<em>availability-arguments</em> → <em>availability-argument</em> | <em>availability-argument</em> <strong><code>,</code></strong> <em>availability-arguments</em> \
+<em>availability-argument</em> → <em>platform-name</em> <em>platform-version</em> \
+<em>availability-argument</em> → <strong><code>*</code></strong></p>
+<p><em>platform-name</em> → <strong><code>iOS</code></strong> | <strong><code>iOSApplicationExtension</code></strong> \
+<em>platform-name</em> → <strong><code>macOS</code></strong> | <strong><code>macOSApplicationExtension</code></strong> \
+<em>platform-name</em> → <strong><code>macCatalyst</code></strong> | <strong><code>macCatalystApplicationExtension</code></strong> \
+<em>platform-name</em> → <strong><code>watchOS</code></strong> | <strong><code>watchOSApplicationExtension</code></strong> \
+<em>platform-name</em> → <strong><code>tvOS</code></strong> | <strong><code>tvOSApplicationExtension</code></strong> \
+<em>platform-name</em> → <strong><code>visionOS</code></strong> \
+<em>platform-version</em> → <em>decimal-digits</em> \
+<em>platform-version</em> → <em>decimal-digits</em> <strong><code>.</code></strong> <em>decimal-digits</em> \
+<em>platform-version</em> → <em>decimal-digits</em> <strong><code>.</code></strong> <em>decimal-digits</em> <strong><code>.</code></strong> <em>decimal-digits</em></p>
 </blockquote>
 
                                 
@@ -1327,7 +1327,7 @@ continue</span> <span class="token operator">&lt;</span><span class="token other
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"文(Statements)","level":"4.5","depth":1,"next":{"title":"宣言(Declarations)","level":"4.6","depth":1,"path":"language-reference/declarations.md","ref":"language-reference/declarations.md","articles":[]},"previous":{"title":"式(Expressions)","level":"4.4","depth":1,"path":"language-reference/expressions.md","ref":"language-reference/expressions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-reference/statements.md","mtime":"2023-07-18T21:59:33.422Z","type":"markdown"},"gitbook":{"version":"3.7.5","time":"2023-07-18T21:59:54.636Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"文(Statements)","level":"4.5","depth":1,"next":{"title":"宣言(Declarations)","level":"4.6","depth":1,"path":"language-reference/declarations.md","ref":"language-reference/declarations.md","articles":[]},"previous":{"title":"式(Expressions)","level":"4.4","depth":1,"path":"language-reference/expressions.md","ref":"language-reference/expressions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-reference/statements.md","mtime":"2023-08-12T23:25:08.923Z","type":"markdown"},"gitbook":{"version":"3.7.5","time":"2023-08-12T23:25:42.339Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
