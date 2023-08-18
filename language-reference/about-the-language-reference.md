@@ -1,6 +1,6 @@
 # 言語リファレンスについて\(About the Language Reference\)
 
-最終更新日: 2023/8/11  
+最終更新日: 2023/8/18
 原文: https://docs.swift.org/swift-book/ReferenceManual/AboutTheLanguageReference.html
 
 正式な文法で使用される表記法を読む。
