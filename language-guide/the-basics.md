@@ -618,6 +618,19 @@ if let firstNumber = Int("4") {
 
  `if` 文の中でオプショナルバインディングによって作られた定数や変数は、`if` 文の中でしか使えません。もし他でも使用したい場合は、`guard` 文を使用することで、`guard` 文の次から使用することができます。詳細は[Early Exit\(早期リターン\)](control-flow.md#early-exit早期リターン)に記載しています。
 
+### <a id="providing-fallback-value">フォールバック値の提供\(Providing a Fallback Value\)</a>
+
+欠如している値を処理する別の方法は、`nil` 結合演算子\( `??` \) を使用してデフォルトの値を提供することです。 `??` の左側のオプショナルが `nil` でなければ、その値はアンラップされて使用されます。それ以外の場合、 `??` の右側の値が使用されます。例えば、以下のコードは、名前が指定されていればその名前であいさつし、名前が `nil` の場合は汎用的な挨拶を使用します。
+
+```swift
+let name: String? = nil
+let greeting = "Hello, " + (name ?? "friend") + "!"
+print(greeting)
+// Hello, friend!
+```
+nil-coalescing-operator
+`??` を使用してフォールバック値を提供する詳細については、[Nil-Coalescing-Operator\( `nil` 合体演算子\)](basic-operators.md#nil-coalescing-operator)を参照してください。
+
 ### <a id="implicitly-unwrapped-optionals">暗黙アンラップオプショナル\(Implicitly Unwrapped Optionals\)</a>
 
 上記で書いているように、オプショナルは定数や変数に「値が存在しない」可能性があることを示します。オプショナルは値が存在するかどうかを `if` 文の中でチェックでき、存在している場合は、オプショナル内の値にアクセスするために、オプショナルバインディングを使用してアンラップすることができます。
