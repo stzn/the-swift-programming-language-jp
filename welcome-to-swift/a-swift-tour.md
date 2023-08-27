@@ -679,7 +679,7 @@ Task {
 // Hello Guest, user ID 97
 ```
 
-平行コードを構造化するために、タスクグループ\(_task group_\)を使います。
+同時並行コードを構造化するために、タスクグループ\(_task group_\)を使います。
 
 ```swift
 let userIDs = await withTaskGroup(of: Int.self) { taskGroup in
@@ -712,20 +712,6 @@ actor ServerConnection {
 }
 ```
 
-<!--
-  - test: `guided-tour`
-  ```swifttest
-  -> actor Oven {
-         var contents: [String] = []
-         func bake(_ food: String) -> String {
-             contents.append(food)
-             // ... wait for food to bake ...
-             return contents.removeLast()
-         }
-     }
-  ```
--->
-
 アクターのメソッドを呼び出す、もしくはそのプロパティの 1 つにアクセスする時に、
 そのアクター上で実行している他のコードが完了するのを待つことを示すために `await` をつける必要があります。
 
@@ -733,14 +719,6 @@ actor ServerConnection {
 let server = ServerConnection()
 let userID = await server.connect()
 ```
-
-<!--
-  - test: `guided-tour`
-  ```swifttest
-  -> let oven = Oven()
-  -> let biscuits = await oven.bake("biscuits")
-  ```
--->
 
 ## プロトコルと拡張\(Protocols and Extensions\)
 
