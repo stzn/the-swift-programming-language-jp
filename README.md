@@ -125,20 +125,27 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/TonTonbow">
+            <img src="https://avatars.githubusercontent.com/u/70003919?v=4" width="100;" alt="TonTonbow"/>
+            <br />
+            <sub><b>とんとんぼ</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/rymshm">
             <img src="https://avatars.githubusercontent.com/u/23201810?v=4" width="100;" alt="rymshm"/>
             <br />
             <sub><b>Ryo Mashima</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/elmetal">
             <img src="https://avatars.githubusercontent.com/u/20150994?v=4" width="100;" alt="elmetal"/>
             <br />
             <sub><b>Elmetal</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/gitbook-bot">
             <img src="https://avatars.githubusercontent.com/u/31919211?v=4" width="100;" alt="gitbook-bot"/>
