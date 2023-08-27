@@ -338,7 +338,7 @@ let freezeWarning: String? = if temperatureInCelsius <= 0 {
 }
 ```
 
-上のコードでは、`if` 式の一方の分岐に `String` 値が、もう一方の分岐に `nil` 値が設定されています。`nil` 値は任意のオプショナル型の値として使用できるため、doc:TheBasics#Type-Annotations [型注釈\(Type Annotations\)](../language-guide/the-basics.md#type-annotations)にあるように、`freezeWarning` がオプショナルの文字列であることを明示的に記述する必要があります。
+上のコードでは、`if` 式の一方の分岐に `String` 値が、もう一方の分岐に `nil` 値が設定されています。`nil` 値は任意のオプショナル型の値として使用できるため、 [型注釈\(Type Annotations\)](../language-guide/the-basics.md#type-annotations)にあるように、`freezeWarning` がオプショナルの文字列であることを明示的に記述する必要があります。
 この型情報を提供する別の方法として、`freezeWarning` に明示的な型を提供する代わりに、`nil` に明示的な型を提供することができます：
 
 
