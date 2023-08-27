@@ -662,6 +662,8 @@ guard let number = convertedNumber else {
 
 暗黙アンラップオプショナルは、オプショナル値の定義後すぐに値が設定され、それ以降はずっと値が存在していることが確実な場合に、役に立ちます。Swift での暗黙アンラップオプショナルの主な使われ方としては、クラスの初期化時があります。[Unowned References and Implicitly Unwrapped Optional Properties\(非所有参照と暗黙アンラップしたオプショナルプロパティ\)](automatic-reference-counting.md#unowned-references-and-implicitly-unwrapped-optional-properties非所有参照と暗黙アンラップしたオプショナルプロパティ)に記載しています。
 
+後で変数が `nil` になる可能性がある場合、暗黙的アンラップされたオプショナルを使用しないでください。変数の有効期間中に `nil` 値をチェックする必要がある場合は、常に通常のオプショナル型を使用してください。
+
 暗黙アンラップオプショナルは、内部的には通常のオプショナルですが、オプショナルではない値のように使用することもできます。次の例は、オプショナルと暗黙アンラップオプショナルで、明示的に `String` を型として記載している値へアクセスするときの動きの違いを表しています。
 
 ```swift
@@ -669,7 +671,7 @@ let possibleString: String? = "An optional string."
 let forcedString: String = possibleString! // ! が必要
 
 let assumedString: String! = "An implicitly unwrapped optional string."
-let implicitString: String = assumedString // ! は不要
+let implicitString: String = assumedString // ! は自動的に不要になる
 ```
 
 暗黙アンラップオプショナルを必要なときにオプショナル値へ強制アンラップできるようにしていると見なすことができます。暗黙アンラップオプショナル値を使用するとき、Swift は強制アンラップします。上記のコードでは、オプショナル値の `assumedString` は、`implicitString` が明示的にオプショナルではない `String` を宣言しているため、代入される前に強制アンラップされています。下記のコードでは、`optionalString` は明示的に型を宣言していないため、通常はオプショナルになります。
@@ -679,7 +681,7 @@ let optionalString = assumedString
 // optionalString は String? 型で assumedString は 強制アンラップする必要はありません
 ```
 
-暗黙アンラップオプショナルが `nil` の場合に内部の値にアクセスしようとすると、実行時エラーが発生します。これは `!` を付けた通常のオプショナルで値が存在しない場合にアクセスしたときの動きと同じです。
+暗黙アンラップオプショナルが `nil` の場合に内部の値にアクセスしようとすると、実行時エラーが発生します。これは `!` を付けた通常のオプショナルで値が存在しない場合に強制的にアンラップしたときの動きと同じです。
 
 暗黙アンラップオプショナルが `nil` かどうかのチェックは通常のオプショナルと同じ方法でできます。
 
@@ -698,9 +700,6 @@ if let definiteString = assumedString {
 }
 // An implicitly unwrapped optional string.
 ```
-
-> NOTE  
-> 暗黙アンラップオプショナルを、後で `nil` になる可能性のある変数に使わないでください。変数が使用されている間に `nil` チェックが必要な場合は、通常のオプショナルを常に使いましょう
 
 ## エラーハンドリング\(Error Handling\)
 
@@ -810,4 +809,3 @@ precondition(index > 0, "Index must be greater than zero.")
 事前条件が失敗したことを示すために、[preconditionFailure\(\_:file:line:\)](https://developer.apple.com/documentation/swift/1539374-preconditionfailure)関数を使用することもできます。例えば、switch 文の中で、本来ならば他のケースで全ての妥当な入力値をカバーできるはずなのに、default のケースに入ってしまうケースなどがあります。
 
 > NOTE もし\(`-Ounchecked`\)モードでコンパイルした場合、事前条件はチェックされません。コンパイラは事前条件を常に `true` とみなしてコードの最適化を行います。一方で、`fatalError(_:file:line:)` 関数は最適化の設定をしても、常に実行を中断します。`fatalError(_:file:line:)` 関数は、試作段階や開発の初期段階で、まだ未実装であることを示すためのスタブとして使用することができます\(`fatalError("Unimplemented")` と書くなど\)。fatal error はコードの最適化がされないため、アサーションと事前条件とは異なり、もしこのスタブメソッドに遭遇した場合は、確実に実行を中断させることができます
-
