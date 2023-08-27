@@ -1,6 +1,6 @@
 # Swiftツアー\(A Swift Tour\)
 
-最終更新日: 2023/5/27  
+最終更新日: 2023/8/27  
 原文: https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html
 
 Swift の特徴とシンタックスを探る。
@@ -678,6 +678,69 @@ Task {
 }
 // Hello Guest, user ID 97
 ```
+
+平行コードを構造化するために、タスクグループ\(_task group_\)を使います。
+
+```swift
+let userIDs = await withTaskGroup(of: Int.self) { taskGroup in
+    for server in ["primary", "secondary", "development"] {
+        taskGroup.addTask {
+            return await fetchUserID(from: server)
+        }
+    }
+
+    var results: [Int] = []
+    for await result in taskGroup {
+        results.append(result)
+    }
+    return results
+}
+```
+
+アクターはクラスと似ていますが、異なる非同期関数が同時に同じアクターのインスタンスに安全にアクセスできる点が異なります。
+
+```swift
+actor ServerConnection {
+    var server: String = "primary"
+    private var activeUsers: [Int] = []
+    func connect() async -> Int {
+        let userID = await fetchUserID(from: server)
+        // ... communicate with server ...
+        activeUsers.append(userID)
+        return userID
+    }
+}
+```
+
+<!--
+  - test: `guided-tour`
+  ```swifttest
+  -> actor Oven {
+         var contents: [String] = []
+         func bake(_ food: String) -> String {
+             contents.append(food)
+             // ... wait for food to bake ...
+             return contents.removeLast()
+         }
+     }
+  ```
+-->
+
+アクターのメソッドを呼び出す、もしくはそのプロパティの 1 つにアクセスする時に、
+そのアクター上で実行している他のコードが完了するのを待つことを示すために `await` をつける必要があります。
+
+```swift
+let server = ServerConnection()
+let userID = await server.connect()
+```
+
+<!--
+  - test: `guided-tour`
+  ```swifttest
+  -> let oven = Oven()
+  -> let biscuits = await oven.bake("biscuits")
+  ```
+-->
 
 ## プロトコルと拡張\(Protocols and Extensions\)
 
