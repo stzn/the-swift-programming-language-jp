@@ -631,6 +631,27 @@ print(greeting)
 nil-coalescing-operator
 `??` を使用してフォールバック値を提供する詳細については、[Nil-Coalescing-Operator\( `nil` 合体演算子\)](basic-operators.md#nil-coalescing-operator)を参照してください。
 
+### <a id="force-unwrapping">フォースアンラッピング\(Force Unwrapping\)</a>
+
+`nil` がプログラマのエラーや破損した状態などの回復不可能な失敗を表す場合、オプショナルの名前の末尾に感嘆符\( `!` \)を追加することで、その基本の値にアクセスすることができます。
+
+これはオプショナルの値を _強制的にアンラップする_ として知られています。非 `nil` の値を強制的にアンラップすると、結果はアンラップされた値となります。 `nil` の値を強制的にアンラップすると、ランタイムエラーが発生します。 `!` は、実質的に [`fatalError(_:file:line:)`](https://developer.apple.com/documentation/swift/fatalerror(_:file:line:)) の短縮形です。以下のコードは、 2 つの同等のアプローチを示しています。
+
+```swift
+let possibleNumber = "123"
+let convertedNumber = Int(possibleNumber)
+
+let number = convertedNumber!
+
+guard let number = convertedNumber else {
+    fatalError("The number was invalid")
+}
+```
+
+上記のコードの両方のバージョンは、`convertedNumber` が常に値を持っていることに依存しています。その要件をコードの一部として書くことで、上記のいずれかのアプローチを使用して、ランタイムでその要件が真であることをコードがチェックできます。
+
+ランタイム時にデータ要件を強制し、前提を確認する詳細については、[Assertions and Preconditions\(アサーションと事前条件\)](the-basics.md#assertions-and-preconditions)を参照してください。
+
 ### <a id="implicitly-unwrapped-optionals">暗黙アンラップオプショナル\(Implicitly Unwrapped Optionals\)</a>
 
 上記で書いているように、オプショナルは定数や変数に「値が存在しない」可能性があることを示します。オプショナルは値が存在するかどうかを `if` 文の中でチェックでき、存在している場合は、オプショナル内の値にアクセスするために、オプショナルバインディングを使用してアンラップすることができます。
