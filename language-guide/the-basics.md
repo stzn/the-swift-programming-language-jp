@@ -536,7 +536,7 @@ if convertedNumber != nil {
 オプショナルの値にアクセスするとき、コードは常に `nil` の場合と非 `nil` の場合の両方を処理します。値が欠如しているときにできるいくつかのことがあり、次のセクションで説明されています。
 
 - `nil` のときに値を操作するコードをスキップする
-- `nil` の値を伝搬させ、`nil` を返すか `?` を使用する。演算子については、[ Optional Chainig \(オプショナルチェーン\) ](optional-chaining.md)を参照してください
+- `nil` の値を伝播させるには、`nil` を返すか `?` を使用します。`?` 演算子については、[ Optional Chainig \(オプショナルチェーン\) ](optional-chaining.md)を参照してください
 - `??` 演算子を使用して、フォールバック値を提供します
 - `!` 演算子を使用して、プログラムの実行を停止します
 
@@ -571,7 +571,6 @@ if let actualNumber = Int(possibleNumber) {
 「`Int(possibleNumber)` が返すオプショナルの `Int` が値を含んでいた場合、`actualNumber` にその値を設定します」
 
 この変換が成功した場合、`actualNumber` 定数は `if` 文の最初の分岐内で使用することができます。オプショナル内にラップされている値で既に初期化は完了しているので、対応する非オプショナルの型を持っています。この場合、 `possibleNumber` の型は `Int?` なので、 `actualNumber` の型は `Int` です。
-
 
 オプショナルに含まれている値にアクセスした後、元のオプショナルの定数または変数を参照する必要がない場合は、新しい定数または変数に同じ名前を使用できます。
 
@@ -629,7 +628,7 @@ print(greeting)
 // Hello, friend!
 ```
 nil-coalescing-operator
-`??` を使用してフォールバック値を提供する詳細については、[Nil-Coalescing-Operator\( `nil` 合体演算子\)](basic-operators.md#nil-coalescing-operator)を参照してください。
+`??` を使用してフォールバック値を提供する方法の詳細については、[Nil-Coalescing-Operator\( `nil` 合体演算子\)](basic-operators.md#nil-coalescing-operator)を参照してください。
 
 ### <a id="force-unwrapping">フォースアンラッピング\(Force Unwrapping\)</a>
 
