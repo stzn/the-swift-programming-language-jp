@@ -1,6 +1,6 @@
 # 本の構造
 
-最終更新日: 2022/11/25
+最終更新日: 2023/9/1
 原文: https://github.com/apple/swift-book/blob/main/Style.md
 
 TSPL は 3 つの主なパートに加えて、補完的な機能を提供するいくつかの序文に分かれています。
