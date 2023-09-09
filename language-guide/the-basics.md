@@ -627,7 +627,7 @@ let greeting = "Hello, " + (name ?? "friend") + "!"
 print(greeting)
 // Hello, friend!
 ```
-nil-coalescing-operator
+
 `??` を使用してフォールバック値を提供する方法の詳細については、[Nil-Coalescing-Operator\( `nil` 合体演算子\)](basic-operators.md#nil-coalescing-operator)を参照してください。
 
 ### <a id="force-unwrapping">強制アンラップ\(Force Unwrapping\)</a>
