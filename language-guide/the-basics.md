@@ -649,7 +649,7 @@ guard let number = convertedNumber else {
 
 上記のコードの両方のバージョンは、`convertedNumber` が常に値を持っていることに依存しています。その要件をコードの一部として書くことで、上記のいずれかのアプローチを使用して、実行時にその要件が真であることをコードがチェックできます。
 
-ランタイム時にデータ要件を強制し、前提を確認する詳細については、[Assertions and Preconditions\(アサーションと事前条件\)](the-basics.md#assertions-and-preconditions)を参照してください。
+実行時にデータ要件を強制し、前提を確認する詳細については、[Assertions and Preconditions\(アサーションと事前条件\)](the-basics.md#assertions-and-preconditions)を参照してください。
 
 ### <a id="implicitly-unwrapped-optionals">暗黙アンラップオプショナル\(Implicitly Unwrapped Optionals\)</a>
 
