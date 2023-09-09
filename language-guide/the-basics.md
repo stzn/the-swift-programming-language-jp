@@ -490,7 +490,7 @@ _オプショナル_は、値が存在しないかもしれないときに使用
 ```swift
 let possibleNumber = "123"
 let convertedNumber = Int(possibleNumber)
-// convertedNumber 型 は Optional<Int> です。
+// convertedNumber の型は 「Optional<Int>」 です。
 ```
 
 上記のコードのイニシャライザは失敗するかもしれないので、`Int` ではなく、_オプショナル_の `Int` を返します。
