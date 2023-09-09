@@ -634,7 +634,7 @@ nil-coalescing-operator
 
 `nil` がプログラマのエラーや破損した状態などの回復不可能な失敗を表す場合、オプショナルの名前の末尾に感嘆符\( `!` \)を追加することで、その基本の値にアクセスすることができます。
 
-これはオプショナルの値を _強制的にアンラップする_ として知られています。非 `nil` の値を強制的にアンラップすると、結果はアンラップされた値となります。 `nil` の値を強制的にアンラップすると、ランタイムエラーが発生します。 `!` は、実質的に [`fatalError(_:file:line:)`](https://developer.apple.com/documentation/swift/fatalerror(_:file:line:)) の短縮形です。以下のコードは、 2 つの同等のアプローチを示しています。
+これはオプショナル値を _強制的にアンラップする_ として知られています。非 `nil` の値を強制的にアンラップすると、結果はアンラップされた値となります。 `nil` の値を強制的にアンラップすると、ランタイムエラーが発生します。 `!` は、実質的に [`fatalError(_:file:line:)`](https://developer.apple.com/documentation/swift/fatalerror(_:file:line:)) の短縮形です。以下のコードは、 2 つの同等のアプローチを示しています。
 
 ```swift
 let possibleNumber = "123"
