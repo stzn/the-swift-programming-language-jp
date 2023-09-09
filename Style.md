@@ -86,7 +86,7 @@ nono-ptional と誤読を避けるためにハイフンでつなげます。Appl
 
 ## オプショナルバインディング
 
-冠詞を省略してください。"use an optional binding"ではなく、"use optional binding"と使用してください。
+冠詞を省略してください。"use an optional binding"ではなく、"use optional binding"を使用してください。
 
 ## 受動態
 
