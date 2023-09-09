@@ -630,7 +630,7 @@ print(greeting)
 nil-coalescing-operator
 `??` を使用してフォールバック値を提供する方法の詳細については、[Nil-Coalescing-Operator\( `nil` 合体演算子\)](basic-operators.md#nil-coalescing-operator)を参照してください。
 
-### <a id="force-unwrapping">フォースアンラッピング\(Force Unwrapping\)</a>
+### <a id="force-unwrapping">強制アンラップ\(Force Unwrapping\)</a>
 
 `nil` がプログラマのエラーや破損した状態などの回復不可能な失敗を表す場合、オプショナルの名前の末尾に感嘆符\( `!` \)を追加することで、その基本の値にアクセスすることができます。
 
