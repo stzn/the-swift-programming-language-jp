@@ -104,17 +104,17 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/jollyjoester">
-            <img src="https://avatars.githubusercontent.com/u/2178775?v=4" width="100;" alt="jollyjoester"/>
-            <br />
-            <sub><b>Hideyuki Nanashima</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/NiwakaDev">
             <img src="https://avatars.githubusercontent.com/u/61189782?v=4" width="100;" alt="NiwakaDev"/>
             <br />
             <sub><b>Niwaka</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/jollyjoester">
+            <img src="https://avatars.githubusercontent.com/u/2178775?v=4" width="100;" alt="jollyjoester"/>
+            <br />
+            <sub><b>Hideyuki Nanashima</b></sub>
         </a>
     </td>
     <td align="center">
@@ -125,20 +125,27 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/TonTonbow">
-            <img src="https://avatars.githubusercontent.com/u/70003919?v=4" width="100;" alt="TonTonbow"/>
+        <a href="https://github.com/enomoto">
+            <img src="https://avatars.githubusercontent.com/u/1823075?v=4" width="100;" alt="enomoto"/>
+            <br />
+            <sub><b>Kenta Enomoto</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/Tomtombow-KaitoMuraoka">
+            <img src="https://avatars.githubusercontent.com/u/70003919?v=4" width="100;" alt="Tomtombow-KaitoMuraoka"/>
             <br />
             <sub><b>とんとんぼ</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/rymshm">
             <img src="https://avatars.githubusercontent.com/u/23201810?v=4" width="100;" alt="rymshm"/>
             <br />
             <sub><b>Ryo Mashima</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/elmetal">
             <img src="https://avatars.githubusercontent.com/u/20150994?v=4" width="100;" alt="elmetal"/>
