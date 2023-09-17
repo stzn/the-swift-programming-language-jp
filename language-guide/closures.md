@@ -1,6 +1,6 @@
 # クロージャ\(Closures\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2023/9/17
 原文: https://docs.swift.org/swift-book/LanguageGuide/Closures.html
 
 名前付き関数を作成せずに一緒に実行するコードをグループ化する。
@@ -9,7 +9,7 @@ _クロージャ_は、コード内で受け渡して使用できる、ある機
 
 クロージャは、定数と変数への参照を、それらを定義したコンテキストから_キャプチャ_して保持できます。これは、これらの定数と変数をスコープに_閉じ込める_と呼ばれます。Swift は、キャプチャに関連した全てのメモリ管理を行います。
 
-> NOTE  
+> NOTE
 > キャプチャの概念に慣れていなくても心配しないでください。これについては、[Capturing Values\(値のキャプチャ\)](../language-guide/closures.md#capturing-values)で詳しく説明します。
 
 [Functions\(関数\)](functions.md)で紹介したグローバル関数やネスト関数は、実際にはクロージャの特殊なケースです。クロージャは、次の 3 つの形式のいずれかを取ります:
@@ -207,8 +207,8 @@ let strings = numbers.map { (number) -> String in
 
 クロージャ式は、呼び出されるたびに `output` という文字列を作成します。剰余演算子\(`number % 10`\)を使用して `number` の最後の桁を計算し、この桁を使用して `digitNames` 辞書で適切な文字列を検索します。クロージャを使用して、ゼロより大きい任意の整数の文字列表現を作成できます。
 
-> NOTE  
-> 辞書のサブスクリプトは、キーが存在しない場合に辞書の検索が失敗する可能性があることを示す オプショナルの値を返すため、`digitNames` 辞書のサブスクリプトの呼び出しの後に感嘆符\(`!`\)を付けています。上記の例では、`number % 10` が常に `digitNames` 辞書内に存在するサブスクリプトのキーだとが保証されているため、感嘆符を使用して、サブスクリプトのオプショナルの値に格納されている `String` 値を強制アンラップします。
+> NOTE
+> 辞書のサブスクリプトは、キーが存在しない場合に辞書の検索が失敗する可能性があることを示す オプショナル値を返すため、`digitNames` 辞書のサブスクリプトの呼び出しの後に感嘆符\(`!`\)を付けています。上記の例では、`number % 10` が常に `digitNames` 辞書内に存在するサブスクリプトのキーだとが保証されているため、感嘆符を使用して、サブスクリプトのオプショナル値に格納されている `String` 値を強制アンラップします。
 
 `digitNames` 辞書から取得した文字列が `output` の前に追加され、数値の文字列バージョンが逆順に追加されています。\(式 `number % 10` は、`16` の場合は `6`、`58` の場合は `8`、`510` の場合は `0` を返します\)
 
@@ -278,7 +278,7 @@ func incrementer() -> Int {
 
 `incrementer()` 関数にはパラメータがありませんが、関数本文内から `runningTotal` と `amount` を参照します。これは、`runningTotal` と `amount` への参照を周囲の関数からキャプチャし、それらを独自に関数本文内で使用します。参照によるキャプチャにより、`makeIncrementer` の呼び出しが終了したときに `runningTotal` と `amount` が解放されないようにし、次に `incrementer` 関数が呼び出されたときにも `runningTotal` を使用可能にします。
 
-> NOTE  
+> NOTE
 > 最適化として、Swift は、値がクロージャによって変更されていない場合やクロージャの作成後に値が変更されていない場合、代わりに値のコピーをキャプチャして保存する場合があります。 Swiftは、変数が不要になったときの変数の破棄に関わるメモリ管理を全て行ないます。
 
 `makeIncrementer` の動作例を次に示します。
@@ -313,7 +313,7 @@ incrementByTen()
 // 40 を返します
 ```
 
-> NOTE  
+> NOTE
 > クラスインスタンスのプロパティにクロージャを代入して、クロージャがインスタンスまたはそのメンバを参照して、そのインスタンスをキャプチャする場合、クロージャとインスタンスの間に循環参照\(strong reference cycle\)が作成されます。Swift は、キャプチャリストを使用して、これらの循環参照を防ぎます。詳細については、 [Strong Reference Cycles for Closures\(クロージャの強循環参照\)](../language-guide/automatic-reference-counting.md#strong-reference-cycles-for-closure)を参照ください。
 
 ## <a id="closures-are-reference-types">クロージャは参照型\(Closures Are Reference Types\)</a>
@@ -450,7 +450,7 @@ serve(customer: customersInLine.remove(at: 0))
 // ただ今 Ewa を接客中!
 ```
 
-> NOTE  
+> NOTE
 > 自動クロージャを使いすぎると、コードが理解しにくくなる可能性があります。コンテキストと関数名で、遅延評価されていることを明確にする必要があります。
 
 エスケープする自動クロージャが必要な場合は、`@autoclosure` 属性と `@escaping` 属性の両方を使用します。`@escaping` 属性については、上記の[Escaping Closures\(エスケープクロージャ\)](../language-guide/closures.md#escaping-closures)で説明しています。
@@ -474,4 +474,3 @@ for customerProvider in customerProviders {
 ```
 
 上記のコードでは、`customerProvider` 引数として渡されたクロージャを呼び出す代わりに、`collectCustomerProviders(_:)` 関数がクロージャを `customerProviders` 配列に追加します。配列は関数のスコープ外で宣言されています。つまり、配列のクロージャは関数が戻った後に実行される場合があります。その結果、`customerProvider` 引数の値は、関数のスコープをエスケープできるようにする必要があります。
-

@@ -1,6 +1,6 @@
 # サブスクリプト\(Subscripts\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2022/12/3
 原文: https://docs.swift.org/swift-book/LanguageGuide/Subscripts.html
 
 コレクションの要素にアクセスする。
@@ -52,7 +52,7 @@ print("six times three is \(threeTimesTable[6])")
 
 `threeTimesTable[6]` で示されているように、サブスクリプトを呼び出すことで `threeTimesTable` インスタンスの検索を実行できます。これは、3 の倍数テーブルの `6` 番目のエントリを要求し、値 `18`、つまり 3 x 6 を返します。
 
-> NOTE  
+> NOTE
 > n 倍数テーブル は、決まった数学ルールに基づいています。`threeTimesTable[someIndex]` に新しい値に設定することは適切ではないため、`TimesTable` のサブスクリプトは読み取り専用として定義されています。
 
 ## サブスクリプトの利用\(Subscript Usage\)
@@ -70,7 +70,7 @@ numberOfLegs["bird"] = 2
 
 `Dictionary` のサブスクリプトの詳細については、[Accessing and Modifying a Dictionary\(辞書へのアクセスと変更\)](../language-guide/collection-types.md#accessing-and-modifying-a-dictionary)を参照ください。
 
-> NOTE  
+> NOTE
 > Swift の `Dictionary` 型は、オプショナルの型を受け取って返すサブスクリプトとしてキーバリューのサブスクリプトを実装します。上記の `numberOfLegs` 辞書の場合、キーとバリューのサブスクリプトは `Int?` または オプショナル Int 型の値を受け取って返します。`Dictionary` 型は、 オプショナルのサブスクリプトの型を使用して、全てのキーにバリューがあるわけではないということをモデル化し、そのキーに `nil` 値を割り当てることによってキーに対応したバリューを削除する方法を提供します。
 
 ## <a id="subscript-options">様々なサブスクリプト\(Subscript Options\)</a>
@@ -160,4 +160,3 @@ enum Planet: Int {
 let mars = Planet[4]
 print(mars)
 ```
-
