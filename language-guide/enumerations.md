@@ -1,6 +1,6 @@
 # 列挙型\(Enumerations\)
 
-最終更新日: 2023/9/17
+最終更新日: 2023/9/17  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html
 
 可能な値のリストを定義する独自の型をモデル化する。
