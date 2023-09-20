@@ -1,6 +1,6 @@
 # 初期化\(Initialization\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2023/09/20
 原文: https://docs.swift.org/swift-book/LanguageGuide/Initialization.html
 
 型に格納されたプロパティの初期値を設定し、一度きりのセットアップを実行します。
@@ -326,9 +326,9 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0),
 
 サブクラスがスーパークラスから継承する全てのプロパティを含む、クラスの全ての格納プロパティには、初期化中に初期値を割り当てる必要があります。
 
-Swift は、クラス型に対して 2 種類のイニシャライザを定義して、全ての格納プロパティが確実に初期値を受け取るようにします。これらは、_指定イニシャライザ_および _covenience イニシャライザ_と呼ばれます。
+Swift は、クラス型に対して 2 種類のイニシャライザを定義して、全ての格納プロパティが確実に初期値を受け取るようにします。これらは、_指定イニシャライザ_および _convenience イニシャライザ_と呼ばれます。
 
-### 指定イニシャライザとcovenience イニシャライザ\(Designated Initializers and Convenience Initializers\)
+### 指定イニシャライザとconvenience イニシャライザ\(Designated Initializers and Convenience Initializers\)
 
 _指定イニシャライザ_は、クラスの主要なイニシャライザです。指定イニシャライザは、そのクラスで導入された全てのプロパティを完全に初期化し、適切なスーパークラスのイニシャライザを呼び出して、スーパークラスへチェーンして初期化プロセスを続行します。
 
@@ -340,7 +340,7 @@ convenience イニシャライザは二次的なもので、クラスのイニ�
 
 クラスで必要ない場合は、convenience イニシャライザを提供する必要はありません。共通の初期化パターンへのショートカットとして時間の節約になったり、初期化の意図をより明確にできる場合は、常に convenience イニシャライザを作成してください。
 
-### 指定イニシャライザとcovenience イニシャライザの構文\(Syntax for Designated and Convenience Initializers\)
+### 指定イニシャライザとconvenience イニシャライザの構文\(Syntax for Designated and Convenience Initializers\)
 
 クラスの指定イニシャライザは、値型のシンプルなイニシャライザと同じ方法で記述します:
 
@@ -350,7 +350,7 @@ init(<#parameters#>) {
 }
 ```
 
-covenience イニシャライザは同じスタイルで記述できますが、`init` キーワードの前にスペース区切りで `covenience` 修飾子を配置します:
+convenience イニシャライザは同じスタイルで記述できますが、`init` キーワードの前にスペース区切りで `convenience` 修飾子を配置します:
 
 ```swift
 convenience init(<#parameters#>) {
@@ -562,7 +562,7 @@ print("ホバーボード: \(hoverboard.description)")
 > NOTE  
 > サブクラスは、ルール 2 を満たす方法の 1 つとして、スーパークラスの指定イニシャライザをサブクラスの convenience イニシャライザとして実装できます。
 
-### 指定とcovenience イニシャライザの挙動\(Designated and Convenience Initializers in Action\)
+### 指定とconvenience イニシャライザの挙動\(Designated and Convenience Initializers in Action\)
 
 次の例は、指定イニシャライザ、convenience イニシャライザ、および自動イニシャライザの継承の挙動を示しています。この例では、`Food`、`RecipeIngredient`、および `ShoppingListItem` という 3 つのクラスの階層を定義し、それらのイニシャライザがどのように相互作用するかを示しています。
 
