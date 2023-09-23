@@ -171,7 +171,7 @@
         <a href="https://github.com/b1ackturtle">
             <img src="https://avatars.githubusercontent.com/u/13419249?v=4" width="100;" alt="b1ackturtle"/>
             <br />
-            <sub><b>b1ackturtle</b></sub>
+            <sub><b>B1ackturtle</b></sub>
         </a>
     </td>
     <td align="center">
