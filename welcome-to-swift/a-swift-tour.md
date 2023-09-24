@@ -1,6 +1,6 @@
 # Swiftツアー\(A Swift Tour\)
 
-最終更新日: 2023/5/27  
+最終更新日: 2023/9/24
 原文: https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html
 
 Swift の特徴とシンタックスを探る。
@@ -36,7 +36,7 @@ let implicitDouble = 70.0
 let explicitDouble: Double = 70
 ```
 
-> Experiment  
+> Experiment
 > 値が `4` で `Float` を明示的に指定した定数を作成してみましょう。
 
 値は暗黙的に他の型に変換されることはありません。他の型に変換したい場合は、変換したい型のインスタンスを明示的に作成してください。
@@ -47,7 +47,7 @@ let width = 94
 let widthLabel = label + String(width)
 ```
 
-> Experiment  
+> Experiment
 > 最後の行から `String` への変換を消してみてください。どんなエラーが起きるでしょうか？
 
 もっと簡単な方法で文字列の中に値を含めることができます。値を括弧で囲み、括弧の前にバックスラッシュをつけます。
@@ -59,7 +59,7 @@ let appleSummary = "I have \(apples) apples."
 let fruitSummary = "I have \(apples + oranges) pieces of fruit."
 ```
 
-> Experiment  
+> Experiment
 > 文字列に浮動小数点の計算を含めたり、誰かの名前を挨拶に含めるために、`\()` を使用してみましょう。
 
 複数行の文字列に対しては、3 つのダブルクォーテーション\(`"""`\)を使いましょう。末尾のクォーテーションに到達するまで、各行の最初のインデントは除外されます。
@@ -155,12 +155,12 @@ if let name = optionalName {
 }
 ```
 
-> Experiment  
+> Experiment
 > `optionalName` を `nil` に変えてみましょう。どんな挨拶が出力されるでしょうか？ `optionalName` が `nil` の場合に別の挨拶が出力されるように `else` を追加してみましょう。
 
-もしオプショナルの値が `nil` の場合、条件は `false` になり、中括弧内のコードはスキップされます。`nil` でなければ、オプショナルの値はアンラップされて `let` の後の定数に代入され、中括弧内のブロック内でその値を利用できます。
+もしオプショナル値が `nil` の場合、条件は `false` になり、中括弧内のコードはスキップされます。`nil` でなければ、オプショナル値はアンラップされて `let` の後の定数に代入され、中括弧内のブロック内でその値を利用できます。
 
-オプショナルの値を扱うもう 1 つの方法として、`??` 演算子を使用してデフォルトの値を提供する方法があります。もしオプショナルの値が `nil` の場合、代わりにデフォルトの値が使われます。
+オプショナル値を扱うもう 1 つの方法として、`??` 演算子を使用してデフォルトの値を提供する方法があります。もしオプショナル値が `nil` の場合、代わりにデフォルトの値が使われます。
 
 ```swift
 let nickname: String? = nil
@@ -193,7 +193,7 @@ default:
 // Is it a spicy red pepper?
 ```
 
-> Experiment  
+> Experiment
 > `default` のケースを削除してみましょう。どんなエラーが起きるでしょうか？
 
 パターンに合った値を定数に設定するために `let` がどう使われるかに注目してください。
@@ -220,7 +220,7 @@ print(largest)
 // 25
 ```
 
-> Experiment  
+> Experiment
 > `_` を変数の名前に置き換えてみて、どの種類の値が最大だったかを追ってみましょう。
 
 `while` を使用することで、条件が変わるまでブロック内のコードを反復して実行できます。ループの条件を最後に置くことで、ループ内のブロックが少なくとも 1 回実行されるようにすることができます。
@@ -241,7 +241,7 @@ print(m)
 // 128
 ```
 
-> Experiment  
+> Experiment
 > 条件を `m < 100` から `m < 0` に変更し、ループ条件がすでに真である場合の `while` と `repeat-while` の動作の違いを確認しましょう。
 
 `..<` を使用するとインデックスの範囲を生成でき、ループのインデックスを追うことができます。
@@ -268,7 +268,7 @@ func greet(person: String, day: String) -> String {
 greet(person: "Bob", day: "Tuesday")
 ```
 
-> Experiment  
+> Experiment
 > `day` パラメータを削除して、`greet` に今日のランチスペシャルを指定するためのパラメータを追加してみましょう。
 
 デフォルトで、関数はパラメータ名をそのままラベルとして使用します。独自の引数ラベルを設定したい場合は、パラメータ名の前に引数ラベルを記載してください。引数にラベルが不要な場合は、`_` を書きましょう。
@@ -351,7 +351,7 @@ numbers.map({ (number: Int) -> Int in
 })
 ```
 
-> Experiment  
+> Experiment
 > 上記のクロージャを、全ての奇数で 0 を返すように書き換えてみましょう。
 
 より簡潔にクロージャを書く複数の方法があります。クロージャの型が既にわかっている場合\(デリゲートのコールバックなど\)、パラメータと戻り値の型を省略できます。単一の文のみのクロージャの場合、その文の値が戻り値として暗黙的に返されます。
@@ -383,7 +383,7 @@ class Shape {
 }
 ```
 
-> Experiment  
+> Experiment
 > `let` を使用して定数プロパティを追加してください。また、引数を受け取る別のメソッドも追加してみましょう。
 
 クラスのインスタンスは、クラス名の後に丸括弧\(`()`\)を付けて生成します。そのインスタンスのプロパティやメソッドにアクセスするには、ドット\(`.`\)構文を使います。
@@ -442,7 +442,7 @@ test.area()
 test.simpleDescription()
 ```
 
-> Experiment  
+> Experiment
 > `radius` と `name` をイニシャライザの引数に受けとる `Circle` という名前の `NameShape` の別のサブクラスを作ってみましょう。そして、 `Circle` クラスに `area()`、`simpleDescription()` メソッドを実装してみましょう。
 
 単純に値を保持するプロパティ以外に、プロパティが get と set を持つこともできます。
@@ -515,7 +515,7 @@ print(triangleAndSquare.triangle.sideLength)
 // 50.0
 ```
 
-オプショナルな値を扱う場合、`?` をメソッド、プロパティ、サブスクリプトのような操作の前に書きます。もし `?` の前の値が `nil` の場合、`?` の後の処理は全て無視され、その式全体の値は `nil` になります。それ以外、オプショナルの値はアンラップされて、`?` の後は全てアンラップされた値として実行されます。どちらの場合も、式全体はオプショナルな値です。
+オプショナル値を扱う場合、`?` をメソッド、プロパティ、サブスクリプトのような操作の前に書きます。もし `?` の前の値が `nil` の場合、`?` の後の処理は全て無視され、その式全体の値は `nil` になります。それ以外、オプショナル値はアンラップされて、`?` の後は全てアンラップされた値として実行されます。どちらの場合も、式全体はオプショナル値です。
 
 ```swift
 let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
@@ -551,7 +551,7 @@ let ace = Rank.ace
 let aceRawValue = ace.rawValue
 ```
 
-> Experiment  
+> Experiment
 > 2つの `Rank` の raw value を比較して `Rank` を比較するメソッドを追加してみましょう。
 
 デフォルトで、Swift は 0 から 1 つずつ増加する値を raw value に割り当てますが、明示的に値を指定してこの挙動を変更することもできます。上記の例では、`Ace` は明示的に `1` を raw value に指定しており、残りは、`1` から順番に raw value が指定されます。文字列や浮動小数点も使用することができます。列挙型の個々のケースの raw value には、`rawValue` プロパティからアクセスすることができます。
@@ -587,7 +587,7 @@ let hearts = Suit.hearts
 let heartsDescription = hearts.simpleDescription()
 ```
 
-> Experiment  
+> Experiment
 > `color()` メソッドを `Suit` に追加してみましょう。`spades` と `clubs` は "black" を返し、`hearts` と `diaminds` は "red" を返します。
 
 `hearts` ケースを参照するために 2 つの方法があることに注目してください。`hearts` 定数に値を設定する時、定数の型が明示的に指定されていないため、列挙ケースの `Suits.hearts` を完全な名前で参照しています。一方、switch 文の中では、`self` が既に `Suit` だとわかっているため、列挙ケースは `.hearts` と省略記法で参照しています。型が既にわかっている場合はいつでも省略記法を使用することができます。
@@ -612,7 +612,7 @@ case let .failure(message):
 // Sunrise is at 6:00 am and sunset is at 8:09 pm.
 ```
 
-> Experiment  
+> Experiment
 > `ServerResponse` に3つ目のケースを追加して、switch 文を変更してください。
 
 日の出時刻と日の入り時刻が、switch に合致したケースの一部として、`ServerResponse` から抽出されていることに注目してください。
@@ -631,7 +631,7 @@ let threeOfSpades = Card(rank: .three, suit: .spades)
 let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 ```
 
-> Experiment  
+> Experiment
 > 全種\(ランクとスートの全組み合わせ\)のカードからなる配列を返すメソッドを書いてみよう。
 
 ## 同時並行処理\(Concurrency\)
@@ -715,7 +715,7 @@ b.adjust()
 let bDescription = b.simpleDescription
 ```
 
-> Experiment  
+> Experiment
 > `ExampleProtocolrank` にもう1つの要件を追加してみましょう。`SimpleClass` と `SimpleStructure` にどういう変更が必要になるでしょうか？
 
 構造体 `SimpleStructure` を変更するメソッドに `mutating` キーワードが付いていることに注目してください。クラスのメソッドはクラスを変更することが許されているため、`mutating` を付ける必要はありません。
@@ -735,7 +735,7 @@ print(7.simpleDescription)
 // The number 7
 ```
 
-> Experiment  
+> Experiment
 > `absoluteValue` プロパティを `Double` に追加する `extension` を書いてみましょう。
 
 プロトコルの名前は、他の名前が付いた型と同じように使用することができます。例えば、同じ 1 つのプロトコルに準拠した異なる型のオブジェクトのコレクションを作成することができます。Box プロトコル型の値をそのまま扱っている場合、プロトコルの外側で定義されたメソッドを使用することはできません。
@@ -784,7 +784,7 @@ do {
 // Job sent
 ```
 
-> Experiment  
+> Experiment
 > プリンタの名前を `"Never Has Toner"` に変えてみましょう。`send(job:toPrinter:)` はエラーをスローします。
 
 特定のエラーを処理するために、複数の `catch` ブロックを書くこともできます。switch 文の `case` のように `catch` の後ろにパターンを書きます。
@@ -803,7 +803,7 @@ do {
 // Job sent
 ```
 
-> Experiment  
+> Experiment
 > `do` ブロックの中でエラーをスローするコードを追加してみましょう。最初の `catch` ブロックでエラーを処理するためにはどの種類のエラーをスローする必要がありますでしょうか？ 2つ目、3つ目の場合はどうでしょうか？
 
 エラーを処理するもう 1 つの方法は、`try?` を付けて結果をオプショナルに変換することです。もしその関数がエラーをスローする場合、特定のエラーは破棄されて、結果が `nil` になります。そうでなければ、結果は、関数が返す値を内包したオプショナルになります。
@@ -880,7 +880,7 @@ func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
 anyCommonElements([1, 2, 3], [3])
 ```
 
-> Experiment  
+> Experiment
 > `anyCommonElements(_:_:)` を2つのシーケンスの共通の要素が含まれる配列を返すように修正してみましょう。
 
 `<T: Equatable>` は `<T> ... where T: Equatable` と同じです。
