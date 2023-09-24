@@ -744,7 +744,7 @@ for object in objects {
 // Something that doesn't have an area
 ```
 
-配列内のオブジェクトが `HasArea` プロトコルに準拠している場合は、常に `as?` 演算子は、`objectWithArea` と呼ばれる定数へオプショナルバインドでアンラップされます。`objectWithArea` 定数は `HasArea` 型なことがわかっているため、その `area` プロパティは型安全な方法でアクセスおよび出力できます。
+配列内のオブジェクトが `HasArea` プロトコルに準拠している場合、`as?` 演算子によって返されるオプショナル値はオプショナルバインディングを使用して `objectWithArea` という名前の定数にアンラップされます。`objectWithArea` 定数は `HasArea` 型であることが分かっているので、その `area` プロパティに型安全にアクセスして、表示することができます。
 
 プロトコルに準拠したオブジェクトは、キャストで変更されないことに注目してください。それらはそれぞれ `Circle`、`Country`、`Animal` です。ただし、オブジェクトが `objectWithArea` 定数に格納されている時点では、`HasArea` 型とのみ認識されているため、アクセスできるのは `area` プロパティのみです。
 
