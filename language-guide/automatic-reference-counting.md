@@ -1,6 +1,6 @@
 # 自動参照カウント ARC\(Automatic Reference Counting\)
 
-最終更新日: 2023/9/17
+最終更新日: 2023/9/24
 原文: https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html
 
 オブジェクトの存続期間とオブジェクト同士の関係をモデル化する。
@@ -425,7 +425,7 @@ print("\(country.name) の首都は \(country.capitalCity.name) です")
 // カナダ の首都は オタワ です
 ```
 
-上記の例では、暗黙アンラップオプショナルを使用することは、2 段階のクラスイニシャライザの要件が全て満たされることを意味します。`capitalCity` プロパティは、初期化が完了すると、強循環参照を回避しつつ、オプショナルではない値のように使用およびアクセスできます。
+上記の例では、暗黙アンラップオプショナルを使用することは、2 段階のクラスイニシャライザの要件が全て満たされることを意味します。`capitalCity` プロパティは、初期化が完了すると、強循環参照を回避しつつ、非オプショナル値のように使用およびアクセスできます。
 
 ## <a id="strong-reference-cycles-for-closures">クロージャの強循環参照\(Strong Reference Cycles for Closures\)</a>
 

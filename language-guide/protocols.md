@@ -1,6 +1,6 @@
 # プロトコル\(Protocols\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2023/9/24
 原文: https://docs.swift.org/swift-book/LanguageGuide/Protocols.html
 
 準拠型が実装する必要がある要件を定義する。
@@ -35,7 +35,7 @@ class SomeClass: SomeSuperclass, FirstProtocol, AnotherProtocol {
 }
 ```
 
-> NOTE: 
+> NOTE:
 > プロトコルは型のため、
 > Swiftの他の型に一致するように(`Int`、`String` や `Double` など)
 > 名前は大文字から始めてください。(`FullyNamed` や `RandomNumberGenerator` など)
@@ -158,7 +158,7 @@ print("And another one: \(generator.random())")
 
 任意の型のインスタンスを変更することを目的としたプロトコルのインスタンスメソッドの要件を定義する場合は、`mutating` キーワードをメソッドにマークします。これにより、構造体と列挙型がそのメソッド要件を満たしてプロトコルに準拠することができます。
 
-> NOTE  
+> NOTE
 > プロトコルのインスタンスメソッドの要件を `mutating` としてマークする場合、クラスがそのメソッドを実装するときに、`mutating` キーワードを記述する必要はありません。`mutating` キーワードは、構造体と列挙型のみ使用できます。
 
 下記の例では、`Togglable` というプロトコルが定義されています。これは、`toggle` という単一のインスタンスメソッドの要件を定義しています。その名前が示すように、`toggle()` メソッドは、通常、その型のプロパティを変更することによって、準拠する型の状態をトグル\(反転\)することを目的としています。
@@ -218,7 +218,7 @@ class SomeClass: SomeProtocol {
 
 `required` イニシャライザの詳細については、[Required Initializers\(必須イニシャライザ\)](../language-guide/initialization.md#required-initializers)を参照ください。
 
-> NOTE  
+> NOTE
 > `final` クラスはサブクラス化できないため、 `final` 修飾子でマークされているクラスでは、プロトコルのイニシャライザの実装を `required` 修飾子でマークする必要はありません。`final` 修飾子の詳細については、[Preventing Overrides\(オーバーライドを防ぐ\)](../language-guide/inheritance.md#preventing-overrides)を参照ください。
 
 サブクラスがスーパークラスからの指定イニシャライザをオーバーライドし、そのイニシャライザがプロトコル要件も満たす場合、`required` 修飾子と `override` 修飾子の両方でイニシャライザの実装をマークします:
@@ -377,7 +377,7 @@ game.play()
 
 既存の型のソースコードにアクセスできない場合でも、既存の型を拡張して新しいプロトコルに準拠させることができます。extension は、新しいプロパティ、メソッド、およびサブスクリプトを既存の型に追加できるため、プロトコルの要件を追加できます。拡張機能の詳細については、[Extensions\(拡張\)](extensions.md)を参照ください。
 
-> NOTE  
+> NOTE
 > 型の既存のインスタンスは、extension でそのインスタンスの型がプロトコルに準拠すると、自動的にプロトコルに準拠します。
 
 例えば、`TextRepresentable` と呼ばれるプロトコルは、テキストとして表現できる任意の型で実装できます。これは、それ自体の説明や、現在の状態の説明などの可能性があります:
@@ -461,7 +461,7 @@ print(somethingTextRepresentable.textualDescription)
 // A hamster named Simon
 ```
 
-> NOTE  
+> NOTE
 > 要件を満たすだけで、型が自動的にプロトコルに準拠するわけではありません。プロトコルへの準拠を常に明示的に宣言する必要があります。
 
 ## <a id="adopting-a-protocol-using-a-synthesized-implementation">デフォルト実装を使用したプロトコル準拠\(Adopting a Protocol Using a Synthesized Implementation\)</a>
@@ -608,7 +608,7 @@ protocol SomeClassOnlyProtocol: AnyObject, SomeInheritedProtocol {
 
 上記の例では、`SomeClassOnlyProtocol` はクラス型でのみ準拠できます。`SomeClassOnlyProtocol` に準拠しようとする構造体または列挙型の定義を作成すると、コンパイルエラーになります。
 
-> NOTE  
+> NOTE
 > そのプロトコルの要件によって定義された動作が、準拠する型が値型のセマンティクスではなく参照型のセマンティクスであることを想定\(要求\)する場合は、クラス専用プロトコルを使用してください。参照型と値型のセマンティクスの詳細については、[Structures and Enumerations Are Value Types\(構造体と列挙型は値型\)](../language-guide/structures-and-classes.md#structures-and-enumerations-are-value-type)、[Classes Are Reference Types\(クラスは参照型\)](../language-guide/structures-and-classes.md#classes-are-reference-types)を参照ください。
 
 ## <a id="protocol-composition">プロトコル合成\(Protocol Composition\)</a>
@@ -767,7 +767,7 @@ for object in objects {
 
 `CounterDataSource` プロトコルは、`increment(forCount:)` と呼ばれるオプショナルメソッドの要件と、`fixedIncrement` と呼ばれるオプショナルのプロパティの要件を定義しています。これらの要件は、データソースが `Counter` インスタンスに適切な増分量を提供するための 2 つの異なる方法を定義します。
 
-> NOTE  
+> NOTE
 > 厳密に言えば、いずれのプロトコル要件を実装していなくても、`CounterDataSource` に準拠する独自クラスを作成できます。結局のところ、どちらもオプショナルです。技術的には許可されていますが、これはあまり有用なデータソースではありません。
 
 以下で定義される `Counter` クラスには、`CounterDataSource?` 型のオプショナルの `dataSource` プロパティがあります:
@@ -887,7 +887,7 @@ print("And here's a random Boolean: \(generator.randomBool())")
 
 プロトコル Extension を使用して、そのプロトコルのメソッドまたは計算プロパティ要件にデフォルトの実装を提供できます。準拠する型が要件のメソッドまたはプロパティの実装を提供している場合、プロトコル Extension によって提供されるものの代わりに、準拠する型の実装が使用されます。
 
-> NOTE  
+> NOTE
 > extension によって提供されるプロトコル要件のデフォルト実装は、オプショナルのプロトコル要件とは異なります。準拠する型は、独自の実装を提供する必要はありませんが、デフォルトの実装を持つ要件は、オプショナルチェーンなしで呼び出すことができます。
 
 例えば、`TextRepresentable` プロトコルを継承する `PrettyTextRepresentable` プロトコルは、要件の `prettyTextualDescription` プロパティのデフォルト実装を提供して、`textualDescription` プロパティにアクセスした結果を返すことができます:
@@ -937,6 +937,5 @@ print(differentNumbers.allEqual())
 // false
 ```
 
-> NOTE  
+> NOTE
 > 準拠する型が、複数の制約が付いた拡張の要件を満たす同じメソッドまたはプロパティを実装している場合、Swift は最も厳しい制約がついている実装を選択して使用します。
-
