@@ -1,6 +1,6 @@
 # 列挙型\(Enumerations\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2023/9/17  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html
 
 可能な値のリストを定義する独自の型をモデル化する。
@@ -188,7 +188,7 @@ case .qrCode(let productCode):
 // QR code: ABCDEFGHIJKLMNOP.
 ```
 
-列挙ケースの全ての関連値が定数として抽出される場合、または全てが変数として抽出される場合は、簡潔にするために、ケース名の前に 1 つの `var` または `let` を付けるだけで問題ありません:
+列挙ケースの全ての関連値が定数として抽出される場合、または全てが変数として抽出される場合は、簡潔にするために、ケース名の前に 1 つの `let` または `var` を付けるだけで問題ありません:
 
 ```swift
 switch productBarcode {
