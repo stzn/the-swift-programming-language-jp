@@ -64,7 +64,7 @@ if let roomCount = john.residence?.numberOfRooms {
 
 `numberOfRooms` へのアクセスは失敗する可能性があるため、オプショナルチェーンは `Int?` 型または"オプショナルの `Int`"の値を返します。上記の例のように、`residence` が `nil` の場合、`numberOfRooms` にアクセスできなかったことを反映するために、このオプショナルの `Int` も `nil` になります。オプショナルの `Int` は、整数をアンラップし、オプショナルバインディングを介して非オプショナル値を `roomCount` 定数に割り当てます。
 
-`numberOfRooms` がオプショナルではない `Int` でも、結果は `Int?` になることに注目してください。オプショナルチェーンを介して照会されるため、`numberOfRooms` の呼び出しは常に `Int` の代わりに `Int?` を返します。
+`numberOfRooms` が非オプショナルの `Int` でも、結果は `Int?` になることに注目してください。オプショナルチェーンを介して照会されるため、`numberOfRooms` の呼び出しは常に `Int` の代わりに `Int?` を返します。
 
 `Residence` インスタンスを `john.residence` に割り当てて、`nil` 値を持たないようにすることができます。
 
