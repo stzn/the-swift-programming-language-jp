@@ -659,7 +659,7 @@ guard let number = convertedNumber else {
 
 このようなオプショナルは、_暗黙アンラップオプショナル_として定義されています。`?` の代わりに `!` を型の後に付けることで、暗黙アンラップオプショナルを書くことができます\(`String?` の代わりに `String!` と書くなど\)。コード内で使用するオプショナル値の後に `!` 付けるよりも、定義した型の後に `!` を付けます。
 
-暗黙アンラップオプショナルは、オプショナル値の定義後すぐに値が設定され、それ以降はずっと値が存在していることが確実な場合に、役に立ちます。Swift での暗黙アンラップオプショナルの主な使われ方としては、クラスの初期化時があります。[Unowned References and Implicitly Unwrapped Optional Properties\(非所有参照と暗黙アンラップしたオプショナルプロパティ\)](automatic-reference-counting.md#unowned-references-and-implicitly-unwrapped-optional-properties非所有参照と暗黙アンラップしたオプショナルプロパティ)に記載しています。
+暗黙アンラップオプショナルは、オプショナル値の定義後すぐに値が設定され、それ以降はずっと値が存在していることが確実な場合に役に立ちます。Swift での暗黙アンラップオプショナルの主な使われ方としては、クラスの初期化時があります。[Unowned References and Implicitly Unwrapped Optional Properties\(非所有参照と暗黙アンラップしたオプショナルプロパティ\)](automatic-reference-counting.md#unowned-references-and-implicitly-unwrapped-optional-properties非所有参照と暗黙アンラップしたオプショナルプロパティ)に記載しています。
 
 後で変数が `nil` になる可能性がある場合、暗黙的アンラップされたオプショナル値を使用しないでください。変数の有効期間中に `nil` 値をチェックする必要がある場合は、常に通常のオプショナル型を使用してください。
 
