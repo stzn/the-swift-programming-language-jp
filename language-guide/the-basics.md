@@ -673,7 +673,7 @@ let assumedString: String! = "An implicitly unwrapped optional string."
 let implicitString: String = assumedString // ! は自動的に不要になる
 ```
 
-暗黙アンラップオプショナル値を必要なときにオプショナル値へ強制アンラップできるようにしていると見なすことができます。暗黙アンラップオプショナル値を使用するとき、Swift は強制アンラップします。上記のコードでは、オプショナル値の `assumedString` は、`implicitString` が明示的にオプショナルではない `String` を宣言しているため、代入される前に強制アンラップされています。下記のコードでは、`optionalString` は明示的に型を宣言していないため、通常はオプショナルになります。
+暗黙アンラップオプショナル値を必要なときにオプショナル値へ強制アンラップできるようにしていると見なすことができます。暗黙アンラップオプショナル値を使用するとき、Swift は強制アンラップします。上記のコードでは、オプショナル値の `assumedString` は、`implicitString` が明示的に非オプショナルな `String` を宣言しているため、代入される前に強制アンラップされています。下記のコードでは、`optionalString` は明示的に型を宣言していないため、通常はオプショナル値になります。
 
 ```swift
 let optionalString = assumedString
