@@ -770,7 +770,7 @@ for object in objects {
 > NOTE
 > 厳密に言えば、いずれのプロトコル要件を実装していなくても、`CounterDataSource` に準拠する独自クラスを作成できます。結局のところ、どちらもオプショナルです。技術的には許可されていますが、これはあまり有用なデータソースではありません。
 
-以下で定義される `Counter` クラスには、`CounterDataSource?` 型のオプショナルの `dataSource` プロパティがあります:
+以下で定義される `Counter` クラスには、`CounterDataSource?` 型のオプショナル値の `dataSource` プロパティがあります:
 
 ```swift
 class Counter {
