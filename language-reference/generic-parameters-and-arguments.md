@@ -1,6 +1,6 @@
 # ジェネリックパラメータと引数\(Generic Parameters and Arguments\)
 
-最終更新日: 2023/8/11  
+最終更新日: 2023/8/11
 原文: https://docs.swift.org/swift-book/ReferenceManual/GenericParametersAndArguments.html
 
 宣言を一般化して具体的な型を抽象化する。

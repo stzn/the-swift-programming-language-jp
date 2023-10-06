@@ -1,6 +1,6 @@
 # 式\(Expressions\)
 
-最終更新日: 2023/8/11  
+最終更新日: 2023/9/17
 原文: https://docs.swift.org/swift-book/ReferenceManual/Expressions.html
 
 型、演算子、変数、およびその他の名前と構造を紹介する。
@@ -139,7 +139,7 @@ _中置式_は、左右の引数を受け取る式と中置バイナリ演算子
 
 標準ライブラリによって提供されている演算子については、[Operator Declarations\(演算子宣言\)](https://developer.apple.com/documentation/swift/operator_declarations)を参照ください。
 
-> NOTE  
+> NOTE
 > 構文解析時には、式はバイナリ演算子のフラットなリストを構成します。このリストは、演算子の優先順位を適用することによってツリーに変換されます。例えば、式 `2 + 3 * 5` は、最初は5つの項目、`2`、`+`、`3`、`*`、および `5` として解釈され、その後 `(2 + (3 * 5))` のツリーに変換します
 
 > Grammar of an infix expression:
@@ -259,10 +259,10 @@ f(x as Any)
 
 リテラル式は、通常のリテラル\(文字列や数など\)、配列または辞書リテラル、playground リテラルで構成されます。
 
-> NOTE  
-> Swift 5.9以前は、以下の特殊リテラルが認識されていました:  
+> NOTE
+> Swift 5.9以前は、以下の特殊リテラルが認識されていました:
 > `#column`, `#dsohandle` , `#fileID`, `#filePath`, `#file`, `#function`, `#line`。
-> 現在はSwift標準ライブラリのマクロとして実装されています:  
+> 現在はSwift標準ライブラリのマクロとして実装されています:
 > [`column`](https://developer.apple.com/documentation/swift/column()),
 > [`dsohandle`](https://developer.apple.com/documentation/swift/dsohandle()),
 > [`fileID`](https://developer.apple.com/documentation/swift/fileID()),
@@ -408,7 +408,7 @@ default:
 
 条件式は、`if` 文や `switch` 文と同じ動作と構文ですが、以下の段落で説明する違いがあります。
 
-条件式は、以下の状況でのみ使用できます:  
+条件式は、以下の状況でのみ使用できます:
 
 - 変数に代入される値として
 - 変数または定数宣言の初期値として
@@ -641,7 +641,7 @@ _タプル式_の各識別子は、タプル式の範囲内で一意な必要が
 
 タプル式には、式を全く含めなくても、2 つ以上の式を含めることもできます。括弧内の単一式は括弧で囲まれた式です。
 
-> NOTE  
+> NOTE
 > 空のタプル式と空のタプル型はいずれもSwiftでは `()` で書きます。`Void` は `()` のタイプエイリアスのため、空のタプル型を書くために使用できます。ただし、全てのタイプエイリアスと同様に、`Void` は常に型で、空のタプル式を書くためには使用できません。
 
 > Grammar of a tuple expression:
@@ -665,8 +665,8 @@ _タプル式_の各識別子は、タプル式の範囲内で一意な必要が
 
 ### マクロ展開式\(Macro-Expansion Expression\)
 
-*マクロ展開式*は、マクロ名と、その後ろに括弧で囲んだカンマ区切りのマクロ引数のリストで構成されます。  
-マクロはコンパイル時に展開されます。  
+*マクロ展開式*は、マクロ名と、その後ろに括弧で囲んだカンマ区切りのマクロ引数のリストで構成されます。
+マクロはコンパイル時に展開されます。
 マクロ展開式は次のような形式をとります:
 
 ```swift
@@ -896,7 +896,7 @@ let anotherSelector = #selector(SomeClass.doSomething(_:) as (SomeClass) -> (Str
 
 セレクタが実行時ではなくコンパイル時に作成されるため、コンパイラはメソッドまたはプロパティが存在すること、およびそれらが Objective-C ランタイムに公開されていることを確認できます。
 
-> NOTE  
+> NOTE
 > メソッド名とプロパティ名は式ですが、それらは決して評価されません。
 
 Objective-C API とやり取りする Swift コードでセレクタを使用する方法の詳細については、[Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift)を参照ください。
@@ -950,7 +950,7 @@ KeyPath 文字列は、実行時ではなくコンパイル時に作成されて
 
 Objective-C API とやり取りする Swift コードで KeyPath を使用する方法の詳細については、[Using Objective-C Runtime Features in Swift](https://developer.apple.com/documentation/swift/using_objective_c_runtime_features_in_swift)を参照ください。Key-Value Coding と Key-Value Observing については、[Key-Value Coding Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueCoding/index.html#//apple_ref/doc/uid/10000107i)と[Key-Value Observing Programming Guide](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html#//apple_ref/doc/uid/10000177i)を参照ください。
 
-> NOTE  
+> NOTE
 > プロパティ名は式ですが、それらは決して評価されません。
 
 > Grammar of a key-path string expression:
@@ -1076,7 +1076,7 @@ withUnsafePointer(to: myNumber) { unsafeFunction(pointer: $0) }
 
 これらの暗黙の変換によって作成されたポインタは、関数呼び出しの間だけ有効です。未定義の動作を避けるために、関数呼び出しが終了した後までポインタを保持しないようにしてください。
 
-> NOTE  
+> NOTE
 > 配列を暗黙的に安全でないポインタに変換すると、Swift は、配列のストレージが必要に応じて配列を変換またはコピーすることによって連続していることを保証します。例えば、この構文は、そのストレージに関する API の契約がない\(動作が定義されているか定かではない\) `NSArray` のサブクラスから `Array` にブリッジされた配列でこの構文を使用できます。配列のストレージがすでに連続していることを保証する必要がある場合、暗黙の変換を行わないようにするために、`Array` の代わりに `ContigureArray` を使用します
 
 `withUnsafePointer(to:)` のような明示的な機能の代わりに、`&` を使うことで、低レベルの C 言語の関数を呼び出しやすくするのに役立ちます。ただし、他の Swift コードから関数を呼び出すときは、安全でない API を明示的に使用する代わりとして `&` を使用しないでください。
@@ -1259,13 +1259,13 @@ _サブスクリプト式_は、対応するサブスクリプト宣言の get �
 
 ### 強制アンラップ式\(Forced-Value Expression\)
 
-_強制アンラップ式_は、特定の値が `nil` ではないオプショナルの値を表します。形式は次のとおりです:
+_強制アンラップ式_は、特定の値が `nil` ではないオプショナル値を表します。形式は次のとおりです:
 
 ```swift
 <#expression#>!
 ```
 
-_expression_ の値が `nil` でない場合、オプショナルの値はアンラップされ、対応するオプショナルの非オプショナルの型で返されます。それ以外の場合は、実行時エラーが発生します。
+_expression_ の値が `nil` でない場合、オプショナル値はアンラップされ、対応するオプショナルの非オプショナルの型で返されます。それ以外の場合は、実行時エラーが発生します。
 
 強制アンラップされた値は、値自体を変化させる、またはその値のメンバの 1 つに割り当てることによって、変更できます。例えば:
 
@@ -1285,7 +1285,7 @@ someDictionary["a"]![0] = 100
 
 ### <a id="optional-chaining-expression">オプショナルチェーン式\(Optional-Chaining Expression\)</a>
 
-_オプショナルチェーン式_は後置式で、オプショナルの値を使用するための簡単な構文を提供します。形式は次のとおりです:
+_オプショナルチェーン式_は後置式で、オプショナル値を使用するための簡単な構文を提供します。形式は次のとおりです:
 
 ```swift
 <#expression#>?
@@ -1331,4 +1331,3 @@ someDictionary["a"]?[0] = someFunctionWithSideEffects()
 > Grammar of an optional-chaining expression:
 >
 > *optional-chaining-expression* → *postfix-expression* **`?`**
-

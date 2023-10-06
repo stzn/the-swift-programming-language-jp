@@ -1,6 +1,6 @@
 # エラー処理\(Error Handling\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2023/9/17
 原文: https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html
 
 エラーに対応し、エラーから回復する。
@@ -11,7 +11,7 @@ _エラー処理_は、プログラムのエラー状態に応答し、エラー
 
 例として、ディスク上のファイルからデータを読み取って処理するタスクを考えてみましょう。指定されたパスにファイルが存在しない、ファイルが読み取り権限を持たない、ファイルが互換性のある形式でエンコードされていないなど、このタスクが失敗する原因はいくつかあります。これらの様々な状況を区別することで、プログラムはいくつかのエラーを解決し、解決できないエラーをユーザに伝えることができます。
 
-> NOTE  
+> NOTE
 > Swift のエラー処理は、Cocoa および Objective-C の NSError クラスを使用するエラー処理パターンと相互運用します。このクラスの詳細については、[Handling Cocoa Errors in Swift](https://developer.apple.com/documentation/swift/cocoa_design_patterns/handling_cocoa_errors_in_swift)を参照ください。
 
 ## <a id="representing-and-throwing-errors">エラーの表現とスロー\(Representing and Throwing Errors\)</a>
@@ -38,11 +38,11 @@ throw VendingMachineError.insufficientFunds(coinsNeeded: 5)
 
 エラーがスローされた場合、周囲のコードの一部がエラーを処理する必要があります。例えば、問題を修正する、別のアプローチを試みる、またはユーザにエラーを通知するなどです。
 
-Swift でエラーを処理する方法は 4 つあります。関数からその関数を呼び出すコードにエラーを伝播したり、`do-catch` 文を使用してエラーを処理したり、オプショナルの値としてエラーを処理したり、エラーが発生しないことをアサートしたりできます。各アプローチについては、以下のセクションで説明します。
+Swift でエラーを処理する方法は 4 つあります。関数からその関数を呼び出すコードにエラーを伝播したり、`do-catch` 文を使用してエラーを処理したり、オプショナル値としてエラーを処理したり、エラーが発生しないことをアサートしたりできます。各アプローチについては、以下のセクションで説明します。
 
 関数がエラーをスローすると、プログラムのフローが変わるため、エラーをスローする可能性のあるコード内の場所をすばやく特定できることが重要です。コード内のこれらの場所を特定するには、`try` キーワード \(または `try?` または `try!`\) をエラーをスローする可能性のある関数、メソッド、またはイニシャライザを呼び出すコードの前に置きます。これらのキーワードについては、以下のセクションで説明します。
 
-> NOTE  
+> NOTE
 > Swift でのエラー処理は、他の言語での例外処理に似ており、`try`、`catch`、`throw` キーワードを使用しています。Objective-C を含む多くの言語の例外処理とは異なり、Swift でのエラー処理には、計算コストがかかる可能性のあるプロセスであるコールスタックの巻き戻しが含まれません。したがって、`throw` 文のパフォーマンスは、`return` 文のパフォーマンスに匹敵します。
 
 ### <a id="propagating-errors-using-throwing-functions">スロー関数を使用したエラーの伝播\(Propagating Errors Using Throwing Functions\)</a>
@@ -57,7 +57,7 @@ func cannotThrowErrors() -> String
 
 スロー関数は、その内部でスローされたエラーを、呼び出されたスコープに伝播します。
 
-> NOTE  
+> NOTE
 > エラーを伝播できるのは、スローする関数だけです。スローされない関数内でスローされたエラーは、関数内で処理する必要があります。
 
 下記の例では、`VendingMachine` クラスに `vend(itemNamed:)` メソッドがあり、要求されたアイテムが利用できない場合、在庫がない場合、または現在のお金が足りない場合に、適切な `VendingMachineError` をスローします:
@@ -214,7 +214,7 @@ func eat(item: String) throws {
 
 ### <a id="converting-errors-to-optional-values">エラーからオプショナル値への変換\(Converting Errors to Optional Values\)</a>
 
-エラーをオプショナルの値に変換して処理するには `try?` を使います。`try?` 式を評価中にエラーがスローされた場合、式の値は `nil` です。例えば、次のコードでは、`x` と `y` の値は挙動が同じです:
+エラーをオプショナル値に変換して処理するには `try?` を使います。`try?` 式を評価中にエラーがスローされた場合、式の値は `nil` です。例えば、次のコードでは、`x` と `y` の値は挙動が同じです:
 
 ```swift
 func someThrowingFunction() throws -> Int {
@@ -276,6 +276,5 @@ func processFile(filename: String) throws {
 
 上記の例では、`defer` 文を使用して、`open(_:)` 関数に対応する `close(_:)` への呼び出しが確実に実行されること保証しています。
 
-> NOTE  
+> NOTE
 > エラー処理コードが含まれていない場合でも、`defer` 文を使用できます。
-
