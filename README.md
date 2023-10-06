@@ -61,6 +61,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/KaitoMuraoka">
+            <img src="https://avatars.githubusercontent.com/u/70003919?v=4" width="100;" alt="KaitoMuraoka"/>
+            <br />
+            <sub><b>とんとんぼ</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/t-ae">
             <img src="https://avatars.githubusercontent.com/u/12446914?v=4" width="100;" alt="t-ae"/>
             <br />
@@ -87,15 +94,15 @@
             <br />
             <sub><b>Sumomoneko</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/KS1019">
             <img src="https://avatars.githubusercontent.com/u/6828522?v=4" width="100;" alt="KS1019"/>
             <br />
             <sub><b>Kotaro Suto</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/kishikawakatsumi">
             <img src="https://avatars.githubusercontent.com/u/40610?v=4" width="100;" alt="kishikawakatsumi"/>
@@ -129,13 +136,6 @@
             <img src="https://avatars.githubusercontent.com/u/1823075?v=4" width="100;" alt="enomoto"/>
             <br />
             <sub><b>Kenta Enomoto</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/TonTonbow-KaitoMuraoka">
-            <img src="https://avatars.githubusercontent.com/u/70003919?v=4" width="100;" alt="TonTonbow-KaitoMuraoka"/>
-            <br />
-            <sub><b>とんとんぼ</b></sub>
         </a>
     </td></tr>
 <tr>
@@ -171,7 +171,7 @@
         <a href="https://github.com/b1ackturtle">
             <img src="https://avatars.githubusercontent.com/u/13419249?v=4" width="100;" alt="b1ackturtle"/>
             <br />
-            <sub><b>b1ackturtle</b></sub>
+            <sub><b>B1ackturtle</b></sub>
         </a>
     </td>
     <td align="center">
@@ -183,10 +183,10 @@
     </td></tr>
 <tr>
     <td align="center">
-        <a href="https://github.com/ribilynn">
-            <img src="https://avatars.githubusercontent.com/u/11924267?v=4" width="100;" alt="ribilynn"/>
+        <a href="https://github.com/Lumisilk">
+            <img src="https://avatars.githubusercontent.com/u/11924267?v=4" width="100;" alt="Lumisilk"/>
             <br />
-            <sub><b>Ribilynn Zhou</b></sub>
+            <sub><b>Lumi</b></sub>
         </a>
     </td>
     <td align="center">
