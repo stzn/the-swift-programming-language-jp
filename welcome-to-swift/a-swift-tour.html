@@ -758,7 +758,8 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="swiftツアーa-swift-tour">Swiftツアー(A Swift Tour)</h1>
-<p>最終更新日: 2023/8/27<br>原文: <a href="https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html" target="_blank">https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html</a></p>
+<p>最終更新日: 2023/9/24
+原文: <a href="https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html" target="_blank">https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html</a></p>
 <p>Swift の特徴とシンタックスを探る。</p>
 <p>伝統的に、新しい言語の最初のプログラミングは &quot;Hello world!&quot; を画面に表示することを勧めます。これを Swift ではたった 1 行で達成できます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;Hello, world!&quot;</span></span><span class="token punctuation">)</span>
@@ -779,7 +780,8 @@ myVariable <span class="token operator">=</span> <span class="token number">50</
 <span class="token keyword">let</span> explicitDouble<span class="token punctuation">:</span> <span class="token class-name">Double</span> <span class="token operator">=</span> <span class="token number">70</span>
 </code></pre>
 <blockquote>
-<p>Experiment<br>値が <code>4</code> で <code>Float</code> を明示的に指定した定数を作成してみましょう。</p>
+<p>Experiment
+値が <code>4</code> で <code>Float</code> を明示的に指定した定数を作成してみましょう。</p>
 </blockquote>
 <p>値は暗黙的に他の型に変換されることはありません。他の型に変換したい場合は、変換したい型のインスタンスを明示的に作成してください。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> label <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;The width is &quot;</span></span>
@@ -787,7 +789,8 @@ myVariable <span class="token operator">=</span> <span class="token number">50</
 <span class="token keyword">let</span> widthLabel <span class="token operator">=</span> label <span class="token operator">+</span> <span class="token class-name">String</span><span class="token punctuation">(</span>width<span class="token punctuation">)</span>
 </code></pre>
 <blockquote>
-<p>Experiment<br>最後の行から <code>String</code> への変換を消してみてください。どんなエラーが起きるでしょうか？</p>
+<p>Experiment
+最後の行から <code>String</code> への変換を消してみてください。どんなエラーが起きるでしょうか？</p>
 </blockquote>
 <p>もっと簡単な方法で文字列の中に値を含めることができます。値を括弧で囲み、括弧の前にバックスラッシュをつけます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> apples <span class="token operator">=</span> <span class="token number">3</span>
@@ -796,7 +799,8 @@ myVariable <span class="token operator">=</span> <span class="token number">50</
 <span class="token keyword">let</span> fruitSummary <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;I have </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">apples <span class="token operator">+</span> oranges</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> pieces of fruit.&quot;</span></span>
 </code></pre>
 <blockquote>
-<p>Experiment<br>文字列に浮動小数点の計算を含めたり、誰かの名前を挨拶に含めるために、<code>\()</code> を使用してみましょう。</p>
+<p>Experiment
+文字列に浮動小数点の計算を含めたり、誰かの名前を挨拶に含めるために、<code>\()</code> を使用してみましょう。</p>
 </blockquote>
 <p>複数行の文字列に対しては、3 つのダブルクォーテーション(<code>&quot;&quot;&quot;</code>)を使いましょう。末尾のクォーテーションに到達するまで、各行の最初のインデントは除外されます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> quotation <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;&quot;&quot;
@@ -866,10 +870,11 @@ occupations <span class="token operator">=</span> <span class="token punctuation
 <span class="token punctuation">}</span>
 </code></pre>
 <blockquote>
-<p>Experiment<br><code>optionalName</code> を <code>nil</code> に変えてみましょう。どんな挨拶が出力されるでしょうか？ <code>optionalName</code> が <code>nil</code> の場合に別の挨拶が出力されるように <code>else</code> を追加してみましょう。</p>
+<p>Experiment
+<code>optionalName</code> を <code>nil</code> に変えてみましょう。どんな挨拶が出力されるでしょうか？ <code>optionalName</code> が <code>nil</code> の場合に別の挨拶が出力されるように <code>else</code> を追加してみましょう。</p>
 </blockquote>
-<p>もしオプショナルの値が <code>nil</code> の場合、条件は <code>false</code> になり、中括弧内のコードはスキップされます。<code>nil</code> でなければ、オプショナルの値はアンラップされて <code>let</code> の後の定数に代入され、中括弧内のブロック内でその値を利用できます。</p>
-<p>オプショナルの値を扱うもう 1 つの方法として、<code>??</code> 演算子を使用してデフォルトの値を提供する方法があります。もしオプショナルの値が <code>nil</code> の場合、代わりにデフォルトの値が使われます。</p>
+<p>もしオプショナル値が <code>nil</code> の場合、条件は <code>false</code> になり、中括弧内のコードはスキップされます。<code>nil</code> でなければ、オプショナル値はアンラップされて <code>let</code> の後の定数に代入され、中括弧内のブロック内でその値を利用できます。</p>
+<p>オプショナル値を扱うもう 1 つの方法として、<code>??</code> 演算子を使用してデフォルトの値を提供する方法があります。もしオプショナル値が <code>nil</code> の場合、代わりにデフォルトの値が使われます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> nickname<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token nil constant">nil</span>
 <span class="token keyword">let</span> fullName<span class="token punctuation">:</span> <span class="token class-name">String</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;John Appleseed&quot;</span></span>
 <span class="token keyword">let</span> informalGreeting <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;Hi </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">nickname <span class="token operator">??</span> fullName</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string">&quot;</span></span>
@@ -894,7 +899,8 @@ occupations <span class="token operator">=</span> <span class="token punctuation
 <span class="token comment">// Is it a spicy red pepper?</span>
 </code></pre>
 <blockquote>
-<p>Experiment<br><code>default</code> のケースを削除してみましょう。どんなエラーが起きるでしょうか？</p>
+<p>Experiment
+<code>default</code> のケースを削除してみましょう。どんなエラーが起きるでしょうか？</p>
 </blockquote>
 <p>パターンに合った値を定数に設定するために <code>let</code> がどう使われるかに注目してください。</p>
 <p>パターンに合った switch case 内のコードが実行された後、プログラムは switch 文から抜け出します。次の case は実行されないので、各 case の最後に明示的に break を書く必要はありません。</p>
@@ -916,7 +922,8 @@ occupations <span class="token operator">=</span> <span class="token punctuation
 <span class="token comment">// 25</span>
 </code></pre>
 <blockquote>
-<p>Experiment<br><code>_</code> を変数の名前に置き換えてみて、どの種類の値が最大だったかを追ってみましょう。</p>
+<p>Experiment
+<code>_</code> を変数の名前に置き換えてみて、どの種類の値が最大だったかを追ってみましょう。</p>
 </blockquote>
 <p><code>while</code> を使用することで、条件が変わるまでブロック内のコードを反復して実行できます。ループの条件を最後に置くことで、ループ内のブロックが少なくとも 1 回実行されるようにすることができます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> n <span class="token operator">=</span> <span class="token number">2</span>
@@ -934,7 +941,8 @@ occupations <span class="token operator">=</span> <span class="token punctuation
 <span class="token comment">// 128</span>
 </code></pre>
 <blockquote>
-<p>Experiment<br>条件を <code>m &lt; 100</code> から <code>m &lt; 0</code> に変更し、ループ条件がすでに真である場合の <code>while</code> と <code>repeat-while</code> の動作の違いを確認しましょう。</p>
+<p>Experiment
+条件を <code>m &lt; 100</code> から <code>m &lt; 0</code> に変更し、ループ条件がすでに真である場合の <code>while</code> と <code>repeat-while</code> の動作の違いを確認しましょう。</p>
 </blockquote>
 <p><code>..&lt;</code> を使用するとインデックスの範囲を生成でき、ループのインデックスを追うことができます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> total <span class="token operator">=</span> <span class="token number">0</span>
@@ -953,7 +961,8 @@ occupations <span class="token operator">=</span> <span class="token punctuation
 <span class="token function">greet</span><span class="token punctuation">(</span>person<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;Bob&quot;</span></span><span class="token punctuation">,</span> day<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;Tuesday&quot;</span></span><span class="token punctuation">)</span>
 </code></pre>
 <blockquote>
-<p>Experiment<br><code>day</code> パラメータを削除して、<code>greet</code> に今日のランチスペシャルを指定するためのパラメータを追加してみましょう。</p>
+<p>Experiment
+<code>day</code> パラメータを削除して、<code>greet</code> に今日のランチスペシャルを指定するためのパラメータを追加してみましょう。</p>
 </blockquote>
 <p>デフォルトで、関数はパラメータ名をそのままラベルとして使用します。独自の引数ラベルを設定したい場合は、パラメータ名の前に引数ラベルを記載してください。引数にラベルが不要な場合は、<code>_</code> を書きましょう。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">func</span> <span class="token function-definition function">calculateStatistics</span><span class="token punctuation">(</span>scores<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">Int</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">(</span>min<span class="token punctuation">:</span> <span class="token class-name">Int</span><span class="token punctuation">,</span> max<span class="token punctuation">:</span> <span class="token class-name">Int</span><span class="token punctuation">,</span> sum<span class="token punctuation">:</span> <span class="token class-name">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1021,7 +1030,8 @@ occupations <span class="token operator">=</span> <span class="token punctuation
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
 <blockquote>
-<p>Experiment<br>上記のクロージャを、全ての奇数で 0 を返すように書き換えてみましょう。</p>
+<p>Experiment
+上記のクロージャを、全ての奇数で 0 を返すように書き換えてみましょう。</p>
 </blockquote>
 <p>より簡潔にクロージャを書く複数の方法があります。クロージャの型が既にわかっている場合(デリゲートのコールバックなど)、パラメータと戻り値の型を省略できます。単一の文のみのクロージャの場合、その文の値が戻り値として暗黙的に返されます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> mappedNumbers <span class="token operator">=</span> numbers<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">{</span> number <span class="token keyword">in</span> <span class="token number">3</span> <span class="token operator">*</span> number <span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -1043,7 +1053,8 @@ occupations <span class="token operator">=</span> <span class="token punctuation
 <span class="token punctuation">}</span>
 </code></pre>
 <blockquote>
-<p>Experiment<br><code>let</code> を使用して定数プロパティを追加してください。また、引数を受け取る別のメソッドも追加してみましょう。</p>
+<p>Experiment
+<code>let</code> を使用して定数プロパティを追加してください。また、引数を受け取る別のメソッドも追加してみましょう。</p>
 </blockquote>
 <p>クラスのインスタンスは、クラス名の後に丸括弧(<code>()</code>)を付けて生成します。そのインスタンスのプロパティやメソッドにアクセスするには、ドット(<code>.</code>)構文を使います。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> shape <span class="token operator">=</span> <span class="token class-name">Shape</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -1090,7 +1101,8 @@ test<span class="token punctuation">.</span><span class="token function">area</s
 test<span class="token punctuation">.</span><span class="token function">simpleDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <blockquote>
-<p>Experiment<br><code>radius</code> と <code>name</code> をイニシャライザの引数に受けとる <code>Circle</code> という名前の <code>NameShape</code> の別のサブクラスを作ってみましょう。そして、 <code>Circle</code> クラスに <code>area()</code>、<code>simpleDescription()</code> メソッドを実装してみましょう。</p>
+<p>Experiment
+<code>radius</code> と <code>name</code> をイニシャライザの引数に受けとる <code>Circle</code> という名前の <code>NameShape</code> の別のサブクラスを作ってみましょう。そして、 <code>Circle</code> クラスに <code>area()</code>、<code>simpleDescription()</code> メソッドを実装してみましょう。</p>
 </blockquote>
 <p>単純に値を保持するプロパティ以外に、プロパティが get と set を持つこともできます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">class</span> <span class="token class-name">EquilateralTriangle</span><span class="token punctuation">:</span> <span class="token class-name">NamedShape</span> <span class="token punctuation">{</span>
@@ -1155,7 +1167,7 @@ triangleAndSquare<span class="token punctuation">.</span>square <span class="tok
 <span class="token function">print</span><span class="token punctuation">(</span>triangleAndSquare<span class="token punctuation">.</span>triangle<span class="token punctuation">.</span>sideLength<span class="token punctuation">)</span>
 <span class="token comment">// 50.0</span>
 </code></pre>
-<p>オプショナルな値を扱う場合、<code>?</code> をメソッド、プロパティ、サブスクリプトのような操作の前に書きます。もし <code>?</code> の前の値が <code>nil</code> の場合、<code>?</code> の後の処理は全て無視され、その式全体の値は <code>nil</code> になります。それ以外、オプショナルの値はアンラップされて、<code>?</code> の後は全てアンラップされた値として実行されます。どちらの場合も、式全体はオプショナルな値です。</p>
+<p>オプショナル値を扱う場合、<code>?</code> をメソッド、プロパティ、サブスクリプトのような操作の前に書きます。もし <code>?</code> の前の値が <code>nil</code> の場合、<code>?</code> の後の処理は全て無視され、その式全体の値は <code>nil</code> になります。それ以外、オプショナル値はアンラップされて、<code>?</code> の後は全てアンラップされた値として実行されます。どちらの場合も、式全体はオプショナル値です。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> optionalSquare<span class="token punctuation">:</span> <span class="token class-name">Square</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token class-name">Square</span><span class="token punctuation">(</span>sideLength<span class="token punctuation">:</span> <span class="token number">2.5</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;optional square&quot;</span></span><span class="token punctuation">)</span>
 <span class="token keyword">let</span> sideLength <span class="token operator">=</span> optionalSquare<span class="token operator">?</span><span class="token punctuation">.</span>sideLength
 </code></pre>
@@ -1185,7 +1197,8 @@ triangleAndSquare<span class="token punctuation">.</span>square <span class="tok
 <span class="token keyword">let</span> aceRawValue <span class="token operator">=</span> ace<span class="token punctuation">.</span>rawValue
 </code></pre>
 <blockquote>
-<p>Experiment<br>2つの <code>Rank</code> の raw value を比較して <code>Rank</code> を比較するメソッドを追加してみましょう。</p>
+<p>Experiment
+2つの <code>Rank</code> の raw value を比較して <code>Rank</code> を比較するメソッドを追加してみましょう。</p>
 </blockquote>
 <p>デフォルトで、Swift は 0 から 1 つずつ増加する値を raw value に割り当てますが、明示的に値を指定してこの挙動を変更することもできます。上記の例では、<code>Ace</code> は明示的に <code>1</code> を raw value に指定しており、残りは、<code>1</code> から順番に raw value が指定されます。文字列や浮動小数点も使用することができます。列挙型の個々のケースの raw value には、<code>rawValue</code> プロパティからアクセスすることができます。</p>
 <p>Raw value から列挙型のインスタンスを生成するためには <code>init?(rawValue:)</code> イニシャライザを使います。これは raw value に合致したケースを返すか、合致するものがない場合は <code>nil</code> を返します。</p>
@@ -1214,7 +1227,8 @@ triangleAndSquare<span class="token punctuation">.</span>square <span class="tok
 <span class="token keyword">let</span> heartsDescription <span class="token operator">=</span> hearts<span class="token punctuation">.</span><span class="token function">simpleDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <blockquote>
-<p>Experiment<br><code>color()</code> メソッドを <code>Suit</code> に追加してみましょう。<code>spades</code> と <code>clubs</code> は &quot;black&quot; を返し、<code>hearts</code> と <code>diaminds</code> は &quot;red&quot; を返します。</p>
+<p>Experiment
+<code>color()</code> メソッドを <code>Suit</code> に追加してみましょう。<code>spades</code> と <code>clubs</code> は &quot;black&quot; を返し、<code>hearts</code> と <code>diaminds</code> は &quot;red&quot; を返します。</p>
 </blockquote>
 <p><code>hearts</code> ケースを参照するために 2 つの方法があることに注目してください。<code>hearts</code> 定数に値を設定する時、定数の型が明示的に指定されていないため、列挙ケースの <code>Suits.hearts</code> を完全な名前で参照しています。一方、switch 文の中では、<code>self</code> が既に <code>Suit</code> だとわかっているため、列挙ケースは <code>.hearts</code> と省略記法で参照しています。型が既にわかっている場合はいつでも省略記法を使用することができます。</p>
 <p>もし列挙型が raw value を持つ場合、これらの値は宣言の一部として決定されます。これはつまり、特定の列挙ケースの全てのインスタンスは、必ず同じ raw value を持つということです。もう 1 つの選択肢は、列挙ケースに関連値(Associated value)を持たせることです。関連値はインスタンス生成時に決定され、列挙ケースのインスタンスごとに異なる値を持つことができます。関連値は列挙ケースのインスタンスの格納プロパティのように振る舞います。例えば、サーバから日の出時刻と日の入り時刻をリクエストする場合を考えてみてください。サーバはリクエスト情報に応じたレスポンスを返すか、リクエストが間違っている場合は間違っているという内容を返します。</p>
@@ -1235,7 +1249,8 @@ triangleAndSquare<span class="token punctuation">.</span>square <span class="tok
 <span class="token comment">// Sunrise is at 6:00 am and sunset is at 8:09 pm.</span>
 </code></pre>
 <blockquote>
-<p>Experiment<br><code>ServerResponse</code> に3つ目のケースを追加して、switch 文を変更してください。</p>
+<p>Experiment
+<code>ServerResponse</code> に3つ目のケースを追加して、switch 文を変更してください。</p>
 </blockquote>
 <p>日の出時刻と日の入り時刻が、switch に合致したケースの一部として、<code>ServerResponse</code> から抽出されていることに注目してください。</p>
 <p>構造体を作成するには <code>struct</code> を使います。構造体はメソッドやイニシャライザなど多くのクラスと同じ挙動をサポートしています。最も重要な違いは、構造体はコードの中で渡される時に必ずコピーされる、ということです。クラスは参照を渡します。</p>
@@ -1250,7 +1265,8 @@ triangleAndSquare<span class="token punctuation">.</span>square <span class="tok
 <span class="token keyword">let</span> threeOfSpadesDescription <span class="token operator">=</span> threeOfSpades<span class="token punctuation">.</span><span class="token function">simpleDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <blockquote>
-<p>Experiment<br>全種(ランクとスートの全組み合わせ)のカードからなる配列を返すメソッドを書いてみよう。</p>
+<p>Experiment
+全種(ランクとスートの全組み合わせ)のカードからなる配列を返すメソッドを書いてみよう。</p>
 </blockquote>
 <h2 id="同時並行処理concurrency">同時並行処理(Concurrency)</h2>
 <p><code>async</code> を使うことで非同期に実行される関数を定義できます。</p>
@@ -1346,7 +1362,8 @@ b<span class="token punctuation">.</span><span class="token function">adjust</sp
 <span class="token keyword">let</span> bDescription <span class="token operator">=</span> b<span class="token punctuation">.</span>simpleDescription
 </code></pre>
 <blockquote>
-<p>Experiment<br><code>ExampleProtocolrank</code> にもう1つの要件を追加してみましょう。<code>SimpleClass</code> と <code>SimpleStructure</code> にどういう変更が必要になるでしょうか？</p>
+<p>Experiment
+<code>ExampleProtocolrank</code> にもう1つの要件を追加してみましょう。<code>SimpleClass</code> と <code>SimpleStructure</code> にどういう変更が必要になるでしょうか？</p>
 </blockquote>
 <p>構造体 <code>SimpleStructure</code> を変更するメソッドに <code>mutating</code> キーワードが付いていることに注目してください。クラスのメソッドはクラスを変更することが許されているため、<code>mutating</code> を付ける必要はありません。</p>
 <p>既存の型に新しい機能(メソッドや計算プロパティ)を追加する場合に、<code>extension</code> を使います。他のファイルやモジュールで宣言された型や、ライブラリやフレームワークからインポートした型にプロトコルを準拠させる場合にも <code>extension</code> を使います。</p>
@@ -1362,7 +1379,8 @@ b<span class="token punctuation">.</span><span class="token function">adjust</sp
 <span class="token comment">// The number 7</span>
 </code></pre>
 <blockquote>
-<p>Experiment<br><code>absoluteValue</code> プロパティを <code>Double</code> に追加する <code>extension</code> を書いてみましょう。</p>
+<p>Experiment
+<code>absoluteValue</code> プロパティを <code>Double</code> に追加する <code>extension</code> を書いてみましょう。</p>
 </blockquote>
 <p>プロトコルの名前は、他の名前が付いた型と同じように使用することができます。例えば、同じ 1 つのプロトコルに準拠した異なる型のオブジェクトのコレクションを作成することができます。Box プロトコル型の値をそのまま扱っている場合、プロトコルの外側で定義されたメソッドを使用することはできません。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> protocolValue<span class="token punctuation">:</span> any <span class="token class-name">ExampleProtocol</span> <span class="token operator">=</span> a
@@ -1397,7 +1415,8 @@ b<span class="token punctuation">.</span><span class="token function">adjust</sp
 <span class="token comment">// Job sent</span>
 </code></pre>
 <blockquote>
-<p>Experiment<br>プリンタの名前を <code>&quot;Never Has Toner&quot;</code> に変えてみましょう。<code>send(job:toPrinter:)</code> はエラーをスローします。</p>
+<p>Experiment
+プリンタの名前を <code>&quot;Never Has Toner&quot;</code> に変えてみましょう。<code>send(job:toPrinter:)</code> はエラーをスローします。</p>
 </blockquote>
 <p>特定のエラーを処理するために、複数の <code>catch</code> ブロックを書くこともできます。switch 文の <code>case</code> のように <code>catch</code> の後ろにパターンを書きます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">do</span> <span class="token punctuation">{</span>
@@ -1413,9 +1432,10 @@ b<span class="token punctuation">.</span><span class="token function">adjust</sp
 <span class="token comment">// Job sent</span>
 </code></pre>
 <blockquote>
-<p>Experiment<br><code>do</code> ブロックの中でエラーをスローするコードを追加してみましょう。最初の <code>catch</code> ブロックでエラーを処理するためにはどの種類のエラーをスローする必要がありますでしょうか？ 2つ目、3つ目の場合はどうでしょうか？</p>
+<p>Experiment
+<code>do</code> ブロックの中でエラーをスローするコードを追加してみましょう。最初の <code>catch</code> ブロックでエラーを処理するためにはどの種類のエラーをスローする必要がありますでしょうか？ 2つ目、3つ目の場合はどうでしょうか？</p>
 </blockquote>
-<p>エラーを処理するもう 1 つの方法は、<code>try?</code> を付けて結果をオプショナルに変換することです。もしその関数がエラーをスローする場合、特定のエラーは破棄されて、結果が <code>nil</code> になります。そうでなければ、結果は、関数が返す値を内包したオプショナルになります。</p>
+<p>エラーを処理するもう 1 つの方法は、<code>try?</code> を付けて結果をオプショナルに変換することです。もしその関数がエラーをスローする場合、特定のエラーは破棄されて、結果が <code>nil</code> になります。そうでなければ、結果は、関数が返す値を内包したオプショナル値になります。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> printerSuccess <span class="token operator">=</span> <span class="token keyword">try</span><span class="token operator">?</span> <span class="token function">send</span><span class="token punctuation">(</span>job<span class="token punctuation">:</span> <span class="token number">1884</span><span class="token punctuation">,</span> toPrinter<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;Mergenthaler&quot;</span></span><span class="token punctuation">)</span>
 <span class="token keyword">let</span> printerFailure <span class="token operator">=</span> <span class="token keyword">try</span><span class="token operator">?</span> <span class="token function">send</span><span class="token punctuation">(</span>job<span class="token punctuation">:</span> <span class="token number">1885</span><span class="token punctuation">,</span> toPrinter<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;Never Has Toner&quot;</span></span><span class="token punctuation">)</span>
 </code></pre>
@@ -1474,7 +1494,8 @@ possibleInteger <span class="token operator">=</span> <span class="token punctua
 <span class="token function">anyCommonElements</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 </code></pre>
 <blockquote>
-<p>Experiment<br><code>anyCommonElements(_:_:)</code> を2つのシーケンスの共通の要素が含まれる配列を返すように修正してみましょう。</p>
+<p>Experiment
+<code>anyCommonElements(_:_:)</code> を2つのシーケンスの共通の要素が含まれる配列を返すように修正してみましょう。</p>
 </blockquote>
 <p><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">T:</span></span> <span class="token attr-name">Equatable</span><span class="token punctuation">&gt;</span></span></code> は <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>T</span><span class="token punctuation">&gt;</span></span> ... where T: Equatable</code> と同じです。</p>
 
@@ -1520,7 +1541,7 @@ possibleInteger <span class="token operator">=</span> <span class="token punctua
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Swiftツアー(A Swift Tour)","level":"2.3","depth":1,"next":{"title":"基本(The Basics)","level":"3.1","depth":1,"path":"language-guide/the-basics.md","ref":"language-guide/the-basics.md","articles":[]},"previous":{"title":"バージョン互換性(Version Compatibility)","level":"2.2","depth":1,"path":"welcome-to-swift/version-compatibility.md","ref":"welcome-to-swift/version-compatibility.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"welcome-to-swift/a-swift-tour.md","mtime":"2023-09-23T18:46:41.375Z","type":"markdown"},"gitbook":{"version":"3.7.5","time":"2023-09-23T18:47:08.482Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Swiftツアー(A Swift Tour)","level":"2.3","depth":1,"next":{"title":"基本(The Basics)","level":"3.1","depth":1,"path":"language-guide/the-basics.md","ref":"language-guide/the-basics.md","articles":[]},"previous":{"title":"バージョン互換性(Version Compatibility)","level":"2.2","depth":1,"path":"welcome-to-swift/version-compatibility.md","ref":"welcome-to-swift/version-compatibility.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"welcome-to-swift/a-swift-tour.md","mtime":"2023-10-06T07:25:25.423Z","type":"markdown"},"gitbook":{"version":"3.7.5","time":"2023-10-06T07:25:55.127Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
