@@ -147,6 +147,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/tez3998">
+            <img src="https://avatars.githubusercontent.com/u/90051826?v=4" width="100;" alt="tez3998"/>
+            <br />
+            <sub><b>Yuta Tezuka</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/elmetal">
             <img src="https://avatars.githubusercontent.com/u/20150994?v=4" width="100;" alt="elmetal"/>
             <br />
@@ -173,15 +180,15 @@
             <br />
             <sub><b>B1ackturtle</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/u-abyss">
             <img src="https://avatars.githubusercontent.com/u/47887646?v=4" width="100;" alt="u-abyss"/>
             <br />
             <sub><b>Uabyss</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/Lumisilk">
             <img src="https://avatars.githubusercontent.com/u/11924267?v=4" width="100;" alt="Lumisilk"/>
