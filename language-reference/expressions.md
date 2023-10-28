@@ -145,8 +145,8 @@ _中置式_は、左右の引数を受け取る式と中置バイナリ演算子
 > Grammar of an infix expression:
 >
 > *infix-expression* → *infix-operator* *prefix-expression* \
-> *infix-expression* → *assignment-operator* *try-operator*_?_ *prefix-expression* \
-> *infix-expression* → *conditional-operator* *try-operator*_?_ *prefix-expression* \
+> *infix-expression* → *assignment-operator* *try-operator*_?_ *await-operator*_?_ *prefix-expression* \
+> *infix-expression* → *conditional-operator* *try-operator*_?_ *await-operator*_?_ *prefix-expression* \
 > *infix-expression* → *type-casting-operator* \
 > *infix-expressions* → *infix-expression* *infix-expressions*_?_
 
