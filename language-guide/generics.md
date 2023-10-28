@@ -1,6 +1,6 @@
 # ジェネリクス\(Generics\)
 
-最終更新日: 2023/9/17
+最終更新日: 2023/10/28
 原文: https://docs.swift.org/swift-book/LanguageGuide/Generics.html
 
 複数の型で機能するコードを記述し、それらの型で準拠が必要な要件を指定する。
@@ -693,7 +693,7 @@ extension Container where Item: Equatable {
 
 ## <a id="associated-types-with-a-generic-where-clause">ジェネリック where 句を使用した関連型\(Associated Types with a Generic Where Clause\)</a>
 
-関連型にジェネリック `where` 句を含めることができます。例えば、標準ライブラリの `Sequence` プロトコルで使用するようなイテレータを含む `Container` のバージョンを作成するとします。書き方は次のとおりです:
+関連型にジェネリック `where` 句を含めることができます。例えば、Swift 標準ライブラリの `Sequence` プロトコルで使用するようなイテレータを含む `Container` のバージョンを作成するとします。書き方は次のとおりです:
 
 ```swift
 protocol Container {
@@ -734,7 +734,7 @@ extension Container {
 
 `Container` プロトコルへのこの extension は、インデックスのシーケンスを受け取り、指定された各インデックスのアイテムを含む配列を返すサブスクリプトを追加します。このジェネリックなサブスクリプトは、次のように制約されます:
 
-* 山括弧\(`<>`\)内のジェネリックパラメータのインデックスは、標準ライブラリの `Sequence` プロトコルに準拠した型にする必要があります
+* 山括弧\(`<>`\)内のジェネリックパラメータのインデックスは、Swift 標準ライブラリの `Sequence` プロトコルに準拠した型にする必要があります
 * サブスクリプトは、単一の `Indices` 型のインスタンスのパラメータ `indices` を受け取ります
 * ジェネリック `where` 句では、シーケンスのイテレータが `Int` 型の要素を繰り返し処理することを要求します。これにより、シーケンス内のインデックスは、コンテナに使用されるインデックスと同じ型だということが保証されます
 

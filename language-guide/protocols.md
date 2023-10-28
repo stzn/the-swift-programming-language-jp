@@ -904,7 +904,7 @@ extension PrettyTextRepresentable  {
 
 プロトコル Extension を定義するとき、準拠する型が拡張したメソッドとプロパティを使用できる前に、その型が満たす必要がある制約を指定できます。これらの制約は、拡張するプロトコルの名前の後のジェネリックの `where` 句によって記述されます。ジェネリック `where` 句の詳細については、[Generic Where Clauses\(ジェネリック where 句\)](../language-guide/generics.md#generic-where-clauses)を参照ください。
 
-例えば、要素が `Equatable` プロトコルに準拠しているコレクションに適用される `Collection` プロトコルの拡張を定義できます。コレクションの要素を標準ライブラリの `Equatable` プロトコルに制約することで、`==` および `!=` 演算子を使用して、2 つの要素間の等価性と不等価性をチェックできます:
+例えば、要素が `Equatable` プロトコルに準拠しているコレクションに適用される `Collection` プロトコルの拡張を定義できます。コレクションの要素を Swift 標準ライブラリの `Equatable` プロトコルに制約することで、`==` および `!=` 演算子を使用して、2 つの要素間の等価性と不等価性をチェックできます:
 
 ```swift
 extension Collection where Element: Equatable {
