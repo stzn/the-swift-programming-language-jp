@@ -272,6 +272,17 @@ private func fourCharacterCode(for characters: String) -> UInt32? {
 enum CustomError: Error { case message(String) }
 ```
 
+このマクロを既存の Swift Package Manager プロジェクトに追加する場合、マクロターゲットのエントリポイントとして動作し、ターゲットが定義するマクロを一覧にする型を追加します:
+
+```swift
+import SwiftCompilerPlugin
+
+@main
+struct MyProjectMacros: CompilerPlugin {
+    var providingMacros: [Macro.Type] = [FourCharacterCode.self]
+}
+```
+
 `#fourCharacterCode` マクロは、式を生成する自立式マクロなので、これを実装した `FourCharacterCode` 型は、 `ExpressionMacro` プロトコルに準拠します。`ExpressionMacro` プロトコルの要件は 1 つで、AST を展開する `expansion(of:in:)` メソッドです。マクロの役割とそれに対応する `SwiftSyntax` プロトコルのリストについては、[属性\(Attributes\)](../language-reference/attributes.md)の[属性\(Attributes\)のattached](../language-reference/attributes.md#attached)と[属性\(Attributes\)のfreestanding](../language-reference/attributes.md#freestanding) を参照してください。
 
 `#fourCharacterCode` マクロを展開するために、Swift はこのマクロを使用するコードの AST を、マクロの実装を含むライブラリに送信します。ライブラリの中で、Swift はメソッドの引数として AST とコンテキストを渡して `FourCharacterCode.expansion(of:in:)` を呼び出します。`expansion(of:in:)` の実装は、`#fourCharacterCode` に引数として渡された文字列を見つけ、対応する整数リテラルの値を計算します。
