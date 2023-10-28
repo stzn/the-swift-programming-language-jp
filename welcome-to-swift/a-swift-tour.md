@@ -682,15 +682,15 @@ Task {
 同時並行コードを構造化するために、タスクグループ\(_task group_\)を使います。
 
 ```swift
-let userIDs = await withTaskGroup(of: Int.self) { taskGroup in
+let userIDs = await withTaskGroup(of: Int.self) { group in
     for server in ["primary", "secondary", "development"] {
-        taskGroup.addTask {
+        group.addTask {
             return await fetchUserID(from: server)
         }
     }
 
     var results: [Int] = []
-    for await result in taskGroup {
+    for await result in group {
         results.append(result)
     }
     return results
