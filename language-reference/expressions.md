@@ -1,6 +1,6 @@
 # 式\(Expressions\)
 
-最終更新日: 2023/9/17
+最終更新日: 2023/10/28
 原文: https://docs.swift.org/swift-book/ReferenceManual/Expressions.html
 
 型、演算子、変数、およびその他の名前と構造を紹介する。
@@ -41,7 +41,7 @@ in-out 式は、[Implicit Conversion to a Pointer Type\(ポインタ型への暗
 
 > Grammar of an in-out expression:
 >
-> *in-out-expression* → **`&`** *identifier*
+> *in-out-expression* → **`&`** *primary-expression*
 
 ### <a id="try-operator">Try 演算子\(Try Operator\)</a>
 
