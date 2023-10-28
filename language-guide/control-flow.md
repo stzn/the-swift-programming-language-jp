@@ -1,6 +1,6 @@
 # 制御フロー\(Control Flow\)
 
-最終更新日: 2023/5/27  
+最終更新日: 2023/10/28  
 原文: https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html
 
 分岐、ループ、および早期終了を使ってコードを構造化する。
@@ -394,13 +394,13 @@ default:
 let someCharacter: Character = "z"
 switch someCharacter {
 case "a":
-    print("アルファベットの最初の文字")
+    print("ラテンアルファベットの最初の文字")
 case "z":
-    print("アルファベットの最後の文字")
+    print("ラテンアルファベットの最後の文字")
 default:
     print("その他の文字")
 }
-// アルファベットの最後の文字
+// ラテンアルファベットの最後の文字
 ```
 
 `switch` 文の最初のケースは、英語アルファベットの最初の文字 `a` に合致し、2 番目のケースは最後の文字 `z` に合致します。全ての可能性がある文字をカバーしなければならないため、`a` と `z` 以外の全ての文字に対して `default` ケースを使用しています。こうすることで全てのケースを網羅できています。
@@ -411,15 +411,15 @@ default:
 let anotherCharacter: Character = "a"
 let message = switch anotherCharacter {
 case "a":
-    "アルファベットの最初の文字"
+    "ラテンアルファベットの最初の文字"
 case "z":
-    "アルファベットの最後の文字"
+    "ラテンアルファベットの最後の文字"
 default:
     "その他の文字"
 }
 
 print(message)
-// "アルファベットの最初の文字"
+// "ラテンアルファベットの最初の文字"
 ```
 
 この例では、`switch` 式の各ケースには、そのケースが `anotherCharacter` にマッチしたときに使用される `message` の値が含まれています。`switch` は常に網羅的であるため、代入する値は必ず存在します。
