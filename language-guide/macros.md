@@ -1,6 +1,6 @@
 # マクロ\(Macros\)
 
-最終更新日: 2023/6/3  
+最終更新日: 2023/10/28  
 原文: https://docs.swift.org/swift-book/documentation/the-swift-programming-language/macros
 
 繰り返しコードを生成するために、コンパイル時にコードを変換します。
@@ -233,7 +233,7 @@ dependencies: [
 
 上記のコードの `some-tag` プレースホルダを、使用したい `SwiftSyntax` のバージョンの Git タグで置き換えてください。
 
-マクロの役割に応じて、マクロの実装が準拠するべき `SwiftSystem` にある対応するプロトコルがあります。例えば、前のセクションの `#fourCharacterCode` を考えてみましょう。そのマクロを実装した構造体がこちらです:
+マクロの役割に応じて、マクロの実装が準拠するべき `SwiftSyntax` にある対応するプロトコルがあります。例えば、前のセクションの `#fourCharacterCode` を考えてみましょう。そのマクロを実装した構造体がこちらです:
 
 ```swift
 public struct FourCharacterCode: ExpressionMacro {
@@ -272,11 +272,22 @@ private func fourCharacterCode(for characters: String) -> UInt32? {
 enum CustomError: Error { case message(String) }
 ```
 
-`#fourCharacterCode` マクロは、式を生成する自立式マクロなので、これを実装した `FourCharacterCode` 型は、 `ExpressionMacro` プロトコルに準拠します。`ExpressionMacro` プロトコルの要件は 1 つで、AST を展開する `expansion(of:in:)` メソッドです。マクロの役割とそれに対応する `SwiftSystem` プロトコルのリストについては、[属性\(Attributes\)](../language-reference/attributes.md)の[属性\(Attributes\)のattached](../language-reference/attributes.md#attached)と[属性\(Attributes\)のfreestanding](../language-reference/attributes.md#freestanding) を参照してください。
+このマクロを既存の Swift Package Manager プロジェクトに追加する場合、マクロターゲットのエントリポイントとして動作し、ターゲットが定義するマクロを一覧にする型を追加します:
+
+```swift
+import SwiftCompilerPlugin
+
+@main
+struct MyProjectMacros: CompilerPlugin {
+    var providingMacros: [Macro.Type] = [FourCharacterCode.self]
+}
+```
+
+`#fourCharacterCode` マクロは、式を生成する自立式マクロなので、これを実装した `FourCharacterCode` 型は、 `ExpressionMacro` プロトコルに準拠します。`ExpressionMacro` プロトコルの要件は 1 つで、AST を展開する `expansion(of:in:)` メソッドです。マクロの役割とそれに対応する `SwiftSyntax` プロトコルのリストについては、[属性\(Attributes\)](../language-reference/attributes.md)の[属性\(Attributes\)のattached](../language-reference/attributes.md#attached)と[属性\(Attributes\)のfreestanding](../language-reference/attributes.md#freestanding) を参照してください。
 
 `#fourCharacterCode` マクロを展開するために、Swift はこのマクロを使用するコードの AST を、マクロの実装を含むライブラリに送信します。ライブラリの中で、Swift はメソッドの引数として AST とコンテキストを渡して `FourCharacterCode.expansion(of:in:)` を呼び出します。`expansion(of:in:)` の実装は、`#fourCharacterCode` に引数として渡された文字列を見つけ、対応する整数リテラルの値を計算します。
 
-上記の例では、最初の `guard` ブロックが AST から文字列リテラルを取り出し、その AST 要素を `literalSegment` に代入しています。2 番目の `guard` ブロックは、private な `FourCharacterCode(for:)` 関数を呼び出します。これらのブロックはいずれも、マクロの使い方が間違っているとエラーを発生させます(エラーメッセージは、不正な呼び出し先でのコンパイラエラーになります)。例えば、マクロを `#fourCharacterCode("AB" + "CD")` として呼び出そうとすると、コンパイラは「静的な文字列が必要です(Need a static string)」というエラーを表示します。
+上記の例では、最初の `guard` ブロックが AST から文字列リテラルを取り出し、その AST 要素を `literalSegment` に代入しています。2 番目の `guard` ブロックは、private な `fourCharacterCode(for:)` 関数を呼び出します。これらのブロックはいずれも、マクロの使い方が間違っているとエラーを発生させます(エラーメッセージは、不正な呼び出し先でのコンパイラエラーになります)。例えば、マクロを `#fourCharacterCode("AB" + "CD")` として呼び出そうとすると、コンパイラは「静的な文字列が必要です(Need a static string)」というエラーを表示します。
 
 `expansion(of:in:)` メソッドは、AST で式を表す `SwiftSyntax` からの型である `ExprSyntax` のインスタンスを返します。この型は、`StringLiteralConvertible` プロトコルに準拠しているので、マクロの実装は、その結果を作成するために、軽量な構文として文字列リテラルを使用します。マクロの実装から返す `SwiftSyntax` の型はすべて、 `StringLiteralConvertible` に準拠しているので、あらゆる種類のマクロを実装するときにこのアプローチを使用することができます。
 
@@ -298,7 +309,7 @@ let file = BasicMacroExpansionContext.KnownSourceFile(
 let context = BasicMacroExpansionContext(sourceFiles: [source: file])
 
 let transformedSF = source.expand(
-    macros:["fourCharacterCode": FourCC.self],
+    macros:["fourCharacterCode": FourCharacterCode.self],
     in: context
 )
 

@@ -276,5 +276,5 @@ func processFile(filename: String) throws {
 
 上記の例では、`defer` 文を使用して、`open(_:)` 関数に対応する `close(_:)` への呼び出しが確実に実行されること保証しています。
 
-> NOTE
-> エラー処理コードが含まれていない場合でも、`defer` 文を使用できます。
+エラー処理コードが含まれていない場合でも、`defer` 文を使用できます。
+より詳細は[遅延アクション\(Deferred Actions\)](./control-flow.md#遅延アクションdeferred-actions)

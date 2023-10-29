@@ -16,6 +16,8 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 
 一部の宣言属性は、属性とそれが特定の宣言にどのように適用されるかについての詳細情報を指定する引数を受け入れます。これらの _attribute arguments_ は括弧\(`()`\)で囲まれ、その形式は属する属性によって定義されています。
 
+付属型マクロとプロパティラッパも属性構文を使用します。マクロの展開方法については、[マクロ展開](./expressions.md#マクロ展開式macro-expansion-expression)を参照してください。プロパティ・ラッパについては、[propertyWrapper](#propertywrapper)を参照してください。
+
 ## <a id="declaration-attributes">宣言属性\(Declaration Attributes\)</a>
 
 宣言属性は宣言にのみ適用できます。

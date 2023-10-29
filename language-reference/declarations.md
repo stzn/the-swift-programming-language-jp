@@ -1,6 +1,6 @@
 # 宣言\(Declarations\)
 
-最終更新日: 2023/8/11  
+最終更新日: 2023/10/28  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Declarations.html
 
 型、演算子、変数、およびその他の名前と構造を紹介する。
@@ -28,7 +28,6 @@ Swift では、ほとんどの宣言は、宣言されているのと同時に�
 > *declaration* → *macro-declaration* \
 > *declaration* → *operator-declaration* \
 > *declaration* → *precedence-group-declaration* \
-> *declarations* → *declaration* *declarations*_?_
 
 ## <a id="top-level-code">トップレベルコード\(Top-Level Code\)</a>
 
@@ -1345,7 +1344,7 @@ _parameters_ または _return type_ がオーバーロードしているもの�
 macro <#name#> = <#macro implementation#>
 ```
 
-*マクロ実装*は別のマクロで、このマクロの展開を行うコードの場所を示しています。Swift 標準ライブラリの `externalMacro(module:type:)` マクロを呼び出し、 マクロの実装を含む型の名前と、その型を含むモジュールの名前を渡します。
+*マクロ実装*は別のマクロで、このマクロの展開を行うコードの場所を示しています。マクロの展開を実行するコードは別の Swift プログラムで、[SwiftSyntax](http://github.com/apple/swift-syntax/)モジュールを使用して Swift コードとやり取りします。Swift 標準ライブラリから `externalMacro(module:type:)` マクロを呼び出し、マクロの実装を含む型の名前と、その型を含むモジュールの名前を渡します。
 
 マクロは、関数と同じ形でオーバーロードすることができます。
 マクロ宣言は、ファイルスコープにのみ表示されます。
@@ -1430,11 +1429,11 @@ _lower group names_ と _higher group names_ のリストは、既存の優先�
 > NOTE  
 > _lower group names_ と _higher group names_ を使用して相互に関連付けられた優先順位グループは、単一の関係階層に収める必要がありますが、直線的な階層を形成する必要はありません。これは、相対的な優先順位が定義されていない優先順位グループを持つことができることを意味します。これらの優先順位グループの演算子は、グループ化するための括弧なしで隣に並べて使用することはできません。
 
-Swift は、標準ライブラリが提供する演算子に多数の優先順位グループを定義しています。例えば、加算\(`+`\)および減算\(`-`\)演算子は `AdditionPrecedence` グループに属し、乗算\(`*`\)および除算\(`/`\)演算子は `MultiplicationPrecedence` グループに属します。Swift 標準ライブラリによって提供される優先順位グループの完全なリストについては、[Operator Declarations\(演算子宣言\)](https://developer.apple.com/documentation/swift/operator_declarations)を参照ください。
+Swift は、Swift 標準ライブラリが提供する演算子に多数の優先順位グループを定義しています。例えば、加算\(`+`\)および減算\(`-`\)演算子は `AdditionPrecedence` グループに属し、乗算\(`*`\)および除算\(`/`\)演算子は `MultiplicationPrecedence` グループに属します。Swift 標準ライブラリによって提供される優先順位グループの完全なリストについては、[Operator Declarations\(演算子宣言\)](https://developer.apple.com/documentation/swift/operator_declarations)を参照ください。
 
 演算子の_結合規則_は、グループ化する括弧がない場合に、同じ優先順位レベルを持つ一連の演算子をグループ化する方法を指定します。演算子の結合規則を指定するには、コンテキスト依存のキーワード `left`、`right`、または `none` を記述します。結合規則を省略した場合、デフォルトは `none` です。左結合規則の演算子は左から右にグループ化します。例えば、減算演算子\(`-`\)は左結合のため、式 `4 - 5 - 6` は `(4 - 5) - 6` としてグループ化され、`-7` と評価されます。右結合規則の演算子、および `none` 結合規則の演算子は、全く結合しません。同じ優先順位レベルの非結合演算子は、互いに隣接して使用することはできません。例えば、`<` 演算子の結合規則は `none` です。これは、`1 < 2 < 3` が有効な式ではないことを意味します。
 
-優先順位グループの _assignment_ は、オプショナルチェーンを含む操作で使用される場合の演算子の優先順位を指定します。`true` にすると、対応する優先順位グループの演算子は、オプショナルチェーン中に、標準ライブラリの代入演算子と同じグループ化結合規則を使用します。それ以外の場合、`false` にするか省略すると、優先順位グループの演算子は、代入を実行しない演算子と同じオプショナルチェーンの結合規則に従います。
+優先順位グループの _assignment_ は、オプショナルチェーンを含む操作で使用される場合の演算子の優先順位を指定します。`true` にすると、対応する優先順位グループの演算子は、オプショナルチェーン中に、Swift 標準ライブラリの代入演算子と同じグループ化結合規則を使用します。それ以外の場合、`false` にするか省略すると、優先順位グループの演算子は、代入を実行しない演算子と同じオプショナルチェーンの結合規則に従います。
 
 > Grammar of a precedence group declaration:
 >
