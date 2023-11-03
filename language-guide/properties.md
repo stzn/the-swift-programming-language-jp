@@ -1,6 +1,6 @@
 # プロパティ\(Properties\)
 
-最終更新日: 2023/1/15  
+最終更新日: 2023/11/3 
 原文: https://docs.swift.org/swift-book/LanguageGuide/Properties.html
 
 インスタンスまたは型の一部である、格納および計算された値にアクセスする。
@@ -386,7 +386,7 @@ struct SmallNumber {
 プロパティラッパを適用し、初期値を指定しない場合、Swift は `init()` を使用してラッパを設定します。例えば:
 
 ```swift
-truct ZeroRectangle {
+struct ZeroRectangle {
     @SmallNumber var height: Int
     @SmallNumber var width: Int
 }
