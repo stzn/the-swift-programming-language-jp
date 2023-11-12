@@ -1,6 +1,6 @@
 # 本の構造
 
-最終更新日: 2023/10/28
+最終更新日: 2023/11/12
 原文: https://github.com/apple/swift-book/blob/main/Style.md
 
 TSPL は 3 つの主なパートに加えて、補完的な機能を提供するいくつかの序文に分かれています。
@@ -38,6 +38,11 @@ TSPL は 3 つの主なパートに加えて、補完的な機能を提供する
 ## back deploy
 
 2 つの単語でつづり、1 単語にしたり、ハイフンを付けません。
+
+## definite initialization
+
+"definitive initialization"ではありません。
+DI という略称を使ってはいけません。
 
 ## コンパイラ
 

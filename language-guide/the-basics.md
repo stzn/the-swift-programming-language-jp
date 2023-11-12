@@ -1,6 +1,6 @@
 # 基本\(The Basics\)
 
-最終更新日: 2023/9/1  
+最終更新日: 2023/11/12  
 原文: https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html
 
 一般的な種類のデータを操作し、基本的な構文を記述する。
@@ -36,14 +36,30 @@ var currentLoginAttempt = 0
 
 この例では、最大回数は変更しないので定数で定義しています。試行回数はログインを試みる度に増やさなければならないため、変数として今の試行回数を定義しています。
 
+コードに格納された値が変化しない場合は、常に `let`` キーワードで定数として宣言してください。変数は、変化する値を格納する場合にのみ使用します。
+
+定数や変数を宣言するとき、上の例のように宣言の一部として値を与えることができます。あるいは、プログラムの後半で初期値を代入することもできます。
+
+```swift
+var environment = "development"
+let maximumNumberOfLoginAttempts: Int
+// maximumNumberOfLoginAttemptsにはまだ値がない。
+
+if environment == "development" {
+    maximumNumberOfLoginAttempts = 100
+} else {
+    maximumNumberOfLoginAttempts = 10
+}
+// この時点でmaximumNumberOfLoginAttemptsには値が存在し、値を読み取ることができる。
+```
+
+この例では、ログイン試行回数の最大値は一定で、その値は環境に依存します。開発環境では 100 であり、他の環境では 10 です。`if` 文の両方のブランチで `maximumNumberOfLoginAttempts` を特定の値で初期化しているため、定数が常に値が存在することを保証しています。この方法で初期値を設定するときに Swift がコードをチェックする方法についての情報は、[定数宣言\(Constant Declaration\)](../language-reference/declarations.md#定数宣言constant-declaration)を参照してください。
+
 カンマ\(`,`\)区切りで 1 行の中に複数の定数や変数を定義することもできます。
 
 ```swift
 var x = 0.0, y = 0.0, z = 0.0
 ```
-
-> NOTE  
-> コードで保持している値がこの先変更されない場合は、 `let` を使用して定数として定義してください。変数は変更できるようにする必要がある場合にのみ使用してください。
 
 ### <a id="type-annotations">型注釈\(Type Annotations\)</a>
 
