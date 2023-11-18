@@ -1,6 +1,6 @@
 # マクロ\(Macros\)
 
-最終更新日: 2023/10/28  
+最終更新日: 2023/11/12  
 原文: https://docs.swift.org/swift-book/documentation/the-swift-programming-language/macros
 
 繰り返しコードを生成するために、コンパイル時にコードを変換します。
@@ -181,16 +181,16 @@ Swift は、マクロを実装するコードを制限することによって�
 
 `fourCharacterCode` の実装は、展開されたコードを含む新しい AST を生成します。そのコードがコンパイラに返すものは以下の通りです：
 
-![シングルノードが整数リテラル1145258561であるツリー図](../assets/macro-ast-output%402x.png)
+![UInt32型の整数リテラル1145258561であるツリー図](../assets/macro-ast-output%402x.png)
 
 コンパイラはこの展開を受け取ると、マクロの呼び出しを含む AST 要素を、マクロの展開を含む要素に置き換えます。マクロの展開の後、コンパイラはプログラムがまだ構文的に有効な Swift であり、すべての型が正しいことを確認するために再度チェックします。それにより、通常通りコンパイルできる最終的な AST が生成されます:
 
-![定数をルート要素とするツリー図。定数には、名前、マジックナンバー、値を持ちます。定数の値は、整数リテラル1145258561です。](../assets/macro-ast-result%402x.png)
+![定数をルート要素とするツリー図。定数には、名前、マジックナンバー、値を持ちます。定数の値は、UInt32型の整数リテラル1145258561です。](../assets/macro-ast-result%402x.png)
 
 この AST は、次のような Swift のコードに対応します:
 
 ```swift
-let magicNumber = 1145258561
+let magicNumber = 1145258561 as UInt32
 ```
 
 この例では、入力ソースコードには 1 つのマクロしかありませんが、実際のプログラムでは、同じマクロの複数のインスタンスと異なるマクロへの複数の呼び出しがあるかもしれません。コンパイラは、マクロを 1 つずつ展開します。
@@ -227,7 +227,7 @@ targets: [
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/apple/swift-syntax.git", from: "some-tag"),
+    .package(url: "https://github.com/apple/swift-syntax", from: "509.0.0"),
 ],
 ```
 
@@ -254,7 +254,7 @@ public struct FourCharacterCode: ExpressionMacro {
             throw CustomError.message("Invalid four-character code")
         }
 
-        return "\(raw: result)"
+        return "\(raw: result) as UInt32"
     }
 }
 
@@ -267,7 +267,7 @@ private func fourCharacterCode(for characters: String) -> UInt32? {
         guard let asciiValue = character.asciiValue else { return nil }
         result += UInt32(asciiValue)
     }
-    return result.bigEndian
+    return result
 }
 enum CustomError: Error { case message(String) }
 ```
@@ -285,7 +285,7 @@ struct MyProjectMacros: CompilerPlugin {
 
 `#fourCharacterCode` マクロは、式を生成する自立式マクロなので、これを実装した `FourCharacterCode` 型は、 `ExpressionMacro` プロトコルに準拠します。`ExpressionMacro` プロトコルの要件は 1 つで、AST を展開する `expansion(of:in:)` メソッドです。マクロの役割とそれに対応する `SwiftSyntax` プロトコルのリストについては、[属性\(Attributes\)](../language-reference/attributes.md)の[属性\(Attributes\)のattached](../language-reference/attributes.md#attached)と[属性\(Attributes\)のfreestanding](../language-reference/attributes.md#freestanding) を参照してください。
 
-`#fourCharacterCode` マクロを展開するために、Swift はこのマクロを使用するコードの AST を、マクロの実装を含むライブラリに送信します。ライブラリの中で、Swift はメソッドの引数として AST とコンテキストを渡して `FourCharacterCode.expansion(of:in:)` を呼び出します。`expansion(of:in:)` の実装は、`#fourCharacterCode` に引数として渡された文字列を見つけ、対応する整数リテラルの値を計算します。
+`#fourCharacterCode` マクロを展開するために、Swift はこのマクロを使用するコードの AST を、マクロの実装を含むライブラリに送信します。ライブラリの中で、Swift はメソッドの引数として AST とコンテキストを渡して `FourCharacterCode.expansion(of:in:)` を呼び出します。`expansion(of:in:)` の実装は、`#fourCharacterCode` に引数として渡された文字列を見つけ、対応する 32 ビット符号なし整数リテラルの値を計算します。
 
 上記の例では、最初の `guard` ブロックが AST から文字列リテラルを取り出し、その AST 要素を `literalSegment` に代入しています。2 番目の `guard` ブロックは、private な `fourCharacterCode(for:)` 関数を呼び出します。これらのブロックはいずれも、マクロの使い方が間違っているとエラーを発生させます(エラーメッセージは、不正な呼び出し先でのコンパイラエラーになります)。例えば、マクロを `#fourCharacterCode("AB" + "CD")` として呼び出そうとすると、コンパイラは「静的な文字列が必要です(Need a static string)」というエラーを表示します。
 
@@ -315,7 +315,7 @@ let transformedSF = source.expand(
 
 let expectedDescription =
     """
-    let abcd = 1145258561
+    let abcd = 1145258561 as UInt32
     """
 
 precondition(transformedSF.description == expectedDescription)
