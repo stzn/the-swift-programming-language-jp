@@ -696,7 +696,45 @@ if (someNumber % 2) == 1 {
 var manualOptional = ArrayBuilder.buildOptional(partialResult)
 ```
 
-コードブロックまたは `do` 文は、`buildBlock(_:)` メソッドの呼び出しになります。ブロック内の各文は一度に 1 つずつ変換され、`buildBlock(_:)` メソッドの引数になります。例えば、次の宣言は同等です:
+リザルトビルダーが `buildPartialBlock(first:)` メソッドと `buildPartialBlock(accumulated:next:)` メソッドを実装している場合、コードブロックまたは `do` 文はこれらのメソッドを呼び出します。ブロック内の最初の宣言は `buildPartialBlock(first:)` メソッドの引数に変換され、残りの宣言は `buildPartialBlock(accumulated:next:)` メソッドのネストされた呼び出しになります。例えば、以下の宣言は等しいです:
+
+```swift
+struct DrawBoth<First: Drawable, Second: Drawable>: Drawable {
+    var first: First
+    var second: Second
+    func draw() -> String { return first.draw() + second.draw() }
+}
+
+@resultBuilder
+struct DrawingPartialBlockBuilder {
+    static func buildPartialBlock<D: Drawable>(first: D) -> D {
+        return first
+    }
+    static func buildPartialBlock<Accumulated: Drawable, Next: Drawable>(
+        accumulated: Accumulated, next: Next
+    ) -> DrawBoth<Accumulated, Next> {
+        return DrawBoth(first: accumulated, second: next)
+    }
+}
+
+@DrawingPartialBlockBuilder var builderBlock: some Drawable {
+    Text("First")
+    Line(elements: [Text("Second"), Text("Third")])
+    Text("Last")
+}
+
+let partialResult1 = DrawingPartialBlockBuilder.buildPartialBlock(first: Text("first"))
+let partialResult2 = DrawingPartialBlockBuilder.buildPartialBlock(
+    accumulated: partialResult1,
+    next: Line(elements: [Text("Second"), Text("Third")])
+)
+let manualResult = DrawingPartialBlockBuilder.buildPartialBlock(
+    accumulated: partialResult2,
+    next: Text("Last")
+)
+```
+
+そうでなければ、コードブロックまたは `do` 文は、`buildBlock(_:)` メソッドの呼び出しになります。ブロック内の各文は一度に 1 つずつ変換され、`buildBlock(_:)` メソッドの引数になります。例えば、次の宣言は同等です:
 
 ```swift
 @ArrayBuilder var builderBlock: [Int] {
