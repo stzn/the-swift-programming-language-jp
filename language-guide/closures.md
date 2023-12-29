@@ -1,6 +1,6 @@
 # クロージャ\(Closures\)
 
-最終更新日: 2023/9/17
+最終更新日: 2023/12/29
 原文: https://docs.swift.org/swift-book/LanguageGuide/Closures.html
 
 名前付き関数を作成せずに一緒に実行するコードをグループ化する。
