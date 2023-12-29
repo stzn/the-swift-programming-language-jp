@@ -1,6 +1,6 @@
 # マクロ\(Macros\)
 
-最終更新日: 2023/11/12  
+最終更新日: 2023/12/29  
 原文: https://docs.swift.org/swift-book/documentation/the-swift-programming-language/macros
 
 繰り返しコードを生成するために、コンパイル時にコードを変換します。
@@ -203,7 +203,28 @@ let magicNumber = 1145258561 as UInt32
 
 Swift パッケージマネージャを使用して新しいマクロを作成するには、`swift package init --type macro` これを実行すると、マクロの実装と宣言のためのテンプレートを含むいくつかのファイルが作成されます。
 
-既存のプロジェクトにマクロを追加するには、マクロの実装のためのターゲットとマクロライブラリのためのターゲットを追加します。例えば、以下のようなものを `Package.swift` ファイルに追加し、プロジェクトに合わせて名前を変更します:
+既存のプロジェクトにマクロを追加するには、`Package.swift` ファイルの先頭部分を以下のように編集します:
+
+- `swift-tools-version` コメントで Swift ツールのバージョンを 5.9 以上に設定
+- `CompilerPluginSupport` モジュールをインポート
+- `platforms` リストで、最低の展開先として macOS 10.15 を含めます
+
+下記のコードは、例としての `Package.swift` ファイルの冒頭を示しています。
+
+```swift
+// swift-tools-version: 5.9
+
+import PackageDescription
+import CompilerPluginSupport
+
+let package = Package(
+    name: "MyPackage",
+    platforms: [ .iOS(.v17), .macOS(.v13)],
+    // ...
+)
+```
+
+次に、既存の `Package.swift` ファイルに、マクロの実装用のターゲットとマクロライブラリ用のターゲットを追加してください。例えば、以下のようなものを追加することができます。プロジェクトに合わせて名前を変更してください。
 
 ```swift
 targets: [
@@ -236,6 +257,9 @@ dependencies: [
 マクロの役割に応じて、マクロの実装が準拠するべき `SwiftSyntax` にある対応するプロトコルがあります。例えば、前のセクションの `#fourCharacterCode` を考えてみましょう。そのマクロを実装した構造体がこちらです:
 
 ```swift
+import SwiftSyntax
+import SwiftSyntaxMacros
+
 public struct FourCharacterCode: ExpressionMacro {
     public static func expansion(
         of node: some FreestandingMacroExpansionSyntax,
