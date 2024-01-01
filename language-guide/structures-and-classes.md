@@ -1,6 +1,6 @@
 # 構造体とクラス\(Structures and Classes\)
 
-最終更新日: 2023/1/15  
+最終更新日: 2023/12/29  
 原文: https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html
 
 データをカプセル化する独自のデータ型をモデル化する。
@@ -228,11 +228,11 @@ print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 
 `tenEighty` と `alsoTenEighty` は、変数ではなく定数として宣言されていることに注目してください。それでも、`tenEighty` および `alsoTenEighty` 定数自体の値は実際には変更されないため、`tenEighty.frameRate` および `alsoTenEighty.frameRate` を変更することはできます。`tenEighty` と `alsoTenEighty` 自体は、`VideoMode` インスタンスを「格納」しません。代わりに、どちらも内部で同じ `VideoMode` インスタンスを参照します。変更されるのは、基になる `VideoMode` の `frameRate` プロパティで、その `VideoMode` への参照を持つ定数ではありません。
 
-### <a id="identity-operators">恒等作用素\(Identity Operators\)</a>
+### <a id="identity-operators">同値演算子\(Identity Operators\)</a>
 
 クラスは参照型のため、複数の定数と変数が内部でクラスの同じインスタンスを参照する可能性があります。\(構造体や列挙型は、定数や変数に割り当てられたとき、または関数に渡されたときに常にコピーされるため異なります\)
 
-2 つの定数または変数が同じインスタンスを参照しているかどうかを確認すると便利な場合があります。これを可能にするために、Swift は 2 つの_恒等作用素_を提供します:
+2 つの定数または変数が同じインスタンスを参照しているかどうかを確認すると便利な場合があります。これを可能にするために、Swift は 2 つの_同値演算子_を提供します:
 
 * 同一\(`===`\)
 * 同一ではない\(`!==`\)

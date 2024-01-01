@@ -1,6 +1,6 @@
 # 基本演算子\(Basic Operators\)
 
-最終更新日: 2023/1/15  
+最終更新日: 2023/12/29  
 原文: https://docs.swift.org/swift-book/LanguageGuide/BasicOperators.html
 
 代入、算術、比較などの演算を行う。
@@ -170,7 +170,7 @@ Swift は、次の比較演算子をサポートしています。
 * 等しいかそれ以下\(`a <= b`\)
 
 > NOTE  
-> Swift では、2つの恒等作用素\(`===` と `!==`\)も提供しています。これは2つのオブジェクトが同じインスタンスを参照しているかどうかの確認ができます。より詳細は、[Identity Operators\(恒等作用素\)](../language-guide/structures-and-classes.md#identity-operators)を参照ください。
+> Swift では、2つの同値演算子\(`===` と `!==`\)も提供しています。これは2つのオブジェクトが同じインスタンスを参照しているかどうかの確認ができます。より詳細は、[Identity Operators\(同値演算子\)](../language-guide/structures-and-classes.md#identity-operators)を参照ください。
 
 それぞれの比較演算子は、そのステートメントが `true` かどうかのブール値を返します。
 
