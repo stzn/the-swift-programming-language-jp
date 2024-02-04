@@ -1,6 +1,6 @@
 # 宣言\(Declarations\)
 
-最終更新日: 2023/11/12  
+最終更新日: 2024/2/4  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Declarations.html
 
 型、演算子、変数、およびその他の名前と構造を紹介する。
@@ -409,7 +409,21 @@ func repeatGreeting(_ greeting: String, count n: Int) { /* n 回あいさつ */ 
 repeatGreeting("Hello, world!", count: 2) //  count は ラベルあち, greeting は ラベルなし
 ```
 
-### <a id="declarations-in-out-parameters">In-Out パラメータ\(In-Out Parameters\)</a>
+### Parameter Modifiers\(修飾子\)
+
+*パラメータ修飾子*は、引数が関数に渡される方法を変更します。
+
+```swift
+<#argument label#> <#parameter name#>: <#parameter modifier#> <#parameter type#>
+```
+
+パラメータ修飾子を使うには、引数の型の前に `inout`、`borrowing`、`consuming`` のいずれかを書きます。
+
+```swift
+func someFunction(a: inout A, b: consuming B, c: C) { ... }
+```
+
+#### <a id="declarations-in-out-parameters">In-Out パラメータ\(In-Out Parameters\)</a>
 
 in-out パラメータは次のように渡されます:
 
@@ -421,7 +435,31 @@ in-out パラメータは次のように渡されます:
 
 最適化として、引数がメモリ内の物理アドレスに格納されている値の場合、関数本文の内側と外側の両方で同じメモリアドレスが使用されます。最適化された動作は、_参照渡し_と呼ばれます。これはコピーのオーバーヘッドを削減しながら、コピーインコピーアウトモデルの全ての要件を満たします。参照渡しに依存せず、コピーインコピーアウトで与えられたモデルを使用してコードを書きましょう。そうすれば、最適化の有無にかかわらず正しく動作します。
 
-関数内で、元の値が現在のスコープで使用可能でも、in-out 引数として渡された値にアクセスしないでください。元の値へのアクセスは、Swift のメモリ排他性に対する保証に違反した値への同時アクセスです。同じ理由で、同じ値を複数の in-out パラメータに渡すことはできません。
+関数内で、元の値が現在のスコープで使用可能でも、in-out 引数として渡された値にアクセスしないで
+ください。元の値へのアクセスは、Swift のメモリ排他性違反です。
+
+```swift
+var someValue: Int
+func someFunction(a: inout Int) {
+    a += someValue
+}
+
+// エラー: これは実行時排他権違反を起こす
+someFunction(&someValue)
+```
+
+同じ理由で、同じ値を複数の in-out パラメータに渡すことはできません。
+
+```swift
+var someValue: Int
+func someFunction(a: inout Int, b: inout Int) {
+    a += b
+    b += 1
+}
+
+// Error: 複数の in-out パラメータに同じ値を渡すことはできない
+someFunction(&someValue, &someValue)
+```
 
 メモリの安全性とメモリの排他性の詳細については、[Memory Safety\(メモリ安全性\)](../language-guide/memory-safety.md)を参照ください。
 
@@ -448,6 +486,99 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 ```
 
 より多くの議論と in-out パラメータの例については、[In-Out Parameters\(In-Out パラメータ\)](../language-reference/functions#functions-in-out-parameters)を参照ください。
+
+#### Borrowing と Consuming パラメータ
+
+デフォルトでは、Swift は、必要なときに値をコピーし、関数呼び出し全体でオブジェクトの寿命を自動的に管理するために、一連のルールを使用します。デフォルトのルールは、ほとんどのケースでオーバーヘッドを最小限に抑えるように設計されています。この場合、コピー操作を明示的にマークするには `copy` を使用します。
+
+デフォルトのルールを使用するかどうかに関係なく、Swift はオブジェクトの寿命と所有権がすべてのケースで正しく管理されることを保証します。これらのパラメータ修飾子は、正しさではなく、特定の使用パターンの相対的な効率性だけに影響します。
+
+`borrowing` 修飾子は、関数がパラメータの値を保持しないことを示します。この場合、呼び出し元がオブジェクトの所有権を保持し、オブジェクトの寿命に対する責任を負います。`borrowing`` を使用すると、関数がオブジェクトを一時的にしか使用しない場合のオーバーヘッドを最小限に抑えることができます。
+
+```swift
+// `isLessThan`いずれの引数も保持しない
+func isLessThan(lhs: borrowing A, rhs: borrowing A) -> Bool {
+    ...
+}
+```
+
+関数がパラメータの値を保持する必要がある場合、例えばグローバル変数に格納する場合、`copy` を使用して明示的にその値をコピーします。
+
+```swift
+// 上記と同様だが、この `isLessThan` は最小値も記録したい。
+func isLessThan(lhs: borrowing A, rhs: borrowing A) -> Bool {
+    if lhs < storedValue {
+        storedValue = copy lhs
+    } else if rhs < storedValue {
+        storedValue = copy rhs
+    }
+    return lhs < rhs
+}
+```
+
+逆に、`consuming` パラメータ修飾子は、関数が値の所有権を持ち、関数が戻る前に値を保存するか破棄する責任を負うことを示します。
+
+```swift
+// `store` は `consuming`がついているため、引数を保持します。 
+func store(a: consuming A) {
+    someGlobalVariable = a
+}
+```
+`consuming` を使うことで、関数呼び出し後に呼び出し元がそのオブジェクトを使う必要がなくなったときのオーバーヘッドを最小限に抑えることができます。
+
+```swift
+// 通常、これがvalueに対して行う最後の作業
+store(a: value)
+```
+
+コピー可能(Copyable)なオブジェクトを関数呼び出し後も使い続けると、コンパイラーは自動的にそのオブジェクトのコピーを関数呼び出し前に作成します。
+
+```swift
+// コンパイラがここに暗黙的にコピーを挿入する
+store(a: someValue)  // この関数はsomeValueをconsumeする
+print(someValue)  // ここではsomeValueんもコピーを使っている
+```
+
+`inout` とは異なり、関数を呼び出す際には、`borrowing` も `consuming` パラメータに特別な表記は必要ありません。
+
+```swift
+func someFunction(a: borrowing A, b: consuming B) { ... }
+
+someFunction(a: someA, b: someB)
+```
+
+明示的に `borrowing` または `consuming` を使用すると、実行時所有権管理のオーバーヘッドをより厳密に制御する意図を示すことができます。コピーは予期しない実行時所有権操作を引き起こす可能性があるため、明示的な `copy` キーワードを使用しない限り、これらの修飾子のいずれかでマークされたパラメータをコピーすることはできません:
+
+```swift
+func borrowingFunction1(a: borrowing A) {
+    // Error: `a`を暗黙的にコピーできない。
+    // `a`は呼び出し元から借用されるだけなので、この代入はコピーを必要とする
+    someGlobalVariable = a
+}
+
+func borrowingFunction2(a: borrowing A) {
+    // OK: 明示的にコピーしている
+    someGlobalVariable = copy a
+}
+
+func consumingFunction1(a: consuming A) {
+    // エラー: `a`を暗黙的にコピーできない。
+    // 次の文`print`のために`a`コピーを必要とする
+    someGlobalVariable = a
+    print(a)
+}
+
+func consumingFunction2(a: consuming A) {
+    // OK: 明示的にコピーしている
+    someGlobalVariable = copy a
+    print(a)
+}
+
+func consumingFunction3(a: consuming A) {
+    // OK: これが`a`が最後に使われている場所なのでコピーは不要
+    someGlobalVariable = a
+}
+```
 
 ### <a id="special-kinds-of-parameters">特殊な種類のパラメータ\(Special Kinds of Parameters\)</a>
 

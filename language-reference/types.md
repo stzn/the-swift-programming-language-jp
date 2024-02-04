@@ -1,6 +1,6 @@
 # 型\(Types\)
 
-最終更新日: 2023/9/17
+最終更新日: 2024/2/4
 原文: https://docs.swift.org/swift-book/ReferenceManual/Types.html
 
 組み込みの名前付き型と複合型を使用します。
@@ -47,7 +47,7 @@ func someFunction(a: Int) { /* ... */ }
 
 > Grammar of a type annotation:
 >
-> *type-annotation* → **`:`** *attributes*_?_ **`inout`**_?_ *type*
+> *type-annotation* → **`:`** *attributes*_?_ *type*
 
 ## 型識別子\(Type Identifier\)
 
@@ -179,7 +179,7 @@ func takesTwoFunctions(first: (() -> Void) -> Void, second: (() -> Void) -> Void
 > *function-type-argument-clause* → **`(`** *function-type-argument-list* **`...`**_?_ **`)`**
 >
 > *function-type-argument-list* → *function-type-argument* | *function-type-argument* **`,`** *function-type-argument-list* \
-> *function-type-argument* → *attributes*_?_ **`inout`**_?_ *type* | *argument-label* *type-annotation* \
+> *function-type-argument* → *attributes*_?_ *parameter-modifier*_?_ *type* | *argument-label* *type-annotation* \
 > *argument-label* → *identifier*
 
 ## 配列型\(Array Type\)
