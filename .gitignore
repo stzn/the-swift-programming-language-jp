@@ -4,3 +4,6 @@ package-lock.json
 *.log
 .cache/
 _book/
+.build/
+.swiftpm/
+.vscode/
