@@ -369,7 +369,12 @@ protocol ProvidesMain {
 
 ### NSApplicationMain
 
-この属性をクラスに適用すると、それがアプリケーションデリゲートだということを示します。この属性を使用することは、`NSApplicationMain(_:_:)` 関数を呼び出すことと同じです。
+> 非推奨:  
+> この属性は非推奨です。  
+> [main](./language-reference/attributes.md#main)を代わりに使用してください。  
+> Swift6では、この属性を使用するとエラーになります。
+
+この属性をクラスに適用すると、それが app delegate だということを示します。この属性を使用することは、`NSApplicationMain(_:_:)` 関数を呼び出すことと同じです。
 
 この属性を使用しない場合は、次のように `NSApplicationMain(_:_:)` 関数を呼び出すトップレベルのコードを `main.swift` ファイルに指定します。
 
