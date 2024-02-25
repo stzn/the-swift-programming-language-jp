@@ -112,9 +112,9 @@ throwing 関数は他の throwing 関数を呼び出すことができるのと�
 例えば、
 
 ```swift
-func getRainyWeekendPhotos() async -> Result<[String]> {
+func availableRainyWeekendPhotos() -> Result<[String], Error> {
     return Result {
-        try await listPhotos(inGallery: "雨の週末")
+        try listDownloadedPhotos(inGallery: "雨の週末")
     }
 }
 ```
