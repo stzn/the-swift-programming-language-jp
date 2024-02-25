@@ -1,6 +1,6 @@
 # 文法のまとめ\(Summary of the Grammar\)
 
-最終更新日: 2023/10/28  
+最終更新日: 2024/02/25  
 原文: https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html
 
 ## Lexical Structure\(構文の構造\)
@@ -298,7 +298,6 @@
 > Grammar of an expression:
 >
 > *expression* → *try-operator*_?_ *await-operator*_?_ *prefix-expression* *infix-expressions*_?_ \
-> *expression-list* → *expression* | *expression* **`,`** *expression-list*
 
 > Grammar of a prefix expression:
 >

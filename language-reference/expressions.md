@@ -1,6 +1,6 @@
 # 式\(Expressions\)
 
-最終更新日: 2023/10/28
+最終更新日: 2024/2/25
 原文: https://docs.swift.org/swift-book/ReferenceManual/Expressions.html
 
 型、演算子、変数、およびその他の名前と構造を紹介する。
@@ -12,7 +12,6 @@ Swift では、前置式、バイナリ式、基本式、後置式の 4 種類�
 > Grammar of an expression:
 >
 > *expression* → *try-operator*_?_ *await-operator*_?_ *prefix-expression* *infix-expressions*_?_ \
-> *expression-list* → *expression* | *expression* **`,`** *expression-list*
 
 ## 前置式\(Prefix Expressions\)
 
