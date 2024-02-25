@@ -1,17 +1,35 @@
 # ドキュメント改訂履歴\(Document Revision History\)
 
-最終更新日: 2023/6/7  
+最終更新日: 2024/2/25  
 原文: https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html
 
 本書に対する最近の変更点を確認する。
 
-## 2023-06-05
+## 2024-02-13
 
-- Swift 5.9 用に更新しました
+- Swift5.10 に更新しました
+- ネストされたプロトコルの情報を[委譲\(Delegation\)](../language-guide/protocols.md#delegation)セクションに追加しました
+- [UIApplicationMain](../language-reference/attributes.md#uiapplicationmain)と[NSApplicationMain](../language-reference/attributes.md#nsapplicationmain)セクションに非推奨情報を追加しました
+
+## 2023-12-11
+
+- Swift 5.9.2 に更新しました
+- [](../language-reference/declarations.md#parameter-modifiers修飾子)セクションに `borrowing` と `consuming` 修飾子に関する情報を追加しました
+- [定数と変数\(Constants and Variables\)](../language-guide/the-basics.md#declaring-constants-and-variables)に、宣言後の定数の値の設定に関する情報を追加しました
+- タスク、タスクグループ、タスクキャンセルに関する情報を[同時並行処理\(Concurrency\)](../language-guide/concurrency.md)の章に追加しました
+- [マクロ\(Macros\)](../language-guide/macros.md)の章に、既存の Swift パッケージでマクロを実装する方法ついての情報を追加しました
+- extension マクロが conformance マクロに置換されたので、[付属型マクロ\(Attached Macros\)](../language-guide/macros.md#付属型マクロ)のセクションを更新しました
+- バックデプロイに関する情報を[backDeployed](../language-reference/attributes.md#backdeployed)セクションに追加しました
+
+## 2023-09-18
+
+- Swift 5.9 に更新しました
 - [制御フロー\(Control Flow\)](../language-guide/control-flow.md)の章と[条件文\(Conditional Statements\)](../language-guide/control-flow.md#条件文conditional-statements)セクションに、`if` 式と `switch` 式に関する情報を追加しました
 - [マクロ\(Macros\)](../language-guide/macros.md)の章を追加し、コンパイル時にコードを生成することについての情報を追加しました
 - [Opaque 型とBox 型\(Opaque Types and Boxed Types\)](../language-guide/opaque-types.md#opaque-型とbox-型opaque-types-and-boxed-types)の章に、Box 型プロトコルに関する情報を追加しました
 - [Result-Building Methods](../language-reference/attributes.md#result-building-methods)のセクションを更新し、`buildPartialBlock(first:)` メソッドと `buildPartialBlock(cumulated:next:)` メソッドについての情報を追加しました
+- [available](../language-reference/attributes.md#available)と[条件付きコンパイルブロック\(Conditional Compilation Block\)](../language-reference/statements.md#条件付きコンパイルブロックconditional-compilation-block)に visionOS を追加しました
+- グループ化に空白行を使用するように公式の grammar を整形しました
 
 ## 2023-03-30
 
