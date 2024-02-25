@@ -20,7 +20,7 @@ Swift は_型安全_な言語です。つまり、言語として、コードで
 
 定数と変数は特定の型の値\(数字の `10` や文字列の `"Hello"` など\)と名前\(`maximumNumberOfLoginAttempts` や `welcomeMessage`\)を関連付けます。_定数_は一度値を設定すると変更することはできません。一方で、_変数_は後で異なった値を設定できます。
 
-### 定数と変数の宣言\(Declaring Constants and Variables\)
+### <a id="declaring-constants-and-variables">定数と変数の宣言\(Declaring Constants and Variables\)</a>
 
 定数と変数は、使用する前に定義されていなければなりません。定数は `let`、変数は `var` キーワードで定義します。ここで、ユーザが何回ログインをしようとしたか試行回数を追跡する定数と変数の例を紹介します。
 
