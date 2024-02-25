@@ -1,6 +1,6 @@
 # 文\(Statements\)
 
-最終更新日: 2023/10/28  
+最終更新日: 2024/2/25  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Statements.html
 
 式を分類し、実行の流れを制御する。
@@ -693,7 +693,7 @@ if #unavailable(<#platform name#> <#version#>, <#...#>) {
 > *platform-name* → **`macCatalyst`** | **`macCatalystApplicationExtension`** \
 > *platform-name* → **`watchOS`** | **`watchOSApplicationExtension`** \
 > *platform-name* → **`tvOS`** | **`tvOSApplicationExtension`** \
-> *platform-name* → **`visionOS`** \
+> *platform-name* → **`visionOS`** | **`visionOSApplicationExtension`** \
 > *platform-version* → *decimal-digits* \
 > *platform-version* → *decimal-digits* **`.`** *decimal-digits* \
 > *platform-version* → *decimal-digits* **`.`** *decimal-digits* **`.`** *decimal-digits*

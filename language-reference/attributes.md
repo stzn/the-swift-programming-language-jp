@@ -61,6 +61,7 @@ Swift には、宣言に適用される属性と型に適用される属性の 2
 * `tvOS`
 * `tvOSApplicationExtension`
 * `visionOS`
+* `visionOSApplicationExtension`
 * `swift`
 
 アスタリスク\(`*`\)を使用して、上記の全てのプラットフォーム名で宣言が使用可能だと示すこともできます。Swift のバージョン番号を使用してアベイラビリティを指定する `available` 属性では、アスタリスクを使用できません。
