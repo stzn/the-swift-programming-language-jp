@@ -1,6 +1,6 @@
 # 属性\(Attributes\)
 
-最終更新日: 2023/11/12  
+最終更新日: 2024/2/25  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Attributes.html
 
 宣言と型に情報を追加する。
@@ -369,7 +369,12 @@ protocol ProvidesMain {
 
 ### NSApplicationMain
 
-この属性をクラスに適用すると、それがアプリケーションデリゲートだということを示します。この属性を使用することは、`NSApplicationMain(_:_:)` 関数を呼び出すことと同じです。
+> 非推奨:  
+> この属性は非推奨です。  
+> [main](./language-reference/attributes.md#main)を代わりに使用してください。  
+> Swift6では、この属性を使用するとエラーになります。
+
+この属性をクラスに適用すると、それが app delegate だということを示します。この属性を使用することは、`NSApplicationMain(_:_:)` 関数を呼び出すことと同じです。
 
 この属性を使用しない場合は、次のように `NSApplicationMain(_:_:)` 関数を呼び出すトップレベルのコードを `main.swift` ファイルに指定します。
 
@@ -798,7 +803,12 @@ resultBuilder 属性を適用しても、ABI の互換性には影響しませ�
 
 ### UIApplicationMain
 
-この属性をクラスに適用して、それがアプリケーションデリゲートだということを示します。この属性を使用することは、`UIApplicationMain` 関数を呼び出し、このクラスの名前をデリゲートクラスの名前として渡すことと同じです。
+> 非推奨:  
+> この属性は非推奨です。  
+> [main](./language-reference/attributes.md#main)を代わりに使用してください。  
+> Swift6では、この属性を使用するとエラーになります。
+
+この属性をクラスに適用して、それが app delegate だということを示します。この属性を使用することは、`UIApplicationMain` 関数を呼び出し、このクラスの名前をデリゲートクラスの名前として渡すことと同じです。
 
 この属性を使用しない場合は、[UIApplicationMain\(_:_:_:_:\)](https://developer.apple.com/documentation/uikit/1622933-uiapplicationmain)関数を呼び出すトップレベルのコードを `main.swift` ファイルに指定します。例えば、アプリが `UIApplication` の独自のサブクラスをメインクラスとして使用している場合、この属性を使用する代わりに `UIApplicationMain(_:_:_:_:)` 関数を呼び出します。
 
