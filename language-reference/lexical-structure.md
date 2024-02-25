@@ -97,7 +97,7 @@ _識別子_は、大文字または小文字の `A` から `Z`、アンダース
 * 文で使用されるキーワード: `break`、`case`、`continue`、`default`、`defer`、`do`、`else`、`fallthrough`、`for`、`guard`、`if`、`in`、`repeat`、`return`、`switch`、`where`、`while`
 * 式と型で使用されるキーワード: `Any`、`as`、`await`、`catch`、`false`、`is`、`nil`、`super`、`self`、`Self`、`throw`、`throws`、`true`、および `try`
 * パターンで使用されるキーワード: `_`
-* シャープ記号\(`#`\)で始まるキーワード: `#available`、`#colorLiteral`、`#else`、`#elseif`、`#endif`、`#if`、`#imageLiteral`、`#selector`、`#sourceLocation`
+* シャープ記号\(`#`\)で始まるキーワード: `#available`、`#colorLiteral`、`#else`、`#elseif`、`#endif`、`#if`、`#imageLiteral`、`#selector`、`#sourceLocation`、`#unavailable`
 
 > NOTE  
 > Swift 5.9以前は、以下の特殊リテラルが認識されていました:  
