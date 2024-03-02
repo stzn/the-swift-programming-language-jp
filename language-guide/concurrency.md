@@ -258,7 +258,7 @@ let photos = await withTaskGroup(of: Optional<Data>.self) { group in
     let photoNames = await listPhotos(inGallery: "夏休み")
     for name in photoNames {
         let added = group.addTaskUnlessCancelled {
-            guard isCancelled == false else { return nil }
+            guard !Task.isCancelled else { return nil }
             return await downloadPhoto(named: name)
         }
         guard added else { break }
