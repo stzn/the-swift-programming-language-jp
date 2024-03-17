@@ -1,6 +1,6 @@
 # プロトコル\(Protocols\)
 
-最終更新日: 2024/2/17
+最終更新日: 2024/3/18
 原文: https://docs.swift.org/swift-book/LanguageGuide/Protocols.html
 
 準拠型が実装する必要がある要件を定義する。
@@ -313,7 +313,7 @@ _強参照_循環を防ぐために、デリゲートは_弱参照_として宣�
 
 `DiceGame.Delegate` は、ゲームの進行状況を追跡するための 3 つのメソッドを提供しています。これらの 3 つのメソッドは、上記の `play(rounds:)` メソッド内のゲームロジックに組み込まれています。`DiceGame` クラスが、新しいゲームの開始、新しいターンの開始、またはゲームの終了時に、このデリゲートメソッドを呼びます。
 
-`delegate` プロパティはオプショナルの `DiceGame.Delegate` のため、`play()` メソッドはデリゲートメソッドを呼び出す度にオプショナルチェーンを使用します。`delegate` プロパティが `nil` の場合、これらのデリゲートの呼び出しはエラーを出力せずに失敗します。`delegate` プロパティが `nil` ではない場合、デリゲートメソッドが呼び出され、パラメータとして `SnakesAndLadders` インスタンスが渡されます。
+`delegate` プロパティはオプショナルの `DiceGame.Delegate` のため、`play(rounds:)` メソッドはデリゲートメソッドを呼び出す度にオプショナルチェーンを使用します。`delegate` プロパティが `nil` の場合、これらのデリゲートの呼び出しはエラーを出力せずに失敗します。`delegate` プロパティが `nil` ではない場合、デリゲートメソッドが呼び出され、パラメータとして `DiceGame` インスタンスが渡されます。
 
 次の例は、`DiceGame.Delegate` プロトコルに準拠する `DiceGameTracker` というクラスを示しています:
 
@@ -355,9 +355,9 @@ class DiceGameTracker: DiceGame.Delegate {
 
 ```swift
 let tracker = DiceGameTracker()
-let game = SnakesAndLadders()
+let game = DiceGame(sides: 6)
 game.delegate = tracker
-game.play()
+game.play(rounds: 3)
 // 新しいゲームを開始します
 // 1回戦は Player2 の勝ち
 // 2回戦は Player2 の勝ち
@@ -531,7 +531,7 @@ for thing in things {
 // A hamster named Simon
 ```
 
-`Thing` 定数は `TextRepresentable` 型なことに注目してください。内部の実際のインスタンスがそれらの型の 1 つの場合でも、型は `Dice`、`DiceGame`、または `Hamster` ではありません。これは `TextRepresentable` 型で、`TextRepresentable` は全て `textualDescription` プロパティを持つことがわかっているため、ループ処理の中で安全に `thing.textualDescription` にアクセスできます。
+`thing` 定数は `TextRepresentable` 型なことに注目してください。内部の実際のインスタンスがそれらの型の 1 つの場合でも、型は `Dice`、`DiceGame`、または `Hamster` ではありません。これは `TextRepresentable` 型で、`TextRepresentable` は全て `textualDescription` プロパティを持つことがわかっているため、ループ処理の中で安全に `thing.textualDescription` にアクセスできます。
 
 ## <a id="protocols-protocol-inheritance">プロトコル継承\(Protocol Inheritance\)</a>
 
@@ -630,7 +630,7 @@ wishHappyBirthday(to: birthdayPerson)
 // Happy birthday, Malcolm, you're 21!
 ```
 
-この例では、`Named` プロトコルには、`name` という `String` 型のプロパティの get 要件が 1 つのあります。`Aged` プロトコルには、`age` と呼ばれる `Int` 型のプロパティの get 要件が 1 つあります。どちらのプロトコルも、`Person` と呼ばれる構造体に準拠されています。
+この例では、`Named` プロトコルには、`name` という `String` 型のプロパティの get 要件が 1 つあります。`Aged` プロトコルには、`age` と呼ばれる `Int` 型のプロパティの get 要件が 1 つあります。どちらのプロトコルも、`Person` と呼ばれる構造体に準拠されています。
 
 この例では、`wishHappyBirthday(to:)` 関数も定義されています。`celebrator` パラメータの型は `Named & Aged` です。これは、「`Named` プロトコルと `Aged` プロトコルの両方に準拠する任意の型」を意味します。必要なプロトコルの両方に準拠している限り、関数に渡される特定の型は問題ではありません。
 
