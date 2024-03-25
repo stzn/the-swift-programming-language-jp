@@ -201,7 +201,7 @@
         <a href="https://github.com/samekard-dev">
             <img src="https://avatars.githubusercontent.com/u/88572321?v=4" width="100;" alt="samekard-dev"/>
             <br />
-            <sub><b>samekard-dev</b></sub>
+            <sub><b>Samekard-dev</b></sub>
         </a>
     </td>
     <td align="center">
