@@ -121,16 +121,6 @@ func availableRainyWeekendPhotos() -> Result<[String], Error> {
 
 対照的に、同期コードから非同期コードを呼び出して結果を待つことができるように、非同期コードをラップする安全な方法はありません。Swift の標準ライブラリは、意図的にこの安全でない機能を省略しています。なぜなら、自分で実装しようとすると、わかりづらいデータ競合やスレッド問題、デッドロックのような問題につながる可能性があるからです。既存のプロジェクトに Concurrency コードを追加するときは、トップダウンで作業します。具体的には、コードの最上位レイヤーを並行処理に変換することから始め、そのコードが呼び出す関数やメソッドの変換を開始し、プロジェクトのアーキテクチャーを一度に 1 レイヤーずつ変換していきます。ボトムアップのアプローチは、これまでのところ同期コードが非同期コードを呼び出すことができないためできません。
 
-> NOTE  
-> [`Task.sleep(until:tolerance:clock:)`](https://developer.apple.com/documentation/swift/task/sleep(until:tolerance:clock:)) メソッドは、同時並行処理が機能する方法を学ぶために簡単なコードを書くときに役立ちます。このメソッドは何もしませんが、それがリターンする前に少なくとも指定されたナノ秒数処理を待ちます。下記は、ネットワーク操作の待機をシミュレートするために `sleep(nanoseconds:)` を使用する `listPhotos(inGallery:)` 関数のバージョンです。
->
-> ```swift
-> func listPhotos(inGallery name: String) async throws -> [String] {
->     try await Task.sleep(for: .seconds(2))
->     return ["IMG001", "IMG99", "IMG0404"]
-> }
-> ```
-
 ## 非同期シーケンス\(Asynchronous Sequences\)
 
 前のセクションの `listPhotos(inGallery:)` は、非同期に配列全体を一度にまとめて返し、全ての配列の要素は既に取得できています。もう 1 つの方法として、非同期シーケンス\(_asynchronous sequence_\)を使用して、コレクションの要素を 1 つずつ待機することができます。下記では非同期シーケンスを使って配列の要素を 1 つ 1 つ取得しています:
@@ -202,8 +192,6 @@ show(photos)
 
 以下は、任意の枚数の写真を処理する、写真をダウンロードするコードの別バージョンです:
 
-処理の正しさを保つためのいくつかの責務は開発者にありますが、この明示的な親子関係によって、Swift は、キャンセルの伝播のような行動を処理したり、コンパイル時にいくつかのエラーを検出することができます。
-
 ```swift
 await withTaskGroup(of: Data.self) { group in
     let photoNames = await listPhotos(inGallery: "夏休み")
@@ -257,11 +245,10 @@ Swift の並行処理では、協調キャンセルモデルを使用します�
 let photos = await withTaskGroup(of: Optional<Data>.self) { group in
     let photoNames = await listPhotos(inGallery: "夏休み")
     for name in photoNames {
-        let added = group.addTaskUnlessCancelled {
-            guard !Task.isCancelled else { return nil }
+        group.addTaskUnlessCancelled {
+            guard isCancelled == false else { return nil }
             return await downloadPhoto(named: name)
         }
-        guard added else { break }
     }
 
     var results: [Data] = []
@@ -275,11 +262,8 @@ let photos = await withTaskGroup(of: Optional<Data>.self) { group in
 上記のコードでは、以前のバージョンからいくつかの変更が加えられています:
 
 - 各タスクは [`TaskGroup.addTaskUnlessCancelled(priority:operation:)`](https://developer.apple.com/documentation/swift/taskgroup/addtaskunlesscancelled(priority:operation:))メソッドを使用して追加され、キャンセル後に新しい作業が開始されるのを防ぎます
-- `addTaskUnlessCancelled(priority:operation:)` を呼び出すたびに、コードは新しい子タスクが追加されたことを確認します。グループがキャンセルされた場合、`added` の値は `false` になります。上記の例の場合、コードは追加の写真をダウンロードしようとするのを止めます
 - 各タスクは、写真のダウンロードを開始する前に、キャンセルされたかどうかをチェックします。キャンセルされた場合、タスクは `nil` を返します
 - 最後に、タスクグループは結果を集める際に `nil` 値をスキップします。`nil` を返すことでキャンセルを処理することは、タスクグループが完了した作業を破棄する代わりに、部分的な結果(キャンセル時にすでにダウンロードされていた写真)を返すことができるということです
-
- > NOTE: タスクの外側からタスクがキャンセルされたかどうかを確認するには、型プロパティの代わりに [`Task.isCancelled` インスタンスプロパティ](https://developer.apple.com/documentation/swift/task/iscancelled-swift.property)を使用します。
 
 キャンセルの即時通知が必要な作業には、[`Task.withTaskCancellationHandler(operation:onCancel:)`](https://developer.apple.com/documentation/swift/withtaskcancellationhandler(operation:oncancel:))メソッドを使用します。たとえば:
 
@@ -309,18 +293,6 @@ let result = await handle.value
 ```
 
 切り離されたタスクの管理の詳細については、[Task](https://developer.apple.com/documentation/swift/task)を参照ください。
-
-### タスクのキャンセル\(Task Cancellation\)
-
-Swift の同時並行処理は協調キャンセルモデル\(_cooperative cancellation model_\)を使用しています。各タスクは、実行中の適切な時点でキャンセルされたかどうかを確認し、適切ないかなる方法でもキャンセルに応答します。実行しているタスクに応じて、通常次のいずれかを意味します:
-
-* `CancellationError` のようなエラーをスローする
-* `nil` または空のコレクションを返す
-* 部分的に完了したタスクを返す
-
-タスクがキャンセルされたかどうかをチェックするには、キャンセルされていた場合に `CancellationError` をスローする[Task.checkCancellation\(\)](https://developer.apple.com/documentation/swift/task/3814826-checkcancellation)を呼び出すか、[Task.isCancelled](https://developer.apple.com/documentation/swift/task/3814832-iscancelled)の値を確認し、自分でコードのキャンセルを処理します。例えば、ギャラリから写真をダウンロードしているタスクは、一部だけダウンロードされたデータを削除してネットワークを切断する必要があるかもしれません。
-
-キャンセルを手動で伝播するには、[Task.cancel\(\)](https://developer.apple.com/documentation/swift/task/3851218-cancel) を呼び出します。
 
 ## アクター\(Actors\)
 
