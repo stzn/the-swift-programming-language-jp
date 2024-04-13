@@ -1,6 +1,6 @@
 # 同時並行処理\(Concurrency\)
 
-最終更新日: 2024/04/12  
+最終更新日: 2024/04/13
 原文: https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html
 
 非同期操作を行う。
