@@ -119,10 +119,10 @@
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/uhooi">
-            <img src="https://avatars.githubusercontent.com/u/21194714?v=4" width="100;" alt="uhooi"/>
+        <a href="https://github.com/samekard-dev">
+            <img src="https://avatars.githubusercontent.com/u/88572321?v=4" width="100;" alt="samekard-dev"/>
             <br />
-            <sub><b>Uhooi</b></sub>
+            <sub><b>Samekard-dev</b></sub>
         </a>
     </td>
     <td align="center">
@@ -133,13 +133,20 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/uhooi">
+            <img src="https://avatars.githubusercontent.com/u/21194714?v=4" width="100;" alt="uhooi"/>
+            <br />
+            <sub><b>Uhooi</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
         <a href="https://github.com/enomoto">
             <img src="https://avatars.githubusercontent.com/u/1823075?v=4" width="100;" alt="enomoto"/>
             <br />
             <sub><b>Kenta Enomoto</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/rymshm">
             <img src="https://avatars.githubusercontent.com/u/23201810?v=4" width="100;" alt="rymshm"/>
@@ -174,15 +181,15 @@
             <br />
             <sub><b>Hiraoka</b></sub>
         </a>
-    </td>
+    </td></tr>
+<tr>
     <td align="center">
         <a href="https://github.com/b1ackturtle">
             <img src="https://avatars.githubusercontent.com/u/13419249?v=4" width="100;" alt="b1ackturtle"/>
             <br />
             <sub><b>B1ackturtle</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/u-abyss">
             <img src="https://avatars.githubusercontent.com/u/47887646?v=4" width="100;" alt="u-abyss"/>
@@ -195,13 +202,6 @@
             <img src="https://avatars.githubusercontent.com/u/11924267?v=4" width="100;" alt="Lumisilk"/>
             <br />
             <sub><b>Lumi</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/samekard-dev">
-            <img src="https://avatars.githubusercontent.com/u/88572321?v=4" width="100;" alt="samekard-dev"/>
-            <br />
-            <sub><b>Samekard-dev</b></sub>
         </a>
     </td>
     <td align="center">
