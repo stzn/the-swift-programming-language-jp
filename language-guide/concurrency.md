@@ -245,10 +245,11 @@ Swift の並行処理では、協調キャンセルモデルを使用します�
 let photos = await withTaskGroup(of: Optional<Data>.self) { group in
     let photoNames = await listPhotos(inGallery: "夏休み")
     for name in photoNames {
-        group.addTaskUnlessCancelled {
-            guard isCancelled == false else { return nil }
+        let added = group.addTaskUnlessCancelled {
+            guard !Task.isCancelled else { return nil }
             return await downloadPhoto(named: name)
         }
+        guard added else { break }
     }
 
     var results: [Data] = []
@@ -262,8 +263,11 @@ let photos = await withTaskGroup(of: Optional<Data>.self) { group in
 上記のコードでは、以前のバージョンからいくつかの変更が加えられています:
 
 - 各タスクは [`TaskGroup.addTaskUnlessCancelled(priority:operation:)`](https://developer.apple.com/documentation/swift/taskgroup/addtaskunlesscancelled(priority:operation:))メソッドを使用して追加され、キャンセル後に新しい作業が開始されるのを防ぎます
+- `addTaskUnlessCancelled(priority:operation:)` を呼び出すたびに、コードは新しい子タスクが追加されたことを確認します。グループがキャンセルされた場合、`added` の値は `false` になります。上記の例の場合、コードは追加の写真をダウンロードしようとするのを止めます
 - 各タスクは、写真のダウンロードを開始する前に、キャンセルされたかどうかをチェックします。キャンセルされた場合、タスクは `nil` を返します
 - 最後に、タスクグループは結果を集める際に `nil` 値をスキップします。`nil` を返すことでキャンセルを処理することは、タスクグループが完了した作業を破棄する代わりに、部分的な結果(キャンセル時にすでにダウンロードされていた写真)を返すことができるということです
+
+ > NOTE: タスクの外側からタスクがキャンセルされたかどうかを確認するには、型プロパティの代わりに [`Task.isCancelled` インスタンスプロパティ](https://developer.apple.com/documentation/swift/task/iscancelled-swift.property)を使用します。
 
 キャンセルの即時通知が必要な作業には、[`Task.withTaskCancellationHandler(operation:onCancel:)`](https://developer.apple.com/documentation/swift/withtaskcancellationhandler(operation:oncancel:))メソッドを使用します。たとえば:
 
