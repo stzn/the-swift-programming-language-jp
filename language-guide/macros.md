@@ -1,6 +1,6 @@
 # マクロ\(Macros\)
 
-最終更新日: 2023/12/29  
+最終更新日: 2024/04/19  
 原文: https://docs.swift.org/swift-book/documentation/the-swift-programming-language/macros
 
 繰り返しコードを生成するために、コンパイル時にコードを変換します。
