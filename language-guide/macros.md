@@ -260,7 +260,7 @@ dependencies: [
 ],
 ```
 
-マクロの役割に応じて、マクロの実装が準拠するべき `SwiftSyntax` にある対応するプロトコルがあります。例えば、前のセクションの `#fourCharacterCode` を考えてみましょう。そのマクロを実装した構造体がこちらです:
+マクロの役割に応じて、マクロの実装が準拠するべき `SwiftSyntax` 上のプロトコルがあります。例えば、前のセクションの `#fourCharacterCode` を考えてみましょう。そのマクロを実装した構造体がこちらです:
 
 ```swift
 import SwiftSyntax
