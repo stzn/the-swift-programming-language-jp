@@ -30,7 +30,7 @@ func myFunction() {
     #warning("何かが間違っています")
 }
 ```
-最初の行で、`#function` は Swift 標準ライブラリから `function()` マクロを呼び出します。このコードをコンパイルするとき、Swift は、`#function` を現在の関数の名前に置き換えるマクロの実装を呼び出します。このコードを走らせて `myFunction()` を呼ぶと、"現在実行中 myFunction()" と表示します。2 行目では、`#warning` は、カスタムコンパイル時の警告を生成するために標準ライブラリから `warning(_:)` を呼び出します。
+最初の行で、`#function` は Swift 標準ライブラリから [`function()`](https://developer.apple.com/documentation/swift/function()) マクロを呼び出します。このコードをコンパイルするとき、Swift は、`#function` を現在の関数の名前に置き換えるマクロの実装を呼び出します。このコードを実行して `myFunction()` を呼ぶと、"現在実行中 myFunction()" と表示します。2 行目では、`#warning` は、カスタムコンパイル時の警告を生成するために標準ライブラリから [`warning(_:)`](https://developer.apple.com/documentation/swift/warning(_:)) を呼び出します。
 
 自立型マクロは、`#function` のように値を生成したり、または `#warning` のようにコンパイル時にアクションを実行できます。
 
