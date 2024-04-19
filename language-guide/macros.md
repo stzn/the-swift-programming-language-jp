@@ -117,7 +117,7 @@ public macro OptionSet<RawType>() =
         #externalMacro(module: "SwiftMacros", type: "OptionSetMacro")
 ```
 
-`attached` 属性は、この宣言で 2 回、各マクロの役割のために 1 回ずつ、現れます。最初の使用である `@attached(member)` は、マクロがそれを適用する型に新しいメンバーを追加することを示します。`@OptionSet` マクロは、`OptionSet` プロトコルで必要な `init(rawValue:)` イニシャライザと、いくつかの追加メンバを追加します。2 つ目の使い方である `@attached(extension, conformances: OptionSet)` は、`@OptionSet` が `OptionSet` プロトコルへの準拠を追加することを示しています。`@OptionSet` マクロは、それを適用する型を展開し、`OptionSet` プロトコルに準拠します。
+`attached` 属性は、この宣言で 2 回、各マクロの役割のために 1 回ずつ、現れます。最初の使用である `@attached(member)` は、マクロがそれを適用する型に新しいメンバを追加することを示します。`@OptionSet` マクロは、`OptionSet` プロトコルで必要な `init(rawValue:)` イニシャライザと、いくつかの追加メンバを追加します。2 つ目の使い方である `@attached(extension, conformances: OptionSet)` は、`@OptionSet` が `OptionSet` プロトコルへの準拠を追加することを示しています。`@OptionSet` マクロは、それを適用する型を展開し、`OptionSet` プロトコルに準拠します。
 
 自立型マクロの場合、`@freestanding` 属性を記述してその役割を指定します:
 
