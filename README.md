@@ -90,13 +90,20 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/samekard-dev">
+            <img src="https://avatars.githubusercontent.com/u/88572321?v=4" width="100;" alt="samekard-dev"/>
+            <br />
+            <sub><b>Samekard-dev</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
         <a href="https://github.com/sumomoneko">
             <img src="https://avatars.githubusercontent.com/u/6897176?v=4" width="100;" alt="sumomoneko"/>
             <br />
             <sub><b>Sumomoneko</b></sub>
         </a>
-    </td></tr>
-<tr>
+    </td>
     <td align="center">
         <a href="https://github.com/KS1019">
             <img src="https://avatars.githubusercontent.com/u/6828522?v=4" width="100;" alt="KS1019"/>
@@ -116,13 +123,6 @@
             <img src="https://avatars.githubusercontent.com/u/61189782?v=4" width="100;" alt="NiwakaDev"/>
             <br />
             <sub><b>Niwaka</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/samekard-dev">
-            <img src="https://avatars.githubusercontent.com/u/88572321?v=4" width="100;" alt="samekard-dev"/>
-            <br />
-            <sub><b>Samekard-dev</b></sub>
         </a>
     </td>
     <td align="center">
