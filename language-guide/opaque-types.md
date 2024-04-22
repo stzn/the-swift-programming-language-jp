@@ -1,15 +1,19 @@
-# Opaque 型とBox 型\(Opaque Types and Boxed Types\)
+# Opaque 型とBox 型\(Opaque and Boxed Types\)
 
-最終更新日: 2023/5/28  
+最終更新日: 2024/04/23  
 原文: https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html
 
 値の型に関する実装の詳細を隠す。
 
-Swift は値の型情報を隠すために 2 つの方法を提供します。不透明な型\(以下_Opaque 型_\)と Box 型です。
-型情報を隠すことで、戻り値の基になる型を private のままにすることができるため、モジュールとモジュールを呼び出すコードの間に境界を設けることに役立ちます。戻り値に Opaque 型を持つ関数またはメソッドは、その戻り値の型情報を隠します。関数の戻り値の型として具体的な型を提供する代わりに、準拠するプロトコルの観点から戻り値を記述します。
+Swift は値の型情報を隠すために 2 つの方法を提供します。不透明な型\(以下_Opaque 型_\)と Box プロトコル型です。
+型情報を隠すことで、戻り値の基になる型を private のままにすることができるため、モジュールとモジュールを呼び出すコードの間に境界を設けることに役立ちます。
+
+戻り値に Opaque 型を持つ関数またはメソッドは、その戻り値の型情報を隠します。関数の戻り値の型として具体的な型を提供する代わりに、準拠するプロトコルの観点から戻り値を記述します。
+Opaque 型は型の同一性を保持します。
 コンパイラは型情報にアクセスできますが、モジュールのクライアントはアクセスできません。
-Box プロトコル型は、任意の型のインスタンスを格納することができます。Box プロトコル型は、与えられたプロトコルに準拠する任意の型のインスタンスを格納することができます。
-ボックス型プロトコル型は型の同一性を保持しません。つまり、値の特定の型は実行時までわからず、また、異なる値が保存されるため、時間の経過とともに変化する可能性があります。
+
+Box プロトコル型は、与えられたプロトコルに準拠する任意の型のインスタンスを格納することができます。
+Box プロトコル型は型の同一性を保持しません。つまり、値の特定の型は実行時までわからず、また、異なる値が保存されるため、時間の経過とともに変化する可能性があります。
 
 ## <a id="the-problem-that-opaque-types-solve">Opaque 型が解決する問題\(The Problem That Opaque Types Solve\)</a>
 
@@ -54,7 +58,7 @@ print(flippedTriangle.draw())
 // *
 ```
 
-下記のコードに示すように、2 つの図形を垂直に結合する `JoinedShape<T: Shape, U:Shape>` 構造体を定義するアプローチでは、反転した三角形を別の三角形と結合すると `JoinedShape<FlippedShape<Triangle>, Triangle>` のような型の結果を返します。
+下記のコードに示すように、2 つの図形を垂直に結合する `JoinedShape<T: Shape, U:Shape>` 構造体を定義するアプローチでは、三角形を別の反転した三角形と結合すると `JoinedShape<Triangle, FlippedShape<Triangle>>` のような型の結果を返します。
 
 ```swift
 struct JoinedShape<T: Shape, U: Shape>: Shape {
@@ -144,7 +148,7 @@ print(opaqueJoinedTriangles.draw())
 
 この例の `opaqueJoinedTriangles` の値は、この章の前半の[The Problem That Opaque Types Solve\(Opaque 型が解決する問題\)](opaque-types.md#the-problem-that-opaque-types-solve)セクションのジェネリクスの例の `joinedTriangles` と同じです。ただし、その例の値とは異なり、`flip(_:)` と `join(_:_:)` は、ジェネリックな形状の操作が返す基本的な型を Opaque でラップし、それらの型が外部からは見えないようにしています。どちらの関数も、依存する型がジェネリックなのでジェネリック関数で、型パラメータは `FlippedShape` と `JoinedShape` に必要な型情報を渡します。
 
-Opaque な戻り値の型を持つ関数が複数の場所から呼び出される場合、返す可能性のある戻り値は全て同じ型にする必要があります。ジェネリック関数の場合、その戻り値の型は関数のジェネリック型パラメータを使用できますが、それでも単一の型にする必要があります。例えば、正方形の特殊なケースを含む、形状反転関数の無効なバージョンを次に示します:
+Opaque な戻り値の型を持つ関数が、戻る場所を複数持つ場合、返す可能性のある戻り値は全て同じ型にする必要があります。ジェネリック関数の場合、その戻り値の型は関数のジェネリック型パラメータを使用できますが、それでも単一の型にする必要があります。例えば、正方形の特殊なケースを含む、形状反転関数の無効なバージョンを次に示します:
 
 ```swift
 func invalidFlip<T: Shape>(_ shape: T) -> some Shape {
@@ -208,7 +212,7 @@ print(vertical.draw())
 - Opaque 型を使用する場合、`var shapes:[some Shape]` と書くと、特定の形状を要素とする配列を作成し、その特定の型の識別は隠されます
 - Box プロトコル型を使って、`var shapes:[any Shape]` と書くと、異なる形状の要素を格納できる配列ができ、それらの型の識別は隠される
 
-この場合、Box プロトコル型は、`VerticalShapes` の呼び出し元が異なる種類の形状を一緒に混ぜることができる唯一のアプローチです。
+この場合、Box プロトコル型は、`VerticalShapes` の呼び出し元が、異なる種類の形状を一緒に混ぜることができる唯一のアプローチです。
 
 Box 値の基礎となる型がわかっている場合は、`as` キャストを使用することができます。例えば、以下のような感じです:
 
@@ -221,7 +225,7 @@ if let downcastTriangle = vertical.shapes[0] as? Triangle {
 
 より詳細は[Downcasting\(ダウンキャスト\)](../language-guide/type-casting.md#downcasting)を参照ください。
 
-## Opaque 型とプロトコルの違い\(Differences Between Opaque Types and Protocol Types\)
+## Opaque 型とBox プロトコルの違い\(Differences Between Opaque Types and Box Protocol Types\)
 
 Opaque 型を返すことは、Box プロトコル型を関数の戻り値の型として使用する場合と非常によく似ていますが、これら 2 種類の戻り値の型は、型情報を保持するかどうかが異なります。Opaque 型は 1 つの特定の型を参照しますが、関数の呼び出し側はどの型を参照するかはわかりません。Box プロトコル型は、プロトコルに準拠する任意の型を参照できます。一般に、Box プロトコル型では、格納する値の基になる型についてより柔軟に対応でき、Opaque 型を使用すると、基になる型についてより強力な保証を行うことができます。
 
