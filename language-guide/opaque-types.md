@@ -225,7 +225,7 @@ if let downcastTriangle = vertical.shapes[0] as? Triangle {
 
 より詳細は[Downcasting\(ダウンキャスト\)](../language-guide/type-casting.md#downcasting)を参照ください。
 
-## Opaque 型とBox プロトコルの違い\(Differences Between Opaque Types and Box Protocol Types\)
+## Opaque 型とBox プロトコル型の違い\(Differences Between Opaque Types and Box Protocol Types\)
 
 Opaque 型を返すことは、Box プロトコル型を関数の戻り値の型として使用する場合と非常によく似ていますが、これら 2 種類の戻り値の型は、型情報を保持するかどうかが異なります。Opaque 型は 1 つの特定の型を参照しますが、関数の呼び出し側はどの型を参照するかはわかりません。Box プロトコル型は、プロトコルに準拠する任意の型を参照できます。一般に、Box プロトコル型では、格納する値の基になる型についてより柔軟に対応でき、Opaque 型を使用すると、基になる型についてより強力な保証を行うことができます。
 
