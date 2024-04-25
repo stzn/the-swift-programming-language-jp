@@ -41,7 +41,7 @@
     "gitbook-plugin-insert-logo": "^0.1.5",
     "gitbook-plugin-intopic-toc": "^1.1.1",
     "gitbook-plugin-katex": "^1.1.4",
-    "gitbook-plugin-prism": "^2.4.0",
+    "honkit-plugin-prism": "^2.5.1",
     "honkit": "^5.1.4",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
