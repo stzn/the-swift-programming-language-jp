@@ -1,4 +1,4 @@
-# Opaque 型とBox 型\(Opaque and Boxed Types\)
+# Opaque 型とBox プロトコル型\(Opaque and Boxed Protocol Types\)
 
 最終更新日: 2024/04/23  
 原文: https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html
