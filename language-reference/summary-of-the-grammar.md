@@ -1,6 +1,6 @@
 # 文法のまとめ\(Summary of the Grammar\)
 
-最終更新日: 2024/02/25  
+最終更新日: 2024/6/7  
 原文: https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html
 
 ## Lexical Structure\(構文の構造\)
@@ -238,7 +238,7 @@
 
 > Grammar of a function type:
 >
-> *function-type* → *attributes*_?_ *function-type-argument-clause* **`async`**_?_ **`throws`**_?_ **`->`** *type*
+> *function-type* → *attributes*_?_ *function-type-argument-clause* **`async`**_?_ *throws-clause*_?_ **`->`** *type*
 >
 > *function-type-argument-clause* → **`(`** **`)`** \
 > *function-type-argument-clause* → **`(`** *function-type-argument-list* **`...`**_?_ **`)`**
@@ -246,6 +246,8 @@
 > *function-type-argument-list* → *function-type-argument* | *function-type-argument* **`,`** *function-type-argument-list* \
 > *function-type-argument* → *attributes*_?_ **`inout`**_?_ *type* | *argument-label* *type-annotation* \
 > *argument-label* → *identifier*
+>
+> *throws-clause* → **`throws`** | **`throws`** **`(`** *type* **`)`**
 
 > Grammar of an array type:
 >
@@ -406,7 +408,7 @@
 >
 > *closure-expression* → **`{`** *attributes*_?_ *closure-signature*_?_ *statements*_?_ **`}`**
 >
-> *closure-signature* → *capture-list*_?_ *closure-parameter-clause* **`async`**_?_ **`throws`**_?_ *function-result*_?_ **`in`** \
+> *closure-signature* → *capture-list*_?_ *closure-parameter-clause* **`async`**_?_ *throws-clause*_?_ *function-result*_?_ **`in`** \
 > *closure-signature* → *capture-list* **`in`**
 >
 > *closure-parameter-clause* → **`(`** **`)`** | **`(`** *closure-parameter-list* **`)`** | *identifier-list* \
@@ -797,7 +799,7 @@
 > *function-head* → *attributes*_?_ *declaration-modifiers*_?_ **`func`** \
 > *function-name* → *identifier* | *operator*
 >
-> *function-signature* → *parameter-clause* **`async`**_?_ **`throws`**_?_ *function-result*_?_ \
+> *function-signature* → *parameter-clause* **`async`**_?_ *throws-clause*_?_ *function-result*_?_ \
 > *function-signature* → *parameter-clause* **`async`**_?_ **`rethrows`** *function-result*_?_ \
 > *function-result* → **`->`** *attributes*_?_ *type* \
 > *function-body* → *code-block*
@@ -888,7 +890,7 @@
 
 > Grammar of a protocol initializer declaration:
 >
-> *protocol-initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* **`throws`**_?_ *generic-where-clause*_?_ \
+> *protocol-initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* *throws-clause*_?_ *generic-where-clause*_?_ \
 > *protocol-initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* **`rethrows`** *generic-where-clause*_?_
 
 > Grammar of a protocol subscript declaration:
@@ -901,7 +903,7 @@
 
 > Grammar of an initializer declaration:
 >
-> *initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* **`async`**_?_ **`throws`**_?_ *generic-where-clause*_?_ *initializer-body* \
+> *initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* **`async`**_?_ *throws-clause*_?_ *generic-where-clause*_?_ *initializer-body* \
 > *initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* **`async`**_?_ **`rethrows`** *generic-where-clause*_?_ *initializer-body* \
 > *initializer-head* → *attributes*_?_ *declaration-modifiers*_?_ **`init`** \
 > *initializer-head* → *attributes*_?_ *declaration-modifiers*_?_ **`init`** **`?`** \

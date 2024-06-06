@@ -1,6 +1,6 @@
 # 文\(Statements\)
 
-最終更新日: 2024/2/25  
+最終更新日: 2024/6/7  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Statements.html
 
 式を分類し、実行の流れを制御する。
@@ -404,7 +404,7 @@ return <#expression#>
 throw <#expression#>
 ```
 
-_expression_ の値は、`Error` プロトコルに準拠する型でなければなりません。
+_expression_ の値は、`Error` プロトコルに準拠する型でなければなりません。`throw` 文を含む `do` 文または関数が、スローするエラーの型を宣言する場合、_式_の値はその型のインスタンスである必要があります。
 
 `throw` 文の使用方法の例については、[Error Handling\(エラーハンドリング\)](../language-guide/error-handling.md)の[Propagating Errors Using Throwing Functions\(スロー関数を使用したエラーの伝播\)](../language-guide/error-handling.md#propagating-errors-using-throwing-functions)を参照ください。
 
@@ -491,6 +491,26 @@ do {
 }
 ```
 
+`do` 文では、スローするエラーの型も指定できます。その形式は次のとおりです。
+
+```swift
+do throws(<#type#>) {
+    try <#expression#>
+} catch <#pattern> {
+    <#statements#>
+} catch {
+    <#statements#>
+}
+```
+
+`do` 文に `throws` 句が含まれている場合、`do` ブロックは指定されたエラーの型のみをスローできます。型は、`Error` プロトコルに準拠する具体的な型、`Error` プロトコルに準拠する Opaque 型、または Box プロトコル型の `any Error` のいずれかである必要があります。`do` 文がスローするエラーの型を指定しない場合、Swift は次のようにエラー型を推論します。
+
+- `do` コードブロック内の全ての `throws` 文と `try` 式が全てを網羅するエラー処理メカニズム内にネストされている場合、Swift は do 文がエラーをスローしないと推論する
+- `do` コードブロックに、`Never` をスローする(エラースローしない)場合を除き、全てを網羅するエラー処理の他に、単一のエラーの型のみをスローするコードが含まれている場合、Swift は、`do` 文がその具体的なエラー の型をスローすると推論する
+- `do` コードブロックに、全体を網羅するエラー処理の他に、複数のエラーの型をスローするコードが含まれている場合、Swift は、 `do` 文が `any Error` をスローすると推論する
+
+明示的なエラーの型の処理の詳細については、[エラーの型の特定](../language-guide/error-handling.md#エラーの型の特定specifying-the-error-type)を参照してください。
+
 `do` ブロック内のいずれかの文がエラーをスローした場合、プログラム制御は、パターンがエラーに一致する最初の `catch` 句に移ります。どの句も一致しない場合、エラーは周囲のスコープに伝播します。エラーがトップレベルでも処理されない場合、プログラムの実行は実行時エラーで停止します。
 
 `switch` 文と同様に、コンパイラは `catch` 句が全てのエラーを網羅しているかどうかを調べます。網羅されている場合、エラーは処理されたと見なされます。そうしないと、エラーがスコープ外に伝播する可能性があります。つまり、エラーは `catch` 句内で処理するか、関数を `throws` で宣言する必要があります。
@@ -503,7 +523,7 @@ do {
 
 > Grammar of a do statement:
 >
-> *do-statement* → **`do`** *code-block* *catch-clauses*_?_ \
+> *do-statement* → **`do`** *throws-clause*_?_ *code-block* *catch-clauses*_?_ \
 > *catch-clauses* → *catch-clause* *catch-clauses*_?_ \
 > *catch-clause* → **`catch`** *catch-pattern-list*_?_ *code-block* \
 > *catch-pattern-list* → *catch-pattern* | *catch-pattern* **`,`** *catch-pattern-list* \

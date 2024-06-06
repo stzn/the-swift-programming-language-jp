@@ -1,6 +1,6 @@
 # 宣言\(Declarations\)
 
-最終更新日: 2024/2/17  
+最終更新日: 2024/6/7  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Declarations.html
 
 型、演算子、変数、およびその他の名前と構造を紹介する。
@@ -655,13 +655,21 @@ func <#function name#>(<#parameters#>) throws -> <#return type#> {
 }
 ```
 
+特定のエラーの型をスローする関数の形式は次のとおりです。
+
+```swift
+func <#function name#>(<#parameters#>) throws(<#error type#>) -> <#return type#> {
+   <#statements#>
+}
+```
+
 スロー関数またはスローメソッドの呼び出しは、`try` または `try!` 式で囲まれていなければなりません\(つまり、`try` または `try!` 演算子のスコープ内\)。
 
-`throws` キーワードは関数の型の一部で、非スロー関数はスロー関数のサブタイプです。その結果、スロー関数が期待されているコンテキストで非スロー関数を使用することができます。
+関数の型には、エラーをスローできるかどうか、およびどのエラーの型をスローするかが含まれます。このサブタイプの関係は、例えば、エラーをスローしない関数を、エラーをスローする関数が期待されるコンテキストで使用できることを意味します。エラーをスローする関数の型の詳細については、[関数型](./types.md#types-function-type)を参照してください。明示的な型を持つエラーの操作例については、[](../language-guide/error-handling.md#specifying-the-error-type)を参照してください。
 
-関数がエラーをスローできるかどうかだけを基に、関数をオーバーロードすることはできません。一方で、関数の _parameter_ がエラーをスローできるかどうかに基づいて関数をオーバーロードすることができます。
+関数がエラーをスローできるかどうかだけを基に、関数をオーバーロードすることはできません。一方で、関数の _parameter_ がエラーをスローできるかどうかに基づいて、関数をオーバーロードできます。
 
-スローメソッドは、非スローメソッドをオーバーライドすることができず、非スローメソッドのプロトコル要件を満たすことができません。逆に、非スローメソッドはスローメソッドをオーバーライドすることができ、スローメソッドのプロトコル要件を満たすことができます。
+スローメソッドは、スローしないメソッドをオーバーライドできず、スローしないメソッドのプロトコル要件を満たせません。逆に、スローしないメソッドは、スローメソッドをオーバーライドでき、スローメソッドのプロトコル要件を満たせます。
 
 ### <a id="rethrowing-functions-and-methods">再スロー関数と再スローメソッド\(Rethrowing Functions and Methods\)</a>
 
@@ -690,6 +698,16 @@ func someFunction(callback: () throws -> Void) rethrows {
 ```
 
 スローメソッドは再スローメソッドをオーバーライドできず、再スローメソッドのプロトコル要件を満たすことができません。逆に、再スローメソッドはスローメソッドをオーバーライドでき、再スローメソッドはスローメソッドのプロトコル要件を満たすことができます。
+
+再スローの代わりとして、ジェネリックコードで特定のエラーの型をスローする方法もあります。例えば:
+
+```swift
+func someFunction<E: Error>(callback: () throws(E) -> Void) throws(E) {
+    try callback()
+}
+```
+
+エラーを伝播するこのアプローチでは、エラーに関する型情報が保持されます。ただし、関数に `rethrows` をマークする場合とは異なり、このアプローチでは、関数がコールバックと同じ型のエラーをスローすることを防げません。
 
 ### <a id="asynchronous-functions-and-asynchronous-methods">非同期関数と非同期メソッド\(Asynchronous Functions and Methods\)</a>
 
@@ -720,7 +738,7 @@ Swift は、関数またはメソッドがその呼び出し元に戻り値を�
 > *function-head* → *attributes*_?_ *declaration-modifiers*_?_ **`func`** \
 > *function-name* → *identifier* | *operator*
 >
-> *function-signature* → *parameter-clause* **`async`**_?_ **`throws`**_?_ *function-result*_?_ \
+> *function-signature* → *parameter-clause* **`async`**_?_ *throws-clause*_?_ *function-result*_?_ \
 > *function-signature* → *parameter-clause* **`async`**_?_ **`rethrows`** *function-result*_?_ \
 > *function-result* → **`->`** *attributes*_?_ *type* \
 > *function-body* → *code-block*
@@ -1094,7 +1112,7 @@ var <#property name#>: <#type#> { get set }
 
 > Grammar of a protocol initializer declaration:
 >
-> *protocol-initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* **`throws`**_?_ *generic-where-clause*_?_ \
+> *protocol-initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* *throws-clause*_?_ *generic-where-clause*_?_ \
 > *protocol-initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* **`rethrows`** *generic-where-clause*_?_
 
 ### <a id="protocol-subscript-declaration">プロトコルサブスクリプト宣言\(Protocol Subscript Declaration\)</a>
@@ -1222,7 +1240,7 @@ if let actualInstance = SomeStruct(input: "Hello") {
 
 > Grammar of an initializer declaration:
 >
-> *initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* **`async`**_?_ **`throws`**_?_ *generic-where-clause*_?_ *initializer-body*
+> *initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* **`async`**_?_ *throws-clause*_?_ *generic-where-clause*_?_ *initializer-body*
 >
 > *initializer-declaration* → *initializer-head* *generic-parameter-clause*_?_ *parameter-clause* **`async`**_?_ **`rethrows`** *generic-where-clause*_?_ *initializer-body*
 >

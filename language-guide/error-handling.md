@@ -1,6 +1,6 @@
 # エラー処理\(Error Handling\)
 
-最終更新日: 2023/12/29
+最終更新日: 2024/6/7
 原文: https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html
 
 エラーに対応し、エラーから回復する。
@@ -252,6 +252,115 @@ func fetchData() -> Data? {
 ```swift
 let photo = try! loadImage(atPath: "./Resources/John Appleseed.jpg")
 ```
+
+## <a id="specifying-the-error-type">エラーの型の特定\(Specifying the Error Type\)</a>
+
+上記の例はすべて、最も一般的な種類のエラー処理を使用しており、コードがスローするエラーは、`Error` プロトコルに準拠する任意の型の値にできます。このアプローチは、特に他の場所でスローされたエラーを伝播する場合、コードの実行中に発生する可能性のあるすべてのエラーを事前に知ることができないという事実に即しています。またこれは、エラーの型が、時間の経過とともに変化する可能性があるという事実を反映しています。(依存しているライブラリが使用するもの含めた)ライブラリの新しいバージョンは、新しいエラーをスローする可能性があり、実際のユーザーの設定の複雑さに起因するような、開発中やテスト中には見つけられなかった障害が発生するケースが見つかることがあります。上記の例のエラー処理コードには、特定の `catch` 句がないエラーを処理するためのデフォルトのケースが常に含まれています。
+
+ほとんどの Swift で書かれたコードは、スローするエラーの型を指定しません。ただし、次のような特別なケースでは、特定の 1 つの型のエラーのみをスローするようにコードを制限することがあるかもしれません。
+
+- メモリの動的割り当てをサポートしていない組み込みシステムでコードを実行する場合。`Error` または別の Box プロトコル型のインスタンスをスローするには、実行時にエラーを格納するためのメモリを割り当てる必要がある。一方で、特定の型のエラーをスローすると、Swift はエラーインスタンスをヒープ割り当てるのを回避できる
+- エラーがライブラリなどのコードユニットの実装の詳細であり、そのコードへのインターフェイスの一部ではない場合。エラーはライブラリからのみ発生し、他の依存関係やライブラリのクライアントからは発生しないため、想定される全ての障害の完全なリストを作成できる。また、これらのエラーはライブラリの実装の詳細であるため、常にそのライブラリ内で処理される
+- クロージャを引数で受け取り、そのクロージャからエラーを伝播する関数のように、ジェネリックパラメータによって記述されたエラーのみを伝播するコード内。特定のエラー型を伝播する方法と `rethrows` を使うことの違いついては、[再スロー関数と再スローメソッド](../language-reference/declarations.md#再スロー関数と再スローメソッドrethrowing-functions-and-methods)を参照
+
+例えば、評価を要約し、次のようなエラー型を使用するコードを考えてみましょう:
+
+```swift
+enum StatisticsError: Error {
+    case noRatings
+    case invalidRating(Int)
+}
+```
+
+関数がエラーとして `StatisticsError` の値のみをスローするように指定するには、関数を宣言するときに、ただ `throws` と記述するのではなく、 `throws(StatisticsError)` と記述します。この構文は、宣言で `throws` の後にエラーの型を記述するため、*型付きスロー* とも呼ばれます。例えば、次の関数は、エラーとして `StatisticsError` の値をスローします。
+
+```swift
+func summarize(_ ratings: [Int]) throws(StatisticsError) {
+    guard !ratings.isEmpty else { throw .noRatings }
+
+    var counts = [1: 0, 2: 0, 3: 0]
+    for rating in ratings {
+        guard rating > 0 && rating <= 3 else { throw .invalidRating(rating) }
+        counts[rating]! += 1
+    }
+
+    print("*", counts[1]!, "-- **", counts[2]!, "-- ***", counts[3]!)
+}
+```
+
+上記のコードでは、`summary(_:)` 関数が 1 から 3 のスケールで表現された評価のリストを要約します。この関数は、入力が有効でない場合、`StatisticsError` のインスタンスをスローします。上記のコードの中のエラーをスローする 2 つの場所では、関数のエラー型がすでに定義されているため、エラーの型が省略されています。このような関数でエラーをスローする場合は、`throw StatisticsError.noRatings` と記述する代わりに、短縮して `throw .noRatings` を使用できます。
+
+関数の先頭に特定のエラー型を記述すると、Swift は他のエラーがスローされないかどうかをチェックします。たとえば、このチャプターの前半に出てきた例の `VendingMachineError` を上記の `summary(_:)` 関数で使用しようとすると、そのコードはコンパイル時にエラーを出力します。
+
+通常のエラーをスローする関数内から、型付きスローを使用する関数を呼び出せます。
+
+```swift
+func someThrowingFunction() -> throws {
+    let ratings = [1, 2, 3, 2, 2, 1]
+    try summarize(ratings)
+}
+```
+
+上記のコードでは、`someThrowingFunction()` がエラーの型を指定していないため、`any Error` がスローされます。エラーの型を明示的に `throws(any Error)` として記述することもできます。以下のコードは、上記のコードと同等です。
+
+```swift
+func someThrowingFunction() -> throws(any Error) {
+    let ratings = [1, 2, 3, 2, 2, 1]
+    try summarize(ratings)
+}
+```
+
+このコードでは、`someThrowingFunction()` は、`summarize(_:)` がスローするエラーをすべて伝播します。`summarize(_:)` からのエラーは常に `StatisticsError` の値であり、これは、`someThrowingFunction()` がスローする有効なエラーでもあります。
+
+戻り値の型を `Never` にして戻り値を返さない関数を記述できるのと同様に、`throws(Never)` を使ってエラーをスローしない関数を記述できます。
+
+```swift
+func nonThrowingFunction() throws(Never) {
+  // ...
+}
+```
+
+`Never` 型をスローするの値は作成できないため、この関数はスローできません。
+
+関数のエラーの型を指定するだけでなく、`do-catch` 文に特定のエラーの型を記述することもできます。例えば:
+
+```swift
+let ratings = []
+do throws(StatisticsError) {
+    try summarize(ratings)
+} catch {
+    switch error {
+    case .noRatings:
+        print("No ratings available")
+    case .invalidRating(let rating):
+        print("Invalid rating: \(rating)")
+    }
+}
+// Prints "No ratings available"
+```
+
+このコードでは、`do throws(StatisticsError)` と書くことで、`do-catch` 文がエラーとして `StatisticsError` の値を投げることを示しています。他の `do-catch` 文と同様に、`catch` 節は起こり得るすべてのエラーを処理するか、未処理のエラーを周囲のスコープに伝播して処理させることができます。このコードでは、列挙値ごとに 1 つの `case` を持つ `switch` 文を使用して、すべてのエラーを処理しています。パターンを持たない他の `catch` 句と同様に、この句はあらゆるエラーにマッチし、エラーを `error` という名前のローカル定数にバインドします。`do-catch` 文は `StatisticsError` の値をスローするので、`error` は `StatisticsError` 型の値です。
+
+上記の `catch` 句は、起こり得るエラーをそれぞれ照合して処理するために `switch` 文を使用しています。エラー処理コードを更新せずに `StatisticsError` に新しい `case` を追加しようとすると、`switch` 文が網羅的でなくなるため、Swift はエラーを出力します。独自のエラーを全てキャッチするライブラリの場合は、このアプローチを使用して、新しいエラーに対応する新しいコードが処理されることができます。
+
+関数または `do` ブロックが単一のタイプのエラーのみをスローする場合、Swift はこのコードが型付きスロー を使用していると推論します。この短い構文を使用すると、上記の `do-catch` の例を次のように記述できます。
+
+```swift
+let ratings = []
+do {
+    try summarize(ratings)
+} catch {
+    switch error {
+    case .noRatings:
+        print("No ratings available")
+    case .invalidRating(let rating):
+        print("Invalid rating: \(rating)")
+    }
+}
+// Prints "No ratings available"
+```
+
+上記の `do-catch` ブロックでは、スローするエラーの種類を指定していませんが、Swift は `StatisticsError` をスローすると推論します。Swift がスローする型を推論しないようにするためには、`throws(any Error)` と明示的に記述します。
 
 ## クリーンアップアクションの指定\(Specifying Cleanup Actions\)
 
