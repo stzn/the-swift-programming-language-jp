@@ -1,6 +1,6 @@
 # 型\(Types\)
 
-最終更新日: 2024/2/4
+最終更新日: 2024/6/7
 原文: https://docs.swift.org/swift-book/ReferenceManual/Types.html
 
 組み込みの名前付き型と複合型を使用します。
@@ -143,7 +143,24 @@ var operation: (Int, Int) -> Int          // OK
 
 関数型に 1 つ以上の矢印\(`->`\)が含まれている場合、関数型は右から左にグループ化されます。例えば、関数型 `(Int) -> (Int) -> Int` は、`(Int) -> ((Int) -> Int)` で、`Int` を受け取り、別の `Int` を受け取り、`Int` を返す関数を返します。
 
-エラーを_スロー_または_再スロー_する関数型は、`throws` キーワードでマークする必要があります。`throws` キーワードは関数型の一部で、_スローしない_関数はスロー関数のサブタイプです。その結果、スロー関数が使われる場所で、スローしない関数を使用できます。スロー関数や再スロー関数は、[Throwing Functions and Methods\(スロー関数とメソッド\)](../language-reference/declarations.md#throwing-functions-and-methods)、[Rethrowing Functions and Methods\(再スロー関数と再スローメソッド\)](../language-reference/declarations.md#rethrowing-functions-and-methods)で説明されています。
+
+エラーをスローまたは再スローできる関数の関数型には、`throws` キーワードを含める必要があります。関数がスローするエラーの型を指定するには、`throws` の後に括弧で囲んだ型を含めます。スローするエラーの型は、`Error` プロトコルに準拠している必要があります。型を指定せずに `throws` を記述することは、`throws(any Error)` を記述することと同じです。`throws` を省略することは、`throws(Never)` を記述することと同じです。関数がスローするエラーの型は、ジェネリック型、Box プロトコル型、Opaque 型など、`Error` に準拠する任意の型にできます。
+
+関数がスローするエラーの型は、その関数の型の一部であり、エラーの型間のサブタイプ関係は、それに対応する関数型間のサブタイプ関係でもあることを意味します。例えば、独自の `MyError` 型を宣言する場合、一部の関数型間の関係は、スーパータイプからサブタイプまで次のようになります。
+
+1. `any Error` をスローする関数 (`throws(any Error)` とマーク)
+2. 特定のエラーをスローする関数 (`throws(MyError)` とマーク)
+3. エラーをスローしない関数 (`throws(Never)` とマーク)
+
+これらのサブタイプ関係の結果は、次のようになります。
+
+- スローしない関数は、スローする関数と同じ場所で使用できる
+- 具体的なエラーの型をスローする関数は、スローする関数と同じ場所で使用できる
+- より具体的なエラーの型をスローする関数は、より一般的なエラーの型をスローする関数と同じ場所で使用できる
+
+関連型またはジェネリック型パラメータを、関数型でスローされるエラーの型として使用する場合、その関連型またはジェネリック型パラメーターは、暗黙的に `Error` プロトコルに準拠する必要があります。
+
+スロー関数や再スロー関数は、[Throwing Functions and Methods\(スロー関数とメソッド\)](../language-reference/declarations.md#throwing-functions-and-methods)、[Rethrowing Functions and Methods\(再スロー関数と再スローメソッド\)](../language-reference/declarations.md#rethrowing-functions-and-methods)で説明されています。
 
 ### 非エスケープクロージャの制限\(Restrictions for Nonescaping Closures\)
 
@@ -173,7 +190,7 @@ func takesTwoFunctions(first: (() -> Void) -> Void, second: (() -> Void) -> Void
 
 > Grammar of a function type:
 >
-> *function-type* → *attributes*_?_ *function-type-argument-clause* **`async`**_?_ **`throws`**_?_ **`->`** *type*
+> *function-type* → *attributes*_?_ *function-type-argument-clause* **`async`**_?_ *throws-clause*_?_ **`->`** *type*
 >
 > *function-type-argument-clause* → **`(`** **`)`** \
 > *function-type-argument-clause* → **`(`** *function-type-argument-list* **`...`**_?_ **`)`**
@@ -181,6 +198,8 @@ func takesTwoFunctions(first: (() -> Void) -> Void, second: (() -> Void) -> Void
 > *function-type-argument-list* → *function-type-argument* | *function-type-argument* **`,`** *function-type-argument-list* \
 > *function-type-argument* → *attributes*_?_ *parameter-modifier*_?_ *type* | *argument-label* *type-annotation* \
 > *argument-label* → *identifier*
+>
+> *throws-clause* → **`throws`** | **`throws`** **`(`** *type* **`)`**
 
 ## 配列型\(Array Type\)
 
