@@ -1,6 +1,6 @@
 # 字句構造 \(Lexical Structure\)
 
-最終更新日: 2023/8/11  
+最終更新日: 2024/6/10  
 原文: https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html
 
 最低水準の構成要素を使用する。
@@ -112,7 +112,7 @@ _識別子_は、大文字または小文字の `A` から `Z`、アンダース
 > [`line`](https://developer.apple.com/documentation/swift/line()),
 > and [`warning(_:)`](https://developer.apple.com/documentation/swift/warning(_:))。
 
-* 特定のコンテキストで予約されているキーワード: `associativity`、`convenient`、`dynamic`、`didSet`、`final`、`get`、`infix`、`indirect`、`lazy`、`left`、`mutating`、`none`、`nonmutating`、`optional`、`override`、`postfix`、`precedence`、`prefix`、`Protocol`、 `required`、`right`、`set`、`Type`、 `unowned`、 `weak`、 および `willSet`。該当するコンテキスト外では、識別子として使用することができます
+* 特定のコンテキストで予約されているキーワード: `associativity`、`convenient`、`dynamic`、`didSet`、`final`、`get`、`infix`、`indirect`、`lazy`、`left`、`mutating`、`none`、`nonmutating`、`optional`、`override`、`postfix`、`package`、`precedence`、`prefix`、`Protocol`、 `required`、`right`、`set`、`Type`、 `unowned`、 `weak`、 および `willSet`。該当するコンテキスト外では、識別子として使用することができます
 
 次のトークンは句読点として予約されており、カスタム演算子としては使用できません: `(`、 `)`、 `{`、 `}`、 `[`、 `]`、 `.`、 `,`、 `:`、 `;`、 `=`、 `@`、 `#`、 `&`\(前置演算子として\)、`->`、\`、`?`、および `!`\(後置演算子として\)
 
