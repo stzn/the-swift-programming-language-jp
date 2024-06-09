@@ -1,6 +1,6 @@
 # 宣言\(Declarations\)
 
-最終更新日: 2024/6/7  
+最終更新日: 2024/6/10  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Declarations.html
 
 型、演算子、変数、およびその他の名前と構造を紹介する。
@@ -1672,6 +1672,9 @@ Swift は、open、public、internal、file private、private の 5 つのレベ
 - public:  
 この修飾子を宣言に適用すると、同じモジュール内のコードから宣言にアクセスしたり、サブクラス化できることを示します。\`public\` 修飾子でマークされた宣言は、その宣言を含むモジュールをインポートするモジュール内のコードからアクセスできます\(ただし、サブクラス化はできません\)。
 
+- package:  
+この修飾子を宣言に適用すると、その宣言と同じパッケージのコードからのみその宣言にアクセスできます。パッケージは、使用しているビルドシステムで定義するコードを配布する単位です。ビルドシステムがコードをコンパイルするとき、Swift コンパイラに `-package-name` フラグを渡すことで、パッケージ名を指定します。ビルド中にビルドシステムが同じパッケージ名を特定した場合、2 つのモジュールは同じパッケージの一部となります。
+
 - `internal`:  
 この修飾子を宣言に適用すると、同じモジュール内のコードからのみ宣言にアクセスできることを示します。デフォルトでは、ほとんどの宣言は、\`internal\` 修飾子で暗黙的にマークされています。
 
@@ -1696,6 +1699,7 @@ Swift は、open、public、internal、file private、private の 5 つのレベ
 > *access-level-modifier* → **`private`** | **`private`** **`(`** **`set`** **`)`** \
 > *access-level-modifier* → **`fileprivate`** | **`fileprivate`** **`(`** **`set`** **`)`** \
 > *access-level-modifier* → **`internal`** | **`internal`** **`(`** **`set`** **`)`** \
+> *access-level-modifier* → **`package`** | **`package`** **`(`** **`set`** **`)`** \
 > *access-level-modifier* → **`public`** | **`public`** **`(`** **`set`** **`)`** \
 > *access-level-modifier* → **`open`** | **`open`** **`(`** **`set`** **`)`**
 >

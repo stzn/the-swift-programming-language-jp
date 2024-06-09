@@ -330,7 +330,7 @@ frozen 列挙型の switch 文は、[Switching Over Future Enumeration Cases\(�
 
 この属性を関数、メソッド、計算プロパティ、サブスクリプト、convenience イニシャライザ、またはデイニシャライザ宣言に適用すると、モジュールのパブリックインターフェイスの一部としてその宣言の実装を公開します。コンパイラは、inlinable シンボルへの呼び出しを、呼び出し側でシンボルの実装のコピーに置き換えることができます。
 
-inlinable コードは、任意のモジュールで宣言された `public` シンボルとやり取りし、`usableFromInline` 属性がマークされた同じモジュールで宣言された `internal` シンボルとやり取りできます。inline 化したコードは、`private` シンボルまたは fileprivate シンボルとやり取りできません。
+inlinable コードは、任意のモジュールで宣言された `open` と `public` シンボルとやり取りし、`usableFromInline` 属性がマークされた同じモジュールで宣言された `internal` シンボルとやり取りできます。inline 化したコードは、`private` シンボルまたは fileprivate シンボルとやり取りできません。
 
 この属性は、関数内にネストされている宣言や、`fileprivate` または `private` 宣言には適用できません。inlinable 関数内で定義された関数とクロージャは、この属性をマークすることはできませんが、暗黙的に inlinable です。
 

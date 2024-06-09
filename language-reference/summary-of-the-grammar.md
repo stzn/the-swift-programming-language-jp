@@ -1,6 +1,6 @@
 # 文法のまとめ\(Summary of the Grammar\)
 
-最終更新日: 2024/6/7  
+最終更新日: 2024/6/10  
 原文: https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html
 
 ## Lexical Structure\(構文の構造\)
@@ -980,6 +980,7 @@
 > *access-level-modifier* → **`private`** | **`private`** **`(`** **`set`** **`)`** \
 > *access-level-modifier* → **`fileprivate`** | **`fileprivate`** **`(`** **`set`** **`)`** \
 > *access-level-modifier* → **`internal`** | **`internal`** **`(`** **`set`** **`)`** \
+> *access-level-modifier* → **`package`** | **`package`** **`(`** **`set`** **`)`** \
 > *access-level-modifier* → **`public`** | **`public`** **`(`** **`set`** **`)`** \
 > *access-level-modifier* → **`open`** | **`open`** **`(`** **`set`** **`)`**
 >
