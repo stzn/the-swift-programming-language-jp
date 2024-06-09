@@ -1,6 +1,6 @@
 # 属性\(Attributes\)
 
-最終更新日: 2024/2/25  
+最終更新日: 2024/6/10  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Attributes.html
 
 宣言と型に情報を追加する。
@@ -433,6 +433,34 @@ class ExampleClass: NSObject {
 この属性をクラス宣言に適用すると、クラスの全ての Objective-C に互換性のあるメンバ、その extension、そのサブクラス、およびそのサブクラスの全ての extension に `objc` 属性を暗黙的に追加します。
 
 ほとんどのコードでは、代わりに `objc` 属性を使用して、必要な宣言のみを公開する必要があります。多くの宣言を公開する必要がある場合は、`objc` 属性を持つ extension でグループ化できます。`objcMembers` 属性は、Objective-C ランタイムのリフレクション機能を多用するライブラリにとって便利です。必要のないときに `objc` 属性を適用すると、バイナリサイズが大きくなり、パフォーマンスに悪影響を与える可能性があります。
+
+### preconcurrency
+
+この属性を宣言に適用すると、Strict Concurrency チェックを抑制できます。この属性は、以下の種類の宣言に適用できます:
+
+- インポート
+- 構造体、クラス、アクター
+- 列挙型および列挙型のケース
+- プロトコル
+- 変数および定数
+- subscript
+- イニシャライザ
+- 関数
+
+`import` 宣言で、この属性は、インポートされたモジュールの型を使用するコードの Strict Concurrency チェックを軽減します。具体的には、インポートされたモジュールから明示的に non-`Sendable` とマークされていない型は、`Sendable` な型を必要とするコンテキストで使用できます。
+
+その他の宣言では、この属性は、宣言されたシンボルを使用するコードの Concurrency チェックの厳密性を下げます。最小限(minimal)の Strict Concurrency チェックを行うスコープでこのシンボルを使用する場合、`Sendable` 要件やグローバルアクターなど、そのシンボルで指定された Concurrency 関連の制約はチェックされません。
+
+この属性を次のように使用すると、Strict Concurrency チェックへのコードの移行に役立ちます:
+
+1. Strict Concurrency チェックを有効にする
+2. Strict Concurrency チェックを有効にしていないモジュールの `import` 宣言に `@preconcurrency` 属性を付ける
+3. モジュールを Strict Concurrency チェックに移行した後、`@preconcurrency` 属性を削除する。コンパイラは、`import` 宣言の `@preconcurrency` 属性が、もはや何の効果も持たないため、削除すべき場所を警告する
+
+その他の宣言では、Strict Concurrency チェックに移行していないクライアントがまだある場合、Concurrency 関連の制約を宣言に追加するときに `@preconcurrency` 属性を追加してください。そして、すべてのクライアントが移行したら、`@preconcurrency` 属性を削除してください。
+
+Objective-C からの宣言は、常に `@preconcurrency` 属性でマークされたものとしてインポートされます。
+
 
 ### propertyWrapper
 
