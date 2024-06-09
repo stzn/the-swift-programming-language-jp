@@ -1,6 +1,6 @@
 # エラー処理\(Error Handling\)
 
-最終更新日: 2024/6/7
+最終更新日: 2024/6/9
 原文: https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html
 
 エラーに対応し、エラーから回復する。
@@ -320,7 +320,7 @@ func nonThrowingFunction() throws(Never) {
 }
 ```
 
-`Never` 型をスローするの値は作成できないため、この関数はスローできません。
+`Never` 型をスローする値は作成できないため、この関数はスローできません。
 
 関数のエラーの型を指定するだけでなく、`do-catch` 文に特定のエラーの型を記述することもできます。例えば:
 
