@@ -1,11 +1,19 @@
 # ドキュメント改訂履歴\(Document Revision History\)
 
-最終更新日: 2024/2/25  
+最終更新日: 2024/6/11  
 原文: https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html
 
 本書に対する最近の変更点を確認する。
 
-## 2024-02-13
+## 2024-06-10
+
+- Swift6 に更新しました
+- [属性のpreconcurrency](../language-reference/attributes.md#preconcurrency) セクションに、Strict Concurrency チェックへの移行に関する情報を追加しました
+- [エラーハンドリングのエラーの型の特定](../language-guide/error-handling.md#エラーの型の特定specifying-the-error-type) セクションに、特定の型のエラーをスローことについての情報を追加しました
+- [アクセスコントロール](../language-guide/access-control.md) の章に package レベルのアクセスに関する情報を追加しました
+
+
+## 2024-03-05
 
 - Swift5.10 に更新しました
 - ネストされたプロトコルの情報を[委譲\(Delegation\)](../language-guide/protocols.md#delegation)セクションに追加しました
