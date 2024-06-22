@@ -1,6 +1,6 @@
 # 文\(Statements\)
 
-最終更新日: 2024/6/7  
+最終更新日: 2024/6/23  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Statements.html
 
 式を分類し、実行の流れを制御する。
@@ -635,7 +635,7 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 > *platform-condition* → **`canImport`** **`(`** *import-path* **`)`** \
 > *platform-condition* → **`targetEnvironment`** **`(`** *environment* **`)`**
 >
-> *operating-system* → **`macOS`** | **`iOS`** | **`watchOS`** | **`tvOS`** | **`Linux`** | **`Windows`** \
+> *operating-system* → **`macOS`** | **`iOS`** | **`watchOS`** | **`tvOS`** | **`visionOS`** | **`Linux`** | **`Windows`** \
 > *architecture* → **`i386`** | **`x86_64`** | **`arm`** | **`arm64`** \
 > *swift-version* → *decimal-digits* *swift-version-continuation*_?_ \
 > *swift-version-continuation* → **`.`** *decimal-digits* *swift-version-continuation*_?_ \
@@ -683,7 +683,7 @@ if #available(<#platform name#> <#version#>, <#...#>, *) {
 
 使用する API が実行時に使用可能かどうかに応じて、Availability 条件を使用してコードのブロックを実行します。コンパイラは、そのコード・ブロック内の API が使用可能かどうかを確認するときに、Availability 条件からの情報を使用します。
 
-availability 条件は、プラットフォーム名とバージョンのカンマ区切りのリストを受け取ります。プラットフォーム名には `iOS`、`macOS`、`watchOS`、`tvOS` を使用し、対応するバージョン番号を含めます。`*` 引数は必須で、他のプラットフォームでは、Availability 条件によって保護されたコードブロックの本文が、ターゲットで指定された最小のデプロイターゲットで実行されることを指定します。
+availability 条件は、プラットフォーム名とバージョンのカンマ区切りのリストを受け取ります。プラットフォーム名には `iOS`、`macOS`、`watchOS`、`tvOS`、`visionOS` を使用し、対応するバージョン番号を含めます。`*` 引数は必須で、他のプラットフォームでは、Availability 条件によって保護されたコードブロックの本文が、ターゲットで指定された最小のデプロイターゲットで実行されることを指定します。
 
 ブール条件とは異なり、`&&` や `||` などの論理演算子を使用して Availability 条件を組み合わせることはできません。  
 Availability 条件を否定するためには、`!` を使用する代わりに、Unavailability 条件を使用します。次のような形式です:
