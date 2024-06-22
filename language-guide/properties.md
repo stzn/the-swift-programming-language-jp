@@ -1,6 +1,6 @@
 # プロパティ\(Properties\)
 
-最終更新日: 2023/11/3 
+最終更新日: 2024/6/23 
 原文: https://docs.swift.org/swift-book/LanguageGuide/Properties.html
 
 インスタンスまたは型の一部である、格納および計算された値にアクセスする。
@@ -307,7 +307,7 @@ struct TwelveOrLess {
 set は新しい値が `12` 未満だと確認し、get は格納された値を返します。
 
 > NOTE  
-> 上記の例の `number` の宣言は、変数を `private` としてマークします。これにより、`number` は `TwelveOrLess` の実装でのみ使用されます。それ以外の場所に記述されたコードは、`wrappedValue` のプロパティの get/set を通して値にアクセスし、数値を直接使用することはできません。`private` については、[Access Control\(アクセスコントロール\)](access-control.md)を参照ください。
+> 上記の例の `number` の宣言は、変数を `private` としてマークします。これにより、`number` は `TwelveOrLess` の実装でのみ使用されます。それ以外の場所に記述されたコードは、`wrappedValue` のプロパティの get/set を通して値にアクセスし、数値を直接使用することはできません。`private` については、[Access Control\(アクセス制御\)](access-control.md)を参照ください。
 
 プロパティラッパを適用するには、属性としてプロパティの前にラッパの名前を記述します。`TwelveOrLess` プロパティラッパを使用して、大きさが常に `12` 以下になるようにする四角形を格納する構造体を次に示します。
 

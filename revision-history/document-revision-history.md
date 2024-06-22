@@ -1,6 +1,6 @@
 # ドキュメント改訂履歴\(Document Revision History\)
 
-最終更新日: 2024/6/11  
+最終更新日: 2024/6/23  
 原文: https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html
 
 本書に対する最近の変更点を確認する。
@@ -10,7 +10,7 @@
 - Swift6 に更新しました
 - [属性のpreconcurrency](../language-reference/attributes.md#preconcurrency) セクションに、Strict Concurrency チェックへの移行に関する情報を追加しました
 - [エラーハンドリングのエラーの型の特定](../language-guide/error-handling.md#エラーの型の特定specifying-the-error-type) セクションに、特定の型のエラーをスローことについての情報を追加しました
-- [アクセスコントロール](../language-guide/access-control.md) の章に package レベルのアクセスに関する情報を追加しました
+- [アクセス制御](../language-guide/access-control.md) の章に package レベルのアクセスに関する情報を追加しました
 
 
 ## 2024-03-05
@@ -183,7 +183,7 @@
 * Swift 3.0 に更新しました
 * [関数\(Functions\)](../language-guide/functions.md)の章と[関数宣言\(Function Declaration\)](../language-reference/declarations.md#function-declaration)セクションの関数の説明を、デフォルトで全てのパラメータが引数ラベルを持つように更新しました
 * [高度な演算子\(Advanced Operators\)](../language-guide/advanced-operators.md)の章の演算子の説明を更新しました。これらの演算子をグローバル関数としてはなく型メソッドとして実装できるようになりました
-* [アクセスコントロール\(Access Control\)](../language-guide/access-control.md)の章に、`open` と `filePrivate` アクセスレベル修飾子についての情報を追加しました
+* [アクセス制御\(Access Control\)](../language-guide/access-control.md)の章に、`open` と `filePrivate` アクセスレベル修飾子についての情報を追加しました
 * [関数宣言\(Function Declaration\)](../language-reference/declarations.md#function-declaration)セクションの `inout` の説明を、パラメータ名の前ではなくパラメータの型の前に使用するように更新しました
 * [エスケープクロージャ\(Escaping Closures\)](../language-guide/closures.md#escaping-closures)と[自動クロージャ\(AutoClosures\)](../language-guide/closures.md#autoclosures)セクションと、[属性\(Attributes\)](../language-reference/attributes.md)の章の説明で、`@noescape` および `@autoclosures` 属性を宣言属性から型属性へ更新しました
 * [高度な演算子\(Advanced Operators\)](../language-guide/advanced-operators.md)の章の[Precedence for Custom Infix Operators\(カスタム中置演算子の優先順位\)](../language-guide/advanced-operators.md#precedence-for-custom-infix-operators)セクションと、[宣言\(Declaration\)](../language-reference/declarations.md)の章の[優先順位グループ宣言\(Precedence Group Declaration\)](../language-guide/advanced-operators.md#precedence-for-custom-infix-operators)セクションに、演算子の優先順位グループについての情報を追加しました
@@ -253,7 +253,7 @@
 * [制御フロー\(Control Flow\)](../language-guide/control-flow.md)の章の[API アベイラビリティチェック\(Checking API Availability\)](../language-guide/control-flow.md#checking-api-availability)セクションと、[文\(Statements\)](../language-reference/statements.md)の章の[Availability Condition\(アベイラビリティ条件\)](../language-reference/statements.md#availability-condition)セクションに、API アベイラビリティチェックについての情報を追加しました
 * [制御フロー\(Control Flow\)](../language-guide/control-flow.md)の章の[Early Exit\(早期リターン\)](../language-guide/control-flow.md#early-exit)と、[文\(Statements\)](../language-reference/statements.md)の章の[Guard 文\(Guard Statement\)](../language-reference/statements.md#guard-statement)セクションに、新しい `guard` 文についての情報を追加しました
 * [プロトコル\(Protocols\)](../language-guide/protocols.md)の章の[プロトコル Extension\(Protocol Extensions\)](../language-guide/protocols.md#protocol-extensions)についての情報を追加しました
-* [アクセスコントロール\(Access Control\)](../language-guide/access-control.md)の章の[単体テストターゲットのアクセスレベル\(Access Levels for Unit Test Targets\)](../language-guide/access-control.md#access-levels-for-unit-test-targets)セクションに、単体テストでのアクセス制御についての情報を追加しました
+* [アクセス制御\(Access Control\)](../language-guide/access-control.md)の章の[単体テストターゲットのアクセスレベル\(Access Levels for Unit Test Targets\)](../language-guide/access-control.md#access-levels-for-unit-test-targets)セクションに、単体テストでのアクセス制御についての情報を追加しました
 * [パターン\(Patterns\)](../language-reference/patterns.md)の章の[オプショナルパターン\(Optional Pattern\)](../language-reference/patterns.md#optional-pattern)セクションに、新しいオプショナルパターンについての情報を追加しました
 * [Repeat-While](../language-guide/control-flow.md#repeat-while)セクションを更新し、`repeat-while` ループについての情報を追加しました
 * [文字列と文字\(Strings and Characters\)](../language-guide/strings-and-characters.md)の章を更新しました。`String` は Swift 標準ライブラリの `CollectionType` プロトコルに準拠しなくなりました
@@ -345,7 +345,7 @@
 * [宣言修飾子\(Declaration Modifiers\)](../language-reference/declarations.md#declaration-modifiers)に、`dynamic` 修飾子についての情報を追加しました
 * 型推論が[リテラル\(Literals\)](../language-reference/lexical-structure.md#literals)で動作する方法についての情報を追加しました
 * カリー関数のより詳しい情報を追加しました
-* [アクセスコントロール\(Access Control\)](../language-guide/access-control.md)についての新しい章を追加しました
+* [アクセス制御\(Access Control\)](../language-guide/access-control.md)についての新しい章を追加しました
 * [文字列と文字\(Strings and Characters\)](../language-guide/strings-and-characters.md)の章を更新し、Swift の `Character` 型が単一の Unicode 拡張書記素クラスタを表すことを反映しました。[拡張書記素クラスタ\(Extended Grapheme Clusters\)](../language-guide/strings-and-characters.md#extended-grapheme-clusters)上の新しいセクションと、[Unicode Scalar Values\(Unicode スカラ値\)](../language-guide/strings-and-characters.md#unicode-scalar-values)と[文字列の比較\(Comparing Strings\)](../language-guide/strings-and-characters.md#comparing-strings)についての詳しい情報も含まれています
 * [文字列リテラル\(String Literals\)](../language-guide/strings-and-characters.md#strings-and-characters-string-literals)セクションを更新し、文字列内の Unicode スカラを `\u{n}`\(n には 0 から 10FFFF の間の 16 進数が入る\)で書けることを記載しました
 * `NSString` の `length` プロパティは、`utf16count` ではなく、Swift のネイティブの `String` 型の `utf16count` にマッピングされるようになりました
