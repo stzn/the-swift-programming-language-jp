@@ -1,6 +1,6 @@
 # 宣言\(Declarations\)
 
-最終更新日: 2024/6/10  
+最終更新日: 2024/6/23  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Declarations.html
 
 型、演算子、変数、およびその他の名前と構造を紹介する。
@@ -1664,8 +1664,6 @@ _宣言修飾子_は、宣言の動作または意味を変更するキーワー
 
 Swift は、open、public、internal、file private、private の 5 つのレベルのアクセス制御を提供します。下記のアクセスレベル修飾子のいずれかで宣言をマークして、宣言のアクセスレベルを指定できます。アクセス制御については、[Access Control\(アクセスコントロール\)](../language-guide/access-control.md)で詳しく説明しています。
 
-## <a id="access-control-levels">アクセス制御レベル\(Access Control Levels\)</a>
-
 - `open`:  
 この修飾子を宣言に適用すると、同じモジュール内のコードから宣言にアクセスしたり、サブクラス化できることを示します。\`open\` 修飾子でマークされた宣言は、その宣言を含むモジュールをインポートしたモジュール内のコードからアクセスおよびサブクラス化することもできます。
 
@@ -1684,7 +1682,11 @@ Swift は、open、public、internal、file private、private の 5 つのレベ
 - `private`:  
 この修飾子を宣言に適用すると、宣言で囲んだスコープ内のコードからのみ宣言にアクセスできることを示します。
 
-アクセス制御の目的で、同じファイル内にある同じ型の extension は、アクセス制御スコープを共有します。その型を拡張する型も同じファイル内にある場合、同様にその型のアクセス制御スコープを共有します。型の宣言で宣言されたプライベートメンバは extension からもアクセスでき、1 つの extension で宣言されたプライベートメンバは、他の extension および型の宣言からもアクセスできます。
+アクセス制御に対して、extension は次のように振る舞います:
+
+- 同じファイルに複数の extension があり、それらの extension がすべて同じ型を拡張している場合、それらの extension はすべて、同じアクセス制御スコープを持つ。extension と拡張する型は別のファイルにある場合もある
+- extension が拡張した型と同じファイルにある場合、extension は、拡張した型と同じアクセス制御スコープを持つ
+- 型の宣言で宣言された `private` メンバは、その型の extension からアクセスできる。ある extension で宣言された `private` メンバは、他の extension や拡張した型の宣言からアクセスできる
 
 上記の各アクセスレベル修飾子は、任意で 1 つの引数、括弧で囲まれた `set` キーワード\(例えば、`private(set)`\)を受け入れます。[Getters and Setters\(get と set\)](../language-guide/access-control.md#getters-and-setters)で説明されているように、変数またはサブスクリプト自体のアクセスレベル以下のアクセスレベルを変数またはサブスクリプトの set に指定する場合は、この形式のアクセスレベル修飾子を使用します。
 
