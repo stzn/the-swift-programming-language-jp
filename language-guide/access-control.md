@@ -1,6 +1,6 @@
 # アクセスコントロール\(Access Control\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2024/6/23  
 原文: https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html
 
 宣言、ファイル、モジュールのコードの可視性を管理する。
@@ -107,14 +107,14 @@ let someInternalConstant = 0  // 暗黙的に internal
 > public 型のメンバは、デフォルトで public ではなく、internal のアクセスレベルが設定されます。メンバを public にする場合は、明示的にそのようにマークする必要があります。これにより、型の API を選択的に公開することができ、型の内部動作を誤って API として公開することを回避できます。
 
 ```swift
-public class SomePublicClass {                  // 明示的な public クラス
+public class SomePublicClass {                   // 明示的な public クラス
     public var somePublicProperty = 0            // 明示的な public クラス メンバ
     var someInternalProperty = 0                 // 暗黙的な internal クラス メンバ
     fileprivate func someFilePrivateMethod() {}  // 明示的な file-private クラス メンバ
     private func somePrivateMethod() {}          // 明示的な private クラス メンバ
 }
 
-class SomeInternalClass {                       // 暗黙的な internal クラス
+class SomeInternalClass {                        // 暗黙的な internal クラス
     var someInternalProperty = 0                 // 暗黙的な internal クラスメンバ
     fileprivate func someFilePrivateMethod() {}  // 明示的な file-private クラスメンバ
     private func somePrivateMethod() {}          // 明示的な private クラスメンバ
