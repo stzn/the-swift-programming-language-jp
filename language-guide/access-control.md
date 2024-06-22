@@ -1,4 +1,4 @@
-# アクセスコントロール\(Access Control\)
+# アクセス制御\(Access Control\)
 
 最終更新日: 2024/6/23  
 原文: https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html

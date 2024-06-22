@@ -1662,7 +1662,7 @@ _宣言修飾子_は、宣言の動作または意味を変更するキーワー
 
 ## <a id="access-control-levels">Access Control Levels\(アクセス制御レベル\)</a>
 
-Swift は、open、public、internal、file private、private の 5 つのレベルのアクセス制御を提供します。下記のアクセスレベル修飾子のいずれかで宣言をマークして、宣言のアクセスレベルを指定できます。アクセス制御については、[Access Control\(アクセスコントロール\)](../language-guide/access-control.md)で詳しく説明しています。
+Swift は、open、public、internal、file private、private の 5 つのレベルのアクセス制御を提供します。下記のアクセスレベル修飾子のいずれかで宣言をマークして、宣言のアクセスレベルを指定できます。アクセス制御については、[Access Control\(アクセス制御\)](../language-guide/access-control.md)で詳しく説明しています。
 
 - `open`:  
 この修飾子を宣言に適用すると、同じモジュール内のコードから宣言にアクセスしたり、サブクラス化できることを示します。\`open\` 修飾子でマークされた宣言は、その宣言を含むモジュールをインポートしたモジュール内のコードからアクセスおよびサブクラス化することもできます。

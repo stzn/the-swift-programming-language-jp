@@ -37,7 +37,7 @@
 * [Opaque 型とBox プロトコル型\(Opaque Types and Boxed Types\)](language-guide/opaque-types.md)
 * [自動参照カウント ARC\(Automatic Reference Counting\)](language-guide/automatic-reference-counting.md)
 * [メモリ安全性\(Memory Safety\)](language-guide/memory-safety.md)
-* [アクセスコントロール\(Access Control\)](language-guide/access-control.md)
+* [アクセス制御\(Access Control\)](language-guide/access-control.md)
 * [高度な演算子\(Advanced Operators\)](language-guide/advanced-operators.md)
 
 ## 言語リファレンス\(LANGUAGE REFERENCE\) <a id="language-reference"></a>
