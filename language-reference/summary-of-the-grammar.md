@@ -1,6 +1,6 @@
 # 文法のまとめ\(Summary of the Grammar\)
 
-最終更新日: 2024/6/10  
+最終更新日: 2024/6/23  
 原文: https://docs.swift.org/swift-book/ReferenceManual/zzSummaryOfTheGrammar.html
 
 ## Lexical Structure\(構文の構造\)
@@ -682,7 +682,7 @@
 > *platform-condition* → **`canImport`** **`(`** *import-path* **`)`** \
 > *platform-condition* → **`targetEnvironment`** **`(`** *environment* **`)`**
 >
-> *operating-system* → **`macOS`** | **`iOS`** | **`watchOS`** | **`tvOS`** | **`Linux`** | **`Windows`** \
+> *operating-system* → **`macOS`** | **`iOS`** | **`watchOS`** | **`tvOS`** | **`visionOS`** | **`Linux`** | **`Windows`** \
 > *architecture* → **`i386`** | **`x86_64`** | **`arm`** | **`arm64`** \
 > *swift-version* → *decimal-digits* *swift-version-continuation*_?_ \
 > *swift-version-continuation* → **`.`** *decimal-digits* *swift-version-continuation*_?_ \

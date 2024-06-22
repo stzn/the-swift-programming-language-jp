@@ -1,6 +1,6 @@
 # 制御フロー\(Control Flow\)
 
-最終更新日: 2023/10/28  
+最終更新日: 2024/6/23  
 原文: https://docs.swift.org/swift-book/LanguageGuide/ControlFlow.html
 
 分岐、ループ、および早期終了を使ってコードを構造化する。
@@ -893,7 +893,7 @@ if #available(iOS 10, macOS 10.12, *) {
 
 上記のアベイラビリティ条件は、iOS では、`if` 文が `iOS10` 以降でのみ実行されることを指定しています。`macOS` では、`macOS10.12` 以降のみになります。最後の引数 `*` は必須で、他のプラットフォームでは、`if` の本文がターゲットで指定された最小のデプロイメントターゲットで実行されることを示します。
 
-基本的な形式として、アベイラビリティ条件はプラットフォームの名前とバージョンのリストを受け取ります。`iOS`、`macOS`、`watchOS`、`tvOS` などをプラットフォームの名前として使います。全リストは[宣言属性\(Declaration Attributes\)](../language-reference/attributes.md)を参照ください。`iOS 8` や `macOS 10.10` のようなメジャーバージョンに加え、`iOS 11.2.6` や `macOS 10.13.3` のようにマイナーバージョンも指定できます。
+基本的な形式として、アベイラビリティ条件はプラットフォームの名前とバージョンのリストを受け取ります。`iOS`、`macOS`、`watchOS`、`tvOS`、`visionOS` などをプラットフォームの名前として使います。全リストは[宣言属性\(Declaration Attributes\)](../language-reference/attributes.md)を参照ください。`iOS 8` や `macOS 10.10` のようなメジャーバージョンに加え、`iOS 11.2.6` や `macOS 10.13.3` のようにマイナーバージョンも指定できます。
 
 ```swift
 if #available(<#platform name#> <#version#>, <#...#>, *) {
