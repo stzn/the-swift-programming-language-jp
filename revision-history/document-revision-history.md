@@ -1,6 +1,6 @@
 # ドキュメント改訂履歴\(Document Revision History\)
 
-最終更新日: 2024/6/23  
+最終更新日: 2024/6/26  
 原文: https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html
 
 本書に対する最近の変更点を確認する。
@@ -24,7 +24,7 @@
 - Swift 5.9.2 に更新しました
 - [](../language-reference/declarations.md#parameter-modifiers修飾子)セクションに `borrowing` と `consuming` 修飾子に関する情報を追加しました
 - [定数と変数\(Constants and Variables\)](../language-guide/the-basics.md#declaring-constants-and-variables)に、宣言後の定数の値の設定に関する情報を追加しました
-- タスク、タスクグループ、タスクキャンセルに関する情報を[同時並行処理\(Concurrency\)](../language-guide/concurrency.md)の章に追加しました
+- タスク、タスクグループ、タスクキャンセルに関する情報を[並行処理\(Concurrency\)](../language-guide/concurrency.md)の章に追加しました
 - [マクロ\(Macros\)](../language-guide/macros.md)の章に、既存の Swift パッケージでマクロを実装する方法ついての情報を追加しました
 - extension マクロが conformance マクロに置換されたので、[付属型マクロ\(Attached Macros\)](../language-guide/macros.md#付属型マクロ)のセクションを更新しました
 - バックデプロイに関する情報を[backDeployed](../language-reference/attributes.md#backdeployed)セクションに追加しました
@@ -62,7 +62,7 @@
 ## 2021-09-20
 
 * Swift 5.5 に更新しました
-* 非同期関数、Task、およびアクターについての情報を[同時並行処理\(Concurrency\)](../language-guide/concurrency.md)の章、および[アクター宣言\(Actor Declaration\)](../language-reference/declarations.md#actor-declaration)、[非同期関数と非同期メソッド\(Asynchronous Functions and Methods\)](../language-reference/declarations.md#asynchronous-functions-and-asynchronous-methods)、および[Await 演算子\(Await Operator\)](../language-reference/expressions.md#await-operator)セクションに追加しました
+* 非同期関数、Task、およびアクターについての情報を[並行処理\(Concurrency\)](../language-guide/concurrency.md)の章、および[アクター宣言\(Actor Declaration\)](../language-reference/declarations.md#actor-declaration)、[非同期関数と非同期メソッド\(Asynchronous Functions and Methods\)](../language-reference/declarations.md#asynchronous-functions-and-asynchronous-methods)、および[Await 演算子\(Await Operator\)](../language-reference/expressions.md#await-operator)セクションに追加しました
 * [識別子\(Identifiers\)](../language-reference/lexical-structure.md#identifiers)セクションに、アンダースコアで始まる識別子についての情報を追加しました
 
 ## 2021-04-26

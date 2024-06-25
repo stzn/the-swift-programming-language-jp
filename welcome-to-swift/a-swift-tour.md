@@ -1,6 +1,6 @@
 # Swiftツアー\(A Swift Tour\)
 
-最終更新日: 2023/12/29
+最終更新日: 2024/6/26
 原文: https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html
 
 Swift の特徴とシンタックスを探る。
@@ -634,7 +634,7 @@ let threeOfSpadesDescription = threeOfSpades.simpleDescription()
 > Experiment
 > 全種\(ランクとスートの全組み合わせ\)のカードからなる配列を返すメソッドを書いてみよう。
 
-## 同時並行処理\(Concurrency\)
+## 並行処理\(Concurrency\)
 
 `async` を使うことで非同期に実行される関数を定義できます。
 
@@ -679,7 +679,7 @@ Task {
 // Hello Guest, user ID 97
 ```
 
-同時並行コードを構造化するために、タスクグループ\(_task group_\)を使います。
+並行コードを構造化するために、タスクグループ\(_task group_\)を使います。
 
 ```swift
 let userIDs = await withTaskGroup(of: Int.self) { group in
