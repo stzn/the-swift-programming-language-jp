@@ -1,6 +1,6 @@
 # 構造体とクラス\(Structures and Classes\)
 
-最終更新日: 2023/12/29  
+最終更新日: 2024/6/26  
 原文: https://docs.swift.org/swift-book/LanguageGuide/ClassesAndStructures.html
 
 データをカプセル化する独自のデータ型をモデル化する。
@@ -37,7 +37,7 @@ Swift の構造体とクラスには多くの共通点があります。いず�
 クラスは追加の機能をサポートしている分、複雑さが増します。一般的なガイドラインとして、構造体の方が扱いやすく推奨されます。クラスは適切または必要な場合にのみ使用してください。つまり、実際は、独自に定義する型のほとんどが構造体と列挙型になることを意味します。より詳細な比較は[Choosing Between Structures and Classes](https://developer.apple.com/documentation/swift/choosing_between_structures_and_classes)を参照ください。
 
 > NOTE  
-> クラスとアクターは多くの共通の特徴や振る舞いを持ちます。アクターについては、[同時並行処理\(Concurrency\)](./concurrency.md)を参照ください。
+> クラスとアクターは多くの共通の特徴や振る舞いを持ちます。アクターについては、[並行処理\(Concurrency\)](./concurrency.md)を参照ください。
 
 ### 定義構文\(Definition Syntax\)
 
