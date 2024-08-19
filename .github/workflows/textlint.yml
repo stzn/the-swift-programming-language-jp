@@ -1,0 +1,25 @@
+name: textlint
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/textlint.yml
+      - .textlintrc
+      - './**/*.md'
+
+jobs:
+  textlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: run textlint
+        id: run-textlint
+        run: |
+          echo "TEXTLINT_OUTPUT=$(./node_modules/.bin/textlint './**/*.md' -f json || true)" >> $GITHUB_OUTPUT
+
+      - uses: yutailang0119/action-textlint@v4
+        with:
+          textlint-output: ${{ steps.run-textlint.outputs.TEXTLINT_OUTPUT }}
+        continue-on-error: false
