@@ -25,7 +25,7 @@ jobs:
       - name: run textlint
         id: run-textlint
         run: |
-          echo "textlint-output=$(./node_modules/.bin/textlint './**/*.md' -f json || true)" >> $GITHUB_OUTPUT
+          echo "textlint-output=$(yarn --silent textlint './**/*.md' -f json)" >> $GITHUB_OUTPUT
 
       - uses: yutailang0119/action-textlint@v4
         with:
