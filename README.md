@@ -129,12 +129,21 @@
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/yutailang0119">
+                    <img src="https://avatars.githubusercontent.com/u/9477376?v=4" width="100;" alt="yutailang0119"/>
+                    <br />
+                    <sub><b>Yutaro Muta</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/jollyjoester">
                     <img src="https://avatars.githubusercontent.com/u/2178775?v=4" width="100;" alt="jollyjoester"/>
                     <br />
                     <sub><b>Hideyuki Nanashima</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/uhooi">
                     <img src="https://avatars.githubusercontent.com/u/21194714?v=4" width="100;" alt="uhooi"/>
@@ -142,8 +151,6 @@
                     <sub><b>Uhooi</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/enomoto">
                     <img src="https://avatars.githubusercontent.com/u/1823075?v=4" width="100;" alt="enomoto"/>
@@ -179,6 +186,8 @@
                     <sub><b>GitBook Bot</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/hira22">
                     <img src="https://avatars.githubusercontent.com/u/31942637?v=4" width="100;" alt="hira22"/>
@@ -186,8 +195,6 @@
                     <sub><b>Hiraoka</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/b1ackturtle">
                     <img src="https://avatars.githubusercontent.com/u/13419249?v=4" width="100;" alt="b1ackturtle"/>
