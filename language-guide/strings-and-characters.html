@@ -749,107 +749,107 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="文字と文字列strings-and-characters">文字と文字列(Strings and Characters)</h1>
-<p>最終更新日: 2023/8/18<br>原文: <a href="https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html" target="_blank">https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html</a></p>
+                                <html><head></head><body><h1 id="文字と文字列strings-and-characters">文字と文字列(Strings and Characters)</h1>
+<p>最終更新日: 2023/8/18<br></br>原文: <a href="https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html" target="_blank">https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html</a></p>
 <p>テキストを保存して操作する。</p>
-<p><em>文字列</em> は <code>&quot;hello, world&quot;</code> や <code>&quot;albatross&quot;</code> のような一連の文字です。Swift の文字列は <code>String</code> 型で表されます。<code>String</code> の内容には、様々な方法でアクセスすることができます(<code>Character</code> 型の値のコレクションとしてなど)。</p>
+<p><em>文字列</em> は <code>"hello, world"</code> や <code>"albatross"</code> のような一連の文字です。Swift の文字列は <code>String</code> 型で表されます。<code>String</code> の内容には、様々な方法でアクセスすることができます(<code>Character</code> 型の値のコレクションとしてなど)。</p>
 <p>Swift の <code>String</code> と <code>Character</code> 型は、高速で、Unicode に準拠した方法でテキストを扱うことができます。文字列の生成と操作の構文は、C 言語に似た文字列リテラルの構文を使い、軽量で読みやすくなっています。文字列の連結は、<code>+</code> 演算子を使用して 2 つの文字列の連結をするシンプルなものです。また、文字列が変更が可能かどうかは、他の型と同じように定数か変数かを選択することで管理できます。また、文字列補間と呼ばれるプロセスの中で、定数、変数、リテラルや式をより長い文字列の中に入れることができます。こういった特徴から、表示用、ストレージ用、出力用などにカスタム文字列も簡単に作ることができます。</p>
 <p>このようなシンプルな構文にもかかわらず、Swift の <code>String</code> 型は、高速で、モダンな実装になっています。それぞれの文字は、特定の変換形式とは独立した Unicode 文字群で構成され、様々な Unicode 形式でアクセスできるようになっています。</p>
 <blockquote>
-<p>NOTE<br>Swift の <code>String</code> 型は、Foundation の <code>NSString</code> クラスとスムーズにやりとりできるようにしています。同様に、Foundation でも <code>NSString</code> で定義されたメソッドを使用できるようにするために、<code>String</code> を拡張しています。つまり、Foundation をインポートすると、キャストなしで <code>NSString</code> のメソッドに <code>String</code> からアクセスできます。 Foundation と Cocoa を使った <code>String</code> の使用方法に関しては、<a href="https://developer.apple.com/documentation/swift/string#2919514" target="_blank">Bridging Between String and NSString</a>を参照ください</p>
+<p>NOTE<br></br>Swift の <code>String</code> 型は、Foundation の <code>NSString</code> クラスとスムーズにやりとりできるようにしています。同様に、Foundation でも <code>NSString</code> で定義されたメソッドを使用できるようにするために、<code>String</code> を拡張しています。つまり、Foundation をインポートすると、キャストなしで <code>NSString</code> のメソッドに <code>String</code> からアクセスできます。 Foundation と Cocoa を使った <code>String</code> の使用方法に関しては、<a href="https://developer.apple.com/documentation/swift/string#2919514" target="_blank">Bridging Between String and NSString</a>を参照ください</p>
 </blockquote>
 <h2 id="文字列リテラルstring-literals"><a id="strings-and-characters-string-literals">文字列リテラル(String Literals)</a></h2>
-<p>事前に定義された <code>String</code> を <em>文字列リテラル</em> として使用することができます。文字列リテラルはダブルクォーテーション(<code>&quot;</code>)で囲まれた一連の文字です。</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> someString <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;Some string literal value&quot;</span></span>
+<p>事前に定義された <code>String</code> を <em>文字列リテラル</em> として使用することができます。文字列リテラルはダブルクォーテーション(<code>"</code>)で囲まれた一連の文字です。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> someString <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Some string literal value"</span></span>
 </code></pre>
 <p><code>someString</code> は文字列リテラルで初期化されているので、<code>String</code> 型と推論されていることに注目してください。</p>
 <h3 id="複数行文字列リテラルmultiline-string-literals">複数行文字列リテラル(Multiline String Literals)</h3>
-<p>複数行に渡った文字列が必要な場合、複数行文字列リテラルを使いましょう。一連の文字を 3 つのダブルクォーテーション(<code>&quot;</code>)で囲みます。</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> quotation <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;&quot;&quot;
-The White Rabbit put on his spectacles.  &quot;Where shall I begin,
-please your Majesty?&quot; he asked.
+<p>複数行に渡った文字列が必要な場合、複数行文字列リテラルを使いましょう。一連の文字を 3 つのダブルクォーテーション(<code>"</code>)で囲みます。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> quotation <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"""
+The White Rabbit put on his spectacles.  "Where shall I begin,
+please your Majesty?" he asked.
 
-&quot;Begin at the beginning,&quot; the King said gravely, &quot;and go on
-till you come to the end; then stop.&quot;
-&quot;&quot;&quot;</span></span>
+"Begin at the beginning," the King said gravely, "and go on
+till you come to the end; then stop."
+"""</span></span>
 </code></pre>
 <p>複数行文字列リテラルは、全てを開始と終了のクォーテーションマークの間に含めます。文字列は、開始クォーテーションの次の行から始め、終了クォーテーションの 1 つ前の行で終了します。つまり、文字列を改行で開始、終了することができません。</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> singleLineString <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;These are the same.&quot;</span></span>
-<span class="token keyword">let</span> multilineString <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;&quot;&quot;
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> singleLineString <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"These are the same."</span></span>
+<span class="token keyword">let</span> multilineString <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"""
 These are the same.
-&quot;&quot;&quot;</span></span>
+"""</span></span>
 </code></pre>
 <p>もし改行が含まれている場合、文字列にも反映されます。改行を文字列の中に入れずに改行したい場合、行の最後にバックスラッシュ(<code>\</code>)を書きましょう:</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> softWrappedQuotation <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;&quot;&quot;
-The White Rabbit put on his spectacles.  &quot;Where shall I begin, </span><span class="token punctuation">\</span><span class="token string">
-please your Majesty?&quot; he asked.
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> softWrappedQuotation <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"""
+The White Rabbit put on his spectacles.  "Where shall I begin, </span><span class="token punctuation">\</span><span class="token string">
+please your Majesty?" he asked.
 
-&quot;Begin at the beginning,&quot; the King said gravely, &quot;and go on </span><span class="token punctuation">\</span><span class="token string">
-till you come to the end; then stop.&quot;
-&quot;&quot;&quot;</span></span>
+"Begin at the beginning," the King said gravely, "and go on </span><span class="token punctuation">\</span><span class="token string">
+till you come to the end; then stop."
+"""</span></span>
 </code></pre>
 <p>複数行文字列リテラルを改行で開始(終了)したい場合は、最初(最後)に空白の行を入れましょう。例えば:</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> lineBreaks <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;&quot;&quot;
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> lineBreaks <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"""
 
 This string starts with a line break.
 It also ends with a line break.
 
-&quot;&quot;&quot;</span></span>
+"""</span></span>
 </code></pre>
-<p>複数行文字列は、周りのコードに合わせてインデントさせることができます。終了クォーテーションマーク(<code>&quot;&quot;&quot;</code>)の前に空白を加えると、他の行に存在する同じ位置の空白も無視するようになります。一方で、終了クォーテーションマーク(<code>&quot;&quot;&quot;</code>)の空白のさらに後に空白を追加すると、その行の空白 <em>は</em> 含まれるようになります。</p>
-<p><img src="../assets/multilinestringwhitespace_2x.png" alt="複数行文字列のスペース"></p>
-<p>上記の例では、全ての複数行文字列にインデントが加えられていますが、最初と最後の行は冒頭に空白はありません。真ん中の行は終了クォーテーションマーク(<code>&quot;&quot;&quot;</code>)よりもさらにインデントを追加しているため、4 つの空白から開始します。</p>
+<p>複数行文字列は、周りのコードに合わせてインデントさせることができます。終了クォーテーションマーク(<code>"""</code>)の前に空白を加えると、他の行に存在する同じ位置の空白も無視するようになります。一方で、終了クォーテーションマーク(<code>"""</code>)の空白のさらに後に空白を追加すると、その行の空白 <em>は</em> 含まれるようになります。</p>
+<p><img src="../assets/multilinestringwhitespace_2x.png" alt="複数行文字列のスペース"></img></p>
+<p>上記の例では、全ての複数行文字列にインデントが加えられていますが、最初と最後の行は冒頭に空白はありません。真ん中の行は終了クォーテーションマーク(<code>"""</code>)よりもさらにインデントを追加しているため、4 つの空白から開始します。</p>
 <h3 id="文字列内の特殊文字special-characters-in-string-literals"><a id="special-characters-in-string-literals">文字列内の特殊文字(Special Characters in String Literals)</a></h3>
 <p>文字列リテラルには次の特殊文字が含まれています。</p>
 <ul>
-<li>エスケープされた特殊文字 <code>\0 (null文字)</code>、<code>\\ (バックスラッシュ)</code>、<code>\t (水平タブ)</code>、<code>\n (ラインフィード)</code>、<code>\r (キャリッジリターン)</code>、<code>\&quot; (ダブルクォーテーション)</code>、<code>\&apos; (シングルクォーテーション)</code></li>
+<li>エスケープされた特殊文字 <code>\0 (null文字)</code>、<code>\\ (バックスラッシュ)</code>、<code>\t (水平タブ)</code>、<code>\n (ラインフィード)</code>、<code>\r (キャリッジリターン)</code>、<code>\" (ダブルクォーテーション)</code>、<code>\' (シングルクォーテーション)</code></li>
 <li><code>\u{n}</code> で書ける任意の Unicode スカラ、ただし <code>n</code> には 1〜8 桁の 16 進数が入ります(Unicode については下記の<a href="strings-and-characters.html#unicode">Unicode</a>に書かれています)</li>
 </ul>
 <p>下記のコードは、4 つの特殊文字の例を示しています。<code>wiseWords</code> 定数は 2 つのエスケープされたダブルクォーテーションを含んでいます。<code>dollarSign</code> と <code>blackHeart</code> と <code>sparklingHeart</code> 定数は、Unicode スカラの例です:</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> wiseWords <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;\&quot;Imagination is more important than knowledge\&quot; - Einstein&quot;</span></span>
-<span class="token comment">// &quot;Imagination is more important than knowledge&quot; - Einstein</span>
-<span class="token keyword">let</span> dollarSign <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;\u{24}&quot;</span></span>        <span class="token comment">// $  Unicode scalar U+0024</span>
-<span class="token keyword">let</span> blackHeart <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;\u{2665}&quot;</span></span>      <span class="token comment">// ♥  Unicode scalar U+2665</span>
-<span class="token keyword">let</span> sparklingHeart <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;\u{1F496}&quot;</span></span> <span class="token comment">// 💖 Unicode scalar U+1F496</span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> wiseWords <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"\"Imagination is more important than knowledge\" - Einstein"</span></span>
+<span class="token comment">// "Imagination is more important than knowledge" - Einstein</span>
+<span class="token keyword">let</span> dollarSign <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"\u{24}"</span></span>        <span class="token comment">// $  Unicode scalar U+0024</span>
+<span class="token keyword">let</span> blackHeart <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"\u{2665}"</span></span>      <span class="token comment">// ♥  Unicode scalar U+2665</span>
+<span class="token keyword">let</span> sparklingHeart <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"\u{1F496}"</span></span> <span class="token comment">// 💖 Unicode scalar U+1F496</span>
 </code></pre>
-<p>複数行文字列リテラルは 1 つではなく 3 つのダブルクォーテーションを使用しているので、複数行文字列リテラルの中にエスケープなしでダブルクォーテーションを含めることができます。文字列にテキストとして <code>&quot;&quot;&quot;</code> を含めたい場合、少なくともその中の 1 つをエスケープしてください。</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> threeDoubleQuotationMarks <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;&quot;&quot;
-Escaping the first quotation mark \&quot;&quot;&quot;
-Escaping all three quotation marks \&quot;\&quot;\&quot;
-&quot;&quot;&quot;</span></span>
+<p>複数行文字列リテラルは 1 つではなく 3 つのダブルクォーテーションを使用しているので、複数行文字列リテラルの中にエスケープなしでダブルクォーテーションを含めることができます。文字列にテキストとして <code>"""</code> を含めたい場合、少なくともその中の 1 つをエスケープしてください。</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> threeDoubleQuotationMarks <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"""
+Escaping the first quotation mark \"""
+Escaping all three quotation marks \"\"\"
+"""</span></span>
 </code></pre>
 <h3 id="拡張区切り文字extended-string-delimiters"><a id="extended-string-delimiters">拡張区切り文字(Extended String Delimiters)</a></h3>
-<p><em>拡張区切り文字</em> の中に文字列を置くと、特殊文字をただの文字として含めることができます。文字列をクォーテーションで囲み、さらにそれを <em>番号記号</em> で囲みます。例えば、<code>#&quot;Line 1\nLine 2&quot;#</code> は 2 行の文字列を出力するのではなく、改行コード(<code>\n</code>)を出力します。</p>
-<p>文字列内の文字に特殊効果を付けたい場合は、エスケープ文字(<code>\</code>)の後に囲んでいる番号記号と同じ番号記号を、同じ数追加してください。例えば、<code>#&quot;Line 1\nLine 2&quot;#</code> で、改行したい場合は、<code>#&quot;Line 1\#nLine 2&quot;#</code> と書くことができます。同様に、<code>###&quot;Line1\###nLine2&quot;###</code> でも改行することができます。</p>
-<p>拡張区切り文字は複数文字列リテラルにも使用できます。テキストとして <code>&quot;&quot;&quot;</code> を含めたい場合、文字列を終わらせる記号を変えましょう。例えば:</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> threeMoreDoubleQuotationMarks <span class="token operator">=</span> <span class="token string-literal"><span class="token string">#&quot;&quot;&quot;
-Here are three more double quotes: &quot;&quot;&quot;
-&quot;&quot;&quot;#</span></span>
+<p><em>拡張区切り文字</em> の中に文字列を置くと、特殊文字をただの文字として含めることができます。文字列をクォーテーションで囲み、さらにそれを <em>番号記号</em> で囲みます。例えば、<code>#"Line 1\nLine 2"#</code> は 2 行の文字列を出力するのではなく、改行コード(<code>\n</code>)を出力します。</p>
+<p>文字列内の文字に特殊効果を付けたい場合は、エスケープ文字(<code>\</code>)の後に囲んでいる番号記号と同じ番号記号を、同じ数追加してください。例えば、<code>#"Line 1\nLine 2"#</code> で、改行したい場合は、<code>#"Line 1\#nLine 2"#</code> と書くことができます。同様に、<code>###"Line1\###nLine2"###</code> でも改行することができます。</p>
+<p>拡張区切り文字は複数文字列リテラルにも使用できます。テキストとして <code>"""</code> を含めたい場合、文字列を終わらせる記号を変えましょう。例えば:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> threeMoreDoubleQuotationMarks <span class="token operator">=</span> <span class="token string-literal"><span class="token string">#"""
+Here are three more double quotes: """
+"""#</span></span>
 </code></pre>
 <h2 id="空の文字列の作成initializing-an-empty-string">空の文字列の作成(Initializing an Empty String)</h2>
 <p>長い文字列を構築するときに、初期値として空の文字列を作るとき、文字列リテラルを変数に設定するか、<code>String</code> のイニシャライザを使用して新しいインスタンスを初期化します。</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> emptyString <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;&quot;</span></span>               <span class="token comment">// 空の文字列</span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> emptyString <span class="token operator">=</span> <span class="token string-literal"><span class="token string">""</span></span>               <span class="token comment">// 空の文字列</span>
 <span class="token keyword">var</span> anotherEmptyString <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">// イニシャライザ</span>
 <span class="token comment">// 2つの変数はどちらも空の文字列で等しいです</span>
 </code></pre>
 <p><code>isEmpty</code> というブール値のプロパティをチェックすることで <code>String</code> が空文字かどうかを判定できます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">if</span> emptyString<span class="token punctuation">.</span>isEmpty <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;Nothing to see here&quot;</span></span><span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"Nothing to see here"</span></span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 <span class="token comment">// Nothing to see here</span>
 </code></pre>
 <h2 id="文字列の可変性string-mutability">文字列の可変性(String Mutability)</h2>
 <p><code>String</code> が変更可能かどうかは、変数(変更可能)か定数(変更不可能)のどちらに設定するかによって示すことができます:</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> variableString <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;Horse&quot;</span></span>
-variableString <span class="token operator">+=</span> <span class="token string-literal"><span class="token string">&quot; and carriage&quot;</span></span>
-<span class="token comment">// variableString は &quot;Horse and carriage&quot;</span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> variableString <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Horse"</span></span>
+variableString <span class="token operator">+=</span> <span class="token string-literal"><span class="token string">" and carriage"</span></span>
+<span class="token comment">// variableString は "Horse and carriage"</span>
 
-<span class="token keyword">let</span> constantString <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;Highlander&quot;</span></span>
-constantString <span class="token operator">+=</span> <span class="token string-literal"><span class="token string">&quot; and another Highlander&quot;</span></span>
+<span class="token keyword">let</span> constantString <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Highlander"</span></span>
+constantString <span class="token operator">+=</span> <span class="token string-literal"><span class="token string">" and another Highlander"</span></span>
 <span class="token comment">// コンパイルエラー - 定数は変更できません</span>
 </code></pre>
 <blockquote>
-<p>NOTE<br>これは Objective-C と Cocoa とは異なります。Objective-C と Cocoa では、変更の可不可を示すために 2 つのクラス(<code>NSString</code> と <code>NSMutableString</code>)から選択します。</p>
+<p>NOTE<br></br>これは Objective-C と Cocoa とは異なります。Objective-C と Cocoa では、変更の可不可を示すために 2 つのクラス(<code>NSString</code> と <code>NSMutableString</code>)から選択します。</p>
 </blockquote>
 <h2 id="文字列は値型strings-are-value-types">文字列は値型(Strings Are Value Types)</h2>
 <p><code>String</code> 型は <em>値型</em> です。新しい <code>String</code> を生成すると、関数やメソッドのパラメータで渡されるときや、他の定数、変数に代入されるときに、値のコピーが発生します。いずれの場合でも、既存の <code>String</code> のコピーが生成され、元の値ではなく新しいコピーが渡され(または代入され)ます。値型は<a href="structures-and-classes.html#structures-and-enumerations-are-value-type">Structures and Enumerations Are Value Types(構造体と列挙型は値型)</a>で記載されています。</p>
@@ -857,7 +857,7 @@ constantString <span class="token operator">+=</span> <span class="token string-
 <p>内部では、Swift のコンパイラは本当に必要なときだけ実際にコピーが発生するように最適化をしています。つまり、値型として文字列を扱う場合に常に良いパフォーマンスを得ることができます。</p>
 <h2 id="文字配列の取扱working-with-characters"><a id="working-with-characters">文字配列の取扱(Working with Characters)</a></h2>
 <p><code>for-in</code> ループを使用して文字列を繰り返し処理することで、<code>String</code> の個々の <code>Character</code> にアクセスすることができます。</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> character <span class="token keyword">in</span> <span class="token string-literal"><span class="token string">&quot;Dog!🐶&quot;</span></span> <span class="token punctuation">{</span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> character <span class="token keyword">in</span> <span class="token string-literal"><span class="token string">"Dog!🐶"</span></span> <span class="token punctuation">{</span>
     <span class="token function">print</span><span class="token punctuation">(</span>character<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 <span class="token comment">// D</span>
@@ -868,52 +868,52 @@ constantString <span class="token operator">+=</span> <span class="token string-
 </code></pre>
 <p><code>for-in</code> ループについては<a href="control-flow.html#for-in-loops">For-In Loops(For-In ループ)</a>に記載されています。</p>
 <p>もしくは、<code>Character</code> の型注釈を与えて 1 文字のリテラルから <code>Character</code> 型の定数や変数を作ることもできます:</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> exclamationMark<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;!&quot;</span></span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> exclamationMark<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"!"</span></span>
 </code></pre>
 <p><code>String</code> は、<code>Character</code> の配列をイニシャライザの引数として渡して構築することができます:</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> catCharacters<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">Character</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string-literal"><span class="token string">&quot;C&quot;</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">&quot;a&quot;</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">&quot;t&quot;</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">&quot;!&quot;</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">&quot;🐱&quot;</span></span><span class="token punctuation">]</span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> catCharacters<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">Character</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string-literal"><span class="token string">"C"</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">"a"</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">"t"</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">"!"</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">"🐱"</span></span><span class="token punctuation">]</span>
 <span class="token keyword">let</span> catString <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">(</span>catCharacters<span class="token punctuation">)</span>
 <span class="token function">print</span><span class="token punctuation">(</span>catString<span class="token punctuation">)</span>
 <span class="token comment">// Cat!🐱</span>
 </code></pre>
 <h2 id="文字と文字列の連結concatenating-strings-and-characters">文字と文字列の連結(Concatenating Strings and Characters)</h2>
 <p><code>String</code> 同士は、加算演算子(<code>+</code>)使用して新しい <code>String</code> を生成できます:</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> string1 <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;hello&quot;</span></span>
-<span class="token keyword">let</span> string2 <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot; there&quot;</span></span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> string1 <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"hello"</span></span>
+<span class="token keyword">let</span> string2 <span class="token operator">=</span> <span class="token string-literal"><span class="token string">" there"</span></span>
 <span class="token keyword">var</span> welcome <span class="token operator">=</span> string1 <span class="token operator">+</span> string2
-<span class="token comment">// welcome は &quot;hello there&quot; と等しい</span>
+<span class="token comment">// welcome は "hello there" と等しい</span>
 </code></pre>
 <p>加算代入演算子(<code>+=</code>)を使用して、既存の <code>String</code> 変数に <code>String</code> を追加することもできます:</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> instruction <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;look over&quot;</span></span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> instruction <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"look over"</span></span>
 instruction <span class="token operator">+=</span> string2
-<span class="token comment">// instruction は &quot;look over there&quot; と等しい</span>
+<span class="token comment">// instruction は "look over there" と等しい</span>
 </code></pre>
 <p><code>String</code> の <code>append()</code> メソッドを使用して <code>Character</code> を追加することもできます。</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> exclamationMark<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;!&quot;</span></span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> exclamationMark<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"!"</span></span>
 welcome<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>exclamationMark<span class="token punctuation">)</span>
-<span class="token comment">// welcome は &quot;hello there!&quot; と等しい</span>
+<span class="token comment">// welcome は "hello there!" と等しい</span>
 </code></pre>
 <blockquote>
-<p>NOTE<br>既存の <code>Character</code> に <code>String</code> や <code>Character</code> を追加することはできません。<code>Character</code> には、 1 つの文字だけしか含められません。</p>
+<p>NOTE<br></br>既存の <code>Character</code> に <code>String</code> や <code>Character</code> を追加することはできません。<code>Character</code> には、 1 つの文字だけしか含められません。</p>
 </blockquote>
 <p>より長い文字列を構築するために複数行文字列リテラルを使用している場合、最後の行も含めた全ての行で改行したいこともあるかと思います。例えば:</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> badStart <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;&quot;&quot;
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> badStart <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"""
 one
 two
-&quot;&quot;&quot;</span></span>
-<span class="token keyword">let</span> end <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;&quot;&quot;
+"""</span></span>
+<span class="token keyword">let</span> end <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"""
 three
-&quot;&quot;&quot;</span></span>
+"""</span></span>
 <span class="token function">print</span><span class="token punctuation">(</span>badStart <span class="token operator">+</span> end<span class="token punctuation">)</span>
 <span class="token comment">// two lines:</span>
 <span class="token comment">// one</span>
 <span class="token comment">// twothree</span>
 
-<span class="token keyword">let</span> goodStart <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;&quot;&quot;
+<span class="token keyword">let</span> goodStart <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"""
 one
 two
 
-&quot;&quot;&quot;</span></span>
+"""</span></span>
 <span class="token function">print</span><span class="token punctuation">(</span>goodStart <span class="token operator">+</span> end<span class="token punctuation">)</span>
 <span class="token comment">// three lines:</span>
 <span class="token comment">// one</span>
@@ -924,67 +924,67 @@ two
 <h2 id="文字列補間string-interpolation"><a id="string-interpolation">文字列補間(String Interpolation)</a></h2>
 <p><em>文字列補間</em> は、複数の定数、変数、リテラル、式を文字列リテラルの中に含めることで新しい <code>String</code> を構築する方法です。文字列補間は 1 行でも複数行でも使用することができます。文字列に入れるそれぞれの値は、両括弧で囲み、その前にバックスラッシュ(<code>\</code>)をつけます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> multiplier <span class="token operator">=</span> <span class="token number">3</span>
-<span class="token keyword">let</span> message <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">multiplier</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> times 2.5 is </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation"><span class="token class-name">Double</span><span class="token punctuation">(</span>multiplier<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2.5</span></span><span class="token interpolation-punctuation punctuation">)</span><span class="token string">&quot;</span></span>
-<span class="token comment">// message は &quot;3 times 2.5 is 7.5&quot;</span>
+<span class="token keyword">let</span> message <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">multiplier</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> times 2.5 is </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation"><span class="token class-name">Double</span><span class="token punctuation">(</span>multiplier<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2.5</span></span><span class="token interpolation-punctuation punctuation">)</span><span class="token string">"</span></span>
+<span class="token comment">// message は "3 times 2.5 is 7.5"</span>
 </code></pre>
 <p>上記の例では、<code>multiplier</code> は <code>\(multiplier)</code> として文字列に挿入します。このプレースホルダは、実際に文字列を生成するタイミングで評価され、<code>multiplier</code> の実際の値に置き換えられます。</p>
 <p><code>multiplier</code> は文字列の後半の大きな式の中でも使われています。この式は、<code>Double(multiplier) * 2.5</code> を計算して、その結果の(<code>7.5</code>)を文字列に挿入します。この場合、<code>\(Double(multiplier) * 2.5)</code> と書いて文字列リテラルに含まれます。</p>
 <p>文字列補間ではなく通常扱われる文字として文字列を生成したい場合、拡張区切り文字を使用することができます。例えば:</p>
-<pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">#&quot;Write an interpolated string in Swift using \(multiplier).&quot;#</span></span><span class="token punctuation">)</span>
+<pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">#"Write an interpolated string in Swift using \(multiplier)."#</span></span><span class="token punctuation">)</span>
 <span class="token comment">// Write an interpolated string in Swift using \(multiplier).</span>
 </code></pre>
 <p>拡張区切り文字を使った文字列の中で文字列補間を使用する場合、バックスラッシュの後の番号記号の数を文字列の開始(終了)の番号記号の数に合わせます。例えば:</p>
-<pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">#&quot;6 times 7 is </span><span class="token interpolation-punctuation punctuation">\#(</span><span class="token interpolation"><span class="token number">6</span> <span class="token operator">*</span> <span class="token number">7</span></span><span class="token interpolation-punctuation punctuation">)</span><span class="token string">.&quot;#</span></span><span class="token punctuation">)</span>
+<pre class="language-"><code class="lang-swift"><span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">#"6 times 7 is </span><span class="token interpolation-punctuation punctuation">\#(</span><span class="token interpolation"><span class="token number">6</span> <span class="token operator">*</span> <span class="token number">7</span></span><span class="token interpolation-punctuation punctuation">)</span><span class="token string">."#</span></span><span class="token punctuation">)</span>
 <span class="token comment">// 6 times 7 is 42.</span>
 </code></pre>
 <blockquote>
-<p>NOTE<br>補間された文字列内の括弧の中に書かれた式には、エスケープしていないバックスラッシュ(<code>\</code>)、キャリッジリターン、改行を含めることはできません。他の文字列リテラルは含めることができます。</p>
+<p>NOTE<br></br>補間された文字列内の括弧の中に書かれた式には、エスケープしていないバックスラッシュ(<code>\</code>)、キャリッジリターン、改行を含めることはできません。他の文字列リテラルは含めることができます。</p>
 </blockquote>
 <h2 id="unicode">Unicode</h2>
 <p><em>Unicode</em> は、様々な書記体系で、テキストをエンコード、抽象化、および処理するための国際標準です。標準化された形式で、どんな言語でもほとんど全ての文字を表わすことができ、Web ページやテキストファイルなどの外部リソースへ読み書きできます。Swift の <code>String</code> や <code>Character</code> は、このセクションでも記載していますが、完全に Unicode に準拠しています。</p>
 <h3 id="unicode-スカラ値unicode-scalar-values"><a id="unicode-scalar-values">Unicode スカラ値(Unicode Scalar Values)</a></h3>
-<p>内部では、Swift 固有の <code>String</code> 型は <em>Unicode スカラ</em>から構築されています。Unicode スカラは 21 ビットの文字と修飾子で構成されています。例えば、<code>U+0061</code> は <code>LATIN SMALL LETTER A (&quot;a&quot;)</code>、<code>U+1F425</code> は <code>FRONT-FACING BABY CHICK (&quot;🐥&quot;)</code> です。</p>
+<p>内部では、Swift 固有の <code>String</code> 型は <em>Unicode スカラ</em>から構築されています。Unicode スカラは 21 ビットの文字と修飾子で構成されています。例えば、<code>U+0061</code> は <code>LATIN SMALL LETTER A ("a")</code>、<code>U+1F425</code> は <code>FRONT-FACING BABY CHICK ("🐥")</code> です。</p>
 <p>全ての 21 ビットのスカラが 1 つの文字に当てはまるわけではありません。いくつかは将来的に必要になるために確保されていたり、UTF-16 で使われています。文字に割り当てられているスカラには、上記の <code>LATIN SMALL LETTER A</code> や <code>FRONT-FACING BABY CHICK</code> のように一般的には名前が付いています。</p>
 <h3 id="拡張書記素クラスタextended-grapheme-clusters"><a id="extended-grapheme-clusters">拡張書記素クラスタ(Extended Grapheme Clusters)</a></h3>
 <p>Swift の <code>Character</code> の全てのインスタンスは 1 つの <em>拡張書記素クラスタ</em> を表しています。拡張書記素クラスタは、人間が読み取れる 1 文字を生成するための 1 つ以上の Unicode スカラの配列です(1 つ以上の Unicode スカラが必要な場合は合成されます)。</p>
 <p>次に例を示します。文字 <code>é</code> は、1 つの <code>é</code>(<code>LATIN SMALL LETTER E WITH ACUTE</code> または <code>U+00E9</code>)を表すことができます。一方で、同じ文字をスカラのペアで表すこともできます。<code>e</code>(<code>LATIN SMALL LETTER E</code> または <code>U+0065</code>)の後ろに <code>COMBINING ACUTE ACCENT</code> スカラ(<code>U+0301</code>)を付けます。<code>COMBINING ACUTE ACCENT</code> スカラはその前のスカラに視覚的に適用されて、Unicode を理解できるシステムがテキストをレンダリングする際に、<code>e</code> を <code>é</code> に変換します。</p>
 <p>どちらの場合も、<code>é</code> は拡張書記素クラスタの 1 つの <code>Character</code> 型の値として表されます。最初のケースでは、1 つのスカラを含んでいるクラスタで、2 番目のケースは、2 つのスカラのクラスタとなります。</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> eAcute<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;\u{E9}&quot;</span></span>                         <span class="token comment">// é</span>
-<span class="token keyword">let</span> combinedEAcute<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;\u{65}\u{301}&quot;</span></span>          <span class="token comment">// e の後ろに  ́</span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> eAcute<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"\u{E9}"</span></span>                         <span class="token comment">// é</span>
+<span class="token keyword">let</span> combinedEAcute<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"\u{65}\u{301}"</span></span>          <span class="token comment">// e の後ろに  ́</span>
 <span class="token comment">// eAcute は é, combinedEAcute は é</span>
 </code></pre>
 <p>拡張書記素クラスタは、多くの複雑な文字スクリプトを 1 つの <code>Character</code> として表す柔軟な方法です。例えば、韓国語のハングル文字は、合成または展開されたスカラの配列で表すことができます。これらのどちらも、 Swift では 1 つの <code>Character</code> と見なされます。</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> precomposed<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;\u{D55C}&quot;</span></span>                  <span class="token comment">// 한</span>
-<span class="token keyword">let</span> decomposed<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;\u{1112}\u{1161}\u{11AB}&quot;</span></span>   <span class="token comment">// ᄒ, ᅡ, ᆫ</span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> precomposed<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"\u{D55C}"</span></span>                  <span class="token comment">// 한</span>
+<span class="token keyword">let</span> decomposed<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"\u{1112}\u{1161}\u{11AB}"</span></span>   <span class="token comment">// ᄒ, ᅡ, ᆫ</span>
 <span class="token comment">// precomposed は 한, decomposed も 한</span>
 </code></pre>
 <p>拡張書記素クラスタは、囲み記号(<code>COMBINING ENCLOSING CIRCLE</code> または <code>U+20DD</code>)のスカラを 1 つの <code>Character</code> の一部として、他の Unicode スカラを囲むことができます。</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> enclosedEAcute<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;\u{E9}\u{20DD}&quot;</span></span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> enclosedEAcute<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"\u{E9}\u{20DD}"</span></span>
 <span class="token comment">// enclosedEAcute is é⃝</span>
 </code></pre>
 <p>地域を示す Unicode スカラは、1 つの <code>Character</code> を作成するために、2 つのスカラを組み合わせます。例えば、<code>REGIONAL INDICATOR SYMBOL LETTER U</code>(<code>U+1F1FA</code>)と <code>REGIONAL INDICATOR SYMBOL LETTER S</code>(<code>U+1F1F8</code>):</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> regionalIndicatorForUS<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;\u{1F1FA}\u{1F1F8}&quot;</span></span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> regionalIndicatorForUS<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"\u{1F1FA}\u{1F1F8}"</span></span>
 <span class="token comment">// regionalIndicatorForUS は 🇺🇸</span>
 </code></pre>
 <h2 id="文字数を数えるcounting-characters">文字数を数える(Counting Characters)</h2>
 <p>文字列の中の <code>Character</code> の数を得るには、文字列の <code>count</code> プロパティを使いましょう。</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> unusualMenagerie <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪&quot;</span></span>
-<span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;unusualMenagerie has </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">unusualMenagerie<span class="token punctuation">.</span>count</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> characters&quot;</span></span><span class="token punctuation">)</span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> unusualMenagerie <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"</span></span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"unusualMenagerie has </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">unusualMenagerie<span class="token punctuation">.</span>count</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> characters"</span></span><span class="token punctuation">)</span>
 <span class="token comment">// unusualMenagerie has 40 characters</span>
 </code></pre>
 <p><code>Character</code> に拡張書記素クラスタを使用しているということは、文字列の連結や変更が必ずしも文字列内の文字数に影響を与えるわけではない、ということに注意してください。</p>
 <p>例えば、<code>cafe</code> という単語は 4 つの文字から新しい文字列を初期化した場合、<code>COMBINING ACUTE ACCENT (U+0301)</code> を最後に追加すると、最後の文字は <code>e</code> から <code>é</code> に変わりますが、文字のカウントは <code>4</code> のままです。</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> word <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;cafe&quot;</span></span>
-<span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;the number of characters in </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">word</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> is </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">word<span class="token punctuation">.</span>count</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> word <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"cafe"</span></span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"the number of characters in </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">word</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> is </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">word<span class="token punctuation">.</span>count</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string">"</span></span><span class="token punctuation">)</span>
 <span class="token comment">// the number of characters in cafe is 4</span>
 
-word <span class="token operator">+=</span> <span class="token string-literal"><span class="token string">&quot;\u{301}&quot;</span></span>    <span class="token comment">// COMBINING ACUTE ACCENT, U+0301</span>
+word <span class="token operator">+=</span> <span class="token string-literal"><span class="token string">"\u{301}"</span></span>    <span class="token comment">// COMBINING ACUTE ACCENT, U+0301</span>
 
-<span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;the number of characters in </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">word</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> is </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">word<span class="token punctuation">.</span>count</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string">&quot;</span></span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"the number of characters in </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">word</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> is </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">word<span class="token punctuation">.</span>count</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string">"</span></span><span class="token punctuation">)</span>
 <span class="token comment">// the number of characters in café is 4</span>
 </code></pre>
 <blockquote>
-<p>NOTE<br>拡張書記素クラスタは複数の Unicode スカラを組み合わせることができます。つまり、異なった文字や、同じ文字でも、異なったスカラで表された文字はメモリ上に保持する際に異なったメモリサイズが必要になる場合があります。これは、Swift の文字は、それぞれの文字で同じメモリ量ではない、ということです。結果として、文字列内の文字を数えるには、拡張書記素クラスタの境界を判断しなければならず、文字列全体を繰り返し処理しないと計算することができません。特に長い文字列を扱っている場合は、<code>count</code> プロパティを使用すると文字数をカウントするために文字列全体に繰り返し処理を行なっていることに気をつけてください。 <code>count</code> プロパティから返ってくる文字数は、同じ文字列であっても <code>NSString</code> の <code>length</code> と異なる場合があります。<code>NSString</code> の <code>length</code> は UTF-16 での文字数カウントで、Unicode の拡張書記素クラスタでの数ではありません。</p>
+<p>NOTE<br></br>拡張書記素クラスタは複数の Unicode スカラを組み合わせることができます。つまり、異なった文字や、同じ文字でも、異なったスカラで表された文字はメモリ上に保持する際に異なったメモリサイズが必要になる場合があります。これは、Swift の文字は、それぞれの文字で同じメモリ量ではない、ということです。結果として、文字列内の文字を数えるには、拡張書記素クラスタの境界を判断しなければならず、文字列全体を繰り返し処理しないと計算することができません。特に長い文字列を扱っている場合は、<code>count</code> プロパティを使用すると文字数をカウントするために文字列全体に繰り返し処理を行なっていることに気をつけてください。 <code>count</code> プロパティから返ってくる文字数は、同じ文字列であっても <code>NSString</code> の <code>length</code> と異なる場合があります。<code>NSString</code> の <code>length</code> は UTF-16 での文字数カウントで、Unicode の拡張書記素クラスタでの数ではありません。</p>
 </blockquote>
 <h2 id="文字列へのアクセスと変更accessing-and-modifying-a-string">文字列へのアクセスと変更(Accessing and Modifying a String)</h2>
 <p>メソッドやプロパティを使ったり、サブスクリプト構文を使用して、文字列へアクセスしたり、変更をすることができます。</p>
@@ -994,7 +994,7 @@ word <span class="token operator">+=</span> <span class="token string-literal"><
 <p><code>String</code> の最初の <code>Character</code> の位置を知るためには、<code>startIndex</code> プロパティを使いましょう。<code>endIndex</code> プロパティは <code>String</code> の最後の <code>Character</code> の位置の次の位置です。つまり、<code>endIndex</code> プロパティは文字列のサブスクリプトに使用してはいけません。<code>String</code> が空ならば、<code>startIndex</code> と <code>endIndex</code> は等しくなります。</p>
 <p><code>index(before:)</code> と <code>index(after:)</code> を使用して、あるインデックスの前後のインデックスにアクセスできます。あるインデックスから離れた位置のインデックスにアクセスするためには、上記 2 つのメソッドを繰り返し呼ぶのではなく、<code>index(_:offsetBy:)</code> を使います。</p>
 <p><code>String</code> のある特定の位置の <code>Character</code> へアクセスするには、サブスクリプト構文を使います。</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> greeting <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;Guten Tag!&quot;</span></span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> greeting <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Guten Tag!"</span></span>
 greeting<span class="token punctuation">[</span>greeting<span class="token punctuation">.</span>startIndex<span class="token punctuation">]</span>
 <span class="token comment">// G</span>
 greeting<span class="token punctuation">[</span>greeting<span class="token punctuation">.</span><span class="token function">index</span><span class="token punctuation">(</span>before<span class="token punctuation">:</span> greeting<span class="token punctuation">.</span>endIndex<span class="token punctuation">)</span><span class="token punctuation">]</span>
@@ -1011,128 +1011,128 @@ greeting<span class="token punctuation">.</span><span class="token function">ind
 </code></pre>
 <p>文字列内の個々の文字の全てのインデックスにアクセスするためには <code>indices</code> プロパティを使いましょう。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> index <span class="token keyword">in</span> greeting<span class="token punctuation">.</span>indices <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">greeting<span class="token punctuation">[</span>index<span class="token punctuation">]</span></span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> &quot;</span></span><span class="token punctuation">,</span> terminator<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;&quot;</span></span><span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">greeting<span class="token punctuation">[</span>index<span class="token punctuation">]</span></span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> "</span></span><span class="token punctuation">,</span> terminator<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">""</span></span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 <span class="token comment">// G u t e n   T a g !</span>
 </code></pre>
 <blockquote>
-<p>NOTE<br><code>Collection</code> プロトコルに準拠したどんな型にも、<code>startIndex</code>、<code>endIndex</code> プロパティ、<code>index\(before:)</code>、<code>index(after:)</code>、<code>index(_:offsetBy:)</code> メソッドを使用することができます。これは、<code>Array</code>、<code>Dictionary</code>、<code>Set</code> といったコレクションの型と同様に、今紹介している <code>String</code> にも含まれています。</p>
+<p>NOTE<br></br><code>Collection</code> プロトコルに準拠したどんな型にも、<code>startIndex</code>、<code>endIndex</code> プロパティ、<code>index\(before:)</code>、<code>index(after:)</code>、<code>index(_:offsetBy:)</code> メソッドを使用することができます。これは、<code>Array</code>、<code>Dictionary</code>、<code>Set</code> といったコレクションの型と同様に、今紹介している <code>String</code> にも含まれています。</p>
 </blockquote>
 <h3 id="挿入と削除inserting-and-removing">挿入と削除(Inserting and Removing)</h3>
 <p>特定の文字列のインデックスに 1 つの文字を挿入するには、<code>insert(_:at:)</code> を使い、他の文字列を挿入したい場合は、<code>insert(contentsOf:at:)</code> を使います。</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> welcome <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;hello&quot;</span></span>
-welcome<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;!&quot;</span></span><span class="token punctuation">,</span> at<span class="token punctuation">:</span> welcome<span class="token punctuation">.</span>endIndex<span class="token punctuation">)</span>
-<span class="token comment">// welcome は &quot;hello!&quot; と等しい</span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> welcome <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"hello"</span></span>
+welcome<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"!"</span></span><span class="token punctuation">,</span> at<span class="token punctuation">:</span> welcome<span class="token punctuation">.</span>endIndex<span class="token punctuation">)</span>
+<span class="token comment">// welcome は "hello!" と等しい</span>
 
-welcome<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>contentsOf<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot; there&quot;</span></span><span class="token punctuation">,</span> at<span class="token punctuation">:</span> welcome<span class="token punctuation">.</span><span class="token function">index</span><span class="token punctuation">(</span>before<span class="token punctuation">:</span> welcome<span class="token punctuation">.</span>endIndex<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment">// welcome は &quot;hello there!&quot; と等しい</span>
+welcome<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>contentsOf<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">" there"</span></span><span class="token punctuation">,</span> at<span class="token punctuation">:</span> welcome<span class="token punctuation">.</span><span class="token function">index</span><span class="token punctuation">(</span>before<span class="token punctuation">:</span> welcome<span class="token punctuation">.</span>endIndex<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">// welcome は "hello there!" と等しい</span>
 </code></pre>
 <p>文字列の特定のインデックスの 1 つの文字を削除するには <code>remove(at:)</code> を使い、部分文字列を削除したい場合は <code>removeSubrange(_:)</code> を使います。</p>
 <pre class="language-"><code class="lang-swift">welcome<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>at<span class="token punctuation">:</span> welcome<span class="token punctuation">.</span><span class="token function">index</span><span class="token punctuation">(</span>before<span class="token punctuation">:</span> welcome<span class="token punctuation">.</span>endIndex<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment">// welcome は &quot;hello there&quot; と等しい</span>
+<span class="token comment">// welcome は "hello there" と等しい</span>
 
 <span class="token keyword">let</span> range <span class="token operator">=</span> welcome<span class="token punctuation">.</span><span class="token function">index</span><span class="token punctuation">(</span>welcome<span class="token punctuation">.</span>endIndex<span class="token punctuation">,</span> offsetBy<span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token operator">..&lt;</span>welcome<span class="token punctuation">.</span>endIndex
 welcome<span class="token punctuation">.</span><span class="token function">removeSubrange</span><span class="token punctuation">(</span>range<span class="token punctuation">)</span>
-<span class="token comment">// welcome は &quot;hello&quot; と等しい</span>
+<span class="token comment">// welcome は "hello" と等しい</span>
 </code></pre>
 <blockquote>
-<p>NOTE<br><code>RangeReplaceableCollection</code> プロトコルに準拠したどんな型にも、<code>insert(_:at:)</code>、<code>insert(contentsOf:at:)</code>、<code>remove(at:)</code>、<code>removeSubrange(_:)</code> メソッドを使用することができます。これは、<code>Array</code>、<code>Dictionary</code>、<code>Set</code> といったコレクションの型と同様に、今紹介している <code>String</code> も含んでいます。</p>
+<p>NOTE<br></br><code>RangeReplaceableCollection</code> プロトコルに準拠したどんな型にも、<code>insert(_:at:)</code>、<code>insert(contentsOf:at:)</code>、<code>remove(at:)</code>、<code>removeSubrange(_:)</code> メソッドを使用することができます。これは、<code>Array</code>、<code>Dictionary</code>、<code>Set</code> といったコレクションの型と同様に、今紹介している <code>String</code> も含んでいます。</p>
 </blockquote>
 <h2 id="部分文字列substrings">部分文字列(Substrings)</h2>
 <p>文字列から部分文字列を取得した場合(例えばサブスクリプトや <code>prefix(_:)</code> などのメソッドを使用するなど)、<a href="https://developer.apple.com/documentation/swift/substring" target="_blank">Substring</a>インスタンスが結果として取得できます。部分文字列には文字列とほぼ同じメソッドを使用することができます。つまり、部分文字列を文字列と同じような方法で扱うことができます。しかし、文字列とは異なり、部分文字列は、文字列に対して何かアクションを起こしているほんの短い間だけに使います。処理の結果をより長い期間保持するときは、部分文字列を <code>String</code> のインスタンスに変換します。例えば:</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> greeting <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;Hello, world!&quot;</span></span>
-<span class="token keyword">let</span> index <span class="token operator">=</span> greeting<span class="token punctuation">.</span><span class="token function">firstIndex</span><span class="token punctuation">(</span>of<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;,&quot;</span></span><span class="token punctuation">)</span> <span class="token operator">??</span> greeting<span class="token punctuation">.</span>endIndex
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> greeting <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Hello, world!"</span></span>
+<span class="token keyword">let</span> index <span class="token operator">=</span> greeting<span class="token punctuation">.</span><span class="token function">firstIndex</span><span class="token punctuation">(</span>of<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">","</span></span><span class="token punctuation">)</span> <span class="token operator">??</span> greeting<span class="token punctuation">.</span>endIndex
 <span class="token keyword">let</span> beginning <span class="token operator">=</span> greeting<span class="token punctuation">[</span><span class="token operator">..&lt;</span>index<span class="token punctuation">]</span>
-<span class="token comment">// beginning は &quot;Hello&quot;</span>
+<span class="token comment">// beginning は "Hello"</span>
 
 <span class="token comment">// より長期で使用するためにStringへ変換</span>
 <span class="token keyword">let</span> newString <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">(</span>beginning<span class="token punctuation">)</span>
 </code></pre>
 <p>文字列のように、部分文字列もそれを構成する文字配列をメモリ領域に持っています。文字列と部分文字列の違いはパフォーマンス最適化として、部分文字列は元の文字列や他の部分文字列を保持するのに使用しているメモリの一部を再利用します。(文字列にも似たような最適化がありますが、2 つの文字列のメモリが共有されている場合、それらは等しいと見なされます)この最適化によって、文字列や部分文字列が変更されるまでメモリのコピーが発生するコストに注意を払わなくて済みます。上記で述べたように、部分文字列は長期保持するには向いていません。部分文字列が元の文字列とメモリを共有しているため、元の文字列は部分文字列が使われている間はメモリ上に保持していなければなりません。</p>
 <p>上記の例では、<code>greeting</code> は文字列です。つまり、文字列を構築する文字を保持したメモリ領域を持っています。<code>beginning</code> は <code>greeting</code> の部分文字列です。<code>greeting</code> が使用しているメモリを再利用しています。反対に、<code>newString</code> は文字列で、部分文字列から生成されたときに独自のメモリ領域を持ちます。下記の図はこの関係を示しています。</p>
-<p><img src="../assets/stringsubstring_2x.png" alt="文字列と部分文字列"></p>
+<p><img src="../assets/stringsubstring_2x.png" alt="文字列と部分文字列"></img></p>
 <blockquote>
-<p>NOTE<br>文字列と部分文字列は、<a href="https://developer.apple.com/documentation/swift/stringprotocol" target="_blank">StringProtocol</a>に準拠しています。つまり、文字列操作を行う関数は、<code>StringProtocol</code> の値を受け取るとしばしば便利なことがあります。文字列、部分文字列のどちらを使用しても、その関数を使用することができます。</p>
+<p>NOTE<br></br>文字列と部分文字列は、<a href="https://developer.apple.com/documentation/swift/stringprotocol" target="_blank">StringProtocol</a>に準拠しています。つまり、文字列操作を行う関数は、<code>StringProtocol</code> の値を受け取るとしばしば便利なことがあります。文字列、部分文字列のどちらを使用しても、その関数を使用することができます。</p>
 </blockquote>
 <h2 id="文字列の比較comparing-strings"><a id="comparing-strings">文字列の比較(Comparing Strings)</a></h2>
 <p>Swift では、3 つの方法で文字列同士を比較する方法を提供しています: <code>String</code> または <code>Character</code> の完全一致、前方一致、後方一致です。</p>
 <h3 id="文字と文字列の等価性string-and-character-equality">文字と文字列の等価性(String and Character Equality)</h3>
 <p><code>String</code> または <code>Character</code> の完全一致は、は等価演算子(<code>==</code>)と不等価演算子(<code>!=</code>)を使用してチェックします。<a href="basic-operators.html#comparison-operators">Comparison Operators(比較演算子)</a></p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> quotation <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;We&apos;re a lot alike, you and I.&quot;</span></span>
-<span class="token keyword">let</span> sameQuotation <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;We&apos;re a lot alike, you and I.&quot;</span></span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> quotation <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"We're a lot alike, you and I."</span></span>
+<span class="token keyword">let</span> sameQuotation <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"We're a lot alike, you and I."</span></span>
 <span class="token keyword">if</span> quotation <span class="token operator">==</span> sameQuotation <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;These two strings are considered equal&quot;</span></span><span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"These two strings are considered equal"</span></span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 <span class="token comment">// These two strings are considered equal</span>
 </code></pre>
 <p>2 つの文字列(または文字)は、拡張書記素クラスタが <em>ルール上等し</em> ければ、等しいと見なされます。つまり、内部では異なる Unicode スカラで構成されていたとしても、同じ言語的な意味と見た目が同じならば等しくなります。</p>
 <p>例えば、<code>LATIN SMALL LETTER E WITH ACUTE</code>(<code>U+00E9</code>)は、<code>LATIN SMALL LETTER E</code>(<code>U+0065</code>)の最後に <code>COMBINING ACUTE ACCENT</code>(<code>U+0301</code>)を付け加えた文字列とルール上等しくなります。どちらの拡張書記素クラスタも <code>é</code> という文字を表す妥当な方法なので、これらはルール上等しいと見なされます:</p>
-<pre class="language-"><code class="lang-swift"><span class="token comment">// &quot;Voulez-vous un café?&quot;は LATIN SMALL LETTER E WITH ACUTE を使用しています</span>
-<span class="token keyword">let</span> eAcuteQuestion <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;Voulez-vous un caf\u{E9}?&quot;</span></span>
+<pre class="language-"><code class="lang-swift"><span class="token comment">// "Voulez-vous un café?"は LATIN SMALL LETTER E WITH ACUTE を使用しています</span>
+<span class="token keyword">let</span> eAcuteQuestion <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Voulez-vous un caf\u{E9}?"</span></span>
 
-<span class="token comment">// &quot;Voulez-vous un café?&quot;は LATIN SMALL LETTER E and COMBINING ACUTE ACCENT を使用しています</span>
-<span class="token keyword">let</span> combinedEAcuteQuestion <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;Voulez-vous un caf\u{65}\u{301}?&quot;</span></span>
+<span class="token comment">// "Voulez-vous un café?"は LATIN SMALL LETTER E and COMBINING ACUTE ACCENT を使用しています</span>
+<span class="token keyword">let</span> combinedEAcuteQuestion <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Voulez-vous un caf\u{65}\u{301}?"</span></span>
 
 <span class="token keyword">if</span> eAcuteQuestion <span class="token operator">==</span> combinedEAcuteQuestion <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;These two strings are considered equal&quot;</span></span><span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"These two strings are considered equal"</span></span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 <span class="token comment">// These two strings are considered equal</span>
 </code></pre>
-<p>反対に、英語で使われている <code>LATIN CAPITAL LETTER A</code>(<code>U+0041</code> または <code>&quot;A&quot;</code>)はロシア語で使われている <code>CYRILLIC CAPITAL LETTER A</code>(<code>U+0410</code> または <code>&quot;А&quot;</code>)と等しくありません。一見似ていますが、同じ言語的な意味を持っていません:</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> latinCapitalLetterA<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;\u{41}&quot;</span></span>
+<p>反対に、英語で使われている <code>LATIN CAPITAL LETTER A</code>(<code>U+0041</code> または <code>"A"</code>)はロシア語で使われている <code>CYRILLIC CAPITAL LETTER A</code>(<code>U+0410</code> または <code>"А"</code>)と等しくありません。一見似ていますが、同じ言語的な意味を持っていません:</p>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> latinCapitalLetterA<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"\u{41}"</span></span>
 
-<span class="token keyword">let</span> cyrillicCapitalLetterA<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;\u{0410}&quot;</span></span>
+<span class="token keyword">let</span> cyrillicCapitalLetterA<span class="token punctuation">:</span> <span class="token class-name">Character</span> <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"\u{0410}"</span></span>
 
 <span class="token keyword">if</span> latinCapitalLetterA <span class="token operator">!=</span> cyrillicCapitalLetterA <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;These two characters aren&apos;t equivalent.&quot;</span></span><span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"These two characters aren't equivalent."</span></span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-<span class="token comment">// These two characters aren&apos;t equivalent.</span>
+<span class="token comment">// These two characters aren't equivalent.</span>
 </code></pre>
 <blockquote>
-<p>NOTE<br>Swift の文字列と文字の比較は、ロケール依存です。</p>
+<p>NOTE<br></br>Swift の文字列と文字の比較は、ロケール依存です。</p>
 </blockquote>
 <h3 id="前方一致と後方一致prefix-and-suffix-equality">前方一致と後方一致(Prefix and Suffix Equality)</h3>
 <p>ある文字列が特定の前置文字や後置文字を含んでいるかどうかをチェックするために、<code>hasPrefix(_:)</code> と <code>hasSuffix(_:)</code> メソッドを使います。どちらも 1 つの <code>String</code> 型の引数を受け取り、<code>Bool</code> 値を返します。</p>
 <p>下記の例では、シェークスピアのロミオとジュリエットの最初の 2 幕のシーンの場所を表した文字列の配列です。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> romeoAndJuliet <span class="token operator">=</span> <span class="token punctuation">[</span>
-    <span class="token string-literal"><span class="token string">&quot;Act 1 Scene 1: Verona, A public place&quot;</span></span><span class="token punctuation">,</span>
-    <span class="token string-literal"><span class="token string">&quot;Act 1 Scene 2: Capulet&apos;s mansion&quot;</span></span><span class="token punctuation">,</span>
-    <span class="token string-literal"><span class="token string">&quot;Act 1 Scene 3: A room in Capulet&apos;s mansion&quot;</span></span><span class="token punctuation">,</span>
-    <span class="token string-literal"><span class="token string">&quot;Act 1 Scene 4: A street outside Capulet&apos;s mansion&quot;</span></span><span class="token punctuation">,</span>
-    <span class="token string-literal"><span class="token string">&quot;Act 1 Scene 5: The Great Hall in Capulet&apos;s mansion&quot;</span></span><span class="token punctuation">,</span>
-    <span class="token string-literal"><span class="token string">&quot;Act 2 Scene 1: Outside Capulet&apos;s mansion&quot;</span></span><span class="token punctuation">,</span>
-    <span class="token string-literal"><span class="token string">&quot;Act 2 Scene 2: Capulet&apos;s orchard&quot;</span></span><span class="token punctuation">,</span>
-    <span class="token string-literal"><span class="token string">&quot;Act 2 Scene 3: Outside Friar Lawrence&apos;s cell&quot;</span></span><span class="token punctuation">,</span>
-    <span class="token string-literal"><span class="token string">&quot;Act 2 Scene 4: A street in Verona&quot;</span></span><span class="token punctuation">,</span>
-    <span class="token string-literal"><span class="token string">&quot;Act 2 Scene 5: Capulet&apos;s mansion&quot;</span></span><span class="token punctuation">,</span>
-    <span class="token string-literal"><span class="token string">&quot;Act 2 Scene 6: Friar Lawrence&apos;s cell&quot;</span></span>
+    <span class="token string-literal"><span class="token string">"Act 1 Scene 1: Verona, A public place"</span></span><span class="token punctuation">,</span>
+    <span class="token string-literal"><span class="token string">"Act 1 Scene 2: Capulet's mansion"</span></span><span class="token punctuation">,</span>
+    <span class="token string-literal"><span class="token string">"Act 1 Scene 3: A room in Capulet's mansion"</span></span><span class="token punctuation">,</span>
+    <span class="token string-literal"><span class="token string">"Act 1 Scene 4: A street outside Capulet's mansion"</span></span><span class="token punctuation">,</span>
+    <span class="token string-literal"><span class="token string">"Act 1 Scene 5: The Great Hall in Capulet's mansion"</span></span><span class="token punctuation">,</span>
+    <span class="token string-literal"><span class="token string">"Act 2 Scene 1: Outside Capulet's mansion"</span></span><span class="token punctuation">,</span>
+    <span class="token string-literal"><span class="token string">"Act 2 Scene 2: Capulet's orchard"</span></span><span class="token punctuation">,</span>
+    <span class="token string-literal"><span class="token string">"Act 2 Scene 3: Outside Friar Lawrence's cell"</span></span><span class="token punctuation">,</span>
+    <span class="token string-literal"><span class="token string">"Act 2 Scene 4: A street in Verona"</span></span><span class="token punctuation">,</span>
+    <span class="token string-literal"><span class="token string">"Act 2 Scene 5: Capulet's mansion"</span></span><span class="token punctuation">,</span>
+    <span class="token string-literal"><span class="token string">"Act 2 Scene 6: Friar Lawrence's cell"</span></span>
 <span class="token punctuation">]</span>
 </code></pre>
 <p><code>hasPrefix(_:)</code> を使用して <code>romeoAndJuliet</code> 配列から Act 1 のシーンの数を数えます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> act1SceneCount <span class="token operator">=</span> <span class="token number">0</span>
 <span class="token keyword">for</span> scene <span class="token keyword">in</span> romeoAndJuliet <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> scene<span class="token punctuation">.</span><span class="token function">hasPrefix</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;Act 1 &quot;</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> scene<span class="token punctuation">.</span><span class="token function">hasPrefix</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"Act 1 "</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         act1SceneCount <span class="token operator">+=</span> <span class="token number">1</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-<span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;There are </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">act1SceneCount</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> scenes in Act 1&quot;</span></span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"There are </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">act1SceneCount</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> scenes in Act 1"</span></span><span class="token punctuation">)</span>
 <span class="token comment">// There are 5 scenes in Act 1</span>
 </code></pre>
 <p>同様に、<code>hasSuffix(_:)</code> を使用して Capulet マンションや修道士ローレンスの周りで起きたシーンの数を数えてみます。</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">var</span> mansionCount <span class="token operator">=</span> <span class="token number">0</span>
 <span class="token keyword">var</span> cellCount <span class="token operator">=</span> <span class="token number">0</span>
 <span class="token keyword">for</span> scene <span class="token keyword">in</span> romeoAndJuliet <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> scene<span class="token punctuation">.</span><span class="token function">hasSuffix</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;Capulet&apos;s mansion&quot;</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> scene<span class="token punctuation">.</span><span class="token function">hasSuffix</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"Capulet's mansion"</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         mansionCount <span class="token operator">+=</span> <span class="token number">1</span>
-    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> scene<span class="token punctuation">.</span><span class="token function">hasSuffix</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;Friar Lawrence&apos;s cell&quot;</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> scene<span class="token punctuation">.</span><span class="token function">hasSuffix</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"Friar Lawrence's cell"</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         cellCount <span class="token operator">+=</span> <span class="token number">1</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-<span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">mansionCount</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> mansion scenes; </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">cellCount</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> cell scenes&quot;</span></span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">mansionCount</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> mansion scenes; </span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">cellCount</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> cell scenes"</span></span><span class="token punctuation">)</span>
 <span class="token comment">// 6 mansion scenes; 2 cell scenes</span>
 </code></pre>
 <blockquote>
-<p>NOTE<br><code>hasPrefix(_:)</code> と <code>hasSuffix(_:)</code> メソッドは、文字ごとに各文字列の拡張書記素クラスタを使用してルール上等しいかどうかを調べます(<a href="strings-and-characters.html#string-and-character-equalitytono">String and Character Equality(文字と文字列の等価性)</a>に記載)。</p>
+<p>NOTE<br></br><code>hasPrefix(_:)</code> と <code>hasSuffix(_:)</code> メソッドは、文字ごとに各文字列の拡張書記素クラスタを使用してルール上等しいかどうかを調べます(<a href="strings-and-characters.html#string-and-character-equalitytono">String and Character Equality(文字と文字列の等価性)</a>に記載)。</p>
 </blockquote>
 <h2 id="文字列の-unicode-表現unicode-representations-of-strings">文字列の Unicode 表現(Unicode Representations of Strings)</h2>
 <p>Unicode 文字列は、テキストファイルや他のストレージに書かれるとき、Unicode 形式の 1 つに符号化(エンコード)されます。それぞれの形式は、文字列を <em>コードユニット</em> と呼ばれる小さな塊にエンコードします。これらには、UTF-8(8 ビットのコードユニットで文字列を符号化)、UTF-16(16 ビットのコードユニットで文字列を符号化)、UTF-32(32 ビットのコードユニットで文字列を符号化)があります。</p>
@@ -1144,37 +1144,37 @@ welcome<span class="token punctuation">.</span><span class="token function">remo
 <li>21 ビット Unicode スカラのコレクション、UTF-32 に等しい (<code>unicodeScalars</code> プロパティを使用してアクセス)</li>
 </ul>
 <p>下記の例は、次の文字列を異なる形式で表示しています。<code>D</code>、 <code>o</code>、 <code>g</code>、 <code>‼</code> (<code>DOUBLE EXCLAMATION MARK</code> または Unicode スカラ <code>U+203C</code>)と 🐶 文字 (<code>DOG FACE</code>, or Unicode スカラ <code>U+1F436</code>):</p>
-<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> dogString <span class="token operator">=</span> <span class="token string-literal"><span class="token string">&quot;Dog‼🐶&quot;</span></span>
+<pre class="language-"><code class="lang-swift"><span class="token keyword">let</span> dogString <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Dog‼🐶"</span></span>
 </code></pre>
 <h3 id="utf-8-表現utf-8-representation">UTF-8 表現(UTF-8 Representation)</h3>
 <p>UTF-8 表現には <code>String</code> の <code>utf8</code> プロパティを使います。このプロパティの型は、<code>String.UTF8View</code> で、符号なし 8 ビット(<code>UInt8</code>)のコレクションで、文字列の UTF-8 表現のそれぞれのバイトを表しています:</p>
-<p><img src="../assets/utf8_2x.png" alt="UTF-8"></p>
+<p><img src="../assets/utf8_2x.png" alt="UTF-8"></img></p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> codeUnit <span class="token keyword">in</span> dogString<span class="token punctuation">.</span>utf8 <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">codeUnit</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> &quot;</span></span><span class="token punctuation">,</span> terminator<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;&quot;</span></span><span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">codeUnit</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> "</span></span><span class="token punctuation">,</span> terminator<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">""</span></span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-<span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;&quot;</span></span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">""</span></span><span class="token punctuation">)</span>
 <span class="token comment">// 68 111 103 226 128 188 240 159 144 182</span>
 </code></pre>
 <p>上記の例では、最初の 3 つの 10 進数の <code>codeUnit</code>(<code>68</code>、<code>111</code>、<code>103</code>)は、ASCII 表現の <code>D</code>、<code>o</code>、<code>g</code> を UTF-8 表現で表しています。 次の 3 つの 10 進数の <code>codeUnit</code>(<code>226</code>、<code>128</code>、<code>188</code>)は、<code>DOUBLE EXCLAMATION MARK</code> を 3 バイトの UTF-8 表現で表しています。最後の 4 つの <code>codeUnit</code>(<code>240</code>、<code>159</code>、<code>144</code>、<code>182</code>)は、<code>DOG FACE</code> 文字を 4 バイトの UTF-8 表現で表しています。</p>
 <h3 id="utf-16-表現utf-16-representation">UTF-16 表現(UTF-16 Representation)</h3>
 <p>UTF-16 表現には <code>String</code> の <code>utf16</code> プロパティを使います。このプロパティの型は、<code>String.UTF16View</code> で、符号なし 16 ビット(<code>UInt16</code>)のコレクションで、文字列の UTF-16 表現のそれぞれのバイトを表しています:</p>
-<p><img src="../assets/utf16_2x.png" alt="UTF-16"></p>
+<p><img src="../assets/utf16_2x.png" alt="UTF-16"></img></p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> codeUnit <span class="token keyword">in</span> dogString<span class="token punctuation">.</span>utf16 <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">codeUnit</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> &quot;</span></span><span class="token punctuation">,</span> terminator<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;&quot;</span></span><span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">codeUnit</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> "</span></span><span class="token punctuation">,</span> terminator<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">""</span></span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-<span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;&quot;</span></span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">""</span></span><span class="token punctuation">)</span>
 <span class="token comment">// 68 111 103 8252 55357 56374</span>
 </code></pre>
-<p>上記の例では、最初の 3 つの 10 進数の <code>codeUnit</code>(<code>68</code>、<code>111</code>、<code>103</code>)は、<code>D</code>、<code>o</code>、<code>g</code> を UTF-16 表現で表しています。これは UTF-8 と同じです。(Unicode スカラは ASCII 文字を表しているため等しくなります)<br>4 番目の <code>codeUnit</code>(<code>8252</code>)は、16 進数の <code>203C</code> と等しく、<code>DOUBLE EXCLAMATION MARK(U+203C)</code> を表しています。この文字は UTF-16 だと 1 つのコードユニットで表すことができます。</p>
+<p>上記の例では、最初の 3 つの 10 進数の <code>codeUnit</code>(<code>68</code>、<code>111</code>、<code>103</code>)は、<code>D</code>、<code>o</code>、<code>g</code> を UTF-16 表現で表しています。これは UTF-8 と同じです。(Unicode スカラは ASCII 文字を表しているため等しくなります)<br></br>4 番目の <code>codeUnit</code>(<code>8252</code>)は、16 進数の <code>203C</code> と等しく、<code>DOUBLE EXCLAMATION MARK(U+203C)</code> を表しています。この文字は UTF-16 だと 1 つのコードユニットで表すことができます。</p>
 <p>5,6 番目の <code>codeUnit</code>(<code>55357</code>, <code>56374</code>)は UTF-16 のサロゲートペアで、<code>DOG FACE</code> 文字を表しています。これは上位サロゲートの <code>U+D83D</code>(10 進数だと <code>55357</code>)と下位サロゲートの <code>U+DC36</code>(10 進数だと <code>56374</code>)です。</p>
 <h3 id="unicode-スカラ表現unicode-scalar-representation">Unicode スカラ表現(Unicode Scalar Representation)</h3>
 <p>Unicode スカラ表現には <code>String</code> の <code>unicodeScalars</code> プロパティを使います。このプロパティの型は、<code>UnicodeScalarView</code> で、<code>UnicodeScalar</code> のコレクションです。</p>
 <p>それぞれの <code>UnicodeScalar</code> には <code>UInt32</code> で表される 21 ビットのスカラを返す <code>value</code> プロパティを持っています。</p>
-<p><img src="../assets/unicodescalar_2x.png" alt="Unicode Scalar"></p>
+<p><img src="../assets/unicodescalar_2x.png" alt="Unicode Scalar"></img></p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> scalar <span class="token keyword">in</span> dogString<span class="token punctuation">.</span>unicodeScalars <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">scalar<span class="token punctuation">.</span>value</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> &quot;</span></span><span class="token punctuation">,</span> terminator<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">&quot;&quot;</span></span><span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">scalar<span class="token punctuation">.</span>value</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> "</span></span><span class="token punctuation">,</span> terminator<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">""</span></span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-<span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;&quot;</span></span><span class="token punctuation">)</span>
+<span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">""</span></span><span class="token punctuation">)</span>
 <span class="token comment">// 68 111 103 8252 128054</span>
 </code></pre>
 <p>最初の 3 つの <code>UnicodeScalar</code>(<code>68</code>、<code>111</code>、<code>103</code>)の <code>value</code> プロパティは、<code>D</code>、<code>o</code>、<code>g</code> を表しています。</p>
@@ -1182,7 +1182,7 @@ welcome<span class="token punctuation">.</span><span class="token function">remo
 <p>5 番目の <code>UnicodeScalar</code>(<code>128054</code>)は、16 進数の <code>1F436</code> と等しく、<code>DOG FACE</code> 文字を表す Unicode スカラ <code>U+1F436</code> と等しいです。</p>
 <p><code>value</code> プロパティを探索する代わりに、それぞれの <code>UnicodeScalar</code> 値から新しい <code>String</code> を構築することもできます。例えば文字列補間で使えます:</p>
 <pre class="language-"><code class="lang-swift"><span class="token keyword">for</span> scalar <span class="token keyword">in</span> dogString<span class="token punctuation">.</span>unicodeScalars <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">&quot;</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">scalar</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> &quot;</span></span><span class="token punctuation">)</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"</span><span class="token interpolation-punctuation punctuation">\(</span><span class="token interpolation">scalar</span><span class="token interpolation-punctuation punctuation">)</span><span class="token string"> "</span></span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 <span class="token comment">// D</span>
 <span class="token comment">// o</span>
@@ -1190,7 +1190,7 @@ welcome<span class="token punctuation">.</span><span class="token function">remo
 <span class="token comment">// ‼</span>
 <span class="token comment">// 🐶</span>
 </code></pre>
-
+</body></html>
                                 
                                 </section>
                             
@@ -1233,7 +1233,7 @@ welcome<span class="token punctuation">.</span><span class="token function">remo
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"文字と文字列(Strings and Characters)","level":"3.3","depth":1,"next":{"title":"コレクション型(Collection Types)","level":"3.4","depth":1,"path":"language-guide/collection-types.md","ref":"language-guide/collection-types.md","articles":[]},"previous":{"title":"基本演算子(Basic Operators)","level":"3.2","depth":1,"path":"language-guide/basic-operators.md","ref":"language-guide/basic-operators.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-guide/strings-and-characters.md","mtime":"2024-07-03T10:48:50.250Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2024-07-03T10:49:15.968Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"文字と文字列(Strings and Characters)","level":"3.3","depth":1,"next":{"title":"コレクション型(Collection Types)","level":"3.4","depth":1,"path":"language-guide/collection-types.md","ref":"language-guide/collection-types.md","articles":[]},"previous":{"title":"基本演算子(Basic Operators)","level":"3.2","depth":1,"path":"language-guide/basic-operators.md","ref":"language-guide/basic-operators.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","collapsible-chapters","copy-code-button","custom-favicon","edit-link","expand-active-chapter","-highlight","hide-published-with","insert-logo","intopic-toc","katex","prism"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"prism":{},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","mode":"nested","maxDepth":6,"isCollapsed":true,"isScrollspyActive":true,"visible":true,"label":"In this article"},"search":{},"collapsible-chapters":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"hide-published-with":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":"assets/favicon.ico","back-to-top-button":{},"custom-favicon":{},"expand-active-chapter":{},"copy-code-button":{},"edit-link":{"label":"このページを編集","base":"https://github.com/stzn/the-swift-programming-language-jp/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"url":"data:image/png;base64,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","style":"background: none;"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"The Swift Programming Language日本語版","language":"ja","gitbook":"*","description":"[The Swift Programming Language](https://docs.swift.org/swift-book/)の日本語版です。"},"file":{"path":"language-guide/strings-and-characters.md","mtime":"2024-08-22T22:45:58.851Z","type":"markdown"},"gitbook":{"version":"5.1.4","time":"2024-08-22T22:46:25.688Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
