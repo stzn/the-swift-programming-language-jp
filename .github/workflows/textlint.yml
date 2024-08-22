@@ -1,0 +1,33 @@
+name: textlint
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/textlint.yml
+      - .textlintrc
+      - './**/*.md'
+
+jobs:
+  textlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "latest"
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: run textlint
+        id: run-textlint
+        run: |
+          echo "textlint-output=$(yarn --silent textlint './**/*.md' -f json)" >> $GITHUB_OUTPUT
+
+      - uses: yutailang0119/action-textlint@v4
+        with:
+          textlint-output: ${{ steps.run-textlint.outputs.textlint-output }}
+        continue-on-error: false
