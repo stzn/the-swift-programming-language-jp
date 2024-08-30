@@ -1,6 +1,6 @@
 # 並行処理\(Concurrency\)
 
-最終更新日: 2024/06/26
+最終更新日: 2024/08/30
 原文: https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html
 
 非同期操作を行う。
@@ -231,7 +231,7 @@ let photos = await withTaskGroup(of: Data.self) { group in
 
 前の例と同じように、この例でも写真ごとに子タスクを作成してダウンロードしています。前の例とは異なり、`for-await-in` ループは次の子タスクの終了を待ち、そのタスクの結果を結果の配列に追加して、すべての子タスクが終了するまで待ち続けます。最後に、タスクグループはダウンロードした写真の配列を全体の結果として返します。
 
-### <a id="unstructured-concurrency">タスクキャンセル\(Task Cancellation\)</a>
+### <a id="task_cancellation">タスクキャンセル\(Task Cancellation\)</a>
 
 Swift の並行処理では、協調キャンセルモデルを使用します。各タスクは、実行中の適切な時点でキャンセルされたかどうかをチェックし、キャンセルに適切に応答します。タスクがどのような作業をしているかに応じて、キャンセルに応答することは、通常、次のいずれかを意味します:
 
