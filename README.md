@@ -159,6 +159,13 @@
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/elmetal">
+                    <img src="https://avatars.githubusercontent.com/u/20150994?v=4" width="100;" alt="elmetal"/>
+                    <br />
+                    <sub><b>Elmetal</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/rymshm">
                     <img src="https://avatars.githubusercontent.com/u/23201810?v=4" width="100;" alt="rymshm"/>
                     <br />
@@ -170,13 +177,6 @@
                     <img src="https://avatars.githubusercontent.com/u/90051826?v=4" width="100;" alt="tez3998"/>
                     <br />
                     <sub><b>Yuta Tezuka</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/elmetal">
-                    <img src="https://avatars.githubusercontent.com/u/20150994?v=4" width="100;" alt="elmetal"/>
-                    <br />
-                    <sub><b>Elmetal</b></sub>
                 </a>
             </td>
             <td align="center">
