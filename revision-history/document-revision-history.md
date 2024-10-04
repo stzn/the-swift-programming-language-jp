@@ -1,11 +1,11 @@
 # ドキュメント改訂履歴\(Document Revision History\)
 
-最終更新日: 2024/6/26  
+最終更新日: 2024/10/5  
 原文: https://docs.swift.org/swift-book/RevisionHistory/RevisionHistory.html
 
 本書に対する最近の変更点を確認する。
 
-## 2024-06-10
+## 2024-09-16
 
 - Swift6 に更新しました
 - [属性のpreconcurrency](../language-reference/attributes.md#preconcurrency) セクションに、Strict Concurrency チェックへの移行に関する情報を追加しました
