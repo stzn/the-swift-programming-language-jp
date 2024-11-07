@@ -1,6 +1,6 @@
 # Swiftツアー\(A Swift Tour\)
 
-最終更新日: 2024/6/26
+最終更新日: 2024/11/7
 原文: https://docs.swift.org/swift-book/GuidedTour/GuidedTour.html
 
 Swift の特徴とシンタックスを探る。
@@ -478,7 +478,7 @@ print(triangle.sideLength)
 // 3.3000000000000003
 ```
 
-`perimeter` の sett の中で、新しい値は暗黙的に `newValue` という名前になります。`set` の後に丸括弧\(`()`\)で囲んで明示的に指定することもできます。
+`perimeter` の set の中で、新しい値は暗黙的に `newValue` という名前になります。`set` の後に丸括弧\(`()`\)で囲んで明示的に指定することもできます。
 
 `EquilateralTriangle` クラスのイニシャライザは 3 つの異なるステップがあります。
 
