@@ -370,8 +370,8 @@ Swift の並行処理モデルの以下の側面は、共有された可変状�
 ```swift
 extension TemperatureLogger {
     func convertFahrenheitToCelsius() {
-        measurements = measurements.map { measurement in
-            (measurement - 32) * 5 / 9
+        for i in measurements.indices {
+            measurements[i] = (measurements[i] - 32) * 5 / 9
         }
     }
 }
