@@ -189,7 +189,7 @@ func someFunction() { /* ... */ }
 
 ### dynamicCallable
 
-この属性をクラス、構造体、列挙型、またはプロトコルに適用すると、型のインスタンスを呼び出し可能な関数として扱います。この型は、`dynamicallyCall(withArguments:)` メソッド、`dynamicallyCall(withKeywordArguments:)` メソッド、またはその両方を実装する必要があります。
+この属性をクラスや構造体、列挙型、またはプロトコルに適用すると、型のインスタンスを呼び出し可能な関数として扱います。この型は、`dynamicallyCall(withArguments:)` メソッド、`dynamicallyCall(withKeywordArguments:)` メソッド、またはその両方を実装する必要があります。
 
 動的に呼び出し可能な型のインスタンスは、任意の数の引数を取る関数のように呼び出すことができます。
 
@@ -255,7 +255,7 @@ repeatLabels(a: "four") // エラー
 
 ### dynamicMemberLookup
 
-この属性をクラス、構造体、列挙型、またはプロトコルに適用すると、実行時にメンバを名前で検索できるようになります。型は `subscript(dynamicMember:)` を実装する必要があります。
+この属性をクラスや構造体、列挙型、またはプロトコルに適用すると、実行時にメンバを名前で検索できるようになります。型は `subscript(dynamicMember:)` を実装する必要があります。
 
 明示的メンバ式では、指定されたメンバに対応する宣言がない場合、式は型の `subscript(dynamicMember:)` の呼び出しとして解釈され、メンバに関する情報を引数として渡します。サブスクリプトは、KeyPath またはメンバ名のいずれかでパラメータを受け取ることができます。両方のサブスクリプトを実装する場合、KeyPath 引数を取るサブスクリプトが使用されます。
 
@@ -529,7 +529,7 @@ s.$x.wrapper  // WrapperWithProjection 値
 
 ### resultBuilder
 
-この属性をクラス、構造体、列挙型に適用して、その型をリザルトビルダとして使用できます。_リザルトビルダ_は、ネストされたデータ構造を段階的に構築する型です。リザルトビルダを使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語(DSL)を実装します。`resultBuilder` 属性の使用方法の例については、[Result Builders(リザルトビルダ)](../language-guide/advanced-operators.md#result-builders)を参照ください。
+この属性をクラスや構造体、列挙型に適用して、その型をリザルトビルダとして使用できます。_リザルトビルダ_は、ネストされたデータ構造を段階的に構築する型です。リザルトビルダを使用して、ネストされたデータ構造を自然で宣言的な方法で作成するためのドメイン固有言語(DSL)を実装します。`resultBuilder` 属性の使用方法の例については、[Result Builders(リザルトビルダ)](../language-guide/advanced-operators.md#result-builders)を参照ください。
 
 #### Result-Building Methods
 
