@@ -1,6 +1,6 @@
 # 並行処理\(Concurrency\)
 
-最終更新日: 2024/08/30
+最終更新日: 2025/02/01
 原文: https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html
 
 非同期操作を行う。
@@ -19,7 +19,7 @@ Swift の言語サポートを使用せずに並行処理を書くことは可�
 ```swift
 listPhotos(inGallery: "夏休み") { photoNames in
     let sortedNames = photoNames.sorted()
-    let name = sortedNames[1]
+    let name = sortedNames[0]
     downloadPhoto(named: name) { photo in
         show(photo)
     }
@@ -52,7 +52,7 @@ func listPhotos(inGallery name: String) async -> [String] {
 ```swift
 let photoNames = await listPhotos(inGallery: "夏休み")
 let sortedNames = photoNames.sorted()
-let name = sortedNames[1]
+let name = sortedNames[0]
 let photo = await downloadPhoto(named: name)
 show(photo)
 ```
