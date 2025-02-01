@@ -136,19 +136,19 @@
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/jollyjoester">
-                    <img src="https://avatars.githubusercontent.com/u/2178775?v=4" width="100;" alt="jollyjoester"/>
+                <a href="https://github.com/uhooi">
+                    <img src="https://avatars.githubusercontent.com/u/21194714?v=4" width="100;" alt="uhooi"/>
                     <br />
-                    <sub><b>Hideyuki Nanashima</b></sub>
+                    <sub><b>Uhooi</b></sub>
                 </a>
             </td>
 		</tr>
 		<tr>
             <td align="center">
-                <a href="https://github.com/uhooi">
-                    <img src="https://avatars.githubusercontent.com/u/21194714?v=4" width="100;" alt="uhooi"/>
+                <a href="https://github.com/jollyjoester">
+                    <img src="https://avatars.githubusercontent.com/u/2178775?v=4" width="100;" alt="jollyjoester"/>
                     <br />
-                    <sub><b>Uhooi</b></sub>
+                    <sub><b>Hideyuki Nanashima</b></sub>
                 </a>
             </td>
             <td align="center">
@@ -189,6 +189,13 @@
 		</tr>
 		<tr>
             <td align="center">
+                <a href="https://github.com/akidon0000">
+                    <img src="https://avatars.githubusercontent.com/u/53287375?v=4" width="100;" alt="akidon0000"/>
+                    <br />
+                    <sub><b>akidon0000</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/gitbook-bot">
                     <img src="https://avatars.githubusercontent.com/u/31919211?v=4" width="100;" alt="gitbook-bot"/>
                     <br />
@@ -223,6 +230,8 @@
                     <sub><b>Lumi</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/treastrain">
                     <img src="https://avatars.githubusercontent.com/u/13805382?v=4" width="100;" alt="treastrain"/>
