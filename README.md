@@ -166,6 +166,13 @@
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/koogawa">
+                    <img src="https://avatars.githubusercontent.com/u/893643?v=4" width="100;" alt="koogawa"/>
+                    <br />
+                    <sub><b>Kosuke Ogawa</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/rymshm">
                     <img src="https://avatars.githubusercontent.com/u/23201810?v=4" width="100;" alt="rymshm"/>
                     <br />
@@ -179,6 +186,8 @@
                     <sub><b>Yuta Tezuka</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/AppleKid27">
                     <img src="https://avatars.githubusercontent.com/u/39374059?v=4" width="100;" alt="AppleKid27"/>
@@ -186,8 +195,6 @@
                     <sub><b>AK27</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/akidon0000">
                     <img src="https://avatars.githubusercontent.com/u/53287375?v=4" width="100;" alt="akidon0000"/>
@@ -223,6 +230,8 @@
                     <sub><b>Uabyss</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/Lumisilk">
                     <img src="https://avatars.githubusercontent.com/u/11924267?v=4" width="100;" alt="Lumisilk"/>
@@ -230,8 +239,6 @@
                     <sub><b>Lumi</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/treastrain">
                     <img src="https://avatars.githubusercontent.com/u/13805382?v=4" width="100;" alt="treastrain"/>
