@@ -1,6 +1,6 @@
 # マクロ\(Macros\)
 
-最終更新日: 2024/04/19  
+最終更新日: 2025/02/22  
 原文: https://docs.swift.org/swift-book/documentation/the-swift-programming-language/macros
 
 コンパイル時にコードを生成するためにマクロを使用します。
@@ -317,7 +317,7 @@ struct MyProjectMacros: CompilerPlugin {
 
 `#fourCharacterCode` マクロを展開するために、Swift はこのマクロを使用するコードの AST を、マクロの実装を含むライブラリに送信します。ライブラリの中で、Swift はメソッドの引数として AST とコンテキストを渡して `FourCharacterCode.expansion(of:in:)` を呼び出します。`expansion(of:in:)` の実装は、`#fourCharacterCode` に引数として渡された文字列を見つけ、対応する 32 ビット符号なし整数リテラルの値を計算します。
 
-上記の例では、最初の `guard` ブロックが AST から文字列リテラルを取り出し、その AST 要素を `literalSegment` に代入しています。2 番目の `guard` ブロックは、private な `fourCharacterCode(for:)` 関数を呼び出します。これらのブロックはいずれも、マクロの使い方が間違っているとエラーを発生させます(エラーメッセージは、不正な呼び出し先でのコンパイラエラーになります)。例えば、マクロを `#fourCharacterCode("AB" + "CD")` として呼び出そうとすると、コンパイラは「静的な文字列が必要です(Need a static string)」というエラーを表示します。
+上記の例では、最初の `guard` ブロックが AST から文字列リテラルを取り出し、その AST 要素を `literalSegment` に代入しています。2 番目の `guard` ブロックは、private な `fourCharacterCode(for:)` 関数を呼び出します。これらのブロックはいずれも、マクロの使い方が間違っているとエラーを発生させます(エラーメッセージは、不正な呼び出し先でのコンパイルエラーになります)。例えば、マクロを `#fourCharacterCode("AB" + "CD")` として呼び出そうとすると、コンパイラは「静的な文字列が必要です(Need a static string)」というエラーを表示します。
 
 `expansion(of:in:)` メソッドは、AST で式を表す `SwiftSyntax` からの型である `ExprSyntax` のインスタンスを返します。この型は、`StringLiteralConvertible` プロトコルに準拠しているので、マクロの実装は、その結果を作成するために、軽量な構文として文字列リテラルを使用します。マクロの実装から返す `SwiftSyntax` の型はすべて、 `StringLiteralConvertible` に準拠しているので、あらゆる種類のマクロを実装するときにこのアプローチを使用することができます。
 

@@ -1,6 +1,6 @@
 # 属性\(Attributes\)
 
-最終更新日: 2024/6/10  
+最終更新日: 2025/2/22  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Attributes.html
 
 宣言と型に情報を追加する。
@@ -93,7 +93,60 @@ _version number_ は、ピリオド\(`.`\)で区切られた 1〜3 個の正の�
 
 _version number_ は、ピリオド\(`.`\)で区切られた 1〜3 個の正の整数で構成されます。
 
-* `message` 引数は、deprecated または obsoleted された宣言に使用した際に、コンパイラが表示する警告またはエラーのテキストメッセージを提供します。形式は次のとおりです:
+* `noasync` 引数は、宣言されたシンボルが非同期コンテキストで直接使用できないことを示します
+
+Swift の並行処理では、潜在的な中断ポイント後に異なるスレッドで再開される可能性があるため、スレッドローカルストレージ、ロック、ミューテックス、セマフォなどを中断ポイントをまたいで使用すると、誤った結果につながる可能性があります。
+
+この問題を回避するには、シンボルの宣言に `@available(*, noasync)` 属性を追加します:
+
+```swift
+extension pthread_mutex_t {
+  @available(*, noasync)
+  mutating func lock() {
+      pthread_mutex_lock(&self)
+  }
+
+  @available(*, noasync)
+  mutating func unlock() {
+      pthread_mutex_unlock(&self)
+  }
+}
+```
+
+この属性は、誰かが非同期コンテキストでそのシンボルを使用しようとした場合にコンパイルエラーを発生させます。また、`message` 引数を使用してシンボルに関する追加情報も提供できます。
+
+```swift
+@available(*, noasync, message: "Migrate locks to Swift concurrency.")
+mutating func lock() {
+  pthread_mutex_lock(&self)
+}
+```
+
+潜在的に安全でないシンボルを安全に使用できると保証できるのであれば、同期関数でラップし、その関数を非同期コンテキストから呼び出せます。
+
+```swift
+// noasync 宣言を持つメソッドの同期ラッパを提供する
+extension pthread_mutex_t {
+  mutating func withLock(_ operation: () -> ()) {
+    self.lock()
+    operation()
+    self.unlock()
+  }
+}
+
+func downloadAndStore(key: Int,
+                    dataStore: MyKeyedStorage,
+                    dataLock: inout pthread_mutex_t) async {
+  // 非同期コンテキストでラッパを安全に呼び出す
+  dataLock.withLock {
+    dataStore[key] = downloadContent()
+  }
+}
+```
+
+`noasync` 引数はほとんどの宣言で使用できますが、デイニシャライザの宣言では使用できません。Swift は同期・非同期の両方のコンテキストからクラスのデイニシャライザを呼び出せる必要があります。
+
+* `message` 引数は、`deprecated` や `obsoleted`、`noasync` が付与された宣言に使用した際に、コンパイラが表示する警告またはエラーのテキストメッセージを提供します。形式は次のとおりです:
 
   ```swift
   message: <#message#>
