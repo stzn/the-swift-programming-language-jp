@@ -1,6 +1,6 @@
 # 属性\(Attributes\)
 
-最終更新日: 2025/2/22  
+最終更新日: 2025/3/29  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Attributes.html
 
 宣言と型に情報を追加する。
@@ -613,7 +613,7 @@ s.$x.wrapper  // WrapperWithProjection 値
 - `static func buildExpression(_ expression: Expression) -> Component`: 式から部分的な結果を作成する。このメソッドを実装して、前処理(例えば、式を内部型に変換する)を実行したり、使用側で型推論のための追加情報を提供したりできる
 
 - `static func buildFinalResult(_ component: Component) -> FinalResult`: 部分的な結果から最終結果を作成する。このメソッドは、部分結果と最終結果で異なる型を使用するリザルトビルダの一部として実装したり、結果を返す前に結果に対して後処理を実行したりできる
-- `static func buildLimitedAvailability(_ component: Component) -> Component`: アベイラビリティチェックを実行するコンパイラ制御文の外部で型情報を伝播または消去する部分的な結果を作成する。これを使用して、条件分岐間で異なる型情報を消去できる
+- `static func buildLimitedAvailability(_ component: Component) -> Component`: 型情報を消去する部分的な結果を構築する。コンパイラ制御文の外部へ型情報が伝播されるのを防ぐために、このメソッドを実装できる
 
 例えば、下記のコードは、整数の配列を作成するシンプルなリザルトビルダを定義しています。このコードは、`Component` と `Expression` をタイプエイリアスとして定義し、下記の例を上記のメソッドのリストに簡単に一致させることができます。
 
@@ -656,7 +656,7 @@ var manualNumber = ArrayBuilder.buildExpression(10)
 ```
 
 * 代入文は式のように変換されますが、`()` に評価されると解釈されます。代入を具体的に処理するために `()` 型の引数を取る `buildExpression(_:)` のオーバーロードを定義できます
-* アベイラビリティ条件をチェックする分岐文は、`buildLimitedAvailability(_:)` メソッドの呼び出しになります。この変換は、`buildEither(first:)`、`buildEither(second:)`、または `buildOptional(_:)` の呼び出しに変換される前に行われます。`buildLimitedAvailability(_:)` メソッドを使用して、取得する分岐に応じて変化する型情報を消去します。例えば、下記の `buildEither(first:)` メソッドと `buildEither(second:)` メソッドは、両方の分岐に関する型情報をキャプチャするジェネリック型を使用します
+* アベイラビリティ条件をチェックする分岐文は、もし `buildLimitedAvailability(_:)` メソッドを実装していれば、それを呼び出しになります。`buildLimitedAvailability(_:)` を実装していなければ、アベイラビリティをチェックする分岐文は、他の分岐文と同じ変換を使用します。この変換は、`buildEither(first:)`、`buildEither(second:)`、または `buildOptional(_:)` の呼び出しに変換される前に行われます。`buildLimitedAvailability(_:)` メソッドを使用して、取得する分岐に応じて変化する型情報を消去します。例えば、下記の `buildEither(first:)` メソッドと `buildEither(second:)` メソッドは、両方の分岐に関する型情報をキャプチャするジェネリック型を使用します
 
 ```swift
 protocol Drawable {
@@ -715,7 +715,7 @@ struct FutureText: Drawable {
 
 上記のコードでは、`FutureText` は `DrawEither` ジェネリック型の 1 つのため、`brokenDrawing` の型の一部として使用されています。これにより、`FutureText` が実行時に使用できない場合、その型が明示的に使用されていない場合でも、プログラムがクラッシュする可能性があります。
 
-この問題を解決するには、`buildLimitedAvailability(_:)` メソッドを実装して型情報を消去します。例えば、下記のコードは、アベイラビリティチェックから `AnyDrawable` 値を作成します。
+この問題を解決するには、`buildLimitedAvailability(_:)` メソッドを実装し、常に利用可能な型を返すことで、型情報を消去します。例えば、下記のコードは、アベイラビリティチェックから `AnyDrawable` 値を作成します。
 
 ```swift
 struct AnyDrawable: Drawable {
@@ -723,7 +723,7 @@ struct AnyDrawable: Drawable {
     func draw() -> String { return content.draw() }
 }
 extension DrawingBuilder {
-    static func buildLimitedAvailability(_ content: Drawable) -> AnyDrawable {
+    static func buildLimitedAvailability(_ content: some Drawable) -> AnyDrawable {
         return AnyDrawable(content: content)
     }
 }
