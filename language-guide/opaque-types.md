@@ -1,6 +1,6 @@
 # Opaque 型とBox プロトコル型\(Opaque and Boxed Protocol Types\)
 
-最終更新日: 2024/04/23  
+最終更新日: 2025/3/29  
 原文: https://docs.swift.org/swift-book/LanguageGuide/OpaqueTypes.html
 
 値の型に関する実装の詳細を隠す。
@@ -302,3 +302,33 @@ print(type(of: twelve))
 
 `twelve` の型は `Int` だと推論されます。これは、型推論が Opaque 型でも機能することを示しています。`makeOpaqueContainer(item:)` の実装では、Opaque 型の基になる型は `[T]` です。この場合、`T` は `Int` のため、戻り値は整数の配列で、関連型 `Item` は `Int` だと推論されます。`Container` のサブスクリプトは `Item` を返します。これは、`twelve` の型も `Int` だと推論されることを意味します。
 
+## <a id="generic-parameter-types">Opaque パラメータ型\(Opaque Parameter Types\)</a>
+
+Opaque 型を返すために `some` を書くことに加えて、関数や `subscript`、イニシャライザのパラメータの型にも `some` を書くことができます。ただし、パラメータの型に `some` を書く場合、それは Opaque 型ではなく、ジェネリクスの短い構文にすぎません。たとえば、以下の 2 つの関数は等価です:
+
+```swift
+func drawTwiceGeneric<SomeShape: Shape>(_ shape: SomeShape) -> String {
+    let drawn = shape.draw()
+    return drawn + "\n" + drawn
+}
+
+func drawTwiceSome(_ shape: some Shape) -> String {
+    let drawn = shape.draw()
+    return drawn + "\n" + drawn
+}
+```
+
+`drawTwiceGeneric(_:)` 関数は `SomeShape` という名前のジェネリック型パラメータを宣言し、`SomeShape` が `Shape` プロトコルに準拠するように制約を設けています。一方で `drawTwiceSome(_:)` 関数は引数の型として `some Shape` を使っています。これは新しい無名のジェネリック型パラメータを作り、その型が `Shape` プロトコルに準拠するように制約を課しています。ジェネリック型に名前がないため、関数内の別の箇所からその型に言及することはできません。
+
+複数のパラメータの型の前に `some` を書く場合、それぞれのジェネリック型は独立しています。たとえば:
+
+```swift
+func combine(shape s1: some Shape, with s2: some Shape) -> String {
+    return s1.draw() + "\n" + s2.draw()
+}
+
+combine(smallTriangle, trapezoid)
+```
+
+`combine(shape:with:)` 関数では、最初と 2 番目のパラメータの型はどちらも `Shape` プロトコルに準拠している必要がありますが、同じ型である必要はありません。`combine(shape:with:)` を呼び出すときには、ここでは三角形と台形のように、異なる 2 つの図形を渡せます。
+[Generics](./generics.md)の章で説明されている名前付きジェネリック型パラメータの構文とは異なり、この軽量な構文ではジェネリック `where` 句や同一型 (`==`) の制約を含めることはできません。さらに、とても複雑な制約に対してこの軽量な構文を使うと、コードが読みにくくなる場合があります。
