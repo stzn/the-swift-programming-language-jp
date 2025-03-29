@@ -1,6 +1,6 @@
 # 字句構造 \(Lexical Structure\)
 
-最終更新日: 2024/6/11  
+最終更新日: 2025/3/29  
 原文: https://docs.swift.org/swift-book/ReferenceManual/LexicalStructure.html
 
 最低水準の構成要素を使用する。
@@ -93,7 +93,7 @@ _識別子_は、大文字または小文字の `A` から `Z`、アンダース
 
 次のキーワードは予約されており、前述のようにバッククォート\(\`\)でエスケープしない限り識別子としては使用できません。`inout`、`var`、`let` 以外のキーワードは、バッククォートでエスケープすることなく関数宣言、または関数の引数名として使用できます。メンバの名前がキーワードと同じ場合、およびメンバの参照とキーワードの使用の間に曖昧さがある場合を除いて、そのメンバへの参照をバッククォートでエスケープする必要はありません。しかし、例えば `self`、`Type`、および `Protocol` には明示的メンバ式の中で特別な意味があるため、そのコンテキストではバッククォートによるエスケープが必要です。
 
-* 宣言で使用されるキーワード: `associatedtype`、`borrowing`、`class`、`consuming`、`deinit`、`enum`、`extension`、`fileprivate`、`func`、`import`、`init`、`inout`、`internal`、`let`、`open`、`operator`、`private`、`protocol`、`public`、`rethrows`、`static`、`struct`、`subscript`、`typealias`、および `var`
+* 宣言で使用されるキーワード: `associatedtype`、`borrowing`、`class`、`consuming`、`deinit`、`enum`、`extension`、`fileprivate`、`func`、`import`、`init`、`inout`、`internal`、`let`、`nonisolated`、`open`、`operator`、`private`、`protocol`、`public`、`rethrows`、`static`、`struct`、`subscript`、`typealias`、および `var`
 * 文で使用されるキーワード: `break`、`case`、`continue`、`default`、`defer`、`do`、`else`、`fallthrough`、`for`、`guard`、`if`、`in`、`repeat`、`return`、`switch`、`where`、`while`
 * 式と型で使用されるキーワード: `Any`、`as`、`await`、`catch`、`false`、`is`、`nil`、`super`、`self`、`Self`、`throw`、`throws`、`true`、および `try`
 * パターンで使用されるキーワード: `_`
