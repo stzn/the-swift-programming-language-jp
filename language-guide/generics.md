@@ -1,6 +1,6 @@
 # ジェネリクス\(Generics\)
 
-最終更新日: 2023/10/28
+最終更新日: 2025/3/29
 原文: https://docs.swift.org/swift-book/LanguageGuide/Generics.html
 
 複数の型で機能するコードを記述し、それらの型で準拠が必要な要件を指定する。
@@ -110,8 +110,10 @@ swapTwoValues(&someString, &anotherString)
 
 ほとんどの場合、型パラメータには、`Dictionary<Key, Value>` の `Key` と `Value`、`Array<Element>` の `Element` などのその型パラメータの意味を表す名前が付いています。ただし、型パラメータに意味がない場合、上記の `swapTwoValues(_:_:)` 関数の `T` など、`T`、`U`、`V` などの 1 文字の名前を付けるのが伝統的です。
 
+型パラメータには、`T` や `MyTypeParameter` など常に大文字のキャメルケース名を指定し、それらが値ではなく*型*のプレースホルダであることを示します。
+
 > NOTE
-> 型パラメータには常に大文字のキャメルケース名\(`T` や `MyTypeParameter` など\)を指定して、それらが値ではなく型のプレースホルダであることを示します。
+> 型パラメータに名前を付ける必要がなく、ジェネリック型の制約が単純であれば、代わりに使用できる他の軽量なシンタックスがあります。詳しくは、[Opaque パラメータ型\(Opaque Parameter Types\)](./opaque-types.md#opaque-parameter-types)を参照してください。
 
 ## <a id="generic-types">ジェネリック型\(Generic Types\)</a>
 
