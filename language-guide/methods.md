@@ -1,6 +1,6 @@
 # メソッド \(Methods\)
 
-最終更新日: 2022/12/3  
+最終更新日: 2025/04/11
 原文: https://docs.swift.org/swift-book/LanguageGuide/Methods.html
 
 インスタンスまたは型の一部である関数を定義して呼び出す。
@@ -123,7 +123,7 @@ fixedPoint.moveBy(x: 2.0, y: 3.0)
 
 ### mutating メソッド内からselfへの値の割り当て\(Assigning to self Within a Mutating Method\)
 
-`mutating` なメソッドは、まったく新しいインスタンスを暗黙的な `self` プロパティに割り当てることができます。上記の `Point` の例は、代わりに次のように記述できます:
+`mutating` メソッドは、まったく新しいインスタンスを暗黙的な `self` プロパティに割り当てることができます。上記の `Point` の例は、代わりに次のように記述できます:
 
 ```swift
 struct Point {
