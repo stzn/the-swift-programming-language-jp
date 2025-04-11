@@ -136,10 +136,10 @@
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/jollyjoester">
-                    <img src="https://avatars.githubusercontent.com/u/2178775?v=4" width="100;" alt="jollyjoester"/>
+                <a href="https://github.com/uhooi">
+                    <img src="https://avatars.githubusercontent.com/u/21194714?v=4" width="100;" alt="uhooi"/>
                     <br />
-                    <sub><b>Hideyuki Nanashima</b></sub>
+                    <sub><b>Uhooi</b></sub>
                 </a>
             </td>
 		</tr>
@@ -152,10 +152,10 @@
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/uhooi">
-                    <img src="https://avatars.githubusercontent.com/u/21194714?v=4" width="100;" alt="uhooi"/>
+                <a href="https://github.com/jollyjoester">
+                    <img src="https://avatars.githubusercontent.com/u/2178775?v=4" width="100;" alt="jollyjoester"/>
                     <br />
-                    <sub><b>Uhooi</b></sub>
+                    <sub><b>Hideyuki Nanashima</b></sub>
                 </a>
             </td>
             <td align="center">
@@ -163,6 +163,13 @@
                     <img src="https://avatars.githubusercontent.com/u/1823075?v=4" width="100;" alt="enomoto"/>
                     <br />
                     <sub><b>Kenta Enomoto</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/Ryota-Kurokawa">
+                    <img src="https://avatars.githubusercontent.com/u/119117263?v=4" width="100;" alt="Ryota-Kurokawa"/>
+                    <br />
+                    <sub><b>ryota</b></sub>
                 </a>
             </td>
             <td align="center">
@@ -179,6 +186,8 @@
                     <sub><b>Ryo Mashima</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/tez3998">
                     <img src="https://avatars.githubusercontent.com/u/90051826?v=4" width="100;" alt="tez3998"/>
@@ -186,8 +195,6 @@
                     <sub><b>Yuta Tezuka</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/AppleKid27">
                     <img src="https://avatars.githubusercontent.com/u/39374059?v=4" width="100;" alt="AppleKid27"/>
@@ -223,6 +230,8 @@
                     <sub><b>B1ackturtle</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/u-abyss">
                     <img src="https://avatars.githubusercontent.com/u/47887646?v=4" width="100;" alt="u-abyss"/>
@@ -230,8 +239,6 @@
                     <sub><b>Uabyss</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/Lumisilk">
                     <img src="https://avatars.githubusercontent.com/u/11924267?v=4" width="100;" alt="Lumisilk"/>
