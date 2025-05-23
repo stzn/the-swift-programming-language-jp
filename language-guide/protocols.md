@@ -1,6 +1,6 @@
 # プロトコル\(Protocols\)
 
-最終更新日: 2024/3/18
+最終更新日: 2025/5/24
 原文: https://docs.swift.org/swift-book/LanguageGuide/Protocols.html
 
 準拠型が実装する必要がある要件を定義する。
@@ -247,6 +247,32 @@ class SomeSubClass: SomeSuperClass, SomeProtocol {
 プロトコルは、[Failable Initializers\(失敗可能イニシャライザ\)](../language-reference/declarations.md#declarations-failable-initializers)で定義されているように、失敗可能イニシャライザ要件を定義できます。
 
 失敗可能イニシャライザ要件は、準拠する型の失敗可能または失敗しないイニシャライザによって満たされます。失敗しないイニシャライザ要件は、失敗しないイニシャライザまたは暗黙的にアンラップされた失敗可能イニシャライザによって満たされます。
+
+## セマンティック要件のみを持つプロトコル\(Protocols that Have Only Semantic Requirements\)
+
+上記のすべてのプロトコル例では、いくつかのメソッドやプロパティが必要ですが、プロトコル宣言に要件を含める必要はありません。プロトコルを使用して、セマンティック要件、つまりそれらの型の値がどのように動作するか、およびそれらがサポートする操作に関する要件を記述することもできます。
+
+Swift 標準ライブラリは、必須のメソッドやプロパティを持たないいくつかのプロトコルを定義しています。
+
+- [`Sendable`](https://developer.apple.com/documentation/swift/sendable): 並行処理ドメイン間で共有できる値用([`Sendable` 型\(Sendable Types\)](concurrency.md#sendable-型sendable-types)で説明)
+- [`Copyable`](https://developer.apple.com/documentation/swift/copyable): 関数に渡すときに Swift がコピーできる値用([Borrowing と Consuming パラメータ\(Borrowing and Consuming Parameters\)](../language-reference/declarations.md#borrowing-と-consuming-パラメータborrowing-and-consuming-parameters)で説明)
+- [`BitwiseCopyable`](https://developer.apple.com/documentation/swift/bitwisecopyable)：ビット単位でコピーできる値用
+
+これらのプロトコルの要件に関する情報については、それぞれのドキュメントの概要を参照してください。
+
+これらのプロトコルを採用する場合も、他のプロトコルを採用する場合と同じ構文を使用します。唯一の違いは、プロトコルの要件を実装するメソッドやプロパティの宣言を含めないことです。次に例を示します。
+
+```swift
+struct MyStruct: Copyable {
+    var counter = 12
+}
+
+extension MyStruct: BitwiseCopyable { }
+```
+
+上記のコードは新しい構造体を定義しています。`Copyable` にはセマンティック要件しかないため、構造体宣言にはプロトコルを採用するためのコードはありません。同様に、`BitwiseCopyable` にはセマンティック要件しかないため、そのプロトコルを採用する extension の本体は空です。
+
+通常、これらのプロトコルへの準拠を記述する必要はありません。代わりに、[プロトコルへの暗黙の準拠\(Implicit Conformance to a Protocol\)](#プロトコルへの暗黙の準拠implicit-conformance-to-a-protocol)で説明されているように、Swift が暗黙的に準拠を追加します。
 
 ## <a id="protocols-as-types">型としてのプロトコル\(Protocols as Types\)</a>
 
@@ -511,6 +537,35 @@ for level in levels.sorted() {
 // expert(stars: 3)
 // expert(stars: 5)
 ```
+
+## <a id="implicit-conformance-to-a-protocol">プロトコルへの暗黙の準拠\(Implicit Conformance to a Protocol\)</a>
+
+一部のプロトコルは非常によく使われるため、ほとんどの場合、新しい型を宣言するたびにそれらを記述することになるでしょう。以下のプロトコルについては、プロトコルの要件を実装する型を定義すると、Swift が自動的に準拠を推論するため、自分で記述する必要はありません。
+
+- [`Copyable`](https://developer.apple.com/documentation/swift/copyable)
+- [`Sendable`](https://developer.apple.com/documentation/swift/sendable)
+- [`BitwiseCopyable`](https://developer.apple.com/documentation/swift/bitwisecopyable)
+
+明示的に準拠を記述することもできますが、それによってコードの動作が変わることはありません。暗黙的な準拠を抑制するには、準拠リストのプロトコル名の前にチルダ(`~`)を記述します。
+
+```swift
+struct FileDescriptor: ~Sendable {
+    let rawValue: Int
+}
+```
+
+上記のコードは、POSIX ファイルディスクリプタのラッパーの一部を示しています。`FileDescriptor` 構造体は `Sendable` プロトコルのすべての要件を満たしており、通常はこれにより `Sendable` になります。しかし、`~Sendable` と記述することで、この暗黙的な準拠が抑制されます。ファイルディスクリプタは開いているファイルを識別し操作するために整数を使用し、整数値は `Sendable` ですが、これを非 `Sendable` にすることで、特定種類のバグを回避するのに役立ちます。
+
+暗黙的な準拠を抑制するもう 1 つの方法は、利用不可としてマークした extension を使用することです。
+
+```swift
+@available(*, unavailable)
+extension FileDescriptor Sendable { }
+```
+
+前の例のように、コードのある場所で `~Sendable` と記述した場合でも、プログラムの他の場所のコードは `FileDescriptor` 型を拡張して `Sendable` 準拠を追加できます。対照的に、この例の `unavailable` extension は、`Sendable` への暗黙的な準拠を抑制し、さらにコードの他の場所にある extension がその型に `Sendable` 準拠を追加するのを防ぎます。
+
+> 注：上記のプロトコルに加えて、分散(distributed)アクターは、暗黙的に [`Codable`](https://developer.apple.com/documentation/swift/codable) プロトコルに準拠します。
 
 ## プロトコル型のコレクション\(Collections of Protocol Types\)
 
