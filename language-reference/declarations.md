@@ -1,6 +1,6 @@
 # 宣言\(Declarations\)
 
-最終更新日: 2024/6/23  
+最終更新日: 2025/5/24  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Declarations.html
 
 型、演算子、変数、およびその他の名前と構造を紹介する。
@@ -487,9 +487,9 @@ func multithreadedFunction(queue: DispatchQueue, x: inout Int) {
 
 より多くの議論と in-out パラメータの例については、[In-Out Parameters\(In-Out パラメータ\)](../language-reference/functions#functions-in-out-parameters)を参照ください。
 
-#### Borrowing と Consuming パラメータ
+#### <a id="borrowing-and-consuming-parameters">Borrowing と Consuming パラメータ\(Borrowing and Consuming Parameters\)</a>
 
-デフォルトでは、Swift は、必要なときに値をコピーし、関数呼び出し全体でオブジェクトの寿命を自動的に管理するために、一連のルールを使用します。デフォルトのルールは、ほとんどのケースでオーバーヘッドを最小限に抑えるように設計されています。この場合、コピー操作を明示的にマークするには `copy` を使用します。
+デフォルトでは、Swift は、必要なときに値をコピーし、関数呼び出し全体でオブジェクトの寿命を自動的に管理するために、一連のルールを使用します。デフォルトのルールは、ほとんどのケースでオーバーヘッドを最小限に抑えるように設計されています。この場合、コピー操作を明示的にマークするには `copy` を使用します。また、コピー不可型の値は、borrow または consume として渡されなければなりません。
 
 デフォルトのルールを使用するかどうかに関係なく、Swift はオブジェクトの寿命と所有権がすべてのケースで正しく管理されることを保証します。これらのパラメータ修飾子は、正しさではなく、特定の使用パターンの相対的な効率性だけに影響します。
 

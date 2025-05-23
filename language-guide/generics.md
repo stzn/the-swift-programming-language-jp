@@ -1,6 +1,6 @@
 # ジェネリクス\(Generics\)
 
-最終更新日: 2025/3/29
+最終更新日: 2025/5/24
 原文: https://docs.swift.org/swift-book/LanguageGuide/Generics.html
 
 複数の型で機能するコードを記述し、それらの型で準拠が必要な要件を指定する。
@@ -741,3 +741,34 @@ extension Container {
 * ジェネリック `where` 句では、シーケンスのイテレータが `Int` 型の要素を繰り返し処理することを要求します。これにより、シーケンス内のインデックスは、コンテナに使用されるインデックスと同じ型だということが保証されます
 
 まとめると、これらの制約は、`indices` パラメータに渡される値が整数のシーケンスだということを意味します。
+
+## <a id="implicit-constraints">暗黙の制約\(Implicit Constraints\)</a>
+
+明示的に記述する制約に加えて、ジェネリックコードの多くの箇所で [`Copyable`](https://developer.apple.com/documentation/swift/copyable) のような非常に一般的なプロトコルへの準拠が暗黙的に要求されます。
+
+このように記述する必要のないジェネリック制約は、*暗黙的な制約*として知られています。例えば、以下の両方の関数宣言は `MyType` がコピー可能であることを要求します。
+
+```swift
+function someFunction<MyType> { ... }
+function someFunction<MyType: Copyable> { ... }
+```
+
+上記のコードにおける `someFunction()` の両方の宣言は、ジェネリック型パラメータ `MyType` がコピー可能であることを要求します。最初のバージョンでは制約は暗黙的であり、2 番目のバージョンでは明示的に記述されています。ほとんどのコードでは、型はこれらの共通プロトコルに暗黙的に準拠します。詳細については、[プロトコルへの暗黙の準拠\(Implicit Conformance to a Protocol\)](./protocols.md#プロトコルへの暗黙の準拠implicit-conformance-to-a-protocol) を参照してください。
+
+Swift のほとんどの型はこれらのプロトコルに準拠しているため、それらをほぼすべての場所に記述するのは冗長になります。代わりに、例外のみをマークすることで、共通の制約を省略する箇所を明示します。暗黙的な制約を抑制するには、プロトコル名の前にチルダ(`~`)を記述します。`~Copyable` は「コピー可能かもしれない」と読むことができ、この抑制された制約により、この位置でコピー可能な型とコピー不可能な型の両方が許可されます。`~Copyable` は型がコピー不可能であることを要求するものではないことに注意してください。たとえば、
+
+```swift
+func f<MyType>(x: inout MyType) {
+    let x1 = x  // x1 の値は x の値のコピーです。
+    let x2 = x  // x2 の値は x の値のコピーです。
+}
+
+func g<AnotherType: ~Copyable>(y: inout AnotherType) {
+    let y1 = y  // 代入によって y の値が consume されます。
+    let y2 = y  // エラー: 値が複数回 consume されました。
+}
+```
+
+上記のコードでは、関数 `f()` は `MyType` がコピー可能であることを暗黙的に要求します。関数本体内では、代入において `x` の値が `x1` と `x2` にコピーされます。対照的に、`g()` は `AnotherType` に対する暗黙的な制約を抑制し、これによりコピー可能な値またはコピー不可能な値のいずれかを渡すことができます。関数本体内では、`AnotherType` がコピー不可能である可能性があるため、`y` の値をコピーすることはできません。代入は `y` の値を consume し、その値を複数回 consume するとエラーになります。`y` のようなコピー不可能な値は、in-out、 borrow、consume パラメータとして渡す必要があります。詳細については、[Borrowing と Consuming パラメータ\(Borrowing and Consuming Parameters\)](../language-reference/declarations.md#borrowing-and-consuming-parameters)を参照してください。
+
+ジェネリックコードが特定のプロトコルへの暗黙的な制約をいつ含むかについての詳細は、そのプロトコルのリファレンスを参照してください。

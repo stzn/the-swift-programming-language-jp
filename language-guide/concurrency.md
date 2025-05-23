@@ -421,17 +421,12 @@ struct TemperatureReading {
 }
 ```
 
-明示的に型を `Sendable` とマークし、`Sendable` プロトコルへ暗黙に準拠することを上書きするには、extension を使用します:
+`Sendable` プロトコルへの暗黙の準拠を上書きするには、`~Sendable` と書きます:
 
 ```swift
-struct FileDescriptor {
-    let rawValue: CInt
+struct FileDescriptor: ~Sendable {
+    let rawValue: Int
 }
-
-@available(*, unavailable)
-extension FileDescriptor: Sendable { }
 ```
 
-上のコードは、POSIX ファイル記述子のラッパーの一部を示しています。ファイル記述子のインタフェースは、整数を使用して開いているファイルを識別して対話し、整数値は `Sendable` ですが、ファイル記述子は並行処理のドメイン間で送信することは安全ではありません。
-
-上記のコードでは、`FileDescriptor` は暗黙的に `Sendable` に準拠できる基準を満たす構造体です。しかし、extension で `Sendable` への準拠を利用できなくし、この型が `Sendable` に準拠することを防いでいます。
+プロトコルへの暗黙の準拠を抑制する詳細な情報は、[暗黙の制約\(Implicit Constraints\)](./generics.md#暗黙の制約implicit-constraints) を参照ください。
