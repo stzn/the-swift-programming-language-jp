@@ -196,10 +196,10 @@
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/AppleKid27">
-                    <img src="https://avatars.githubusercontent.com/u/39374059?v=4" width="100;" alt="AppleKid27"/>
+                <a href="https://github.com/27pokke">
+                    <img src="https://avatars.githubusercontent.com/u/39374059?v=4" width="100;" alt="27pokke"/>
                     <br />
-                    <sub><b>AK27</b></sub>
+                    <sub><b>ぽっけ</b></sub>
                 </a>
             </td>
             <td align="center">
