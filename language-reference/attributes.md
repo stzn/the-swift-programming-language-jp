@@ -1,6 +1,6 @@
 # 属性\(Attributes\)
 
-最終更新日: 2025/3/29  
+最終更新日: 2025/5/31  
 原文: https://docs.swift.org/swift-book/ReferenceManual/Attributes.html
 
 宣言と型に情報を追加する。
@@ -378,6 +378,14 @@ frozen 列挙型の switch 文は、[Switching Over Future Enumeration Cases\(�
 ### GKInspectable
 
 この属性を適用して、独自の GameplayKit コンポーネントプロパティを SpriteKit エディタ UI に公開します。この属性を適用すると、`objc` 属性も暗黙的に追加されます。
+
+### globalActor
+
+この属性はアクター、構造体、列挙型、または `final` クラスに適用します。その型は、アクターの共有インスタンスを提供する `shared` という名前の静的プロパティを定義する必要があります。
+
+グローバルアクターは、アクター隔離の概念を、コード内の複数の異なる場所（複数の型、ファイル、モジュールなど）に分散した状態で汎用化し、並行コードからグローバル変数に安全にアクセスできるようにします。グローバルアクターが `shared` プロパティの値として提供するアクターは、このすべての状態へのアクセスを直列化します。また、すべて同じスレッドで実行する必要があるコードのように、並行コードにおける制約をモデル化するためにグローバルアクターを使用することもできます。
+
+グローバルアクターは暗黙的に [`GlobalActor`](https://developer.apple.com/documentation/swift/globalactor) プロトコルに準拠します。メインアクターは、[メインアクター\(The Main Actor\)](../language-guide/concurrency.md#メインアクターthe-main-actor)で説明されているように、標準ライブラリによって提供されるグローバルアクターです。ほとんどのコードは、新しいグローバルアクターを定義する代わりにメインアクターを使用できます。
 
 ### inlinable
 
