@@ -1,6 +1,6 @@
 # 列挙型\(Enumerations\)
 
-最終更新日: 2023/9/17  
+最終更新日: 2025/6/21  
 原文: https://docs.swift.org/swift-book/LanguageGuide/Enumerations.html
 
 可能な値のリストを定義する独自の型をモデル化する。
@@ -200,9 +200,19 @@ case let .qrCode(productCode):
 // QR code: ABCDEFGHIJKLMNOP.
 ```
 
+列挙型の単一のケースにのみ一致させる場合、例えばその関連値を抽出するようなときには、完全な `switch` 文を記述する代わりに `if-case` 文を使用できます。例は次の通りです。
+
+```swift
+if case .qrCode(let productCode) = productBarcode {
+    print("QR code: \(productCode).")
+}
+```
+
+先述の `switch` 文と同様に、ここでは `productBarcode` 変数がパターン `.qrCode(let productCode)` とマッチングされます。そして `switch` の `case` と同様に、`let` を記述すると関連値が定数として抽出されます。`if-case` 文についての詳細は、[パターン\(Patterns\)](./control-flow.md#patterns) を参照してください。
+
 ## Raw Values
 
-[Associated Values\(関連値\)](enumerations.md#associated-values)のバーコードの例は、列挙ケースが、様々な型に関連値を格納して宣言する方法を示しています。関連値の代わりに、列挙型には、全て同じ型のデフォルト値\(_Raw Values_と呼ばれる\)を事前に定義することもできます。
+[関連値\(Associated Values\)](enumerations.md#associated-values)のバーコードの例は、列挙ケースが、様々な型に関連値を格納して宣言する方法を示しています。関連値の代わりに、列挙型には、全て同じ型のデフォルト値\(_Raw Values_と呼ばれる\)を事前に定義することもできます。
 
 名前付きの列挙ケースと一緒に ASCII 値を格納する例を次に示します。
 
@@ -218,8 +228,7 @@ enum ASCIIControlCharacter: Character {
 
 Raw Value は、文字列、文字、または整数型または浮動小数点数型のいずれかです。各 Raw Value は、その列挙型内で一意でなければなりません。
 
-> NOTE  
-> Raw Valueは、関連値と同じではありません。上記の3つの ASCII コードのように、コードで列挙型を最初に定義するときに、Raw Value は事前入力された値に設定されます。特定の列挙ケースの Raw Value は常に同じです。関連値は、列挙ケースに基づいて新しい定数または変数を作成するときに設定され、作成する度に異なる可能性があります。
+Raw Value と関連値は、どちらも列挙型に追加の値を設定するために使用できますが、両者の違いを理解しておくことが重要です。Raw Value は、上記の 3 つの ASCII コードのように、コード内で列挙型のケースを定義する際に設定します。特定の列挙型のケースに設定した Raw Value は、常に同じ値です。一方、関連値は、列挙型のいずれかのケースを使用して新しい定数または変数を作成する際に設定するもので、そのたびに異なる値を選択できます。
 
 ### <a id="implicitly-assigned-raw-values">暗黙的に割り当てられたRaw Value\(Implicitly Assigned Raw Values\)</a>
 
