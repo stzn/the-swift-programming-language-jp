@@ -1,6 +1,6 @@
 # 文字列と文字\(Strings and Characters\)
 
-最終更新日: 2023/8/18  
+最終更新日: 2025/6/28  
 原文: https://docs.swift.org/swift-book/LanguageGuide/StringsAndCharacters.html
 
 テキストを保存して操作する。
