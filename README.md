@@ -180,14 +180,21 @@
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/DHLau">
+                    <img src="https://avatars.githubusercontent.com/u/16432625?v=4" width="100;" alt="DHLau"/>
+                    <br />
+                    <sub><b>Eren</b></sub>
+                </a>
+            </td>
+		</tr>
+		<tr>
+            <td align="center">
                 <a href="https://github.com/rymshm">
                     <img src="https://avatars.githubusercontent.com/u/23201810?v=4" width="100;" alt="rymshm"/>
                     <br />
                     <sub><b>Ryo Mashima</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/tez3998">
                     <img src="https://avatars.githubusercontent.com/u/90051826?v=4" width="100;" alt="tez3998"/>
@@ -223,6 +230,8 @@
                     <sub><b>Hiraoka</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/b1ackturtle">
                     <img src="https://avatars.githubusercontent.com/u/13419249?v=4" width="100;" alt="b1ackturtle"/>
@@ -230,8 +239,6 @@
                     <sub><b>B1ackturtle</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/u-abyss">
                     <img src="https://avatars.githubusercontent.com/u/47887646?v=4" width="100;" alt="u-abyss"/>
