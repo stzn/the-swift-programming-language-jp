@@ -1,6 +1,6 @@
 # プロパティ\(Properties\)
 
-最終更新日: 2024/6/23 
+最終更新日: 2025/6/28 
 原文: https://docs.swift.org/swift-book/LanguageGuide/Properties.html
 
 インスタンスまたは型の一部である、格納および計算された値にアクセスする。
@@ -247,7 +247,9 @@ _プロパティオブザーバ_は、プロパティの値の変化を監視し
 同様に、`didSet` オブザーバを実装する場合、古いプロパティ値を含む定数パラメータが渡されます。パラメータに名前を付けるか、`oldValue` というデフォルトパラメータ名を使用できます。独自の `didSet` オブザーバ内のプロパティに値を割り当てると、新しい値によって、設定されたばかりの値が置き換えられます。
 
 > NOTE  
-> スーパークラスのプロパティの `willSet` および `didSet` オブザーバは、プロパティがサブクラスのイニシャライザで設定されると、スーパークラスのイニシャライザが呼び出された後に呼び出されます。スーパークラスのイニシャライザが呼び出される前に、サブクラスが独自のプロパティを設定している間は呼び出されません。 イニシャライザの委譲については、[Initializer Delegation for Value Types\(値型のイニシャライザの委譲\)](../language-guide/initialization.md#initializer-delegation-for-value-types)、[Initializer Delegation for Class Types\(クラス型のイニシャライザの委譲\)](../language-guide/initialization.md#initializer-delegation-for-class-types)を参照ください。
+> スーパークラスのプロパティの `willSet` および `didSet` オブザーバは、プロパティがサブクラスのイニシャライザで設定されると、スーパークラスのイニシャライザが呼び出された後に呼び出されます。イニシャライザの本文内で、クラスが独自のプロパティを設定している間は呼び出されません。 
+> 
+> イニシャライザの委譲については、[Initializer Delegation for Value Types\(値型のイニシャライザの委譲\)](../language-guide/initialization.md#initializer-delegation-for-value-types)、[Initializer Delegation for Class Types\(クラス型のイニシャライザの委譲\)](../language-guide/initialization.md#initializer-delegation-for-class-types)を参照ください。
 
 `willSet` と `didSet` の使用例を次に示します。下記の例では、`StepCounter` という名前の新しいクラスを定義しています。これは、人の合計歩数を追跡します。このクラスは、万歩計からの入力データやその他の日常生活での運動を追跡する歩数計に使われます。
 
