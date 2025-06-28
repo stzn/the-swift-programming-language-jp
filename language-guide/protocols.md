@@ -1,6 +1,6 @@
 # プロトコル\(Protocols\)
 
-最終更新日: 2025/5/24
+最終更新日: 2025/6/28
 原文: https://docs.swift.org/swift-book/LanguageGuide/Protocols.html
 
 準拠型が実装する必要がある要件を定義する。
@@ -560,7 +560,7 @@ struct FileDescriptor: ~Sendable {
 
 ```swift
 @available(*, unavailable)
-extension FileDescriptor Sendable { }
+extension FileDescriptor: Sendable { }
 ```
 
 前の例のように、コードのある場所で `~Sendable` と記述した場合でも、プログラムの他の場所のコードは `FileDescriptor` 型を拡張して `Sendable` 準拠を追加できます。対照的に、この例の `unavailable` extension は、`Sendable` への暗黙的な準拠を抑制し、さらにコードの他の場所にある extension がその型に `Sendable` 準拠を追加するのを防ぎます。
