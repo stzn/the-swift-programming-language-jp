@@ -136,10 +136,10 @@
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/uhooi">
-                    <img src="https://avatars.githubusercontent.com/u/21194714?v=4" width="100;" alt="uhooi"/>
+                <a href="https://github.com/jollyjoester">
+                    <img src="https://avatars.githubusercontent.com/u/2178775?v=4" width="100;" alt="jollyjoester"/>
                     <br />
-                    <sub><b>Uhooi</b></sub>
+                    <sub><b>Hideyuki Nanashima</b></sub>
                 </a>
             </td>
 		</tr>
@@ -152,10 +152,10 @@
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/jollyjoester">
-                    <img src="https://avatars.githubusercontent.com/u/2178775?v=4" width="100;" alt="jollyjoester"/>
+                <a href="https://github.com/uhooi">
+                    <img src="https://avatars.githubusercontent.com/u/21194714?v=4" width="100;" alt="uhooi"/>
                     <br />
-                    <sub><b>Hideyuki Nanashima</b></sub>
+                    <sub><b>Uhooi</b></sub>
                 </a>
             </td>
             <td align="center">
@@ -237,6 +237,13 @@
                     <img src="https://avatars.githubusercontent.com/u/13419249?v=4" width="100;" alt="b1ackturtle"/>
                     <br />
                     <sub><b>B1ackturtle</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/orukahairuka">
+                    <img src="https://avatars.githubusercontent.com/u/132898951?v=4" width="100;" alt="orukahairuka"/>
+                    <br />
+                    <sub><b>sakurai</b></sub>
                 </a>
             </td>
             <td align="center">
