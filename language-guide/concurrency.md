@@ -1,6 +1,6 @@
 # 並行処理\(Concurrency\)
 
-最終更新日: 2025/05/31
+最終更新日: 2025/06/28
 原文: https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html
 
 非同期操作を行う。
@@ -497,12 +497,15 @@ struct TemperatureReading {
 }
 ```
 
-`Sendable` プロトコルへの暗黙の準拠を上書きするには、`~Sendable` と書きます:
+`Sendable` プロトコルへの暗黙の準拠を上書きするには、`Sendable` への unavailable 準拠を書きます:
 
 ```swift
-struct FileDescriptor: ~Sendable {
+struct FileDescriptor {
     let rawValue: Int
 }
+
+@available(*, unavailable)
+extension FileDescriptor: Sendable {}
 ```
 
-プロトコルへの暗黙の準拠を抑制する詳細な情報は、[暗黙の制約\(Implicit Constraints\)](./generics.md#暗黙の制約implicit-constraints) を参照ください。
+unavailable 準拠を使用して、[プロトコルへの暗黙の準拠\(Implicit Conformance to a Protocol\)](./protocols.md#プロトコルへの暗黙の準拠implicit-conformance-to-a-protocol)で説明されているように、プロトコルに対する暗黙的な準拠を抑制することもできます。
