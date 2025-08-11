@@ -33,6 +33,7 @@
 
 |英語|日本語|
 |--------|--------|
+|argument|引数|
 |array|配列|
 |binary|二項、2進|
 |character|文字|
@@ -42,6 +43,7 @@
 |function|関数|
 |initialization|初期化|
 |method|メソッド|
+|parameter|パラメータ|
 |property|プロパティ|
 |set|セット|
 |string|文字列|
