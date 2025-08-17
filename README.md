@@ -182,14 +182,21 @@
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/tsubasakat">
+                    <img src="https://avatars.githubusercontent.com/u/26360184?v=4" width="100;" alt="tsubasakat"/>
+                    <br />
+                    <sub><b>翼</b></sub>
+                </a>
+            </td>
+		</tr>
+		<tr>
+            <td align="center">
                 <a href="https://github.com/DHLau">
                     <img src="https://avatars.githubusercontent.com/u/16432625?v=4" width="100;" alt="DHLau"/>
                     <br />
                     <sub><b>Eren</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/rymshm">
                     <img src="https://avatars.githubusercontent.com/u/23201810?v=4" width="100;" alt="rymshm"/>
@@ -225,6 +232,8 @@
                     <sub><b>GitBook Bot</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/hira22">
                     <img src="https://avatars.githubusercontent.com/u/31942637?v=4" width="100;" alt="hira22"/>
@@ -232,8 +241,6 @@
                     <sub><b>Hiraoka</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/b1ackturtle">
                     <img src="https://avatars.githubusercontent.com/u/13419249?v=4" width="100;" alt="b1ackturtle"/>
