@@ -17,6 +17,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      
+      - name: Update last modified dates
+        run: |
+          # 現在の日付を取得 (JST)
+          current_date=$(TZ=Asia/Tokyo date '+%Y/%m/%d')
+          
+          # .md ファイルの最終更新日コメントを更新
+          find . -name "*.md" -type f -exec grep -l "最終更新日" {} \; | while read file; do
+            echo "Updating date in: $file"
+            sed -i "s|<!--最終更新日: [0-9/]*[[:space:]]*-->|<!--最終更新日: $current_date  -->|g" "$file"
+          done
+          
+          # 変更があった場合のみコミット
+          if ! git diff --quiet; then
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git add .
+            git commit -m "自動更新: 最終更新日を $current_date に更新"
+            git push
+          else
+            echo "No changes to commit"
+          fi
 
       - name: Setup Node
         uses: actions/setup-node@v4
