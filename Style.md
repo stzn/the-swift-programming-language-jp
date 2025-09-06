@@ -160,6 +160,14 @@ API のシンボル名と一致するように、代わりに「追加(add)」�
 
 リファレンスでは、コンパイラがアクションを実行する実際の動作主である場合に具体的に言及しています。私たちはパーサ(parser)、レキサ(lexer)、オプティマイザ(optimizer)などのコンパイラの詳細を区別しません。
 
+### 今後の機能(upcoming features)
+
+[SE-0362: Piecemeal adoption of upcoming language improvements](https://github.com/apple/swift-evolution/blob/main/proposals/0362-piecemeal-future-features.md)の実装以降、一部の言語機能はデフォルトで有効になる前にオプトイン方式で利用可能です。
+
+将来の機能に関するセクションまたは章の冒頭に、次のような注記を含めてください。
+
+> 注: この言語機能は Swift *n* の一部となります。現在のバージョンの Swift でこの機能を有効にするには、機能識別子 `SomeFeatureIdentifier` を使用してください。将来の言語機能の有効化については、[将来の言語機能の有効化](https://github.com/swiftlang/swift-migration-guide/blob/main/Guide.docc/FeatureMigration.md)をご覧ください。
+
 ## トーン
 
 一般的に、そして特にガイドは、楽しさが伝わるように書くべきです。本書内の例は簡単で、読みやすいものでなければなりません。つまり、現実的なコードが好まれ、多くの章で複数の例に共通の物語が織り込まれています。その連続した物語のつながりは、後々の変更をより大変にする可能性がありますが、章の流れが良くなり、全体としてよりよくまとまるため、総じて十分にそうする価値はあると思います。
