@@ -16,13 +16,13 @@
 
 ## 2025-03-31
 
-- Swift6.1 に更新しました
-- ジェネリクスのための軽量なシンタックスとして `some` を使用する情報を含めて[Opaque パラメータ型\(Opaque Parameter Types\)](./opaque-types.md#opaque-parameter-types) セクションを追加しました
+- Swift 6.1 に更新しました
+- ジェネリクスのための軽量なシンタックスとして `some` を使用する情報を含めて[Opaque パラメータ型\(Opaque Parameter Types\)](../language-guide/opaque-types.md#opaque-parameter-types) セクションを追加しました
 - [available](../language-reference/attributes.md#available) セクションに、`noasync` 引数に関する情報を追加しました
 
 ## 2024-09-16
 
-- Swift6 に更新しました
+- Swift 6 に更新しました
 - [属性のpreconcurrency](../language-reference/attributes.md#preconcurrency) セクションに、Strict Concurrency チェックへの移行に関する情報を追加しました
 - [エラーハンドリングのエラーの型の特定](../language-guide/error-handling.md#エラーの型の特定specifying-the-error-type) セクションに、特定の型のエラーをスローことについての情報を追加しました
 - [アクセス制御](../language-guide/access-control.md) の章に package レベルのアクセスに関する情報を追加しました
