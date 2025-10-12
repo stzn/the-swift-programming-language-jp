@@ -1,6 +1,6 @@
 # 文\(Statements\)
 
-最終更新日: 2024/6/23  
+最終更新日: 2025/10/12
 原文: https://docs.swift.org/swift-book/ReferenceManual/Statements.html
 
 式を分類し、実行の流れを制御する。
@@ -665,7 +665,7 @@ print("Compiled with the Swift 5 compiler or later in a Swift mode earlier than 
 
 ### <a id="compile-time-diagnostic-statement">コンパイル時診断文\(Compile-Time Diagnostic Statement\)</a>
 
-Swift 5.9 より前のバージョンでは、コンパイル中に `#warning` と `#error` ステートメントが診断結果を出力します。この動作は、現在 Swift 標準ライブラリの[`warning(_:)`](http://developer.apple.com/documentation/swift/documentation/swift/warning(_:))と[`error(_:)`](http://developer.apple.com/documentation/swift/documentation/swift/error(_:))マクロによって提供されています。
+Swift 5.9 より前のバージョンでは、コンパイル中に `#warning` と `#error` ステートメントが診断結果を出力します。この動作は、現在 Swift 標準ライブラリの[`warning(_:)`](https://developer.apple.com/documentation/swift/warning(_:))と[`error(_:)`](https://developer.apple.com/documentation/swift/error(_:))マクロによって提供されています。
 
 ## <a id="availability-condition">アベイラビリティ条件\(Availability Condition\)</a>
 
