@@ -168,10 +168,10 @@
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/Ryota-Kurokawa">
-                    <img src="https://avatars.githubusercontent.com/u/119117263?v=4" width="100;" alt="Ryota-Kurokawa"/>
+                <a href="https://github.com/tsubasakat">
+                    <img src="https://avatars.githubusercontent.com/u/26360184?v=4" width="100;" alt="tsubasakat"/>
                     <br />
-                    <sub><b>ryota</b></sub>
+                    <sub><b>翼</b></sub>
                 </a>
             </td>
             <td align="center">
@@ -182,10 +182,10 @@
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/tsubasakat">
-                    <img src="https://avatars.githubusercontent.com/u/26360184?v=4" width="100;" alt="tsubasakat"/>
+                <a href="https://github.com/Ryota-Kurokawa">
+                    <img src="https://avatars.githubusercontent.com/u/119117263?v=4" width="100;" alt="Ryota-Kurokawa"/>
                     <br />
-                    <sub><b>翼</b></sub>
+                    <sub><b>ryota</b></sub>
                 </a>
             </td>
 		</tr>
@@ -195,6 +195,13 @@
                     <img src="https://avatars.githubusercontent.com/u/16432625?v=4" width="100;" alt="DHLau"/>
                     <br />
                     <sub><b>Eren</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/kkebo">
+                    <img src="https://avatars.githubusercontent.com/u/601636?v=4" width="100;" alt="kkebo"/>
+                    <br />
+                    <sub><b>Kenta Kubo</b></sub>
                 </a>
             </td>
             <td align="center">
@@ -225,6 +232,8 @@
                     <sub><b>akidon0000</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/gitbook-bot">
                     <img src="https://avatars.githubusercontent.com/u/31919211?v=4" width="100;" alt="gitbook-bot"/>
@@ -232,8 +241,6 @@
                     <sub><b>GitBook Bot</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/hira22">
                     <img src="https://avatars.githubusercontent.com/u/31942637?v=4" width="100;" alt="hira22"/>
@@ -256,10 +263,10 @@
                 </a>
             </td>
             <td align="center">
-                <a href="https://github.com/u-abyss">
-                    <img src="https://avatars.githubusercontent.com/u/47887646?v=4" width="100;" alt="u-abyss"/>
+                <a href="https://github.com/yuya-okuse">
+                    <img src="https://avatars.githubusercontent.com/u/47887646?v=4" width="100;" alt="yuya-okuse"/>
                     <br />
-                    <sub><b>Uabyss</b></sub>
+                    <sub><b>yuya_okuse</b></sub>
                 </a>
             </td>
             <td align="center">
@@ -269,6 +276,8 @@
                     <sub><b>Lumi</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/treastrain">
                     <img src="https://avatars.githubusercontent.com/u/13805382?v=4" width="100;" alt="treastrain"/>
