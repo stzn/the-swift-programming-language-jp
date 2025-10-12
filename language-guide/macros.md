@@ -1,6 +1,6 @@
 # マクロ\(Macros\)
 
-最終更新日: 2025/02/22  
+最終更新日: 2025/10/12
 原文: https://docs.swift.org/swift-book/documentation/the-swift-programming-language/macros
 
 コンパイル時にコードを生成するためにマクロを使用します。
@@ -256,7 +256,7 @@ targets: [
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/apple/swift-syntax", from: "509.0.0"),
+    .package(url: "https://github.com/swiftlang/swift-syntax", from: "509.0.0"),
 ],
 ```
 

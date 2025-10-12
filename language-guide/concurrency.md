@@ -1,6 +1,6 @@
 # 並行処理\(Concurrency\)
 
-最終更新日: 2025/06/28
+最終更新日: 2025/10/12
 原文: https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html
 
 非同期操作を行う。
@@ -271,7 +271,7 @@ task.cancel()  // Prints "キャンセルされた!"
 
 前のセクションで説明されている構造化された並行処理のアプローチに加えて、Swift は非構造化並行処理\(_unstructured concurrency_\)もサポートしています。タスクグループの一部のタスクとは異なり、非構造化タスク\(_unstructured task_\)には親タスクがありません。どんな方法で使われたとしても、非構造化タスクを完全に柔軟に管理することができます。しかし、それらの正しい動作を保証することは完全に開発者の責任です。
 
-周囲のコードと同様に実行される非構造化タスクを作成するには、[Task.init\(priority:operation:\)](https://developer.apple.com/documentation/swift/task/3856790-init) イニシャライザを呼びます。デフォルトで、現在のタスクと同じアクター隔離、優先度、およびタスクローカル状態で実行されます。周囲のコードからより独立した非構造化タスク（より具体的には切り離されたタスク\(_detached task_\)として知られるもの）を作成するには、[Task.detached\(priority:operation:\)](https://developer.apple.com/documentation/swift/task/3856786-detached) 関数を呼び出します。新しいタスクは、デフォルトでどのアクターにも隔離されずに実行され、現在のタスクの優先度やタスクローカル状態を継承しません。これらの操作はいずれも操作可能なタスクを返します。例えば、その結果を待機したり、キャンセルしたりできます。
+周囲のコードと同様に実行される非構造化タスクを作成するには、[`Task.init(name:priority:operation:)`][] イニシャライザを呼びます。デフォルトで、現在のタスクと同じアクター隔離、優先度、およびタスクローカル状態で実行されます。周囲のコードからより独立した非構造化タスク（より具体的には切り離されたタスク\(_detached task_\)として知られるもの）を作成するには、[`Task.detached(name:priority:operation:)`][] 関数を呼び出します。新しいタスクは、デフォルトでどのアクターにも隔離されずに実行され、現在のタスクの優先度やタスクローカル状態を継承しません。これらの操作はいずれも操作可能なタスクを返します。例えば、その結果を待機したり、キャンセルしたりできます。
 
 ```swift
 let newPhoto = // ... ある写真データ ...
@@ -282,6 +282,9 @@ let result = await handle.value
 ```
 
 切り離されたタスクの管理の詳細については、[Task](https://developer.apple.com/documentation/swift/task)を参照ください。
+
+[`Task.init(name:priority:operation:)`]: https://developer.apple.com/documentation/swift/task/init(name:priority:operation:)-43wmk
+[`Task.detached(name:priority:operation:)`]: https://developer.apple.com/documentation/swift/task/detached(name:priority:operation:)-795w1
 
 ## 隔離
 

@@ -1,6 +1,6 @@
 # 宣言\(Declarations\)
 
-最終更新日: 2025/7/6  
+最終更新日: 2025/10/12
 原文: https://docs.swift.org/swift-book/ReferenceManual/Declarations.html
 
 型、演算子、変数、およびその他の名前と構造を紹介する。
@@ -1511,7 +1511,7 @@ _parameters_ または _return type_ がオーバーロードしているもの�
 macro <#name#> = <#macro implementation#>
 ```
 
-*マクロ実装*は別のマクロで、このマクロの展開を行うコードの場所を示しています。マクロの展開を実行するコードは別の Swift プログラムで、[SwiftSyntax](http://github.com/apple/swift-syntax/)モジュールを使用して Swift コードとやり取りします。Swift 標準ライブラリから `externalMacro(module:type:)` マクロを呼び出し、マクロの実装を含む型の名前と、その型を含むモジュールの名前を渡します。
+*マクロ実装*は別のマクロで、このマクロの展開を行うコードの場所を示しています。マクロの展開を実行するコードは別の Swift プログラムで、[SwiftSyntax](http://github.com/swiftlang/swift-syntax/)モジュールを使用して Swift コードとやり取りします。Swift 標準ライブラリから `externalMacro(module:type:)` マクロを呼び出し、マクロの実装を含む型の名前と、その型を含むモジュールの名前を渡します。
 
 マクロは、関数と同じ形でオーバーロードすることができます。
 マクロ宣言は、ファイルスコープにのみ表示されます。
