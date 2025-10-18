@@ -5,9 +5,24 @@
 
 本書に対する最近の変更点を確認する。
 
+## 2025-09-15
+
+- Swift 6.2 に更新しました
+- [基本\(The Basics\)のメモリ安全性\(Memory Safety\)](../language-guide/the-basics.md#メモリ安全性memory-safety)セクションに、Swift がメモリ違反防止に役立つ問題に関する情報を追加しました
+- [制御フロー\(Control Flow\)のパターン\(Patterns\)](../language-guide/control-flow.md#パターンpatterns)セクションに、`if case` 構文に関する情報を追加しました
+- [並行処理\(Concurrency\)](../language-guide/concurrency.md)章にメインアクター、分離、およびグローバルアクターに関する情報を追加しました
+- [プロトコル\(Protocols\)の暗黙的適合\(Implicit Conformance to a Protocol\)](../language-guide/protocols.md#implicit-conformance-to-a-protocol)セクションに、明示的に適合を書かずに共通のプロトコルへ適合する方法や暗黙的適合を抑制する方法に関する情報を追加しました
+- [ジェネリクス\(Generics\)の暗黙的制約\(Implicit Constraints\)](../language-guide/generics.md#implicit-constraints)セクションに、共通のプロトコルへの適合が必要なジェネリック制約に関する情報を追加しました
+
+## 2025-03-31
+
+- Swift 6.1 に更新しました
+- ジェネリクスのための軽量なシンタックスとして `some` を使用する情報を含めて[Opaque パラメータ型\(Opaque Parameter Types\)](../language-guide/opaque-types.md#opaque-parameter-types) セクションを追加しました
+- [available](../language-reference/attributes.md#available) セクションに、`noasync` 引数に関する情報を追加しました
+
 ## 2024-09-16
 
-- Swift6 に更新しました
+- Swift 6 に更新しました
 - [属性のpreconcurrency](../language-reference/attributes.md#preconcurrency) セクションに、Strict Concurrency チェックへの移行に関する情報を追加しました
 - [エラーハンドリングのエラーの型の特定](../language-guide/error-handling.md#エラーの型の特定specifying-the-error-type) セクションに、特定の型のエラーをスローことについての情報を追加しました
 - [アクセス制御](../language-guide/access-control.md) の章に package レベルのアクセスに関する情報を追加しました
