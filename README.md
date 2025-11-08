@@ -193,17 +193,17 @@
 		</tr>
 		<tr>
             <td align="center">
-                <a href="https://github.com/DHLau">
-                    <img src="https://avatars.githubusercontent.com/u/16432625?v=4" width="100;" alt="DHLau"/>
-                    <br />
-                    <sub><b>Eren</b></sub>
-                </a>
-            </td>
-            <td align="center">
                 <a href="https://github.com/kkebo">
                     <img src="https://avatars.githubusercontent.com/u/601636?v=4" width="100;" alt="kkebo"/>
                     <br />
                     <sub><b>Kenta Kubo</b></sub>
+                </a>
+            </td>
+            <td align="center">
+                <a href="https://github.com/DHLau">
+                    <img src="https://avatars.githubusercontent.com/u/16432625?v=4" width="100;" alt="DHLau"/>
+                    <br />
+                    <sub><b>Eren</b></sub>
                 </a>
             </td>
             <td align="center">
