@@ -1,6 +1,6 @@
 # 本の構造
 
-最終更新日: 2025/10/12
+最終更新日: 2025/11/07
 原文: https://github.com/swiftlang/swift-book/blob/main/Style.md
 
 TSPL は 3 つの主なパートに加えて、補完的な機能を提供するいくつかの序文に分かれています。
@@ -162,7 +162,7 @@ API のシンボル名と一致するように、代わりに「追加(add)」�
 
 ### 今後の機能(upcoming features)
 
-[SE-0362: Piecemeal adoption of upcoming language improvements](https://github.com/apple/swift-evolution/blob/main/proposals/0362-piecemeal-future-features.md)の実装以降、一部の言語機能はデフォルトで有効になる前にオプトイン方式で利用可能です。
+[SE-0362: Piecemeal adoption of upcoming language improvements](https://github.com/swiftlang/swift-evolution/blob/main/proposals/0362-piecemeal-future-features.md)の実装以降、一部の言語機能はデフォルトで有効になる前にオプトイン方式で利用可能です。
 
 将来の機能に関するセクションまたは章の冒頭に、次のような注記を含めてください。
 
