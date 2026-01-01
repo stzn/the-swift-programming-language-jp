@@ -445,7 +445,7 @@ func someFunction(a: inout Int) {
 }
 
 // エラー: これは実行時排他権違反を起こす
-someFunction(&someValue)
+someFunction(a: &someValue)
 ```
 
 同じ理由で、同じ値を複数の in-out パラメータに渡すことはできません。
@@ -458,7 +458,7 @@ func someFunction(a: inout Int, b: inout Int) {
 }
 
 // Error: 複数の in-out パラメータに同じ値を渡すことはできない
-someFunction(&someValue, &someValue)
+someFunction(a: &someValue, b: &someValue)
 ```
 
 メモリの安全性とメモリの排他性の詳細については、[Memory Safety\(メモリ安全性\)](../language-guide/memory-safety.md)を参照ください。
