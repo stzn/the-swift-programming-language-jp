@@ -89,7 +89,7 @@ func someFunction<let z: Int>(s: SomeStruct<z>) {
 }
 
 let s1 = SomeStruct<12>()
-let s2 = AnotherStruct(s: s1)  // AnotherStruct.y は 12 に推論されます
+let s2 = AnotherStruct(s: s1)  // AnotherStruct.y は 12 に推論される
 someFunction(s: s1)  // "12"を出力
 ```
 
