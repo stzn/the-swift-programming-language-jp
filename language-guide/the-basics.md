@@ -232,7 +232,6 @@ Swift は符号なしの整数値型も提供しています。これも、プ�
 
 浮動小数点数は非常に小さい数値と非常に大きい数値を扱うことができますが、その範囲内の全ての値を表現できるわけではありません。整数の計算は常に正確な結果を生み出しますが、浮動小数点数の計算は表現可能な最も近い数値に結果を丸めます。例えば、`Float` 型で `10,000` を格納する場合、次に大きい数値は `10,000.001` です。この 2 つの数値の間の値はどちらかに丸められます。また、数値間の間隔も可変です。大きい数値の間隔は小さい数値の間隔よりも大きくなります。例えば、`0.001` の次の `Float` 値は `0.0010000002` であり、これは `10,000` の後の間隔よりも小さくなります。
 
-Floating-point numbers have values for negative zero, infinity, and negative infinity, which represent overflow and underflow in calculations. They also have include not-a-number (NaN) values to represent an invalid or undefined result, such as dividing zero by zero. This behavior is different from integers, which stop the program if they can't represent the result.
 浮動小数点数は、負のゼロ、無限大、負の無限大の値を持ち、計算におけるオーバーフローとアンダーフローを表します。また、ゼロをゼロで割るなどの無効または未定義の結果を表すために、NaN\(Not a Number\)値も含まれています。この動作は、結果を表現できない場合にプログラムを停止する整数とは異なります。
 
 全ての可能な値の間で同じ間隔が必要な場合、または行っている計算が正確な結果を必要とし、上記の特別な値を必要としない場合、浮動小数点数は適切なデータ型ではないかもしれません。[整数\(Integers\)](the-basics.md#整数integers)で説明したように、代わりに固定小数点数を使用することを検討してください。
