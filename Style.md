@@ -89,7 +89,6 @@ DI という略称を使ってはいけません。
 
 ## isolation
 
-Use the phrase “is isolated” to describe values and types that are isolated to a global actor. For example, in the following code, MyType and m are isolated to the main actor.: 
 
 「~は隔離されている」というフレーズを使用して、グローバルアクターに隔離されている値と型を説明します。例えば、次のコードでは、`MyType` と `m` はメインアクターに隔離されています。
 
@@ -145,7 +144,6 @@ nono-ptional と誤読を避けるためにハイフンでつなげます。Appl
 
 > 上記のコードリストは `someValue` を `f()` に渡します。これは `SomeType` が `Sendable` プロトコルに準拠しているため安全です。`f()` に渡す値は送信可能(sendable)でなければならないため、メソッドは[…]
 
-Pay attention to possible ambiguity around Sendable: Types can conform to Sendable, not have a conformance to Sendable, or have an unavailable conformance to Sendable. Without context, writing “nonsendable” is ambiguous between the second and third case.
 
 `Sendable` に関するあいまいさに注意してください。例えば、型は `Sendable` に準拠することができますが、`Sendable` への準拠を持たない、あるいは利用できない `Sendable` への準拠を持つこともできます。これは、コンテキストがない状態で「nonsendable」と書くと、2 番目と 3 番目のケースの間であいまいになります。
 
