@@ -439,7 +439,7 @@ protocol ProvidesMain {
 > 非推奨:  
 > この属性は非推奨です。  
 > [main](./language-reference/attributes.md#main)を代わりに使用してください。  
-> Swift6では、この属性を使用するとエラーになります。
+> Swift6では、この属性を使用するとコンパイルエラーになります。
 
 この属性をクラスに適用すると、それが app delegate だということを示します。この属性を使用することは、`NSApplicationMain(_:_:)` 関数を呼び出すことと同じです。
 
@@ -901,7 +901,7 @@ resultBuilder 属性を適用しても、ABI の互換性には影響しませ�
 > 非推奨:  
 > この属性は非推奨です。  
 > [main](./language-reference/attributes.md#main)を代わりに使用してください。  
-> Swift6では、この属性を使用するとエラーになります。
+> Swift6では、この属性を使用するとコンパイルエラーになります。
 
 この属性をクラスに適用して、それが app delegate だということを示します。この属性を使用することは、`UIApplicationMain` 関数を呼び出し、このクラスの名前をデリゲートクラスの名前として渡すことと同じです。
 

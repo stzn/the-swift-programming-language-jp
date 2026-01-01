@@ -69,7 +69,7 @@ TSPL は 3 つの主なパートに加えて、補完的な機能を提供する
 > 非推奨:  
 > この属性は非推奨です。  
 > [main](./language-reference/attributes.md#main)を代わりに使用してください。  
-> Swift6では、この属性を使用するとエラーになります。
+> Swift6では、この属性を使用するとコンパイルエラーになります。
 ```
 
 ## definite initialization
