@@ -45,8 +45,6 @@ simpleMax(3.14159, 2.71828) // T は Double に推論されます
 
 ### 整数ジェネリックパラメータ\(Integer Generic Parameters\)
 
-An integer generic parameter acts as a placeholder for an integer value rather than a type. It has the following form:
-
 _整数のジェネリックパラメータ_は、型ではなく整数値のプレースホルダーとして機能します。その形は以下の通りです。
 
 ```swift
