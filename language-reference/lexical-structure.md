@@ -200,7 +200,7 @@ _浮動小数点リテラル_は不特定の精度の浮動小数点値を表し
 
 > Grammar of a floating-point literal:
 >
-> *signed-floating-point-literal* → > **`-`**_?_ *floating-point-literal* \
+> *signed-floating-point-literal* → **`-`**_?_ *floating-point-literal* \
 > *floating-point-literal* → *decimal-literal* *decimal-fraction*_?_ *decimal-exponent*_?_ \
 > *floating-point-literal* → *hexadecimal-literal* *hexadecimal-fraction*_?_ *hexadecimal-exponent*
 >
