@@ -43,6 +43,54 @@ simpleMax(17, 42) // T は Int に推論されます
 simpleMax(3.14159, 2.71828) // T は Double に推論されます
 ```
 
+### 整数ジェネリックパラメータ\(Integer Generic Parameters\)
+
+_整数のジェネリックパラメータ_は、型ではなく整数値のプレースホルダーとして機能します。その形は以下の通りです。
+
+```swift
+let <#type parameter#>: <#type>
+```
+
+_型_は、Swift 標準ライブラリの `Int` 型、または `Int` に解決される型エイリアスまたはジェネリック型でなければなりません。
+
+整数のジェネリックパラメータに提供する値は、整数リテラルまたはそれを含めたジェネリックコンテキストからの別の整数ジェネリックパラメータでなければなりません。例えば、
+
+```swift
+struct SomeStruct<let x: Int> { }
+let a: SomeStruct<2>  // OK: 整数リテラル
+
+struct AnotherStruct<let x: Int, T, each U> {
+    let b: SomeStruct<x>  // OK: 他の整数ジェネリックパラメータ
+
+    static let c = 42
+    let d: SomeStruct<c>  // Error: 定数は使えない
+
+    let e: SomeStruct<T>  // Error: ジェネリック型パラメータは使えない
+    let f: SomeStruct<U>  // Error: パラメータパックは使えない
+}
+```
+
+型の整数ジェネリックパラメータの値は、その型の静的定数メンバとしてアクセス可能であり、型自体と同じ可視性を持ちます。関数の整数ジェネリックパラメータの値は、関数内から定数としてアクセス可能です。これらの定数は式で使用されると、`Int` 型として扱われます。
+
+```swift
+print(a.x)  // "2"を出力
+```
+
+整数のジェネリックパラメータの値は、型を初期化したり関数を呼び出したりするときに、使用する引数の型から推論できます。
+
+```swift
+struct AnotherStruct<let y: Int> {
+    var s: SomeStruct<y>
+}
+func someFunction<let z: Int>(s: SomeStruct<z>) {
+    print(z)
+}
+
+let s1 = SomeStruct<12>()
+let s2 = AnotherStruct(s: s1)  // AnotherStruct.y は 12 に推論される
+someFunction(s: s1)  // "12"を出力
+```
+
 ### ジェネリック where 句\(Generic Where Clauses\)
 
 型または関数の本文の開始中括弧\(`{`\)の直前にジェネリック `where` 句を含むことによって、型パラメータとその関連型に追加要件を指定できます。ジェネリック `where` 句は、`where` キーワードで構成され、その後に 1 つ以上の要件のカンマ区切りのリストが続きます。
@@ -52,8 +100,10 @@ where <#requirements#>
 ```
 
 ジェネリック `where` 句の _requirements_ は、型パラメータがクラスを継承するか、プロトコルまたはプロトコル合成に準拠することを指定します。ジェネリック `where` 句は型パラメータのシンプルな制約を表現するための糖衣構文\(シンタックスシュガー\)を提供しますが\(例えば、`<T: Comparable>` は `<T> where T: Comparable` などと同等\)、それを使用して複雑な制約を型パラメータや関連型に提供することもできます。例えば、プロトコルに準拠するために、関連型の型パラメータを制限することができます。`<S: Sequence> where S.Iterator.Element: Equatable` は、`S` が `Sequence` プロトコルに準拠し、関連型 `S.Iterator.Element` が `Equatable` プロトコルに準拠することを指定します。この制約は、シーケンスの各要素が `Equatable` だということを保証します。
+整数のジェネリックパラメータは、プロトコルまたはスーパークラスの要件を持つことはできません。
 
 `==` 演算子を使用して、2 つの型が同じという要件を指定することもできます。例えば、`<S1: Sequence, S2: Sequence> where S1.Iterator.Element == S2.Iterator.Element` は `S1` と `S2` が `Sequence` プロトコルに準拠し、両方のシーケンスの要素が同じ型でなければならない制約を表現します。
+整数のジェネリックパラメータの場合、`==` 演算子はその値に対する要件を指定します。これにより、2 つの整数ジェネリックパラメータが同じ値を持つことを要求したり、整数ジェネリックパラメータに特定の整数値を要求したりすることができます。
 
 型パラメータに置き換えられる任意の型引数は、型パラメータの全て制約と要件を満たす必要があります。
 
@@ -80,6 +130,7 @@ extension Collection where Element: SomeProtocol {
 > *generic-parameter* → *type-name* \
 > *generic-parameter* → *type-name* **`:`** *type-identifier* \
 > *generic-parameter* → *type-name* **`:`** *protocol-composition-type*
+> *generic-parameter* → **`let`** *type-name* **`:`** *type* \
 >
 > *generic-where-clause* → **`where`** *requirement-list* \
 > *requirement-list* → *requirement* | *requirement* **`,`** *requirement-list* \
@@ -88,6 +139,7 @@ extension Collection where Element: SomeProtocol {
 > *conformance-requirement* → *type-identifier* **`:`** *type-identifier* \
 > *conformance-requirement* → *type-identifier* **`:`** *protocol-composition-type* \
 > *same-type-requirement* → *type-identifier* **`==`** *type*
+> *same-type-requirement* → *type-identifier* **`==`** *signed-integer-literal*
 
 ## ジェネリック引数句\(Generic Argument Clause\)
 
@@ -97,7 +149,7 @@ _ジェネリック引数句_は、ジェネリック型の型引数を指定し
 <<#generic argument list#>>
 ```
 
-_generic argument list_ は、型パラメータのカンマ区切りのリストです。_型引数_は、ジェネリック型のジェネリックパラメータ句に対応する型パラメータを置き換えた実際の具象型の名前です。つまり、そのジェネリック型の具象型バージョンです。下記の例は、Swift 標準ライブラリのジェネリックな辞書型のシンプルなバージョンを示しています。
+_generic argument list_ は、型引数のカンマ区切りのリストです。_型引数_は、ジェネリック型のジェネリックパラメータ句に対応する型パラメータを置き換えた実際の具象型の名前です。整数ジェネリックパラメータの場合、_型引数_はその整数ジェネリックパラメータを置き換える整数値になります。結果として、そのジェネリック型の特殊化されたバージョンになります。下記の例は、Swift 標準ライブラリのジェネリックな辞書型のシンプルなバージョンを示しています。
 
 ```swift
 struct Dictionary<Key: Hashable, Value>: Collection, ExpressibleByDictionaryLiteral {
@@ -119,4 +171,4 @@ let arrayOfArrays: Array<Array<Int>> = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 >
 > *generic-argument-clause* → **`<`** *generic-argument-list* **`>`** \
 > *generic-argument-list* → *generic-argument* | *generic-argument* **`,`** *generic-argument-list* \
-> *generic-argument* → *type*
+> *generic-argument* → *type* | *signed-integer-literal*
