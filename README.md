@@ -207,6 +207,13 @@
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/preettrank53">
+                    <img src="https://avatars.githubusercontent.com/u/153091626?v=4" width="100;" alt="preettrank53"/>
+                    <br />
+                    <sub><b>Rank Preet </b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/rymshm">
                     <img src="https://avatars.githubusercontent.com/u/23201810?v=4" width="100;" alt="rymshm"/>
                     <br />
@@ -227,6 +234,8 @@
                     <sub><b>ぽっけ</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/akidon0000">
                     <img src="https://avatars.githubusercontent.com/u/53287375?v=4" width="100;" alt="akidon0000"/>
@@ -234,8 +243,6 @@
                     <sub><b>akidon0000</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/gitbook-bot">
                     <img src="https://avatars.githubusercontent.com/u/31919211?v=4" width="100;" alt="gitbook-bot"/>
@@ -271,6 +278,8 @@
                     <sub><b>yuya_okuse</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/Lumisilk">
                     <img src="https://avatars.githubusercontent.com/u/11924267?v=4" width="100;" alt="Lumisilk"/>
@@ -278,8 +287,6 @@
                     <sub><b>Lumi</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/treastrain">
                     <img src="https://avatars.githubusercontent.com/u/13805382?v=4" width="100;" alt="treastrain"/>
