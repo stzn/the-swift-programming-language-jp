@@ -221,12 +221,21 @@
                 </a>
             </td>
             <td align="center">
+                <a href="https://github.com/S-Shimotori">
+                    <img src="https://avatars.githubusercontent.com/u/10096099?v=4" width="100;" alt="S-Shimotori"/>
+                    <br />
+                    <sub><b>SHIMOTORI Shigure</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/tez3998">
                     <img src="https://avatars.githubusercontent.com/u/90051826?v=4" width="100;" alt="tez3998"/>
                     <br />
                     <sub><b>Yuta Tezuka</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/27pokke">
                     <img src="https://avatars.githubusercontent.com/u/39374059?v=4" width="100;" alt="27pokke"/>
@@ -234,8 +243,6 @@
                     <sub><b>ぽっけ</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/akidon0000">
                     <img src="https://avatars.githubusercontent.com/u/53287375?v=4" width="100;" alt="akidon0000"/>
@@ -271,6 +278,8 @@
                     <sub><b>sakurai</b></sub>
                 </a>
             </td>
+		</tr>
+		<tr>
             <td align="center">
                 <a href="https://github.com/yuya-okuse">
                     <img src="https://avatars.githubusercontent.com/u/47887646?v=4" width="100;" alt="yuya-okuse"/>
@@ -278,8 +287,6 @@
                     <sub><b>yuya_okuse</b></sub>
                 </a>
             </td>
-		</tr>
-		<tr>
             <td align="center">
                 <a href="https://github.com/Lumisilk">
                     <img src="https://avatars.githubusercontent.com/u/11924267?v=4" width="100;" alt="Lumisilk"/>
